@@ -24,6 +24,8 @@ Removes a specified untrusted hotspot configuration.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
+<!--Device-wifi-function removeUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>--><!--Device-wifi-function removeUntrustedConfig(config: WifiDeviceConfig): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**
@@ -91,6 +93,8 @@ Removes a specified untrusted hotspot configuration.
 **Substitutes:** [removeCandidateConfig](arkts-connectivity-wifimanager-removecandidateconfig-f.md)
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
+
+<!--Device-wifi-function removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void--><!--Device-wifi-function removeUntrustedConfig(config: WifiDeviceConfig, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

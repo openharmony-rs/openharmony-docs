@@ -8,6 +8,8 @@ interface Configuration
 
 **起始版本：** 9
 
+<!--Device-window-interface Configuration--><!--Device-window-interface Configuration-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,7 +30,9 @@ ctx?: BaseContext
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-ctx?: BaseContext--><!--Device-Configuration-ctx?: BaseContext-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,7 +48,9 @@ decorEnabled?: boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-decorEnabled?: boolean--><!--Device-Configuration-decorEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -60,7 +66,9 @@ displayId?: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-displayId?: long--><!--Device-Configuration-displayId?: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -76,7 +84,9 @@ name: string
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-name: string--><!--Device-Configuration-name: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -92,7 +102,9 @@ parentId?: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-parentId?: int--><!--Device-Configuration-parentId?: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -108,7 +120,9 @@ title?: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-title?: string--><!--Device-Configuration-title?: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -124,6 +138,8 @@ windowType: WindowType
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-windowType: WindowType--><!--Device-Configuration-windowType: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

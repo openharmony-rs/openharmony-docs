@@ -8,6 +8,8 @@ declare interface StateStyles
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface StateStyles--><!--Device-unnamed-declare interface StateStyles-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## clicked
@@ -25,6 +27,8 @@ clicked?: any
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StateStyles-clicked?: any--><!--Device-StateStyles-clicked?: any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ disabled?: any
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-StateStyles-disabled?: any--><!--Device-StateStyles-disabled?: any-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## focused
@@ -61,6 +67,8 @@ focused?: any
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StateStyles-focused?: any--><!--Device-StateStyles-focused?: any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ hovered?: object
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-StateStyles-hovered?: object--><!--Device-StateStyles-hovered?: object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -100,6 +110,8 @@ normal?: any
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-StateStyles-normal?: any--><!--Device-StateStyles-normal?: any-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pressed
@@ -117,6 +129,8 @@ pressed?: any
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StateStyles-pressed?: any--><!--Device-StateStyles-pressed?: any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,5 +151,7 @@ selected?: object
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StateStyles-selected?: object--><!--Device-StateStyles-selected?: object-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

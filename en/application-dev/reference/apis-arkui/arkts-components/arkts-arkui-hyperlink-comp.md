@@ -1,16 +1,18 @@
 # Hyperlink
 
-The **Hyperlink** component implements a link from a location in the component to another location.
+The **Hyperlink** component supports two display forms: text and image. Tapping within the component area redirects to a specified web page. It is suitable for scenarios where external web links are opened within an app. This component must be used with the system browser.
 
-> **NOTE** > > - This component must be used with the system browser.
+> **NOTE:** 
+> 
+> - This component must be used with the system browser.
 
 ## Required Permissions
 
-If Internet access is required, you must apply for the **ohos.permission.INTERNET** permission. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
+When a network connection is required to redirect to the target web page, you need to apply for the **ohos.permission.INTERNET** permission. For details about how to apply, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
 
 ## Child Components
 
-This component can contain the [Image](arkts-arkui-image-comp.md#image) child component.
+This component can contain the [Image](arkts-arkui-image-comp.md) child component.
 
 ## Hyperlink
 
@@ -24,14 +26,16 @@ Defines the constructor of Hyperlink.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HyperlinkInterface-(address: string | Resource, content?: string | Resource): HyperlinkAttribute--><!--Device-HyperlinkInterface-(address: string | Resource, content?: string | Resource): HyperlinkAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Web page to which the hyperlink is redirected. |
-| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Text displayed in the hyperlink.<br>Default value: **''**. If this parameter is not passed and the component does not have child components, the value of the **address** parameter is displayed by default.<br>**NOTE:** <br>If this component has child components, the hyperlink text is not displayed. |
+| address | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Web page address that the **Hyperlink** component navigates to. |
+| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Text displayed for the hyperlink in the **Hyperlink** component.<br>Default value: **''**. If this parameter is not set and the component has no child components, the **address** parameter value is displayed by default. <br>**NOTE:** <br>If the component has child components, the hyperlink text is not displayed. |
 
 ## Summary
 

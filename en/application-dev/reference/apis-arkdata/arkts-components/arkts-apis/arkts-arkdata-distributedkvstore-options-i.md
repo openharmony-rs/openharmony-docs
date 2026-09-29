@@ -8,6 +8,8 @@ Provides KV store configuration.
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface Options--><!--Device-distributedKVStore-interface Options-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -22,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 autoSync?: boolean
 ```
 
-Whether to enable auto sync across devices. The default value is **false**, indicating that only manual sync is supported. If this parameter is set to **true**, &lt;!--RP1--&gt;it takes effect only in [device collaboration using cross-device calls](../../../application-models/hop-multi-device-collaboration.md#using-cross-device-call).&lt;!--RP1End--&gt;
+Whether to enable auto sync across devices. The default value is **false**, indicating that only manual sync is supported. If this parameter is set to **true**, <!--RP1-->it takes effect only in [device collaboration using cross-device calls](../../../application-models/hop-multi-device-collaboration.md#using-cross-device-call).<!--RP1End-->
 
 SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -35,6 +37,8 @@ ohos.permission.DISTRIBUTED_DATASYNC
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Options-autoSync?: boolean--><!--Device-Options-autoSync?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -54,6 +58,8 @@ SystemCapability.DistributedDataManager.KVStore.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Options-backup?: boolean--><!--Device-Options-backup?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## createIfMissing
@@ -71,6 +77,8 @@ SystemCapability.DistributedDataManager.KVStore.Core
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Options-createIfMissing?: boolean--><!--Device-Options-createIfMissing?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -90,6 +98,8 @@ SystemCapability.DistributedDataManager.KVStore.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Options-encrypt?: boolean--><!--Device-Options-encrypt?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## kvStoreType
@@ -108,6 +118,8 @@ SystemCapability.DistributedDataManager.KVStore.Core
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Options-kvStoreType?: KVStoreType--><!--Device-Options-kvStoreType?: KVStoreType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## rootDir
@@ -123,6 +135,8 @@ Specifies the root directory relative to the database
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Options-rootDir?: string--><!--Device-Options-rootDir?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -142,6 +156,8 @@ SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Options-schema?: Schema--><!--Device-Options-schema?: Schema-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## securityLevel
@@ -157,5 +173,7 @@ Security level of the KV store.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Options-securityLevel: SecurityLevel--><!--Device-Options-securityLevel: SecurityLevel-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

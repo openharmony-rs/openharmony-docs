@@ -6,6 +6,8 @@ export declare class ComposeTitleBarMenuItem
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class ComposeTitleBarMenuItem--><!--Device-unnamed-export declare class ComposeTitleBarMenuItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -28,6 +30,8 @@ action?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeTitleBarMenuItem-action?: () => void--><!--Device-ComposeTitleBarMenuItem-action?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -47,6 +51,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeTitleBarMenuItem-accessibilityDescription?: ResourceStr--><!--Device-ComposeTitleBarMenuItem-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeTitleBarMenuItem-accessibilityLevel?: string--><!--Device-ComposeTitleBarMenuItem-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -99,6 +107,8 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeTitleBarMenuItem-accessibilityText?: ResourceStr--><!--Device-ComposeTitleBarMenuItem-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +132,8 @@ item参数不支持触发isEnabled属性。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeTitleBarMenuItem-isEnabled?: boolean--><!--Device-ComposeTitleBarMenuItem-isEnabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -139,6 +151,8 @@ label?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeTitleBarMenuItem-label?: ResourceStr--><!--Device-ComposeTitleBarMenuItem-label?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +172,8 @@ Symbol图标资源，优先级大于value，item左侧头像不支持设置该�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier--><!--Device-ComposeTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -175,5 +191,7 @@ value: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeTitleBarMenuItem-value: ResourceStr--><!--Device-ComposeTitleBarMenuItem-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

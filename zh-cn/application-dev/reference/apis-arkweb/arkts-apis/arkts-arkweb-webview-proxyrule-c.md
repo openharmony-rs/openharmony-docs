@@ -10,6 +10,8 @@ ProxyRule提供两个方法：getSchemeFilter用于获取该代理规则对应�
 
 **起始版本：** 15
 
+<!--Device-webview-class ProxyRule--><!--Device-webview-class ProxyRule-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -30,6 +32,8 @@ getSchemeFilter(): ProxySchemeFilter
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProxyRule-getSchemeFilter(): ProxySchemeFilter--><!--Device-ProxyRule-getSchemeFilter(): ProxySchemeFilter-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -40,7 +44,7 @@ getSchemeFilter(): ProxySchemeFilter
 
 **示例**
 
-完整示例代码参考removeProxyOverride。
+完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。
 
 ## getUrl
 
@@ -54,6 +58,8 @@ getUrl(): string
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProxyRule-getUrl(): string--><!--Device-ProxyRule-getUrl(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -64,4 +70,4 @@ getUrl(): string
 
 **示例**
 
-完整示例代码参考removeProxyOverride。
+完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。

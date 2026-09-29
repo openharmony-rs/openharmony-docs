@@ -20,6 +20,8 @@ breakpoints: {value: ['320vp', '600vp', '840vp', '1080vp']}
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface BreakPoints--><!--Device-unnamed-declare interface BreakPoints-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## reference
@@ -41,6 +43,8 @@ Invalid value: The default value is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BreakPoints-reference?: BreakpointsReference--><!--Device-BreakPoints-reference?: BreakpointsReference-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,5 +71,7 @@ The default breakpoints apply to most scenarios. You can customize them for spec
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BreakPoints-value?: Array<string>--><!--Device-BreakPoints-value?: Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

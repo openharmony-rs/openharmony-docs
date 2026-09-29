@@ -4,6 +4,8 @@ The **storageStatistics** module provides APIs for obtaining storage space infor
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace storageStatistics--><!--Device-unnamed-declare namespace storageStatistics-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 ## Modules to Import

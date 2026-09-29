@@ -18,6 +18,8 @@ Unregisters the observer used to listen for application state changes. This API 
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function off(type: 'applicationState', observerId: int, callback: AsyncCallback<void>): void--><!--Device-appManager-function off(type: 'applicationState', observerId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -108,6 +110,8 @@ Unregisters the observer used to listen for application state changes. This API 
 **Since:** 14
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
+
+<!--Device-appManager-function off(type: 'applicationState', observerId: int): Promise<void>--><!--Device-appManager-function off(type: 'applicationState', observerId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

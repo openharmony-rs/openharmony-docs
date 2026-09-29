@@ -28,6 +28,8 @@ Since API version 26.0.0, if you call [setDisallowedPolicyForAccount](arkts-mdm-
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addUserNonStopApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void--><!--Device-applicationManager-function addUserNonStopApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

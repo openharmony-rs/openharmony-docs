@@ -18,6 +18,8 @@ Sets the short message service center (SMSC) address. This API uses an asynchron
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sms-function setSmscAddr(slotId: int, smscAddr: string, callback: AsyncCallback<void>): void--><!--Device-sms-function setSmscAddr(slotId: int, smscAddr: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Sets the SMSC address. This API uses a promise to return the result.
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sms-function setSmscAddr(slotId: int, smscAddr: string): Promise<void>--><!--Device-sms-function setSmscAddr(slotId: int, smscAddr: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

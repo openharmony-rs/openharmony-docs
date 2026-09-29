@@ -10,6 +10,8 @@ Defines the device profile information.
 
 **Deprecated since:** 6
 
+<!--Device-unnamed-export interface DeviceResponse--><!--Device-unnamed-export interface DeviceResponse-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## Modules to Import
@@ -34,6 +36,8 @@ API version.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-apiVersion: number--><!--Device-DeviceResponse-apiVersion: number-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## brand
@@ -51,6 +55,8 @@ Brand.
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DeviceResponse-brand: string--><!--Device-DeviceResponse-brand: string-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -70,6 +76,8 @@ Device type. The options are as follows: **phone**, **tablet**, **tv**, and **we
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-deviceType: string--><!--Device-DeviceResponse-deviceType: string-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## language
@@ -87,6 +95,8 @@ System language.
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DeviceResponse-language: string--><!--Device-DeviceResponse-language: string-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -106,6 +116,8 @@ Manufacturer.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-manufacturer: string--><!--Device-DeviceResponse-manufacturer: string-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## model
@@ -123,6 +135,8 @@ Model.
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DeviceResponse-model: string--><!--Device-DeviceResponse-model: string-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -142,6 +156,8 @@ Product code.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-product: string--><!--Device-DeviceResponse-product: string-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## region
@@ -160,6 +176,8 @@ System region.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-region: string--><!--Device-DeviceResponse-region: string-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## screenDensity
@@ -177,6 +195,8 @@ Screen pixel density, which indicates the number of pixels per inch on the scree
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DeviceResponse-screenDensity: number--><!--Device-DeviceResponse-screenDensity: number-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -198,6 +218,8 @@ Screen shape. The options are as follows:
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-screenShape: 'rect' | 'circle'--><!--Device-DeviceResponse-screenShape: 'rect' | 'circle'-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## sdkMinorApiVersion
@@ -217,6 +239,8 @@ SDK minor API version. Since API version 26.0.0, the API version is in the forma
 **Deprecated since:** 26.0.0
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DeviceResponse-sdkMinorApiVersion?: number--><!--Device-DeviceResponse-sdkMinorApiVersion?: number-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -238,6 +262,8 @@ SDK patch API version. Since API version 26.0.0, the API version is in the forma
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-DeviceResponse-sdkPatchApiVersion?: number--><!--Device-DeviceResponse-sdkPatchApiVersion?: number-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## windowHeight
@@ -256,6 +282,8 @@ Available window height, in px. The available window size varies on different de
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-DeviceResponse-windowHeight: number--><!--Device-DeviceResponse-windowHeight: number-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## windowWidth
@@ -273,5 +301,7 @@ Available window width, in px. The available window size varies on different dev
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DeviceResponse-windowWidth: number--><!--Device-DeviceResponse-windowWidth: number-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite

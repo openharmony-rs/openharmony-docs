@@ -14,6 +14,8 @@ Defines the callback triggered when the **Swiper** component is about to scroll.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-unnamed-declare type ContentWillScrollCallback = (result: SwiperContentWillScrollResult) => boolean--><!--Device-unnamed-declare type ContentWillScrollCallback = (result: SwiperContentWillScrollResult) => boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

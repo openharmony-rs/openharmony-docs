@@ -8,6 +8,8 @@ Implements the subtab style. A transition animation is played when the user swit
 
 **Since:** 9
 
+<!--Device-unnamed-declare class SubTabBarStyle--><!--Device-unnamed-declare class SubTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## board
@@ -23,6 +25,8 @@ Sets the background style (board style) of the selected subtab. It takes effect 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubTabBarStyle-board(value: BoardStyle): SubTabBarStyle--><!--Device-SubTabBarStyle-board(value: BoardStyle): SubTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Constructor used to create a **SubTabBarStyle** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SubTabBarStyle-constructor(content: ResourceStr)--><!--Device-SubTabBarStyle-constructor(content: ResourceStr)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -74,6 +80,8 @@ Constructor used to create a **SubTabBarStyle** instance. You can set custom con
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SubTabBarStyle-constructor(content: ResourceStr | ComponentContent)--><!--Device-SubTabBarStyle-constructor(content: ResourceStr | ComponentContent)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -95,6 +103,8 @@ Sets the [ID](arkts-arkui-common-comp-commonmethod-c.md#id) of the subtab.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SubTabBarStyle-id(value: string): SubTabBarStyle--><!--Device-SubTabBarStyle-id(value: string): SubTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,6 +133,8 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubTabBarStyle-indicator(value: IndicatorStyle): SubTabBarStyle--><!--Device-SubTabBarStyle-indicator(value: IndicatorStyle): SubTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,6 +166,8 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-SubTabBarStyle-indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle--><!--Device-SubTabBarStyle-indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -182,6 +196,8 @@ Sets the style of the label text and font for the subtab.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SubTabBarStyle-labelStyle(value: LabelStyle): SubTabBarStyle--><!--Device-SubTabBarStyle-labelStyle(value: LabelStyle): SubTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -209,6 +225,8 @@ Static constructor used to create a **SubTabBarStyle** instance.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubTabBarStyle-static of(content: ResourceStr): SubTabBarStyle--><!--Device-SubTabBarStyle-static of(content: ResourceStr): SubTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,6 +258,8 @@ Static constructor used to create a **SubTabBarStyle** instance. You can set cus
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SubTabBarStyle-static of(content: ResourceStr | ComponentContent): SubTabBarStyle--><!--Device-SubTabBarStyle-static of(content: ResourceStr | ComponentContent): SubTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -267,6 +287,8 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubTabBarStyle-padding(value: Padding | Dimension): SubTabBarStyle--><!--Device-SubTabBarStyle-padding(value: Padding | Dimension): SubTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -298,6 +320,8 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SubTabBarStyle-padding(padding: LocalizedPadding): SubTabBarStyle--><!--Device-SubTabBarStyle-padding(padding: LocalizedPadding): SubTabBarStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -325,6 +349,8 @@ Sets the display mode of the selected subtab. It takes effect only in the horizo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubTabBarStyle-selectedMode(value: SelectedMode): SubTabBarStyle--><!--Device-SubTabBarStyle-selectedMode(value: SelectedMode): SubTabBarStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

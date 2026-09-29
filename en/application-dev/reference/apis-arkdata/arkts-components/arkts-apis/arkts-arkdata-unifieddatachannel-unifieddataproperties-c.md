@@ -8,6 +8,8 @@ Defines the properties of the data records in the unified data object, including
 
 **Since:** 12
 
+<!--Device-unifiedDataChannel-class UnifiedDataProperties--><!--Device-unifiedDataChannel-class UnifiedDataProperties-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Callback for obtaining the deferred data. Currently, it can be used only in the 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UnifiedDataProperties-getDelayData?: GetDelayData--><!--Device-UnifiedDataProperties-getDelayData?: GetDelayData-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -48,6 +52,8 @@ Object of the dictionary type used to set other properties. The default value is
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UnifiedDataProperties-extras?: Record<string, object>--><!--Device-UnifiedDataProperties-extras?: Record<string, object>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## shareOptions
@@ -64,7 +70,9 @@ Range, in which [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddataproper
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UnifiedDataProperties-shareOptions?: ShareOptions--><!--Device-UnifiedDataProperties-shareOptions?: ShareOptions-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -82,7 +90,9 @@ Customized tag. The default value is an empty string.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UnifiedDataProperties-tag?: string--><!--Device-UnifiedDataProperties-tag?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -100,7 +110,9 @@ Timestamp when [UnifiedData](arkts-arkdata-unifieddatachannel-unifieddatapropert
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UnifiedDataProperties-readonly timestamp?: Date--><!--Device-UnifiedDataProperties-readonly timestamp?: Date-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -118,6 +130,8 @@ URI authorization policies for the drag-and-drop scenario. The default value is 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-UnifiedDataProperties-uriAuthorizationPolicies?: Array<UriPermission>--><!--Device-UnifiedDataProperties-uriAuthorizationPolicies?: Array<UriPermission>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

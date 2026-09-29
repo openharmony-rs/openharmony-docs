@@ -10,6 +10,8 @@ Inherited from [AlertDialogParam](arkts-arkui-alertdialogparam-i.md).
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface AlertDialogParamWithOptions extends AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParamWithOptions extends AlertDialogParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonDirection
@@ -30,6 +32,8 @@ Button layout direction. The default value is **DialogButtonDirection.AUTO**. Yo
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogParamWithOptions-buttonDirection?: DialogButtonDirection--><!--Device-AlertDialogParamWithOptions-buttonDirection?: DialogButtonDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttons
@@ -47,5 +51,7 @@ Buttons in the dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParamWithOptions-buttons: Array<AlertDialogButtonOptions>--><!--Device-AlertDialogParamWithOptions-buttons: Array<AlertDialogButtonOptions>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

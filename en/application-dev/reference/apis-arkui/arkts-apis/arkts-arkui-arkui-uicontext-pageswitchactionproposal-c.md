@@ -10,6 +10,8 @@ Smart gesture page switch action handling. The default direction is forward page
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export class PageSwitchActionProposal extends TargetedGestureProposal--><!--Device-unnamed-export class PageSwitchActionProposal extends TargetedGestureProposal-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Constructor for the smart gesture page switch action handling.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-PageSwitchActionProposal-constructor(node: FrameNode, pageCount: int)--><!--Device-PageSwitchActionProposal-constructor(node: FrameNode, pageCount: int)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,5 +67,7 @@ Unit: pages.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-PageSwitchActionProposal-pageCount: int--><!--Device-PageSwitchActionProposal-pageCount: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

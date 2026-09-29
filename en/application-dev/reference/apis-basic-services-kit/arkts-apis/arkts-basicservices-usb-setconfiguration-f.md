@@ -22,6 +22,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [setConfiguration](arkts-basicservices-usbmanager-setconfiguration-f.md)
 
+<!--Device-usb-function setConfiguration(pipe: USBDevicePipe, config: USBConfig): number--><!--Device-usb-function setConfiguration(pipe: USBDevicePipe, config: USBConfig): number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

@@ -22,6 +22,8 @@ Installs a font file from a specified path into the system font library. This AP
 
 **Required permissions:** ohos.permission.UPDATE_FONT
 
+<!--Device-fontManager-function installFont(path: string): Promise<int>--><!--Device-fontManager-function installFont(path: string): Promise<int>-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **System API:** This is a system API.

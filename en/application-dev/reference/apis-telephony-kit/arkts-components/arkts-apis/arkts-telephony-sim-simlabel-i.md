@@ -8,6 +8,8 @@ Defines the SIM card label.
 
 **Since:** 20
 
+<!--Device-sim-export interface SimLabel--><!--Device-sim-export interface SimLabel-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Unique index ID of the SIM card.
 
 **Since:** 20
 
+<!--Device-SimLabel-index: int--><!--Device-SimLabel-index: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## simType
@@ -41,5 +45,7 @@ SIM card type.
 **Type:** [SimType](arkts-telephony-sim-simtype-e.md)
 
 **Since:** 20
+
+<!--Device-SimLabel-simType: SimType--><!--Device-SimLabel-simType: SimType-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

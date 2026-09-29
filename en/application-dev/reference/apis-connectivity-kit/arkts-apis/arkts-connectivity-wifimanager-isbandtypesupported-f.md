@@ -18,6 +18,8 @@ Check whether the current device supports the specified band.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function isBandTypeSupported(bandType: WifiBandType): boolean--><!--Device-wifiManager-function isBandTypeSupported(bandType: WifiBandType): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**

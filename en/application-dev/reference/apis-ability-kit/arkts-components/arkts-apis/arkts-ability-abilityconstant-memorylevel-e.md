@@ -19,6 +19,8 @@ Enumerates the memory levels of the entire device. You can use it in [onMemoryLe
 
 **Since:** 9
 
+<!--Device-AbilityConstant-export enum MemoryLevel--><!--Device-AbilityConstant-export enum MemoryLevel-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## MEMORY_LEVEL_MODERATE
@@ -33,7 +35,9 @@ Indicates that the system has a moderate amount of available memory. Due to diff
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0--><!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -49,7 +53,9 @@ Indicates that the system has low available memory. Due to differences in system
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1--><!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -65,7 +71,9 @@ Indicates that the system has critically low available memory. Due to difference
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2--><!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -81,7 +89,9 @@ All UI elements of the application are invisible. At this point, some resources 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3--><!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -97,7 +107,9 @@ Indicates that the application has just been used, that is, it is at the head of
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -113,7 +125,9 @@ Indicates that the application has not been used for a period of time, that is, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_LOW = 5--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_LOW = 5-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -129,6 +143,8 @@ Indicates that the application has not been used for a long time, that is, it is
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

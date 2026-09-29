@@ -20,6 +20,8 @@ Updates the awareness enabling event when the app subscribes to the function.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function updateSpatialActionEnableStatus(event: number): void--><!--Device-carAwareness-function updateSpatialActionEnableStatus(event: number): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.

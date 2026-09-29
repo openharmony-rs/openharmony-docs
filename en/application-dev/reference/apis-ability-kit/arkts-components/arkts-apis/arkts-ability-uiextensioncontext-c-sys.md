@@ -10,6 +10,8 @@ UIExtensionContext provides the context environment for [UIExtensionAbility](ark
 
 **Since:** 10
 
+<!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## connectServiceExtensionAbilityWithRootHostToken
@@ -23,6 +25,8 @@ Connects the current UI extension to an service extension ability with a root ho
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): long--><!--Device-UIExtensionContext-connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -80,6 +84,8 @@ Sets whether the page started by the [UIExtensionAbility](arkts-ability-app-abil
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-setHostPageOverlayForbidden(isForbidden: boolean) : void--><!--Device-UIExtensionContext-setHostPageOverlayForbidden(isForbidden: boolean) : void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -118,6 +124,8 @@ is returned to the caller.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<AbilityResult>--><!--Device-UIExtensionContext-startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -168,6 +176,8 @@ Starts a ServiceExtensionAbility. This API uses a promise to return the result.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startServiceExtensionAbility(want: Want): Promise<void>--><!--Device-UIExtensionContext-startServiceExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -226,6 +236,8 @@ Starts a ServiceExtensionAbility under a specified system account. This API uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise<void>--><!--Device-UIExtensionContext-startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -279,6 +291,8 @@ Starts multiple UIAbility components simultaneously. This API uses a promise to 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startUIAbilities(wantList: Array<Want>): Promise<void>--><!--Device-UIExtensionContext-startUIAbilities(wantList: Array<Want>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -350,6 +364,8 @@ Starts a second UIAbility after the first UIAbility instance is created, and dis
 **Required permissions:** ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startUIAbilitiesInSplitWindowMode(primaryWindowId: int, secondaryWant: Want): Promise<void>--><!--Device-UIExtensionContext-startUIAbilitiesInSplitWindowMode(primaryWindowId: int, secondaryWant: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

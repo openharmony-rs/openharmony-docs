@@ -30,6 +30,8 @@ After the bulk transfer is complete, the size of the transferred or received dat
 
 **Since:** 9
 
+<!--Device-usbManager-function bulkTransfer(    pipe: USBDevicePipe,    endpoint: USBEndpoint,    buffer: Uint8Array,    timeout?: int  ): Promise<int>--><!--Device-usbManager-function bulkTransfer(    pipe: USBDevicePipe,    endpoint: USBEndpoint,    buffer: Uint8Array,    timeout?: int  ): Promise<int>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

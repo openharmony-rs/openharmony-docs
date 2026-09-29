@@ -20,6 +20,8 @@ export declare interface PopoverDialogV2Options extends CustomPopupOptions
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare interface PopoverDialogV2Options extends CustomPopupOptions--><!--Device-unnamed-export declare interface PopoverDialogV2Options extends CustomPopupOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块

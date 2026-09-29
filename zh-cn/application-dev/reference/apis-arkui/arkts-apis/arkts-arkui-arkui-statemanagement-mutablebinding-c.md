@@ -8,6 +8,8 @@ export declare class MutableBinding<T>
 
 **起始版本：** 20
 
+<!--Device-unnamed-export declare class MutableBinding<T>--><!--Device-unnamed-export declare class MutableBinding<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ get value(): T
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-MutableBinding-get value(): T--><!--Device-MutableBinding-get value(): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -47,5 +51,7 @@ set value(newValue: T)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MutableBinding-set value(newValue: T)--><!--Device-MutableBinding-set value(newValue: T)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

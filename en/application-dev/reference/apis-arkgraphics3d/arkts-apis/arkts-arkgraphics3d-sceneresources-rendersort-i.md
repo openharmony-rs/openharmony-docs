@@ -10,6 +10,8 @@ Describes the order in which materials are rendered, controlling the sequence of
 
 **Since:** 20
 
+<!--Device-unnamed-export interface RenderSort--><!--Device-unnamed-export interface RenderSort-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## renderSortLayer
@@ -26,6 +28,8 @@ Rendering layer ID. A smaller value indicates an earlier rendering order. The va
 
 **Since:** 20
 
+<!--Device-RenderSort-renderSortLayer?: int--><!--Device-RenderSort-renderSortLayer?: int-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## renderSortLayerOrder
@@ -41,5 +45,7 @@ Rendering order of different objects within the same rendering layer. A smaller 
 **Default:** 0
 
 **Since:** 20
+
+<!--Device-RenderSort-renderSortLayerOrder?: int--><!--Device-RenderSort-renderSortLayerOrder?: int-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

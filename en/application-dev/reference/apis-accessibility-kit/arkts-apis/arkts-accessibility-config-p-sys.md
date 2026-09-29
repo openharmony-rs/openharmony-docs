@@ -14,6 +14,8 @@ Default value: **false**
 
 **Since:** 9
 
+<!--Device-config-let animationOff: Config<boolean>--><!--Device-config-let animationOff: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Indicates the brightness discount configuration, which is used to proportionally
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;number&gt;
 
 **Since:** 9
+
+<!--Device-config-let brightnessDiscount: Config<double>--><!--Device-config-let brightnessDiscount: Config<double>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -48,6 +52,8 @@ Default value: **false**
 
 **Since:** 9
 
+<!--Device-config-let captions: Config<boolean>--><!--Device-config-let captions: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ Indicates the configuration of the caption style.
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;[accessibility.CaptionsStyle](arkts-accessibility-accessibility-captionsstyle-i.md)&gt;
 
 **Since:** 9
+
+<!--Device-config-let captionsStyle: Config<accessibility.CaptionsStyle>--><!--Device-config-let captionsStyle: Config<accessibility.CaptionsStyle>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -80,6 +88,8 @@ Indicates the content display suggested duration configuration, which is used to
 
 **Since:** 9
 
+<!--Device-config-let contentTimeout: Config<int>--><!--Device-config-let contentTimeout: Config<int>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -95,6 +105,8 @@ Indicates the color correction filter configuration. Used together with daltoniz
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;[DaltonizationColorFilter](arkts-accessibility-config-daltonizationcolorfilter-t-sys.md)&gt;
 
 **Since:** 9
+
+<!--Device-config-let daltonizationColorFilter: Config<DaltonizationColorFilter>--><!--Device-config-let daltonizationColorFilter: Config<DaltonizationColorFilter>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -114,6 +126,8 @@ Default value: **false**
 
 **Since:** 9
 
+<!--Device-config-let highContrastText: Config<boolean>--><!--Device-config-let highContrastText: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -132,6 +146,8 @@ Default value: **false**
 
 **Since:** 9
 
+<!--Device-config-let invertColor: Config<boolean>--><!--Device-config-let invertColor: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -147,6 +163,8 @@ Indicates the configuration for the mouse auto-click operation. The value ranges
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;number&gt;
 
 **Since:** 9
+
+<!--Device-config-let mouseAutoClick: Config<int>--><!--Device-config-let mouseAutoClick: Config<int>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -166,6 +184,8 @@ Default value: **false**
 
 **Since:** 9
 
+<!--Device-config-let mouseKey: Config<boolean>--><!--Device-config-let mouseKey: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -182,6 +202,8 @@ Indicates the accessibility extension shortcut key feature status. Used together
 
 **Since:** 9
 
+<!--Device-config-let shortkey: Config<boolean>--><!--Device-config-let shortkey: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -197,6 +219,8 @@ Indicates the target configuration of the accessibility extension shortcut key. 
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;string&gt;
 
 **Since:** 9
+
+<!--Device-config-let shortkeyTarget: Config<string>--><!--Device-config-let shortkeyTarget: Config<string>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

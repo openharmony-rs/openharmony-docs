@@ -10,6 +10,8 @@ The module provides APIs for setting and obtaining installation-free information
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace freeInstall--><!--Device-unnamed-declare namespace freeInstall-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -38,15 +40,6 @@ import { freeInstall } from '@kit.AbilityKit';
 <!--DelEnd-->
 
 <!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | Flag of the bundle package. |
-| [UpgradeFlag](arkts-ability-freeinstall-upgradeflag-e-sys.md) | Upgrade flag, which is for internal use only. |
-<!--DelEnd-->
-
-<!--Del-->
 ### Types(System API)
 
 | Name | Description |
@@ -63,4 +56,13 @@ import { freeInstall } from '@kit.AbilityKit';
 | [PackageConfig](arkts-ability-freeinstall-packageconfig-t-sys.md) | Defines the package configuration information in the **pack.info** file. |
 | [PackageSummary](arkts-ability-freeinstall-packagesummary-t-sys.md) | Defines the package summary information in the **pack.info** file. |
 | [Version](arkts-ability-freeinstall-version-t-sys.md) | Defines the version in the **pack.info** file. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | Flag of the bundle package. |
+| [UpgradeFlag](arkts-ability-freeinstall-upgradeflag-e-sys.md) | Upgrade flag, which is for internal use only. |
 <!--DelEnd-->

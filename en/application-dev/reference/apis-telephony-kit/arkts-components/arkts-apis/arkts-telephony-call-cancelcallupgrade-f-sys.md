@@ -18,6 +18,8 @@ Cancels the upgrade of a video call. This API uses a promise to return the resul
 
 **Required permissions:** ohos.permission.PLACE_CALL
 
+<!--Device-call-function cancelCallUpgrade(callId: int): Promise<void>--><!--Device-call-function cancelCallUpgrade(callId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

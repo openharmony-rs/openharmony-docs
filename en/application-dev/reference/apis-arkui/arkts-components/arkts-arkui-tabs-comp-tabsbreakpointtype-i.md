@@ -8,6 +8,8 @@ Defines the value type for different Tabs container sizes.
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare interface TabsBreakpointType<T>--><!--Device-unnamed-declare interface TabsBreakpointType<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lg
@@ -25,6 +27,8 @@ Value for large Tabs container size.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsBreakpointType-lg?: T--><!--Device-TabsBreakpointType-lg?: T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Value for medium Tabs container size.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-TabsBreakpointType-md?: T--><!--Device-TabsBreakpointType-md?: T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sm
@@ -61,5 +67,7 @@ Value for small Tabs container size.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsBreakpointType-sm?: T--><!--Device-TabsBreakpointType-sm?: T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

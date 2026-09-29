@@ -16,6 +16,8 @@ Obtains the mouse pointer color. This API uses an asynchronous callback to retur
 
 **Since:** 10
 
+<!--Device-pointer-function getPointerColor(callback: AsyncCallback<int>): void--><!--Device-pointer-function getPointerColor(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getPointerColor(): Promise<number>
 Obtains the current mouse pointer color. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getPointerColor(): Promise<int>--><!--Device-pointer-function getPointerColor(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

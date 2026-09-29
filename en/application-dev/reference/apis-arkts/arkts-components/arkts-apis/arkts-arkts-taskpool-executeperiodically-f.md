@@ -18,6 +18,8 @@ Executes a task periodically. In this execution mode, you can set the task prior
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-taskpool-function executePeriodically(period: number, task: Task, priority?: Priority): void--><!--Device-taskpool-function executePeriodically(period: number, task: Task, priority?: Priority): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -93,6 +95,8 @@ Executes a generic task periodically, without verifying the parameter type and r
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-taskpool-function executePeriodically<A extends Array<Object>, R>(period: number, task: GenericsTask<A, R>, priority?: Priority): void--><!--Device-taskpool-function executePeriodically<A extends Array<Object>, R>(period: number, task: GenericsTask<A, R>, priority?: Priority): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

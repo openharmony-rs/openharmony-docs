@@ -8,6 +8,8 @@ Describes the input method application attributes.
 
 **Since:** 8
 
+<!--Device-inputMethod-interface InputMethodProperty--><!--Device-inputMethod-interface InputMethodProperty-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 
 **Since:** 20
 
+<!--Device-InputMethodProperty-readonly enabledState?: EnabledState--><!--Device-InputMethodProperty-readonly enabledState?: EnabledState-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## extra
@@ -41,6 +45,8 @@ Extra information about the input method. This parameter is reserved and current
 **Type:** object
 
 **Since:** 9
+
+<!--Device-InputMethodProperty-extra?: object--><!--Device-InputMethodProperty-extra?: object-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -56,6 +62,8 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 
 **Since:** 9
 
+<!--Device-InputMethodProperty-readonly icon?: string--><!--Device-InputMethodProperty-readonly icon?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## iconId
@@ -69,6 +77,8 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 **Type:** number
 
 **Since:** 9
+
+<!--Device-InputMethodProperty-readonly iconId?: long--><!--Device-InputMethodProperty-readonly iconId?: long-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -84,6 +94,8 @@ Mandatory. Unique identifier of an input method extension in an app. **id** and 
 
 **Since:** 9
 
+<!--Device-InputMethodProperty-readonly id: string--><!--Device-InputMethodProperty-readonly id: string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## label
@@ -98,6 +110,8 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 
 **Since:** 9
 
+<!--Device-InputMethodProperty-readonly label?: string--><!--Device-InputMethodProperty-readonly label?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## labelId
@@ -111,6 +125,24 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 **Type:** number
 
 **Since:** 10
+
+<!--Device-InputMethodProperty-readonly labelId?: long--><!--Device-InputMethodProperty-readonly labelId?: long-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## name
+
+```TypeScript
+readonly name: string
+```
+
+Mandatory. Name of the input method package.
+
+**Type:** string
+
+**Since:** 9
+
+<!--Device-InputMethodProperty-readonly name: string--><!--Device-InputMethodProperty-readonly name: string-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -130,19 +162,7 @@ Unique ID of the input method. Mandatory.
 
 **Substitutes:** [id](#id)
 
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-## name
-
-```TypeScript
-readonly name: string
-```
-
-Mandatory. Name of the input method package.
-
-**Type:** string
-
-**Since:** 9
+<!--Device-InputMethodProperty-readonly methodId: string--><!--Device-InputMethodProperty-readonly methodId: string-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -161,5 +181,7 @@ Name of the input method package. Mandatory.
 **Deprecated since:** 9
 
 **Substitutes:** [name](#name)
+
+<!--Device-InputMethodProperty-readonly packageName: string--><!--Device-InputMethodProperty-readonly packageName: string-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

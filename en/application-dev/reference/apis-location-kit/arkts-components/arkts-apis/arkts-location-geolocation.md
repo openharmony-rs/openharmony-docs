@@ -12,6 +12,8 @@ Provides interfaces for initiating location requests, ending the location servic
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-unnamed-declare namespace geolocation--><!--Device-unnamed-declare namespace geolocation-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## Modules to Import

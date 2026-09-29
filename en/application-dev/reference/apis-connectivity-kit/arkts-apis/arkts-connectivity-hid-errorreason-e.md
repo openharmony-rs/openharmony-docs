@@ -8,6 +8,8 @@ Describe the error reason.
 
 **Since:** 23
 
+<!--Device-hid-enum ErrorReason--><!--Device-hid-enum ErrorReason-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## RSP_SUCCESS
@@ -21,6 +23,8 @@ Constant representing success response for set report.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ErrorReason-RSP_SUCCESS = 0--><!--Device-ErrorReason-RSP_SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -36,6 +40,8 @@ Constant representing error response for set report due to not ready.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ErrorReason-RSP_NOT_READY = 1--><!--Device-ErrorReason-RSP_NOT_READY = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## RSP_INVALID_REPORT_ID
@@ -49,6 +55,8 @@ Constant representing error response for set report due to invalid report ID.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ErrorReason-RSP_INVALID_REPORT_ID = 2--><!--Device-ErrorReason-RSP_INVALID_REPORT_ID = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -64,6 +72,8 @@ Constant representing error response for set report due to unsupported request.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3--><!--Device-ErrorReason-RSP_UNSUPPORTED_REQ = 3-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## RSP_INVALID_PARAM
@@ -78,6 +88,8 @@ Constant representing error response for set report due to invalid parameter.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ErrorReason-RSP_INVALID_PARAM = 4--><!--Device-ErrorReason-RSP_INVALID_PARAM = 4-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## RSP_UNKNOWN
@@ -91,5 +103,7 @@ Constant representing error response for Set Report with unknown reason.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ErrorReason-RSP_UNKNOWN = 14--><!--Device-ErrorReason-RSP_UNKNOWN = 14-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

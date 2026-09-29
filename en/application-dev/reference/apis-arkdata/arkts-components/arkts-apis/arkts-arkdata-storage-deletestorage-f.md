@@ -19,6 +19,8 @@ Deletes the singleton **Storage** instance of a file from the memory, and delete
 
 **Substitutes:** deletePreferences
 
+<!--Device-storage-function deleteStorage(path: string, callback: AsyncCallback<void>): void--><!--Device-storage-function deleteStorage(path: string, callback: AsyncCallback<void>): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -42,6 +44,8 @@ Deletes the singleton **Storage** instance of a file from the memory, and delete
 **Deprecated since:** 9
 
 **Substitutes:** deletePreferences
+
+<!--Device-storage-function deleteStorage(path: string): Promise<void>--><!--Device-storage-function deleteStorage(path: string): Promise<void>-End-->
 
 **Parameters:**
 

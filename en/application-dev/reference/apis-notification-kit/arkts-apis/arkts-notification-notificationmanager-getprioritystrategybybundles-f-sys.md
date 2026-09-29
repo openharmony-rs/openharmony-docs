@@ -20,6 +20,8 @@ Obtains the application priority notification strategies in batches. This API us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function getPriorityStrategyByBundles(bundles: Array<BundleOption>): Promise<Map<BundleOption, long>>--><!--Device-notificationManager-function getPriorityStrategyByBundles(bundles: Array<BundleOption>): Promise<Map<BundleOption, long>>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

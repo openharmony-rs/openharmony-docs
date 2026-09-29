@@ -20,6 +20,8 @@ Obtains allowed USB devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function getAllowedUsbDevices(admin: Want): Array<UsbDeviceId>--><!--Device-usbManager-function getAllowedUsbDevices(admin: Want): Array<UsbDeviceId>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -83,6 +85,8 @@ Use cases:
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-usbManager-function getAllowedUsbDevices(admin: Want | null): Array<UsbDeviceId>--><!--Device-usbManager-function getAllowedUsbDevices(admin: Want | null): Array<UsbDeviceId>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

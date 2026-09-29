@@ -8,6 +8,8 @@ Defines the data proxy handle, which can be used to access or manage shared conf
 
 **Since:** 20
 
+<!--Device-dataShare-interface DataProxyHandle--><!--Device-dataShare-interface DataProxyHandle-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Deletes the specified shared configuration items based on URIs. This API uses a 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyHandle-delete(uris: string[], config: DataProxyConfig): Promise<DataProxyResult[]>--><!--Device-DataProxyHandle-delete(uris: string[], config: DataProxyConfig): Promise<DataProxyResult[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -79,6 +83,8 @@ Deletes all the data published by the publisher. Only the data publisher can del
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyHandle-deleteMyPublishedData(config: DataProxyConfig): Promise<DataProxyResult[]>--><!--Device-DataProxyHandle-deleteMyPublishedData(config: DataProxyConfig): Promise<DataProxyResult[]>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters:**
@@ -126,6 +132,8 @@ Obtains a specified shared configuration item based on the URI. This API uses a 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyHandle-get(uris: string[], config: DataProxyConfig): Promise<DataProxyGetResult[]>--><!--Device-DataProxyHandle-get(uris: string[], config: DataProxyConfig): Promise<DataProxyGetResult[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -177,6 +185,8 @@ Obtains all multi-value data under a specified URI. Only the publisher and the a
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyHandle-getValues(uri: string, config: DataProxyConfig): Promise<ValueType[]>--><!--Device-DataProxyHandle-getValues(uri: string, config: DataProxyConfig): Promise<ValueType[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -250,6 +260,8 @@ Unsubscribes from the change event of the proxy data corresponding to a specifie
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyHandle-off(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback?: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]--><!--Device-DataProxyHandle-off(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback?: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters:**
@@ -316,6 +328,8 @@ When the publisher calls the [publish](#publish) or [delete](#delete) API to pub
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyHandle-on(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]--><!--Device-DataProxyHandle-on(      event: 'dataChange',      uris: string[],      config: DataProxyConfig,      callback: AsyncCallback<DataProxyChangeInfo[]>    ): DataProxyResult[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters:**
@@ -375,6 +389,8 @@ Publishes shared configuration items. This API uses a promise to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyHandle-publish(data: ProxyData[], config: DataProxyConfig): Promise<DataProxyResult[]>--><!--Device-DataProxyHandle-publish(data: ProxyData[], config: DataProxyConfig): Promise<DataProxyResult[]>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Parameters:**
@@ -432,6 +448,8 @@ Puts a value into the published data. This operation can be performed only on mu
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyHandle-putValue(uri: string, key: int, value: ValueType, config: DataProxyConfig): Promise<void>--><!--Device-DataProxyHandle-putValue(uri: string, key: int, value: ValueType, config: DataProxyConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -501,6 +519,8 @@ Removes the value corresponding to the key. This operation can be performed only
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyHandle-removeValue(uri: string, key: int, config: DataProxyConfig): Promise<void>--><!--Device-DataProxyHandle-removeValue(uri: string, key: int, config: DataProxyConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

@@ -10,6 +10,8 @@ declare interface ClickEvent extends BaseEvent
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface ClickEvent extends BaseEvent--><!--Device-unnamed-declare interface ClickEvent extends BaseEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCurrentLocalPosition
@@ -25,6 +27,8 @@ getCurrentLocalPosition?(): Coordinate2D
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEvent-getCurrentLocalPosition?(): Coordinate2D--><!--Device-ClickEvent-getCurrentLocalPosition?(): Coordinate2D-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ preventDefault: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEvent-preventDefault: () => void--><!--Device-ClickEvent-preventDefault: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ displayX: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ClickEvent-displayX: number--><!--Device-ClickEvent-displayX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -96,6 +104,8 @@ displayY: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ClickEvent-displayY: number--><!--Device-ClickEvent-displayY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayX
@@ -104,7 +114,7 @@ displayY: number
 globalDisplayX?: number
 ```
 
-点击位置在全局坐标系中的X坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
 
 单位：vp
 
@@ -117,6 +127,8 @@ globalDisplayX?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEvent-globalDisplayX?: number--><!--Device-ClickEvent-globalDisplayX?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +138,7 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-点击位置在全局坐标系中的Y坐标。
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
 
 单位：vp
 
@@ -139,6 +151,8 @@ globalDisplayY?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEvent-globalDisplayY?: number--><!--Device-ClickEvent-globalDisplayY?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,6 +171,8 @@ hand?: InteractionHand
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEvent-hand?: InteractionHand--><!--Device-ClickEvent-hand?: InteractionHand-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +194,8 @@ windowX: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ClickEvent-windowX: number--><!--Device-ClickEvent-windowX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowY
@@ -197,6 +215,8 @@ windowY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEvent-windowY: number--><!--Device-ClickEvent-windowY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,6 +238,8 @@ x: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ClickEvent-x: number--><!--Device-ClickEvent-x: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -237,6 +259,8 @@ y: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ClickEvent-y: number--><!--Device-ClickEvent-y: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,6 +282,8 @@ screenX: number
 
 **替代接口：** [windowX](#windowx)
 
+<!--Device-ClickEvent-screenX: number--><!--Device-ClickEvent-screenX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## screenY
@@ -277,5 +303,7 @@ screenY: number
 **废弃版本：** 10
 
 **替代接口：** [windowY](#windowy)
+
+<!--Device-ClickEvent-screenY: number--><!--Device-ClickEvent-screenY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

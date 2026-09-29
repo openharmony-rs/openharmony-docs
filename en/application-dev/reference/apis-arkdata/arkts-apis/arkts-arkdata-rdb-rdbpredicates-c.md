@@ -12,6 +12,8 @@ Defines predicates for an RDB store. This class determines whether the condition
 
 **Substitutes:** [RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md)
 
+<!--Device-rdb-class RdbPredicates--><!--Device-rdb-class RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Creates an **RdbPredicates** object to add the AND condition.
 **Deprecated since:** 9
 
 **Substitutes:** [and](arkts-arkdata-relationalstore-rdbpredicates-c.md#and)
+
+<!--Device-RdbPredicates-and(): RdbPredicates--><!--Device-RdbPredicates-and(): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -63,6 +67,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [beginsWith](arkts-arkdata-relationalstore-rdbpredicates-c.md#beginswith)
+
+<!--Device-RdbPredicates-beginsWith(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-beginsWith(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -100,6 +106,8 @@ Creates an **RdbPredicates** object to add a left parenthesis.
 
 **Substitutes:** [beginWrap](arkts-arkdata-relationalstore-rdbpredicates-c.md#beginwrap)
 
+<!--Device-RdbPredicates-beginWrap(): RdbPredicates--><!--Device-RdbPredicates-beginWrap(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -133,6 +141,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [between](arkts-arkdata-relationalstore-rdbpredicates-c.md#between)
+
+<!--Device-RdbPredicates-between(field: string, low: ValueType, high: ValueType): RdbPredicates--><!--Device-RdbPredicates-between(field: string, low: ValueType, high: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -171,6 +181,8 @@ A constructor used to create an **RdbPredicates** object.
 
 **Substitutes:** [RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md)
 
+<!--Device-RdbPredicates-constructor(name: string)--><!--Device-RdbPredicates-constructor(name: string)-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -198,6 +210,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [contains](arkts-arkdata-relationalstore-rdbpredicates-c.md#contains)
+
+<!--Device-RdbPredicates-contains(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-contains(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -235,6 +249,8 @@ Creates an **RdbPredicates** object to filter out duplicate records.
 
 **Substitutes:** [distinct](arkts-arkdata-relationalstore-rdbpredicates-c.md#distinct)
 
+<!--Device-RdbPredicates-distinct(): RdbPredicates--><!--Device-RdbPredicates-distinct(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -263,6 +279,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [endsWith](arkts-arkdata-relationalstore-rdbpredicates-c.md#endswith)
+
+<!--Device-RdbPredicates-endsWith(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-endsWith(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -300,6 +318,8 @@ Creates an **RdbPredicates** object to add a right parenthesis.
 
 **Substitutes:** [endWrap](arkts-arkdata-relationalstore-rdbpredicates-c.md#endwrap)
 
+<!--Device-RdbPredicates-endWrap(): RdbPredicates--><!--Device-RdbPredicates-endWrap(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -333,6 +353,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [equalTo](arkts-arkdata-relationalstore-rdbpredicates-c.md#equalto)
+
+<!--Device-RdbPredicates-equalTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-equalTo(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -370,6 +392,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Substitutes:** [glob](arkts-arkdata-relationalstore-rdbpredicates-c.md#glob)
 
+<!--Device-RdbPredicates-glob(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-glob(field: string, value: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -405,6 +429,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [greaterThan](arkts-arkdata-relationalstore-rdbpredicates-c.md#greaterthan)
+
+<!--Device-RdbPredicates-greaterThan(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-greaterThan(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -442,6 +468,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Substitutes:** [greaterThanOrEqualTo](arkts-arkdata-relationalstore-rdbpredicates-c.md#greaterthanorequalto)
 
+<!--Device-RdbPredicates-greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -478,6 +506,8 @@ Creates an **RdbPredicates** object to group the query results based on the spec
 
 **Substitutes:** [groupBy](arkts-arkdata-relationalstore-rdbpredicates-c.md#groupby)
 
+<!--Device-RdbPredicates-groupBy(fields: Array<string>): RdbPredicates--><!--Device-RdbPredicates-groupBy(fields: Array<string>): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -512,6 +542,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [in](arkts-arkdata-relationalstore-rdbpredicates-c.md#in)
+
+<!--Device-RdbPredicates-in(field: string, value: Array<ValueType>): RdbPredicates--><!--Device-RdbPredicates-in(field: string, value: Array<ValueType>): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -549,6 +581,8 @@ Creates an **RdbPredicates** object to specify all remote devices on the network
 
 **Substitutes:** [inAllDevices](arkts-arkdata-relationalstore-rdbpredicates-c.md#inalldevices)
 
+<!--Device-RdbPredicates-inAllDevices(): RdbPredicates--><!--Device-RdbPredicates-inAllDevices(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -574,9 +608,9 @@ Creates an **RdbPredicates** object to specify the remote devices to connect on 
 
 > **NOTE:** 
 
-> The value of **devices** can be obtained by using &lt;!--RP2--&gt;
+> The value of **devices** can be obtained by using <!--RP2-->
 > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
-> . &lt;!--RP2End--&gt;The APIs of the **deviceManager** module are system interfaces and available only to system
+> . <!--RP2End-->The APIs of the **deviceManager** module are system interfaces and available only to system
 > applications.
 
 **Since:** 8
@@ -584,6 +618,8 @@ Creates an **RdbPredicates** object to specify the remote devices to connect on 
 **Deprecated since:** 9
 
 **Substitutes:** [inDevices](arkts-arkdata-relationalstore-rdbpredicates-c.md#indevices)
+
+<!--Device-RdbPredicates-inDevices(devices: Array<string>): RdbPredicates--><!--Device-RdbPredicates-inDevices(devices: Array<string>): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -638,6 +674,8 @@ Creates an **RdbPredicates** object to specify the index column.
 
 **Substitutes:** [indexedBy](arkts-arkdata-relationalstore-rdbpredicates-c.md#indexedby)
 
+<!--Device-RdbPredicates-indexedBy(field: string): RdbPredicates--><!--Device-RdbPredicates-indexedBy(field: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -672,6 +710,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [isNotNull](arkts-arkdata-relationalstore-rdbpredicates-c.md#isnotnull)
+
+<!--Device-RdbPredicates-isNotNull(field: string): RdbPredicates--><!--Device-RdbPredicates-isNotNull(field: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -714,6 +754,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Substitutes:** [isNull](arkts-arkdata-relationalstore-rdbpredicates-c.md#isnull)
 
+<!--Device-RdbPredicates-isNull(field: string): RdbPredicates--><!--Device-RdbPredicates-isNull(field: string): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -748,6 +790,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [lessThan](arkts-arkdata-relationalstore-rdbpredicates-c.md#lessthan)
+
+<!--Device-RdbPredicates-lessThan(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-lessThan(field: string, value: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -785,6 +829,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Substitutes:** [lessThanOrEqualTo](arkts-arkdata-relationalstore-rdbpredicates-c.md#lessthanorequalto)
 
+<!--Device-RdbPredicates-lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -820,6 +866,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [like](arkts-arkdata-relationalstore-rdbpredicates-c.md#like)
+
+<!--Device-RdbPredicates-like(field: string, value: string): RdbPredicates--><!--Device-RdbPredicates-like(field: string, value: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -857,6 +905,8 @@ Creates an **RdbPredicates** object to limit the number of records.
 
 **Substitutes:** [limitAs](arkts-arkdata-relationalstore-rdbpredicates-c.md#limitas)
 
+<!--Device-RdbPredicates-limitAs(value: number): RdbPredicates--><!--Device-RdbPredicates-limitAs(value: number): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -891,6 +941,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [notBetween](arkts-arkdata-relationalstore-rdbpredicates-c.md#notbetween)
+
+<!--Device-RdbPredicates-notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates--><!--Device-RdbPredicates-notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -929,6 +981,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 
 **Substitutes:** [notEqualTo](arkts-arkdata-relationalstore-rdbpredicates-c.md#notequalto)
 
+<!--Device-RdbPredicates-notEqualTo(field: string, value: ValueType): RdbPredicates--><!--Device-RdbPredicates-notEqualTo(field: string, value: ValueType): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -964,6 +1018,8 @@ Creates an **RdbPredicates** object to search for the records in the specified c
 **Deprecated since:** 9
 
 **Substitutes:** [notIn](arkts-arkdata-relationalstore-rdbpredicates-c.md#notin)
+
+<!--Device-RdbPredicates-notIn(field: string, value: Array<ValueType>): RdbPredicates--><!--Device-RdbPredicates-notIn(field: string, value: Array<ValueType>): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1001,6 +1057,8 @@ Creates an **RdbPredicates** object to specify the start position of the returne
 
 **Substitutes:** [offsetAs](arkts-arkdata-relationalstore-rdbpredicates-c.md#offsetas)
 
+<!--Device-RdbPredicates-offsetAs(rowOffset: number): RdbPredicates--><!--Device-RdbPredicates-offsetAs(rowOffset: number): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1036,6 +1094,8 @@ Creates an **RdbPredicates** object to add the OR condition.
 
 **Substitutes:** [or](arkts-arkdata-relationalstore-rdbpredicates-c.md#or)
 
+<!--Device-RdbPredicates-or(): RdbPredicates--><!--Device-RdbPredicates-or(): RdbPredicates-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -1066,6 +1126,8 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 **Deprecated since:** 9
 
 **Substitutes:** [orderByAsc](arkts-arkdata-relationalstore-rdbpredicates-c.md#orderbyasc)
+
+<!--Device-RdbPredicates-orderByAsc(field: string): RdbPredicates--><!--Device-RdbPredicates-orderByAsc(field: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1101,6 +1163,8 @@ Creates an **RdbPredicates** object to sort the records in the specified column 
 **Deprecated since:** 9
 
 **Substitutes:** [orderByDesc](arkts-arkdata-relationalstore-rdbpredicates-c.md#orderbydesc)
+
+<!--Device-RdbPredicates-orderByDesc(field: string): RdbPredicates--><!--Device-RdbPredicates-orderByDesc(field: string): RdbPredicates-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

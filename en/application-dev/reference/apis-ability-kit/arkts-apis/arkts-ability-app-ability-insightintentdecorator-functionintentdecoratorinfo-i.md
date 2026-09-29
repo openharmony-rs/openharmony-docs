@@ -14,6 +14,8 @@ Parameter type of the [@InsightIntentFunctionMethod](../../../reference/apis-abi
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

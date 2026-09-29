@@ -10,6 +10,8 @@ Defines the basic gesture event type. Inherits from [BaseEvent](arkts-arkui-comm
 
 **Since:** 11
 
+<!--Device-unnamed-interface BaseGestureEvent extends BaseEvent--><!--Device-unnamed-interface BaseGestureEvent extends BaseEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerInfos
@@ -32,6 +34,8 @@ Information about touch points of the gesture event. For gesture events initiate
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-BaseGestureEvent-fingerInfos?: FingerInfo[]--><!--Device-BaseGestureEvent-fingerInfos?: FingerInfo[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerList
@@ -49,5 +53,7 @@ Information about all fingers triggering the event.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BaseGestureEvent-fingerList: FingerInfo[]--><!--Device-BaseGestureEvent-fingerList: FingerInfo[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

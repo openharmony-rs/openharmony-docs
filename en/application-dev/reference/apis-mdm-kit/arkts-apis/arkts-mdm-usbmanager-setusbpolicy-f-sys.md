@@ -24,6 +24,8 @@ Sets the USB read/write policy. This API uses an asynchronous callback to return
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback<void>): void--><!--Device-usbManager-function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -88,6 +90,8 @@ Sets the USB read/write policy. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-usbManager-function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise<void>--><!--Device-usbManager-function setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

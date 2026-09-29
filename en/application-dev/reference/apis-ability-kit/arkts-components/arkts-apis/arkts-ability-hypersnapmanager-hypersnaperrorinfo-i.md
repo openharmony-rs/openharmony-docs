@@ -8,6 +8,8 @@ Describes the Hyper Snap error information.
 
 **Since:** 26.0.1
 
+<!--Device-hyperSnapManager-export interface HyperSnapErrorInfo--><!--Device-hyperSnapManager-export interface HyperSnapErrorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The error code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HyperSnapErrorInfo-code: HyperSnapErrorCode--><!--Device-HyperSnapErrorInfo-code: HyperSnapErrorCode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## msg
@@ -46,6 +50,8 @@ The error message.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HyperSnapErrorInfo-msg: string--><!--Device-HyperSnapErrorInfo-msg: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## occurTimeStamp
@@ -61,5 +67,7 @@ The time elapsed from the Unix epoch to the moment the error occurred. Unit: mil
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorInfo-occurTimeStamp: long--><!--Device-HyperSnapErrorInfo-occurTimeStamp: long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

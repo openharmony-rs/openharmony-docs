@@ -22,6 +22,8 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>--><!--Device-workScheduler-function obtainAllWorks(callback: AsyncCallback<void>): Array<WorkInfo>-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**
@@ -86,6 +88,8 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void--><!--Device-workScheduler-function obtainAllWorks(callback: AsyncCallback<Array<WorkInfo>>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**
@@ -132,6 +136,8 @@ Obtains all the deferred tasks. This API uses a promise to return the result.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-workScheduler-function obtainAllWorks(): Promise<Array<WorkInfo>>--><!--Device-workScheduler-function obtainAllWorks(): Promise<Array<WorkInfo>>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

@@ -16,7 +16,9 @@ Creates an NDEF record based on the specified application bundle name.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ndef-function makeApplicationRecord(bundleName: string): NdefRecord--><!--Device-ndef-function makeApplicationRecord(bundleName: string): NdefRecord-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

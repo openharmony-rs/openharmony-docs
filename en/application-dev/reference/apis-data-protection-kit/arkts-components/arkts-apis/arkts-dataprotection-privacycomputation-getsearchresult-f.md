@@ -20,6 +20,8 @@ Get the privacy search result and the final search outcome. Decrypts the search 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-privacyComputation-function getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol):        Promise<SearchResult>--><!--Device-privacyComputation-function getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol):        Promise<SearchResult>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**
@@ -39,5 +41,8 @@ Get the privacy search result and the final search outcome. Decrypts the search 
 
 | Error Code ID | Error Message |
 | --- | --- |
+| [24000001](../../apis-asset-store-kit/errorcode-asset.md#24000001-asset-store-service-unavailable) | The service is unavailable. |
 | [24000006](../../apis-asset-store-kit/errorcode-asset.md#24000006-insufficient-memory) | Insufficient memory. |
+| [24000009](../../apis-asset-store-kit/errorcode-asset.md#24000009-cryptographic-operation-failed) | The cryptography operation failed. |
+| [24000017](../../apis-asset-store-kit/errorcode-asset.md#24000017-function-not-supported) | The capability is not supported. |
 | [24000018](../../apis-asset-store-kit/errorcode-asset.md#24000018-parameter-check-failed) | Parameter verification failed. |

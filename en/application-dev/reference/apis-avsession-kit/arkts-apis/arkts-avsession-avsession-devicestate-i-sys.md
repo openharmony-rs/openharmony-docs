@@ -8,6 +8,8 @@ Device state used to describe states including discovery, authentication and oth
 
 **Since:** 20
 
+<!--Device-avSession-interface DeviceState--><!--Device-avSession-interface DeviceState-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Unique device descriptor.
 
 **Since:** 20
 
+<!--Device-DeviceState-readonly deviceId: string--><!--Device-DeviceState-readonly deviceId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Device connection state.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-DeviceState-readonly deviceState: int--><!--Device-DeviceState-readonly deviceState: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -62,6 +68,8 @@ System radar error code returned by cast+services.
 
 **Since:** 20
 
+<!--Device-DeviceState-readonly radarErrorCode: int--><!--Device-DeviceState-readonly radarErrorCode: int-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Reason for connection failure, for example, user cancellation and timeout.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-DeviceState-readonly reasonCode: int--><!--Device-DeviceState-readonly reasonCode: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

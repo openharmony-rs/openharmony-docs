@@ -8,6 +8,8 @@ The maintenance of this interface has been stopped since version api 9. Please u
 
 **Since:** 9
 
+<!--Device-media-type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'--><!--Device-media-type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.

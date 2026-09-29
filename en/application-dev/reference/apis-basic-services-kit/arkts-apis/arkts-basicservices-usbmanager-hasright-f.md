@@ -18,6 +18,8 @@ The value **true** is returned if the user has the device access permissions; th
 
 **Since:** 9
 
+<!--Device-usbManager-function hasRight(deviceName: string): boolean--><!--Device-usbManager-function hasRight(deviceName: string): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

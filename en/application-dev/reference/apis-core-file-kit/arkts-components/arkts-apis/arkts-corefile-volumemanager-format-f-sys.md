@@ -18,6 +18,8 @@ Formats a volume. This API uses an asynchronous callback to return the result. C
 
 **Required permissions:** ohos.permission.MOUNT_FORMAT_MANAGER
 
+<!--Device-volumeManager-function format(volumeId: string, fsType: string, callback: AsyncCallback<void>): void--><!--Device-volumeManager-function format(volumeId: string, fsType: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Formats a volume. This API uses a promise to return the result. Currently, only 
 **Since:** 9
 
 **Required permissions:** ohos.permission.MOUNT_FORMAT_MANAGER
+
+<!--Device-volumeManager-function format(volumeId: string, fsType: string): Promise<void>--><!--Device-volumeManager-function format(volumeId: string, fsType: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

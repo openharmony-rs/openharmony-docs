@@ -122,6 +122,8 @@ An intrinsic object that provides functions to convert JavaScript values to and 
 
 **Type:** JSON
 
+<!--Device-unnamed-declare var JSON: JSON--><!--Device-unnamed-declare var JSON: JSON-End-->
+
 ## Math
 
 ```TypeScript
@@ -131,6 +133,8 @@ declare var Math: Math
 An intrinsic object that provides basic mathematics functionality and constants.
 
 **Type:** Math
+
+<!--Device-unnamed-declare var Math: Math--><!--Device-unnamed-declare var Math: Math-End-->
 
 ## NaN
 
@@ -150,6 +154,8 @@ An object that represents a number of any kind. All JavaScript numbers are 64-bi
 
 **Type:** [NumberConstructor](arkts-lib-es5-numberconstructor-i.md)
 
+<!--Device-unnamed-declare var Number: NumberConstructor--><!--Device-unnamed-declare var Number: NumberConstructor-End-->
+
 ## Object
 
 ```TypeScript
@@ -159,6 +165,8 @@ declare var Object: ObjectConstructor
 Provides functionality common to all JavaScript objects.
 
 **Type:** [ObjectConstructor](arkts-lib-es5-objectconstructor-i.md)
+
+<!--Device-unnamed-declare var Object: ObjectConstructor--><!--Device-unnamed-declare var Object: ObjectConstructor-End-->
 
 ## RangeError
 
@@ -193,6 +201,8 @@ declare var String: StringConstructor
 Allows manipulation and formatting of text strings and determination and location of substrings within strings.
 
 **Type:** [StringConstructor](arkts-lib-es5-stringconstructor-i.md)
+
+<!--Device-unnamed-declare var String: StringConstructor--><!--Device-unnamed-declare var String: StringConstructor-End-->
 
 ## SyntaxError
 

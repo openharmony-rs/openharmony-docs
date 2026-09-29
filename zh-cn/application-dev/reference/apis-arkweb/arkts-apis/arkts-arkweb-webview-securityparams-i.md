@@ -8,6 +8,8 @@ interface SecurityParams
 
 **起始版本：** 26.0.0
 
+<!--Device-webview-interface SecurityParams--><!--Device-webview-interface SecurityParams-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -32,6 +34,8 @@ JIT编译是一种将程序代码在运行时动态编译为机器码的技术�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SecurityParams-disableJITCompilation?: boolean--><!--Device-SecurityParams-disableJITCompilation?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## disableMathML
@@ -49,6 +53,8 @@ MathML是内核中一个相对陈旧的渲染模块，往往缺乏足够的自�
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SecurityParams-disableMathML?: boolean--><!--Device-SecurityParams-disableMathML?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,6 +74,8 @@ WebRTC开启时可能导致恶意流量绕过代理通道，暴露用户的真�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SecurityParams-disableNonProxyUDP?: boolean--><!--Device-SecurityParams-disableNonProxyUDP?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## disablePDFViewer
@@ -85,6 +93,8 @@ disablePDFViewer?: boolean
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SecurityParams-disablePDFViewer?: boolean--><!--Device-SecurityParams-disablePDFViewer?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -104,6 +114,8 @@ Service Worker具有持久化控制权，可在Web页面后台常驻并拦截网
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SecurityParams-disableServiceWorker?: boolean--><!--Device-SecurityParams-disableServiceWorker?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## disableWebAssembly
@@ -122,6 +134,8 @@ WebAssembly（简称WASM）是一种可移植的二进制指令格式，允许C/
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-SecurityParams-disableWebAssembly?: boolean--><!--Device-SecurityParams-disableWebAssembly?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## disableWebGL
@@ -139,5 +153,7 @@ WebGL允许JavaScript直接调用GPU驱动进行渲染，攻击者可能利用�
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SecurityParams-disableWebGL?: boolean--><!--Device-SecurityParams-disableWebGL?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

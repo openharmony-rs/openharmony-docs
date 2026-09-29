@@ -8,6 +8,8 @@ In the following API examples, you must first use [getController](arkts-ime-inpu
 
 **Since:** 6
 
+<!--Device-inputMethod-interface InputMethodController--><!--Device-inputMethod-interface InputMethodController-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Hides the soft keyboard on a specified screen. This API uses a promise to return
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodController-hideSoftKeyboard(displayId: long): Promise<void>--><!--Device-InputMethodController-hideSoftKeyboard(displayId: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -91,6 +95,8 @@ Shows the soft keyboard on a specified screen. This API uses a promise to return
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodController-showSoftKeyboard(displayId: long): Promise<void>--><!--Device-InputMethodController-showSoftKeyboard(displayId: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

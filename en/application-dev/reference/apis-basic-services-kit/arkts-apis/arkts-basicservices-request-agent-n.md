@@ -8,6 +8,8 @@ The request agent api. Supports "background" and "frontend" tasks as while. Thou
 
 **Since:** 10
 
+<!--Device-request-namespace agent--><!--Device-request-namespace agent-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import

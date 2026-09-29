@@ -16,4 +16,6 @@ declare const Monitor: MonitorDecorator
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare const Monitor: MonitorDecorator--><!--Device-unnamed-declare const Monitor: MonitorDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

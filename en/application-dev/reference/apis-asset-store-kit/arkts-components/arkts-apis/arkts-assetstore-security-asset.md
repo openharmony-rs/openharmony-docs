@@ -4,6 +4,8 @@ This module provides the capabilities for life cycle management of sensitive use
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace asset--><!--Device-unnamed-declare namespace asset-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -56,6 +58,13 @@ import { asset } from '@kit.AssetStoreKit';
 | [BatchResult](arkts-assetstore-asset-batchresult-i.md) | Result object containing batch operation,including [batchAdd](arkts-assetstore-asset-batchadd-f.md) and [batchUpdate](arkts-assetstore-asset-batchupdate-f.md). |
 | [SyncResult](arkts-assetstore-asset-syncresult-i.md) | Represents the sync result of an asset. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AssetMap](arkts-assetstore-asset-assetmap-t.md) | Represents a set of asset attributes in the form of KV pairs. |
+| [Value](arkts-assetstore-asset-value-t.md) | Represents the value of each attribute in [AssetMap](arkts-assetstore-asset-assetmap-t.md). |
+
 ### Enums
 
 | Name | Description |
@@ -78,10 +87,3 @@ import { asset } from '@kit.AssetStoreKit';
 | --- | --- |
 | [AuthType](arkts-assetstore-asset-authtype-e-sys.md) | Enumerates the types of user authentication supported by an asset. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AssetMap](arkts-assetstore-asset-assetmap-t.md) | Represents a set of asset attributes in the form of KV pairs. |
-| [Value](arkts-assetstore-asset-value-t.md) | Represents the value of each attribute in [AssetMap](arkts-assetstore-asset-assetmap-t.md). |

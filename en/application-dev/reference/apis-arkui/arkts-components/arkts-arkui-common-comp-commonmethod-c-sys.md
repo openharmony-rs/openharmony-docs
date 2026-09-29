@@ -8,6 +8,8 @@ CommonMethod.
 
 **Since:** 11
 
+<!--Device-unnamed-declare class CommonMethod<T>--><!--Device-unnamed-declare class CommonMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## advancedBlendMode
@@ -23,6 +25,8 @@ Defines how the component's content (including the content of it child component
 **Model restriction:** This API can be used only in the stage model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 13.
+
+<!--Device-CommonMethod-advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T--><!--Device-CommonMethod-advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ constructor.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-constructor()--><!--Device-CommonMethod-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -72,6 +78,8 @@ Sets the edge light effect for the component.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CommonMethod-edgeLight(params: EdgeLightParams | undefined): T--><!--Device-CommonMethod-edgeLight(params: EdgeLightParams | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,6 +125,8 @@ If this attribute is not set, the current component and its children are not rem
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CommonMethod-excludeFromRenderGroup(exclude: boolean | undefined): T--><!--Device-CommonMethod-excludeFromRenderGroup(exclude: boolean | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -144,6 +154,8 @@ Marks the node as an independent render layer. Once marked, the component and it
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CommonMethod-markLayeredRender(value: boolean | undefined): T--><!--Device-CommonMethod-markLayeredRender(value: boolean | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,6 +187,8 @@ Applies a spatial effect to component.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonMethod-spatialEffect(params: SpatialEffectParams | undefined): T--><!--Device-CommonMethod-spatialEffect(params: SpatialEffectParams | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -202,6 +216,8 @@ Specify whether the current component participates in the fusion effect of the a
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CommonMethod-useUnionEffect(value: boolean | undefined): T--><!--Device-CommonMethod-useUnionEffect(value: boolean | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +248,8 @@ Specify whether the current component participates in the fusion effect of the a
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CommonMethod-useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T--><!--Device-CommonMethod-useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

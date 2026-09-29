@@ -18,6 +18,8 @@ Checks whether the device supports cross-device notifications. This API uses an 
 
 **Deprecated since:** 26.0.0
 
+<!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isDistributedEnabled(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -66,6 +68,8 @@ Checks whether the device supports cross-device notifications. This API uses a p
 **Since:** 9
 
 **Deprecated since:** 26.0.0
+
+<!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>--><!--Device-notificationManager-function isDistributedEnabled(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

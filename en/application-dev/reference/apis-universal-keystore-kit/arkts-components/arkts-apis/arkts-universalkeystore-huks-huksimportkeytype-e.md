@@ -8,6 +8,8 @@ Enumerates the types of keys to import. By default, a public key is imported. Th
 
 **Since:** 9
 
+<!--Device-huks-export enum HuksImportKeyType--><!--Device-huks-export enum HuksImportKeyType-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 9 to 11: SystemCapability.Security.Huks.Extension
@@ -25,6 +27,8 @@ Public key
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PUBLIC_KEY = 0-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -44,6 +48,8 @@ Private key
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PRIVATE_KEY = 1--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_PRIVATE_KEY = 1-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 9 to 11: SystemCapability.Security.Huks.Extension
@@ -61,6 +67,8 @@ Public and private key pair
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2--><!--Device-HuksImportKeyType-HUKS_KEY_TYPE_KEY_PAIR = 2-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core

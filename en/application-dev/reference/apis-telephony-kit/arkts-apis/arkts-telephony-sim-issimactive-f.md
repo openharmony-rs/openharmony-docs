@@ -16,6 +16,8 @@ Checks whether the SIM card in the specified slot is activated. This API uses an
 
 **Since:** 7
 
+<!--Device-sim-function isSimActive(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-sim-function isSimActive(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -48,6 +50,8 @@ function isSimActive(slotId: number): Promise<boolean>
 Checks whether the SIM card in the specified slot is activated. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-sim-function isSimActive(slotId: int): Promise<boolean>--><!--Device-sim-function isSimActive(slotId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

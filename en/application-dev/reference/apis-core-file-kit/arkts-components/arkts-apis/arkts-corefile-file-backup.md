@@ -6,6 +6,8 @@ Module providing backup and restore capabilities.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace backup--><!--Device-unnamed-declare namespace backup-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

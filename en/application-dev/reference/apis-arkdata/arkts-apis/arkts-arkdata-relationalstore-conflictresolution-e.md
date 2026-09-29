@@ -8,6 +8,8 @@ Enumerates the resolutions used when a conflict occurs during data insertion or 
 
 **Since:** 10
 
+<!--Device-relationalStore-enum ConflictResolution--><!--Device-relationalStore-enum ConflictResolution-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## ON_CONFLICT_NONE
@@ -19,6 +21,8 @@ ON_CONFLICT_NONE = 0
 No operation is performed.
 
 **Since:** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_NONE = 0--><!--Device-ConflictResolution-ON_CONFLICT_NONE = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -32,6 +36,8 @@ Abort the SQL statement and roll back the current transaction.
 
 **Since:** 10
 
+<!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1--><!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## ON_CONFLICT_ABORT
@@ -43,6 +49,8 @@ ON_CONFLICT_ABORT = 2
 Abort the current SQL statement and revert any changes made by the current SQL statement. However, the changes made by the previous SQL statement in the same transaction are retained and the transaction remains active.
 
 **Since:** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_ABORT = 2--><!--Device-ConflictResolution-ON_CONFLICT_ABORT = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -56,6 +64,8 @@ Abort the current SQL statement. The **FAIL** resolution does not revert previou
 
 **Since:** 10
 
+<!--Device-ConflictResolution-ON_CONFLICT_FAIL = 3--><!--Device-ConflictResolution-ON_CONFLICT_FAIL = 3-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## ON_CONFLICT_IGNORE
@@ -68,6 +78,8 @@ Skip the rows that contain constraint violations and continue to process the sub
 
 **Since:** 10
 
+<!--Device-ConflictResolution-ON_CONFLICT_IGNORE = 4--><!--Device-ConflictResolution-ON_CONFLICT_IGNORE = 4-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## ON_CONFLICT_REPLACE
@@ -79,5 +91,7 @@ ON_CONFLICT_REPLACE = 5
 Delete pre-existing rows that cause the constraint violation before inserting or updating the current row, and continue to execute the command normally.
 
 **Since:** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_REPLACE = 5--><!--Device-ConflictResolution-ON_CONFLICT_REPLACE = 5-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

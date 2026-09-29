@@ -14,6 +14,8 @@ Provides APIs for generating the messages in CMS format.
 
 **Since:** 18
 
+<!--Device-cert-interface CmsGenerator--><!--Device-cert-interface CmsGenerator-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -34,7 +36,9 @@ Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the iss
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGenerator-addCert(cert: X509Cert): void--><!--Device-CmsGenerator-addCert(cert: X509Cert): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -122,7 +126,9 @@ Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsGenerator-addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>--><!--Device-CmsGenerator-addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -240,7 +246,9 @@ Adds signer information to the CMS whose content type is **SIGNED_DATA**.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGenerator-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void--><!--Device-CmsGenerator-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -358,7 +366,9 @@ Obtains the CMS message, for example, the CMS signed data or CMS enveloped data.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGenerator-doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>--><!--Device-CmsGenerator-doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | string>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -493,7 +503,9 @@ Obtains the CMS message, for example, the CMS signed data or CMS enveloped data.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGenerator-doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string--><!--Device-CmsGenerator-doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -627,7 +639,9 @@ Obtains the encrypted content data of the CMS whose content type is **ENVELOPED_
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsGenerator-getEncryptedContentData(): Promise<Uint8Array>--><!--Device-CmsGenerator-getEncryptedContentData(): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -754,7 +768,9 @@ Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsGenerator-setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void--><!--Device-CmsGenerator-setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

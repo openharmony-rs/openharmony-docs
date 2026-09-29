@@ -6,6 +6,8 @@ Provides methods for intelligent data processing.
 
 **Since:** 15
 
+<!--Device-unnamed-declare namespace intelligence--><!--Device-unnamed-declare namespace intelligence-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 ## Modules to Import
@@ -35,15 +37,15 @@ import { intelligence } from '@kit.ArkData';
 | [SplitConfig](arkts-arkdata-intelligence-splitconfig-i.md) | Manages text chunk process configurations. |
 | [TextEmbedding](arkts-arkdata-intelligence-textembedding-i.md) | Describes the text embedding functions of the multi-modal embedding model. Chinese and English are supported. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [Image](arkts-arkdata-intelligence-image-t.md) | The type of the image can be its URI. |
+
 ### Enums
 
 | Name | Description |
 | --- | --- |
 | [ModelVersion](arkts-arkdata-intelligence-modelversion-e.md) | Version of the model. |
 | [NetworkPolicy](arkts-arkdata-intelligence-networkpolicy-e.md) | Indicates network policy. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [Image](arkts-arkdata-intelligence-image-t.md) | The type of the image can be its URI. |

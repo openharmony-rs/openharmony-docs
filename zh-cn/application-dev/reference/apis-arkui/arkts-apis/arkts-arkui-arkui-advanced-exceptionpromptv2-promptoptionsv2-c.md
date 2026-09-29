@@ -10,6 +10,8 @@ PromptOptionsV2用于定义异常提示组件的配置信息。
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class PromptOptionsV2--><!--Device-unnamed-export declare class PromptOptionsV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ PromptOptionsV2的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptionsV2-constructor(config?: PromptOptionsV2Config)--><!--Device-PromptOptionsV2-constructor(config?: PromptOptionsV2Config)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ actionText?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PromptOptionsV2-actionText?: ResourceStr--><!--Device-PromptOptionsV2-actionText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -81,6 +87,8 @@ icon?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptionsV2-icon?: ResourceStr--><!--Device-PromptOptionsV2-icon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +116,8 @@ false：隐藏状态。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PromptOptionsV2-isShown?: boolean--><!--Device-PromptOptionsV2-isShown?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginTop
@@ -128,6 +138,8 @@ marginTop: Dimension
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-PromptOptionsV2-marginTop: Dimension--><!--Device-PromptOptionsV2-marginTop: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginType
@@ -147,6 +159,8 @@ marginType: MarginTypeV2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptionsV2-marginType: MarginTypeV2--><!--Device-PromptOptionsV2-marginType: MarginTypeV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,6 +183,8 @@ symbolStyle?: SymbolGlyphModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptionsV2-symbolStyle?: SymbolGlyphModifier--><!--Device-PromptOptionsV2-symbolStyle?: SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -198,5 +214,7 @@ tip?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PromptOptionsV2-tip?: ResourceStr--><!--Device-PromptOptionsV2-tip?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ A non-linear data structure.
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class Set<T>--><!--Device-collections-class Set<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Returns an iterator, each item of which is a JavaScript object. NOTE: This API c
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-[Symbol.iterator](): IterableIterator<T>--><!--Device-Set-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -61,6 +65,8 @@ Checks whether a value exists in this ArkTS set, and if not, adds the value to t
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-add(value: T): Set<T>--><!--Device-Set-add(value: T): Set<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -95,6 +101,8 @@ Removes all elements from this ArkTS set.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Set-clear(): void--><!--Device-Set-clear(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -115,6 +123,8 @@ A constructor used to create an ArkTS set.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-constructor(values?: readonly T[] | null)--><!--Device-Set-constructor(values?: readonly T[] | null)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -144,6 +154,8 @@ A constructor used to create an ArkTS set.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Set-constructor(iterable: Iterable<T>)--><!--Device-Set-constructor(iterable: Iterable<T>)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -169,6 +181,8 @@ Deletes an element from this ArkTS set.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-delete(value: T): boolean--><!--Device-Set-delete(value: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -203,6 +217,8 @@ Returns a set iterator object that contains the key-value pair of each element i
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Set-entries(): IterableIterator<[T, T]>--><!--Device-Set-entries(): IterableIterator<[T, T]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -230,6 +246,8 @@ Calls a callback function for each key-value pair in this ArkTS set.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Set-forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void--><!--Device-Set-forEach(callbackFn: (value: T, value2: T, set: Set<T>) => void): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -256,6 +274,8 @@ Checks whether a value exists in this ArkTS set.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-has(value: T): boolean--><!--Device-Set-has(value: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -290,6 +310,8 @@ Returns a set iterator object that contains the key of each element in this ArkT
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Set-keys(): IterableIterator<T>--><!--Device-Set-keys(): IterableIterator<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -316,6 +338,8 @@ Returns a set iterator object that contains the value of each element in this Ar
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-values(): IterableIterator<T>--><!--Device-Set-values(): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -345,5 +369,7 @@ Number of elements in a set.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Set-readonly size: number--><!--Device-Set-readonly size: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

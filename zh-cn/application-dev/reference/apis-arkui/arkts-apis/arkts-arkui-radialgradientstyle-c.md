@@ -10,6 +10,8 @@ declare class RadialGradientStyle extends ShaderStyle
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare class RadialGradientStyle extends ShaderStyle--><!--Device-unnamed-declare class RadialGradientStyle extends ShaderStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -25,6 +27,8 @@ constructor(options: RadialGradientOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-RadialGradientStyle-constructor(options: RadialGradientOptions)--><!--Device-RadialGradientStyle-constructor(options: RadialGradientOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ options: RadialGradientOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-RadialGradientStyle-options: RadialGradientOptions--><!--Device-RadialGradientStyle-options: RadialGradientOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -22,6 +22,8 @@ Sets the system date. This API uses an asynchronous callback to return the resul
 
 **Required permissions:** ohos.permission.SET_TIME
 
+<!--Device-systemDateTime-function setDate(date: Date, callback: AsyncCallback<void>): void--><!--Device-systemDateTime-function setDate(date: Date, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ Sets the system date. This API uses a promise to return the result.
 **Substitutes:** [setTime](arkts-basicservices-systemdatetime-settime-f-sys.md)(time: number, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.SET_TIME
+
+<!--Device-systemDateTime-function setDate(date: Date): Promise<void>--><!--Device-systemDateTime-function setDate(date: Date): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

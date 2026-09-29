@@ -13,6 +13,8 @@ Defines the identity and position information of a BuilderSpan in **RichEditor**
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare interface BuilderSpanInfo--><!--Device-unnamed-declare interface BuilderSpanInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -31,6 +33,8 @@ Developer-defined tracking identifier for tracking BuilderSpan. The framework do
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-BuilderSpanInfo-id?: string--><!--Device-BuilderSpanInfo-id?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -48,5 +52,7 @@ Current offset position of the BuilderSpan in the text content. This value is ma
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-BuilderSpanInfo-offset?: number--><!--Device-BuilderSpanInfo-offset?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

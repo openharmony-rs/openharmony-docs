@@ -8,6 +8,8 @@ Represents the configuration for generating a CMS message.
 
 **Since:** 18
 
+<!--Device-cert-interface CmsGeneratorOptions--><!--Device-cert-interface CmsGeneratorOptions-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Format of the content. The default value is **CmsContentDataFormat.BINARY**.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGeneratorOptions-contentDataFormat?: CmsContentDataFormat--><!--Device-CmsGeneratorOptions-contentDataFormat?: CmsContentDataFormat-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -48,7 +52,9 @@ Whether the final CMS message does not contain the raw data. The default value i
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGeneratorOptions-isDetached?: boolean--><!--Device-CmsGeneratorOptions-isDetached?: boolean-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -66,6 +72,8 @@ Format of the CMS message generated. The default value is **DER**.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmsGeneratorOptions-outFormat?: CmsFormat--><!--Device-CmsGeneratorOptions-outFormat?: CmsFormat-End-->
 
 **System capability:** SystemCapability.Security.Cert

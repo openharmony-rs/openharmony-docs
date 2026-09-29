@@ -4,6 +4,8 @@ The childProcessManager module provides the child process management capability.
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace childProcessManager--><!--Device-unnamed-declare namespace childProcessManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -26,14 +28,14 @@ import { childProcessManager } from '@kit.AbilityKit';
 | [startChildProcess](arkts-ability-childprocessmanager-startchildprocess-f.md#startchildprocess-1) | Starts an [ArkTS child process](../../../application-models/ability-terminology.md#arkts-child-process). This API uses an asynchronous callback to return the result. This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 16000061 is returned. |
 | [startNativeChildProcess](arkts-ability-childprocessmanager-startnativechildprocess-f.md) | Starts a [native child process](../../../application-models/ability-terminology.md#native-child-process). This API uses a promise to return the result. This API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other devices, error code 801 is returned. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | Enumerates the child process start modes. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [ChildProcessInformation](arkts-ability-childprocessmanager-childprocessinformation-t.md) | Defines the child process information. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [StartMode](arkts-ability-childprocessmanager-startmode-e.md) | Enumerates the child process start modes. |

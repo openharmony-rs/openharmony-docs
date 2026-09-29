@@ -20,6 +20,8 @@ The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct SwipeRefresher--><!--Device-unnamed-export declare struct SwipeRefresher-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -50,6 +52,8 @@ If the text length exceeds the column width, it will be truncated. The Resource 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SwipeRefresher-content?: ResourceStr--><!--Device-SwipeRefresher-content?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isLoading
@@ -71,5 +75,7 @@ Whether content is being loaded.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwipeRefresher-isLoading: boolean--><!--Device-SwipeRefresher-isLoading: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

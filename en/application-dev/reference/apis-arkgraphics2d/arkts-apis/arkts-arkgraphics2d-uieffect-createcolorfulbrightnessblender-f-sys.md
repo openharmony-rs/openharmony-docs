@@ -21,6 +21,8 @@ Creates a ColorfulBrightnessBlender instance to add a hue-preserving brightening
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-uiEffect-function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam,    options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender--><!--Device-uiEffect-function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam,    options?: ColorfulBrightnessBlenderOptions): ColorfulBrightnessBlender-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.

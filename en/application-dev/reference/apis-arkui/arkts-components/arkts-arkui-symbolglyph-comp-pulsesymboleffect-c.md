@@ -4,7 +4,7 @@
 declare class PulseSymbolEffect extends SymbolEffect
 ```
 
-Defines PulseSymbolEffect class, which inherits from **SymbolEffect**.
+Inherits from **SymbolEffect**.
 
 **Inheritance/Implementation:** PulseSymbolEffect extends [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md)
 
@@ -15,5 +15,7 @@ Defines PulseSymbolEffect class, which inherits from **SymbolEffect**.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-unnamed-declare class PulseSymbolEffect extends SymbolEffect--><!--Device-unnamed-declare class PulseSymbolEffect extends SymbolEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

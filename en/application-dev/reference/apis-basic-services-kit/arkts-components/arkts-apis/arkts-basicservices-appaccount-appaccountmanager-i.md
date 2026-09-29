@@ -8,218 +8,14 @@ Defines the application account manager, which is used to manage account informa
 
 **Since:** 7
 
+<!--Device-appAccount-interface AppAccountManager--><!--Device-appAccount-interface AppAccountManager-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import
 
 ```TypeScript
 import { appAccount } from '@kit.BasicServicesKit';
-```
-
-## addAccount
-
-```TypeScript
-addAccount(name: string, callback: AsyncCallback<void>): void
-```
-
-Adds an application account with the given name. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.addAccount('WangWu', (err: BusinessError) => { 
-  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-<a id="addaccount-1"></a>
-
-## addAccount
-
-```TypeScript
-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
-```
-
-Adds an application account name and additional information. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [createAccount](#createaccount-1)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| extraInfo | string | Yes | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => { 
-  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-<a id="addaccount-2"></a>
-
-## addAccount
-
-```TypeScript
-addAccount(name: string, extraInfo?: string): Promise<void>
-```
-
-Adds an application account name and additional information. This API uses a promise to return the result.
-
-> **NOTE:** 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount-2)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [createAccount](#createaccount-2)(name: string, options?: CreateAccountOptions)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| extraInfo | string | No | Additional information (information that can be converted to the string type).<br>The additional information cannot be sensitive information (such as the password and token) of the application account. <br>By default, no value is passed, which means no additional information needs to be added for the account. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.addAccount('LiSi', 'token101').then(()=> { 
-  console.info('addAccount Success');
-}).catch((err: BusinessError) => {
-  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## addAccountImplicitly
-
-```TypeScript
-addAccountImplicitly(
-      owner: string,
-      authType: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void
-```
-
-Adds an application account implicitly based on the specified owner. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [createAccountImplicitly](#createaccountimplicitly)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| options | { [key: string]: any } | Yes | Options for the authentication, which can be set as required. |
-| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want, common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-
-  onResultCallback(code: number, result: Record<string, Object>): void {
-    console.info('resultCode: ' + code);
-    console.info('result: ' + JSON.stringify(result));
-  }
-
-  onRequestRedirectedCallback(request: Want): void {
-    let wantInfo: Want = {
-      deviceId: '',
-      bundleName: 'com.example.accountjsdemo',
-      action: 'ohos.want.action.viewData',
-      entities: ['entity.system.default'],
-    }
-    this.context.startAbility(wantInfo).then(() => {
-      console.info('startAbility successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
-    })
-  }
-
-  aboutToAppear(): void {
-    appAccountManager.addAccountImplicitly('com.example.accountjsdemo', 'getSocialData', {}, {
-      onResult: this.onResultCallback,
-      onRequestRedirected: this.onRequestRedirectedCallback
-    });
-  }
-
-  build() {}
-}
 ```
 
 ## auth
@@ -231,6 +27,8 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 Authenticates an application account. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-auth(name: string, owner: string, authType: string, callback: AuthCallback): void--><!--Device-AppAccountManager-auth(name: string, owner: string, authType: string, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -319,6 +117,8 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 **Since:** 9
 
+<!--Device-AppAccountManager-auth(      name: string,      owner: string,      authType: string,      options: Record<string, Object>,      callback: AuthCallback    ): void--><!--Device-AppAccountManager-auth(      name: string,      owner: string,      authType: string,      options: Record<string, Object>,      callback: AuthCallback    ): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -392,85 +192,6 @@ struct Index {
 }
 ```
 
-## authenticate
-
-```TypeScript
-authenticate(
-      name: string,
-      owner: string,
-      authType: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void
-```
-
-Authenticates an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [auth](#auth)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| options | { [key: string]: any } | Yes | Options for the authentication. |
-| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want, common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-
-  onResultCallback(code: number, result: Record<string, Object>): void {
-    console.info('resultCode: ' + code);
-    console.info('result: ' + JSON.stringify(result));
-  }
-
-  onRequestRedirectedCallback(request: Want): void {
-    let wantInfo: Want = {
-      deviceId: '',
-      bundleName: 'com.example.accountjsdemo',
-      action: 'ohos.want.action.viewData',
-      entities: ['entity.system.default'],
-    }
-    this.context.startAbility(wantInfo).then(() => {
-      console.info('startAbility successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
-    })
-  }
-
-  aboutToAppear(): void {
-    appAccountManager.authenticate('LiSi', 'com.example.accountjsdemo', 'getSocialData', {}, {
-      onResult: this.onResultCallback,
-      onRequestRedirected: this.onRequestRedirectedCallback
-    });
-  }
-
-  build() {}
-}
-```
-
 ## checkAccountLabels
 
 ```TypeScript
@@ -480,6 +201,8 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>, callback:
 Checks whether an application account has specific labels. This API uses an asynchronous callback to return the result. The labels are checked by the authenticator of the target application.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -536,6 +259,8 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<
 Checks whether an application account has specific labels. This API uses a promise to return the result. The labels are checked by the authenticator of the target application.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<boolean>--><!--Device-AppAccountManager-checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -594,6 +319,8 @@ Checks whether the caller can access the account data that belongs to the target
 
 **Since:** 9
 
+<!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -645,6 +372,8 @@ Checks whether the caller can access the account data that belongs to the target
 
 **Since:** 9
 
+<!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkAppAccess(name: string, bundleName: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -686,100 +415,6 @@ try {
 }
 ```
 
-## checkAppAccountSyncEnable
-
-```TypeScript
-checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
-```
-
-Checks whether data synchronization is enabled for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, result: boolean) => { 
-  if (err) {
-    console.error(`checkAppAccountSyncEnable code: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('checkAppAccountSyncEnable result: ' + result);
-  }
-});
-```
-
-<a id="checkappaccountsyncenable-1"></a>
-
-## checkAppAccountSyncEnable
-
-```TypeScript
-checkAppAccountSyncEnable(name: string): Promise<boolean>
-```
-
-Checks whether data synchronization is enabled for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled-1) instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled-1)(name: string)
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => { 
-  console.info('checkAppAccountSyncEnable, result: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`checkAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## checkAuthTokenVisibility
 
 ```TypeScript
@@ -789,6 +424,8 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 Checks the visibility of an authorization token of the specified authentication type to an application. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -842,6 +479,8 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 Checks the visibility of an authorization token of the specified authentication type to an application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -899,6 +538,8 @@ Checks whether data synchronization is enabled for an application account. This 
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -951,6 +592,8 @@ Checks whether data synchronization is enabled for an application account. This 
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-checkDataSyncEnabled(name: string): Promise<boolean>--><!--Device-AppAccountManager-checkDataSyncEnabled(name: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -992,108 +635,6 @@ try {
 }
 ```
 
-## checkOAuthTokenVisibility
-
-```TypeScript
-checkOAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      callback: AsyncCallback<boolean>
-    ): void
-```
-
-Checks the visibility of an authorization token of the specified authentication type to an application. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
-  (err: BusinessError, data: boolean) => {
-    if (err) {
-      console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('checkOAuthTokenVisibility isVisible: ' + data);
-    }
-  });
-```
-
-<a id="checkoauthtokenvisibility-1"></a>
-
-## checkOAuthTokenVisibility
-
-```TypeScript
-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>
-```
-
-Checks the visibility of an authorization token of the specified authentication type to an application. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility-1)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility-1)(name: string, authType: string, bundleName: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the authorization token is visible to the application; the value **false** means the opposite. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
-  data: boolean) => {
-  console.info('checkOAuthTokenVisibility isVisible: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## createAccount
 
 ```TypeScript
@@ -1103,6 +644,8 @@ createAccount(name: string, callback: AsyncCallback<void>): void
 Creates an application account with the given name. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-createAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-createAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -1153,6 +696,8 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 Creates an application account with custom data. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -1210,6 +755,8 @@ Creates an application account with custom data. This API uses a promise to retu
 
 **Since:** 9
 
+<!--Device-AppAccountManager-createAccount(name: string, options?: CreateAccountOptions): Promise<void>--><!--Device-AppAccountManager-createAccount(name: string, options?: CreateAccountOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -1266,6 +813,8 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 Creates an application account automatically by the authenticator based on the specified owner. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-createAccountImplicitly(owner: string, callback: AuthCallback): void--><!--Device-AppAccountManager-createAccountImplicitly(owner: string, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -1345,6 +894,8 @@ Creates an application account automatically by the authenticator based on the s
 
 **Since:** 9
 
+<!--Device-AppAccountManager-createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void--><!--Device-AppAccountManager-createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -1416,93 +967,6 @@ struct Index {
 }
 ```
 
-## deleteAccount
-
-```TypeScript
-deleteAccount(name: string, callback: AsyncCallback<void>): void
-```
-
-Deletes an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => { 
-  console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-<a id="deleteaccount-1"></a>
-
-## deleteAccount
-
-```TypeScript
-deleteAccount(name: string): Promise<void>
-```
-
-Deletes an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [removeAccount](#removeaccount-1)(name: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
-  console.info('deleteAccount Success');
-}).catch((err: BusinessError) => {
-  console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## deleteAuthToken
 
 ```TypeScript
@@ -1512,6 +976,8 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 Deletes the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -1567,6 +1033,8 @@ Deletes the authorization token of the specified authentication type for an appl
 
 **Since:** 9
 
+<!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -1621,6 +1089,8 @@ Deletes the credential for the specified type of an application account. This AP
 
 **Since:** 9
 
+<!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -1672,6 +1142,8 @@ Deletes the credential for the specified type of an application account. This AP
 
 **Since:** 9
 
+<!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string): Promise<void>--><!--Device-AppAccountManager-deleteCredential(name: string, credentialType: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -1714,469 +1186,6 @@ try {
 }
 ```
 
-## deleteOAuthToken
-
-```TypeScript
-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void
-```
-
-Deletes the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
-  (err: BusinessError) => {
-    if (err) {
-      console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('deleteOAuthToken successful.');
-    }
-  });
-```
-
-<a id="deleteoauthtoken-1"></a>
-
-## deleteOAuthToken
-
-```TypeScript
-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>
-```
-
-Deletes the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken-1)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [deleteAuthToken](#deleteauthtoken-1)(name: string, owner: string, authType: string, token: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
-  console.info('deleteOAuthToken successfully');
-}).catch((err: BusinessError) => {
-  console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## disableAppAccess
-
-```TypeScript
-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void
-```
-
-Disables access to the third-party application with the specified package name using the specified third-party application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If access to the third-party application with the specified package name using the specified third-party application account is disabled successfully, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => { 
-  console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-<a id="disableappaccess-1"></a>
-
-## disableAppAccess
-
-```TypeScript
-disableAppAccess(name: string, bundleName: string): Promise<void>
-```
-
-Disables an application account from accessing an application. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the target application account. The value contains a maximum of 512 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-  console.info('disableAppAccess Success');
-}).catch((err: BusinessError) => {
-  console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## enableAppAccess
-
-```TypeScript
-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void
-```
-
-Enables an application to access an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => {
-  if (err) {
-    console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('enableAppAccess successful.');
-  }
-});
-```
-
-<a id="enableappaccess-1"></a>
-
-## enableAppAccess
-
-```TypeScript
-enableAppAccess(name: string, bundleName: string): Promise<void>
-```
-
-Enables an application to access an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
-  console.info('enableAppAccess Success');
-}).catch((err: BusinessError) => {
-  console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## getAccountCredential
-
-```TypeScript
-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void
-```
-
-Obtains the credential of an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: BusinessError, result: string) => { 
-  if (err) {
-    console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('getAccountCredential result: ' + result);
-  }
-});
-```
-
-<a id="getaccountcredential-1"></a>
-
-## getAccountCredential
-
-```TypeScript
-getAccountCredential(name: string, credentialType: string): Promise<string>
-```
-
-Obtains the credential of an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getCredential](#getcredential-1)(name: string, credentialType: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the credential obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((data: string) => { 
-  console.info('getAccountCredential, result: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## getAccountExtraInfo
-
-```TypeScript
-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
-```
-
-Obtains additional information of an application account. Additional information refers to other information that can be converted to the string type. It cannot contain sensitive information, such as the application account password and token. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the additional information obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: string) => { 
-  if (err) {
-    console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('getAccountExtraInfo result: ' + result);
-  }
-});
-```
-
-<a id="getaccountextrainfo-1"></a>
-
-## getAccountExtraInfo
-
-```TypeScript
-getAccountExtraInfo(name: string): Promise<string>
-```
-
-Obtains additional information of an application account. Additional information refers to other information that can be converted to the string type. It cannot contain sensitive information, such as the application account password and token. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata-1) instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the additional information of the application account. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => { 
-  console.info('getAccountExtraInfo, result: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## getAccountsByOwner
 
 ```TypeScript
@@ -2186,6 +1195,8 @@ getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>
 Obtains the application accounts that can be accessed by the invoker based on the application account owner. This API uses an asynchronous callback to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications or <br> have gained the ohos.permission.GET_ALL_APP_ACCOUNTS permission.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAccountsByOwner(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -2236,6 +1247,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getAccountsByOwner(owner: string): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAccountsByOwner(owner: string): Promise<Array<AppAccountInfo>>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -2276,93 +1289,6 @@ try {
 }
 ```
 
-## getAllAccessibleAccounts
-
-```TypeScript
-getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
-```
-
-Obtains information about all accessible application accounts. This API uses an asynchronous callback to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAllAccounts](#getallaccounts)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
-
-**Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of accessible application accounts. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount.AppAccountInfo[])=>{
-  if (err) {
-    console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('getAllAccessibleAccounts data: ' + JSON.stringify(data));
-  }
-});
-```
-
-<a id="getallaccessibleaccounts-1"></a>
-
-## getAllAccessibleAccounts
-
-```TypeScript
-getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>
-```
-
-Obtains information about all accessible application accounts. This API uses a promise to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAllAccounts](#getallaccounts) instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAllAccounts](#getallaccounts)()
-
-**Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Promise used to return information about all accessible accounts. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
-  console.info('getAllAccessibleAccounts: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## getAllAccounts
 
 ```TypeScript
@@ -2372,6 +1298,8 @@ getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 Obtains information about all accessible application accounts. This API uses an asynchronous callback to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications or <br> have gained the ohos.permission.GET_ALL_APP_ACCOUNTS permission.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -2418,6 +1346,8 @@ getAllAccounts(): Promise<Array<AppAccountInfo>>
 Obtains information about all accessible application accounts. This API uses a promise to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications or <br> have gained the ohos.permission.GET_ALL_APP_ACCOUNTS permission.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAllAccounts(): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAllAccounts(): Promise<Array<AppAccountInfo>>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -2474,6 +1404,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
+<!--Device-AppAccountManager-getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -2521,6 +1453,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
+<!--Device-AppAccountManager-getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -2557,6 +1491,8 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<Auth
 Obtains all tokens visible to the invoker for an application account. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<AuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<AuthTokenInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -2609,6 +1545,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>--><!--Device-AppAccountManager-getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -2651,192 +1589,6 @@ try {
 }
 ```
 
-## getAllOAuthTokens
-
-```TypeScript
-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void
-```
-
-Obtains all tokens visible to the invoker for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OAuthTokenInfo](arkts-basicservices-appaccount-oauthtokeninfo-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
-  (err: BusinessError, data: appAccount.OAuthTokenInfo[]) => {
-    if (err) {
-      console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
-    }
-  });
-```
-
-<a id="getalloauthtokens-1"></a>
-
-## getAllOAuthTokens
-
-```TypeScript
-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
-```
-
-Obtains all tokens visible to the invoker for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens-1) instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAllAuthTokens](#getallauthtokens-1)(name: string, owner: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;[OAuthTokenInfo](arkts-basicservices-appaccount-oauthtokeninfo-i.md)&gt;&gt; | Promise used to return the tokens obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
-  data: appAccount.OAuthTokenInfo[]) => {
-  console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## getAssociatedData
-
-```TypeScript
-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void
-```
-
-Obtains the associated data of an application account based on the specified key. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the data obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, result: string) => { 
-  if (err) {
-    console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('getAssociatedData result: ' + result);
-  }
-});
-```
-
-<a id="getassociateddata-1"></a>
-
-## getAssociatedData
-
-```TypeScript
-getAssociatedData(name: string, key: string): Promise<string>
-```
-
-Obtains data to be associated with an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata-1) instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the data obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => { 
-  console.info('getAssociatedData: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## getAuthCallback
 
 ```TypeScript
@@ -2846,6 +1598,8 @@ getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void
 Obtains the authenticator callback for an authentication session. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void--><!--Device-AppAccountManager-getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -2912,6 +1666,8 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getAuthCallback(sessionId: string): Promise<AuthCallback>--><!--Device-AppAccountManager-getAuthCallback(sessionId: string): Promise<AuthCallback>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -2968,212 +1724,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## getAuthenticatorCallback
-
-```TypeScript
-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void
-```
-
-Obtains the authenticator callback for an authentication session. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| sessionId | string | Yes | ID of the authentication session. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator callback obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
-    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
-    appAccountManager.getAuthenticatorCallback(sessionId,
-        (err: BusinessError, callback: appAccount.AuthenticatorCallback) => {
-        if (err.code != appAccount.ResultCode.SUCCESS) {
-            console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
-            return;
-        }
-        callback.onResult(appAccount.ResultCode.SUCCESS, {
-          name: 'LiSi',
-          owner: 'com.example.accountjsdemo',
-          authType: 'getSocialData',
-          token: 'xxxxxx'
-        });
-      });
-  }
-}
-```
-
-<a id="getauthenticatorcallback-1"></a>
-
-## getAuthenticatorCallback
-
-```TypeScript
-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
-```
-
-Obtains the authenticator callback for an authentication session. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback-1) instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAuthCallback](#getauthcallback-1)(sessionId: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| sessionId | string | Yes | ID of the authentication session. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md)&gt; | Promise used to return the authenticator callback obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
-    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
-    appAccountManager.getAuthenticatorCallback(sessionId).then((
-      callback: appAccount.AuthenticatorCallback) => {
-      callback.onResult(appAccount.ResultCode.SUCCESS, {
-        name: 'LiSi',
-        owner: 'com.example.accountjsdemo',
-        authType: 'getSocialData',
-        token: 'xxxxxx'
-      });
-    }).catch((err: BusinessError) => {
-      console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
-    });
-  }
-}
-```
-
-## getAuthenticatorInfo
-
-```TypeScript
-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void
-```
-
-Obtains the authenticator information of an application. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[AuthenticatorInfo](arkts-basicservices-appaccount-authenticatorinfo-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator information obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
-  (err: BusinessError, data: appAccount.AuthenticatorInfo) => {
-    if (err) {
-      console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getAuthenticatorInfo data: ' + JSON.stringify(data));
-    }
-  });
-```
-
-<a id="getauthenticatorinfo-1"></a>
-
-## getAuthenticatorInfo
-
-```TypeScript
-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
-```
-
-Obtains the authenticator information of an application. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo-1) instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo-1)(owner: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[AuthenticatorInfo](arkts-basicservices-appaccount-authenticatorinfo-i.md)&gt; | Promise used to return the authenticator information obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
-  data: appAccount.AuthenticatorInfo) => { 
-  console.info('getAuthenticatorInfo: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## getAuthList
 
 ```TypeScript
@@ -3183,6 +1733,8 @@ getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string
 Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -3235,6 +1787,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getAuthList(name: string, authType: string): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -3286,6 +1840,8 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 Obtains the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -3340,6 +1896,8 @@ Obtains the authorization token of the specified authentication type for an appl
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -3393,6 +1951,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -3443,6 +2003,8 @@ getCredential(name: string, credentialType: string): Promise<string>
 Obtains the credential of an application account. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getCredential(name: string, credentialType: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -3496,6 +2058,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getCustomData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getCustomData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -3546,6 +2110,8 @@ getCustomData(name: string, key: string): Promise<string>
 Obtains the custom data of an application account based on the specified key. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-getCustomData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getCustomData(name: string, key: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -3599,6 +2165,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 **Since:** 9
 
+<!--Device-AppAccountManager-getCustomDataSync(name: string, key: string): string--><!--Device-AppAccountManager-getCustomDataSync(name: string, key: string): string-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -3638,243 +2206,6 @@ try {
 }
 ```
 
-## getOAuthList
-
-```TypeScript
-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
-```
-
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, data: string[]) => {
-  if (err) {
-    console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('getOAuthList data: ' + JSON.stringify(data));
-  }
-});
-```
-
-<a id="getoauthlist-1"></a>
-
-## getOAuthList
-
-```TypeScript
-getOAuthList(name: string, authType: string): Promise<Array<string>>
-```
-
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist-1) instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAuthList](#getauthlist-1)(name: string, authType: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a list of authorized bundles. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) => {
-  console.info('getOAuthList data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## getOAuthToken
-
-```TypeScript
-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void
-```
-
-Obtains the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
-  (err: BusinessError, data: string) => {
-    if (err) {
-      console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('getOAuthToken token: ' + data);
-    }
-  });
-```
-
-<a id="getoauthtoken-1"></a>
-
-## getOAuthToken
-
-```TypeScript
-getOAuthToken(name: string, owner: string, authType: string): Promise<string>
-```
-
-Obtains the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken-1)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getAuthToken](#getauthtoken-1)(name: string, owner: string, authType: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the authorization token obtained. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((data: string) => {
-  console.info('getOAuthToken token: ' + data);
-}).catch((err: BusinessError) => {
-  console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## off('change')
-
-```TypeScript
-off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void
-```
-
-Unsubscribes from account information changes.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [off('accountChange')](#offaccountchange)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [off](#offaccountchange)(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'change' | Yes | Event type to Unsubscribe to. The value is **'change'**. An event will be reported when the account information changes. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | No | Callback to unregister. By default, no value is passed, which means to unregister all callbacks for the specified event. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  console.info('receive change data: ' + JSON.stringify(data));
-  appAccountManager.off('change', () => {
-    console.info('off finish');
-  })
-}
-
-try {
-  appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`on accountOnOffDemo err: code is ${err.code}, message is ${err.message}`);
-}
-```
-
 ## off('accountChange')
 
 ```TypeScript
@@ -3884,6 +2215,8 @@ off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void
 Unsubscribes from account information changes.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -3925,25 +2258,27 @@ try {
 }
 ```
 
-## on('change')
+## off('change')
 
 ```TypeScript
-on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void
+off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void
 ```
 
-Subscribes to account information changes of apps.
+Unsubscribes from account information changes.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [on('accountChange')](#onaccountchange)
+> [off('accountChange')](#offaccountchange)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#onaccountchange)(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [off](#offaccountchange)(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+
+<!--Device-AppAccountManager-off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-off(type: 'change', callback?: Callback<Array<AppAccountInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -3951,9 +2286,8 @@ Subscribes to account information changes of apps.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'change' | Yes | Event type to subscribe to. The value is **'change'**. An event will be reported when the account information changes. |
-| owners | Array&lt;string&gt; | Yes | Application bundle names of the account. |
-| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Yes | Callback registered to return the list of changed application accounts. |
+| type | 'change' | Yes | Event type to Unsubscribe to. The value is **'change'**. An event will be reported when the account information changes. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | No | Callback to unregister. By default, no value is passed, which means to unregister all callbacks for the specified event. |
 
 **Examples**
 
@@ -3961,14 +2295,17 @@ Subscribes to account information changes of apps.
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-  console.info('receive change data:' + JSON.stringify(data));
+  console.info('receive change data: ' + JSON.stringify(data));
+  appAccountManager.off('change', () => {
+    console.info('off finish');
+  })
 }
 
 try {
   appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`on accountOnOffDemo code is ${err.code}, message is ${err.message}`);
+  console.error(`on accountOnOffDemo err: code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -3981,6 +2318,8 @@ on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAcc
 Subscribes to account information changes of apps.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-on(type: 'accountChange', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4017,6 +2356,55 @@ try {
 }
 ```
 
+## on('change')
+
+```TypeScript
+on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void
+```
+
+Subscribes to account information changes of apps.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [on('accountChange')](#onaccountchange)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [on](#onaccountchange)(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+
+<!--Device-AppAccountManager-on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-on(type: 'change', owners: Array<string>, callback: Callback<Array<AppAccountInfo>>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'change' | Yes | Event type to subscribe to. The value is **'change'**. An event will be reported when the account information changes. |
+| owners | Array&lt;string&gt; | Yes | Application bundle names of the account. |
+| callback | [Callback](arkts-basicservices-base-callback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Yes | Callback registered to return the list of changed application accounts. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
+  console.info('receive change data:' + JSON.stringify(data));
+}
+
+try {
+  appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`on accountOnOffDemo code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -4026,6 +2414,8 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>
 Obtains the authenticator information of an application. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4076,6 +2466,8 @@ queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 Obtains the authenticator information of an application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4128,6 +2520,8 @@ Removes an application account. This API uses an asynchronous callback to return
 
 **Since:** 9
 
+<!--Device-AppAccountManager-removeAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-removeAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -4176,6 +2570,8 @@ removeAccount(name: string): Promise<void>
 Removes an application account. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-removeAccount(name: string): Promise<void>--><!--Device-AppAccountManager-removeAccount(name: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4226,6 +2622,8 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<
 Selects the accounts that can be accessed by the invoker based on the options. This API uses an asynchronous callback to return the result. If the options contain label constraints, the authenticator of the target application provides the capability of checking the labels.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4282,6 +2680,8 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 **Since:** 9
 
+<!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-selectAccountsByOptions(options: SelectAccountsOptions): Promise<Array<AppAccountInfo>>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -4326,194 +2726,6 @@ try {
 }
 ```
 
-## setAccountCredential
-
-```TypeScript
-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void
-```
-
-Sets a credential for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
-| credential | string | Yes | Credential value. The value is user-defined and contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If a credential is successfully set for an application account, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001', (err: BusinessError) => { 
-  if (err) {
-    console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('setAccountCredential successful.');
-  }
-});
-```
-
-<a id="setaccountcredential-1"></a>
-
-## setAccountCredential
-
-```TypeScript
-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>
-```
-
-Sets a credential for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setCredential](#setcredential-1)(name: string, credentialType: string, credential: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
-| credential | string | Yes | Credential value. The value is user-defined and contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001').then(() => { 
-  console.info('setAccountCredential Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## setAccountExtraInfo
-
-```TypeScript
-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void
-```
-
-Sets additional information for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| extraInfo | string | Yes | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) => { 
-  if (err) {
-    console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('setAccountExtraInfo successful.');
-  }
-});
-```
-
-<a id="setaccountextrainfo-1"></a>
-
-## setAccountExtraInfo
-
-```TypeScript
-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
-```
-
-Sets additional information for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| extraInfo | string | Yes | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => { 
-  console.info('setAccountExtraInfo Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## setAppAccess
 
 ```TypeScript
@@ -4523,6 +2735,8 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 Sets the access to the data of an account for an application. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4576,6 +2790,8 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 **Since:** 9
 
+<!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise<void>--><!--Device-AppAccountManager-setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -4619,198 +2835,6 @@ try {
 }
 ```
 
-## setAppAccountSyncEnable
-
-```TypeScript
-setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback<void>): void
-```
-
-Sets data synchronization for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| isEnable | boolean | Yes | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError) => {
-  if (err) {
-    console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('setAppAccountSyncEnable successful.');
-  }
-});
-```
-
-<a id="setappaccountsyncenable-1"></a>
-
-## setAppAccountSyncEnable
-
-```TypeScript
-setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
-```
-
-Sets data synchronization for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled-1)(name: string, isEnabled: boolean)
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| isEnable | boolean | Yes | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => { 
-  console.info('setAppAccountSyncEnable Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## setAssociatedData
-
-```TypeScript
-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void
-```
-
-Sets data to be associated with an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
-| value | string | Yes | Value of the data to set. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessError) => {
-  if (err) {
-    console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('setAssociatedData successful.');
-  }
-});
-```
-
-<a id="setassociateddata-1"></a>
-
-## setAssociatedData
-
-```TypeScript
-setAssociatedData(name: string, key: string, value: string): Promise<void>
-```
-
-Sets data to be associated with an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata-1)
-> instead.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
-| value | string | Yes | Value of the data to set. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => { 
-  console.info('setAssociatedData Success');
-}).catch((err: BusinessError) => {
-  console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -4820,6 +2844,8 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 Sets the authenticator attributes of an application. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, callback: AuthCallback): void--><!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4874,6 +2900,8 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 Sets the authenticator attributes of an application. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void--><!--Device-AppAccountManager-setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -4931,6 +2959,8 @@ Sets an authorization token of the specific authentication type for an applicati
 
 **Since:** 9
 
+<!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -4982,6 +3012,8 @@ setAuthToken(name: string, authType: string, token: string): Promise<void>
 Sets an authorization token of the specific authentication type for an application account. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -5042,6 +3074,8 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 **Since:** 9
 
+<!--Device-AppAccountManager-setAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -5096,6 +3130,8 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 Sets the visibility of an authorization token to an application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -5153,6 +3189,8 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 **Since:** 9
 
+<!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,                             callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string,                             callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -5203,6 +3241,8 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 Sets a credential for an application account. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -5256,6 +3296,8 @@ Sets custom data for an application account. This API uses an asynchronous callb
 
 **Since:** 9
 
+<!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -5307,6 +3349,8 @@ setCustomData(name: string, key: string, value: string): Promise<void>
 Sets custom data for an application account. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setCustomData(name: string, key: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -5363,6 +3407,8 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -5412,6 +3458,8 @@ Sets data synchronization for an application account. This API uses a promise to
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>--><!--Device-AppAccountManager-setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -5454,205 +3502,6 @@ try {
 }
 ```
 
-## setOAuthToken
-
-```TypeScript
-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void
-```
-
-Sets an authorization token of the specific authentication type for an application account. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
-  if (err) {
-    console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('setOAuthToken successful.');
-  }
-});
-```
-
-<a id="setoauthtoken-1"></a>
-
-## setOAuthToken
-
-```TypeScript
-setOAuthToken(name: string, authType: string, token: string): Promise<void>
-```
-
-Sets an authorization token of the specific authentication type for an application account. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken-1)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAuthToken](#setauthtoken-1)(name: string, authType: string, token: string)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
-  console.info('setOAuthToken successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
-## setOAuthTokenVisibility
-
-```TypeScript
-setOAuthTokenVisibility(
-      name: string,
-      authType: string,
-      bundleName: string,
-      isVisible: boolean,
-      callback: AsyncCallback<void>
-    ): void
-```
-
-Sets the visibility of an authorization token to an application. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-| isVisible | boolean | Yes | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite. |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
-  (err: BusinessError) => {
-    if (err) {
-      console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
-    } else {
-      console.info('setOAuthTokenVisibility successful.');
-    }
-  });
-```
-
-<a id="setoauthtokenvisibility-1"></a>
-
-## setOAuthTokenVisibility
-
-```TypeScript
-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>
-```
-
-Sets the visibility of an authorization token to an application. This API uses a promise to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility-1)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility-1)(name: string, authType: string, bundleName: string, isVisible: boolean)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
-| isVisible | boolean | Yes | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
-  console.info('setOAuthTokenVisibility successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
-});
-```
-
 ## verifyCredential
 
 ```TypeScript
@@ -5662,6 +3511,8 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 Verifies the validity of a specified account credential. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AppAccountManager-verifyCredential(name: string, owner: string, callback: AuthCallback): void--><!--Device-AppAccountManager-verifyCredential(name: string, owner: string, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -5719,6 +3570,8 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 **Since:** 9
 
+<!--Device-AppAccountManager-verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void--><!--Device-AppAccountManager-verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -5766,4 +3619,2375 @@ try {
   const err = e as BusinessError;
   console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
 }
+```
+
+## addAccount
+
+```TypeScript
+addAccount(name: string, callback: AsyncCallback<void>): void
+```
+
+Adds an application account with the given name. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [createAccount](#createaccount)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.addAccount('WangWu', (err: BusinessError) => { 
+  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<a id="addaccount-1"></a>
+
+## addAccount
+
+```TypeScript
+addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
+```
+
+Adds an application account name and additional information. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [createAccount](#createaccount-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [createAccount](#createaccount-1)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| extraInfo | string | Yes | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => { 
+  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<a id="addaccount-2"></a>
+
+## addAccount
+
+```TypeScript
+addAccount(name: string, extraInfo?: string): Promise<void>
+```
+
+Adds an application account name and additional information. This API uses a promise to return the result.
+
+> **NOTE:** 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [createAccount](#createaccount-2)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [createAccount](#createaccount-2)(name: string, options?: CreateAccountOptions)
+
+<!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| extraInfo | string | No | Additional information (information that can be converted to the string type).<br>The additional information cannot be sensitive information (such as the password and token) of the application account. <br>By default, no value is passed, which means no additional information needs to be added for the account. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.addAccount('LiSi', 'token101').then(()=> { 
+  console.info('addAccount Success');
+}).catch((err: BusinessError) => {
+  console.error(`addAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## addAccountImplicitly
+
+```TypeScript
+addAccountImplicitly(
+      owner: string,
+      authType: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void
+```
+
+Adds an application account implicitly based on the specified owner. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [createAccountImplicitly](#createaccountimplicitly)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
+
+<!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| options | { [key: string]: any } | Yes | Options for the authentication, which can be set as required. |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, result: Record<string, Object>): void {
+    console.info('resultCode: ' + code);
+    console.info('result: ' + JSON.stringify(result));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    appAccountManager.addAccountImplicitly('com.example.accountjsdemo', 'getSocialData', {}, {
+      onResult: this.onResultCallback,
+      onRequestRedirected: this.onRequestRedirectedCallback
+    });
+  }
+
+  build() {}
+}
+```
+
+## authenticate
+
+```TypeScript
+authenticate(
+      name: string,
+      owner: string,
+      authType: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void
+```
+
+Authenticates an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [auth](#auth)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
+
+<!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| options | { [key: string]: any } | Yes | Options for the authentication. |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+  onResultCallback(code: number, result: Record<string, Object>): void {
+    console.info('resultCode: ' + code);
+    console.info('result: ' + JSON.stringify(result));
+  }
+
+  onRequestRedirectedCallback(request: Want): void {
+    let wantInfo: Want = {
+      deviceId: '',
+      bundleName: 'com.example.accountjsdemo',
+      action: 'ohos.want.action.viewData',
+      entities: ['entity.system.default'],
+    }
+    this.context.startAbility(wantInfo).then(() => {
+      console.info('startAbility successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+    })
+  }
+
+  aboutToAppear(): void {
+    appAccountManager.authenticate('LiSi', 'com.example.accountjsdemo', 'getSocialData', {}, {
+      onResult: this.onResultCallback,
+      onRequestRedirected: this.onRequestRedirectedCallback
+    });
+  }
+
+  build() {}
+}
+```
+
+## checkAppAccountSyncEnable
+
+```TypeScript
+checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
+```
+
+Checks whether data synchronization is enabled for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [checkDataSyncEnabled](#checkdatasyncenabled)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void--><!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, result: boolean) => { 
+  if (err) {
+    console.error(`checkAppAccountSyncEnable code: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('checkAppAccountSyncEnable result: ' + result);
+  }
+});
+```
+
+<a id="checkappaccountsyncenable-1"></a>
+
+## checkAppAccountSyncEnable
+
+```TypeScript
+checkAppAccountSyncEnable(name: string): Promise<boolean>
+```
+
+Checks whether data synchronization is enabled for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [checkDataSyncEnabled](#checkdatasyncenabled-1) instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled-1)(name: string)
+
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string): Promise<boolean>--><!--Device-AppAccountManager-checkAppAccountSyncEnable(name: string): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => { 
+  console.info('checkAppAccountSyncEnable, result: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`checkAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## checkOAuthTokenVisibility
+
+```TypeScript
+checkOAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      callback: AsyncCallback<boolean>
+    ): void
+```
+
+Checks the visibility of an authorization token of the specified authentication type to an application. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [checkAuthTokenVisibility](#checkauthtokenvisibility)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+
+<!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
+  (err: BusinessError, data: boolean) => {
+    if (err) {
+      console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('checkOAuthTokenVisibility isVisible: ' + data);
+    }
+  });
+```
+
+<a id="checkoauthtokenvisibility-1"></a>
+
+## checkOAuthTokenVisibility
+
+```TypeScript
+checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>
+```
+
+Checks the visibility of an authorization token of the specified authentication type to an application. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [checkAuthTokenVisibility](#checkauthtokenvisibility-1)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility-1)(name: string, authType: string, bundleName: string)
+
+<!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the authorization token is visible to the application; the value **false** means the opposite. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
+  data: boolean) => {
+  console.info('checkOAuthTokenVisibility isVisible: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`checkOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## deleteAccount
+
+```TypeScript
+deleteAccount(name: string, callback: AsyncCallback<void>): void
+```
+
+Deletes an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [removeAccount](#removeaccount)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => { 
+  console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<a id="deleteaccount-1"></a>
+
+## deleteAccount
+
+```TypeScript
+deleteAccount(name: string): Promise<void>
+```
+
+Deletes an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [removeAccount](#removeaccount-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [removeAccount](#removeaccount-1)(name: string)
+
+<!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
+  console.info('deleteAccount Success');
+}).catch((err: BusinessError) => {
+  console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## deleteOAuthToken
+
+```TypeScript
+deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void
+```
+
+Deletes the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [deleteAuthToken](#deleteauthtoken)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
+  (err: BusinessError) => {
+    if (err) {
+      console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('deleteOAuthToken successful.');
+    }
+  });
+```
+
+<a id="deleteoauthtoken-1"></a>
+
+## deleteOAuthToken
+
+```TypeScript
+deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>
+```
+
+Deletes the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [deleteAuthToken](#deleteauthtoken-1)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [deleteAuthToken](#deleteauthtoken-1)(name: string, owner: string, authType: string, token: string)
+
+<!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
+  console.info('deleteOAuthToken successfully');
+}).catch((err: BusinessError) => {
+  console.error(`deleteOAuthToken err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## disableAppAccess
+
+```TypeScript
+disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void
+```
+
+Disables access to the third-party application with the specified package name using the specified third-party application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setAppAccess](#setappaccess)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If access to the third-party application with the specified package name using the specified third-party application account is disabled successfully, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => { 
+  console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+<a id="disableappaccess-1"></a>
+
+## disableAppAccess
+
+```TypeScript
+disableAppAccess(name: string, bundleName: string): Promise<void>
+```
+
+Disables an application account from accessing an application. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setAppAccess](#setappaccess-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
+
+<!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the target application account. The value contains a maximum of 512 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
+  console.info('disableAppAccess Success');
+}).catch((err: BusinessError) => {
+  console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## enableAppAccess
+
+```TypeScript
+enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void
+```
+
+Enables an application to access an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setAppAccess](#setappaccess)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => {
+  if (err) {
+    console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('enableAppAccess successful.');
+  }
+});
+```
+
+<a id="enableappaccess-1"></a>
+
+## enableAppAccess
+
+```TypeScript
+enableAppAccess(name: string, bundleName: string): Promise<void>
+```
+
+Enables an application to access an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setAppAccess](#setappaccess-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAppAccess](#setappaccess-1)(name: string, bundleName: string, isAccessible: boolean)
+
+<!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(() => { 
+  console.info('enableAppAccess Success');
+}).catch((err: BusinessError) => {
+  console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getAccountCredential
+
+```TypeScript
+getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void
+```
+
+Obtains the credential of an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getCredential](#getcredential)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+
+<!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: BusinessError, result: string) => { 
+  if (err) {
+    console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('getAccountCredential result: ' + result);
+  }
+});
+```
+
+<a id="getaccountcredential-1"></a>
+
+## getAccountCredential
+
+```TypeScript
+getAccountCredential(name: string, credentialType: string): Promise<string>
+```
+
+Obtains the credential of an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getCredential](#getcredential-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getCredential](#getcredential-1)(name: string, credentialType: string)
+
+<!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the credential obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((data: string) => { 
+  console.info('getAccountCredential, result: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAccountCredential err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getAccountExtraInfo
+
+```TypeScript
+getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
+```
+
+Obtains additional information of an application account. Additional information refers to other information that can be converted to the string type. It cannot contain sensitive information, such as the application account password and token. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getCustomData](#getcustomdata)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+
+<!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the additional information obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: string) => { 
+  if (err) {
+    console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('getAccountExtraInfo result: ' + result);
+  }
+});
+```
+
+<a id="getaccountextrainfo-1"></a>
+
+## getAccountExtraInfo
+
+```TypeScript
+getAccountExtraInfo(name: string): Promise<string>
+```
+
+Obtains additional information of an application account. Additional information refers to other information that can be converted to the string type. It cannot contain sensitive information, such as the application account password and token. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getCustomData](#getcustomdata-1) instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string)
+
+<!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the additional information of the application account. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => { 
+  console.info('getAccountExtraInfo, result: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getAllAccessibleAccounts
+
+```TypeScript
+getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
+```
+
+Obtains information about all accessible application accounts. This API uses an asynchronous callback to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getAllAccounts](#getallaccounts)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+
+**Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
+
+<!--Device-AppAccountManager-getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void--><!--Device-AppAccountManager-getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of accessible application accounts. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount.AppAccountInfo[])=>{
+  if (err) {
+    console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('getAllAccessibleAccounts data: ' + JSON.stringify(data));
+  }
+});
+```
+
+<a id="getallaccessibleaccounts-1"></a>
+
+## getAllAccessibleAccounts
+
+```TypeScript
+getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>
+```
+
+Obtains information about all accessible application accounts. This API uses a promise to return the result. This method applies to the following accounts: <br> Accounts of this application. <br> Accounts of third-party applications. To obtain such information, <br> your application must have gained authorization from the third-party applications.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getAllAccounts](#getallaccounts) instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAllAccounts](#getallaccounts)()
+
+**Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
+
+<!--Device-AppAccountManager-getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>--><!--Device-AppAccountManager-getAllAccessibleAccounts(): Promise<Array<AppAccountInfo>>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[AppAccountInfo](arkts-basicservices-appaccount-appaccountinfo-i.md)&gt;&gt; | Promise used to return information about all accessible accounts. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
+  console.info('getAllAccessibleAccounts: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getAllOAuthTokens
+
+```TypeScript
+getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void
+```
+
+Obtains all tokens visible to the invoker for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAllAuthTokens](#getallauthtokens)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+
+<!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OAuthTokenInfo](arkts-basicservices-appaccount-oauthtokeninfo-i.md)&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
+  (err: BusinessError, data: appAccount.OAuthTokenInfo[]) => {
+    if (err) {
+      console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
+    }
+  });
+```
+
+<a id="getalloauthtokens-1"></a>
+
+## getAllOAuthTokens
+
+```TypeScript
+getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
+```
+
+Obtains all tokens visible to the invoker for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAllAuthTokens](#getallauthtokens-1) instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAllAuthTokens](#getallauthtokens-1)(name: string, owner: string)
+
+<!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[OAuthTokenInfo](arkts-basicservices-appaccount-oauthtokeninfo-i.md)&gt;&gt; | Promise used to return the tokens obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
+  data: appAccount.OAuthTokenInfo[]) => {
+  console.info('getAllOAuthTokens data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`getAllOAuthTokens err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getAssociatedData
+
+```TypeScript
+getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void
+```
+
+Obtains the associated data of an application account based on the specified key. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getCustomData](#getcustomdata)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+
+<!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the data obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, result: string) => { 
+  if (err) {
+    console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('getAssociatedData result: ' + result);
+  }
+});
+```
+
+<a id="getassociateddata-1"></a>
+
+## getAssociatedData
+
+```TypeScript
+getAssociatedData(name: string, key: string): Promise<string>
+```
+
+Obtains data to be associated with an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [getCustomData](#getcustomdata-1) instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getCustomData](#getcustomdata-1)(name: string, key: string)
+
+<!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the data obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => { 
+  console.info('getAssociatedData: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getAssociatedData err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getAuthenticatorCallback
+
+```TypeScript
+getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void
+```
+
+Obtains the authenticator callback for an authentication session. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAuthCallback](#getauthcallback)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+
+<!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| sessionId | string | Yes | ID of the authentication session. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator callback obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
+    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+    appAccountManager.getAuthenticatorCallback(sessionId,
+        (err: BusinessError, callback: appAccount.AuthenticatorCallback) => {
+        if (err.code != appAccount.ResultCode.SUCCESS) {
+            console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
+            return;
+        }
+        callback.onResult(appAccount.ResultCode.SUCCESS, {
+          name: 'LiSi',
+          owner: 'com.example.accountjsdemo',
+          authType: 'getSocialData',
+          token: 'xxxxxx'
+        });
+      });
+  }
+}
+```
+
+<a id="getauthenticatorcallback-1"></a>
+
+## getAuthenticatorCallback
+
+```TypeScript
+getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
+```
+
+Obtains the authenticator callback for an authentication session. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAuthCallback](#getauthcallback-1) instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAuthCallback](#getauthcallback-1)(sessionId: string)
+
+<!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| sessionId | string | Yes | ID of the authentication session. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md)&gt; | Promise used to return the authenticator callback obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // Ability lifecycle function.
+    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+    appAccountManager.getAuthenticatorCallback(sessionId).then((
+      callback: appAccount.AuthenticatorCallback) => {
+      callback.onResult(appAccount.ResultCode.SUCCESS, {
+        name: 'LiSi',
+        owner: 'com.example.accountjsdemo',
+        authType: 'getSocialData',
+        token: 'xxxxxx'
+      });
+    }).catch((err: BusinessError) => {
+      console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
+
+## getAuthenticatorInfo
+
+```TypeScript
+getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void
+```
+
+Obtains the authenticator information of an application. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [queryAuthenticatorInfo](#queryauthenticatorinfo)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+
+<!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[AuthenticatorInfo](arkts-basicservices-appaccount-authenticatorinfo-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator information obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
+  (err: BusinessError, data: appAccount.AuthenticatorInfo) => {
+    if (err) {
+      console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('getAuthenticatorInfo data: ' + JSON.stringify(data));
+    }
+  });
+```
+
+<a id="getauthenticatorinfo-1"></a>
+
+## getAuthenticatorInfo
+
+```TypeScript
+getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
+```
+
+Obtains the authenticator information of an application. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [queryAuthenticatorInfo](#queryauthenticatorinfo-1) instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo-1)(owner: string)
+
+<!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[AuthenticatorInfo](arkts-basicservices-appaccount-authenticatorinfo-i.md)&gt; | Promise used to return the authenticator information obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
+  data: appAccount.AuthenticatorInfo) => { 
+  console.info('getAuthenticatorInfo: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`getAuthenticatorInfo err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getOAuthList
+
+```TypeScript
+getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
+```
+
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAuthList](#getauthlist)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+
+<!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, data: string[]) => {
+  if (err) {
+    console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('getOAuthList data: ' + JSON.stringify(data));
+  }
+});
+```
+
+<a id="getoauthlist-1"></a>
+
+## getOAuthList
+
+```TypeScript
+getOAuthList(name: string, authType: string): Promise<Array<string>>
+```
+
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAuthList](#getauthlist-1) instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAuthList](#getauthlist-1)(name: string, authType: string)
+
+<!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a list of authorized bundles. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) => {
+  console.info('getOAuthList data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`getOAuthList err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getOAuthToken
+
+```TypeScript
+getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void
+```
+
+Obtains the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAuthToken](#getauthtoken)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+
+<!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
+  (err: BusinessError, data: string) => {
+    if (err) {
+      console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('getOAuthToken token: ' + data);
+    }
+  });
+```
+
+<a id="getoauthtoken-1"></a>
+
+## getOAuthToken
+
+```TypeScript
+getOAuthToken(name: string, owner: string, authType: string): Promise<string>
+```
+
+Obtains the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [getAuthToken](#getauthtoken-1)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getAuthToken](#getauthtoken-1)(name: string, owner: string, authType: string)
+
+<!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| owner | string | Yes | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the authorization token obtained. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((data: string) => {
+  console.info('getOAuthToken token: ' + data);
+}).catch((err: BusinessError) => {
+  console.error(`getOAuthToken err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## setAccountCredential
+
+```TypeScript
+setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void
+```
+
+Sets a credential for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setCredential](#setcredential)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
+| credential | string | Yes | Credential value. The value is user-defined and contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If a credential is successfully set for an application account, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001', (err: BusinessError) => { 
+  if (err) {
+    console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('setAccountCredential successful.');
+  }
+});
+```
+
+<a id="setaccountcredential-1"></a>
+
+## setAccountCredential
+
+```TypeScript
+setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>
+```
+
+Sets a credential for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setCredential](#setcredential-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setCredential](#setcredential-1)(name: string, credentialType: string, credential: string)
+
+<!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| credentialType | string | Yes | Credential type. The value is user-defined and contains a maximum of 1024 characters. |
+| credential | string | Yes | Credential value. The value is user-defined and contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credential001').then(() => { 
+  console.info('setAccountCredential Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAccountCredential err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## setAccountExtraInfo
+
+```TypeScript
+setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void
+```
+
+Sets additional information for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setCustomData](#setcustomdata)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| extraInfo | string | Yes | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) => { 
+  if (err) {
+    console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('setAccountExtraInfo successful.');
+  }
+});
+```
+
+<a id="setaccountextrainfo-1"></a>
+
+## setAccountExtraInfo
+
+```TypeScript
+setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
+```
+
+Sets additional information for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setCustomData](#setcustomdata-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
+
+<!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| extraInfo | string | Yes | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => { 
+  console.info('setAccountExtraInfo Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAccountExtraInfo err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## setAppAccountSyncEnable
+
+```TypeScript
+setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback<void>): void
+```
+
+Sets data synchronization for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setDataSyncEnabled](#setdatasyncenabled)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| isEnable | boolean | Yes | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError) => {
+  if (err) {
+    console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('setAppAccountSyncEnable successful.');
+  }
+});
+```
+
+<a id="setappaccountsyncenable-1"></a>
+
+## setAppAccountSyncEnable
+
+```TypeScript
+setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
+```
+
+Sets data synchronization for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setDataSyncEnabled](#setdatasyncenabled-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled-1)(name: string, isEnabled: boolean)
+
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>--><!--Device-AppAccountManager-setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| isEnable | boolean | Yes | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => { 
+  console.info('setAppAccountSyncEnable Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAppAccountSyncEnable err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## setAssociatedData
+
+```TypeScript
+setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void
+```
+
+Sets data to be associated with an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setCustomData](#setcustomdata)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
+| value | string | Yes | Value of the data to set. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessError) => {
+  if (err) {
+    console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('setAssociatedData successful.');
+  }
+});
+```
+
+<a id="setassociateddata-1"></a>
+
+## setAssociatedData
+
+```TypeScript
+setAssociatedData(name: string, key: string, value: string): Promise<void>
+```
+
+Sets data to be associated with an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use
+> [setCustomData](#setcustomdata-1)
+> instead.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [setCustomData](#setcustomdata-1)(name: string, key: string, value: string)
+
+<!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| key | string | Yes | Key of the associated data. The value contains a maximum of 1024 characters. |
+| value | string | Yes | Value of the data to set. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => { 
+  console.info('setAssociatedData Success');
+}).catch((err: BusinessError) => {
+  console.error(`setAssociatedData err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## setOAuthToken
+
+```TypeScript
+setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void
+```
+
+Sets an authorization token of the specific authentication type for an application account. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [setAuthToken](#setauthtoken)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
+  if (err) {
+    console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('setOAuthToken successful.');
+  }
+});
+```
+
+<a id="setoauthtoken-1"></a>
+
+## setOAuthToken
+
+```TypeScript
+setOAuthToken(name: string, authType: string, token: string): Promise<void>
+```
+
+Sets an authorization token of the specific authentication type for an application account. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [setAuthToken](#setauthtoken-1)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAuthToken](#setauthtoken-1)(name: string, authType: string, token: string)
+
+<!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| token | string | Yes | Authorization token. The value contains a maximum of 1024 characters. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
+  console.info('setOAuthToken successfully');
+}).catch((err: BusinessError) => {
+  console.error(`setOAuthToken err: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## setOAuthTokenVisibility
+
+```TypeScript
+setOAuthTokenVisibility(
+      name: string,
+      authType: string,
+      bundleName: string,
+      isVisible: boolean,
+      callback: AsyncCallback<void>
+    ): void
+```
+
+Sets the visibility of an authorization token to an application. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [setAuthTokenVisibility](#setauthtokenvisibility)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+
+<!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+| isVisible | boolean | Yes | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite. |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
+  (err: BusinessError) => {
+    if (err) {
+      console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('setOAuthTokenVisibility successful.');
+    }
+  });
+```
+
+<a id="setoauthtokenvisibility-1"></a>
+
+## setOAuthTokenVisibility
+
+```TypeScript
+setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>
+```
+
+Sets the visibility of an authorization token to an application. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [setAuthTokenVisibility](#setauthtokenvisibility-1)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility-1)(name: string, authType: string, bundleName: string, isVisible: boolean)
+
+<!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| bundleName | string | Yes | Bundle name of the application. The value contains a maximum of 512 characters. |
+| isVisible | boolean | Yes | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
+  console.info('setOAuthTokenVisibility successfully');
+}).catch((err: BusinessError) => {
+  console.error(`setOAuthTokenVisibility err: code is ${err.code}, message is ${err.message}`);
+});
 ```

@@ -1,6 +1,24 @@
 # SelectionContainer
 
-Defines SelectionContainer component.
+The **SelectionContainer** component provides cross-node text selection, copying, and menu extension capabilities for multiple text nodes. It supports unified configuration of the caret color and highlight color of selected text, flexible text concatenation policies, and custom selection menus and menu extension options. It is suitable for scenarios where continuous text selection, unified copying, style customization, and menu extension are required across multiple **Text** components. It resolves the problem of fragmented text selection experience in multi- **Text** component scenarios and improves the user interaction experience in complex text layouts.
+
+> **NOTE:** 
+> 
+> - The text content returned by the selected text related callbacks in this component is concatenated in the top-to-bottom display order of the [Text](arkts-arkui-text-comp.md) components.
+> 
+> - By default, this component uses the [Stack](arkts-arkui-stack-comp.md) layout. If other container layout requirements exist, place a container component in **SelectionContainer**.
+> 
+> - When text is selected in **SelectionContainer**, the magnifier is not displayed, and [getMagnifier](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getmagnifier) cannot be used to proactively set the magnifier.
+> 
+> - Dragging is not supported when text is selected in **SelectionContainer**.
+> 
+> - Text under the [Repeat](arkts-arkui-repeat-comp.md) component in **SelectionContainer** does not support cross-node selection.
+> 
+> - Only the text content in **Text** components participates in cross-node selection and text concatenation.
+
+## Child Components
+
+Supported
 
 ## SelectionContainer
 
@@ -8,13 +26,15 @@ Defines SelectionContainer component.
 SelectionContainer(value?: SelectionContainerOptions)
 ```
 
-Defines the constructor of SelectionContainer.
+Initial configuration options of the component.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SelectionContainerInterface-(value?: SelectionContainerOptions): SelectionContainerAttribute--><!--Device-SelectionContainerInterface-(value?: SelectionContainerOptions): SelectionContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,21 +50,21 @@ Defines the constructor of SelectionContainer.
 
 | Name | Description |
 | --- | --- |
-| [SelectionContainerEditMenuOptions](arkts-arkui-selectioncontainer-comp-selectioncontainereditmenuoptions-i.md) | Defines custom edit menu options for SelectionContainer. |
-| [SelectionContainerMenuOptions](arkts-arkui-selectioncontainer-comp-selectioncontainermenuoptions-i.md) | Defines selection menu options for SelectionContainer. |
-| [SelectionContainerOptions](arkts-arkui-selectioncontainer-comp-selectioncontaineroptions-i.md) | Describes the initialization options of the SelectionContainer component. |
+| [SelectionContainerEditMenuOptions](arkts-arkui-selectioncontainer-comp-selectioncontainereditmenuoptions-i.md) | Provides the custom edit menu options of **SelectionContainer**. |
+| [SelectionContainerMenuOptions](arkts-arkui-selectioncontainer-comp-selectioncontainermenuoptions-i.md) | Provides the configuration options in the selection menu. |
+| [SelectionContainerOptions](arkts-arkui-selectioncontainer-comp-selectioncontaineroptions-i.md) | Provides the initial configuration options of the component. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnMenuItemClickWithTextCallback](arkts-arkui-selectioncontainer-comp-onmenuitemclickwithtextcallback-t.md) | Invoke upon clicking an item, capable of intercepting the default system menu execution behavior. |
+| [OnMenuItemClickWithTextCallback](arkts-arkui-selectioncontainer-comp-onmenuitemclickwithtextcallback-t.md) | Called when a menu item is tapped. It can intercept the execution of system default menu items (such as copy and paste menu items). |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [SelectionContainerTextJoinStyle](arkts-arkui-selectioncontainer-comp-selectioncontainertextjoinstyle-e.md) | Defines text join style for SelectionContainer. |
+| [SelectionContainerTextJoinStyle](arkts-arkui-selectioncontainer-comp-selectioncontainertextjoinstyle-e.md) | Provides the concatenation method for text aggregation. |
 
 ## Examples
 

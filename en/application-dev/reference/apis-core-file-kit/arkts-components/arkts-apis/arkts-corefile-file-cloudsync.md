@@ -4,6 +4,8 @@ The **cloudSync** module provides the device-cloud sync capabilities for applica
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace cloudSync--><!--Device-unnamed-declare namespace cloudSync-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import

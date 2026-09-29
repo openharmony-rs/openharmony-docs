@@ -12,6 +12,8 @@ Represents control transfer parameters.
 
 **Substitutes:** [USBControlParams](arkts-basicservices-usbmanager-usbcontrolparams-i.md)
 
+<!--Device-usb-interface USBControlParams--><!--Device-usb-interface USBControlParams-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Buffer for writing or reading data.
 
 **Substitutes:** [data](arkts-basicservices-usbmanager-usbcontrolparams-i.md#data)
 
+<!--Device-USBControlParams-data: Uint8Array--><!--Device-USBControlParams-data: Uint8Array-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## index
@@ -53,6 +57,8 @@ Index of the request parameter value.
 **Deprecated since:** 9
 
 **Substitutes:** [index](arkts-basicservices-usbmanager-usbcontrolparams-i.md#index)
+
+<!--Device-USBControlParams-index: number--><!--Device-USBControlParams-index: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -72,6 +78,8 @@ Control request type.
 
 **Substitutes:** [reqType](arkts-basicservices-usbmanager-usbcontrolparams-i.md#reqtype)
 
+<!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## request
@@ -89,6 +97,8 @@ Request type.
 **Deprecated since:** 9
 
 **Substitutes:** [request](arkts-basicservices-usbmanager-usbcontrolparams-i.md#request)
+
+<!--Device-USBControlParams-request: number--><!--Device-USBControlParams-request: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -108,6 +118,8 @@ Request target type.
 
 **Substitutes:** [target](arkts-basicservices-usbmanager-usbcontrolparams-i.md#target)
 
+<!--Device-USBControlParams-target: USBRequestTargetType--><!--Device-USBControlParams-target: USBRequestTargetType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## value
@@ -125,5 +137,7 @@ Request parameter value.
 **Deprecated since:** 9
 
 **Substitutes:** [value](arkts-basicservices-usbmanager-usbcontrolparams-i.md#value)
+
+<!--Device-USBControlParams-value: number--><!--Device-USBControlParams-value: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager

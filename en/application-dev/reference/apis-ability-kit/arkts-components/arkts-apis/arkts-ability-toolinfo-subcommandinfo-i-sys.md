@@ -8,6 +8,8 @@ Describes the information of a CLI tool subcommand.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface SubCommandInfo--><!--Device-unnamed-export interface SubCommandInfo-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Description of the subcommand. It should clearly explain the specific function a
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SubCommandInfo-readonly description: string--><!--Device-SubCommandInfo-readonly description: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,6 +48,8 @@ Schema definitions for subcommand custom events. Stored as key-value pairs, wher
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SubCommandInfo-readonly eventSchemas?: Record<string, Record<string, Object>>--><!--Device-SubCommandInfo-readonly eventSchemas?: Record<string, Record<string, Object>>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ List of custom event types supported by the CLI tool. All event types must be un
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SubCommandInfo-readonly eventTypes?: Array<string>--><!--Device-SubCommandInfo-readonly eventTypes?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -80,6 +88,8 @@ Input schema definition of the subcommand. It uses JSON Schema format to define 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SubCommandInfo-readonly inputSchema: Record<string, Object>--><!--Device-SubCommandInfo-readonly inputSchema: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -98,6 +108,8 @@ Output schema definition of the subcommand. It uses JSON Schema format to define
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SubCommandInfo-readonly outputSchema: Record<string, Object>--><!--Device-SubCommandInfo-readonly outputSchema: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -115,6 +127,8 @@ List of permissions required by the subcommand. All permission items must be uni
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SubCommandInfo-readonly requirePermissions?: Array<string>--><!--Device-SubCommandInfo-readonly requirePermissions?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

@@ -16,6 +16,8 @@ Obtains the time elapsed since the Unix epoch. This API returns the result synch
 
 **Since:** 10
 
+<!--Device-systemDateTime-function getTime(isNanoseconds?: boolean): long--><!--Device-systemDateTime-function getTime(isNanoseconds?: boolean): long-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**

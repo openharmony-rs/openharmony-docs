@@ -12,6 +12,8 @@ interface MediaQueryListener extends MediaQueryResult
 
 **起始版本：** 7
 
+<!--Device-mediaquery-interface MediaQueryListener extends MediaQueryResult--><!--Device-mediaquery-interface MediaQueryListener extends MediaQueryResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,6 +35,8 @@ off(type: 'change', callback?: Callback<MediaQueryResult>): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MediaQueryListener-off(type: 'change', callback?: Callback<MediaQueryResult>): void--><!--Device-MediaQueryListener-off(type: 'change', callback?: Callback<MediaQueryResult>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +81,8 @@ on(type: 'change', callback: Callback<MediaQueryResult>): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MediaQueryListener-on(type: 'change', callback: Callback<MediaQueryResult>): void--><!--Device-MediaQueryListener-on(type: 'change', callback: Callback<MediaQueryResult>): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

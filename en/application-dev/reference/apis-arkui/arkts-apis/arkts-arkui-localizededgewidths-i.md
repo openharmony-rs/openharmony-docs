@@ -10,6 +10,8 @@ To reference this object, at least one parameter must be passed.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedEdgeWidths--><!--Device-unnamed-declare interface LocalizedEdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -29,6 +31,8 @@ Width of the bottom edge of the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedEdgeWidths-bottom?: LengthMetrics--><!--Device-LocalizedEdgeWidths-bottom?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Width of the left edge of the component in RTL mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedEdgeWidths-end?: LengthMetrics--><!--Device-LocalizedEdgeWidths-end?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -74,6 +80,8 @@ Width of the right edge of the component in RTL mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedEdgeWidths-start?: LengthMetrics--><!--Device-LocalizedEdgeWidths-start?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -93,5 +101,7 @@ Width of the top edge of the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedEdgeWidths-top?: LengthMetrics--><!--Device-LocalizedEdgeWidths-top?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

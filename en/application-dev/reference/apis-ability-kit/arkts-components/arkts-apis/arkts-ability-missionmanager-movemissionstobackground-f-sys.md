@@ -18,6 +18,8 @@ Switches a batch of missions to the background. The mission IDs returned are sor
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function moveMissionsToBackground(missionIds: Array<int>, callback: AsyncCallback<Array<int>>): void--><!--Device-missionManager-function moveMissionsToBackground(missionIds: Array<int>, callback: AsyncCallback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Switches a batch of missions to the background. The mission IDs returned are sor
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function moveMissionsToBackground(missionIds: Array<int>): Promise<Array<int>>--><!--Device-missionManager-function moveMissionsToBackground(missionIds: Array<int>): Promise<Array<int>>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

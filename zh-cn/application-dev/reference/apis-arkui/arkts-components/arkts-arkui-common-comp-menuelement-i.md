@@ -8,6 +8,8 @@ declare interface MenuElement
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface MenuElement--><!--Device-unnamed-declare interface MenuElement-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -21,6 +23,8 @@ action: () => void
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuElement-action: () => void--><!--Device-MenuElement-action: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ true：菜单条目可以进行交互；false：菜单条目不可以进行交�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuElement-enabled?: boolean--><!--Device-MenuElement-enabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -63,6 +69,8 @@ icon?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuElement-icon?: ResourceStr--><!--Device-MenuElement-icon?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ symbolIcon?: SymbolGlyphModifier
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuElement-symbolIcon?: SymbolGlyphModifier--><!--Device-MenuElement-symbolIcon?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -97,5 +107,7 @@ value: ResourceStr
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuElement-value: ResourceStr--><!--Device-MenuElement-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

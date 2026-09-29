@@ -8,6 +8,8 @@ Represents the space optimization states and optimization progress.
 
 **Since:** 17
 
+<!--Device-cloudSync-interface OptimizeSpaceProgress--><!--Device-cloudSync-interface OptimizeSpaceProgress-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Optimization progress percentage. The value range is [0, 100].
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-OptimizeSpaceProgress-progress: int--><!--Device-OptimizeSpaceProgress-progress: int-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Enumerates the space optimization states.
 **Since:** 17
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-OptimizeSpaceProgress-state: OptimizeState--><!--Device-OptimizeSpaceProgress-state: OptimizeState-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

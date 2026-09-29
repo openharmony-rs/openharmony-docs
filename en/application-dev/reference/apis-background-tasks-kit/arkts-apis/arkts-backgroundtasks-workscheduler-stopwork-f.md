@@ -18,6 +18,8 @@ Stops a deferred task.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function stopWork(work: WorkInfo, needCancel?: boolean): void--><!--Device-workScheduler-function stopWork(work: WorkInfo, needCancel?: boolean): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**

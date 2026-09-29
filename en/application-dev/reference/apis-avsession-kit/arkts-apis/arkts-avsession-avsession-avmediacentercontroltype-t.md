@@ -11,6 +11,8 @@ The type of media center control command, which can be used to determine the but
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |    'toggleFavorite'--><!--Device-avSession-type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' |    'toggleFavorite'-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 | Type | Description |

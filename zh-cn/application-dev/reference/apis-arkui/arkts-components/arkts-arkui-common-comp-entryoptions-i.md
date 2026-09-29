@@ -8,6 +8,8 @@ declare interface EntryOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface EntryOptions--><!--Device-unnamed-declare interface EntryOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## routeName
@@ -27,6 +29,8 @@ routeName? : string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-EntryOptions-routeName? : string--><!--Device-EntryOptions-routeName? : string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ storage? : LocalStorage
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-EntryOptions-storage? : LocalStorage--><!--Device-EntryOptions-storage? : LocalStorage-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## useSharedStorage
@@ -67,5 +73,7 @@ useSharedStorage? : boolean
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-EntryOptions-useSharedStorage? : boolean--><!--Device-EntryOptions-useSharedStorage? : boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

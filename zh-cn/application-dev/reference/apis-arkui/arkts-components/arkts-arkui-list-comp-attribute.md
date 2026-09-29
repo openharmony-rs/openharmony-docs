@@ -4,13 +4,15 @@
 declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
 ```
 
-除支持通用属性和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)和[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)外，还支持以下属性：
 
-除支持通用事件和滚动组件通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)和[滚动组件通用事件](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#事件)外，还支持以下事件：
 
-**继承/实现关系：** ListAttribute extends ScrollableCommonMethod&lt;ListAttribute&gt;
+**继承/实现关系：** ListAttribute extends ScrollableCommonMethod<ListAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>--><!--Device-unnamed-declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ alignListItem(value: ListItemAlign)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-alignListItem(value: ListItemAlign): ListAttribute--><!--Device-ListAttribute-alignListItem(value: ListItemAlign): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ backPressBehavior(behavior: ListBackPressBehavior | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-backPressBehavior(behavior: ListBackPressBehavior | undefined): ListAttribute--><!--Device-ListAttribute-backPressBehavior(behavior: ListBackPressBehavior | undefined): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +85,8 @@ List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-cachedCount(value: number): ListAttribute--><!--Device-ListAttribute-cachedCount(value: number): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本14开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-cachedCount(count: number, show: boolean): ListAttribute--><!--Device-ListAttribute-cachedCount(count: number, show: boolean): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,6 +164,8 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-cachedCount(count: number | CacheCountInfo, show: boolean): ListAttribute--><!--Device-ListAttribute-cachedCount(count: number | CacheCountInfo, show: boolean): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -189,6 +201,8 @@ chainAnimation(value: boolean)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-chainAnimation(value: boolean): ListAttribute--><!--Device-ListAttribute-chainAnimation(value: boolean): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -221,6 +235,8 @@ childrenMainSize(value: ChildrenMainSize)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-childrenMainSize(value: ChildrenMainSize): ListAttribute--><!--Device-ListAttribute-childrenMainSize(value: ChildrenMainSize): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -244,6 +260,8 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-contentEndOffset(value: number): ListAttribute--><!--Device-ListAttribute-contentEndOffset(value: number): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,6 +289,8 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-contentEndOffset(offset: number | Resource): ListAttribute--><!--Device-ListAttribute-contentEndOffset(offset: number | Resource): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -294,6 +314,8 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-contentStartOffset(value: number): ListAttribute--><!--Device-ListAttribute-contentStartOffset(value: number): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,6 +342,8 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-contentStartOffset(offset: number | Resource): ListAttribute--><!--Device-ListAttribute-contentStartOffset(offset: number | Resource): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,6 +377,8 @@ ListItem设置[多态样式时，被按压的子组件上下的分割线不绘�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-divider(    value: ListDividerOptions | null,  ): ListAttribute--><!--Device-ListAttribute-divider(    value: ListDividerOptions | null,  ): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -381,6 +407,8 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions): ListAttribute--><!--Device-ListAttribute-edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -404,6 +432,8 @@ editModeOptions(options?: EditModeOptions)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-editModeOptions(options?: EditModeOptions): ListAttribute--><!--Device-ListAttribute-editModeOptions(options?: EditModeOptions): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -418,13 +448,15 @@ editModeOptions(options?: EditModeOptions)
 enableEditMode(enabled: boolean | undefined)
 ```
 
-设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选ListItem。未通过该接口设置时，不启用编辑模式。
+设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选[ListItem](arkts-arkui-listitem-comp.md)。未通过该接口设置时，不启用编辑模式。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-enableEditMode(enabled: boolean | undefined): ListAttribute--><!--Device-ListAttribute-enableEditMode(enabled: boolean | undefined): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,6 +480,8 @@ enableScrollInteraction(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-enableScrollInteraction(value: boolean): ListAttribute--><!--Device-ListAttribute-enableScrollInteraction(value: boolean): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -470,6 +504,8 @@ focusWrapMode(mode: Optional<FocusWrapMode>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-focusWrapMode(mode: Optional<FocusWrapMode>): ListAttribute--><!--Device-ListAttribute-focusWrapMode(mode: Optional<FocusWrapMode>): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -491,6 +527,8 @@ friction(value: number | Resource)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-friction(value: number | Resource): ListAttribute--><!--Device-ListAttribute-friction(value: number | Resource): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -525,6 +563,8 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-lanes(value: number | LengthConstrain, gutter?: Dimension): ListAttribute--><!--Device-ListAttribute-lanes(value: number | LengthConstrain, gutter?: Dimension): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -552,6 +592,8 @@ lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension)
 
 **卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension): ListAttribute--><!--Device-ListAttribute-lanes(value: number | LengthConstrain | ItemFillPolicy, gutter?: Dimension): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -577,6 +619,8 @@ listDirection(value: Axis)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-listDirection(value: Axis): ListAttribute--><!--Device-ListAttribute-listDirection(value: Axis): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -598,6 +642,8 @@ maintainVisibleContentPosition(enabled: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-maintainVisibleContentPosition(enabled: boolean): ListAttribute--><!--Device-ListAttribute-maintainVisibleContentPosition(enabled: boolean): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,6 +669,8 @@ multiSelectable(value: boolean)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-multiSelectable(value: boolean): ListAttribute--><!--Device-ListAttribute-multiSelectable(value: boolean): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -644,6 +692,8 @@ nestedScroll(value: NestedScrollOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-nestedScroll(value: NestedScrollOptions): ListAttribute--><!--Device-ListAttribute-nestedScroll(value: NestedScrollOptions): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +717,8 @@ onEditModeChange(callback: Callback<boolean> | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-onEditModeChange(callback: Callback<boolean> | undefined): ListAttribute--><!--Device-ListAttribute-onEditModeChange(callback: Callback<boolean> | undefined): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -681,13 +733,15 @@ onEditModeChange(callback: Callback<boolean> | undefined)
 onItemDragEnter(event: (event: ItemDragInfo) => void)
 ```
 
-拖拽List的子组件ListItem进入列表范围内时触发。
+拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md)进入列表范围内时触发。
 
 **起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-onItemDragEnter(event: (event: ItemDragInfo) => void): ListAttribute--><!--Device-ListAttribute-onItemDragEnter(event: (event: ItemDragInfo) => void): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -703,13 +757,15 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 ```
 
-拖拽List的子组件ListItem离开列表范围时触发。
+拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md)离开列表范围时触发。
 
 **起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void): ListAttribute--><!--Device-ListAttribute-onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -725,13 +781,15 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void)
 ```
 
-拖拽List的子组件ListItem在列表范围内移动时触发。
+拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md)在列表范围内移动时触发。
 
 **起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void): ListAttribute--><!--Device-ListAttribute-onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -747,9 +805,9 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 onItemDragStart(event: OnItemDragStartCallback)
 ```
 
-开始拖拽List的子组件ListItem时触发。
+开始拖拽List的子组件[ListItem](arkts-arkui-listitem-comp.md)时触发。
 
-不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考示例12（使用onMove进行拖拽）。但需注意[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup拖拽。
+不支持拖动到List边缘时触发List的自动滚动，可以使用ForEach、LazyForEach、Repeat的[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口实现该效果，参考[示例12（使用onMove进行拖拽）](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例12使用onmove进行拖拽)。但需注意[onMove](arkts-arkui-common-comp-dynamicnode-c.md#onmove)接口不支持跨ListItemGroup拖拽。
 
 > **说明：** 
 > 
@@ -761,13 +819,15 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-onItemDragStart(event: OnItemDragStartCallback): ListAttribute--><!--Device-ListAttribute-onItemDragStart(event: OnItemDragStartCallback): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | 是 | List的子组件ListItem拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md)。<br>**适用版本：** 23 |
+| event | [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | 是 | List的子组件[ListItem](arkts-arkui-listitem-comp.md)拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) =&gt; (() =&gt; any) &#124; void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md)。<br>**适用版本：** 23 |
 
 ## onItemDrop
 
@@ -785,6 +845,8 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void): ListAttribute--><!--Device-ListAttribute-onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -799,13 +861,15 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 onItemMove(event: (from: number, to: number) => boolean)
 ```
 
-List的子组件ListItem发生移动时触发。
+List的子组件[ListItem](arkts-arkui-listitem-comp.md)发生移动时触发。
 
 **起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-onItemMove(event: (from: number, to: number) => boolean): ListAttribute--><!--Device-ListAttribute-onItemMove(event: (from: number, to: number) => boolean): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -835,6 +899,8 @@ List边缘效果为弹簧效果时，划动经过末尾位置时触发一次，�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-onReachEnd(event: () => void): ListAttribute--><!--Device-ListAttribute-onReachEnd(event: () => void): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -860,6 +926,8 @@ List初始化时如果initialIndex为0会触发一次，List滚动到起始位�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-onReachStart(event: () => void): ListAttribute--><!--Device-ListAttribute-onReachStart(event: () => void): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -899,6 +967,8 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-onScrollFrameBegin(event: OnScrollFrameBeginCallback): ListAttribute--><!--Device-ListAttribute-onScrollFrameBegin(event: OnScrollFrameBeginCallback): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -933,6 +1003,8 @@ onScrollIndex(event: (start: number, end: number, center: number) => void)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-onScrollIndex(event: (start: number, end: number, center: number) => void): ListAttribute--><!--Device-ListAttribute-onScrollIndex(event: (start: number, end: number, center: number) => void): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -957,6 +1029,8 @@ onScrollStart(event: () => void)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ListAttribute-onScrollStart(event: () => void): ListAttribute--><!--Device-ListAttribute-onScrollStart(event: () => void): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -980,6 +1054,8 @@ onScrollStop(event: () => void)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-onScrollStop(event: () => void): ListAttribute--><!--Device-ListAttribute-onScrollStop(event: () => void): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1007,6 +1083,8 @@ List的边缘效果为弹簧效果时，在List划动到边缘继续划动和松
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-onScrollVisibleContentChange(handler: OnScrollVisibleContentChangeCallback): ListAttribute--><!--Device-ListAttribute-onScrollVisibleContentChange(handler: OnScrollVisibleContentChangeCallback): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1030,6 +1108,8 @@ scrollBar(value: BarState)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-scrollBar(value: BarState): ListAttribute--><!--Device-ListAttribute-scrollBar(value: BarState): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1055,6 +1135,8 @@ scrollSnapAlign(value: ScrollSnapAlign)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-scrollSnapAlign(value: ScrollSnapAlign): ListAttribute--><!--Device-ListAttribute-scrollSnapAlign(value: ScrollSnapAlign): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1076,6 +1158,8 @@ scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListAttribute-scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed): ListAttribute--><!--Device-ListAttribute-scrollSnapAnimationSpeed(speed: ScrollSnapAnimationSpeed): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1099,6 +1183,8 @@ stackFromEnd(enabled: boolean)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-stackFromEnd(enabled: boolean): ListAttribute--><!--Device-ListAttribute-stackFromEnd(enabled: boolean): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1113,7 +1199,7 @@ stackFromEnd(enabled: boolean)
 sticky(value: StickyStyle)
 ```
 
-配合ListItemGroup组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
+配合[ListItemGroup](arkts-arkui-listitemgroup-comp.md)组件使用，设置ListItemGroup中header是否要吸顶或footer是否要吸底。从API version 20开始，sticky属性支持StickyStyle.BOTH枚举值，可直接设置为StickyStyle.BOTH以同时支持header吸顶和footer吸底，效果与StickyStyle.Header | StickyStyle.Footer相同。API version 20之前，可通过StickyStyle.Header | StickyStyle.Footer达到相同效果。
 
 > **说明：** 
 > 
@@ -1126,6 +1212,8 @@ sticky(value: StickyStyle)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-sticky(value: StickyStyle): ListAttribute--><!--Device-ListAttribute-sticky(value: StickyStyle): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1149,6 +1237,8 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-supportEmptyBranchInLazyLoading(supported: boolean | undefined): ListAttribute--><!--Device-ListAttribute-supportEmptyBranchInLazyLoading(supported: boolean | undefined): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1171,6 +1261,8 @@ syncLoad(enable: boolean)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListAttribute-syncLoad(enable: boolean): ListAttribute--><!--Device-ListAttribute-syncLoad(enable: boolean): ListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1190,13 +1282,15 @@ editMode(value: boolean)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现编辑状态切换和删除列表项，可通过自定义状态变量控制删除按钮的显示与隐藏，并在删除按钮的点击事件中更新数据源，具体
-> 实现方式请参考示例3。
+> 实现方式请参考[示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ListAttribute-editMode(value: boolean): ListAttribute--><!--Device-ListAttribute-editMode(value: boolean): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1217,13 +1311,15 @@ onItemDelete(event: (index: number) => boolean)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。此接口已完全移除，无替代接口。如需实现删除列表项，可在自定义删除按钮的点击事件中更新数据源，具体实现方式请参考
-> 示例3。
+> [示例3](../../../reference/apis-arkui/arkui-ts/ts-container-list.md#示例3自定义编辑和删除模式)。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ListAttribute-onItemDelete(event: (index: number) => boolean): ListAttribute--><!--Device-ListAttribute-onItemDelete(event: (index: number) => boolean): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1257,6 +1353,8 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListAttribute-onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): ListAttribute--><!--Device-ListAttribute-onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): ListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4,6 +4,8 @@ The ErrorManager module provides capabilities for registering and unregistering 
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace errorManager--><!--Device-unnamed-declare namespace errorManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -41,13 +43,6 @@ import { errorManager } from '@kit.AbilityKit';
 | --- | --- |
 | [GlobalError](arkts-ability-errormanager-globalerror-i.md) | Describes the object related to the exception event name, message, error stack information, exception thread name, and exception thread type. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [InstanceType](arkts-ability-errormanager-instancetype-e.md) | Enumerates the VM instance types. |
-| [ResourceType](arkts-ability-errormanager-resourcetype-e.md) | Define the resource types of the application. |
-
 ### Types
 
 | Name | Description |
@@ -59,3 +54,10 @@ import { errorManager } from '@kit.AbilityKit';
 | [LoopObserver](arkts-ability-errormanager-loopobserver-t.md) | Defines the LoopObserver module. It can be used as a parameter of **errormanager.on** to listen for and handle main thread timeout events in the current application. |
 | [ResourceUsageObserver](arkts-ability-errormanager-resourceusageobserver-t.md) | The observer will be called by the system when resource usage exceed threshold. |
 | [UnhandledRejectionObserver](arkts-ability-errormanager-unhandledrejectionobserver-t.md) | Defines an observer to capture the cause of a rejected promise. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [InstanceType](arkts-ability-errormanager-instancetype-e.md) | Enumerates the VM instance types. |
+| [ResourceType](arkts-ability-errormanager-resourcetype-e.md) | Define the resource types of the application. |

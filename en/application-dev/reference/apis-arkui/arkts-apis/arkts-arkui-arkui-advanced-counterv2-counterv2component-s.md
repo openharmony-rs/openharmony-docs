@@ -10,17 +10,15 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE:** 
 > 
-> - If [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are set for **CounterV2**, the compilation toolchain generates an additional node \_\_Common\_\_ and attaches the universal attributes or universal events to \_\_Common\_\_, rather than directly applying them to **CounterV2** itself. This may cause the universal attributes or universal events you set to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **CounterV2** is not recommended.
+> - If [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) are set for **CounterV2**, the compilation toolchain generates an additional node \_\_Common\_\_ and attaches the universal attributes or universal events to \_\_Common \_\_, rather than directly applying them to **CounterV2** itself. This may cause the universal attributes or universal events you set to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **CounterV2** is not recommended.
 > 
 > - This component API can only be used in the stage model.
-
-Universal attributes are not supported.
-
-Universal events are not supported.
 
 **Since:** 26.0.0
 
 **Decorator:** @ComponentV2
+
+<!--Device-unnamed-declare struct CounterV2Component--><!--Device-unnamed-declare struct CounterV2Component-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,5 +43,7 @@ Defines the type and style of the **CounterV2** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2Component-options: CounterV2Options--><!--Device-CounterV2Component-options: CounterV2Options-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

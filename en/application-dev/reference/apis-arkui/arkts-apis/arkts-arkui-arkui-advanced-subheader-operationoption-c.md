@@ -8,6 +8,8 @@ Declare type OperationOption
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class OperationOption--><!--Device-unnamed-export declare class OperationOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Right-side button click event.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperationOption-action?: () => void--><!--Device-OperationOption-action?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ Default value: "Loading" when the operation type is **LOADING** and **"Double-ta
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperationOption-accessibilityDescription?: ResourceStr--><!--Device-OperationOption-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperationOption-accessibilityLevel?: string--><!--Device-OperationOption-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -101,6 +109,8 @@ Default value: value of the **value** property if the operation type is **TEXT_A
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperationOption-accessibilityText?: ResourceStr--><!--Device-OperationOption-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +138,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperationOption-defaultFocus?: boolean--><!--Device-OperationOption-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -146,6 +158,8 @@ Set the id for the operation.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-OperationOption-id?: string--><!--Device-OperationOption-id?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -163,5 +177,7 @@ Text content.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperationOption-value: ResourceStr--><!--Device-OperationOption-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

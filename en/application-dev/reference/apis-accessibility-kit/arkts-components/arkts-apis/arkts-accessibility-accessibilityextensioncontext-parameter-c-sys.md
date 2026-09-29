@@ -8,6 +8,8 @@ Provides parameter values for specific settings when an accessibility node eleme
 
 **Since:** 20
 
+<!--Device-unnamed-export declare class Parameter--><!--Device-unnamed-export declare class Parameter-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Parameter-accessibilityFocusScene?: AccessibilityFocusScene--><!--Device-Parameter-accessibilityFocusScene?: AccessibilityFocusScene-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -44,6 +48,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Parameter-customAction?: string--><!--Device-Parameter-customAction?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -62,6 +68,8 @@ Sets the injected action type. Configured when executing [AccessibilityAction](a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Parameter-injectActionType?: InjectActionType--><!--Device-Parameter-injectActionType?: InjectActionType-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 **Type:** string
 
 **Since:** 20
+
+<!--Device-Parameter-offset?: string--><!--Device-Parameter-offset?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -94,6 +104,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 
 **Since:** 20
 
+<!--Device-Parameter-scrollType?: string--><!--Device-Parameter-scrollType?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 **Type:** string
 
 **Since:** 20
+
+<!--Device-Parameter-selectTextBegin?: string--><!--Device-Parameter-selectTextBegin?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -126,6 +140,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 
 **Since:** 20
 
+<!--Device-Parameter-selectTextEnd?: string--><!--Device-Parameter-selectTextEnd?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -141,6 +157,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-Parameter-selectTextInForWard?: boolean--><!--Device-Parameter-selectTextInForWard?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -158,6 +176,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 
 **Since:** 20
 
+<!--Device-Parameter-setText?: string--><!--Device-Parameter-setText?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -173,6 +193,8 @@ Configured when executing [AccessibilityAction](arkts-accessibility-accessibilit
 **Type:** string
 
 **Since:** 20
+
+<!--Device-Parameter-spanId?: string--><!--Device-Parameter-spanId?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

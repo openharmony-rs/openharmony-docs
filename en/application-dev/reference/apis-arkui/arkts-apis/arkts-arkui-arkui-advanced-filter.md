@@ -19,13 +19,13 @@ import { Filter, FilterParams, FilterResult, FilterType } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [Filter](arkts-arkui-arkui-advanced-filter-filter-s.md) | Declare Filter.The Filter is used in scenarios where multi-dimensional filtering is required. |
+| [Filter](arkts-arkui-arkui-advanced-filter-filter-s.md) | The advanced filter component allows users to filter data with multiple criteria combined. It consists of a floating bar and filters therein. The floating bar can be expanded to reveal the filters, which come in a multi-line collapsible or multi-line list style. For added convenience, you can append an additional quick filter. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [FilterType](arkts-arkui-arkui-advanced-filter-filtertype-e.md) | Declare FilterType @enum { FilterType } |
+| [FilterType](arkts-arkui-arkui-advanced-filter-filtertype-e.md) | Declare FilterType |
 
 ## Examples
 

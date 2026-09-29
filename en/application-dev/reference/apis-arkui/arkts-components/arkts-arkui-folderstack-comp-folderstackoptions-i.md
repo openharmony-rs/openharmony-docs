@@ -14,6 +14,8 @@ Configuration object for the **FolderStack** hover status, which describes the i
 
 **Since:** 18
 
+<!--Device-unnamed-interface FolderStackOptions--><!--Device-unnamed-interface FolderStackOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## upperItems
@@ -35,5 +37,7 @@ When hover is triggered, the child components in the **upperItems** array automa
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FolderStackOptions-upperItems?: Array<string>--><!--Device-FolderStackOptions-upperItems?: Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

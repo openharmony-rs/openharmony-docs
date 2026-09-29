@@ -22,6 +22,8 @@ Set settingsdata value.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function setValue(context: Context, name: string, value: string, callback: AsyncCallback<boolean>): void--><!--Device-settings-function setValue(context: Context, name: string, value: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -63,6 +65,8 @@ Set settingsdata value.
 **Required permissions:** ohos.permission.MANAGE_SETTINGS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function setValue(context: Context, name: string, value: string): Promise<boolean>--><!--Device-settings-function setValue(context: Context, name: string, value: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -110,6 +114,8 @@ Set settingsdata value. [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permissi
 **Required permissions:** ohos.permission.MANAGE_SECURE_SETTINGS or ohos.permission.MANAGE_SETTINGS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function setValue(context: Context, name: string, value: string, domainName: string): Promise<boolean>--><!--Device-settings-function setValue(context: Context, name: string, value: string, domainName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

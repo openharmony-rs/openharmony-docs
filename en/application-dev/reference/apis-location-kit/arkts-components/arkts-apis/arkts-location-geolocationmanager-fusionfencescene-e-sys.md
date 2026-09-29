@@ -8,6 +8,8 @@ Enum for fusion fence scene.
 
 **Since:** 26.0.0
 
+<!--Device-geoLocationManager-export enum FusionFenceScene--><!--Device-geoLocationManager-export enum FusionFenceScene-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Indicates the airport scene.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FusionFenceScene-AIRPORT = 1--><!--Device-FusionFenceScene-AIRPORT = 1-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -40,6 +44,8 @@ Indicates the train station scene.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FusionFenceScene-TRAIN_STATION = 2--><!--Device-FusionFenceScene-TRAIN_STATION = 2-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ Indicates the subway scene.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FusionFenceScene-SUBWAY = 3--><!--Device-FusionFenceScene-SUBWAY = 3-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ Indicates the shop scene.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FusionFenceScene-SHOP = 4--><!--Device-FusionFenceScene-SHOP = 4-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

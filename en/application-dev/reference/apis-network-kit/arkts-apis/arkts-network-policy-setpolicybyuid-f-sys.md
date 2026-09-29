@@ -18,6 +18,8 @@ Sets the metered network access policy for the application specified by a given 
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function setPolicyByUid(uid: int, policy: NetUidPolicy, callback: AsyncCallback<void>): void--><!--Device-policy-function setPolicyByUid(uid: int, policy: NetUidPolicy, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Sets whether the application with the corresponding UID can access the metering 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function setPolicyByUid(uid: int, policy: NetUidPolicy): Promise<void>--><!--Device-policy-function setPolicyByUid(uid: int, policy: NetUidPolicy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

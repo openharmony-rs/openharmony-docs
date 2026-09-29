@@ -18,6 +18,8 @@ Obtain the country code of the device.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getCountryCode(): string--><!--Device-wifiManager-function getCountryCode(): string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 **Return value:**

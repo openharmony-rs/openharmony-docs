@@ -10,6 +10,8 @@ Describes the notification switch state changes callback data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationSubscribe-export type NotificationSwitchChangedCallbackData = _NotificationSwitchChangedCallbackData--><!--Device-notificationSubscribe-export type NotificationSwitchChangedCallbackData = _NotificationSwitchChangedCallbackData-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ The description of the media for an item in the playlist of the session
 
 **Since:** 10
 
+<!--Device-avSession-interface AVMediaDescription--><!--Device-avSession-interface AVMediaDescription-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ The album cover uri of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-albumCoverUri?: string--><!--Device-AVMediaDescription-albumCoverUri?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -44,7 +48,9 @@ The album title of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-albumTitle?: string--><!--Device-AVMediaDescription-albumTitle?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -60,7 +66,9 @@ Application name.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-appName?: string--><!--Device-AVMediaDescription-appName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -76,7 +84,9 @@ The artist of this media.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-artist?: string--><!--Device-AVMediaDescription-artist?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -92,7 +102,9 @@ Unique ID used to represent this media.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-assetId: string--><!--Device-AVMediaDescription-assetId: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -108,7 +120,9 @@ Media credits position, described by milliseconds.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-creditsPosition?: int--><!--Device-AVMediaDescription-creditsPosition?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -124,6 +138,8 @@ DataSource descriptor. The caller ensures the fileSize and callback are valid.
 
 **Since:** 12
 
+<!--Device-AVMediaDescription-dataSrc?: media.AVDataSrcDescriptor--><!--Device-AVMediaDescription-dataSrc?: media.AVDataSrcDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## description
@@ -138,7 +154,9 @@ The description of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-description?: string--><!--Device-AVMediaDescription-description?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -154,7 +172,9 @@ The display tags supported by application to be displayed on media center
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-displayTags?: int--><!--Device-AVMediaDescription-displayTags?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -170,6 +190,8 @@ The drm scheme supported by this resource which is represented by uuid.
 
 **Since:** 12
 
+<!--Device-AVMediaDescription-drmScheme?: string--><!--Device-AVMediaDescription-drmScheme?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## duration
@@ -184,7 +206,9 @@ The duration of this media, described by milliseconds.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-duration?: int--><!--Device-AVMediaDescription-duration?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -202,6 +226,8 @@ Any additional attributes that can be represented as key-value pairs
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AVMediaDescription-extras?: {[key: string]: Object}--><!--Device-AVMediaDescription-extras?: {[key: string]: Object}-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## fdSrc
@@ -216,7 +242,9 @@ Media file descriptor.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-fdSrc?: media.AVFileDescriptor--><!--Device-AVMediaDescription-fdSrc?: media.AVFileDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -232,7 +260,9 @@ Custom data sent by the application to the receiver during casting.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AVMediaDescription-launchClientData?: string--><!--Device-AVMediaDescription-launchClientData?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -248,7 +278,9 @@ The lyric content of the media, it should be in standard lyric format
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-lyricContent?: string--><!--Device-AVMediaDescription-lyricContent?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -264,7 +296,9 @@ The lyric uri of the media.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-lyricUri?: string--><!--Device-AVMediaDescription-lyricUri?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -280,7 +314,9 @@ The image of this media asset displayed in the media center. It can be a PixelMa
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-mediaImage?: image.PixelMap | string--><!--Device-AVMediaDescription-mediaImage?: image.PixelMap | string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -296,7 +332,9 @@ The size of this media.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-mediaSize?: int--><!--Device-AVMediaDescription-mediaSize?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -312,7 +350,9 @@ The type of this media, such as video, audio and so on.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-mediaType?: string--><!--Device-AVMediaDescription-mediaType?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -328,7 +368,9 @@ The uri of the media, used to locate the media in some special cases
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-mediaUri?: string--><!--Device-AVMediaDescription-mediaUri?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -344,7 +386,9 @@ Source type that supports PCM casting. The application can send PCM data directl
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AVMediaDescription-pcmSrc?: boolean--><!--Device-AVMediaDescription-pcmSrc?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -360,7 +404,9 @@ Media start position, described by milliseconds.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-startPosition?: int--><!--Device-AVMediaDescription-startPosition?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -376,7 +422,9 @@ The subtitle of the media, used for display
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-subtitle?: string--><!--Device-AVMediaDescription-subtitle?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -392,6 +440,8 @@ The title of this media, for display in media center.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMediaDescription-title?: string--><!--Device-AVMediaDescription-title?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core

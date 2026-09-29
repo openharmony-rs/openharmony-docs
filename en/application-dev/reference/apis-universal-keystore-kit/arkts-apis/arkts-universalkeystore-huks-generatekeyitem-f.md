@@ -27,6 +27,8 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-huks-function generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void--><!--Device-huks-function generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**
@@ -210,6 +212,8 @@ Based on the principle that the key cannot be transferred out of [Trusted Execut
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-huks-function generateKeyItem(keyAlias: string, options: HuksOptions): Promise<void>--><!--Device-huks-function generateKeyItem(keyAlias: string, options: HuksOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

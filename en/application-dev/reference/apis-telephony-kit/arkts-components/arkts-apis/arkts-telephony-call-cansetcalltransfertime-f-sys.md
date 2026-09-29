@@ -18,6 +18,8 @@ Checks whether the call forwarding time can be set. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-call-function canSetCallTransferTime(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-call-function canSetCallTransferTime(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Checks whether the call forwarding time can be set. This API uses a promise to r
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-call-function canSetCallTransferTime(slotId: int): Promise<boolean>--><!--Device-call-function canSetCallTransferTime(slotId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

@@ -4,6 +4,8 @@ The hdrCapability module provides enums related to the High Dynamic Range (HDR) 
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace hdrCapability--><!--Device-unnamed-declare namespace hdrCapability-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## Modules to Import

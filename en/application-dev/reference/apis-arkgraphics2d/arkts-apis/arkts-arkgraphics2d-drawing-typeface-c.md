@@ -14,6 +14,8 @@ Describes the style of a typeface, such as SimSun or KaiTi.
 
 **Since:** 11
 
+<!--Device-drawing-class Typeface--><!--Device-drawing-class Typeface-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -31,6 +33,8 @@ getFamilyName(): string
 Obtains the name of the typeface family, which is the name given to a collection of related typeface designs.
 
 **Since:** 11
+
+<!--Device-Typeface-getFamilyName(): string--><!--Device-Typeface-getFamilyName(): string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,6 +64,8 @@ Checks whether the font is bold.
 
 **Since:** 23
 
+<!--Device-Typeface-isBold(): boolean--><!--Device-Typeface-isBold(): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -88,6 +94,8 @@ Checks whether the font is italic.
 
 **Since:** 23
 
+<!--Device-Typeface-isItalic(): boolean--><!--Device-Typeface-isItalic(): boolean-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**
@@ -115,6 +123,8 @@ makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface
 Constructs a typeface object from the current typeface and its arguments.
 
 **Since:** 20
+
+<!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-makeFromCurrent(typefaceArguments: TypefaceArguments): Typeface-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -162,6 +172,8 @@ Constructs a typeface from a file.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Typeface-static makeFromFile(filePath: string): Typeface--><!--Device-Typeface-static makeFromFile(filePath: string): Typeface-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -214,6 +226,8 @@ Constructs a typeface from the typeface file path and arguments.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-static makeFromFileWithArguments(filePath: string, typefaceArguments: TypefaceArguments): Typeface-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -261,6 +275,8 @@ Constructs a typeface from a file, which must be stored in the **resources/rawfi
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface--><!--Device-Typeface-static makeFromRawFile(rawfile: Resource): Typeface-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Parameters:**
@@ -304,6 +320,8 @@ Constructs a typeface from a file with typeface arguments, which must be stored 
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface--><!--Device-Typeface-static makeFromRawFileWithArguments(rawfile: Resource, typefaceArguments: TypefaceArguments): Typeface-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

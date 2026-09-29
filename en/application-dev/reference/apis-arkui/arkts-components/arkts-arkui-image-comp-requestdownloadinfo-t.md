@@ -14,6 +14,8 @@ Describes the download information when an online image fails to load or encount
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo--><!--Device-unnamed-declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.request.cacheDownload').default.DownloadInfo

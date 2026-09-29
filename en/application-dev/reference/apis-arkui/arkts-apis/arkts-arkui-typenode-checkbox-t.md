@@ -12,6 +12,8 @@ Represents a FrameNode of the **Checkbox** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>--><!--Device-typeNode-type Checkbox = TypedFrameNode<CheckboxInterface, CheckboxAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;CheckboxInterface, [CheckboxAttribute](../arkts-components/arkts-arkui-checkbox-comp-attribute.md)&gt;

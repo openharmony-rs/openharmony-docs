@@ -2,7 +2,10 @@
 
 The **NavRouter** component provides default processing logic for responding to clicks, eliminating the need for manual logic definition.
 
-> **NOTE** > > This component is deprecated since API version 13. You are advised to use [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) in > conjunction with the **navDestination** attribute for page routing.
+> **NOTE:** 
+> 
+> This component is deprecated since API version 13. You are advised to use [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) in
+> conjunction with the **navDestination** attribute for page routing.
 
 ## Child Components
 
@@ -34,6 +37,8 @@ Constructor.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavRouterInterface-(): NavRouterAttribute--><!--Device-NavRouterInterface-(): NavRouterAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NavRouter
@@ -53,6 +58,8 @@ Provides route information so that clicking the **NavRouter** component redirect
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavRouterInterface-(value: RouteInfo): NavRouterAttribute--><!--Device-NavRouterInterface-(value: RouteInfo): NavRouterAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

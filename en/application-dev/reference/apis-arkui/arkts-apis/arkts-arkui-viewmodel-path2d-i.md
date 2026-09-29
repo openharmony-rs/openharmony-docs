@@ -10,6 +10,8 @@ Path2D
 
 **Since:** 4
 
+<!--Device-unnamed-export interface Path2D--><!--Device-unnamed-export interface Path2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## addPath
@@ -23,6 +25,8 @@ Add another path to current path.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-addPath(path: Path2D): void--><!--Device-Path2D-addPath(path: Path2D): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +47,8 @@ Draws an arc on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void--><!--Device-Path2D-arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ Draws an arc based on the radius and points on the arc.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Path2D-arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void--><!--Device-Path2D-arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -92,6 +100,8 @@ Draws a cubic bezier curve on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void--><!--Device-Path2D-bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +128,8 @@ Draws a closed path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Path2D-closePath(): void--><!--Device-Path2D-closePath(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ellipse
@@ -140,6 +152,8 @@ Draws an ellipse based on the coordinate and radius.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: number,  ): void--><!--Device-Path2D-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: number,  ): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +182,8 @@ Connects the current point to a target position using a straight line.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Path2D-lineTo(x: number, y: number): void--><!--Device-Path2D-lineTo(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -189,6 +205,8 @@ Moves a drawing path to a target position on the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-Path2D-moveTo(x: number, y: number): void--><!--Device-Path2D-moveTo(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -209,6 +227,8 @@ Draws a quadratic curve on the canvas.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void--><!--Device-Path2D-quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +252,8 @@ Creates a rectangular.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-rect(x: number, y: number, width: number, height: number): void--><!--Device-Path2D-rect(x: number, y: number, width: number, height: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -262,6 +284,8 @@ Uses same parameters as the transform() function to reset the existing transform
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-Path2D-setTransform(    scaleX: number,    skewX: number,    skewY: number,    scaleY: number,    translateX: number,    translateY: number,  ): void--><!--Device-Path2D-setTransform(    scaleX: number,    skewX: number,    skewY: number,    scaleY: number,    translateX: number,    translateY: number,  ): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

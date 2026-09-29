@@ -8,6 +8,8 @@ Enumerates SMS encoding schemes.
 
 **Since:** 8
 
+<!--Device-sms-export enum SmsEncodingScheme--><!--Device-sms-export enum SmsEncodingScheme-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ SMS_ENCODING_UNKNOWN = 0
 Unknown code.
 
 **Since:** 8
+
+<!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0--><!--Device-SmsEncodingScheme-SMS_ENCODING_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -36,6 +40,8 @@ SMS_ENCODING_7BIT = 1
 
 **Since:** 8
 
+<!--Device-SmsEncodingScheme-SMS_ENCODING_7BIT = 1--><!--Device-SmsEncodingScheme-SMS_ENCODING_7BIT = 1-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -50,6 +56,8 @@ SMS_ENCODING_8BIT = 2
 
 **Since:** 8
 
+<!--Device-SmsEncodingScheme-SMS_ENCODING_8BIT = 2--><!--Device-SmsEncodingScheme-SMS_ENCODING_8BIT = 2-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -63,6 +71,8 @@ SMS_ENCODING_16BIT = 3
 16-digit code.
 
 **Since:** 8
+
+<!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3--><!--Device-SmsEncodingScheme-SMS_ENCODING_16BIT = 3-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

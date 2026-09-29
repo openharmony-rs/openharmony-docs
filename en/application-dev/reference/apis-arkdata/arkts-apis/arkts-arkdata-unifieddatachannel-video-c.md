@@ -10,6 +10,8 @@ Represents video data. It is a child class of [File](arkts-arkdata-unifieddatach
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-class Video extends File--><!--Device-unifiedDataChannel-class Video extends File-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Indicates the uri of video
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Video-get videoUri(): string--><!--Device-Video-get videoUri(): string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -48,6 +52,8 @@ Indicates the uri of video
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Video-set videoUri(value: string)--><!--Device-Video-set videoUri(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

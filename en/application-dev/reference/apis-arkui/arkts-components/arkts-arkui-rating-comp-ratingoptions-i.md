@@ -14,6 +14,8 @@ Provides configuration options for the **Rating** component.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface RatingOptions--><!--Device-unnamed-declare interface RatingOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## indicator
@@ -22,7 +24,7 @@ Provides configuration options for the **Rating** component.
 indicator?: boolean
 ```
 
-Whether the component is used as an indicator. If this parameter is set to **true**, the rating value cannot be changed.
+Whether the **Rating** component is used as an indicator. The value **true** indicates the component is used as an indicator without changing the rating. The value **false** indicates the component is not used as an indicator and the rating can be changed.
 
 Default value: **false**
 
@@ -41,6 +43,8 @@ When **indicator** is set to **false**, the default component height is 28.0 vp,
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RatingOptions-indicator?: boolean--><!--Device-RatingOptions-indicator?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,5 +73,7 @@ This parameter supports two-way binding through [$$](../../../ui/state-managemen
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RatingOptions-rating: number--><!--Device-RatingOptions-rating: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

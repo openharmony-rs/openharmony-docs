@@ -12,6 +12,8 @@ Callback function on mission changed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type NotifyMissionsChangedCallback = (deviceId: string) => void--><!--Device-unnamed-type NotifyMissionsChangedCallback = (deviceId: string) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.

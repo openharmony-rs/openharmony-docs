@@ -8,6 +8,8 @@ Defines the authorization result. Currently, the authorization validity period o
 
 **Since:** 26.0.1
 
+<!--Device-authorization-interface AuthorizationResult--><!--Device-authorization-interface AuthorizationResult-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Privilege associated with the authorization.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizationResult-privilege: Privilege--><!--Device-AuthorizationResult-privilege: Privilege-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## resultCode
@@ -45,5 +49,7 @@ Authorization result code. If the authorization is granted, [AUTHORIZATION_GRANT
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationResult-resultCode: AuthorizationResultCode--><!--Device-AuthorizationResult-resultCode: AuthorizationResultCode-End-->
 
 **System capability:** SystemCapability.Account.OsAccount

@@ -20,6 +20,8 @@ Creates an AudioPlayer instance in synchronous mode.
 
 **Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md)(callback: AsyncCallback&lt;AVPlayer&gt;)
 
+<!--Device-media-function createAudioPlayer(): AudioPlayer--><!--Device-media-function createAudioPlayer(): AudioPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioPlayer
 
 **Return value:**

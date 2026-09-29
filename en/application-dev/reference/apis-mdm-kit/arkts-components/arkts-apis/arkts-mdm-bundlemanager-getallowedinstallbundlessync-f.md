@@ -20,6 +20,8 @@ Obtains the applications that can be installed by the current or specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array<string>--><!--Device-bundleManager-function getAllowedInstallBundlesSync(admin: Want, accountId?: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -80,6 +82,8 @@ Obtains the applications that can be installed by the current or specified user.
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array<string>--><!--Device-bundleManager-function getAllowedInstallBundlesSync(admin: Want | null, accountId?: number): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

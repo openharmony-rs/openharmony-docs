@@ -19,6 +19,8 @@ Generates an authorization package for the controlled device. This function gene
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-abilityToolAccessCtrl-export function generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise<RemoteAuthPackage[]>--><!--Device-abilityToolAccessCtrl-export function generateControlledDevicePackage(permissionQuery: PermissionQuery[]): Promise<RemoteAuthPackage[]>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Resets the default application based on a system-defined application type, a fil
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function resetDefaultApplicationSync(type: string, userId?: int): void--><!--Device-defaultAppManager-function resetDefaultApplicationSync(type: string, userId?: int): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.

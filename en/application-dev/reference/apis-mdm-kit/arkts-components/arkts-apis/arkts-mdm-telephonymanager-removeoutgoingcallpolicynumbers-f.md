@@ -24,6 +24,8 @@ If the device's call capability has been disabled via the [setDisallowedPolicy](
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void--><!--Device-telephonyManager-function removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

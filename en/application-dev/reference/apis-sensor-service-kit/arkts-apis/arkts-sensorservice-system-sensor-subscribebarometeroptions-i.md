@@ -4,13 +4,15 @@
 export interface SubscribeBarometerOptions
 ```
 
-Defines the type of data to return for a subscription to data changes of the barometer sensor.
+Configures the parameters for subscribing to the barometric pressure sensor, including the callback function.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
 **Substitutes:** [BAROMETER](arkts-sensorservice-sensor-sensorid-e.md#barometer)
+
+<!--Device-unnamed-export interface SubscribeBarometerOptions--><!--Device-unnamed-export interface SubscribeBarometerOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -26,7 +28,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 3
 
@@ -35,6 +37,8 @@ Callback invoked when an API call fails.
 **Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeBarometerOptions-fail?: (data: string, code: number) => void--><!--Device-SubscribeBarometerOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -51,7 +55,7 @@ Callback invoked when an API call fails.
 success: (data: BarometerResponse) => void
 ```
 
-Callback invoked when the barometer sensor data changes.
+Callback invoked when the barometric pressure sensor data changes. The callback parameter is a **BarometerResponse** object.
 
 **Since:** 3
 
@@ -60,6 +64,8 @@ Callback invoked when the barometer sensor data changes.
 **Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeBarometerOptions-success: (data: BarometerResponse) => void--><!--Device-SubscribeBarometerOptions-success: (data: BarometerResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 

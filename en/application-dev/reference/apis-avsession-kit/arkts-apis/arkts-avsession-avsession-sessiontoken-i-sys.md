@@ -8,6 +8,8 @@ Session token. Used to judge the legitimacy of the session.
 
 **Since:** 9
 
+<!--Device-avSession-interface SessionToken--><!--Device-avSession-interface SessionToken-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Process id of session
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 
+<!--Device-SessionToken-pid?: long--><!--Device-SessionToken-pid?: long-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ The unique session id of the avsession object
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 
+<!--Device-SessionToken-sessionId: string--><!--Device-SessionToken-sessionId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ User id
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+<!--Device-SessionToken-uid?: long--><!--Device-SessionToken-uid?: long-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 

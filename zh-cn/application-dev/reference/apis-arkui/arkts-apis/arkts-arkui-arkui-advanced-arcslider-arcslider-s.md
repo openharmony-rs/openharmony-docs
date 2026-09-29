@@ -16,6 +16,8 @@ declare struct ArcSlider
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-declare struct ArcSlider--><!--Device-unnamed-declare struct ArcSlider-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -39,5 +41,7 @@ options: ArcSliderOptions
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSlider-options: ArcSliderOptions--><!--Device-ArcSlider-options: ArcSliderOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

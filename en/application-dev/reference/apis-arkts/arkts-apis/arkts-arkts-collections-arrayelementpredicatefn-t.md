@@ -12,6 +12,8 @@ Defines the ArkTS Array predicate function, which is used by the 'retainAll'API 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-collections-type ArrayElementPredicateFn<ElementType> = (value: ElementType) => boolean--><!--Device-collections-type ArrayElementPredicateFn<ElementType> = (value: ElementType) => boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.

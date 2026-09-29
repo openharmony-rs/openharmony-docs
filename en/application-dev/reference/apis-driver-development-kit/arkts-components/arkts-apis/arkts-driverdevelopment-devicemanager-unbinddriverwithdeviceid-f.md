@@ -18,6 +18,8 @@ Unbinds a peripheral device. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_DDK_DRIVERS
 
+<!--Device-deviceManager-function unbindDriverWithDeviceId(deviceId: long): Promise<int>--><!--Device-deviceManager-function unbindDriverWithDeviceId(deviceId: long): Promise<int>-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Parameters:**

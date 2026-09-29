@@ -12,7 +12,9 @@ Declare navigator properties.
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
+
+<!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>--><!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,9 +30,11 @@ Sets whether the **Navigator** component is activated. If the component is activ
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigatorAttribute-active(value: boolean): NavigatorAttribute--><!--Device-NavigatorAttribute-active(value: boolean): NavigatorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Sets the data that needs to be passed to the target page during redirection.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigatorAttribute-params(value: object): NavigatorAttribute--><!--Device-NavigatorAttribute-params(value: object): NavigatorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -76,9 +82,11 @@ Sets the path of the target page to be redirected to. The target page must be ad
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigatorAttribute-target(value: string): NavigatorAttribute--><!--Device-NavigatorAttribute-target(value: string): NavigatorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,9 +108,11 @@ Sets the navigation type.
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigatorAttribute-type(value: NavigationType): NavigatorAttribute--><!--Device-NavigatorAttribute-type(value: NavigationType): NavigatorAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

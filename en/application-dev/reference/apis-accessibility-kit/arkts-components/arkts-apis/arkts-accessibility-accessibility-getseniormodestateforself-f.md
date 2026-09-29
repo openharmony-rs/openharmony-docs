@@ -21,6 +21,8 @@ Unlike [accessibility.isSeniorModeEnabled](arkts-accessibility-accessibility-iss
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function getSeniorModeStateForSelf(): Promise<boolean>--><!--Device-accessibility-function getSeniorModeStateForSelf(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value:**

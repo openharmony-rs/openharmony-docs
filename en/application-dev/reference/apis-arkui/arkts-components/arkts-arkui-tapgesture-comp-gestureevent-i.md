@@ -10,6 +10,8 @@ Defines the gesture event information. Inherits from [BaseEvent](arkts-arkui-com
 
 **Since:** 7
 
+<!--Device-unnamed-interface GestureEvent extends BaseEvent--><!--Device-unnamed-interface GestureEvent extends BaseEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -34,6 +36,8 @@ Value range: [-180, 180]
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-angle: number--><!--Device-GestureEvent-angle: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerInfos
@@ -55,6 +59,8 @@ Information about touch points of the gesture event. For gesture events initiate
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureEvent-fingerInfos?: FingerInfo[]--><!--Device-GestureEvent-fingerInfos?: FingerInfo[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +85,8 @@ information exists.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-fingerList: FingerInfo[]--><!--Device-GestureEvent-fingerList: FingerInfo[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -96,6 +104,8 @@ Value range: (-∞, +∞)
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GestureEvent-offsetX: number--><!--Device-GestureEvent-offsetX: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,6 +125,8 @@ Value range: (-∞, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-offsetY: number--><!--Device-GestureEvent-offsetY: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pinchCenterX
@@ -132,6 +144,8 @@ Value range: [0, +∞)
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GestureEvent-pinchCenterX: number--><!--Device-GestureEvent-pinchCenterX: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,6 +165,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-pinchCenterY: number--><!--Device-GestureEvent-pinchCenterY: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeat
@@ -166,6 +182,8 @@ Whether the event is a repeated trigger event, used in the **LongPressGesture** 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GestureEvent-repeat: boolean--><!--Device-GestureEvent-repeat: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,6 +203,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-scale: number--><!--Device-GestureEvent-scale: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## speed
@@ -203,6 +223,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-speed: number--><!--Device-GestureEvent-speed: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## tapLocation
@@ -220,6 +242,8 @@ Coordinate information of the current tap gesture. For non-tap gestures, the ret
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureEvent-tapLocation?: EventLocationInfo--><!--Device-GestureEvent-tapLocation?: EventLocationInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -241,6 +265,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-velocity: number--><!--Device-GestureEvent-velocity: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocityX
@@ -261,6 +287,8 @@ Value range: (-∞, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GestureEvent-velocityX: number--><!--Device-GestureEvent-velocityX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocityY
@@ -280,5 +308,7 @@ Value range: (-∞, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GestureEvent-velocityY: number--><!--Device-GestureEvent-velocityY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -24,6 +24,8 @@ Checks whether the system is undergoing a stability test. This API uses an async
 
 **Substitutes:** [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md)
 
+<!--Device-appManager-function isRunningInStabilityTest(callback: AsyncCallback<boolean>): void--><!--Device-appManager-function isRunningInStabilityTest(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Test API:** This API is used only in automated test scripts.
@@ -69,6 +71,8 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 **Deprecated since:** 9
 
 **Substitutes:** [isRunningInStabilityTest](arkts-ability-appmanager-isrunninginstabilitytest-f.md)
+
+<!--Device-appManager-function isRunningInStabilityTest(): Promise<boolean>--><!--Device-appManager-function isRunningInStabilityTest(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

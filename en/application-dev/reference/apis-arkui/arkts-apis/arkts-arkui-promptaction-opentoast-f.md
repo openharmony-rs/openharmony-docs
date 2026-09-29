@@ -28,6 +28,8 @@ Shows a toast. This API uses a promise to return the toast ID.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-function openToast(options: ShowToastOptions): Promise<number>--><!--Device-promptAction-function openToast(options: ShowToastOptions): Promise<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

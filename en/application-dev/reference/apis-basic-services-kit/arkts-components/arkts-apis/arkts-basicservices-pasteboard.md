@@ -4,6 +4,8 @@ This module provides the capabilities of managing the system pasteboard to suppo
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace pasteboard--><!--Device-unnamed-declare namespace pasteboard-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## Modules to Import
@@ -48,6 +50,14 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | [ProgressInfo](arkts-basicservices-pasteboard-progressinfo-i.md) | Defines the progress information. This information is reported only when [ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md) is set to **NONE**. |
 | [SystemPasteboard](arkts-basicservices-pasteboard-systempasteboard-i.md) | Provides **SystemPasteboard** APIs. Before calling any **SystemPasteboard** API, you must obtain a **SystemPasteboard** object using [getSystemPasteboard](arkts-basicservices-pasteboard-getsystempasteboard-f.md). |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md) | Defines a listener for progress data changes. If the default progress indicator is not used, you can set this API to obtain the paste progress. |
+| [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md) | Callback to be invoked when the pasteboard content changes. |
+| [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | Indicates type of value. |
+
 ### Enums
 
 | Name | Description |
@@ -56,14 +66,6 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | [Pattern](arkts-basicservices-pasteboard-pattern-e.md) | Describes the patterns supported by the pasteboard. |
 | [ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md) | Enumerates options for the progress indicator. You can choose whether to use the default progress indicator. |
 | [ShareOption](arkts-basicservices-pasteboard-shareoption-e.md) | Enumerates the pasteable ranges of PasteData. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [ProgressListener](arkts-basicservices-pasteboard-progresslistener-t.md) | Defines a listener for progress data changes. If the default progress indicator is not used, you can set this API to obtain the paste progress. |
-| [UpdateCallback](arkts-basicservices-pasteboard-updatecallback-t.md) | Callback to be invoked when the pasteboard content changes. |
-| [ValueType](arkts-basicservices-pasteboard-valuetype-t.md) | Indicates type of value. |
 
 ### Constants
 

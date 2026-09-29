@@ -16,6 +16,8 @@ Specifies whether data roaming is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-network-const DATA_ROAMING_STATUS: string--><!--Device-network-const DATA_ROAMING_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## HTTP_PROXY_CFG
@@ -32,6 +34,8 @@ Indicates the host name and port number of the global HTTP proxy. The host name 
 
 **Deprecated since:** 21
 
+<!--Device-network-const HTTP_PROXY_CFG: string--><!--Device-network-const HTTP_PROXY_CFG: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## NETWORK_PREFERENCE_USAGE
@@ -47,5 +51,7 @@ Indicates the user preferences of the network to use.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-network-const NETWORK_PREFERENCE_USAGE: string--><!--Device-network-const NETWORK_PREFERENCE_USAGE: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

@@ -14,6 +14,8 @@ Manager hid host profile.
 
 **Substitutes:** [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md)
 
+<!--Device-bluetoothManager-interface HidHostProfile extends BaseProfile--><!--Device-bluetoothManager-interface HidHostProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Connect to device with hid host. On API 10 and above, the permission required by
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-HidHostProfile-connect(device: string): void--><!--Device-HidHostProfile-connect(device: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -80,6 +84,8 @@ Disconnect to device with hid host. On API 10 and above, the permission required
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-HidHostProfile-disconnect(device: string): void--><!--Device-HidHostProfile-disconnect(device: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

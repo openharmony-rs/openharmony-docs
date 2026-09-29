@@ -8,6 +8,8 @@ Defines the event.
 
 **Since:** 7
 
+<!--Device-unnamed-export interface Event--><!--Device-unnamed-export interface Event-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Timestamp (accurate to millisecond) when the event is created. This parameter is
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Event-readonly timeStamp: number--><!--Device-Event-readonly timeStamp: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## type
@@ -45,5 +49,7 @@ Type of the Event.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Event-readonly type: string--><!--Device-Event-readonly type: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang

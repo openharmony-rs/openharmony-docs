@@ -2,7 +2,9 @@
 
 Defines a stack container where child components are successively stacked and the latter one overwrites the previous one. The stacking order is based on the declaration order of child components in the parent container. A child component declared later has a higher rendering level and visually covers the preceding child components. It is suitable for scenarios that require layered layout, such as floating buttons or prompt messages on a page, text labels overlaid on images or videos, and multi-layer pop-up windows or dialog boxes. Compared with nesting multiple containers to achieve the layered effect, **Stack** provides a simpler and more efficient solution.
 
-> **NOTE** > > - The general attribute [align](arkts-arkui-common-comp-commonmethod-c.md#align) supports the mirroring capability on > this component.
+> **NOTE:** 
+> 
+> - The general attribute [align](arkts-arkui-common-comp-commonmethod-c.md#align) supports the mirroring capability on this component.
 
 ## Child Components
 
@@ -32,6 +34,8 @@ Defines a stack container where child components are successively stacked and th
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StackInterface-(options?: StackOptions): StackAttribute--><!--Device-StackInterface-(options?: StackOptions): StackAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

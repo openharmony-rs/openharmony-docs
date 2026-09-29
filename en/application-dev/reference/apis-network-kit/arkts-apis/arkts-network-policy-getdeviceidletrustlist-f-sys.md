@@ -18,6 +18,8 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function getDeviceIdleTrustlist(callback: AsyncCallback<Array<int>>): void--><!--Device-policy-function getDeviceIdleTrustlist(callback: AsyncCallback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function getDeviceIdleTrustlist(): Promise<Array<int>>--><!--Device-policy-function getDeviceIdleTrustlist(): Promise<Array<int>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

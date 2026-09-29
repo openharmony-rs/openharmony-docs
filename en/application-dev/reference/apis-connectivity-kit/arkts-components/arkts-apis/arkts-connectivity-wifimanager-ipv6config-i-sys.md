@@ -8,6 +8,8 @@ Wi-Fi Ipv6 configuration information. @typedef Ipv6Config
 
 **Since:** 20
 
+<!--Device-wifiManager-interface Ipv6Config--><!--Device-wifiManager-interface Ipv6Config-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ DNS servers.
 
 **Since:** 20
 
+<!--Device-Ipv6Config-dnsServers: Array<string>--><!--Device-Ipv6Config-dnsServers: Array<string>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Domains.
 **Type:** Array&lt;string&gt;
 
 **Since:** 20
+
+<!--Device-Ipv6Config-domains: Array<string>--><!--Device-Ipv6Config-domains: Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -62,6 +68,8 @@ Gate way.
 
 **Since:** 20
 
+<!--Device-Ipv6Config-gateway: string--><!--Device-Ipv6Config-gateway: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ IPv6 address.
 
 **Since:** 20
 
+<!--Device-Ipv6Config-ipAddress: string--><!--Device-Ipv6Config-ipAddress: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Prefix length.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Ipv6Config-prefixLength: int--><!--Device-Ipv6Config-prefixLength: int-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

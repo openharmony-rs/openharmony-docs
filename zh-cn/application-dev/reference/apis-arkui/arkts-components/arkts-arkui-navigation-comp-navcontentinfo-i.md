@@ -8,6 +8,8 @@ declare interface NavContentInfo
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface NavContentInfo--><!--Device-unnamed-declare interface NavContentInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -28,6 +30,8 @@ NavDestination在NavPathStack中的序号， 如果为根视图(NavBar)，则返
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavContentInfo-index: number--><!--Device-NavContentInfo-index: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -45,6 +49,8 @@ NavDestination的模式，如果是根视图(NavBar)，则返回值为undefined�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavContentInfo-mode?: NavDestinationMode--><!--Device-NavContentInfo-mode?: NavDestinationMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ NavDestination名称，如果为根视图(NavBar)，则返回值为undefined。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavContentInfo-name?: string--><!--Device-NavContentInfo-name?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## navDestinationId
@@ -82,6 +90,8 @@ NavDestination的唯一标识符。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavContentInfo-navDestinationId?: string--><!--Device-NavContentInfo-navDestinationId?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -99,5 +109,7 @@ NavDestination页面加载的参数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavContentInfo-param?: Object--><!--Device-NavContentInfo-param?: Object-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

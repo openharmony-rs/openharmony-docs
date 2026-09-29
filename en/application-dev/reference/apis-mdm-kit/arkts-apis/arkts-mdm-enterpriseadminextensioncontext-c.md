@@ -18,6 +18,8 @@ When an **EnterpriseAdminExtensionAbility** component is instantiated, the syste
 
 **Since:** 23
 
+<!--Device-unnamed-declare class EnterpriseAdminExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class EnterpriseAdminExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## startAbilityByAdmin
@@ -44,6 +46,8 @@ Directly starts another component within the [EnterpriseAdminExtensionAbility](a
 **Required permissions:** ohos.permission.ENTERPRISE_START_ABILITIES
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionContext-startAbilityByAdmin(admin: Want, want: Want): Promise<void>--><!--Device-EnterpriseAdminExtensionContext-startAbilityByAdmin(admin: Want, want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -4,6 +4,8 @@ Provides the screen capture capability.
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace screenshot--><!--Device-unnamed-declare namespace screenshot-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import

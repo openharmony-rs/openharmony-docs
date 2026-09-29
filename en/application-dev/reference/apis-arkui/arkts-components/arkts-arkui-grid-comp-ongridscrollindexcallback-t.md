@@ -12,6 +12,8 @@ Represents a callback for item changes in the visible area of the **Grid** compo
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-unnamed-declare type OnGridScrollIndexCallback = (first: number, last: number) => void--><!--Device-unnamed-declare type OnGridScrollIndexCallback = (first: number, last: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -8,6 +8,8 @@ Defines the options used in listFileExt().
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ListFileExtOptions--><!--Device-unnamed-export interface ListFileExtOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -30,6 +32,8 @@ File name filtering interface. This parameter is optional. Filtering rules can b
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ListFileExtOptions-fileFilter?: FileFilter--><!--Device-ListFileExtOptions-fileFilter?: FileFilter-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## listNum
@@ -46,6 +50,8 @@ Number of file names to list. This parameter is optional. The default value is 0
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ListFileExtOptions-listNum?: number--><!--Device-ListFileExtOptions-listNum?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## recursion
@@ -61,5 +67,7 @@ Whether to list all files in the subdirectories recursively. This parameter is o
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ListFileExtOptions-recursion?: boolean--><!--Device-ListFileExtOptions-recursion?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

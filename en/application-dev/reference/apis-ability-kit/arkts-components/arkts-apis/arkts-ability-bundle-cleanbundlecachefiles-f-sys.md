@@ -22,6 +22,8 @@ Clears the cache data of an application. This API uses an asynchronous callback 
 
 **Required permissions:** ohos.permission.REMOVE_CACHE_FILES
 
+<!--Device-bundle-function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-bundle-function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -80,6 +82,8 @@ Clears the cache data of an application. This API uses a promise to return the r
 **Substitutes:** null
 
 **Required permissions:** ohos.permission.REMOVE_CACHE_FILES
+
+<!--Device-bundle-function cleanBundleCacheFiles(bundleName: string): Promise<void>--><!--Device-bundle-function cleanBundleCacheFiles(bundleName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

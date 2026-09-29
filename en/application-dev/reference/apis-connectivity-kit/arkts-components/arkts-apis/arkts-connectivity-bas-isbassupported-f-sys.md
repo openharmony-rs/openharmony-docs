@@ -18,6 +18,8 @@ Determine whether the local device can obtain the battery level of the remote de
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bas-function isBasSupported(): boolean--><!--Device-bas-function isBasSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

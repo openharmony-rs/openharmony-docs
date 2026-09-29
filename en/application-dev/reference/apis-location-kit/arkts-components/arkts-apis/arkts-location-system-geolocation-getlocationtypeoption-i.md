@@ -8,6 +8,8 @@ export interface GetLocationTypeOption
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-export interface GetLocationTypeOption--><!--Device-unnamed-export interface GetLocationTypeOption-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Called when the execution is completed.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-GetLocationTypeOption-complete?: () => void--><!--Device-GetLocationTypeOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.Location.Location.Lite
 
 ## fail
@@ -45,6 +49,8 @@ Called when the location types fail to be obtained.
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetLocationTypeOption-fail?: (data: string, code: number) => void--><!--Device-GetLocationTypeOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite
 
@@ -68,6 +74,8 @@ Called when the location types are obtained.
 **Deprecated since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetLocationTypeOption-success?: (data: GetLocationTypeResponse) => void--><!--Device-GetLocationTypeOption-success?: (data: GetLocationTypeResponse) => void-End-->
 
 **System capability:** SystemCapability.Location.Location.Lite
 

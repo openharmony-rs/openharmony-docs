@@ -8,6 +8,8 @@ interface IconOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface IconOptions--><!--Device-unnamed-interface IconOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -25,6 +27,8 @@ color?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconOptions-color?: ResourceColor--><!--Device-IconOptions-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ size?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-IconOptions-size?: Length--><!--Device-IconOptions-size?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -61,5 +67,7 @@ src?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconOptions-src?: ResourceStr--><!--Device-IconOptions-src?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

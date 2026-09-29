@@ -12,6 +12,8 @@ Sets the offset of the component or effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type Offset = Vector2--><!--Device-unnamed-export type Offset = Vector2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [Vector2](arkts-arkui-graphics-vector2-i.md)

@@ -17,6 +17,8 @@ An object representing the relative time format in parts that can be used for cu
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts#Using_formatToParts).
 
+<!--Device-Intl-type RelativeTimeFormatPart =        | {              type: "literal";              value: string;          }        | {              type: Exclude<NumberFormatPartTypes, "literal">;              value: string;              unit: RelativeTimeFormatUnitSingular;          }--><!--Device-Intl-type RelativeTimeFormatPart =        | {              type: "literal";              value: string;          }        | {              type: Exclude<NumberFormatPartTypes, "literal">;              value: string;              unit: RelativeTimeFormatUnitSingular;          }-End-->
+
 | Type | Description |
 | --- | --- |
 | {               type: "literal"               value: string           } |  |

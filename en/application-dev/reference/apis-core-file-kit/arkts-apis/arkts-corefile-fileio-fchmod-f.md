@@ -17,6 +17,8 @@ Changes file permissions based on the file descriptor. This API uses a promise t
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function fchmod(fd: number, mode: number): Promise<void>--><!--Device-unnamed-declare function fchmod(fd: number, mode: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -46,6 +48,8 @@ Changes file permissions based on the file descriptor. This API uses an asynchro
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-unnamed-declare function fchmod(fd: number, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fchmod(fd: number, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

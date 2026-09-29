@@ -12,6 +12,8 @@ Implements a video session for system applications, which sets the parameters of
 
 **Since:** 11
 
+<!--Device-camera-interface VideoSessionForSys extends VideoSession, Beauty, ColorEffect, ColorManagement, Macro, Aperture, ColorReservation, EffectSuggestion, ImagingMode, ColorControls--><!--Device-camera-interface VideoSessionForSys extends VideoSession, Beauty, ColorEffect, ColorManagement, Macro, Aperture, ColorReservation, EffectSuggestion, ImagingMode, ColorControls-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.

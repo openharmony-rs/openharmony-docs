@@ -16,6 +16,8 @@ Defines the device information returned by the continuation management entry.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-continuationManager-export type ContinuationResult = _ContinuationResult--><!--Device-continuationManager-export type ContinuationResult = _ContinuationResult-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 **Type:** _ContinuationResult

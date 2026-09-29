@@ -17,6 +17,8 @@ Changes the file owner based on the file descriptor. This API uses a promise to 
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number): Promise<void>--><!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -47,6 +49,8 @@ Changes the file owner based on the file descriptor. This API uses an asynchrono
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fchown(fd: number, uid: number, gid: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

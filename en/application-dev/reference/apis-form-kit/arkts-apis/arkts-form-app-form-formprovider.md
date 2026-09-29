@@ -4,6 +4,8 @@ The **formProvider** module provides APIs to obtain widget information, update w
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace formProvider--><!--Device-unnamed-declare namespace formProvider-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import

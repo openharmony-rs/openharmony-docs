@@ -8,6 +8,8 @@ Represents the result of port connection parameter negotiation with a remote dev
 
 **Since:** 26.0.0
 
+<!--Device-dataTransfer-interface ConnectionResult--><!--Device-dataTransfer-interface ConnectionResult-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionResult-address: string--><!--Device-ConnectionResult-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## mtu
@@ -45,6 +49,8 @@ Negotiated packet size of data to be sent and received, in bytes. The value rang
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionResult-mtu: int--><!--Device-ConnectionResult-mtu: int-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Connection state with a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionResult-state: ConnectionState--><!--Device-ConnectionResult-state: ConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## uuid
@@ -77,5 +85,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionResult-uuid: string--><!--Device-ConnectionResult-uuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

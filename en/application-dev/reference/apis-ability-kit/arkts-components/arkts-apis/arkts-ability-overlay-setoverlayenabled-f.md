@@ -16,6 +16,8 @@ Enables or disables a module with the overlay feature in the current application
 
 **Since:** 10
 
+<!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void--><!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 
 **Parameters:**
@@ -70,6 +72,8 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 Enables or disables a module with the overlay feature in the current application. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>--><!--Device-overlay-function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 

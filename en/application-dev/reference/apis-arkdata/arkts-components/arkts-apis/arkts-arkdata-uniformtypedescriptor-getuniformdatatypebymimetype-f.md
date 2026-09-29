@@ -18,6 +18,8 @@ Obtains the uniform data type ID based on the given MIME type and data type. If 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-uniformTypeDescriptor-function getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string--><!--Device-uniformTypeDescriptor-function getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters:**

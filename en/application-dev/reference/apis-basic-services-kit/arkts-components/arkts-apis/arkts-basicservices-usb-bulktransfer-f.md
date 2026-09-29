@@ -27,6 +27,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [bulkTransfer](arkts-basicservices-usbmanager-bulktransfer-f.md)
 
+<!--Device-usb-function bulkTransfer(    pipe: USBDevicePipe,    endpoint: USBEndpoint,    buffer: Uint8Array,    timeout?: number  ): Promise<number>--><!--Device-usb-function bulkTransfer(    pipe: USBDevicePipe,    endpoint: USBEndpoint,    buffer: Uint8Array,    timeout?: number  ): Promise<number>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

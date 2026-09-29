@@ -18,6 +18,8 @@ Get the system size.
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getSystemSize(callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getSystemSize(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Get the system size.
 **Since:** 9
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
+
+<!--Device-storageStatistics-function getSystemSize(): Promise<long>--><!--Device-storageStatistics-function getSystemSize(): Promise<long>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

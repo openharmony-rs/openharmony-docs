@@ -8,6 +8,8 @@ Defines the options used in **createRandomAccessFile()**.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface RandomAccessFileOptions--><!--Device-unnamed-export interface RandomAccessFileOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -28,6 +30,8 @@ End position to read the data, in bytes. This parameter is optional. The default
 
 **Since:** 12
 
+<!--Device-RandomAccessFileOptions-end?: number--><!--Device-RandomAccessFileOptions-end?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## start
@@ -41,5 +45,7 @@ Start position to read the data, in bytes. This parameter is optional. By defaul
 **Type:** number
 
 **Since:** 12
+
+<!--Device-RandomAccessFileOptions-start?: number--><!--Device-RandomAccessFileOptions-start?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

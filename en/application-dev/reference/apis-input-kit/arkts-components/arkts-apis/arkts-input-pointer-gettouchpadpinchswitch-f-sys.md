@@ -16,6 +16,8 @@ Obtains the touchpad pinch switch state. This API uses an asynchronous callback 
 
 **Since:** 10
 
+<!--Device-pointer-function getTouchpadPinchSwitch(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getTouchpadPinchSwitch(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getTouchpadPinchSwitch(): Promise<boolean>
 Obtains the touchpad pinch switch state. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getTouchpadPinchSwitch(): Promise<boolean>--><!--Device-pointer-function getTouchpadPinchSwitch(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

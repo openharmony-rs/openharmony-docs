@@ -8,6 +8,8 @@ Before a card with tags is read or written, **[TagInfo](arkts-connectivity-tag-t
 
 **Since:** 7
 
+<!--Device-tag-export interface TagInfo--><!--Device-tag-export interface TagInfo-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Extended attribute value of the tag technology.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-TagInfo-extrasData: PacMap[]--><!--Device-TagInfo-extrasData: PacMap[]-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Remote object of the NFC service process used for interface communication betwee
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-TagInfo-remoteTagService: rpc.RemoteObject--><!--Device-TagInfo-remoteTagService: rpc.RemoteObject-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ ID allocated when the tag is discovered.
 **Since:** 9
 
 **Required permissions:** ohos.permission.NFC_TAG
+
+<!--Device-TagInfo-tagRfDiscId: int--><!--Device-TagInfo-tagRfDiscId: int-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

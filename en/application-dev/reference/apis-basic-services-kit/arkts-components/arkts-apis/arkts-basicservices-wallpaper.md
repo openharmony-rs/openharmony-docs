@@ -6,6 +6,8 @@ System wallpaper
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace wallpaper--><!--Device-unnamed-declare namespace wallpaper-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 ## Modules to Import

@@ -27,6 +27,8 @@ device KV store. This class inherits from [KVStore](arkts-arkdata-distributeddat
 
 **Substitutes:** [distributedKVStore](arkts-arkdata-data-distributedkvstore.md)
 
+<!--Device-unnamed-declare namespace distributedData--><!--Device-unnamed-declare namespace distributedData-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## Modules to Import

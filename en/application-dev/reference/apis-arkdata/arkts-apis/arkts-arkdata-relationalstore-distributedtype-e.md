@@ -8,6 +8,8 @@ Enumerates the distributed database table types. Use the enum name rather than t
 
 **Since:** 10
 
+<!--Device-relationalStore-enum DistributedType--><!--Device-relationalStore-enum DistributedType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DISTRIBUTED_DEVICE
@@ -21,6 +23,8 @@ Distributed database table synced between devices.
 SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since:** 10
+
+<!--Device-DistributedType-DISTRIBUTED_DEVICE = 0--><!--Device-DistributedType-DISTRIBUTED_DEVICE = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -39,5 +43,7 @@ SystemCapability.DistributedDataManager.CloudSync.Client
 **Required permissions:** 
 - API version 12 and later: N/A
 - API versions 10 to 11: ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DistributedType-DISTRIBUTED_CLOUD = 1--><!--Device-DistributedType-DISTRIBUTED_CLOUD = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client

@@ -12,6 +12,8 @@ Defines EventHub, which is an event communication mechanism based on the publish
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-common-export type EventHub = _EventHub.default--><!--Device-common-export type EventHub = _EventHub.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _EventHub.default

@@ -20,6 +20,8 @@ Creates a CDSM client instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cdsm-function createCdsmClient(address: string): CdsmClient--><!--Device-cdsm-function createCdsmClient(address: string): CdsmClient-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

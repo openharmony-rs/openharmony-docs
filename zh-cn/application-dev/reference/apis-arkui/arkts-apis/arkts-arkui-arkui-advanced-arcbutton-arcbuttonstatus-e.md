@@ -8,6 +8,8 @@ export declare enum ArcButtonStatus
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare enum ArcButtonStatus--><!--Device-unnamed-export declare enum ArcButtonStatus-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## NORMAL
@@ -21,6 +23,8 @@ NORMAL = 0
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonStatus-NORMAL = 0--><!--Device-ArcButtonStatus-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -36,6 +40,8 @@ PRESSED = 1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonStatus-PRESSED = 1--><!--Device-ArcButtonStatus-PRESSED = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## DISABLED
@@ -49,5 +55,7 @@ DISABLED = 2
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonStatus-DISABLED = 2--><!--Device-ArcButtonStatus-DISABLED = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

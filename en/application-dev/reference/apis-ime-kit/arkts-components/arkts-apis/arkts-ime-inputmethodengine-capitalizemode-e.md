@@ -9,11 +9,13 @@ Enumerates the modes of capitalizing the first letter of a text.<br> <br>
 | Name| Value| Description|  
 | -------- | -- | -------- |  
 | NONE | 0 | The first letter is not capitalized.|
-| [SENTENCES](arkts-ime-inputmethodengine-capitalizemode-e.md) | 1 | The first letter of each sentence is capitalized.|
-| [WORDS](arkts-ime-inputmethodengine-capitalizemode-e.md) | 2 | The first letter of each word is capitalized.|
-| [CHARACTERS](arkts-ime-inputmethodengine-capitalizemode-e.md) | 3 | All letters are capitalized.|
+| SENTENCES | 1 | The first letter of each sentence is capitalized.|
+| WORDS | 2 | The first letter of each word is capitalized.|
+| CHARACTERS | 3 | All letters are capitalized.|
 
 **Since:** 20
+
+<!--Device-inputMethodEngine-export enum CapitalizeMode--><!--Device-inputMethodEngine-export enum CapitalizeMode-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -27,6 +29,8 @@ Capitalize nothing.
 
 **Since:** 20
 
+<!--Device-CapitalizeMode-NONE = 0--><!--Device-CapitalizeMode-NONE = 0-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## SENTENCES
@@ -38,6 +42,8 @@ SENTENCES
 Capitalize the first letter of each sentence.
 
 **Since:** 20
+
+<!--Device-CapitalizeMode-SENTENCES--><!--Device-CapitalizeMode-SENTENCES-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -51,6 +57,8 @@ Capitalize the first letter of each word.
 
 **Since:** 20
 
+<!--Device-CapitalizeMode-WORDS--><!--Device-CapitalizeMode-WORDS-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## CHARACTERS
@@ -62,5 +70,7 @@ CHARACTERS
 Capitalize each letter.
 
 **Since:** 20
+
+<!--Device-CapitalizeMode-CHARACTERS--><!--Device-CapitalizeMode-CHARACTERS-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

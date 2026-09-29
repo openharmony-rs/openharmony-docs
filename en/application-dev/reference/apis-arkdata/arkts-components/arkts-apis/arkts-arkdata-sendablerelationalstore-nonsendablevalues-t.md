@@ -8,6 +8,8 @@ Represents the [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) array t
 
 **Since:** 20
 
+<!--Device-sendableRelationalStore-type NonSendableValues = Array<relationalStore.ValueType>--><!--Device-sendableRelationalStore-type NonSendableValues = Array<relationalStore.ValueType>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Type:** Array&lt;[relationalStore.ValueType](arkts-arkdata-relationalstore-valuetype-t.md)&gt;

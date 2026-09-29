@@ -14,6 +14,8 @@ declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVa
 
 **卡片能力：** 从API版本26.0.1开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation--><!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.graphics.text').default.FontVariation

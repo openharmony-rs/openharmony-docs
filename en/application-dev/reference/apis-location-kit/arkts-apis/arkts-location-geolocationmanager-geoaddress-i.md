@@ -8,6 +8,8 @@ Data struct describes geographic locations.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface GeoAddress--><!--Device-geoLocationManager-export interface GeoAddress-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Indicates website URL.
 
 **Since:** 9
 
+<!--Device-GeoAddress-addressUrl?: string--><!--Device-GeoAddress-addressUrl?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## administrativeArea
@@ -41,6 +45,8 @@ Indicates administrative region name.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-administrativeArea?: string--><!--Device-GeoAddress-administrativeArea?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -56,6 +62,8 @@ Indicates country code.
 
 **Since:** 9
 
+<!--Device-GeoAddress-countryCode?: string--><!--Device-GeoAddress-countryCode?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## countryName
@@ -69,6 +77,8 @@ Indicates country name.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-countryName?: string--><!--Device-GeoAddress-countryName?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -84,6 +94,8 @@ Indicates additional information.
 
 **Since:** 9
 
+<!--Device-GeoAddress-descriptions?: Array<string>--><!--Device-GeoAddress-descriptions?: Array<string>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## descriptionsSize
@@ -97,6 +109,8 @@ Indicates the amount of additional descriptive information.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-GeoAddress-descriptionsSize?: int--><!--Device-GeoAddress-descriptionsSize?: int-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -112,6 +126,8 @@ Indicates latitude information. A positive value indicates north latitude, and a
 
 **Since:** 9
 
+<!--Device-GeoAddress-latitude?: double--><!--Device-GeoAddress-latitude?: double-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## locale
@@ -125,6 +141,8 @@ Indicates language used for the location description. zh indicates Chinese, and 
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-locale?: string--><!--Device-GeoAddress-locale?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -140,6 +158,8 @@ Indicates locality information.
 
 **Since:** 9
 
+<!--Device-GeoAddress-locality?: string--><!--Device-GeoAddress-locality?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## longitude
@@ -153,6 +173,8 @@ Indicates longitude information. A positive value indicates east longitude , and
 **Type:** number
 
 **Since:** 9
+
+<!--Device-GeoAddress-longitude?: double--><!--Device-GeoAddress-longitude?: double-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -168,6 +190,8 @@ Indicates phone number.
 
 **Since:** 9
 
+<!--Device-GeoAddress-phoneNumber?: string--><!--Device-GeoAddress-phoneNumber?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## placeName
@@ -181,6 +205,8 @@ Indicates detailed address information.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-placeName?: string--><!--Device-GeoAddress-placeName?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -196,6 +222,8 @@ Indicates postal code.
 
 **Since:** 9
 
+<!--Device-GeoAddress-postalCode?: string--><!--Device-GeoAddress-postalCode?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## premises
@@ -209,6 +237,8 @@ Indicates house information.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-premises?: string--><!--Device-GeoAddress-premises?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -224,6 +254,8 @@ Indicates road name.
 
 **Since:** 9
 
+<!--Device-GeoAddress-roadName?: string--><!--Device-GeoAddress-roadName?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## subAdministrativeArea
@@ -237,6 +269,8 @@ Indicates sub-administrative region name.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-subAdministrativeArea?: string--><!--Device-GeoAddress-subAdministrativeArea?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -252,6 +286,8 @@ Indicates sub-locality information.
 
 **Since:** 9
 
+<!--Device-GeoAddress-subLocality?: string--><!--Device-GeoAddress-subLocality?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## subRoadName
@@ -265,5 +301,7 @@ Indicates auxiliary road information.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-GeoAddress-subRoadName?: string--><!--Device-GeoAddress-subRoadName?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder

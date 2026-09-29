@@ -12,6 +12,8 @@ Defines the style of the navigation indicator.
 
 **Substitutes:** [Indicator](arkts-arkui-swiper-comp-indicator-c.md)
 
+<!--Device-unnamed-declare interface IndicatorStyle--><!--Device-unnamed-declare interface IndicatorStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -38,6 +40,8 @@ Value range: [0, Swiper height - Navigation indicator area height]. Values outsi
 
 **Substitutes:** bottom
 
+<!--Device-IndicatorStyle-bottom?: Length--><!--Device-IndicatorStyle-bottom?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -57,6 +61,8 @@ Default value: **'#1A182431'** (light gray)
 **Deprecated since:** 10
 
 **Substitutes:** [color](arkts-arkui-swiper-comp-dotindicator-c.md#color)
+
+<!--Device-IndicatorStyle-color?: ResourceColor--><!--Device-IndicatorStyle-color?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ Value range: [0, Swiper width - Navigation indicator area width]. Values outside
 
 **Substitutes:** left
 
+<!--Device-IndicatorStyle-left?: Length--><!--Device-IndicatorStyle-left?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mask
@@ -105,6 +113,8 @@ Default value: **false**.
 **Deprecated since:** 10
 
 **Substitutes:** [mask](arkts-arkui-swiper-comp-dotindicator-c.md#mask)
+
+<!--Device-IndicatorStyle-mask?: boolean--><!--Device-IndicatorStyle-mask?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,6 +142,8 @@ Value range: [0, Swiper width - Navigation indicator area width]. Values outside
 
 **Substitutes:** right
 
+<!--Device-IndicatorStyle-right?: Length--><!--Device-IndicatorStyle-right?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedColor
@@ -152,6 +164,8 @@ Default value: **'#007DFF'** (blue)
 
 **Substitutes:** selectColor
 
+<!--Device-IndicatorStyle-selectedColor?: ResourceColor--><!--Device-IndicatorStyle-selectedColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -171,6 +185,8 @@ Default value: **6vp**
 **Deprecated since:** 10
 
 **Substitutes:** [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md)
+
+<!--Device-IndicatorStyle-size?: Length--><!--Device-IndicatorStyle-size?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,5 +213,7 @@ Value range: [0, Swiper height - Navigation indicator area height]. Values outsi
 **Deprecated since:** 10
 
 **Substitutes:** top
+
+<!--Device-IndicatorStyle-top?: Length--><!--Device-IndicatorStyle-top?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

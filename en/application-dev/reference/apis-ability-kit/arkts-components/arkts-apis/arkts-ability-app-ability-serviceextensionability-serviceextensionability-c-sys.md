@@ -8,6 +8,8 @@ The ServiceExtensionAbility module provides extended capabilities for background
 
 **Since:** 9
 
+<!--Device-unnamed-declare class ServiceExtensionAbility--><!--Device-unnamed-declare class ServiceExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Called when the configuration of this ServiceExtensionAbility is updated.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionAbility-onConfigurationUpdate(newConfig: Configuration): void--><!--Device-ServiceExtensionAbility-onConfigurationUpdate(newConfig: Configuration): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -63,6 +67,8 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionAbility-onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>--><!--Device-ServiceExtensionAbility-onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -139,6 +145,8 @@ Called to initialize the service logic when a ServiceExtensionAbility is being c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionAbility-onCreate(want: Want): void--><!--Device-ServiceExtensionAbility-onCreate(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -173,6 +181,8 @@ Called to clear resources when this ServiceExtensionAbility is being destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionAbility-onDestroy(): void--><!--Device-ServiceExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -200,6 +210,8 @@ Called when a client is disconnected from this ServiceExtensionAbility. This API
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionAbility-onDisconnect(want: Want): void | Promise<void>--><!--Device-ServiceExtensionAbility-onDisconnect(want: Want): void | Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -250,6 +262,8 @@ Dumps the client information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionAbility-onDump(params: Array<string>): Array<string>--><!--Device-ServiceExtensionAbility-onDump(params: Array<string>): Array<string>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -291,6 +305,8 @@ Called when a new client attempts to connect to this ServiceExtensionAbility aft
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionAbility-onReconnect(want: Want): void--><!--Device-ServiceExtensionAbility-onReconnect(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -324,6 +340,8 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionAbility-onRequest(want: Want, startId: int): void--><!--Device-ServiceExtensionAbility-onRequest(want: Want, startId: int): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -361,6 +379,8 @@ Context of the ServiceExtensionAbility. This context inherits from **ExtensionCo
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionAbility-context: ServiceExtensionContext--><!--Device-ServiceExtensionAbility-context: ServiceExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

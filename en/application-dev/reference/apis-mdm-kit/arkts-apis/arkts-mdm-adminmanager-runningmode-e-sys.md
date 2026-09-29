@@ -8,6 +8,8 @@ Represents the running mode of a device administrator application.
 
 **Since:** 19
 
+<!--Device-adminManager-export enum RunningMode--><!--Device-adminManager-export enum RunningMode-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -22,6 +24,8 @@ Default user running mode, indicating that the application runs under the defaul
 
 **Since:** 19
 
+<!--Device-RunningMode-DEFAULT = 0--><!--Device-RunningMode-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -35,6 +39,8 @@ MULTI_USER = 1
 Multi-user running mode, indicating that the application runs under multiple users at the same time.
 
 **Since:** 19
+
+<!--Device-RunningMode-MULTI_USER = 1--><!--Device-RunningMode-MULTI_USER = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

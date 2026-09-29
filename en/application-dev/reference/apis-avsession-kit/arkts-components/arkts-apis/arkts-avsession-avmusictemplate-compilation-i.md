@@ -12,6 +12,8 @@ The definition of compilation.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface Compilation extends OperResult--><!--Device-avMusicTemplate-interface Compilation extends OperResult-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Having more compilation data
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Compilation-hasMoreData: boolean--><!--Device-Compilation-hasMoreData: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## id
@@ -49,6 +53,8 @@ Unique ID of the compilation
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Compilation-id: string--><!--Device-Compilation-id: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,6 +72,8 @@ Media type of the compilation
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Compilation-memberMediaType: EntityType--><!--Device-Compilation-memberMediaType: EntityType-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## title
@@ -81,6 +89,8 @@ Title of the compilation
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Compilation-title: string--><!--Device-Compilation-title: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -98,6 +108,8 @@ Content of the compilation
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Compilation-topElements: MediaEntity[]--><!--Device-Compilation-topElements: MediaEntity[]-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## totalSize
@@ -113,5 +125,7 @@ Total size of the compilation
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Compilation-totalSize: int--><!--Device-Compilation-totalSize: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

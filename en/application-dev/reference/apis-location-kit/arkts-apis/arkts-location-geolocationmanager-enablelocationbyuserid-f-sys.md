@@ -18,6 +18,8 @@ Turn on the location switch for a specified user.
 
 **Required permissions:** ohos.permission.MANAGE_SECURE_SETTINGS and ohos.permission.CONTROL_LOCATION_SWITCH
 
+<!--Device-geoLocationManager-function enableLocationByUserId(userId: int): Promise<void>--><!--Device-geoLocationManager-function enableLocationByUserId(userId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

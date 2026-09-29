@@ -20,6 +20,8 @@ Sets the connection mode. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function setConnectionMode(mode: ConnectionMode, duration: int): Promise<void>--><!--Device-manager-function setConnectionMode(mode: ConnectionMode, duration: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

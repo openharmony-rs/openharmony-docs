@@ -8,6 +8,8 @@ Program access control management class, providing capabilities such as permissi
 
 **Since:** 8
 
+<!--Device-abilityAccessCtrl-interface AtManager--><!--Device-abilityAccessCtrl-interface AtManager-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the flags of a specified permission for a specified app. This API uses a
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS or ohos.permission.GRANT_SENSITIVE_PERMISSIONS or ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-getPermissionFlags(tokenID: int, permissionName: Permissions): Promise<int>--><!--Device-AtManager-getPermissionFlags(tokenID: int, permissionName: Permissions): Promise<int>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -88,6 +92,8 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-getPermissionRequestToggleStatus(permissionName: Permissions): Promise<PermissionRequestToggleStatus>--><!--Device-AtManager-getPermissionRequestToggleStatus(permissionName: Permissions): Promise<PermissionRequestToggleStatus>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -155,6 +161,8 @@ Obtains the permission dialog toggle status for a specified permission under a s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtManager-getPermissionRequestToggleStatus(      permissionName: Permissions,      subProfileId: int): Promise<PermissionRequestToggleStatus>--><!--Device-AtManager-getPermissionRequestToggleStatus(      permissionName: Permissions,      subProfileId: int): Promise<PermissionRequestToggleStatus>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -201,6 +209,8 @@ Obtains the status of the specified permissions. This API uses a promise to retu
 **Required permissions:** ohos.permission.GET_SENSITIVE_PERMISSIONS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-getPermissionsStatus(tokenID: int, permissionList: Array<Permissions>): Promise<Array<PermissionStatus>>--><!--Device-AtManager-getPermissionsStatus(tokenID: int, permissionList: Array<Permissions>): Promise<Array<PermissionStatus>>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -257,6 +267,8 @@ Obtains the data version number of the current permission management. This API u
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-getVersion(): Promise<int>--><!--Device-AtManager-getVersion(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -301,6 +313,8 @@ Grants an app permission. After the call is successful, the specified app obtain
 **Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-grantPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise<void>--><!--Device-AtManager-grantPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -364,6 +378,8 @@ This API only supports granting permissions of the user_grant type. If you need 
 **Required permissions:** ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-grantUserGrantedPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise<void>--><!--Device-AtManager-grantUserGrantedPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -433,6 +449,8 @@ Grants a user_grant permission to an app. This API uses an asynchronous callback
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-grantUserGrantedPermission(        tokenID: int,        permissionName: Permissions,        permissionFlags: int,        callback: AsyncCallback<void>    ): void--><!--Device-AtManager-grantUserGrantedPermission(        tokenID: int,        permissionName: Permissions,        permissionFlags: int,        callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -500,6 +518,8 @@ This API is usually used together with [on](#onpermissionstatechange) to cancel 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-off(      type: 'permissionStateChange',      tokenIDList: Array<int>,      permissionList: Array<Permissions>,      callback?: Callback<PermissionStateChangeInfo>    ): void--><!--Device-AtManager-off(      type: 'permissionStateChange',      tokenIDList: Array<int>,      permissionList: Array<Permissions>,      callback?: Callback<PermissionStateChangeInfo>    ): void-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -566,6 +586,8 @@ This API is usually used together with [off](#offpermissionstatechange). When li
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-on(      type: 'permissionStateChange',      tokenIDList: Array<int>,      permissionList: Array<Permissions>,      callback: Callback<PermissionStateChangeInfo>    ): void--><!--Device-AtManager-on(      type: 'permissionStateChange',      tokenIDList: Array<int>,      permissionList: Array<Permissions>,      callback: Callback<PermissionStateChangeInfo>    ): void-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -628,6 +650,8 @@ Queries all apps that have requested the specified permissions and their permiss
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtManager-queryStatusByPermission(      permissionList: Array<Permissions>): Promise<Array<PermissionStatusInfo>>--><!--Device-AtManager-queryStatusByPermission(      permissionList: Array<Permissions>): Promise<Array<PermissionStatusInfo>>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -684,6 +708,8 @@ Queries all permission statuses of an app based on its tokenID list. This API us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtManager-queryStatusByTokenID(tokenIDList: Array<int>): Promise<Array<PermissionStatusInfo>>--><!--Device-AtManager-queryStatusByTokenID(tokenIDList: Array<int>): Promise<Array<PermissionStatusInfo>>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -738,6 +764,8 @@ Starts the permission settings page for an application. This API uses a promise 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtManager-requestPermissionOnApplicationSetting(tokenID: int): Promise<void>--><!--Device-AtManager-requestPermissionOnApplicationSetting(tokenID: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -797,6 +825,8 @@ If the user denies authorization, the dialog cannot be pulled up again. Permissi
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtManager-requestPermissionsFromUserWithWindowId(        context: Context,        windowId: int,        permissionList: Array<Permissions>) : Promise<PermissionRequestResult>--><!--Device-AtManager-requestPermissionsFromUserWithWindowId(        context: Context,        windowId: int,        permissionList: Array<Permissions>) : Promise<PermissionRequestResult>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -869,6 +899,8 @@ When the killProcess parameter is true and the permission status changes from "a
 **Required permissions:** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-revokePermission(      tokenID: int,      permissionName: Permissions,      permissionFlags: int,      killProcess?: boolean): Promise<void>--><!--Device-AtManager-revokePermission(      tokenID: int,      permissionName: Permissions,      permissionFlags: int,      killProcess?: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -943,6 +975,8 @@ When the permission status changes from "authorized" to "unauthorized", the app 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-revokeUserGrantedPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise<void>--><!--Device-AtManager-revokeUserGrantedPermission(tokenID: int, permissionName: Permissions, permissionFlags: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -1011,6 +1045,8 @@ Revokes a user_grant permission from an app. This API uses an asynchronous callb
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-revokeUserGrantedPermission(        tokenID: int,        permissionName: Permissions,        permissionFlags: int,        callback: AsyncCallback<void>    ): void--><!--Device-AtManager-revokeUserGrantedPermission(        tokenID: int,        permissionName: Permissions,        permissionFlags: int,        callback: AsyncCallback<void>    ): void-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -1068,6 +1104,8 @@ Sets the dialog toggle status for a specified permission of the current user. Af
 **Required permissions:** ohos.permission.DISABLE_PERMISSION_DIALOG
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-setPermissionRequestToggleStatus(permissionName: Permissions, status: PermissionRequestToggleStatus): Promise<void>--><!--Device-AtManager-setPermissionRequestToggleStatus(permissionName: Permissions, status: PermissionRequestToggleStatus): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -1133,6 +1171,8 @@ Sets the dialog toggle status for a specified permission under a specified sub-p
 **Required permissions:** ohos.permission.DISABLE_PERMISSION_DIALOG
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AtManager-setPermissionRequestToggleStatus(      permissionName: Permissions,      status: PermissionRequestToggleStatus,      subProfileId: int): Promise<void>--><!--Device-AtManager-setPermissionRequestToggleStatus(      permissionName: Permissions,      status: PermissionRequestToggleStatus,      subProfileId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

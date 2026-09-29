@@ -18,6 +18,8 @@ Mounts a volume. This API uses an asynchronous callback to return the result. Cu
 
 **Required permissions:** ohos.permission.MOUNT_UNMOUNT_MANAGER
 
+<!--Device-volumeManager-function mount(volumeId: string, callback: AsyncCallback<void>): void--><!--Device-volumeManager-function mount(volumeId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Mounts a volume. This API uses a promise to return the result. Currently, only t
 **Since:** 9
 
 **Required permissions:** ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+<!--Device-volumeManager-function mount(volumeId: string): Promise<void>--><!--Device-volumeManager-function mount(volumeId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

@@ -8,6 +8,8 @@ Represents information about the download progress of a cloud file.
 
 **Since:** 11
 
+<!--Device-cloudSync-interface DownloadProgress--><!--Device-cloudSync-interface DownloadProgress-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Download error type.
 
 **Since:** 11
 
+<!--Device-DownloadProgress-error: DownloadErrorType--><!--Device-DownloadProgress-error: DownloadErrorType-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## processed
@@ -41,6 +45,8 @@ Size of the downloaded data, in bytes. The value range is [0, 922337203685477580
 **Type:** number
 
 **Since:** 11
+
+<!--Device-DownloadProgress-processed: long--><!--Device-DownloadProgress-processed: long-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -56,6 +62,8 @@ Size of the cloud file, in bytes. The value range is [0, 9223372036854775807].
 
 **Since:** 11
 
+<!--Device-DownloadProgress-size: long--><!--Device-DownloadProgress-size: long-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## state
@@ -70,6 +78,8 @@ File download state.
 
 **Since:** 11
 
+<!--Device-DownloadProgress-state: State--><!--Device-DownloadProgress-state: State-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## uri
@@ -83,5 +93,7 @@ URI of the cloud file.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-DownloadProgress-uri: string--><!--Device-DownloadProgress-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

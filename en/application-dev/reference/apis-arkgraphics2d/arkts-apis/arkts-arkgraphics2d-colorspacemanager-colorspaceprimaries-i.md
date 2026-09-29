@@ -8,6 +8,8 @@ The three primary colors (red, green, blue) and white as defined by the color sp
 
 **Since:** 9
 
+<!--Device-colorSpaceManager-interface ColorSpacePrimaries--><!--Device-colorSpaceManager-interface ColorSpacePrimaries-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ X coordinate of the blue color in the color space.
 
 **Since:** 9
 
+<!--Device-ColorSpacePrimaries-blueX: double--><!--Device-ColorSpacePrimaries-blueX: double-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## blueY
@@ -41,6 +45,8 @@ Y coordinate of the blue color in the color space.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ColorSpacePrimaries-blueY: double--><!--Device-ColorSpacePrimaries-blueY: double-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -56,6 +62,8 @@ X coordinate of the green color in the color space.
 
 **Since:** 9
 
+<!--Device-ColorSpacePrimaries-greenX: double--><!--Device-ColorSpacePrimaries-greenX: double-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## greenY
@@ -69,6 +77,8 @@ Y coordinate of the green color in the color space.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ColorSpacePrimaries-greenY: double--><!--Device-ColorSpacePrimaries-greenY: double-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -84,6 +94,8 @@ X coordinate of the red color in the color space.
 
 **Since:** 9
 
+<!--Device-ColorSpacePrimaries-redX: double--><!--Device-ColorSpacePrimaries-redX: double-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## redY
@@ -97,6 +109,8 @@ Y coordinate of the red color in the color space.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ColorSpacePrimaries-redY: double--><!--Device-ColorSpacePrimaries-redY: double-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -112,6 +126,8 @@ X coordinate of the white point in the color space.
 
 **Since:** 9
 
+<!--Device-ColorSpacePrimaries-whitePointX: double--><!--Device-ColorSpacePrimaries-whitePointX: double-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## whitePointY
@@ -125,5 +141,7 @@ Y coordinate of the white point in the color space.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ColorSpacePrimaries-whitePointY: double--><!--Device-ColorSpacePrimaries-whitePointY: double-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core

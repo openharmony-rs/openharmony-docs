@@ -8,6 +8,8 @@ Describes the text shadow style.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class TextShadowStyle--><!--Device-unnamed-declare class TextShadowStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -25,6 +27,8 @@ The **ShadowOptions** object does not support the **fill** field.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextShadowStyle-constructor(value: ShadowOptions | Array<ShadowOptions>)--><!--Device-TextShadowStyle-constructor(value: ShadowOptions | Array<ShadowOptions>)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ Text shadow of the styled string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextShadowStyle-readonly textShadow: Array<ShadowOptions>--><!--Device-TextShadowStyle-readonly textShadow: Array<ShadowOptions>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

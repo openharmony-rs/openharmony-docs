@@ -26,6 +26,8 @@ This module provides Wi-Fi management capabilities for enterprise devices, inclu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace wifiManager--><!--Device-unnamed-declare namespace wifiManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

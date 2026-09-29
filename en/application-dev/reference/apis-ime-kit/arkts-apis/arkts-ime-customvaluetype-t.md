@@ -8,6 +8,8 @@ Represents the extension information type. The specific type of the parameter de
 
 **Since:** 22
 
+<!--Device-unnamed-export type CustomValueType = int | string | boolean--><!--Device-unnamed-export type CustomValueType = int | string | boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 | Type | Description |

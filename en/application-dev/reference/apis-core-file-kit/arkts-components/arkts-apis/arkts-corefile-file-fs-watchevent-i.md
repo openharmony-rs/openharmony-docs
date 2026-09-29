@@ -8,6 +8,8 @@ Defines the event to observe.
 
 **Since:** 10
 
+<!--Device-unnamed-export interface WatchEvent--><!--Device-unnamed-export interface WatchEvent-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Currently, only the **IN_MOVED_FROM** and **IN_MOVED_TO** events are supported. 
 
 **Since:** 10
 
+<!--Device-WatchEvent-readonly cookie: number--><!--Device-WatchEvent-readonly cookie: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## event
@@ -44,6 +48,8 @@ Events to observe. Multiple events can be separated by vertical bars (
 
 **Since:** 10
 
+<!--Device-WatchEvent-readonly event: number--><!--Device-WatchEvent-readonly event: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## fileName
@@ -57,5 +63,7 @@ Sandbox path of the file to observe. The sandbox path contains the file name.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-WatchEvent-readonly fileName: string--><!--Device-WatchEvent-readonly fileName: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

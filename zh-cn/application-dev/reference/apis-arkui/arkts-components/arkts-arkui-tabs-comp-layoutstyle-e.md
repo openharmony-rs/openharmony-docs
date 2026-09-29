@@ -8,6 +8,8 @@ declare enum LayoutStyle
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum LayoutStyle--><!--Device-unnamed-declare enum LayoutStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_CENTER
@@ -26,6 +28,8 @@ ALWAYS_CENTER = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-LayoutStyle-ALWAYS_CENTER = 0--><!--Device-LayoutStyle-ALWAYS_CENTER = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_AVERAGE_SPLIT
@@ -43,6 +47,8 @@ ALWAYS_AVERAGE_SPLIT = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutStyle-ALWAYS_AVERAGE_SPLIT = 1--><!--Device-LayoutStyle-ALWAYS_AVERAGE_SPLIT = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,5 +69,7 @@ SPACE_BETWEEN_OR_CENTER = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutStyle-SPACE_BETWEEN_OR_CENTER = 2--><!--Device-LayoutStyle-SPACE_BETWEEN_OR_CENTER = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

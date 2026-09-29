@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 19
 
+<!--Device-unnamed-declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>--><!--Device-unnamed-declare class LazyVGridLayoutAttribute extends LazyGridLayoutAttribute<LazyVGridLayoutAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## columnsTemplate
@@ -42,6 +44,8 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-LazyVGridLayoutAttribute-columnsTemplate(value: string): LazyVGridLayoutAttribute--><!--Device-LazyVGridLayoutAttribute-columnsTemplate(value: string): LazyVGridLayoutAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -71,6 +75,8 @@ For example, the **ItemFillPolicy.BREAKPOINT_DEFAULT** component displays two co
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-LazyVGridLayoutAttribute-columnsTemplate(template: string | ItemFillPolicy): LazyVGridLayoutAttribute--><!--Device-LazyVGridLayoutAttribute-columnsTemplate(template: string | ItemFillPolicy): LazyVGridLayoutAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

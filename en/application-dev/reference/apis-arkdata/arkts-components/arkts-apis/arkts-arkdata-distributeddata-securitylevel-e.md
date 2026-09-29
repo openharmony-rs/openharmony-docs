@@ -12,6 +12,8 @@ Enumerates the KV store security levels.
 
 **Substitutes:** SecurityLevel
 
+<!--Device-distributedData-enum SecurityLevel--><!--Device-distributedData-enum SecurityLevel-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## NO_LEVEL
@@ -26,6 +28,8 @@ No security level is set for the KV store (deprecated).
 
 **Deprecated since:** 9
 
+<!--Device-SecurityLevel-NO_LEVEL = 0--><!--Device-SecurityLevel-NO_LEVEL = 0-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## S0
@@ -39,6 +43,8 @@ The KV store security level is public (deprecated).
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-SecurityLevel-S0 = 1--><!--Device-SecurityLevel-S0 = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -56,6 +62,8 @@ Low security level. If data leakage occurs, minor impact will be caused. For exa
 
 **Substitutes:** S1
 
+<!--Device-SecurityLevel-S1 = 2--><!--Device-SecurityLevel-S1 = 2-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## S2
@@ -71,6 +79,8 @@ Medium security level. If data leakage occurs, moderate impact will be caused. F
 **Deprecated since:** 9
 
 **Substitutes:** S2
+
+<!--Device-SecurityLevel-S2 = 3--><!--Device-SecurityLevel-S2 = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -88,6 +98,8 @@ High security level. If data leakage occurs, major impact will be caused. For ex
 
 **Substitutes:** S3
 
+<!--Device-SecurityLevel-S3 = 5--><!--Device-SecurityLevel-S3 = 5-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## S4
@@ -103,5 +115,7 @@ Critical security level. If data leakage occurs, severe impact will be caused. F
 **Deprecated since:** 9
 
 **Substitutes:** S4
+
+<!--Device-SecurityLevel-S4 = 6--><!--Device-SecurityLevel-S4 = 6-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

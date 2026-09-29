@@ -18,6 +18,8 @@ Obtaining the MAC address of the local device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_LOCAL_MAC
 
+<!--Device-access-function getLocalAddress(): string--><!--Device-access-function getLocalAddress(): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

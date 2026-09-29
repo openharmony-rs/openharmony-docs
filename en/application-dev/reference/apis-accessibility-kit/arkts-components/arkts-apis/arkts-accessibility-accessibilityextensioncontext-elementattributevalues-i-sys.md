@@ -8,6 +8,8 @@ Provides attribute names and value types of a node element.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ElementAttributeValues--><!--Device-unnamed-export interface ElementAttributeValues-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## accessibilityStateDescription
@@ -23,6 +25,8 @@ Custom accessibility status announcement text information of the element.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-accessibilityStateDescription?: string--><!--Device-ElementAttributeValues-accessibilityStateDescription?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -42,6 +46,8 @@ Whether the element is accessibility visible. The value **true** means the eleme
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ElementAttributeValues-accessibilityVisible?: boolean--><!--Device-ElementAttributeValues-accessibilityVisible?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ ID of the component tree to which the element belongs. The default value is **-1
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-belongTreeId?: int--><!--Device-ElementAttributeValues-belongTreeId?: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -78,6 +86,8 @@ List of child component IDs of the element.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ElementAttributeValues-childrenIds?: Array<long>--><!--Device-ElementAttributeValues-childrenIds?: Array<long>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -95,6 +105,8 @@ ID of the child component tree of the element. The default value is **-1**.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-childrenTreeId?: int--><!--Device-ElementAttributeValues-childrenTreeId?: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -114,6 +126,8 @@ Current item in the component grid.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ElementAttributeValues-currentItem?: AccessibilityGrid--><!--Device-ElementAttributeValues-currentItem?: AccessibilityGrid-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -131,6 +145,8 @@ List of custom actions supported by the element.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-customActions?: Array<string>--><!--Device-ElementAttributeValues-customActions?: Array<string>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -150,6 +166,8 @@ Whether the element is essential to the user. The value **true** means the eleme
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ElementAttributeValues-isEssential?: boolean--><!--Device-ElementAttributeValues-isEssential?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -167,6 +185,8 @@ ID of the main window of the element. The default value is **-1**.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-mainWindowId?: int--><!--Device-ElementAttributeValues-mainWindowId?: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -186,6 +206,8 @@ ID of the navigation destination associated with the element. The default value 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ElementAttributeValues-navDestinationId?: long--><!--Device-ElementAttributeValues-navDestinationId?: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -203,6 +225,8 @@ ID of the parent component of the element. The default value is **-1**.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-parentId?: long--><!--Device-ElementAttributeValues-parentId?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -222,6 +246,8 @@ Source type of the component, used to distinguish default components from newly 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ElementAttributeValues-sourceType?: AccessibilitySourceType--><!--Device-ElementAttributeValues-sourceType?: AccessibilitySourceType-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -239,6 +265,8 @@ Array of hyperlink text information of the element.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ElementAttributeValues-span?: AccessibilitySpan[]--><!--Device-ElementAttributeValues-span?: AccessibilitySpan[]-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

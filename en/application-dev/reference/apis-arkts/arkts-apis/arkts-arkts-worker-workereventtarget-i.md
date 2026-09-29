@@ -8,6 +8,8 @@ Processes worker listening events.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface WorkerEventTarget--><!--Device-unnamed-export interface WorkerEventTarget-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Adds an event listener for the Worker thread. This API provides the same functio
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WorkerEventTarget-addEventListener(type: string, listener: WorkerEventListener): void--><!--Device-WorkerEventTarget-addEventListener(type: string, listener: WorkerEventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -70,6 +74,8 @@ Dispatches the event defined for the Worker thread.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WorkerEventTarget-dispatchEvent(event: Event): boolean--><!--Device-WorkerEventTarget-dispatchEvent(event: Event): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -120,6 +126,8 @@ Removes all event listeners for the Worker thread.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WorkerEventTarget-removeAllListener(): void--><!--Device-WorkerEventTarget-removeAllListener(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -156,6 +164,8 @@ Removes an event listener for the Worker thread. This API provides the same func
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WorkerEventTarget-removeEventListener(type: string, callback?: WorkerEventListener): void--><!--Device-WorkerEventTarget-removeEventListener(type: string, callback?: WorkerEventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

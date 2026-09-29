@@ -12,6 +12,8 @@ All data operation types.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type DataOperation =  DataAddOperation | DataDeleteOperation | DataChangeOperation | DataMoveOperation | DataExchangeOperation | DataReloadOperation--><!--Device-unnamed-declare type DataOperation =  DataAddOperation | DataDeleteOperation | DataChangeOperation | DataMoveOperation | DataExchangeOperation | DataReloadOperation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

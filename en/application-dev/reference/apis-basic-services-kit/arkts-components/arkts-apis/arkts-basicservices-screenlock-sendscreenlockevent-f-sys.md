@@ -18,6 +18,8 @@ The screen lock app sends the event to the screen lock service.
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK_INNER
 
+<!--Device-screenLock-function sendScreenLockEvent(event: String, parameter: int, callback: AsyncCallback<boolean>): void--><!--Device-screenLock-function sendScreenLockEvent(event: String, parameter: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ The screen lock app sends the event to the screen lock service.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK_INNER
+
+<!--Device-screenLock-function sendScreenLockEvent(event: String, parameter: int): Promise<boolean>--><!--Device-screenLock-function sendScreenLockEvent(event: String, parameter: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

@@ -20,6 +20,8 @@ Register the form host service info.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function registerFormHostService(service: formInfo.FormHostServiceInfo): Promise<string>--><!--Device-formHost-function registerFormHostService(service: formInfo.FormHostServiceInfo): Promise<string>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

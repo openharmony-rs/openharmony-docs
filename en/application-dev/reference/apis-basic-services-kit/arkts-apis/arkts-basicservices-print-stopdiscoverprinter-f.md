@@ -20,6 +20,8 @@ Stops discovering printers. This API uses an asynchronous callback to return the
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 - API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function stopDiscoverPrinter(callback: AsyncCallback<void>): void--><!--Device-print-function stopDiscoverPrinter(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -66,6 +68,8 @@ Stops discovering printers. This API uses a promise to return the result.
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
 - API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function stopDiscoverPrinter(): Promise<void>--><!--Device-print-function stopDiscoverPrinter(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

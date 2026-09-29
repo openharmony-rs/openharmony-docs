@@ -6,9 +6,11 @@ declare class NavigationAttribute extends CommonMethod<NavigationAttribute>
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** NavigationAttribute extends CommonMethod&lt;NavigationAttribute&gt;
+**继承/实现关系：** NavigationAttribute extends CommonMethod<NavigationAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class NavigationAttribute extends CommonMethod<NavigationAttribute>--><!--Device-unnamed-declare class NavigationAttribute extends CommonMethod<NavigationAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier): NavigationAttribute--><!--Device-NavigationAttribute-backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessibilityText?: ResourceStr): NavigationAttribute--><!--Device-NavigationAttribute-backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessibilityText?: ResourceStr): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,6 +92,8 @@ configuration(config: NavigationConfiguration)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-configuration(config: NavigationConfiguration): NavigationAttribute--><!--Device-NavigationAttribute-configuration(config: NavigationConfiguration): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +122,8 @@ customNavContentTransition(delegate: (from: NavContentInfo, to: NavContentInfo, 
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-customNavContentTransition(delegate: (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation)    => NavigationAnimatedTransition | undefined): NavigationAttribute--><!--Device-NavigationAttribute-customNavContentTransition(delegate: (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation)    => NavigationAnimatedTransition | undefined): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -135,6 +145,8 @@ divider(style: NavigationDividerStyle | null)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-divider(style: NavigationDividerStyle | null): NavigationAttribute--><!--Device-NavigationAttribute-divider(style: NavigationDividerStyle | null): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +170,8 @@ enableDragBar(isEnabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-enableDragBar(isEnabled: Optional<boolean>): NavigationAttribute--><!--Device-NavigationAttribute-enableDragBar(isEnabled: Optional<boolean>): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -180,6 +194,8 @@ enableModeChangeAnimation(isEnabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-enableModeChangeAnimation(isEnabled: Optional<boolean>): NavigationAttribute--><!--Device-NavigationAttribute-enableModeChangeAnimation(isEnabled: Optional<boolean>): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -201,6 +217,8 @@ enableToolBarAdaptation(enable: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-enableToolBarAdaptation(enable: Optional<boolean>): NavigationAttribute--><!--Device-NavigationAttribute-enableToolBarAdaptation(enable: Optional<boolean>): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -228,6 +246,8 @@ enableVisibilityLifecycleWithContentCover(isEnabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-enableVisibilityLifecycleWithContentCover(isEnabled: Optional<boolean>): NavigationAttribute--><!--Device-NavigationAttribute-enableVisibilityLifecycleWithContentCover(isEnabled: Optional<boolean>): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -247,6 +267,8 @@ hideBackButton(value: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-hideBackButton(value: boolean): NavigationAttribute--><!--Device-NavigationAttribute-hideBackButton(value: boolean): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -270,6 +292,8 @@ hideNavBar(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-hideNavBar(value: boolean): NavigationAttribute--><!--Device-NavigationAttribute-hideNavBar(value: boolean): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -289,6 +313,8 @@ hideTitleBar(value: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-hideTitleBar(value: boolean): NavigationAttribute--><!--Device-NavigationAttribute-hideTitleBar(value: boolean): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +340,8 @@ hideTitleBar(hide: boolean, animated: boolean)
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-hideTitleBar(hide: boolean, animated: boolean): NavigationAttribute--><!--Device-NavigationAttribute-hideTitleBar(hide: boolean, animated: boolean): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -334,6 +362,8 @@ hideToolBar(value: boolean)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-hideToolBar(value: boolean): NavigationAttribute--><!--Device-NavigationAttribute-hideToolBar(value: boolean): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,6 +388,8 @@ hideToolBar(hide: boolean, animated: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-hideToolBar(hide: boolean, animated: boolean): NavigationAttribute--><!--Device-NavigationAttribute-hideToolBar(hide: boolean, animated: boolean): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +424,8 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): NavigationAttribute--><!--Device-NavigationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -412,6 +446,8 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-menus(value: Array<NavigationMenuItem> | CustomBuilder): NavigationAttribute--><!--Device-NavigationAttribute-menus(value: Array<NavigationMenuItem> | CustomBuilder): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -441,6 +477,8 @@ menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenu
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions): NavigationAttribute--><!--Device-NavigationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -464,6 +502,8 @@ minContentWidth(value: Dimension)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-minContentWidth(value: Dimension): NavigationAttribute--><!--Device-NavigationAttribute-minContentWidth(value: Dimension): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -484,6 +524,8 @@ mode(value: NavigationMode)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-mode(value: NavigationMode): NavigationAttribute--><!--Device-NavigationAttribute-mode(value: NavigationMode): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -503,6 +545,8 @@ navBarPosition(value: NavBarPosition)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-navBarPosition(value: NavBarPosition): NavigationAttribute--><!--Device-NavigationAttribute-navBarPosition(value: NavBarPosition): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -525,6 +569,8 @@ navBarWidth(value: Length)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-navBarWidth(value: Length): NavigationAttribute--><!--Device-NavigationAttribute-navBarWidth(value: Length): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,6 +604,8 @@ navBarWidthRange(value: [Dimension, Dimension])
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-navBarWidthRange(value: [Dimension, Dimension]): NavigationAttribute--><!--Device-NavigationAttribute-navBarWidthRange(value: [Dimension, Dimension]): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -580,6 +628,8 @@ navDestination(builder: (name: string, param: unknown) => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-navDestination(builder: (name: string, param: unknown) => void): NavigationAttribute--><!--Device-NavigationAttribute-navDestination(builder: (name: string, param: unknown) => void): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -599,6 +649,8 @@ onNavBarStateChange(callback: (isVisible: boolean) => void)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-onNavBarStateChange(callback: (isVisible: boolean) => void): NavigationAttribute--><!--Device-NavigationAttribute-onNavBarStateChange(callback: (isVisible: boolean) => void): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -622,6 +674,8 @@ onNavigationModeChange(callback: (mode: NavigationMode) => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-onNavigationModeChange(callback: (mode: NavigationMode) => void): NavigationAttribute--><!--Device-NavigationAttribute-onNavigationModeChange(callback: (mode: NavigationMode) => void): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -641,6 +695,8 @@ onTitleModeChange(callback: (titleMode: NavigationTitleMode) => void)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-onTitleModeChange(callback: (titleMode: NavigationTitleMode) => void): NavigationAttribute--><!--Device-NavigationAttribute-onTitleModeChange(callback: (titleMode: NavigationTitleMode) => void): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -666,11 +722,13 @@ recoverable(recoverable: Optional<boolean>)
 > 
 > 3. 恢复的过程中不可序列化的信息，例如不可序列化的参数与用户设置的onPop等，会被丢弃，无法恢复。
 > 
-> 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考示例18。
+> 4. 当应用退到后台，因系统资源不足等原因被系统终止后，如果某页面已配置为可恢复，当应用再次被唤醒至前台时，系统将自动恢复该页面。详细说明请参考[UIAbility备份恢复](../../../application-models/ability-recover-guideline.md)，详细使用请参考[示例18](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例18设置navigation可恢复)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NavigationAttribute-recoverable(recoverable: Optional<boolean>): NavigationAttribute--><!--Device-NavigationAttribute-recoverable(recoverable: Optional<boolean>): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -693,6 +751,8 @@ Navigation双栏模式下，支持设置右侧页面显示默认占位页，占�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-splitPlaceholder(placeholder: ComponentContent): NavigationAttribute--><!--Device-NavigationAttribute-splitPlaceholder(placeholder: ComponentContent): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -740,6 +800,8 @@ systemBarStyle(style: Optional<SystemBarStyle>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-systemBarStyle(style: Optional<SystemBarStyle>): NavigationAttribute--><!--Device-NavigationAttribute-systemBarStyle(style: Optional<SystemBarStyle>): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -764,6 +826,8 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute--><!--Device-NavigationAttribute-title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -784,6 +848,8 @@ titleMode(value: NavigationTitleMode)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationAttribute-titleMode(value: NavigationTitleMode): NavigationAttribute--><!--Device-NavigationAttribute-titleMode(value: NavigationTitleMode): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -811,6 +877,8 @@ toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: Naviga
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavigationAttribute-toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavigationAttribute--><!--Device-NavigationAttribute-toolbarConfiguration(value: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavigationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -835,6 +903,8 @@ subTitle(value: string)
 **废弃版本：** 9
 
 **替代接口：** [title](#title)
+
+<!--Device-NavigationAttribute-subTitle(value: string): NavigationAttribute--><!--Device-NavigationAttribute-subTitle(value: string): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -865,6 +935,8 @@ toolBar(value: object | CustomBuilder)
 **废弃版本：** 10
 
 **替代接口：** [toolbarConfiguration](#toolbarconfiguration)
+
+<!--Device-NavigationAttribute-toolBar(value: object | CustomBuilder): NavigationAttribute--><!--Device-NavigationAttribute-toolBar(value: object | CustomBuilder): NavigationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

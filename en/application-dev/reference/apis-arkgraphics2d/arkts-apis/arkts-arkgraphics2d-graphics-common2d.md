@@ -8,6 +8,8 @@ This module defines some common data types in the 2D graphics field.
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace common2D--><!--Device-unnamed-declare namespace common2D-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import

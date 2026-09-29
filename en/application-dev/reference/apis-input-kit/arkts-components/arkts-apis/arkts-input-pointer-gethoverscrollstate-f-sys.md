@@ -16,6 +16,8 @@ Obtains the mouse hover scrolling switch state. This API uses an asynchronous ca
 
 **Since:** 10
 
+<!--Device-pointer-function getHoverScrollState(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getHoverScrollState(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getHoverScrollState(): Promise<boolean>
 Obtains the status of the mouse hover scroll switch. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getHoverScrollState(): Promise<boolean>--><!--Device-pointer-function getHoverScrollState(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

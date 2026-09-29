@@ -18,6 +18,8 @@ Obtains the CPU time (in milliseconds) from the time the process starts to the c
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-process-function getPastCpuTime(): number--><!--Device-process-function getPastCpuTime(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**

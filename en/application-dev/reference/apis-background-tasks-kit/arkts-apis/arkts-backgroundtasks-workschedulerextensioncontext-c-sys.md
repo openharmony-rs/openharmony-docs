@@ -12,6 +12,8 @@ This module provides APIs for accessing the resources of a **WorkSchedulerExtens
 
 **Since:** 10
 
+<!--Device-unnamed-declare class WorkSchedulerExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class WorkSchedulerExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 ## startServiceExtensionAbility
@@ -25,6 +27,8 @@ Starts a **ServiceExtensionAbility**. This API uses a promise to return the resu
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WorkSchedulerExtensionContext-startServiceExtensionAbility(want: Want): Promise<void>--><!--Device-WorkSchedulerExtensionContext-startServiceExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -101,6 +105,8 @@ Stops a **ServiceExtensionAbility**. This API uses a promise to return the resul
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WorkSchedulerExtensionContext-stopServiceExtensionAbility(want: Want): Promise<void>--><!--Device-WorkSchedulerExtensionContext-stopServiceExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

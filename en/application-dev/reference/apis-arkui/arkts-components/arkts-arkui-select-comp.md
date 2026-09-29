@@ -2,7 +2,7 @@
 
 The **Select** component provides a drop-down menu that allows users to select among multiple options.
 
-> **NOTE**
+> **NOTE:** 
 
 ## Child Components
 
@@ -14,11 +14,15 @@ Not supported
 Select(options: Array<SelectOption>)
 ```
 
+Creates the Select component.
+
 **Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectInterface-(options: Array<SelectOption>): SelectAttribute--><!--Device-SelectInterface-(options: Array<SelectOption>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +46,7 @@ Select(options: Array<SelectOption>)
 
 | Name | Description |
 | --- | --- |
-| [OnSelectCallback](arkts-arkui-select-comp-onselectcallback-t.md) | Defines the callback invoked when a drop-down menu option is selected. |
+| [OnSelectCallback](arkts-arkui-select-comp-onselectcallback-t.md) | Callback of selecting an item from the select event. |
 
 ### Enums
 

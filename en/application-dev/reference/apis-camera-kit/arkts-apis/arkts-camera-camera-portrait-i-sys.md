@@ -10,6 +10,8 @@ Portrait: inherits from [PortraitQuery](arkts-camera-camera-portraitquery-i-sys.
 
 **Since:** 11
 
+<!--Device-camera-interface Portrait extends PortraitQuery--><!--Device-camera-interface Portrait extends PortraitQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ getPortraitEffect(): PortraitEffect
 Obtains the portrait effect in use.
 
 **Since:** 10
+
+<!--Device-Portrait-getPortraitEffect(): PortraitEffect--><!--Device-Portrait-getPortraitEffect(): PortraitEffect-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -65,6 +69,8 @@ setPortraitEffect(effect: PortraitEffect): void
 Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](arkts-camera-camera-portraitquery-i-sys.md#getsupportedportraiteffects) to obtain the supported portrait effects and check whether the target portrait effect is supported.
 
 **Since:** 10
+
+<!--Device-Portrait-setPortraitEffect(effect: PortraitEffect): void--><!--Device-Portrait-setPortraitEffect(effect: PortraitEffect): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -16,6 +16,8 @@ The segment button component includes tab-style segment buttons and capsule-styl
 
 **Decorator:** @Component
 
+<!--Device-unnamed-declare struct SegmentButton--><!--Device-unnamed-declare struct SegmentButton-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -48,6 +50,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-SegmentButton-enableStateAnimation: boolean--><!--Device-SegmentButton-enableStateAnimation: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxFontScale
@@ -74,6 +78,8 @@ Default value: **1**
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-SegmentButton-maxFontScale: number | Resource--><!--Device-SegmentButton-maxFontScale: number | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onItemClicked
@@ -91,6 +97,8 @@ Callback invoked when a segment button option is clicked. It receives the index 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-SegmentButton-onItemClicked?: Callback<number>--><!--Device-SegmentButton-onItemClicked?: Callback<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +119,8 @@ Configuration options of the segment button, used to set the button type (tab ty
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SegmentButton-options: SegmentButtonOptions--><!--Device-SegmentButton-options: SegmentButtonOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,5 +143,7 @@ Index of the selected item in the segment button. The index of the first item is
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SegmentButton-selectedIndexes: number[]--><!--Device-SegmentButton-selectedIndexes: number[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

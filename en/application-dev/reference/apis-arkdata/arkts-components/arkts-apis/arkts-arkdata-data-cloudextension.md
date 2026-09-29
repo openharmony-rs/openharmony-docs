@@ -4,6 +4,8 @@ The cloudExtension module provides APIs for third-party vendors to implement the
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace cloudExtension--><!--Device-unnamed-declare namespace cloudExtension-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 ## Modules to Import
@@ -51,6 +53,15 @@ import { cloudExtension } from '@kit.ArkData';
 <!--DelEnd-->
 
 <!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [CloudAssets](arkts-arkdata-cloudextension-cloudassets-t-sys.md) | Represents an array of CloudAsset. |
+| [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md) | Enumerates the types of the cloud data field. The specific type is determined by the parameter function. |
+<!--DelEnd-->
+
+<!--Del-->
 ### Enums(System API)
 
 | Name | Description |
@@ -58,13 +69,4 @@ import { cloudExtension } from '@kit.ArkData';
 | [ErrorCode](arkts-arkdata-cloudextension-errorcode-e-sys.md) | Enumerates the device-cloud sync states. Use the enum name rather than the enum value. |
 | [FieldType](arkts-arkdata-cloudextension-fieldtype-e-sys.md) | Enumerates the types of the fields in a database table. Use the enum name rather than the enum value. |
 | [Flag](arkts-arkdata-cloudextension-flag-e-sys.md) | Enumerates the operations that can be performed on a database. Use the enum name rather than the enum value. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [CloudAssets](arkts-arkdata-cloudextension-cloudassets-t-sys.md) | Represents an array of CloudAsset. |
-| [CloudType](arkts-arkdata-cloudextension-cloudtype-t-sys.md) | Enumerates the types of the cloud data field. The specific type is determined by the parameter function. |
 <!--DelEnd-->

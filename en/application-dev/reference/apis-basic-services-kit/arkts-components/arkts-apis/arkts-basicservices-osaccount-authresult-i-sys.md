@@ -8,6 +8,8 @@ Defines the authentication result information.
 
 **Since:** 8
 
+<!--Device-osAccount-interface AuthResult--><!--Device-osAccount-interface AuthResult-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ OS account ID, which is **undefined** by default.
 
 **Since:** 12
 
+<!--Device-AuthResult-accountId?: int--><!--Device-AuthResult-accountId?: int-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Credential ID, which is left blank by default.
 **Type:** Uint8Array
 
 **Since:** 12
+
+<!--Device-AuthResult-credentialId?: Uint8Array--><!--Device-AuthResult-credentialId?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -62,6 +68,8 @@ Freezing time, in milliseconds. The default value is **-1**.
 
 **Since:** 8
 
+<!--Device-AuthResult-freezingTime?: int--><!--Device-AuthResult-freezingTime?: int-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Next freezing time, in milliseconds. The default value is **undefined**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-AuthResult-nextPhaseFreezingTime?: int--><!--Device-AuthResult-nextPhaseFreezingTime?: int-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -94,6 +104,8 @@ Authentication validity period, in milliseconds. The default value is **undefine
 
 **Since:** 12
 
+<!--Device-AuthResult-pinValidityPeriod?: long--><!--Device-AuthResult-pinValidityPeriod?: long-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -110,6 +122,8 @@ Number of remaining authentication times, which is **-1** by default.
 
 **Since:** 8
 
+<!--Device-AuthResult-remainTimes?: int--><!--Device-AuthResult-remainTimes?: int-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -125,6 +139,8 @@ Authentication token, which is left blank by default.
 **Type:** Uint8Array
 
 **Since:** 8
+
+<!--Device-AuthResult-token?: Uint8Array--><!--Device-AuthResult-token?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

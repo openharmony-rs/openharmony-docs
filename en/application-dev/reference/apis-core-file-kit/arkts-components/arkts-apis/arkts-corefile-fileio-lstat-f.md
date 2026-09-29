@@ -19,6 +19,8 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 **Substitutes:** [lstat](arkts-corefile-file-fs-lstat-f.md)
 
+<!--Device-unnamed-declare function lstat(path: string): Promise<Stat>--><!--Device-unnamed-declare function lstat(path: string): Promise<Stat>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 **Deprecated since:** 9
 
 **Substitutes:** [lstat](arkts-corefile-file-fs-lstat-f.md)
+
+<!--Device-unnamed-declare function lstat(path: string, callback: AsyncCallback<Stat>): void--><!--Device-unnamed-declare function lstat(path: string, callback: AsyncCallback<Stat>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

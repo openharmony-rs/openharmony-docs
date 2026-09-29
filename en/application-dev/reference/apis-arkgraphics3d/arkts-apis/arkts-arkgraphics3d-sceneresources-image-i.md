@@ -12,6 +12,8 @@ Image resource, which inherits from SceneResource.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Image extends SceneResource--><!--Device-unnamed-export interface Image extends SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## height
@@ -26,6 +28,8 @@ Image height, in px. The value must be greater than 0.
 
 **Since:** 12
 
+<!--Device-Image-readonly height: int--><!--Device-Image-readonly height: int-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## width
@@ -39,5 +43,7 @@ Image width, in px. The value must be greater than 0.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Image-readonly width: int--><!--Device-Image-readonly width: int-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

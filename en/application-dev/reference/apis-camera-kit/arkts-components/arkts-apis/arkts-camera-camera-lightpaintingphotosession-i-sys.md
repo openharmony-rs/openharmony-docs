@@ -10,6 +10,8 @@ LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect Imple
 
 **Since:** 12
 
+<!--Device-camera-interface LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect--><!--Device-camera-interface LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ getLightPaintingType(): LightPaintingType
 Obtains the type of light painting shutter mode in use.
 
 **Since:** 12
+
+<!--Device-LightPaintingPhotoSession-getLightPaintingType(): LightPaintingType--><!--Device-LightPaintingPhotoSession-getLightPaintingType(): LightPaintingType-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -66,6 +70,8 @@ Obtains the supported types of light painting shutter mode.
 
 **Since:** 12
 
+<!--Device-LightPaintingPhotoSession-getSupportedLightPaintingTypes(): Array<LightPaintingType>--><!--Device-LightPaintingPhotoSession-getSupportedLightPaintingTypes(): Array<LightPaintingType>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -102,6 +108,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 **Since:** 12
 
+<!--Device-LightPaintingPhotoSession-off(type: 'error', callback?: ErrorCallback): void--><!--Device-LightPaintingPhotoSession-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -136,6 +144,8 @@ off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 Unsubscribes from focus state change events.
 
 **Since:** 12
+
+<!--Device-LightPaintingPhotoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void--><!--Device-LightPaintingPhotoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -172,6 +182,8 @@ Unsubscribes from smooth zoom state change events.
 
 **Since:** 12
 
+<!--Device-LightPaintingPhotoSession-off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void--><!--Device-LightPaintingPhotoSession-off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -206,6 +218,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-LightPaintingPhotoSession-on(type: 'error', callback: ErrorCallback): void--><!--Device-LightPaintingPhotoSession-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -247,6 +261,8 @@ on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-LightPaintingPhotoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void--><!--Device-LightPaintingPhotoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -293,6 +309,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Since:** 12
 
+<!--Device-LightPaintingPhotoSession-on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void--><!--Device-LightPaintingPhotoSession-on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -337,6 +355,8 @@ setLightPaintingType(type: LightPaintingType): void
 Sets the type of light painting shutter mode.
 
 **Since:** 12
+
+<!--Device-LightPaintingPhotoSession-setLightPaintingType(type: LightPaintingType): void--><!--Device-LightPaintingPhotoSession-setLightPaintingType(type: LightPaintingType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ Defines the callback of remote authentication. This API is used in remote authen
 
 **Since:** 26.0.0
 
+<!--Device-userAuth-interface IRemoteAuthCallback--><!--Device-userAuth-interface IRemoteAuthCallback-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Callback triggered to obtain remote authentication page parameters. When a remot
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-IRemoteAuthCallback-onGetRemoteAuthWidgetParam: WidgetParamCallback--><!--Device-IRemoteAuthCallback-onGetRemoteAuthWidgetParam: WidgetParamCallback-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Callback triggered to return the remote authentication result. After remote auth
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IRemoteAuthCallback-onRemoteAuthResult: ResultCallback--><!--Device-IRemoteAuthCallback-onRemoteAuthResult: ResultCallback-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

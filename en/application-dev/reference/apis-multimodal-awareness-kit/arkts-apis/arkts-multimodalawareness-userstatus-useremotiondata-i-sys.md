@@ -10,6 +10,8 @@ Defines user emotion data.
 
 **Since:** 26.0.0
 
+<!--Device-userStatus-export interface UserEmotionData extends UserStatusData--><!--Device-userStatus-export interface UserEmotionData extends UserStatusData-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ User emotion confidence. The value ranges from 0 to 100. A larger value indicate
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserEmotionData-confidence?: int--><!--Device-UserEmotionData-confidence?: int-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ User non-real-time emotion level. The value ranges from 0 to 5. 0: Very happy, 1
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserEmotionData-emotionNonRealTime ?: int[]--><!--Device-UserEmotionData-emotionNonRealTime ?: int[]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -70,6 +76,8 @@ User real-time emotion level. The value ranges from 0 to 5. 0: Very happy, 1: A 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserEmotionData-emotionRealTime ?: int--><!--Device-UserEmotionData-emotionRealTime ?: int-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Gravity acceleration of user motion status, in m/s².
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserEmotionData-gravityAcceleration?: double[]--><!--Device-UserEmotionData-gravityAcceleration?: double[]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -106,6 +116,8 @@ Whether emotion data is real-time.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserEmotionData-isRealTime?: boolean--><!--Device-UserEmotionData-isRealTime?: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -123,6 +135,8 @@ Linear acceleration of user motion status, in m/s².
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserEmotionData-linearAcceleration?: double[][]--><!--Device-UserEmotionData-linearAcceleration?: double[][]-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

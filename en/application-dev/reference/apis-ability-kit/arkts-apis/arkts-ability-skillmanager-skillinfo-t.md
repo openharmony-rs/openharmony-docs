@@ -14,6 +14,8 @@ Provides information about a skill, including skill name, type, and associated m
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-skillManager-export type SkillInfo = _SkillInfo--><!--Device-skillManager-export type SkillInfo = _SkillInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Type:** _SkillInfo

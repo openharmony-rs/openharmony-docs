@@ -20,6 +20,8 @@ Checks whether the application is forbidden to cancel the keep-alive status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function isModifyKeepAliveAppsDisallowed(admin: Want, accountId: number, bundleName: string): boolean--><!--Device-applicationManager-function isModifyKeepAliveAppsDisallowed(admin: Want, accountId: number, bundleName: string): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

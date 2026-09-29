@@ -8,6 +8,8 @@ Provides the properties of the float view.
 
 **Since:** 26.0.0
 
+<!--Device-floatView-interface FloatViewProperties--><!--Device-floatView-interface FloatViewProperties-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -34,6 +36,8 @@ On the page loaded by [setUIContext](arkts-arkui-floatview-floatviewcontroller-i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewProperties-avoidArea: window.AvoidArea--><!--Device-FloatViewProperties-avoidArea: window.AvoidArea-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## displayId
@@ -49,6 +53,8 @@ ID of the display where the float view is located.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewProperties-displayId: int--><!--Device-FloatViewProperties-displayId: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -66,6 +72,8 @@ Whether the float view is in the sidebar. **true**: in the sidebar; **false**: n
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewProperties-inSidebar: boolean--><!--Device-FloatViewProperties-inSidebar: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## templateType
@@ -81,6 +89,8 @@ Template type of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewProperties-templateType: FloatViewTemplateType--><!--Device-FloatViewProperties-templateType: FloatViewTemplateType-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -98,6 +108,8 @@ Float view ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewProperties-windowId: int--><!--Device-FloatViewProperties-windowId: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowRect
@@ -114,6 +126,8 @@ Rectangle area of the float view.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewProperties-windowRect: window.Rect--><!--Device-FloatViewProperties-windowRect: window.Rect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowScale
@@ -129,5 +143,7 @@ Scale factor of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewProperties-windowScale: double--><!--Device-FloatViewProperties-windowScale: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

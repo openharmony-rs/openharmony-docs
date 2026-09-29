@@ -10,6 +10,8 @@ Defines a **MulticastSocket** connection. Before calling MulticastSocket APIs, y
 
 **Since:** 11
 
+<!--Device-socket-export interface MulticastSocket extends UDPSocket--><!--Device-socket-export interface MulticastSocket extends UDPSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Adds a member to a multicast group. This API uses an asynchronous callback to re
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-MulticastSocket-addMembership(multicastAddress: NetAddress, callback: AsyncCallback<void>): void--><!--Device-MulticastSocket-addMembership(multicastAddress: NetAddress, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -52,9 +56,9 @@ Adds a member to a multicast group. This API uses an asynchronous callback to re
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301022 | Invalid argument. |
-| 2301088 | Not a socket. |
-| 2301098 | Address in use. |
+| [2301022](../errorcode-net-socket.md#2301022-invalid-argument) | Invalid argument. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
+| [2301098](../errorcode-net-socket.md#2301098-network-address-already-in-use) | Address in use. |
 
 **Examples**
 
@@ -96,6 +100,8 @@ Adds a member to a multicast group. This API uses a promise to return the result
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-MulticastSocket-addMembership(multicastAddress: NetAddress): Promise<void>--><!--Device-MulticastSocket-addMembership(multicastAddress: NetAddress): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -116,8 +122,8 @@ Adds a member to a multicast group. This API uses a promise to return the result
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
-| 2301098 | Address in use. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
+| [2301098](../errorcode-net-socket.md#2301098-network-address-already-in-use) | Address in use. |
 
 **Examples**
 
@@ -155,6 +161,8 @@ Drops a member from a multicast group. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-MulticastSocket-dropMembership(multicastAddress: NetAddress, callback: AsyncCallback<void>): void--><!--Device-MulticastSocket-dropMembership(multicastAddress: NetAddress, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -170,8 +178,8 @@ Drops a member from a multicast group. This API uses an asynchronous callback to
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
-| 2301098 | Address in use. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
+| [2301098](../errorcode-net-socket.md#2301098-network-address-already-in-use) | Address in use. |
 
 **Examples**
 
@@ -213,6 +221,8 @@ Drops a member from a multicast group. This API uses a promise to return the res
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-MulticastSocket-dropMembership(multicastAddress: NetAddress): Promise<void>--><!--Device-MulticastSocket-dropMembership(multicastAddress: NetAddress): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -233,8 +243,8 @@ Drops a member from a multicast group. This API uses a promise to return the res
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
-| 2301098 | Address in use. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
+| [2301098](../errorcode-net-socket.md#2301098-network-address-already-in-use) | Address in use. |
 
 **Examples**
 
@@ -274,6 +284,8 @@ Obtains the loopback mode flag for multicast communication. This API uses an asy
 
 **Since:** 11
 
+<!--Device-MulticastSocket-getLoopbackMode(callback: AsyncCallback<boolean>): void--><!--Device-MulticastSocket-getLoopbackMode(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -287,7 +299,7 @@ Obtains the loopback mode flag for multicast communication. This API uses an asy
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -327,6 +339,8 @@ Obtains the loopback mode flag for multicast communication. This API uses a prom
 
 **Since:** 11
 
+<!--Device-MulticastSocket-getLoopbackMode(): Promise<boolean>--><!--Device-MulticastSocket-getLoopbackMode(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -340,7 +354,7 @@ Obtains the loopback mode flag for multicast communication. This API uses a prom
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -378,6 +392,8 @@ Obtains the TTL for multicast packets. This API uses an asynchronous callback to
 
 **Since:** 11
 
+<!--Device-MulticastSocket-getMulticastTTL(callback: AsyncCallback<int>): void--><!--Device-MulticastSocket-getMulticastTTL(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -391,7 +407,7 @@ Obtains the TTL for multicast packets. This API uses an asynchronous callback to
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -433,6 +449,8 @@ Obtains the TTL for multicast packets. This API uses a promise to return the res
 
 **Since:** 11
 
+<!--Device-MulticastSocket-getMulticastTTL(): Promise<int>--><!--Device-MulticastSocket-getMulticastTTL(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -446,7 +464,7 @@ Obtains the TTL for multicast packets. This API uses a promise to return the res
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -482,6 +500,8 @@ Obtains the file descriptor of the MulticastSocket. This API uses a promise to r
 **Required permissions:** ohos.permission.INTERNET
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MulticastSocket-getSocketFd(): Promise<int>--><!--Device-MulticastSocket-getSocketFd(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -542,6 +562,8 @@ Sets the loopback mode flag for multicast communication. This API uses an asynch
 
 **Since:** 11
 
+<!--Device-MulticastSocket-setLoopbackMode(flag: boolean, callback: AsyncCallback<void>): void--><!--Device-MulticastSocket-setLoopbackMode(flag: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -556,7 +578,7 @@ Sets the loopback mode flag for multicast communication. This API uses an asynch
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -596,6 +618,8 @@ Sets the loopback mode flag for multicast communication. This API uses a promise
 
 **Since:** 11
 
+<!--Device-MulticastSocket-setLoopbackMode(flag: boolean): Promise<void>--><!--Device-MulticastSocket-setLoopbackMode(flag: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -615,7 +639,7 @@ Sets the loopback mode flag for multicast communication. This API uses a promise
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301088 | Not a socket. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -653,6 +677,8 @@ Sets the time to live (TTL) for multicast packets. This API uses an asynchronous
 
 **Since:** 11
 
+<!--Device-MulticastSocket-setMulticastTTL(ttl: int, callback: AsyncCallback<void>): void--><!--Device-MulticastSocket-setMulticastTTL(ttl: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -667,8 +693,8 @@ Sets the time to live (TTL) for multicast packets. This API uses an asynchronous
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301022 | Invalid argument. |
-| 2301088 | Not a socket. |
+| [2301022](../errorcode-net-socket.md#2301022-invalid-argument) | Invalid argument. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -711,6 +737,8 @@ Sets the TTL for multicast packets. This API uses a promise to return the result
 
 **Since:** 11
 
+<!--Device-MulticastSocket-setMulticastTTL(ttl: int): Promise<void>--><!--Device-MulticastSocket-setMulticastTTL(ttl: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -730,8 +758,8 @@ Sets the TTL for multicast packets. This API uses a promise to return the result
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
-| 2301022 | Invalid argument. |
-| 2301088 | Not a socket. |
+| [2301022](../errorcode-net-socket.md#2301022-invalid-argument) | Invalid argument. |
+| [2301088](../errorcode-net-socket.md#2301088-socket-operation-on-non-socket) | Not a socket. |
 
 **Examples**
 
@@ -766,6 +794,8 @@ Sets whether the multicast socket supports address reuse. This API is called in 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MulticastSocket-setReuseAddress(reuse: boolean): void--><!--Device-MulticastSocket-setReuseAddress(reuse: boolean): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

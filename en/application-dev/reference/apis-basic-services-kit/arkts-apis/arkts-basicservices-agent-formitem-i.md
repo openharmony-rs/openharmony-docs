@@ -8,6 +8,8 @@ Describes the form item of a task.
 
 **Since:** 10
 
+<!--Device-agent-interface FormItem--><!--Device-agent-interface FormItem-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Form parameter name.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormItem-name: string--><!--Device-FormItem-name: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -44,6 +48,8 @@ Form parameter value.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormItem-value: string | FileSpec | Array<FileSpec>--><!--Device-FormItem-value: string | FileSpec | Array<FileSpec>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

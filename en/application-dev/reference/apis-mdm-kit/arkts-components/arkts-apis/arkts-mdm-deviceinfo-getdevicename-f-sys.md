@@ -24,6 +24,8 @@ Obtains the device name. This API uses an asynchronous callback to return the re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceInfo-function getDeviceName(admin: Want, callback: AsyncCallback<string>): void--><!--Device-deviceInfo-function getDeviceName(admin: Want, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Obtains the device name. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceInfo-function getDeviceName(admin: Want): Promise<string>--><!--Device-deviceInfo-function getDeviceName(admin: Want): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

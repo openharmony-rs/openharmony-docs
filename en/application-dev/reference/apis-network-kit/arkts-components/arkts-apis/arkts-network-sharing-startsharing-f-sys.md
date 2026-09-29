@@ -18,6 +18,8 @@ Enables sharing of a specified type. This API uses an asynchronous callback to r
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function startSharing(type: SharingIfaceType, callback: AsyncCallback<void>): void--><!--Device-sharing-function startSharing(type: SharingIfaceType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Enables sharing of a specified type. This API uses a promise to return the resul
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function startSharing(type: SharingIfaceType): Promise<void>--><!--Device-sharing-function startSharing(type: SharingIfaceType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

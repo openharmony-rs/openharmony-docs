@@ -21,6 +21,8 @@ To have the capabilities provided by this module, for example, to receive a noti
 
 **Since:** 12
 
+<!--Device-unnamed-export default class EnterpriseAdminExtensionAbility--><!--Device-unnamed-export default class EnterpriseAdminExtensionAbility-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -40,6 +42,8 @@ Called when a system account is added. You should register the **MANAGED_EVENT_A
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onAccountAdded(accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onAccountAdded(accountId: number): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -88,6 +92,8 @@ Called when the system account is removed. You should register the **MANAGED_EVE
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onAccountRemoved(accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onAccountRemoved(accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -134,6 +140,8 @@ Called when the system account is switched. You should register the **MANAGED_EV
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onAccountSwitched(accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onAccountSwitched(accountId: number): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -182,6 +190,8 @@ Called when the device administrator application is disabled. After an enterpris
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onAdminDisabled(): void--><!--Device-EnterpriseAdminExtensionAbility-onAdminDisabled(): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Examples**
@@ -217,6 +227,8 @@ You should choose the appropriate method based on the application type and liste
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onAdminEnabled(): void--><!--Device-EnterpriseAdminExtensionAbility-onAdminEnabled(): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Examples**
@@ -242,6 +254,8 @@ Defines the policy change event. The super device administrator application can 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onAdminPolicyChanged(event: common.PolicyChangedEvent): void--><!--Device-EnterpriseAdminExtensionAbility-onAdminPolicyChanged(event: common.PolicyChangedEvent): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -291,6 +305,8 @@ Called when an application is started. You should register the **MANAGED_EVENT_A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onAppStart(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onAppStart(bundleName: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -338,6 +354,8 @@ Called when an application is stopped. You should register the **MANAGED_EVENT_A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onAppStop(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onAppStop(bundleName: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -384,6 +402,8 @@ Called when applications are installed. The application bundle name is included.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onBundleAdded(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onBundleAdded(bundleName: string): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -434,6 +454,8 @@ Called when applications are installed. The application bundle name and account 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onBundleAdded(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onBundleAdded(bundleName: string, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -482,6 +504,8 @@ Called when applications are uninstalled. The application bundle name is include
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onBundleRemoved(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onBundleRemoved(bundleName: string): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -532,6 +556,8 @@ Called when applications are uninstalled. The application bundle name and accoun
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onBundleRemoved(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onBundleRemoved(bundleName: string, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -581,6 +607,8 @@ Callback for application update events. The callback contains the application pa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onBundleUpdated(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onBundleUpdated(bundleName: string, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -629,6 +657,8 @@ Called only for the super device administrator application when the device admin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminDisabled(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminDisabled(bundleName: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -660,6 +690,8 @@ Called only for the super device administrator application when the device admin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminEnabled(bundleName: string): void--><!--Device-EnterpriseAdminExtensionAbility-onDeviceAdminEnabled(bundleName: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -690,6 +722,8 @@ Callback for the device startup completion event. You can receive this callback 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onDeviceBootCompleted(): void--><!--Device-EnterpriseAdminExtensionAbility-onDeviceBootCompleted(): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -737,6 +771,8 @@ Long-press event. When a single key or key combination is pressed for an extende
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onKeyEvent(keyEvent: systemManager.KeyEvent): void--><!--Device-EnterpriseAdminExtensionAbility-onKeyEvent(keyEvent: systemManager.KeyEvent): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -859,6 +895,8 @@ Kiosk mode is a system-level runtime mode that restricts a device to a single ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onKioskModeEntering(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onKioskModeEntering(bundleName: string, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -891,6 +929,8 @@ Called when an application exits the kiosk mode. This callback contains the appl
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onKioskModeExiting(bundleName: string, accountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onKioskModeExiting(bundleName: string, accountId: number): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -932,6 +972,8 @@ Callback triggered upon completion of log collection, after a log collection tas
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onLogCollected(result: common.Result): void--><!--Device-EnterpriseAdminExtensionAbility-onLogCollected(result: common.Result): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -995,6 +1037,8 @@ Called when an application is installed via the [bundleManager.installMarketApps
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void--><!--Device-EnterpriseAdminExtensionAbility-onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -1028,6 +1072,8 @@ Called when EnterpriseAdminExtensionAbility starts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onStart(): void--><!--Device-EnterpriseAdminExtensionAbility-onStart(): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Examples**
@@ -1053,6 +1099,8 @@ Callback for the startup wizard completion event. You can receive this callback 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onStartupGuideCompleted(scene: common.StartupScene): void--><!--Device-EnterpriseAdminExtensionAbility-onStartupGuideCompleted(scene: common.StartupScene): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1107,6 +1155,8 @@ Called to report a system update event. You should register the **MANAGED_EVENT_
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnterpriseAdminExtensionAbility-onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void--><!--Device-EnterpriseAdminExtensionAbility-onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -1155,5 +1205,7 @@ Context of **EnterpriseAdminExtensionAbility**. It inherits from [ExtensionConte
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-context: EnterpriseAdminExtensionContext--><!--Device-EnterpriseAdminExtensionAbility-context: EnterpriseAdminExtensionContext-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

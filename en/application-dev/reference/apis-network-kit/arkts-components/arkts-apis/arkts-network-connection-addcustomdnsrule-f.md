@@ -26,6 +26,8 @@ Adds custom DNS rules for the specified host of the current application. This AP
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-connection-function addCustomDnsRule(host: string, ip: Array<string>, callback: AsyncCallback<void>): void--><!--Device-connection-function addCustomDnsRule(host: string, ip: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -83,6 +85,8 @@ Adds custom DNS rules for the specified host of the current application. This AP
 **Required permissions:** ohos.permission.INTERNET
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-connection-function addCustomDnsRule(host: string, ip: Array<string>): Promise<void>--><!--Device-connection-function addCustomDnsRule(host: string, ip: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

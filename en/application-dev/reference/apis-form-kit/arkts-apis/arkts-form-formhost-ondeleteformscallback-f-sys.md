@@ -20,6 +20,8 @@ Register the callback for deleting forms.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function onDeleteFormsCallback(callback: formInfo.DeleteFormsCallback): void--><!--Device-formHost-function onDeleteFormsCallback(callback: formInfo.DeleteFormsCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Configuring parameters in reverse geocode requests.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface ReverseGeoCodeRequest--><!--Device-geoLocationManager-export interface ReverseGeoCodeRequest-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Indicates the country information.
 
 **Since:** 12
 
+<!--Device-ReverseGeoCodeRequest-country?: string--><!--Device-ReverseGeoCodeRequest-country?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## latitude
@@ -41,6 +45,8 @@ Latitude for reverse geocoding query.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ReverseGeoCodeRequest-latitude: double--><!--Device-ReverseGeoCodeRequest-latitude: double-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -56,6 +62,8 @@ Indicates the language area information.
 
 **Since:** 9
 
+<!--Device-ReverseGeoCodeRequest-locale?: string--><!--Device-ReverseGeoCodeRequest-locale?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## longitude
@@ -70,6 +78,8 @@ Longitude for reverse geocoding query.
 
 **Since:** 9
 
+<!--Device-ReverseGeoCodeRequest-longitude: double--><!--Device-ReverseGeoCodeRequest-longitude: double-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## maxItems
@@ -83,5 +93,7 @@ Indicates the maximum number of addresses returned by reverse geocoding query.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ReverseGeoCodeRequest-maxItems?: int--><!--Device-ReverseGeoCodeRequest-maxItems?: int-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder

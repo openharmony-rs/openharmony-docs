@@ -8,6 +8,8 @@ Defines options for route tracing.
 
 **Since:** 26.0.0
 
+<!--Device-connection-export interface TraceRouteOptions--><!--Device-connection-export interface TraceRouteOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Maximum number of jumps. The value range is [1, 30]. The default value is **30**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TraceRouteOptions-maxJumpNumber?: int--><!--Device-TraceRouteOptions-maxJumpNumber?: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## packetsType
@@ -45,5 +49,7 @@ Type of the data packet used for probe. The default value is **NETCONN_PACKETS_I
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TraceRouteOptions-packetsType?: PacketsType--><!--Device-TraceRouteOptions-packetsType?: PacketsType-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

@@ -22,6 +22,8 @@ Obtains the policy of the specified browser. This API uses an asynchronous callb
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>): void--><!--Device-browser-function getPolicies(admin: Want, appId: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -82,6 +84,8 @@ Obtains the policy of the specified browser. This API uses a promise to return t
 **Substitutes:** [getPoliciesSync](arkts-mdm-browser-getpoliciessync-f.md)
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-browser-function getPolicies(admin: Want, appId: string): Promise<string>--><!--Device-browser-function getPolicies(admin: Want, appId: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

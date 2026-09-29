@@ -14,6 +14,8 @@ Defines the ArcSwiper Component that can provide the ability for sub components 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare let ArcSwiper: ArcSwiperInterface--><!--Device-unnamed-declare let ArcSwiper: ArcSwiperInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## ArcSwiperInstance
@@ -29,5 +31,7 @@ Defines ArcSwiper Component instance.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-unnamed-declare let ArcSwiperInstance: ArcSwiperAttribute--><!--Device-unnamed-declare let ArcSwiperInstance: ArcSwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

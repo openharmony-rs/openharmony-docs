@@ -8,6 +8,8 @@ ModuleDistroInfo: the bundle info summary class.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ModuleDistroInfo--><!--Device-unnamed-export interface ModuleDistroInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Whether it should be installed together with the application. **true** if it sho
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ModuleDistroInfo-readonly deliveryWithInstall: boolean--><!--Device-ModuleDistroInfo-readonly deliveryWithInstall: boolean-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -40,6 +44,8 @@ Whether the HAP file supports the installation-free feature. **true** if the HAP
 
 **Since:** 9
 
+<!--Device-ModuleDistroInfo-readonly installationFree: boolean--><!--Device-ModuleDistroInfo-readonly installationFree: boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ Module name.
 
 **Since:** 9
 
+<!--Device-ModuleDistroInfo-readonly moduleName: string--><!--Device-ModuleDistroInfo-readonly moduleName: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ Module type.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ModuleDistroInfo-readonly moduleType: string--><!--Device-ModuleDistroInfo-readonly moduleType: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

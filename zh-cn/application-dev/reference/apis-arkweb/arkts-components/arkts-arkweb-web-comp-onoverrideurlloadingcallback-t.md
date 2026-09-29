@@ -10,6 +10,8 @@ type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => 
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean--><!--Device-unnamed-type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**

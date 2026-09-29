@@ -8,6 +8,8 @@ Describes a coordinate position in the relative coordinate system, with the orig
 
 **Since:** 20
 
+<!--Device-display-interface RelativePosition--><!--Device-display-interface RelativePosition-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Display ID for the relative coordinates. Only integers are supported, and the va
 
 **Since:** 20
 
+<!--Device-RelativePosition-displayId: long--><!--Device-RelativePosition-displayId: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## position
@@ -41,5 +45,7 @@ Coordinates with the top-left corner of the screen specified by **displayId** as
 **Type:** [Position](arkts-arkui-display-position-i.md)
 
 **Since:** 20
+
+<!--Device-RelativePosition-position: Position--><!--Device-RelativePosition-position: Position-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

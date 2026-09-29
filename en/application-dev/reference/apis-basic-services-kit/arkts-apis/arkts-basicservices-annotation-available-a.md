@@ -8,6 +8,8 @@ Annotates the minimum available version supported by an API. This annotation cap
 
 **Since:** 22
 
+<!--Device-unnamed-export @interface Available--><!--Device-unnamed-export @interface Available-End-->
+
 **System capability:** SystemCapability.Base
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Minimum available version, which consists of two parts: system type and version 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 22.
+
+<!--Device-Available-minApiVersion: string = ''--><!--Device-Available-minApiVersion: string = ''-End-->
 
 **System capability:** SystemCapability.Base
 

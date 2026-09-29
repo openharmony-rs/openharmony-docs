@@ -16,6 +16,8 @@ Obtains the root directory of user files. This API uses a promise to return the 
 
 **Since:** 8
 
+<!--Device-Environment-function getUserDataDir(): Promise<string>--><!--Device-Environment-function getUserDataDir(): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment
 
 **System API:** This is a system API.
@@ -46,6 +48,8 @@ function getUserDataDir(callback: AsyncCallback<string>): void
 Obtains the root directory of user files. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-Environment-function getUserDataDir(callback: AsyncCallback<string>): void--><!--Device-Environment-function getUserDataDir(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.Environment
 

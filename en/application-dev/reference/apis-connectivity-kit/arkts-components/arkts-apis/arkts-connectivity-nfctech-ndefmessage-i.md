@@ -8,6 +8,8 @@ Provides methods for Message of NDEF.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface NdefMessage--><!--Device-unnamed-export interface NdefMessage-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## getNdefRecords
@@ -20,7 +22,9 @@ Obtains all NDEF records.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NdefMessage-getNdefRecords(): tag.NdefRecord[]--><!--Device-NdefMessage-getNdefRecords(): tag.NdefRecord[]-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

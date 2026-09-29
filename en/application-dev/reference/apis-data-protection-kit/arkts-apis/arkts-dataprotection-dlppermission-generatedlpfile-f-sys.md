@@ -20,6 +20,8 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise<DLPFile>--><!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise<DLPFile>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -108,6 +110,8 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback<DLPFile>): void--><!--Device-dlpPermission-function generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback<DLPFile>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

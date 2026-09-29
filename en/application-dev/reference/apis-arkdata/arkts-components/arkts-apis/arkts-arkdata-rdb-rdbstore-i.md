@@ -14,6 +14,8 @@ Before using the APIs of this class, use [executeSql](#executesql) to initialize
 
 **Substitutes:** [RdbStore](arkts-arkdata-relationalstore-rdbstore-i.md)
 
+<!--Device-rdb-interface RdbStore--><!--Device-rdb-interface RdbStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Inserts a batch of data into a table. This API uses an asynchronous callback to 
 **Deprecated since:** 9
 
 **Substitutes:** [batchInsert](arkts-arkdata-relationalstore-rdbstore-i.md#batchinsert)
+
+<!--Device-RdbStore-batchInsert(table: string, values: Array<ValuesBucket>, callback: AsyncCallback<number>): void--><!--Device-RdbStore-batchInsert(table: string, values: Array<ValuesBucket>, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -110,6 +114,8 @@ Inserts a batch of data into a table. This API uses a promise to return the resu
 **Deprecated since:** 9
 
 **Substitutes:** [batchInsert](arkts-arkdata-relationalstore-rdbstore-i.md#batchinsert)
+
+<!--Device-RdbStore-batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>--><!--Device-RdbStore-batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -189,6 +195,8 @@ Starts the transaction before executing an SQL statement.
 
 **Substitutes:** [beginTransaction](arkts-arkdata-relationalstore-rdbstore-i.md#begintransaction)
 
+<!--Device-RdbStore-beginTransaction(): void--><!--Device-RdbStore-beginTransaction(): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Examples**
@@ -233,6 +241,8 @@ Commits the executed SQL statements.
 **Deprecated since:** 9
 
 **Substitutes:** [commit](arkts-arkdata-relationalstore-rdbstore-i.md#commit)
+
+<!--Device-RdbStore-commit(): void--><!--Device-RdbStore-commit(): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -279,6 +289,8 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object.
 
 **Substitutes:** [delete](arkts-arkdata-relationalstore-rdbstore-i.md#delete)
 
+<!--Device-RdbStore-delete(predicates: RdbPredicates, callback: AsyncCallback<number>): void--><!--Device-RdbStore-delete(predicates: RdbPredicates, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -317,6 +329,8 @@ Deletes data from the RDB store based on the specified **RdbPredicates** object.
 **Deprecated since:** 9
 
 **Substitutes:** [delete](arkts-arkdata-relationalstore-rdbstore-i.md#delete)
+
+<!--Device-RdbStore-delete(predicates: RdbPredicates): Promise<number>--><!--Device-RdbStore-delete(predicates: RdbPredicates): Promise<number>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -359,6 +373,8 @@ Executes an SQL statement that contains specified arguments but returns no value
 
 **Substitutes:** [executeSql](arkts-arkdata-relationalstore-rdbstore-i.md#executesql)
 
+<!--Device-RdbStore-executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void>): void--><!--Device-RdbStore-executeSql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -397,6 +413,8 @@ Executes an SQL statement that contains specified arguments but returns no value
 **Deprecated since:** 9
 
 **Substitutes:** [executeSql](arkts-arkdata-relationalstore-rdbstore-i.md#executesql)
+
+<!--Device-RdbStore-executeSql(sql: string, bindArgs?: Array<ValueType>): Promise<void>--><!--Device-RdbStore-executeSql(sql: string, bindArgs?: Array<ValueType>): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -438,6 +456,8 @@ Inserts a row of data into a table. This API uses an asynchronous callback to re
 **Deprecated since:** 9
 
 **Substitutes:** [insert](arkts-arkdata-relationalstore-rdbstore-i.md#insert)
+
+<!--Device-RdbStore-insert(table: string, values: ValuesBucket, callback: AsyncCallback<number>): void--><!--Device-RdbStore-insert(table: string, values: ValuesBucket, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -494,6 +514,8 @@ Inserts a row of data into a table. This API uses a promise to return the result
 
 **Substitutes:** [insert](arkts-arkdata-relationalstore-rdbstore-i.md#insert)
 
+<!--Device-RdbStore-insert(table: string, values: ValuesBucket): Promise<number>--><!--Device-RdbStore-insert(table: string, values: ValuesBucket): Promise<number>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -547,9 +569,9 @@ Obtains the distributed table name of a remote device based on the local table n
 
 > **NOTE:** 
 
-> The value of **device** can be obtained by &lt;!--RP1--&gt;
+> The value of **device** can be obtained by <!--RP1-->
 > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
-> . &lt;!--RP1End--&gt;The APIs of the **deviceManager** module are system interfaces and available only to system
+> . <!--RP1End-->The APIs of the **deviceManager** module are system interfaces and available only to system
 > applications.
 
 **Since:** 8
@@ -559,6 +581,8 @@ Obtains the distributed table name of a remote device based on the local table n
 **Substitutes:** [obtainDistributedTableName](arkts-arkdata-relationalstore-rdbstore-i.md#obtaindistributedtablename)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-RdbStore-obtainDistributedTableName(device: string, table: string, callback: AsyncCallback<string>): void--><!--Device-RdbStore-obtainDistributedTableName(device: string, table: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -608,9 +632,9 @@ Obtains the distributed table name of a remote device based on the local table n
 
 > **NOTE:** 
 
-> The value of **device** can be obtained by &lt;!--RP1--&gt;
+> The value of **device** can be obtained by <!--RP1-->
 > [deviceManager.getTrustedDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-devicemanager-devicemanager-i-sys.md#gettrusteddevicelistsync)
-> . &lt;!--RP1End--&gt;The APIs of the **deviceManager** module are system interfaces and available only to system
+> . <!--RP1End-->The APIs of the **deviceManager** module are system interfaces and available only to system
 > applications.
 
 **Since:** 8
@@ -620,6 +644,8 @@ Obtains the distributed table name of a remote device based on the local table n
 **Substitutes:** [obtainDistributedTableName](arkts-arkdata-relationalstore-rdbstore-i.md#obtaindistributedtablename)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-RdbStore-obtainDistributedTableName(device: string, table: string): Promise<string>--><!--Device-RdbStore-obtainDistributedTableName(device: string, table: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -675,6 +701,8 @@ Unregisters the observer of the specified type from the RDB store. This API uses
 
 **Substitutes:** [off](arkts-arkdata-relationalstore-rdbstore-i.md#off)
 
+<!--Device-RdbStore-off(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>): void--><!--Device-RdbStore-off(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -714,6 +742,8 @@ Registers an observer for this RDB store. When the data in the RDB store changes
 **Deprecated since:** 9
 
 **Substitutes:** [on](arkts-arkdata-relationalstore-rdbstore-i.md#on)
+
+<!--Device-RdbStore-on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>): void--><!--Device-RdbStore-on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -755,6 +785,8 @@ Queries data from the RDB store based on specified conditions. This API uses an 
 
 **Substitutes:** [query](arkts-arkdata-relationalstore-rdbstore-i.md#query)
 
+<!--Device-RdbStore-query(predicates: RdbPredicates, columns: Array<string>, callback: AsyncCallback<ResultSet>): void--><!--Device-RdbStore-query(predicates: RdbPredicates, columns: Array<string>, callback: AsyncCallback<ResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -795,6 +827,8 @@ Queries data from the RDB store based on specified conditions. This API uses a p
 **Deprecated since:** 9
 
 **Substitutes:** [query](arkts-arkdata-relationalstore-rdbstore-i.md#query)
+
+<!--Device-RdbStore-query(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>--><!--Device-RdbStore-query(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -839,6 +873,8 @@ Queries data using the specified SQL statement. This API uses an asynchronous ca
 
 **Substitutes:** [querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)
 
+<!--Device-RdbStore-querySql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<ResultSet>): void--><!--Device-RdbStore-querySql(sql: string, bindArgs: Array<ValueType>, callback: AsyncCallback<ResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -877,6 +913,8 @@ Queries data using the specified SQL statement. This API uses a promise to retur
 **Deprecated since:** 9
 
 **Substitutes:** [querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)
+
+<!--Device-RdbStore-querySql(sql: string, bindArgs?: Array<ValueType>): Promise<ResultSet>--><!--Device-RdbStore-querySql(sql: string, bindArgs?: Array<ValueType>): Promise<ResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -918,6 +956,8 @@ Rolls back the SQL statements that have been executed.
 **Deprecated since:** 9
 
 **Substitutes:** [rollBack](arkts-arkdata-relationalstore-rdbstore-i.md#rollback)
+
+<!--Device-RdbStore-rollBack(): void--><!--Device-RdbStore-rollBack(): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -971,6 +1011,8 @@ Sets distributed tables. This API uses an asynchronous callback to return the re
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-RdbStore-setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1009,6 +1051,8 @@ Sets distributed tables. This API uses a promise to return the result.
 **Substitutes:** [setDistributedTables](arkts-arkdata-relationalstore-rdbstore-i.md#setdistributedtables)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-RdbStore-setDistributedTables(tables: Array<string>): Promise<void>--><!--Device-RdbStore-setDistributedTables(tables: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1050,6 +1094,8 @@ Synchronizes data across devices. This API uses an asynchronous callback to retu
 **Substitutes:** [sync](arkts-arkdata-relationalstore-rdbstore-i.md#sync)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-RdbStore-sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback<Array<[string, number]>>): void--><!--Device-RdbStore-sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback<Array<[string, number]>>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1112,6 +1158,8 @@ Synchronizes data across devices. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-RdbStore-sync(mode: SyncMode, predicates: RdbPredicates): Promise<Array<[string, number]>>--><!--Device-RdbStore-sync(mode: SyncMode, predicates: RdbPredicates): Promise<Array<[string, number]>>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1173,6 +1221,8 @@ Updates data in the RDB store based on the specified **RdbPredicates** object. T
 
 **Substitutes:** [update](arkts-arkdata-relationalstore-rdbstore-i.md#update)
 
+<!--Device-RdbStore-update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback<number>): void--><!--Device-RdbStore-update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1229,6 +1279,8 @@ Updates data based on the specified **RdbPredicates** object. This API uses a pr
 **Deprecated since:** 9
 
 **Substitutes:** [update](arkts-arkdata-relationalstore-rdbstore-i.md#update)
+
+<!--Device-RdbStore-update(values: ValuesBucket, predicates: RdbPredicates): Promise<number>--><!--Device-RdbStore-update(values: ValuesBucket, predicates: RdbPredicates): Promise<number>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

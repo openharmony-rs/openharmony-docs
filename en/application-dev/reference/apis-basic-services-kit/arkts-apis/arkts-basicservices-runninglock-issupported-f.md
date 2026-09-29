@@ -16,6 +16,8 @@ Checks whether a specified type of [RunningLock](arkts-basicservices-runninglock
 
 **Since:** 9
 
+<!--Device-runningLock-function isSupported(type: RunningLockType): boolean--><!--Device-runningLock-function isSupported(type: RunningLockType): boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Parameters:**

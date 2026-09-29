@@ -22,6 +22,8 @@ Stops discovering Wi-Fi P2P devices.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function stopDiscoverDevices(): boolean--><!--Device-wifi-function stopDiscoverDevices(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**

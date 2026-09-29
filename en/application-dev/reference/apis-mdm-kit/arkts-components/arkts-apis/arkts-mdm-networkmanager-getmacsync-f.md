@@ -20,6 +20,8 @@ Obtains the MAC address of a device based on the network interface. This API is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getMacSync(admin: Want, networkInterface: string): string--><!--Device-networkManager-function getMacSync(admin: Want, networkInterface: string): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

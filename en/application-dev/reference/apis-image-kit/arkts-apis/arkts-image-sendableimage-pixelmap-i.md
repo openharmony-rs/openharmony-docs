@@ -12,6 +12,8 @@ Sendable PixelMap instance.
 
 **Since:** 12
 
+<!--Device-sendableImage-interface PixelMap extends ISendable--><!--Device-sendableImage-interface PixelMap extends ISendable-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Apply color space of pixelmap, the pixels will be changed by input color space. 
 This method is used to change color space of PixelMap. Pixel data will be changed by calling this method. If you want to set the colorspace property of PixelMap only, use method {@Link #setColorSpace(colorSpaceManager.ColorSpaceManager)}.
 
 **Since:** 12
+
+<!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>--><!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -85,6 +89,8 @@ Obtains new pixelmap with alpha information. This method uses a promise to retur
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-createAlphaPixelmap(): Promise<PixelMap>--><!--Device-PixelMap-createAlphaPixelmap(): Promise<PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -121,6 +127,8 @@ Obtains new pixelmap with alpha information.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-createAlphaPixelmapSync(): PixelMap--><!--Device-PixelMap-createAlphaPixelmapSync(): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -159,6 +167,8 @@ Crop the image. This method uses a promise to return the result.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-crop(region: image.Region): Promise<void>--><!--Device-PixelMap-crop(region: image.Region): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -206,6 +216,8 @@ Crop the image.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-cropSync(region: image.Region): void--><!--Device-PixelMap-cropSync(region: image.Region): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -246,6 +258,8 @@ Image flipping. This method uses a promise to return the result.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean): Promise<void>--><!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -294,6 +308,8 @@ Image flipping.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-flipSync(horizontal: boolean, vertical: boolean): void--><!--Device-PixelMap-flipSync(horizontal: boolean, vertical: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -336,6 +352,8 @@ Obtains the number of bytes in each line of the image pixelmap.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-getBytesNumberPerRow(): number--><!--Device-PixelMap-getBytesNumberPerRow(): number-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -363,6 +381,8 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 Get color space of pixelmap.
 
 **Since:** 12
+
+<!--Device-PixelMap-getColorSpace(): colorSpaceManager.ColorSpaceManager--><!--Device-PixelMap-getColorSpace(): colorSpaceManager.ColorSpaceManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -404,6 +424,8 @@ Obtains the density of the image pixelmap.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-getDensity(): number--><!--Device-PixelMap-getDensity(): number-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -433,6 +455,8 @@ Obtains pixelmap information about this image. This method uses a promise to ret
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-getImageInfo(): Promise<image.ImageInfo>--><!--Device-PixelMap-getImageInfo(): Promise<image.ImageInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -474,6 +498,8 @@ Get image information from image source.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-getImageInfoSync(): image.ImageInfo--><!--Device-PixelMap-getImageInfoSync(): image.ImageInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Return value:**
@@ -513,6 +539,8 @@ Obtains the total number of bytes of the image pixelmap.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-getPixelBytesNumber(): number--><!--Device-PixelMap-getPixelBytesNumber(): number-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -540,6 +568,8 @@ marshalling(sequence: rpc.MessageSequence): void
 Marshalling PixelMap and write into MessageSequence.
 
 **Since:** 12
+
+<!--Device-PixelMap-marshalling(sequence: rpc.MessageSequence): void--><!--Device-PixelMap-marshalling(sequence: rpc.MessageSequence): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -628,6 +658,8 @@ Set the transparent rate of pixelmap. This method uses a promise to return the r
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-opacity(rate: number): Promise<void>--><!--Device-PixelMap-opacity(rate: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -672,6 +704,8 @@ Set the transparent rate of pixelmap.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-opacitySync(rate: number): void--><!--Device-PixelMap-opacitySync(rate: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -711,6 +745,8 @@ Reads image pixelmap data in an area. This method uses a promise to return the d
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-readPixels(area: image.PositionArea): Promise<void>--><!--Device-PixelMap-readPixels(area: image.PositionArea): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -762,6 +798,8 @@ Reads image pixelmap data in an area.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-readPixelsSync(area: image.PositionArea): void--><!--Device-PixelMap-readPixelsSync(area: image.PositionArea): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -808,6 +846,8 @@ Reads image pixelmap data and writes the data to an ArrayBuffer. This method use
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer): Promise<void>--><!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -852,6 +892,8 @@ Reads image pixelmap data and writes the data to an ArrayBuffer.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-readPixelsToBufferSync(dst: ArrayBuffer): void--><!--Device-PixelMap-readPixelsToBufferSync(dst: ArrayBuffer): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -893,6 +935,8 @@ Releases this PixelMap object. This method uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-release(): Promise<void>--><!--Device-PixelMap-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -929,6 +973,8 @@ Image rotation. This method uses a promise to return the result.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-rotate(angle: number): Promise<void>--><!--Device-PixelMap-rotate(angle: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -974,6 +1020,8 @@ Image rotation.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-rotateSync(angle: number): void--><!--Device-PixelMap-rotateSync(angle: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1013,6 +1061,8 @@ Image zoom in width and height. This method uses a promise to return the result.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-scale(x: number, y: number): Promise<void>--><!--Device-PixelMap-scale(x: number, y: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1061,6 +1111,8 @@ Image zoom in width and height.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-scaleSync(x: number, y: number): void--><!--Device-PixelMap-scaleSync(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1103,6 +1155,8 @@ This method is only used to set the colorspace property of PixelMap, while all p
 
 **Since:** 12
 
+<!--Device-PixelMap-setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void--><!--Device-PixelMap-setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1144,6 +1198,8 @@ Image position transformation. This method uses a promise to return the result.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-translate(x: number, y: number): Promise<void>--><!--Device-PixelMap-translate(x: number, y: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1191,6 +1247,8 @@ Image position transformation.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-translateSync(x: number, y: number): void--><!--Device-PixelMap-translateSync(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1230,6 +1288,8 @@ unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>
 Creates a PixelMap object based on MessageSequence parameter.
 
 **Since:** 12
+
+<!--Device-PixelMap-unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>--><!--Device-PixelMap-unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1325,6 +1385,8 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object. Thi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer): Promise<void>--><!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1373,6 +1435,8 @@ Reads image data in an ArrayBuffer and writes the data to a PixelMap object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-writeBufferToPixelsSync(src: ArrayBuffer): void--><!--Device-PixelMap-writeBufferToPixelsSync(src: ArrayBuffer): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1417,6 +1481,8 @@ Writes image pixelmap data to the specified area. This method uses a promise to 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PixelMap-writePixels(area: image.PositionArea): Promise<void>--><!--Device-PixelMap-writePixels(area: image.PositionArea): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1472,6 +1538,8 @@ Writes image pixelmap data to the specified area.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-writePixelsSync(area: image.PositionArea): void--><!--Device-PixelMap-writePixelsSync(area: image.PositionArea): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1524,6 +1592,8 @@ Whether the image pixelmap can be edited.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PixelMap-readonly isEditable: boolean--><!--Device-PixelMap-readonly isEditable: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## isStrideAlignment
@@ -1537,5 +1607,7 @@ Is it stride Alignment
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-PixelMap-readonly isStrideAlignment: boolean--><!--Device-PixelMap-readonly isStrideAlignment: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -8,6 +8,8 @@ Describes the status information about a batch download.
 
 **Since:** 21
 
+<!--Device-photoAccessHelper-interface CloudAssetDownloadStatus--><!--Device-photoAccessHelper-interface CloudAssetDownloadStatus-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Array of strings containing the information of each individual download item wit
 **Type:** string[]
 
 **Since:** 21
+
+<!--Device-CloudAssetDownloadStatus-readonly taskInfos: string[]--><!--Device-CloudAssetDownloadStatus-readonly taskInfos: string[]-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

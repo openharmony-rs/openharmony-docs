@@ -16,6 +16,8 @@ function on(type: 'drag', callback: Callback<DragState>): void
 
 **起始版本：** 10
 
+<!--Device-dragInteraction-function on(type: 'drag', callback: Callback<DragState>): void--><!--Device-dragInteraction-function on(type: 'drag', callback: Callback<DragState>): void-End-->
+
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
 **系统接口：** 此接口为系统接口。

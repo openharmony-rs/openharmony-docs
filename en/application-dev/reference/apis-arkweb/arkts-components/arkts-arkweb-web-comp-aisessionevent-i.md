@@ -10,6 +10,8 @@ Custom AI session configuration object, used to define the lifecycle callbacks o
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface AISessionEvent--><!--Device-unnamed-declare interface AISessionEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## onCreateAISession
@@ -23,6 +25,8 @@ Callback function triggered when an AI session is created. Returns **true** to s
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AISessionEvent-onCreateAISession: OnCreateAISession--><!--Device-AISessionEvent-onCreateAISession: OnCreateAISession-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -38,6 +42,8 @@ Callback function triggered when an AI session is destroyed, used to clean up re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AISessionEvent-onDestroyAISession: OnDestroyAISession--><!--Device-AISessionEvent-onDestroyAISession: OnDestroyAISession-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## onExecuteAIAction
@@ -51,6 +57,8 @@ Callback function triggered when an AI session executes an action.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AISessionEvent-onExecuteAIAction: OnExecuteAIAction--><!--Device-AISessionEvent-onExecuteAIAction: OnExecuteAIAction-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -67,5 +75,7 @@ AI session type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AISessionEvent-aiSessionType: AISessionType--><!--Device-AISessionEvent-aiSessionType: AISessionType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

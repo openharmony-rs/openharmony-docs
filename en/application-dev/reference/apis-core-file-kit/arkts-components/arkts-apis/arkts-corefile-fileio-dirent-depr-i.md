@@ -12,6 +12,8 @@ Provides information about files and directories. Before calling an API of the *
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-unnamed-declare interface Dirent--><!--Device-unnamed-declare interface Dirent-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Checks whether this directory entry is a block special file. A block special fil
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dirent-isBlockDevice(): boolean--><!--Device-Dirent-isBlockDevice(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -62,6 +66,8 @@ Checks whether this directory entry is a character special file. A character spe
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-Dirent-isCharacterDevice(): boolean--><!--Device-Dirent-isCharacterDevice(): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -90,6 +96,8 @@ Checks whether this directory entry is a directory.
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dirent-isDirectory(): boolean--><!--Device-Dirent-isDirectory(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -120,6 +128,8 @@ Checks whether this directory entry is a named pipe (also called FIFO). Named pi
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-Dirent-isFIFO(): boolean--><!--Device-Dirent-isFIFO(): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -148,6 +158,8 @@ Checks whether this directory entry is a regular file.
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dirent-isFile(): boolean--><!--Device-Dirent-isFile(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -178,6 +190,8 @@ Checks whether this directory entry is a socket.
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-Dirent-isSocket(): boolean--><!--Device-Dirent-isSocket(): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Return value:**
@@ -206,6 +220,8 @@ Checks whether this directory entry is a symbolic link.
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dirent-isSymbolicLink(): boolean--><!--Device-Dirent-isSymbolicLink(): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -237,5 +253,7 @@ Directory entry name.
 **Deprecated since:** 9
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
+
+<!--Device-Dirent-readonly name: string--><!--Device-Dirent-readonly name: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

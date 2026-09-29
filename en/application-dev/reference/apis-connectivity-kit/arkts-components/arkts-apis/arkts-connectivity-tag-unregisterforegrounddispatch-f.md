@@ -18,7 +18,9 @@ Unregisters the listener for the NFC tag read event. If the listener is unregist
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-function unregisterForegroundDispatch(elementName: ElementName): void--><!--Device-tag-function unregisterForegroundDispatch(elementName: ElementName): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

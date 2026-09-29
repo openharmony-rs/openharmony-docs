@@ -8,6 +8,8 @@ Describes the information about an encoder.
 
 **Since:** 11
 
+<!--Device-media-interface EncoderInfo--><!--Device-media-interface EncoderInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Bit rate range of the encoder, with the minimum and maximum bit rates specified,
 
 **Since:** 11
 
+<!--Device-EncoderInfo-bitRate?: Range--><!--Device-EncoderInfo-bitRate?: Range-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## channels
@@ -41,6 +45,8 @@ Number of audio channels for the audio capturer, with the minimum and maximum nu
 **Type:** [Range](arkts-media-media-range-i.md)
 
 **Since:** 11
+
+<!--Device-EncoderInfo-channels?: Range--><!--Device-EncoderInfo-channels?: Range-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -56,6 +62,8 @@ Video frame rate range, with the minimum and maximum frame rates specified, in f
 
 **Since:** 11
 
+<!--Device-EncoderInfo-frameRate?: Range--><!--Device-EncoderInfo-frameRate?: Range-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## height
@@ -69,6 +77,8 @@ Video frame height range, with the minimum and maximum heights specified, in px.
 **Type:** [Range](arkts-media-media-range-i.md)
 
 **Since:** 11
+
+<!--Device-EncoderInfo-height?: Range--><!--Device-EncoderInfo-height?: Range-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -84,6 +94,8 @@ MIME type of the encoder.
 
 **Since:** 11
 
+<!--Device-EncoderInfo-mimeType: CodecMimeType--><!--Device-EncoderInfo-mimeType: CodecMimeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## sampleRate
@@ -97,6 +109,8 @@ Audio sampling rate, including all available audio sampling rates, in Hz. The va
 **Type:** Array&lt;number&gt;
 
 **Since:** 11
+
+<!--Device-EncoderInfo-sampleRate?: Array<int>--><!--Device-EncoderInfo-sampleRate?: Array<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -112,6 +126,8 @@ Encoder type. The value **audio** means an audio encoder, and **video** means a 
 
 **Since:** 11
 
+<!--Device-EncoderInfo-type: string--><!--Device-EncoderInfo-type: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## width
@@ -125,5 +141,7 @@ Video frame width range, with the minimum and maximum widths specified, in px. T
 **Type:** [Range](arkts-media-media-range-i.md)
 
 **Since:** 11
+
+<!--Device-EncoderInfo-width?: Range--><!--Device-EncoderInfo-width?: Range-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder

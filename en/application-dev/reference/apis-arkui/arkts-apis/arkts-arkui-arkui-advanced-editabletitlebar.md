@@ -26,17 +26,17 @@ import { EditableLeftIconType, EditableTitleBar, EditableTitleBarMenuItem, Edita
 | --- | --- |
 | [EditableTitleBarOptions](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebaroptions-i.md) | Indicates the options of the editable title bar. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [EditableLeftIconType](arkts-arkui-arkui-advanced-editabletitlebar-editablelefticontype-e.md) | Declaration of the left icon type. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [EditableTitleBarItem](arkts-arkui-editabletitlebaritem-t.md) | Declaration of the image item. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [EditableLeftIconType](arkts-arkui-arkui-advanced-editabletitlebar-editablelefticontype-e.md) | Declaration of the left icon type. |
 
 ## Examples
 

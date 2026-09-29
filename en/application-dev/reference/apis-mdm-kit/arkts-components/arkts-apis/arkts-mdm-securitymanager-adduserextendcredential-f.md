@@ -20,6 +20,8 @@ Adds the extended user credential for an account.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function addUserExtendCredential(info: AddCredentialInfo, accountId: number): Promise<Uint8Array>--><!--Device-securityManager-function addUserExtendCredential(info: AddCredentialInfo, accountId: number): Promise<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

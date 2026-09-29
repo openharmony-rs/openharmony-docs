@@ -20,6 +20,8 @@ Disables a common device administrator application for the current user. This AP
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function disableAdmin(admin: Want, callback: AsyncCallback<void>): void--><!--Device-adminManager-function disableAdmin(admin: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ Disables a common device administrator application for the user specified by **u
 **Required permissions:** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function disableAdmin(admin: Want, userId: number, callback: AsyncCallback<void>): void--><!--Device-adminManager-function disableAdmin(admin: Want, userId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

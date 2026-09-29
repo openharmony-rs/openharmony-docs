@@ -12,6 +12,8 @@ Defines the routing state.
 
 **Substitutes:** RouterState
 
+<!--Device-unnamed-export interface RouterState--><!--Device-unnamed-export interface RouterState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Index of the current page in the stack. The index starts from 1 from the bottom 
 
 **Substitutes:** index
 
+<!--Device-RouterState-index: number--><!--Device-RouterState-index: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -54,6 +58,8 @@ Name of the current page, that is, the file name.
 
 **Substitutes:** name
 
+<!--Device-RouterState-name: string--><!--Device-RouterState-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -71,5 +77,7 @@ Path of the current page.
 **Deprecated since:** 8
 
 **Substitutes:** path
+
+<!--Device-RouterState-path: string--><!--Device-RouterState-path: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

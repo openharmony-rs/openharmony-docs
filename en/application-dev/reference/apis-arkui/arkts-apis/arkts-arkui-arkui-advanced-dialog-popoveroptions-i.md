@@ -4,9 +4,13 @@
 export declare interface PopoverOptions extends CustomPopupOptions
 ```
 
-Defines PopoverDialog Options
+Defines a set of options used to configure the popover dialog box, including its content and position.
 
-@typedef PopoverOptions @extends CustomPopupOptions
+Inherits [CustomPopupOptions](../arkts-components/arkts-arkui-common-comp-custompopupoptions-i.md).
+
+> **NOTE:** 
+> 
+> The default value of **radius** is **32vp**.
 
 **Inheritance/Implementation:** PopoverOptions extends [CustomPopupOptions](../arkts-components/arkts-arkui-common-comp-custompopupoptions-i.md)
 
@@ -15,6 +19,8 @@ Defines PopoverDialog Options
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-unnamed-export declare interface PopoverOptions extends CustomPopupOptions--><!--Device-unnamed-export declare interface PopoverOptions extends CustomPopupOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

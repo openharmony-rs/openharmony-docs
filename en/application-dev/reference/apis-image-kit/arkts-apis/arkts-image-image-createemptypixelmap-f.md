@@ -20,9 +20,11 @@ The following pixel format is not supported for PixelMap creation: ASTC_4x4.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-image-function createEmptyPixelMap(param: InitializationOptions): PixelMap--><!--Device-image-function createEmptyPixelMap(param: InitializationOptions): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

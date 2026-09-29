@@ -19,6 +19,8 @@ Unsubscribes from vehicle sensing results.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function offCarAwareness(capability: Capability, callback?: Callback<CarAwarenessInfo[]>, options?:  CarAwarenessOptions): void--><!--Device-carAwareness-function offCarAwareness(capability: Capability, callback?: Callback<CarAwarenessInfo[]>, options?:  CarAwarenessOptions): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.

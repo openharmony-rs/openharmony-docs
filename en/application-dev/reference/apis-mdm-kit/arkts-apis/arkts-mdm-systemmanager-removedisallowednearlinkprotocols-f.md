@@ -20,6 +20,8 @@ Removes the list of disallowed NearLink protocols for a specified user. After su
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function removeDisallowedNearLinkProtocols(admin: Want, protocols: Array<NearLinkProtocol>, accountId: number): void--><!--Device-systemManager-function removeDisallowedNearLinkProtocols(admin: Want, protocols: Array<NearLinkProtocol>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

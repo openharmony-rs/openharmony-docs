@@ -20,6 +20,8 @@ Obtains the list of USB Key credential . This API uses a promise to return the r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise<CMResult>--><!--Device-certificateManager-function getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**

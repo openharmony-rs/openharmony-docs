@@ -12,6 +12,8 @@ Defines the callback triggered on hover.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type OnHoverCallback = (status: boolean, event: HoverEvent) => void--><!--Device-unnamed-declare type OnHoverCallback = (status: boolean, event: HoverEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

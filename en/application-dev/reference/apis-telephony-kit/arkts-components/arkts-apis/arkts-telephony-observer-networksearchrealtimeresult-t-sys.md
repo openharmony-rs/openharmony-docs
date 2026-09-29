@@ -10,6 +10,8 @@ Indicates the result of network search.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-observer-type NetworkSearchRealTimeResult = radio.NetworkSearchRealTimeResult--><!--Device-observer-type NetworkSearchRealTimeResult = radio.NetworkSearchRealTimeResult-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **System API:** This is a system API.

@@ -4,9 +4,11 @@
 interface IPropertySubscriber
 ```
 
-Provides an interface for attribute subscribers.
+A property subscriber API, which defines the methods that the subscriber needs to implement to receive property change notifications and lifecycle callbacks.
 
 **Since:** 7
+
+<!--Device-unnamed-interface IPropertySubscriber--><!--Device-unnamed-interface IPropertySubscriber-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ Called when the object is about to be destroyed.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-IPropertySubscriber-aboutToBeDeleted(owningView?: IPropertySubscriber): void--><!--Device-IPropertySubscriber-aboutToBeDeleted(owningView?: IPropertySubscriber): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -32,7 +36,7 @@ Called when the object is about to be destroyed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| owningView | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | No | Component that owns the current property. |
+| owningView | [IPropertySubscriber](arkts-arkui-ipropertysubscriber-i-sys.md) | No | Custom component that owns the current property. If not passed, no associated custom component is specified. |
 
 ## id
 
@@ -46,6 +50,8 @@ Obtains the ID.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-IPropertySubscriber-id(): number--><!--Device-IPropertySubscriber-id(): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -54,4 +60,4 @@ Obtains the ID.
 
 | Type | Description |
 | --- | --- |
-| number | Variable ID obtained. |
+| number | Unique ID of the subscriber. |

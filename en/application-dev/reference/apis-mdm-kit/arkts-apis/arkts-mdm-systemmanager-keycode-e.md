@@ -8,6 +8,8 @@ Key code. The [addKeyEventPolicies](arkts-mdm-systemmanager-addkeyeventpolicies-
 
 **Since:** 23
 
+<!--Device-systemManager-enum KeyCode--><!--Device-systemManager-enum KeyCode-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## POWER
@@ -21,6 +23,8 @@ Power key
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyCode-POWER = 0--><!--Device-KeyCode-POWER = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ Volume up
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyCode-VOLUME_UP = 1--><!--Device-KeyCode-VOLUME_UP = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## VOLUME_DOWN
@@ -49,6 +55,8 @@ Volume down
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyCode-VOLUME_DOWN = 2--><!--Device-KeyCode-VOLUME_DOWN = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -64,6 +72,8 @@ Navigation key - back
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyCode-BACK = 3--><!--Device-KeyCode-BACK = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## HOME
@@ -78,6 +88,8 @@ Navigation key - home
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyCode-HOME = 4--><!--Device-KeyCode-HOME = 4-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## RECENT
@@ -91,5 +103,7 @@ Navigation key - recently opened
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyCode-RECENT = 5--><!--Device-KeyCode-RECENT = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

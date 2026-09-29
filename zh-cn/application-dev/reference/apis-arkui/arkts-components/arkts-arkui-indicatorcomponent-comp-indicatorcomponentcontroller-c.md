@@ -8,6 +8,8 @@ Indicator组件的控制器，可以将此对象绑定至Indicator组件来控�
 
 **起始版本：** 15
 
+<!--Device-unnamed-declare class IndicatorComponentController--><!--Device-unnamed-declare class IndicatorComponentController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeIndex
@@ -25,6 +27,8 @@ changeIndex(index: number, useAnimation?: boolean):void
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-IndicatorComponentController-changeIndex(index: number, useAnimation?: boolean):void--><!--Device-IndicatorComponentController-changeIndex(index: number, useAnimation?: boolean):void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ IndicatorComponentController的构造函数。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-IndicatorComponentController-constructor()--><!--Device-IndicatorComponentController-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## showNext
@@ -69,6 +75,8 @@ showNext():void
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-IndicatorComponentController-showNext():void--><!--Device-IndicatorComponentController-showNext():void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## showPrevious
@@ -86,5 +94,7 @@ showPrevious():void
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-IndicatorComponentController-showPrevious():void--><!--Device-IndicatorComponentController-showPrevious():void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

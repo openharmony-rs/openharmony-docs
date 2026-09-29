@@ -10,6 +10,8 @@ Provides the information about the scrollable container component corresponding 
 
 **Since:** 12
 
+<!--Device-unnamed-declare class ScrollableTargetInfo extends EventTargetInfo--><!--Device-unnamed-declare class ScrollableTargetInfo extends EventTargetInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isBegin
@@ -25,6 +27,8 @@ Checks whether this scrollable container component is scrolled to the top. If it
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollableTargetInfo-isBegin(): boolean--><!--Device-ScrollableTargetInfo-isBegin(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ Checks whether the current scroll container is scrolled to the bottom. If the co
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollableTargetInfo-isEnd(): boolean--><!--Device-ScrollableTargetInfo-isEnd(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

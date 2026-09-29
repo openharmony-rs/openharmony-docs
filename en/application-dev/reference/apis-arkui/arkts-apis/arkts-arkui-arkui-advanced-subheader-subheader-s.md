@@ -10,11 +10,13 @@ The **SubHeader** component is positioned at the top of list items or content se
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SubHeader** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
+> - If the **SubHeader** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
 
 **Since:** 10
 
 **Decorator:** @Component
+
+<!--Device-unnamed-export declare struct SubHeader--><!--Device-unnamed-export declare struct SubHeader-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,6 +43,8 @@ Default value: **undefined**, indicating that no custom title is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SubHeader-titleBuilder?: () => void--><!--Device-SubHeader-titleBuilder?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +78,8 @@ Default value:
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SubHeader-contentMargin?: LocalizedMargin--><!--Device-SubHeader-contentMargin?: LocalizedMargin-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentPadding
@@ -102,6 +108,8 @@ If a secondary title, with or without an icon, is displayed on the left:
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SubHeader-contentPadding?: LocalizedPadding--><!--Device-SubHeader-contentPadding?: LocalizedPadding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIcon
@@ -122,6 +130,8 @@ End icon of the title. The **endIcon** attribute takes effect only when the **pr
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-SubHeader-endIcon?: ResourceStr--><!--Device-SubHeader-endIcon?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIconSymbolOptions
@@ -130,7 +140,7 @@ End icon of the title. The **endIcon** attribute takes effect only when the **pr
 endIconSymbolOptions?: SymbolOptions
 ```
 
-End icon symbol options. This parameter is available when **endIcon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+End icon symbol options. This parameter is available when **endIcon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **undefined**, indicating that no end icon symbol style is set.
 
@@ -141,6 +151,8 @@ Default value: **undefined**, indicating that no end icon symbol style is set.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-SubHeader-endIconSymbolOptions?: SymbolOptions--><!--Device-SubHeader-endIconSymbolOptions?: SymbolOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +178,8 @@ The **icon** attribute takes effect only when the **secondaryTitle** attribute i
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SubHeader-icon?: ResourceStr--><!--Device-SubHeader-icon?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconSymbolOptions
@@ -174,7 +188,7 @@ The **icon** attribute takes effect only when the **secondaryTitle** attribute i
 iconSymbolOptions?: SymbolOptions
 ```
 
-Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **undefined**, indicating that no icon is displayed.
 
@@ -185,6 +199,8 @@ Default value: **undefined**, indicating that no icon is displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SubHeader-iconSymbolOptions?: SymbolOptions--><!--Device-SubHeader-iconSymbolOptions?: SymbolOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,6 +222,8 @@ Default value: **undefined**, indicating that the operation area is not displaye
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SubHeader-operationItem?: Array<OperationOption>--><!--Device-SubHeader-operationItem?: Array<OperationOption>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## operationSymbolOptions
@@ -216,7 +234,7 @@ operationSymbolOptions?: Array<SymbolOptions>
 
 Icon symbol options.
 
-This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](../arkts-components/arkts-arkui-symbolglyph-comp.md#symbolglyph).
+This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **undefined**, indicating that no symbol icon is set.
 
@@ -227,6 +245,8 @@ Default value: **undefined**, indicating that no symbol icon is set.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SubHeader-operationSymbolOptions?: Array<SymbolOptions>--><!--Device-SubHeader-operationSymbolOptions?: Array<SymbolOptions>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -249,6 +269,8 @@ Default value: **OperationType.BUTTON**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubHeader-operationType?: OperationType--><!--Device-SubHeader-operationType?: OperationType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,6 +296,8 @@ When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SubHeader-primaryTitle?: ResourceStr--><!--Device-SubHeader-primaryTitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitleModifier
@@ -293,6 +317,8 @@ Default value: **undefined**, indicating that the default style is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SubHeader-primaryTitleModifier?: TextModifier--><!--Device-SubHeader-primaryTitleModifier?: TextModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,6 +342,8 @@ Default value: **undefined**, indicating that no secondary title is displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SubHeader-secondaryTitle?: ResourceStr--><!--Device-SubHeader-secondaryTitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitleModifier
@@ -336,6 +364,8 @@ Default value: **undefined**, indicating that the default style is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SubHeader-secondaryTitleModifier?: TextModifier--><!--Device-SubHeader-secondaryTitleModifier?: TextModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## select
@@ -355,6 +385,8 @@ Default value: **undefined**, indicating that no drop-down list is displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SubHeader-select?: SelectOptions--><!--Device-SubHeader-select?: SelectOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -380,6 +412,8 @@ If the value is **undefined**, the title content displayed by the component is r
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SubHeader-titleAccessibilityText?: ResourceStr--><!--Device-SubHeader-titleAccessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleId
@@ -399,5 +433,7 @@ Set the titleId for title.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-SubHeader-titleId?: string--><!--Device-SubHeader-titleId?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

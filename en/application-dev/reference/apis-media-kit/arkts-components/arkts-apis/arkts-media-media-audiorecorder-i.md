@@ -12,6 +12,8 @@ AudioRecorder is a class for audio recording management. It provides APIs to rec
 
 **Substitutes:** [media](arkts-media-multimedia-media.md)
 
+<!--Device-media-interface AudioRecorder--><!--Device-media-interface AudioRecorder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Subscribes to the audio recording events.
 **Deprecated since:** 9
 
 **Substitutes:** [on](arkts-media-media-avrecorder-i.md#onstatechange)(type: 'stateChange', callback: OnAVRecorderStateChangeHandler)
+
+<!--Device-AudioRecorder-on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset', callback: () => void): void--><!--Device-AudioRecorder-on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset', callback: () => void): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -57,6 +61,8 @@ Subscribes to audio recording error events. After an error event is reported, yo
 
 **Substitutes:** [on](arkts-media-media-avrecorder-i.md#onerror)(type: 'error', callback: ErrorCallback)
 
+<!--Device-AudioRecorder-on(type: 'error', callback: ErrorCallback): void--><!--Device-AudioRecorder-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 **Parameters:**
@@ -80,6 +86,8 @@ Pauses audio recording. This API can be called only after the **'start'** event 
 
 **Substitutes:** [pause](arkts-media-media-avrecorder-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioRecorder-pause(): void--><!--Device-AudioRecorder-pause(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## prepare
@@ -97,6 +105,8 @@ Prepares for recording.
 **Substitutes:** [prepare](arkts-media-media-avrecorder-i.md#prepare)(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-AudioRecorder-prepare(config: AudioRecorderConfig): void--><!--Device-AudioRecorder-prepare(config: AudioRecorderConfig): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -126,6 +136,8 @@ Releases the audio recording resources.
 
 **Substitutes:** [release](arkts-media-media-avrecorder-i.md#release)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioRecorder-release(): void--><!--Device-AudioRecorder-release(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## reset
@@ -144,6 +156,8 @@ Before resetting audio recording, you must call **stop()** to stop recording. Af
 
 **Substitutes:** [reset](arkts-media-media-avrecorder-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioRecorder-reset(): void--><!--Device-AudioRecorder-reset(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## resume
@@ -159,6 +173,8 @@ Resumes audio recording. This API can be called only after the **'pause'** event
 **Deprecated since:** 9
 
 **Substitutes:** [resume](arkts-media-media-avrecorder-i.md#resume)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AudioRecorder-resume(): void--><!--Device-AudioRecorder-resume(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -176,6 +192,8 @@ Starts audio recording. This API can be called only after the **'prepare'** even
 
 **Substitutes:** [start](arkts-media-media-avrecorder-i.md#start)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-AudioRecorder-start(): void--><!--Device-AudioRecorder-start(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## stop
@@ -191,5 +209,7 @@ Stops audio recording.
 **Deprecated since:** 9
 
 **Substitutes:** [stop](arkts-media-media-avrecorder-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-AudioRecorder-stop(): void--><!--Device-AudioRecorder-stop(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder

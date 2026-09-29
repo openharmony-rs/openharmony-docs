@@ -16,6 +16,8 @@ Implements sampling options.
 
 **Since:** 12
 
+<!--Device-drawing-class SamplingOptions--><!--Device-drawing-class SamplingOptions-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -33,6 +35,8 @@ constructor()
 Creates a **SamplingOptions** object, where the default value of [FilterMode](arkts-arkgraphics2d-drawing-filtermode-e.md) is **FILTER_MODE_NEAREST**.
 
 **Since:** 12
+
+<!--Device-SamplingOptions-constructor()--><!--Device-SamplingOptions-constructor()-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,6 +64,8 @@ constructor(filterMode: FilterMode)
 Creates a **SamplingOptions** object.
 
 **Since:** 12
+
+<!--Device-SamplingOptions-constructor(filterMode: FilterMode)--><!--Device-SamplingOptions-constructor(filterMode: FilterMode)-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

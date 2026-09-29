@@ -20,6 +20,8 @@ Disables spatial motion awareness and subscribes to spatial motion awareness res
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function offSpatialMotion(callback?: Callback<SpatialMotionInfo>): void--><!--Device-carAwareness-function offSpatialMotion(callback?: Callback<SpatialMotionInfo>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters:**

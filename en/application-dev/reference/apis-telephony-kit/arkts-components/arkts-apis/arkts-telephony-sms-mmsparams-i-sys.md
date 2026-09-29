@@ -8,6 +8,8 @@ Defines the parameters for sending SMS messages.
 
 **Since:** 11
 
+<!--Device-sms-export interface MmsParams--><!--Device-sms-export interface MmsParams-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ MMS PDU address.
 
 **Since:** 11
 
+<!--Device-MmsParams-data: string--><!--Device-MmsParams-data: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ MMSC address.
 
 **Since:** 11
 
+<!--Device-MmsParams-mmsc: string--><!--Device-MmsParams-mmsc: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ MMS configuration file. For details, see [MmsParams](arkts-telephony-sms-mmspara
 **Type:** [MmsConfig](arkts-telephony-sms-mmsconfig-i-sys.md)
 
 **Since:** 11
+
+<!--Device-MmsParams-mmsConfig?: MmsConfig--><!--Device-MmsParams-mmsConfig?: MmsConfig-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -80,6 +88,8 @@ Slot ID of the SIM card used for sending SMS messages.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-MmsParams-slotId: int--><!--Device-MmsParams-slotId: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

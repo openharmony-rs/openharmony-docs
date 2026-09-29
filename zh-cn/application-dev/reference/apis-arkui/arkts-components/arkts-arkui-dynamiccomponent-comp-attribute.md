@@ -4,13 +4,15 @@
 declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
 ```
 
-支持通用属性。
+支持[通用属性](arkts-arkui-common-comp.md)。
 
 支持以下事件：
 
-**继承/实现关系：** DynamicComponentAttribute extends CommonMethod&lt;DynamicComponentAttribute&gt;
+**继承/实现关系：** DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
 
 **起始版本：** 26.0.0
+
+<!--Device-unnamed-declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>--><!--Device-unnamed-declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -22,6 +22,8 @@ Creates an AVTranscoder instance. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-media-function createAVTranscoder(): Promise<AVTranscoder>--><!--Device-media-function createAVTranscoder(): Promise<AVTranscoder>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
 **Return value:**

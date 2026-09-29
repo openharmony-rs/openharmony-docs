@@ -26,6 +26,8 @@ Replaces the current page with another one in the application and destroys the c
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void--><!--Device-router-function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Parameters:**
@@ -90,6 +92,8 @@ Replaces the current page with another one in the application and destroys the c
 **Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-1)(options: router.RouterOptions)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-router-function replaceUrl(options: RouterOptions): Promise<void>--><!--Device-router-function replaceUrl(options: RouterOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -163,6 +167,8 @@ Replaces the current page with another one in the application and destroys the c
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void--><!--Device-router-function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **Parameters:**
@@ -228,6 +234,8 @@ Replaces the current page with another one in the application and destroys the c
 **Substitutes:** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl-3)(options: router.RouterOptions, mode: router.RouterMode)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-router-function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>--><!--Device-router-function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 

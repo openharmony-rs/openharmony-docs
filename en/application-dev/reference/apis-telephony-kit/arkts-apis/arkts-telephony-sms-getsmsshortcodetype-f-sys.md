@@ -20,6 +20,8 @@ Get the SMS short code type of the destination address.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-sms-function getSmsShortCodeType(slotId: int, destAddr: string): Promise<SmsShortCodeType>--><!--Device-sms-function getSmsShortCodeType(slotId: int, destAddr: string): Promise<SmsShortCodeType>-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.

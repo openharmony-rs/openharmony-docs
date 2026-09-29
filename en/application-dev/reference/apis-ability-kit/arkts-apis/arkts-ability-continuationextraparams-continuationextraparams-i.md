@@ -10,6 +10,8 @@ The ContinuationExtraParams module provides the filter parameters required by th
 
 **Deprecated since:** 22
 
+<!--Device-unnamed-export interface ContinuationExtraParams--><!--Device-unnamed-export interface ContinuationExtraParams-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 ## authInfo
@@ -29,6 +31,8 @@ Authentication information.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContinuationExtraParams-authInfo?: Record<string, Object>--><!--Device-ContinuationExtraParams-authInfo?: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
@@ -50,6 +54,8 @@ Continuation mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContinuationExtraParams-continuationMode?: continuationManager.ContinuationMode--><!--Device-ContinuationExtraParams-continuationMode?: continuationManager.ContinuationMode-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 ## description
@@ -69,6 +75,8 @@ Device filtering description.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContinuationExtraParams-description?: string--><!--Device-ContinuationExtraParams-description?: string-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
@@ -90,6 +98,8 @@ Device type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContinuationExtraParams-deviceType?: Array<string>--><!--Device-ContinuationExtraParams-deviceType?: Array<string>-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 ## filter
@@ -110,6 +120,8 @@ Device filtering parameter.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContinuationExtraParams-filter?: any--><!--Device-ContinuationExtraParams-filter?: any-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 ## targetBundle
@@ -129,5 +141,7 @@ Name of the target bundle.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContinuationExtraParams-targetBundle?: string--><!--Device-ContinuationExtraParams-targetBundle?: string-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager

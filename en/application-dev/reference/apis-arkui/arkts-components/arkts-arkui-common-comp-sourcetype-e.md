@@ -8,6 +8,8 @@ Enumerates the input source device types.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum SourceType--><!--Device-unnamed-declare enum SourceType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Unknown
@@ -21,6 +23,8 @@ Unknown input source.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SourceType-Unknown--><!--Device-SourceType-Unknown-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ Mouse.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SourceType-Mouse--><!--Device-SourceType-Mouse-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TouchScreen
@@ -49,6 +55,8 @@ Touchscreen.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SourceType-TouchScreen--><!--Device-SourceType-TouchScreen-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +74,8 @@ Key.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-SourceType-KEY = 4--><!--Device-SourceType-KEY = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## JOYSTICK
@@ -81,5 +91,7 @@ Joystick.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-SourceType-JOYSTICK = 5--><!--Device-SourceType-JOYSTICK = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

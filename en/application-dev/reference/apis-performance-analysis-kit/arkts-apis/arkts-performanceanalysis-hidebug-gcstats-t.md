@@ -8,6 +8,8 @@ Describes the key-value pair used to store GC statistics. This type does not sup
 
 **Since:** 12
 
+<!--Device-hidebug-type GcStats = Record<string, long>--><!--Device-hidebug-type GcStats = Record<string, long>-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Type:** Record&lt;string, number&gt;

@@ -18,6 +18,8 @@ Sends a notification from the user authentication widget. When the unified authe
 
 **Required permissions:** ohos.permission.SUPPORT_USER_AUTH
 
+<!--Device-userAuth-function sendNotice(noticeType: NoticeType, eventData: string): void--><!--Device-userAuth-function sendNotice(noticeType: NoticeType, eventData: string): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

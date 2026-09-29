@@ -8,6 +8,8 @@ Manager OPP server profile.
 
 **Since:** 16
 
+<!--Device-opp-interface OppServerProfile--><!--Device-opp-interface OppServerProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ cancel the current file transfer action.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppServerProfile-cancelTransfer(): Promise<void>--><!--Device-OppServerProfile-cancelTransfer(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -86,6 +90,8 @@ Obtains the information about the file that is being transferred. On API 26.0.0 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppServerProfile-getCurrentTransferInformation(): Promise<OppTransferInformation>--><!--Device-OppServerProfile-getCurrentTransferInformation(): Promise<OppTransferInformation>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -139,6 +145,8 @@ Unsubscribe the event reported when the file transfer status changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppServerProfile-off(type: 'transferStateChange', callback?: Callback<OppTransferInformation>): void--><!--Device-OppServerProfile-off(type: 'transferStateChange', callback?: Callback<OppTransferInformation>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -191,6 +199,8 @@ Unsubscribe to the event of receiving a file transfer request.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppServerProfile-off(type: 'receiveIncomingFile', callback?: Callback<OppTransferInformation>): void--><!--Device-OppServerProfile-off(type: 'receiveIncomingFile', callback?: Callback<OppTransferInformation>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -246,6 +256,8 @@ Subscribe the event reported when the file transfer status changes. On API 26.0.
 - API versions 16 to 24: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppServerProfile-on(type: 'transferStateChange', callback: Callback<OppTransferInformation>): void--><!--Device-OppServerProfile-on(type: 'transferStateChange', callback: Callback<OppTransferInformation>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -311,6 +323,8 @@ Subscribe to the event of receiving a file transfer request. On API 26.0.0 and a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppServerProfile-on(type: 'receiveIncomingFile', callback: Callback<OppTransferInformation>): void--><!--Device-OppServerProfile-on(type: 'receiveIncomingFile', callback: Callback<OppTransferInformation>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -371,6 +385,8 @@ Send files to the remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppServerProfile-sendFile(deviceId: string, fileHolds: Array<FileHolder>): Promise<void>--><!--Device-OppServerProfile-sendFile(deviceId: string, fileHolds: Array<FileHolder>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -451,6 +467,8 @@ Set the user confirmation information for incoming files.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppServerProfile-setIncomingFileConfirmation(accept: boolean, fileFd: int): Promise<void>--><!--Device-OppServerProfile-setIncomingFileConfirmation(accept: boolean, fileFd: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -520,6 +538,8 @@ Set the URI of the last received file.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppServerProfile-setLastReceivedFileUri(uri: string): Promise<void>--><!--Device-OppServerProfile-setLastReceivedFileUri(uri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

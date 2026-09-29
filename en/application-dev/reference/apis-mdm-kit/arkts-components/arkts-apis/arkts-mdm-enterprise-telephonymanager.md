@@ -14,6 +14,8 @@ The **telephonyManager** module provides the telephony management capability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace telephonyManager--><!--Device-unnamed-declare namespace telephonyManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

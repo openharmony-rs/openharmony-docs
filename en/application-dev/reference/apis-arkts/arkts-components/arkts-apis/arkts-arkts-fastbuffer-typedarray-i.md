@@ -14,6 +14,8 @@ TypedArray inherits the features and methods of Int8Array
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-fastbuffer-interface TypedArray extends Int8Array--><!--Device-fastbuffer-interface TypedArray extends Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

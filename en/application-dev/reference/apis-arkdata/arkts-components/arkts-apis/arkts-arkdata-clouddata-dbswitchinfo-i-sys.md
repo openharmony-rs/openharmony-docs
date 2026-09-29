@@ -8,6 +8,8 @@ Defines the switch information of a device-cloud synergy database.
 
 **Since:** 23
 
+<!--Device-cloudData-interface DBSwitchInfo--><!--Device-cloudData-interface DBSwitchInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Whether to enable device-cloud synergy for the database. The value **true** indi
 
 **Since:** 23
 
+<!--Device-DBSwitchInfo-enable: boolean--><!--Device-DBSwitchInfo-enable: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Device-cloud synergy configuration of a table. The key is the table name, and th
 **Type:** Record&lt;string, boolean&gt;
 
 **Since:** 23
+
+<!--Device-DBSwitchInfo-tableInfo?: Record<string, boolean>--><!--Device-DBSwitchInfo-tableInfo?: Record<string, boolean>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Config
 

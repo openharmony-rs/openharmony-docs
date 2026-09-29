@@ -24,6 +24,8 @@ Stops BLE scanning. On API 10 and above, the permission required by this interfa
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-BLE-function stopBLEScan(): void--><!--Device-BLE-function stopBLEScan(): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Error codes:**

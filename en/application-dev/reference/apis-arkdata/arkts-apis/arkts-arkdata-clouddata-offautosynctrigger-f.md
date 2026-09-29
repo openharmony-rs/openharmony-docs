@@ -18,6 +18,8 @@ Describes unsubscribing from the device-cloud automatic synchronization trigger 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cloudData-function offAutoSyncTrigger(observer?: Callback<AutoSyncTriggerInfo>): void--><!--Device-cloudData-function offAutoSyncTrigger(observer?: Callback<AutoSyncTriggerInfo>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Parameters:**

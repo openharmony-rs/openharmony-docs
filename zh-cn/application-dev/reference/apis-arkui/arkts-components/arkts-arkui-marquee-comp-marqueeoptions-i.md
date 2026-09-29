@@ -12,6 +12,8 @@ Marquee初始化参数。
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface MarqueeOptions--><!--Device-unnamed-interface MarqueeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -31,6 +33,8 @@ delay?: number
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeOptions-delay?: number--><!--Device-MarqueeOptions-delay?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ true：表示文本从头部位置开始正向滚动；false：表示文本反�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeOptions-fromStart?: boolean--><!--Device-MarqueeOptions-fromStart?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。当设置
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-MarqueeOptions-loop?: number--><!--Device-MarqueeOptions-loop?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## spacing
@@ -106,6 +114,8 @@ spacing?: LengthMetrics
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-MarqueeOptions-spacing?: LengthMetrics--><!--Device-MarqueeOptions-spacing?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -123,6 +133,8 @@ src: string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeOptions-src: string--><!--Device-MarqueeOptions-src: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,6 +160,8 @@ true：播放；false：不播放。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-MarqueeOptions-start: boolean--><!--Device-MarqueeOptions-start: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## step
@@ -162,7 +176,7 @@ step?: number
 
 默认值：6
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** number
 
@@ -174,5 +188,7 @@ step?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MarqueeOptions-step?: number--><!--Device-MarqueeOptions-step?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

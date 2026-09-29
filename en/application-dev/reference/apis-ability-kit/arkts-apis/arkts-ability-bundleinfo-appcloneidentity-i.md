@@ -8,6 +8,8 @@ Describes the identity information of an application clone.
 
 **Since:** 14
 
+<!--Device-unnamed-export interface AppCloneIdentity--><!--Device-unnamed-export interface AppCloneIdentity-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## appIndex
@@ -22,6 +24,8 @@ Clone index information of the app package. The value is an integer ranging from
 
 **Since:** 14
 
+<!--Device-AppCloneIdentity-readonly appIndex: int--><!--Device-AppCloneIdentity-readonly appIndex: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## bundleName
@@ -35,5 +39,7 @@ Bundle name of the application.
 **Type:** string
 
 **Since:** 14
+
+<!--Device-AppCloneIdentity-readonly bundleName: string--><!--Device-AppCloneIdentity-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

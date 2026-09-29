@@ -26,6 +26,8 @@ Defines all transition effects.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}--><!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** {

@@ -8,6 +8,8 @@ Background communication object created by the system for the UIAbility, known a
 
 **Since:** 9
 
+<!--Device-unnamed-export interface Callee--><!--Device-unnamed-export interface Callee-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Unregisters a caller notification callback, which is invoked when the target UIA
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Callee-off(method: string): void--><!--Device-Callee-off(method: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -75,6 +79,8 @@ Registers a caller notification callback, which is invoked when the target UIAbi
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Callee-on(method: string, callback: CalleeCallback): void--><!--Device-Callee-on(method: string, callback: CalleeCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

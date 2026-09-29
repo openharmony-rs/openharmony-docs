@@ -8,6 +8,8 @@ ToolBarModifier提供设置工具栏高度(height)、背景色(backgroundColor)�
 
 **起始版本：** 13
 
+<!--Device-unnamed-export declare class ToolBarModifier--><!--Device-unnamed-export declare class ToolBarModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,6 +31,8 @@ backgroundColor(backgroundColor: ResourceColor): ToolBarModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarModifier-backgroundColor(backgroundColor: ResourceColor): ToolBarModifier--><!--Device-ToolBarModifier-backgroundColor(backgroundColor: ResourceColor): ToolBarModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ height(height: LengthMetrics): ToolBarModifier
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarModifier-height(height: LengthMetrics): ToolBarModifier--><!--Device-ToolBarModifier-height(height: LengthMetrics): ToolBarModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,6 +92,8 @@ padding(padding: LengthMetrics): ToolBarModifier
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarModifier-padding(padding: LengthMetrics): ToolBarModifier--><!--Device-ToolBarModifier-padding(padding: LengthMetrics): ToolBarModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -113,6 +121,8 @@ stateEffect(stateEffect: boolean): ToolBarModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarModifier-stateEffect(stateEffect: boolean): ToolBarModifier--><!--Device-ToolBarModifier-stateEffect(stateEffect: boolean): ToolBarModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

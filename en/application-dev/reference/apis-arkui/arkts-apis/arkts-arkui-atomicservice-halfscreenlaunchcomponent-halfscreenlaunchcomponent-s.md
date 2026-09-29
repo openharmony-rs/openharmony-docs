@@ -16,6 +16,8 @@ export declare struct HalfScreenLaunchComponent
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct HalfScreenLaunchComponent--><!--Device-unnamed-export declare struct HalfScreenLaunchComponent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Application ID for the atomic service.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-HalfScreenLaunchComponent-appId: string--><!--Device-HalfScreenLaunchComponent-appId: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -56,6 +60,8 @@ Content displayed in the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-HalfScreenLaunchComponent-content: Callback<void>--><!--Device-HalfScreenLaunchComponent-content: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onError
@@ -71,6 +77,8 @@ Invoked when an error occurs during the running of the atomic service.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-HalfScreenLaunchComponent-onError?: ErrorCallback--><!--Device-HalfScreenLaunchComponent-onError?: ErrorCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +96,8 @@ Callback triggered when an embedded atomic service calls [@ohos.window (window)]
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-HalfScreenLaunchComponent-onReceive?: Callback<Record<string, Object>>--><!--Device-HalfScreenLaunchComponent-onReceive?: Callback<Record<string, Object>>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onTerminated
@@ -104,6 +114,8 @@ Callback triggered when an embedded atomic service exits normally. Exit scenario
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-HalfScreenLaunchComponent-onTerminated?: Callback<TerminationInfo>--><!--Device-HalfScreenLaunchComponent-onTerminated?: Callback<TerminationInfo>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -119,5 +131,7 @@ Parameters for starting the atomic service. The default value is empty.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-HalfScreenLaunchComponent-options?: AtomicServiceOptions--><!--Device-HalfScreenLaunchComponent-options?: AtomicServiceOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

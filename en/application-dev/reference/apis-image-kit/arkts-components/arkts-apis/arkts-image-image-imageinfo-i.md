@@ -8,6 +8,8 @@ Describes image information.
 
 **Since:** 6
 
+<!--Device-image-interface ImageInfo--><!--Device-image-interface ImageInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,9 +30,11 @@ Alpha type.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-ImageInfo-alphaType: AlphaType--><!--Device-ImageInfo-alphaType: AlphaType-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,9 +50,11 @@ Pixel density, in ppi.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-ImageInfo-density: int--><!--Device-ImageInfo-density: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -63,6 +69,8 @@ Whether the image is an HDR image. The value **true** means an HDR image, and **
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-ImageInfo-isHdr: boolean--><!--Device-ImageInfo-isHdr: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -82,6 +90,8 @@ You can use the **supportedFormats** property of ImageSource and ImagePacker to 
 
 **Since:** 12
 
+<!--Device-ImageInfo-mimeType: string--><!--Device-ImageInfo-mimeType: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## pixelFormat
@@ -96,9 +106,11 @@ Pixel format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-ImageInfo-pixelFormat: PixelMapFormat--><!--Device-ImageInfo-pixelFormat: PixelMapFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -114,9 +126,11 @@ Image size.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-ImageInfo-size: Size--><!--Device-ImageInfo-size: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -132,8 +146,10 @@ Number of bytes from one row of pixels in memory to the next row of pixels in me
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-ImageInfo-stride: int--><!--Device-ImageInfo-stride: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -16,6 +16,8 @@ Obtains information about the sensor of a specific type. This API uses an asynch
 
 **Since:** 9
 
+<!--Device-sensor-function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void--><!--Device-sensor-function getSingleSensor(type: SensorId, callback: AsyncCallback<Sensor>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -74,6 +76,8 @@ function getSingleSensor(type: SensorId): Promise<Sensor>
 Obtains information about the sensor of a specific type. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-sensor-function getSingleSensor(type: SensorId): Promise<Sensor>--><!--Device-sensor-function getSingleSensor(type: SensorId): Promise<Sensor>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

@@ -18,6 +18,8 @@ function removeVirtualScreenSurface(screenId: number, surfaceId: string): Promis
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-display-function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<void>--><!--Device-display-function removeVirtualScreenSurface(screenId: long, surfaceId: string): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

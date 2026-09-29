@@ -8,6 +8,8 @@ User authorization result.
 
 **Since:** 26.0.0
 
+<!--Device-abilityToolAccessCtrl-interface UserAuthResult--><!--Device-abilityToolAccessCtrl-interface UserAuthResult-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Permission information list.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-UserAuthResult-permissionInfo: PermissionInfo[]--><!--Device-UserAuthResult-permissionInfo: PermissionInfo[]-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Permission query information.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-UserAuthResult-permissionQuery: PermissionQuery--><!--Device-UserAuthResult-permissionQuery: PermissionQuery-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

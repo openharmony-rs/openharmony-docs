@@ -22,6 +22,8 @@ Obtain current location
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function getCurrentLocation(request: CurrentLocationRequest, callback: AsyncCallback<Location>): void--><!--Device-geolocation-function getCurrentLocation(request: CurrentLocationRequest, callback: AsyncCallback<Location>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -67,6 +69,8 @@ Obtain current location
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function getCurrentLocation(callback: AsyncCallback<Location>): void--><!--Device-geolocation-function getCurrentLocation(callback: AsyncCallback<Location>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -109,6 +113,8 @@ Obtain current location
 **Substitutes:** [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function getCurrentLocation(request?: CurrentLocationRequest): Promise<Location>--><!--Device-geolocation-function getCurrentLocation(request?: CurrentLocationRequest): Promise<Location>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

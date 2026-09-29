@@ -14,6 +14,8 @@ declare type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"--><!--Device-unnamed-declare type CanvasTextAlign = "center" | "end" | "left" | "right" | "start"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |

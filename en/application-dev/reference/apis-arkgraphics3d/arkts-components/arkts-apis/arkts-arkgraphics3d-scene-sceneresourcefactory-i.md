@@ -12,6 +12,8 @@ Provides APIs for creating resources, such as cameras and light sources, used in
 
 **Since:** 12
 
+<!--Device-unnamed-export interface SceneResourceFactory extends RenderResourceFactory--><!--Device-unnamed-export interface SceneResourceFactory extends RenderResourceFactory-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## createCamera
@@ -23,6 +25,8 @@ createCamera(params: SceneNodeParameters): Promise<Camera>
 Creates a camera based on scene node parameters. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters): Promise<Camera>--><!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters): Promise<Camera>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -72,6 +76,8 @@ createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promi
 Creates a camera based on scene node parameters and camera parameters. This API uses a promise to return the result.
 
 **Since:** 21
+
+<!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise<Camera>--><!--Device-SceneResourceFactory-createCamera(params: SceneNodeParameters, cameraParams: CameraParameters): Promise<Camera>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -123,6 +129,8 @@ Creates an effect object based on the effect parameters. This API uses a promise
 
 **Since:** 21
 
+<!--Device-SceneResourceFactory-createEffect(params: EffectParameters): Promise<Effect>--><!--Device-SceneResourceFactory-createEffect(params: EffectParameters): Promise<Effect>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -172,6 +180,8 @@ Creates an environment based on the scene resource parameters. This API uses a p
 
 **Since:** 12
 
+<!--Device-SceneResourceFactory-createEnvironment(params: SceneResourceParameters): Promise<Environment>--><!--Device-SceneResourceFactory-createEnvironment(params: SceneResourceParameters): Promise<Environment>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -219,6 +229,8 @@ createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry
 Creates a geometry object based on the scene node parameters and mesh data. This API uses a promise to return the result.
 
 **Since:** 18
+
+<!--Device-SceneResourceFactory-createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry>--><!--Device-SceneResourceFactory-createGeometry(params: SceneNodeParameters, mesh:MeshResource): Promise<Geometry>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -275,6 +287,8 @@ Creates a light based on the scene node parameters and light type. This API uses
 
 **Since:** 12
 
+<!--Device-SceneResourceFactory-createLight(params: SceneNodeParameters, lightType: LightType): Promise<Light>--><!--Device-SceneResourceFactory-createLight(params: SceneNodeParameters, lightType: LightType): Promise<Light>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -323,6 +337,8 @@ Creates a material based on the scene resource parameters and material type. Thi
 
 **Since:** 12
 
+<!--Device-SceneResourceFactory-createMaterial(params: SceneResourceParameters, materialType: MaterialType): Promise<Material>--><!--Device-SceneResourceFactory-createMaterial(params: SceneResourceParameters, materialType: MaterialType): Promise<Material>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -370,6 +386,8 @@ createNode(params: SceneNodeParameters): Promise<Node>
 Creates a node. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-SceneResourceFactory-createNode(params: SceneNodeParameters): Promise<Node>--><!--Device-SceneResourceFactory-createNode(params: SceneNodeParameters): Promise<Node>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

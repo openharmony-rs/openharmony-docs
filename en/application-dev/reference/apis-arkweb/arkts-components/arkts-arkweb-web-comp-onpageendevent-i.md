@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page loading ends, inclu
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnPageEndEvent--><!--Device-unnamed-declare interface OnPageEndEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -23,5 +25,7 @@ URL of the page after the web page is loaded.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnPageEndEvent-url: string--><!--Device-OnPageEndEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -10,6 +10,8 @@ Enumerates the policies for activating the blur style.
 
 **Since:** 14
 
+<!--Device-unnamed-declare enum BlurStyleActivePolicy--><!--Device-unnamed-declare enum BlurStyleActivePolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOWS_WINDOW_ACTIVE_STATE
@@ -25,6 +27,8 @@ The blur effect changes according to the window's focus state; it is inactive wh
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-BlurStyleActivePolicy-FOLLOWS_WINDOW_ACTIVE_STATE = 0--><!--Device-BlurStyleActivePolicy-FOLLOWS_WINDOW_ACTIVE_STATE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ The blur effect is always active.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-BlurStyleActivePolicy-ALWAYS_ACTIVE = 1--><!--Device-BlurStyleActivePolicy-ALWAYS_ACTIVE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALWAYS_INACTIVE
@@ -57,5 +63,7 @@ The blur effect is always inactive.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-BlurStyleActivePolicy-ALWAYS_INACTIVE = 2--><!--Device-BlurStyleActivePolicy-ALWAYS_INACTIVE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

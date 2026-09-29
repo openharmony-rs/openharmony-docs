@@ -8,6 +8,8 @@ declare interface CanvasPattern
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface CanvasPattern--><!--Device-unnamed-declare interface CanvasPattern-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## setTransform
@@ -25,6 +27,8 @@ Applies a matrix transformation to the current **CanvasPattern** using a **Matri
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasPattern-setTransform(transform?: Matrix2D): void--><!--Device-CanvasPattern-setTransform(transform?: Matrix2D): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

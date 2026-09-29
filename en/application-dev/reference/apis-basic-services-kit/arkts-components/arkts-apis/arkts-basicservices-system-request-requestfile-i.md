@@ -10,6 +10,8 @@ export interface RequestFile
 
 **Substitutes:** [File](arkts-basicservices-request-file-i.md)
 
+<!--Device-unnamed-export interface RequestFile--><!--Device-unnamed-export interface RequestFile-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## Modules to Import
@@ -34,6 +36,8 @@ File name in the header when **multipart** is used.
 
 **Substitutes:** filename
 
+<!--Device-RequestFile-filename?: string--><!--Device-RequestFile-filename?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## name
@@ -51,6 +55,8 @@ Name of a form item when **multipart** is used. The default value is **file**.
 **Deprecated since:** 9
 
 **Substitutes:** name
+
+<!--Device-RequestFile-name?: string--><!--Device-RequestFile-name?: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -70,6 +76,8 @@ Type of the file content. By default, the type is obtained based on the extensio
 
 **Substitutes:** contentType
 
+<!--Device-RequestFile-type?: string--><!--Device-RequestFile-type?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## uri
@@ -87,5 +95,7 @@ Local path for storing files.
 **Deprecated since:** 9
 
 **Substitutes:** path
+
+<!--Device-RequestFile-uri: string--><!--Device-RequestFile-uri: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload

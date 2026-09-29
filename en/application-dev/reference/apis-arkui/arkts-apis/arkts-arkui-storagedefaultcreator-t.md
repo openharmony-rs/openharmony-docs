@@ -12,6 +12,8 @@ Obtains the default constructor.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export declare type StorageDefaultCreator<T> = () => T--><!--Device-unnamed-export declare type StorageDefaultCreator<T> = () => T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**

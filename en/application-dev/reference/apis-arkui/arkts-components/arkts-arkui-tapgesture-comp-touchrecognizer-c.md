@@ -8,6 +8,8 @@ Represents a touch gesture recognizer.
 
 **Since:** 20
 
+<!--Device-unnamed-declare class TouchRecognizer--><!--Device-unnamed-declare class TouchRecognizer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancelTouch
@@ -24,6 +26,8 @@ Sends a touch cancellation event to this touch gesture recognizer.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TouchRecognizer-cancelTouch(): void--><!--Device-TouchRecognizer-cancelTouch(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getEventTargetInfo
@@ -39,6 +43,8 @@ Obtains the information about the component corresponding to this touch gesture 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TouchRecognizer-getEventTargetInfo(): EventTargetInfo--><!--Device-TouchRecognizer-getEventTargetInfo(): EventTargetInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +67,8 @@ Returns whether the node bound to the current touch gesture recognizer is a desc
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: int): boolean--><!--Device-TouchRecognizer-isHostBelongsTo(uniqueId: int): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

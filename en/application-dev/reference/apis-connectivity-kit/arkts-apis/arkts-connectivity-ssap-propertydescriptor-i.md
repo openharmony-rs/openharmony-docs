@@ -8,6 +8,8 @@ Defines the descriptor of a property.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface PropertyDescriptor--><!--Device-ssap-interface PropertyDescriptor-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Descriptor type of a property.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyDescriptor-descriptorType: PropertyDescriptorType--><!--Device-PropertyDescriptor-descriptorType: PropertyDescriptorType-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## isWriteable
@@ -45,6 +49,8 @@ Whether a descriptor is writable. The value **true** indicates the descriptor is
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyDescriptor-isWriteable?: boolean--><!--Device-PropertyDescriptor-isWriteable?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Property UUID, in the same format as **serviceUuid**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyDescriptor-propertyUuid: string--><!--Device-PropertyDescriptor-propertyUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## serviceUuid
@@ -78,6 +86,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyDescriptor-serviceUuid: string--><!--Device-PropertyDescriptor-serviceUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## value
@@ -93,5 +103,7 @@ Data value of a descriptor.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyDescriptor-value: ArrayBuffer--><!--Device-PropertyDescriptor-value: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

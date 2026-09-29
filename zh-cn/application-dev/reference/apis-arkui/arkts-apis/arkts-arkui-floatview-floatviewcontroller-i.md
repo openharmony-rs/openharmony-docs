@@ -10,6 +10,8 @@ interface FloatViewController
 
 **起始版本：** 26.0.0
 
+<!--Device-floatView-interface FloatViewController--><!--Device-floatView-interface FloatViewController-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -29,6 +31,8 @@ getWindowProperties(): FloatViewProperties
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-getWindowProperties(): FloatViewProperties--><!--Device-FloatViewController-getWindowProperties(): FloatViewProperties-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -68,6 +72,8 @@ offLimitsChange(callback?: Callback<FloatViewLimits>): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-offLimitsChange(callback?: Callback<FloatViewLimits>): void--><!--Device-FloatViewController-offLimitsChange(callback?: Callback<FloatViewLimits>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -110,6 +116,8 @@ offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void--><!--Device-FloatViewController-offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -151,6 +159,8 @@ offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void--><!--Device-FloatViewController-offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -191,6 +201,8 @@ onLimitsChange(callback: Callback<FloatViewLimits>): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-onLimitsChange(callback: Callback<FloatViewLimits>): void--><!--Device-FloatViewController-onLimitsChange(callback: Callback<FloatViewLimits>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -234,6 +246,8 @@ onRectChange(callback: Callback<FloatViewRectChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-onRectChange(callback: Callback<FloatViewRectChangeInfo>): void--><!--Device-FloatViewController-onRectChange(callback: Callback<FloatViewRectChangeInfo>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -276,6 +290,8 @@ onStateChange(callback: Callback<FloatViewStateChangeInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-onStateChange(callback: Callback<FloatViewStateChangeInfo>): void--><!--Device-FloatViewController-onStateChange(callback: Callback<FloatViewStateChangeInfo>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -317,6 +333,8 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>--><!--Device-FloatViewController-restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -378,6 +396,8 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>--><!--Device-FloatViewController-setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -428,6 +448,8 @@ setUIContext(path: string, storage?: LocalStorage): Promise<void>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-setUIContext(path: string, storage?: LocalStorage): Promise<void>--><!--Device-FloatViewController-setUIContext(path: string, storage?: LocalStorage): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -481,6 +503,8 @@ setUIContextByName(name: string, storage?: LocalStorage): Promise<void>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-setUIContextByName(name: string, storage?: LocalStorage): Promise<void>--><!--Device-FloatViewController-setUIContextByName(name: string, storage?: LocalStorage): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -564,6 +588,8 @@ setWindowSize(size: window.Size): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-setWindowSize(size: window.Size): Promise<void>--><!--Device-FloatViewController-setWindowSize(size: window.Size): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -623,6 +649,8 @@ start(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewController-start(): Promise<void>--><!--Device-FloatViewController-start(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
@@ -635,7 +663,7 @@ start(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 201 | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The float view controller object is null. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300030](../errorcode-window.md#1300030-重复操作闪控窗) | Repeated operations on the float view. Possible cause: The float view is starting or has already started. |
@@ -672,6 +700,8 @@ stop(): Promise<void>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-stop(): Promise<void>--><!--Device-FloatViewController-stop(): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -719,6 +749,8 @@ switchTemplate(templateProperty: TemplateProperty): Promise<void>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewController-switchTemplate(templateProperty: TemplateProperty): Promise<void>--><!--Device-FloatViewController-switchTemplate(templateProperty: TemplateProperty): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

@@ -20,6 +20,8 @@ Obtains the thread priority based on the specified TID.
 
 **Substitutes:** [getThreadPriority](arkts-arkts-process-processmanager-c.md#getthreadpriority)
 
+<!--Device-process-function getThreadPriority(v: number): number--><!--Device-process-function getThreadPriority(v: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

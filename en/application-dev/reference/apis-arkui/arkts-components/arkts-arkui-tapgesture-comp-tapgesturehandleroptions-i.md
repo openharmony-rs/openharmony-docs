@@ -10,6 +10,8 @@ Provides the parameters of the tap gesture handler. Inherits from [BaseHandlerOp
 
 **Since:** 12
 
+<!--Device-unnamed-interface TapGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface TapGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -37,6 +39,8 @@ recognition fails.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TapGestureHandlerOptions-count?: number--><!--Device-TapGestureHandlerOptions-count?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ If the finger movement exceeds the preset movement threshold, the gesture recogn
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-TapGestureHandlerOptions-distanceThreshold?: number--><!--Device-TapGestureHandlerOptions-distanceThreshold?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingers
@@ -91,5 +97,7 @@ is not pressed within 300 milliseconds after the first finger touches down, or w
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TapGestureHandlerOptions-fingers?: number--><!--Device-TapGestureHandlerOptions-fingers?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

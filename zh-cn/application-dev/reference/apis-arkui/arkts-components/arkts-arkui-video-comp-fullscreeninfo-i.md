@@ -12,6 +12,8 @@ interface FullscreenInfo
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface FullscreenInfo--><!--Device-unnamed-interface FullscreenInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fullscreen
@@ -33,5 +35,7 @@ true：进入全屏播放状态；false：未进入全屏播放状态。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FullscreenInfo-fullscreen: boolean--><!--Device-FullscreenInfo-fullscreen: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ During application development, you often need to draw different elements. Typic
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace drawing--><!--Device-unnamed-declare namespace drawing-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Details the space usage of the **\/data** directory on the user device.
 
 **Since:** 23
 
+<!--Device-storageStatistics-export interface UserdataDirInfo--><!--Device-storageStatistics-export interface UserdataDirInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Path name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserdataDirInfo-path: string--><!--Device-UserdataDirInfo-path: string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ The size of inode count.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserdataDirInfo-totalCnt: int--><!--Device-UserdataDirInfo-totalCnt: int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ The size of user data dirs. <br>Unit: Byte.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserdataDirInfo-totalSize: long--><!--Device-UserdataDirInfo-totalSize: long-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

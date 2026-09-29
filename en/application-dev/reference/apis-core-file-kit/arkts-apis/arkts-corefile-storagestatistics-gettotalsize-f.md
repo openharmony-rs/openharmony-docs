@@ -20,6 +20,8 @@ Obtains the total size (in bytes) of the built-in storage. This API uses an asyn
 - API version 15 and later: N/A
 - API versions 9 to 14: ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getTotalSize(callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getTotalSize(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Parameters:**
@@ -68,6 +70,8 @@ Obtains the total size (in bytes) of the built-in storage. This API uses a promi
 **Required permissions:** 
 - API version 15 and later: N/A
 - API versions 9 to 14: ohos.permission.STORAGE_MANAGER
+
+<!--Device-storageStatistics-function getTotalSize(): Promise<long>--><!--Device-storageStatistics-function getTotalSize(): Promise<long>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

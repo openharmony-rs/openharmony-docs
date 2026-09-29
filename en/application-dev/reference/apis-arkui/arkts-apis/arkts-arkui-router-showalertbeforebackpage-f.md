@@ -26,6 +26,8 @@ Enables the display of a confirm dialog box before returning to the previous pag
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function showAlertBeforeBackPage(options: EnableAlertOptions): void--><!--Device-router-function showAlertBeforeBackPage(options: EnableAlertOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -4,6 +4,8 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace formHost--><!--Device-unnamed-declare namespace formHost-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

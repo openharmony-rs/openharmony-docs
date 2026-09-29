@@ -6,9 +6,11 @@ declare class SelectAttribute extends CommonMethod<SelectAttribute>
 
 除支持通用属性外，还支持以下属性：
 
-**继承/实现关系：** SelectAttribute extends CommonMethod&lt;SelectAttribute&gt;
+**继承/实现关系：** SelectAttribute extends CommonMethod<SelectAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class SelectAttribute extends CommonMethod<SelectAttribute>--><!--Device-unnamed-declare class SelectAttribute extends CommonMethod<SelectAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ arrowModifier(modifier: Optional<SymbolGlyphModifier>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-arrowModifier(modifier: Optional<SymbolGlyphModifier>): SelectAttribute--><!--Device-SelectAttribute-arrowModifier(modifier: Optional<SymbolGlyphModifier>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ arrowPosition(value: ArrowPosition)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-arrowPosition(value: ArrowPosition): SelectAttribute--><!--Device-SelectAttribute-arrowPosition(value: ArrowPosition): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ arrowPosition(position: Optional<ArrowPosition>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-arrowPosition(position: Optional<ArrowPosition>): SelectAttribute--><!--Device-SelectAttribute-arrowPosition(position: Optional<ArrowPosition>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -98,6 +106,8 @@ avoidance(mode: AvoidanceMode)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-avoidance(mode: AvoidanceMode): SelectAttribute--><!--Device-SelectAttribute-avoidance(mode: AvoidanceMode): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -119,6 +129,8 @@ controlSize(value: ControlSize)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-controlSize(value: ControlSize): SelectAttribute--><!--Device-SelectAttribute-controlSize(value: ControlSize): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +156,8 @@ controlSize(size: Optional<ControlSize>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-controlSize(size: Optional<ControlSize>): SelectAttribute--><!--Device-SelectAttribute-controlSize(size: Optional<ControlSize>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -165,6 +179,8 @@ divider(options: Optional<DividerOptions> | null)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-divider(options: Optional<DividerOptions> | null): SelectAttribute--><!--Device-SelectAttribute-divider(options: Optional<DividerOptions> | null): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +204,8 @@ dividerStyle(style: Optional<DividerStyleOptions>)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-dividerStyle(style: Optional<DividerStyleOptions>): SelectAttribute--><!--Device-SelectAttribute-dividerStyle(style: Optional<DividerStyleOptions>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -209,6 +227,8 @@ font(value: Font)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-font(value: Font): SelectAttribute--><!--Device-SelectAttribute-font(value: Font): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,6 +254,8 @@ font(selectFont: Optional<Font>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-font(selectFont: Optional<Font>): SelectAttribute--><!--Device-SelectAttribute-font(selectFont: Optional<Font>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -255,6 +277,8 @@ fontColor(value: ResourceColor)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-fontColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-fontColor(value: ResourceColor): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,6 +304,8 @@ fontColor(resColor: Optional<ResourceColor>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-fontColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-fontColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -302,6 +328,8 @@ keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>): SelectAttribute--><!--Device-SelectAttribute-keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -323,6 +351,8 @@ menuAlign(alignType: MenuAlignType, offset?: Offset)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuAlign(alignType: MenuAlignType, offset?: Offset): SelectAttribute--><!--Device-SelectAttribute-menuAlign(alignType: MenuAlignType, offset?: Offset): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,6 +378,8 @@ menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset): SelectAttribute--><!--Device-SelectAttribute-menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,6 +408,8 @@ menuBackgroundBlurStyle(value: BlurStyle)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -400,6 +434,8 @@ menuBackgroundBlurStyle(style: Optional<BlurStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-menuBackgroundBlurStyle(style: Optional<BlurStyle>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundBlurStyle(style: Optional<BlurStyle>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -421,6 +457,8 @@ menuBackgroundBlurStyleOptions(blurStyle: Optional<BackgroundBlurStyleOptions>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuBackgroundBlurStyleOptions(blurStyle: Optional<BackgroundBlurStyleOptions>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundBlurStyleOptions(blurStyle: Optional<BackgroundBlurStyleOptions>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,6 +486,8 @@ menuBackgroundColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-menuBackgroundColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundColor(value: ResourceColor): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -472,6 +512,8 @@ menuBackgroundColor(resColor: Optional<ResourceColor>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-menuBackgroundColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -493,6 +535,8 @@ menuBackgroundEffect(effect: Optional<BackgroundEffectOptions>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuBackgroundEffect(effect: Optional<BackgroundEffectOptions>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundEffect(effect: Optional<BackgroundEffectOptions>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -519,6 +563,8 @@ menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>): SelectAttribute--><!--Device-SelectAttribute-menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -548,6 +594,8 @@ menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration>>): SelectAttribute--><!--Device-SelectAttribute-menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration>>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -569,6 +617,8 @@ menuOutline(outline: MenuOutlineOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-menuOutline(outline: MenuOutlineOptions): SelectAttribute--><!--Device-SelectAttribute-menuOutline(outline: MenuOutlineOptions): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -592,6 +642,8 @@ minKeyboardAvoidDistance(distance: Optional<LengthMetrics>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-minKeyboardAvoidDistance(distance: Optional<LengthMetrics>): SelectAttribute--><!--Device-SelectAttribute-minKeyboardAvoidDistance(distance: Optional<LengthMetrics>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -613,6 +665,8 @@ onSelect(callback: (index: number, value: string) => void)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-onSelect(callback: (index: number, value: string) => void): SelectAttribute--><!--Device-SelectAttribute-onSelect(callback: (index: number, value: string) => void): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -638,6 +692,8 @@ onSelect(callback: Optional<OnSelectCallback>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-onSelect(callback: Optional<OnSelectCallback>): SelectAttribute--><!--Device-SelectAttribute-onSelect(callback: Optional<OnSelectCallback>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -659,6 +715,8 @@ optionBgColor(value: ResourceColor)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-optionBgColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-optionBgColor(value: ResourceColor): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -684,6 +742,8 @@ optionBgColor(resColor: Optional<ResourceColor>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-optionBgColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-optionBgColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -705,6 +765,8 @@ optionFont(value: Font)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-optionFont(value: Font): SelectAttribute--><!--Device-SelectAttribute-optionFont(value: Font): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -732,6 +794,8 @@ optionFont(selectFont: Optional<Font>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-optionFont(selectFont: Optional<Font>): SelectAttribute--><!--Device-SelectAttribute-optionFont(selectFont: Optional<Font>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -753,6 +817,8 @@ optionFontColor(value: ResourceColor)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-optionFontColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-optionFontColor(value: ResourceColor): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -777,6 +843,8 @@ optionFontColor(resColor: Optional<ResourceColor>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-optionFontColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-optionFontColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -803,6 +871,8 @@ optionHeight(value: Dimension)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-optionHeight(value: Dimension): SelectAttribute--><!--Device-SelectAttribute-optionHeight(value: Dimension): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -832,6 +902,8 @@ optionHeight(height: Optional<Dimension>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-optionHeight(height: Optional<Dimension>): SelectAttribute--><!--Device-SelectAttribute-optionHeight(height: Optional<Dimension>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -860,6 +932,8 @@ optionTextModifier(modifier: Optional<TextModifier>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-optionTextModifier(modifier: Optional<TextModifier>): SelectAttribute--><!--Device-SelectAttribute-optionTextModifier(modifier: Optional<TextModifier>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -885,6 +959,8 @@ Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute--><!--Device-SelectAttribute-optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -914,6 +990,8 @@ Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-optionWidth(width: Optional<Dimension | OptionWidthMode> ): SelectAttribute--><!--Device-SelectAttribute-optionWidth(width: Optional<Dimension | OptionWidthMode> ): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -939,6 +1017,8 @@ selected(value: number | Resource)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-selected(value: number | Resource): SelectAttribute--><!--Device-SelectAttribute-selected(value: number | Resource): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -966,6 +1046,8 @@ selected(numCount: Optional<number | Resource>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-selected(numCount: Optional<number | Resource>): SelectAttribute--><!--Device-SelectAttribute-selected(numCount: Optional<number | Resource>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -987,6 +1069,8 @@ selectedOptionBgColor(value: ResourceColor)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-selectedOptionBgColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-selectedOptionBgColor(value: ResourceColor): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1012,6 +1096,8 @@ selectedOptionBgColor(resColor: Optional<ResourceColor>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-selectedOptionBgColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionBgColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1033,6 +1119,8 @@ selectedOptionFont(value: Font)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-selectedOptionFont(value: Font): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFont(value: Font): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1058,6 +1146,8 @@ selectedOptionFont(selectFont: Optional<Font>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-selectedOptionFont(selectFont: Optional<Font>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFont(selectFont: Optional<Font>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1079,6 +1169,8 @@ selectedOptionFontColor(value: ResourceColor)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-selectedOptionFontColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFontColor(value: ResourceColor): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1103,6 +1195,8 @@ selectedOptionFontColor(resColor: Optional<ResourceColor>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-selectedOptionFontColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFontColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1132,6 +1226,8 @@ selectedOptionTextModifier(modifier: Optional<TextModifier>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-selectedOptionTextModifier(modifier: Optional<TextModifier>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionTextModifier(modifier: Optional<TextModifier>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1153,6 +1249,8 @@ showDefaultSelectedIcon(show: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-showDefaultSelectedIcon(show: boolean): SelectAttribute--><!--Device-SelectAttribute-showDefaultSelectedIcon(show: boolean): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1176,6 +1274,8 @@ showInSubWindow(showInSubWindow: Optional<boolean>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-showInSubWindow(showInSubWindow: Optional<boolean>): SelectAttribute--><!--Device-SelectAttribute-showInSubWindow(showInSubWindow: Optional<boolean>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1197,6 +1297,8 @@ space(value: Length)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-space(value: Length): SelectAttribute--><!--Device-SelectAttribute-space(value: Length): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1221,6 +1323,8 @@ space(spaceLength: Optional<Length>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-space(spaceLength: Optional<Length>): SelectAttribute--><!--Device-SelectAttribute-space(spaceLength: Optional<Length>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1248,6 +1352,8 @@ textModifier(modifier: Optional<TextModifier>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-textModifier(modifier: Optional<TextModifier>): SelectAttribute--><!--Device-SelectAttribute-textModifier(modifier: Optional<TextModifier>): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1274,6 +1380,8 @@ value(value: ResourceStr)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectAttribute-value(value: ResourceStr): SelectAttribute--><!--Device-SelectAttribute-value(value: ResourceStr): SelectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1299,6 +1407,8 @@ value(resStr: Optional<ResourceStr>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectAttribute-value(resStr: Optional<ResourceStr>): SelectAttribute--><!--Device-SelectAttribute-value(resStr: Optional<ResourceStr>): SelectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

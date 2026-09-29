@@ -8,6 +8,8 @@ Enumerates the codec MIME types.
 
 **Since:** 8
 
+<!--Device-media-enum CodecMimeType--><!--Device-media-enum CodecMimeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## VIDEO_H263
@@ -19,6 +21,8 @@ VIDEO_H263 = 'video/h263'
 Video in H.263 format.
 
 **Since:** 8
+
+<!--Device-CodecMimeType-VIDEO_H263 = 'video/h263'--><!--Device-CodecMimeType-VIDEO_H263 = 'video/h263'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -32,7 +36,9 @@ Video in AVC format.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CodecMimeType-VIDEO_AVC = 'video/avc'--><!--Device-CodecMimeType-VIDEO_AVC = 'video/avc'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -46,6 +52,8 @@ Video in MPEG-2 format.
 
 **Since:** 8
 
+<!--Device-CodecMimeType-VIDEO_MPEG2 = 'video/mpeg2'--><!--Device-CodecMimeType-VIDEO_MPEG2 = 'video/mpeg2'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## VIDEO_MPEG4
@@ -57,6 +65,8 @@ VIDEO_MPEG4 = 'video/mp4v-es'
 Video in MPEG-4 format.
 
 **Since:** 8
+
+<!--Device-CodecMimeType-VIDEO_MPEG4 = 'video/mp4v-es'--><!--Device-CodecMimeType-VIDEO_MPEG4 = 'video/mp4v-es'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -70,6 +80,8 @@ Video in VP8 format.
 
 **Since:** 8
 
+<!--Device-CodecMimeType-VIDEO_VP8 = 'video/x-vnd.on2.vp8'--><!--Device-CodecMimeType-VIDEO_VP8 = 'video/x-vnd.on2.vp8'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AUDIO_AAC
@@ -82,7 +94,9 @@ Audio in MP4A-LATM format.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CodecMimeType-AUDIO_AAC = 'audio/mp4a-latm'--><!--Device-CodecMimeType-AUDIO_AAC = 'audio/mp4a-latm'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -96,6 +110,8 @@ Audio in Vorbis format.
 
 **Since:** 8
 
+<!--Device-CodecMimeType-AUDIO_VORBIS = 'audio/vorbis'--><!--Device-CodecMimeType-AUDIO_VORBIS = 'audio/vorbis'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AUDIO_FLAC
@@ -107,6 +123,8 @@ AUDIO_FLAC = 'audio/flac'
 Audio in FLAC format.
 
 **Since:** 8
+
+<!--Device-CodecMimeType-AUDIO_FLAC = 'audio/flac'--><!--Device-CodecMimeType-AUDIO_FLAC = 'audio/flac'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -120,7 +138,9 @@ Video in H.265 format.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CodecMimeType-VIDEO_HEVC = 'video/hevc'--><!--Device-CodecMimeType-VIDEO_HEVC = 'video/hevc'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -134,6 +154,8 @@ Audio in MPEG format.
 
 **Since:** 12
 
+<!--Device-CodecMimeType-AUDIO_MP3 = 'audio/mpeg'--><!--Device-CodecMimeType-AUDIO_MP3 = 'audio/mpeg'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AUDIO_G711MU
@@ -145,6 +167,8 @@ AUDIO_G711MU = 'audio/g711mu'
 Audio in G.711 μ-law format.
 
 **Since:** 12
+
+<!--Device-CodecMimeType-AUDIO_G711MU = 'audio/g711mu'--><!--Device-CodecMimeType-AUDIO_G711MU = 'audio/g711mu'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -158,6 +182,8 @@ Audio in AMR-NB format.
 
 **Since:** 18
 
+<!--Device-CodecMimeType-AUDIO_AMR_NB = 'audio/3gpp'--><!--Device-CodecMimeType-AUDIO_AMR_NB = 'audio/3gpp'-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AUDIO_AMR_WB
@@ -169,6 +195,8 @@ AUDIO_AMR_WB = 'audio/amr-wb'
 Audio in AMR-WB format.
 
 **Since:** 18
+
+<!--Device-CodecMimeType-AUDIO_AMR_WB = 'audio/amr-wb'--><!--Device-CodecMimeType-AUDIO_AMR_WB = 'audio/amr-wb'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -183,5 +211,7 @@ Audio in raw streams format.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CodecMimeType-AUDIO_RAW = 'audio/raw'--><!--Device-CodecMimeType-AUDIO_RAW = 'audio/raw'-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

@@ -8,6 +8,8 @@ Represents domain account information.
 
 **Since:** 8
 
+<!--Device-osAccount-interface DomainAccountInfo--><!--Device-osAccount-interface DomainAccountInfo-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -30,6 +32,8 @@ This is a system API and is **undefined** by default.
 
 **Since:** 10
 
+<!--Device-DomainAccountInfo-accountId?: string--><!--Device-DomainAccountInfo-accountId?: string-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ This is a system API. The default value is **false**.
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-DomainAccountInfo-isAuthenticated?: boolean--><!--Device-DomainAccountInfo-isAuthenticated?: boolean-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

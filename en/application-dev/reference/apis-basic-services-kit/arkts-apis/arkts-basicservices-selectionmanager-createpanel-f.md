@@ -20,6 +20,8 @@ Only one [MENU_PANEL](arkts-basicservices-selectioninput-selectionpanel-paneltyp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-selectionManager-function createPanel(ctx: Context, info: PanelInfo): Promise<Panel>--><!--Device-selectionManager-function createPanel(ctx: Context, info: PanelInfo): Promise<Panel>-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Parameters:**

@@ -10,6 +10,8 @@ Describes a 3D coordinate point. It inherits from [Point](arkts-arkgraphics2d-co
 
 **Since:** 12
 
+<!--Device-common2D-interface Point3d extends Point--><!--Device-common2D-interface Point3d extends Point-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Z-axis coordinate. The value is a floating point number.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Point3d-z: double--><!--Device-Point3d-z: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

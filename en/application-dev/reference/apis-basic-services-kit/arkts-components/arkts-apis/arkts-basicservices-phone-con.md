@@ -14,4 +14,6 @@ Specifies whether real-time text (RTT) calling is enabled. If enabled, incoming 
 
 **Deprecated since:** 21
 
+<!--Device-phone-const RTT_CALLING_STATUS: string--><!--Device-phone-const RTT_CALLING_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core

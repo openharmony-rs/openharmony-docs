@@ -8,6 +8,8 @@ Information about the Ukey authentication dialog box to be opened.
 
 **Since:** 26.0.1
 
+<!--Device-certificateManagerDialog-export interface UkeyAuthDialogInfo--><!--Device-certificateManagerDialog-export interface UkeyAuthDialogInfo-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Ability name of the Ukey authentication dialog box. The maximum length is 256 by
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UkeyAuthDialogInfo-abilityName: string--><!--Device-UkeyAuthDialogInfo-abilityName: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## abilityType
@@ -45,5 +49,7 @@ Ability type of the Ukey authentication dialog box.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UkeyAuthDialogInfo-abilityType: AbilityType--><!--Device-UkeyAuthDialogInfo-abilityType: AbilityType-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

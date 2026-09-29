@@ -8,6 +8,8 @@ Defines the video call mode information.
 
 **Since:** 11
 
+<!--Device-call-export interface ImsCallModeInfo--><!--Device-call-export interface ImsCallModeInfo-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Call ID.
 
 **Since:** 11
 
+<!--Device-ImsCallModeInfo-callId: int--><!--Device-ImsCallModeInfo-callId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Video call mode.
 **Type:** [ImsCallMode](arkts-telephony-call-imscallmode-e-sys.md)
 
 **Since:** 11
+
+<!--Device-ImsCallModeInfo-imsCallMode: ImsCallMode--><!--Device-ImsCallModeInfo-imsCallMode: ImsCallMode-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -62,6 +68,8 @@ Whether the information is request information.
 
 **Since:** 11
 
+<!--Device-ImsCallModeInfo-isRequestInfo: boolean--><!--Device-ImsCallModeInfo-isRequestInfo: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Call ending message.
 **Type:** [VideoRequestResultType](arkts-telephony-call-videorequestresulttype-e-sys.md)
 
 **Since:** 11
+
+<!--Device-ImsCallModeInfo-result: VideoRequestResultType--><!--Device-ImsCallModeInfo-result: VideoRequestResultType-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

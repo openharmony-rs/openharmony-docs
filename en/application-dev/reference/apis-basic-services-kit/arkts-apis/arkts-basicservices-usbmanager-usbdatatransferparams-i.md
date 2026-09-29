@@ -8,6 +8,8 @@ Defines a USB data transfer parameter object, which contains all parameters requ
 
 **Since:** 18
 
+<!--Device-usbManager-interface UsbDataTransferParams--><!--Device-usbManager-interface UsbDataTransferParams-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Buffer, which is used to store data for read or write requests.
 
 **Since:** 18
 
+<!--Device-UsbDataTransferParams-buffer: Uint8Array--><!--Device-UsbDataTransferParams-buffer: Uint8Array-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## callback
@@ -41,6 +45,8 @@ Callback invoked when the transfer is complete. The signature is **(err: Error, 
 **Type:** [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[SubmitTransferCallback](arkts-basicservices-usbmanager-submittransfercallback-i.md)&gt;
 
 **Since:** 18
+
+<!--Device-UsbDataTransferParams-callback: AsyncCallback<SubmitTransferCallback>--><!--Device-UsbDataTransferParams-callback: AsyncCallback<SubmitTransferCallback>-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -56,6 +62,8 @@ USB device pipe, which is used to determine the bus address and device address. 
 
 **Since:** 18
 
+<!--Device-UsbDataTransferParams-devPipe: USBDevicePipe--><!--Device-UsbDataTransferParams-devPipe: USBDevicePipe-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## endpoint
@@ -69,6 +77,8 @@ Endpoint address. The value is a positive integer within the range of [1, 255]. 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-UsbDataTransferParams-endpoint: int--><!--Device-UsbDataTransferParams-endpoint: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -84,6 +94,8 @@ USB transfer flag, which is used to control the transfer behavior. The options a
 
 **Since:** 18
 
+<!--Device-UsbDataTransferParams-flags: UsbTransferFlags--><!--Device-UsbDataTransferParams-flags: UsbTransferFlags-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## isoPacketCount
@@ -97,6 +109,8 @@ Number of data packets during real-time transfer, used only for I/Os with real-t
 **Type:** number
 
 **Since:** 18
+
+<!--Device-UsbDataTransferParams-isoPacketCount: int--><!--Device-UsbDataTransferParams-isoPacketCount: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -112,6 +126,8 @@ Expected length of the data buffer, in bytes. The value must be a non-negative n
 
 **Since:** 18
 
+<!--Device-UsbDataTransferParams-length: int--><!--Device-UsbDataTransferParams-length: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## timeout
@@ -125,6 +141,8 @@ Timeout interval, in milliseconds. If the transfer is complete within the specif
 **Type:** number
 
 **Since:** 18
+
+<!--Device-UsbDataTransferParams-timeout: int--><!--Device-UsbDataTransferParams-timeout: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -140,6 +158,8 @@ Transfer type, which specifies the USB data transfer mode. The options are as fo
 
 **Since:** 18
 
+<!--Device-UsbDataTransferParams-type: UsbEndpointTransferType--><!--Device-UsbDataTransferParams-type: UsbEndpointTransferType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## userData
@@ -153,5 +173,7 @@ User context data, which is used to pass custom context information in the callb
 **Type:** Uint8Array
 
 **Since:** 18
+
+<!--Device-UsbDataTransferParams-userData: Uint8Array--><!--Device-UsbDataTransferParams-userData: Uint8Array-End-->
 
 **System capability:** SystemCapability.USB.USBManager

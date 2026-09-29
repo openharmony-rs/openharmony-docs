@@ -22,6 +22,8 @@ Checks whether the device supports the float view.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-floatView-function isFloatViewEnabled(): boolean--><!--Device-floatView-function isFloatViewEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**

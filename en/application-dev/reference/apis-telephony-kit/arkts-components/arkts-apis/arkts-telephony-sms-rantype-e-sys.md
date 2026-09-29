@@ -8,6 +8,8 @@ RAN type.
 
 **Since:** 7
 
+<!--Device-sms-export enum RanType--><!--Device-sms-export enum RanType-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -22,6 +24,8 @@ GSM
 
 **Since:** 7
 
+<!--Device-RanType-TYPE_GSM = 1--><!--Device-RanType-TYPE_GSM = 1-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -35,6 +39,8 @@ TYPE_CDMA = 2
 CMDA
 
 **Since:** 7
+
+<!--Device-RanType-TYPE_CDMA = 2--><!--Device-RanType-TYPE_CDMA = 2-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

@@ -14,11 +14,13 @@ function getTaskInfo(taskId: number): Promise<TaskInfo>
 
 Obtains the information of a background load task. This API returns the result via a promise.
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-backgroundLoader-function getTaskInfo(taskId: int): Promise<TaskInfo>--><!--Device-backgroundLoader-function getTaskInfo(taskId: int): Promise<TaskInfo>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

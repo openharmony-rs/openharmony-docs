@@ -20,6 +20,8 @@ Queries whether a specified sensitive permission is currently being used. It can
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-privacyManager-function checkPermissionInUse(permissionName: Permissions): boolean--><!--Device-privacyManager-function checkPermissionInUse(permissionName: Permissions): boolean-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Sets the running mode of the device administrator application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function setAdminRunningMode(admin: Want, mode: RunningMode): void--><!--Device-adminManager-function setAdminRunningMode(admin: Want, mode: RunningMode): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

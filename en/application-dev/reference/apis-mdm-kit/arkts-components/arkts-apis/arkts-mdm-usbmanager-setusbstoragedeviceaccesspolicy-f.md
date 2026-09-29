@@ -42,6 +42,8 @@ You can disable a USB storage device by calling this API or [addDisallowedUsbDev
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void--><!--Device-usbManager-function setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

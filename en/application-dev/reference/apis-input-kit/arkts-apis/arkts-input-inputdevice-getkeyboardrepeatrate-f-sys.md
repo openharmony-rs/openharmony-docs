@@ -16,6 +16,8 @@ Obtains the keyboard repeat rate. This API uses an asynchronous callback to retu
 
 **Since:** 10
 
+<!--Device-inputDevice-function getKeyboardRepeatRate(callback: AsyncCallback<int>): void--><!--Device-inputDevice-function getKeyboardRepeatRate(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getKeyboardRepeatRate(): Promise<number>
 Obtains the keyboard repeat rate. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-inputDevice-function getKeyboardRepeatRate(): Promise<int>--><!--Device-inputDevice-function getKeyboardRepeatRate(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 

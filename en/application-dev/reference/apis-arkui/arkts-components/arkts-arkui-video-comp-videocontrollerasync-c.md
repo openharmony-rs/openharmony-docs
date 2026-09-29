@@ -22,6 +22,8 @@ let controllerAsync: VideoControllerAsync = new VideoControllerAsync();
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare class VideoControllerAsync--><!--Device-unnamed-declare class VideoControllerAsync-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -38,6 +40,8 @@ Constructor of **VideoControllerAsync**.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-VideoControllerAsync-constructor()--><!--Device-VideoControllerAsync-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## exitFullscreen
@@ -53,6 +57,8 @@ Exits full-screen playback.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-VideoControllerAsync-exitFullscreen()--><!--Device-VideoControllerAsync-exitFullscreen()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +77,8 @@ This method can be called only in the playing state. Calling **pause()** in othe
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-VideoControllerAsync-pause(): Promise<void>--><!--Device-VideoControllerAsync-pause(): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +108,8 @@ Requests full-screen playback. If this API is not called, full-screen playback i
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-VideoControllerAsync-requestFullscreen(value: boolean)--><!--Device-VideoControllerAsync-requestFullscreen(value: boolean)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -121,6 +131,8 @@ Resets the video player. The current frame is displayed, and playback starts fro
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-VideoControllerAsync-reset(): Promise<void>--><!--Device-VideoControllerAsync-reset(): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,6 +161,8 @@ Sets the playback position of the video, with an optional seek mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-VideoControllerAsync-setCurrentTime(value: double, seekMode?: SeekMode)--><!--Device-VideoControllerAsync-setCurrentTime(value: double, seekMode?: SeekMode)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -174,6 +188,8 @@ Calling **start()** before the video is prepared (before the [onPrepared](arkts-
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-VideoControllerAsync-start(): Promise<void>--><!--Device-VideoControllerAsync-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -195,6 +211,8 @@ Stops video playback. The current frame is displayed, and playback starts from t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-VideoControllerAsync-stop(): Promise<void>--><!--Device-VideoControllerAsync-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

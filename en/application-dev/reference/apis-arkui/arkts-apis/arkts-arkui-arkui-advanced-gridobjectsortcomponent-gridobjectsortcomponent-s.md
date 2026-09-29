@@ -10,11 +10,13 @@ export declare struct GridObjectSortComponent
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **GridObjectSortComponent** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common)and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
+> - If the **GridObjectSortComponent** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md)and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
 
 **Since:** 11
 
 **Decorator:** @Component
+
+<!--Device-unnamed-export declare struct GridObjectSortComponent--><!--Device-unnamed-export declare struct GridObjectSortComponent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,6 +40,8 @@ Build function of GridObjectSortComponent.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GridObjectSortComponent-build(): void--><!--Device-GridObjectSortComponent-build(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onCancel
@@ -54,6 +58,8 @@ Callback invoked when changes are canceled.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GridObjectSortComponent-onCancel: () => void--><!--Device-GridObjectSortComponent-onCancel: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onSave
@@ -69,6 +75,8 @@ Callback invoked when changes are saved. The data after the changes is returned.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GridObjectSortComponent-onSave: (select: Array<GridObjectSortComponentItem>, unselect: Array<GridObjectSortComponentItem>) => void--><!--Device-GridObjectSortComponent-onSave: (select: Array<GridObjectSortComponentItem>, unselect: Array<GridObjectSortComponentItem>) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +103,8 @@ Data to pass. The maximum data length is 50 characters. If it is exceeded, only 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GridObjectSortComponent-dataList: Array<GridObjectSortComponentItem>--><!--Device-GridObjectSortComponent-dataList: Array<GridObjectSortComponentItem>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -114,5 +124,7 @@ Component configuration.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GridObjectSortComponent-options: GridObjectSortComponentOptions--><!--Device-GridObjectSortComponent-options: GridObjectSortComponentOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

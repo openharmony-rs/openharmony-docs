@@ -20,6 +20,8 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-contact-function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<int>>--><!--Device-contact-function addContacts(context: Context, contacts: Array<Contact>): Promise<Array<int>>-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters:**
@@ -39,7 +41,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [16700001](../errorcode-contacts.md#16700001-system-internal-error) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-parameter-check-failed) | Invalid parameter value. |
 

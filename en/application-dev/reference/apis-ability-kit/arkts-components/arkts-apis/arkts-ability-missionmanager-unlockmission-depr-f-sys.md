@@ -21,6 +21,8 @@ Unlocks a given mission. This API uses an asynchronous callback to return the re
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function unlockMission(missionId: number, callback: AsyncCallback<void>): void--><!--Device-missionManager-function unlockMission(missionId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Unlocks a given mission. This API uses a promise to return the result.
 **Substitutes:** [unlockMission](arkts-ability-missionmanager-unlockmission-f-sys.md)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function unlockMission(missionId: number): Promise<void>--><!--Device-missionManager-function unlockMission(missionId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

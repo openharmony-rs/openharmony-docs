@@ -8,6 +8,8 @@ Provides the aspect ratio range of the float view. The aspect ratio is obtained 
 
 **Since:** 26.0.0
 
+<!--Device-floatView-interface RatioLimit--><!--Device-floatView-interface RatioLimit-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Maximum aspect ratio of the float view.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RatioLimit-maxRatio: double--><!--Device-RatioLimit-maxRatio: double-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## minRatio
@@ -45,5 +49,7 @@ Minimum aspect ratio of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RatioLimit-minRatio: double--><!--Device-RatioLimit-minRatio: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

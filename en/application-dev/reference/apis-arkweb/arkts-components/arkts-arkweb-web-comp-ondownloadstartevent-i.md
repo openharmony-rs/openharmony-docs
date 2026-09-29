@@ -8,6 +8,8 @@ Defines the callback information for notifying the host app that a file download
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnDownloadStartEvent--><!--Device-unnamed-declare interface OnDownloadStartEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## contentDisposition
@@ -23,6 +25,8 @@ Content-Disposition response header returned by the server, which may be empty.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnDownloadStartEvent-contentDisposition: string--><!--Device-OnDownloadStartEvent-contentDisposition: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Length of the file returned by the server. Unit: byte.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnDownloadStartEvent-contentLength: number--><!--Device-OnDownloadStartEvent-contentLength: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## mimetype
@@ -55,6 +61,8 @@ MIME type of the content returned by the server.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnDownloadStartEvent-mimetype: string--><!--Device-OnDownloadStartEvent-mimetype: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ URL for the download task.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnDownloadStartEvent-url: string--><!--Device-OnDownloadStartEvent-url: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## userAgent
@@ -87,5 +97,7 @@ User agent used for download.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnDownloadStartEvent-userAgent: string--><!--Device-OnDownloadStartEvent-userAgent: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

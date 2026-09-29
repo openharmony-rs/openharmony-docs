@@ -20,6 +20,8 @@ Checks the update policy. This API is applicable to scenarios where you need to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy--><!--Device-systemManager-function getOtaUpdatePolicy(admin: Want): OtaUpdatePolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -22,6 +22,8 @@ Removes the data control information set by [setAppShareOptions](arkts-arkdata-u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unifiedDataChannel-function removeAppShareOptions(intention: Intention): void--><!--Device-unifiedDataChannel-function removeAppShareOptions(intention: Intention): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters:**

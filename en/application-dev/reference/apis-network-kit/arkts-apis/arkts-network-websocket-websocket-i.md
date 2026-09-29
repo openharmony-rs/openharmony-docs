@@ -8,6 +8,8 @@ Defines a **WebSocket** object. Before invoking WebSocket APIs, you need to call
 
 **Since:** 6
 
+<!--Device-webSocket-export interface WebSocket--><!--Device-webSocket-export interface WebSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Closes the WebSocket connection. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-close(callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-close(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -75,7 +79,9 @@ Closes the WebSocket connection based on the options parameter. This API uses an
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-close(options: WebSocketCloseOptions, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-close(options: WebSocketCloseOptions, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -129,7 +135,9 @@ Closes a WebSocket connection based on the specified options. This API uses a pr
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-close(options?: WebSocketCloseOptions): Promise<boolean>--><!--Device-WebSocket-close(options?: WebSocketCloseOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -196,7 +204,9 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-connect(url: string, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-connect(url: string, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -263,7 +273,9 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -355,7 +367,9 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>--><!--Device-WebSocket-connect(url: string, options?: WebSocketRequestOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -416,6 +430,8 @@ Unsubscribes from WebSocket open events. This API uses an asynchronous callback 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocket-off(type: 'open', callback?: AsyncCallback<Object>): void--><!--Device-WebSocket-off(type: 'open', callback?: AsyncCallback<Object>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -455,6 +471,8 @@ Cancels listening for the open info events of a WebSocket connection.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebSocket-off(type: 'openInfo', callback?: AsyncCallback<WebSocketOpenInfo>): void--><!--Device-WebSocket-off(type: 'openInfo', callback?: AsyncCallback<WebSocketOpenInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -503,6 +521,8 @@ Unsubscribes from WebSocket server message receiving events. This API uses an as
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocket-off(type: 'message', callback?: AsyncCallback<string | ArrayBuffer>): void--><!--Device-WebSocket-off(type: 'message', callback?: AsyncCallback<string | ArrayBuffer>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -537,6 +557,8 @@ Unsubscribes from WebSocket close events. This API uses an asynchronous callback
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebSocket-off(type: 'close', callback?: AsyncCallback<CloseResult>): void--><!--Device-WebSocket-off(type: 'close', callback?: AsyncCallback<CloseResult>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -573,6 +595,8 @@ Unsubscribes from WebSocket error events. This API uses an asynchronous callback
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocket-off(type: 'error', callback?: ErrorCallback): void--><!--Device-WebSocket-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -605,6 +629,8 @@ Unsubscribes from WebSocket data receiving end events. This API uses an asynchro
 > If you do not pass the callback, you will cancel listening for all events.
 
 **Since:** 11
+
+<!--Device-WebSocket-off(type: 'dataEnd', callback?: Callback<void>): void--><!--Device-WebSocket-off(type: 'dataEnd', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -639,6 +665,8 @@ Unsubscribes from HTTP response header events. This API uses an asynchronous cal
 
 **Since:** 12
 
+<!--Device-WebSocket-off(type: 'headerReceive', callback?: Callback<ResponseHeaders>): void--><!--Device-WebSocket-off(type: 'headerReceive', callback?: Callback<ResponseHeaders>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -668,6 +696,8 @@ Subscribes to WebSocket open events. This API uses an asynchronous callback to r
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebSocket-on(type: 'open', callback: AsyncCallback<Object>): void--><!--Device-WebSocket-on(type: 'open', callback: AsyncCallback<Object>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -710,6 +740,8 @@ Subscribes to WebSocket server message receiving events. This API uses an asynch
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocket-on(type: 'message', callback: AsyncCallback<string | ArrayBuffer>): void--><!--Device-WebSocket-on(type: 'message', callback: AsyncCallback<string | ArrayBuffer>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -742,6 +774,8 @@ Enables listening for the open info events of a WebSocket connection.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebSocket-on(type: 'openInfo', callback: AsyncCallback<WebSocketOpenInfo>): void--><!--Device-WebSocket-on(type: 'openInfo', callback: AsyncCallback<WebSocketOpenInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -780,6 +814,8 @@ Subscribes to WebSocket close events. This API uses an asynchronous callback to 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocket-on(type: 'close', callback: AsyncCallback<CloseResult>): void--><!--Device-WebSocket-on(type: 'close', callback: AsyncCallback<CloseResult>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -815,6 +851,8 @@ The error code of the [error](#onerror) event callback is described as follows: 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocket-on(type: 'error', callback: ErrorCallback): void--><!--Device-WebSocket-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -846,6 +884,8 @@ Subscribes to the WebSocket data receiving end event. This API uses an asynchron
 
 **Since:** 11
 
+<!--Device-WebSocket-on(type: 'dataEnd', callback: Callback<void>): void--><!--Device-WebSocket-on(type: 'dataEnd', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -875,6 +915,8 @@ on(type: 'headerReceive', callback: Callback<ResponseHeaders>): void
 Subscribes to HTTP response header events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-WebSocket-on(type: 'headerReceive', callback: Callback<ResponseHeaders>): void--><!--Device-WebSocket-on(type: 'headerReceive', callback: Callback<ResponseHeaders>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -908,7 +950,9 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-send(data: string | ArrayBuffer, callback: AsyncCallback<boolean>): void--><!--Device-WebSocket-send(data: string | ArrayBuffer, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -971,7 +1015,9 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocket-send(data: string | ArrayBuffer): Promise<boolean>--><!--Device-WebSocket-send(data: string | ArrayBuffer): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

@@ -26,6 +26,8 @@ Restarts the current atomic service.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-abilityManager-function restartSelfAtomicService(context: Context): void--><!--Device-abilityManager-function restartSelfAtomicService(context: Context): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

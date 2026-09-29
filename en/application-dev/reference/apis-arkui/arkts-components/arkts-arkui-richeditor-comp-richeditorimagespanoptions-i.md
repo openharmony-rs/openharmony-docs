@@ -8,6 +8,8 @@ Sets the offset and style of an image span.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorImageSpanOptions--><!--Device-unnamed-declare interface RichEditorImageSpanOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onHover
@@ -23,6 +25,8 @@ Callback triggered when the mouse hovers over the component. If this parameter i
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-RichEditorImageSpanOptions-onHover?: OnHoverCallback--><!--Device-RichEditorImageSpanOptions-onHover?: OnHoverCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ Gesture event that triggers a callback. If this parameter is omitted, only the d
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorImageSpanOptions-gesture?: RichEditorGesture--><!--Device-RichEditorImageSpanOptions-gesture?: RichEditorGesture-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageStyle
@@ -59,6 +65,8 @@ Image style information. Pass this parameter when you need to customize the imag
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorImageSpanOptions-imageStyle?: RichEditorImageSpanStyle--><!--Device-RichEditorImageSpanOptions-imageStyle?: RichEditorImageSpanStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,5 +87,7 @@ If the value specified is less than 0, the span is placed at the beginning of al
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorImageSpanOptions-offset?: number--><!--Device-RichEditorImageSpanOptions-offset?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

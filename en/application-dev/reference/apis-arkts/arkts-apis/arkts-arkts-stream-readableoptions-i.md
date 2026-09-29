@@ -8,6 +8,8 @@ Describes the options used in the **Readable** constructor.
 
 **Since:** 12
 
+<!--Device-stream-interface ReadableOptions--><!--Device-stream-interface ReadableOptions-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -32,6 +34,8 @@ The default value is **'utf-8'**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ReadableOptions-encoding?: string--><!--Device-ReadableOptions-encoding?: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang

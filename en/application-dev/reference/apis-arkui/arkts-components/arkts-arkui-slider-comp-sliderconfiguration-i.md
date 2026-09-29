@@ -4,11 +4,13 @@
 declare interface SliderConfiguration extends CommonConfiguration<SliderConfiguration>
 ```
 
-You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
+You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
 **Inheritance/Implementation:** SliderConfiguration extends CommonConfiguration<SliderConfiguration>
 
 **Since:** 12
+
+<!--Device-unnamed-declare interface SliderConfiguration extends CommonConfiguration<SliderConfiguration>--><!--Device-unnamed-declare interface SliderConfiguration extends CommonConfiguration<SliderConfiguration>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ Triggers slider changes.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SliderConfiguration-triggerChange: SliderTriggerChangeCallback--><!--Device-SliderConfiguration-triggerChange: SliderTriggerChangeCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Maximum value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderConfiguration-max: number--><!--Device-SliderConfiguration-max: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## min
@@ -62,6 +68,8 @@ Minimum value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderConfiguration-min: number--><!--Device-SliderConfiguration-min: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## step
@@ -70,7 +78,7 @@ Minimum value.
 step: number
 ```
 
-Step of the slider.
+Step of the slider, which indicates the value increment of each slider movement.
 
 **Type:** number
 
@@ -79,6 +87,8 @@ Step of the slider.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SliderConfiguration-step: number--><!--Device-SliderConfiguration-step: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,5 +107,7 @@ Current progress.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SliderConfiguration-value: number--><!--Device-SliderConfiguration-value: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

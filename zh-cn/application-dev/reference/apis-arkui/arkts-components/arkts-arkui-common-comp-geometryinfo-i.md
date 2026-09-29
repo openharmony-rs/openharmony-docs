@@ -10,6 +10,8 @@ declare interface GeometryInfo extends SizeResult
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface GeometryInfo extends SizeResult--><!--Device-unnamed-declare interface GeometryInfo extends SizeResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderWidth
@@ -27,6 +29,8 @@ borderWidth: EdgeWidth
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GeometryInfo-borderWidth: EdgeWidth--><!--Device-GeometryInfo-borderWidth: EdgeWidth-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ margin: Margin
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GeometryInfo-margin: Margin--><!--Device-GeometryInfo-margin: Margin-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## padding
@@ -63,5 +69,7 @@ padding: Padding
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GeometryInfo-padding: Padding--><!--Device-GeometryInfo-padding: Padding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Get default preferences by printer ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function getPrinterDefaultPreferences(printerId: string): Promise<PrinterPreferences>--><!--Device-print-function getPrinterDefaultPreferences(printerId: string): Promise<PrinterPreferences>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

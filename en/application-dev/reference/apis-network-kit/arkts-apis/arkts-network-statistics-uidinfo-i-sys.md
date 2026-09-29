@@ -8,6 +8,8 @@ Defines the parameters for querying historical traffic of an application.
 
 **Since:** 10
 
+<!--Device-statistics-export interface UidInfo--><!--Device-statistics-export interface UidInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ NIC information, including the NIC name and query time range.
 
 **Since:** 10
 
+<!--Device-UidInfo-ifaceInfo: IfaceInfo--><!--Device-UidInfo-ifaceInfo: IfaceInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Application UID.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-UidInfo-uid: int--><!--Device-UidInfo-uid: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

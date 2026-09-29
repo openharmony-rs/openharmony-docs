@@ -8,6 +8,8 @@ The **userFileManager** module provides user data management capabilities, inclu
 
 **Substitutes:** [photoAccessHelper](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-file-photoaccesshelper.md)
 
+<!--Device-unnamed-declare namespace userFileManager--><!--Device-unnamed-declare namespace userFileManager-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -47,6 +49,15 @@ import { userFileManager } from '@kit.CoreFileKit';
 <!--DelEnd-->
 
 <!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Enumerates the type of changes to observe. |
+| [MemberType](arkts-corefile-userfilemanager-membertype-t-sys.md) | Represents the type of a file asset member. |
+<!--DelEnd-->
+
+<!--Del-->
 ### Enums(System API)
 
 | Name | Description |
@@ -62,13 +73,4 @@ import { userFileManager } from '@kit.CoreFileKit';
 | [PhotoSubType](arkts-corefile-userfilemanager-photosubtype-e-sys.md) | Enumerates the [FileAsset](arkts-corefile-userfilemanager-fileasset-i-sys.md) types. |
 | [PositionType](arkts-corefile-userfilemanager-positiontype-e-sys.md) | Enumerates the file location. |
 | [PrivateAlbumType](arkts-corefile-userfilemanager-privatealbumtype-e-sys.md) | Enumerates the system album types. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Enumerates the type of changes to observe. |
-| [MemberType](arkts-corefile-userfilemanager-membertype-t-sys.md) | Represents the type of a file asset member. |
 <!--DelEnd-->

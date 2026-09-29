@@ -18,6 +18,8 @@ function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<voi
 
 **废弃版本：** 26.0.0
 
+<!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<void>): void--><!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -70,6 +72,8 @@ function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>
 **起始版本：** 9
 
 **废弃版本：** 26.0.0
+
+<!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>--><!--Device-window-function setWindowLayoutMode(mode: WindowLayoutMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

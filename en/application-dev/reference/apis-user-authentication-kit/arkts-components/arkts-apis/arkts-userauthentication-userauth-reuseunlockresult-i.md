@@ -19,6 +19,8 @@ Represents information about the authentication result reuse. This API is used t
 
 **Since:** 12
 
+<!--Device-userAuth-interface ReuseUnlockResult--><!--Device-userAuth-interface ReuseUnlockResult-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -45,7 +47,9 @@ recommended.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ReuseUnlockResult-reuseDuration: int--><!--Device-ReuseUnlockResult-reuseDuration: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -70,6 +74,8 @@ security but the best user experience.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ReuseUnlockResult-reuseMode: ReuseMode--><!--Device-ReuseUnlockResult-reuseMode: ReuseMode-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

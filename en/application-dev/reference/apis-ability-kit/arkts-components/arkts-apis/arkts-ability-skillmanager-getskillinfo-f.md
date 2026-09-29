@@ -23,6 +23,8 @@ Obtains SkillInfo of a specified application based on bundleName, moduleName and
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-skillManager-function getSkillInfo(bundleName: string, moduleName: string, skillName: string,    flags: int, userId?: int): Promise<SkillInfo>--><!--Device-skillManager-function getSkillInfo(bundleName: string, moduleName: string, skillName: string,    flags: int, userId?: int): Promise<SkillInfo>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Parameters:**

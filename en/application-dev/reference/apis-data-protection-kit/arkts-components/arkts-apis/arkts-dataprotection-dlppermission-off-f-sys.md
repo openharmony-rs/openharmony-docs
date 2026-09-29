@@ -22,6 +22,8 @@ When the DLP management application exits or no longer needs to track sandbox st
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-dlpPermission-function off(type: 'uninstallDLPSandbox', listener?: Callback<DLPSandboxState>): void--><!--Device-dlpPermission-function off(type: 'uninstallDLPSandbox', listener?: Callback<DLPSandboxState>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.

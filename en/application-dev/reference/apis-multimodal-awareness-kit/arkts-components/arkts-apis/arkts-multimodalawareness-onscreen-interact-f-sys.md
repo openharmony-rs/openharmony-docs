@@ -24,6 +24,8 @@ Proactively triggers screen behavior interaction to identify screen behaviors an
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-onScreen-function interact(capability: OnscreenAwarenessCap,                    options?: OnscreenAwarenessOptions): Promise<OnscreenAwarenessInfo[]>--><!--Device-onScreen-function interact(capability: OnscreenAwarenessCap,                    options?: OnscreenAwarenessOptions): Promise<OnscreenAwarenessInfo[]>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.

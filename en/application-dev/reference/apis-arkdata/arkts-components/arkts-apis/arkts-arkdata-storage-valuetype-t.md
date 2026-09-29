@@ -10,6 +10,8 @@ Enumerates the value types.
 
 **Deprecated since:** 9
 
+<!--Device-storage-type ValueType = number | string | boolean--><!--Device-storage-type ValueType = number | string | boolean-End-->
+
 | Type | Description |
 | --- | --- |
 | number | The value is a number. |

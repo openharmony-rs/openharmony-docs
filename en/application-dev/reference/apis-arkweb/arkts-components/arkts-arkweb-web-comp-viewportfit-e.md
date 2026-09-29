@@ -8,6 +8,8 @@ Enumerates the viewport types available for **viewport-fit** in the web page **\
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum ViewportFit--><!--Device-unnamed-declare enum ViewportFit-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## AUTO
@@ -21,6 +23,8 @@ Default value. The entire web page is visible. This is suitable for scenarios wh
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ViewportFit-AUTO = 0--><!--Device-ViewportFit-AUTO = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ The initial layout viewport and visual viewport are within the largest rectangle
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ViewportFit-CONTAINS = 1--><!--Device-ViewportFit-CONTAINS = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## COVER
@@ -49,5 +55,7 @@ The initial layout viewport and visual viewport are within the bounding rectangl
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ViewportFit-COVER = 2--><!--Device-ViewportFit-COVER = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

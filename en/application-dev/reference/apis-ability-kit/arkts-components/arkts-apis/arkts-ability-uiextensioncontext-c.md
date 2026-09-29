@@ -10,6 +10,8 @@ UIExtensionContext provides the context environment for [UIExtensionAbility](ark
 
 **Since:** 10
 
+<!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class UIExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## connectServiceExtensionAbility
@@ -28,6 +30,8 @@ Connects this UIExtensionAbility to a ServiceExtensionAbility. It enables commun
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long--><!--Device-UIExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -81,6 +85,8 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise<UIServiceProxy>--><!--Device-UIExtensionContext-connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise<UIServiceProxy>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -125,6 +131,8 @@ Disconnects from a ServiceExtensionAbility. Once the connection is terminated, s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -155,6 +163,8 @@ Disconnects from a ServiceExtensionAbility. Once the connection is terminated, s
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>--><!--Device-UIExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -189,6 +199,8 @@ Disconnects from a UIServiceExtensionAbility. This API uses a promise to return 
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>--><!--Device-UIExtensionContext-disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -233,6 +245,8 @@ Opens an atomic service in an independent window and returns the result. This AP
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<AbilityResult>--><!--Device-UIExtensionContext-openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -285,6 +299,8 @@ If you want to obtain the result after the started UIAbility is terminated, set 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>--><!--Device-UIExtensionContext-openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -336,6 +352,8 @@ Called when the window content associated with the UIExtensionAbility finishes d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-reportDrawnCompleted(callback: AsyncCallback<void>): void--><!--Device-UIExtensionContext-reportDrawnCompleted(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -369,6 +387,8 @@ Sets the dark/light color mode for this UIExtensionAbility. Before calling this 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-setColorMode(colorMode: ConfigurationConstant.ColorMode): void--><!--Device-UIExtensionContext-setColorMode(colorMode: ConfigurationConstant.ColorMode): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -399,6 +419,8 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContext-startAbility(want: Want, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -462,6 +484,8 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -522,6 +546,8 @@ Starts a UIAbility. This API uses a promise to return the result.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-UIExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -594,6 +620,8 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void--><!--Device-UIExtensionContext-startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -661,6 +689,8 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void--><!--Device-UIExtensionContext-startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -726,6 +756,8 @@ Starts a UIAbility and returns the exit result of the launched UIAbility via a c
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>--><!--Device-UIExtensionContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -793,6 +825,8 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-startUIServiceExtensionAbility(want: Want): Promise<void>--><!--Device-UIExtensionContext-startUIServiceExtensionAbility(want: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -838,6 +872,8 @@ Destroys this UIExtensionAbility and closes the corresponding window. This API u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-terminateSelf(callback: AsyncCallback<void>): void--><!--Device-UIExtensionContext-terminateSelf(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -866,6 +902,8 @@ Destroys this UIExtensionAbility and closes the corresponding window. This API u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContext-terminateSelf(): Promise<void>--><!--Device-UIExtensionContext-terminateSelf(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**
@@ -885,6 +923,8 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContext-terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -914,6 +954,8 @@ Destroys this UIExtensionAbility, closes the corresponding window, and returns t
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContext-terminateSelfWithResult(parameter: AbilityResult): Promise<void>--><!--Device-UIExtensionContext-terminateSelfWithResult(parameter: AbilityResult): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

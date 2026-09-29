@@ -8,6 +8,8 @@ interface ColumnOptionsV2
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ColumnOptionsV2--><!--Device-unnamed-interface ColumnOptionsV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -41,5 +43,7 @@ space取值是大于等于0的数字，或者可以转换为非负数字的字�
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnOptionsV2-space?: SpaceType--><!--Device-ColumnOptionsV2-space?: SpaceType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

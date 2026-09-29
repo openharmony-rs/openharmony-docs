@@ -18,6 +18,8 @@ Describes the long text notification. This API is inherited from NotificationBas
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationLongTextContent extends NotificationBasicContent--><!--Device-unnamed-export interface NotificationLongTextContent extends NotificationBasicContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## briefText
@@ -31,6 +33,8 @@ Notification summary content, which is a summary of the notification content and
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationLongTextContent-briefText: string--><!--Device-NotificationLongTextContent-briefText: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -46,6 +50,8 @@ Title when the notification is expanded. It cannot be an empty string. The size 
 
 **Since:** 7
 
+<!--Device-NotificationLongTextContent-expandedTitle: string--><!--Device-NotificationLongTextContent-expandedTitle: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## longText
@@ -59,5 +65,7 @@ Full long text content displayed after the notification is expanded. It cannot b
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationLongTextContent-longText: string--><!--Device-NotificationLongTextContent-longText: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

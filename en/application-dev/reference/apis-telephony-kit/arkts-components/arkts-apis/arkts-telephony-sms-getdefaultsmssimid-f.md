@@ -16,6 +16,8 @@ Obtains the default ID of the SIM card used to send SMS messages. This API uses 
 
 **Since:** 10
 
+<!--Device-sms-function getDefaultSmsSimId(callback: AsyncCallback<int>): void--><!--Device-sms-function getDefaultSmsSimId(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **Parameters:**
@@ -59,6 +61,8 @@ function getDefaultSmsSimId(): Promise<number>
 Obtains the default ID of the SIM card used to send SMS messages. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-sms-function getDefaultSmsSimId(): Promise<int>--><!--Device-sms-function getDefaultSmsSimId(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

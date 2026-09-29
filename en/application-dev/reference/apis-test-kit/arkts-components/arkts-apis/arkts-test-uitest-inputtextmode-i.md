@@ -8,6 +8,8 @@ Describes the text input mode.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface InputTextMode--><!--Device-unnamed-declare interface InputTextMode-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -31,7 +33,9 @@ Whether to input text in addition mode. The value **true** means to input text i
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-InputTextMode-addition?: boolean--><!--Device-InputTextMode-addition?: boolean-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -51,7 +55,9 @@ Whether to copy and paste text. The value **true** means to copy and paste text,
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-InputTextMode-paste?: boolean--><!--Device-InputTextMode-paste?: boolean-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

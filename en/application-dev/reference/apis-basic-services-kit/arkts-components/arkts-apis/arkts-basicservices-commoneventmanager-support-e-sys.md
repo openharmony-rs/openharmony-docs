@@ -8,6 +8,8 @@ System common events are events published by system services or system apps. Sub
 
 **Since:** 9
 
+<!--Device-commonEventManager-export enum Support--><!--Device-commonEventManager-export enum Support-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 ## COMMON_EVENT_USER_LOCKING
@@ -21,6 +23,8 @@ Indicates that a user is about to be locked.
 Before a user is locked, the common event service is triggered to publish this event carrying the system account ID.
 
 **Since:** 20
+
+<!--Device-Support-COMMON_EVENT_USER_LOCKING = 'usual.event.USER_LOCKING'--><!--Device-Support-COMMON_EVENT_USER_LOCKING = 'usual.event.USER_LOCKING'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -37,6 +41,8 @@ Indicates that a user is locked.
 After a user is locked, the common event service is triggered to publish this event carrying the system account ID.
 
 **Since:** 20
+
+<!--Device-Support-COMMON_EVENT_USER_LOCKED = 'usual.event.USER_LOCKED'--><!--Device-Support-COMMON_EVENT_USER_LOCKED = 'usual.event.USER_LOCKED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -56,6 +62,8 @@ After an OS account sub-profile is created, the common event service is triggere
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -73,6 +81,8 @@ After an OS account sub-profile is deleted, the common event service is triggere
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -92,6 +102,8 @@ After an OS account sub-profile is switching, the common event service is trigge
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ After an OS account sub-profile is switched, the common event service is trigger
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED'--><!--Device-Support-COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED = 'usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -128,6 +142,8 @@ After a distributed account is bound, the common event service is triggered to p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND = 'usual.event.DISTRIBUTED_ACCOUNT_BOUND'--><!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND = 'usual.event.DISTRIBUTED_ACCOUNT_BOUND'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -146,6 +162,8 @@ After a distributed account is unbound, the common event service is triggered to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND = 'usual.event.DISTRIBUTED_ACCOUNT_UNBOUND'--><!--Device-Support-COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND = 'usual.event.DISTRIBUTED_ACCOUNT_UNBOUND'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -161,6 +179,8 @@ Indicates that the system charging type has changed.
 When the system charging type changes, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_CHARGE_TYPE_CHANGED = 'usual.event.CHARGE_TYPE_CHANGED'--><!--Device-Support-COMMON_EVENT_CHARGE_TYPE_CHANGED = 'usual.event.CHARGE_TYPE_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -182,6 +202,8 @@ System applications can call JavaScript APIs to apply for removing resource usag
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED = 'usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED'--><!--Device-Support-COMMON_EVENT_DEVICE_IDLE_EXEMPTION_LIST_UPDATED = 'usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -197,6 +219,8 @@ Indicates that the local host receives a user-defined control transmission reque
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Support-COMMON_EVENT_USB_CONTROL_DATA = 'usual.event.hardware.usb.action.USB_CONTROL_DATA'--><!--Device-Support-COMMON_EVENT_USB_CONTROL_DATA = 'usual.event.hardware.usb.action.USB_CONTROL_DATA'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -218,6 +242,8 @@ To subscribe to this common event, your application must have the **ohos.permiss
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_DISK_VOLUME_STATE_CHANGE = 'usual.event.data.DISK_VOLUME_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_DISK_VOLUME_STATE_CHANGE = 'usual.event.data.DISK_VOLUME_STATE_CHANGE'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -238,6 +264,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_APP_FIRST_LAUNCH = 'usual.event.APP_FIRST_LAUNCH'--><!--Device-Support-COMMON_EVENT_APP_FIRST_LAUNCH = 'usual.event.APP_FIRST_LAUNCH'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -255,6 +283,8 @@ When the device receives an SMS message, the common event service is triggered t
 To subscribe to this common event, your application must have the ohos.permission.RECEIVE_SMS permission.(This permission is available only for system applications.)
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_SMS_RECEIVE_COMPLETED = 'usual.event.SMS_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_RECEIVE_COMPLETED = 'usual.event.SMS_RECEIVE_COMPLETED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -274,6 +304,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED = 'usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED = 'usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -292,6 +324,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED = 'usual.event.SMS_CB_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED = 'usual.event.SMS_CB_RECEIVE_COMPLETED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -307,6 +341,8 @@ COMMON_EVENT_STK_COMMAND = 'usual.event.STK_COMMAND'
 When an STK command is sent, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_STK_COMMAND = 'usual.event.STK_COMMAND'--><!--Device-Support-COMMON_EVENT_STK_COMMAND = 'usual.event.STK_COMMAND'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -324,6 +360,8 @@ When an STK session ends, the common event service is triggered to publish this 
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_STK_SESSION_END = 'usual.event.STK_SESSION_END'--><!--Device-Support-COMMON_EVENT_STK_SESSION_END = 'usual.event.STK_SESSION_END'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -340,6 +378,8 @@ When the STK card state is updated, the common event service is triggered to pub
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_STK_CARD_STATE_CHANGED = 'usual.event.STK_CARD_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_STK_CARD_STATE_CHANGED = 'usual.event.STK_CARD_STATE_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -355,6 +395,8 @@ COMMON_EVENT_STK_ALPHA_IDENTIFIER = 'usual.event.STK_ALPHA_IDENTIFIER'
 When an STK Alpha identifier is sent, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_STK_ALPHA_IDENTIFIER = 'usual.event.STK_ALPHA_IDENTIFIER'--><!--Device-Support-COMMON_EVENT_STK_ALPHA_IDENTIFIER = 'usual.event.STK_ALPHA_IDENTIFIER'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -374,6 +416,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED = 'usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED'--><!--Device-Support-COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED = 'usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -389,6 +433,8 @@ Indicates that the carrier configuration has been updated.
 When the carrier configuration of the device is updated, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_OPERATOR_CONFIG_CHANGED = 'usual.event.OPERATOR_CONFIG_CHANGED'--><!--Device-Support-COMMON_EVENT_OPERATOR_CONFIG_CHANGED = 'usual.event.OPERATOR_CONFIG_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -406,6 +452,8 @@ When the default primary SIM card for the SMS service is updated, the common eve
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_SMS_SUBSCRIPTION_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -421,6 +469,8 @@ Indicates that the default primary SIM card for the data service has been update
 When the default primary SIM card for the data service is updated, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_DATA_SUBSCRIPTION_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -438,6 +488,8 @@ When the default primary SIM card of the device is updated, the common event ser
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -453,6 +505,8 @@ Indicates that the status of the action for setting the primary SIM card changes
 When the status of the action for setting the primary SIM card changes (for example, when the status is updated to executing or completed), the common event service is triggered to publish this event.
 
 **Since:** 11
+
+<!--Device-Support-COMMON_EVENT_SET_PRIMARY_SLOT_STATUS = 'usual.event.SET_PRIMARY_SLOT_STATUS'--><!--Device-Support-COMMON_EVENT_SET_PRIMARY_SLOT_STATUS = 'usual.event.SET_PRIMARY_SLOT_STATUS'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -470,6 +524,8 @@ When the roaming status of the default primary SIM card changes, the common even
 
 **Since:** 11
 
+<!--Device-Support-COMMON_EVENT_PRIMARY_SLOT_ROAMING = 'usual.event.PRIMARY_SLOT_ROAMING'--><!--Device-Support-COMMON_EVENT_PRIMARY_SLOT_ROAMING = 'usual.event.PRIMARY_SLOT_ROAMING'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -486,6 +542,8 @@ When the default primary SIM card for the voice service is updated, the common e
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED'--><!--Device-Support-COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED = 'usual.event.SIM.DEFAULT_VOICE_SUBSCRIPTION_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -501,6 +559,8 @@ Indicates that the cellular data state has been updated.
 When the cellular data state of the device is updated, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED = 'usual.event.CELLULAR_DATA_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED = 'usual.event.CELLULAR_DATA_STATE_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -520,6 +580,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_INCOMING_CALL_MISSED = 'usual.event.INCOMING_CALL_MISSED'--><!--Device-Support-COMMON_EVENT_INCOMING_CALL_MISSED = 'usual.event.INCOMING_CALL_MISSED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -535,6 +597,8 @@ Indicates that the radio state of the device modem has changed.
 When there is a change in the radio state of the device modem, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_RADIO_STATE_CHANGE = 'usual.event.RADIO_STATE_CHANGE'--><!--Device-Support-COMMON_EVENT_RADIO_STATE_CHANGE = 'usual.event.RADIO_STATE_CHANGE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -556,6 +620,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED = 'usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED'--><!--Device-Support-COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED = 'usual.event.DOMAIN_ACCOUNT_STATUS_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -571,6 +637,8 @@ This commonEvent means when the screen lock is exiting.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Support-COMMON_EVENT_SCREEN_LOCK_EXITING = 'usual.event.SCREEN_LOCK_EXITING'--><!--Device-Support-COMMON_EVENT_SCREEN_LOCK_EXITING = 'usual.event.SCREEN_LOCK_EXITING'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -588,6 +656,8 @@ When a secret code is successfully sent on the device, the common event service 
 
 **Since:** 10
 
+<!--Device-Support-COMMON_EVENT_SPECIAL_CODE = 'common.event.SPECIAL_CODE'--><!--Device-Support-COMMON_EVENT_SPECIAL_CODE = 'common.event.SPECIAL_CODE'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -603,6 +673,8 @@ Indicates that the audio quality has changed.
 When there is a change in the audio quality of the device, the common event service is triggered to publish this event.
 
 **Since:** 10
+
+<!--Device-Support-COMMON_EVENT_AUDIO_QUALITY_CHANGE = 'usual.event.AUDIO_QUALITY_CHANGE'--><!--Device-Support-COMMON_EVENT_AUDIO_QUALITY_CHANGE = 'usual.event.AUDIO_QUALITY_CHANGE'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -620,6 +692,8 @@ When a user taps the agree button in the privacy statement dialog box, the event
 
 **Since:** 11
 
+<!--Device-Support-COMMON_EVENT_PRIVACY_STATE_CHANGED = 'usual.event.PRIVACY_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_PRIVACY_STATE_CHANGED = 'usual.event.PRIVACY_STATE_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -636,6 +710,8 @@ When a new application starts to be installed by a specified user on the device,
 
 **Since:** 12
 
+<!--Device-Support-COMMON_EVENT_PACKAGE_INSTALLATION_STARTED = 'usual.event.PACKAGE_INSTALLATION_STARTED'--><!--Device-Support-COMMON_EVENT_PACKAGE_INSTALLATION_STARTED = 'usual.event.PACKAGE_INSTALLATION_STARTED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -649,6 +725,8 @@ COMMON_EVENT_DYNAMIC_ICON_CHANGED = 'usual.event.DYNAMIC_ICON_CHANGED'
 This common event means an application package enables or disables a dynamic icon. This is a protected common event that can only be sent by system.
 
 **Since:** 12
+
+<!--Device-Support-COMMON_EVENT_DYNAMIC_ICON_CHANGED = 'usual.event.DYNAMIC_ICON_CHANGED'--><!--Device-Support-COMMON_EVENT_DYNAMIC_ICON_CHANGED = 'usual.event.DYNAMIC_ICON_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -668,6 +746,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 15
 
+<!--Device-Support-COMMON_EVENT_BUNDLE_RESOURCES_CHANGED = 'usual.event.BUNDLE_RESOURCES_CHANGED'--><!--Device-Support-COMMON_EVENT_BUNDLE_RESOURCES_CHANGED = 'usual.event.BUNDLE_RESOURCES_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -683,6 +763,8 @@ Indicates the common event that the VPN connection status has changed.
 This common event is sent when a VPN connection is established or disconnected.
 
 **Since:** 12
+
+<!--Device-Support-COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED = 'usual.event.VPN_CONNECTION_STATUS_CHANGED'--><!--Device-Support-COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED = 'usual.event.VPN_CONNECTION_STATUS_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -702,6 +784,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 13
 
+<!--Device-Support-COMMON_EVENT_RESTORE_START = 'usual.event.RESTORE_START'--><!--Device-Support-COMMON_EVENT_RESTORE_START = 'usual.event.RESTORE_START'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -719,6 +803,8 @@ This common event is sent when the default application for opening a file change
 To subscribe to this common event, your application must have the ohos.permission.CHANGE_DEFAULT_APPLICATION permission.
 
 **Since:** 19
+
+<!--Device-Support-COMMON_EVENT_DEFAULT_APPLICATION_CHANGED = 'usual.event.DEFAULT_APPLICATION_CHANGED'--><!--Device-Support-COMMON_EVENT_DEFAULT_APPLICATION_CHANGED = 'usual.event.DEFAULT_APPLICATION_CHANGED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -738,6 +824,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 20
 
+<!--Device-Support-COMMON_EVENT_SHORTCUT_CHANGED = 'usual.event.SHORTCUT_CHANGED'--><!--Device-Support-COMMON_EVENT_SHORTCUT_CHANGED = 'usual.event.SHORTCUT_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -754,6 +842,8 @@ This common event is sent when the system updates the device configuration direc
 
 **Since:** 20
 
+<!--Device-Support-COMMON_EVENT_CUSTOM_CONFIG_POLICY_UPDATED = 'usual.event.CUSTOM_CONFIG_POLICY_UPDATED'--><!--Device-Support-COMMON_EVENT_CUSTOM_CONFIG_POLICY_UPDATED = 'usual.event.CUSTOM_CONFIG_POLICY_UPDATED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -769,6 +859,8 @@ Indicates that the roaming area of a device is updated.
 When the attributes such as network injection, persistent connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
 
 **Since:** 20
+
+<!--Device-Support-COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED = 'usual.event.CUSTOM_ROAMING_REGION_UPDATED'--><!--Device-Support-COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED = 'usual.event.CUSTOM_ROAMING_REGION_UPDATED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -788,6 +880,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 20
 
+<!--Device-Support-COMMON_EVENT_SCREEN_SHARE = 'usual.event.SCREEN_SHARE'--><!--Device-Support-COMMON_EVENT_SCREEN_SHARE = 'usual.event.SCREEN_SHARE'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -803,6 +897,8 @@ Represents the common event indicating the restore is complete for an applicatio
 To subscribe to this common event, your application must have the ohos.permission.RESTORE_END_NOTIFICATION permission.(This permission is available only for system applications.)
 
 **Since:** 23
+
+<!--Device-Support-COMMON_EVENT_RESTORE_END = 'usual.event.RESTORE_END'--><!--Device-Support-COMMON_EVENT_RESTORE_END = 'usual.event.RESTORE_END'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 
@@ -822,6 +918,8 @@ To subscribe to this common event, your application must have the ohos.permissio
 
 **Since:** 21
 
+<!--Device-Support-COMMON_EVENT_CLOUD_DISK_STATE_CHANGED = 'usual.event.CLOUD_DISK_STATE_CHANGED'--><!--Device-Support-COMMON_EVENT_CLOUD_DISK_STATE_CHANGED = 'usual.event.CLOUD_DISK_STATE_CHANGED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -840,6 +938,8 @@ This event is supported only on PCs/2-in-1 devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_DATA_VOLUME_STATUS_REPORT = 'usual.event.DATA_VOLUME_STATUS_REPORT'--><!--Device-Support-COMMON_EVENT_DATA_VOLUME_STATUS_REPORT = 'usual.event.DATA_VOLUME_STATUS_REPORT'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -856,6 +956,8 @@ Indicates that the sandbox application has been installed on the device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_ADDED = 'usual.event.SANDBOX_BUNDLE_ADDED'--><!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_ADDED = 'usual.event.SANDBOX_BUNDLE_ADDED'-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -871,6 +973,8 @@ Indicates that the sandbox application has been uninstalled on the device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_REMOVED = 'usual.event.SANDBOX_BUNDLE_REMOVED'--><!--Device-Support-COMMON_EVENT_SANDBOX_BUNDLE_REMOVED = 'usual.event.SANDBOX_BUNDLE_REMOVED'-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

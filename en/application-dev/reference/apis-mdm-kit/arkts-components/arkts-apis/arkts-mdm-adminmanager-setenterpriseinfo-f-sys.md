@@ -20,6 +20,8 @@ Sets the enterprise information of the device administrator application. This AP
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo, callback: AsyncCallback<void>): void--><!--Device-adminManager-function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -83,6 +85,8 @@ Sets the enterprise information of the device administrator application. This AP
 **Required permissions:** ohos.permission.SET_ENTERPRISE_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise<void>--><!--Device-adminManager-function setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

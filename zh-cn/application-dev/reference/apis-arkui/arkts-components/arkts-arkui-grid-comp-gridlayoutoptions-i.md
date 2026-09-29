@@ -4,11 +4,13 @@
 declare interface GridLayoutOptions
 ```
 
-Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见示例3；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见示例1。
+Grid布局选项。其中，irregularIndexes和onGetIrregularSizeByIndex可对仅设置rowsTemplate或columnsTemplate的Grid使用，可以指定一个index数组，并为其中的index对应的GridItem设置其占据的行数与列数，使用方法参见[示例3](arkts-arkui-grid-comp.md)；onGetRectByIndex可对同时设置rowsTemplate和columnsTemplate的Grid使用，为指定的index对应的GridItem设置位置和大小，使用方法参见[示例1](arkts-arkui-grid-comp.md)。
 
-为提高Grid在跳转、列数变化等场景的性能，应该尽量使用GridLayoutOptions。即使Grid中没有任何特殊的跨行跨列节点，也可以通过使用'Grid(this.scroller, {regularSize: [1, 1]})'的方式提高跳转性能。参考<!--RP1-->使用GridLayoutOptions提升Grid性能<!--RP1End-->。
+为提高Grid在跳转、列数变化等场景的性能，应该尽量使用GridLayoutOptions。即使Grid中没有任何特殊的跨行跨列节点，也可以通过使用'Grid(this.scroller, {regularSize: [1, 1]})'的方式提高跳转性能。参考<!--RP1-->[使用GridLayoutOptions提升Grid性能](arkts-arkui-grid-comp.md)<!--RP1End-->。
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare interface GridLayoutOptions--><!--Device-unnamed-declare interface GridLayoutOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ onGetIrregularSizeByIndex?: (index: number) => [number, number]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridLayoutOptions-onGetIrregularSizeByIndex?: (index: number) => [number, number]--><!--Device-GridLayoutOptions-onGetIrregularSizeByIndex?: (index: number) => [number, number]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ rowSpan和columnSpan取大于等于1的自然数，若取小数则向下取整�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GridLayoutOptions-onGetRectByIndex?: (index: number) => [number, number, number, number]--><!--Device-GridLayoutOptions-onGetRectByIndex?: (index: number) => [number, number, number, number]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -88,6 +94,8 @@ irregularIndexes?: number[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GridLayoutOptions-irregularIndexes?: number[]--><!--Device-GridLayoutOptions-irregularIndexes?: number[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## regularSize
@@ -105,5 +113,7 @@ regularSize: [number, number]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridLayoutOptions-regularSize: [number, number]--><!--Device-GridLayoutOptions-regularSize: [number, number]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

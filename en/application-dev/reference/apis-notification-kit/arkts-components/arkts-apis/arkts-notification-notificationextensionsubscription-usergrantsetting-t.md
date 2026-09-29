@@ -10,6 +10,8 @@ Describes the user authorization settings.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationExtensionSubscription-export type UserGrantSetting = _UserGrantSetting--><!--Device-notificationExtensionSubscription-export type UserGrantSetting = _UserGrantSetting-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Type:** _UserGrantSetting

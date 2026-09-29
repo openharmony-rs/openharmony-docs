@@ -8,6 +8,8 @@ Enumerates the button importance levels.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum ButtonStyleMode--><!--Device-unnamed-declare enum ButtonStyleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -25,6 +27,8 @@ Normal button (used to direct the user to a common task).
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-ButtonStyleMode-NORMAL = 0--><!--Device-ButtonStyleMode-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Emphasized button (used to direct the user to the most important task).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-ButtonStyleMode-EMPHASIZED = 1--><!--Device-ButtonStyleMode-EMPHASIZED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXTUAL
@@ -61,5 +67,7 @@ Text button (displayed as simple text without any background color).
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-ButtonStyleMode-TEXTUAL = 2--><!--Device-ButtonStyleMode-TEXTUAL = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

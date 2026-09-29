@@ -34,6 +34,8 @@ Badge(value: BadgeParamWithNumber)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BadgeInterface-(value: BadgeParamWithNumber): BadgeAttribute--><!--Device-BadgeInterface-(value: BadgeParamWithNumber): BadgeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -55,6 +57,8 @@ Badge(value: BadgeParamWithString)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BadgeInterface-(value: BadgeParamWithString): BadgeAttribute--><!--Device-BadgeInterface-(value: BadgeParamWithString): BadgeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,7 +89,7 @@ Badge(value: BadgeParamWithString)
 
 ### 示例1（设置标记组件内容）
 
-该示例通过BadgeParamWithNumber的入参count、BadgeParamWithString的入参value，实现了传入空值、字符、数字时标记组件展现不同的效果。
+该示例通过[BadgeParamWithNumber](#badgeparamwithnumber对象说明)的入参count、[BadgeParamWithString](#badgeparamwithstring对象说明)的入参value，实现了传入空值、字符、数字时标记组件展现不同的效果。
 
 
 

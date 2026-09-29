@@ -28,6 +28,8 @@ Filters the bundle list by device mode distribution policies. This API uses a pr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function filterBundleListByDeviceModeDistributionPolicies(    policies: Array<DeviceModeDistributionPolicy>): Promise<void>--><!--Device-bundleManager-function filterBundleListByDeviceModeDistributionPolicies(    policies: Array<DeviceModeDistributionPolicy>): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

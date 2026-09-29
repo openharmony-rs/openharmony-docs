@@ -8,6 +8,8 @@ Enumerates gesture competition results.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum GestureJudgeResult--><!--Device-unnamed-declare enum GestureJudgeResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTINUE
@@ -24,6 +26,8 @@ The system gesture recognition process continues.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureJudgeResult-CONTINUE = 0--><!--Device-GestureJudgeResult-CONTINUE = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## REJECT
@@ -39,5 +43,7 @@ Gesture recognition fails.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureJudgeResult-REJECT = 1--><!--Device-GestureJudgeResult-REJECT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -25,6 +25,8 @@ API, using this API to remove an incoming call trustlist or blocklist will retur
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void--><!--Device-telephonyManager-function removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

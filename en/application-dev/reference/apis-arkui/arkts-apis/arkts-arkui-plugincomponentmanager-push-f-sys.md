@@ -20,6 +20,8 @@ Plugin component push method used to send the information of the template it pro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-pluginComponentManager-function push(param: PushParameterForStage, callback: AsyncCallback<void>): void--><!--Device-pluginComponentManager-function push(param: PushParameterForStage, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Obtains the SE supported by the device. If eSE, SIM, and SIM2 are supported, thr
 
 **Since:** 10
 
+<!--Device-omapi-export interface Reader--><!--Device-omapi-export interface Reader-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 ## Modules to Import
@@ -25,6 +27,8 @@ closeSessions(): void
 Closes all sessions opened on this reader. All channels opened by these sessions will be closed.
 
 **Since:** 10
+
+<!--Device-Reader-closeSessions(): void--><!--Device-Reader-closeSessions(): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -77,6 +81,8 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 **Since:** 10
 
+<!--Device-Reader-getName(): string--><!--Device-Reader-getName(): string-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Return value:**
@@ -119,6 +125,8 @@ isSecureElementPresent(): boolean
 Checks whether the SE corresponding to this reader is available.
 
 **Since:** 10
+
+<!--Device-Reader-isSecureElementPresent(): boolean--><!--Device-Reader-isSecureElementPresent(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -163,6 +171,8 @@ openSession(): Session
 Opens a session to connect to an SE in this reader. Multiple sessions can be opened on a reader at the same time.
 
 **Since:** 10
+
+<!--Device-Reader-openSession(): Session--><!--Device-Reader-openSession(): Session-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 

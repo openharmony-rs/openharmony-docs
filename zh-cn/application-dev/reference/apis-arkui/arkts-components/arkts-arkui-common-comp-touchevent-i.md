@@ -10,6 +10,8 @@ declare interface TouchEvent extends BaseEvent
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface TouchEvent extends BaseEvent--><!--Device-unnamed-declare interface TouchEvent extends BaseEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getHistoricalPoints
@@ -25,6 +27,8 @@ getHistoricalPoints(): Array<HistoricalPoint>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchEvent-getHistoricalPoints(): Array<HistoricalPoint>--><!--Device-TouchEvent-getHistoricalPoints(): Array<HistoricalPoint>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ preventDefault: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchEvent-preventDefault: () => void--><!--Device-TouchEvent-preventDefault: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **错误码：**
@@ -70,6 +76,8 @@ stopPropagation: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchEvent-stopPropagation: () => void--><!--Device-TouchEvent-stopPropagation: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## changedTouches
@@ -85,6 +93,8 @@ changedTouches: TouchObject[]
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchEvent-changedTouches: TouchObject[]--><!--Device-TouchEvent-changedTouches: TouchObject[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +120,8 @@ eventHandleId?: number
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchEvent-eventHandleId?: number--><!--Device-TouchEvent-eventHandleId?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## touches
@@ -126,6 +138,8 @@ touches: TouchObject[]
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TouchEvent-touches: TouchObject[]--><!--Device-TouchEvent-touches: TouchObject[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -141,5 +155,7 @@ type: TouchType
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TouchEvent-type: TouchType--><!--Device-TouchEvent-type: TouchType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

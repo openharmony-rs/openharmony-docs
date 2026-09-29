@@ -16,6 +16,8 @@ Sets the touchpad scroll switch. This API uses an asynchronous callback to retur
 
 **Since:** 10
 
+<!--Device-pointer-function setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback<void>): void--><!--Device-pointer-function setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ function setTouchpadScrollSwitch(state: boolean): Promise<void>
 Sets the touchpad scroll switch. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function setTouchpadScrollSwitch(state: boolean): Promise<void>--><!--Device-pointer-function setTouchpadScrollSwitch(state: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

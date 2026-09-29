@@ -8,6 +8,8 @@ Returns the application notification silent reminder switch state.
 
 **Since:** 24
 
+<!--Device-unnamed-export interface EnabledSilentReminderCallbackData--><!--Device-unnamed-export interface EnabledSilentReminderCallbackData-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Bundle name of the application.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnabledSilentReminderCallbackData-readonly bundle: string--><!--Device-EnabledSilentReminderCallbackData-readonly bundle: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -48,6 +52,8 @@ Enabling state of the application's silent reminder.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnabledSilentReminderCallbackData-readonly enableStatus: notificationManager.SwitchState--><!--Device-EnabledSilentReminderCallbackData-readonly enableStatus: notificationManager.SwitchState-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ UID of the application.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnabledSilentReminderCallbackData-readonly uid: int--><!--Device-EnabledSilentReminderCallbackData-readonly uid: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

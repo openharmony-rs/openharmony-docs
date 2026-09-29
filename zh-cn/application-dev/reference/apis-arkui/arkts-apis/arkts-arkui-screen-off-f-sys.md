@@ -16,6 +16,8 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 
 **起始版本：** 9
 
+<!--Device-screen-function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback<long>): void--><!--Device-screen-function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback<long>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -59,6 +61,8 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 
 **起始版本：** 9
 
+<!--Device-screen-function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback<long>): void--><!--Device-screen-function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback<long>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -93,6 +97,8 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 关闭屏幕状态变化的监听。
 
 **起始版本：** 9
+
+<!--Device-screen-function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback<long>): void--><!--Device-screen-function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback<long>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

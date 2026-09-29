@@ -8,6 +8,8 @@ declare interface EdgeLightParams
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface EdgeLightParams--><!--Device-unnamed-declare interface EdgeLightParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -29,6 +31,8 @@ color?: ResourceColor
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EdgeLightParams-color?: ResourceColor--><!--Device-EdgeLightParams-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ intensity?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-EdgeLightParams-intensity?: double--><!--Device-EdgeLightParams-intensity?: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -90,6 +96,8 @@ length为0时，无边缘流光投影效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-EdgeLightParams-length: Length--><!--Device-EdgeLightParams-length: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -107,6 +115,8 @@ position: EdgeLightPosition
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EdgeLightParams-position: EdgeLightPosition--><!--Device-EdgeLightParams-position: EdgeLightPosition-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,6 +149,8 @@ thickness为0时，边缘流光线条不可见。
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EdgeLightParams-thickness?: Length--><!--Device-EdgeLightParams-thickness?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

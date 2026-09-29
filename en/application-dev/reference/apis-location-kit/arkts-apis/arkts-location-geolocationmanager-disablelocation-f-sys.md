@@ -20,6 +20,8 @@ Disable location switch.
 - API version 20 and later: ohos.permission.MANAGE_SECURE_SETTINGS and ohos.permission.CONTROL_LOCATION_SWITCH
 - API versions 9 to 19: ohos.permission.MANAGE_SECURE_SETTINGS
 
+<!--Device-geoLocationManager-function disableLocation(): void--><!--Device-geoLocationManager-function disableLocation(): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

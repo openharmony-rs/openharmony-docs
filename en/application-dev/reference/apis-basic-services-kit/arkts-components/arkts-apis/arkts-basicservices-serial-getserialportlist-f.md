@@ -18,6 +18,8 @@ Obtains the serial port list. This API uses a promise to return the result, whic
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-serial-function getSerialPortList(): Promise<SerialPort[]>--><!--Device-serial-function getSerialPortList(): Promise<SerialPort[]>-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **Return value:**

@@ -14,6 +14,8 @@ Length type, used to describe a length in percentage units.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type Percentage = `${number}%`--><!--Device-unnamed-declare type Percentage = `${number}%`-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** `${number}%`

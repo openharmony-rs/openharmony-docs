@@ -12,6 +12,8 @@ Provides domain name constants.
 
 **Since:** 11
 
+<!--Device-hiAppEvent-namespace domain--><!--Device-hiAppEvent-namespace domain-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import

@@ -20,6 +20,8 @@ Creates a **VideoPlayer** instance. This API uses an asynchronous callback to re
 
 **Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md)(callback: AsyncCallback&lt;AVPlayer&gt;)
 
+<!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void--><!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoPlayer
 
 **Parameters:**
@@ -60,6 +62,8 @@ Creates a VideoPlayer instance. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md)()
+
+<!--Device-media-function createVideoPlayer(): Promise<VideoPlayer>--><!--Device-media-function createVideoPlayer(): Promise<VideoPlayer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoPlayer
 

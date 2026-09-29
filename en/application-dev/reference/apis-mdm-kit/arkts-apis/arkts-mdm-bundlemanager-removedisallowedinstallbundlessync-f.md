@@ -20,6 +20,8 @@ Removes the applications that cannot be installed by the current or specified us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function removeDisallowedInstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void--><!--Device-bundleManager-function removeDisallowedInstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

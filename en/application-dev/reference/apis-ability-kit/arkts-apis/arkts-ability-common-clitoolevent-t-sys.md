@@ -12,6 +12,8 @@ The event data of cli execute.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type CliToolEvent = _CliToolEvent--><!--Device-common-export type CliToolEvent = _CliToolEvent-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

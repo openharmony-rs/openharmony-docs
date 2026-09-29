@@ -16,6 +16,8 @@ Obtains the ISO country code of the network with which the SIM card in the speci
 
 **Since:** 7
 
+<!--Device-radio-function getISOCountryCodeForNetwork(slotId: int, callback: AsyncCallback<string>): void--><!--Device-radio-function getISOCountryCodeForNetwork(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -62,6 +64,8 @@ function getISOCountryCodeForNetwork(slotId: number): Promise<string>
 Obtains the ISO country code of the network with which the SIM card in the specified slot is registered. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-radio-function getISOCountryCodeForNetwork(slotId: int): Promise<string>--><!--Device-radio-function getISOCountryCodeForNetwork(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

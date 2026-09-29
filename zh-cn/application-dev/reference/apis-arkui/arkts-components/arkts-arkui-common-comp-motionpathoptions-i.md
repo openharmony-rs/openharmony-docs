@@ -8,6 +8,8 @@ declare interface MotionPathOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface MotionPathOptions--><!--Device-unnamed-declare interface MotionPathOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## from
@@ -34,6 +36,8 @@ from的处理值会约束to的取值，需满足to值 &gt;= from的处理值。�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MotionPathOptions-from?: number--><!--Device-MotionPathOptions-from?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -51,6 +55,8 @@ path: string
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MotionPathOptions-path: string--><!--Device-MotionPathOptions-path: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +77,8 @@ rotatable?: boolean
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MotionPathOptions-rotatable?: boolean--><!--Device-MotionPathOptions-rotatable?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,5 +105,7 @@ to?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MotionPathOptions-to?: number--><!--Device-MotionPathOptions-to?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

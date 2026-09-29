@@ -8,6 +8,8 @@ Rotation parameter option of the rotation angle on each axis.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface RotateAngleOptions--><!--Device-unnamed-declare interface RotateAngleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angleX
@@ -33,6 +35,8 @@ Value range: (-∞, +∞).
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-RotateAngleOptions-angleX?: number | string--><!--Device-RotateAngleOptions-angleX?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ Value range: (-∞, +∞).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-RotateAngleOptions-angleY?: number | string--><!--Device-RotateAngleOptions-angleY?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angleZ
@@ -85,6 +91,8 @@ Value range: (-∞, +∞).
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-RotateAngleOptions-angleZ?: number | string--><!--Device-RotateAngleOptions-angleZ?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +122,8 @@ Value range: (-∞, +∞).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-RotateAngleOptions-centerX?: number | string--><!--Device-RotateAngleOptions-centerX?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
@@ -142,6 +152,8 @@ Value range: (-∞, +∞).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-RotateAngleOptions-centerY?: number | string--><!--Device-RotateAngleOptions-centerY?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerZ
@@ -169,6 +181,8 @@ Value range: (-∞, +∞).
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-RotateAngleOptions-centerZ?: number--><!--Device-RotateAngleOptions-centerZ?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,5 +213,7 @@ Value range: (-∞, +∞).
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-RotateAngleOptions-perspective?: number--><!--Device-RotateAngleOptions-perspective?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

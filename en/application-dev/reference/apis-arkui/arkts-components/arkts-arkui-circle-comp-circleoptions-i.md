@@ -8,6 +8,8 @@ Describes the drawing attributes of the **Circle** component.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface CircleOptions--><!--Device-unnamed-declare interface CircleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -32,6 +34,8 @@ Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated a
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CircleOptions-height?: Length--><!--Device-CircleOptions-height?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -55,5 +59,7 @@ Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated a
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CircleOptions-width?: Length--><!--Device-CircleOptions-width?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines watermark properties.
 
 **Since:** 26.0.0
 
+<!--Device-securityManager-export interface WatermarkProperties--><!--Device-securityManager-export interface WatermarkProperties-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Number of columns for displaying the watermark.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WatermarkProperties-intervalsCol: number--><!--Device-WatermarkProperties-intervalsCol: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## intervalsRow
@@ -45,5 +49,7 @@ Number of rows for displaying the watermark.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WatermarkProperties-intervalsRow: number--><!--Device-WatermarkProperties-intervalsRow: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

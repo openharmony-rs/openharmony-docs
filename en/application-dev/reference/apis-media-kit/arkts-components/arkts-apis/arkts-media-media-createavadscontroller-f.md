@@ -18,6 +18,8 @@ Create an ad playback controller associated with the player instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-function createAVAdsController(player: AVPlayer): Promise<AVAdsController | undefined>--><!--Device-media-function createAVAdsController(player: AVPlayer): Promise<AVAdsController | undefined>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**

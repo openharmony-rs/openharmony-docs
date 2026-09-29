@@ -16,6 +16,8 @@ Unsubscribes from device attachment state change events.
 
 **Since:** 20
 
+<!--Device-mechanicManager-function off(type: 'attachStateChange', callback?: Callback<AttachStateChangeInfo>): void--><!--Device-mechanicManager-function off(type: 'attachStateChange', callback?: Callback<AttachStateChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **Parameters:**
@@ -55,6 +57,8 @@ function off(type: 'trackingStateChange', callback?: Callback<TrackingEventInfo>
 Unsubscribes from tracking events.
 
 **Since:** 20
+
+<!--Device-mechanicManager-function off(type: 'trackingStateChange', callback?: Callback<TrackingEventInfo>): void--><!--Device-mechanicManager-function off(type: 'trackingStateChange', callback?: Callback<TrackingEventInfo>): void-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

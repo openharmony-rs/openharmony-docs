@@ -20,6 +20,8 @@ This event is accessible only to system applications that granted the ohos.permi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-remoteDevice-function onPairingRequest(callback: Callback<PairingRequestParam>): void--><!--Device-remoteDevice-function onPairingRequest(callback: Callback<PairingRequestParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

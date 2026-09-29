@@ -24,6 +24,8 @@ Disallows the device to modify the system time. This API uses an asynchronous ca
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dateTimeManager-function disallowModifyDateTime(admin: Want, disallow: boolean, callback: AsyncCallback<void>): void--><!--Device-dateTimeManager-function disallowModifyDateTime(admin: Want, disallow: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ Disallows the device to modify the system time. This API uses a promise to retur
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-dateTimeManager-function disallowModifyDateTime(admin: Want, disallow: boolean): Promise<void>--><!--Device-dateTimeManager-function disallowModifyDateTime(admin: Want, disallow: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

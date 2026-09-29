@@ -18,6 +18,8 @@ Reboots a device.
 
 **Required permissions:** ohos.permission.REBOOT
 
+<!--Device-power-function reboot(reason: string): void--><!--Device-power-function reboot(reason: string): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

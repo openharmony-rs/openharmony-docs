@@ -20,6 +20,8 @@ Stops flash blinking or screen blinking.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-config-function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode--><!--Device-config-function stopBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

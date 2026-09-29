@@ -20,6 +20,8 @@ Start an application for media playback with command info for an specific audio 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, info?: CommandInfo): Promise<void>--><!--Device-avSession-function startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, info?: CommandInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.

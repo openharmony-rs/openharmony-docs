@@ -18,6 +18,8 @@ Create a MediaSource object from the given directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-function createMediaSourceWithDirectory(path: string): Promise< MediaSource | undefined>--><!--Device-media-function createMediaSourceWithDirectory(path: string): Promise< MediaSource | undefined>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**

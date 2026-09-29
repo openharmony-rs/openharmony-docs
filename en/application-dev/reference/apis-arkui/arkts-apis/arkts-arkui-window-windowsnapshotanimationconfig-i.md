@@ -8,6 +8,8 @@ Configuration for window snapshot animation.
 
 **Since:** 26.0.0
 
+<!--Device-window-interface WindowSnapshotAnimationConfig--><!--Device-window-interface WindowSnapshotAnimationConfig-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The delay before the window snapshot fade-out animation begins (ms). If left uns
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowSnapshotAnimationConfig-delay?: long--><!--Device-WindowSnapshotAnimationConfig-delay?: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## duration
@@ -45,5 +49,7 @@ The duration of the window snapshot fade-out animation (ms). If left unspecified
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowSnapshotAnimationConfig-duration?: long--><!--Device-WindowSnapshotAnimationConfig-duration?: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

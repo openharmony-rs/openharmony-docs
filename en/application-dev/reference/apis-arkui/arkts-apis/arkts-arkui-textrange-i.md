@@ -8,6 +8,8 @@ Defines the text range.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface TextRange--><!--Device-unnamed-declare interface TextRange-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -28,6 +30,8 @@ End index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextRange-end?: number--><!--Device-TextRange-end?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -47,5 +51,7 @@ Start index.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextRange-start?: number--><!--Device-TextRange-start?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -19,6 +19,8 @@ Creates a directory. This API uses a promise to return the result.
 
 **Substitutes:** [mkdir](arkts-corefile-file-fs-mkdir-f.md)
 
+<!--Device-unnamed-declare function mkdir(path: string, mode?: number): Promise<void>--><!--Device-unnamed-declare function mkdir(path: string, mode?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -51,6 +53,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 
 **Substitutes:** [mkdir](arkts-corefile-file-fs-mkdir-f.md)
 
+<!--Device-unnamed-declare function mkdir(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function mkdir(path: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -76,6 +80,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 **Deprecated since:** 9
 
 **Substitutes:** [mkdir](arkts-corefile-file-fs-mkdir-f.md)
+
+<!--Device-unnamed-declare function mkdir(path: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function mkdir(path: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

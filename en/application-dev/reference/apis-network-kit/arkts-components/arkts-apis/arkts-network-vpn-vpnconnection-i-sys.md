@@ -8,6 +8,8 @@ Defines a VPN connection object. Before calling **VpnConnection** APIs, you need
 
 **Since:** 10
 
+<!--Device-vpn-export interface VpnConnection--><!--Device-vpn-export interface VpnConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Destroys a VPN. This API uses an asynchronous callback to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_VPN
+
+<!--Device-VpnConnection-destroy(callback: AsyncCallback<void>): void--><!--Device-VpnConnection-destroy(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -89,6 +93,8 @@ Destroys a VPN. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_VPN
 
+<!--Device-VpnConnection-destroy(): Promise<void>--><!--Device-VpnConnection-destroy(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.
@@ -147,6 +153,8 @@ Protects sockets against a VPN connection. The data sent through sockets is dire
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_VPN
+
+<!--Device-VpnConnection-protect(socketFd: int, callback: AsyncCallback<void>): void--><!--Device-VpnConnection-protect(socketFd: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -227,6 +235,8 @@ Protects sockets against a VPN connection. The data sent through sockets is dire
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_VPN
+
+<!--Device-VpnConnection-protect(socketFd: int): Promise<void>--><!--Device-VpnConnection-protect(socketFd: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -313,6 +323,8 @@ Creates a VPN based on the specified configuration. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.MANAGE_VPN
 
+<!--Device-VpnConnection-setUp(config: VpnConfig, callback: AsyncCallback<int>): void--><!--Device-VpnConnection-setUp(config: VpnConfig, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.
@@ -387,6 +399,8 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_VPN
+
+<!--Device-VpnConnection-setUp(config: VpnConfig): Promise<int>--><!--Device-VpnConnection-setUp(config: VpnConfig): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 

@@ -21,6 +21,8 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 
 **Since:** 10
 
+<!--Device-statistics-function getCellularTxBytes(callback: AsyncCallback<long>): void--><!--Device-statistics-function getCellularTxBytes(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -71,6 +73,8 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 > 3012 will be thrown.
 
 **Since:** 10
+
+<!--Device-statistics-function getCellularTxBytes(): Promise<long>--><!--Device-statistics-function getCellularTxBytes(): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

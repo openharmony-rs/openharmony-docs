@@ -8,6 +8,8 @@ In the following API examples, you must first use [getController](arkts-ime-inpu
 
 **Since:** 6
 
+<!--Device-inputMethod-interface InputMethodController--><!--Device-inputMethod-interface InputMethodController-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Attaches a self-drawing component to the input method. This API uses an asynchro
 > If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable-1), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **Since:** 10
+
+<!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<void>): void--><!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -84,6 +88,8 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 > If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable-1), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **Since:** 10
+
+<!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>--><!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -141,6 +147,8 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 > If the window where the self-drawing component is located is set to be non-focusable via [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable-1), the system cannot guarantee proper interaction between the self-drawing input component and the input method. If you want to draw an input box in a non-focusable window, refer to [Input Box and Input Method Interaction in Non-Focusable Windows](../../../inputmethod/use-inputmethod-in-not-focusable-window.md).
 
 **Since:** 15
+
+<!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise<void>--><!--Device-InputMethodController-attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: RequestKeyboardReason): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -200,6 +208,8 @@ Attaches a self-drawing component to the input method. This API uses a promise t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodController-attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise<void>--><!--Device-InputMethodController-attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -253,6 +263,8 @@ Updates the information about the selected text in this edit box, to notify the 
 
 **Since:** 10
 
+<!--Device-InputMethodController-changeSelection(text: string, start: int, end: int, callback: AsyncCallback<void>): void--><!--Device-InputMethodController-changeSelection(text: string, start: int, end: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -298,6 +310,8 @@ changeSelection(text: string, start: number, end: number): Promise<void>
 Updates the information about the selected text in this edit box, to notify the input method when the selected text content or text range changes. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-changeSelection(text: string, start: int, end: int): Promise<void>--><!--Device-InputMethodController-changeSelection(text: string, start: int, end: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -346,6 +360,8 @@ Detaches the self-drawing component from the input method. This API uses an asyn
 
 **Since:** 10
 
+<!--Device-InputMethodController-detach(callback: AsyncCallback<void>): void--><!--Device-InputMethodController-detach(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -387,6 +403,8 @@ Detaches the self-drawing component from the input method. This API uses a promi
 
 **Since:** 10
 
+<!--Device-InputMethodController-detach(): Promise<void>--><!--Device-InputMethodController-detach(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -426,6 +444,8 @@ Discards the text that is being typed. This API uses a promise to return the res
 > This API can be called after the edit box is attached to an input method.
 
 **Since:** 20
+
+<!--Device-InputMethodController-discardTypingText(): Promise<void>--><!--Device-InputMethodController-discardTypingText(): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -469,6 +489,8 @@ Hides the soft keyboard. This API uses an asynchronous callback to return the re
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
+
+<!--Device-InputMethodController-hideSoftKeyboard(callback: AsyncCallback<void>): void--><!--Device-InputMethodController-hideSoftKeyboard(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -517,6 +539,8 @@ Hides the soft keyboard. This API uses a promise to return the result. <br> <br>
 
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
 
+<!--Device-InputMethodController-hideSoftKeyboard(): Promise<void>--><!--Device-InputMethodController-hideSoftKeyboard(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -559,6 +583,8 @@ Exits the text editing mode. This API uses an asynchronous callback to return th
 > Calling this API does not detach the edit box from the input method. The edit box can call [showTextInput](#showtextinput) again to reenter the text editing mode.
 
 **Since:** 10
+
+<!--Device-InputMethodController-hideTextInput(callback: AsyncCallback<void>): void--><!--Device-InputMethodController-hideTextInput(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -607,6 +633,8 @@ Exits the text editing mode. This API uses a promise to return the result. <br> 
 
 **Since:** 10
 
+<!--Device-InputMethodController-hideTextInput(): Promise<void>--><!--Device-InputMethodController-hideTextInput(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -645,6 +673,8 @@ Disables listening for the select-by-range event. This API uses an asynchronous 
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'selectByRange', callback?: Callback<Range>): void--><!--Device-InputMethodController-off(type: 'selectByRange', callback?: Callback<Range>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -677,6 +707,8 @@ off(type: 'selectByMovement', callback?: Callback<Movement>): void
 Disables listening for the select-by-cursor-movement event. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-off(type: 'selectByMovement', callback?: Callback<Movement>): void--><!--Device-InputMethodController-off(type: 'selectByMovement', callback?: Callback<Movement>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -711,6 +743,8 @@ Disables listening for the text insertion event of the input method.
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'insertText', callback?: (text: string) => void): void--><!--Device-InputMethodController-off(type: 'insertText', callback?: (text: string) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -743,6 +777,8 @@ off(type: 'deleteLeft', callback?: (length: number) => void): void
 Disables listening for the leftward delete event.
 
 **Since:** 10
+
+<!--Device-InputMethodController-off(type: 'deleteLeft', callback?: (length: number) => void): void--><!--Device-InputMethodController-off(type: 'deleteLeft', callback?: (length: number) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -777,6 +813,8 @@ Disables listening for the rightward delete event.
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'deleteRight', callback?: (length: number) => void): void--><!--Device-InputMethodController-off(type: 'deleteRight', callback?: (length: number) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -808,6 +846,8 @@ off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => v
 Disables listening for the input method soft keyboard status event of the input method.
 
 **Since:** 10
+
+<!--Device-InputMethodController-off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => void): void--><!--Device-InputMethodController-off(type: 'sendKeyboardStatus', callback?: (keyboardStatus: KeyboardStatus) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -842,6 +882,8 @@ Disables listening for the function key sending event of the input method.
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'sendFunctionKey', callback?: (functionKey: FunctionKey) => void): void--><!--Device-InputMethodController-off(type: 'sendFunctionKey', callback?: (functionKey: FunctionKey) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -874,6 +916,8 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 Disables listening for the cursor movement event of the input method.
 
 **Since:** 10
+
+<!--Device-InputMethodController-off(type: 'moveCursor', callback?: (direction: Direction) => void): void--><!--Device-InputMethodController-off(type: 'moveCursor', callback?: (direction: Direction) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -908,6 +952,8 @@ Disables listening for the extended action handling event of the input method. T
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'handleExtendAction', callback?: (action: ExtendAction) => void): void--><!--Device-InputMethodController-off(type: 'handleExtendAction', callback?: (action: ExtendAction) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -940,6 +986,8 @@ off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void
 Disables listening for the event of obtaining the length of text deleted leftward. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void--><!--Device-InputMethodController-off(type: 'getLeftTextOfCursor', callback?: (length: number) => string): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -974,6 +1022,8 @@ Disables listening for the event of obtaining the length of text deleted rightwa
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void--><!--Device-InputMethodController-off(type: 'getRightTextOfCursor', callback?: (length: number) => string): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1007,6 +1057,8 @@ Disables listening for the event of obtaining the index of text at the cursor. T
 
 **Since:** 10
 
+<!--Device-InputMethodController-off(type: 'getTextIndexAtCursor', callback?: () => number): void--><!--Device-InputMethodController-off(type: 'getTextIndexAtCursor', callback?: () => number): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1039,6 +1091,8 @@ off(type: 'setPreviewText', callback?: SetPreviewTextCallback): void
 Unsubscribes from the event for text preview operations in an input method application. This API uses an asynchronous callback to return the result.
 
 **Since:** 17
+
+<!--Device-InputMethodController-off(type: 'setPreviewText', callback?: SetPreviewTextCallback): void--><!--Device-InputMethodController-off(type: 'setPreviewText', callback?: SetPreviewTextCallback): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1082,6 +1136,8 @@ off(type: 'finishTextPreview', callback?: Callback<void>): void
 Unsubscribes from the event of finishing text preview. This API uses an asynchronous callback to return the result.
 
 **Since:** 17
+
+<!--Device-InputMethodController-off(type: 'finishTextPreview', callback?: Callback<void>): void--><!--Device-InputMethodController-off(type: 'finishTextPreview', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1127,6 +1183,8 @@ Enables listening for the select-by-range event. This API uses an asynchronous c
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'selectByRange', callback: Callback<Range>): void--><!--Device-InputMethodController-on(type: 'selectByRange', callback: Callback<Range>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1160,6 +1218,8 @@ Enables listening for the select-by-cursor-movement event. This API uses an asyn
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'selectByMovement', callback: Callback<Movement>): void--><!--Device-InputMethodController-on(type: 'selectByMovement', callback: Callback<Movement>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1192,6 +1252,8 @@ on(type: 'insertText', callback: (text: string) => void): void
 Enables listening for the text insertion event of the input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-on(type: 'insertText', callback: (text: string) => void): void--><!--Device-InputMethodController-on(type: 'insertText', callback: (text: string) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1240,6 +1302,8 @@ Enables listening for the leftward delete event. This API uses an asynchronous c
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'deleteLeft', callback: (length: number) => void): void--><!--Device-InputMethodController-on(type: 'deleteLeft', callback: (length: number) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1273,6 +1337,8 @@ on(type: 'deleteRight', callback: (length: number) => void): void
 Enables listening for the rightward delete event. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-on(type: 'deleteRight', callback: (length: number) => void): void--><!--Device-InputMethodController-on(type: 'deleteRight', callback: (length: number) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1308,6 +1374,8 @@ Enables listening for the soft keyboard status event of the input method. This A
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'sendKeyboardStatus', callback: (keyboardStatus: KeyboardStatus) => void): void--><!--Device-InputMethodController-on(type: 'sendKeyboardStatus', callback: (keyboardStatus: KeyboardStatus) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1341,6 +1409,8 @@ on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void
 Enables listening for the function key sending event of the input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void--><!--Device-InputMethodController-on(type: 'sendFunctionKey', callback: (functionKey: FunctionKey) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1376,6 +1446,8 @@ Enables listening for the cursor movement event of the input method. This API us
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'moveCursor', callback: (direction: Direction) => void): void--><!--Device-InputMethodController-on(type: 'moveCursor', callback: (direction: Direction) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1410,6 +1482,8 @@ Enables listening for the extended action handling event of the input method. Th
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'handleExtendAction', callback: (action: ExtendAction) => void): void--><!--Device-InputMethodController-on(type: 'handleExtendAction', callback: (action: ExtendAction) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1443,6 +1517,8 @@ on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void
 Enables listening for the event of obtaining the length of text deleted leftward. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void--><!--Device-InputMethodController-on(type: 'getLeftTextOfCursor', callback: (length: number) => string): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1480,6 +1556,8 @@ Enables listening for the event of obtaining the length of text deleted rightwar
 
 **Since:** 10
 
+<!--Device-InputMethodController-on(type: 'getRightTextOfCursor', callback: (length: number) => string): void--><!--Device-InputMethodController-on(type: 'getRightTextOfCursor', callback: (length: number) => string): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1515,6 +1593,8 @@ on(type: 'getTextIndexAtCursor', callback: () => number): void
 Enables listening for the event of obtaining the index of text at the cursor. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-on(type: 'getTextIndexAtCursor', callback: () => number): void--><!--Device-InputMethodController-on(type: 'getTextIndexAtCursor', callback: () => number): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1554,6 +1634,8 @@ Subscribes to the event for text preview operations in an input method applicati
 > To use the text preview function, you need to subscribe to this event before calling [attach](#attach) and subscribe to this event together with [on('finishTextPreview')](#onfinishtextpreview).
 
 **Since:** 17
+
+<!--Device-InputMethodController-on(type: 'setPreviewText', callback: SetPreviewTextCallback): void--><!--Device-InputMethodController-on(type: 'setPreviewText', callback: SetPreviewTextCallback): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1606,6 +1688,8 @@ Subscribes to the event of finishing text preview. This API uses an asynchronous
 > To use the text preview function, you need to subscribe to this event before calling [attach](#attach) and subscribe to this event together with [on('setPreviewText')](#onsetpreviewtext).
 
 **Since:** 17
+
+<!--Device-InputMethodController-on(type: 'finishTextPreview', callback: Callback<void>): void--><!--Device-InputMethodController-on(type: 'finishTextPreview', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1662,6 +1746,8 @@ Registers or unregisters MessageHandler. <br> <br>
 
 **Since:** 15
 
+<!--Device-InputMethodController-recvMessage(msgHandler?: MessageHandler): void--><!--Device-InputMethodController-recvMessage(msgHandler?: MessageHandler): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1709,6 +1795,8 @@ Sends the custom communication to the input method application. This API uses a 
 > The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
 **Since:** 15
+
+<!--Device-InputMethodController-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>--><!--Device-InputMethodController-sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1763,6 +1851,8 @@ Sets the window to be avoided by the input method. This API uses an asynchronous
 
 **Since:** 10
 
+<!--Device-InputMethodController-setCallingWindow(windowId: int, callback: AsyncCallback<void>): void--><!--Device-InputMethodController-setCallingWindow(windowId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1810,6 +1900,8 @@ Sets the window to be avoided by the input method. This API uses a promise to re
 > After the window ID of the application bound to the input method is passed in the API, the input method window will not cover the window holding the application.
 
 **Since:** 10
+
+<!--Device-InputMethodController-setCallingWindow(windowId: int): Promise<void>--><!--Device-InputMethodController-setCallingWindow(windowId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1862,6 +1954,8 @@ Shows the soft keyboard. This API uses an asynchronous callback to return the re
 
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
 
+<!--Device-InputMethodController-showSoftKeyboard(callback: AsyncCallback<void>): void--><!--Device-InputMethodController-showSoftKeyboard(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1909,6 +2003,8 @@ Shows the soft keyboard. This API uses a promise to return the result. <br> <br>
 
 **Required permissions:** ohos.permission.CONNECT_IME_ABILITY
 
+<!--Device-InputMethodController-showSoftKeyboard(): Promise<void>--><!--Device-InputMethodController-showSoftKeyboard(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -1949,6 +2045,8 @@ Enters the text editing mode. This API uses an asynchronous callback to return t
 > After the edit box is attached to an input method, this API can be called to start the soft keyboard and enter the text editing state.
 
 **Since:** 10
+
+<!--Device-InputMethodController-showTextInput(callback: AsyncCallback<void>): void--><!--Device-InputMethodController-showTextInput(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1995,6 +2093,8 @@ Enters the text editing mode. This API uses a promise to return the result. <br>
 
 **Since:** 10
 
+<!--Device-InputMethodController-showTextInput(): Promise<void>--><!--Device-InputMethodController-showTextInput(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -2038,6 +2138,8 @@ Enters the text editing mode. This API uses a promise to return the result. <br>
 
 **Since:** 15
 
+<!--Device-InputMethodController-showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise<void>--><!--Device-InputMethodController-showTextInput(requestKeyboardReason: RequestKeyboardReason): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -2074,92 +2176,6 @@ inputMethod.getController().showTextInput(requestKeyboardReason).then(() => {
 });
 ```
 
-## stopInput
-
-```TypeScript
-stopInput(callback: AsyncCallback<boolean>): void
-```
-
-Ends this input session. This API uses an asynchronous callback to return the result. <br> <br>  
-> **NOTE:** <br>
-> <br>
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [stopInputSession](#stopinputsession)
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
-  if (err) {
-    console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  if (result) {
-    console.info('Succeeded in stopping input.');
-  } else {
-    console.error('Failed to stopInput.');
-  }
-});
-```
-
-<a id="stopinput-1"></a>
-
-## stopInput
-
-```TypeScript
-stopInput(): Promise<boolean>
-```
-
-Ends this input session. This API uses a promise to return the result. <br> <br>  
-> **NOTE:** <br>
-> <br>
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [stopInputSession](#stopinputsession)
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the operation is successful, and **false** means the opposite. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getController().stopInput().then((result: boolean) => {
-  if (result) {
-    console.info('Succeeded in stopping input.');
-  } else {
-    console.error('Failed to stopInput.');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
-});
-```
-
 ## stopInputSession
 
 ```TypeScript
@@ -2172,6 +2188,8 @@ Ends this input session. This API uses an asynchronous callback to return the re
 > This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 
 **Since:** 9
+
+<!--Device-InputMethodController-stopInputSession(callback: AsyncCallback<boolean>): void--><!--Device-InputMethodController-stopInputSession(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2221,6 +2239,8 @@ Ends this input session. This API uses a promise to return the result. <br> <br>
 
 **Since:** 9
 
+<!--Device-InputMethodController-stopInputSession(): Promise<boolean>--><!--Device-InputMethodController-stopInputSession(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -2261,6 +2281,8 @@ updateAttribute(attribute: InputAttribute, callback: AsyncCallback<void>): void
 Updates the attribute information of this edit box. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-updateAttribute(attribute: InputAttribute, callback: AsyncCallback<void>): void--><!--Device-InputMethodController-updateAttribute(attribute: InputAttribute, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2307,6 +2329,8 @@ Updates the attribute information of this edit box. This API uses a promise to r
 
 **Since:** 10
 
+<!--Device-InputMethodController-updateAttribute(attribute: InputAttribute): Promise<void>--><!--Device-InputMethodController-updateAttribute(attribute: InputAttribute): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -2352,6 +2376,8 @@ updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback<void>): void
 Updates the cursor information in this edit box. This API can be called to notify the input method of the cursor changes. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodController-updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback<void>): void--><!--Device-InputMethodController-updateCursor(cursorInfo: CursorInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2403,6 +2429,8 @@ Updates the cursor information in this edit box. This API can be called to notif
 
 **Since:** 10
 
+<!--Device-InputMethodController-updateCursor(cursorInfo: CursorInfo): Promise<void>--><!--Device-InputMethodController-updateCursor(cursorInfo: CursorInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -2441,5 +2469,95 @@ inputMethod.getController().updateCursor(cursorInfo).then(() => {
   console.info('Succeeded in updating cursorInfo.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to updateCursor, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## stopInput
+
+```TypeScript
+stopInput(callback: AsyncCallback<boolean>): void
+```
+
+Ends this input session. This API uses an asynchronous callback to return the result. <br> <br>  
+> **NOTE:** <br>
+> <br>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [stopInputSession](#stopinputsession)
+
+<!--Device-InputMethodController-stopInput(callback: AsyncCallback<boolean>): void--><!--Device-InputMethodController-stopInput(callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
+  if (err) {
+    console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  if (result) {
+    console.info('Succeeded in stopping input.');
+  } else {
+    console.error('Failed to stopInput.');
+  }
+});
+```
+
+<a id="stopinput-1"></a>
+
+## stopInput
+
+```TypeScript
+stopInput(): Promise<boolean>
+```
+
+Ends this input session. This API uses a promise to return the result. <br> <br>  
+> **NOTE:** <br>
+> <br>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [stopInputSession](#stopinputsession)
+
+<!--Device-InputMethodController-stopInput(): Promise<boolean>--><!--Device-InputMethodController-stopInput(): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the operation is successful, and **false** means the opposite. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getController().stopInput().then((result: boolean) => {
+  if (result) {
+    console.info('Succeeded in stopping input.');
+  } else {
+    console.error('Failed to stopInput.');
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stopInput, code: ${err.code}, message: ${err.message}`);
 });
 ```

@@ -10,6 +10,8 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface RadioConfiguration extends CommonConfiguration<RadioConfiguration>--><!--Device-unnamed-declare interface RadioConfiguration extends CommonConfiguration<RadioConfiguration>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## checked
@@ -32,6 +34,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RadioConfiguration-checked: boolean--><!--Device-RadioConfiguration-checked: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## triggerChange
@@ -52,6 +56,8 @@ The value **true** means that the radio button changes from unselected to select
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RadioConfiguration-triggerChange: Callback<boolean>--><!--Device-RadioConfiguration-triggerChange: Callback<boolean>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -69,5 +75,7 @@ Current value of the radio button.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RadioConfiguration-value: string--><!--Device-RadioConfiguration-value: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

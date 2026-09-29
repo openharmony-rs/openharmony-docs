@@ -18,6 +18,8 @@ Open resource by specific resource ID. NOTE: The opened resource must be closed 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-huksExternalCrypto-function openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise<void>--><!--Device-huksExternalCrypto-function openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 **Parameters:**

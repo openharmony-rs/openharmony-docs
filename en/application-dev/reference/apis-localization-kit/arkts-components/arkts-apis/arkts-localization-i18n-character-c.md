@@ -12,6 +12,8 @@ Provides the API for accessing unicode character properties. For example, determ
 
 **Substitutes:** [Unicode](arkts-localization-i18n-unicode-c.md)
 
+<!--Device-i18n-export class Character--><!--Device-i18n-export class Character-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Obtains the type of the input character.
 **Deprecated since:** 9
 
 **Substitutes:** [getType](arkts-localization-i18n-unicode-c.md#gettype)
+
+<!--Device-Character-getType(ch: string): string--><!--Device-Character-getType(ch: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -62,6 +66,8 @@ Checks whether the input character is a digit.
 
 **Substitutes:** [isDigit](arkts-localization-i18n-unicode-c.md#isdigit)
 
+<!--Device-Character-isDigit(ch: string): boolean--><!--Device-Character-isDigit(ch: string): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -89,6 +95,8 @@ Checks whether the input character is an ideographic character.
 **Deprecated since:** 9
 
 **Substitutes:** [isIdeograph](arkts-localization-i18n-unicode-c.md#isideograph)
+
+<!--Device-Character-isIdeograph(ch: string): boolean--><!--Device-Character-isIdeograph(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -118,6 +126,8 @@ Checks whether the input character is a letter.
 
 **Substitutes:** [isLetter](arkts-localization-i18n-unicode-c.md#isletter)
 
+<!--Device-Character-isLetter(ch: string): boolean--><!--Device-Character-isLetter(ch: string): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -145,6 +155,8 @@ Checks whether the input character is a lowercase letter.
 **Deprecated since:** 9
 
 **Substitutes:** [isLowerCase](arkts-localization-i18n-unicode-c.md#islowercase)
+
+<!--Device-Character-isLowerCase(ch: string): boolean--><!--Device-Character-isLowerCase(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -174,6 +186,8 @@ Checks whether the input character is of the right to left (RTL) language.
 
 **Substitutes:** [isRTL](arkts-localization-i18n-unicode-c.md#isrtl)
 
+<!--Device-Character-isRTL(ch: string): boolean--><!--Device-Character-isRTL(ch: string): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -201,6 +215,8 @@ Checks whether the input character is a space.
 **Deprecated since:** 9
 
 **Substitutes:** [isSpaceChar](arkts-localization-i18n-unicode-c.md#isspacechar)
+
+<!--Device-Character-isSpaceChar(ch: string): boolean--><!--Device-Character-isSpaceChar(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -230,6 +246,8 @@ Checks whether the input character is an uppercase letter.
 
 **Substitutes:** [isUpperCase](arkts-localization-i18n-unicode-c.md#isuppercase)
 
+<!--Device-Character-isUpperCase(ch: string): boolean--><!--Device-Character-isUpperCase(ch: string): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -257,6 +275,8 @@ Checks whether the input character is a whitespace.
 **Deprecated since:** 9
 
 **Substitutes:** [isWhitespace](arkts-localization-i18n-unicode-c.md#iswhitespace)
+
+<!--Device-Character-isWhitespace(ch: string): boolean--><!--Device-Character-isWhitespace(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

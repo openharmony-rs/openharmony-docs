@@ -8,6 +8,8 @@ Defines the URL regular expression rule.
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface UrlRegexRule--><!--Device-unnamed-declare interface UrlRegexRule-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## rule
@@ -24,6 +26,8 @@ URL regular expression. URL regular expression matching is performed only after 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UrlRegexRule-rule : string--><!--Device-UrlRegexRule-rule : string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## secondLevelDomain
@@ -39,5 +43,7 @@ Exact match of the second-level domain. For example, the second-level domain nam
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UrlRegexRule-secondLevelDomain : string--><!--Device-UrlRegexRule-secondLevelDomain : string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

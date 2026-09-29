@@ -16,6 +16,8 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 
 **起始版本：** 9
 
+<!--Device-screen-function isScreenRotationLocked(callback: AsyncCallback<boolean>): void--><!--Device-screen-function isScreenRotationLocked(callback: AsyncCallback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -60,6 +62,8 @@ function isScreenRotationLocked(): Promise<boolean>
 查询当前自动转屏是否锁定，使用Promise异步回调。
 
 **起始版本：** 9
+
+<!--Device-screen-function isScreenRotationLocked(): Promise<boolean>--><!--Device-screen-function isScreenRotationLocked(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

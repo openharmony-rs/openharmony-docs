@@ -12,6 +12,8 @@ The information returned by the callback is an error parameter of the [BusinessE
 
 **Since:** 6
 
+<!--Device-unnamed-export interface ErrorCallback<T extends Error = BusinessError>--><!--Device-unnamed-export interface ErrorCallback<T extends Error = BusinessError>-End-->
+
 **System capability:** SystemCapability.Base
 
 ## Modules to Import
@@ -29,6 +31,8 @@ import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.Basi
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ErrorCallback-(err: T): void--><!--Device-ErrorCallback-(err: T): void-End-->
 
 **System capability:** SystemCapability.Base
 

@@ -20,6 +20,8 @@ The launched ability can obtain the launch reason through the **launchReasonMess
 
 **Required permissions:** ohos.permission.START_SHORTCUT and ohos.permission.SET_LAUNCH_REASON_MESSAGE
 
+<!--Device-launcherBundleManager-function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options?: StartOptions): Promise<void>--><!--Device-launcherBundleManager-function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options?: StartOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **System API:** This is a system API.

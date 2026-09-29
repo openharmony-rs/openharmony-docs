@@ -10,6 +10,8 @@ The definition of SearchPlayMusicInfo.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface SearchPlayMusicInfo--><!--Device-avMusicTemplate-interface SearchPlayMusicInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Other descriptions of the Media.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayMusicInfo-description?: string--><!--Device-SearchPlayMusicInfo-description?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## displayName
@@ -47,6 +51,8 @@ displayName of the Media.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayMusicInfo-displayName?: string--><!--Device-SearchPlayMusicInfo-displayName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -64,6 +70,8 @@ extras of the Media.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayMusicInfo-extras?: string--><!--Device-SearchPlayMusicInfo-extras?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## items
@@ -79,6 +87,8 @@ list of music
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayMusicInfo-items: SearchPlayMusicItem[]--><!--Device-SearchPlayMusicInfo-items: SearchPlayMusicItem[]-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -96,6 +106,8 @@ playMode of the Media.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayMusicInfo-playMode?: string--><!--Device-SearchPlayMusicInfo-playMode?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## playMusicOnly
@@ -111,5 +123,7 @@ playMusicOnly of the Media.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayMusicInfo-playMusicOnly?: boolean--><!--Device-SearchPlayMusicInfo-playMusicOnly?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

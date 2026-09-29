@@ -8,6 +8,8 @@ Parse's options
 
 **Since:** 12
 
+<!--Device-ASON-interface ParseOptions--><!--Device-ASON-interface ParseOptions-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Enum defining modes for handling bigint.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParseOptions-bigIntMode: BigIntMode--><!--Device-ParseOptions-bigIntMode: BigIntMode-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## parseReturnType
@@ -45,5 +49,7 @@ The return types for parsing.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ParseOptions-parseReturnType: ParseReturnType--><!--Device-ParseOptions-parseReturnType: ParseReturnType-End-->
 
 **System capability:** SystemCapability.Utils.Lang

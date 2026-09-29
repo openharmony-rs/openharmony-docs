@@ -18,6 +18,8 @@ Removes a wallpaper of the specified type and restores the default one.
 
 **Required permissions:** ohos.permission.SET_WALLPAPER
 
+<!--Device-wallpaper-function restore(wallpaperType: WallpaperType, callback: AsyncCallback<void>): void--><!--Device-wallpaper-function restore(wallpaperType: WallpaperType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Removes a wallpaper of the specified type and restores the default one.
 **Since:** 9
 
 **Required permissions:** ohos.permission.SET_WALLPAPER
+
+<!--Device-wallpaper-function restore(wallpaperType: WallpaperType): Promise<void>--><!--Device-wallpaper-function restore(wallpaperType: WallpaperType): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

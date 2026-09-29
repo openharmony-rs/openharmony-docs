@@ -10,6 +10,8 @@ The module provides pure type definitions for common capabilities within MDM Kit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -34,6 +36,12 @@ import { common } from '@kit.MDMKit';
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | An object that holds the application installation result. |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | Defines the policy change event. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [EnterpriseAdminExtensionContext](arkts-mdm-common-enterpriseadminextensioncontext-t.md) | **EnterpriseAdminExtensionContext** is the context of [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md) and inherits from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). |
+
 ### Enums
 
 | Name | Description |
@@ -43,9 +51,3 @@ import { common } from '@kit.MDMKit';
 | [QueryPolicy](arkts-mdm-common-querypolicy-e.md) | The policy of query enterprise device management policy. |
 | [Result](arkts-mdm-common-result-e.md) | Enumerates application installation results. |
 | [StartupScene](arkts-mdm-common-startupscene-e.md) | Startup wizard completion scenario. When the initial switch to a sub-user (only on PCs), OTA upgrade, and first- time startup wizard are complete, the device system calls the [onStartupGuideCompleted](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md#onstartupguidecompleted) API to notify the device administrator application. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [EnterpriseAdminExtensionContext](arkts-mdm-common-enterpriseadminextensioncontext-t.md) | **EnterpriseAdminExtensionContext** is the context of [EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md) and inherits from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md). |

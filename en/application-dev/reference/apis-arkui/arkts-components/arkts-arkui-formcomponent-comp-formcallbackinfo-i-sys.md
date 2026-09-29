@@ -8,6 +8,8 @@ Represents the parameters for obtaining a widget ID (**formId**) when querying o
 
 **Since:** 12
 
+<!--Device-unnamed-interface FormCallbackInfo--><!--Device-unnamed-interface FormCallbackInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ If the obtained ID is **-1**, the ID is greater than or equal to 2^53. In this c
 
 **Since:** 12
 
+<!--Device-FormCallbackInfo-id: number--><!--Device-FormCallbackInfo-id: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -44,6 +48,8 @@ Widget ID of the string type.
 
 **Since:** 12
 
+<!--Device-FormCallbackInfo-idString: string--><!--Device-FormCallbackInfo-idString: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Indicates whether the form is locked.
 **Type:** boolean
 
 **Since:** 22
+
+<!--Device-FormCallbackInfo-isLocked: boolean--><!--Device-FormCallbackInfo-isLocked: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

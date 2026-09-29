@@ -4,11 +4,13 @@
 declare class UIAbilityContext extends Context
 ```
 
-UIAbilityContext provides the context environment for a [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) that needs to store its status. It inherits from Context and provides UIAbility-related configuration and APIs for operating UIAbility and ServiceExtensionAbility components. For example, you can use the APIs to start a UIAbility, terminate a UIAbility to which the UIAbilityContext belongs, and start, terminate, connect to, or disconnect from a ServiceExtensionAbility.
+UIAbilityContext provides the context environment for a [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) that needs to store its status. It inherits from [Context](arkts-ability-context.md) and provides UIAbility-related configuration and APIs for operating UIAbility and ServiceExtensionAbility components. For example, you can use the APIs to start a UIAbility, terminate a UIAbility to which the UIAbilityContext belongs, and start, terminate, connect to, or disconnect from a ServiceExtensionAbility.
 
 **Inheritance/Implementation:** UIAbilityContext extends [Context](arkts-ability-context-c.md)
 
 **Since:** 9
+
+<!--Device-unnamed-declare class UIAbilityContext extends Context--><!--Device-unnamed-declare class UIAbilityContext extends Context-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,7 +26,9 @@ Returns the startup result to the caller of [startAbilityForResult](#startabilit
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UIAbilityContext-backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>--><!--Device-UIAbilityContext-backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,6 +78,8 @@ Connects this UIAbility to an [AppServiceExtensionAbility](../../../reference/ap
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): long--><!--Device-UIAbilityContext-connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -163,6 +169,8 @@ Connects this UIAbility to a [ServiceExtensionAbility](../../../application-mode
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long--><!--Device-UIAbilityContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -257,7 +265,9 @@ Connects to a UIServiceExtensionAbility. This API uses a promise to return the r
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-UIAbilityContext-connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise<UIServiceProxy>--><!--Device-UIAbilityContext-connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise<UIServiceProxy>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -369,6 +379,8 @@ Disconnects from an [AppServiceExtensionAbility](../../../reference/apis-ability
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIAbilityContext-disconnectAppServiceExtensionAbility(connection: long): Promise<void>--><!--Device-UIAbilityContext-disconnectAppServiceExtensionAbility(connection: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -437,6 +449,8 @@ Disconnects from a [ServiceExtensionAbility](../../../application-models/extensi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIAbilityContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -503,6 +517,8 @@ Disconnects from a [ServiceExtensionAbility](../../../application-models/extensi
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-disconnectServiceExtensionAbility(connection: long): Promise<void>--><!--Device-UIAbilityContext-disconnectServiceExtensionAbility(connection: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -577,7 +593,9 @@ Disconnects from a UIServiceExtensionAbility. This API uses a promise to return 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-UIAbilityContext-disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>--><!--Device-UIAbilityContext-disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -671,6 +689,8 @@ Hides this UIAbility. This API uses a promise to return the result. It can be ca
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-hideAbility(): Promise<void>--><!--Device-UIAbilityContext-hideAbility(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -774,7 +794,9 @@ Checks whether this UIAbility is in the terminating state.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-isTerminating(): boolean--><!--Device-UIAbilityContext-isTerminating(): boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -809,13 +831,15 @@ export default class EntryAbility extends UIAbility {
 moveAbilityToBackground(): Promise<void>
 ```
 
-Moves this UIAbility from the foreground to the background. This API uses a promise to return the result. It can be called only on the main thread.<br>&lt;!--RP1--&gt;&lt;!--RP1End--&gt; Starting from API version 12, this API can be properly called on phones, wearables, and TVs. If it is called on other device types, error code 16000061 is returned. Starting from API version 13, this API can be properly called on phones, tablets, wearables, and TVs. If it is called on other device types, error code 16000061 is returned. **Atomic service API**: This API can be used in atomic services since API version 12.
+Moves this UIAbility from the foreground to the background. This API uses a promise to return the result. It can be called only on the main thread.<br><!--RP1--><!--RP1End--> Starting from API version 12, this API can be properly called on phones, wearables, and TVs. If it is called on other device types, error code 16000061 is returned. Starting from API version 13, this API can be properly called on phones, tablets, wearables, and TVs. If it is called on other device types, error code 16000061 is returned. **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UIAbilityContext-moveAbilityToBackground(): Promise<void>--><!--Device-UIAbilityContext-moveAbilityToBackground(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -893,7 +917,9 @@ service calls [terminateSelfWithResult](#terminateselfwithresult) to terminate i
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UIAbilityContext-openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<AbilityResult>--><!--Device-UIAbilityContext-openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -965,7 +991,7 @@ export default class EntryAbility extends UIAbility {
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>
 ```
 
-Starts a UIAbility by using &lt;!--RP2--&gt;[App Linking](../../../application-models/app-linking-startup.md)&lt;!--RP2End- -&gt; or [Deep Linking](../../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only on the main thread. A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
+Starts a UIAbility by using <!--RP2-->[App Linking](../../../application-models/app-linking-startup.md)&lt;!--RP2End- -&gt; or [Deep Linking](../../../application-models/deep-linking-startup.md), and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only on the main thread. A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
 
 - The **actions** field must contain **ohos.want.action.viewData**.  
 - The **entities** field must contain **entity.system.browsable**.  
@@ -981,7 +1007,9 @@ If you want to obtain the result after the started UIAbility is terminated, set 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UIAbilityContext-openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>--><!--Device-UIAbilityContext-openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1084,7 +1112,9 @@ Called when the window content associated with the UIAbility finishes drawing. T
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-reportDrawnCompleted(callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-reportDrawnCompleted(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1153,6 +1183,8 @@ Starts a ServiceExtensionAbility that supports modal dialog boxes. After the Ser
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResult>): void--><!--Device-UIAbilityContext-requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResult>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1237,6 +1269,8 @@ Starts a ServiceExtensionAbility that supports modal dialog boxes. After the Ser
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-requestDialogService(want: Want): Promise<dialogRequest.RequestResult>--><!--Device-UIAbilityContext-requestDialogService(want: Want): Promise<dialogRequest.RequestResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1333,7 +1367,9 @@ Called by a focused UIAbility to restart its own process and launch a specified 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-UIAbilityContext-restartApp(want: Want): Promise<void>--><!--Device-UIAbilityContext-restartApp(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1356,7 +1392,7 @@ Called by a focused UIAbility to restart its own process and launch a specified 
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Connect to system server error. |
-| [16000063](../errorcode-ability.md#16000063-invalid-ability-during-application-restart) | The target to restart does not belong to the caller or is not a UIAbility. |
+| [16000063](../errorcode-ability.md#16000063-invalid-ability-during-application-restart) | The target to restart does not belong to the current application or is not a UIAbility. |
 | [16000064](../errorcode-ability.md#16000064-frequent-application-restart) | Restart too frequently. |
 | [16000065](../errorcode-ability.md#16000065-api-can-be-called-only-for-a-foreground-ability) | The API can be called only when the ability is focused. |
 
@@ -1413,7 +1449,9 @@ Restores the WindowStage data in the UIAbility. It can be called only on the mai
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-restoreWindowStage(localStorage: LocalStorage): void--><!--Device-UIAbilityContext-restoreWindowStage(localStorage: LocalStorage): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1460,6 +1498,8 @@ When the first UIAbility launched under a module needs to redirect to another UI
 **Since:** 17
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-revokeDelegator(): Promise<void>--><!--Device-UIAbilityContext-revokeDelegator(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1534,6 +1574,8 @@ Sets the icon and label for this UIAbility. The icon and label can be displayed 
 **Required permissions:** ohos.permission.SET_ABILITY_INSTANCE_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise<void>--><!--Device-UIAbilityContext-setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1617,6 +1659,8 @@ Sets the icon and label for this UIAbility. The icon and label can be displayed 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIAbilityContext-setAbilityInstanceInfo(label: string, icon: image.PixelMap, groupId: string): Promise<void>--><!--Device-UIAbilityContext-setAbilityInstanceInfo(label: string, icon: image.PixelMap, groupId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -1666,7 +1710,9 @@ Sets the dark/light color mode for this UIAbility. Before calling this API, ensu
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-UIAbilityContext-setColorMode(colorMode: ConfigurationConstant.ColorMode): void--><!--Device-UIAbilityContext-setColorMode(colorMode: ConfigurationConstant.ColorMode): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1716,7 +1762,9 @@ Sets the mission continuation state of this UIAbility. This API uses an asynchro
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1774,7 +1822,9 @@ Sets the mission continuation state of this UIAbility. This API uses a promise t
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-setMissionContinueState(state: AbilityConstant.ContinueState): Promise<void>--><!--Device-UIAbilityContext-setMissionContinueState(state: AbilityConstant.ContinueState): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1827,7 +1877,9 @@ Sets a mission label for this UIAbility on the multitasking screen. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-setMissionLabel(label: string, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-setMissionLabel(label: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1879,7 +1931,9 @@ Sets a mission label for this UIAbility on the multitasking screen. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-setMissionLabel(label: string): Promise<void>--><!--Device-UIAbilityContext-setMissionLabel(label: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1942,6 +1996,8 @@ Sets the icon for this UIAbility, which is displayed in the application window, 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-setMissionWindowIcon(windowIcon: image.PixelMap): Promise<void>--><!--Device-UIAbilityContext-setMissionWindowIcon(windowIcon: image.PixelMap): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2020,7 +2076,9 @@ Sets whether to trigger the [onNewWant](arkts-ability-app-ability-uiability-uiab
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-UIAbilityContext-setOnNewWantSkipScenarios(scenarios: int): Promise<void>--><!--Device-UIAbilityContext-setOnNewWantSkipScenarios(scenarios: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2085,7 +2143,9 @@ Sets whether to enable backup and restore for this UIAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-UIAbilityContext-setRestoreEnabled(enabled: boolean): void--><!--Device-UIAbilityContext-setRestoreEnabled(enabled: boolean): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2133,6 +2193,8 @@ Shows this UIAbility. This API uses a promise to return the result. It can be ca
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-showAbility(): Promise<void>--><!--Device-UIAbilityContext-showAbility(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2241,7 +2303,9 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-startAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-startAbility(want: Want, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2337,7 +2401,9 @@ Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2442,7 +2508,9 @@ Starts a UIAbility. This API uses a promise to return the result. It can be call
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-UIAbilityContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2561,6 +2629,8 @@ Obtains a [Caller](arkts-ability-app-ability-uiability-caller-i.md) object for c
 - API versions 9 to 10: ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-startAbilityByCall(want: Want): Promise<Caller>--><!--Device-UIAbilityContext-startAbilityByCall(want: Want): Promise<Caller>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2745,6 +2815,8 @@ Implicitly starts a given type of [UIExtensionAbility](arkts-ability-app-ability
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIAbilityContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -2814,6 +2886,8 @@ Implicitly starts a given type of [UIExtensionAbility](arkts-ability-app-ability
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIAbilityContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback): Promise<void>--><!--Device-UIAbilityContext-startAbilityByType(type: string, wantParam: Record<string, Object>,    abilityStartCallback: AbilityStartCallback): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2895,7 +2969,9 @@ UIAbility is started multiple times by different applications calling this API, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void--><!--Device-UIAbilityContext-startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2998,7 +3074,9 @@ UIAbility is started multiple times by different applications calling this API, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void--><!--Device-UIAbilityContext-startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3105,7 +3183,9 @@ UIAbility is started multiple times by different applications calling this API, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>--><!--Device-UIAbilityContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3211,6 +3291,8 @@ Starts an [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIAbilityContext-startAppServiceExtensionAbility(want: Want): Promise<void>--><!--Device-UIAbilityContext-startAppServiceExtensionAbility(want: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -3290,6 +3372,8 @@ Bring the current UIAbility instance to the foreground.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIAbilityContext-startSelf(): Promise<void>--><!--Device-UIAbilityContext-startSelf(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**
@@ -3346,6 +3430,8 @@ Launch the application's own UIAbility in the child process. If the launchMode o
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise<void>--><!--Device-UIAbilityContext-startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3427,6 +3513,8 @@ Starts the application's own UIAbility within the current process. This API can 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIAbilityContext-startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise<void>--><!--Device-UIAbilityContext-startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3511,7 +3599,9 @@ Starts a UIServiceExtensionAbility. This API uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-UIAbilityContext-startUIServiceExtensionAbility(want: Want): Promise<void>--><!--Device-UIAbilityContext-startUIServiceExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3604,6 +3694,8 @@ Stops an [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-api
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIAbilityContext-stopAppServiceExtensionAbility(want: Want): Promise<void>--><!--Device-UIAbilityContext-stopAppServiceExtensionAbility(want: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -3684,7 +3776,9 @@ Terminates this UIAbility. This API uses an asynchronous callback to return the 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-terminateSelf(callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-terminateSelf(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3772,7 +3866,9 @@ Terminates this UIAbility. This API uses a promise to return the result. It can 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-terminateSelf(): Promise<void>--><!--Device-UIAbilityContext-terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3857,7 +3953,9 @@ Terminates this UIAbility. This API uses an asynchronous callback to return the 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void--><!--Device-UIAbilityContext-terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3939,7 +4037,9 @@ Terminates this UIAbility. This API uses a promise to return the result. It can 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-terminateSelfWithResult(parameter: AbilityResult): Promise<void>--><!--Device-UIAbilityContext-terminateSelfWithResult(parameter: AbilityResult): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -4021,7 +4121,9 @@ UIAbility information.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-abilityInfo: AbilityInfo--><!--Device-UIAbilityContext-abilityInfo: AbilityInfo-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -4039,7 +4141,9 @@ Environment variables for the application runtime, such as language and color mo
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-config: Configuration--><!--Device-UIAbilityContext-config: Configuration-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -4057,7 +4161,9 @@ Information about the HAP to which the UIAbility belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UIAbilityContext-currentHapModuleInfo: HapModuleInfo--><!--Device-UIAbilityContext-currentHapModuleInfo: HapModuleInfo-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -4075,6 +4181,8 @@ WindowStage object. It can be called only on the main thread.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UIAbilityContext-windowStage: window.WindowStage--><!--Device-UIAbilityContext-windowStage: window.WindowStage-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

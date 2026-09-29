@@ -14,6 +14,8 @@ The class of user authentication extension ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class UserAuthExtensionAbility extends UIExtensionAbility--><!--Device-unnamed-export default class UserAuthExtensionAbility extends UIExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

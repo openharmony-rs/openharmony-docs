@@ -20,6 +20,8 @@ Registers a listener for screen hopping state changes. This API uses an asynchro
 
 **Substitutes:** [on](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate-on-f-sys.md)
 
+<!--Device-inputDeviceCooperate-function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void--><!--Device-inputDeviceCooperate-function on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 
 **System API:** This is a system API.

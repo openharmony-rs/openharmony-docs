@@ -4,6 +4,8 @@ Multicast DNS (MDNS) provides functions such as adding, removing, discovering, a
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace mdns--><!--Device-unnamed-declare namespace mdns-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## Modules to Import
@@ -35,14 +37,14 @@ import { mdns } from '@kit.NetworkKit';
 | [LocalServiceInfo](arkts-network-mdns-localserviceinfo-i.md) | MDNS service information. |
 | [ServiceAttribute](arkts-network-mdns-serviceattribute-i.md) | MDNS service attribute information. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [MdnsError](arkts-network-mdns-mdnserror-e.md) | Defines the MDNS error information. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [NetAddress](arkts-network-mdns-netaddress-t.md) | Obtains the network address. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [MdnsError](arkts-network-mdns-mdnserror-e.md) | Defines the MDNS error information. |

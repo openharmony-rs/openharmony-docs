@@ -19,6 +19,8 @@ Truncates a file based on the file descriptor. This API returns the result synch
 
 **Substitutes:** [truncateSync](arkts-corefile-file-fs-truncatesync-f.md)
 
+<!--Device-unnamed-declare function ftruncateSync(fd: number, len?: number): void--><!--Device-unnamed-declare function ftruncateSync(fd: number, len?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

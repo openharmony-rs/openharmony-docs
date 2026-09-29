@@ -8,6 +8,8 @@ Defines a **WebSocketServer** object. You need to use [webSocket.createWebSocket
 
 **Since:** 19
 
+<!--Device-webSocket-export interface WebSocketServer--><!--Device-webSocket-export interface WebSocketServer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Closes a WebSocket connection. This API uses a promise to return the result.
 **Since:** 19
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-WebSocketServer-close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions): Promise<boolean>--><!--Device-WebSocketServer-close(connection: WebSocketConnection, options?: webSocket.WebSocketCloseOptions): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -48,7 +52,7 @@ Closes a WebSocket connection. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| 2302006 | websocket connection does not exist. |
+| [2302006](../errorcode-net-webSocket.md#2302006-websocketserver-connection-does-not-exist) | websocket connection does not exist. |
 
 **Examples**
 
@@ -105,6 +109,8 @@ Obtains information about all clients connected to the server.
 **Since:** 19
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-WebSocketServer-listAllConnections(): WebSocketConnection[]--><!--Device-WebSocketServer-listAllConnections(): WebSocketConnection[]-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -175,6 +181,8 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 
 **Since:** 19
 
+<!--Device-WebSocketServer-off(type: 'connect', callback?: Callback<WebSocketConnection>): void--><!--Device-WebSocketServer-off(type: 'connect', callback?: Callback<WebSocketConnection>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -208,6 +216,8 @@ Unsubscribes from the WebSocketServer event of receiving client messages. This A
 > If you do not pass the callback, you will cancel listening for all events.
 
 **Since:** 19
+
+<!--Device-WebSocketServer-off(type: 'messageReceive', callback?: Callback<WebSocketMessage>): void--><!--Device-WebSocketServer-off(type: 'messageReceive', callback?: Callback<WebSocketMessage>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -243,6 +253,8 @@ Unsubscribes from WebSocketServer close events. This API uses an asynchronous ca
 
 **Since:** 19
 
+<!--Device-WebSocketServer-off(type: 'close', callback?: ClientConnectionCloseCallback): void--><!--Device-WebSocketServer-off(type: 'close', callback?: ClientConnectionCloseCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -277,6 +289,8 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 
 **Since:** 19
 
+<!--Device-WebSocketServer-off(type: 'error', callback?: ErrorCallback): void--><!--Device-WebSocketServer-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -305,6 +319,8 @@ on(type: 'connect', callback: Callback<WebSocketConnection>): void
 Subscribes to the WebSocketServer connection event (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
 
 **Since:** 19
+
+<!--Device-WebSocketServer-on(type: 'connect', callback: Callback<WebSocketConnection>): void--><!--Device-WebSocketServer-on(type: 'connect', callback: Callback<WebSocketConnection>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -337,6 +353,8 @@ Subscribes to the WebSocketServer event of receiving client messages. This API u
 
 **Since:** 19
 
+<!--Device-WebSocketServer-on(type: 'messageReceive', callback: Callback<WebSocketMessage>): void--><!--Device-WebSocketServer-on(type: 'messageReceive', callback: Callback<WebSocketMessage>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -368,6 +386,8 @@ Subscribes to WebSocketServer close events. This API uses an asynchronous callba
 
 **Since:** 19
 
+<!--Device-WebSocketServer-on(type: 'close', callback: ClientConnectionCloseCallback): void--><!--Device-WebSocketServer-on(type: 'close', callback: ClientConnectionCloseCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -398,6 +418,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to WebSocketServer error events. This API uses an asynchronous callback to return the result.
 
 **Since:** 19
+
+<!--Device-WebSocketServer-on(type: 'error', callback: ErrorCallback): void--><!--Device-WebSocketServer-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -437,6 +459,8 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-WebSocketServer-send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boolean>--><!--Device-WebSocketServer-send(data: string | ArrayBuffer, connection: WebSocketConnection): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -457,7 +481,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| 2302006 | websocket connection does not exist. |
+| [2302006](../errorcode-net-webSocket.md#2302006-websocketserver-connection-does-not-exist) | websocket connection does not exist. |
 
 **Examples**
 
@@ -514,6 +538,8 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 **Since:** 19
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-WebSocketServer-start(config: WebSocketServerConfig): Promise<boolean>--><!--Device-WebSocketServer-start(config: WebSocketServerConfig): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -576,6 +602,8 @@ Stops the WebSocketServer service. This API uses a promise to return the result.
 **Since:** 19
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-WebSocketServer-stop(): Promise<boolean>--><!--Device-WebSocketServer-stop(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

@@ -20,6 +20,8 @@ Verifies the authorization package from the controller device. This function ver
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-abilityToolAccessCtrl-export function verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: RemoteInfo):    Promise<boolean[]>--><!--Device-abilityToolAccessCtrl-export function verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], remoteInfo: RemoteInfo):    Promise<boolean[]>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

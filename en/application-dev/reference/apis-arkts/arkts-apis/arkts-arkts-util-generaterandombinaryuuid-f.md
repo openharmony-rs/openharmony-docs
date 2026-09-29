@@ -18,6 +18,8 @@ Uses a secure random number generator to generate a random universally unique id
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-util-function generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array--><!--Device-util-function generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

@@ -12,6 +12,8 @@ Define local device network id for audio.
 
 **Since:** 9
 
+<!--Device-audio-const LOCAL_NETWORK_ID: string--><!--Device-audio-const LOCAL_NETWORK_ID: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.

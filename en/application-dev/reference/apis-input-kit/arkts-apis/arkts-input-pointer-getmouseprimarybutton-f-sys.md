@@ -16,6 +16,8 @@ Obtains the current primary mouse button. This API uses an asynchronous callback
 
 **Since:** 10
 
+<!--Device-pointer-function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void--><!--Device-pointer-function getMousePrimaryButton(callback: AsyncCallback<PrimaryButton>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getMousePrimaryButton(): Promise<PrimaryButton>
 Obtains the current primary mouse button. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getMousePrimaryButton(): Promise<PrimaryButton>--><!--Device-pointer-function getMousePrimaryButton(): Promise<PrimaryButton>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

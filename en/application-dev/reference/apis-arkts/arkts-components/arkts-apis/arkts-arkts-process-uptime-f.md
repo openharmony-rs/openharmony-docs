@@ -18,6 +18,8 @@ Obtains the running time of the current system, in seconds.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-process-function uptime(): number--><!--Device-process-function uptime(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**

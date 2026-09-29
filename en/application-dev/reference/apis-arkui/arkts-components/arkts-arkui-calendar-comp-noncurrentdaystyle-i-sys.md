@@ -10,6 +10,8 @@ Non current day style.
 
 **Deprecated since:** 20
 
+<!--Device-unnamed-interface NonCurrentDayStyle--><!--Device-unnamed-interface NonCurrentDayStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Non-current month day color.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-NonCurrentDayStyle-nonCurrentMonthDayColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthDayColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Lunar style of non-current month.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-NonCurrentDayStyle-nonCurrentMonthLunarColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthLunarColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -76,6 +82,8 @@ Non-Current Month Off Day Marker Color.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-NonCurrentDayStyle-nonCurrentMonthOffDayMarkColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthOffDayMarkColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -97,6 +105,8 @@ Non-Current Month Workday Marker Color.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-NonCurrentDayStyle-nonCurrentMonthWorkDayMarkColor?: ResourceColor--><!--Device-NonCurrentDayStyle-nonCurrentMonthWorkDayMarkColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

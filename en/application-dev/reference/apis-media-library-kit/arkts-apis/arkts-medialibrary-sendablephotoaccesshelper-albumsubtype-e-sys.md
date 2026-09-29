@@ -8,17 +8,21 @@ Enumerate the album subtypes.
 
 **Since:** 12
 
+<!--Device-sendablePhotoAccessHelper-const enum AlbumSubtype--><!--Device-sendablePhotoAccessHelper-const enum AlbumSubtype-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## HIDDEN
 
 ```TypeScript
-HIDDEN
+HIDDEN = 1027
 ```
 
 Hidden album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-HIDDEN = 1027--><!--Device-AlbumSubtype-HIDDEN = 1027-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -27,12 +31,14 @@ Hidden album.
 ## TRASH
 
 ```TypeScript
-TRASH
+TRASH = 1028
 ```
 
 Trash.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-TRASH = 1028--><!--Device-AlbumSubtype-TRASH = 1028-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -41,12 +47,14 @@ Trash.
 ## SCREENSHOT
 
 ```TypeScript
-SCREENSHOT
+SCREENSHOT = 1029
 ```
 
 Album for screenshots and screen recording files.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-SCREENSHOT = 1029--><!--Device-AlbumSubtype-SCREENSHOT = 1029-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -55,12 +63,14 @@ Album for screenshots and screen recording files.
 ## CAMERA
 
 ```TypeScript
-CAMERA
+CAMERA = 1030
 ```
 
 Album for photos and videos taken by the camera.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-CAMERA = 1030--><!--Device-AlbumSubtype-CAMERA = 1030-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -76,6 +86,8 @@ Source album.
 
 **Since:** 12
 
+<!--Device-AlbumSubtype-SOURCE_GENERIC = 2049--><!--Device-AlbumSubtype-SOURCE_GENERIC = 2049-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -89,6 +101,8 @@ CLASSIFY = 4097
 Classified album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-CLASSIFY = 4097--><!--Device-AlbumSubtype-CLASSIFY = 4097-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -104,6 +118,8 @@ Geographic location album.
 
 **Since:** 12
 
+<!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099--><!--Device-AlbumSubtype-GEOGRAPHY_LOCATION = 4099-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -111,12 +127,14 @@ Geographic location album.
 ## GEOGRAPHY_CITY
 
 ```TypeScript
-GEOGRAPHY_CITY
+GEOGRAPHY_CITY = 4100
 ```
 
 City album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-GEOGRAPHY_CITY = 4100--><!--Device-AlbumSubtype-GEOGRAPHY_CITY = 4100-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -125,12 +143,14 @@ City album.
 ## SHOOTING_MODE
 
 ```TypeScript
-SHOOTING_MODE
+SHOOTING_MODE = 4101
 ```
 
 Shooting mode album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-SHOOTING_MODE = 4101--><!--Device-AlbumSubtype-SHOOTING_MODE = 4101-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -139,12 +159,14 @@ Shooting mode album.
 ## PORTRAIT
 
 ```TypeScript
-PORTRAIT
+PORTRAIT = 4102
 ```
 
 Portrait album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-PORTRAIT = 4102--><!--Device-AlbumSubtype-PORTRAIT = 4102-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -153,12 +175,14 @@ Portrait album.
 ## GROUP_PHOTO
 
 ```TypeScript
-GROUP_PHOTO
+GROUP_PHOTO = 4103
 ```
 
 Group photo album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-GROUP_PHOTO = 4103--><!--Device-AlbumSubtype-GROUP_PHOTO = 4103-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -174,6 +198,8 @@ Highlights album.
 
 **Since:** 12
 
+<!--Device-AlbumSubtype-HIGHLIGHT = 4104--><!--Device-AlbumSubtype-HIGHLIGHT = 4104-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -181,12 +207,14 @@ Highlights album.
 ## HIGHLIGHT_SUGGESTIONS
 
 ```TypeScript
-HIGHLIGHT_SUGGESTIONS
+HIGHLIGHT_SUGGESTIONS = 4105
 ```
 
 Highlights suggestion album.
 
 **Since:** 12
+
+<!--Device-AlbumSubtype-HIGHLIGHT_SUGGESTIONS = 4105--><!--Device-AlbumSubtype-HIGHLIGHT_SUGGESTIONS = 4105-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

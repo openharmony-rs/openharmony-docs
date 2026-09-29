@@ -16,6 +16,8 @@ Checks whether SMS is supported on IMS. This API uses an asynchronous callback t
 
 **Since:** 8
 
+<!--Device-sms-function isImsSmsSupported(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-sms-function isImsSmsSupported(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -62,6 +64,8 @@ function isImsSmsSupported(slotId: number): Promise<boolean>
 Checks whether SMS is supported on IMS. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-sms-function isImsSmsSupported(slotId: int): Promise<boolean>--><!--Device-sms-function isImsSmsSupported(slotId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

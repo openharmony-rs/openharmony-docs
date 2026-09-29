@@ -8,6 +8,8 @@ Defines options used to compress or decompress a ZIP file.
 
 **Since:** 7
 
+<!--Device-zlib-interface Options--><!--Device-zlib-interface Options-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Indicates whether to keep the top-level source folder in the compressed file.The
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Options-keepTopLevelFolder?: boolean--><!--Device-Options-keepTopLevelFolder?: boolean-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -46,7 +50,9 @@ Compression level specified for compression or decompression.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Options-level?: CompressLevel--><!--Device-Options-level?: CompressLevel-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -62,7 +68,9 @@ Memory level specified for compression.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Options-memLevel?: MemLevel--><!--Device-Options-memLevel?: MemLevel-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -78,7 +86,9 @@ Serial or parallel strategy specified for compression or decompression.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Options-parallel?: ParallelStrategy--><!--Device-Options-parallel?: ParallelStrategy-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -94,7 +104,9 @@ Separator strategy for the file path in the compressed package specified for dec
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-Options-pathSeparatorStrategy?: PathSeparatorStrategy--><!--Device-Options-pathSeparatorStrategy?: PathSeparatorStrategy-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -110,6 +122,8 @@ Compression strategy specified for compression.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Options-strategy?: CompressStrategy--><!--Device-Options-strategy?: CompressStrategy-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

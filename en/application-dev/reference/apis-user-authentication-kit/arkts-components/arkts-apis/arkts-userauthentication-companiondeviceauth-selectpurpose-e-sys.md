@@ -8,6 +8,8 @@ Selects the purpose of the companion device.
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-enum SelectPurpose--><!--Device-companionDeviceAuth-enum SelectPurpose-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Selects a companion device to which the template is to be added. Specifically, t
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SelectPurpose-SELECT_ADD_DEVICE = 1--><!--Device-SelectPurpose-SELECT_ADD_DEVICE = 1-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -40,6 +44,8 @@ Selects the companion device that provides the authentication capability. Specif
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SelectPurpose-SELECT_AUTH_DEVICE = 2--><!--Device-SelectPurpose-SELECT_AUTH_DEVICE = 2-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Start value of the vendor-defined selection purpose. The vendor can extend the s
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SelectPurpose-VENDOR_BEGIN = 10000--><!--Device-SelectPurpose-VENDOR_BEGIN = 10000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

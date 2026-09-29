@@ -18,8 +18,8 @@ import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [PopupV2Button](arkts-arkui-arkui-advanced-popupv2-popupv2button-i.md) | Defines the popup button |
-| [PopupV2InitInfo](arkts-arkui-arkui-advanced-popupv2-popupv2initinfo-i.md) | Defines the popup init info. |
+| [PopupV2Button](arkts-arkui-arkui-advanced-popupv2-popupv2button-i.md) | Defines the related attributes and events of a button. |
+| [PopupV2InitInfo](arkts-arkui-arkui-advanced-popupv2-popupv2initinfo-i.md) | Defines the specific style parameters of **PopupV2**. |
 
 ## Examples
 

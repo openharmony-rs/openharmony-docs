@@ -20,6 +20,8 @@ Cancels the watermark policy for a specified user. When an application no longer
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function cancelWatermarkImage(admin: Want, bundleName: string, accountId: number): void--><!--Device-securityManager-function cancelWatermarkImage(admin: Want, bundleName: string, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

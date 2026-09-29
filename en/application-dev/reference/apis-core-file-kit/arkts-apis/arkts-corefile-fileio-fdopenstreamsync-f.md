@@ -19,6 +19,8 @@ Opens a stream based on the file descriptor. This API returns the result synchro
 
 **Substitutes:** [fdopenStreamSync](arkts-corefile-file-fs-fdopenstreamsync-f.md)
 
+<!--Device-unnamed-declare function fdopenStreamSync(fd: number, mode: string): Stream--><!--Device-unnamed-declare function fdopenStreamSync(fd: number, mode: string): Stream-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

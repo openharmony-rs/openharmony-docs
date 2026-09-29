@@ -18,6 +18,8 @@ Registers the NFC field strength state events.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function on(type: "notify", callback: Callback<number>): void--><!--Device-connectedTag-function on(type: "notify", callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Parameters:**

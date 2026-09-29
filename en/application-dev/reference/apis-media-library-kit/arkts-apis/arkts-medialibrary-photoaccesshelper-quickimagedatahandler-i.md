@@ -8,6 +8,8 @@ QuickImageDataHandler is a media asset handler used to customize the media asset
 
 **Since:** 13
 
+<!--Device-photoAccessHelper-interface QuickImageDataHandler<T>--><!--Device-photoAccessHelper-interface QuickImageDataHandler<T>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Information returned by **map**:
 | 'quality' | Image quality. The value **high** means high quality, and **low** means poor quality.|
 
 **Since:** 13
+
+<!--Device-QuickImageDataHandler-onDataPrepared(data: T, imageSource: image.ImageSource, map: Map<string, string>): void--><!--Device-QuickImageDataHandler-onDataPrepared(data: T, imageSource: image.ImageSource, map: Map<string, string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

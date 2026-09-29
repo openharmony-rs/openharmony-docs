@@ -23,6 +23,8 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 **Required permissions:** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
+<!--Device-deviceManager-function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>,    callback: AsyncCallback<{deviceId: number; remote: rpc.IRemoteObject;}>): void--><!--Device-deviceManager-function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>,    callback: AsyncCallback<{deviceId: number; remote: rpc.IRemoteObject;}>): void-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Parameters:**
@@ -88,6 +90,8 @@ Binds a peripheral device based on the device information returned by **queryDev
 **Substitutes:** [bindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md)(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
+
+<!--Device-deviceManager-function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>): Promise<{deviceId: number;    remote: rpc.IRemoteObject;}>--><!--Device-deviceManager-function bindDevice(deviceId: number, onDisconnect: AsyncCallback<number>): Promise<{deviceId: number;    remote: rpc.IRemoteObject;}>-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 

@@ -8,6 +8,8 @@ Defines a function for canceling the paste task. This parameter is valid only wh
 
 **Since:** 15
 
+<!--Device-pasteboard-export class ProgressSignal--><!--Device-pasteboard-export class ProgressSignal-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard @class ProgressSignal
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Cancels an ongoing paste task.
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-ProgressSignal-cancel(): void--><!--Device-ProgressSignal-cancel(): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 

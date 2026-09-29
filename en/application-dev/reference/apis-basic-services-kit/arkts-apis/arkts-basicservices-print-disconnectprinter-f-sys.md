@@ -18,6 +18,8 @@ Disconnects from the specified printer. This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function disconnectPrinter(printerId: string, callback: AsyncCallback<void>): void--><!--Device-print-function disconnectPrinter(printerId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Disconnects from the specified printer. This API uses a promise to return the re
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function disconnectPrinter(printerId: string): Promise<void>--><!--Device-print-function disconnectPrinter(printerId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

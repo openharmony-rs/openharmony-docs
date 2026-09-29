@@ -8,6 +8,8 @@ SoundPool, which provides APIs for loading, unloading, playing, and stopping pla
 
 **Since:** 10
 
+<!--Device-media-type SoundPool = _SoundPool--><!--Device-media-type SoundPool = _SoundPool-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Type:** _SoundPool

@@ -10,6 +10,8 @@ Implements color controls. It inherits from [ColorControlsQuery](arkts-camera-ca
 
 **Since:** 26.0.1
 
+<!--Device-camera-interface ColorControls extends ColorControlsQuery--><!--Device-camera-interface ColorControls extends ColorControlsQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Gets RGB bias value.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ColorControls-getRGBBias(): RGBBias--><!--Device-ColorControls-getRGBBias(): RGBBias-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -61,6 +65,8 @@ Gets the amount of saturation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ColorControls-getSaturation(): double--><!--Device-ColorControls-getSaturation(): double-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -90,6 +96,8 @@ Sets RGB bias value.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ColorControls-setRGBBias(bias: RGBBias): void--><!--Device-ColorControls-setRGBBias(bias: RGBBias): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -118,6 +126,8 @@ Sets the amount of saturation. Before the setting, call [isSaturationSupported](
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ColorControls-setSaturation(val: double): void--><!--Device-ColorControls-setSaturation(val: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -20,6 +20,8 @@ Unregister the previously registered function hook. The hook object must be the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-functionManager-function unregisterFunctionHook(hook: FunctionHook): Promise<void>--><!--Device-functionManager-function unregisterFunctionHook(hook: FunctionHook): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Add a geofence.
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise<int>--><!--Device-geoLocationManager-function addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise<int>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **Parameters:**

@@ -8,6 +8,8 @@ Enumerates loop mode keys for playback.
 
 **Since:** 26.0.0
 
+<!--Device-media-enum PlaylistLoopMode--><!--Device-media-enum PlaylistLoopMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## PLAYLIST_LOOP_MODE_ALL
@@ -22,7 +24,9 @@ loops all items in the playlist
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ALL = 1--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ALL = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -38,7 +42,9 @@ Loops a single playback item.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ONE = 2--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ONE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -54,7 +60,9 @@ Loops shuffle playback item.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_SHUFFLE = 3--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_SHUFFLE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -70,6 +78,8 @@ No looping
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_NONE = 4--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_NONE = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

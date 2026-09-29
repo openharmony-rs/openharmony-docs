@@ -20,6 +20,8 @@ This API can be properly called on devices other than wearables and TVs. If it i
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isSmartReminderEnabled(deviceType: string): Promise<boolean>--><!--Device-notificationManager-function isSmartReminderEnabled(deviceType: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

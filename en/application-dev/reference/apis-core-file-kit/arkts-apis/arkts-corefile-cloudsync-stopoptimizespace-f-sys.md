@@ -18,6 +18,8 @@ Synchronously stops optimizing cloud resource space. This method is used with **
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-cloudSync-function stopOptimizeSpace(): void--><!--Device-cloudSync-function stopOptimizeSpace(): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.

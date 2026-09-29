@@ -22,6 +22,8 @@ Enables Bluetooth on a device.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-bluetooth-function enableBluetooth(): boolean--><!--Device-bluetooth-function enableBluetooth(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

@@ -20,6 +20,8 @@ complete arkTS script for in-app skills.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-scriptManager-function completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise<void>--><!--Device-scriptManager-function completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **Parameters:**

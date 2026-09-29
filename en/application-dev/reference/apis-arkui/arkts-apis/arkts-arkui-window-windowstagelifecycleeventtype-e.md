@@ -8,6 +8,8 @@ Enumerates the lifecycle state types of a WindowStage.
 
 **Since:** 20
 
+<!--Device-window-enum WindowStageLifecycleEventType--><!--Device-window-enum WindowStageLifecycleEventType-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## SHOWN
@@ -21,6 +23,8 @@ The WindowStage is shown in the foreground, for example, when launching from the
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStageLifecycleEventType-SHOWN = 1--><!--Device-WindowStageLifecycleEventType-SHOWN = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -36,6 +40,8 @@ The WindowStage is in the foreground and interactive, for example, when the appl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowStageLifecycleEventType-RESUMED = 2--><!--Device-WindowStageLifecycleEventType-RESUMED = 2-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## PAUSED
@@ -50,6 +56,8 @@ The WindowStage is in the foreground but not interactive, for example, when the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowStageLifecycleEventType-PAUSED = 3--><!--Device-WindowStageLifecycleEventType-PAUSED = 3-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## HIDDEN
@@ -63,5 +71,7 @@ The WindowStage is running in the background, for example, when the application 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStageLifecycleEventType-HIDDEN = 4--><!--Device-WindowStageLifecycleEventType-HIDDEN = 4-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

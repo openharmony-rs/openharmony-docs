@@ -25,6 +25,8 @@ Obtains an **AuthInstance** instance for user authentication.
 
 **Substitutes:** [getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md)
 
+<!--Device-userAuth-function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLevel): AuthInstance--><!--Device-userAuth-function getAuthInstance(challenge: Uint8Array, authType: UserAuthType, authTrustLevel: AuthTrustLevel): AuthInstance-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **Parameters:**

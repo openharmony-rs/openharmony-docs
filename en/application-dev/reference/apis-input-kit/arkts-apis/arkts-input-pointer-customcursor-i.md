@@ -8,6 +8,8 @@ Defines custom cursor resources.
 
 **Since:** 15
 
+<!--Device-pointer-interface CustomCursor--><!--Device-pointer-interface CustomCursor-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Horizontal coordinate of the custom pointer focus, in px. This coordinate is lim
 
 **Since:** 15
 
+<!--Device-CustomCursor-focusX?: int--><!--Device-CustomCursor-focusX?: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 ## focusY
@@ -42,6 +46,8 @@ Vertical coordinate of the custom pointer focus, in px. This coordinate is limit
 
 **Since:** 15
 
+<!--Device-CustomCursor-focusY?: int--><!--Device-CustomCursor-focusY?: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 ## pixelMap
@@ -55,5 +61,7 @@ Pixel map. The minimum size is subject to the minimum limit of the image. The ma
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
 **Since:** 15
+
+<!--Device-CustomCursor-pixelMap: image.PixelMap--><!--Device-CustomCursor-pixelMap: image.PixelMap-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer

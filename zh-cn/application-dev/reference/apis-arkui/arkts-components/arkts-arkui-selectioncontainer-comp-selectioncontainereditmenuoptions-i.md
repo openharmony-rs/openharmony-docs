@@ -8,6 +8,8 @@ SelectionContainer自定义编辑菜单选项。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface SelectionContainerEditMenuOptions--><!--Device-unnamed-export interface SelectionContainerEditMenuOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ onCreateMenu?: OnCreateMenuCallback
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionContainerEditMenuOptions-onCreateMenu?: OnCreateMenuCallback--><!--Device-SelectionContainerEditMenuOptions-onCreateMenu?: OnCreateMenuCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onMenuItemClick
@@ -46,6 +50,8 @@ onMenuItemClick?: OnMenuItemClickWithTextCallback
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionContainerEditMenuOptions-onMenuItemClick?: OnMenuItemClickWithTextCallback--><!--Device-SelectionContainerEditMenuOptions-onMenuItemClick?: OnMenuItemClickWithTextCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onPrepareMenu
@@ -61,5 +67,7 @@ onPrepareMenu?: OnPrepareMenuCallback
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectionContainerEditMenuOptions-onPrepareMenu?: OnPrepareMenuCallback--><!--Device-SelectionContainerEditMenuOptions-onPrepareMenu?: OnPrepareMenuCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

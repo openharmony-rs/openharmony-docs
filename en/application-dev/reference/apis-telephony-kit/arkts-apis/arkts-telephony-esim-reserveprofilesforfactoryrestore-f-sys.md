@@ -18,6 +18,8 @@ Restores factory settings and retains profiles. This API uses a promise to retur
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function reserveProfilesForFactoryRestore(slotId: int): Promise<ResultCode>--><!--Device-eSIM-function reserveProfilesForFactoryRestore(slotId: int): Promise<ResultCode>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

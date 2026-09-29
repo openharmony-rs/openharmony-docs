@@ -8,6 +8,8 @@ Declare type SymbolOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-export declare class SymbolOptions--><!--Device-unnamed-export declare class SymbolOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -22,7 +24,7 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 effectStrategy?: SymbolEffectStrategy
 ```
 
-设置SymbolGlyph动效策略。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)动效策略。
 
 默认值：SymbolEffectStrategy.NONE
 
@@ -38,6 +40,8 @@ $r('sys.symbol.ohos_*')中引用的资源仅ohos_wifi支持层级动效模式。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolOptions-effectStrategy?: SymbolEffectStrategy--><!--Device-SymbolOptions-effectStrategy?: SymbolEffectStrategy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -46,7 +50,7 @@ $r('sys.symbol.ohos_*')中引用的资源仅ohos_wifi支持层级动效模式。
 fontColor?: Array<ResourceColor>
 ```
 
-设置SymbolGlyph颜色。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)颜色。
 
 默认值：不同渲染策略下默认值不同。
 
@@ -58,6 +62,8 @@ fontColor?: Array<ResourceColor>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolOptions-fontColor?: Array<ResourceColor>--><!--Device-SymbolOptions-fontColor?: Array<ResourceColor>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -66,7 +72,7 @@ fontColor?: Array<ResourceColor>
 fontSize?: number | string | Resource
 ```
 
-设置SymbolGlyph大小。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)大小。
 
 number类型取值范围：大于等于0。
 
@@ -82,6 +88,8 @@ number类型取值范围：大于等于0。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolOptions-fontSize?: number | string | Resource--><!--Device-SymbolOptions-fontSize?: number | string | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
@@ -90,7 +98,7 @@ number类型取值范围：大于等于0。
 fontWeight?: number | FontWeight | string
 ```
 
-设置SymbolGlyph粗细。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)粗细。
 
 number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。
 
@@ -106,6 +114,8 @@ string类型仅支持number类型取值的字符串形式，例如“400”，�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolOptions-fontWeight?: number | FontWeight | string--><!--Device-SymbolOptions-fontWeight?: number | FontWeight | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## renderingStrategy
@@ -114,7 +124,7 @@ string类型仅支持number类型取值的字符串形式，例如“400”，�
 renderingStrategy?: SymbolRenderingStrategy
 ```
 
-设置SymbolGlyph渲染策略。
+设置[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)渲染策略。
 
 默认值：SymbolRenderingStrategy.SINGLE
 
@@ -129,5 +139,7 @@ $r('sys.symbol.ohos_*')中引用的资源仅ohos_trash_circle、ohos_folder_badg
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SymbolOptions-renderingStrategy?: SymbolRenderingStrategy--><!--Device-SymbolOptions-renderingStrategy?: SymbolRenderingStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

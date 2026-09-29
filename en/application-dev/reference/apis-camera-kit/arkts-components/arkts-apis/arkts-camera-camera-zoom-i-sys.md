@@ -12,6 +12,8 @@ It provides APIs related to zoom operations.
 
 **Since:** 11
 
+<!--Device-camera-interface Zoom extends ZoomQuery--><!--Device-camera-interface Zoom extends ZoomQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ getZoomCenterPoint(): Point
 Gets zoom center point.
 
 **Since:** 20
+
+<!--Device-Zoom-getZoomCenterPoint(): Point--><!--Device-Zoom-getZoomCenterPoint(): Point-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -56,6 +60,8 @@ prepareZoom(): void
 Instructs the bottom layer to prepare for zooming, for example, powering on the sensor.
 
 **Since:** 11
+
+<!--Device-Zoom-prepareZoom(): void--><!--Device-Zoom-prepareZoom(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -94,6 +100,8 @@ Sets zoom center point.
 
 **Since:** 20
 
+<!--Device-Zoom-setZoomCenterPoint(point: Point): void--><!--Device-Zoom-setZoomCenterPoint(point: Point): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -120,6 +128,8 @@ unprepareZoom(): void
 Instructs the bottom layer to unprepare for zooming.
 
 **Since:** 11
+
+<!--Device-Zoom-unprepareZoom(): void--><!--Device-Zoom-unprepareZoom(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

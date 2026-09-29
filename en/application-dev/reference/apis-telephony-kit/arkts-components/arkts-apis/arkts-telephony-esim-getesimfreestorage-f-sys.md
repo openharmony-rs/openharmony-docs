@@ -20,6 +20,8 @@ This API is used to obtain the remaining storage space of the eUICC hardware. Th
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-eSIM-function getEsimFreeStorage(): Promise<int>--><!--Device-eSIM-function getEsimFreeStorage(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

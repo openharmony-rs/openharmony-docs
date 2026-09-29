@@ -22,6 +22,8 @@ Adds the permission to apps for accessing USB accessories. This API can be used 
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function addAccessoryRight(tokenId: int, accessory: USBAccessory): void--><!--Device-usbManager-function addAccessoryRight(tokenId: int, accessory: USBAccessory): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

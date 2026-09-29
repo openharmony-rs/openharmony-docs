@@ -8,6 +8,8 @@ Enumerates the states that can be set for **ArcButton**.
 
 **Since:** 18
 
+<!--Device-unnamed-export declare enum ArcButtonStatus--><!--Device-unnamed-export declare enum ArcButtonStatus-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## NORMAL
@@ -21,6 +23,8 @@ Normal state.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcButtonStatus-NORMAL = 0--><!--Device-ArcButtonStatus-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -36,6 +40,8 @@ Pressed state.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcButtonStatus-PRESSED = 1--><!--Device-ArcButtonStatus-PRESSED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## DISABLED
@@ -49,5 +55,7 @@ Disabled state.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcButtonStatus-DISABLED = 2--><!--Device-ArcButtonStatus-DISABLED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

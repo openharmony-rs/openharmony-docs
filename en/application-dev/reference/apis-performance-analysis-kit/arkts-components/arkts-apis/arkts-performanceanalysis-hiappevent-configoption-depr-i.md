@@ -12,6 +12,8 @@ Provides the configuration items for application event logging.
 
 **Substitutes:** [ConfigOption](arkts-performanceanalysis-hiappevent-configoption-i.md)
 
+<!--Device-hiAppEvent-interface ConfigOption--><!--Device-hiAppEvent-interface ConfigOption-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Application event logging switch. The value **true** means to disable the applic
 
 **Substitutes:** [disable](arkts-performanceanalysis-hiappevent-configoption-i.md#disable)
 
+<!--Device-ConfigOption-disable?: boolean--><!--Device-ConfigOption-disable?: boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## maxStorage
@@ -52,5 +56,7 @@ Maximum size of the event file storage directory. The default value is **10MB**.
 **Deprecated since:** 9
 
 **Substitutes:** [maxStorage](arkts-performanceanalysis-hiappevent-configoption-i.md#maxstorage)
+
+<!--Device-ConfigOption-maxStorage?: string--><!--Device-ConfigOption-maxStorage?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

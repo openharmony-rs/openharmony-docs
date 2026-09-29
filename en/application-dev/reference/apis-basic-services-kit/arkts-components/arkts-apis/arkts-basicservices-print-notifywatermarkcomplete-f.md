@@ -20,6 +20,8 @@ Notify watermark complete.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void--><!--Device-print-function notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

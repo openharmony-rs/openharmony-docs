@@ -8,6 +8,8 @@ CommonOptions定义了Counter的通用属性和事件。
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare class CommonOptions--><!--Device-unnamed-declare class CommonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ isHover：表示鼠标是否悬浮在减少按钮上，鼠标进入时为true，
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CommonOptions-onHoverDecrease?: (isHover: boolean) => void--><!--Device-CommonOptions-onHoverDecrease?: (isHover: boolean) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -67,6 +71,8 @@ isHover：表示鼠标是否悬浮在增加按钮上，鼠标进入时为true，
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonOptions-onHoverIncrease?: (isHover: boolean) => void--><!--Device-CommonOptions-onHoverIncrease?: (isHover: boolean) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +110,8 @@ true：Counter可获焦（当需要通过键盘或焦点导航操作Counter时�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CommonOptions-focusable?: boolean--><!--Device-CommonOptions-focusable?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## step
@@ -131,5 +139,7 @@ step?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonOptions-step?: number--><!--Device-CommonOptions-step?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

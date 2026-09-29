@@ -18,6 +18,8 @@ Creates a virtual screen. This API uses an asynchronous callback to return the r
 
 **Required permissions:** ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screen-function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback<Screen>): void--><!--Device-screen-function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback<Screen>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ Creates a virtual screen. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screen-function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>--><!--Device-screen-function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

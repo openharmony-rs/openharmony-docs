@@ -2,9 +2,15 @@
 
 This module provides APIs for system materials. Different system materials correspond to different UI effects, including the background color ([backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)), border color ([borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)).
 
+> **NOTE:** 
+> 
+> - This topic describes only system APIs provided by the module. For details about other public APIs, see [System Material](arkts-arkui-arkui-uimaterial.md).
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare namespace uiMaterial--><!--Device-unnamed-declare namespace uiMaterial-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,30 +28,30 @@ import { uiMaterial } from '@kit.ArkUI';
 | --- | --- |
 | [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md) | Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified. |
 | [getMaterialInfo](arkts-arkui-uimaterial-getmaterialinfo-f.md) | Obtains the material configuration information of this application. The returned configuration information comes from the metadata configured in the [module.json5](../../../quick-start/module-configuration-file.md) file of the application. |
-| [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md) | Check whether [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) is supported on the current device. If it is true, the ImmersiveMaterial object can be used in the [systemMaterial](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#systemmaterial) attribute. If it is false, setting the ImmersiveMaterial object in the systemMaterial attribute will not take effect. It is defined by the device and cannot be modified. |
+| [isImmersiveMaterialSupported](arkts-arkui-uimaterial-isimmersivematerialsupported-f.md) | Checks whether the current device supports immersive system materials ([ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md)). This configuration item is defined by the device and cannot be modified. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md) | Convert from ImmersiveMaterial to another ImmersiveMaterial set on EffectComponent. |
-| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md) | Convert from ImmersiveMaterial to another ImmersiveMaterial set on sub component of EffectComponent. |
+| [convertToECMaterial](arkts-arkui-uimaterial-converttoecmaterial-f-sys.md) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
+| [convertToECSubMaterial](arkts-arkui-uimaterial-converttoecsubmaterial-f-sys.md) | Converts an [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) material into an ImmersiveMaterial material applicable to the child components of [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md). |
 <!--DelEnd-->
 
 ### Classes
 
 | Name | Description |
 | --- | --- |
-| [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | Immersive material class, which inherits from [Material](arkts-arkui-uimaterial-materialtype-e.md). |
-| [Material](arkts-arkui-uimaterial-material-c.md) | System material object on the UI. |
+| [ImmersiveMaterial](arkts-arkui-uimaterial-immersivematerial-c.md) | Immersive material class, which inherits from [Material](arkts-arkui-uimaterial-material-c.md). |
+| [Material](arkts-arkui-uimaterial-material-c.md) | Base class for system material objects. |
 
 <!--Del-->
 ### Classes(System API)
 
 | Name | Description |
 | --- | --- |
-| [Material](arkts-arkui-uimaterial-material-c-sys.md) | System material object on the UI. |
+| [Material](arkts-arkui-uimaterial-material-c-sys.md) | Base class for system material objects. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -53,7 +59,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | Name | Description |
 | --- | --- |
 | [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md) | Immersive material parameters. |
-| [LightEffectOptions](arkts-arkui-uimaterial-lighteffectoptions-i.md) | Provides the light sensing interaction feedback configuration for immersive materials. The configuration is used to customize the color of the light sensing feedback. |
+| [LightEffectOptions](arkts-arkui-uimaterial-lighteffectoptions-i.md) | Provides the light sensing interaction feedback configuration for immersive materials. Light sensing interaction feedback refers to the visual effect of dynamic light changes on the surface of a material when a user interacts with a component through touch. The configuration is used to customize the color of the light sensing feedback. |
 | [MaterialInfo](arkts-arkui-uimaterial-materialinfo-i.md) | Provides material configuration information, including the material enabling state and material type. |
 
 <!--Del-->
@@ -68,18 +74,18 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md) | Enumerates immersive material styles. Different material styles correspond to different material parameters, including the blur degree and brightness. |
-| [MaterialLevel](arkts-arkui-uimaterial-materiallevel-e.md) | Enumerates the material levels, which indicate the computing power level of the device. Use [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md) to obtain the material level of the current device. |
+| [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md) | Enumerates the material styles. The enum values suffixed with EC are set on [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md), and those suffixed with EC_SUB are set on the child components of EffectComponent. The two work together to achieve merged optimization of material effect rendering. The material blur set on EffectComponent will ultimately take effect on its child components. Different material styles correspond to different material parameters, mainly including the blur level and highlight effect of the material. For details, see [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md). |
+| [MaterialLevel](arkts-arkui-uimaterial-materiallevel-e.md) | Enumerates material levels, which indicate the computing power levels of devices. You can use [getGlobalMaterialLevel](arkts-arkui-uimaterial-getglobalmateriallevel-f.md) to obtain the material level of the current device. |
 | [MaterialState](arkts-arkui-uimaterial-materialstate-e.md) | Enumerates the material enabling states, indicating the states of the application-level immersive system material configuration. |
-| [MaterialType](arkts-arkui-uimaterial-materialtype-e.md) | Enumerates system material types. |
+| [MaterialType](arkts-arkui-uimaterial-materialtype-e.md) | Enumerates the system material types. This section contains only the system APIs of this module. For other public types, see [MaterialType](arkts-arkui-uimaterial-materialtype-e.md). |
 
 <!--Del-->
 ### Enums(System API)
 
 | Name | Description |
 | --- | --- |
-| [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e-sys.md) | Enumerates immersive material styles. Different material styles correspond to different material parameters, including the blur degree and brightness. |
-| [MaterialType](arkts-arkui-uimaterial-materialtype-e-sys.md) | Enumerates system material types. |
+| [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e-sys.md) | Enumerates the material styles. The enum values suffixed with EC are set on [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md), and those suffixed with EC_SUB are set on the child components of EffectComponent. The two work together to achieve merged optimization of material effect rendering. The material blur set on EffectComponent will ultimately take effect on its child components. Different material styles correspond to different material parameters, mainly including the blur level and highlight effect of the material. For details, see [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md). |
+| [MaterialType](arkts-arkui-uimaterial-materialtype-e-sys.md) | Enumerates the system material types. This section contains only the system APIs of this module. For other public types, see [MaterialType](arkts-arkui-uimaterial-materialtype-e.md). |
 <!--DelEnd-->
 
 ## Examples

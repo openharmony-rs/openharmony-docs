@@ -8,6 +8,8 @@ Describes the internal information about a worker thread.
 
 **Since:** 10
 
+<!--Device-taskpool-class ThreadInfo--><!--Device-taskpool-class ThreadInfo-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Priority of the calling thread. If the return value is empty, no task is running
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ThreadInfo-priority?: Priority--><!--Device-ThreadInfo-priority?: Priority-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## taskIds
@@ -45,6 +49,8 @@ IDs of tasks running on the calling thread. If the return value is empty, no tas
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThreadInfo-taskIds?: number[]--><!--Device-ThreadInfo-taskIds?: number[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -63,5 +69,7 @@ ID of the worker thread. If the return value is empty, no task is running. You a
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThreadInfo-tid: number--><!--Device-ThreadInfo-tid: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

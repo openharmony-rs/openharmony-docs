@@ -8,6 +8,8 @@ The **NotificationActionButton** module defines the action buttons displayed in 
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationActionButton--><!--Device-unnamed-export interface NotificationActionButton-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## extras
@@ -21,6 +23,8 @@ Extension information of the button. The default value is empty. It is used to s
 **Type:** { [key: string]: any }
 
 **Since:** 7
+
+<!--Device-NotificationActionButton-extras?: { [key: string]: any }--><!--Device-NotificationActionButton-extras?: { [key: string]: any }-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -36,6 +40,8 @@ Title of the button, displayed on the action button of the notification. The str
 
 **Since:** 7
 
+<!--Device-NotificationActionButton-title: string--><!--Device-NotificationActionButton-title: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## userInput
@@ -50,6 +56,8 @@ User input object. This parameter is left empty by default. ID entered by a subs
 
 **Since:** 8
 
+<!--Device-NotificationActionButton-userInput?: NotificationUserInput--><!--Device-NotificationActionButton-userInput?: NotificationUserInput-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## wantAgent
@@ -63,5 +71,7 @@ wantAgent: WantAgent
 **Type:** [WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-depr-t.md)
 
 **Since:** 7
+
+<!--Device-NotificationActionButton-wantAgent: WantAgent--><!--Device-NotificationActionButton-wantAgent: WantAgent-End-->
 
 **System capability:** SystemCapability.Notification.Notification

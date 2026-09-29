@@ -8,6 +8,8 @@ Content parameters for the glass marble. Controls how the content mask is blende
 
 **Since:** 26.0.1
 
+<!--Device-uiEffect-interface GlassMarbleContentParam--><!--Device-uiEffect-interface GlassMarbleContentParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Chromatic dispersion of the content blended inside the glass shape. Controls the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleContentParam-contentDispersion: double--><!--Device-GlassMarbleContentParam-contentDispersion: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Content mask to blend additional content inside the glass shape. When provided, 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleContentParam-contentMask: Mask--><!--Device-GlassMarbleContentParam-contentMask: Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -68,6 +74,8 @@ Saturation of the content blended inside the glass shape. The value range is [0,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleContentParam-contentSaturation: double--><!--Device-GlassMarbleContentParam-contentSaturation: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ Scaling factor applied to the content blended inside the glass shape. The value 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleContentParam-contentScale: double--><!--Device-GlassMarbleContentParam-contentScale: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ Tint color applied to the content blended inside the glass shape. The alpha chan
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleContentParam-contentTintColor: Color--><!--Device-GlassMarbleContentParam-contentTintColor: Color-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

@@ -16,6 +16,8 @@ Obtains the OpName of the SIM card in the specified slot.
 
 **Since:** 10
 
+<!--Device-sim-function getOpNameSync(slotId: int): string--><!--Device-sim-function getOpNameSync(slotId: int): string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

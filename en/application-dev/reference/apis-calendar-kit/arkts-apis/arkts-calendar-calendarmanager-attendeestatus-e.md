@@ -8,6 +8,8 @@ Enumerates the status types of an attendee.
 
 **Since:** 18
 
+<!--Device-calendarManager-export enum AttendeeStatus--><!--Device-calendarManager-export enum AttendeeStatus-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## UNKNOWN
@@ -21,6 +23,8 @@ The attendee status is unknown.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AttendeeStatus-UNKNOWN = 0--><!--Device-AttendeeStatus-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -36,6 +40,8 @@ The attendee status is tentative.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AttendeeStatus-TENTATIVE = 1--><!--Device-AttendeeStatus-TENTATIVE = 1-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## ACCEPTED
@@ -49,6 +55,8 @@ The attendee has accepted the conference invitation.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AttendeeStatus-ACCEPTED = 2--><!--Device-AttendeeStatus-ACCEPTED = 2-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -64,6 +72,8 @@ The attendee has rejected the conference invitation.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AttendeeStatus-DECLINED = 3--><!--Device-AttendeeStatus-DECLINED = 3-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## UNRESPONSIVE
@@ -77,5 +87,7 @@ The attendee does not respond.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AttendeeStatus-UNRESPONSIVE = 4--><!--Device-AttendeeStatus-UNRESPONSIVE = 4-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

@@ -18,6 +18,8 @@ Obtains the default pixel map of a wallpaper of the specified type. Returns the 
 
 **Required permissions:** ohos.permission.GET_WALLPAPER
 
+<!--Device-wallpaper-function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.PixelMap>): void--><!--Device-wallpaper-function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Obtains the default pixel map of a wallpaper of the specified type. Returns the 
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WALLPAPER
+
+<!--Device-wallpaper-function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>--><!--Device-wallpaper-function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

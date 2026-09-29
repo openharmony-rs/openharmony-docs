@@ -8,6 +8,8 @@ Enumerates of window posture mode.
 
 **Since:** 26.0.0
 
+<!--Device-window-enum WindowPostureMode--><!--Device-window-enum WindowPostureMode-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## DESKTOP_MODE
@@ -25,5 +27,7 @@ Desktop mode, when the following conditions are met:
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowPostureMode-DESKTOP_MODE = 0--><!--Device-WindowPostureMode-DESKTOP_MODE = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

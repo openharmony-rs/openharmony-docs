@@ -26,6 +26,8 @@ Creates a SoundPool instance. This API uses an asynchronous callback to return t
 
 **Since:** 10
 
+<!--Device-media-function createSoundPool(    maxStreams: number,    audioRenderInfo: audio.AudioRendererInfo,    callback: AsyncCallback<SoundPool>  ): void--><!--Device-media-function createSoundPool(    maxStreams: number,    audioRenderInfo: audio.AudioRendererInfo,    callback: AsyncCallback<SoundPool>  ): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **Parameters:**
@@ -82,6 +84,8 @@ Creates a SoundPool instance. This API uses a promise to return the result.
 > - In API version 18 and later, the bottom layer of the created SoundPool object is in multiton mode. Therefore,an application process can create a maximum of 128 SoundPool instances.
 
 **Since:** 10
+
+<!--Device-media-function createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>--><!--Device-media-function createSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 

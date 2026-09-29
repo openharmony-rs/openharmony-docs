@@ -8,6 +8,8 @@ Defines the drag event information when hover detection is triggered. This API p
 
 **Since:** 20
 
+<!--Device-dragController-interface SpringLoadingDragInfos--><!--Device-dragController-interface SpringLoadingDragInfos-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Summary of the dragged data. The default value is null.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SpringLoadingDragInfos-dataSummary?: unifiedDataChannel.Summary--><!--Device-SpringLoadingDragInfos-dataSummary?: unifiedDataChannel.Summary-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraInfos
@@ -49,5 +53,7 @@ Additional information about the drag event. The default value is an empty strin
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SpringLoadingDragInfos-extraInfos?: string--><!--Device-SpringLoadingDragInfos-extraInfos?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

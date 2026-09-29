@@ -8,9 +8,11 @@ declare class DividerAttribute extends CommonMethod<DividerAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** DividerAttribute extends CommonMethod&lt;DividerAttribute&gt;
+**继承/实现关系：** DividerAttribute extends CommonMethod<DividerAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class DividerAttribute extends CommonMethod<DividerAttribute>--><!--Device-unnamed-declare class DividerAttribute extends CommonMethod<DividerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ color(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DividerAttribute-color(value: ResourceColor): DividerAttribute--><!--Device-DividerAttribute-color(value: ResourceColor): DividerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ lineCap(value: LineCapStyle)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DividerAttribute-lineCap(value: LineCapStyle): DividerAttribute--><!--Device-DividerAttribute-lineCap(value: LineCapStyle): DividerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ strokeWidth(value: number | string)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-DividerAttribute-strokeWidth(value: number | string): DividerAttribute--><!--Device-DividerAttribute-strokeWidth(value: number | string): DividerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -103,6 +111,8 @@ vertical(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DividerAttribute-vertical(value: boolean): DividerAttribute--><!--Device-DividerAttribute-vertical(value: boolean): DividerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

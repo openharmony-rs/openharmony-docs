@@ -8,6 +8,8 @@ Enumerates the statuses of the common live view.
 
 **Since:** 11
 
+<!--Device-unnamed-export enum LiveViewStatus--><!--Device-unnamed-export enum LiveViewStatus-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ LIVE_VIEW_CREATE = 0
 The live view is created.
 
 **Since:** 11
+
+<!--Device-LiveViewStatus-LIVE_VIEW_CREATE = 0--><!--Device-LiveViewStatus-LIVE_VIEW_CREATE = 0-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -36,6 +40,8 @@ The live view is updated in incremental mode.
 
 **Since:** 11
 
+<!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1--><!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -50,6 +56,8 @@ The live view is ended.
 
 **Since:** 11
 
+<!--Device-LiveViewStatus-LIVE_VIEW_END = 2--><!--Device-LiveViewStatus-LIVE_VIEW_END = 2-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -63,6 +71,8 @@ LIVE_VIEW_FULL_UPDATE = 3
 The live view is updated in full mode.
 
 **Since:** 11
+
+<!--Device-LiveViewStatus-LIVE_VIEW_FULL_UPDATE = 3--><!--Device-LiveViewStatus-LIVE_VIEW_FULL_UPDATE = 3-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -80,6 +90,8 @@ The live view is created by condition.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiveViewStatus-LIVE_VIEW_PENDING_CREATE = 4--><!--Device-LiveViewStatus-LIVE_VIEW_PENDING_CREATE = 4-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -95,6 +107,8 @@ The live view is terminated by condition.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiveViewStatus-LIVE_VIEW_PENDING_END = 6--><!--Device-LiveViewStatus-LIVE_VIEW_PENDING_END = 6-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

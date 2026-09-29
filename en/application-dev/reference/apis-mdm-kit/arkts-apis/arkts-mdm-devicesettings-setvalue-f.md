@@ -20,6 +20,8 @@ Sets the device policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setValue(admin: Want, item: string, value: string): void--><!--Device-deviceSettings-function setValue(admin: Want, item: string, value: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

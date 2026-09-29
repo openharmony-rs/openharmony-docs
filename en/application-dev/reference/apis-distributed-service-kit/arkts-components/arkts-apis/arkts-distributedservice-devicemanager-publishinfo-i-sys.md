@@ -10,6 +10,8 @@ Defines published device information.
 
 **Deprecated since:** 11
 
+<!--Device-deviceManager-interface PublishInfo--><!--Device-deviceManager-interface PublishInfo-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Frequency of device discovery.
 
 **Deprecated since:** 11
 
+<!--Device-PublishInfo-freq: ExchangeFreq--><!--Device-PublishInfo-freq: ExchangeFreq-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Device discovery mode.
 **Since:** 9
 
 **Deprecated since:** 11
+
+<!--Device-PublishInfo-mode: DiscoverMode--><!--Device-PublishInfo-mode: DiscoverMode-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -70,6 +76,8 @@ ID used to identify a publication period.
 
 **Deprecated since:** 11
 
+<!--Device-PublishInfo-publishId: number--><!--Device-PublishInfo-publishId: number-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Whether the device supports ranging. The value **true** indicates that the devic
 **Since:** 9
 
 **Deprecated since:** 11
+
+<!--Device-PublishInfo-ranging: boolean--><!--Device-PublishInfo-ranging: boolean-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

@@ -20,6 +20,8 @@ Obtains the device IP address based on the network interface. This API is suitab
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getIpAddressSync(admin: Want, networkInterface: string): string--><!--Device-networkManager-function getIpAddressSync(admin: Want, networkInterface: string): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -8,7 +8,7 @@ The universal attributes module for security components enables unified configur
 
 This module is mainly used in the following scenarios:  
 - Set layout, size, text, icon, color, border, and interaction-related attributes for security components  
-such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#paste_button) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#save_button).  
+such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md).  
 - Adjust the display effect and interaction experience of security components while ensuring compliance with  
 the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).  
 - Reuse the universal attribute capabilities of security components through chained calls.
@@ -33,6 +33,8 @@ Defines the method of a security component.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDefaultFocus
@@ -48,6 +50,8 @@ Sets the initial focus for the screen reader on the page, specifying the compone
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SecurityComponentMethod-accessibilityDefaultFocus(focus: boolean): T--><!--Device-SecurityComponentMethod-accessibilityDefaultFocus(focus: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,6 +81,8 @@ Provides an accessibility description for the component. You can set detailed te
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SecurityComponentMethod-accessibilityDescription(description: string | Resource): T--><!--Device-SecurityComponentMethod-accessibilityDescription(description: string | Resource): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -104,6 +110,8 @@ Specifies the next focus component for the screen reader.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SecurityComponentMethod-accessibilityNextFocusId(nextId: string): T--><!--Device-SecurityComponentMethod-accessibilityNextFocusId(nextId: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,6 +141,8 @@ Sets the accessibility component type. Each component type is announced in a spe
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SecurityComponentMethod-accessibilityRole(role: SecurityComponentRoleType): T--><!--Device-SecurityComponentMethod-accessibilityRole(role: SecurityComponentRoleType): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -161,6 +171,8 @@ Sets the alignment of the icon and text on the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SecurityComponentMethod-align(alignType: Alignment): T--><!--Device-SecurityComponentMethod-align(alignType: Alignment): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -181,7 +193,7 @@ Sets the alignment of the icon and text on the security component.
 alignRules(alignRule: AlignRuleOption): T
 ```
 
-Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container).
+Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md).
 
 **Since:** 15
 
@@ -189,13 +201,15 @@ Sets the alignment rules for child components within a relative container. This 
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SecurityComponentMethod-alignRules(alignRule: AlignRuleOption): T--><!--Device-SecurityComponentMethod-alignRules(alignRule: AlignRuleOption): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | Yes | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). |
+| alignRule | [AlignRuleOption](../arkts-components/arkts-arkui-common-comp-alignruleoption-i.md) | Yes | Alignment rule configuration object that defines anchor alignment options (**top**, **bottom**, **left**, **right**, and **center**). Specifies the alignment position and method of the security component in [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md). |
 
 **Return value:**
 
@@ -211,7 +225,7 @@ Sets the alignment rules for child components within a relative container. This 
 alignRules(alignRule: LocalizedAlignRuleOptions): T
 ```
 
-Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). In the horizontal direction, this method replaces **left** and **right** in the [alignRules](#alignrules) above with **start** and **end**, respectively, allowing the layout to be mirrored in RTL mode. You are advised to use this method preferentially.
+Sets the alignment rules for child components within a relative container. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md). In the horizontal direction, this method replaces **left** and **right** in the [alignRules](#alignrules) above with **start** and **end**, respectively, allowing the layout to be mirrored in RTL mode. You are advised to use this method preferentially.
 
 **Since:** 15
 
@@ -219,13 +233,15 @@ Sets the alignment rules for child components within a relative container. This 
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SecurityComponentMethod-alignRules(alignRule: LocalizedAlignRuleOptions): T--><!--Device-SecurityComponentMethod-alignRules(alignRule: LocalizedAlignRuleOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | Yes | Alignment rule configuration object that uses **start** and **end** in place of **left** and **right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). |
+| alignRule | [LocalizedAlignRuleOptions](../arkts-components/arkts-arkui-common-comp-localizedalignruleoptions-i.md) | Yes | Alignment rule configuration object that uses **start** and **end** in place of **left** and **right** to support RTL layout mirroring. Includes anchor alignment settings for **top**, **bottom**, **start**, **end**, and **center**, specifying the alignment position and method of the security component within [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md). |
 
 **Return value:**
 
@@ -246,6 +262,8 @@ Sets the background color of the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-backgroundColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-backgroundColor(value: ResourceColor): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,6 +292,8 @@ Sets the border color of the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-borderColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-borderColor(value: ResourceColor): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,6 +324,8 @@ The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonTyp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-borderRadius(value: Dimension): T--><!--Device-SecurityComponentMethod-borderRadius(value: Dimension): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,6 +359,8 @@ The effect of **borderRadius** is influenced by **ButtonType**. When **ButtonTyp
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SecurityComponentMethod-borderRadius(radius: Dimension | BorderRadiuses): T--><!--Device-SecurityComponentMethod-borderRadius(radius: Dimension | BorderRadiuses): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -364,6 +388,8 @@ Sets the border style of the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-borderStyle(value: BorderStyle): T--><!--Device-SecurityComponentMethod-borderStyle(value: BorderStyle): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -393,6 +419,8 @@ Sets the border width of the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-borderWidth(value: Dimension): T--><!--Device-SecurityComponentMethod-borderWidth(value: Dimension): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -413,7 +441,7 @@ Sets the border width of the security component.
 chainMode(direction: Axis, style: ChainStyle): T
 ```
 
-Sets the parameters of the chain in which the component is the head. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container).
+Sets the parameters of the chain in which the component is the head. This API takes effect only when the parent container is [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md).
 
 **Since:** 15
 
@@ -421,13 +449,15 @@ Sets the parameters of the chain in which the component is the head. This API ta
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SecurityComponentMethod-chainMode(direction: Axis, style: ChainStyle): T--><!--Device-SecurityComponentMethod-chainMode(direction: Axis, style: ChainStyle): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | [Axis](arkts-arkui-axis-e.md) | Yes | Direction of the chain layout. Specifies the arrangement direction of the chain headed by this component in the [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md#relative_container). |
+| direction | [Axis](arkts-arkui-axis-e.md) | Yes | Direction of the chain layout. Specifies the arrangement direction of the chain headed by this component in the [RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md). |
 | style | [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md) | Yes | Style of the chain layout. Controls how child components are distributed within the chain, such as evenly distributed, aligned at both ends, or compactly arranged. For specific values and effects, see [ChainStyle](../arkts-components/arkts-arkui-common-comp-chainstyle-e.md). |
 
 **Return value:**
@@ -449,6 +479,8 @@ Sets the constraint size, limiting the size range during component layout.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SecurityComponentMethod-constraintSize(value: ConstraintSizeOptions): T--><!--Device-SecurityComponentMethod-constraintSize(value: ConstraintSizeOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -477,6 +509,8 @@ Sets whether the security component is interactive.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SecurityComponentMethod-enabled(respond: boolean): T--><!--Device-SecurityComponentMethod-enabled(respond: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -508,6 +542,8 @@ The **fallbackLineSpacing** attribute is closely coupled with the **lineHeight**
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SecurityComponentMethod-fallbackLineSpacing(enabled: boolean): T--><!--Device-SecurityComponentMethod-fallbackLineSpacing(enabled: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -535,6 +571,8 @@ Sets the style of the system focus box for the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-SecurityComponentMethod-focusBox(style: FocusBoxStyle): T--><!--Device-SecurityComponentMethod-focusBox(style: FocusBoxStyle): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,6 +602,8 @@ Sets the font color of the text on the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-fontColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-fontColor(value: ResourceColor): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -591,6 +631,8 @@ Sets the font family of the text on the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-fontFamily(value: string | Resource): T--><!--Device-SecurityComponentMethod-fontFamily(value: string | Resource): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -620,6 +662,8 @@ Sets the font size of the text for the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-fontSize(value: Dimension): T--><!--Device-SecurityComponentMethod-fontSize(value: Dimension): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -647,6 +691,8 @@ Sets the font style of the text on the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-fontStyle(value: FontStyle): T--><!--Device-SecurityComponentMethod-fontStyle(value: FontStyle): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -676,6 +722,8 @@ Sets the font weight of the text on the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-fontWeight(value: number | FontWeight | string | Resource): T--><!--Device-SecurityComponentMethod-fontWeight(value: number | FontWeight | string | Resource): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -703,6 +751,8 @@ Sets the height of the security component. If not set, the height adapts to the 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SecurityComponentMethod-height(value: Length): T--><!--Device-SecurityComponentMethod-height(value: Length): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -734,6 +784,8 @@ The security component text is laid out at [maxFontSize](#maxfontsize). If the t
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SecurityComponentMethod-heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T--><!--Device-SecurityComponentMethod-heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -761,6 +813,8 @@ Sets the icon color of the security component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-iconColor(value: ResourceColor): T--><!--Device-SecurityComponentMethod-iconColor(value: ResourceColor): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -790,6 +844,8 @@ Sets the icon size of the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-iconSize(value: Dimension): T--><!--Device-SecurityComponentMethod-iconSize(value: Dimension): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -817,6 +873,8 @@ Unique ID you assigned for the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-SecurityComponentMethod-id(id: string): T--><!--Device-SecurityComponentMethod-id(id: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -846,6 +904,8 @@ Sets the layout direction of the icon and text on the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-layoutDirection(value: SecurityComponentLayoutDirection): T--><!--Device-SecurityComponentMethod-layoutDirection(value: SecurityComponentLayoutDirection): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -873,6 +933,8 @@ Sets the anchor of the security component for moving the component with its top-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-markAnchor(value: Position): T--><!--Device-SecurityComponentMethod-markAnchor(value: Position): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -903,6 +965,8 @@ This API can be used in conjunction with [minFontScale](#minfontscale). **maxFon
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SecurityComponentMethod-maxFontScale(scale: number | Resource): T--><!--Device-SecurityComponentMethod-maxFontScale(scale: number | Resource): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -939,6 +1003,8 @@ Sets the maximum font size for text display.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SecurityComponentMethod-maxFontSize(maxSize: number | string | Resource): T--><!--Device-SecurityComponentMethod-maxFontSize(maxSize: number | string | Resource): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -966,6 +1032,8 @@ Sets the maximum number of lines for text. By default, text wraps automatically.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SecurityComponentMethod-maxLines(line: number | Resource): T--><!--Device-SecurityComponentMethod-maxLines(line: number | Resource): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -996,6 +1064,8 @@ This API can be used in conjunction with [maxFontScale](#maxfontscale). **minFon
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SecurityComponentMethod-minFontScale(scale: number | Resource): T--><!--Device-SecurityComponentMethod-minFontScale(scale: number | Resource): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1033,6 +1103,8 @@ Sets the minimum font size for text display.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SecurityComponentMethod-minFontSize(minSize: number | string | Resource): T--><!--Device-SecurityComponentMethod-minFontSize(minSize: number | string | Resource): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1060,6 +1132,8 @@ Sets the coordinate offset of the security component relative to its own layout 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-offset(value: Position | Edges | LocalizedEdges): T--><!--Device-SecurityComponentMethod-offset(value: Position | Edges | LocalizedEdges): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1089,6 +1163,8 @@ Sets the padding of the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-padding(value: Padding | Dimension): T--><!--Device-SecurityComponentMethod-padding(value: Padding | Dimension): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1116,6 +1192,8 @@ Sets the absolute position, which is the offset of the top-left corner of the se
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityComponentMethod-position(value: Position): T--><!--Device-SecurityComponentMethod-position(value: Position): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1145,6 +1223,8 @@ Sets the width and height. If not set, the width and height adapt to the element
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SecurityComponentMethod-size(value: SizeOptions): T--><!--Device-SecurityComponentMethod-size(value: SizeOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1173,6 +1253,8 @@ Sets the spacing between the icon and text in the security component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SecurityComponentMethod-textIconSpace(value: Dimension): T--><!--Device-SecurityComponentMethod-textIconSpace(value: Dimension): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1200,6 +1282,8 @@ Sets the width of the security component. If not set, the width adapts to the el
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SecurityComponentMethod-width(value: Length): T--><!--Device-SecurityComponentMethod-width(value: Length): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

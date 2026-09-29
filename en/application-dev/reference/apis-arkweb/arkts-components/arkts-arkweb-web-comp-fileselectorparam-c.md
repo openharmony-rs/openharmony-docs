@@ -14,6 +14,8 @@ For sample code, see [onShowFileSelector](arkts-arkweb-web-comp-attribute.md#ons
 
 **Since:** 9
 
+<!--Device-unnamed-declare class FileSelectorParam--><!--Device-unnamed-declare class FileSelectorParam-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -28,6 +30,8 @@ Constructs a **FileSelectorParam**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorParam-constructor()--><!--Device-FileSelectorParam-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## getAcceptableFileTypes
@@ -39,6 +43,8 @@ getAcceptableFileTypes(): Array<Array<AcceptableFileType>>
 Obtains the file type information. Corresponds to `types` in the HTML [option](../../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface). The return value is a two-dimensional array, where each sub-array represents a group of allowed file types. Developers should use this return value to set file type filtering rules when building a file selector, ensuring that users can only select files that meet the frontend requirements. The difference between this parameter and getAcceptType and getMimeTypes is that types supports more fine-grained file type control, allowing grouping by MIME type or file extension.
 
 **Since:** 23
+
+<!--Device-FileSelectorParam-getAcceptableFileTypes(): Array<Array<AcceptableFileType>>--><!--Device-FileSelectorParam-getAcceptableFileTypes(): Array<Array<AcceptableFileType>>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,6 +66,8 @@ Obtains the file filtering type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorParam-getAcceptType(): Array<string>--><!--Device-FileSelectorParam-getAcceptType(): Array<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -77,6 +85,8 @@ getDefaultPath(): string
 Obtains the default path of the file selector, which corresponds to **startIn** in HTML's [option](../../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
 
 **Since:** 23
+
+<!--Device-FileSelectorParam-getDefaultPath(): string--><!--Device-FileSelectorParam-getDefaultPath(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -96,6 +106,8 @@ Obtains the optional description of each group of allowed file types. Correspond
 
 **Since:** 23
 
+<!--Device-FileSelectorParam-getDescriptions(): Array<string>--><!--Device-FileSelectorParam-getDescriptions(): Array<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -113,6 +125,8 @@ getMimeTypes(): Array<string>
 Obtains the MIME type of a file.
 
 **Since:** 18
+
+<!--Device-FileSelectorParam-getMimeTypes(): Array<string>--><!--Device-FileSelectorParam-getMimeTypes(): Array<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -134,6 +148,8 @@ Obtains the mode of the file selector.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorParam-getMode(): FileSelectorMode--><!--Device-FileSelectorParam-getMode(): FileSelectorMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -151,6 +167,8 @@ getSuggestedName(): string
 Obtains the suggested file name. Corresponds to `suggestedName` in the HTML [option](../../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface). If the frontend does not set suggestedName, an empty string is returned. Developers can use this return value as the default file name when building a file selector, and use it together with [getDefaultPath](#getdefaultpath) to preset the complete file path and name.
 
 **Since:** 23
+
+<!--Device-FileSelectorParam-getSuggestedName(): string--><!--Device-FileSelectorParam-getSuggestedName(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -172,6 +190,8 @@ Obtains the title of this file selector.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorParam-getTitle(): string--><!--Device-FileSelectorParam-getTitle(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -189,6 +209,8 @@ isAcceptAllOptionExcluded(): boolean
 Obtains whether the file selector excludes the option (*\/*), that is, all files. Corresponds to `excludeAcceptAllOption` in the HTML [option](../../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface).
 
 **Since:** 23
+
+<!--Device-FileSelectorParam-isAcceptAllOptionExcluded(): boolean--><!--Device-FileSelectorParam-isAcceptAllOptionExcluded(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -209,6 +231,8 @@ Checks whether multimedia capabilities are invoked.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FileSelectorParam-isCapture(): boolean--><!--Device-FileSelectorParam-isCapture(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

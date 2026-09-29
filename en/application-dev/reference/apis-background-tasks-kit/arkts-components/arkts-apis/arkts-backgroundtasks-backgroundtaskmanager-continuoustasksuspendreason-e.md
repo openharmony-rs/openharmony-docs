@@ -8,6 +8,8 @@ Describes the reason why a continuous task is suspended.
 
 **Since:** 20
 
+<!--Device-backgroundTaskManager-export enum ContinuousTaskSuspendReason--><!--Device-backgroundTaskManager-export enum ContinuousTaskSuspendReason-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED
@@ -19,6 +21,8 @@ SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4
 A continuous task of the **DATA_TRANSFER** type is requested, but the data transmission rate is low.
 
 **Since:** 20
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -32,6 +36,8 @@ A continuous task of the **AUDIO_PLAYBACK** type is requested, but [AVSession](.
 
 **Since:** 20
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION = 5-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING
@@ -43,6 +49,8 @@ SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING = 6
 A continuous task of the **AUDIO_PLAYBACK** type is requested, but audio playback is not in progress.
 
 **Since:** 20
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING = 6--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING = 6-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -56,6 +64,8 @@ A continuous task of the **AUDIO_RECORDING** type is requested, but audio record
 
 **Since:** 20
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING = 7--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING = 7-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_LOCATION_NOT_USED
@@ -67,6 +77,8 @@ SYSTEM_SUSPEND_LOCATION_NOT_USED = 8
 A continuous task of the **LOCATION** type is requested, but the location service is not in use.
 
 **Since:** 20
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_LOCATION_NOT_USED = 8--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_LOCATION_NOT_USED = 8-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -80,6 +92,8 @@ A continuous task of the **BLUETOOTH_INTERACTION** type is requested, but Blueto
 
 **Since:** 20
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_NOT_USED = 9--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_NOT_USED = 9-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED
@@ -91,6 +105,8 @@ SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED = 10
 A continuous task of the **MULTI_DEVICE_CONNECTION** type is requested, but the multi-device connection service is not in use.
 
 **Since:** 20
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED = 10--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED = 10-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -104,6 +120,8 @@ A continuous task of an invalid type is used. For example, a continuous task of 
 
 **Since:** 20
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USED_ILLEGALLY = 11--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USED_ILLEGALLY = 11-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING
@@ -115,6 +133,8 @@ SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING = 12
 A continuous task is suspended due to high system load. This value is reserved.
 
 **Since:** 20
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING = 12--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING = 12-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -130,6 +150,8 @@ A continuous task of the **VOIP** type is requested, but no audio stream or reco
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_VOIP_NOT_USED = 13--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_VOIP_NOT_USED = 13-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST
@@ -143,6 +165,8 @@ A continuous task of the **BLUETOOTH_INTERACTION** type is requested, but there 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST = 14--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST = 14-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -158,6 +182,8 @@ A continuous task of the **LOCATION** type is requested, but the device is absol
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_POSITION_NOT_MOVED = 15--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_POSITION_NOT_MOVED = 15-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE
@@ -171,6 +197,8 @@ A continuous task of the **AUDIO_PLAYBACK** type is requested, but the device is
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE = 16--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE = 16-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -186,6 +214,8 @@ No nearlink connection for a period of time when request nearlink mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_NEARLINK_NOT_USED = 17--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_NEARLINK_NOT_USED = 17-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST
@@ -199,6 +229,8 @@ No nearlink data for a period of time when request nearlink mode.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST = 18--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST = 18-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -214,6 +246,8 @@ A continuous task of the special scenario type is requested, but the user is not
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USER_UNAUTHORIZED = 19--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USER_UNAUTHORIZED = 19-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_SUSPEND_USB_NOT_USED
@@ -227,5 +261,7 @@ A continuous task of the **USB_CONNECTION** type is requested, but USB device is
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USB_NOT_USED = 20--><!--Device-ContinuousTaskSuspendReason-SYSTEM_SUSPEND_USB_NOT_USED = 20-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

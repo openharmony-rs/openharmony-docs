@@ -8,6 +8,8 @@ Defines the options for saving documents.
 
 **Since:** 9
 
+<!--Device-picker-class DocumentSaveOptions--><!--Device-picker-class DocumentSaveOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Theme color parameter. By default, it is left empty and follows the color settin
 **Type:** [CustomColors](../../apis-arkui/arkts-apis/arkts-arkui-customcolors-t.md)
 
 **Since:** 18
+
+<!--Device-DocumentSaveOptions-themeColor?: CustomColors--><!--Device-DocumentSaveOptions-themeColor?: CustomColors-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

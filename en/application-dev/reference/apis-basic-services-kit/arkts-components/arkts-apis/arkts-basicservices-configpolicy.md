@@ -4,6 +4,8 @@ The **configPolicy** module provides APIs for obtaining the corresponding direct
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace configPolicy--><!--Device-unnamed-declare namespace configPolicy-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.

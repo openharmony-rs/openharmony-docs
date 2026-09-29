@@ -8,6 +8,8 @@ declare interface OnShowFileSelectorEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OnShowFileSelectorEvent--><!--Device-unnamed-declare interface OnShowFileSelectorEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## fileSelector
@@ -24,6 +26,8 @@ fileSelector: FileSelectorParam
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnShowFileSelectorEvent-fileSelector: FileSelectorParam--><!--Device-OnShowFileSelectorEvent-fileSelector: FileSelectorParam-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## result
@@ -39,5 +43,7 @@ result: FileSelectorResult
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnShowFileSelectorEvent-result: FileSelectorResult--><!--Device-OnShowFileSelectorEvent-result: FileSelectorResult-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

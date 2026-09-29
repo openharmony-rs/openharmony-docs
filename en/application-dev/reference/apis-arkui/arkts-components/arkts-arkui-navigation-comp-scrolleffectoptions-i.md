@@ -8,6 +8,8 @@ Defines the scroll effect options for the title bar.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface ScrollEffectOptions--><!--Device-unnamed-declare interface ScrollEffectOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## blurEffectiveEndOffset
@@ -25,6 +27,8 @@ The maximum sliding distance of the content area to enable the final blur style 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ScrollEffectOptions-blurEffectiveEndOffset?: LengthMetrics--><!--Device-ScrollEffectOptions-blurEffectiveEndOffset?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ The minimum sliding distance of the content area to enable the title bar sliding
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ScrollEffectOptions-blurEffectiveStartOffset?: LengthMetrics--><!--Device-ScrollEffectOptions-blurEffectiveStartOffset?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scrollEffectType
@@ -61,5 +67,7 @@ Title bar scroll blur style. Default value: ScrollEffectType.COMMON_BLUR.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ScrollEffectOptions-scrollEffectType?: ScrollEffectType--><!--Device-ScrollEffectOptions-scrollEffectType?: ScrollEffectType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

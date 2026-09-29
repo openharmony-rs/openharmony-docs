@@ -8,6 +8,8 @@ Describes audio interrupt operation results.
 
 **Since:** 9
 
+<!--Device-audio-interface InterruptResult--><!--Device-audio-interface InterruptResult-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Interrupt
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Interrupt node as a unit to receive interrupt change event.
 
 **Since:** 9
 
+<!--Device-InterruptResult-interruptNode: int--><!--Device-InterruptResult-interruptNode: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Interrupt
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Interrupt request or abandon result.
 **Type:** [InterruptRequestResultType](arkts-audio-audio-interruptrequestresulttype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-InterruptResult-requestResult: InterruptRequestResultType--><!--Device-InterruptResult-requestResult: InterruptRequestResultType-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Interrupt
 

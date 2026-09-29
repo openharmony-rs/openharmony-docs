@@ -12,4 +12,6 @@ Defines the base class for text shader effects.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-declare class ShaderStyle--><!--Device-unnamed-declare class ShaderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

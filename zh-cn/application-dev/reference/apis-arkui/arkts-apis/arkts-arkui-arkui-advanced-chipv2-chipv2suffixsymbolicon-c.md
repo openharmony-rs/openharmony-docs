@@ -14,6 +14,8 @@ ChipV2SuffixSymbolIcon定义后缀Symbol图标类。
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2SuffixSymbolIcon extends ChipV2SymbolIcon--><!--Device-unnamed-export declare class ChipV2SuffixSymbolIcon extends ChipV2SymbolIcon-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -42,6 +44,8 @@ public action?: VoidCallback
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2SuffixSymbolIcon-public action?: VoidCallback--><!--Device-ChipV2SuffixSymbolIcon-public action?: VoidCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -57,6 +61,8 @@ ChipV2SuffixSymbolIcon的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2SuffixSymbolIcon-constructor(config: ChipV2SuffixSymbolIconConfig)--><!--Device-ChipV2SuffixSymbolIcon-constructor(config: ChipV2SuffixSymbolIconConfig)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +92,8 @@ public activatedAccessibility?: ChipV2Accessibility
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2SuffixSymbolIcon-public activatedAccessibility?: ChipV2Accessibility--><!--Device-ChipV2SuffixSymbolIcon-public activatedAccessibility?: ChipV2Accessibility-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## normalAccessibility
@@ -107,5 +115,7 @@ public normalAccessibility?: ChipV2Accessibility
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2SuffixSymbolIcon-public normalAccessibility?: ChipV2Accessibility--><!--Device-ChipV2SuffixSymbolIcon-public normalAccessibility?: ChipV2Accessibility-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

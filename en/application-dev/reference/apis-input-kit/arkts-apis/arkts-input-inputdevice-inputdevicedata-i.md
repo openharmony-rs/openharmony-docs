@@ -8,6 +8,8 @@ Provides information about an input device.
 
 **Since:** 8
 
+<!--Device-inputDevice-interface InputDeviceData--><!--Device-inputDevice-interface InputDeviceData-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Axis information of the input device.
 
 **Since:** 8
 
+<!--Device-InputDeviceData-axisRanges: Array<AxisRange>--><!--Device-InputDeviceData-axisRanges: Array<AxisRange>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## bus
@@ -41,6 +45,8 @@ Bus type of the input device. By default, the bus type reported by the input dev
 **Type:** number
 
 **Since:** 9
+
+<!--Device-InputDeviceData-bus: int--><!--Device-InputDeviceData-bus: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -58,6 +64,8 @@ Indicates the bound target displayId.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputDeviceData-readonly displayId?: int--><!--Device-InputDeviceData-readonly displayId?: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## id
@@ -71,6 +79,8 @@ Unique ID of the input device. If a physical device is repeatedly plugged and un
 **Type:** number
 
 **Since:** 8
+
+<!--Device-InputDeviceData-id: int--><!--Device-InputDeviceData-id: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -88,6 +98,8 @@ The value **true** indicates that the device is a local device, and the value **
 
 **Since:** 23
 
+<!--Device-InputDeviceData-isLocal?: boolean--><!--Device-InputDeviceData-isLocal?: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## isVirtual
@@ -104,6 +116,8 @@ The value **true** indicates that the device is a virtual device, and the value 
 
 **Since:** 23
 
+<!--Device-InputDeviceData-isVirtual?: boolean--><!--Device-InputDeviceData-isVirtual?: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## name
@@ -117,6 +131,8 @@ Name of the input device.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-InputDeviceData-name: string--><!--Device-InputDeviceData-name: string-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -132,6 +148,8 @@ Physical address of the input device.
 
 **Since:** 9
 
+<!--Device-InputDeviceData-phys: string--><!--Device-InputDeviceData-phys: string-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## product
@@ -145,6 +163,8 @@ Product information of the input device.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-InputDeviceData-product: int--><!--Device-InputDeviceData-product: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -160,6 +180,8 @@ Input sources supported by the input device, including the keyboard, mouse, touc
 
 **Since:** 8
 
+<!--Device-InputDeviceData-sources: Array<SourceType>--><!--Device-InputDeviceData-sources: Array<SourceType>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## uniq
@@ -173,6 +195,8 @@ Unique ID of the input device.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-InputDeviceData-uniq: string--><!--Device-InputDeviceData-uniq: string-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -188,6 +212,8 @@ Vendor information of the input device.
 
 **Since:** 9
 
+<!--Device-InputDeviceData-vendor: int--><!--Device-InputDeviceData-vendor: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 ## version
@@ -201,5 +227,7 @@ Version information of the input device.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-InputDeviceData-version: int--><!--Device-InputDeviceData-version: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice

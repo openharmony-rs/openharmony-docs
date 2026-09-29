@@ -12,6 +12,8 @@ The context of window extension. It allows access to windowExtension-specific re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export type WindowExtensionContext = _WindowExtensionContext--><!--Device-unnamed-export type WindowExtensionContext = _WindowExtensionContext-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.

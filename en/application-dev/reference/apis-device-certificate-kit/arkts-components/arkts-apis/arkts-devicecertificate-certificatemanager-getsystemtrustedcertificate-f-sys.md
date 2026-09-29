@@ -20,6 +20,8 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getSystemTrustedCertificate(certUri: string): Promise<CMResult>--><!--Device-certificateManager-function getSystemTrustedCertificate(certUri: string): Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

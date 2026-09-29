@@ -8,6 +8,8 @@ Camera shared status info.
 
 **Since:** 26.0.1
 
+<!--Device-camera-interface CameraSharedStatusInfo--><!--Device-camera-interface CameraSharedStatusInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Camera instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CameraSharedStatusInfo-camera: CameraDevice--><!--Device-CameraSharedStatusInfo-camera: CameraDevice-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Current camera shared status.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CameraSharedStatusInfo-sharedStatus: CameraSharedStatus--><!--Device-CameraSharedStatusInfo-sharedStatus: CameraSharedStatus-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

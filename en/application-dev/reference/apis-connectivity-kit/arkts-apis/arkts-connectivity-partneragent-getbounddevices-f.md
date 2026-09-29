@@ -20,6 +20,8 @@ Gets the list of addresses of the bound partner device for this application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-partnerAgent-function getBoundDevices(): PartnerDeviceAddress[]--><!--Device-partnerAgent-function getBoundDevices(): PartnerDeviceAddress[]-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Return value:**

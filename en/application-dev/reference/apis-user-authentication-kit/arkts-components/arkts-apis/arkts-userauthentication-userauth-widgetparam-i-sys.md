@@ -8,6 +8,8 @@ Represents the information presented on the user authentication page. This API i
 
 **Since:** 10
 
+<!--Device-userAuth-interface WidgetParam--><!--Device-userAuth-interface WidgetParam-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Application window object. This API is used to display the authentication dialog
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-WidgetParam-appWindow?: window.Window--><!--Device-WidgetParam-appWindow?: window.Window-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -49,6 +53,8 @@ Window type of the authentication widget. **DIALOG_BOX** is applicable to most a
 **Default:** WindowModeType.DIALOG_BOX
 
 **Since:** 10
+
+<!--Device-WidgetParam-windowMode?: WindowModeType--><!--Device-WidgetParam-windowMode?: WindowModeType-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

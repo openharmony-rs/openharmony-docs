@@ -21,6 +21,8 @@ Add a Bonjour (DNS-SD) local P2P service description and register it.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function addDnsSdLocalP2pService(instanceName: string, serviceType: string,    txtRecord: Map<string, string>, serviceName: string): void--><!--Device-wifiManager-function addDnsSdLocalP2pService(instanceName: string, serviceType: string,    txtRecord: Map<string, string>, serviceName: string): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**

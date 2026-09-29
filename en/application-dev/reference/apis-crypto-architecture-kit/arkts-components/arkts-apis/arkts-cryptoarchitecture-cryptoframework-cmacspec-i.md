@@ -14,6 +14,8 @@ Represents the child class of [MacSpec](arkts-cryptoarchitecture-cryptoframework
 
 **Since:** 18
 
+<!--Device-cryptoFramework-interface CmacSpec extends MacSpec--><!--Device-cryptoFramework-interface CmacSpec extends MacSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Mac
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Symmetric cipher algorithm used by CMAC.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-CmacSpec-cipherName: string--><!--Device-CmacSpec-cipherName: string-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Mac

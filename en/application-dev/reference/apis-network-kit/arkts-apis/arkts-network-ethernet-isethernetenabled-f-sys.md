@@ -20,6 +20,8 @@ Check whether the global ethernet switch is enabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ethernet-function isEthernetEnabled(): boolean--><!--Device-ethernet-function isEthernetEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **System API:** This is a system API.

@@ -10,6 +10,8 @@ The core mechanism of AdsBlockManager is based on a two-tier AllowedList/Disallo
 
 **Since:** 12
 
+<!--Device-webview-class AdsBlockManager--><!--Device-webview-class AdsBlockManager-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Adds an array of domain names to the AllowedList of this AdsBlockManager object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdsBlockManager-static addAdsBlockAllowedList(domainSuffixes: Array<string>): void--><!--Device-AdsBlockManager-static addAdsBlockAllowedList(domainSuffixes: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -128,6 +132,8 @@ Adds an array of domain names to the disallowed list of this **AdsBlockManager**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdsBlockManager-static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void--><!--Device-AdsBlockManager-static addAdsBlockDisallowedList(domainSuffixes: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -212,6 +218,8 @@ Clears the allowed list of this **AdsBlockManager** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdsBlockManager-static clearAdsBlockAllowedList(): void--><!--Device-AdsBlockManager-static clearAdsBlockAllowedList(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -239,6 +247,8 @@ Clears the disallowed list of this **AdsBlockManager** object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdsBlockManager-static clearAdsBlockDisallowedList(): void--><!--Device-AdsBlockManager-static clearAdsBlockDisallowedList(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -312,6 +322,8 @@ Removes an array of domain names from the allowed list of this **AdsBlockManager
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdsBlockManager-static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void--><!--Device-AdsBlockManager-static removeAdsBlockAllowedList(domainSuffixes: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -397,6 +409,8 @@ Removes an array of domain names from the disallowed list of this **AdsBlockMana
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdsBlockManager-static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void--><!--Device-AdsBlockManager-static removeAdsBlockDisallowedList(domainSuffixes: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -480,6 +494,8 @@ Sets a custom ad filtering configuration file that conforms to the universal Eas
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdsBlockManager-static setAdsBlockRules(rulesFile: string, replace: boolean): void--><!--Device-AdsBlockManager-static setAdsBlockRules(rulesFile: string, replace: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -12,13 +12,17 @@ import { vibrator } from '@kit.SensorServiceKit';
 function stopVibrationSync(): void
 ```
 
-Stops any form of motor vibration.
+Stops any form of vibration.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Since:** 12
 
 **Required permissions:** ohos.permission.VIBRATE
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-vibrator-function stopVibrationSync(): void--><!--Device-vibrator-function stopVibrationSync(): void-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -26,7 +30,7 @@ Stops any form of motor vibration.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [14600101](../errorcode-vibrator.md#14600101-device-operation-failed) | Device operation failed. |
 
 **Examples**

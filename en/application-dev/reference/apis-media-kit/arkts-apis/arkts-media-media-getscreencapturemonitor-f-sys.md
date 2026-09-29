@@ -16,6 +16,8 @@ Obtains a **ScreenCaptureMonitor** instance. This API uses a promise to return t
 
 **Since:** 18
 
+<!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>--><!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ The **DriverExtensionAbility** module provides the ExtensionAbility related to d
 
 **Since:** 10
 
+<!--Device-unnamed-declare class DriverExtensionAbility--><!--Device-unnamed-declare class DriverExtensionAbility-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called following **onCreate()** when a DriverExtensionAbility is started by call
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DriverExtensionAbility-onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>--><!--Device-DriverExtensionAbility-onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice
 
@@ -107,6 +111,8 @@ Called when a client is disconnected from this DriverExtensionAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DriverExtensionAbility-onDisconnect(want: Want): void | Promise<void>--><!--Device-DriverExtensionAbility-onDisconnect(want: Want): void | Promise<void>-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Parameters:**
@@ -154,6 +160,8 @@ Dumps client information. It is recommended that developers don't DUMP sensitive
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DriverExtensionAbility-onDump(params: Array<string>): Array<string>--><!--Device-DriverExtensionAbility-onDump(params: Array<string>): Array<string>-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Parameters:**
@@ -191,6 +199,8 @@ Called when a DriverExtensionAbility is created to initialize the service logic.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DriverExtensionAbility-onInit(want: Want): void--><!--Device-DriverExtensionAbility-onInit(want: Want): void-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Parameters:**
@@ -224,6 +234,8 @@ Called when this DriverExtensionAbility is destroyed to clear resources.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DriverExtensionAbility-onRelease(): void--><!--Device-DriverExtensionAbility-onRelease(): void-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Examples**
@@ -249,5 +261,7 @@ Context of the **DriverExtension**. This context is inherited from **ExtensionCo
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DriverExtensionAbility-context: DriverExtensionContext--><!--Device-DriverExtensionAbility-context: DriverExtensionContext-End-->
 
 **System capability:** SystemCapability.Driver.ExternalDevice

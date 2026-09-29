@@ -18,6 +18,8 @@ Removes a watcher used for event subscription.
 
 **Required permissions:** ohos.permission.READ_DFX_SYSEVENT
 
+<!--Device-hiSysEvent-function removeWatcher(watcher: Watcher): void--><!--Device-hiSysEvent-function removeWatcher(watcher: Watcher): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.

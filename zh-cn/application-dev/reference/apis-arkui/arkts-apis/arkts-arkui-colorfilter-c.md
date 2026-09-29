@@ -8,6 +8,8 @@ declare class ColorFilter
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class ColorFilter--><!--Device-unnamed-declare class ColorFilter-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -25,6 +27,8 @@ ColorFilter的构造函数，创建具有4\*5矩阵的颜色过滤器。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColorFilter-constructor(value: number[])--><!--Device-ColorFilter-constructor(value: number[])-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

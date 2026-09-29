@@ -23,6 +23,8 @@ Publishes a notification through the reminder agent. This API uses an asynchrono
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
+<!--Device-notificationManager-function publishAsBundle(    request: NotificationRequest,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void--><!--Device-notificationManager-function publishAsBundle(    request: NotificationRequest,    representativeBundle: string,    userId: int,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -109,6 +111,8 @@ Publishes a notification through the reminder agent. This API uses a promise to 
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+<!--Device-notificationManager-function publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int): Promise<void>--><!--Device-notificationManager-function publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -197,6 +201,8 @@ Publishes a notification through the reminder agent. This API uses a promise to 
 **Since:** 12
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+<!--Device-notificationManager-function publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise<void>--><!--Device-notificationManager-function publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

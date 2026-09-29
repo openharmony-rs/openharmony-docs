@@ -14,6 +14,8 @@ Adding services has requirements on the scenarios supported by the server device
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-enum BusinessId--><!--Device-companionDeviceAuth-enum BusinessId-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Default service ID. It is system-defined and used for basic authentication scena
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BusinessId-DEFAULT = 0--><!--Device-BusinessId-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Start value of the vendor-defined service ID. The vendor can extend service IDs 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BusinessId-VENDOR_BEGIN = 10000--><!--Device-BusinessId-VENDOR_BEGIN = 10000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

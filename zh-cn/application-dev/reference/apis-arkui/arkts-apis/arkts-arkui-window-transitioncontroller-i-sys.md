@@ -8,6 +8,8 @@ interface TransitionController
 
 **起始版本：** 9
 
+<!--Device-window-interface TransitionController--><!--Device-window-interface TransitionController-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -27,6 +29,8 @@ animationForHidden(context: TransitionContext): void
 窗口隐藏时的自定义动画配置。
 
 **起始版本：** 9
+
+<!--Device-TransitionController-animationForHidden(context: TransitionContext): void--><!--Device-TransitionController-animationForHidden(context: TransitionContext): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -112,6 +116,8 @@ animationForShown(context: TransitionContext): void
 窗口显示时的自定义动画配置。
 
 **起始版本：** 9
+
+<!--Device-TransitionController-animationForShown(context: TransitionContext): void--><!--Device-TransitionController-animationForShown(context: TransitionContext): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

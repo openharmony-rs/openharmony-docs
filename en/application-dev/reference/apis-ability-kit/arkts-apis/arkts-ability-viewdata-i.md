@@ -8,6 +8,8 @@ The module defines the view data used for auto-fill.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export default interface ViewData--><!--Device-unnamed-export default interface ViewData-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## bundleName
@@ -24,7 +26,9 @@ Bundle name. The value cannot exceed 512 characters.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ViewData-bundleName: string--><!--Device-ViewData-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -42,7 +46,9 @@ Information of the page nodes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ViewData-pageNodeInfos: Array<PageNodeInfo>--><!--Device-ViewData-pageNodeInfos: Array<PageNodeInfo>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -60,7 +66,9 @@ Coordinates, width, and height of the page. On PC/2-in-1 devices, the password v
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ViewData-pageRect: AutoFillRect--><!--Device-ViewData-pageRect: AutoFillRect-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -78,6 +86,8 @@ URL of the page.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ViewData-pageUrl: string--><!--Device-ViewData-pageUrl: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore

@@ -8,6 +8,8 @@ Describes the parameters used for creating an application clone.
 
 **Since:** 12
 
+<!--Device-installer-export interface CreateAppCloneParam--><!--Device-installer-export interface CreateAppCloneParam-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Index of the clone. The default value is the currently available minimum index.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-CreateAppCloneParam-appIndex?: int--><!--Device-CreateAppCloneParam-appIndex?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -52,6 +56,8 @@ is not sent after the clone is created. If this key is not present or the value 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CreateAppCloneParam-parameters?: Array<Parameters>--><!--Device-CreateAppCloneParam-parameters?: Array<Parameters>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ ID of the user for whom the clone is to be created. You can obtain the user ID b
 **Type:** number
 
 **Since:** 12
+
+<!--Device-CreateAppCloneParam-userId?: int--><!--Device-CreateAppCloneParam-userId?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

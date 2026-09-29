@@ -8,6 +8,8 @@ IconOptions定义图标的通用属性。
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface IconOptions--><!--Device-unnamed-export interface IconOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ sys.float.chip_small_icon_size')}
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-IconOptions-size?: SizeOptions--><!--Device-IconOptions-size?: SizeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -48,7 +52,7 @@ sys.float.chip_small_icon_size')}
 src: ResourceStr
 ```
 
-图标图片或图片地址引用请参考Image。
+图标图片或图片地址引用请参考[Image](../arkts-components/arkts-arkui-image-comp.md)。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -57,5 +61,7 @@ src: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-IconOptions-src: ResourceStr--><!--Device-IconOptions-src: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

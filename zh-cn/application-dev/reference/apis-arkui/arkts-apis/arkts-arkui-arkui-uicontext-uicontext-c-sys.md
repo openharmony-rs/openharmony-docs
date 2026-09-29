@@ -14,6 +14,8 @@ UIContext实例对象。
 
 **起始版本：** 10
 
+<!--Device-unnamed-export class UIContext--><!--Device-unnamed-export class UIContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ clearResourceCache(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIContext-clearResourceCache(): void--><!--Device-UIContext-clearResourceCache(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +83,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UIContext-freezeUINode(id: string, isFrozen: boolean): void--><!--Device-UIContext-freezeUINode(id: string, isFrozen: boolean): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -110,6 +116,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UIContext-freezeUINode(uniqueId: number, isFrozen: boolean): void--><!--Device-UIContext-freezeUINode(uniqueId: number, isFrozen: boolean): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -138,6 +146,8 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIContext-getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined--><!--Device-UIContext-getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,6 +180,8 @@ recycleInvisibleImageMemory(enabled: boolean): void
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIContext-recycleInvisibleImageMemory(enabled: boolean): void--><!--Device-UIContext-recycleInvisibleImageMemory(enabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,6 +233,8 @@ setDynamicDimming(id: string, value: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UIContext-setDynamicDimming(id: string, value: number): void--><!--Device-UIContext-setDynamicDimming(id: string, value: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -265,6 +279,8 @@ setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig):
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UIContext-setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void--><!--Device-UIContext-setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

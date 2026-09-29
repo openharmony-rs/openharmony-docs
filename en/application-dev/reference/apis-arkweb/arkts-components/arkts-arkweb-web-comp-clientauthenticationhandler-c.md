@@ -8,6 +8,8 @@ ClientAuthenticationHandler is a class in the **Web** component that handles SSL
 
 **Since:** 9
 
+<!--Device-unnamed-declare class ClientAuthenticationHandler--><!--Device-unnamed-declare class ClientAuthenticationHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## cancel
@@ -22,6 +24,8 @@ Cancel this certificate request.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ClientAuthenticationHandler-cancel(): void--><!--Device-ClientAuthenticationHandler-cancel(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## confirm
@@ -35,6 +39,8 @@ Uses the specified private key and client certificate chain.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ClientAuthenticationHandler-confirm(priKeyFile: string, certChainFile: string): void--><!--Device-ClientAuthenticationHandler-confirm(priKeyFile: string, certChainFile: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -59,6 +65,8 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ClientAuthenticationHandler-confirm(authUri: string): void--><!--Device-ClientAuthenticationHandler-confirm(authUri: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -78,6 +86,8 @@ confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string
 Instructs the **Web** component to use the specified credential and credential type obtained from the certificate management module.
 
 **Since:** 22
+
+<!--Device-ClientAuthenticationHandler-confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string): void--><!--Device-ClientAuthenticationHandler-confirm(identity: string, credentialTypeOrCertChainFile: CredentialType | string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -106,6 +116,8 @@ Constructs a **ClientAuthenticationHandler**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ClientAuthenticationHandler-constructor()--><!--Device-ClientAuthenticationHandler-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ignore
@@ -119,5 +131,7 @@ Ignores this request.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ClientAuthenticationHandler-ignore(): void--><!--Device-ClientAuthenticationHandler-ignore(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

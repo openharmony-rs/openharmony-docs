@@ -19,6 +19,8 @@ Creates a stream based on the file path. This API uses a promise to return the r
 
 **Substitutes:** [createStream](arkts-corefile-file-fs-createstream-f.md)
 
+<!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>--><!--Device-unnamed-declare function createStream(path: string, mode: string): Promise<Stream>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -50,6 +52,8 @@ Creates a stream based on the file path. This API uses an asynchronous callback 
 **Deprecated since:** 9
 
 **Substitutes:** [createStream](arkts-corefile-file-fs-createstream-f.md)
+
+<!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void--><!--Device-unnamed-declare function createStream(path: string, mode: string, callback: AsyncCallback<Stream>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

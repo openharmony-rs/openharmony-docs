@@ -8,6 +8,8 @@ Enumerates the reasons for the last exit of the ability. You can use it together
 
 **Since:** 9
 
+<!--Device-AbilityConstant-export enum LastExitReason--><!--Device-AbilityConstant-export enum LastExitReason-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## UNKNOWN
@@ -22,7 +24,9 @@ Unknown reason.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-UNKNOWN = 0--><!--Device-LastExitReason-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,6 +46,8 @@ The ability does not respond.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LastExitReason-ABILITY_NOT_RESPONDING = 1--><!--Device-LastExitReason-ABILITY_NOT_RESPONDING = 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## NORMAL
@@ -58,7 +64,9 @@ Note: If the application process is forcibly terminated using methods not provid
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-NORMAL = 2--><!--Device-LastExitReason-NORMAL = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,7 +82,9 @@ The ability exits due to [process crash](../../../dfx/cppcrash-guidelines.md).
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-CPP_CRASH = 3--><!--Device-LastExitReason-CPP_CRASH = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -90,7 +100,9 @@ The ability exits due to a JS_ERROR fault triggered when an application has a JS
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-JS_ERROR = 4--><!--Device-LastExitReason-JS_ERROR = 4-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,7 +118,9 @@ The ability exits due to [application freeze](../../../dfx/appfreeze-guidelines.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-APP_FREEZE = 5--><!--Device-LastExitReason-APP_FREEZE = 5-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -124,7 +138,9 @@ Note: This API will be deprecated. You are advised to use **RESOURCE_CONTROL** i
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-PERFORMANCE_CONTROL = 6--><!--Device-LastExitReason-PERFORMANCE_CONTROL = 6-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -148,7 +164,9 @@ priority.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-RESOURCE_CONTROL = 7--><!--Device-LastExitReason-RESOURCE_CONTROL = 7-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -164,7 +182,9 @@ The application exits due to an upgrade.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LastExitReason-UPGRADE = 8--><!--Device-LastExitReason-UPGRADE = 8-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -180,7 +200,9 @@ The ability exits because it receives a request from the multitasking center.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-LastExitReason-USER_REQUEST = 9--><!--Device-LastExitReason-USER_REQUEST = 9-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -196,6 +218,8 @@ The ability exits because it receives a kill signal from the system.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-LastExitReason-SIGNAL = 10--><!--Device-LastExitReason-SIGNAL = 10-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

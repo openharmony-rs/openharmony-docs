@@ -8,6 +8,8 @@ Enumerates the video meeting component groups. They are used only when [PiPTempl
 
 **Since:** 12
 
+<!--Device-PiPWindow-enum VideoMeetingControlGroup--><!--Device-PiPWindow-enum VideoMeetingControlGroup-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## HANG_UP_BUTTON
@@ -20,7 +22,9 @@ Hang-up component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoMeetingControlGroup-HANG_UP_BUTTON = 301--><!--Device-VideoMeetingControlGroup-HANG_UP_BUTTON = 301-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ Camera on/off component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoMeetingControlGroup-CAMERA_SWITCH = 302--><!--Device-VideoMeetingControlGroup-CAMERA_SWITCH = 302-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ Mute/Unmute component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303--><!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,6 +70,8 @@ Microphone on/off component group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-VideoMeetingControlGroup-MICROPHONE_SWITCH = 304--><!--Device-VideoMeetingControlGroup-MICROPHONE_SWITCH = 304-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

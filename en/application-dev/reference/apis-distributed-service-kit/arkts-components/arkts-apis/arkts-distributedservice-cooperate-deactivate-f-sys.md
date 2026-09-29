@@ -20,6 +20,8 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 **Substitutes:** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md)(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-cooperate-function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void--><!--Device-cooperate-function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Stops screen hopping. This API uses a promise to return the result.
 **Deprecated since:** 11
 
 **Substitutes:** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate-1)(isUnchained: boolean)
+
+<!--Device-cooperate-function deactivate(isUnchained: boolean): Promise<void>--><!--Device-cooperate-function deactivate(isUnchained: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

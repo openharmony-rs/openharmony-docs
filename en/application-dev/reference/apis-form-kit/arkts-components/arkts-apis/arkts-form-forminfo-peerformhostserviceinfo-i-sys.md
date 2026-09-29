@@ -8,6 +8,8 @@ PeerFormHostServiceInfo
 
 **Since:** 26.0.1
 
+<!--Device-formInfo-interface PeerFormHostServiceInfo--><!--Device-formInfo-interface PeerFormHostServiceInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The custom data of the peer form host service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerFormHostServiceInfo-customData?: Record<string, string>--><!--Device-PeerFormHostServiceInfo-customData?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The device Id of the peer form host service.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PeerFormHostServiceInfo-deviceId: string--><!--Device-PeerFormHostServiceInfo-deviceId: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -68,6 +74,8 @@ The display Id of the peer form host service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerFormHostServiceInfo-displayId: string--><!--Device-PeerFormHostServiceInfo-displayId: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The network Id of the peer form host service.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PeerFormHostServiceInfo-networkId: string--><!--Device-PeerFormHostServiceInfo-networkId: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -104,6 +114,8 @@ The service display name of the peer form host service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerFormHostServiceInfo-serviceDisplayName: string--><!--Device-PeerFormHostServiceInfo-serviceDisplayName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -122,6 +134,8 @@ The service Id of the peer form host service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerFormHostServiceInfo-serviceId: string--><!--Device-PeerFormHostServiceInfo-serviceId: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -139,6 +153,8 @@ The service name of the peer form host service.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PeerFormHostServiceInfo-serviceName: string--><!--Device-PeerFormHostServiceInfo-serviceName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

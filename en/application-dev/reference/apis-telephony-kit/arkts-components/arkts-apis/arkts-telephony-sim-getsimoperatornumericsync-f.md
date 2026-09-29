@@ -16,6 +16,8 @@ Obtains the home PLMN ID of the SIM card in the specified slot. This API returns
 
 **Since:** 10
 
+<!--Device-sim-function getSimOperatorNumericSync(slotId: int): string--><!--Device-sim-function getSimOperatorNumericSync(slotId: int): string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

@@ -18,6 +18,8 @@ Sets the enabled state of the magnification effect. The magnification effect dep
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
+<!--Device-config-function setMagnificationState(state: boolean): void--><!--Device-config-function setMagnificationState(state: boolean): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

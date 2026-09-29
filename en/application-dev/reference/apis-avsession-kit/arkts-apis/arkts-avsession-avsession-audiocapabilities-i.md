@@ -8,6 +8,8 @@ Audio capabilities.
 
 **Since:** 20
 
+<!--Device-avSession-interface AudioCapabilities--><!--Device-avSession-interface AudioCapabilities-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Audio stream information.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AudioCapabilities-readonly streamInfos: Array<audio.AudioStreamInfo>--><!--Device-AudioCapabilities-readonly streamInfos: Array<audio.AudioStreamInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

@@ -20,6 +20,8 @@ Configuration file path: {Module directory}/src/main/resources/rawfile/memory_op
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-appMemoryOptimizer-function evictModuleFilePages(moduleNames: Array<string>): Promise<void>--><!--Device-appMemoryOptimizer-function evictModuleFilePages(moduleNames: Array<string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

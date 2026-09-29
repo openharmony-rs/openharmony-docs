@@ -12,9 +12,11 @@ import { sensor } from '@kit.SensorServiceKit';
 function getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array<Sensor>
 ```
 
-Obtains information about the sensor of a specific type.
+Obtains information about the sensor of a specific type. If peripherals exist and no device ID is specified, the obtained sensors will be all local and peripheral sensors that match the specified sensor type. If no peripherals exist, only local sensors are obtained.
 
 **Since:** 19
+
+<!--Device-sensor-function getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array<Sensor>--><!--Device-sensor-function getSingleSensorByDeviceSync(type: SensorId, deviceId?: int): Array<Sensor>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

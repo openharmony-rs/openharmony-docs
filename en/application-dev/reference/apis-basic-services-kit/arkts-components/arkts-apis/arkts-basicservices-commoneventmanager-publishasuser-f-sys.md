@@ -16,6 +16,8 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 **Since:** 9
 
+<!--Device-commonEventManager-function publishAsUser(event: string, userId: int, callback: AsyncCallback<void>): void--><!--Device-commonEventManager-function publishAsUser(event: string, userId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ function publishAsUser(
 Publishes a common event to a specified user and specifies the information to be published. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-commonEventManager-function publishAsUser(    event: string,    userId: int,    options: CommonEventPublishData,    callback: AsyncCallback<void>  ): void--><!--Device-commonEventManager-function publishAsUser(    event: string,    userId: int,    options: CommonEventPublishData,    callback: AsyncCallback<void>  ): void-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

@@ -8,6 +8,8 @@ An arbitrary-precision Decimal type
 
 **Since:** 12
 
+<!--Device-unnamed-declare class Decimal--><!--Device-unnamed-declare class Decimal-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Return a new Decimal whose value is the absolute value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-abs(): Decimal--><!--Device-Decimal-abs(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -48,7 +52,9 @@ Return a new Decimal whose value is the absolute value of `n`.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static abs(n: Value): Decimal--><!--Device-Decimal-static abs(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -80,7 +86,9 @@ Return a new Decimal whose value is the arccosine (inverse cosine) in radians of
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-acos(): Decimal--><!--Device-Decimal-acos(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -108,7 +116,9 @@ Return a new Decimal whose value is the arccosine in radians of `n`.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static acos(n: Value): Decimal--><!--Device-Decimal-static acos(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -141,7 +151,9 @@ Return a new Decimal whose value is the inverse of the hyperbolic cosine in radi
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-acosh(): Decimal--><!--Device-Decimal-acosh(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -169,7 +181,9 @@ Return a new Decimal whose value is the inverse of the hyperbolic cosine of `n`,
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static acosh(n: Value): Decimal--><!--Device-Decimal-static acosh(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -202,7 +216,9 @@ Return a new Decimal whose value is the value of this Decimal plus `n`, rounded 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-add(n: Value): Decimal--><!--Device-Decimal-add(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -236,7 +252,9 @@ Return a new Decimal whose value is the sum of `x` and `y`, rounded to `precisio
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static add(x: Value, y: Value): Decimal--><!--Device-Decimal-static add(x: Value, y: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -269,7 +287,9 @@ Return a new Decimal whose value is the arcsine (inverse sine) in radians of the
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-asin(): Decimal--><!--Device-Decimal-asin(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -297,7 +317,9 @@ Return a new Decimal whose value is the arcsine in radians of `n`, rounded to `p
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static asin(n: Value): Decimal--><!--Device-Decimal-static asin(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -330,7 +352,9 @@ Return a new Decimal whose value is the inverse of the hyperbolic sine in radian
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-asinh(): Decimal--><!--Device-Decimal-asinh(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -358,7 +382,9 @@ Return a new Decimal whose value is the inverse of the hyperbolic sine of `n`, r
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static asinh(n: Value): Decimal--><!--Device-Decimal-static asinh(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -391,7 +417,9 @@ Return a new Decimal whose value is the arctangent (inverse tangent) in radians 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-atan(): Decimal--><!--Device-Decimal-atan(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -419,7 +447,9 @@ Return a new Decimal whose value is the arctangent in radians of `n`, rounded to
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static atan(n: Value): Decimal--><!--Device-Decimal-static atan(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -452,7 +482,9 @@ Return a new Decimal whose value is the arctangent in radians of `y/x` in the ra
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static atan2(y: Value, x: Value): Decimal--><!--Device-Decimal-static atan2(y: Value, x: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -486,7 +518,9 @@ Return a new Decimal whose value is the inverse of the hyperbolic tangent in rad
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-atanh(): Decimal--><!--Device-Decimal-atanh(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -514,7 +548,9 @@ Return a new Decimal whose value is the inverse of the hyperbolic tangent of `n`
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static atanh(n: Value): Decimal--><!--Device-Decimal-static atanh(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -547,7 +583,9 @@ Return a new Decimal whose value is the cube root of the value of this Decimal, 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-cbrt(): Decimal--><!--Device-Decimal-cbrt(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -569,7 +607,9 @@ Return a new Decimal whose value is the cube root of `n`, rounded to `precision`
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static cbrt(n: Value): Decimal--><!--Device-Decimal-static cbrt(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -601,7 +641,9 @@ Return a new Decimal whose value is the value of this Decimal rounded to a whole
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-ceil(): Decimal--><!--Device-Decimal-ceil(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -623,7 +665,9 @@ Return a new Decimal whose value is `n` rounded to an integer using `ROUND_CEIL`
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static ceil(n: Value): Decimal--><!--Device-Decimal-static ceil(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -655,7 +699,9 @@ Return a new Decimal whose value is the value of this Decimal clamped to the ran
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-clamp(min: Value, max: Value): Decimal--><!--Device-Decimal-clamp(min: Value, max: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -691,7 +737,9 @@ Return a new Decimal whose value is `n` clamped to the range delineated by `min`
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static clamp(n: Value, min: Value, max: Value): Decimal--><!--Device-Decimal-static clamp(n: Value, min: Value, max: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -726,7 +774,9 @@ Return 1 if the value of this Decimal is greater than the value of `n`, -1 if th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-comparedTo(n: Value): double--><!--Device-Decimal-comparedTo(n: Value): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -758,7 +808,9 @@ Return a new Decimal whose value is the absolute value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-constructor(n: Value)--><!--Device-Decimal-constructor(n: Value)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -784,7 +836,9 @@ Return a new Decimal whose value is the cosine of the value in radians of this D
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-cos(): Decimal--><!--Device-Decimal-cos(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -806,7 +860,9 @@ Return a new Decimal whose value is the cosine of `n`, rounded to `precision` si
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static cos(n: Value): Decimal--><!--Device-Decimal-static cos(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -838,7 +894,9 @@ Return a new Decimal whose value is the hyperbolic cosine of the value in radian
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-cosh(): Decimal--><!--Device-Decimal-cosh(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -860,7 +918,9 @@ Return a new Decimal whose value is the hyperbolic cosine of `n`, rounded to pre
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static cosh(n: Value): Decimal--><!--Device-Decimal-static cosh(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -892,7 +952,9 @@ Return the number of decimal places of the value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-decimalPlaces(): double--><!--Device-Decimal-decimalPlaces(): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -912,7 +974,9 @@ Return a new Decimal whose value is the value of this Decimal divided by `n`, ro
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-div(n: Value): Decimal--><!--Device-Decimal-div(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -946,7 +1010,9 @@ Return a new Decimal whose value is `x` divided by `y`, rounded to `precision` s
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static div(x: Value, y: Value): Decimal--><!--Device-Decimal-static div(x: Value, y: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -979,7 +1045,9 @@ Return a new Decimal whose value is the integer part of dividing the value of th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-dividedToIntegerBy(n: Value): Decimal--><!--Device-Decimal-dividedToIntegerBy(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1011,7 +1079,9 @@ Return true if the value of this Decimal is equal to the value of `n`, otherwise
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-equals(n: Value): boolean--><!--Device-Decimal-equals(n: Value): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1043,7 +1113,9 @@ Return a new Decimal whose value is the natural exponential of the value of this
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-exp(): Decimal--><!--Device-Decimal-exp(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1071,7 +1143,9 @@ Return a new Decimal whose value is the natural exponential of `n`, rounded to `
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static exp(n: Value): Decimal--><!--Device-Decimal-static exp(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1104,7 +1178,9 @@ Return a new Decimal whose value is the value of this Decimal rounded to a whole
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-floor(): Decimal--><!--Device-Decimal-floor(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1126,7 +1202,9 @@ Return a new Decimal whose value is `n` round to an integer using `ROUND_FLOOR`.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static floor(n: Value): Decimal--><!--Device-Decimal-static floor(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1158,7 +1236,9 @@ Return true if the value of this Decimal is greater than the value of `n`, other
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-greaterThan(n: Value): boolean--><!--Device-Decimal-greaterThan(n: Value): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1190,7 +1270,9 @@ Return true if the value of this Decimal is greater than or equal to the value o
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-greaterThanOrEqualTo(n: Value): boolean--><!--Device-Decimal-greaterThanOrEqualTo(n: Value): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1222,7 +1304,9 @@ Return a new Decimal whose value is the square root of the sum of the squares of
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static hypot(...n: Value[]): Decimal--><!--Device-Decimal-static hypot(...n: Value[]): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1254,7 +1338,9 @@ Return true if the value of this Decimal is a finite number, otherwise return fa
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-isFinite(): boolean--><!--Device-Decimal-isFinite(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1274,7 +1360,9 @@ Return true if the value of this Decimal is an integer, otherwise return false.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-isInteger(): boolean--><!--Device-Decimal-isInteger(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1294,7 +1382,9 @@ Return true if the value of this Decimal is NaN, otherwise return false.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-isNaN(): boolean--><!--Device-Decimal-isNaN(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1314,7 +1404,9 @@ Return true if the value of this Decimal is negative, otherwise return false.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-isNegative(): boolean--><!--Device-Decimal-isNegative(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1334,7 +1426,9 @@ Return true if the value of this Decimal is positive, otherwise return false.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-isPositive(): boolean--><!--Device-Decimal-isPositive(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1354,7 +1448,9 @@ Return true if the value of this Decimal is 0 or -0, otherwise return false.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-isZero(): boolean--><!--Device-Decimal-isZero(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1374,7 +1470,9 @@ Return true if the value of this Decimal is less than `n`, otherwise return fals
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-lessThan(n: Value): boolean--><!--Device-Decimal-lessThan(n: Value): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1406,7 +1504,9 @@ Return true if the value of this Decimal is less than or equal to `n`, otherwise
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-lessThanOrEqualTo(n: Value): boolean--><!--Device-Decimal-lessThanOrEqualTo(n: Value): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1438,7 +1538,9 @@ Return a new Decimal whose value is the natural logarithm of the value of this D
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-ln(): Decimal--><!--Device-Decimal-ln(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1466,7 +1568,9 @@ Return a new Decimal whose value is the natural logarithm of `n`, rounded to `pr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static ln(n: Value): Decimal--><!--Device-Decimal-static ln(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1499,7 +1603,9 @@ Return the logarithm of the value of this Decimal to the specified base, rounded
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-log(n: Value): Decimal--><!--Device-Decimal-log(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1534,7 +1640,9 @@ Return a new Decimal whose value is the log of `n` to the base `base`, rounded t
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static log(n: Value, base: Value): Decimal--><!--Device-Decimal-static log(n: Value, base: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1568,7 +1676,9 @@ Return a new Decimal whose value is the base 10 logarithm of `n`, rounded to `pr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static log10(n: Value): Decimal--><!--Device-Decimal-static log10(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1601,7 +1711,9 @@ Return a new Decimal whose value is the base 2 logarithm of `n`, rounded to `pre
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static log2(n: Value): Decimal--><!--Device-Decimal-static log2(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1634,7 +1746,9 @@ Return a new Decimal whose value is the maximum of the arguments.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static max(...n: Value[]): Decimal--><!--Device-Decimal-static max(...n: Value[]): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1666,7 +1780,9 @@ Return a new Decimal whose value is the minimum of the arguments.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static min(...n: Value[]): Decimal--><!--Device-Decimal-static min(...n: Value[]): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1698,7 +1814,9 @@ Return a new Decimal whose value is the value of this Decimal modulo `n`, rounde
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-mod(n: Value): Decimal--><!--Device-Decimal-mod(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1732,7 +1850,9 @@ Return a new Decimal whose value is `x` modulo `y`, rounded to `precision` signi
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static mod(x: Value, y: Value): Decimal--><!--Device-Decimal-static mod(x: Value, y: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1765,7 +1885,9 @@ Return a new Decimal whose value is this Decimal times `n`, rounded to `precisio
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-mul(n: Value): Decimal--><!--Device-Decimal-mul(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1799,7 +1921,9 @@ Return a new Decimal whose value is `x` multiplied by `y`, rounded to `precision
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static mul(x: Value, y: Value): Decimal--><!--Device-Decimal-static mul(x: Value, y: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1832,7 +1956,9 @@ Return a new Decimal whose value is the value of this Decimal negated, i.e. as i
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-negate(): Decimal--><!--Device-Decimal-negate(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1852,7 +1978,9 @@ Return a new Decimal whose value is the value of this Decimal raised to the powe
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-pow(n: Value): Decimal--><!--Device-Decimal-pow(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1887,7 +2015,9 @@ Return a new Decimal whose value is `base` raised to the power `exponent`, round
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static pow(base: Value, exponent: Value): Decimal--><!--Device-Decimal-static pow(base: Value, exponent: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1921,7 +2051,9 @@ Return the number of significant digits of the value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-precision(): double--><!--Device-Decimal-precision(): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1943,7 +2075,9 @@ Return the number of significant digits of the value of this Decimal, whether to
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-precision(includeZeros: boolean | int): double--><!--Device-Decimal-precision(includeZeros: boolean | int): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1975,7 +2109,9 @@ Returns a new Decimal with a random value equal to or greater than 0 and less th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static random(): Decimal--><!--Device-Decimal-static random(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1989,7 +2125,7 @@ Returns a new Decimal with a random value equal to or greater than 0 and less th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [10200061](../errorcode-utils.md#10200061-encryption-method-is-unavailable) | Crypto unavailable |
+| [10200061](../errorcode-utils.md#10200061-encryption-method-is-unavailable) | Crypto unavailable. |
 
 <a id="random-1"></a>
 
@@ -2003,7 +2139,9 @@ Returns a new Decimal with a random value equal to or greater than 0 and less th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static random(significantDigits: double): Decimal--><!--Device-Decimal-static random(significantDigits: double): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2024,7 +2162,7 @@ Returns a new Decimal with a random value equal to or greater than 0 and less th
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
-| [10200061](../errorcode-utils.md#10200061-encryption-method-is-unavailable) | Crypto unavailable |
+| [10200061](../errorcode-utils.md#10200061-encryption-method-is-unavailable) | Crypto unavailable. |
 
 ## round
 
@@ -2036,7 +2174,9 @@ Return a new Decimal whose value is `n` rounded to an integer using rounding mod
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static round(n: Value): Decimal--><!--Device-Decimal-static round(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2068,7 +2208,9 @@ Configures the 'global' settings for this particular Decimal constructor.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static set(config: DecimalConfig): void--><!--Device-Decimal-static set(config: DecimalConfig): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2076,7 +2218,7 @@ Configures the 'global' settings for this particular Decimal constructor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [DecimalConfig](arkts-arkts-math-decimal-decimalconfig-i.md) | Yes |  |
+| config | [DecimalConfig](arkts-arkts-math-decimal-decimalconfig-i.md) | Yes | An object with one or more of the following properties, precision {double} rounding {Rounding} toExpNeg {double} toExpPos {double} maxE {double} minE {double} modulo {Modulo} crypto {boolean} defaults {true} |
 
 **Error codes:**
 
@@ -2084,7 +2226,7 @@ Configures the 'global' settings for this particular Decimal constructor.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-value-out-of-range) | The value of `DecimalConfig.properties` is out of range. |
-| [10200061](../errorcode-utils.md#10200061-encryption-method-is-unavailable) | Crypto unavailable |
+| [10200061](../errorcode-utils.md#10200061-encryption-method-is-unavailable) | Crypto unavailable. |
 
 ## sign
 
@@ -2096,7 +2238,9 @@ Return the sign of the passed value to the method. 1 if x &gt; 0, -1 if x &lt; 0
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static sign(n: Value): double--><!--Device-Decimal-static sign(n: Value): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2129,7 +2273,9 @@ Return a new Decimal whose value is the sine of the value in radians of this Dec
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-sin(): Decimal--><!--Device-Decimal-sin(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2151,7 +2297,9 @@ Return a new Decimal whose value is the sine of `n`, rounded to `precision` sign
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static sin(n: Value): Decimal--><!--Device-Decimal-static sin(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2183,7 +2331,9 @@ Return a new Decimal whose value is the hyperbolic sine of the value in radians 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-sinh(): Decimal--><!--Device-Decimal-sinh(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2205,7 +2355,9 @@ Return a new Decimal whose value is the hyperbolic sine of `n`, rounded to `prec
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static sinh(n: Value): Decimal--><!--Device-Decimal-static sinh(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2237,7 +2389,9 @@ Return a new Decimal whose value is the square root of this Decimal, rounded to 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-sqrt(): Decimal--><!--Device-Decimal-sqrt(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2259,7 +2413,9 @@ Return a new Decimal whose value is the square root of `n`, rounded to `precisio
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static sqrt(n: Value): Decimal--><!--Device-Decimal-static sqrt(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2291,7 +2447,9 @@ Return a new Decimal whose value is the value of this Decimal minus `n`, rounded
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-sub(n: Value): Decimal--><!--Device-Decimal-sub(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2325,7 +2483,9 @@ Return a new Decimal whose value is `x` minus `y`, rounded to `precision` signif
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static sub(x: Value, y: Value): Decimal--><!--Device-Decimal-static sub(x: Value, y: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2360,7 +2520,9 @@ Only the result is rounded, not the intermediate calculations.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static sum(...n: Value[]): Decimal--><!--Device-Decimal-static sum(...n: Value[]): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2392,7 +2554,9 @@ Return a new Decimal whose value is the tangent of the value in radians of this 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-tan(): Decimal--><!--Device-Decimal-tan(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2414,7 +2578,9 @@ Return a new Decimal whose value is the tangent of `n`, rounded to `precision` s
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static tan(n: Value): Decimal--><!--Device-Decimal-static tan(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2446,7 +2612,9 @@ Return a new Decimal whose value is the hyperbolic tangent of the value in radia
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-tanh(): Decimal--><!--Device-Decimal-tanh(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2468,7 +2636,9 @@ Return a new Decimal whose value is the hyperbolic tangent of `n`, rounded to `p
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static tanh(n: Value): Decimal--><!--Device-Decimal-static tanh(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2500,7 +2670,9 @@ Return a string representing the value of this Decimal in base 2.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toBinary(): string--><!--Device-Decimal-toBinary(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2522,7 +2694,9 @@ Return a string representing the value of this Decimal in base 2, round to `sign
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toBinary(significantDigits: double): string--><!--Device-Decimal-toBinary(significantDigits: double): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2556,7 +2730,9 @@ Return a string representing the value of this Decimal in base 2, round to `sign
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toBinary(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toBinary(significantDigits: double, rounding: Rounding): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2589,7 +2765,9 @@ Return a new Decimal whose value is the value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toDecimalPlaces(): Decimal--><!--Device-Decimal-toDecimalPlaces(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2611,7 +2789,9 @@ Return a new Decimal whose value is the value of this Decimal rounded to a maxim
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toDecimalPlaces(decimalPlaces: double): Decimal--><!--Device-Decimal-toDecimalPlaces(decimalPlaces: double): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2645,7 +2825,9 @@ Return a new Decimal whose value is the value of this Decimal rounded to a maxim
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal--><!--Device-Decimal-toDecimalPlaces(decimalPlaces: double, rounding: Rounding): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2678,7 +2860,9 @@ Return a string representing the value of this Decimal in exponential notation.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toExponential(): string--><!--Device-Decimal-toExponential(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2700,7 +2884,9 @@ Return a string representing the value of this Decimal in exponential notation r
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toExponential(decimalPlaces: double): string--><!--Device-Decimal-toExponential(decimalPlaces: double): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2734,7 +2920,9 @@ Return a string representing the value of this Decimal in exponential notation r
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toExponential(decimalPlaces: double, rounding: Rounding): string--><!--Device-Decimal-toExponential(decimalPlaces: double, rounding: Rounding): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2767,7 +2955,9 @@ Return a string representing the value of this Decimal in normal (fixed-point).
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toFixed(): string--><!--Device-Decimal-toFixed(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2789,10 +2979,11 @@ Return a string representing the value of this Decimal in normal (fixed-point) n
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**System capability:** 
-- API version 18 and later: SystemCapability.Utils.Lang
+<!--Device-Decimal-toFixed(decimalPlaces: double): string--><!--Device-Decimal-toFixed(decimalPlaces: double): string-End-->
+
+**System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
 
@@ -2824,7 +3015,9 @@ Return a string representing the value of this Decimal in normal (fixed-point) n
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toFixed(decimalPlaces: double, rounding: Rounding): string--><!--Device-Decimal-toFixed(decimalPlaces: double, rounding: Rounding): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2857,7 +3050,9 @@ Return an array representing the value of this Decimal as a simple fraction with
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toFraction(): Decimal[]--><!--Device-Decimal-toFraction(): Decimal[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2879,7 +3074,9 @@ Return an array representing the value of this Decimal as a simple fraction with
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toFraction(maxDenominator: Value): Decimal[]--><!--Device-Decimal-toFraction(maxDenominator: Value): Decimal[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2911,7 +3108,9 @@ Return a string representing the value of this Decimal in base 16
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toHexadecimal(): string--><!--Device-Decimal-toHexadecimal(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2933,7 +3132,9 @@ Return a string representing the value of this Decimal in base 16, round to `sig
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toHexadecimal(significantDigits: double): string--><!--Device-Decimal-toHexadecimal(significantDigits: double): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -2967,7 +3168,9 @@ Return a string representing the value of this Decimal in base 16, round to `sig
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toHexadecimal(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toHexadecimal(significantDigits: double, rounding: Rounding): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3000,7 +3203,9 @@ Returns a new Decimal whose value is the nearest multiple of `n`.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toNearest(n: Value): Decimal--><!--Device-Decimal-toNearest(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3034,7 +3239,9 @@ Returns a new Decimal whose value is the nearest multiple of `n` in the directio
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toNearest(n: Value, rounding: Rounding): Decimal--><!--Device-Decimal-toNearest(n: Value, rounding: Rounding): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3068,7 +3275,9 @@ Return the value of this Decimal converted to a number primitive. Zero keeps its
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toNumber(): double--><!--Device-Decimal-toNumber(): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3088,7 +3297,9 @@ Return a string representing the value of this Decimal in base 8.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toOctal(): string--><!--Device-Decimal-toOctal(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3110,7 +3321,9 @@ Return a string representing the value of this Decimal in base 8, round to `sign
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toOctal(significantDigits: double): string--><!--Device-Decimal-toOctal(significantDigits: double): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3144,7 +3357,9 @@ Return a string representing the value of this Decimal in base 8, round to `sign
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toOctal(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toOctal(significantDigits: double, rounding: Rounding): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3177,7 +3392,9 @@ Return a string representing the value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toPrecision(): string--><!--Device-Decimal-toPrecision(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3199,7 +3416,9 @@ Return a string representing the value of this Decimal rounded to `significantDi
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toPrecision(significantDigits: double): string--><!--Device-Decimal-toPrecision(significantDigits: double): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3233,7 +3452,9 @@ Return a string representing the value of this Decimal rounded to `significantDi
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toPrecision(significantDigits: double, rounding: Rounding): string--><!--Device-Decimal-toPrecision(significantDigits: double, rounding: Rounding): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3266,7 +3487,9 @@ Return a new Decimal whose value is the value of this Decimal.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toSignificantDigits(): Decimal--><!--Device-Decimal-toSignificantDigits(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3288,7 +3511,9 @@ Return a new Decimal whose value is the value of this Decimal rounded to a maxim
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toSignificantDigits(significantDigits: double): Decimal--><!--Device-Decimal-toSignificantDigits(significantDigits: double): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3322,7 +3547,9 @@ Return a new Decimal whose value is the value of this Decimal rounded to a maxim
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal--><!--Device-Decimal-toSignificantDigits(significantDigits: double, rounding: Rounding): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3355,7 +3582,9 @@ Return a string representing the value of this Decimal. Return exponential notat
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-toString(): string--><!--Device-Decimal-toString(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3375,7 +3604,9 @@ Return a new Decimal whose value is the value of this Decimal truncated to a who
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-trunc(): Decimal--><!--Device-Decimal-trunc(): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3397,7 +3628,9 @@ Return a new Decimal whose value is `n` truncated to an integer.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-static trunc(n: Value): Decimal--><!--Device-Decimal-static trunc(n: Value): Decimal-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3429,7 +3662,9 @@ Return a string representing the value of this Decimal. Unlike `toString`, negat
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-valueOf(): string--><!--Device-Decimal-valueOf(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3453,6 +3688,8 @@ The numbers of decimal digits.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-readonly d: number[]--><!--Device-Decimal-readonly d: number[]-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## e
@@ -3467,7 +3704,9 @@ The number of decimal exponent.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-get e(): double--><!--Device-Decimal-get e(): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3485,6 +3724,8 @@ Not a rounding mode, see modulo
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-static readonly EUCLIDEAN : 9--><!--Device-Decimal-static readonly EUCLIDEAN : 9-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## ROUND_CEILING
@@ -3500,6 +3741,8 @@ Rounds towards Infinity
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Decimal-static readonly ROUND_CEILING : 2--><!--Device-Decimal-static readonly ROUND_CEILING : 2-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3517,6 +3760,8 @@ Rounds towards zero
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-static readonly ROUND_DOWN : 1--><!--Device-Decimal-static readonly ROUND_DOWN : 1-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## ROUND_FLOOR
@@ -3532,6 +3777,8 @@ Rounds towards -Infinity
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Decimal-static readonly ROUND_FLOOR : 3--><!--Device-Decimal-static readonly ROUND_FLOOR : 3-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3549,6 +3796,8 @@ Rounds towards nearest neighbour. If equidistant, rounds towards Infinity
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-static readonly ROUND_HALF_CEILING : 7--><!--Device-Decimal-static readonly ROUND_HALF_CEILING : 7-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## ROUND_HALF_DOWN
@@ -3564,6 +3813,8 @@ Rounds towards nearest neighbour. If equidistant, rounds towards zero
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Decimal-static readonly ROUND_HALF_DOWN : 5--><!--Device-Decimal-static readonly ROUND_HALF_DOWN : 5-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3581,6 +3832,8 @@ Rounds towards nearest neighbour. If equidistant, rounds towards even neighbour
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-static readonly ROUND_HALF_EVEN : 6--><!--Device-Decimal-static readonly ROUND_HALF_EVEN : 6-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## ROUND_HALF_FLOOR
@@ -3596,6 +3849,8 @@ Rounds towards nearest neighbour. If equidistant, rounds towards -Infinity
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Decimal-static readonly ROUND_HALF_FLOOR : 8--><!--Device-Decimal-static readonly ROUND_HALF_FLOOR : 8-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -3613,6 +3868,8 @@ Rounds towards nearest neighbour. If equidistant, rounds away from zero
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-static readonly ROUND_HALF_UP : 4--><!--Device-Decimal-static readonly ROUND_HALF_UP : 4-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## ROUND_UP
@@ -3629,6 +3886,8 @@ Rounds away from zero
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Decimal-static readonly ROUND_UP : 0--><!--Device-Decimal-static readonly ROUND_UP : 0-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## s
@@ -3643,6 +3902,8 @@ The number of decimal sign.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Decimal-get s(): double--><!--Device-Decimal-get s(): double-End-->
 
 **System capability:** SystemCapability.Utils.Lang

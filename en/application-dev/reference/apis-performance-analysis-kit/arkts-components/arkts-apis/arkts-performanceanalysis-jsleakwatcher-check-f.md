@@ -16,6 +16,8 @@ Obtains the list of objects that are leaked and registered using **jsLeakWatcher
 
 **Since:** 12
 
+<!--Device-jsLeakWatcher-function check(): string--><!--Device-jsLeakWatcher-function check(): string-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Return value:**

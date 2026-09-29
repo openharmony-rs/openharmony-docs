@@ -8,6 +8,8 @@ Describes enroll engine config. @typedef EnrollEngineConfig
 
 **Since:** 10
 
+<!--Device-intelligentVoice-interface EnrollEngineConfig--><!--Device-intelligentVoice-interface EnrollEngineConfig-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Language that enroll engine supports.
 
 **Since:** 10
 
+<!--Device-EnrollEngineConfig-language: string--><!--Device-EnrollEngineConfig-language: string-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Region that enroll engine supports.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-EnrollEngineConfig-region: string--><!--Device-EnrollEngineConfig-region: string-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

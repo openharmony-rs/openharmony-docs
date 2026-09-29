@@ -18,6 +18,8 @@ This API obtains the sandbox application configuration, which can be used to rea
 
 **Since:** 11
 
+<!--Device-dlpPermission-function getSandboxAppConfig(): Promise<string>--><!--Device-dlpPermission-function getSandboxAppConfig(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**

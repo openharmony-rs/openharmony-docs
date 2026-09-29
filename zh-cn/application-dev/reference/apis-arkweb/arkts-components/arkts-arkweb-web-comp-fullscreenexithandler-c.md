@@ -8,6 +8,8 @@ FullScreenExitHandler 是 Web 组件提供的全屏退出处理类，用于响�
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class FullScreenExitHandler--><!--Device-unnamed-declare class FullScreenExitHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -22,6 +24,8 @@ FullScreenExitHandler的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FullScreenExitHandler-constructor()--><!--Device-FullScreenExitHandler-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## exitFullScreen
@@ -35,5 +39,7 @@ exitFullScreen(): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FullScreenExitHandler-exitFullScreen(): void--><!--Device-FullScreenExitHandler-exitFullScreen(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

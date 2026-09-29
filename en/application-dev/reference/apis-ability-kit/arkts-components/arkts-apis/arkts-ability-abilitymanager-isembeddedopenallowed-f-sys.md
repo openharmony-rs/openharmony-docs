@@ -18,6 +18,8 @@ Checks whether the [EmbeddableUIAbility](arkts-ability-app-ability-embeddableuia
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean>--><!--Device-abilityManager-function isEmbeddedOpenAllowed(context: Context, appId: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

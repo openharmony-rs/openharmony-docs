@@ -8,6 +8,8 @@ Defines the file name filtering interface used by listFileExt().
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface FileFilter--><!--Device-unnamed-export interface FileFilter-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Note: This function is frequently invoked. Avoid time-consuming operations, such
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileFilter-filter(name: string): boolean--><!--Device-FileFilter-filter(name: string): boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

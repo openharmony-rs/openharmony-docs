@@ -15,6 +15,8 @@ Underlying data structure of the ArkTS TypedArray ([Int8Array](arkts-arkts-colle
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class ArrayBuffer--><!--Device-collections-class ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -34,6 +36,8 @@ A constructor used to create an ArkTS ArrayBuffer of a given length.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ArrayBuffer-constructor(byteLength: number)--><!--Device-ArrayBuffer-constructor(byteLength: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -60,6 +64,8 @@ Selects a range of elements in this ArkTS ArrayBuffer to create an ArkTS ArrayBu
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ArrayBuffer-slice(begin: number, end?: number): ArrayBuffer--><!--Device-ArrayBuffer-slice(begin: number, end?: number): ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -96,5 +102,7 @@ Number of bytes occupied by the buffer.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ArrayBuffer-readonly byteLength: number--><!--Device-ArrayBuffer-readonly byteLength: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

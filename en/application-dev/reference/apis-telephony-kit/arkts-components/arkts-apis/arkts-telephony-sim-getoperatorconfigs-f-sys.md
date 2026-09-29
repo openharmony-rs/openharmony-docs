@@ -18,6 +18,8 @@ Obtains the operatorconfigs of the SIM card in a specified slot.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-sim-function getOperatorConfigs(slotId: int, callback: AsyncCallback<Array<OperatorConfig>>): void--><!--Device-sim-function getOperatorConfigs(slotId: int, callback: AsyncCallback<Array<OperatorConfig>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Obtains the operatorconfigs of the SIM card in a specified slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-sim-function getOperatorConfigs(slotId: int): Promise<Array<OperatorConfig>>--><!--Device-sim-function getOperatorConfigs(slotId: int): Promise<Array<OperatorConfig>>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

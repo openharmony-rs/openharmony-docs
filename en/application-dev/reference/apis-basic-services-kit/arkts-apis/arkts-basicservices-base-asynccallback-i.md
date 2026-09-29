@@ -14,6 +14,8 @@ The type of the asynchronous return value is defined by the developer.
 
 **Since:** 6
 
+<!--Device-unnamed-export interface AsyncCallback<T, E = void>--><!--Device-unnamed-export interface AsyncCallback<T, E = void>-End-->
+
 **System capability:** SystemCapability.Base
 
 ## Modules to Import
@@ -33,6 +35,8 @@ import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.Basi
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-AsyncCallback-(err: BusinessError<E>, data: T): void--><!--Device-AsyncCallback-(err: BusinessError<E>, data: T): void-End-->
 
 **System capability:** SystemCapability.Base
 

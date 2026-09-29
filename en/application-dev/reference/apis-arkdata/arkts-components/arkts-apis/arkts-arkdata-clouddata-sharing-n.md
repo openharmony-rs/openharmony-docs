@@ -8,6 +8,8 @@ Provides APIs for device-cloud data sharing, including sharing or unsharing data
 
 **Since:** 11
 
+<!--Device-cloudData-export namespace sharing--><!--Device-cloudData-export namespace sharing-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.

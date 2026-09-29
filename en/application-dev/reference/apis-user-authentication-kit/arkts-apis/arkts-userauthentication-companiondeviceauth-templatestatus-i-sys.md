@@ -8,6 +8,8 @@ Describes the complete status information about a registered companion device au
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-interface TemplateStatus--><!--Device-companionDeviceAuth-interface TemplateStatus-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Template adding time. Timestamp when the template is created. The value is a Uni
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TemplateStatus-addedTime: Date--><!--Device-TemplateStatus-addedTime: Date-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Device status information. It specifies the current status of the companion devi
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TemplateStatus-deviceStatus: DeviceStatus--><!--Device-TemplateStatus-deviceStatus: DeviceStatus-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -68,6 +74,8 @@ List of supported service IDs. It specifies the service scenarios where the temp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TemplateStatus-enabledBusinessIds: int[]--><!--Device-TemplateStatus-enabledBusinessIds: int[]-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Data confirmation status. The value **true** indicates that the data is real-tim
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TemplateStatus-isConfirmed: boolean--><!--Device-TemplateStatus-isConfirmed: boolean-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -104,6 +114,8 @@ Template validity. The value **true** indicates that the template is valid and c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TemplateStatus-isValid: boolean--><!--Device-TemplateStatus-isValid: boolean-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -122,6 +134,8 @@ Local user ID. It specifies the user ID associated with the template on the prim
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TemplateStatus-localUserId: int--><!--Device-TemplateStatus-localUserId: int-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -139,6 +153,8 @@ Template ID. Unique ID of a companion device authentication template, which is u
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TemplateStatus-templateId: Uint8Array--><!--Device-TemplateStatus-templateId: Uint8Array-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

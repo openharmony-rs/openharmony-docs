@@ -18,6 +18,8 @@ Checks whether an application is enabled based on a given bundle name. This API 
 
 **Deprecated since:** 9
 
+<!--Device-bundle-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void--><!--Device-bundle-function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **Parameters:**
@@ -57,6 +59,8 @@ Checks whether an application is enabled based on a given bundle name. This API 
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-bundle-function isApplicationEnabled(bundleName: string): Promise<boolean>--><!--Device-bundle-function isApplicationEnabled(bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

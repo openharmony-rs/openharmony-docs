@@ -20,6 +20,8 @@ Obtains the authentication policy used to unlock the screen.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-screenLock-function getUnlockPolicy(userId: int): UnlockPolicy--><!--Device-screenLock-function getUnlockPolicy(userId: int): UnlockPolicy-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

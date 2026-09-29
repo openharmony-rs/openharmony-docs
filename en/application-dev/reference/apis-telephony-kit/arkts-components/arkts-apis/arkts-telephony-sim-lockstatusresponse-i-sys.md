@@ -8,6 +8,8 @@ Defines the personalized lock information.
 
 **Since:** 7
 
+<!--Device-sim-export interface LockStatusResponse--><!--Device-sim-export interface LockStatusResponse-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the operations remaining.
 
 **Since:** 7
 
+<!--Device-LockStatusResponse-remain?: int--><!--Device-LockStatusResponse-remain?: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates the current operation result.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-LockStatusResponse-result: int--><!--Device-LockStatusResponse-result: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

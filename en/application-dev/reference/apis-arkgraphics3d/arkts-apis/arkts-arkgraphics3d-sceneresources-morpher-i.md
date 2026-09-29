@@ -10,6 +10,8 @@ Defines the deformation of 3D models by adjusting the weights of different defor
 
 **Since:** 20
 
+<!--Device-unnamed-export interface Morpher--><!--Device-unnamed-export interface Morpher-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## targets
@@ -23,5 +25,7 @@ Used to store the names and weights of deformation targets. The weight value is 
 **Type:** Record&lt;string, number&gt;
 
 **Since:** 20
+
+<!--Device-Morpher-readonly targets: Record<string, double>--><!--Device-Morpher-readonly targets: Record<string, double>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

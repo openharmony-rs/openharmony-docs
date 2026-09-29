@@ -14,6 +14,8 @@ Represents the type of callback for the end of a component's transition animatio
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare type TransitionFinishCallback = (transitionIn: boolean) => void--><!--Device-unnamed-declare type TransitionFinishCallback = (transitionIn: boolean) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -8,6 +8,8 @@ Provides information about an accessibility application.
 
 **Since:** 7
 
+<!--Device-accessibility-interface AccessibilityAbilityInfo--><!--Device-accessibility-interface AccessibilityAbilityInfo-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## Modules to Import
@@ -29,9 +31,11 @@ Accessibility application type.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly abilityTypes: Array<AbilityType>--><!--Device-AccessibilityAbilityInfo-readonly abilityTypes: Array<AbilityType>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -47,9 +51,11 @@ Bundle name.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly bundleName: string--><!--Device-AccessibilityAbilityInfo-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -65,9 +71,11 @@ Capabilities list of the accessibility application.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly capabilities: Array<Capability>--><!--Device-AccessibilityAbilityInfo-readonly capabilities: Array<Capability>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -83,9 +91,11 @@ Description of the accessibility application.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly description: string--><!--Device-AccessibilityAbilityInfo-readonly description: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -101,9 +111,11 @@ List of events that the accessibility application focuses on.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly eventTypes: Array<EventType>--><!--Device-AccessibilityAbilityInfo-readonly eventTypes: Array<EventType>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -119,9 +131,11 @@ Ability ID.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly id: string--><!--Device-AccessibilityAbilityInfo-readonly id: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -137,9 +151,11 @@ Name of the accessibility app in the extended service list.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly label: string--><!--Device-AccessibilityAbilityInfo-readonly label: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -155,9 +171,11 @@ Ability name.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly name: string--><!--Device-AccessibilityAbilityInfo-readonly name: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -173,9 +191,11 @@ Whether the auxiliary application is hidden in the list of installed extended se
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly needHide: boolean--><!--Device-AccessibilityAbilityInfo-readonly needHide: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -191,8 +211,10 @@ Name of the target bundle.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-AccessibilityAbilityInfo-readonly targetBundleNames: Array<string>--><!--Device-AccessibilityAbilityInfo-readonly targetBundleNames: Array<string>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core

@@ -59,6 +59,8 @@ from(arrayLike: ArrayLike<number>): Int32Array
 
 Creates an array from an array-like or iterable object.
 
+<!--Device-Int32ArrayConstructor-from(arrayLike: ArrayLike<number>): Int32Array--><!--Device-Int32ArrayConstructor-from(arrayLike: ArrayLike<number>): Int32Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -74,6 +76,8 @@ from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: a
 ```
 
 Creates an array from an array-like or iterable object.
+
+<!--Device-Int32ArrayConstructor-from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Int32Array--><!--Device-Int32ArrayConstructor-from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Int32Array-End-->
 
 **Parameters:**
 
@@ -91,6 +95,8 @@ of(...items: number[]): Int32Array
 
 Returns a new array from a set of elements.
 
+<!--Device-Int32ArrayConstructor-of(...items: number[]): Int32Array--><!--Device-Int32ArrayConstructor-of(...items: number[]): Int32Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -106,6 +112,8 @@ readonly BYTES_PER_ELEMENT: number
 The size in bytes of each element in the array.
 
 **Type:** number
+
+<!--Device-Int32ArrayConstructor-readonly BYTES_PER_ELEMENT: number--><!--Device-Int32ArrayConstructor-readonly BYTES_PER_ELEMENT: number-End-->
 
 ## prototype
 

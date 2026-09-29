@@ -18,6 +18,8 @@ Create a video processing instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-videoProcessing-function createVideoProcessor(): VideoProcessor--><!--Device-videoProcessing-function createVideoProcessor(): VideoProcessor-End-->
+
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
 **Return value:**

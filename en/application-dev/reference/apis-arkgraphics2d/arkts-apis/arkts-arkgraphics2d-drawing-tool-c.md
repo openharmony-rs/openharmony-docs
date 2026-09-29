@@ -16,6 +16,8 @@ A utility class that provides only static methods to convert data structs define
 
 **Since:** 15
 
+<!--Device-drawing-class Tool--><!--Device-drawing-class Tool-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -33,6 +35,8 @@ static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color
 Converts a color value of the **ResourceColor** type to a **common2D.Color** object.
 
 **Since:** 15
+
+<!--Device-Tool-static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color--><!--Device-Tool-static makeColorFromResourceColor(resourceColor: ResourceColor): common2D.Color-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

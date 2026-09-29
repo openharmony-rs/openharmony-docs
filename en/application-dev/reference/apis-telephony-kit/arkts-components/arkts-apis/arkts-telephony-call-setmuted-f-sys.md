@@ -16,6 +16,8 @@ Sets call muting. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
+<!--Device-call-function setMuted(callback: AsyncCallback<void>): void--><!--Device-call-function setMuted(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ function setMuted(): Promise<void>
 Sets call muting. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-call-function setMuted(): Promise<void>--><!--Device-call-function setMuted(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

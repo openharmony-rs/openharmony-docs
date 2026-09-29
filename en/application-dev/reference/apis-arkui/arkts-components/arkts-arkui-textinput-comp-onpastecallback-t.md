@@ -4,7 +4,7 @@
 declare type OnPasteCallback = (content: string, event: PasteEvent) => void
 ```
 
-Defines the callback used to return the pasted text content.
+Paste callback.
 
 **Since:** 18
 
@@ -12,11 +12,13 @@ Defines the callback used to return the pasted text content.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnPasteCallback = (content: string, event: PasteEvent) => void--><!--Device-unnamed-declare type OnPasteCallback = (content: string, event: PasteEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| content | string | Yes | Text to be pasted. |
-| event | [PasteEvent](arkts-arkui-richeditor-comp-pasteevent-i.md) | Yes | Custom paste event. |
+| content | string | Yes | Pasted text content. |
+| event | [PasteEvent](arkts-arkui-richeditor-comp-pasteevent-i.md) | Yes | User-defined paste event. |

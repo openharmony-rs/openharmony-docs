@@ -18,6 +18,8 @@ Set the index number of the main SIM card slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-radio-function setPrimarySlotId(slotId: int, callback: AsyncCallback<void>): void--><!--Device-radio-function setPrimarySlotId(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Set the index number of the main SIM card slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-radio-function setPrimarySlotId(slotId: int): Promise<void>--><!--Device-radio-function setPrimarySlotId(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

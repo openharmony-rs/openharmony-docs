@@ -20,6 +20,8 @@ Sets the lock screen wallpaper. This API uses a promise to return the result. En
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>--><!--Device-deviceSettings-function setUnlockWallpaper(admin: Want, fd: number):  Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

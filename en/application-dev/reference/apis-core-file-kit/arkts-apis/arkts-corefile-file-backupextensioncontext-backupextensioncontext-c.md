@@ -12,6 +12,8 @@ The context of an ability or an application. It allows access to application-spe
 
 **Since:** 12
 
+<!--Device-unnamed-declare class BackupExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class BackupExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Indicates backup dir.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionContext-readonly backupDir: string--><!--Device-BackupExtensionContext-readonly backupDir: string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup

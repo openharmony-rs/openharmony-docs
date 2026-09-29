@@ -18,7 +18,9 @@ Queries the lockout state of the specified authentication type. This API uses a 
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-userAuth-function getAuthLockState(authType: UserAuthType): Promise<AuthLockState>--><!--Device-userAuth-function getAuthLockState(authType: UserAuthType): Promise<AuthLockState>-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

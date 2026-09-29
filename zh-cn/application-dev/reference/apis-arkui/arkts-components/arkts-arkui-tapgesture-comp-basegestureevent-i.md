@@ -10,6 +10,8 @@ interface BaseGestureEvent extends BaseEvent
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface BaseGestureEvent extends BaseEvent--><!--Device-unnamed-interface BaseGestureEvent extends BaseEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerInfos
@@ -32,6 +34,8 @@ fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-BaseGestureEvent-fingerInfos?: FingerInfo[]--><!--Device-BaseGestureEvent-fingerInfos?: FingerInfo[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fingerList
@@ -49,5 +53,7 @@ fingerList: FingerInfo[]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BaseGestureEvent-fingerList: FingerInfo[]--><!--Device-BaseGestureEvent-fingerList: FingerInfo[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

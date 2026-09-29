@@ -23,6 +23,8 @@ Ranging state updates are notified via onRangingStateChange callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function startRanging(params: RangingParams, callback: Callback<RangingResult>): void--><!--Device-ranging-function startRanging(params: RangingParams, callback: Callback<RangingResult>): void-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Parameters:**

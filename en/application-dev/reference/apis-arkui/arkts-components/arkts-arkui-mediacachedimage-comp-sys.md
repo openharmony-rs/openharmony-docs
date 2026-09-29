@@ -14,6 +14,8 @@ Image resource to be obtained.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MediaCachedImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource): MediaCachedImageAttribute--><!--Device-MediaCachedImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource): MediaCachedImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

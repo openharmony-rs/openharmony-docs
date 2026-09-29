@@ -8,6 +8,8 @@ Describes the menu item button in the action menu.
 
 **Since:** 9
 
+<!--Device-promptAction-interface Button--><!--Device-promptAction-interface Button-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Text color of the button.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Button-color: string | Resource--><!--Device-Button-color: string | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primary
@@ -50,6 +54,8 @@ Whether the button responds to the **Enter** key by default when the dialog box 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Button-primary?: boolean--><!--Device-Button-primary?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -67,5 +73,7 @@ Button text.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Button-text: string | Resource--><!--Device-Button-text: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

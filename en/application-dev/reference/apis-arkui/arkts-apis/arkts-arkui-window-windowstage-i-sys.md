@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [onWindowStageCreate()](.
 
 **Since:** 9
 
+<!--Device-window-interface WindowStage--><!--Device-window-interface WindowStage-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ When window decorators are disabled and the main window transitions into full-sc
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStage-disableWindowDecor(): void--><!--Device-WindowStage-disableWindowDecor(): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -73,6 +77,8 @@ Sets the image displayed in the multitasking view. This API uses a promise to re
 **Since:** 19
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStage-setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>--><!--Device-WindowStage-setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -138,6 +144,8 @@ Sets whether to display the window of the application on the lock screen.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStage-setShowOnLockScreen(showOnLockScreen: boolean): void--><!--Device-WindowStage-setShowOnLockScreen(showOnLockScreen: boolean): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

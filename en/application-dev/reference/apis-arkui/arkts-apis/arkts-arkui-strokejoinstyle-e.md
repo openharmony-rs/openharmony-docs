@@ -4,9 +4,11 @@
 declare enum StrokeJoinStyle
 ```
 
-An enumeration that defines the line corner style, i.e., the style of the brush when drawing a polyline at the corners of the line segments.
+Defines the style of line corners, that is, the brush style at the corners of line segments when drawing polylines.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare enum StrokeJoinStyle--><!--Device-unnamed-declare enum StrokeJoinStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ An enumeration that defines the line corner style, i.e., the style of the brush 
 MITER_JOIN = 0
 ```
 
-The corner type is an acute angle.
+Sharp corner.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-StrokeJoinStyle-MITER_JOIN = 0--><!--Device-StrokeJoinStyle-MITER_JOIN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ The corner type is an acute angle.
 ROUND_JOIN = 1
 ```
 
-The corner type is round.
+Rounded corner.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-StrokeJoinStyle-ROUND_JOIN = 1--><!--Device-StrokeJoinStyle-ROUND_JOIN = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,12 +54,14 @@ The corner type is round.
 BEVEL_JOIN = 2
 ```
 
-The corner type is flat.
+Beveled corner.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-StrokeJoinStyle-BEVEL_JOIN = 2--><!--Device-StrokeJoinStyle-BEVEL_JOIN = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

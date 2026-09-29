@@ -8,6 +8,8 @@ Enumerates the status code returned by the batch operations of shared configurat
 
 **Since:** 20
 
+<!--Device-dataShare-enum DataProxyErrorCode--><!--Device-dataShare-enum DataProxyErrorCode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## SUCCESS
@@ -21,6 +23,8 @@ The operation is successful.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyErrorCode-SUCCESS = 0--><!--Device-DataProxyErrorCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -36,6 +40,8 @@ The URI does not exist or the URI is not subscribed to.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyErrorCode-URI_NOT_EXIST = 1--><!--Device-DataProxyErrorCode-URI_NOT_EXIST = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## NO_PERMISSION
@@ -50,6 +56,8 @@ No permission to perform this operation on the URI.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyErrorCode-NO_PERMISSION = 2--><!--Device-DataProxyErrorCode-NO_PERMISSION = 2-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## OVER_LIMIT
@@ -63,5 +71,7 @@ The number of configurations published by the current application exceeds the up
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyErrorCode-OVER_LIMIT = 3--><!--Device-DataProxyErrorCode-OVER_LIMIT = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer

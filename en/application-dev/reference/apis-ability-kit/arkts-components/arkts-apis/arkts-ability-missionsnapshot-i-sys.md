@@ -8,6 +8,8 @@ The module defines the snapshot of a mission. The snapshot can be obtained throu
 
 **Since:** 8
 
+<!--Device-unnamed-export interface MissionSnapshot--><!--Device-unnamed-export interface MissionSnapshot-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Ability information of the mission.
 
 **Since:** 8
 
+<!--Device-MissionSnapshot-ability: ElementName--><!--Device-MissionSnapshot-ability: ElementName-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Snapshot of the mission.
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
 **Since:** 8
+
+<!--Device-MissionSnapshot-snapshot: image.PixelMap--><!--Device-MissionSnapshot-snapshot: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

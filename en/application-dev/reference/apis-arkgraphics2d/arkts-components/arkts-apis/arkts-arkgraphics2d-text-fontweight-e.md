@@ -8,6 +8,8 @@ Enumerates the font weights.
 
 **Since:** 12
 
+<!--Device-text-enum FontWeight--><!--Device-text-enum FontWeight-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## W100
@@ -20,7 +22,9 @@ Font weight W100.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W100 = 0--><!--Device-FontWeight-W100 = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -34,7 +38,9 @@ Font weight W200.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W200 = 1--><!--Device-FontWeight-W200 = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -48,7 +54,9 @@ Font weight W300.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W300 = 2--><!--Device-FontWeight-W300 = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,7 +70,9 @@ Font weight W400.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W400 = 3--><!--Device-FontWeight-W400 = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -76,7 +86,9 @@ Font weight W500.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W500 = 4--><!--Device-FontWeight-W500 = 4-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -90,7 +102,9 @@ Font weight W600.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W600 = 5--><!--Device-FontWeight-W600 = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -104,7 +118,9 @@ Font weight W700.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W700 = 6--><!--Device-FontWeight-W700 = 6-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -118,7 +134,9 @@ Font weight W800.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W800 = 7--><!--Device-FontWeight-W800 = 7-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -132,6 +150,8 @@ Font weight W900.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontWeight-W900 = 8--><!--Device-FontWeight-W900 = 8-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

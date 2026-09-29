@@ -12,6 +12,8 @@ Provides APIs to obtain the KV store result sets, and query and move the data re
 
 **Substitutes:** [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)
 
+<!--Device-distributedData-interface KvStoreResultSet--><!--Device-distributedData-interface KvStoreResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Obtains the total number of rows in the result set.
 **Deprecated since:** 9
 
 **Substitutes:** getCount
+
+<!--Device-KvStoreResultSet-getCount(): number--><!--Device-KvStoreResultSet-getCount(): number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -74,6 +78,8 @@ Obtains the KV pair from the current position.
 
 **Substitutes:** getEntry
 
+<!--Device-KvStoreResultSet-getEntry(): Entry--><!--Device-KvStoreResultSet-getEntry(): Entry-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -114,6 +120,8 @@ Obtains the current data read position (position from which data is read) in the
 **Deprecated since:** 9
 
 **Substitutes:** getPosition
+
+<!--Device-KvStoreResultSet-getPosition(): number--><!--Device-KvStoreResultSet-getPosition(): number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -156,6 +164,8 @@ Checks whether the data read position is after the last row.
 
 **Substitutes:** isAfterLast
 
+<!--Device-KvStoreResultSet-isAfterLast(): boolean--><!--Device-KvStoreResultSet-isAfterLast(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -196,6 +206,8 @@ Checks whether the data read position is before the first row.
 **Deprecated since:** 9
 
 **Substitutes:** isBeforeFirst
+
+<!--Device-KvStoreResultSet-isBeforeFirst(): boolean--><!--Device-KvStoreResultSet-isBeforeFirst(): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -238,6 +250,8 @@ Checks whether the data read position is the first row.
 
 **Substitutes:** isFirst
 
+<!--Device-KvStoreResultSet-isFirst(): boolean--><!--Device-KvStoreResultSet-isFirst(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -279,6 +293,8 @@ Checks whether the data read position is the last row.
 
 **Substitutes:** isLast
 
+<!--Device-KvStoreResultSet-isLast(): boolean--><!--Device-KvStoreResultSet-isLast(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -319,6 +335,8 @@ Moves the data read position with the specified offset from the current position
 **Deprecated since:** 9
 
 **Substitutes:** move
+
+<!--Device-KvStoreResultSet-move(offset: number): boolean--><!--Device-KvStoreResultSet-move(offset: number): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -367,6 +385,8 @@ Moves the data read position to the first row. If the result set is empty, **fal
 
 **Substitutes:** moveToFirst
 
+<!--Device-KvStoreResultSet-moveToFirst(): boolean--><!--Device-KvStoreResultSet-moveToFirst(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -407,6 +427,8 @@ Moves the data read position to the last row. If the result set is empty, **fals
 **Deprecated since:** 9
 
 **Substitutes:** moveToLast
+
+<!--Device-KvStoreResultSet-moveToLast(): boolean--><!--Device-KvStoreResultSet-moveToLast(): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -449,6 +471,8 @@ Moves the data read position to the next row. If the result set is empty, **fals
 
 **Substitutes:** moveToNext
 
+<!--Device-KvStoreResultSet-moveToNext(): boolean--><!--Device-KvStoreResultSet-moveToNext(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -489,6 +513,8 @@ Moves the data read position from 0 to an absolute position.
 **Deprecated since:** 9
 
 **Substitutes:** moveToPosition
+
+<!--Device-KvStoreResultSet-moveToPosition(position: number): boolean--><!--Device-KvStoreResultSet-moveToPosition(position: number): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -536,6 +562,8 @@ Moves the data read position to the previous row. If the result set is empty, **
 **Deprecated since:** 9
 
 **Substitutes:** moveToPrevious
+
+<!--Device-KvStoreResultSet-moveToPrevious(): boolean--><!--Device-KvStoreResultSet-moveToPrevious(): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

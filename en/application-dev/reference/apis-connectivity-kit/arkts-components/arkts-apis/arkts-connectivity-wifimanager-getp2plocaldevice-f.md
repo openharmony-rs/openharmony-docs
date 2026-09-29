@@ -18,6 +18,8 @@ Obtain the information about own device information. DeviceAddress in the return
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getP2pLocalDevice(): Promise<WifiP2pDevice>--><!--Device-wifiManager-function getP2pLocalDevice(): Promise<WifiP2pDevice>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**
@@ -66,6 +68,8 @@ Obtain the information about own device information. DeviceAddress in the return
 **Since:** 11
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function getP2pLocalDevice(callback: AsyncCallback<WifiP2pDevice>): void--><!--Device-wifiManager-function getP2pLocalDevice(callback: AsyncCallback<WifiP2pDevice>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 

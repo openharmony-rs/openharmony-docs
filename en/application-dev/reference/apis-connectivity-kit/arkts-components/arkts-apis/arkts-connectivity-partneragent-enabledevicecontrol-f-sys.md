@@ -20,6 +20,8 @@ Enables device control for a bound device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-partnerAgent-function enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise<void>--><!--Device-partnerAgent-function enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **System API:** This is a system API.

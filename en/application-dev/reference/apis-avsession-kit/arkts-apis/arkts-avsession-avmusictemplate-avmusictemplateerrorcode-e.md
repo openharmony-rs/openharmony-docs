@@ -10,6 +10,8 @@ Enumeration ErrorCode types, returns in BusinessError.code.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-enum AVMusicTemplateErrorCode--><!--Device-avMusicTemplate-enum AVMusicTemplateErrorCode-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_FAILED
@@ -23,6 +25,8 @@ Failed to create the AVMusicTemplate.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_FAILED = 35000001--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_FAILED = 35000001-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -38,6 +42,8 @@ Failed to create the AVMusicTemplate controller.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_CONTROLLER_FAILED = 35000002--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CREATE_AV_MUSIC_TEMPLATE_CONTROLLER_FAILED = 35000002-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_TEMPLATE_LISTENER_NO_EXIT
@@ -51,6 +57,8 @@ Template listener not registered.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_TEMPLATE_LISTENER_NO_EXIT = 35000003--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_TEMPLATE_LISTENER_NO_EXIT = 35000003-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,6 +74,8 @@ Controller callback not registered.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_CALLBACK_NO_EXIT = 35000004--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_CALLBACK_NO_EXIT = 35000004-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_AV_MUSIC_TEMPLATE_NOT_EXIST
@@ -79,6 +89,8 @@ AVMusicTemplate does not exist.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_AV_MUSIC_TEMPLATE_NOT_EXIST = 35000005--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_AV_MUSIC_TEMPLATE_NOT_EXIST = 35000005-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -94,6 +106,8 @@ AVMusicTemplateController does not exist.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_NOT_EXIST = 35000006--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_NOT_EXIST = 35000006-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_CONTROLLER_IS_EXIST
@@ -107,6 +121,8 @@ AVMusicTemplateController already exists.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_IS_EXIST = 35000007--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_CONTROLLER_IS_EXIST = 35000007-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -122,6 +138,8 @@ AVMusicTemplate Manager services do not exist.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_SERVICE_NOT_EXIST = 35000008--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_SERVICE_NOT_EXIST = 35000008-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_SERVICE_EXCEPTION
@@ -135,6 +153,8 @@ AVMusicTemplate Manager services exception.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_SERVICE_EXCEPTION = 35000009--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_SERVICE_EXCEPTION = 35000009-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -150,6 +170,8 @@ The data exceeds the maximum allowable transmission capacity.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_EXCEED_MAX_DATA_SIZE = 35000010--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_EXCEED_MAX_DATA_SIZE = 35000010-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_WRITE_RESULT_EXCEPTION
@@ -164,6 +186,8 @@ The data write error, data is invalid.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_WRITE_RESULT_EXCEPTION = 35000011--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_WRITE_RESULT_EXCEPTION = 35000011-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## ERR_CODE_AV_MUSIC_TEMPLATE_ERROR
@@ -177,5 +201,7 @@ AVMusicTemplate error.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMusicTemplateErrorCode-ERR_CODE_AV_MUSIC_TEMPLATE_ERROR = 35000012--><!--Device-AVMusicTemplateErrorCode-ERR_CODE_AV_MUSIC_TEMPLATE_ERROR = 35000012-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

@@ -8,6 +8,8 @@ Abstract base class for soft shadow configuration. It defines the interface for 
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export declare abstract class SoftShadowConfig--><!--Device-unnamed-export declare abstract class SoftShadowConfig-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## shadowAlgorithmType
@@ -23,5 +25,7 @@ The shadow algorithm type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SoftShadowConfig-get shadowAlgorithmType(): ShadowAlgorithmType--><!--Device-SoftShadowConfig-get shadowAlgorithmType(): ShadowAlgorithmType-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

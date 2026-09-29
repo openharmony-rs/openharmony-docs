@@ -24,6 +24,8 @@ Defines a touch target consisting of an input tool type, touch position, and siz
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface ResponseRegion--><!--Device-unnamed-declare interface ResponseRegion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -45,6 +47,8 @@ Default value: **LengthMetrics.percent(1)**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResponseRegion-height?: LengthMetrics | string--><!--Device-ResponseRegion-height?: LengthMetrics | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ Default value: **ResponseRegionSupportedTool.ALL**
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ResponseRegion-tool?: ResponseRegionSupportedTool--><!--Device-ResponseRegion-tool?: ResponseRegionSupportedTool-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -89,6 +95,8 @@ Default value: **LengthMetrics.percent(1)**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResponseRegion-width?: LengthMetrics | string--><!--Device-ResponseRegion-width?: LengthMetrics | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ Default value: **LengthMetrics.vp(0)**
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-ResponseRegion-x?: LengthMetrics--><!--Device-ResponseRegion-x?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -133,5 +143,7 @@ Default value: **LengthMetrics.vp(0)**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResponseRegion-y?: LengthMetrics--><!--Device-ResponseRegion-y?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

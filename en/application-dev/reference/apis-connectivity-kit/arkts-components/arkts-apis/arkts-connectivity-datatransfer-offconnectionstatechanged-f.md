@@ -18,6 +18,8 @@ Unsubscribes from the connection state change event of the port channel. This AP
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataTransfer-function offConnectionStateChanged(callback?: Callback<ConnectionResult>): void--><!--Device-dataTransfer-function offConnectionStateChanged(callback?: Callback<ConnectionResult>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

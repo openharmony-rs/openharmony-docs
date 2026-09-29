@@ -22,6 +22,8 @@ Unsubscribe location changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function off(type: 'locationChange', callback?: Callback<Location>): void--><!--Device-geolocation-function off(type: 'locationChange', callback?: Callback<Location>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -60,6 +62,8 @@ Unsubscribe location switch changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function off(type: 'locationServiceState', callback?: Callback<boolean>): void--><!--Device-geolocation-function off(type: 'locationServiceState', callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -96,6 +100,8 @@ Unsubscribe to cache GNSS locations update messages
 **Substitutes:** cachedGnssLocationsChange
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function off(type: 'cachedGnssLocationsReporting', callback?: Callback<Array<Location>>): void--><!--Device-geolocation-function off(type: 'cachedGnssLocationsReporting', callback?: Callback<Array<Location>>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -135,6 +141,8 @@ Unsubscribe gnss status changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function off(type: 'gnssStatusChange', callback?: Callback<SatelliteStatusInfo>): void--><!--Device-geolocation-function off(type: 'gnssStatusChange', callback?: Callback<SatelliteStatusInfo>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -172,6 +180,8 @@ Unsubscribe nmea message changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function off(type: 'nmeaMessageChange', callback?: Callback<string>): void--><!--Device-geolocation-function off(type: 'nmeaMessageChange', callback?: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -208,6 +218,8 @@ Remove a geofence and unsubscribe geo fence status changed
 **Substitutes:** gnssFenceStatusChange
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function off(type: 'fenceStatusChange', request: GeofenceRequest, want: WantAgent): void--><!--Device-geolocation-function off(type: 'fenceStatusChange', request: GeofenceRequest, want: WantAgent): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

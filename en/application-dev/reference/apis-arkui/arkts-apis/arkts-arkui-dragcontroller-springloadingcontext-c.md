@@ -8,6 +8,8 @@ Defines callback context information passed to applications during hover detecti
 
 **Since:** 20
 
+<!--Device-dragController-class SpringLoadingContext--><!--Device-dragController-class SpringLoadingContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Terminates subsequent hover detection. This API does not trigger CANCEL state no
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SpringLoadingContext-abort(): void--><!--Device-SpringLoadingContext-abort(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateConfiguration
@@ -45,6 +49,8 @@ Updates the hover detection configuration. This API is effective only when the h
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SpringLoadingContext-updateConfiguration(config: DragSpringLoadingConfiguration): void--><!--Device-SpringLoadingContext-updateConfiguration(config: DragSpringLoadingConfiguration): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Configuration information in the current callback. Omitted in CANCEL state; uses
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SpringLoadingContext-currentConfig?: DragSpringLoadingConfiguration--><!--Device-SpringLoadingContext-currentConfig?: DragSpringLoadingConfiguration-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentNotifySequence
@@ -87,6 +95,8 @@ Callback notification sequence number in the current hover detection cycle. The 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SpringLoadingContext-currentNotifySequence: number--><!--Device-SpringLoadingContext-currentNotifySequence: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +116,8 @@ Drag information. Omitted in CANCEL state; uses the [SpringLoadingDragInfos](ark
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SpringLoadingContext-dragInfos?: SpringLoadingDragInfos--><!--Device-SpringLoadingContext-dragInfos?: SpringLoadingDragInfos-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## state
@@ -123,5 +135,7 @@ Current state of hover detection.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SpringLoadingContext-state: DragSpringLoadingState--><!--Device-SpringLoadingContext-state: DragSpringLoadingState-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

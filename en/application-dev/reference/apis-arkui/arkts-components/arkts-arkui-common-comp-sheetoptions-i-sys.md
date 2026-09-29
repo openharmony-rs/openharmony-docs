@@ -10,6 +10,8 @@ Optional attributes of the sheet. Inherits from [BindOptions](arkts-arkui-common
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface SheetOptions extends BindOptions--><!--Device-unnamed-declare interface SheetOptions extends BindOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## blurSnapshot
@@ -28,6 +30,8 @@ Options for blur snapshot optimization of the sheet. When this property is set, 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SheetOptions-blurSnapshot?: BlurSnapshotOptions--><!--Device-SheetOptions-blurSnapshot?: BlurSnapshotOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ System material effect of the close button. Default value: **undefined**, indica
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SheetOptions-closeButtonMaterial?: SystemUiMaterial--><!--Device-SheetOptions-closeButtonMaterial?: SystemUiMaterial-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ Edge light animation mode of the sheet. Default value: EdgeLightMode.EDGELIGHT_D
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SheetOptions-edgeLightMode?: EdgeLightMode--><!--Device-SheetOptions-edgeLightMode?: EdgeLightMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ Default value: 0 vp for both the x-axis and y-axis
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SheetOptions-offset?: Position--><!--Device-SheetOptions-offset?: Position-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ Background blur effect of the title bar. Supports customizing blur parameters vi
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SheetOptions-titleBarBackgroundBlur?: SheetTitleBarBackgroundBlurOptions--><!--Device-SheetOptions-titleBarBackgroundBlur?: SheetTitleBarBackgroundBlurOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

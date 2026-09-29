@@ -17,6 +17,8 @@ Changes file permissions. This API returns the result synchronously.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function chmodSync(path: string, mode: number): void--><!--Device-unnamed-declare function chmodSync(path: string, mode: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

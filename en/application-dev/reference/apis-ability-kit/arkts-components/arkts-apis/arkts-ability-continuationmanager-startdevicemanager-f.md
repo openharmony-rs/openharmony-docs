@@ -22,6 +22,8 @@ Starts the device selection module to show the list of available devices on the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-continuationManager-function startDeviceManager(token: number, callback: AsyncCallback<void>): void--><!--Device-continuationManager-function startDeviceManager(token: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters:**
@@ -64,6 +66,8 @@ Starts the device selection module to show the list of available devices on the 
 **Substitutes:** [startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-continuationManager-function startDeviceManager(token: number, options: ContinuationExtraParams, callback: AsyncCallback<void>): void--><!--Device-continuationManager-function startDeviceManager(token: number, options: ContinuationExtraParams, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
@@ -113,6 +117,8 @@ Starts the device selection module to show the list of available devices on the 
 **Substitutes:** [startDiscovering](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#startdiscovering)(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; })
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-continuationManager-function startDeviceManager(token: number, options?: ContinuationExtraParams): Promise<void>--><!--Device-continuationManager-function startDeviceManager(token: number, options?: ContinuationExtraParams): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 

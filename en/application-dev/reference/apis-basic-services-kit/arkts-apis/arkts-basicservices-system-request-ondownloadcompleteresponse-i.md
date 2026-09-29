@@ -10,6 +10,8 @@ export interface OnDownloadCompleteResponse
 
 **Substitutes:** on
 
+<!--Device-unnamed-export interface OnDownloadCompleteResponse--><!--Device-unnamed-export interface OnDownloadCompleteResponse-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -33,5 +35,7 @@ URI of the download file.
 **Deprecated since:** 9
 
 **Substitutes:** saveas
+
+<!--Device-OnDownloadCompleteResponse-uri: string--><!--Device-OnDownloadCompleteResponse-uri: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

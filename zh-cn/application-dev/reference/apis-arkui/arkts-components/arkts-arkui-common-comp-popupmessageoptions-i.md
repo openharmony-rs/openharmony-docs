@@ -8,6 +8,8 @@ declare interface PopupMessageOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface PopupMessageOptions--><!--Device-unnamed-declare interface PopupMessageOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## font
@@ -31,6 +33,8 @@ font?: Font
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PopupMessageOptions-font?: Font--><!--Device-PopupMessageOptions-font?: Font-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textColor
@@ -48,5 +52,7 @@ textColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PopupMessageOptions-textColor?: ResourceColor--><!--Device-PopupMessageOptions-textColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

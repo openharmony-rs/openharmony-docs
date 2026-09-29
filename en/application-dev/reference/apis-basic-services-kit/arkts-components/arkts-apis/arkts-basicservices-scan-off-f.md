@@ -18,6 +18,8 @@ Unregisters a callback used to listen for the scanner discovery event. This API 
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-scan-function off(type: 'scanDeviceFound', callback?: Callback<ScannerDevice>): void--><!--Device-scan-function off(type: 'scanDeviceFound', callback?: Callback<ScannerDevice>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -58,6 +60,8 @@ Unregisters a callback used to listen for the scanner sync event. This API uses 
 **Since:** 20
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-scan-function off(type: 'scanDeviceSync', callback?: Callback<ScannerSyncDevice>): void--><!--Device-scan-function off(type: 'scanDeviceSync', callback?: Callback<ScannerSyncDevice>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

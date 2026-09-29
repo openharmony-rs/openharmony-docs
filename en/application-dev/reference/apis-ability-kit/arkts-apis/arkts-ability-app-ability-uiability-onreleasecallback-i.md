@@ -8,6 +8,8 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 
 **Since:** 9
 
+<!--Device-unnamed-export interface OnReleaseCallback--><!--Device-unnamed-export interface OnReleaseCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Defines the callback of OnRelease.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OnReleaseCallback-(msg: string): void--><!--Device-OnReleaseCallback-(msg: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

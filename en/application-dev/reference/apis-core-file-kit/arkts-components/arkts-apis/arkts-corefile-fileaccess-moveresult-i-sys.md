@@ -10,6 +10,8 @@ Represents the information returned when the move operation fails. If the operat
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-interface MoveResult--><!--Device-fileAccess-interface MoveResult-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -38,6 +40,8 @@ URI of the conflicting file. If the error is not caused by a file conflict, **de
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MoveResult-destUri: string--><!--Device-MoveResult-destUri: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -59,6 +63,8 @@ Error code. For details about the error codes, see [File Management Error Codes]
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MoveResult-errCode: number--><!--Device-MoveResult-errCode: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -82,6 +88,8 @@ Error message.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MoveResult-errMsg: string--><!--Device-MoveResult-errMsg: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -103,6 +111,8 @@ URI of the source file or directory.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MoveResult-sourceUri: string--><!--Device-MoveResult-sourceUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

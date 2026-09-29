@@ -8,6 +8,8 @@ WebviewController is the core controller for various behaviors of the **Web** co
 
 **Since:** 9
 
+<!--Device-webview-class WebviewController--><!--Device-webview-class WebviewController-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -41,6 +43,8 @@ You can use [getBackForwardEntries](#getbackforwardentries) to obtain the histor
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-accessBackward(): boolean--><!--Device-WebviewController-accessBackward(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -99,6 +103,8 @@ You can use [getBackForwardEntries](#getbackforwardentries) to obtain the histor
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-accessForward(): boolean--><!--Device-WebviewController-accessForward(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -153,6 +159,8 @@ Checks whether a specific number of steps forward or backward can be performed o
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-accessStep(step: number): boolean--><!--Device-WebviewController-accessStep(step: number): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -216,6 +224,8 @@ Adds a list of domain names that bypass intelligent tracking prevention.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): void--><!--Device-WebviewController-static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -281,6 +291,8 @@ Sets the bottom avoidance height of the visible viewport on the web page.
 > - When the height of this API is set to **0**, the web page content can be restored, and the keyboard avoidance mode is specified by [keyboardAvoidMode()](../arkts-components/arkts-arkweb-web-comp-attribute.md#keyboardavoidmode).
 
 **Since:** 20
+
+<!--Device-WebviewController-avoidVisibleViewportBottom(avoidHeight: number): void--><!--Device-WebviewController-avoidVisibleViewportBottom(avoidHeight: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -348,6 +360,8 @@ Because the previously loaded web pages are used for the operation, no page relo
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-backOrForward(step: number): void--><!--Device-WebviewController-backOrForward(step: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -404,6 +418,8 @@ Moves to the previous page based on the history stack. This API is generally use
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-backward(): void--><!--Device-WebviewController-backward(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -455,6 +471,8 @@ In an applet or web application, when the content changes significantly during p
 > - After the page is cleared, the optimization effect appears when the page is loaded for the third time.
 
 **Since:** 20
+
+<!--Device-WebviewController-static clearBlanklessLoadingCache(keys?: Array<string>) : void--><!--Device-WebviewController-static clearBlanklessLoadingCache(keys?: Array<string>) : void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -511,6 +529,8 @@ Clears the user operation corresponding to the client certificate request event 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-clearClientAuthenticationCache(): void--><!--Device-WebviewController-clearClientAuthenticationCache(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -559,6 +579,8 @@ Clears the browsing history. You are not advised to call **clearHistory()** in *
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-clearHistory(): void--><!--Device-WebviewController-clearHistory(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -606,6 +628,8 @@ Clears the IP address of a specified host after domain name resolution.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-static clearHostIP(hostName: string): void--><!--Device-WebviewController-static clearHostIP(hostName: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -670,6 +694,8 @@ Deletes all domain names from the list of domain names added through the **addIn
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static clearIntelligentTrackingPreventionBypassingList(): void--><!--Device-WebviewController-static clearIntelligentTrackingPreventionBypassingList(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -712,6 +738,8 @@ Clears the matches found through [searchAllAsync](#searchallasync).
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-clearMatches(): void--><!--Device-WebviewController-clearMatches(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -760,6 +788,8 @@ Clears the cache of prefetched resources based on the specified cache key list. 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-static clearPrefetchedResource(cacheKeyList: Array<string>): void--><!--Device-WebviewController-static clearPrefetchedResource(cacheKeyList: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -818,6 +848,8 @@ Clears all WebSchemeHandlers that are set in the application and used to interce
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static clearServiceWorkerWebSchemeHandler(): void--><!--Device-WebviewController-static clearServiceWorkerWebSchemeHandler(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -854,6 +886,8 @@ Clears the user operation corresponding to the SSL certificate error event recor
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-clearSslCache(): void--><!--Device-WebviewController-clearSslCache(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -903,6 +937,8 @@ Clears all WebSchemeHandlers set for the **Web** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-clearWebSchemeHandler(): void--><!--Device-WebviewController-clearWebSchemeHandler(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -950,6 +986,8 @@ Closes all full-screen videos on a web page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-closeAllMediaPresentations(): void--><!--Device-WebviewController-closeAllMediaPresentations(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -999,6 +1037,8 @@ Disables the camera capture of the current web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-closeCamera(): void--><!--Device-WebviewController-closeCamera(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -1035,6 +1075,8 @@ Constructs a **WebviewController** object.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-constructor(webTag?: string)--><!--Device-WebviewController-constructor(webTag?: string)-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1137,6 +1179,8 @@ Obtains the data stream of a specified web page using an asynchronous callback.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-WebviewController-createPdf(configuration: PdfConfiguration, callback: AsyncCallback<PdfData>): void--><!--Device-WebviewController-createPdf(configuration: PdfConfiguration, callback: AsyncCallback<PdfData>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1225,6 +1269,8 @@ Obtains the data stream of a specified web page using a promise.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-WebviewController-createPdf(configuration: PdfConfiguration): Promise<PdfData>--><!--Device-WebviewController-createPdf(configuration: PdfConfiguration): Promise<PdfData>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1311,6 +1357,8 @@ Creates web message ports.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>--><!--Device-WebviewController-createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1345,6 +1393,8 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 Creates a **PrintDocumentAdapter** instance to provide content for printing.
 
 **Since:** 11
+
+<!--Device-WebviewController-createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter--><!--Device-WebviewController-createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1407,6 +1457,8 @@ Grants the cross-domain request and fetch request permissions for custom protoco
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>): void--><!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1475,6 +1527,8 @@ Grants the cross-domain request and fetch request permissions for custom protoco
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: boolean): void--><!--Device-WebviewController-static customizeSchemes(schemes: Array<WebCustomScheme>, lazyInitWebEngine: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1534,6 +1588,8 @@ Deletes a JavaScript object with the specified name on the application side that
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-deleteJavaScriptRegister(name: string): void--><!--Device-WebviewController-deleteJavaScriptRegister(name: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1649,6 +1705,8 @@ Enables ad blocking.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-enableAdsBlock(enable: boolean): void--><!--Device-WebviewController-enableAdsBlock(enable: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1712,6 +1770,8 @@ Disables specific web engine capabilities by configuring security feature option
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebviewController-static enableAdvancedSecurityMode(securityParams: SecurityParams): void--><!--Device-WebviewController-static enableAdvancedSecurityMode(securityParams: SecurityParams): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1763,6 +1823,8 @@ This API must be called before [initializeWebEngine()](#initializewebengine) ini
 
 **Since:** 12
 
+<!--Device-WebviewController-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void--><!--Device-WebviewController-static enableBackForwardCache(features: BackForwardCacheSupportedFeatures): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1805,6 +1867,8 @@ Enables intelligent tracking prevention.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-enableIntelligentTrackingPrevention(enable: boolean): void--><!--Device-WebviewController-enableIntelligentTrackingPrevention(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1867,6 +1931,8 @@ After this feature is enabled, the **Web** component performs CORS preflight on 
 
 **Since:** 20
 
+<!--Device-WebviewController-static enablePrivateNetworkAccess(enable: boolean): void--><!--Device-WebviewController-static enablePrivateNetworkAccess(enable: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1914,6 +1980,8 @@ By default, this feature does not take effect. OpenHarmony provides only the mal
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-enableSafeBrowsing(enable: boolean): void--><!--Device-WebviewController-enableSafeBrowsing(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1970,6 +2038,8 @@ Enables the full drawing capability for the web page. This API works only during
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static enableWholeWebPageDrawing(): void--><!--Device-WebviewController-static enableWholeWebPageDrawing(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -2019,6 +2089,8 @@ Executes `AIPageCommand` asynchronously. This API uses a promise to return the r
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-executeAIPageCommand(command: string): Promise<string>--><!--Device-WebviewController-executeAIPageCommand(command: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2088,6 +2160,8 @@ Moves forward by one page in the history stack. Generally used together with [ac
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-forward(): void--><!--Device-WebviewController-forward(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -2134,6 +2208,8 @@ Obtains the current ArkWeb kernel version.
 
 **Since:** 20
 
+<!--Device-WebviewController-static getActiveWebEngineVersion(): ArkWebEngineVersion--><!--Device-WebviewController-static getActiveWebEngineVersion(): ArkWebEngineVersion-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -2155,6 +2231,8 @@ getAttachState(): ControllerAttachState
 Checks whether the current **WebViewController** is bound to a **Web** component.
 
 **Since:** 20
+
+<!--Device-WebviewController-getAttachState(): ControllerAttachState--><!--Device-WebviewController-getAttachState(): ControllerAttachState-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2181,6 +2259,8 @@ Obtains the historical information list of the current WebView.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getBackForwardEntries(): BackForwardList--><!--Device-WebviewController-getBackForwardEntries(): BackForwardList-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2245,6 +2325,8 @@ Obtains the prediction information about blankless loading (for details, see [Bl
 > - Add the **ohos.permission.INTERNET** and **ohos.permission.GET_NETWORK_INFO** permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 **Since:** 20
+
+<!--Device-WebviewController-getBlanklessInfoWithKey(key: string) : BlanklessInfo--><!--Device-WebviewController-getBlanklessInfoWithKey(key: string) : BlanklessInfo-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2314,6 +2396,8 @@ Obtains the certificate information of this website. When the **Web** component 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getCertificate(): Promise<Array<cert.X509Cert>>--><!--Device-WebviewController-getCertificate(): Promise<Array<cert.X509Cert>>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2481,6 +2565,8 @@ Obtains the certificate information of the current website. When the **Web** com
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void--><!--Device-WebviewController-getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2650,6 +2736,8 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-getCustomUserAgent(): string--><!--Device-WebviewController-getCustomUserAgent(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -2708,6 +2796,8 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 
 **Since:** 14
 
+<!--Device-WebviewController-static getDefaultUserAgent(): string--><!--Device-WebviewController-static getDefaultUserAgent(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -2742,6 +2832,8 @@ getErrorPageEnabled(): boolean
 Queries whether the default error page is enabled.
 
 **Since:** 20
+
+<!--Device-WebviewController-getErrorPageEnabled(): boolean--><!--Device-WebviewController-getErrorPageEnabled(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2792,6 +2884,8 @@ Obtains the favicon of this page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-getFavicon(): image.PixelMap--><!--Device-WebviewController-getFavicon(): image.PixelMap-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -2836,125 +2930,6 @@ struct WebComponent {
 }
 ```
 
-## getHitTest
-
-```TypeScript
-getHitTest(): WebHitTestType
-```
-
-Obtains the element type of the area being clicked.
-
-**Since:** 9
-
-**Deprecated since:** 18
-
-**Substitutes:** [getLastHitTest](#getlasthittest)
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [WebHitTestType](arkts-arkweb-webview-webhittesttype-e.md) | Element type of the area being clicked. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
-
-**Examples**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('getHitTest')
-        .onClick(() => {
-          try {
-            let hitTestType = this.controller.getHitTest();
-            console.info("hitTestType: " + hitTestType);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-## getHitTestValue
-
-```TypeScript
-getHitTestValue(): HitTestValue
-```
-
-Obtains the element information of the area being clicked.
-
-**Since:** 9
-
-**Deprecated since:** 18
-
-**Substitutes:** [getLastHitTest](#getlasthittest)
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [HitTestValue](arkts-arkweb-webview-hittestvalue-i.md) | Element information of the area being clicked. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
-
-**Examples**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('getHitTestValue')
-        .onClick(() => {
-          try {
-            let hitValue = this.controller.getHitTestValue();
-            console.info("hitType: " + hitValue.type);
-            console.info("extra: " + hitValue.extra);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## getLastHitTest
 
 ```TypeScript
@@ -2964,6 +2939,8 @@ getLastHitTest(): HitTestValue
 Obtains the element information of the area being clicked last time.
 
 **Since:** 18
+
+<!--Device-WebviewController-getLastHitTest(): HitTestValue--><!--Device-WebviewController-getLastHitTest(): HitTestValue-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3020,6 +2997,8 @@ Injects a JavaScript object into the window object through [registerJavaScriptPr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-getLastJavascriptProxyCallingFrameUrl(): string--><!--Device-WebviewController-getLastJavascriptProxyCallingFrameUrl(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3172,6 +3151,8 @@ Queries the audio and video playback status of the current web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-getMediaPlaybackState(): MediaPlaybackState--><!--Device-WebviewController-getMediaPlaybackState(): MediaPlaybackState-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3228,6 +3209,8 @@ Risk warning: If you want to obtain the URL for JavaScriptProxy communication AP
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-getOriginalUrl(): string--><!--Device-WebviewController-getOriginalUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3283,6 +3266,8 @@ Obtains the height of this web page. For details, see [Obtaining the Web Page Co
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-getPageHeight(): number--><!--Device-WebviewController-getPageHeight(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3335,6 +3320,8 @@ getPageOffset(): ScrollOffset
 Obtains the current scrolling offset of the web page (excluding the over-scrolling offset).
 
 **Since:** 20
+
+<!--Device-WebviewController-getPageOffset(): ScrollOffset--><!--Device-WebviewController-getPageOffset(): ScrollOffset-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3423,6 +3410,8 @@ Obtains whether the web page background is printed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-getPrintBackground(): boolean--><!--Device-WebviewController-getPrintBackground(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3475,6 +3464,8 @@ Obtains the loading progress of the current web page.
 
 **Since:** 20
 
+<!--Device-WebviewController-getProgress() : number--><!--Device-WebviewController-getProgress() : number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3523,6 +3514,8 @@ Obtains the ArkWeb render subprocess mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static getRenderProcessMode(): RenderProcessMode--><!--Device-WebviewController-static getRenderProcessMode(): RenderProcessMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3566,6 +3559,8 @@ Obtains whether this web page is scrollable.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-getScrollable(): boolean--><!--Device-WebviewController-getScrollable(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3621,6 +3616,8 @@ Obtains the current scrolling offset (including the over-scrolling offset) of th
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-WebviewController-getScrollOffset(): ScrollOffset--><!--Device-WebviewController-getScrollOffset(): ScrollOffset-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3722,6 +3719,8 @@ Obtains the security level of this web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-getSecurityLevel(): SecurityLevel--><!--Device-WebviewController-getSecurityLevel(): SecurityLevel-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3770,6 +3769,8 @@ Queries the currently effective site isolation mode.
 
 **Since:** 21
 
+<!--Device-WebviewController-static getSiteIsolationMode(): SiteIsolationMode--><!--Device-WebviewController-static getSiteIsolationMode(): SiteIsolationMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3814,6 +3815,8 @@ Queries whether the subframe error page feature is enabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebviewController-getSubframeErrorPageEnabled(): boolean--><!--Device-WebviewController-getSubframeErrorPageEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3846,6 +3849,8 @@ Obtains the ID of the surface corresponding to ArkWeb. The ID can be used to cap
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-getSurfaceId(): string--><!--Device-WebviewController-getSurfaceId(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3905,6 +3910,8 @@ Obtains the title of the current web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-getTitle(): string--><!--Device-WebviewController-getTitle(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -3959,6 +3966,8 @@ Obtains the URL of the current page.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getUrl(): string--><!--Device-WebviewController-getUrl(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4016,6 +4025,8 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getUserAgent(): string--><!--Device-WebviewController-getUserAgent(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4103,6 +4114,8 @@ Queries whether the User-Agent Client Hints feature is currently enabled.
 
 **Since:** 24
 
+<!--Device-WebviewController-static getUserAgentClientHintsEnabled(): boolean--><!--Device-WebviewController-static getUserAgentClientHintsEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -4124,6 +4137,8 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 Obtains the UserAgentMetadata information of a user agent.
 
 **Since:** 24
+
+<!--Device-WebviewController-getUserAgentMetadata(userAgent: string): UserAgentMetadata--><!--Device-WebviewController-getUserAgentMetadata(userAgent: string): UserAgentMetadata-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4154,6 +4169,8 @@ Obtains the index value of the **Web** component, which can be used for managing
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getWebId(): number--><!--Device-WebviewController-getWebId(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4198,6 +4215,34 @@ struct WebComponent {
 }
 ```
 
+## getZoomFactor
+
+```TypeScript
+getZoomFactor(): number
+```
+
+Gets the current browser zoom factor of this web page.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-getZoomFactor(): number--><!--Device-WebviewController-getZoomFactor(): number-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | Current browser zoom factor. The value **1** indicates that the page is not zoomed.<br>Value range: [0.25, 5.0]. The default value is **1**. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
+
 ## hasImage
 
 ```TypeScript
@@ -4209,6 +4254,8 @@ Checks whether this page contains images. This API uses a promise to return the 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-hasImage(): Promise<boolean>--><!--Device-WebviewController-hasImage(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4270,6 +4317,8 @@ Checks whether this page contains images. This API uses an asynchronous callback
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-hasImage(callback: AsyncCallback<boolean>): void--><!--Device-WebviewController-hasImage(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4338,6 +4387,8 @@ Loads the dynamic library file of the web engine through this API before the **W
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-static initializeWebEngine(): void--><!--Device-WebviewController-static initializeWebEngine(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -4377,6 +4428,8 @@ Resources injected in this mode can be loaded only through HTML tags. If a **scr
 After **webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode.MULTIPLE)** is called, the application starts the multi-rendering process mode. This API does not take effect in this scenario.
 
 **Since:** 12
+
+<!--Device-WebviewController-injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void--><!--Device-WebviewController-injectOfflineResources(resourceMaps: Array<OfflineResourceMap>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4651,6 +4704,8 @@ Checks whether the system is using the evergreen kernel, that is, the latest ker
 
 **Since:** 23
 
+<!--Device-WebviewController-static isActiveWebEngineEvergreen(): boolean--><!--Device-WebviewController-static isActiveWebEngineEvergreen(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -4690,6 +4745,8 @@ Checks whether ad blocking is enabled.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-isAdsBlockEnabled(): boolean--><!--Device-WebviewController-isAdsBlockEnabled(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4748,6 +4805,8 @@ After ads blocking is enabled for the **Web** component, this feature is enabled
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-isAdsBlockEnabledForCurPage(): boolean--><!--Device-WebviewController-isAdsBlockEnabledForCurPage(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -4803,6 +4862,8 @@ If the automatic preconnection status of the Web kernel is not set by using [set
 
 **Since:** 21
 
+<!--Device-WebviewController-static isAutoPreconnectEnabled(): boolean--><!--Device-WebviewController-static isAutoPreconnectEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -4847,6 +4908,8 @@ Checks whether this Webview is in incognito mode.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-isIncognitoMode(): boolean--><!--Device-WebviewController-isIncognitoMode(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4902,6 +4965,8 @@ Obtains whether the **Web** component has enabled intelligent tracking preventio
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-isIntelligentTrackingPreventionEnabled(): boolean--><!--Device-WebviewController-isIntelligentTrackingPreventionEnabled(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -4961,6 +5026,8 @@ Obtains whether the private network access check feature is enabled for the **We
 
 **Since:** 20
 
+<!--Device-WebviewController-static isPrivateNetworkAccessEnabled(): boolean--><!--Device-WebviewController-static isPrivateNetworkAccessEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -5012,6 +5079,8 @@ Checks whether the safe browsing feature is enabled for this web page.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-isSafeBrowsingEnabled(): boolean--><!--Device-WebviewController-isSafeBrowsingEnabled(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -5073,6 +5142,8 @@ If **encoding** is not base64 (including null values), ASCII encoding is used fo
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-loadData(data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string): void--><!--Device-WebviewController-loadData(data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -5272,6 +5343,8 @@ Loads a specified URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void--><!--Device-WebviewController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -5463,6 +5536,8 @@ Deregisters the attach state event of **WebViewController**. After the deregistr
 
 **Since:** 20
 
+<!--Device-WebviewController-off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachState>): void--><!--Device-WebviewController-off(type: 'controllerAttachStateChange', callback?: Callback<ControllerAttachState>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -5537,6 +5612,8 @@ Registers the attach state event of **WebViewController**, which obtains the att
 
 **Since:** 20
 
+<!--Device-WebviewController-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void--><!--Device-WebviewController-on(type: 'controllerAttachStateChange', callback: Callback<ControllerAttachState>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -5565,6 +5642,8 @@ If the page was previously in the inactive state, the event listener registered 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-onActive(): void--><!--Device-WebviewController-onActive(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -5615,6 +5694,8 @@ If the application does not take over media playback on the web page, this callb
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void--><!--Device-WebviewController-onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -5846,6 +5927,8 @@ When this API is called, any content that can be safely paused, such as animatio
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-onInactive(): void--><!--Device-WebviewController-onInactive(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -5893,6 +5976,8 @@ Scrolls the page down by half the viewport or jumps to the bottom of the page.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-pageDown(bottom: boolean): void--><!--Device-WebviewController-pageDown(bottom: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -5984,6 +6069,8 @@ Scrolls the page up by half the viewport or jumps to the top of the page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-pageUp(top: boolean): void--><!--Device-WebviewController-pageUp(top: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -6072,6 +6159,8 @@ Pauses all audio and video on a web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-pauseAllMedia(): void--><!--Device-WebviewController-pauseAllMedia(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -6119,6 +6208,8 @@ Pauses all WebView timers. While the timers are paused, timer operations such as
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-static pauseAllTimers(): void--><!--Device-WebviewController-static pauseAllTimers(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -6198,6 +6289,8 @@ Pauses microphone capture on the current web page.
 
 **Since:** 23
 
+<!--Device-WebviewController-pauseMicrophone(): void--><!--Device-WebviewController-pauseMicrophone(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -6221,6 +6314,8 @@ Sends a web message to an HTML window.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void--><!--Device-WebviewController-postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -6389,6 +6484,8 @@ Loads a URL with postData using the "POST" method. If the URL is not a network U
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-postUrl(url: string, postData: ArrayBuffer): void--><!--Device-WebviewController-postUrl(url: string, postData: ArrayBuffer): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -6463,6 +6560,8 @@ Precompiles JavaScript to generate the bytecode cache or update the existing byt
 The API determines whether to update the existing bytecode cache based on the provided file information, E-Tag response header, and Last-Modified response header.
 
 **Since:** 12
+
+<!--Device-WebviewController-precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise<number>--><!--Device-WebviewController-precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise<number>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -6724,6 +6823,8 @@ Prefetches resources in the background for a page that is likely to be accessed 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-prefetchPage(url: string, additionalHeaders?: Array<WebHeader>): void--><!--Device-WebviewController-prefetchPage(url: string, additionalHeaders?: Array<WebHeader>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -6792,6 +6893,8 @@ Prefetches resources in the background for a page that is likely to be accessed 
 
 **Since:** 21
 
+<!--Device-WebviewController-prefetchPage(url: string, additionalHeaders?: Array<WebHeader>, prefetchOptions?: PrefetchOptions): void--><!--Device-WebviewController-prefetchPage(url: string, additionalHeaders?: Array<WebHeader>, prefetchOptions?: PrefetchOptions): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -6855,6 +6958,8 @@ Resources in the memory cache are automatically managed by the kernel. When too 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static prefetchResource(request: RequestInfo, additionalHeaders?: Array<WebHeader>, cacheKey?: string,                            cacheValidTime?: number): void--><!--Device-WebviewController-static prefetchResource(request: RequestInfo, additionalHeaders?: Array<WebHeader>, cacheKey?: string,                            cacheValidTime?: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -6914,6 +7019,8 @@ Preconnects to a URL. Call this API before loading the URL. It only performs DNS
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void--><!--Device-WebviewController-static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -6962,6 +7069,8 @@ Called when the **Web** component refreshes the web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-refresh(): void--><!--Device-WebviewController-refresh(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -7009,6 +7118,8 @@ refresh(ignoreCache: boolean): void
 Notifies the **Web** component to refresh the web page. You can choose whether to ignore the cache refresh.
 
 **Since:** 24
+
+<!--Device-WebviewController-refresh(ignoreCache: boolean): void--><!--Device-WebviewController-refresh(ignoreCache: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7082,6 +7193,8 @@ For the example, see [Invoking Application Functions on the Frontend Page](../..
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-registerJavaScriptProxy(jsObject: object, name: string, methodList: Array<string>,        asyncMethodList?: Array<string>, permission?: string): void--><!--Device-WebviewController-registerJavaScriptProxy(jsObject: object, name: string, methodList: Array<string>,        asyncMethodList?: Array<string>, permission?: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7253,6 +7366,8 @@ Removes all resource caches generated by Webview (including private mode) in the
 
 **Since:** 18
 
+<!--Device-WebviewController-static removeAllCache(clearRom: boolean): void--><!--Device-WebviewController-static removeAllCache(clearRom: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -7306,6 +7421,8 @@ Removes all resource caches generated by Webview in the app.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-removeCache(clearRom: boolean): void--><!--Device-WebviewController-removeCache(clearRom: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7361,6 +7478,8 @@ Deletes the domain names from the list of domain names added through the **addIn
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-static removeIntelligentTrackingPreventionBypassingList(hostList: Array<string>): void--><!--Device-WebviewController-static removeIntelligentTrackingPreventionBypassingList(hostList: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7418,6 +7537,8 @@ Requests focus for the specified component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-requestFocus(): void--><!--Device-WebviewController-requestFocus(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -7467,6 +7588,8 @@ If the value of **state** is too large, exceptions may occur. It is recommended 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-restoreWebState(state: Uint8Array) : void--><!--Device-WebviewController-restoreWebState(state: Uint8Array) : void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7559,6 +7682,8 @@ Resumes the playback of the audio and video that are paused by the pauseAllMedia
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-resumeAllMedia(): void--><!--Device-WebviewController-resumeAllMedia(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -7606,6 +7731,8 @@ Resumes all timers that are paused from the **pauseAllTimers()** API.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-static resumeAllTimers(): void--><!--Device-WebviewController-static resumeAllTimers(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7681,6 +7808,8 @@ resumeMicrophone(): void
 Resumes microphone capture on the current web page. Before using the microphone , add the **ohos.permission.MICROPHONE** permission to **module.json5**. For details about how to add the permission, see [Declaring Permissions in the Configuration File](../../../security/AccessToken/declare-permissions.md).
 
 **Since:** 23
+
+<!--Device-WebviewController-resumeMicrophone(): void--><!--Device-WebviewController-resumeMicrophone(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -7832,6 +7961,8 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-runJavaScript(script: string): Promise<string>--><!--Device-WebviewController-runJavaScript(script: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -7938,6 +8069,8 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-runJavaScript(script: string, callback: AsyncCallback<string>): void--><!--Device-WebviewController-runJavaScript(script: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -8034,6 +8167,8 @@ Executes a JavaScript script asynchronously and returns the script execution res
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>--><!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -8258,6 +8393,8 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessageExt>): void--><!--Device-WebviewController-runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessageExt>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -8485,6 +8622,8 @@ Scrolls the page by the specified amount within a specified period.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-scrollBy(deltaX: number, deltaY: number, duration?: number): void--><!--Device-WebviewController-scrollBy(deltaX: number, deltaY: number, duration?: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -8572,6 +8711,8 @@ Scrolls the page by the specified amount and returns value to indicate whether t
 
 **Since:** 12
 
+<!--Device-WebviewController-scrollByWithResult(deltaX: number, deltaY: number): boolean--><!--Device-WebviewController-scrollByWithResult(deltaX: number, deltaY: number): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -8658,6 +8799,8 @@ Scrolls the page to the specified absolute position within a specified period.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-scrollTo(x: number, y: number, duration?: number): void--><!--Device-WebviewController-scrollTo(x: number, y: number, duration?: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -8748,6 +8891,8 @@ Searches the web page for content that matches the keyword specified by **'searc
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-searchAllAsync(searchString: string): void--><!--Device-WebviewController-searchAllAsync(searchString: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -8822,6 +8967,8 @@ Searches for and highlights the next match.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-searchNext(forward: boolean): void--><!--Device-WebviewController-searchNext(forward: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -8876,6 +9023,8 @@ Serializes the page status history of the current WebView.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-serializeWebState(): Uint8Array--><!--Device-WebviewController-serializeWebState(): Uint8Array-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -8962,6 +9111,8 @@ Sets the ArkWeb kernel version. If the system does not support the specified ver
 
 **Since:** 20
 
+<!--Device-WebviewController-static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void--><!--Device-WebviewController-static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9004,6 +9155,8 @@ If you need to set the application-level custom user agent, you are advised to c
 For details about the default **User-Agent** definition, application scenarios, and API priorities, see [Developing User-Agent](../../../web/web-default-userAgent.md).
 
 **Since:** 20
+
+<!--Device-WebviewController-static setAppCustomUserAgent(userAgent: string) : void--><!--Device-WebviewController-static setAppCustomUserAgent(userAgent: string) : void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9055,6 +9208,8 @@ Mutes the web page. Typical use cases include: the app needs to control the web 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-setAudioMuted(mute: boolean): void--><!--Device-WebviewController-setAudioMuted(mute: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9110,6 +9265,8 @@ This API must be called before [initializeWebEngine()](#initializewebengine) ini
 
 **Since:** 21
 
+<!--Device-WebviewController-static setAutoPreconnect(enabled: boolean): void--><!--Device-WebviewController-static setAutoPreconnect(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9143,6 +9300,8 @@ setBackForwardCacheOptions(options: BackForwardCacheOptions): void
 Sets the back-forward cache options of the **Web** component.
 
 **Since:** 12
+
+<!--Device-WebviewController-setBackForwardCacheOptions(options: BackForwardCacheOptions): void--><!--Device-WebviewController-setBackForwardCacheOptions(options: BackForwardCacheOptions): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9202,6 +9361,8 @@ static setBlanklessLoadingCacheCapacity(capacity: number) : number
 Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. If the API is not explicitly called, the default cache capacity is 30 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.
 
 **Since:** 20
+
+<!--Device-WebviewController-static setBlanklessLoadingCacheCapacity(capacity: number) : number--><!--Device-WebviewController-static setBlanklessLoadingCacheCapacity(capacity: number) : number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9265,6 +9426,8 @@ Sets whether to enable blankless loading. This API must be used together with [g
 > - Add the **ohos.permission.INTERNET** and **ohos.permission.GET_NETWORK_INFO** permissions to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../../../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
 **Since:** 20
+
+<!--Device-WebviewController-setBlanklessLoadingWithKey(key: string, is_start: boolean) : WebBlanklessErrorCode--><!--Device-WebviewController-setBlanklessLoadingWithKey(key: string, is_start: boolean) : WebBlanklessErrorCode-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9349,6 +9512,8 @@ Sets the configuration parameters for frame interpolation during blankless loadi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebviewController-setBlanklessLoadingWithParams(key: string,      param: BlanklessLoadingParam) : WebBlanklessErrorCode--><!--Device-WebviewController-setBlanklessLoadingWithParams(key: string,      param: BlanklessLoadingParam) : WebBlanklessErrorCode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9424,6 +9589,8 @@ Sets the network connection timeout interval. You can use the **onErrorReceive**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-static setConnectionTimeout(timeout: number): void--><!--Device-WebviewController-static setConnectionTimeout(timeout: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9496,6 +9663,8 @@ Sets a custom user agent, which will overwrite the default user agent.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-setCustomUserAgent(userAgent: string): void--><!--Device-WebviewController-setCustomUserAgent(userAgent: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9553,6 +9722,8 @@ Sets a **WebDownloadDelegate** for the current **Web** component. The delegate i
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-setDownloadDelegate(delegate: WebDownloadDelegate): void--><!--Device-WebviewController-setDownloadDelegate(delegate: WebDownloadDelegate): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9607,6 +9778,8 @@ Sets whether to enable the default error page.
 When this API is set to true, if an error occurs during page loading, the [onOverrideErrorPage](../arkts-components/arkts-arkweb-web-comp-attribute.md#onoverrideerrorpage) callback is triggered. You can customize the error display page in the callback.
 
 **Since:** 20
+
+<!--Device-WebviewController-setErrorPageEnabled(enable: boolean): void--><!--Device-WebviewController-setErrorPageEnabled(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9669,6 +9842,8 @@ When **enable** is set to **true**, an error page is displayed when a mainframe 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void--><!--Device-WebviewController-setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9741,6 +9916,8 @@ Sets the IP address of the host after domain name resolution.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static setHostIP(hostName: string, address: string, aliveTime: number): void--><!--Device-WebviewController-static setHostIP(hostName: string, address: string, aliveTime: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -9772,6 +9949,8 @@ Sets how the **Web** component uses HTTPDNS for DNS resolution.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void--><!--Device-WebviewController-static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9822,6 +10001,8 @@ Sets the **window.navigator.onLine** attribute in JavaScript.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-setNetworkAvailable(enable: boolean): void--><!--Device-WebviewController-setNetworkAvailable(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -9928,6 +10109,8 @@ Using setPathAllowingUniversalAccess to relax cross-origin access restrictions o
 If a path in the list is not of the preceding paths, error code 401 is reported and the path list fails to be set. When the path list is set to empty, the accessible files for the file protocol are subject to the behavior of the [fileAccess](../arkts-components/arkts-arkweb-web-comp-attribute.md#fileaccess).
 
 **Since:** 12
+
+<!--Device-WebviewController-setPathAllowingUniversalAccess(pathList: Array<string>): void--><!--Device-WebviewController-setPathAllowingUniversalAccess(pathList: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10048,6 +10231,8 @@ Sets whether to print the background of a web page. If the setting of this API i
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-setPrintBackground(enable: boolean): void--><!--Device-WebviewController-setPrintBackground(enable: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10102,6 +10287,8 @@ Sets the ArkWeb rendering subprocess mode. You can select the appropriate mode b
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static setRenderProcessMode(mode: RenderProcessMode): void--><!--Device-WebviewController-static setRenderProcessMode(mode: RenderProcessMode): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10155,6 +10342,8 @@ Sets whether this web page is scrollable.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-setScrollable(enable: boolean, type?: ScrollType): void--><!--Device-WebviewController-setScrollable(enable: boolean, type?: ScrollType): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10217,6 +10406,8 @@ Sets the global scrollbar mode in the web page. When this API is not explicitly 
 > - This API must be called before WebViewController is bound to a **Web** component.
 
 **Since:** 23
+
+<!--Device-WebviewController-static setScrollbarMode(scrollbarMode: ScrollbarMode): void--><!--Device-WebviewController-static setScrollbarMode(scrollbarMode: ScrollbarMode): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10285,6 +10476,8 @@ Sets a WebSchemeHandler for all **Web** components of the current app, used to i
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void--><!--Device-WebviewController-static setServiceWorkerWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10347,6 +10540,8 @@ For third-party applications that load only trusted web pages, you can disable t
 
 **Since:** 21
 
+<!--Device-WebviewController-static setSiteIsolationMode(mode: SiteIsolationMode): void--><!--Device-WebviewController-static setSiteIsolationMode(mode: SiteIsolationMode): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10401,6 +10596,8 @@ If this API is not used to set the timeout interval for idle sockets, the defaul
 
 **Since:** 21
 
+<!--Device-WebviewController-static setSocketIdleTimeout(timeout: number): void--><!--Device-WebviewController-static setSocketIdleTimeout(timeout: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10433,6 +10630,8 @@ setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 Sets the automatic control mode of the soft keyboard. When this API is not explicitly called, the system attempts to automatically hide or show the soft keyboard when the **Web** component loses or gains focus, or when its state switches to inactive or active. Typical use case: when you do not want the **Web** component to automatically hide or re-show the soft keyboard during inactive or active state switching, use DISABLE_AUTO_KEYBOARD_ON_ACTIVE; when you need to retain the default automatic management behavior, use DEFAULT.
 
 **Since:** 22
+
+<!--Device-WebviewController-setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void--><!--Device-WebviewController-setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10482,6 +10681,8 @@ Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-setUrlTrustList(urlTrustList: string): void--><!--Device-WebviewController-setUrlTrustList(urlTrustList: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10573,6 +10774,8 @@ setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcar
 Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be loaded or navigated to. Otherwise, they are intercepted and an alert page is displayed. This API extends the control over opaque origin URLs and wildcard rules.
 
 **Since:** 24
+
+<!--Device-WebviewController-setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void--><!--Device-WebviewController-setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10683,6 +10886,8 @@ Sets whether to enable the User-Agent Client Hints feature.
 
 **Since:** 24
 
+<!--Device-WebviewController-static setUserAgentClientHintsEnabled(enabled: boolean): void--><!--Device-WebviewController-static setUserAgentClientHintsEnabled(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10790,6 +10995,8 @@ For details about the default **User-Agent** definition, application scenarios, 
 
 **Since:** 20
 
+<!--Device-WebviewController-static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void--><!--Device-WebviewController-static setUserAgentForHosts(userAgent: string, hosts : Array<string>) : void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10860,6 +11067,8 @@ Sets the **UserAgentMetadata** corresponding to the **User-Agent**.
 
 **Since:** 24
 
+<!--Device-WebviewController-setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void--><!--Device-WebviewController-setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -10886,6 +11095,8 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean): void--><!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -10947,6 +11158,8 @@ A port number smaller than 1024 is a well-known or system port and can be enable
 NOTE: Enabling web debugging allows users to check and modify the internal status of the web page, which poses security risks. Therefore, you are advised not to enable this feature in the officially released version of the application.
 
 **Since:** 20
+
+<!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void--><!--Device-WebviewController-static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11011,6 +11224,8 @@ Sets the destroy mode of the **Web** component. The destroy mode of the **Web** 
 
 **Since:** 20
 
+<!--Device-WebviewController-static setWebDestroyMode(mode: WebDestroyMode): void--><!--Device-WebviewController-static setWebDestroyMode(mode: WebDestroyMode): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -11048,6 +11263,8 @@ Sets a [WebSchemeHandler](arkts-arkweb-webview-webschemehandler-c.md) for the **
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void--><!--Device-WebviewController-setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11094,6 +11311,34 @@ struct WebComponent {
 }
 ```
 
+## setZoomFactor
+
+```TypeScript
+setZoomFactor(zoomFactor: number): void
+```
+
+Sets the browser zoom factor of this web page. Both text and images are scaled simultaneously, and the page is re-laid out (reflow) to fit the width of the **Web** component. This API works independently of [zoom](#zoom), [zoomIn](#zoomin), and [zoomOut](#zoomout) (visual scaling without re-layout) and [textZoomRatio](../arkts-components/arkts-arkweb-web-comp-attribute.md#textzoomratio) (text-only scaling). The zoom factor takes effect on the current web component instance only and is retained after in-page cross-document navigation.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebviewController-setZoomFactor(zoomFactor: number): void--><!--Device-WebviewController-setZoomFactor(zoomFactor: number): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| zoomFactor | number | Yes | Browser zoom factor to set. The value **1** indicates that the page is not zoomed. A value smaller than **1** indicates zoom-out, and a value greater than **1** indicates zoom-in.<br>Value range: [0.25, 5]. <br>Values beyond this range are clamped to the boundary. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
+
 ## slideScroll
 
 ```TypeScript
@@ -11105,6 +11350,8 @@ Simulates a slide-to-scroll action on the page at the specified velocity.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-slideScroll(vx: number, vy: number): void--><!--Device-WebviewController-slideScroll(vx: number, vy: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11185,6 +11432,8 @@ Enables the camera capture of the current web page. Before using the camera, add
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-startCamera(): void--><!--Device-WebviewController-startCamera(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11317,6 +11566,8 @@ Uses the download capability of the **Web** component to download a specified UR
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-startDownload(url: string): void--><!--Device-WebviewController-startDownload(url: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -11381,6 +11632,8 @@ Stops page loading.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-stop(): void--><!--Device-WebviewController-stop(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -11428,6 +11681,8 @@ Stops all audio and video on a web page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-stopAllMedia(): void--><!--Device-WebviewController-stopAllMedia(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11477,6 +11732,8 @@ Stops the camera capture of the current web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-stopCamera(): void--><!--Device-WebviewController-stopCamera(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -11498,6 +11755,8 @@ stopMicrophone(): void
 Stops microphone capture on the current web page.
 
 **Since:** 23
+
+<!--Device-WebviewController-stopMicrophone(): void--><!--Device-WebviewController-stopMicrophone(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11522,6 +11781,8 @@ Stores this web page. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean): Promise<string>--><!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean): Promise<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11596,6 +11857,8 @@ Stores this web page. This API uses an asynchronous callback to return the resul
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<string>): void--><!--Device-WebviewController-storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -11662,6 +11925,8 @@ Calling this API will destroy the associated render process. If the render proce
 
 **Since:** 12
 
+<!--Device-WebviewController-terminateRenderProcess(): boolean--><!--Device-WebviewController-terminateRenderProcess(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -11711,6 +11976,8 @@ Clears the cache occupied by **Web** component based on the specified memory pre
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-WebviewController-static trimMemoryByPressureLevel(level: PressureLevel): void--><!--Device-WebviewController-static trimMemoryByPressureLevel(level: PressureLevel): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11766,6 +12033,8 @@ waitForAttached(timeout: number): Promise<ControllerAttachState>
 Asynchronously waits for the **WebViewController** to be attached to the **Web** component. If the attachment is complete or times out, a callback is triggered to return the current [ControllerAttachState](arkts-arkweb-webview-controllerattachstate-e.md) through a promise.
 
 **Since:** 20
+
+<!--Device-WebviewController-waitForAttached(timeout: number): Promise<ControllerAttachState>--><!--Device-WebviewController-waitForAttached(timeout: number): Promise<ControllerAttachState>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11832,6 +12101,8 @@ Warms up ServiceWorker to improve the loading speed of the first screen page (on
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebviewController-static warmupServiceWorker(url: string): void--><!--Device-WebviewController-static warmupServiceWorker(url: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -11884,6 +12155,8 @@ Obtains the full drawing result of the web page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebviewController-webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): void--><!--Device-WebviewController-webPageSnapshot(info: SnapshotInfo, callback: AsyncCallback<SnapshotResult>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -11943,6 +12216,8 @@ Zooms in or out of this web page. This API is effective only when [zoomAccess](.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-zoom(factor: number): void--><!--Device-WebviewController-zoom(factor: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -12001,6 +12276,8 @@ Zooms in on this web page by 25%.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-zoomIn(): void--><!--Device-WebviewController-zoomIn(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -12050,6 +12327,8 @@ Zooms out of this web page by 20%.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebviewController-zoomOut(): void--><!--Device-WebviewController-zoomOut(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Error codes:**
@@ -12077,6 +12356,129 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.controller.zoomOut();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getHitTest
+
+```TypeScript
+getHitTest(): WebHitTestType
+```
+
+Obtains the element type of the area being clicked.
+
+**Since:** 9
+
+**Deprecated since:** 18
+
+**Substitutes:** [getLastHitTest](#getlasthittest)
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getHitTest(): WebHitTestType--><!--Device-WebviewController-getHitTest(): WebHitTestType-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [WebHitTestType](arkts-arkweb-webview-webhittesttype-e.md) | Element type of the area being clicked. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getHitTest')
+        .onClick(() => {
+          try {
+            let hitTestType = this.controller.getHitTest();
+            console.info("hitTestType: " + hitTestType);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getHitTestValue
+
+```TypeScript
+getHitTestValue(): HitTestValue
+```
+
+Obtains the element information of the area being clicked.
+
+**Since:** 9
+
+**Deprecated since:** 18
+
+**Substitutes:** [getLastHitTest](#getlasthittest)
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebviewController-getHitTestValue(): HitTestValue--><!--Device-WebviewController-getHitTestValue(): HitTestValue-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [HitTestValue](arkts-arkweb-webview-hittestvalue-i.md) | Element information of the area being clicked. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getHitTestValue')
+        .onClick(() => {
+          try {
+            let hitValue = this.controller.getHitTestValue();
+            console.info("hitType: " + hitValue.type);
+            console.info("extra: " + hitValue.extra);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }

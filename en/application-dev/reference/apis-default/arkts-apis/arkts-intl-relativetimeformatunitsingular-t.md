@@ -8,6 +8,8 @@ Value of the `unit` property in objects returned by `Intl.RelativeTimeFormat.pro
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts#Using_formatToParts).
 
+<!--Device-Intl-type RelativeTimeFormatUnitSingular =        | "year"        | "quarter"        | "month"        | "week"        | "day"        | "hour"        | "minute"        | "second"--><!--Device-Intl-type RelativeTimeFormatUnitSingular =        | "year"        | "quarter"        | "month"        | "week"        | "day"        | "hour"        | "minute"        | "second"-End-->
+
 | Type | Description |
 | --- | --- |
 | "year" |  |

@@ -18,6 +18,8 @@ After deletion, all notification slots and their configurations of the current a
 
 **Since:** 9
 
+<!--Device-notificationManager-function removeAllSlots(callback: AsyncCallback<void>): void--><!--Device-notificationManager-function removeAllSlots(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -72,6 +74,8 @@ Removes all notification slots for this application. This API uses a promise to 
 After deletion, all notification slots and their configurations of the current application will be permanently removed. When notifications are published subsequently, the system will automatically create slots of the corresponding types. Notifications already published through these slots are not affected and can still be viewed in the notification center. This is suitable for scenarios where all slot configurations need to be cleared at once.
 
 **Since:** 9
+
+<!--Device-notificationManager-function removeAllSlots(): Promise<void>--><!--Device-notificationManager-function removeAllSlots(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -22,6 +22,8 @@ Discover Wi-Fi P2P devices.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
+<!--Device-wifi-function startDiscoverDevices(): boolean--><!--Device-wifi-function startDiscoverDevices(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**

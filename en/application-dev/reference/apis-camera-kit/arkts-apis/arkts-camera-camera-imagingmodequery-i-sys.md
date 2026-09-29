@@ -8,6 +8,8 @@ Imaging mode query object.
 
 **Since:** 26.0.1
 
+<!--Device-camera-interface ImagingModeQuery--><!--Device-camera-interface ImagingModeQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Checks whether a camera imaging mode is supported.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImagingModeQuery-isImagingModeSupported(mode: CameraImagingMode): boolean--><!--Device-ImagingModeQuery-isImagingModeSupported(mode: CameraImagingMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

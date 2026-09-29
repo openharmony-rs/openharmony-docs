@@ -18,6 +18,8 @@ create the instance of PBAP client profile.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-pbap-function createPbapClientProfile(): PbapClientProfile--><!--Device-pbap-function createPbapClientProfile(): PbapClientProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

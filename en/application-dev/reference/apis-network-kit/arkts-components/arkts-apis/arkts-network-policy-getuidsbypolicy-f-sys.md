@@ -18,6 +18,8 @@ Obtains all UIDs that match the specified network policy. This API uses an async
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback<Array<int>>): void--><!--Device-policy-function getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback<Array<int>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Obtains all UIDs that match the policy by policy. This API uses a promise to ret
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function getUidsByPolicy(policy: NetUidPolicy): Promise<Array<int>>--><!--Device-policy-function getUidsByPolicy(policy: NetUidPolicy): Promise<Array<int>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

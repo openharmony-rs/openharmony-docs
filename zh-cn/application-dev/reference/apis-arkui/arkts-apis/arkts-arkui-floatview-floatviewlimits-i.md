@@ -8,6 +8,8 @@ interface FloatViewLimits
 
 **起始版本：** 26.0.0
 
+<!--Device-floatView-interface FloatViewLimits--><!--Device-floatView-interface FloatViewLimits-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -30,6 +32,8 @@ maxSize: window.Size
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewLimits-maxSize: window.Size--><!--Device-FloatViewLimits-maxSize: window.Size-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## minSize
@@ -46,6 +50,8 @@ minSize: window.Size
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewLimits-minSize: window.Size--><!--Device-FloatViewLimits-minSize: window.Size-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## ratioLimits
@@ -61,5 +67,7 @@ ratioLimits: Array<RatioLimit>
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewLimits-ratioLimits: Array<RatioLimit>--><!--Device-FloatViewLimits-ratioLimits: Array<RatioLimit>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

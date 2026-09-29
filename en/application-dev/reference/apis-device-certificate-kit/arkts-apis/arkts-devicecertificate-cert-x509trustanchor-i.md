@@ -8,6 +8,8 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 
 **Since:** 11
 
+<!--Device-cert-interface X509TrustAnchor--><!--Device-cert-interface X509TrustAnchor-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Trusted CA certificate. If **CACert** is set, only **CACert** is used to validat
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509TrustAnchor-CACert?: X509Cert--><!--Device-X509TrustAnchor-CACert?: X509Cert-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -44,7 +48,9 @@ Public key of the trusted CA certificate, in DER format. This parameter takes ef
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509TrustAnchor-CAPubKey?: Uint8Array--><!--Device-X509TrustAnchor-CAPubKey?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -60,7 +66,9 @@ Subject of the trusted CA certificate, in DER format. This parameter takes effec
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509TrustAnchor-CASubject?: Uint8Array--><!--Device-X509TrustAnchor-CASubject?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -76,6 +84,8 @@ Name constraints, in DER format. Only the leaf certificate of the current certif
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509TrustAnchor-nameConstraints?: Uint8Array--><!--Device-X509TrustAnchor-nameConstraints?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert

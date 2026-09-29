@@ -8,6 +8,8 @@ Defines the accessibility event information. An accessibility event is generated
 
 **Since:** 9
 
+<!--Device-unnamed-export declare interface AccessibilityEvent--><!--Device-unnamed-export declare interface AccessibilityEvent-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ ID of the element that is actively focused. Active focus means that the app acti
 **Type:** number
 
 **Since:** 12
+
+<!--Device-AccessibilityEvent-elementId?: long--><!--Device-AccessibilityEvent-elementId?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -52,6 +56,8 @@ PageUpdateType: page update type.
 
 **Since:** 9
 
+<!--Device-AccessibilityEvent-eventType: accessibility.EventType | accessibility.WindowUpdateType |        TouchGuideType | GestureType | PageUpdateType--><!--Device-AccessibilityEvent-eventType: accessibility.EventType | accessibility.WindowUpdateType |        TouchGuideType | GestureType | PageUpdateType-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## extraInfo
@@ -65,6 +71,8 @@ For TextArea, TextInput, SearchField, and RichEdit components, when text content
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilityEvent-extraInfo?: string--><!--Device-AccessibilityEvent-extraInfo?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -80,6 +88,8 @@ Target element on which the event occurs. When the accessibility event involves 
 
 **Since:** 9
 
+<!--Device-AccessibilityEvent-target?: AccessibilityElement--><!--Device-AccessibilityEvent-target?: AccessibilityElement-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## textAnnouncedForAccessibility
@@ -94,6 +104,8 @@ Content actively announced. When the app needs to actively announce content, set
 
 **Since:** 12
 
+<!--Device-AccessibilityEvent-textAnnouncedForAccessibility?: string--><!--Device-AccessibilityEvent-textAnnouncedForAccessibility?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## timeStamp
@@ -107,5 +119,7 @@ Event timestamp, which is a non-negative integer in milliseconds. The default va
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AccessibilityEvent-timeStamp?: long--><!--Device-AccessibilityEvent-timeStamp?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core

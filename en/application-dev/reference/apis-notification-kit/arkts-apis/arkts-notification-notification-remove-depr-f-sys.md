@@ -26,6 +26,8 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function remove(    bundle: BundleOption,    notificationKey: NotificationKey,    reason: RemoveReason,    callback: AsyncCallback<void>  ): void--><!--Device-notification-function remove(    bundle: BundleOption,    notificationKey: NotificationKey,    reason: RemoveReason,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Removes a notification for a specified bundle. This API uses a promise to return
 **Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason): Promise<void>--><!--Device-notification-function remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -95,6 +99,8 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void--><!--Device-notification-function remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -125,6 +131,8 @@ Removes a notification for a specified bundle. This API uses a promise to return
 **Substitutes:** [remove](arkts-notification-notificationsubscribe-remove-f-sys.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function remove(hashCode: string, reason: RemoveReason): Promise<void>--><!--Device-notification-function remove(hashCode: string, reason: RemoveReason): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

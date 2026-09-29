@@ -16,6 +16,8 @@ Checks whether the specified card slot supports the eSIM function.
 
 **Since:** 18
 
+<!--Device-eSIM-function isSupported(slotId: int): boolean--><!--Device-eSIM-function isSupported(slotId: int): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **Parameters:**

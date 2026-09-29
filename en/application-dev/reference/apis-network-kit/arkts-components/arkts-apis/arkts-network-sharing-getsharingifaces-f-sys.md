@@ -18,6 +18,8 @@ Obtains the names of NICs in the specified network sharing state. This API uses 
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback<Array<string>>): void--><!--Device-sharing-function getSharingIfaces(state: SharingIfaceState, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Obtains the names of NICs in the specified network sharing state. This API uses 
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function getSharingIfaces(state: SharingIfaceState): Promise<Array<string>>--><!--Device-sharing-function getSharingIfaces(state: SharingIfaceState): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

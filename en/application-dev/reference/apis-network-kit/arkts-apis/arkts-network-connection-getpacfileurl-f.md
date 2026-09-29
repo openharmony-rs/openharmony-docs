@@ -16,6 +16,8 @@ Obtains the URL of the current PAC script.
 
 **Since:** 20
 
+<!--Device-connection-function getPacFileUrl(): string--><!--Device-connection-function getPacFileUrl(): string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

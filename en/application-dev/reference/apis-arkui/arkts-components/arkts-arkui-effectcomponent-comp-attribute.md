@@ -12,6 +12,8 @@ The universal events are not supported.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>--><!--Device-unnamed-declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

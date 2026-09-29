@@ -20,6 +20,8 @@ Checks whether nonce is enabled for OTA update. This API is applicable to scenar
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function isOtaUpdateNonceEnable(admin: Want): boolean--><!--Device-systemManager-function isOtaUpdateNonceEnable(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -8,6 +8,8 @@ Defines the copy progress information.
 
 **Since:** 11
 
+<!--Device-unnamed-interface Progress--><!--Device-unnamed-interface Progress-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Size of the copied data, in bytes.
 
 **Since:** 11
 
+<!--Device-Progress-readonly processedSize: number--><!--Device-Progress-readonly processedSize: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## totalSize
@@ -41,5 +45,7 @@ Total size of the data to be copied, in bytes.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-Progress-readonly totalSize: number--><!--Device-Progress-readonly totalSize: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

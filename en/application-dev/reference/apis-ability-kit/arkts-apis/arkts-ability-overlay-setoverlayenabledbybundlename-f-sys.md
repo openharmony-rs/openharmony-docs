@@ -20,6 +20,8 @@ No permission is required when the specified application is the caller itself.
 
 **Required permissions:** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
+<!--Device-overlay-function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void--><!--Device-overlay-function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ No permission is required when the specified application is the caller itself.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
+
+<!--Device-overlay-function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isEnabled: boolean): Promise<void>--><!--Device-overlay-function setOverlayEnabledByBundleName(bundleName:string, moduleName:string, isEnabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 

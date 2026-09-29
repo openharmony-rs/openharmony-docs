@@ -8,6 +8,8 @@ export default class MeasureText
 
 **起始版本：** 9
 
+<!--Device-unnamed-export default class MeasureText--><!--Device-unnamed-export default class MeasureText-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -37,6 +39,8 @@ static measureText(options: MeasureOptions): number
 **替代接口：** measureText
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MeasureText-static measureText(options: MeasureOptions): number--><!--Device-MeasureText-static measureText(options: MeasureOptions): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,6 +103,8 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MeasureText-static measureTextSize(options: MeasureOptions): SizeOptions--><!--Device-MeasureText-static measureTextSize(options: MeasureOptions): SizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

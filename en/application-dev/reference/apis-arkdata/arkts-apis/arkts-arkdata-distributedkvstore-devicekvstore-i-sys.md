@@ -10,6 +10,8 @@ Provides APIs for querying data in a device KV store and performing cross-device
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface DeviceKVStore extends SingleKVStore--><!--Device-distributedKVStore-interface DeviceKVStore extends SingleKVStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Obtains the KVStoreResultSet object matching the local device ID and specified p
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -396,6 +400,8 @@ Obtains the KVStoreResultSet object matching the local device ID and specified p
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
@@ -767,6 +773,8 @@ Obtains the KVStoreResultSet object matching a specified Device ID and Predicate
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 
 **System API:** This is a system API.
@@ -1132,6 +1140,8 @@ Obtains the KVStoreResultSet object matching a specified Device ID and Predicate
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Provider
 

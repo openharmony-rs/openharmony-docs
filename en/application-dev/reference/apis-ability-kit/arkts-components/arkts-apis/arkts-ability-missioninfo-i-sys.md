@@ -8,6 +8,8 @@ The module defines detailed information about a mission. The information can be 
 
 **Since:** 8
 
+<!--Device-unnamed-export interface MissionInfo--><!--Device-unnamed-export interface MissionInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Indicates the ability state of this mission.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-MissionInfo-abilityState: int--><!--Device-MissionInfo-abilityState: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -40,6 +44,8 @@ Indicates whether the mission is continuable. The value **true** means continuab
 
 **Since:** 8
 
+<!--Device-MissionInfo-continuable: boolean--><!--Device-MissionInfo-continuable: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Indicates icon path of the mission.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-MissionInfo-iconPath: string--><!--Device-MissionInfo-iconPath: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -72,6 +80,8 @@ Indicates the label of the mission, used as the task name displayed in the task 
 
 **Since:** 8
 
+<!--Device-MissionInfo-label: string--><!--Device-MissionInfo-label: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ Indicates the locked state. The value **true** means the locked state, and **fal
 **Type:** boolean
 
 **Since:** 8
+
+<!--Device-MissionInfo-lockedState: boolean--><!--Device-MissionInfo-lockedState: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -104,6 +116,8 @@ Indicates mission id.
 
 **Since:** 8
 
+<!--Device-MissionInfo-missionId: int--><!--Device-MissionInfo-missionId: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -119,6 +133,8 @@ Indicates the running state. The value **0** means enabled, indicating that the 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MissionInfo-runningState: int--><!--Device-MissionInfo-runningState: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -136,6 +152,8 @@ Indicates the recent created or updated time of the mission. Unit: ns
 
 **Since:** 8
 
+<!--Device-MissionInfo-timestamp: string--><!--Device-MissionInfo-timestamp: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -152,6 +170,8 @@ Indicates whether the mission can be manually deleted by the user. The value **t
 
 **Since:** 10
 
+<!--Device-MissionInfo-unclearable: boolean--><!--Device-MissionInfo-unclearable: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -167,6 +187,8 @@ Indicates want of the mission.
 **Type:** [Want](arkts-ability-app-ability-want-want-c.md)
 
 **Since:** 8
+
+<!--Device-MissionInfo-want: Want--><!--Device-MissionInfo-want: Want-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

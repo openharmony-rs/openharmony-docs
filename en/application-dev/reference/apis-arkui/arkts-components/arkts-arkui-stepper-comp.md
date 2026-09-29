@@ -2,7 +2,7 @@
 
 The **Stepper** component provides a step navigator, suitable for guiding users through a step-by-step task completion process.
 
-> **NOTE**
+> **NOTE:** 
 
 ## Child Components
 
@@ -25,6 +25,8 @@ Creates a **Stepper** component.
 **Substitutes:** index
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute--><!--Device-StepperInterface-(value?: { index?: number }): StepperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Sets the input switch status of an input device. Take the touchscreen as an exam
 
 **Required permissions:** ohos.permission.INPUT_DEVICE_CONTROLLER
 
+<!--Device-inputDevice-function setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise<void>--><!--Device-inputDevice-function setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **System API:** This is a system API.

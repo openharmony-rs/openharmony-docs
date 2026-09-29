@@ -8,6 +8,8 @@ Enumerates the animation modes for switching between tabs.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum AnimationMode--><!--Device-unnamed-declare enum AnimationMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTENT_FIRST
@@ -24,6 +26,8 @@ Loads the content of the target page before starting the switching animation.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AnimationMode-CONTENT_FIRST = 0--><!--Device-AnimationMode-CONTENT_FIRST = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTION_FIRST
@@ -39,6 +43,8 @@ Starts the switching animation before loading the content of the target page. Th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AnimationMode-ACTION_FIRST = 1--><!--Device-AnimationMode-ACTION_FIRST = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ To disable the animation under this scenario, set **animationDuration** to **0**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AnimationMode-NO_ANIMATION = 2--><!--Device-AnimationMode-NO_ANIMATION = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTENT_FIRST_WITH_JUMP
@@ -74,6 +82,8 @@ Loads the content of the target page first, then jumps to the vicinity of the ta
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-AnimationMode-CONTENT_FIRST_WITH_JUMP = 3--><!--Device-AnimationMode-CONTENT_FIRST_WITH_JUMP = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTION_FIRST_WITH_JUMP
@@ -89,5 +99,7 @@ Jumps to the vicinity of the target page without animation first, then jumps to 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-AnimationMode-ACTION_FIRST_WITH_JUMP = 4--><!--Device-AnimationMode-ACTION_FIRST_WITH_JUMP = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

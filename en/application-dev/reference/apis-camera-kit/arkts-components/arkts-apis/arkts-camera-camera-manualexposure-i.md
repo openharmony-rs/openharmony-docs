@@ -10,6 +10,8 @@ ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposureq
 
 **Since:** 24
 
+<!--Device-camera-interface ManualExposure extends ManualExposureQuery--><!--Device-camera-interface ManualExposure extends ManualExposureQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Gets current exposure value.
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ManualExposure-getExposureDuration(): int--><!--Device-ManualExposure-getExposureDuration(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -55,7 +59,9 @@ Sets Exposure duration value, units: microseconds.This control is only effective
 
 **Since:** 24
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-ManualExposure-setExposureDuration(exposureDuration: int): void--><!--Device-ManualExposure-setExposureDuration(exposureDuration: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

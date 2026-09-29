@@ -32,6 +32,8 @@ Creates and displays a toast.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-promptAction-function showToast(options: ShowToastOptions): void--><!--Device-promptAction-function showToast(options: ShowToastOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

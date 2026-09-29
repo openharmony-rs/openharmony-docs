@@ -8,6 +8,8 @@ Describes the options for image encoding.
 
 **Since:** 6
 
+<!--Device-image-interface PackingOption--><!--Device-image-interface PackingOption-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Reserved space size for C2PA data during encoding, in bytes. The default value i
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PackingOption-c2paDataSize?: int--><!--Device-PackingOption-c2paDataSize?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 

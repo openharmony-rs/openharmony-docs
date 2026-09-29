@@ -8,6 +8,8 @@ Represents the optional parameters of [DataShareHelper](arkts-arkdata-datashare-
 
 **Since:** 10
 
+<!--Device-dataShare-interface DataShareHelperOptions--><!--Device-dataShare-interface DataShareHelperOptions-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ If the value is **true**, the [DataShareHelper](arkts-arkdata-datashare-datashar
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataShareHelperOptions-isProxy?: boolean--><!--Device-DataShareHelperOptions-isProxy?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -55,6 +59,8 @@ Waiting time for starting the data provider process, in seconds. The default val
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataShareHelperOptions-waitTime?: int--><!--Device-DataShareHelperOptions-waitTime?: int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

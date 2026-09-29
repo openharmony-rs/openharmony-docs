@@ -13,6 +13,8 @@ declare interface OverlayOptions
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OverlayOptions--><!--Device-unnamed-declare interface OverlayOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## align
@@ -33,6 +35,8 @@ Default value: **TopStart**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-OverlayOptions-align?: Alignment--><!--Device-OverlayOptions-align?: Alignment-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -50,5 +54,7 @@ Offset of the overlay from the upper left corner. By default, the overlay is in 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-OverlayOptions-offset?: OverlayOffset--><!--Device-OverlayOptions-offset?: OverlayOffset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

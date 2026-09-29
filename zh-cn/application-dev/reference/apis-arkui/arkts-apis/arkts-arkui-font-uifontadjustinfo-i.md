@@ -8,6 +8,8 @@ interface UIFontAdjustInfo
 
 **起始版本：** 11
 
+<!--Device-font-interface UIFontAdjustInfo--><!--Device-font-interface UIFontAdjustInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ to: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIFontAdjustInfo-to: number--><!--Device-UIFontAdjustInfo-to: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## weight
@@ -53,5 +57,7 @@ weight: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIFontAdjustInfo-weight: number--><!--Device-UIFontAdjustInfo-weight: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

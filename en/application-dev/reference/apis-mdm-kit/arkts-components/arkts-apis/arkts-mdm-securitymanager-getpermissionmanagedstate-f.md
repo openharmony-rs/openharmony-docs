@@ -24,6 +24,8 @@ Obtains the management policy for the [user_grant permission](../../apis-ability
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getPermissionManagedState(    admin: Want,    applicationInstance: ApplicationInstance,    permission: string  ): PermissionManagedState--><!--Device-securityManager-function getPermissionManagedState(    admin: Want,    applicationInstance: ApplicationInstance,    permission: string  ): PermissionManagedState-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

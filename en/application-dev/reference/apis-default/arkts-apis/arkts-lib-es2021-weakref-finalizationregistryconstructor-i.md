@@ -17,6 +17,8 @@ new<T>(cleanupCallback: (heldValue: T) => void): FinalizationRegistry<T>
 
 Creates a finalization registry with an associated cleanup callback
 
+<!--Device-FinalizationRegistryConstructor-new<T>(cleanupCallback: (heldValue: T) => void): FinalizationRegistry<T>--><!--Device-FinalizationRegistryConstructor-new<T>(cleanupCallback: (heldValue: T) => void): FinalizationRegistry<T>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

@@ -16,6 +16,8 @@ Check whether the device is currently locked and the screenlock requires an iden
 
 **Since:** 20
 
+<!--Device-screenLock-function isDeviceLocked(userId: int): boolean--><!--Device-screenLock-function isDeviceLocked(userId: int): boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.

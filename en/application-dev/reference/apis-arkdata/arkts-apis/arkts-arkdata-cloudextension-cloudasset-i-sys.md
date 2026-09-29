@@ -10,6 +10,8 @@ Represents the cloud asset information.
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface CloudAsset extends relationalStore.Asset--><!--Device-cloudExtension-export interface CloudAsset extends relationalStore.Asset-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Asset ID.
 
 **Since:** 11
 
+<!--Device-CloudAsset-assetId: string--><!--Device-CloudAsset-assetId: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Hashed value of the asset modification time and size.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-CloudAsset-hash: string--><!--Device-CloudAsset-hash: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

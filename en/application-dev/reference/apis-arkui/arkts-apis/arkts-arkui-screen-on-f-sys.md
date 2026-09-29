@@ -16,6 +16,8 @@ Subscribes to events related to the screen state.
 
 **Since:** 9
 
+<!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void--><!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Subscribes to events related to the screen state.
 
 **Since:** 9
 
+<!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void--><!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -91,6 +95,8 @@ function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<n
 Subscribes to events related to the screen state.
 
 **Since:** 9
+
+<!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void--><!--Device-screen-function on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback<long>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -8,6 +8,8 @@ Defines the parameters of the key derivation function. When the key derivation f
 
 **Since:** 11
 
+<!--Device-cryptoFramework-interface KdfSpec--><!--Device-cryptoFramework-interface KdfSpec-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Kdf
 - API version 11: SystemCapability.Security.CryptoFramework
@@ -30,7 +32,9 @@ Algorithm of the key derivation function, for example, **PBKDF2**.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-KdfSpec-algName: string--><!--Device-KdfSpec-algName: string-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Kdf

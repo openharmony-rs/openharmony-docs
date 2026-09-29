@@ -18,6 +18,8 @@ Obtains the Kiosk mode status information, including whether the system is in ki
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-kioskManager-function getKioskStatus(): Promise<KioskStatus>--><!--Device-kioskManager-function getKioskStatus(): Promise<KioskStatus>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

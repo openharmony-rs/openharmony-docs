@@ -15,6 +15,8 @@ Represents the RSA private key encoding parameters. You can use it to generate a
 
 **Since:** 18
 
+<!--Device-cryptoFramework-interface KeyEncodingConfig--><!--Device-cryptoFramework-interface KeyEncodingConfig-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
 ## Modules to Import
@@ -35,7 +37,9 @@ Symmetric cipher algorithm used for encoding the private key.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-KeyEncodingConfig-cipherName: string--><!--Device-KeyEncodingConfig-cipherName: string-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
@@ -51,6 +55,8 @@ Password used for encoding the private key.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-KeyEncodingConfig-password: string--><!--Device-KeyEncodingConfig-password: string-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Key.AsymKey

@@ -12,6 +12,8 @@ Control center session object.
 
 **Since:** 20
 
+<!--Device-camera-interface ControlCenterSession extends Beauty, Aperture, ColorEffect--><!--Device-camera-interface ControlCenterSession extends Beauty, Aperture, ColorEffect-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ enableAutoFraming(enabled: boolean): void
 Enable auto-framing effect.
 
 **Since:** 24
+
+<!--Device-ControlCenterSession-enableAutoFraming(enabled: boolean): void--><!--Device-ControlCenterSession-enableAutoFraming(enabled: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -60,6 +64,8 @@ Gets the status of auto-framing effect.
 
 **Since:** 24
 
+<!--Device-ControlCenterSession-getAutoFramingStatus(): boolean--><!--Device-ControlCenterSession-getAutoFramingStatus(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -87,6 +93,8 @@ Gets the control center height.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ControlCenterSession-getControlCenterHeight(): double--><!--Device-ControlCenterSession-getControlCenterHeight(): double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -116,6 +124,8 @@ Gets the current camera device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ControlCenterSession-getCurrentDevice(): CameraDevice--><!--Device-ControlCenterSession-getCurrentDevice(): CameraDevice-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -143,6 +153,8 @@ Checks whether auto-framing is supported.
 
 **Since:** 24
 
+<!--Device-ControlCenterSession-isAutoFramingSupported(): boolean--><!--Device-ControlCenterSession-isAutoFramingSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -168,6 +180,8 @@ release(): Promise<void>
 Release control center session object.
 
 **Since:** 20
+
+<!--Device-ControlCenterSession-release(): Promise<void>--><!--Device-ControlCenterSession-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -196,6 +210,8 @@ Sets the camera to be used as a camera at the specified position.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ControlCenterSession-usedAsPosition(position: CameraPosition): void--><!--Device-ControlCenterSession-usedAsPosition(position: CameraPosition): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -19,6 +19,8 @@ Unsubscribes from the "senior mode" change event of the app itself. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function offSeniorModeStateChangeForSelf(callback?: Callback<boolean>): void--><!--Device-accessibility-function offSeniorModeStateChangeForSelf(callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

@@ -10,4 +10,6 @@ Describes a callback function.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-taskpool-type CallbackFunction = () => void--><!--Device-taskpool-type CallbackFunction = () => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang

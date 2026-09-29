@@ -10,6 +10,8 @@ Describes the camera parameters, which are used to define additional configurati
 
 **Since:** 21
 
+<!--Device-unnamed-export interface CameraParameters--><!--Device-unnamed-export interface CameraParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## msaa
@@ -26,6 +28,8 @@ Whether Multisample Anti-Aliasing (MSAA) is enabled for the camera. true if enab
 
 **Since:** 22
 
+<!--Device-CameraParameters-msaa?: boolean--><!--Device-CameraParameters-msaa?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## renderingPipeline
@@ -41,5 +45,7 @@ Initial rendering pipeline type. The default value is FORWARD_LIGHTWEIGHT.
 **Default:** RenderingPipelineType.FORWARD_LIGHTWEIGHT
 
 **Since:** 21
+
+<!--Device-CameraParameters-renderingPipeline?: RenderingPipelineType--><!--Device-CameraParameters-renderingPipeline?: RenderingPipelineType-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

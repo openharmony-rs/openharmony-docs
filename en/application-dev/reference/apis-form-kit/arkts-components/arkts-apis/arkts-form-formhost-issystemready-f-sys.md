@@ -16,6 +16,8 @@ Checks whether the system is ready. This API uses an asynchronous callback to re
 
 **Since:** 9
 
+<!--Device-formHost-function isSystemReady(callback: AsyncCallback<void>): void--><!--Device-formHost-function isSystemReady(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -45,6 +47,8 @@ function isSystemReady(): Promise<void>
 Checks whether the system is ready. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-formHost-function isSystemReady(): Promise<void>--><!--Device-formHost-function isSystemReady(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

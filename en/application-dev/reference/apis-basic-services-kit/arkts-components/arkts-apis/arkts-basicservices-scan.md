@@ -8,6 +8,8 @@ This module provides JavaScript APIs of the scan framework for discovering and c
 
 **Since:** 20
 
+<!--Device-unnamed-declare namespace scan--><!--Device-unnamed-declare namespace scan-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import

@@ -20,6 +20,8 @@ Adds allowed printer IP addresses for current account. The policy takes effect o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function addAllowedPrinterIPAddressesForAccount(ipAddresses: Array<string>): void--><!--Device-systemManager-function addAllowedPrinterIPAddressesForAccount(ipAddresses: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

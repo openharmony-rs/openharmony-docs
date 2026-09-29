@@ -14,6 +14,8 @@ export enum InstallErrorCode
 
 **Deprecated since:** 9
 
+<!--Device-bundle-export enum InstallErrorCode--><!--Device-bundle-export enum InstallErrorCode-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## SUCCESS
@@ -27,6 +29,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-SUCCESS = 0--><!--Device-InstallErrorCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -42,6 +46,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE = 1--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_INSTALL_FAILURE_ABORTED
@@ -55,6 +61,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_ABORTED = 2--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_ABORTED = 2-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -70,6 +78,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_INVALID = 3--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_INVALID = 3-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_INSTALL_FAILURE_CONFLICT
@@ -83,6 +93,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_CONFLICT = 4--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_CONFLICT = 4-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -98,6 +110,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_STORAGE = 5--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_STORAGE = 5-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_INSTALL_FAILURE_INCOMPATIBLE
@@ -111,6 +125,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_INCOMPATIBLE = 6--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_INCOMPATIBLE = 6-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -126,6 +142,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE = 7--><!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE = 7-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_UNINSTALL_FAILURE_BLOCKED
@@ -139,6 +157,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_BLOCKED = 8--><!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_BLOCKED = 8-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -154,6 +174,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_ABORTED = 9--><!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_ABORTED = 9-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_UNINSTALL_FAILURE_CONFLICT
@@ -167,6 +189,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_CONFLICT = 10--><!--Device-InstallErrorCode-STATUS_UNINSTALL_FAILURE_CONFLICT = 10-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -182,6 +206,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT = 0x0B--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT = 0x0B-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED
@@ -195,6 +221,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED = 0x0C--><!--Device-InstallErrorCode-STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED = 0x0C-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -210,6 +238,8 @@ No uninstallation permission.
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_RECOVER_FAILURE_INVALID = 0x0D--><!--Device-InstallErrorCode-STATUS_RECOVER_FAILURE_INVALID = 0x0D-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_ABILITY_NOT_FOUND
@@ -223,6 +253,8 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_ABILITY_NOT_FOUND = 0x40--><!--Device-InstallErrorCode-STATUS_ABILITY_NOT_FOUND = 0x40-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -238,6 +270,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_BMS_SERVICE_ERROR = 0x41--><!--Device-InstallErrorCode-STATUS_BMS_SERVICE_ERROR = 0x41-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_FAILED_NO_SPACE_LEFT
@@ -251,6 +285,8 @@ No uninstallation permission.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_FAILED_NO_SPACE_LEFT = 0x42--><!--Device-InstallErrorCode-STATUS_FAILED_NO_SPACE_LEFT = 0x42-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -266,6 +302,8 @@ No uninstallation permission.
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_GRANT_REQUEST_PERMISSIONS_FAILED = 0x43--><!--Device-InstallErrorCode-STATUS_GRANT_REQUEST_PERMISSIONS_FAILED = 0x43-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_INSTALL_PERMISSION_DENIED
@@ -280,6 +318,8 @@ No uninstallation permission.
 
 **Deprecated since:** 9
 
+<!--Device-InstallErrorCode-STATUS_INSTALL_PERMISSION_DENIED = 0x44--><!--Device-InstallErrorCode-STATUS_INSTALL_PERMISSION_DENIED = 0x44-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## STATUS_UNINSTALL_PERMISSION_DENIED
@@ -293,5 +333,7 @@ No uninstallation permission.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-InstallErrorCode-STATUS_UNINSTALL_PERMISSION_DENIED = 0x45--><!--Device-InstallErrorCode-STATUS_UNINSTALL_PERMISSION_DENIED = 0x45-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

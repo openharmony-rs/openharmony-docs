@@ -8,6 +8,8 @@ Enumerates the features that can be disabled or enabled for a specified user.
 
 **Since:** 26.0.0
 
+<!--Device-restrictions-enum FeatureForAccount--><!--Device-restrictions-enum FeatureForAccount-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MULTI_WINDOW
@@ -21,6 +23,8 @@ System multi-window. Currently, this feature is available only on phones and tab
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-MULTI_WINDOW = 0--><!--Device-FeatureForAccount-MULTI_WINDOW = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ DISTRIBUTED_TRANSMISSION = 1
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION = 1--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## SUPER_HUB
@@ -49,6 +55,8 @@ SuperHub. Currently, this feature is available only on phones and tablets. Once 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-SUPER_HUB = 2--><!--Device-FeatureForAccount-SUPER_HUB = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -69,6 +77,8 @@ this capability ([FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FeatureForAccount-FINGERPRINT = 3--><!--Device-FeatureForAccount-FINGERPRINT = 3-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PRINT
@@ -83,6 +93,8 @@ Device printing capability. If the device printing capability is disabled for a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FeatureForAccount-PRINT = 4--><!--Device-FeatureForAccount-PRINT = 4-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## MTP_CLIENT
@@ -96,6 +108,8 @@ MTP client capability (including read and write capabilities). Currently, it is 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-MTP_CLIENT = 5--><!--Device-FeatureForAccount-MTP_CLIENT = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -118,6 +132,8 @@ Disabling the USB storage device write capability for a specific user in any of 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FeatureForAccount-USB_STORAGE_DEVICE_WRITE = 6--><!--Device-FeatureForAccount-USB_STORAGE_DEVICE_WRITE = 6-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISK_RECOVERY_KEY
@@ -131,6 +147,8 @@ DISK_RECOVERY_KEY = 7
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7--><!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -146,6 +164,8 @@ superuser do (execution with superuser privileges). Currently, it is supported o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FeatureForAccount-SUDO = 8--><!--Device-FeatureForAccount-SUDO = 8-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DISTRIBUTED_TRANSMISSION_OUTGOING
@@ -160,6 +180,8 @@ Distributed one-way data transmission between devices (only data transmission to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## OPEN_FILE_BOOST
@@ -173,5 +195,7 @@ File open acceleration capability, providing applications with the ability to se
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10--><!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

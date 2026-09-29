@@ -8,6 +8,8 @@ Provides APIs for user authentication.
 
 **Since:** 8
 
+<!--Device-osAccount-class UserAuth--><!--Device-osAccount-class UserAuth-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Performs authentication of the current user.
 **Since:** 8
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -122,6 +126,8 @@ Starts user authentication based on the specified challenge value, authenticatio
 **Since:** 12
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      options: AuthOptions,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      options: AuthOptions,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -214,6 +220,8 @@ Authenticates a specified user. This API uses an asynchronous callback to return
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-UserAuth-authUser(      userId: int,      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-authUser(      userId: int,      challenge: Uint8Array,      authType: AuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -297,6 +305,8 @@ Cancels an authentication.
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-UserAuth-cancelAuth(contextID: Uint8Array): void--><!--Device-UserAuth-cancelAuth(contextID: Uint8Array): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -349,6 +359,8 @@ A constructor used to create an instance for user authentication.
 
 **Since:** 8
 
+<!--Device-UserAuth-constructor()--><!--Device-UserAuth-constructor()-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -376,6 +388,8 @@ Obtains the available status of the authentication capability corresponding to t
 **Since:** 8
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): int--><!--Device-UserAuth-getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): int-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -433,6 +447,8 @@ Obtains the executor property based on the request. This API uses an asynchronou
 **Since:** 8
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-getProperty(request: GetPropertyRequest, callback: AsyncCallback<ExecutorProperty>): void--><!--Device-UserAuth-getProperty(request: GetPropertyRequest, callback: AsyncCallback<ExecutorProperty>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -499,6 +515,8 @@ Obtains the executor property based on the request. This API uses a promise to r
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-UserAuth-getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>--><!--Device-UserAuth-getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -564,6 +582,8 @@ Obtains the specified property information of the associated executor based on t
 **Since:** 14
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-getPropertyByCredentialId(credentialId: Uint8Array, keys: Array<GetPropertyType>): Promise<ExecutorProperty>--><!--Device-UserAuth-getPropertyByCredentialId(credentialId: Uint8Array, keys: Array<GetPropertyType>): Promise<ExecutorProperty>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -642,6 +662,8 @@ Obtains this version number.
 
 **Since:** 8
 
+<!--Device-UserAuth-getVersion(): int--><!--Device-UserAuth-getVersion(): int-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -677,6 +699,8 @@ Prepares for remote authentication. This API uses a promise to return the result
 **Since:** 12
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-prepareRemoteAuth(remoteNetworkId: string): Promise<void>--><!--Device-UserAuth-prepareRemoteAuth(remoteNetworkId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -743,6 +767,8 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-UserAuth-setProperty(request: SetPropertyRequest, callback: AsyncCallback<void>): void--><!--Device-UserAuth-setProperty(request: SetPropertyRequest, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -802,6 +828,8 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 **Since:** 8
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-UserAuth-setProperty(request: SetPropertyRequest): Promise<void>--><!--Device-UserAuth-setProperty(request: SetPropertyRequest): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

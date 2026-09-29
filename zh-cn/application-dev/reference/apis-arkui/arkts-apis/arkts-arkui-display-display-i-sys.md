@@ -10,6 +10,8 @@ interface Display
 
 **起始版本：** 7
 
+<!--Device-display-interface Display--><!--Device-display-interface Display-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -27,6 +29,8 @@ hasImmersiveWindow(callback: AsyncCallback<boolean>): void
 判断当前屏幕是否包含沉浸式窗口，使用callback异步回调。
 
 **起始版本：** 11
+
+<!--Device-Display-hasImmersiveWindow(callback: AsyncCallback<boolean>): void--><!--Device-Display-hasImmersiveWindow(callback: AsyncCallback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -78,6 +82,8 @@ hasImmersiveWindow(): Promise<boolean>
 判断当前屏幕是否包含沉浸式窗口，使用Promise异步回调。
 
 **起始版本：** 11
+
+<!--Device-Display-hasImmersiveWindow(): Promise<boolean>--><!--Device-Display-hasImmersiveWindow(): Promise<boolean>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

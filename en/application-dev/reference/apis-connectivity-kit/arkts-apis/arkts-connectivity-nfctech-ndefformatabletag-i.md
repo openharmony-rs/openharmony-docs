@@ -16,6 +16,8 @@ The following describes the unique APIs of **NdefFormatableTag**.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface NdefFormatableTag extends TagSession--><!--Device-unnamed-export interface NdefFormatableTag extends TagSession-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## format
@@ -30,7 +32,9 @@ Formats this tag as an NDEF tag, and writes an NDEF message to it. This API uses
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NdefFormatableTag-format(message: NdefMessage): Promise<void>--><!--Device-NdefFormatableTag-format(message: NdefMessage): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -136,7 +140,9 @@ Formats this tag as an NDEF tag, and writes an NDEF message to it. This API uses
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NdefFormatableTag-format(message: NdefMessage, callback: AsyncCallback<void>): void--><!--Device-NdefFormatableTag-format(message: NdefMessage, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -172,7 +178,9 @@ Formats this tag as an NDEF tag, writes an NDEF message to it, and then sets the
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage): Promise<void>--><!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 
@@ -279,7 +287,9 @@ Formats this tag as an NDEF tag, writes an NDEF message to the NDEF tag, and the
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage, callback: AsyncCallback<void>): void--><!--Device-NdefFormatableTag-formatReadOnly(message: NdefMessage, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

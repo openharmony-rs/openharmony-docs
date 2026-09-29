@@ -8,6 +8,8 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 
 **Substitutes:** [formHost](arkts-form-app-form-formhost.md)
 
+<!--Device-unnamed-declare namespace formHost--><!--Device-unnamed-declare namespace formHost-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

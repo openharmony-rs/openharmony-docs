@@ -18,6 +18,8 @@ Obtain information about the groups.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getP2pGroups(): Promise<Array<WifiP2pGroupInfo>>--><!--Device-wifiManager-function getP2pGroups(): Promise<Array<WifiP2pGroupInfo>>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Obtain information about the groups.
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function getP2pGroups(callback: AsyncCallback<Array<WifiP2pGroupInfo>>): void--><!--Device-wifiManager-function getP2pGroups(callback: AsyncCallback<Array<WifiP2pGroupInfo>>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 

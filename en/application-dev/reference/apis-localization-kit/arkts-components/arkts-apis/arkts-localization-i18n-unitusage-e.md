@@ -8,6 +8,8 @@ Enumerates unit formatting scenarios.
 
 **Since:** 23
 
+<!--Device-i18n-export enum UnitUsage--><!--Device-i18n-export enum UnitUsage-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## AREA_LAND_AGRICULT
@@ -22,7 +24,9 @@ Area land agricult scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-AREA_LAND_AGRICULT = 1--><!--Device-UnitUsage-AREA_LAND_AGRICULT = 1-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -38,7 +42,9 @@ Area land commercl scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-AREA_LAND_COMMERCL = 2--><!--Device-UnitUsage-AREA_LAND_COMMERCL = 2-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -54,7 +60,9 @@ Area land residntl scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-AREA_LAND_RESIDNTL = 3--><!--Device-UnitUsage-AREA_LAND_RESIDNTL = 3-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -70,7 +78,9 @@ Length person scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_PERSON = 4--><!--Device-UnitUsage-LENGTH_PERSON = 4-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -86,7 +96,9 @@ Length person small scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_PERSON_SMALL = 5--><!--Device-UnitUsage-LENGTH_PERSON_SMALL = 5-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -102,7 +114,9 @@ Length rainfall scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_RAINFALL = 6--><!--Device-UnitUsage-LENGTH_RAINFALL = 6-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -118,7 +132,9 @@ Length road scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_ROAD = 7--><!--Device-UnitUsage-LENGTH_ROAD = 7-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -134,7 +150,9 @@ Length road small scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_ROAD_SMALL = 8--><!--Device-UnitUsage-LENGTH_ROAD_SMALL = 8-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -150,7 +168,9 @@ Length snowfall scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_SNOWFALL = 9--><!--Device-UnitUsage-LENGTH_SNOWFALL = 9-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -166,7 +186,9 @@ Length vehicle scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_VEHICLE = 10--><!--Device-UnitUsage-LENGTH_VEHICLE = 10-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -182,7 +204,9 @@ Length visiblty scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_VISIBLTY = 11--><!--Device-UnitUsage-LENGTH_VISIBLTY = 11-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -198,7 +222,9 @@ Length visiblty small scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_VISIBLTY_SMALL = 12--><!--Device-UnitUsage-LENGTH_VISIBLTY_SMALL = 12-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -214,7 +240,9 @@ Length person informal scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_PERSON_INFORMAL = 13--><!--Device-UnitUsage-LENGTH_PERSON_INFORMAL = 13-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -230,7 +258,9 @@ Length person small informal scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_PERSON_SMALL_INFORMAL = 14--><!--Device-UnitUsage-LENGTH_PERSON_SMALL_INFORMAL = 14-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -246,7 +276,9 @@ Length road informal scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-LENGTH_ROAD_INFORMAL = 15--><!--Device-UnitUsage-LENGTH_ROAD_INFORMAL = 15-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -262,7 +294,9 @@ Speed road travel scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-SPEED_ROAD_TRAVEL = 16--><!--Device-UnitUsage-SPEED_ROAD_TRAVEL = 16-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -278,7 +312,9 @@ Speed wind scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-SPEED_WIND = 17--><!--Device-UnitUsage-SPEED_WIND = 17-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -294,7 +330,9 @@ Temperature person scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-TEMPERATURE_PERSON = 18--><!--Device-UnitUsage-TEMPERATURE_PERSON = 18-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -310,7 +348,9 @@ Temperature weather scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-TEMPERATURE_WEATHER = 19--><!--Device-UnitUsage-TEMPERATURE_WEATHER = 19-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -326,7 +366,9 @@ Volume vehicle fuel scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-VOLUME_VEHICLE_FUEL = 20--><!--Device-UnitUsage-VOLUME_VEHICLE_FUEL = 20-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -342,7 +384,9 @@ Elapsed time second scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-ELAPSED_TIME_SECOND = 21--><!--Device-UnitUsage-ELAPSED_TIME_SECOND = 21-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -358,7 +402,9 @@ Size file byte scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-SIZE_FILE_BYTE = 22--><!--Device-UnitUsage-SIZE_FILE_BYTE = 22-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -374,6 +420,8 @@ Size shortfile byte scenario.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-UnitUsage-SIZE_SHORTFILE_BYTE = 23--><!--Device-UnitUsage-SIZE_SHORTFILE_BYTE = 23-End-->
 
 **System capability:** SystemCapability.Global.I18n

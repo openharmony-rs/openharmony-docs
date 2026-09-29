@@ -22,6 +22,8 @@ Obtains all SkillInfo of a specified application based on bundleName. To query i
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-skillManager-function getSkillInfos(bundleName: string, flags: int, userId?: int): Promise<Array<SkillInfo>>--><!--Device-skillManager-function getSkillInfos(bundleName: string, flags: int, userId?: int): Promise<Array<SkillInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Parameters:**

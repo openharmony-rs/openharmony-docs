@@ -8,6 +8,8 @@ export interface BackgroundBlur
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface BackgroundBlur--><!--Device-unnamed-export interface BackgroundBlur-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## grayscale
@@ -25,6 +27,8 @@ grayscale?: [number, number]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundBlur-grayscale?: [int, int]--><!--Device-BackgroundBlur-grayscale?: [int, int]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,5 +51,7 @@ radius: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackgroundBlur-radius: double--><!--Device-BackgroundBlur-radius: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

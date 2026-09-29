@@ -8,6 +8,8 @@ Enum for the action of car key.
 
 **Since:** 26.0.0
 
+<!--Device-connection-enum CarKeyActionType--><!--Device-connection-enum CarKeyActionType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Add the data of car key.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CarKeyActionType-CAR_KEY_ACTION_ADD = 0--><!--Device-CarKeyActionType-CAR_KEY_ACTION_ADD = 0-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Delete the data of car key.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CarKeyActionType-CAR_KEY_ACTION_DELETE = 1--><!--Device-CarKeyActionType-CAR_KEY_ACTION_DELETE = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

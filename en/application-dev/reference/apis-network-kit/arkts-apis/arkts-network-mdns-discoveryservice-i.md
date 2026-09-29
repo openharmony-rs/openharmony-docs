@@ -8,6 +8,8 @@ Defines a **DiscoveryService** object for discovering MDNS services of the speci
 
 **Since:** 10
 
+<!--Device-mdns-export interface DiscoveryService--><!--Device-mdns-export interface DiscoveryService-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Disables listening for **discoveryStart** events.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DiscoveryService-off(type: 'discoveryStart', callback?: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-off(type: 'discoveryStart', callback?: Callback<DiscoveryEventInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
@@ -77,6 +81,8 @@ Disables listening for **discoveryStop** events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DiscoveryService-off(type: 'discoveryStop', callback?: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-off(type: 'discoveryStop', callback?: Callback<DiscoveryEventInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters:**
@@ -97,6 +103,8 @@ Disables listening for **serviceFound** events.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DiscoveryService-off(type: 'serviceFound', callback?: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-off(type: 'serviceFound', callback?: Callback<LocalServiceInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
@@ -150,6 +158,8 @@ Disables listening for **serviceLost** events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DiscoveryService-off(type: 'serviceLost', callback?: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-off(type: 'serviceLost', callback?: Callback<LocalServiceInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters:**
@@ -199,6 +209,8 @@ Enables listening for **discoveryStart** events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DiscoveryService-on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-on(type: 'discoveryStart', callback: Callback<DiscoveryEventInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters:**
@@ -244,6 +256,8 @@ Enables listening for **discoveryStop** events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DiscoveryService-on(type: 'discoveryStop', callback: Callback<DiscoveryEventInfo>): void--><!--Device-DiscoveryService-on(type: 'discoveryStop', callback: Callback<DiscoveryEventInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters:**
@@ -288,6 +302,8 @@ Enables listening for **serviceFound** events.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DiscoveryService-on(type: 'serviceFound', callback: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-on(type: 'serviceFound', callback: Callback<LocalServiceInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
@@ -337,6 +353,8 @@ Enables listening for **serviceLost** events.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DiscoveryService-on(type: 'serviceLost', callback: Callback<LocalServiceInfo>): void--><!--Device-DiscoveryService-on(type: 'serviceLost', callback: Callback<LocalServiceInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters:**
@@ -382,6 +400,8 @@ Searches for MDNS services on the LAN.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DiscoveryService-startSearchingMDNS(): void--><!--Device-DiscoveryService-startSearchingMDNS(): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Examples**
@@ -415,6 +435,8 @@ Stops searching for MDNS services on the LAN.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DiscoveryService-stopSearchingMDNS(): void--><!--Device-DiscoveryService-stopSearchingMDNS(): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 

@@ -8,6 +8,8 @@ Enumerates the text alignment modes.
 
 **Since:** 12
 
+<!--Device-text-enum TextAlign--><!--Device-text-enum TextAlign-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## LEFT
@@ -20,7 +22,9 @@ Left-aligned.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextAlign-LEFT = 0--><!--Device-TextAlign-LEFT = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -34,7 +38,9 @@ Right-aligned.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextAlign-RIGHT = 1--><!--Device-TextAlign-RIGHT = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -48,7 +54,9 @@ Center-aligned.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextAlign-CENTER = 2--><!--Device-TextAlign-CENTER = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,7 +70,9 @@ Justified, which means that each line (except the last line) is stretched so tha
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextAlign-JUSTIFY = 3--><!--Device-TextAlign-JUSTIFY = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -76,7 +86,9 @@ Aligned with the start position, which depends on [TextDirection](arkts-arkgraph
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextAlign-START = 4--><!--Device-TextAlign-START = 4-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -90,6 +102,8 @@ Aligned with the end position, which depends on [TextDirection](arkts-arkgraphic
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextAlign-END = 5--><!--Device-TextAlign-END = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

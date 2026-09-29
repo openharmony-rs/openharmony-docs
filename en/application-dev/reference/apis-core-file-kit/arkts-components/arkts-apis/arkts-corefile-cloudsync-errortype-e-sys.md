@@ -17,6 +17,8 @@ the cloud.
 
 **Since:** 12
 
+<!--Device-cloudSync-enum ErrorType--><!--Device-cloudSync-enum ErrorType-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## RESPONSE_TIME_OUT
@@ -30,6 +32,8 @@ Upload aborted due to cloud response time out.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ErrorType-RESPONSE_TIME_OUT = 9--><!--Device-ErrorType-RESPONSE_TIME_OUT = 9-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -46,6 +50,8 @@ Upload aborted due to unknown error.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ErrorType-UNKNOWN_ERROR = 10--><!--Device-ErrorType-UNKNOWN_ERROR = 10-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

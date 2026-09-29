@@ -8,6 +8,8 @@ Provides options for configuring or querying the cross-language access permissio
 
 **Since:** 15
 
+<!--Device-unnamed-declare interface CrossLanguageOptions--><!--Device-unnamed-declare interface CrossLanguageOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## attributeSetting
@@ -31,6 +33,8 @@ The default value is **false**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-CrossLanguageOptions-attributeSetting?: boolean--><!--Device-CrossLanguageOptions-attributeSetting?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,5 +61,7 @@ Note: When **treeOperating** is set to **true** for a FrameNode, the FrameNode c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CrossLanguageOptions-treeOperating?: boolean--><!--Device-CrossLanguageOptions-treeOperating?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

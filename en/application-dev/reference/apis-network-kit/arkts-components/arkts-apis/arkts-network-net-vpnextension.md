@@ -23,6 +23,8 @@ This module implements virtual private network (VPN) management, such as startin
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace vpnExtension--><!--Device-unnamed-declare namespace vpnExtension-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## Modules to Import

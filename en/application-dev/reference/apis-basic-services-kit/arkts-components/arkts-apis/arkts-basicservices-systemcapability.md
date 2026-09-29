@@ -4,6 +4,8 @@ Provides interfaces to get system capability. @namespace systemCapability
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace systemCapability--><!--Device-unnamed-declare namespace systemCapability-End-->
+
 **System capability:** SystemCapability.Developtools.Syscap
 
 **System API:** This is a system API.

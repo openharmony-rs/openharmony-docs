@@ -8,6 +8,8 @@ Hue-preserving brightening and darkening blender, used to add the brightening an
 
 **Since:** 26.2.0
 
+<!--Device-uiEffect-interface ColorfulBrightnessBlender--><!--Device-uiEffect-interface ColorfulBrightnessBlender-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Regular parameters for brightening and darkening, used to configure basic proper
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-ColorfulBrightnessBlender-brightnessBlenderParam: BrightnessBlenderParam--><!--Device-ColorfulBrightnessBlender-brightnessBlenderParam: BrightnessBlenderParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ Enhanced parameters for brightening and darkening, used to control the brighteni
 **Model restriction:** This API can be used only in the stage model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+
+<!--Device-ColorfulBrightnessBlender-options?: ColorfulBrightnessBlenderOptions--><!--Device-ColorfulBrightnessBlender-options?: ColorfulBrightnessBlenderOptions-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

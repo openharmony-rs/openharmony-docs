@@ -22,6 +22,8 @@ function save(options: ScreenshotOptions, callback: AsyncCallback<image.PixelMap
 - API版本22-24：ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本7-21：ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screenshot-function save(options: ScreenshotOptions, callback: AsyncCallback<image.PixelMap>): void--><!--Device-screenshot-function save(options: ScreenshotOptions, callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -91,6 +93,8 @@ function save(callback: AsyncCallback<image.PixelMap>): void
 - API版本22-24：ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本7-21：ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screenshot-function save(callback: AsyncCallback<image.PixelMap>): void--><!--Device-screenshot-function save(callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -143,6 +147,8 @@ function save(options?: ScreenshotOptions): Promise<image.PixelMap>
 - API版本25：N/A
 - API版本22-24：ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本7-21：ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screenshot-function save(options?: ScreenshotOptions): Promise<image.PixelMap>--><!--Device-screenshot-function save(options?: ScreenshotOptions): Promise<image.PixelMap>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -22,6 +22,8 @@ Obtains the value of a specified character string in the database.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-settings-function getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback<object>): void--><!--Device-settings-function getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback<object>): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -67,6 +69,8 @@ Obtains the value of a specified character string in the database.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-settings-function getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise<object>--><!--Device-settings-function getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise<object>-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -108,6 +112,8 @@ Get value from settingsdata
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function getValue(context: Context, name: string, callback: AsyncCallback<string>): void--><!--Device-settings-function getValue(context: Context, name: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -151,6 +157,8 @@ Get value from settingsdata
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function getValue(context: Context, name: string): Promise<string>--><!--Device-settings-function getValue(context: Context, name: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -193,6 +201,8 @@ Get value from settingsdata [USER_SECURE] domain need ohos.permission.MANAGE_SEC
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function getValue(context: Context, name: string, domainName: string): Promise<string>--><!--Device-settings-function getValue(context: Context, name: string, domainName: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

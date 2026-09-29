@@ -18,6 +18,8 @@ Converts a `SendableResource` object transmitted across threads to a `Resource` 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendableResourceManager-export function sendableResourceToResource(resource: SendableResource): Resource--><!--Device-sendableResourceManager-export function sendableResourceToResource(resource: SendableResource): Resource-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Parameters:**

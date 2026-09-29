@@ -10,7 +10,7 @@ export class BuilderNode<Args extends Object[]>
 
 > **说明：** 
 > 
-> - 若传入的Builder的根节点为语法节点（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)…）、Span、[ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md)、[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md)或自定义组件，将额外生成一个[FrameNode](arkts-arkui-typenode-n.md)，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响事件传递等测试流程。详情参见[BuilderNode内的BuilderProxyNode导致树结构发生变化](../../../ui/arkts-user-defined-arktsNode-builderNode.md#buildernode内的builderproxynode导致树结构发生变化)。
+> - 若传入的Builder的根节点为语法节点（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)…）、[Span](../arkts-components/arkts-arkui-span-comp.md)、[ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md)、[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md)或自定义组件，将额外生成一个[FrameNode](arkts-arkui-typenode-n.md)，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响事件传递等测试流程。详情参见[BuilderNode内的BuilderProxyNode导致树结构发生变化](../../../ui/arkts-user-defined-arktsNode-builderNode.md#buildernode内的builderproxynode导致树结构发生变化)。
 > 
 > - 如果在跨页面复用BuilderNode时显示异常，可参考[跨页面复用注意事项](../../../ui/arkts-user-defined-arktsNode-builderNode.md#跨页面复用注意事项)。
 > 
@@ -31,6 +31,8 @@ export class BuilderNode<Args extends Object[]>
 > - BuilderNode对象不支持使用JSON序列化。
 
 **起始版本：** 11
+
+<!--Device-unnamed-export class BuilderNode<Args extends Object[]>--><!--Device-unnamed-export class BuilderNode<Args extends Object[]>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +63,8 @@ build(builder: WrappedBuilder<Args>, arg?: Object): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg?: Object): void--><!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg?: Object): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +170,8 @@ build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void--><!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -253,13 +259,15 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuilderNode-constructor(uiContext: UIContext, options?: RenderOptions)--><!--Device-BuilderNode-constructor(uiContext: UIContext, options?: RenderOptions)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考UIContext获取方法。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考[UIContext获取方法](../../../reference/apis-arkui/js-apis-arkui-node.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 否 | BuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br>默认值：undefined |
 
 ## dispose
@@ -282,6 +290,8 @@ dispose(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuilderNode-dispose(): void--><!--Device-BuilderNode-dispose(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getFrameNode
@@ -297,6 +307,8 @@ getFrameNode(): FrameNode | null
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-getFrameNode(): FrameNode | null--><!--Device-BuilderNode-getFrameNode(): FrameNode | null-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,6 +336,8 @@ inheritFreezeOptions(enabled: boolean): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-inheritFreezeOptions(enabled: boolean): void--><!--Device-BuilderNode-inheritFreezeOptions(enabled: boolean): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -550,6 +564,8 @@ isDisposed(): boolean
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuilderNode-isDisposed(): boolean--><!--Device-BuilderNode-isDisposed(): boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -690,7 +706,7 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 > 
 > - 鼠标左键点击事件将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，SourceType不会发生变化，规格可查看[onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch)。
 > 
-> - 注入事件为轴事件[（AxisEvent）](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发RotationGesture。
+> - 注入事件为轴事件[（AxisEvent）](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发[RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md)。
 > 
 > - 转发的事件会在被分发到的目标组件所在的子树里做触摸测试（TouchTest），并触发对应手势，原始事件也会触发当前组件所在组件树中的手势。不保证两类手势的竞争结果。
 > 
@@ -707,6 +723,8 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-postInputEvent(event: InputEventType): boolean--><!--Device-BuilderNode-postInputEvent(event: InputEventType): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -744,7 +762,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 > 
 > - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，SourceType不会发生变化，规格可查看[onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch)。
 > 
-> - 注入事件为轴事件[AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势RotationGesture。
+> - 注入事件为轴事件[AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势[RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md)。
 > 
 > - 转发的事件会在被分发到的目标组件及其子组件里做事件处理，并触发对应手势。可以通过入参控制当前组件和目标组件手势是否为竞争关系。
 > 
@@ -761,6 +779,8 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean--><!--Device-BuilderNode-postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -808,6 +828,8 @@ offsetA为builderNode相对于父组件的偏移量，可以通过FrameNode中�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-postTouchEvent(event: TouchEvent): boolean--><!--Device-BuilderNode-postTouchEvent(event: TouchEvent): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -935,6 +957,8 @@ recycle(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuilderNode-recycle(): void--><!--Device-BuilderNode-recycle(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reuse
@@ -952,6 +976,8 @@ BuilderNode通过reuse和[recycle](#recycle)完成其内外自定义组件之间
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-reuse(param?: Object): void--><!--Device-BuilderNode-reuse(param?: Object): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -974,6 +1000,8 @@ update(arg: Object): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-update(arg: Object): void--><!--Device-BuilderNode-update(arg: Object): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1098,6 +1126,8 @@ updateConfiguration(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuilderNode-updateConfiguration(): void--><!--Device-BuilderNode-updateConfiguration(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

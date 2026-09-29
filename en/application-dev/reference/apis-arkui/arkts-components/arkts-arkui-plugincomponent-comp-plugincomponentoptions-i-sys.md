@@ -14,6 +14,8 @@ Defines options for constructing a **PluginComponent**.
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface PluginComponentOptions--><!--Device-unnamed-declare interface PluginComponentOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Data passed to the **PluginComponent** provider.
 
 **Since:** 9
 
+<!--Device-PluginComponentOptions-data: any--><!--Device-PluginComponentOptions-data: any-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Template of the **PluginComponent**, which is bound to the component defined by 
 **Type:** [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md)
 
 **Since:** 9
+
+<!--Device-PluginComponentOptions-template: PluginComponentTemplate--><!--Device-PluginComponentOptions-template: PluginComponentTemplate-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

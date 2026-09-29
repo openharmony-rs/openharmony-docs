@@ -24,6 +24,8 @@ declare enum ButtonType
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum ButtonType--><!--Device-unnamed-declare enum ButtonType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Capsule
@@ -41,6 +43,8 @@ Capsule
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ButtonType-Capsule--><!--Device-ButtonType-Capsule-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ Circle
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ButtonType-Circle--><!--Device-ButtonType-Circle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
@@ -78,6 +84,8 @@ Normal
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ButtonType-Normal--><!--Device-ButtonType-Normal-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ROUNDED_RECTANGLE
@@ -95,5 +103,7 @@ ROUNDED_RECTANGLE = 3
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ButtonType-ROUNDED_RECTANGLE = 3--><!--Device-ButtonType-ROUNDED_RECTANGLE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

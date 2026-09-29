@@ -2,7 +2,7 @@
 
 The **Button** component can be used to create different types of buttons.
 
-> **NOTE**
+> **NOTE:** 
 
 ## Child Components
 
@@ -14,7 +14,7 @@ This component can contain only one child component.
 Button()
 ```
 
-Creates an empty button.
+Button object
 
 **Since:** 7
 
@@ -23,6 +23,8 @@ Creates an empty button.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ButtonInterface-(): ButtonAttribute--><!--Device-ButtonInterface-(): ButtonAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,6 +43,8 @@ Creates a button that can contain a single child component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ButtonInterface-(options: ButtonOptions): ButtonAttribute--><!--Device-ButtonInterface-(options: ButtonOptions): ButtonAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ By default, the text content is displayed in a one line.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ButtonInterface-(label: ResourceStr, options?: ButtonOptions): ButtonAttribute--><!--Device-ButtonInterface-(label: ResourceStr, options?: ButtonOptions): ButtonAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -91,7 +97,7 @@ By default, the text content is displayed in a one line.
 
 | Name | Description |
 | --- | --- |
-| [ButtonTriggerClickCallback](arkts-arkui-button-comp-buttontriggerclickcallback-t.md) | Defines the callback type used in **ButtonConfiguration**. |
+| [ButtonTriggerClickCallback](arkts-arkui-button-comp-buttontriggerclickcallback-t.md) | Defines the callback type used in ButtonConfiguration. |
 
 ### Enums
 

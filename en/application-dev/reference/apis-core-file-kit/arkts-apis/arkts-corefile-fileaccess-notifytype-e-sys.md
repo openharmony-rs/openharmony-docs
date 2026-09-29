@@ -10,6 +10,8 @@ Enumerates the notification types.
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-enum NotifyType--><!--Device-fileAccess-enum NotifyType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ See examples 2 and 3 of **registerObserver**.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotifyType-NOTIFY_ADD = 0--><!--Device-NotifyType-NOTIFY_ADD = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -50,6 +54,8 @@ See examples 1 and 2 of **unregisterObserver(uri: string, callback: Callback&lt;
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotifyType-NOTIFY_DELETE = 1--><!--Device-NotifyType-NOTIFY_DELETE = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ See example 1 of **registerObserver** and example 1 of **unregisterObserver(uri:
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotifyType-NOTIFY_MOVED_TO = 2--><!--Device-NotifyType-NOTIFY_MOVED_TO = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -90,6 +98,8 @@ See example 1 of **registerObserver** and example 1 of **unregisterObserver(uri:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotifyType-NOTIFY_MOVED_FROM = 3--><!--Device-NotifyType-NOTIFY_MOVED_FROM = 3-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -110,6 +120,8 @@ See example 1 of **registerObserver**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotifyType-NOTIFY_MOVE_SELF = 4--><!--Device-NotifyType-NOTIFY_MOVE_SELF = 4-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -128,6 +140,8 @@ Device goes online.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5--><!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -145,6 +159,8 @@ Device goes offline.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6--><!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

@@ -12,6 +12,8 @@ FocusQuery provides APIs to check whether a focus mode is supported.
 
 **Since:** 12
 
+<!--Device-camera-interface FocusQuery--><!--Device-camera-interface FocusQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Checks whether a focus mode is supported.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-FocusQuery-isFocusModeSupported(afMode: FocusMode): boolean--><!--Device-FocusQuery-isFocusModeSupported(afMode: FocusMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -82,7 +86,9 @@ Checks whether lock focus tracking is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-FocusQuery-isLockFocusTrackingSupported(): boolean--><!--Device-FocusQuery-isLockFocusTrackingSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -22,6 +22,8 @@ export interface BundleStatusCallback
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-unnamed-export interface BundleStatusCallback--><!--Device-unnamed-export interface BundleStatusCallback-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -41,6 +43,8 @@ Used to obtain information when a bundle is installed.
 **Substitutes:** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+<!--Device-BundleStatusCallback-add: (bundleName: string, userId: number) => void--><!--Device-BundleStatusCallback-add: (bundleName: string, userId: number) => void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -69,6 +73,8 @@ Used to obtain information when a bundle is uninstalled.
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-BundleStatusCallback-remove: (bundleName: string, userId: number) => void--><!--Device-BundleStatusCallback-remove: (bundleName: string, userId: number) => void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -95,6 +101,8 @@ Used to obtain information when a bundle is updated.
 **Substitutes:** [BundleChangedInfo](arkts-ability-bundlemonitor-bundlechangedinfo-i-sys.md)
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+<!--Device-BundleStatusCallback-update: (bundleName: string, userId: number) => void--><!--Device-BundleStatusCallback-update: (bundleName: string, userId: number) => void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

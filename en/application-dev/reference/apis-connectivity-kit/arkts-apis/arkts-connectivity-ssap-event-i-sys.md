@@ -8,6 +8,8 @@ Represents a service event.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface Event--><!--Device-ssap-interface Event-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Event UUID. The data format is the same as that of **serviceUuid**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Event-eventUuid: string--><!--Device-Event-eventUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Event parameters. The data format is defined by the specific service. By default
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Event-parameter?: ArrayBuffer--><!--Device-Event-parameter?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Event-serviceUuid: string--><!--Device-Event-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 

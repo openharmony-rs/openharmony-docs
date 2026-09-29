@@ -24,6 +24,8 @@ Sets the power policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setPowerPolicy(admin: Want, powerScene: PowerScene, powerPolicy: PowerPolicy): void--><!--Device-deviceSettings-function setPowerPolicy(admin: Want, powerScene: PowerScene, powerPolicy: PowerPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

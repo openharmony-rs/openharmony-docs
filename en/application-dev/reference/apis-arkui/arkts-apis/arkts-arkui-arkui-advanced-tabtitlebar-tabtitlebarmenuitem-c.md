@@ -8,6 +8,8 @@ Declaration of the menu item on the right side.
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class TabTitleBarMenuItem--><!--Device-unnamed-export declare class TabTitleBarMenuItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Action to perform.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TabTitleBarMenuItem-action?: () => void--><!--Device-TabTitleBarMenuItem-action?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ Default value: **"Double-tap to activate"**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TabTitleBarMenuItem-accessibilityDescription?: ResourceStr--><!--Device-TabTitleBarMenuItem-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabTitleBarMenuItem-accessibilityLevel?: string--><!--Device-TabTitleBarMenuItem-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -102,6 +110,8 @@ Default value: value of the **label** property if it is set and an empty string 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabTitleBarMenuItem-accessibilityText?: ResourceStr--><!--Device-TabTitleBarMenuItem-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isEnabled
@@ -119,6 +129,8 @@ Whether to enable the item. Default value: **false**. The value **true** means t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabTitleBarMenuItem-isEnabled?: boolean--><!--Device-TabTitleBarMenuItem-isEnabled?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +150,8 @@ Icon label.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-TabTitleBarMenuItem-label?: ResourceStr--><!--Device-TabTitleBarMenuItem-label?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -156,6 +170,8 @@ Symbol icon resource, which has higher priority than **value**.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TabTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier--><!--Device-TabTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -173,5 +189,7 @@ Icon resource.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabTitleBarMenuItem-value: ResourceStr--><!--Device-TabTitleBarMenuItem-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

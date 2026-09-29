@@ -8,6 +8,8 @@ Describes the FD of a custom vibration configuration file. Ensure that the file 
 
 **Since:** 10
 
+<!--Device-vibrator-interface HapticFileDescriptor--><!--Device-vibrator-interface HapticFileDescriptor-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## Modules to Import
@@ -28,6 +30,8 @@ FD of the custom vibration configuration file.
 
 **Since:** 10
 
+<!--Device-HapticFileDescriptor-fd: int--><!--Device-HapticFileDescriptor-fd: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## length
@@ -42,6 +46,8 @@ Resource length, in bytes. The default value is the length from the offset posit
 
 **Since:** 10
 
+<!--Device-HapticFileDescriptor-length?: long--><!--Device-HapticFileDescriptor-length?: long-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## offset
@@ -55,5 +61,7 @@ Offset from the start position of the file, in bytes. The default value is the s
 **Type:** number
 
 **Since:** 10
+
+<!--Device-HapticFileDescriptor-offset?: long--><!--Device-HapticFileDescriptor-offset?: long-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice

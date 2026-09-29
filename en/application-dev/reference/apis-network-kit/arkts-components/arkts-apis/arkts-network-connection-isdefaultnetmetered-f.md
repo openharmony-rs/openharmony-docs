@@ -20,6 +20,8 @@ Checks whether the data traffic over the current default network is metered. For
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-connection-function isDefaultNetMetered(callback: AsyncCallback<boolean>): void--><!--Device-connection-function isDefaultNetMetered(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -65,6 +67,8 @@ Checks whether the data traffic over the current default network is metered. For
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-connection-function isDefaultNetMetered(): Promise<boolean>--><!--Device-connection-function isDefaultNetMetered(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

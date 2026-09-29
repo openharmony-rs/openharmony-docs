@@ -8,6 +8,8 @@ The ExtensionRunningInfo module encapsulates ExtensionAbility running informatio
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ExtensionRunningInfo--><!--Device-unnamed-export interface ExtensionRunningInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Names of all packages in the process.
 **Default:** All package names under the current process
 
 **Since:** 9
+
+<!--Device-ExtensionRunningInfo-clientPackage: Array<String>--><!--Device-ExtensionRunningInfo-clientPackage: Array<String>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,6 +48,8 @@ ExtensionAbility information.
 
 **Since:** 9
 
+<!--Device-ExtensionRunningInfo-extension: ElementName--><!--Device-ExtensionRunningInfo-extension: ElementName-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Process ID.
 **Default:** process id
 
 **Since:** 9
+
+<!--Device-ExtensionRunningInfo-pid: int--><!--Device-ExtensionRunningInfo-pid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -80,6 +88,8 @@ Process name.
 
 **Since:** 9
 
+<!--Device-ExtensionRunningInfo-processName: string--><!--Device-ExtensionRunningInfo-processName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -97,6 +107,8 @@ Timestamp when the ExtensionAbility is started.
 **Default:** ability start time
 
 **Since:** 9
+
+<!--Device-ExtensionRunningInfo-startTime: long--><!--Device-ExtensionRunningInfo-startTime: long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -116,6 +128,8 @@ ExtensionAbility type.
 
 **Since:** 9
 
+<!--Device-ExtensionRunningInfo-type: bundle.ExtensionAbilityType--><!--Device-ExtensionRunningInfo-type: bundle.ExtensionAbilityType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -133,6 +147,8 @@ UID of the application.
 **Default:** user id
 
 **Since:** 9
+
+<!--Device-ExtensionRunningInfo-uid: int--><!--Device-ExtensionRunningInfo-uid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

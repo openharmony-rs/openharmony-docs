@@ -8,6 +8,8 @@ Defines the top and bottom padding configuration of **ChipGroupV2**, which is us
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2PaddingConfig--><!--Device-unnamed-export interface ChipGroupV2PaddingConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2PaddingConfig-bottom: Length--><!--Device-ChipGroupV2PaddingConfig-bottom: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -61,5 +65,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2PaddingConfig-top: Length--><!--Device-ChipGroupV2PaddingConfig-top: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

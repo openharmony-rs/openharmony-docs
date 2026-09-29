@@ -16,6 +16,8 @@ Reports the user selection result in the screen capture privacy dialog box to th
 
 **Since:** 12
 
+<!--Device-media-function reportAVScreenCaptureUserChoice(sessionId: int, choice: string): Promise<void>--><!--Device-media-function reportAVScreenCaptureUserChoice(sessionId: int, choice: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **System API:** This is a system API.

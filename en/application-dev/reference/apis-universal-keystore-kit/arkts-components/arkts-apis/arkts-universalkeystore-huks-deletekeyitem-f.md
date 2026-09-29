@@ -24,6 +24,8 @@ Deletes a key. This API uses an asynchronous callback to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-huks-function deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void--><!--Device-huks-function deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**
@@ -163,6 +165,8 @@ Deletes a key. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-huks-function deleteKeyItem(keyAlias: string, options: HuksOptions): Promise<void>--><!--Device-huks-function deleteKeyItem(keyAlias: string, options: HuksOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

@@ -18,6 +18,8 @@ Describes the triggering method for automatic device-cloud synchronization subsc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cloudData-function onAutoSyncTrigger(observer: Callback<AutoSyncTriggerInfo>): void--><!--Device-cloudData-function onAutoSyncTrigger(observer: Callback<AutoSyncTriggerInfo>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **Parameters:**

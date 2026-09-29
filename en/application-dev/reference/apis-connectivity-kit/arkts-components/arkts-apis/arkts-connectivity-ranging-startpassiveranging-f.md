@@ -24,6 +24,8 @@ The returned handle can be used to stop the passive ranging broadcast via stopPa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function startPassiveRanging(capabilityType: RangingTypes): Promise<int>--><!--Device-ranging-function startPassiveRanging(capabilityType: RangingTypes): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Parameters:**

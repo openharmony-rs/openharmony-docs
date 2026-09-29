@@ -22,6 +22,8 @@ Sets the Bluetooth friendly name of a device. It is used only by system applicat
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setLocalName(name: string): void--><!--Device-connection-function setLocalName(name: string): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

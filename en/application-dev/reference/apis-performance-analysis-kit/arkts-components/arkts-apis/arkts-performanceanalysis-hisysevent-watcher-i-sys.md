@@ -8,6 +8,8 @@ Defines a watcher for event subscription.
 
 **Since:** 9
 
+<!--Device-hiSysEvent-interface Watcher--><!--Device-hiSysEvent-interface Watcher-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ onEvent: (info: SysEventInfo) => void
 Callback for event subscription: (info: [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md)) =&gt; void
 
 **Since:** 9
+
+<!--Device-Watcher-onEvent: (info: SysEventInfo) => void--><!--Device-Watcher-onEvent: (info: SysEventInfo) => void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -48,6 +52,8 @@ Callback for disabling of event subscription: () =&gt; void
 
 **Since:** 9
 
+<!--Device-Watcher-onServiceDied: () => void--><!--Device-Watcher-onServiceDied: () => void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ Array of matching event subscription rules.
 **Type:** [WatchRule](arkts-performanceanalysis-hisysevent-watchrule-i-sys.md)[]
 
 **Since:** 9
+
+<!--Device-Watcher-rules: WatchRule[]--><!--Device-Watcher-rules: WatchRule[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 

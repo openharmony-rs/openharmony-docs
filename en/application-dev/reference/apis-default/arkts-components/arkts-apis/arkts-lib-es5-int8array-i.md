@@ -6,6 +6,8 @@ interface Int8Array
 
 A typed array of 8-bit integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.
 
+<!--Device-unnamed-interface Int8Array--><!--Device-unnamed-interface Int8Array-End-->
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,6 +20,8 @@ copyWithin(target: number, start: number, end?: number): this
 ```
 
 Returns the this object after copying a section of the array identified by start and end to the same array starting at position target
+
+<!--Device-Int8Array-copyWithin(target: number, start: number, end?: number): this--><!--Device-Int8Array-copyWithin(target: number, start: number, end?: number): this-End-->
 
 **Parameters:**
 
@@ -34,6 +38,8 @@ every(predicate: (value: number, index: number, array: Int8Array) => unknown, th
 ```
 
 Determines whether all the members of an array satisfy the specified test.
+
+<!--Device-Int8Array-every(predicate: (value: number, index: number, array: Int8Array) => unknown, thisArg?: any): boolean--><!--Device-Int8Array-every(predicate: (value: number, index: number, array: Int8Array) => unknown, thisArg?: any): boolean-End-->
 
 **Test API:** This API is used only in automated test scripts.
 
@@ -52,6 +58,8 @@ fill(value: number, start?: number, end?: number): this
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
+<!--Device-Int8Array-fill(value: number, start?: number, end?: number): this--><!--Device-Int8Array-fill(value: number, start?: number, end?: number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -68,6 +76,8 @@ filter(predicate: (value: number, index: number, array: Int8Array) => any, thisA
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
+<!--Device-Int8Array-filter(predicate: (value: number, index: number, array: Int8Array) => any, thisArg?: any): Int8Array--><!--Device-Int8Array-filter(predicate: (value: number, index: number, array: Int8Array) => any, thisArg?: any): Int8Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -82,6 +92,8 @@ find(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisA
 ```
 
 Returns the value of the first element in the array where predicate is true, and undefined otherwise.
+
+<!--Device-Int8Array-find(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisArg?: any): number | undefined--><!--Device-Int8Array-find(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisArg?: any): number | undefined-End-->
 
 **Parameters:**
 
@@ -98,6 +110,8 @@ findIndex(predicate: (value: number, index: number, obj: Int8Array) => boolean, 
 
 Returns the index of the first element in the array where predicate is true, and -1 otherwise.
 
+<!--Device-Int8Array-findIndex(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisArg?: any): number--><!--Device-Int8Array-findIndex(predicate: (value: number, index: number, obj: Int8Array) => boolean, thisArg?: any): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -112,6 +126,8 @@ forEach(callbackfn: (value: number, index: number, array: Int8Array) => void, th
 ```
 
 Performs the specified action for each element in an array.
+
+<!--Device-Int8Array-forEach(callbackfn: (value: number, index: number, array: Int8Array) => void, thisArg?: any): void--><!--Device-Int8Array-forEach(callbackfn: (value: number, index: number, array: Int8Array) => void, thisArg?: any): void-End-->
 
 **Parameters:**
 
@@ -128,6 +144,8 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 Returns the index of the first occurrence of a value in an array.
 
+<!--Device-Int8Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Int8Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -143,6 +161,8 @@ join(separator?: string): string
 
 Adds all the elements of an array separated by the specified separator string.
 
+<!--Device-Int8Array-join(separator?: string): string--><!--Device-Int8Array-join(separator?: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -156,6 +176,8 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 ```
 
 Returns the index of the last occurrence of a value in an array.
+
+<!--Device-Int8Array-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Int8Array-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **Parameters:**
 
@@ -172,6 +194,8 @@ map(callbackfn: (value: number, index: number, array: Int8Array) => number, this
 
 Calls a defined callback function on each element of an array, and returns an array that contains the results.
 
+<!--Device-Int8Array-map(callbackfn: (value: number, index: number, array: Int8Array) => number, thisArg?: any): Int8Array--><!--Device-Int8Array-map(callbackfn: (value: number, index: number, array: Int8Array) => number, thisArg?: any): Int8Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -186,6 +210,8 @@ reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: n
 ```
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-Int8Array-reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Int8Array) => number): number--><!--Device-Int8Array-reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Int8Array) => number): number-End-->
 
 **Parameters:**
 
@@ -218,6 +244,8 @@ reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: num
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-Int8Array-reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Int8Array) => U, initialValue: U): U--><!--Device-Int8Array-reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Int8Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -232,6 +260,8 @@ reduceRight(callbackfn: (previousValue: number, currentValue: number, currentInd
 ```
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-Int8Array-reduceRight(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Int8Array) => number): number--><!--Device-Int8Array-reduceRight(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Int8Array) => number): number-End-->
 
 **Parameters:**
 
@@ -264,6 +294,8 @@ reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-Int8Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Int8Array) => U, initialValue: U): U--><!--Device-Int8Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Int8Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -279,6 +311,8 @@ reverse(): Int8Array
 
 Reverses the elements in an Array.
 
+<!--Device-Int8Array-reverse(): Int8Array--><!--Device-Int8Array-reverse(): Int8Array-End-->
+
 ## set
 
 ```TypeScript
@@ -286,6 +320,8 @@ set(array: ArrayLike<number>, offset?: number): void
 ```
 
 Sets a value or an array of values.
+
+<!--Device-Int8Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Int8Array-set(array: ArrayLike<number>, offset?: number): void-End-->
 
 **Parameters:**
 
@@ -302,6 +338,8 @@ slice(start?: number, end?: number): Int8Array
 
 Returns a section of an array.
 
+<!--Device-Int8Array-slice(start?: number, end?: number): Int8Array--><!--Device-Int8Array-slice(start?: number, end?: number): Int8Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -316,6 +354,8 @@ some(predicate: (value: number, index: number, array: Int8Array) => unknown, thi
 ```
 
 Determines whether the specified callback function returns true for any element of an array.
+
+<!--Device-Int8Array-some(predicate: (value: number, index: number, array: Int8Array) => unknown, thisArg?: any): boolean--><!--Device-Int8Array-some(predicate: (value: number, index: number, array: Int8Array) => unknown, thisArg?: any): boolean-End-->
 
 **Parameters:**
 
@@ -332,6 +372,8 @@ sort(compareFn?: (a: number, b: number) => number): this
 
 Sorts an array.
 
+<!--Device-Int8Array-sort(compareFn?: (a: number, b: number) => number): this--><!--Device-Int8Array-sort(compareFn?: (a: number, b: number) => number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -345,6 +387,8 @@ subarray(begin?: number, end?: number): Int8Array
 ```
 
 Gets a new Int8Array view of the ArrayBuffer store for this array, referencing the elements at begin, inclusive, up to end, exclusive.
+
+<!--Device-Int8Array-subarray(begin?: number, end?: number): Int8Array--><!--Device-Int8Array-subarray(begin?: number, end?: number): Int8Array-End-->
 
 **Parameters:**
 
@@ -361,6 +405,8 @@ toLocaleString(): string
 
 Converts a number to a string by using the current locale.
 
+<!--Device-Int8Array-toLocaleString(): string--><!--Device-Int8Array-toLocaleString(): string-End-->
+
 ## toString
 
 ```TypeScript
@@ -369,6 +415,8 @@ toString(): string
 
 Returns a string representation of an array.
 
+<!--Device-Int8Array-toString(): string--><!--Device-Int8Array-toString(): string-End-->
+
 ## valueOf
 
 ```TypeScript
@@ -376,6 +424,8 @@ valueOf(): Int8Array
 ```
 
 Returns the primitive value of the specified object.
+
+<!--Device-Int8Array-valueOf(): Int8Array--><!--Device-Int8Array-valueOf(): Int8Array-End-->
 
 ## [index: number]
 
@@ -395,6 +445,8 @@ The ArrayBuffer instance referenced by the array.
 
 **Type:** [ArrayBufferLike](arkts-arraybufferlike-t.md)
 
+<!--Device-Int8Array-readonly buffer: ArrayBufferLike--><!--Device-Int8Array-readonly buffer: ArrayBufferLike-End-->
+
 ## byteLength
 
 ```TypeScript
@@ -404,6 +456,8 @@ readonly byteLength: number
 The length in bytes of the array.
 
 **Type:** number
+
+<!--Device-Int8Array-readonly byteLength: number--><!--Device-Int8Array-readonly byteLength: number-End-->
 
 ## byteOffset
 
@@ -415,6 +469,8 @@ The offset in bytes of the array.
 
 **Type:** number
 
+<!--Device-Int8Array-readonly byteOffset: number--><!--Device-Int8Array-readonly byteOffset: number-End-->
+
 ## BYTES_PER_ELEMENT
 
 ```TypeScript
@@ -425,6 +481,8 @@ The size in bytes of each element in the array.
 
 **Type:** number
 
+<!--Device-Int8Array-readonly BYTES_PER_ELEMENT: number--><!--Device-Int8Array-readonly BYTES_PER_ELEMENT: number-End-->
+
 ## length
 
 ```TypeScript
@@ -434,3 +492,5 @@ readonly length: number
 The length of the array.
 
 **Type:** number
+
+<!--Device-Int8Array-readonly length: number--><!--Device-Int8Array-readonly length: number-End-->

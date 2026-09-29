@@ -8,6 +8,8 @@ Defines the callback information triggered during a call to allow for the displa
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnContextMenuShowEvent--><!--Device-unnamed-declare interface OnContextMenuShowEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## param
@@ -24,6 +26,8 @@ Parameters related to the context menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnContextMenuShowEvent-param: WebContextMenuParam--><!--Device-OnContextMenuShowEvent-param: WebContextMenuParam-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## result
@@ -39,5 +43,7 @@ Result of the context menu.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnContextMenuShowEvent-result: WebContextMenuResult--><!--Device-OnContextMenuShowEvent-result: WebContextMenuResult-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

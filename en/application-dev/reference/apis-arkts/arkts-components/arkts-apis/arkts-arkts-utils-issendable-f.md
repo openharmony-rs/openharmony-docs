@@ -20,6 +20,8 @@ Checks whether an ArkTS value is sendable.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-utils-function isSendable(value: Object | null | undefined): boolean--><!--Device-utils-function isSendable(value: Object | null | undefined): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

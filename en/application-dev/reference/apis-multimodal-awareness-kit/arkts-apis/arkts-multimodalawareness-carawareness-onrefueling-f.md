@@ -22,6 +22,8 @@ Enables refueling awareness and subscribes to refueling awareness results. If th
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-carAwareness-function onRefueling(callback: Callback<RefuelingInfo>): void--><!--Device-carAwareness-function onRefueling(callback: Callback<RefuelingInfo>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters:**

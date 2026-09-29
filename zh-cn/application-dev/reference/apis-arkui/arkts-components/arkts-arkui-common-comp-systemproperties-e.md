@@ -10,6 +10,8 @@ declare enum SystemProperties
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare enum SystemProperties--><!--Device-unnamed-declare enum SystemProperties-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BREAK_POINT
@@ -25,6 +27,8 @@ BREAK_POINT = 'system.arkui.breakpoint'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-SystemProperties-BREAK_POINT = 'system.arkui.breakpoint'--><!--Device-SystemProperties-BREAK_POINT = 'system.arkui.breakpoint'-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ WINDOW_AVOID_AREA = 'system.window.avoidarea'
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SystemProperties-WINDOW_AVOID_AREA = 'system.window.avoidarea'--><!--Device-SystemProperties-WINDOW_AVOID_AREA = 'system.window.avoidarea'-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_AVOID_AREA_PX
@@ -57,6 +63,8 @@ WINDOW_AVOID_AREA_PX = 'system.window.avoidarea.px'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SystemProperties-WINDOW_AVOID_AREA_PX = 'system.window.avoidarea.px'--><!--Device-SystemProperties-WINDOW_AVOID_AREA_PX = 'system.window.avoidarea.px'-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ WINDOW_SIZE = 'system.window.size'
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SystemProperties-WINDOW_SIZE = 'system.window.size'--><!--Device-SystemProperties-WINDOW_SIZE = 'system.window.size'-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_SIZE_PX
@@ -89,5 +99,7 @@ WINDOW_SIZE_PX = 'system.window.size.px'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SystemProperties-WINDOW_SIZE_PX = 'system.window.size.px'--><!--Device-SystemProperties-WINDOW_SIZE_PX = 'system.window.size.px'-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

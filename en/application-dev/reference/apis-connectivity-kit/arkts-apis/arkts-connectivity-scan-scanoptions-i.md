@@ -8,6 +8,8 @@ Represents the scan options.
 
 **Since:** 26.0.0
 
+<!--Device-scan-interface ScanOptions--><!--Device-scan-interface ScanOptions-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Scan duration, in seconds. The value range is The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScanOptions-duration?: int--><!--Device-ScanOptions-duration?: int-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## scanMode
@@ -45,5 +49,7 @@ Scan mode. The default value is **'SCAN_MODE_LOW_POWER'**.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanOptions-scanMode?: ScanMode--><!--Device-ScanOptions-scanMode?: ScanMode-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

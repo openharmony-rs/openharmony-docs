@@ -16,6 +16,8 @@ Obtains a text embedding model.
 
 **Since:** 15
 
+<!--Device-intelligence-function getTextEmbeddingModel(config: ModelConfig): Promise<TextEmbedding>--><!--Device-intelligence-function getTextEmbeddingModel(config: ModelConfig): Promise<TextEmbedding>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
 **Parameters:**

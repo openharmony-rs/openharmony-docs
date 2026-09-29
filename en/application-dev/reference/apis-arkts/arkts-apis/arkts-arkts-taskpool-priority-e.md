@@ -8,6 +8,8 @@ Enumerates the priorities available for created tasks. The task priority applies
 
 **Since:** 9
 
+<!--Device-taskpool-enum Priority--><!--Device-taskpool-enum Priority-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## HIGH
@@ -23,6 +25,8 @@ This API can be used in atomic services since API version 11.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Priority-HIGH = 0--><!--Device-Priority-HIGH = 0-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -40,6 +44,8 @@ This API can be used in atomic services since API version 11.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Priority-MEDIUM = 1--><!--Device-Priority-MEDIUM = 1-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## LOW
@@ -56,6 +62,8 @@ This API can be used in atomic services since API version 11.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Priority-LOW = 2--><!--Device-Priority-LOW = 2-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## IDLE
@@ -71,5 +79,7 @@ This API can be used in atomic services since API version 12.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Priority-IDLE = 3--><!--Device-Priority-IDLE = 3-End-->
 
 **System capability:** SystemCapability.Utils.Lang

@@ -8,7 +8,9 @@ Describes the content and properties of a common event.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-commonEventManager-export type CommonEventPublishData = _CommonEventPublishData--><!--Device-commonEventManager-export type CommonEventPublishData = _CommonEventPublishData-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

@@ -20,6 +20,8 @@ Obtains a firewall rule based on the specified user ID and rule ID. This API use
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
 
+<!--Device-netFirewall-function getNetFirewallRule(userId: int, ruleId: int): Promise<NetFirewallRule>--><!--Device-netFirewall-function getNetFirewallRule(userId: int, ruleId: int): Promise<NetFirewallRule>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

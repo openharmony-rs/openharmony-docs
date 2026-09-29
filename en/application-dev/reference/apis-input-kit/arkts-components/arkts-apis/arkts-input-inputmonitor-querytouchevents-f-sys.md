@@ -18,6 +18,8 @@ Queries recent touchscreen input events. A maximum of 100 events can be queried.
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>--><!--Device-inputMonitor-function queryTouchEvents(count: int) : Promise<Array<TouchEvent>>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.

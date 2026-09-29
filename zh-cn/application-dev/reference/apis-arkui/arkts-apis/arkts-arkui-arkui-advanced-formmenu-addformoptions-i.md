@@ -6,6 +6,8 @@ export interface AddFormOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface AddFormOptions--><!--Device-unnamed-export interface AddFormOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,7 +28,9 @@ The callback is used to return the form id.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AddFormOptions-callback?: AsyncCallback<string>--><!--Device-AddFormOptions-callback?: AsyncCallback<string>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +46,9 @@ Indicates the form data.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AddFormOptions-formBindingData?: formBindingData.FormBindingData--><!--Device-AddFormOptions-formBindingData?: formBindingData.FormBindingData-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ The style of the menu item.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AddFormOptions-style?: FormMenuItemStyle--><!--Device-AddFormOptions-style?: FormMenuItemStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Decodes MMS messages. This API uses an asynchronous callback to return the resul
 
 **Since:** 8
 
+<!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>, callback: AsyncCallback<MmsInformation>): void--><!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>, callback: AsyncCallback<MmsInformation>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ function decodeMms(mmsFilePathName: string | Array<number>): Promise<MmsInformat
 Decodes MMS messages. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation>--><!--Device-sms-function decodeMms(mmsFilePathName: string | Array<int>): Promise<MmsInformation>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

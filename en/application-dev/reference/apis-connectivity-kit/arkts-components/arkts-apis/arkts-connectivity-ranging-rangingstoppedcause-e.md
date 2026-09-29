@@ -8,6 +8,8 @@ The enum of ranging stopped causes.
 
 **Since:** 26.0.0
 
+<!--Device-ranging-enum RangingStoppedCause--><!--Device-ranging-enum RangingStoppedCause-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## NO_ERROR
@@ -21,6 +23,8 @@ No error.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RangingStoppedCause-NO_ERROR = 0--><!--Device-RangingStoppedCause-NO_ERROR = 0-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
@@ -36,6 +40,8 @@ An internal error occurred.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RangingStoppedCause-INTERNAL_ERROR = 1--><!--Device-RangingStoppedCause-INTERNAL_ERROR = 1-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## BUSINESS_CONFLICT
@@ -50,6 +56,8 @@ A service conflict occurs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RangingStoppedCause-BUSINESS_CONFLICT = 2--><!--Device-RangingStoppedCause-BUSINESS_CONFLICT = 2-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## BACKGROUND_PAUSED
@@ -63,5 +71,7 @@ Ranging is stopped when the app goes to background.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RangingStoppedCause-BACKGROUND_PAUSED = 3--><!--Device-RangingStoppedCause-BACKGROUND_PAUSED = 3-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

@@ -8,6 +8,8 @@ ModuleAbilityInfo: the ability info of a module.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ModuleAbilityInfo--><!--Device-unnamed-export interface ModuleAbilityInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Whether the ability can be invoked by other applications. **true** if it can be 
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-ModuleAbilityInfo-readonly exported: boolean--><!--Device-ModuleAbilityInfo-readonly exported: boolean-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -40,6 +44,8 @@ Widget information.
 
 **Since:** 9
 
+<!--Device-ModuleAbilityInfo-readonly forms: Array<AbilityFormInfo>--><!--Device-ModuleAbilityInfo-readonly forms: Array<AbilityFormInfo>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ Name of the ability displayed to users. The value is a resource index to names i
 
 **Since:** 9
 
+<!--Device-ModuleAbilityInfo-readonly label: string--><!--Device-ModuleAbilityInfo-readonly label: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ Name of the ability. The name must be unique in the bundle.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ModuleAbilityInfo-readonly name: string--><!--Device-ModuleAbilityInfo-readonly name: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

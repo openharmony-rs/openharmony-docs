@@ -10,6 +10,8 @@ Holds the data transferred between Worker threads.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface MessageEvents extends Event--><!--Device-unnamed-export interface MessageEvents extends Event-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Data transferred when an exception occurs.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MessageEvents-readonly data: any--><!--Device-MessageEvents-readonly data: any-End-->
 
 **System capability:** SystemCapability.Utils.Lang

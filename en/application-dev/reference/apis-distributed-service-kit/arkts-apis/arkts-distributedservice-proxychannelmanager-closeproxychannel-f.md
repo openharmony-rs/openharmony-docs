@@ -20,6 +20,8 @@ Closes an opened proxy channel. This is applicable to scenarios where the phone-
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-proxyChannelManager-function closeProxyChannel(channelId: int): void--><!--Device-proxyChannelManager-function closeProxyChannel(channelId: int): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**

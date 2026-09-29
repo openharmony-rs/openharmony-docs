@@ -20,6 +20,8 @@ Get remote device battery information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getRemoteDeviceBatteryInfo(deviceId: string): Promise<BatteryInfo>--><!--Device-connection-function getRemoteDeviceBatteryInfo(deviceId: string): Promise<BatteryInfo>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

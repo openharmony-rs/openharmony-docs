@@ -16,7 +16,9 @@ Parses P12.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-cert-function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data--><!--Device-cert-function parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -233,7 +235,9 @@ Parses P12. This API uses a promise to return the result.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-cert-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>--><!--Device-cert-function parsePkcs12(data: Uint8Array, password: string): Promise<Pkcs12Data>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

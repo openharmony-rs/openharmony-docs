@@ -16,6 +16,8 @@ Obtains the touchpad scroll direction. This API uses an asynchronous callback to
 
 **Since:** 26.0.1
 
+<!--Device-pointer-function getTouchpadScrollDirection(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function getTouchpadScrollDirection(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters:**
@@ -74,6 +76,8 @@ function getTouchpadScrollDirection(): Promise<boolean>
 Obtains the scroll direction of the touchpad. This API uses a promise to return the result.
 
 **Since:** 26.0.1
+
+<!--Device-pointer-function getTouchpadScrollDirection(): Promise<boolean>--><!--Device-pointer-function getTouchpadScrollDirection(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

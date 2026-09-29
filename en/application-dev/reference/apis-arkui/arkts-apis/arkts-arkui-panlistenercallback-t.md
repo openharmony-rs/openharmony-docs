@@ -12,6 +12,8 @@ Defines a callback for pan gesture events.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-unnamed-declare type PanListenerCallback = (event: GestureEvent, current: GestureRecognizer, node?: FrameNode) => void--><!--Device-unnamed-declare type PanListenerCallback = (event: GestureEvent, current: GestureRecognizer, node?: FrameNode) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

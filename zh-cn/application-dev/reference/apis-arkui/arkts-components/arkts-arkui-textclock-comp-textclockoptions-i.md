@@ -12,6 +12,8 @@ declare interface TextClockOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface TextClockOptions--><!--Device-unnamed-declare interface TextClockOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -29,6 +31,8 @@ controller?: TextClockController
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockOptions-controller?: TextClockController--><!--Device-TextClockOptions-controller?: TextClockController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,5 +59,7 @@ timeZoneOffset?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextClockOptions-timeZoneOffset?: number--><!--Device-TextClockOptions-timeZoneOffset?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

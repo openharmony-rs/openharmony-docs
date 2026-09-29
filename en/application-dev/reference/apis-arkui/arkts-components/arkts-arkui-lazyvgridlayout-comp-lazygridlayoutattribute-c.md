@@ -10,6 +10,8 @@ Defines the lazy grid layout attribute.
 
 **Since:** 19
 
+<!--Device-unnamed-declare class LazyGridLayoutAttribute<T> extends CommonMethod<T>--><!--Device-unnamed-declare class LazyGridLayoutAttribute<T> extends CommonMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## columnsGap
@@ -25,6 +27,8 @@ Sets the gap between columns. Values less than 0 are treated as the default valu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-LazyGridLayoutAttribute-columnsGap(value: LengthMetrics): T--><!--Device-LazyGridLayoutAttribute-columnsGap(value: LengthMetrics): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Sets the footer of the lazy grid layout.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-LazyGridLayoutAttribute-footer(builder: CustomBuilder | undefined): T--><!--Device-LazyGridLayoutAttribute-footer(builder: CustomBuilder | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -81,6 +87,8 @@ Sets the header of the lazy grid layout.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyGridLayoutAttribute-header(builder: CustomBuilder | undefined): T--><!--Device-LazyGridLayoutAttribute-header(builder: CustomBuilder | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +118,8 @@ Sets a callback for **onVisibleIndexesChange**. This callback is triggered when 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-LazyGridLayoutAttribute-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T--><!--Device-LazyGridLayoutAttribute-onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -138,6 +148,8 @@ Sets the gap between rows. Values less than 0 are treated as the default value.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-LazyGridLayoutAttribute-rowsGap(value: LengthMetrics): T--><!--Device-LazyGridLayoutAttribute-rowsGap(value: LengthMetrics): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -165,6 +177,8 @@ Sets the sticky style for header and footer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyGridLayoutAttribute-sticky(sticky: StickyStyle | undefined): T--><!--Device-LazyGridLayoutAttribute-sticky(sticky: StickyStyle | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

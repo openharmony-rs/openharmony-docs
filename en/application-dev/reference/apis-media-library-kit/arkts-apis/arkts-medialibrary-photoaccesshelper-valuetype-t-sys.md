@@ -8,6 +8,8 @@ Defines the type of value in a KV pair. The type varies with the parameter funct
 
 **Since:** 22
 
+<!--Device-photoAccessHelper-type ValueType = int | long | double | string | boolean | Uint8Array | null--><!--Device-photoAccessHelper-type ValueType = int | long | double | string | boolean | Uint8Array | null-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Stop the authorized URI that has been enabled
 
 **Required permissions:** ohos.permission.FILE_ACCESS_PERSIST
 
+<!--Device-fileShare-function deactivatePermission(policies: Array<PolicyInfo>): Promise<void>--><!--Device-fileShare-function deactivatePermission(policies: Array<PolicyInfo>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Parameters:**

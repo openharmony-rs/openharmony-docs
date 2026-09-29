@@ -10,6 +10,8 @@ Defines the struct of CalendarSelectedDate.
 
 **Deprecated since:** 20
 
+<!--Device-unnamed-declare interface CalendarSelectedDate--><!--Device-unnamed-declare interface CalendarSelectedDate-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Application day
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-CalendarSelectedDate-day: number--><!--Device-CalendarSelectedDate-day: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Application month
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-CalendarSelectedDate-month: number--><!--Device-CalendarSelectedDate-month: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -75,6 +81,8 @@ Application year
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-CalendarSelectedDate-year: number--><!--Device-CalendarSelectedDate-year: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

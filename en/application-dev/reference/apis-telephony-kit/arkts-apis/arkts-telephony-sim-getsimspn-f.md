@@ -16,6 +16,8 @@ Obtains the service provider name (SPN) of the SIM card in the specified slot. T
 
 **Since:** 6
 
+<!--Device-sim-function getSimSpn(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sim-function getSimSpn(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -59,6 +61,8 @@ function getSimSpn(slotId: number): Promise<string>
 Obtains the SPN of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-sim-function getSimSpn(slotId: int): Promise<string>--><!--Device-sim-function getSimSpn(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

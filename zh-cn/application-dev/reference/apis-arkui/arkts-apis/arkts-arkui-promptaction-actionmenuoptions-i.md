@@ -8,6 +8,8 @@ interface ActionMenuOptions
 
 **起始版本：** 9
 
+<!--Device-promptAction-interface ActionMenuOptions--><!--Device-promptAction-interface ActionMenuOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -39,6 +41,8 @@ buttons: [
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]--><!--Device-ActionMenuOptions-buttons: [            Button,            Button?,            Button?,            Button?,            Button?,            Button?        ]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## immersiveMode
@@ -58,6 +62,8 @@ immersiveMode?: ImmersiveMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionMenuOptions-immersiveMode?: ImmersiveMode--><!--Device-ActionMenuOptions-immersiveMode?: ImmersiveMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +85,8 @@ isModal?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-isModal?: boolean--><!--Device-ActionMenuOptions-isModal?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelMode
@@ -99,6 +107,8 @@ levelMode?: LevelMode
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-levelMode?: LevelMode--><!--Device-ActionMenuOptions-levelMode?: LevelMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -116,6 +126,8 @@ levelUniqueId?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionMenuOptions-levelUniqueId?: number--><!--Device-ActionMenuOptions-levelUniqueId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +147,8 @@ onDidAppear?: Callback<void>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-onDidAppear?: Callback<void>--><!--Device-ActionMenuOptions-onDidAppear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -152,6 +166,8 @@ onDidDisappear?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionMenuOptions-onDidDisappear?: Callback<void>--><!--Device-ActionMenuOptions-onDidDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +187,8 @@ onWillAppear?: Callback<void>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-onWillAppear?: Callback<void>--><!--Device-ActionMenuOptions-onWillAppear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDisappear
@@ -188,6 +206,8 @@ onWillDisappear?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionMenuOptions-onWillDisappear?: Callback<void>--><!--Device-ActionMenuOptions-onWillDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,6 +229,8 @@ showInSubWindow?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-showInSubWindow?: boolean--><!--Device-ActionMenuOptions-showInSubWindow?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -227,6 +249,8 @@ systemMaterial?: SystemUiMaterial
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ActionMenuOptions-systemMaterial?: SystemUiMaterial--><!--Device-ActionMenuOptions-systemMaterial?: SystemUiMaterial-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -244,5 +268,7 @@ title?: string | Resource
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ActionMenuOptions-title?: string | Resource--><!--Device-ActionMenuOptions-title?: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

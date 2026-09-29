@@ -16,6 +16,8 @@ Represents the SM2 ciphertext parameters. You can use this object to generate SM
 
 **Since:** 12
 
+<!--Device-cryptoFramework-interface SM2CipherTextSpec--><!--Device-cryptoFramework-interface SM2CipherTextSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
 ## Modules to Import
@@ -36,7 +38,9 @@ Indicates the ciphertext data, also known as C2.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SM2CipherTextSpec-cipherTextData: Uint8Array--><!--Device-SM2CipherTextSpec-cipherTextData: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -52,7 +56,9 @@ Indicates the hash data, also known as C3.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SM2CipherTextSpec-hashData: Uint8Array--><!--Device-SM2CipherTextSpec-hashData: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -68,7 +74,9 @@ Indicates the x coordinate, also known as C1x.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SM2CipherTextSpec-xCoordinate: bigint--><!--Device-SM2CipherTextSpec-xCoordinate: bigint-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -84,6 +92,8 @@ Indicates the y coordinate, also known as C1y.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SM2CipherTextSpec-yCoordinate: bigint--><!--Device-SM2CipherTextSpec-yCoordinate: bigint-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher

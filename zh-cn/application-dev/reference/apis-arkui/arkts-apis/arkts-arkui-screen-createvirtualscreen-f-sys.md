@@ -18,6 +18,8 @@ function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallbac
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screen-function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback<Screen>): void--><!--Device-screen-function createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback<Screen>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -87,6 +89,8 @@ function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>
 **起始版本：** 9
 
 **需要权限：** ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screen-function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>--><!--Device-screen-function createVirtualScreen(options:VirtualScreenOption): Promise<Screen>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

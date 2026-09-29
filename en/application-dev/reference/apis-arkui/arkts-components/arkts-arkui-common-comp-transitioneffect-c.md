@@ -11,6 +11,8 @@ Defines the transition effect by using the provided APIs, as listed below.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class TransitionEffect<  Type extends keyof TransitionEffects = keyof TransitionEffects,  Effect extends TransitionEffects[Type] = TransitionEffects[Type]>--><!--Device-unnamed-declare class TransitionEffect<  Type extends keyof TransitionEffects = keyof TransitionEffects,  Effect extends TransitionEffects[Type] = TransitionEffects[Type]>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## animation
@@ -28,6 +30,8 @@ Animation settings.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEffect-animation(value: AnimateParam): TransitionEffect--><!--Device-TransitionEffect-animation(value: AnimateParam): TransitionEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ Sets the asymmetric transition effect.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-static asymmetric(    appear: TransitionEffect,    disappear: TransitionEffect  ): TransitionEffect<"asymmetric">--><!--Device-TransitionEffect-static asymmetric(    appear: TransitionEffect,    disappear: TransitionEffect  ): TransitionEffect<"asymmetric">-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -93,6 +99,8 @@ Combination of transition effects.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-combine(transitionEffect: TransitionEffect): TransitionEffect--><!--Device-TransitionEffect-combine(transitionEffect: TransitionEffect): TransitionEffect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -123,6 +131,8 @@ Constructs a **TransitionEffect** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-constructor(type: Type, effect: Effect)--><!--Device-TransitionEffect-constructor(type: Type, effect: Effect)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -147,6 +157,8 @@ Sets the slide-in and slide-out effects for component transitions from the scree
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEffect-static move(edge: TransitionEdge): TransitionEffect<"move">--><!--Device-TransitionEffect-static move(edge: TransitionEdge): TransitionEffect<"move">-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +190,8 @@ Sets the opacity for component transition.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-static opacity(alpha: number): TransitionEffect<"opacity">--><!--Device-TransitionEffect-static opacity(alpha: number): TransitionEffect<"opacity">-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -207,6 +221,8 @@ Sets the rotation effect for component transitions.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEffect-static rotate(options: RotateOptions): TransitionEffect<"rotate">--><!--Device-TransitionEffect-static rotate(options: RotateOptions): TransitionEffect<"rotate">-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,6 +254,8 @@ Sets the scaling effect for component transitions.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-static scale(options: ScaleOptions): TransitionEffect<"scale">--><!--Device-TransitionEffect-static scale(options: ScaleOptions): TransitionEffect<"scale">-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -267,6 +285,8 @@ Sets the translation effect for component transitions.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEffect-static translate(options: TranslateOptions): TransitionEffect<"translate">--><!--Device-TransitionEffect-static translate(options: TranslateOptions): TransitionEffect<"translate">-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -300,6 +320,8 @@ Disables the transition effect.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-static readonly IDENTITY: TransitionEffect<"identity">--><!--Device-TransitionEffect-static readonly IDENTITY: TransitionEffect<"identity">-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OPACITY
@@ -319,6 +341,8 @@ Applies a transition effect with the opacity changing from 0 to 1 when the compo
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEffect-static readonly OPACITY: TransitionEffect<"opacity">--><!--Device-TransitionEffect-static readonly OPACITY: TransitionEffect<"opacity">-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -346,6 +370,8 @@ Applies a transition effect of sliding in from the start edge when the component
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<    "asymmetric",    {      appear: TransitionEffect<"move", TransitionEdge>;      disappear: TransitionEffect<"move", TransitionEdge>;    }  >--><!--Device-TransitionEffect-static readonly SLIDE: TransitionEffect<    "asymmetric",    {      appear: TransitionEffect<"move", TransitionEdge>;      disappear: TransitionEffect<"move", TransitionEdge>;    }  >-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLIDE_SWITCH
@@ -365,5 +391,7 @@ Applies a transition effect of sliding in from the right with first scaling down
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEffect-static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">--><!--Device-TransitionEffect-static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

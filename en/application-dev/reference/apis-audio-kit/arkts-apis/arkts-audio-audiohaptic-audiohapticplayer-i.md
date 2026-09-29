@@ -8,6 +8,8 @@ Implements audio-haptic playback. Before calling any API in AudioHapticPlayer, y
 
 **Since:** 11
 
+<!--Device-audioHaptic-interface AudioHapticPlayer--><!--Device-audioHaptic-interface AudioHapticPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ isMuted(type: AudioHapticType): boolean
 Checks whether an audio-haptic type is muted.
 
 **Since:** 11
+
+<!--Device-AudioHapticPlayer-isMuted(type: AudioHapticType): boolean--><!--Device-AudioHapticPlayer-isMuted(type: AudioHapticType): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -64,6 +68,8 @@ Unsubscribes from the EOS event. This API uses an asynchronous callback to retur
 
 **Since:** 11
 
+<!--Device-AudioHapticPlayer-off(type: 'endOfStream', callback?: Callback<void>): void--><!--Device-AudioHapticPlayer-off(type: 'endOfStream', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Parameters:**
@@ -98,6 +104,8 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 Unsubscribes from the audio interruption event. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-AudioHapticPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -180,6 +188,8 @@ Subscribes to end of stream (EOS) event, which is triggered when the audio strea
 
 **Since:** 11
 
+<!--Device-AudioHapticPlayer-on(type: 'endOfStream', callback: Callback<void>): void--><!--Device-AudioHapticPlayer-on(type: 'endOfStream', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Parameters:**
@@ -206,6 +216,8 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 Subscribes to the audio interruption event, which is triggered when the audio focus is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-AudioHapticPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void--><!--Device-AudioHapticPlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -281,6 +293,8 @@ Releases this audio-haptic player. This API uses a promise to return the result.
 
 **Since:** 11
 
+<!--Device-AudioHapticPlayer-release(): Promise<void>--><!--Device-AudioHapticPlayer-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Return value:**
@@ -320,6 +334,8 @@ Sets this audio-haptic player to play in a loop. This API uses a promise to retu
 > This API must be called before the audio-haptic player is released.
 
 **Since:** 20
+
+<!--Device-AudioHapticPlayer-setLoop(loop: boolean): Promise<void>--><!--Device-AudioHapticPlayer-setLoop(loop: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -367,6 +383,8 @@ Sets the volume for this audio-haptic player. This API uses a promise to return 
 
 **Since:** 20
 
+<!--Device-AudioHapticPlayer-setVolume(volume: double): Promise<void>--><!--Device-AudioHapticPlayer-setVolume(volume: double): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Parameters:**
@@ -411,6 +429,8 @@ Starts playback. This API uses a promise to return the result.
 
 **Since:** 11
 
+<!--Device-AudioHapticPlayer-start(): Promise<void>--><!--Device-AudioHapticPlayer-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **Return value:**
@@ -448,6 +468,8 @@ stop(): Promise<void>
 Stops playback. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-AudioHapticPlayer-stop(): Promise<void>--><!--Device-AudioHapticPlayer-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 

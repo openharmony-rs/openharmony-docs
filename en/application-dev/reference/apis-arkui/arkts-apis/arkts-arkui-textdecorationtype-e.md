@@ -4,9 +4,11 @@
 declare enum TextDecorationType
 ```
 
-Text decoration type.
+Sets the text decoration type.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum TextDecorationType--><!--Device-unnamed-declare enum TextDecorationType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ No text decorations.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextDecorationType-None--><!--Device-TextDecorationType-None-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Underline
@@ -39,6 +43,8 @@ Line below the text.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextDecorationType-Underline--><!--Device-TextDecorationType-Underline-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +62,8 @@ Line above the text.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextDecorationType-Overline--><!--Device-TextDecorationType-Overline-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LineThrough
@@ -71,5 +79,7 @@ Line through the text.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextDecorationType-LineThrough--><!--Device-TextDecorationType-LineThrough-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

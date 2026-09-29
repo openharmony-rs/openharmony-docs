@@ -8,6 +8,8 @@ declare enum EdgeEffect
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum EdgeEffect--><!--Device-unnamed-declare enum EdgeEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Spring
@@ -28,6 +30,8 @@ API version 22及之前版本，拖动滚动条，滚动组件的弹性物理动
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-EdgeEffect-Spring--><!--Device-EdgeEffect-Spring-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Fade
@@ -44,6 +48,8 @@ Fade
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-EdgeEffect-Fade--><!--Device-EdgeEffect-Fade-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -59,5 +65,7 @@ None
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-EdgeEffect-None--><!--Device-EdgeEffect-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -1,5 +1,23 @@
 # Constants
 
+## TIME_FORMAT
+
+```TypeScript
+const TIME_FORMAT: string
+```
+
+Specifies whether the time is displayed in 12-hour or 24-hour format.
+
+<p>If the value is `12`, the 12-hour format is used. If the value is `24`, the 24-hour format is used.
+
+**Type:** string
+
+**Since:** 7
+
+<!--Device-date-const TIME_FORMAT: string--><!--Device-date-const TIME_FORMAT: string-End-->
+
+**System capability:** SystemCapability.Applications.Settings.Core
+
 ## AUTO_GAIN_TIME
 
 ```TypeScript
@@ -15,6 +33,8 @@ Specifies whether the date, time, and time zone are automatically obtained from 
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-date-const AUTO_GAIN_TIME: string--><!--Device-date-const AUTO_GAIN_TIME: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -34,6 +54,8 @@ Specifies whether the time zone is automatically obtained from NITZ.
 
 **Deprecated since:** 21
 
+<!--Device-date-const AUTO_GAIN_TIME_ZONE: string--><!--Device-date-const AUTO_GAIN_TIME_ZONE: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## DATE_FORMAT
@@ -52,20 +74,6 @@ Indicates the date format.
 
 **Deprecated since:** 21
 
-**System capability:** SystemCapability.Applications.Settings.Core
-
-## TIME_FORMAT
-
-```TypeScript
-const TIME_FORMAT: string
-```
-
-Specifies whether the time is displayed in 12-hour or 24-hour format.
-
-<p>If the value is `12`, the 12-hour format is used. If the value is `24`, the 24-hour format is used.
-
-**Type:** string
-
-**Since:** 7
+<!--Device-date-const DATE_FORMAT: string--><!--Device-date-const DATE_FORMAT: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

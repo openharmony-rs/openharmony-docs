@@ -18,6 +18,8 @@ Sets the default slot ID of the SIM card used to send SMS messages. This API use
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sms-function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void--><!--Device-sms-function setDefaultSmsSlotId(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Sets the default slot ID of the SIM card used to send SMS messages. This API use
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sms-function setDefaultSmsSlotId(slotId: int): Promise<void>--><!--Device-sms-function setDefaultSmsSlotId(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

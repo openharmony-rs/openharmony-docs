@@ -12,6 +12,8 @@ interface EmitterParticleOptions<PARTICLE extends ParticleType>
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface EmitterParticleOptions<PARTICLE extends ParticleType>--><!--Device-unnamed-interface EmitterParticleOptions<PARTICLE extends ParticleType>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## config
@@ -35,6 +37,8 @@ config类型和type值有关联：
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterParticleOptions-config: ParticleConfigs[PARTICLE]--><!--Device-EmitterParticleOptions-config: ParticleConfigs[PARTICLE]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -56,6 +60,8 @@ count: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterParticleOptions-count: number--><!--Device-EmitterParticleOptions-count: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +85,8 @@ lifetime?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterParticleOptions-lifetime?: number--><!--Device-EmitterParticleOptions-lifetime?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## lifetimeRange
@@ -99,6 +107,8 @@ lifetimeRange?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EmitterParticleOptions-lifetimeRange?: number--><!--Device-EmitterParticleOptions-lifetimeRange?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -116,5 +126,7 @@ type: PARTICLE
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EmitterParticleOptions-type: PARTICLE--><!--Device-EmitterParticleOptions-type: PARTICLE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Generates IR signals at the specified frequency and level.
 
 **Required permissions:** ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
+<!--Device-infraredEmitter-function transmitInfrared(infraredFrequency: long, pattern: Array<long>): void--><!--Device-infraredEmitter-function transmitInfrared(infraredFrequency: long, pattern: Array<long>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InfraredEmitter
 
 **Parameters:**

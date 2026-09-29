@@ -8,9 +8,11 @@ Window update type.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-accessibility-type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'--><!--Device-accessibility-type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

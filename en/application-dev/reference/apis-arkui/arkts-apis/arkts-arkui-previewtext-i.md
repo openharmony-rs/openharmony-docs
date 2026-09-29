@@ -8,6 +8,8 @@ Preview text.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface PreviewText--><!--Device-unnamed-declare interface PreviewText-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -16,7 +18,7 @@ Preview text.
 offset: number
 ```
 
-Start position of the preview text.
+Start index of the preview text content, starting from 0.
 
 **Type:** number
 
@@ -25,6 +27,8 @@ Start position of the preview text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PreviewText-offset: number--><!--Device-PreviewText-offset: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,5 +47,7 @@ Content of the preview text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PreviewText-value: string--><!--Device-PreviewText-value: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

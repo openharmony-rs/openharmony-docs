@@ -16,6 +16,8 @@ Checks whether the trace flag is enabled for **HiTraceId**. This API returns the
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean--><!--Device-hiTraceChain-function isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

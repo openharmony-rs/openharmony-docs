@@ -8,6 +8,8 @@ Declaration of the menu item on the right side.
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class EditableTitleBarMenuItem--><!--Device-unnamed-export declare class EditableTitleBarMenuItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Right-side custom button click event of the title bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EditableTitleBarMenuItem-action?: () => void--><!--Device-EditableTitleBarMenuItem-action?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ Default value: **"Double-tap to activate"**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-EditableTitleBarMenuItem-accessibilityDescription?: ResourceStr--><!--Device-EditableTitleBarMenuItem-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-EditableTitleBarMenuItem-accessibilityLevel?: string--><!--Device-EditableTitleBarMenuItem-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -101,6 +109,8 @@ Default value: value of the **label** property if it is set and an empty string 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-EditableTitleBarMenuItem-accessibilityText?: ResourceStr--><!--Device-EditableTitleBarMenuItem-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +140,8 @@ The **defaultFocus** attribute requires the **isEnabled** attribute to be set to
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-EditableTitleBarMenuItem-defaultFocus?: boolean--><!--Device-EditableTitleBarMenuItem-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isEnabled
@@ -152,6 +164,8 @@ Whether to enable the item. Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EditableTitleBarMenuItem-isEnabled?: boolean--><!--Device-EditableTitleBarMenuItem-isEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -169,6 +183,8 @@ Icon label.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EditableTitleBarMenuItem-label?: ResourceStr--><!--Device-EditableTitleBarMenuItem-label?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +204,8 @@ Symbol icon resource, which has higher priority than **value**.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-EditableTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier--><!--Device-EditableTitleBarMenuItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -205,5 +223,7 @@ Icon resource.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EditableTitleBarMenuItem-value: ResourceStr--><!--Device-EditableTitleBarMenuItem-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

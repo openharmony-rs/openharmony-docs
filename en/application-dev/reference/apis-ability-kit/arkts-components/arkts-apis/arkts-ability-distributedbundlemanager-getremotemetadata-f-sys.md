@@ -20,6 +20,8 @@ Obtains the metadata of an app with a specified bundle name on a specified remot
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedBundleManager-function getRemoteMetadata(deviceId: string, bundleName: string): Promise<Array<ModuleMetadata>>--><!--Device-distributedBundleManager-function getRemoteMetadata(deviceId: string, bundleName: string): Promise<Array<ModuleMetadata>>-End-->
+
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.
@@ -44,6 +46,7 @@ Obtains the metadata of an app with a specified bundle name on a specified remot
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
+| [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle is not found. |
 | [17700007](../errorcode-bundle.md#17700007-incorrect-device-id) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-distributed-service-is-not-started) | The distributed service is not running. |
+| [17700101](../errorcode-bundle.md#17700101-bundle-manager-service-abnormal) | Bundle manager service is excepted. |

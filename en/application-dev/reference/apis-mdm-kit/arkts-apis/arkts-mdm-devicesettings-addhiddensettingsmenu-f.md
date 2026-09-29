@@ -20,6 +20,8 @@ Adds a setting item to the hidden setting item list of the current user. Then th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function addHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void--><!--Device-deviceSettings-function addHiddenSettingsMenu(admin: Want, menusToHidden: Array<SettingsMenu>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

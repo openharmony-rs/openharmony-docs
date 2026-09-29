@@ -10,6 +10,8 @@ Streaming configuration parameters.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-interface StreamParam--><!--Device-abilityConnectionManager-interface StreamParam-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ This value indicates video bitrate, default 80(kbps). Only valid on the sender s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StreamParam-bitrate?: int--><!--Device-StreamParam-bitrate?: int-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ The target color space for conversion. Currently, only BT709_LIMIT is supported.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StreamParam-colorSpaceConversionTarget?: colorSpaceManager.ColorSpace--><!--Device-StreamParam-colorSpaceConversionTarget?: colorSpaceManager.ColorSpace-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -70,6 +76,8 @@ Stream name, the receive end must be consistent with the transmit end.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StreamParam-name: string--><!--Device-StreamParam-name: string-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Stream transmission role, which can be a receive stream or a transmit stream.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StreamParam-role: StreamRole--><!--Device-StreamParam-role: StreamRole-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

@@ -8,6 +8,8 @@ OperateIconV2构造函数的参数选项。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface OperateIconV2Options--><!--Device-unnamed-export interface OperateIconV2Options-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ action?: OnActionCallback
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateIconV2Options-action?: OnActionCallback--><!--Device-OperateIconV2Options-action?: OnActionCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -51,6 +55,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateIconV2Options-accessibilityDescription?: ResourceStr--><!--Device-OperateIconV2Options-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateIconV2Options-accessibilityLevel?: string--><!--Device-OperateIconV2Options-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -104,6 +112,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateIconV2Options-accessibilityText?: ResourceStr--><!--Device-OperateIconV2Options-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -123,6 +133,8 @@ symbolStyle?: SymbolGlyphModifier
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateIconV2Options-symbolStyle?: SymbolGlyphModifier--><!--Device-OperateIconV2Options-symbolStyle?: SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,5 +157,7 @@ value?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateIconV2Options-value?: ResourceStr--><!--Device-OperateIconV2Options-value?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

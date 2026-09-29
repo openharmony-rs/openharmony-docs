@@ -8,6 +8,8 @@ declare interface FirstMeaningfulPaint
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface FirstMeaningfulPaint--><!--Device-unnamed-declare interface FirstMeaningfulPaint-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## firstMeaningfulPaintTime
@@ -24,6 +26,8 @@ firstMeaningfulPaintTime?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FirstMeaningfulPaint-firstMeaningfulPaintTime?: number--><!--Device-FirstMeaningfulPaint-firstMeaningfulPaintTime?: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## navigationStartTime
@@ -39,5 +43,7 @@ navigationStartTime?: number
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FirstMeaningfulPaint-navigationStartTime?: number--><!--Device-FirstMeaningfulPaint-navigationStartTime?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

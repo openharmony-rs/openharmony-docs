@@ -18,6 +18,8 @@ Checks whether a user is allowed to set wallpapers. Returns true if a user is al
 
 **Deprecated since:** 9
 
+<!--Device-wallpaper-function isOperationAllowed(callback: AsyncCallback<boolean>): void--><!--Device-wallpaper-function isOperationAllowed(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -54,6 +56,8 @@ Checks whether a user is allowed to set wallpapers. Returns true if a user is al
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-wallpaper-function isOperationAllowed(): Promise<boolean>--><!--Device-wallpaper-function isOperationAllowed(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

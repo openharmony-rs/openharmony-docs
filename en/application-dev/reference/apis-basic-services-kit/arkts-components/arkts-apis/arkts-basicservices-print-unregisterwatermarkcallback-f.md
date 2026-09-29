@@ -20,6 +20,8 @@ Unregister to listen for watermark handling.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function unregisterWatermarkCallback(callback?: WatermarkCallback): void--><!--Device-print-function unregisterWatermarkCallback(callback?: WatermarkCallback): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

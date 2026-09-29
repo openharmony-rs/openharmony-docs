@@ -8,6 +8,8 @@ Provides APIs for managing DLP files. A **DLPFile** instance indicates a DLP fil
 
 **Since:** 10
 
+<!--Device-dlpPermission-export interface DLPFile--><!--Device-dlpPermission-export interface DLPFile-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ When a DLP application needs to access a DLP file using a standard file API, it 
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-DLPFile-addDLPLinkFile(linkFileName: string): Promise<void>--><!--Device-DLPFile-addDLPLinkFile(linkFileName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -112,6 +116,8 @@ This API is called when a DLP application needs to access a DLP file using a sta
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-addDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void--><!--Device-DLPFile-addDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -190,6 +196,8 @@ This API is used when the file owner decides to close a DLP file.
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-closeDLPFile(): Promise<void>--><!--Device-DLPFile-closeDLPFile(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -264,6 +272,8 @@ This API is used when the file owner decides to close a DLP file.
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-closeDLPFile(callback: AsyncCallback<void>): void--><!--Device-DLPFile-closeDLPFile(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -335,6 +345,8 @@ This API is used to clear the link file mapping after DLP file access is complet
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-DLPFile-deleteDLPLinkFile(linkFileName: string): Promise<void>--><!--Device-DLPFile-deleteDLPLinkFile(linkFileName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -415,6 +427,8 @@ This API is used to clear the link file mapping after DLP file access is complet
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void--><!--Device-DLPFile-deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -487,6 +501,8 @@ This API is used when the file owner decides to disable the DLP protection for a
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-DLPFile-recoverDLPFile(plaintextFd: number): Promise<void>--><!--Device-DLPFile-recoverDLPFile(plaintextFd: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -574,6 +590,8 @@ This API is used when the file owner decides to disable the DLP protection for a
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void--><!--Device-DLPFile-recoverDLPFile(plaintextFd: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -655,6 +673,8 @@ When you need to access a different DLP file, you can replace the link file to c
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-replaceDLPLinkFile(linkFileName: string): Promise<void>--><!--Device-DLPFile-replaceDLPLinkFile(linkFileName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -734,6 +754,8 @@ When you need to access a different DLP file, you can replace the link file. Bef
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void--><!--Device-DLPFile-replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -811,6 +833,8 @@ After the link file is replaced, the read and write need to be resumed for norma
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-resumeFuseLink(): Promise<void>--><!--Device-DLPFile-resumeFuseLink(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -883,6 +907,8 @@ After the link file is replaced, the read and write need to be resumed.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-DLPFile-resumeFuseLink(callback: AsyncCallback<void>): void--><!--Device-DLPFile-resumeFuseLink(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -959,6 +985,8 @@ Before deleting a link file, stop the read and write to ensure secure file opera
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-stopFuseLink(): Promise<void>--><!--Device-DLPFile-stopFuseLink(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -1030,6 +1058,8 @@ Before deleting a link file, stop the read and write.
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-DLPFile-stopFuseLink(callback: AsyncCallback<void>): void--><!--Device-DLPFile-stopFuseLink(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -1099,6 +1129,8 @@ Authorized user information.
 **Type:** [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md)
 
 **Since:** 10
+
+<!--Device-DLPFile-dlpProperty: DLPProperty--><!--Device-DLPFile-dlpProperty: DLPProperty-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

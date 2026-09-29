@@ -10,6 +10,8 @@ Provides information about a form.
 
 **Since:** 9
 
+<!--Device-formInfo-interface FormInfo--><!--Device-formInfo-interface FormInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates whether the form uses a blur background provided by the form host.
 
 **Since:** 18
 
+<!--Device-FormInfo-readonly enableBlurBackground?: boolean--><!--Device-FormInfo-readonly enableBlurBackground?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Indicates the fun interaction form params
 
 **Since:** 20
 
+<!--Device-FormInfo-readonly funInteractionParams?: FunInteractionParams--><!--Device-FormInfo-readonly funInteractionParams?: FunInteractionParams-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Obtains the group id of the form.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-FormInfo-readonly groupId?: string--><!--Device-FormInfo-readonly groupId?: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -80,6 +88,8 @@ Obtains whether the font scaling factor follows system settings. <br>Default val
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormInfo-isFontScaleFollowSystem?: boolean--><!--Device-FormInfo-isFontScaleFollowSystem?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -97,6 +107,8 @@ Obtains whether the form is privacy sensitive.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormInfo-readonly isPrivacySensitive?: boolean--><!--Device-FormInfo-readonly isPrivacySensitive?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -116,6 +128,8 @@ Obtains whether the form is adapted for standby.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormInfo-readonly isStandbyAdapted?: boolean--><!--Device-FormInfo-readonly isStandbyAdapted?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -134,6 +148,8 @@ Obtains whether the form supports standby.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormInfo-readonly isStandbySupported?: boolean--><!--Device-FormInfo-readonly isStandbySupported?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -149,6 +165,8 @@ Obtains whether the form is template form.
 **Type:** boolean
 
 **Since:** 23
+
+<!--Device-FormInfo-readonly isTemplateForm?: boolean--><!--Device-FormInfo-readonly isTemplateForm?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -166,7 +184,9 @@ Indicates the form previewImage IDs map corresponds to the \"supportDimensions\"
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-FormInfo-readonly previewImages?: Array<int>--><!--Device-FormInfo-readonly previewImages?: Array<int>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -184,6 +204,8 @@ Obtains the rendering mode of the form.
 
 **Since:** 18
 
+<!--Device-FormInfo-readonly renderingMode?: RenderingMode--><!--Device-FormInfo-readonly renderingMode?: RenderingMode-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -200,6 +222,8 @@ Obtains the resizable of the form.
 
 **Since:** 20
 
+<!--Device-FormInfo-readonly resizable?: boolean--><!--Device-FormInfo-readonly resizable?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -215,6 +239,8 @@ Indicates the scene animation form params
 **Type:** [SceneAnimationParams](arkts-form-forminfo-sceneanimationparams-i-sys.md)
 
 **Since:** 20
+
+<!--Device-FormInfo-readonly sceneAnimationParams?: SceneAnimationParams--><!--Device-FormInfo-readonly sceneAnimationParams?: SceneAnimationParams-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

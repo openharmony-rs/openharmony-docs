@@ -10,6 +10,8 @@ For typical use cases, see [Principles for Classifying Biometric Authentication 
 
 **Since:** 8
 
+<!--Device-userAuth-enum AuthTrustLevel--><!--Device-userAuth-enum AuthTrustLevel-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## ATL1
@@ -22,7 +24,9 @@ Authentication trust level 1. It can identify individual users and provides basi
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthTrustLevel-ATL1 = 10000--><!--Device-AuthTrustLevel-ATL1 = 10000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -36,7 +40,9 @@ Authentication trust level 2. It can accurately identify individual users and pr
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthTrustLevel-ATL2 = 20000--><!--Device-AuthTrustLevel-ATL2 = 20000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -50,7 +56,9 @@ Authentication trust level 3. It can accurately identify individual users and pr
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthTrustLevel-ATL3 = 30000--><!--Device-AuthTrustLevel-ATL3 = 30000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -64,6 +72,8 @@ Authentication trust level 4. It can accurately identify individual users and pr
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AuthTrustLevel-ATL4 = 40000--><!--Device-AuthTrustLevel-ATL4 = 40000-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

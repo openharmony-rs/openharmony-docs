@@ -8,6 +8,8 @@ Defines the common attributes and events of the **Counter** component.
 
 **Since:** 11
 
+<!--Device-unnamed-declare class CommonOptions--><!--Device-unnamed-declare class CommonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -37,6 +39,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonOptions-onHoverDecrease?: (isHover: boolean) => void--><!--Device-CommonOptions-onHoverDecrease?: (isHover: boolean) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonOptions-onHoverIncrease?: (isHover: boolean) => void--><!--Device-CommonOptions-onHoverIncrease?: (isHover: boolean) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -86,7 +92,7 @@ Whether the Counter can obtain focus.
 
 **Note:** This attribute takes effect for the list and compact types of Counter, but not for the inline number and inline date types.
 
-Default value: **true**.
+Default value: **true**
 
 **true**: The Counter can obtain focus (selected when the Counter needs to be operated via keyboard or focus navigation); **false**: The Counter cannot obtain focus (selected when focus interaction is not required).
 
@@ -102,6 +108,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonOptions-focusable?: boolean--><!--Device-CommonOptions-focusable?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## step
@@ -114,7 +122,7 @@ Step of the Counter. This is used when you need to quickly adjust the value (for
 
 Value range: an integer greater than or equal to 1.
 
-Default value: **1**.
+Default value: **1**
 
 If the value is out of range, the default value is used.
 
@@ -129,5 +137,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonOptions-step?: number--><!--Device-CommonOptions-step?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

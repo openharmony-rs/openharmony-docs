@@ -16,6 +16,8 @@ declare interface AnimateParam
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface AnimateParam--><!--Device-unnamed-declare interface AnimateParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFinish
@@ -33,6 +35,8 @@ onFinish?: () => void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AnimateParam-onFinish?: () => void--><!--Device-AnimateParam-onFinish?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +104,8 @@ curve?: Curve | string | ICurve
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AnimateParam-curve?: Curve | string | ICurve--><!--Device-AnimateParam-curve?: Curve | string | ICurve-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -125,6 +131,8 @@ delay?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimateParam-delay?: number--><!--Device-AnimateParam-delay?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,6 +165,8 @@ duration?: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-AnimateParam-duration?: number--><!--Device-AnimateParam-duration?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## expectedFrameRateRange
@@ -174,6 +184,8 @@ expectedFrameRateRange?: ExpectedFrameRateRange
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange--><!--Device-AnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,6 +208,8 @@ finishCallbackType?: FinishCallbackType
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AnimateParam-finishCallbackType?: FinishCallbackType--><!--Device-AnimateParam-finishCallbackType?: FinishCallbackType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,6 +235,8 @@ iterations?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AnimateParam-iterations?: number--><!--Device-AnimateParam-iterations?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## playMode
@@ -244,6 +260,8 @@ playMode?: PlayMode
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AnimateParam-playMode?: PlayMode--><!--Device-AnimateParam-playMode?: PlayMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -270,5 +288,7 @@ tempo?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AnimateParam-tempo?: number--><!--Device-AnimateParam-tempo?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

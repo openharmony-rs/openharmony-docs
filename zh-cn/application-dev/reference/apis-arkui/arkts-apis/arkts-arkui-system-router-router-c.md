@@ -12,6 +12,8 @@ export default class Router
 
 **替代接口：** [router](arkts-arkui-router.md)
 
+<!--Device-unnamed-export default class Router--><!--Device-unnamed-export default class Router-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## 导入模块
@@ -33,6 +35,8 @@ static back(options?: BackRouterOptions): void
 **废弃版本：** 8
 
 **替代接口：** back
+
+<!--Device-Router-static back(options?: BackRouterOptions): void--><!--Device-Router-static back(options?: BackRouterOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ static clear(): void
 
 **替代接口：** clear
 
+<!--Device-Router-static clear(): void--><!--Device-Router-static clear(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## disableAlertBeforeBackPage
@@ -71,6 +77,8 @@ static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): 
 **废弃版本：** 8
 
 **替代接口：** hideAlertBeforeBackPage
+
+<!--Device-Router-static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void--><!--Device-Router-static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): voi
 
 **替代接口：** showAlertBeforeBackPage
 
+<!--Device-Router-static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void--><!--Device-Router-static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -115,6 +125,8 @@ static getLength(): string
 **废弃版本：** 8
 
 **替代接口：** getLength
+
+<!--Device-Router-static getLength(): string--><!--Device-Router-static getLength(): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +150,8 @@ static getParams(): ParamsInterface
 
 **替代接口：** getParams
 
+<!--Device-Router-static getParams(): ParamsInterface--><!--Device-Router-static getParams(): ParamsInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -159,6 +173,8 @@ static getState(): RouterState
 **废弃版本：** 8
 
 **替代接口：** getState
+
+<!--Device-Router-static getState(): RouterState--><!--Device-Router-static getState(): RouterState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,6 +202,8 @@ static push(options: RouterOptions): void
 
 **替代接口：** push
 
+<!--Device-Router-static push(options: RouterOptions): void--><!--Device-Router-static push(options: RouterOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -207,6 +225,8 @@ static replace(options: RouterOptions): void
 **废弃版本：** 8
 
 **替代接口：** replace
+
+<!--Device-Router-static replace(options: RouterOptions): void--><!--Device-Router-static replace(options: RouterOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 

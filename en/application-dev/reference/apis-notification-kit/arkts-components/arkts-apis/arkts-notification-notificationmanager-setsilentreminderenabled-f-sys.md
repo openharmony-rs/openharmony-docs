@@ -18,6 +18,8 @@ Sets the enabling status of the silent reminder. This API uses a promise to retu
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise<void>--><!--Device-notificationManager-function setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

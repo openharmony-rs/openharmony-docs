@@ -8,6 +8,8 @@ White-Screen-Free Loading frame interpolation status information, which is used 
 
 **Since:** 23
 
+<!--Device-webview-interface BlanklessFrameInterpolationInfo--><!--Device-webview-interface BlanklessFrameInterpolationInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Key value that uniquely identifies the page where the frame is interpolated. The
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BlanklessFrameInterpolationInfo-key: string--><!--Device-BlanklessFrameInterpolationInfo-key: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## reason
@@ -45,6 +49,8 @@ Reason for the frame interpolation failure.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlanklessFrameInterpolationInfo-reason: string--><!--Device-BlanklessFrameInterpolationInfo-reason: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -62,6 +68,8 @@ Current frame interpolation state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BlanklessFrameInterpolationInfo-state: BlanklessFrameInterpolationState--><!--Device-BlanklessFrameInterpolationInfo-state: BlanklessFrameInterpolationState-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## timestamp
@@ -77,5 +85,7 @@ Time when the frame interpolation is successful, fails, or removed, in ms (UTC t
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlanklessFrameInterpolationInfo-timestamp: number--><!--Device-BlanklessFrameInterpolationInfo-timestamp: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

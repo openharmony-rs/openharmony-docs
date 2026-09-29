@@ -18,6 +18,8 @@ This API sets the sandbox application configuration so that the application can 
 
 **Since:** 11
 
+<!--Device-dlpPermission-function setSandboxAppConfig(configInfo: string): Promise<void>--><!--Device-dlpPermission-function setSandboxAppConfig(configInfo: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

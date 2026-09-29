@@ -20,6 +20,8 @@ Obtains the NTP server information. This API is applicable to scenarios where yo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getNTPServer(admin: Want): string--><!--Device-systemManager-function getNTPServer(admin: Want): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

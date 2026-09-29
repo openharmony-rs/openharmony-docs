@@ -18,6 +18,8 @@ Obtains the provision configuration file information of all applications based o
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
+<!--Device-bundleManager-function getAllAppProvisionInfo(userId?: int): Promise<Array<AppProvisionInfo>>--><!--Device-bundleManager-function getAllAppProvisionInfo(userId?: int): Promise<Array<AppProvisionInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

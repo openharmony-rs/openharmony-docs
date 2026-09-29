@@ -8,6 +8,8 @@ ListItem划出菜单的管理器。
 
 **起始版本：** 21
 
+<!--Device-unnamed-declare class ListItemSwipeActionManager--><!--Device-unnamed-declare class ListItemSwipeActionManager-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## collapse
@@ -23,6 +25,8 @@ static collapse(node: FrameNode): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListItemSwipeActionManager-static collapse(node: FrameNode): void--><!--Device-ListItemSwipeActionManager-static collapse(node: FrameNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-ListItemSwipeActionManager-static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void--><!--Device-ListItemSwipeActionManager-static expand(node: FrameNode, direction: ListItemSwipeActionDirection): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -16,6 +16,8 @@ Obtains the battery configuration based on the specified scenario.
 
 **Since:** 11
 
+<!--Device-batteryInfo-function getBatteryConfig(sceneName: string): string--><!--Device-batteryInfo-function getBatteryConfig(sceneName: string): string-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 **System API:** This is a system API.

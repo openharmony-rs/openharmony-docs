@@ -22,6 +22,8 @@ This API can be called only after a DLP sandbox is installed by calling [install
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-dlpPermission-function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promise<void>--><!--Device-dlpPermission-function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ This API can be called only after a DLP sandbox is installed by calling [install
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-dlpPermission-function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callback: AsyncCallback<void>): void--><!--Device-dlpPermission-function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

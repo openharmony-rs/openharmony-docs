@@ -18,6 +18,8 @@ Checks whether this application is authorized by the specified user credential. 
 
 **Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
 
+<!--Device-certificateManager-function isAuthorizedApp(keyUri: string): Promise<boolean>--><!--Device-certificateManager-function isAuthorizedApp(keyUri: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**

@@ -12,6 +12,8 @@ The query compilation by keyword event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]>--><!--Device-avMusicTemplate-type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **Parameters:**

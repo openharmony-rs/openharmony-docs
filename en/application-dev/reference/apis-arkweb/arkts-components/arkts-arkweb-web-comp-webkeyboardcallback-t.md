@@ -10,13 +10,15 @@ Defines a callback to intercept the soft keyboard initiated from editable elemen
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions--><!--Device-unnamed-type WebKeyboardCallback = (keyboardCallbackInfo: WebKeyboardCallbackInfo) => WebKeyboardOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | Yes | Input parameter of the callback used to intercept the soft keyboard initiated from editable elements on a web page, including [WebKeyboardController](arkts-arkweb-web-comp.md#web) and editable element attributes. |
+| keyboardCallbackInfo | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | Yes | Input parameter of the callback used to intercept the soft keyboard initiated from editable elements on a web page, including [WebKeyboardController](arkts-arkweb-web-comp.md) and editable element attributes. |
 
 **Return value:**
 

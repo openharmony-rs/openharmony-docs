@@ -8,6 +8,8 @@ Obtains TDSCDMA cell information.
 
 **Since:** 8
 
+<!--Device-radio-export interface TdscdmaCellInformation--><!--Device-radio-export interface TdscdmaCellInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the cell ID.
 
 **Since:** 8
 
+<!--Device-TdscdmaCellInformation-cellId: int--><!--Device-TdscdmaCellInformation-cellId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates the cell parameter ID.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-TdscdmaCellInformation-cpid: int--><!--Device-TdscdmaCellInformation-cpid: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,6 +68,8 @@ Indicates the location area code.
 
 **Since:** 8
 
+<!--Device-TdscdmaCellInformation-lac: int--><!--Device-TdscdmaCellInformation-lac: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Indicates the mobile country code.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-TdscdmaCellInformation-mcc: string--><!--Device-TdscdmaCellInformation-mcc: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -94,6 +104,8 @@ Indicates the mobile network code.
 
 **Since:** 8
 
+<!--Device-TdscdmaCellInformation-mnc: string--><!--Device-TdscdmaCellInformation-mnc: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Indicates the absolute radio frequency number.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-TdscdmaCellInformation-uarfcn: int--><!--Device-TdscdmaCellInformation-uarfcn: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

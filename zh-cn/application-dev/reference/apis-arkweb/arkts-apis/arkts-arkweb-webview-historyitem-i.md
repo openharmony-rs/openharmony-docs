@@ -10,6 +10,8 @@ interface HistoryItem
 
 **起始版本：** 9
 
+<!--Device-webview-interface HistoryItem--><!--Device-webview-interface HistoryItem-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -32,6 +34,8 @@ historyRawUrl: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-HistoryItem-historyRawUrl: string--><!--Device-HistoryItem-historyRawUrl: string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## historyUrl
@@ -47,6 +51,8 @@ historyUrl: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HistoryItem-historyUrl: string--><!--Device-HistoryItem-historyUrl: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +70,8 @@ icon: image.PixelMap
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-HistoryItem-icon: image.PixelMap--><!--Device-HistoryItem-icon: image.PixelMap-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## title
@@ -79,5 +87,7 @@ title: string
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HistoryItem-title: string--><!--Device-HistoryItem-title: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

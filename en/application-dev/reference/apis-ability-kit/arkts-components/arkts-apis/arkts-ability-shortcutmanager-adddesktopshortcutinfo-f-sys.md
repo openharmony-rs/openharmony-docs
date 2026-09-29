@@ -18,6 +18,8 @@ Adds a shortcut for the given user. This API uses a promise to return the result
 
 **Required permissions:** ohos.permission.MANAGE_SHORTCUTS
 
+<!--Device-shortcutManager-function addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise<void>--><!--Device-shortcutManager-function addDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **System API:** This is a system API.

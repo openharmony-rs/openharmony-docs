@@ -16,7 +16,9 @@ Checks whether the target application can be accessed based on the provided link
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-bundleManager-function canOpenLink(link: string): boolean--><!--Device-bundleManager-function canOpenLink(link: string): boolean-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

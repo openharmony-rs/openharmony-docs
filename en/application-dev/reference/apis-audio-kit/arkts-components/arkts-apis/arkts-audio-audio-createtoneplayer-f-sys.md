@@ -16,6 +16,8 @@ Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This met
 
 **Since:** 9
 
+<!--Device-audio-function createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback<TonePlayer>): void--><!--Device-audio-function createTonePlayer(options: AudioRendererInfo, callback: AsyncCallback<TonePlayer>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ function createTonePlayer(options: AudioRendererInfo): Promise<TonePlayer>
 Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance.
 
 **Since:** 9
+
+<!--Device-audio-function createTonePlayer(options: AudioRendererInfo): Promise<TonePlayer>--><!--Device-audio-function createTonePlayer(options: AudioRendererInfo): Promise<TonePlayer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 

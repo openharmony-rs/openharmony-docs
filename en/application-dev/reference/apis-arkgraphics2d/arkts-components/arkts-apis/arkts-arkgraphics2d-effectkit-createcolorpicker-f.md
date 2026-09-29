@@ -16,9 +16,11 @@ Creates a ColorPicker instance based on a pixel map. This API uses a promise to 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-effectKit-function createColorPicker(source: image.PixelMap): Promise<ColorPicker>--><!--Device-effectKit-function createColorPicker(source: image.PixelMap): Promise<ColorPicker>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -83,9 +85,11 @@ Creates a ColorPicker instance for the selected region based on a pixel map. Thi
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-effectKit-function createColorPicker(source: image.PixelMap, region: Array<double>): Promise<ColorPicker>--><!--Device-effectKit-function createColorPicker(source: image.PixelMap, region: Array<double>): Promise<ColorPicker>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -151,9 +155,11 @@ Creates a ColorPicker instance based on a pixel map. This API uses an asynchrono
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-effectKit-function createColorPicker(source: image.PixelMap, callback: AsyncCallback<ColorPicker>): void--><!--Device-effectKit-function createColorPicker(source: image.PixelMap, callback: AsyncCallback<ColorPicker>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -213,9 +219,11 @@ Creates a ColorPicker instance for the selected region based on a pixel map. Thi
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-effectKit-function createColorPicker(source: image.PixelMap, region: Array<double>, callback: AsyncCallback<ColorPicker>): void--><!--Device-effectKit-function createColorPicker(source: image.PixelMap, region: Array<double>, callback: AsyncCallback<ColorPicker>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

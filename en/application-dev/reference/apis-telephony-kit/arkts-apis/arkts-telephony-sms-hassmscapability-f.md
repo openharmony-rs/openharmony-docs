@@ -16,6 +16,8 @@ Checks whether the current device can send and receive SMS messages. This API wo
 
 **Since:** 7
 
+<!--Device-sms-function hasSmsCapability(): boolean--><!--Device-sms-function hasSmsCapability(): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **Return value:**

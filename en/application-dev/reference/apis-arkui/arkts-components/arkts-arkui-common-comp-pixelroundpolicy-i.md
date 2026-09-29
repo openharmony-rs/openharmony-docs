@@ -10,6 +10,8 @@ Rounding strategy for the boundary of the current component.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface PixelRoundPolicy--><!--Device-unnamed-declare interface PixelRoundPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -31,6 +33,8 @@ Boundary rounding strategy for the bottom edge of the component. <br>Since API v
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-PixelRoundPolicy-bottom?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-bottom?: PixelRoundCalcPolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Boundary rounding strategy for the tail edge of the component. <br>Since API ver
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-PixelRoundPolicy-end?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-end?: PixelRoundCalcPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -76,6 +82,8 @@ Boundary rounding strategy for the front edge of the component. <br>Since API ve
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-PixelRoundPolicy-start?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-start?: PixelRoundCalcPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -97,5 +105,7 @@ Boundary rounding strategy for the top edge of the component. <br>Since API vers
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-PixelRoundPolicy-top?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-top?: PixelRoundCalcPolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

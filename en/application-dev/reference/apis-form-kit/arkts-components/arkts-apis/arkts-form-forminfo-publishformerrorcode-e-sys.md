@@ -8,6 +8,8 @@ Enumerates the result codes that may be used for the operation of adding a widge
 
 **Since:** 12
 
+<!--Device-formInfo-enum PublishFormErrorCode--><!--Device-formInfo-enum PublishFormErrorCode-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The widget is added to the home screen.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormErrorCode-SUCCESS = 0--><!--Device-PublishFormErrorCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -40,6 +44,8 @@ There is no space for adding widgets.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PublishFormErrorCode-NO_SPACE = 1--><!--Device-PublishFormErrorCode-NO_SPACE = 1-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Parameter check fails.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormErrorCode-PARAM_ERROR = 2--><!--Device-PublishFormErrorCode-PARAM_ERROR = 2-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -72,6 +80,8 @@ An internal error occurs during widget processing.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PublishFormErrorCode-INTERNAL_ERROR = 3--><!--Device-PublishFormErrorCode-INTERNAL_ERROR = 3-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -88,6 +98,8 @@ Indicates that the host does not support the form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PublishFormErrorCode-NOT_SUPPORT = 4--><!--Device-PublishFormErrorCode-NOT_SUPPORT = 4-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -103,6 +115,8 @@ Indicates that the number of forms added to the host exceeds the upper limit.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PublishFormErrorCode-HOST_FORM_LIMIT = 5--><!--Device-PublishFormErrorCode-HOST_FORM_LIMIT = 5-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

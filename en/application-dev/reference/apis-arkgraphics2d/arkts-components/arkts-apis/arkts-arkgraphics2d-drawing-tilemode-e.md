@@ -8,6 +8,8 @@ Enumerates the tile modes of the shader effect.
 
 **Since:** 12
 
+<!--Device-drawing-enum TileMode--><!--Device-drawing-enum TileMode-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## CLAMP
@@ -19,6 +21,8 @@ CLAMP = 0
 Replicates the edge color if the shader effect draws outside of its original boundary.
 
 **Since:** 12
+
+<!--Device-TileMode-CLAMP = 0--><!--Device-TileMode-CLAMP = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -32,6 +36,8 @@ Repeats the shader effect in both horizontal and vertical directions.
 
 **Since:** 12
 
+<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## MIRROR
@@ -44,6 +50,8 @@ Repeats the shader effect in both horizontal and vertical directions, alternatin
 
 **Since:** 12
 
+<!--Device-TileMode-MIRROR = 2--><!--Device-TileMode-MIRROR = 2-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## DECAL
@@ -55,5 +63,7 @@ DECAL = 3
 Renders the shader effect only within the original boundary.
 
 **Since:** 12
+
+<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

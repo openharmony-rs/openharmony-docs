@@ -16,3 +16,5 @@ interface IArguments
 ```
 
 Iterator
+
+<!--Device-IArguments-[Symbol.iterator](): IterableIterator<any>--><!--Device-IArguments-[Symbol.iterator](): IterableIterator<any>-End-->

@@ -8,6 +8,8 @@ Defines the optional parameters carried in the request for closing a WebSocket c
 
 **Since:** 6
 
+<!--Device-webSocket-export interface WebSocketCloseOptions--><!--Device-webSocket-export interface WebSocketCloseOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Error code. Set this parameter based on the actual situation. The value must be 
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocketCloseOptions-code?: int--><!--Device-WebSocketCloseOptions-code?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -44,6 +48,8 @@ Error cause. Set this parameter based on the actual situation. If no reason valu
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-WebSocketCloseOptions-reason?: string--><!--Device-WebSocketCloseOptions-reason?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

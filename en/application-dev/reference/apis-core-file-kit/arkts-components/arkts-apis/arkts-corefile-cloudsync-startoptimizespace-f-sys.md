@@ -20,6 +20,8 @@ startOptimizeSpace is used together with **stopOptimizeSpace**. If **startOptimi
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-cloudSync-function startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callback<OptimizeSpaceProgress>): Promise<void>--><!--Device-cloudSync-function startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callback<OptimizeSpaceProgress>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.

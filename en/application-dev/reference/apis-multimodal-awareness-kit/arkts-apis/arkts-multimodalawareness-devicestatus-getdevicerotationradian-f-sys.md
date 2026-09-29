@@ -18,6 +18,8 @@ The posture data contains the rotation angles of the x, y, and z axes, that is, 
 
 **Since:** 20
 
+<!--Device-deviceStatus-function getDeviceRotationRadian(): Promise<DeviceRotationRadian>--><!--Device-deviceStatus-function getDeviceRotationRadian(): Promise<DeviceRotationRadian>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
 
 **System API:** This is a system API.

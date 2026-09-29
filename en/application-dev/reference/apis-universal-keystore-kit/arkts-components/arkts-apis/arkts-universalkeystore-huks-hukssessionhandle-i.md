@@ -8,6 +8,8 @@ Defines the struct for a HUKS handle.
 
 **Since:** 9
 
+<!--Device-huks-export interface HuksSessionHandle--><!--Device-huks-export interface HuksSessionHandle-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Challenge obtained after the [initSession](arkts-universalkeystore-huks-initsess
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksSessionHandle-challenge?: Uint8Array--><!--Device-HuksSessionHandle-challenge?: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## handle
@@ -49,5 +53,7 @@ Handle of the unsigned integer type.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksSessionHandle-handle: number--><!--Device-HuksSessionHandle-handle: number-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

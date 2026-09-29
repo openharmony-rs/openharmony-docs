@@ -24,6 +24,8 @@ Sets restrictions on user behaviors.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function setUserRestriction(admin: Want, settingsItem: string, restricted: boolean): void--><!--Device-restrictions-function setUserRestriction(admin: Want, settingsItem: string, restricted: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -79,6 +81,8 @@ Restricts users from modifying specified device setting items.
 **Required permissions:** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function setUserRestriction(admin: Want, settingsItem: SettingsForDevice, restricted: boolean): void--><!--Device-restrictions-function setUserRestriction(admin: Want, settingsItem: SettingsForDevice, restricted: boolean): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

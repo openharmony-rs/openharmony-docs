@@ -12,6 +12,8 @@ Enumerates the ability lifecycle states.
 
 **Substitutes:** [AbilityLifecycleState](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md)
 
+<!--Device-abilityDelegatorRegistry-export enum AbilityLifecycleState--><!--Device-abilityDelegatorRegistry-export enum AbilityLifecycleState-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## UNINITIALIZED
@@ -27,6 +29,8 @@ The ability is in an invalid state.
 **Deprecated since:** 9
 
 **Substitutes:** [UNINITIALIZED](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#uninitialized)
+
+<!--Device-AbilityLifecycleState-UNINITIALIZED = 0--><!--Device-AbilityLifecycleState-UNINITIALIZED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,6 +48,8 @@ The ability is created.
 
 **Substitutes:** [CREATE](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#create)
 
+<!--Device-AbilityLifecycleState-CREATE = 1--><!--Device-AbilityLifecycleState-CREATE = 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## FOREGROUND
@@ -59,6 +65,8 @@ The ability is running in the foreground.
 **Deprecated since:** 9
 
 **Substitutes:** [FOREGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#foreground)
+
+<!--Device-AbilityLifecycleState-FOREGROUND = 2--><!--Device-AbilityLifecycleState-FOREGROUND = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,6 +84,8 @@ The ability is running in the background.
 
 **Substitutes:** [BACKGROUND](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#background)
 
+<!--Device-AbilityLifecycleState-BACKGROUND = 3--><!--Device-AbilityLifecycleState-BACKGROUND = 3-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## DESTROY
@@ -91,5 +101,7 @@ The ability is destroyed.
 **Deprecated since:** 9
 
 **Substitutes:** [DESTROY](arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md#destroy)
+
+<!--Device-AbilityLifecycleState-DESTROY = 4--><!--Device-AbilityLifecycleState-DESTROY = 4-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -20,6 +20,8 @@ Obtains the UID of a user from the user database of the system based on the spec
 
 **Substitutes:** [getUidForName](arkts-arkts-process-processmanager-c.md#getuidforname)
 
+<!--Device-process-function getUidForName(v: string): number--><!--Device-process-function getUidForName(v: string): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

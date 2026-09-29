@@ -14,6 +14,8 @@ Since API version 10, no limit is placed on the number of records in a **PasteDa
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-pasteboard-const MAX_RECORD_NUM = 512--><!--Device-pasteboard-const MAX_RECORD_NUM = 512-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## MIMETYPE_PIXELMAP
@@ -27,6 +29,8 @@ MIME type of the PixelMap content.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-pasteboard-const MIMETYPE_PIXELMAP = 'pixelMap'--><!--Device-pasteboard-const MIMETYPE_PIXELMAP = 'pixelMap'-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -42,6 +46,8 @@ MIME type of the HTML content.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-pasteboard-const MIMETYPE_TEXT_HTML = 'text/html'--><!--Device-pasteboard-const MIMETYPE_TEXT_HTML = 'text/html'-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## MIMETYPE_TEXT_PLAIN
@@ -55,6 +61,8 @@ MIME type of the plain text content.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-pasteboard-const MIMETYPE_TEXT_PLAIN = 'text/plain'--><!--Device-pasteboard-const MIMETYPE_TEXT_PLAIN = 'text/plain'-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -70,6 +78,8 @@ MIME type of the URI content.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-pasteboard-const MIMETYPE_TEXT_URI = 'text/uri'--><!--Device-pasteboard-const MIMETYPE_TEXT_URI = 'text/uri'-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## MIMETYPE_TEXT_WANT
@@ -83,5 +93,7 @@ MIME type of the Want content.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-pasteboard-const MIMETYPE_TEXT_WANT = 'text/want'--><!--Device-pasteboard-const MIMETYPE_TEXT_WANT = 'text/want'-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

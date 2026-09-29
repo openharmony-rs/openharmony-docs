@@ -8,6 +8,8 @@ Provides information about the document to print. This API must be implemented b
 
 **Since:** 11
 
+<!--Device-print-interface PrintDocumentAdapter--><!--Device-print-interface PrintDocumentAdapter-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Registers a listener for print job state changes.
 **Since:** 11
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-PrintDocumentAdapter-onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void--><!--Device-PrintDocumentAdapter-onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -83,6 +87,8 @@ Sends an empty PDF file descriptor to a third-party application. The third-party
 **Since:** 11
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-PrintDocumentAdapter-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int,      writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void--><!--Device-PrintDocumentAdapter-onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int,      writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

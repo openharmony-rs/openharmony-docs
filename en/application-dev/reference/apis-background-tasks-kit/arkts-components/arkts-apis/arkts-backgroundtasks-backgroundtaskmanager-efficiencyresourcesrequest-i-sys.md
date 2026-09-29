@@ -8,6 +8,8 @@ Describes the parameters for requesting efficiency resources.
 
 **Since:** 9
 
+<!--Device-backgroundTaskManager-export interface EfficiencyResourcesRequest--><!--Device-backgroundTaskManager-export interface EfficiencyResourcesRequest-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EfficiencyResourcesRequest-cpuLevel?: EfficiencyResourcesCpuLevel--><!--Device-EfficiencyResourcesRequest-cpuLevel?: EfficiencyResourcesCpuLevel-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Whether the request is used to apply for resources.
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-EfficiencyResourcesRequest-isApply: boolean--><!--Device-EfficiencyResourcesRequest-isApply: boolean-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -70,6 +76,8 @@ Whether the resource is permanently held. The default value is **false**.
 
 **Since:** 9
 
+<!--Device-EfficiencyResourcesRequest-isPersist?: boolean--><!--Device-EfficiencyResourcesRequest-isPersist?: boolean-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -89,6 +97,8 @@ Whether the request is initiated by a process. The default value is **false**.
 
 **Since:** 9
 
+<!--Device-EfficiencyResourcesRequest-isProcess?: boolean--><!--Device-EfficiencyResourcesRequest-isProcess?: boolean-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -104,6 +114,8 @@ Reason for requesting the resource.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-EfficiencyResourcesRequest-reason: string--><!--Device-EfficiencyResourcesRequest-reason: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -121,6 +133,8 @@ Type of the resource to request.
 
 **Since:** 9
 
+<!--Device-EfficiencyResourcesRequest-resourceTypes: int--><!--Device-EfficiencyResourcesRequest-resourceTypes: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -136,6 +150,8 @@ Duration for which the resource will be used, in milliseconds.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-EfficiencyResourcesRequest-timeOut: int--><!--Device-EfficiencyResourcesRequest-timeOut: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 

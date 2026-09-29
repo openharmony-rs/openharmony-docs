@@ -8,6 +8,8 @@ declare interface OnRenderExitedEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OnRenderExitedEvent--><!--Device-unnamed-declare interface OnRenderExitedEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## renderExitReason
@@ -23,5 +25,7 @@ renderExitReason: RenderExitReason
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnRenderExitedEvent-renderExitReason: RenderExitReason--><!--Device-OnRenderExitedEvent-renderExitReason: RenderExitReason-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

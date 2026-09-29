@@ -4,6 +4,8 @@ The module provides APIs to query whether the current application is the default
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace defaultAppManager--><!--Device-unnamed-declare namespace defaultAppManager-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 ## Modules to Import

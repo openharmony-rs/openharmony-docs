@@ -8,6 +8,8 @@ Defines the application information provided to create assets on behalf of the a
 
 **Since:** 18
 
+<!--Device-photoAccessHelper-interface PhotoCreationSource--><!--Device-photoAccessHelper-interface PhotoCreationSource-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ ID of the target application.
 
 **Since:** 18
 
+<!--Device-PhotoCreationSource-appId?: string--><!--Device-PhotoCreationSource-appId?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Name of the target application.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-PhotoCreationSource-appName?: string--><!--Device-PhotoCreationSource-appName?: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,6 +68,8 @@ Bundle name of the target application.
 
 **Since:** 18
 
+<!--Device-PhotoCreationSource-bundleName?: string--><!--Device-PhotoCreationSource-bundleName?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Token ID of the target application.
 **Type:** number
 
 **Since:** 18
+
+<!--Device-PhotoCreationSource-tokenId?: long--><!--Device-PhotoCreationSource-tokenId?: long-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

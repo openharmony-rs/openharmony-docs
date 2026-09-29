@@ -8,6 +8,8 @@ Defines the information provided when a specific gesture callback is triggered.
 
 **Since:** 20
 
+<!--Device-unnamed-export interface GestureTriggerInfo--><!--Device-unnamed-export interface GestureTriggerInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Gesture recognizer object. Detailed gesture information can be obtained from thi
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-GestureTriggerInfo-current: GestureRecognizer--><!--Device-GestureTriggerInfo-current: GestureRecognizer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentPhase
@@ -52,6 +56,8 @@ Phase of the gesture action callback.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureTriggerInfo-currentPhase: GestureActionPhase--><!--Device-GestureTriggerInfo-currentPhase: GestureActionPhase-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +77,8 @@ Gesture event object.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-GestureTriggerInfo-event: GestureEvent--><!--Device-GestureTriggerInfo-event: GestureEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## node
@@ -88,5 +96,7 @@ Node that triggers the gesture. The default value is **null**, indicating that n
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureTriggerInfo-node?: FrameNode--><!--Device-GestureTriggerInfo-node?: FrameNode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

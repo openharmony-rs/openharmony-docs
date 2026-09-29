@@ -8,6 +8,8 @@ ChipGroupV2ItemConfig定义每个ChipV2的非通用属性配置。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2ItemConfig--><!--Device-unnamed-export interface ChipGroupV2ItemConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ ChipGroupV2中ChipV2项的无障碍描述。此描述用于向用户详细解释
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemConfig-accessibilityDescription?: ResourceStr--><!--Device-ChipGroupV2ItemConfig-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ ChipGroupV2中ChipV2项无障碍重要性。用于控制ChipGroupV2中ChipV2项�
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemConfig-accessibilityLevel?: string--><!--Device-ChipGroupV2ItemConfig-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowClose
@@ -95,6 +101,8 @@ allowClose?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemConfig-allowClose?: boolean--><!--Device-ChipGroupV2ItemConfig-allowClose?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +130,8 @@ closeIcon?: ChipV2CloseConfig
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemConfig-closeIcon?: ChipV2CloseConfig--><!--Device-ChipGroupV2ItemConfig-closeIcon?: ChipV2CloseConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## label
@@ -139,6 +149,8 @@ label: ChipV2LabelConfig
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemConfig-label: ChipV2LabelConfig--><!--Device-ChipGroupV2ItemConfig-label: ChipV2LabelConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,6 +174,8 @@ prefixIcon?: ChipV2PrefixImageIconConfig
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemConfig-prefixIcon?: ChipV2PrefixImageIconConfig--><!--Device-ChipGroupV2ItemConfig-prefixIcon?: ChipV2PrefixImageIconConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## prefixSymbolIcon
@@ -183,6 +197,8 @@ prefixSymbolIcon?: ChipV2PrefixSymbolIconConfig
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemConfig-prefixSymbolIcon?: ChipV2PrefixSymbolIconConfig--><!--Device-ChipGroupV2ItemConfig-prefixSymbolIcon?: ChipV2PrefixSymbolIconConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,6 +222,8 @@ suffixIcon?: ChipV2SuffixImageIconConfig
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2ItemConfig-suffixIcon?: ChipV2SuffixImageIconConfig--><!--Device-ChipGroupV2ItemConfig-suffixIcon?: ChipV2SuffixImageIconConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## suffixSymbolIcon
@@ -227,5 +245,7 @@ suffixSymbolIcon?: ChipV2SuffixSymbolIconConfig
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2ItemConfig-suffixSymbolIcon?: ChipV2SuffixSymbolIconConfig--><!--Device-ChipGroupV2ItemConfig-suffixSymbolIcon?: ChipV2SuffixSymbolIconConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

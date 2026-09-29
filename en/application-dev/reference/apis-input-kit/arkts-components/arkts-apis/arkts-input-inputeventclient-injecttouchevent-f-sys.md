@@ -20,6 +20,8 @@ Injects a touch event.
 - API version 12 and later: ohos.permission.INJECT_INPUT_EVENT
 - API version 11: N/A
 
+<!--Device-inputEventClient-function injectTouchEvent(touchEvent: TouchEventData): void--><!--Device-inputEventClient-function injectTouchEvent(touchEvent: TouchEventData): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.

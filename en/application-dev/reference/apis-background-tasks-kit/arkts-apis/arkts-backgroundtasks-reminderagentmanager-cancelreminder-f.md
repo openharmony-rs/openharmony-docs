@@ -16,6 +16,8 @@ Cancels a reminder published. This API uses an asynchronous callback to return t
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-function cancelReminder(reminderId: int, callback: AsyncCallback<void>): void--><!--Device-reminderAgentManager-function cancelReminder(reminderId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -61,6 +63,8 @@ function cancelReminder(reminderId: number): Promise<void>
 Cancels a reminder published. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-reminderAgentManager-function cancelReminder(reminderId: int): Promise<void>--><!--Device-reminderAgentManager-function cancelReminder(reminderId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

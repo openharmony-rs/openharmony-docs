@@ -8,6 +8,8 @@ Describes the status of device sync.
 
 **Since:** 26.0.0
 
+<!--Device-relationalStore-enum SyncResultCode--><!--Device-relationalStore-enum SyncResultCode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## SUCCESS
@@ -21,6 +23,8 @@ Indicates sync success.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SyncResultCode-SUCCESS = 0--><!--Device-SyncResultCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -36,6 +40,8 @@ Indicates sync fail, for detailed reasons, please refer to the message.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SyncResultCode-FAIL = 1--><!--Device-SyncResultCode-FAIL = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## OFFLINE
@@ -49,6 +55,8 @@ Indicates that the device is offline.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SyncResultCode-OFFLINE = 2--><!--Device-SyncResultCode-OFFLINE = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -64,6 +72,8 @@ Indicates parameter is invalid.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SyncResultCode-INVALID_ARGS = 3--><!--Device-SyncResultCode-INVALID_ARGS = 3-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DISTRIBUTED_TABLE_NOT_SET
@@ -77,6 +87,8 @@ Indicates that a distributed table is not set.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SyncResultCode-DISTRIBUTED_TABLE_NOT_SET = 4--><!--Device-SyncResultCode-DISTRIBUTED_TABLE_NOT_SET = 4-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -92,6 +104,8 @@ Indicates that the synchronization field of the peer device is inconsistent with
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SyncResultCode-TABLE_FIELD_MISMATCH = 5--><!--Device-SyncResultCode-TABLE_FIELD_MISMATCH = 5-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## DISTRIBUTED_SCHEMA_MISMATCH
@@ -105,6 +119,8 @@ Indicates that the schema field of the peer device is inconsistent with that of 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SyncResultCode-DISTRIBUTED_SCHEMA_MISMATCH = 6--><!--Device-SyncResultCode-DISTRIBUTED_SCHEMA_MISMATCH = 6-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -120,6 +136,8 @@ Indicates that the database is busy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SyncResultCode-BUSY = 7--><!--Device-SyncResultCode-BUSY = 7-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## CORRUPTED
@@ -133,6 +151,8 @@ Indicates that the database is corrupted.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SyncResultCode-CORRUPTED = 8--><!--Device-SyncResultCode-CORRUPTED = 8-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -148,6 +168,8 @@ Indicates synchronization timeout.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SyncResultCode-TIMEOUT = 9--><!--Device-SyncResultCode-TIMEOUT = 9-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## SCHEMA_CHANGED
@@ -162,6 +184,8 @@ Indicates that the table structure changed during the synchronization process.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SyncResultCode-SCHEMA_CHANGED = 10--><!--Device-SyncResultCode-SCHEMA_CHANGED = 10-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## CONSTRAINT_VIOLATION
@@ -175,5 +199,7 @@ Indicates a violation of constraints when synchronizing data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SyncResultCode-CONSTRAINT_VIOLATION = 11--><!--Device-SyncResultCode-CONSTRAINT_VIOLATION = 11-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

@@ -16,6 +16,8 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 
 **Since:** 9
 
+<!--Device-systemParameterEnhance-function set(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-systemParameterEnhance-function set(key: string, value: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ function set(key: string, value: string): Promise<void>
 Sets a value of the specified key. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-systemParameterEnhance-function set(key: string, value: string): Promise<void>--><!--Device-systemParameterEnhance-function set(key: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo
 

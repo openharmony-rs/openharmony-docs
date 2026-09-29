@@ -22,6 +22,8 @@ All prepared GNSS locations are returned to the application through the callback
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function flushCachedGnssLocations(callback: AsyncCallback<boolean>): void--><!--Device-geolocation-function flushCachedGnssLocations(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -62,6 +64,8 @@ All prepared GNSS locations are returned to the application through the callback
 **Substitutes:** [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function flushCachedGnssLocations(): Promise<boolean>--><!--Device-geolocation-function flushCachedGnssLocations(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 

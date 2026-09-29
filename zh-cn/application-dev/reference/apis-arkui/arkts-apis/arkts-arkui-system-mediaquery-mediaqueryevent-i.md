@@ -8,6 +8,8 @@ export interface MediaQueryEvent
 
 **起始版本：** 3
 
+<!--Device-unnamed-export interface MediaQueryEvent--><!--Device-unnamed-export interface MediaQueryEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,5 +31,7 @@ matches: boolean
 **起始版本：** 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaQueryEvent-matches: boolean--><!--Device-MediaQueryEvent-matches: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

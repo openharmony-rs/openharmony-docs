@@ -8,6 +8,8 @@ Declare CallbackParam
 
 **起始版本：** 10
 
+<!--Device-unnamed-export interface CallbackParam--><!--Device-unnamed-export interface CallbackParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ childIndex?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CallbackParam-childIndex?: number--><!--Device-CallbackParam-childIndex?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentNodeId
@@ -55,6 +59,8 @@ currentNodeId: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CallbackParam-currentNodeId: number--><!--Device-CallbackParam-currentNodeId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,5 +83,7 @@ parentNodeId?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CallbackParam-parentNodeId?: number--><!--Device-CallbackParam-parentNodeId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ declare interface RichEditorGesture
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface RichEditorGesture--><!--Device-unnamed-declare interface RichEditorGesture-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDoubleClick
@@ -23,6 +25,8 @@ onDoubleClick?: Callback<GestureEvent>
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RichEditorGesture-onDoubleClick?: Callback<GestureEvent>--><!--Device-RichEditorGesture-onDoubleClick?: Callback<GestureEvent>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

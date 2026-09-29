@@ -8,6 +8,8 @@ A helper to enable a picker to select output devices
 
 **Since:** 14
 
+<!--Device-avSession-class AVCastPickerHelper--><!--Device-avSession-class AVCastPickerHelper-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## Modules to Import
@@ -26,7 +28,9 @@ The constructor used to create a AVCastPickerHelper object.
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-AVCastPickerHelper-constructor(context: Context)--><!--Device-AVCastPickerHelper-constructor(context: Context)-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -83,6 +87,8 @@ Unregister picker state change callback.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-AVCastPickerHelper-off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState>) : void--><!--Device-AVCastPickerHelper-off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState>) : void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **Parameters:**
@@ -122,6 +128,8 @@ Register picker state change callback.
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-AVCastPickerHelper-on(type: 'pickerStateChange', callback: Callback<AVCastPickerState>) : void--><!--Device-AVCastPickerHelper-on(type: 'pickerStateChange', callback: Callback<AVCastPickerState>) : void-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -164,7 +172,9 @@ Reset audio device to be default set by the platform which is used for communica
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-AVCastPickerHelper-resetCommunicationDevice(): Promise<void>--><!--Device-AVCastPickerHelper-resetCommunicationDevice(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -198,7 +208,9 @@ Pull up the avcastpicker based on the options.
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-AVCastPickerHelper-select(options?: AVCastPickerOptions): Promise<void>--><!--Device-AVCastPickerHelper-select(options?: AVCastPickerOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

@@ -4,9 +4,11 @@
 declare interface TextDecorationOptions
 ```
 
-Provides text decoration options.
+Provides the text decoration options.
 
 **Since:** 12
+
+<!--Device-unnamed-declare interface TextDecorationOptions--><!--Device-unnamed-declare interface TextDecorationOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,9 @@ Provides text decoration options.
 color?: ResourceColor
 ```
 
-Color of the text decoration. Default value: Color.Black.
+Sets the color of the text decoration line.
+
+Default value: Color.Black.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -26,6 +30,8 @@ Color of the text decoration. Default value: Color.Black.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecorationOptions-color?: ResourceColor--><!--Device-TextDecorationOptions-color?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -34,7 +40,9 @@ Color of the text decoration. Default value: Color.Black.
 style?: TextDecorationStyle
 ```
 
-Style of the text decoration. Default value: TextDecorationStyle.SOLID.
+Sets the style of the text decoration line.
+
+Default value: TextDecorationStyle.SOLID.
 
 **Type:** [TextDecorationStyle](../arkts-apis/arkts-arkui-textdecorationstyle-e.md)
 
@@ -44,6 +52,8 @@ Style of the text decoration. Default value: TextDecorationStyle.SOLID.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDecorationOptions-style?: TextDecorationStyle--><!--Device-TextDecorationOptions-style?: TextDecorationStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## thicknessScale
@@ -52,7 +62,13 @@ Style of the text decoration. Default value: TextDecorationStyle.SOLID.
 thicknessScale?: number
 ```
 
-The scale value of decoration thickness. Value constraint: Negative values are handled as default values. Default value: 1.
+Sets the thickness scaling ratio of the text decoration line.
+
+Default value: 1.0
+
+Value range: [0, +∞)
+
+**Note:** Negative values are processed as the default value.
 
 **Type:** number
 
@@ -62,6 +78,8 @@ The scale value of decoration thickness. Value constraint: Negative values are h
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TextDecorationOptions-thicknessScale?: number--><!--Device-TextDecorationOptions-thicknessScale?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -70,7 +88,7 @@ The scale value of decoration thickness. Value constraint: Negative values are h
 type: TextDecorationType
 ```
 
-Type of the text decoration.
+Sets the text decoration line type.
 
 **Type:** [TextDecorationType](../arkts-apis/arkts-arkui-textdecorationtype-e.md)
 
@@ -79,5 +97,7 @@ Type of the text decoration.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDecorationOptions-type: TextDecorationType--><!--Device-TextDecorationOptions-type: TextDecorationType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

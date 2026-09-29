@@ -18,6 +18,8 @@ Clears a given mission, regardless of whether it is locked. This API uses an asy
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function clearMission(missionId: int, callback: AsyncCallback<void>): void--><!--Device-missionManager-function clearMission(missionId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Clears a given mission, regardless of whether it is locked. This API uses a prom
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function clearMission(missionId: int): Promise<void>--><!--Device-missionManager-function clearMission(missionId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

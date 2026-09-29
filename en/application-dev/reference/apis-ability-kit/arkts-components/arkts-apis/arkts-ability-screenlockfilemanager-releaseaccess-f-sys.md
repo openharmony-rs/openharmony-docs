@@ -22,6 +22,8 @@ Before calling this API, ensure that the app has enabled the sensitive data prot
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA or ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
+<!--Device-screenLockFileManager-function releaseAccess(dataType: DataType): ReleaseStatus--><!--Device-screenLockFileManager-function releaseAccess(dataType: DataType): ReleaseStatus-End-->
+
 **System capability:** SystemCapability.Security.ScreenLockFileManager
 
 **System API:** This is a system API.

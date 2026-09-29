@@ -18,6 +18,8 @@ Shuts down the system.
 
 **Required permissions:** ohos.permission.REBOOT
 
+<!--Device-power-function shutdown(reason: string): void--><!--Device-power-function shutdown(reason: string): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Enumerates the types of ability components.
 
 **Since:** 9
 
+<!--Device-bundleManager-export enum AbilityType--><!--Device-bundleManager-export enum AbilityType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## PAGE
@@ -21,6 +23,8 @@ Ability that has the UI. FA developed using the Page template to provide the cap
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityType-PAGE = 1--><!--Device-AbilityType-PAGE = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,6 +40,8 @@ Ability of the background service type, without the UI. PA developed using the S
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AbilityType-SERVICE = 2--><!--Device-AbilityType-SERVICE = 2-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## DATA
@@ -49,5 +55,7 @@ PA developed using the Data template to provide unified data access for external
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AbilityType-DATA = 3--><!--Device-AbilityType-DATA = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

@@ -11,6 +11,8 @@ The **InputMethodExtensionAbility** module provides APIs for developing input me
 
 **Since:** 9
 
+<!--Device-unnamed-declare class InputMethodExtensionAbility--><!--Device-unnamed-declare class InputMethodExtensionAbility-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Called when the **InputMethodExtensionAbility** is started to implement initiali
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionAbility-onCreate(want: Want): void--><!--Device-InputMethodExtensionAbility-onCreate(want: Want): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -88,6 +92,8 @@ Called when this **InputMethodExtensionAbility** is destroyed to clear resources
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionAbility-onDestroy(): void--><!--Device-InputMethodExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Examples**
@@ -116,5 +122,7 @@ Context of the **InputMethodExtension**, which is inherited from **ExtensionCont
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionAbility-context: InputMethodExtensionContext--><!--Device-InputMethodExtensionAbility-context: InputMethodExtensionContext-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

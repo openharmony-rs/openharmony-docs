@@ -10,6 +10,8 @@ declare interface ImageError
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare interface ImageError--><!--Device-unnamed-declare interface ImageError-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## componentHeight
@@ -31,6 +33,8 @@ componentHeight: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageError-componentHeight: number--><!--Device-ImageError-componentHeight: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ componentWidth: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageError-componentWidth: number--><!--Device-ImageError-componentWidth: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## downloadInfo
@@ -75,6 +81,8 @@ downloadInfo?: RequestDownloadInfo
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageError-downloadInfo?: RequestDownloadInfo--><!--Device-ImageError-downloadInfo?: RequestDownloadInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ error?: BusinessError<void>
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageError-error?: BusinessError<void>--><!--Device-ImageError-error?: BusinessError<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -117,5 +127,7 @@ message: string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageError-message: string--><!--Device-ImageError-message: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

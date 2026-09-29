@@ -8,6 +8,8 @@ Represents the request for querying permission usage records.
 
 **Since:** 9
 
+<!--Device-privacyManager-interface PermissionUsedRequest--><!--Device-privacyManager-interface PermissionUsedRequest-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Start time of the query. Unit: milliseconds. Default value: **0**, indicating no
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRequest-beginTime?: long--><!--Device-PermissionUsedRequest-beginTime?: long-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ Default value: queries all applications.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRequest-bundleName?: string--><!--Device-PermissionUsedRequest-bundleName?: string-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -74,6 +80,8 @@ Default value: local device ID.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRequest-deviceId?: string--><!--Device-PermissionUsedRequest-deviceId?: string-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -94,6 +102,8 @@ End time of the query. It must not be earlier than beginTime; otherwise, error c
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRequest-endTime?: long--><!--Device-PermissionUsedRequest-endTime?: long-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -111,6 +121,8 @@ Used to specify the query mode. When set to **FLAG_PERMISSION_USAGE_SUMMARY**, s
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRequest-flag: PermissionUsageFlag--><!--Device-PermissionUsedRequest-flag: PermissionUsageFlag-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -134,6 +146,8 @@ Default value: **false**.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionUsedRequest-isRemote?: boolean--><!--Device-PermissionUsedRequest-isRemote?: boolean-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -151,6 +165,8 @@ Set of permissions to query. Default value: Empty string. Means querying usage r
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRequest-permissionNames?: Array<Permissions>--><!--Device-PermissionUsedRequest-permissionNames?: Array<Permissions>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -171,6 +187,8 @@ Default value: **0**, queries all applications.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionUsedRequest-tokenId?: int--><!--Device-PermissionUsedRequest-tokenId?: int-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

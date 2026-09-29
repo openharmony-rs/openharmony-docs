@@ -16,6 +16,8 @@ Creates a distributed data object. The object properties support basic types (nu
 
 **Since:** 9
 
+<!--Device-distributedDataObject-function create(context: Context, source: object): DataObject--><!--Device-distributedDataObject-function create(context: Context, source: object): DataObject-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 **Parameters:**

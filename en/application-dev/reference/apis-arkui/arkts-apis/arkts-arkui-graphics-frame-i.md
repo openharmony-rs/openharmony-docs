@@ -8,6 +8,8 @@ Sets or returns the layout size and position of the component.
 
 **Since:** 11
 
+<!--Device-unnamed-export declare interface Frame--><!--Device-unnamed-export declare interface Frame-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -16,11 +18,13 @@ Sets or returns the layout size and position of the component.
 height: number
 ```
 
-Component height.
+Height of the component.
 
 Unit: vp.
 
 Value range: [0, +∞).
+
+A negative value is treated as the default value.
 
 **Type:** number
 
@@ -29,6 +33,8 @@ Value range: [0, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Frame-height: number--><!--Device-Frame-height: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,11 +44,13 @@ Value range: [0, +∞).
 width: number
 ```
 
-Component width.
+Width of the component.
 
 Unit: vp.
 
 Value range: [0, +∞).
+
+A negative value is treated as the default value.
 
 **Type:** number
 
@@ -51,6 +59,8 @@ Value range: [0, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Frame-width: number--><!--Device-Frame-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +84,8 @@ Value range: (-∞, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Frame-x: number--><!--Device-Frame-x: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -95,5 +107,7 @@ Value range: (-∞, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Frame-y: number--><!--Device-Frame-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

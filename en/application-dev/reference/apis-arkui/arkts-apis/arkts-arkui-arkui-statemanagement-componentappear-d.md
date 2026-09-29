@@ -12,4 +12,6 @@ Decorates a function that is called after a new instance of the custom component
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-export declare const ComponentAppear: MethodDecorator--><!--Device-unnamed-export declare const ComponentAppear: MethodDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Unlock the screen.
 
 **Since:** 11
 
+<!--Device-screenLock-function unlock(callback: AsyncCallback<boolean>): void--><!--Device-screenLock-function unlock(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ function unlock(): Promise<boolean>
 Unlock the screen.
 
 **Since:** 11
+
+<!--Device-screenLock-function unlock(): Promise<boolean>--><!--Device-screenLock-function unlock(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

@@ -8,6 +8,8 @@ enum WebDownloadState
 
 **起始版本：** 11
 
+<!--Device-webview-enum WebDownloadState--><!--Device-webview-enum WebDownloadState-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## IN_PROGRESS
@@ -21,6 +23,8 @@ IN_PROGRESS = 0
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ COMPLETED = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebDownloadState-COMPLETED = 1--><!--Device-WebDownloadState-COMPLETED = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CANCELED
@@ -49,6 +55,8 @@ CANCELED = 2
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadState-CANCELED = 2--><!--Device-WebDownloadState-CANCELED = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ INTERRUPTED = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebDownloadState-INTERRUPTED = 3--><!--Device-WebDownloadState-INTERRUPTED = 3-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## PENDING
@@ -77,6 +87,8 @@ PENDING = 4
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadState-PENDING = 4--><!--Device-WebDownloadState-PENDING = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -92,6 +104,8 @@ PAUSED = 5
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebDownloadState-PAUSED = 5--><!--Device-WebDownloadState-PAUSED = 5-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## UNKNOWN
@@ -105,5 +119,7 @@ UNKNOWN = 6
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadState-UNKNOWN = 6--><!--Device-WebDownloadState-UNKNOWN = 6-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

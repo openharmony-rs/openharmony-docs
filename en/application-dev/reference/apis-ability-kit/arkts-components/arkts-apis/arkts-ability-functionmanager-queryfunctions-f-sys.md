@@ -20,6 +20,8 @@ Query all available functions.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-functionManager-function queryFunctions(): Promise<Array<FunctionInfo>>--><!--Device-functionManager-function queryFunctions(): Promise<Array<FunctionInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

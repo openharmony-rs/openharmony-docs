@@ -8,6 +8,8 @@ Describes the configuration of an upload task.
 
 **Since:** 6
 
+<!--Device-request-interface UploadConfig--><!--Device-request-interface UploadConfig-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## Modules to Import
@@ -28,6 +30,8 @@ File start point to read when the upload task begins, in bytes. The default valu
 
 **Since:** 11
 
+<!--Device-UploadConfig-begins?: long--><!--Device-UploadConfig-begins?: long-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## data
@@ -41,6 +45,8 @@ Form data in the request body.
 **Type:** Array&lt;[RequestData](arkts-basicservices-request-requestdata-i.md)&gt;
 
 **Since:** 6
+
+<!--Device-UploadConfig-data: Array<RequestData>--><!--Device-UploadConfig-data: Array<RequestData>-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -56,6 +62,8 @@ File end point to read when the upload task ends, in bytes. The default value is
 
 **Since:** 11
 
+<!--Device-UploadConfig-ends?: long--><!--Device-UploadConfig-ends?: long-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## files
@@ -69,6 +77,8 @@ List of files to upload. The files are submitted in multipart/form-data format.
 **Type:** Array&lt;[File](arkts-basicservices-request-file-i.md)&gt;
 
 **Since:** 6
+
+<!--Device-UploadConfig-files: Array<File>--><!--Device-UploadConfig-files: Array<File>-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -84,6 +94,8 @@ HTTP or HTTPS header added to an upload request.
 
 **Since:** 6
 
+<!--Device-UploadConfig-header: Object--><!--Device-UploadConfig-header: Object-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## index
@@ -97,6 +109,8 @@ Path index of the task. The default value is **0**.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-UploadConfig-index?: int--><!--Device-UploadConfig-index?: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -112,6 +126,8 @@ HTTP request method. The value can be **POST** or **PUT**. The default value is 
 
 **Since:** 6
 
+<!--Device-UploadConfig-method: string--><!--Device-UploadConfig-method: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## url
@@ -125,5 +141,7 @@ Resource URL. From API version 6 to 14, the value contains a maximum of 2048 cha
 **Type:** string
 
 **Since:** 6
+
+<!--Device-UploadConfig-url: string--><!--Device-UploadConfig-url: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload

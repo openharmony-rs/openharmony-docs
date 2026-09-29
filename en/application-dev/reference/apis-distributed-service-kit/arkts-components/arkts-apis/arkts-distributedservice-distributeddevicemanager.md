@@ -10,6 +10,8 @@ The **distributedDeviceManager** module provides APIs for distributed device man
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace distributedDeviceManager--><!--Device-unnamed-declare namespace distributedDeviceManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## Modules to Import

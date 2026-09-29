@@ -16,6 +16,8 @@ Obtains the magnetic dip based on the inclination matrix. This API uses an async
 
 **Since:** 9
 
+<!--Device-sensor-function getInclination(inclinationMatrix: Array<double>, callback: AsyncCallback<double>): void--><!--Device-sensor-function getInclination(inclinationMatrix: Array<double>, callback: AsyncCallback<double>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -71,6 +73,8 @@ function getInclination(inclinationMatrix: Array<number>): Promise<number>
 Obtains the magnetic dip based on the inclination matrix. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-sensor-function getInclination(inclinationMatrix: Array<double>): Promise<double>--><!--Device-sensor-function getInclination(inclinationMatrix: Array<double>): Promise<double>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

@@ -18,7 +18,9 @@ The **level**, **name**, and **taskId** used in **finishAsyncTrace()** must be t
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-hiTraceMeter-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void--><!--Device-hiTraceMeter-function finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: int): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 

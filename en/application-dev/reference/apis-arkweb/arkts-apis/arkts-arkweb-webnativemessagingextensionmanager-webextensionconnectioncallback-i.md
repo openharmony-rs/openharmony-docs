@@ -8,6 +8,8 @@ As an input parameter when connecting a web native messaging extension, it is us
 
 **Since:** 21
 
+<!--Device-webNativeMessagingExtensionManager-interface WebExtensionConnectionCallback--><!--Device-webNativeMessagingExtensionManager-interface WebExtensionConnectionCallback-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called when a connection is set up.
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebExtensionConnectionCallback-onConnect(connection: ConnectionNativeInfo): void--><!--Device-WebExtensionConnectionCallback-onConnect(connection: ConnectionNativeInfo): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -93,6 +97,8 @@ Called when a connection is interrupted.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebExtensionConnectionCallback-onDisconnect(connection: ConnectionNativeInfo): void--><!--Device-WebExtensionConnectionCallback-onDisconnect(connection: ConnectionNativeInfo): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -157,6 +163,8 @@ Called when the connection fails.
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebExtensionConnectionCallback-onFailed(code: NmErrorCode, errMsg: string): void--><!--Device-WebExtensionConnectionCallback-onFailed(code: NmErrorCode, errMsg: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

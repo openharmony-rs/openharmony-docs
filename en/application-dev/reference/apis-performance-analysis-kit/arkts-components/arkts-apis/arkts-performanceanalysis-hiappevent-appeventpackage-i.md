@@ -8,6 +8,8 @@ Defines parameters of an **AppEventPackage** object. This API is used to obtain 
 
 **Since:** 9
 
+<!--Device-hiAppEvent-interface AppEventPackage--><!--Device-hiAppEvent-interface AppEventPackage-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Event object group.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AppEventPackage-appEventInfos: Array<AppEventInfo>--><!--Device-AppEventPackage-appEventInfos: Array<AppEventInfo>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -48,7 +52,9 @@ Event data in the event package.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventPackage-data: string[]--><!--Device-AppEventPackage-data: string[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -66,7 +72,9 @@ Event package ID, which is named from **0** in ascending order.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventPackage-packageId: int--><!--Device-AppEventPackage-packageId: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -84,7 +92,9 @@ Number of events in the event package.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventPackage-row: int--><!--Device-AppEventPackage-row: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -102,6 +112,8 @@ Event size of the event package, in bytes.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventPackage-size: int--><!--Device-AppEventPackage-size: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

@@ -12,6 +12,8 @@ It provides APIs related to the flash.
 
 **Since:** 11
 
+<!--Device-camera-interface Flash extends FlashQuery--><!--Device-camera-interface Flash extends FlashQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Obtains the flash mode in use.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Flash-getFlashMode(): FlashMode--><!--Device-Flash-getFlashMode(): FlashMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -76,7 +80,9 @@ Unsubscribes from flash light status change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-Flash-offFlashStateChange(callback?: Callback<FlashState>): void--><!--Device-Flash-offFlashStateChange(callback?: Callback<FlashState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -106,7 +112,9 @@ Subscribes to flash light status change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-Flash-onFlashStateChange(callback: Callback<FlashState>): void--><!--Device-Flash-onFlashStateChange(callback: Callback<FlashState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -141,7 +149,9 @@ Before the setting, do the following checks:
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Flash-setFlashMode(flashMode: FlashMode): void--><!--Device-Flash-setFlashMode(flashMode: FlashMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

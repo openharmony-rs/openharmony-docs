@@ -8,6 +8,8 @@ interface SystemBarStyle
 
 **起始版本：** 12
 
+<!--Device-window-interface SystemBarStyle--><!--Device-window-interface SystemBarStyle-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,6 +30,8 @@ statusBarContentColor?: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SystemBarStyle-statusBarContentColor?: string--><!--Device-SystemBarStyle-statusBarContentColor?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

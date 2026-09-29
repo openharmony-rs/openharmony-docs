@@ -4,6 +4,8 @@ The **power** module provides APIs for rebooting and shutting down the system, a
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace power--><!--Device-unnamed-declare namespace power-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 ## Modules to Import

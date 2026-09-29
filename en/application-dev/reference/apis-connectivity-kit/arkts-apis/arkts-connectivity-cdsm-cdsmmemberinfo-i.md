@@ -8,6 +8,8 @@ Represents the information about member devices in the coordinated devices set.
 
 **Since:** 26.0.0
 
+<!--Device-cdsm-interface CdsmMemberInfo--><!--Device-cdsm-interface CdsmMemberInfo-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Member device address.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CdsmMemberInfo-address: string--><!--Device-CdsmMemberInfo-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## state
@@ -45,5 +49,7 @@ Member device connection state.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CdsmMemberInfo-state: CdsmConnectionState--><!--Device-CdsmMemberInfo-state: CdsmConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

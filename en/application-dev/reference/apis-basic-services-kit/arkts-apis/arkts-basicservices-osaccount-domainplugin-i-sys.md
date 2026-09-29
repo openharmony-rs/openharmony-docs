@@ -8,6 +8,8 @@ Provides APIs for domain account authentication.
 
 **Since:** 9
 
+<!--Device-osAccount-interface DomainPlugin--><!--Device-osAccount-interface DomainPlugin-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 Authenticates a domain account.
 
 **Since:** 9
+
+<!--Device-DomainPlugin-auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void--><!--Device-DomainPlugin-auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -100,6 +104,8 @@ Authenticates a domain account in a pop-up window.
 
 **Since:** 10
 
+<!--Device-DomainPlugin-authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback): void--><!--Device-DomainPlugin-authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -155,6 +161,8 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 Authenticates a domain account by the authorization token.
 
 **Since:** 10
+
+<!--Device-DomainPlugin-authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: IUserAuthCallback): void--><!--Device-DomainPlugin-authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: IUserAuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -213,6 +221,8 @@ Binds a domain account.
 
 **Since:** 10
 
+<!--Device-DomainPlugin-bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: AsyncCallback<void>): void--><!--Device-DomainPlugin-bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -270,6 +280,8 @@ Obtains the domain access token based on the specified conditions. This API uses
 
 **Since:** 10
 
+<!--Device-DomainPlugin-getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>): void--><!--Device-DomainPlugin-getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uint8Array>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -326,6 +338,8 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 Obtains information about a domain account. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-DomainPlugin-getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback<DomainAccountInfo>): void--><!--Device-DomainPlugin-getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback<DomainAccountInfo>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -387,6 +401,8 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 Obtains the authentication status of a domain account.
 
 **Since:** 10
+
+<!--Device-DomainPlugin-getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<AuthStatusInfo>): void--><!--Device-DomainPlugin-getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<AuthStatusInfo>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -450,6 +466,8 @@ Checks whether the specified domain account token is valid.
 
 **Since:** 10
 
+<!--Device-DomainPlugin-isAccountTokenValid(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<boolean>    ): void--><!--Device-DomainPlugin-isAccountTokenValid(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<boolean>    ): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -506,6 +524,8 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void
 Unbinds a domain account.
 
 **Since:** 10
+
+<!--Device-DomainPlugin-unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void>): void--><!--Device-DomainPlugin-unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

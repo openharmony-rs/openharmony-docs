@@ -12,6 +12,8 @@ interface PlaybackInfo
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface PlaybackInfo--><!--Device-unnamed-interface PlaybackInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## time
@@ -33,5 +35,7 @@ time: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaybackInfo-time: number--><!--Device-PlaybackInfo-time: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

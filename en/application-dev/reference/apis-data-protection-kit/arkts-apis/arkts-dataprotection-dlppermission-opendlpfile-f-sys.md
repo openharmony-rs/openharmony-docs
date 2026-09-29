@@ -22,6 +22,8 @@ When a DLP management application or an authorized application needs to access a
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
 
+<!--Device-dlpPermission-function openDLPFile(ciphertextFd: number, appId: string): Promise<DLPFile>--><!--Device-dlpPermission-function openDLPFile(ciphertextFd: number, appId: string): Promise<DLPFile>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.
@@ -104,6 +106,8 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_DLP_FILE
+
+<!--Device-dlpPermission-function openDLPFile(ciphertextFd: number, appId: string, callback: AsyncCallback<DLPFile>): void--><!--Device-dlpPermission-function openDLPFile(ciphertextFd: number, appId: string, callback: AsyncCallback<DLPFile>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

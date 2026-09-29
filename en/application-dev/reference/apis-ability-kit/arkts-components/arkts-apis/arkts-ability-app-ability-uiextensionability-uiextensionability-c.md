@@ -10,6 +10,8 @@ UIExtensionAbility is an ExtensionAbility component with a User Interface (UI). 
 
 **Since:** 10
 
+<!--Device-unnamed-declare class UIExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class UIExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when a UIExtensionAbility transitions from the foreground to the backgrou
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionAbility-onBackground(): void--><!--Device-UIExtensionAbility-onBackground(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -58,6 +62,8 @@ Called when a UIExtensionAbility instance is created. You can execute initializa
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionAbility-onCreate(launchParam: AbilityConstant.LaunchParam): void--><!--Device-UIExtensionAbility-onCreate(launchParam: AbilityConstant.LaunchParam): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -93,6 +99,8 @@ Called when a UIExtensionAbility is destroyed. You can clear resources and save 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionAbility-onDestroy(): void | Promise<void>--><!--Device-UIExtensionAbility-onDestroy(): void | Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -152,6 +160,8 @@ Called when a UIExtensionAbility is initially launched into the foreground or tr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionAbility-onForeground(): void--><!--Device-UIExtensionAbility-onForeground(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Examples**
@@ -180,6 +190,8 @@ Called when a [UIExtensionContentSession](arkts-ability-app-ability-uiextensionc
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionAbility-onSessionCreate(want: Want, session: UIExtensionContentSession): void--><!--Device-UIExtensionAbility-onSessionCreate(want: Want, session: UIExtensionContentSession): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -225,6 +237,8 @@ Called when a UIExtensionContentSession is destroyed. It informs applications th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void--><!--Device-UIExtensionAbility-onSessionDestroy(session: UIExtensionContentSession): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -261,5 +275,7 @@ Context of the UIExtensionAbility.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionAbility-context: UIExtensionContext--><!--Device-UIExtensionAbility-context: UIExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore

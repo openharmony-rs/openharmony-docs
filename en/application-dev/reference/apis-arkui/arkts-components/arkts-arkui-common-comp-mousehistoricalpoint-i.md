@@ -17,6 +17,8 @@ frequency and improves performance.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface MouseHistoricalPoint--><!--Device-unnamed-declare interface MouseHistoricalPoint-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayX
@@ -36,6 +38,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MouseHistoricalPoint-displayX: double--><!--Device-MouseHistoricalPoint-displayX: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-MouseHistoricalPoint-displayY: double--><!--Device-MouseHistoricalPoint-displayY: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayX
@@ -76,6 +82,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MouseHistoricalPoint-globalDisplayX: double--><!--Device-MouseHistoricalPoint-globalDisplayX: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,6 +105,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-MouseHistoricalPoint-globalDisplayY: double--><!--Device-MouseHistoricalPoint-globalDisplayY: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## timestamp
@@ -116,6 +126,8 @@ Unit: ns
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MouseHistoricalPoint-timestamp: long--><!--Device-MouseHistoricalPoint-timestamp: long-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,6 +149,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-MouseHistoricalPoint-windowX: double--><!--Device-MouseHistoricalPoint-windowX: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowY
@@ -156,6 +170,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MouseHistoricalPoint-windowY: double--><!--Device-MouseHistoricalPoint-windowY: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,6 +193,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-MouseHistoricalPoint-x: double--><!--Device-MouseHistoricalPoint-x: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -196,5 +214,7 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MouseHistoricalPoint-y: double--><!--Device-MouseHistoricalPoint-y: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

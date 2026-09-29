@@ -20,6 +20,8 @@ Generate out-of-band data of the local device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function generateLocalOobData(transport: BluetoothTransport): Promise<OobData>--><!--Device-connection-function generateLocalOobData(transport: BluetoothTransport): Promise<OobData>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

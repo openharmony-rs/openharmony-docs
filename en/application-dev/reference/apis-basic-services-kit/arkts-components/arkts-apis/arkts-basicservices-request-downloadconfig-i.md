@@ -8,6 +8,8 @@ Defines the download task configuration.
 
 **Since:** 6
 
+<!--Device-request-interface DownloadConfig--><!--Device-request-interface DownloadConfig-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Whether to enable the background task notification. When this parameter is enabl
 
 **Since:** 9
 
+<!--Device-DownloadConfig-background?: boolean--><!--Device-DownloadConfig-background?: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## description
@@ -41,6 +45,8 @@ Description of the download session. The default value is an empty string.
 **Type:** string
 
 **Since:** 6
+
+<!--Device-DownloadConfig-description?: string--><!--Device-DownloadConfig-description?: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -60,6 +66,8 @@ Whether download is allowed on a metered connection. The value **true** means th
 
 **Since:** 6
 
+<!--Device-DownloadConfig-enableMetered?: boolean--><!--Device-DownloadConfig-enableMetered?: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## enableRoaming
@@ -73,6 +81,8 @@ Whether download is allowed on a roaming network. The value **true** means the d
 **Type:** boolean
 
 **Since:** 6
+
+<!--Device-DownloadConfig-enableRoaming?: boolean--><!--Device-DownloadConfig-enableRoaming?: boolean-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -91,6 +101,8 @@ Path where the downloaded file is stored. The default value is the cache directo
 
 **Since:** 7
 
+<!--Device-DownloadConfig-filePath?: string--><!--Device-DownloadConfig-filePath?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## header
@@ -104,6 +116,8 @@ HTTPS flag header to be included in the download request. The default value is e
 **Type:** Object
 
 **Since:** 6
+
+<!--Device-DownloadConfig-header?: Object--><!--Device-DownloadConfig-header?: Object-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -124,6 +138,8 @@ Network type that can be used for download. The allowed network type is determin
 
 **Since:** 6
 
+<!--Device-DownloadConfig-networkType?: int--><!--Device-DownloadConfig-networkType?: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## title
@@ -138,6 +154,8 @@ Download task name. The default value is **download**.
 
 **Since:** 6
 
+<!--Device-DownloadConfig-title?: string--><!--Device-DownloadConfig-title?: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## url
@@ -151,5 +169,7 @@ Resource URL. From API version 6 to 14, the value contains a maximum of 2048 cha
 **Type:** string
 
 **Since:** 6
+
+<!--Device-DownloadConfig-url: string--><!--Device-DownloadConfig-url: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

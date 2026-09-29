@@ -8,6 +8,8 @@ Defines the color space used for the snapshot.
 
 **Since:** 23
 
+<!--Device-componentSnapshot-interface ColorModeOptions--><!--Device-componentSnapshot-interface ColorModeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ If the value is **undefined**, **null**, or not set, the default value is used. 
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace--><!--Device-ColorModeOptions-colorSpace?: colorSpaceManager.ColorSpace-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isAuto
@@ -71,5 +75,7 @@ When **isAuto** is set to true, the value of **colorSpace** is ignored. In this 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ColorModeOptions-isAuto?: boolean--><!--Device-ColorModeOptions-isAuto?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the information about the callback that is triggered for mission continu
 
 **Since:** 11
 
+<!--Device-distributedMissionManager-interface ContinueCallbackInfo--><!--Device-distributedMissionManager-interface ContinueCallbackInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Continuation information of the mission.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinueCallbackInfo-info: ContinuableInfo--><!--Device-ContinueCallbackInfo-info: ContinuableInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Continuation state of the mission.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinueCallbackInfo-state: ContinueState--><!--Device-ContinueCallbackInfo-state: ContinueState-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

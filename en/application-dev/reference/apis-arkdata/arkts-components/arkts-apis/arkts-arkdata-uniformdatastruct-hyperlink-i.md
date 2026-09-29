@@ -8,6 +8,8 @@ Represents data of the hyperlink type.
 
 **Since:** 12
 
+<!--Device-uniformDataStruct-interface Hyperlink--><!--Device-uniformDataStruct-interface Hyperlink-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Description of the linked content. This parameter is optional. By default, it is
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Hyperlink-description?: string--><!--Device-Hyperlink-description?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -56,6 +60,8 @@ By default, it is an empty dictionary object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Hyperlink-details?: Record<string, string>--><!--Device-Hyperlink-details?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -72,6 +78,8 @@ Uniform data type, which has a fixed value of **general.hyperlink**. For details
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Hyperlink-readonly uniformDataType: 'general.hyperlink'--><!--Device-Hyperlink-readonly uniformDataType: 'general.hyperlink'-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## url
@@ -87,5 +95,7 @@ URL.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Hyperlink-url: string--><!--Device-Hyperlink-url: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

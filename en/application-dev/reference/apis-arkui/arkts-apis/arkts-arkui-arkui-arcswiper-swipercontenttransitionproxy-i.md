@@ -19,6 +19,8 @@ Implements the proxy object returned during the execution of the custom page tra
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface SwiperContentTransitionProxy--><!--Device-unnamed-declare interface SwiperContentTransitionProxy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Notifies the **ArcSwiper** component that the custom animation has finished play
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SwiperContentTransitionProxy-finishTransition(): void--><!--Device-SwiperContentTransitionProxy-finishTransition(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## index
@@ -54,6 +58,8 @@ Index of a page in the viewport.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SwiperContentTransitionProxy-index: number--><!--Device-SwiperContentTransitionProxy-index: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -71,6 +77,8 @@ Length of the page specified by **index** along the main axis. Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SwiperContentTransitionProxy-mainAxisLength: number--><!--Device-SwiperContentTransitionProxy-mainAxisLength: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## position
@@ -87,6 +95,8 @@ Position of the page specified by **index** relative to the start position of th
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SwiperContentTransitionProxy-position: number--><!--Device-SwiperContentTransitionProxy-position: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## selectedIndex
@@ -102,5 +112,7 @@ Index of the currently selected page.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SwiperContentTransitionProxy-selectedIndex: number--><!--Device-SwiperContentTransitionProxy-selectedIndex: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

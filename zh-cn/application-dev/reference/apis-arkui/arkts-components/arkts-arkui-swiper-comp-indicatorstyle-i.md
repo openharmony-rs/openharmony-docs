@@ -16,6 +16,8 @@ declare interface IndicatorStyle
 
 **替代接口：** [Indicator](arkts-arkui-swiper-comp-indicator-c.md)
 
+<!--Device-unnamed-declare interface IndicatorStyle--><!--Device-unnamed-declare interface IndicatorStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -42,6 +44,8 @@ bottom?: Length
 
 **替代接口：** bottom
 
+<!--Device-IndicatorStyle-bottom?: Length--><!--Device-IndicatorStyle-bottom?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -61,6 +65,8 @@ color?: ResourceColor
 **废弃版本：** 10
 
 **替代接口：** [color](arkts-arkui-swiper-comp-dotindicator-c.md#color)
+
+<!--Device-IndicatorStyle-color?: ResourceColor--><!--Device-IndicatorStyle-color?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ left?: Length
 
 **替代接口：** left
 
+<!--Device-IndicatorStyle-left?: Length--><!--Device-IndicatorStyle-left?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mask
@@ -109,6 +117,8 @@ true：显示导航点蒙层样式，false：不显示导航点蒙层样式。
 **废弃版本：** 10
 
 **替代接口：** [mask](arkts-arkui-swiper-comp-dotindicator-c.md#mask)
+
+<!--Device-IndicatorStyle-mask?: boolean--><!--Device-IndicatorStyle-mask?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +146,8 @@ right?: Length
 
 **替代接口：** right
 
+<!--Device-IndicatorStyle-right?: Length--><!--Device-IndicatorStyle-right?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedColor
@@ -156,6 +168,8 @@ selectedColor?: ResourceColor
 
 **替代接口：** selectColor
 
+<!--Device-IndicatorStyle-selectedColor?: ResourceColor--><!--Device-IndicatorStyle-selectedColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -175,6 +189,8 @@ size?: Length
 **废弃版本：** 10
 
 **替代接口：** [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md)
+
+<!--Device-IndicatorStyle-size?: Length--><!--Device-IndicatorStyle-size?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,5 +217,7 @@ top?: Length
 **废弃版本：** 10
 
 **替代接口：** top
+
+<!--Device-IndicatorStyle-top?: Length--><!--Device-IndicatorStyle-top?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

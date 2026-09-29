@@ -18,6 +18,8 @@ Registers a specified external Provider. This API uses a promise to return the r
 
 **Required permissions:** ohos.permission.CRYPTO_EXTENSION_REGISTER
 
+<!--Device-huksExternalCrypto-function registerProvider(providerName: string, params: Array<HuksExternalCryptoParam>): Promise<void>--><!--Device-huksExternalCrypto-function registerProvider(providerName: string, params: Array<HuksExternalCryptoParam>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 **Parameters:**

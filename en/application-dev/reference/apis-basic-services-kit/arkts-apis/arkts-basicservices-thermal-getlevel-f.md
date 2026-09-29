@@ -16,6 +16,8 @@ Obtains the current thermal level.
 
 **Since:** 9
 
+<!--Device-thermal-function getLevel(): ThermalLevel--><!--Device-thermal-function getLevel(): ThermalLevel-End-->
+
 **System capability:** SystemCapability.PowerManager.ThermalManager
 
 **Return value:**

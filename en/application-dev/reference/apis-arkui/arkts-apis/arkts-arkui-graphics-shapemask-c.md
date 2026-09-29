@@ -4,9 +4,11 @@
 export declare class ShapeMask
 ```
 
-Describes the shape mask.
+Sets a graphics mask, which supports multiple shapes such as rectangles, rounded rectangles, circles, ellipses, and custom paths. It can be applied to a RenderNode to implement a shape mask effect.
 
 **Since:** 12
+
+<!--Device-unnamed-export declare class ShapeMask--><!--Device-unnamed-export declare class ShapeMask-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ A constructor used to create a **ShapeMask** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShapeMask-constructor()--><!--Device-ShapeMask-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## setCircleShape
@@ -39,6 +43,8 @@ Sets a round mask.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShapeMask-setCircleShape(circle: Circle): void--><!--Device-ShapeMask-setCircleShape(circle: Circle): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +114,8 @@ Sets the command for drawing a path.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShapeMask-setCommandPath(path: CommandPath): void--><!--Device-ShapeMask-setCommandPath(path: CommandPath): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,6 +187,8 @@ Sets an oval mask.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShapeMask-setOvalShape(oval: Rect): void--><!--Device-ShapeMask-setOvalShape(oval: Rect): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -242,6 +252,8 @@ Sets a rectangle mask.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShapeMask-setRectShape(rect: Rect): void--><!--Device-ShapeMask-setRectShape(rect: Rect): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -317,6 +329,8 @@ Sets the mask in the shape of a rectangle with rounded corners.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShapeMask-setRoundRectShape(roundRect: RoundRect): void--><!--Device-ShapeMask-setRoundRectShape(roundRect: RoundRect): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -382,9 +396,13 @@ struct Index {
 fillColor: number
 ```
 
-Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.
+Fill color of the mask, in ARGB format. Default value: `0XFF000000`.
 
-A color with only the transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md) API to generate the final color.
+Value range: [0, 0xffffffff]
+
+A value out of range is treated as the default value.
+
+A color containing only transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of the RenderNode itself using [BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md) to generate the final color.
 
 **Type:** number
 
@@ -395,6 +413,8 @@ A color with only the transparency is generated based on the transparency and br
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShapeMask-fillColor: number--><!--Device-ShapeMask-fillColor: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -404,9 +424,13 @@ A color with only the transparency is generated based on the transparency and br
 strokeColor: number
 ```
 
-Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.
+Stroke color for the mask, in ARGB format. Default value: `0XFF000000`.
 
-A color with only the transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RenderNode** using the [BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md) API to generate the final color.
+Value range: [0, 0xffffffff]
+
+A value out of range is treated as the default value.
+
+A color containing only transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of the RenderNode itself using [BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md) to generate the final color.
 
 **Type:** number
 
@@ -418,6 +442,8 @@ A color with only the transparency is generated based on the transparency and br
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ShapeMask-strokeColor: number--><!--Device-ShapeMask-strokeColor: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -426,7 +452,11 @@ A color with only the transparency is generated based on the transparency and br
 strokeWidth: number
 ```
 
-Sets the stroke width for the mask, in px. The default value is **0**.
+Stroke width for the mask, in px. Default value: **0**.
+
+Value range: [0, +∞)
+
+A negative value is treated as the default value.
 
 **Type:** number
 
@@ -437,5 +467,7 @@ Sets the stroke width for the mask, in px. The default value is **0**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ShapeMask-strokeWidth: number--><!--Device-ShapeMask-strokeWidth: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

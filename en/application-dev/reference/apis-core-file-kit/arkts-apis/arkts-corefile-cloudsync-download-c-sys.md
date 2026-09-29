@@ -8,6 +8,8 @@ Provides APIs for downloading image files to **Gallery**. Before using the APIs 
 
 **Since:** 10
 
+<!--Device-cloudSync-class Download--><!--Device-cloudSync-class Download-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ constructor()
 A constructor used to create a **Download** instance.
 
 **Since:** 10
+
+<!--Device-Download-constructor()--><!--Device-Download-constructor()-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -49,6 +53,8 @@ Removes the specified callback from the device-cloud download progress.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-Download-off(evt: 'progress', callback: (pg: DownloadProgress) => void): void--><!--Device-Download-off(evt: 'progress', callback: (pg: DownloadProgress) => void): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -98,6 +104,8 @@ Removes all callbacks from the device-cloud download progress.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-Download-off(evt: 'progress'): void--><!--Device-Download-off(evt: 'progress'): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -141,6 +149,8 @@ Registers a listener for the download progress of a cloud file.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-Download-on(evt: 'progress', callback: (pg: DownloadProgress) => void): void--><!--Device-Download-on(evt: 'progress', callback: (pg: DownloadProgress) => void): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -182,6 +192,8 @@ Starts downloading a cloud file. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-Download-start(uri: string): Promise<void>--><!--Device-Download-start(uri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -242,6 +254,8 @@ Starts downloading a cloud file. This API uses an asynchronous callback to retur
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-Download-start(uri: string, callback: AsyncCallback<void>): void--><!--Device-Download-start(uri: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -296,6 +310,8 @@ Stops downloading a cloud file. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-Download-stop(uri: string): Promise<void>--><!--Device-Download-stop(uri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -354,6 +370,8 @@ Stops downloading a cloud file. This API uses an asynchronous callback to return
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+<!--Device-Download-stop(uri: string, callback: AsyncCallback<void>): void--><!--Device-Download-stop(uri: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

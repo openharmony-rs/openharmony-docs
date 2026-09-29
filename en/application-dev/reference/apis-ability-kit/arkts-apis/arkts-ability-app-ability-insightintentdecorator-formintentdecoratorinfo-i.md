@@ -10,6 +10,8 @@ Inherits from [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecor
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface FormIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface FormIntentDecoratorInfo extends IntentDecoratorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Name of the widget bound to the FormExtensionAbility.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-FormIntentDecoratorInfo-formName: string--><!--Device-FormIntentDecoratorInfo-formName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

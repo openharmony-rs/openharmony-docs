@@ -8,6 +8,8 @@ The **PixelMap** class provides APIs to read or write image data and obtain imag
 
 **Since:** 7
 
+<!--Device-image-interface PixelMap--><!--Device-image-interface PixelMap-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 Performs color space conversion (CSC) on the image pixel color based on a given color space. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback: AsyncCallback<void>): void--><!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -74,6 +78,8 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<
 Performs Color Space Converters (CSC) on the image pixel color based on a given color space. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>--><!--Device-PixelMap-applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -127,9 +133,11 @@ Crops the PixelMap.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyCrop(region: Region): Promise<void>--><!--Device-PixelMap-applyCrop(region: Region): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -194,9 +202,11 @@ Crops the PixelMap.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyCropSync(region: Region): void--><!--Device-PixelMap-applyCropSync(region: Region): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -255,9 +265,11 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyFlip(horizontal: boolean, vertical: boolean): Promise<void>--><!--Device-PixelMap-applyFlip(horizontal: boolean, vertical: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -315,9 +327,11 @@ Flips the PixelMap in the horizontal and/or vertical directions.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyFlipSync(horizontal: boolean, vertical: boolean): void--><!--Device-PixelMap-applyFlipSync(horizontal: boolean, vertical: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -371,9 +385,11 @@ Note: YUV format PixelMaps only support rotation angles that are multiples of 90
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyRotate(angle: double): Promise<void>--><!--Device-PixelMap-applyRotate(angle: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -431,9 +447,11 @@ Note: YUV format PixelMaps only support rotation angles that are multiples of 90
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyRotateSync(angle: double): void--><!--Device-PixelMap-applyRotateSync(angle: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -483,9 +501,11 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise<void>--><!--Device-PixelMap-applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -544,9 +564,11 @@ Scales the PixelMap in the horizontal and/or vertical dimensions.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void--><!--Device-PixelMap-applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -599,9 +621,11 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyTranslate(x: double, y: double): Promise<void>--><!--Device-PixelMap-applyTranslate(x: double, y: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -659,9 +683,11 @@ Repositions the PixelMap in the horizontal and/or vertical directions.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-applyTranslateSync(x: double, y: double): void--><!--Device-PixelMap-applyTranslateSync(x: double, y: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -711,6 +737,8 @@ Copies this PixelMap object. This API uses a promise to return the result.
 
 **Since:** 18
 
+<!--Device-PixelMap-clone(): Promise<PixelMap>--><!--Device-PixelMap-clone(): Promise<PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -752,6 +780,8 @@ cloneSync(): PixelMap
 Copies this PixelMap object. This API returns the result synchronously.
 
 **Since:** 18
+
+<!--Device-PixelMap-cloneSync(): PixelMap--><!--Device-PixelMap-cloneSync(): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -796,6 +826,8 @@ convertPixelFormat(targetPixelFormat: PixelMapFormat): Promise<void>
 The method is used for the transformation of the image formats. Pixel data will be changed by calling this method.
 
 **Since:** 12
+
+<!--Device-PixelMap-convertPixelFormat(targetPixelFormat: PixelMapFormat): Promise<void>--><!--Device-PixelMap-convertPixelFormat(targetPixelFormat: PixelMapFormat): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -849,9 +881,11 @@ Starting from API 26.0.0, it is recommended to use [extractAlphaPixelMap](#extra
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-createAlphaPixelmap(): Promise<PixelMap>--><!--Device-PixelMap-createAlphaPixelmap(): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -889,9 +923,11 @@ Starting from API 26.0.0, it is recommended to use [extractAlphaPixelMap](#extra
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-createAlphaPixelmap(callback: AsyncCallback<PixelMap>): void--><!--Device-PixelMap-createAlphaPixelmap(callback: AsyncCallback<PixelMap>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -929,7 +965,9 @@ Starting from API 26.0.0, it is recommended to use [extractAlphaPixelMapSync](#e
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-createAlphaPixelmapSync(): PixelMap--><!--Device-PixelMap-createAlphaPixelmapSync(): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -971,6 +1009,8 @@ createCroppedAndScaledPixelMap(region: Region, x: number, y: number, level?: Ant
 Creates an image that has been cropped and resized based on the specified cropping area, scale factors of the width and height, and anti-aliasing level. This API uses a promise to return the result.
 
 **Since:** 22
+
+<!--Device-PixelMap-createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise<PixelMap>--><!--Device-PixelMap-createCroppedAndScaledPixelMap(region: Region, x: double, y: double, level?: AntiAliasingLevel): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1032,6 +1072,8 @@ Creates an image that has been cropped and resized based on the specified croppi
 
 **Since:** 22
 
+<!--Device-PixelMap-createCroppedAndScaledPixelMapSync(region: Region, x: double, y: double, level?: AntiAliasingLevel): PixelMap--><!--Device-PixelMap-createCroppedAndScaledPixelMapSync(region: Region, x: double, y: double, level?: AntiAliasingLevel): PixelMap-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1092,6 +1134,8 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 
 **Since:** 18
 
+<!--Device-PixelMap-createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel): Promise<PixelMap>--><!--Device-PixelMap-createScaledPixelMap(x: double, y: double, level?: AntiAliasingLevel): Promise<PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -1140,6 +1184,8 @@ createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): Pixel
 Creates an image that has been resized based on the specified anti-aliasing level and the scale factors of the width and height. This API returns the result synchronously.
 
 **Since:** 18
+
+<!--Device-PixelMap-createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLevel): PixelMap--><!--Device-PixelMap-createScaledPixelMapSync(x: double, y: double, level?: AntiAliasingLevel): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1194,9 +1240,11 @@ Starting from API 26.0.0, it is recommended to use [applyCrop](#applycrop) inste
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-crop(region: Region, callback: AsyncCallback<void>): void--><!--Device-PixelMap-crop(region: Region, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1238,9 +1286,11 @@ Starting from API 26.0.0, it is recommended to use [applyCrop](#applycrop) inste
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-crop(region: Region): Promise<void>--><!--Device-PixelMap-crop(region: Region): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1283,7 +1333,9 @@ Starting from API 26.0.0, it is recommended to use [applyCropSync](#applycropsyn
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-cropSync(region: Region): void--><!--Device-PixelMap-cropSync(region: Region): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1329,9 +1381,11 @@ Extracts the alpha channel from the current PixelMap to create a new ALPHA_U8 fo
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-extractAlphaPixelMap(): Promise<PixelMap>--><!--Device-PixelMap-extractAlphaPixelMap(): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1379,9 +1433,11 @@ Extracts the alpha channel from the current PixelMap to create a new ALPHA_U8 fo
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-extractAlphaPixelMapSync(): PixelMap--><!--Device-PixelMap-extractAlphaPixelMapSync(): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1429,9 +1485,11 @@ Starting from API 26.0.0, it is recommended to use [applyFlip](#applyflip) inste
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean, callback: AsyncCallback<void>): void--><!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1475,9 +1533,11 @@ Starting from API 26.0.0, it is recommended to use [applyFlip](#applyflip) inste
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean): Promise<void>--><!--Device-PixelMap-flip(horizontal: boolean, vertical: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1522,7 +1582,9 @@ Starting from API 26.0.0, it is recommended to use [applyFlipSync](#applyflipsyn
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-flipSync(horizontal: boolean, vertical: boolean): void--><!--Device-PixelMap-flipSync(horizontal: boolean, vertical: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1568,9 +1630,11 @@ Obtains the number of bytes per row of this image. Unit: bytes.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-getBytesNumberPerRow(): int--><!--Device-PixelMap-getBytesNumberPerRow(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1597,6 +1661,8 @@ getColorSpace(): colorSpaceManager.ColorSpaceManager
 Obtains the color space of this image.
 
 **Since:** 10
+
+<!--Device-PixelMap-getColorSpace(): colorSpaceManager.ColorSpaceManager--><!--Device-PixelMap-getColorSpace(): colorSpaceManager.ColorSpaceManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1640,9 +1706,11 @@ Obtains the pixel density of this image. Unit: ppi (pixels/inch)
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-getDensity(): int--><!--Device-PixelMap-getDensity(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1670,9 +1738,11 @@ Obtains the image information of a PixelMap. This API uses a promise to return t
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-getImageInfo(): Promise<ImageInfo>--><!--Device-PixelMap-getImageInfo(): Promise<ImageInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1708,9 +1778,11 @@ Obtains the image information. This API uses an asynchronous callback to return 
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-getImageInfo(callback: AsyncCallback<ImageInfo>): void--><!--Device-PixelMap-getImageInfo(callback: AsyncCallback<ImageInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1746,9 +1818,11 @@ Obtains the image information. This API returns the result synchronously.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-getImageInfoSync(): ImageInfo--><!--Device-PixelMap-getImageInfoSync(): ImageInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1789,6 +1863,8 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 Obtains the value of the metadata with a given key in this PixelMap.
 
 **Since:** 12
+
+<!--Device-PixelMap-getMetadata(key: HdrMetadataKey): HdrMetadataValue--><!--Device-PixelMap-getMetadata(key: HdrMetadataKey): HdrMetadataValue-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1851,9 +1927,11 @@ Obtains the total number of bytes of this image. Unit: bytes.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-getPixelBytesNumber(): int--><!--Device-PixelMap-getPixelBytesNumber(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1880,6 +1958,8 @@ getUniqueId(): number
 Obtains the unique ID of this PixelMap.
 
 **Since:** 22
+
+<!--Device-PixelMap-getUniqueId(): int--><!--Device-PixelMap-getUniqueId(): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1926,6 +2006,8 @@ Checks whether this PixelMap object is released. If released, any attempt to acc
 
 **Since:** 22
 
+<!--Device-PixelMap-isReleased(): boolean--><!--Device-PixelMap-isReleased(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -1945,6 +2027,8 @@ marshalling(sequence: rpc.MessageSequence): void
 Marshals this PixelMap object and writes it to a MessageSequence object.
 
 **Since:** 10
+
+<!--Device-PixelMap-marshalling(sequence: rpc.MessageSequence): void--><!--Device-PixelMap-marshalling(sequence: rpc.MessageSequence): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2031,9 +2115,11 @@ Starting from API 26.0.0, it is recommended to use [setOpacity](#setopacity) ins
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-opacity(rate: double, callback: AsyncCallback<void>): void--><!--Device-PixelMap-opacity(rate: double, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2075,9 +2161,11 @@ Starting from API 26.0.0, it is recommended to use [setOpacity](#setopacity) ins
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-opacity(rate: double): Promise<void>--><!--Device-PixelMap-opacity(rate: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2120,7 +2208,9 @@ Starting from API 26.0.0, it is recommended to use [setOpacitySync](#setopacitys
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-opacitySync(rate: double): void--><!--Device-PixelMap-opacitySync(rate: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2166,9 +2256,11 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer. The 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-readAllPixelsToBuffer(dst: ArrayBuffer): Promise<void>--><!--Device-PixelMap-readAllPixelsToBuffer(dst: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2224,9 +2316,11 @@ Reads all the pixel data from the PixelMap and writes the data to a buffer. The 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-readAllPixelsToBufferSync(dst: ArrayBuffer): void--><!--Device-PixelMap-readAllPixelsToBufferSync(dst: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2276,9 +2370,11 @@ Starting from API 26.0.0, it is recommended to use [readPixelsToArea](#readpixel
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-readPixels(area: PositionArea): Promise<void>--><!--Device-PixelMap-readPixels(area: PositionArea): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2344,9 +2440,11 @@ Starting from API 26.0.0, it is recommended to use [readPixelsToArea](#readpixel
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-readPixels(area: PositionArea, callback: AsyncCallback<void>): void--><!--Device-PixelMap-readPixels(area: PositionArea, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2409,7 +2507,9 @@ Starting from API 26.0.0, it is recommended to use [readPixelsToAreaSync](#readp
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-readPixelsSync(area: PositionArea): void--><!--Device-PixelMap-readPixelsSync(area: PositionArea): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2460,9 +2560,11 @@ Reads pixel data from a certain area of the PixelMap to a buffer. The resulting 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-readPixelsToArea(area: PositionArea): Promise<void>--><!--Device-PixelMap-readPixelsToArea(area: PositionArea): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2550,9 +2652,11 @@ Reads pixel data from a certain area of the PixelMap to a buffer. The resulting 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-readPixelsToAreaSync(area: PositionArea): void--><!--Device-PixelMap-readPixelsToAreaSync(area: PositionArea): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2634,9 +2738,11 @@ Starting from API 26.0.0, it is recommended to use [readAllPixelsToBuffer](#read
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer): Promise<void>--><!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2681,9 +2787,11 @@ Starting from API 26.0.0, it is recommended to use [readAllPixelsToBuffer](#read
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback<void>): void--><!--Device-PixelMap-readPixelsToBuffer(dst: ArrayBuffer, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2723,9 +2831,11 @@ Starting from API 26.0.0, it is recommended to use [readAllPixelsToBufferSync](#
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-readPixelsToBufferSync(dst: ArrayBuffer): void--><!--Device-PixelMap-readPixelsToBufferSync(dst: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2774,9 +2884,11 @@ Releases this PixelMap instance. After the release, any attempt to access the in
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-release(callback: AsyncCallback<void>): void--><!--Device-PixelMap-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2819,9 +2931,11 @@ Releases this PixelMap instance. After the release, any attempt to access the in
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-release(): Promise<void>--><!--Device-PixelMap-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2857,9 +2971,11 @@ Starting from API 26.0.0, it is recommended to use [applyRotate](#applyrotate) i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-rotate(angle: double, callback: AsyncCallback<void>): void--><!--Device-PixelMap-rotate(angle: double, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2901,9 +3017,11 @@ Starting from API 26.0.0, it is recommended to use [applyRotate](#applyrotate) i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-rotate(angle: double): Promise<void>--><!--Device-PixelMap-rotate(angle: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2946,7 +3064,9 @@ Starting from API 26.0.0, it is recommended to use [applyRotateSync](#applyrotat
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-rotateSync(angle: double): void--><!--Device-PixelMap-rotateSync(angle: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -2992,9 +3112,11 @@ Starting from API 26.0.0, it is recommended to use [applyScale](#applyscale) ins
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-scale(x: double, y: double, callback: AsyncCallback<void>): void--><!--Device-PixelMap-scale(x: double, y: double, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3038,9 +3160,11 @@ Starting from API 26.0.0, it is recommended to use [applyScale](#applyscale) ins
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-scale(x: double, y: double): Promise<void>--><!--Device-PixelMap-scale(x: double, y: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3087,9 +3211,11 @@ Starting from API 26.0.0, it is recommended to use [applyScale](#applyscale) ins
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-scale(x: double, y: double, level: AntiAliasingLevel): Promise<void>--><!--Device-PixelMap-scale(x: double, y: double, level: AntiAliasingLevel): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3142,7 +3268,9 @@ Starting from API 26.0.0, it is recommended to use [applyScaleSync](#applyscales
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-scaleSync(x: double, y: double): void--><!--Device-PixelMap-scaleSync(x: double, y: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3192,7 +3320,9 @@ Starting from API 26.0.0, it is recommended to use [applyScaleSync](#applyscales
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-scaleSync(x: double, y: double, level: AntiAliasingLevel): void--><!--Device-PixelMap-scaleSync(x: double, y: double, level: AntiAliasingLevel): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3241,6 +3371,8 @@ This method is only used to set the colorspace property of pixelmap, while all p
 
 **Since:** 12
 
+<!--Device-PixelMap-setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void--><!--Device-PixelMap-setColorSpace(colorSpace: colorSpaceManager.ColorSpaceManager): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -3285,6 +3417,8 @@ Sets a memory name for this PixelMap.
 
 **Since:** 13
 
+<!--Device-PixelMap-setMemoryNameSync(name: string): void--><!--Device-PixelMap-setMemoryNameSync(name: string): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -3326,6 +3460,8 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise<void>
 Sets the value for the metadata with a given key in this PixelMap. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-PixelMap-setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise<void>--><!--Device-PixelMap-setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3387,9 +3523,11 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-setOpacity(value: double): Promise<void>--><!--Device-PixelMap-setOpacity(value: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3445,9 +3583,11 @@ Sets opacity of the PixelMap. Every pixel will be set to the same opacity value.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-setOpacitySync(value: double): void--><!--Device-PixelMap-setOpacitySync(value: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3494,6 +3634,8 @@ setTransferDetached(detached: boolean): void
 Sets whether to detach from the original thread when this PixelMap is transmitted across threads. This API applies to the scenario where the PixelMap needs to be released immediately.
 
 **Since:** 12
+
+<!--Device-PixelMap-setTransferDetached(detached: boolean): void--><!--Device-PixelMap-setTransferDetached(detached: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3569,6 +3711,8 @@ Convert pixelmap to standard dynamic range.
 
 **Since:** 12
 
+<!--Device-PixelMap-toSdr(): Promise<void>--><!--Device-PixelMap-toSdr(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -3622,9 +3766,11 @@ Starting from API 26.0.0, it is recommended to use [applyTranslate](#applytransl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-translate(x: double, y: double, callback: AsyncCallback<void>): void--><!--Device-PixelMap-translate(x: double, y: double, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3668,9 +3814,11 @@ Starting from API 26.0.0, it is recommended to use [applyTranslate](#applytransl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-translate(x: double, y: double): Promise<void>--><!--Device-PixelMap-translate(x: double, y: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3715,7 +3863,9 @@ Starting from API 26.0.0, it is recommended to use [applyTranslateSync](#applytr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-translateSync(x: double, y: double): void--><!--Device-PixelMap-translateSync(x: double, y: double): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3760,6 +3910,8 @@ unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>
 Unmarshals a MessageSequence object to obtain a PixelMap object. To create a PixelMap object in synchronous mode, use [createPixelMapFromParcel](arkts-image-image-createpixelmapfromparcel-f.md).
 
 **Since:** 10
+
+<!--Device-PixelMap-unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>--><!--Device-PixelMap-unmarshalling(sequence: rpc.MessageSequence): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3853,9 +4005,11 @@ Reads the pixel data from a buffer and writes the data to the PixelMap. The sour
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-writeAllPixelsFromBuffer(src: ArrayBuffer): Promise<void>--><!--Device-PixelMap-writeAllPixelsFromBuffer(src: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3920,9 +4074,11 @@ Reads the pixel data from a buffer and writes the data to the PixelMap. The sour
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-writeAllPixelsFromBufferSync(src: ArrayBuffer): void--><!--Device-PixelMap-writeAllPixelsFromBufferSync(src: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -3981,9 +4137,11 @@ Starting from API 26.0.0, it is recommended to use [writeAllPixelsFromBuffer](#w
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer): Promise<void>--><!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4032,9 +4190,11 @@ Starting from API 26.0.0, it is recommended to use [writeAllPixelsFromBuffer](#w
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback<void>): void--><!--Device-PixelMap-writeBufferToPixels(src: ArrayBuffer, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4078,7 +4238,9 @@ Starting from API 26.0.0, it is recommended to use [writeAllPixelsFromBufferSync
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PixelMap-writeBufferToPixelsSync(src: ArrayBuffer): void--><!--Device-PixelMap-writeBufferToPixelsSync(src: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4128,9 +4290,11 @@ Starting from API 26.0.0, it is recommended to use [writePixelsFromArea](#writep
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-writePixels(area: PositionArea): Promise<void>--><!--Device-PixelMap-writePixels(area: PositionArea): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4202,9 +4366,11 @@ Starting from API 26.0.0, it is recommended to use [writePixelsFromArea](#writep
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-writePixels(area: PositionArea, callback: AsyncCallback<void>): void--><!--Device-PixelMap-writePixels(area: PositionArea, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4273,9 +4439,11 @@ Writes data from a buffer to a certain area of the PixelMap. The source data mus
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-writePixelsFromArea(area: PositionArea): Promise<void>--><!--Device-PixelMap-writePixelsFromArea(area: PositionArea): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4378,9 +4546,11 @@ Writes data from a buffer to a certain area of the PixelMap. The source data mus
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+
+<!--Device-PixelMap-writePixelsFromAreaSync(area: PositionArea): void--><!--Device-PixelMap-writePixelsFromAreaSync(area: PositionArea): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4477,9 +4647,11 @@ Starting from API 26.0.0, it is recommended to use [writePixelsFromAreaSync](#wr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-writePixelsSync(area: PositionArea): void--><!--Device-PixelMap-writePixelsSync(area: PositionArea): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4534,9 +4706,11 @@ Whether the image pixels are editable. **true** if editable, **false** otherwise
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-PixelMap-readonly isEditable: boolean--><!--Device-PixelMap-readonly isEditable: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -4551,5 +4725,7 @@ Whether the row data of the image is memory aligned. The value **true** means th
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-PixelMap-readonly isStrideAlignment: boolean--><!--Device-PixelMap-readonly isStrideAlignment: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

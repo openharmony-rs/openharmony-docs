@@ -27,6 +27,8 @@ input parameter.
 
 **Since:** 20
 
+<!--Device-usbManager-function resetUsbDevice(pipe: USBDevicePipe): boolean--><!--Device-usbManager-function resetUsbDevice(pipe: USBDevicePipe): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

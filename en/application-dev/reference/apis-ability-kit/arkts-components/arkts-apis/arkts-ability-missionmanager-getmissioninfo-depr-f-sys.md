@@ -21,6 +21,8 @@ Obtains the information about a given mission. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback<MissionInfo>): void--><!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback<MissionInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Obtains the information about a given mission. This API uses a promise to return
 **Substitutes:** [getMissionInfo](arkts-ability-missionmanager-getmissioninfo-f-sys.md)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInfo>--><!--Device-missionManager-function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInfo>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

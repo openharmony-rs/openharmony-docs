@@ -20,6 +20,8 @@ Obtains disallowed Wi-Fi networks.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function getDisallowedWifiList(admin: Want): Array<WifiAccessInfo>--><!--Device-wifiManager-function getDisallowedWifiList(admin: Want): Array<WifiAccessInfo>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -77,6 +79,8 @@ Obtains disallowed Wi-Fi networks.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-wifiManager-function getDisallowedWifiList(admin: Want | null): Array<WifiAccessInfo>--><!--Device-wifiManager-function getDisallowedWifiList(admin: Want | null): Array<WifiAccessInfo>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

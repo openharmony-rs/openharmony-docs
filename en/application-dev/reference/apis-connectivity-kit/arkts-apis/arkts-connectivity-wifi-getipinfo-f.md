@@ -24,6 +24,8 @@ Obtains the IP information of a Wi-Fi connection.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function getIpInfo(): IpInfo--><!--Device-wifi-function getIpInfo(): IpInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

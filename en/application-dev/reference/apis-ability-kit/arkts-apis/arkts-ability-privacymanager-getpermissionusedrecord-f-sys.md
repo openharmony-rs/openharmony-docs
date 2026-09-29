@@ -20,6 +20,8 @@ Obtains historical permission usage records, which can be used in permission aud
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-privacyManager-function getPermissionUsedRecord(request: PermissionUsedRequest): Promise<PermissionUsedResponse>--><!--Device-privacyManager-function getPermissionUsedRecord(request: PermissionUsedRequest): Promise<PermissionUsedResponse>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Obtains historical permission usage records, which can be used in permission aud
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-privacyManager-function getPermissionUsedRecord(    request: PermissionUsedRequest,    callback: AsyncCallback<PermissionUsedResponse>): void--><!--Device-privacyManager-function getPermissionUsedRecord(    request: PermissionUsedRequest,    callback: AsyncCallback<PermissionUsedResponse>): void-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

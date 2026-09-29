@@ -18,6 +18,8 @@ Re-connect to current network.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function reconnect(): void--><!--Device-wifiManager-function reconnect(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

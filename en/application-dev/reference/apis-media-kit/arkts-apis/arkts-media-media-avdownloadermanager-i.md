@@ -8,6 +8,8 @@ Definition of the Offline Download Management Interface
 
 **Since:** 26.0.0
 
+<!--Device-media-interface AVDownloaderManager--><!--Device-media-interface AVDownloaderManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Create a download task based on the media description.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-addAVDownloadTask(source: MediaSource): string--><!--Device-AVDownloaderManager-addAVDownloadTask(source: MediaSource): string-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -54,6 +58,8 @@ Set the network environment for the download. By default, the download is perfor
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-allowsCellularAccess(value: boolean): void--><!--Device-AVDownloaderManager-allowsCellularAccess(value: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**
@@ -74,6 +80,8 @@ Obtains all offline download tasks in the Task Manager. Ended download tasks are
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-getDownloadTasks(): Array<string>--><!--Device-AVDownloaderManager-getDownloadTasks(): Array<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Return value:**
@@ -93,6 +101,8 @@ Obtains the offline download cache directory of a specified task.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-getTaskCacheDirectory(taskId: string): string--><!--Device-AVDownloaderManager-getTaskCacheDirectory(taskId: string): string-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -126,6 +136,8 @@ Obtains the progress of a specified offline download task.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-getTaskProgress(taskId: string): double--><!--Device-AVDownloaderManager-getTaskProgress(taskId: string): double-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**
@@ -157,6 +169,8 @@ Obtains the status of a specified offline download task. For details, see #AVDow
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-getTaskStatus(taskId: string): AVDownloadTaskState--><!--Device-AVDownloaderManager-getTaskStatus(taskId: string): AVDownloadTaskState-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -190,6 +204,8 @@ Deregisters a specified function's listening on task progress change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-offProgressChange(callback?: OnAVDownloadProgressChangeHandle): void--><!--Device-AVDownloaderManager-offProgressChange(callback?: OnAVDownloadProgressChangeHandle): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**
@@ -209,6 +225,8 @@ Deregisters a specified function's listening on task status change events.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-offStatusChange(callback?: OnAVDownloadTaskStateHandle): void--><!--Device-AVDownloaderManager-offStatusChange(callback?: OnAVDownloadTaskStateHandle): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -230,6 +248,8 @@ Registers a function to listen to the progress change value of an offline downlo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-onProgressChange(callback: OnAVDownloadProgressChangeHandle): void--><!--Device-AVDownloaderManager-onProgressChange(callback: OnAVDownloadProgressChangeHandle): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**
@@ -250,6 +270,8 @@ Registering a Function for Listening on Status Changes of Offline Download Tasks
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-onStatusChange(callback: OnAVDownloadTaskStateHandle): void--><!--Device-AVDownloaderManager-onStatusChange(callback: OnAVDownloadTaskStateHandle): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**
@@ -269,6 +291,8 @@ Suspending the download of a specified task
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-pauseDownloadTask(taskId?: string): void--><!--Device-AVDownloaderManager-pauseDownloadTask(taskId?: string): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -297,6 +321,8 @@ Release resources used for AVDownloaderManager.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-release(): void--><!--Device-AVDownloaderManager-release(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## removeDownloadTask
@@ -310,6 +336,8 @@ Remove a download task from the offline download manager
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-removeDownloadTask(taskId?: string): void--><!--Device-AVDownloaderManager-removeDownloadTask(taskId?: string): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -337,6 +365,8 @@ Resuming Offline Download of a Specified Task
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVDownloaderManager-resumeDownloadTask(taskId?: string): void--><!--Device-AVDownloaderManager-resumeDownloadTask(taskId?: string): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**
@@ -363,6 +393,8 @@ Sets the network timeout interval for HTTP requests. If the timeout interval is 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVDownloaderManager-setRequestTimeout(timeout: int): void--><!--Device-AVDownloaderManager-setRequestTimeout(timeout: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 

@@ -8,6 +8,8 @@ Provides the state change information of the microphone when the callback is tri
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface MicrophoneCaptureStateChangeInfo--><!--Device-unnamed-declare interface MicrophoneCaptureStateChangeInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## newState
@@ -22,6 +24,8 @@ New state.
 
 **Since:** 23
 
+<!--Device-MicrophoneCaptureStateChangeInfo-newState: MicrophoneCaptureState--><!--Device-MicrophoneCaptureStateChangeInfo-newState: MicrophoneCaptureState-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## originalState
@@ -35,5 +39,7 @@ State before the change.
 **Type:** [MicrophoneCaptureState](arkts-arkweb-web-comp-microphonecapturestate-e.md)
 
 **Since:** 23
+
+<!--Device-MicrophoneCaptureStateChangeInfo-originalState: MicrophoneCaptureState--><!--Device-MicrophoneCaptureStateChangeInfo-originalState: MicrophoneCaptureState-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

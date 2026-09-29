@@ -8,6 +8,8 @@ The **AbilityDelegatorRegistry** module provides APIs for storing global registe
 
 **Substitutes:** [abilityDelegatorRegistry](arkts-test-app-ability-abilitydelegatorregistry.md)
 
+<!--Device-unnamed-declare namespace abilityDelegatorRegistry--><!--Device-unnamed-declare namespace abilityDelegatorRegistry-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Test API:** This API is used only in automated test scripts.
@@ -23,8 +25,8 @@ The **AbilityDelegatorRegistry** module provides APIs for storing global registe
 
 | Name | Description |
 | --- | --- |
-| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md#getabilitydelegator) | Obtains the **AbilityDelegator** object of the application. |
-| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md#getarguments) | Obtains the **AbilityDelegatorArgs** object of the application. |
+| [getAbilityDelegator](arkts-test-abilitydelegatorregistry-getabilitydelegator-depr-f.md) | Obtains the **AbilityDelegator** object of the application. |
+| [getArguments](arkts-test-abilitydelegatorregistry-getarguments-depr-f.md) | Obtains the **AbilityDelegatorArgs** object of the application. |
 
 ### Enums
 

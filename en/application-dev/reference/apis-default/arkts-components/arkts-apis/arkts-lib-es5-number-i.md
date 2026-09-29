@@ -17,6 +17,8 @@ toExponential(fractionDigits?: number): string
 
 Returns a string containing a number represented in exponential notation.
 
+<!--Device-Number-toExponential(fractionDigits?: number): string--><!--Device-Number-toExponential(fractionDigits?: number): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -31,6 +33,8 @@ toFixed(fractionDigits?: number): string
 
 Returns a string representing a number in fixed-point notation.
 
+<!--Device-Number-toFixed(fractionDigits?: number): string--><!--Device-Number-toFixed(fractionDigits?: number): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -44,6 +48,8 @@ toLocaleString(locales?: string[], options?: Intl.NumberFormatOptions): string
 ```
 
 Converts a number to a string by using the current or specified locale.
+
+<!--Device-Number-toLocaleString(locales?: string | string[], options?: Intl.NumberFormatOptions): string--><!--Device-Number-toLocaleString(locales?: string | string[], options?: Intl.NumberFormatOptions): string-End-->
 
 **Parameters:**
 
@@ -60,6 +66,8 @@ toPrecision(precision?: number): string
 
 Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.
 
+<!--Device-Number-toPrecision(precision?: number): string--><!--Device-Number-toPrecision(precision?: number): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -74,6 +82,8 @@ toString(radix?: number): string
 
 Returns a string representation of an object.
 
+<!--Device-Number-toString(radix?: number): string--><!--Device-Number-toString(radix?: number): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -87,3 +97,5 @@ valueOf(): number
 ```
 
 Returns the primitive value of the specified object.
+
+<!--Device-Number-valueOf(): number--><!--Device-Number-valueOf(): number-End-->

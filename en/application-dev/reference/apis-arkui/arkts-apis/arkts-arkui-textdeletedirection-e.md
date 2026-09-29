@@ -8,6 +8,8 @@ Defines the direction for deleting text.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum TextDeleteDirection--><!--Device-unnamed-declare enum TextDeleteDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BACKWARD
@@ -24,6 +26,8 @@ Backward delete.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextDeleteDirection-BACKWARD = 0--><!--Device-TextDeleteDirection-BACKWARD = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FORWARD
@@ -39,5 +43,7 @@ Forward delete.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextDeleteDirection-FORWARD = 1--><!--Device-TextDeleteDirection-FORWARD = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

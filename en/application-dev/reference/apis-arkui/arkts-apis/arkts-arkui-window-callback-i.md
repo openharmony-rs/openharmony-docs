@@ -8,6 +8,8 @@ Defines the window callback.
 
 **Since:** 15
 
+<!--Device-unnamed-declare interface Callback<T, V = void>--><!--Device-unnamed-declare interface Callback<T, V = void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Defines the callback info.
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-Callback-(data: T): V--><!--Device-Callback-(data: T): V-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

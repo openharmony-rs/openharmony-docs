@@ -8,6 +8,8 @@ Describes the criteria for filtering scanning results can be set.
 
 **Since:** 10
 
+<!--Device-ble-interface ScanFilter--><!--Device-ble-interface ScanFilter-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Identity Resolving Key of BLE peripheral device. [irk](#irk) needs to be used wi
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanFilter-irk?: Uint8Array--><!--Device-ScanFilter-irk?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

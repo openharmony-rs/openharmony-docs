@@ -24,6 +24,8 @@ Obtains the Bluetooth scanning mode of a device. On API 10 and above, the permis
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function getBluetoothScanMode(): ScanMode--><!--Device-bluetoothManager-function getBluetoothScanMode(): ScanMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

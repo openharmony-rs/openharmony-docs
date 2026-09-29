@@ -4,9 +4,11 @@
 interface UIFontFallbackGroupInfo
 ```
 
-UI font configuration of the system.
+Defines a list of fallback generic font families.
 
 **Since:** 11
+
+<!--Device-font-interface UIFontFallbackGroupInfo--><!--Device-font-interface UIFontFallbackGroupInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +24,7 @@ import { font } from '@kit.ArkUI';
 fallback: Array<UIFontFallbackInfo>
 ```
 
-Fallback fonts for the font family. If **fontSetName** is **""**, it indicates that the fonts can be used as fallback fonts for all font families.
+Fallback fonts for the font family. If **fontSetName** is set to **""**, it indicates that the fonts can be used as fallback fonts for all font families.
 
 **Type:** Array&lt;[UIFontFallbackInfo](arkts-arkui-font-uifontfallbackinfo-i.md)&gt;
 
@@ -32,6 +34,8 @@ Fallback fonts for the font family. If **fontSetName** is **""**, it indicates t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIFontFallbackGroupInfo-fallback: Array<UIFontFallbackInfo>--><!--Device-UIFontFallbackGroupInfo-fallback: Array<UIFontFallbackInfo>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSetName
@@ -40,7 +44,7 @@ Fallback fonts for the font family. If **fontSetName** is **""**, it indicates t
 fontSetName: string
 ```
 
-Name of the font family corresponding to the fallback fonts.
+Name of the font family corresponding to the fallback font group. If **fontSetName** is set to **""**, the fallback font group can be used for all font families.
 
 **Type:** string
 
@@ -49,5 +53,7 @@ Name of the font family corresponding to the fallback fonts.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIFontFallbackGroupInfo-fontSetName: string--><!--Device-UIFontFallbackGroupInfo-fontSetName: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

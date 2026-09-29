@@ -16,6 +16,8 @@ Requests to activate a widget. This API takes effect only for [scene-based widge
 
 **Since:** 20
 
+<!--Device-formProvider-function activateSceneAnimation(formId: string): Promise<void>--><!--Device-formProvider-function activateSceneAnimation(formId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

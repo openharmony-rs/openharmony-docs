@@ -8,6 +8,8 @@ Enum for the type of pairing to a remote device
 
 **Since:** 10
 
+<!--Device-connection-enum PinType--><!--Device-connection-enum PinType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The user needs to enter the pin code displayed on the peer device.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PinType-PIN_TYPE_ENTER_PIN_CODE = 0--><!--Device-PinType-PIN_TYPE_ENTER_PIN_CODE = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -40,6 +44,8 @@ The user needs to enter the passkey displayed on the peer device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PinType-PIN_TYPE_ENTER_PASSKEY = 1--><!--Device-PinType-PIN_TYPE_ENTER_PASSKEY = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ The user needs to confirm the passkey displayed on the local device.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PinType-PIN_TYPE_CONFIRM_PASSKEY = 2--><!--Device-PinType-PIN_TYPE_CONFIRM_PASSKEY = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -72,6 +80,8 @@ The user needs to accept or deny the pairing request.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PinType-PIN_TYPE_NO_PASSKEY_CONSENT = 3--><!--Device-PinType-PIN_TYPE_NO_PASSKEY_CONSENT = 3-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ The user needs to enter the passkey displayed on the local device on the peer de
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PinType-PIN_TYPE_NOTIFY_PASSKEY = 4--><!--Device-PinType-PIN_TYPE_NOTIFY_PASSKEY = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -104,6 +116,8 @@ The user needs to enter the pin code displayed on the peer device, used for blue
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PinType-PIN_TYPE_DISPLAY_PIN_CODE = 5--><!--Device-PinType-PIN_TYPE_DISPLAY_PIN_CODE = 5-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -120,6 +134,8 @@ The user needs to accept or deny the OOB pairing request.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PinType-PIN_TYPE_OOB_CONSENT = 6--><!--Device-PinType-PIN_TYPE_OOB_CONSENT = 6-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -135,6 +151,8 @@ The user needs to enter the 16-digit pin code displayed on the peer device.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PinType-PIN_TYPE_PIN_16_DIGITS = 7--><!--Device-PinType-PIN_TYPE_PIN_16_DIGITS = 7-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

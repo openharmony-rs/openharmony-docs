@@ -10,6 +10,8 @@ efficiency. Check whether the ArkUI components support this function by referrin
 
 **Since:** 18
 
+<!--Device-unnamed-declare namespace cacheDownload--><!--Device-unnamed-declare namespace cacheDownload-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import

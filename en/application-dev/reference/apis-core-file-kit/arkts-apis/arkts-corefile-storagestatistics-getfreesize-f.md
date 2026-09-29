@@ -20,6 +20,8 @@ Obtains the available space (in bytes) of the built-in storage. This API uses an
 - API version 15 and later: N/A
 - API versions 9 to 14: ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getFreeSize(callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getFreeSize(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Parameters:**
@@ -68,6 +70,8 @@ Obtains the available space (in bytes) of the built-in storage. This API uses a 
 **Required permissions:** 
 - API version 15 and later: N/A
 - API versions 9 to 14: ohos.permission.STORAGE_MANAGER
+
+<!--Device-storageStatistics-function getFreeSize(): Promise<long>--><!--Device-storageStatistics-function getFreeSize(): Promise<long>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

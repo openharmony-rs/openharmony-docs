@@ -4,9 +4,11 @@
 declare interface EditModeOptions
 ```
 
-Define edit mode options.
+Sets attributes of the **List** or **Grid** component in edit mode.
 
 **Since:** 23
+
+<!--Device-unnamed-declare interface EditModeOptions--><!--Device-unnamed-declare interface EditModeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ Called to return whether to display the number badge or the number displayed on 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-EditModeOptions-onGetPreviewBadge?: OnGetPreviewBadgeCallback--><!--Device-EditModeOptions-onGetPreviewBadge?: OnGetPreviewBadgeCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Define whether to gather selected items in grid or list when item is long presse
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-EditModeOptions-enableGatherSelectedItemsAnimation?: boolean--><!--Device-EditModeOptions-enableGatherSelectedItemsAnimation?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableTwoFingerMultiSelect
@@ -64,6 +70,8 @@ Enable two-finger swipe multi-selection. `true` indicates that two-finger swipin
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-EditModeOptions-enableTwoFingerMultiSelect?: boolean--><!--Device-EditModeOptions-enableTwoFingerMultiSelect?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## useDefaultMultiSelectStyle
@@ -83,5 +91,7 @@ Use default multi-select style. `true` indicates that the check box is displayed
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EditModeOptions-useDefaultMultiSelectStyle?: boolean--><!--Device-EditModeOptions-useDefaultMultiSelectStyle?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

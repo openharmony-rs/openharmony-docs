@@ -12,6 +12,8 @@ Search初始化参数。
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface SearchOptions--><!--Device-unnamed-declare interface SearchOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -28,6 +30,8 @@ controller?: SearchController
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SearchOptions-controller?: SearchController--><!--Device-SearchOptions-controller?: SearchController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -40,7 +44,7 @@ icon?: string
 
 **说明：** 
 
-icon的数据源支持使用相对路径显示图片和网络图片。
+icon的数据源支持[使用相对路径显示图片](../../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例25使用相对路径显示图片)和网络图片。
 
 - 支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。
 
@@ -55,6 +59,8 @@ Wearable设备上默认图标大小为16vp。
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SearchOptions-icon?: string--><!--Device-SearchOptions-icon?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +77,8 @@ placeholder?: ResourceStr
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SearchOptions-placeholder?: ResourceStr--><!--Device-SearchOptions-placeholder?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,5 +101,7 @@ value?: ResourceStr
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SearchOptions-value?: ResourceStr--><!--Device-SearchOptions-value?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

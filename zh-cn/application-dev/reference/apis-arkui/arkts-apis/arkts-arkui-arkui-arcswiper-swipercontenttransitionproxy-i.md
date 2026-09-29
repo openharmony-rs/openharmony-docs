@@ -14,6 +14,8 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface SwiperContentTransitionProxy--><!--Device-unnamed-declare interface SwiperContentTransitionProxy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -34,6 +36,8 @@ finishTransition(): void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperContentTransitionProxy-finishTransition(): void--><!--Device-SwiperContentTransitionProxy-finishTransition(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## index
@@ -49,6 +53,8 @@ index: number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperContentTransitionProxy-index: number--><!--Device-SwiperContentTransitionProxy-index: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -66,6 +72,8 @@ index对应页面在主轴方向上的长度。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperContentTransitionProxy-mainAxisLength: number--><!--Device-SwiperContentTransitionProxy-mainAxisLength: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## position
@@ -82,6 +90,8 @@ index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperContentTransitionProxy-position: number--><!--Device-SwiperContentTransitionProxy-position: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## selectedIndex
@@ -97,5 +107,7 @@ selectedIndex: number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperContentTransitionProxy-selectedIndex: number--><!--Device-SwiperContentTransitionProxy-selectedIndex: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

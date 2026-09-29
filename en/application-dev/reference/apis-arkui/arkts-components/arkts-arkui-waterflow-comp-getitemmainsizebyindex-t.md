@@ -12,6 +12,8 @@ Obtains the main axis size of a specified water flow item based on its index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type GetItemMainSizeByIndex = (index: number) => number--><!--Device-unnamed-declare type GetItemMainSizeByIndex = (index: number) => number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

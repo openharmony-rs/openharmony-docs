@@ -8,6 +8,8 @@ Describes the rectangle used to hold the minimize, maximize, and close buttons o
 
 **Since:** 11
 
+<!--Device-window-interface TitleButtonRect--><!--Device-window-interface TitleButtonRect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Height of the rectangle, in vp. The value must be an integer.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TitleButtonRect-height: int--><!--Device-TitleButtonRect-height: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ Right boundary of the rectangle, in vp. The value must be an integer.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TitleButtonRect-right: int--><!--Device-TitleButtonRect-right: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -60,7 +66,9 @@ Top boundary of the rectangle, in vp. The value must be an integer.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TitleButtonRect-top: int--><!--Device-TitleButtonRect-top: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -76,6 +84,8 @@ Width of the rectangle, in vp. The value must be an integer.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TitleButtonRect-width: int--><!--Device-TitleButtonRect-width: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

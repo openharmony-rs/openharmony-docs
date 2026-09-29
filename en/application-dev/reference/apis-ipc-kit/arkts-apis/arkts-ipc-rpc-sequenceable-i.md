@@ -12,6 +12,8 @@ Writes objects of classes to a **MessageParcel** and reads them from the **Messa
 
 **Substitutes:** [Parcelable](arkts-ipc-rpc-parcelable-i.md)
 
+<!--Device-rpc-interface Sequenceable--><!--Device-rpc-interface Sequenceable-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Marshals the sequenceable object into a **MessageParcel** object.
 **Deprecated since:** 9
 
 **Substitutes:** [marshalling](arkts-ipc-rpc-parcelable-i.md#marshalling)(dataOut: MessageSequence)
+
+<!--Device-Sequenceable-marshalling(dataOut: MessageParcel): boolean--><!--Device-Sequenceable-marshalling(dataOut: MessageParcel): boolean-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -99,6 +103,8 @@ Unmarshals this sequenceable object from a **MessageParcel** object.
 **Deprecated since:** 9
 
 **Substitutes:** [unmarshalling](arkts-ipc-rpc-parcelable-i.md#unmarshalling)(dataIn: MessageSequence)
+
+<!--Device-Sequenceable-unmarshalling(dataIn: MessageParcel): boolean--><!--Device-Sequenceable-unmarshalling(dataIn: MessageParcel): boolean-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 

@@ -12,6 +12,8 @@ The **fileAccess** module provides a framework for accessing and operating user 
 
 **Substitutes:** [fileIo](arkts-corefile-fileio-n.md)
 
+<!--Device-unnamed-declare namespace fileAccess--><!--Device-unnamed-declare namespace fileAccess-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import

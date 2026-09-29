@@ -20,6 +20,8 @@ This module provides APIs for accessing resources of a specific [FaultLogExtensi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class FaultLogExtensionContext extends ExtensionContext--><!--Device-unnamed-export default class FaultLogExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## Modules to Import

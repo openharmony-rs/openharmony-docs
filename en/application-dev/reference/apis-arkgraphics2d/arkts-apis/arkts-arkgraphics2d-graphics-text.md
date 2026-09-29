@@ -18,6 +18,8 @@ paragraph.
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace text--><!--Device-unnamed-declare namespace text-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -80,6 +82,12 @@ import { text } from '@kit.ArkGraphics2D';
 | [TextTab](arkts-arkgraphics2d-text-texttab-i.md) | Implements a paragraph-style text tab, which stores the alignment mode and position. |
 | [TypographicBounds](arkts-arkgraphics2d-text-typographicbounds-i.md) | Describes the typographic boundaries of a text line. These boundaries depend on the typographic font and font size, but not on the characters themselves. For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, independent of the characters themselves. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [CaretOffsetsCallback](arkts-arkgraphics2d-text-caretoffsetscallback-t.md) | Defines the callback used to receive the offset and index of each character in a text line object as its parameters. |
+
 ### Enums
 
 | Name | Description |
@@ -108,9 +116,3 @@ import { text } from '@kit.ArkGraphics2D';
 | [TextUndefinedGlyphDisplay](arkts-arkgraphics2d-text-textundefinedglyphdisplay-e.md) | Enumerates the modes for displaying undefined text glyphs. |
 | [TextVerticalAlign](arkts-arkgraphics2d-text-textverticalalign-e.md) | Enumerates the vertical alignment modes of text. |
 | [WordBreak](arkts-arkgraphics2d-text-wordbreak-e.md) | Enumerates the word break types. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [CaretOffsetsCallback](arkts-arkgraphics2d-text-caretoffsetscallback-t.md) | Defines the callback used to receive the offset and index of each character in a text line object as its parameters. |

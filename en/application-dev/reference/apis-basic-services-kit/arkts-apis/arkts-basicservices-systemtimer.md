@@ -4,6 +4,8 @@ The **systemTimer** module provides system timer features. You can use the APIs 
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace systemTimer--><!--Device-unnamed-declare namespace systemTimer-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.

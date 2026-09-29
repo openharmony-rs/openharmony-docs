@@ -10,6 +10,8 @@ WebSchemeHandlerResponse is used together with WebResourceHandler: the developer
 
 **Since:** 12
 
+<!--Device-webview-class WebSchemeHandlerResponse--><!--Device-webview-class WebSchemeHandlerResponse-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Constructs a **Response** object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-constructor()--><!--Device-WebSchemeHandlerResponse-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -86,6 +90,8 @@ Get the custom error code of the Web response.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebSchemeHandlerResponse-getCustomErrorCode(): number--><!--Device-WebSchemeHandlerResponse-getCustomErrorCode(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -105,6 +111,8 @@ Obtains the character encoding format of the response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-getEncoding(): string--><!--Device-WebSchemeHandlerResponse-getEncoding(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -129,6 +137,8 @@ Obtains the value of a response header field by name.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-getHeaderByName(name: string): string--><!--Device-WebSchemeHandlerResponse-getHeaderByName(name: string): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -160,6 +170,8 @@ Obtains the MIME type of this response.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerResponse-getMimeType(): string--><!--Device-WebSchemeHandlerResponse-getMimeType(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -183,6 +195,8 @@ Obtains the network error code of the response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-getNetErrorCode(): WebNetErrorList--><!--Device-WebSchemeHandlerResponse-getNetErrorCode(): WebNetErrorList-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -208,6 +222,8 @@ Obtains the HTTP status code of the response.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerResponse-getStatus(): number--><!--Device-WebSchemeHandlerResponse-getStatus(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -231,6 +247,8 @@ Obtains the status text of this response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-getStatusText(): string--><!--Device-WebSchemeHandlerResponse-getStatusText(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -258,6 +276,8 @@ Risk warning: To obtain a URL for JavaScriptProxy communication API authenticati
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerResponse-getUrl(): string--><!--Device-WebSchemeHandlerResponse-getUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -282,6 +302,8 @@ Set the custom error code for the Web response.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebSchemeHandlerResponse-setCustomErrorCode(customErrorCode: number): void--><!--Device-WebSchemeHandlerResponse-setCustomErrorCode(customErrorCode: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -301,6 +323,8 @@ Sets the character encoding format for the current response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-setEncoding(encoding: string): void--><!--Device-WebSchemeHandlerResponse-setEncoding(encoding: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -331,6 +355,8 @@ Sets the header information for this response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-setHeaderByName(name: string, value: string, overwrite: boolean): void--><!--Device-WebSchemeHandlerResponse-setHeaderByName(name: string, value: string, overwrite: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -364,6 +390,8 @@ Sets the MIME type for the current response. For example, set it to text/html wh
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerResponse-setMimeType(type: string): void--><!--Device-WebSchemeHandlerResponse-setMimeType(type: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -393,6 +421,8 @@ Sets the network error code for this response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-setNetErrorCode(code: WebNetErrorList): void--><!--Device-WebSchemeHandlerResponse-setNetErrorCode(code: WebNetErrorList): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -424,6 +454,8 @@ Sets the HTTP status code for this response.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerResponse-setStatus(code: number): void--><!--Device-WebSchemeHandlerResponse-setStatus(code: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -454,6 +486,8 @@ Sets the status text for this response.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebSchemeHandlerResponse-setStatusText(text: string): void--><!--Device-WebSchemeHandlerResponse-setStatusText(text: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -483,6 +517,8 @@ Sets the redirection URL or the URL changed due to HSTS for this response. After
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebSchemeHandlerResponse-setUrl(url: string): void--><!--Device-WebSchemeHandlerResponse-setUrl(url: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

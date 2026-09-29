@@ -21,6 +21,8 @@ Lists all file names in a directory. This API uses a promise to return the resul
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare function listFileExt(  path: string,  options?: ListFileExtOptions): Promise<string[]>--><!--Device-unnamed-declare function listFileExt(  path: string,  options?: ListFileExtOptions): Promise<string[]>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

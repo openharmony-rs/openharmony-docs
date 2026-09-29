@@ -16,6 +16,8 @@ declare interface LazyForEachOptions
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface LazyForEachOptions--><!--Device-unnamed-declare interface LazyForEachOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## customComponentFreezeMode
@@ -38,6 +40,8 @@ customComponentFreezeMode?: LazyForEachCustomComponentFreezeMode
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-LazyForEachOptions-customComponentFreezeMode?: LazyForEachCustomComponentFreezeMode--><!--Device-LazyForEachOptions-customComponentFreezeMode?: LazyForEachCustomComponentFreezeMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## memoryOptimizationStrategy
@@ -57,6 +61,8 @@ LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyForEachOptions-memoryOptimizationStrategy?: LazyForEachMemOptStrategy--><!--Device-LazyForEachOptions-memoryOptimizationStrategy?: LazyForEachMemOptStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,5 +85,7 @@ releaseStrategy?: LazyForEachReleaseStrategy
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-LazyForEachOptions-releaseStrategy?: LazyForEachReleaseStrategy--><!--Device-LazyForEachOptions-releaseStrategy?: LazyForEachReleaseStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

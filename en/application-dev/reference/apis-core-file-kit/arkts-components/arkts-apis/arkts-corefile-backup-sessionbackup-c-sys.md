@@ -8,6 +8,8 @@ Control class for backup procedure.
 
 **Since:** 10
 
+<!--Device-backup-class SessionBackup--><!--Device-backup-class SessionBackup-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Append new bundles and backupInfos to backup.
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionBackup-appendBundles(bundlesToBackup: string[], infos?: string[]): Promise<void>--><!--Device-SessionBackup-appendBundles(bundlesToBackup: string[], infos?: string[]): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -178,6 +182,8 @@ Append new bundles to backup.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionBackup-appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void--><!--Device-SessionBackup-appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -277,6 +283,8 @@ cancel the application being backup.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionBackup-cancel(bundleName: string): int--><!--Device-SessionBackup-cancel(bundleName: string): int-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -366,6 +374,8 @@ Provides an interface for the tool to clear temporary directories
 **Since:** 20
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionBackup-cleanBundleTempDir(bundleName: string): Promise<boolean>--><!--Device-SessionBackup-cleanBundleTempDir(bundleName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -468,6 +478,8 @@ Constructor for obtaining the instance of the SessionBackup class.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionBackup-constructor(callbacks: GeneralCallbacks)--><!--Device-SessionBackup-constructor(callbacks: GeneralCallbacks)-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -538,6 +550,8 @@ Obtain application data size to be backed up.
 **Since:** 18
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionBackup-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>--><!--Device-SessionBackup-getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -685,6 +699,8 @@ Provides an interface for the tool to get compatibility info.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-SessionBackup-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>--><!--Device-SessionBackup-getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -785,6 +801,8 @@ Obtain a Json file that describes local capabilities.
 **Since:** 18
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionBackup-getLocalCapabilities(): Promise<FileData>--><!--Device-SessionBackup-getLocalCapabilities(): Promise<FileData>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -945,6 +963,8 @@ End Backup process
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-SessionBackup-release(): Promise<void>--><!--Device-SessionBackup-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

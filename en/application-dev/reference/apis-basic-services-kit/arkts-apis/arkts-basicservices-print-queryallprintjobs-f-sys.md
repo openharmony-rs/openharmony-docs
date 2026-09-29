@@ -22,6 +22,8 @@ Queries all print jobs. This API uses an asynchronous callback to return the res
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function queryAllPrintJobs(callback: AsyncCallback<void>): void--><!--Device-print-function queryAllPrintJobs(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -83,6 +85,8 @@ Queries all print jobs. This API uses a promise to return the result.
 **Substitutes:** null
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function queryAllPrintJobs(): Promise<void>--><!--Device-print-function queryAllPrintJobs(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

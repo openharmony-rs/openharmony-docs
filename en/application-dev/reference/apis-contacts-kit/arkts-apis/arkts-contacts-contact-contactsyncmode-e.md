@@ -8,6 +8,8 @@ The type of contact synchronization mode.
 
 **Since:** 26.0.0
 
+<!--Device-contact-enum ContactSyncMode--><!--Device-contact-enum ContactSyncMode-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## MODE_INCREMENTAL
@@ -23,6 +25,8 @@ Indicates that contacts differing between cloud and local will be inserted or up
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContactSyncMode-MODE_INCREMENTAL = 1--><!--Device-ContactSyncMode-MODE_INCREMENTAL = 1-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -41,5 +45,7 @@ When the cloud overwrite local mode is used for batch synchronization, all local
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContactSyncMode-MODE_CLOUD_BASED = 2--><!--Device-ContactSyncMode-MODE_CLOUD_BASED = 2-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

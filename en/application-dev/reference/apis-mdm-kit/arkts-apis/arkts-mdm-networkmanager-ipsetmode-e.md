@@ -8,6 +8,8 @@ Enumerates Ethernet connection configuration modes.
 
 **Since:** 23
 
+<!--Device-networkManager-enum IpSetMode--><!--Device-networkManager-enum IpSetMode-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## STATIC
@@ -22,6 +24,8 @@ Static configuration of network information for Ethernet connection. When this m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-IpSetMode-STATIC = 0--><!--Device-IpSetMode-STATIC = 0-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DHCP
@@ -35,5 +39,7 @@ Dynamic configuration of network information for Ethernet connection. When this 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IpSetMode-DHCP = 1--><!--Device-IpSetMode-DHCP = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -8,6 +8,8 @@ Enumerates other key information. This refers to the information of other keys t
 
 **Since:** 23
 
+<!--Device-systemManager-interface KeyItem--><!--Device-systemManager-interface KeyItem-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Time when the key action occurs. The value is a microsecond-level timestamp afte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyItem-downTime: number--><!--Device-KeyItem-downTime: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyCode
@@ -46,6 +50,8 @@ Key code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyItem-keyCode: KeyCode--><!--Device-KeyItem-keyCode: KeyCode-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## pressed
@@ -61,5 +67,7 @@ Key action. It indicates whether the key is pressed: **true** for pressed; **fal
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyItem-pressed: boolean--><!--Device-KeyItem-pressed: boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

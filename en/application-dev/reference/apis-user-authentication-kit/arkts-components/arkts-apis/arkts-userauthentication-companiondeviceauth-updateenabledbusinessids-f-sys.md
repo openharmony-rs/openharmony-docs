@@ -20,6 +20,8 @@ Updates the service scope supported by the specified companion device template. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: int[]): Promise<void>--><!--Device-companionDeviceAuth-function updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: int[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

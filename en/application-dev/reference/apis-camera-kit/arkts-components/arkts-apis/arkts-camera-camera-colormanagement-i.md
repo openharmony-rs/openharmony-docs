@@ -12,6 +12,8 @@ It provides the APIs for color space settings.
 
 **Since:** 12
 
+<!--Device-camera-interface ColorManagement extends ColorManagementQuery--><!--Device-camera-interface ColorManagement extends ColorManagementQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Obtains the color space in use.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-ColorManagement-getActiveColorSpace(): colorSpaceManager.ColorSpace--><!--Device-ColorManagement-getActiveColorSpace(): colorSpaceManager.ColorSpace-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -108,7 +112,9 @@ Recording mode:
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-ColorManagement-setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void--><!--Device-ColorManagement-setColorSpace(colorSpace: colorSpaceManager.ColorSpace): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

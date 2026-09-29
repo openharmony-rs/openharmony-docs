@@ -8,6 +8,8 @@ Enumerates the errors codes available for failures in launching an atomic servic
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum FailureCode--><!--Device-unnamed-declare enum FailureCode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## FAILURE_CODE_SYSTEM_MALFUNCTION
@@ -23,6 +25,8 @@ The atomic service cannot be launched due to a system error (for example, a cras
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-FailureCode-FAILURE_CODE_SYSTEM_MALFUNCTION = 0--><!--Device-FailureCode-FAILURE_CODE_SYSTEM_MALFUNCTION = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ The user canceled the operation.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-FailureCode-FAILURE_CODE_USER_CANCEL = 1--><!--Device-FailureCode-FAILURE_CODE_USER_CANCEL = 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## FAILURE_CODE_USER_REFUSE
@@ -55,5 +61,7 @@ The user refused the operation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-FailureCode-FAILURE_CODE_USER_REFUSE = 2--><!--Device-FailureCode-FAILURE_CODE_USER_REFUSE = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

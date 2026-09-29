@@ -10,6 +10,8 @@ WallpaperInfo definition including folding status, rotation status, and resource
 
 **Since:** 14
 
+<!--Device-wallpaper-interface WallpaperInfo--><!--Device-wallpaper-interface WallpaperInfo-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Indicates the folding status for wallpaper.
 
 **Since:** 14
 
+<!--Device-WallpaperInfo-foldState: FoldState--><!--Device-WallpaperInfo-foldState: FoldState-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Indicates the rotation status for wallpaper.
 
 **Since:** 14
 
+<!--Device-WallpaperInfo-rotateState: RotateState--><!--Device-WallpaperInfo-rotateState: RotateState-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ Indicates the resource path for wallpaper.
 **Type:** string
 
 **Since:** 14
+
+<!--Device-WallpaperInfo-source: string--><!--Device-WallpaperInfo-source: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

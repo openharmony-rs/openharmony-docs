@@ -8,6 +8,8 @@ Defines domain name parameters of a firewall rule. Currently, Chinese domain nam
 
 **Since:** 15
 
+<!--Device-netFirewall-interface NetFirewallDomainParams--><!--Device-netFirewall-interface NetFirewallDomainParams-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## Modules to Import
@@ -28,6 +30,8 @@ If **isWildcard** is set to **false**, the complete domain name, for example, "w
 
 **Since:** 15
 
+<!--Device-NetFirewallDomainParams-domain: string--><!--Device-NetFirewallDomainParams-domain: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## isWildcard
@@ -41,5 +45,7 @@ Whether to contain wildcards. The value **true** means to contain wildcards; and
 **Type:** boolean
 
 **Since:** 15
+
+<!--Device-NetFirewallDomainParams-isWildcard: boolean--><!--Device-NetFirewallDomainParams-isWildcard: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

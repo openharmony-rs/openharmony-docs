@@ -12,7 +12,7 @@ import { prompt } from '@kit.ArkUI';
 function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void
 ```
 
-Displays the menu.
+Shows an action menu. This API uses a callback to return the result asynchronously.
 
 **Since:** 8
 
@@ -22,14 +22,16 @@ Displays the menu.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-prompt-function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void--><!--Device-prompt-function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | Yes | Options. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md)&gt; | Yes |  |
+| options | [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | Yes | Action menu options. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md)&gt; | Yes | Callback used to return the action menu response result. |
 
 **Examples**
 
@@ -65,7 +67,7 @@ prompt.showActionMenu({
 function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>
 ```
 
-Displays the menu.
+Shows an action menu. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -75,19 +77,21 @@ Displays the menu.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-prompt-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>--><!--Device-prompt-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | Yes | Options. |
+| options | [ActionMenuOptions](arkts-arkui-prompt-actionmenuoptions-i.md) | Yes | Action menu options. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md)&gt; |  |
+| Promise&lt;[ActionMenuSuccessResponse](arkts-arkui-prompt-actionmenusuccessresponse-i.md)&gt; | Promise used to return the action menu response result. |
 
 **Examples**
 

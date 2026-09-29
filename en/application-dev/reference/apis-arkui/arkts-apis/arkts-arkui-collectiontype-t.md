@@ -13,6 +13,8 @@ Defines the types of persistent collection data supported by **globalConnect** u
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-export declare type CollectionType<S> = Array<S> | Map<string | number, S> |  Set<S> | collections.Array<S> | collections.Map<string | number, S> | collections.Set<S>--><!--Device-unnamed-export declare type CollectionType<S> = Array<S> | Map<string | number, S> |  Set<S> | collections.Array<S> | collections.Map<string | number, S> | collections.Set<S>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

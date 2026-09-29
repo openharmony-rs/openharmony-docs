@@ -18,6 +18,8 @@ Obtains the sandbox path of the built-in card directory of the current user. Thi
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-Environment-function getUserHomeDir(): string--><!--Device-Environment-function getUserHomeDir(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **System API:** This is a system API.

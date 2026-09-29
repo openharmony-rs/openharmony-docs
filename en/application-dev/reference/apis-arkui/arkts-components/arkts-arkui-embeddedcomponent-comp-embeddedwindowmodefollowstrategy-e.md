@@ -8,6 +8,8 @@ Enumeration of different types of EmbeddedWindowModeFollowStrategy.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare enum EmbeddedWindowModeFollowStrategy--><!--Device-unnamed-declare enum EmbeddedWindowModeFollowStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOW_HOST_WINDOW_MODE
@@ -24,6 +26,8 @@ Followed the host Window Mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_HOST_WINDOW_MODE = 0--><!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_HOST_WINDOW_MODE = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE
@@ -39,5 +43,7 @@ Followed the EmbeddedUIExtensionAbility.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1--><!--Device-EmbeddedWindowModeFollowStrategy-FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

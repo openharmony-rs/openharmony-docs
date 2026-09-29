@@ -18,6 +18,8 @@ Foreground mode: A foreground application has priority to read the NFC tag disco
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace tag--><!--Device-unnamed-declare namespace tag-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## Modules to Import

@@ -4,11 +4,13 @@
 declare class ShapeAttribute extends CommonMethod<ShapeAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
 
-**继承/实现关系：** ShapeAttribute extends CommonMethod&lt;ShapeAttribute&gt;
+**继承/实现关系：** ShapeAttribute extends CommonMethod<ShapeAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class ShapeAttribute extends CommonMethod<ShapeAttribute>--><!--Device-unnamed-declare class ShapeAttribute extends CommonMethod<ShapeAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ antiAlias(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeAttribute-antiAlias(value: boolean): ShapeAttribute--><!--Device-ShapeAttribute-antiAlias(value: boolean): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ fill(value: ResourceColor)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-fill(value: ResourceColor): ShapeAttribute--><!--Device-ShapeAttribute-fill(value: ResourceColor): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -75,6 +81,8 @@ fillOpacity(value: number | string | Resource)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeAttribute-fillOpacity(value: number | string | Resource): ShapeAttribute--><!--Device-ShapeAttribute-fillOpacity(value: number | string | Resource): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +116,8 @@ mesh(value: Array<any>, column: number, row: number)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-mesh(value: Array<any>, column: number, row: number): ShapeAttribute--><!--Device-ShapeAttribute-mesh(value: Array<any>, column: number, row: number): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -134,6 +144,8 @@ stroke(value: ResourceColor)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-stroke(value: ResourceColor): ShapeAttribute--><!--Device-ShapeAttribute-stroke(value: ResourceColor): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -157,6 +169,8 @@ strokeDashArray(value: Array<any>)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeAttribute-strokeDashArray(value: Array<any>): ShapeAttribute--><!--Device-ShapeAttribute-strokeDashArray(value: Array<any>): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,6 +196,8 @@ strokeDashOffset(value: Length)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-strokeDashOffset(value: Length): ShapeAttribute--><!--Device-ShapeAttribute-strokeDashOffset(value: Length): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -206,6 +222,8 @@ strokeLineCap(value: LineCapStyle)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-strokeLineCap(value: LineCapStyle): ShapeAttribute--><!--Device-ShapeAttribute-strokeLineCap(value: LineCapStyle): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -229,6 +247,8 @@ strokeLineJoin(value: LineJoinStyle)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeAttribute-strokeLineJoin(value: LineJoinStyle): ShapeAttribute--><!--Device-ShapeAttribute-strokeLineJoin(value: LineJoinStyle): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,6 +276,8 @@ strokeMiterLimit(value: Length)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-strokeMiterLimit(value: Length): ShapeAttribute--><!--Device-ShapeAttribute-strokeMiterLimit(value: Length): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -280,6 +302,8 @@ strokeOpacity(value: number | string | Resource)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeAttribute-strokeOpacity(value: number | string | Resource): ShapeAttribute--><!--Device-ShapeAttribute-strokeOpacity(value: number | string | Resource): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -303,6 +327,8 @@ strokeWidth(value: Length)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeAttribute-strokeWidth(value: Length): ShapeAttribute--><!--Device-ShapeAttribute-strokeWidth(value: Length): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -329,6 +355,8 @@ viewPort(value: ViewportRect)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeAttribute-viewPort(value: ViewportRect): ShapeAttribute--><!--Device-ShapeAttribute-viewPort(value: ViewportRect): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

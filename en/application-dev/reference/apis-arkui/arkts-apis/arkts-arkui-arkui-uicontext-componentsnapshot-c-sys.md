@@ -16,6 +16,8 @@ Provides APIs for obtaining component snapshots, including snapshots of componen
 
 **Since:** 12
 
+<!--Device-unnamed-export class ComponentSnapshot--><!--Device-unnamed-export class ComponentSnapshot-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Captures a snapshot of the area between two specified components. This API uses 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ComponentSnapshot-getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,    options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>--><!--Device-ComponentSnapshot-getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,    options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

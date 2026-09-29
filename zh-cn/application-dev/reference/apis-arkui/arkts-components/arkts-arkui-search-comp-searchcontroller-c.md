@@ -16,6 +16,8 @@ controller: SearchController = new SearchController();
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class SearchController extends TextContentControllerBase--><!--Device-unnamed-declare class SearchController extends TextContentControllerBase-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## caretPosition
@@ -29,6 +31,8 @@ caretPosition(value: number): void
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SearchController-caretPosition(value: number): void--><!--Device-SearchController-caretPosition(value: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ SearchController的构造函数。
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SearchController-constructor()--><!--Device-SearchController-constructor()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ setTextSelection(selectionStart: number, selectionEnd: number, options?: Selecti
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SearchController-setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void--><!--Device-SearchController-setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -97,5 +105,7 @@ stopEditing(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SearchController-stopEditing(): void--><!--Device-SearchController-stopEditing(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Receives a function that uses the error-first callback mode, that is, uses `(err
 
 **Substitutes:** [promisify](arkts-arkts-util-promisify-f.md)
 
+<!--Device-util-function promiseWrapper(original: (err: Object, value: Object) => void): Object--><!--Device-util-function promiseWrapper(original: (err: Object, value: Object) => void): Object-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

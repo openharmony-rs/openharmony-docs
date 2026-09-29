@@ -8,6 +8,8 @@ Defines the options of geometry transition.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface GeometryTransitionOptions--><!--Device-unnamed-declare interface GeometryTransitionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hierarchyStrategy
@@ -31,6 +33,8 @@ You are advised to adjust this setting only when there is an error in the compon
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12 - 12.
+
+<!--Device-GeometryTransitionOptions-hierarchyStrategy?: TransitionHierarchyStrategy--><!--Device-GeometryTransitionOptions-hierarchyStrategy?: TransitionHierarchyStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

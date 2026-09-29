@@ -22,6 +22,8 @@ Obtain address info from location
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback<Array<GeoAddress>>): void--><!--Device-geolocation-function getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback<Array<GeoAddress>>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 **Parameters:**
@@ -64,6 +66,8 @@ Obtain address info from location
 **Substitutes:** [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array<GeoAddress>>--><!--Device-geolocation-function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array<GeoAddress>>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 

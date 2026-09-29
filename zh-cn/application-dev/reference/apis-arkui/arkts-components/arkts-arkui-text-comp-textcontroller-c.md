@@ -14,6 +14,8 @@ controller: TextController = new TextController()
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare class TextController--><!--Device-unnamed-declare class TextController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## closeSelectionMenu
@@ -30,6 +32,8 @@ closeSelectionMenu(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextController-closeSelectionMenu(): void--><!--Device-TextController-closeSelectionMenu(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getLayoutManager
@@ -45,6 +49,8 @@ getLayoutManager(): LayoutManager
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextController-getLayoutManager(): LayoutManager--><!--Device-TextController-getLayoutManager(): LayoutManager-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +73,8 @@ setStyledString(value: StyledString): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextController-setStyledString(value: StyledString): void--><!--Device-TextController-setStyledString(value: StyledString): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +112,8 @@ setTextSelection(selectionStart: number | undefined, selectionEnd: number | unde
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,                   options?: SelectionOptions): void--><!--Device-TextController-setTextSelection(selectionStart: number | undefined, selectionEnd: number | undefined,                   options?: SelectionOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

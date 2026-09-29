@@ -8,6 +8,8 @@ class CommonController
 
 **起始版本：** 18
 
+<!--Device-promptAction-class CommonController--><!--Device-promptAction-class CommonController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ close(): void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CommonController-close(): void--><!--Device-CommonController-close(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -46,6 +50,8 @@ constructor()
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CommonController-constructor()--><!--Device-CommonController-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getState
@@ -61,6 +67,8 @@ getState(): CommonState
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonController-getState(): CommonState--><!--Device-CommonController-getState(): CommonState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

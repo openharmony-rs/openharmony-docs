@@ -20,6 +20,8 @@ Unregisters the callback used to prompt for a companion device passcode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-function unregisterPasscodePromptCallback(): void--><!--Device-companionDeviceAuth-function unregisterPasscodePromptCallback(): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

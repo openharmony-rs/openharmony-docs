@@ -20,6 +20,8 @@ Obtains the list of applications in the shortcut bar currently.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getDockApps(admin: Want): Array<DockInfo>--><!--Device-applicationManager-function getDockApps(admin: Want): Array<DockInfo>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

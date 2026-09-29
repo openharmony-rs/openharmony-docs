@@ -8,6 +8,8 @@ declare enum RichEditorDeleteDirection
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum RichEditorDeleteDirection--><!--Device-unnamed-declare enum RichEditorDeleteDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BACKWARD
@@ -24,6 +26,8 @@ BACKWARD
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorDeleteDirection-BACKWARD--><!--Device-RichEditorDeleteDirection-BACKWARD-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FORWARD
@@ -39,5 +43,7 @@ FORWARD
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorDeleteDirection-FORWARD--><!--Device-RichEditorDeleteDirection-FORWARD-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

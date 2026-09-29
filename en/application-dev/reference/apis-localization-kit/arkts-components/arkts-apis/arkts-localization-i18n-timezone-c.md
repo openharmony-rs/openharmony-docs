@@ -8,6 +8,8 @@ Provides time zone management capabilities, such as time zone name translation, 
 
 **Since:** 7
 
+<!--Device-i18n-export class TimeZone--><!--Device-i18n-export class TimeZone-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the default time zone object used by an application. If the default time
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TimeZone-static getAppDefaultTimeZone(): TimeZone--><!--Device-TimeZone-static getAppDefaultTimeZone(): TimeZone-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -67,7 +71,9 @@ Obtains the list of time zone IDs supported by the system.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-static getAvailableIDs(): Array<string>--><!--Device-TimeZone-static getAvailableIDs(): Array<string>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -96,7 +102,9 @@ Obtains the list of time zone city IDs supported by the system.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-static getAvailableZoneCityIDs(): Array<string>--><!--Device-TimeZone-static getAvailableZoneCityIDs(): Array<string>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -125,7 +133,9 @@ Obtains time zone city display name in the specified language.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-static getCityDisplayName(cityID: string, locale: string): string--><!--Device-TimeZone-static getCityDisplayName(cityID: string, locale: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -160,7 +170,9 @@ Obtains time zone display name in the specified language.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-getDisplayName(locale?: string, isDST?: boolean): string--><!--Device-TimeZone-getDisplayName(locale?: string, isDST?: boolean): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -196,7 +208,9 @@ Obtains the ID of the specified **TimeZone** object.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-getID(): string--><!--Device-TimeZone-getID(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -225,7 +239,9 @@ Obtains the offset of the specified time zone at the specified time.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-getOffset(date?: double): int--><!--Device-TimeZone-getOffset(date?: double): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -260,7 +276,9 @@ Obtains the raw offset of the specified time zone.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-getRawOffset(): int--><!--Device-TimeZone-getRawOffset(): int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -289,7 +307,9 @@ Creates a **TimeZone** object corresponding to the specified time zone city.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-static getTimezoneFromCity(cityID: string): TimeZone--><!--Device-TimeZone-static getTimezoneFromCity(cityID: string): TimeZone-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -323,7 +343,9 @@ Creates an array of **TimeZone** objects corresponding to the specified location
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TimeZone-static getTimezonesByLocation(longitude: double, latitude: double): Array<TimeZone>--><!--Device-TimeZone-static getTimezonesByLocation(longitude: double, latitude: double): Array<TimeZone>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -371,7 +393,9 @@ Obtains the time zone transition rules. For details about the time zone transiti
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-TimeZone-public getZoneRules(): ZoneRules--><!--Device-TimeZone-public getZoneRules(): ZoneRules-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -420,6 +444,8 @@ Check if the given date use daylight saving time. The calculation will be based 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TimeZone-public isDaylightSavingTime(date: Date): boolean--><!--Device-TimeZone-public isDaylightSavingTime(date: Date): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -454,6 +480,8 @@ Sets the default time zone for the current app, the value will be used on the ap
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TimeZone-static setAppDefaultTimeZoneById(zoneID: string): void--><!--Device-TimeZone-static setAppDefaultTimeZoneById(zoneID: string): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

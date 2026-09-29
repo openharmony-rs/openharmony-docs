@@ -18,6 +18,8 @@ Unregisters the observer used to listen for application start or exit events.
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void--><!--Device-appManager-function off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ Deregisters the observer used to listen for the complete of the first frame rend
 **Since:** 12
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
+
+<!--Device-appManager-function off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): void--><!--Device-appManager-function off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -25,6 +25,8 @@ Sends session data to the target device. The target device must be a trusted dev
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-conversation-function postConversationData(    deviceId: string,    bundleName: string,    abilityName: string,    msg: ArrayBuffer  ): Promise<void>--><!--Device-conversation-function postConversationData(    deviceId: string,    bundleName: string,    abilityName: string,    msg: ArrayBuffer  ): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

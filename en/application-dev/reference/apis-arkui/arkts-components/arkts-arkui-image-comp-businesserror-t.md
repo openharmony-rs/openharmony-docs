@@ -16,6 +16,8 @@ The table below describes the **ImageError** error codes. The **error** property
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>--><!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.base').BusinessError&lt;T&gt;

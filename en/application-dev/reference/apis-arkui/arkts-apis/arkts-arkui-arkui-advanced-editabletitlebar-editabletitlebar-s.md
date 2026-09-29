@@ -10,11 +10,13 @@ The editable title bar is a title bar that comes with button icons, typically **
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **EditableTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) and [universal events](../arkts-components/arkts-arkui-common-comp.md#common) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **EditableTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **EditableTitleBar** component.
+> - If the **EditableTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **EditableTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **EditableTitleBar** component.
 
 **Since:** 10
 
 **Decorator:** @Component
+
+<!--Device-unnamed-export declare struct EditableTitleBar--><!--Device-unnamed-export declare struct EditableTitleBar-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +44,8 @@ Back action event, which is triggered when the button on the left side is of the
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EditableTitleBar-onCancel?: () => void--><!--Device-EditableTitleBar-onCancel?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onSave
@@ -59,6 +63,8 @@ Default value: **() =&gt; void**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EditableTitleBar-onSave?: () => void--><!--Device-EditableTitleBar-onSave?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +92,8 @@ Default value:
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditableTitleBar-contentMargin?: LocalizedMargin--><!--Device-EditableTitleBar-contentMargin?: LocalizedMargin-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageItem
@@ -107,6 +115,8 @@ Note: Accessibility properties are not supported.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EditableTitleBar-imageItem?: EditableTitleBarItem--><!--Device-EditableTitleBar-imageItem?: EditableTitleBarItem-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,6 +144,8 @@ If not decorated by @Require, this parameter is not subject to mandatory validat
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditableTitleBar-isSaveIconRequired: boolean--><!--Device-EditableTitleBar-isSaveIconRequired: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## leftIconDefaultFocus
@@ -156,6 +168,8 @@ Default value: **false**, indicating that the left icon is not the default focus
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-EditableTitleBar-leftIconDefaultFocus?: boolean--><!--Device-EditableTitleBar-leftIconDefaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## leftIconStyle
@@ -176,6 +190,8 @@ Default value: **EditableLeftIconType.Back**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EditableTitleBar-leftIconStyle: EditableLeftIconType--><!--Device-EditableTitleBar-leftIconStyle: EditableLeftIconType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## menuItems
@@ -195,6 +211,8 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EditableTitleBar-menuItems?: Array<EditableTitleBarMenuItem>--><!--Device-EditableTitleBar-menuItems?: Array<EditableTitleBarMenuItem>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +250,8 @@ If not decorated by @Require, this parameter is not subject to mandatory validat
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditableTitleBar-options: EditableTitleBarOptions--><!--Device-EditableTitleBar-options: EditableTitleBarOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## saveIconDefaultFocus
@@ -254,6 +274,8 @@ Default value: **false**, indicating that the save icon is not the default focus
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-EditableTitleBar-saveIconDefaultFocus?: boolean--><!--Device-EditableTitleBar-saveIconDefaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -274,6 +296,8 @@ Default value: **''**, indicating that the subtitle is empty.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditableTitleBar-subtitle?: ResourceStr--><!--Device-EditableTitleBar-subtitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -293,5 +317,7 @@ Default value: **''**, indicating that the title is empty.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EditableTitleBar-title: ResourceStr--><!--Device-EditableTitleBar-title: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

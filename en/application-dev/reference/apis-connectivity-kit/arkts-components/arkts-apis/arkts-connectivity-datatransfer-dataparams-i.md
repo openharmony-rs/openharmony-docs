@@ -8,6 +8,8 @@ Defines the parameters for port data sending and receiving.
 
 **Since:** 26.0.0
 
+<!--Device-dataTransfer-interface DataParams--><!--Device-dataTransfer-interface DataParams-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataParams-address: string--><!--Device-DataParams-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## data
@@ -46,6 +50,8 @@ Data packet. When this parameter is used in [dataTransfer.writeData](arkts-conne
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataParams-data: ArrayBuffer--><!--Device-DataParams-data: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## uuid
@@ -61,5 +67,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataParams-uuid: string--><!--Device-DataParams-uuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

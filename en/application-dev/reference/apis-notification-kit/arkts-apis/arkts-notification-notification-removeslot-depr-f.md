@@ -19,6 +19,8 @@ Removes a notification slot of a specified type. This API uses an asynchronous c
 
 **Substitutes:** [removeSlot](arkts-notification-notificationmanager-removeslot-f.md)
 
+<!--Device-notification-function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void--><!--Device-notification-function removeSlot(slotType: SlotType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -44,6 +46,8 @@ Removes a notification slot of a specified type. This API uses a promise to retu
 **Deprecated since:** 9
 
 **Substitutes:** [removeSlot](arkts-notification-notificationmanager-removeslot-f.md)
+
+<!--Device-notification-function removeSlot(slotType: SlotType): Promise<void>--><!--Device-notification-function removeSlot(slotType: SlotType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

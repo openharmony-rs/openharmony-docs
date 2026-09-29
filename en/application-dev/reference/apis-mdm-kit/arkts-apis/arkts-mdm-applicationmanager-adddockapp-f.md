@@ -36,6 +36,8 @@ Adds an application to the bottom shortcut bar of a PC/2-in-1 device based on th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void--><!--Device-applicationManager-function addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

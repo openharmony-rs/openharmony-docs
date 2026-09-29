@@ -18,6 +18,8 @@ Checks whether the current device supports shortcuts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-shortcutManager-function isShortcutSupported(): boolean--><!--Device-shortcutManager-function isShortcutSupported(): boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **Return value:**

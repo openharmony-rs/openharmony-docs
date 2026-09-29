@@ -16,6 +16,8 @@ Checks whether the device is in standby mode.
 
 **Since:** 10
 
+<!--Device-power-function isStandby(): boolean--><!--Device-power-function isStandby(): boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Return value:**

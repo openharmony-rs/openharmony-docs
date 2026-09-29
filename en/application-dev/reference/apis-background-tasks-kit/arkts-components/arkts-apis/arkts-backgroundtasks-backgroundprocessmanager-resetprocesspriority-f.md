@@ -16,6 +16,8 @@ Unsuppresses the child process. In this case, the child process follows the sche
 
 **Since:** 17
 
+<!--Device-backgroundProcessManager-function resetProcessPriority(pid: int): Promise<void>--><!--Device-backgroundProcessManager-function resetProcessPriority(pid: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Parameters:**

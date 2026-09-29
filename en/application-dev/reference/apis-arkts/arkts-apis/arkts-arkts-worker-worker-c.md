@@ -14,6 +14,8 @@ The Worker class contains all Worker functions.
 
 **Substitutes:** [ThreadWorker](arkts-arkts-worker-threadworker-c.md)
 
+<!--Device-worker-class Worker implements EventTarget--><!--Device-worker-class Worker implements EventTarget-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Creates a worker instance
 **Deprecated since:** 9
 
 **Substitutes:** constructor
+
+<!--Device-Worker-constructor(scriptURL: string, options?: WorkerOptions)--><!--Device-Worker-constructor(scriptURL: string, options?: WorkerOptions)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -71,6 +75,8 @@ Removes an event listener to the worker.
 
 **Substitutes:** off
 
+<!--Device-Worker-off(type: string, listener?: EventListener): void--><!--Device-Worker-off(type: string, listener?: EventListener): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -104,6 +110,8 @@ Adds an event listener to the worker.
 **Deprecated since:** 9
 
 **Substitutes:** on
+
+<!--Device-Worker-on(type: string, listener: EventListener): void--><!--Device-Worker-on(type: string, listener: EventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -140,6 +148,8 @@ Adds an event listener to the worker and removes the event listener automaticall
 
 **Substitutes:** once
 
+<!--Device-Worker-once(type: string, listener: EventListener): void--><!--Device-Worker-once(type: string, listener: EventListener): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -175,6 +185,8 @@ The onerror attribute of the worker specifies the event handler to be called whe
 
 **Substitutes:** onerror
 
+<!--Device-Worker-onerror?: (err: ErrorEvent) => void--><!--Device-Worker-onerror?: (err: ErrorEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -196,6 +208,8 @@ Called when the Worker thread exits. The event handler is executed in the host t
 **Deprecated since:** 9
 
 **Substitutes:** onexit
+
+<!--Device-Worker-onexit?: (code: number) => void--><!--Device-Worker-onexit?: (code: number) => void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -219,6 +233,8 @@ The onmessage attribute of the worker specifies the event handler to be called t
 
 **Substitutes:** onmessage
 
+<!--Device-Worker-onmessage?: (event: MessageEvent) => void--><!--Device-Worker-onmessage?: (event: MessageEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -241,6 +257,8 @@ The onmessage attribute of the worker specifies the event handler when the worke
 
 **Substitutes:** onmessageerror
 
+<!--Device-Worker-onmessageerror?: (event: MessageEvent) => void--><!--Device-Worker-onmessageerror?: (event: MessageEvent) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -262,6 +280,8 @@ Sends a message to the worker thread. The data is transferred using the structur
 **Deprecated since:** 9
 
 **Substitutes:** postMessage
+
+<!--Device-Worker-postMessage(message: Object, transfer: ArrayBuffer[]): void--><!--Device-Worker-postMessage(message: Object, transfer: ArrayBuffer[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -300,6 +320,8 @@ Sends a message to the worker thread. The data is transferred using the structur
 
 **Substitutes:** postMessage
 
+<!--Device-Worker-postMessage(message: Object, options?: PostMessageOptions): void--><!--Device-Worker-postMessage(message: Object, options?: PostMessageOptions): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -336,6 +358,8 @@ Terminates the worker thread to stop the worker from receiving messages
 **Deprecated since:** 9
 
 **Substitutes:** terminate
+
+<!--Device-Worker-terminate(): void--><!--Device-Worker-terminate(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

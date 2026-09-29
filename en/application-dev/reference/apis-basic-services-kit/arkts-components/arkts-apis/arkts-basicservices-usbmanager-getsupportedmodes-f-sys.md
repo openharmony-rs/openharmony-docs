@@ -20,6 +20,8 @@ Obtains the mask combination for the supported mode list of a given USB port. Th
 
 **Substitutes:** [getPortSupportModes](arkts-basicservices-usbmanager-getportsupportmodes-f-sys.md)(portId: number)
 
+<!--Device-usbManager-function getSupportedModes(portId: number): PortModeType--><!--Device-usbManager-function getSupportedModes(portId: number): PortModeType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines the print preview attributes.
 
 **Since:** 24
 
+<!--Device-print-interface PreviewAttribute--><!--Device-print-interface PreviewAttribute-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Preview page range.
 
 **Since:** 24
 
+<!--Device-PreviewAttribute-previewRange: PrinterRange--><!--Device-PreviewAttribute-previewRange: PrinterRange-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## result
@@ -41,5 +45,7 @@ Print preview result. The default value is **-1**.
 **Type:** number
 
 **Since:** 24
+
+<!--Device-PreviewAttribute-result?: int--><!--Device-PreviewAttribute-result?: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

@@ -8,6 +8,8 @@ The **statfs** module provides APIs for obtaining file system information, inclu
 
 **Substitutes:** [statfs](arkts-corefile-file-statvfs.md)
 
+<!--Device-unnamed-declare namespace Statfs--><!--Device-unnamed-declare namespace Statfs-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import

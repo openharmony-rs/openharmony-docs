@@ -8,6 +8,8 @@ Describes the contents of the scan results.
 
 **Since:** 10
 
+<!--Device-ble-interface ScanResult--><!--Device-ble-interface ScanResult-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The address object of a BLE peripheral device, including the address type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScanResult-address?: BluetoothAddress--><!--Device-ScanResult-address?: BluetoothAddress-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## advertiseFlags
@@ -46,7 +50,9 @@ This field is used to identify the discovery mode and supported capabilities of 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ScanResult-advertiseFlags?: int--><!--Device-ScanResult-advertiseFlags?: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -64,7 +70,9 @@ Map of advertising data fields.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ScanResult-advertisingDataMap?: Map<int, Uint8Array>--><!--Device-ScanResult-advertisingDataMap?: Map<int, Uint8Array>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -82,7 +90,9 @@ Connectable of the remote device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ScanResult-connectable: boolean--><!--Device-ScanResult-connectable: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -100,7 +110,9 @@ The raw data of broadcast packet
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ScanResult-data: ArrayBuffer--><!--Device-ScanResult-data: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -118,7 +130,9 @@ Address of the scanned device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ScanResult-deviceId: string--><!--Device-ScanResult-deviceId: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -136,7 +150,9 @@ The local name of the BLE device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ScanResult-deviceName: string--><!--Device-ScanResult-deviceName: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -154,7 +170,9 @@ Map of manufacturer data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ScanResult-manufacturerDataMap?: Map<int, Uint8Array>--><!--Device-ScanResult-manufacturerDataMap?: Map<int, Uint8Array>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -172,7 +190,9 @@ RSSI of the remote device
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ScanResult-rssi: int--><!--Device-ScanResult-rssi: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -190,7 +210,9 @@ Map of service data.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ScanResult-serviceDataMap?: Map<string, Uint8Array>--><!--Device-ScanResult-serviceDataMap?: Map<string, Uint8Array>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -208,7 +230,9 @@ The list of service uuid.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ScanResult-serviceUuids?: string[]--><!--Device-ScanResult-serviceUuids?: string[]-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -226,6 +250,8 @@ The tx power level of the packet in dBm.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ScanResult-txPowerLevel?: int--><!--Device-ScanResult-txPowerLevel?: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

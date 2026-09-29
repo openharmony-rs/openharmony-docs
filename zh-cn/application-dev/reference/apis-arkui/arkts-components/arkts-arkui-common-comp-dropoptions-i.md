@@ -8,6 +8,8 @@ declare interface DropOptions
 
 **起始版本：** 15
 
+<!--Device-unnamed-declare interface DropOptions--><!--Device-unnamed-declare interface DropOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## disableDataPrefetch
@@ -29,5 +31,7 @@ disableDataPrefetch?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-DropOptions-disableDataPrefetch?: boolean--><!--Device-DropOptions-disableDataPrefetch?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

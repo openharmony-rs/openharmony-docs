@@ -16,6 +16,8 @@ Obtains the list of call IDs in a conference. This API uses an asynchronous call
 
 **Since:** 7
 
+<!--Device-call-function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<string>>): void--><!--Device-call-function getCallIdListForConference(callId: int, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ function getCallIdListForConference(callId: number): Promise<Array<string>>
 Obtains the list of call IDs in a conference. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-call-function getCallIdListForConference(callId: int): Promise<Array<string>>--><!--Device-call-function getCallIdListForConference(callId: int): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

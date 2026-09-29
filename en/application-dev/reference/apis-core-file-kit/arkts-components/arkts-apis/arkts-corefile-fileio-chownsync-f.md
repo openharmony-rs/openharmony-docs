@@ -17,6 +17,8 @@ Changes the file owner based on its path. This API returns the result synchronou
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function chownSync(path: string, uid: number, gid: number): void--><!--Device-unnamed-declare function chownSync(path: string, uid: number, gid: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

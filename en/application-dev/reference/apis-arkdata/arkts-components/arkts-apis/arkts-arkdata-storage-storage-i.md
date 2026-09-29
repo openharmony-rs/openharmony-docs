@@ -14,6 +14,8 @@ Before calling the following APIs, use [data_storage.getStorage](arkts-arkdata-s
 
 **Substitutes:** preferences
 
+<!--Device-storage-interface Storage--><!--Device-storage-interface Storage-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Clears this **Storage** object. This API uses an asynchronous callback to return
 **Deprecated since:** 9
 
 **Substitutes:** clear
+
+<!--Device-Storage-clear(callback: AsyncCallback<void>): void--><!--Device-Storage-clear(callback: AsyncCallback<void>): void-End-->
 
 **Parameters:**
 
@@ -69,6 +73,8 @@ Clears this **Storage** object. This API uses a promise to return the result.
 
 **Substitutes:** clear
 
+<!--Device-Storage-clear(): Promise<void>--><!--Device-Storage-clear(): Promise<void>-End-->
+
 **Return value:**
 
 | Type | Description |
@@ -100,6 +106,8 @@ Clears this **Storage** object.
 
 **Substitutes:** clear
 
+<!--Device-Storage-clearSync(): void--><!--Device-Storage-clearSync(): void-End-->
+
 **Examples**
 
 ```TypeScript
@@ -119,6 +127,8 @@ Deletes data with the specified key from this storage object. This API uses an a
 **Deprecated since:** 9
 
 **Substitutes:** delete
+
+<!--Device-Storage-delete(key: string, callback: AsyncCallback<void>): void--><!--Device-Storage-delete(key: string, callback: AsyncCallback<void>): void-End-->
 
 **Parameters:**
 
@@ -154,6 +164,8 @@ Deletes data with the specified key from this storage object. This API uses a pr
 **Deprecated since:** 9
 
 **Substitutes:** delete
+
+<!--Device-Storage-delete(key: string): Promise<void>--><!--Device-Storage-delete(key: string): Promise<void>-End-->
 
 **Parameters:**
 
@@ -192,6 +204,8 @@ Deletes data with the specified key from this storage object.
 
 **Substitutes:** delete
 
+<!--Device-Storage-deleteSync(key: string): void--><!--Device-Storage-deleteSync(key: string): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -217,6 +231,8 @@ Saves the modification of this object to the **Storage** instance and synchroniz
 **Deprecated since:** 9
 
 **Substitutes:** flush
+
+<!--Device-Storage-flush(callback: AsyncCallback<void>): void--><!--Device-Storage-flush(callback: AsyncCallback<void>): void-End-->
 
 **Parameters:**
 
@@ -252,6 +268,8 @@ Saves the modification of this object to the **Storage** instance and synchroniz
 
 **Substitutes:** flush
 
+<!--Device-Storage-flush(): Promise<void>--><!--Device-Storage-flush(): Promise<void>-End-->
+
 **Return value:**
 
 | Type | Description |
@@ -283,6 +301,8 @@ Saves the modification of this object to the **Storage** instance and synchroniz
 
 **Substitutes:** flush
 
+<!--Device-Storage-flushSync(): void--><!--Device-Storage-flushSync(): void-End-->
+
 **Examples**
 
 ```TypeScript
@@ -302,6 +322,8 @@ Obtains the value corresponding to a key. If the value is null or not of the def
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-Storage-get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void--><!--Device-Storage-get(key: string, defValue: ValueType, callback: AsyncCallback<ValueType>): void-End-->
 
 **Parameters:**
 
@@ -338,6 +360,8 @@ Obtains the value corresponding to a key. If the value is null or not of the def
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-Storage-get(key: string, defValue: ValueType): Promise<ValueType>--><!--Device-Storage-get(key: string, defValue: ValueType): Promise<ValueType>-End-->
 
 **Parameters:**
 
@@ -377,6 +401,8 @@ Obtains the value corresponding to a key. If the value is null or not of the def
 
 **Substitutes:** get
 
+<!--Device-Storage-getSync(key: string, defValue: ValueType): ValueType--><!--Device-Storage-getSync(key: string, defValue: ValueType): ValueType-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -410,6 +436,8 @@ Checks whether the storage object contains data with a given key. This API uses 
 **Deprecated since:** 9
 
 **Substitutes:** has
+
+<!--Device-Storage-has(key: string, callback: AsyncCallback<boolean>): boolean--><!--Device-Storage-has(key: string, callback: AsyncCallback<boolean>): boolean-End-->
 
 **Parameters:**
 
@@ -454,6 +482,8 @@ Checks whether the storage object contains data with a given key. This API uses 
 
 **Substitutes:** has
 
+<!--Device-Storage-has(key: string): Promise<boolean>--><!--Device-Storage-has(key: string): Promise<boolean>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -493,6 +523,8 @@ Checks whether the storage object contains data with a given key.
 
 **Substitutes:** has
 
+<!--Device-Storage-hasSync(key: string): boolean--><!--Device-Storage-hasSync(key: string): boolean-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -528,6 +560,8 @@ Unsubscribes from data changes.
 
 **Substitutes:** off
 
+<!--Device-Storage-off(type: 'change', callback: Callback<StorageObserver>): void--><!--Device-Storage-off(type: 'change', callback: Callback<StorageObserver>): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -557,6 +591,8 @@ Subscribes to data changes. The **StorageObserver** needs to be implemented. Whe
 **Deprecated since:** 9
 
 **Substitutes:** on
+
+<!--Device-Storage-on(type: 'change', callback: Callback<StorageObserver>): void--><!--Device-Storage-on(type: 'change', callback: Callback<StorageObserver>): void-End-->
 
 **Parameters:**
 
@@ -589,6 +625,8 @@ Obtains the **Storage** instance corresponding to the specified file, writes dat
 **Deprecated since:** 9
 
 **Substitutes:** put
+
+<!--Device-Storage-put(key: string, value: ValueType, callback: AsyncCallback<void>): void--><!--Device-Storage-put(key: string, value: ValueType, callback: AsyncCallback<void>): void-End-->
 
 **Parameters:**
 
@@ -625,6 +663,8 @@ Obtains the **Storage** instance corresponding to the specified file, writes dat
 **Deprecated since:** 9
 
 **Substitutes:** put
+
+<!--Device-Storage-put(key: string, value: ValueType): Promise<void>--><!--Device-Storage-put(key: string, value: ValueType): Promise<void>-End-->
 
 **Parameters:**
 
@@ -663,6 +703,8 @@ Obtains the **Storage** instance corresponding to the specified file, writes dat
 **Deprecated since:** 9
 
 **Substitutes:** put
+
+<!--Device-Storage-putSync(key: string, value: ValueType): void--><!--Device-Storage-putSync(key: string, value: ValueType): void-End-->
 
 **Parameters:**
 

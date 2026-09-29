@@ -4,7 +4,7 @@
 declare type OnCheckboxChangeCallback = (value: boolean) => void
 ```
 
-Represents the callback invoked when the selected state of the check box changes.
+Invoked when the selected state of the check box changes.
 
 **Since:** 18
 
@@ -13,6 +13,8 @@ Represents the callback invoked when the selected state of the check box changes
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-unnamed-declare type OnCheckboxChangeCallback = (value: boolean) => void--><!--Device-unnamed-declare type OnCheckboxChangeCallback = (value: boolean) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

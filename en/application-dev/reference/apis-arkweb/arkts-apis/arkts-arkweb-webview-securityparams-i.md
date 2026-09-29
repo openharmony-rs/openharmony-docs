@@ -8,6 +8,8 @@ Security feature option configuration. This class provides a set of boolean swit
 
 **Since:** 26.0.0
 
+<!--Device-webview-interface SecurityParams--><!--Device-webview-interface SecurityParams-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Whether to disable JIT compilation. true means disabled, and false means the opp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SecurityParams-disableJITCompilation?: boolean--><!--Device-SecurityParams-disableJITCompilation?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## disableMathML
@@ -45,6 +49,8 @@ Whether to disable MathML. true means disabled, and false means the opposite. De
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SecurityParams-disableMathML?: boolean--><!--Device-SecurityParams-disableMathML?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -62,6 +68,8 @@ Whether to disable non-proxy UDP for WebRTC. true means disabled, and false mean
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SecurityParams-disableNonProxyUDP?: boolean--><!--Device-SecurityParams-disableNonProxyUDP?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## disablePDFViewer
@@ -77,6 +85,8 @@ Whether to disable the PDF viewer. true means disabled, and false means the oppo
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SecurityParams-disablePDFViewer?: boolean--><!--Device-SecurityParams-disablePDFViewer?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -94,6 +104,8 @@ Whether to disable Service Worker. true means disabled, and false means the oppo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SecurityParams-disableServiceWorker?: boolean--><!--Device-SecurityParams-disableServiceWorker?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## disableWebAssembly
@@ -110,6 +122,8 @@ Whether to disable WebAssembly. true means disabled, and false means the opposit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SecurityParams-disableWebAssembly?: boolean--><!--Device-SecurityParams-disableWebAssembly?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## disableWebGL
@@ -125,5 +139,7 @@ Whether to disable WebGL. true means disabled, and false means the opposite. Def
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SecurityParams-disableWebGL?: boolean--><!--Device-SecurityParams-disableWebGL?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

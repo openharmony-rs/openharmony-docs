@@ -20,6 +20,8 @@ Removes applications from the application running blocklist of the current or sp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeDisallowedRunningBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void--><!--Device-applicationManager-function removeDisallowedRunningBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

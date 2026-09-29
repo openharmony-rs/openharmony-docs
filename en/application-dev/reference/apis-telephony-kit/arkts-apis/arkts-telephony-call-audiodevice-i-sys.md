@@ -8,6 +8,8 @@ Enumerates audio devices.
 
 **Since:** 10
 
+<!--Device-call-export interface AudioDevice--><!--Device-call-export interface AudioDevice-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Audio device address.
 
 **Since:** 10
 
+<!--Device-AudioDevice-address?: string--><!--Device-AudioDevice-address?: string-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Audio device name.
 
 **Since:** 11
 
+<!--Device-AudioDevice-deviceName?: string--><!--Device-AudioDevice-deviceName?: string-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Audio device type.
 **Type:** [AudioDeviceType](arkts-telephony-call-audiodevicetype-e-sys.md)
 
 **Since:** 10
+
+<!--Device-AudioDevice-deviceType: AudioDeviceType--><!--Device-AudioDevice-deviceType: AudioDeviceType-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

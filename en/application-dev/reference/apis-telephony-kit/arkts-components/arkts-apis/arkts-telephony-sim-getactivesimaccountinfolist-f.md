@@ -26,6 +26,8 @@ Obtains the list of activated SIM card accounts. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-sim-function getActiveSimAccountInfoList(callback: AsyncCallback<Array<IccAccountInfo>>): void--><!--Device-sim-function getActiveSimAccountInfoList(callback: AsyncCallback<Array<IccAccountInfo>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -78,6 +80,8 @@ Obtains the list of activated SIM card accounts. This API uses a promise to retu
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-sim-function getActiveSimAccountInfoList(): Promise<Array<IccAccountInfo>>--><!--Device-sim-function getActiveSimAccountInfoList(): Promise<Array<IccAccountInfo>>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

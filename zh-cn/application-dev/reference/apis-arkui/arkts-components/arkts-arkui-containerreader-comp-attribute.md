@@ -6,9 +6,11 @@ export declare class ContainerReaderAttribute extends CommonMethod<ContainerRead
 
 除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
 
-**继承/实现关系：** ContainerReaderAttribute extends CommonMethod&lt;ContainerReaderAttribute&gt;
+**继承/实现关系：** ContainerReaderAttribute extends CommonMethod<ContainerReaderAttribute>
 
 **起始版本：** 26.0.0
+
+<!--Device-unnamed-export declare class ContainerReaderAttribute extends CommonMethod<ContainerReaderAttribute>--><!--Device-unnamed-export declare class ContainerReaderAttribute extends CommonMethod<ContainerReaderAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ breakpointConfig(value?: BreakpointOptions)
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ContainerReaderAttribute-breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute--><!--Device-ContainerReaderAttribute-breakpointConfig(value?: BreakpointOptions): ContainerReaderAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

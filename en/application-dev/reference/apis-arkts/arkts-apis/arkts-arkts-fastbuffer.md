@@ -6,6 +6,8 @@ The FastBuffer class is a container type for dealing with binary data directly. 
 
 **Since:** 20
 
+<!--Device-unnamed-declare namespace fastbuffer--><!--Device-unnamed-declare namespace fastbuffer-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

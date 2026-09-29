@@ -27,6 +27,8 @@ You can resolve the conflict by removing allowed Bluetooth devices through [remo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function addDisallowedBluetoothDevices(admin: Want, deviceIds: Array<string>): void--><!--Device-bluetoothManager-function addDisallowedBluetoothDevices(admin: Want, deviceIds: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

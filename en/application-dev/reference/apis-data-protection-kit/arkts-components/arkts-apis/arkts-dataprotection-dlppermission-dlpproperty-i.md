@@ -8,6 +8,8 @@ Represents the authorization information.
 
 **Since:** 21
 
+<!--Device-dlpPermission-export interface DLPProperty--><!--Device-dlpPermission-export interface DLPProperty-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Whether the file can be opened after the permission expires (with the editing pe
 
 **Since:** 21
 
+<!--Device-DLPProperty-actionUponExpiry?: ActionType--><!--Device-DLPProperty-actionUponExpiry?: ActionType-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## allowedOpenCount
@@ -41,6 +45,8 @@ Number of allowed opening times. The default value is **0**. No value range rest
 **Type:** number
 
 **Since:** 21
+
+<!--Device-DLPProperty-allowedOpenCount?: number--><!--Device-DLPProperty-allowedOpenCount?: number-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -56,6 +62,8 @@ List of users who are authorized to access the DLP file. By default, this parame
 
 **Since:** 21
 
+<!--Device-DLPProperty-authUserList?: Array<AuthUser>--><!--Device-DLPProperty-authUserList?: Array<AuthUser>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## contactAccount
@@ -69,6 +77,8 @@ Account of the contact. The value contains 1 to 255 bytes. If the value is out o
 **Type:** string
 
 **Since:** 21
+
+<!--Device-DLPProperty-contactAccount: string--><!--Device-DLPProperty-contactAccount: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -86,6 +96,8 @@ Validity period for file viewing, in seconds. The default value is 0. After the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DLPProperty-countdown?: number--><!--Device-DLPProperty-countdown?: number-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## everyoneAccessList
@@ -100,6 +112,8 @@ Permission granted to everyone. This parameter is left blank by default.
 
 **Since:** 21
 
+<!--Device-DLPProperty-everyoneAccessList?: Array<DLPFileAccess>--><!--Device-DLPProperty-everyoneAccessList?: Array<DLPFileAccess>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## expireTime
@@ -113,6 +127,8 @@ Timestamp when the file permission has expired. This parameter is left blank by 
 **Type:** number
 
 **Since:** 21
+
+<!--Device-DLPProperty-expireTime?: number--><!--Device-DLPProperty-expireTime?: number-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -130,6 +146,8 @@ Extended attribute of a DLP file. This parameter is left empty by default.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DLPProperty-extensionFields?: Record<string, Object>--><!--Device-DLPProperty-extensionFields?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## fileId
@@ -143,6 +161,8 @@ System account ID. This parameter is left empty by default. The value contains a
 **Type:** string
 
 **Since:** 21
+
+<!--Device-DLPProperty-fileId?: string--><!--Device-DLPProperty-fileId?: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -158,6 +178,8 @@ Whether the file can be accessed offline. **true**: yes; **false**: no.
 
 **Since:** 21
 
+<!--Device-DLPProperty-offlineAccess: boolean--><!--Device-DLPProperty-offlineAccess: boolean-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## ownerAccount
@@ -171,6 +193,8 @@ Account of the owner who can set the permission. The value contains 1 to 255 byt
 **Type:** string
 
 **Since:** 21
+
+<!--Device-DLPProperty-ownerAccount: string--><!--Device-DLPProperty-ownerAccount: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -186,6 +210,8 @@ Account ID of the owner. The value contains a maximum of 255 bytes. If the value
 
 **Since:** 21
 
+<!--Device-DLPProperty-ownerAccountID: string--><!--Device-DLPProperty-ownerAccountID: string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## ownerAccountType
@@ -200,6 +226,8 @@ Account type of the owner.
 
 **Since:** 21
 
+<!--Device-DLPProperty-ownerAccountType: AccountType--><!--Device-DLPProperty-ownerAccountType: AccountType-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## waterMarkConfig
@@ -213,5 +241,7 @@ Whether watermarks are required. **true**: yes; **false**: no. This parameter is
 **Type:** boolean
 
 **Since:** 23
+
+<!--Device-DLPProperty-waterMarkConfig?: boolean--><!--Device-DLPProperty-waterMarkConfig?: boolean-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

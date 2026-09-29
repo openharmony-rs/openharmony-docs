@@ -8,6 +8,8 @@ Input sources supported by the input device, including the keyboard, mouse, touc
 
 **Since:** 9
 
+<!--Device-inputDevice-type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'--><!--Device-inputDevice-type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 | Type | Description |

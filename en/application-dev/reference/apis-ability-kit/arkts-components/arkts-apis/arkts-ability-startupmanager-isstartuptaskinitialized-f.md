@@ -18,6 +18,8 @@ Checks whether a startup task or .so file preloading task is initialized.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-startupManager-function isStartupTaskInitialized(startupTask: string): boolean--><!--Device-startupManager-function isStartupTaskInitialized(startupTask: string): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 **Parameters:**

@@ -20,6 +20,8 @@ Checks whether the current application is activated as a BYOD device administrat
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function isByodAdmin(admin: Want): boolean--><!--Device-adminManager-function isByodAdmin(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -18,6 +18,8 @@ Send system media key event.The system automatically selects the recipient.
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
 
+<!--Device-avSession-function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): void--><!--Device-avSession-function sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Send system media key event.The system automatically selects the recipient.
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+<!--Device-avSession-function sendSystemAVKeyEvent(event: KeyEvent): Promise<void>--><!--Device-avSession-function sendSystemAVKeyEvent(event: KeyEvent): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 

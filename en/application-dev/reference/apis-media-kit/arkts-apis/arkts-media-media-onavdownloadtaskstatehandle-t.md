@@ -10,6 +10,8 @@ Describes the callback invoked for the AVDownloader state change event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-media-type OnAVDownloadTaskStateHandle = (taskId: string, state: AVDownloadTaskState) => void--><!--Device-media-type OnAVDownloadTaskStateHandle = (taskId: string, state: AVDownloadTaskState) => void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**

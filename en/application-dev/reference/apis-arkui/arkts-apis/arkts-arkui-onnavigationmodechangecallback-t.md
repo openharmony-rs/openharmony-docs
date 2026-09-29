@@ -12,6 +12,8 @@ Represents the callback invoked when the mode of the **MultiNavigation** compone
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type OnNavigationModeChangeCallback = (mode: NavigationMode) => void--><!--Device-unnamed-declare type OnNavigationModeChangeCallback = (mode: NavigationMode) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

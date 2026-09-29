@@ -14,6 +14,8 @@ Sets the image smoothness attribute.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type ImageSmoothingQuality = "high" | "low" | "medium"--><!--Device-unnamed-declare type ImageSmoothingQuality = "high" | "low" | "medium"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

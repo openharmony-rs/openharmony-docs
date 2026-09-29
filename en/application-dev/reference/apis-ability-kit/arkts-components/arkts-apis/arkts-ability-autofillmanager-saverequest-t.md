@@ -12,6 +12,8 @@ Defines the information about an auto-save request.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest--><!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Type:** [_AutoFillRequest.SaveRequest](arkts-ability-autofillrequest-saverequest-i.md)

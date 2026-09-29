@@ -18,6 +18,8 @@ Obtains information about a volume based on the UUID. This API uses an asynchron
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
+<!--Device-volumeManager-function getVolumeByUuid(uuid: string, callback: AsyncCallback<Volume>): void--><!--Device-volumeManager-function getVolumeByUuid(uuid: string, callback: AsyncCallback<Volume>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -54,6 +56,8 @@ Obtains information about a volume based on the universally unique identifier (U
 **Since:** 9
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
+
+<!--Device-volumeManager-function getVolumeByUuid(uuid: string): Promise<Volume>--><!--Device-volumeManager-function getVolumeByUuid(uuid: string): Promise<Volume>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

@@ -18,6 +18,8 @@ Obtains the historical data traffic of the specified NIC. This API uses an async
 
 **Required permissions:** ohos.permission.GET_NETWORK_STATS
 
+<!--Device-statistics-function getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback<NetStatsInfo>): void--><!--Device-statistics-function getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback<NetStatsInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Obtains the historical data traffic of the specified NIC. This API uses a promis
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_NETWORK_STATS
+
+<!--Device-statistics-function getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise<NetStatsInfo>--><!--Device-statistics-function getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise<NetStatsInfo>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

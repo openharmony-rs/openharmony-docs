@@ -8,6 +8,8 @@ Optional configuration for maximizing.
 
 **Since:** 26.0.0
 
+<!--Device-window-interface MaximizeOptions--><!--Device-window-interface MaximizeOptions-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -32,6 +34,8 @@ The parameter controls the across-display mode policy of main windows. This para
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MaximizeOptions-acrossDisplayPresentation?: AcrossDisplayPresentation--><!--Device-MaximizeOptions-acrossDisplayPresentation?: AcrossDisplayPresentation-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## maximizePresentation
@@ -50,6 +54,8 @@ Layout when the window is maximized.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MaximizeOptions-maximizePresentation?: MaximizePresentation--><!--Device-MaximizeOptions-maximizePresentation?: MaximizePresentation-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## snapshotAnimationConfig
@@ -65,5 +71,7 @@ The configuration of snapshot animation. If not specified, the system default an
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MaximizeOptions-snapshotAnimationConfig?: WindowSnapshotAnimationConfig--><!--Device-MaximizeOptions-snapshotAnimationConfig?: WindowSnapshotAnimationConfig-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

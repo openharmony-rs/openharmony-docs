@@ -22,6 +22,8 @@ Sets the APN corresponding to the specified **apnId** as the preferred APN. This
 
 **Required permissions:** ohos.permission.MANAGE_APN_SETTING
 
+<!--Device-data-function setPreferredApn(apnId: int): Promise<boolean>--><!--Device-data-function setPreferredApn(apnId: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**

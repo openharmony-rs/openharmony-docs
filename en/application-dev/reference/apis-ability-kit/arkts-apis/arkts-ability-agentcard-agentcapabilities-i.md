@@ -10,6 +10,8 @@ Defines optional capabilities supported by an agent.
 
 **Since:** 24
 
+<!--Device-unnamed-export interface AgentCapabilities--><!--Device-unnamed-export interface AgentCapabilities-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## extendedAgentCard
@@ -26,7 +28,9 @@ Indicates if the agent supports providing an extended agent card when authentica
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentCapabilities-extendedAgentCard?: boolean--><!--Device-AgentCapabilities-extendedAgentCard?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,7 +48,9 @@ The protocol extension supported by the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentCapabilities-extension?: string--><!--Device-AgentCapabilities-extension?: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -62,7 +68,9 @@ Indicates if the agent supports sending push notifications for asynchronous task
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentCapabilities-pushNotifications?: boolean--><!--Device-AgentCapabilities-pushNotifications?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -80,7 +88,9 @@ If the Agent exposes task state change history.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentCapabilities-stateTransitionHistory?: boolean--><!--Device-AgentCapabilities-stateTransitionHistory?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -98,6 +108,8 @@ Indicates if the agent supports streaming responses.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentCapabilities-streaming?: boolean--><!--Device-AgentCapabilities-streaming?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

@@ -16,6 +16,8 @@ This module provides APIs for enterprise device information management, includin
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace deviceInfo--><!--Device-unnamed-declare namespace deviceInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

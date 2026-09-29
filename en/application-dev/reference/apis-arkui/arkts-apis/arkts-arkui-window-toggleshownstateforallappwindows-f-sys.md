@@ -16,6 +16,8 @@ Hides or restores the application's windows during quick multi-window switching.
 
 **Since:** 9
 
+<!--Device-window-function toggleShownStateForAllAppWindows(callback: AsyncCallback<void>): void--><!--Device-window-function toggleShownStateForAllAppWindows(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ function toggleShownStateForAllAppWindows(): Promise<void>
 Hides or restores the application's windows during quick multi-window switching. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-window-function toggleShownStateForAllAppWindows(): Promise<void>--><!--Device-window-function toggleShownStateForAllAppWindows(): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

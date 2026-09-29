@@ -12,6 +12,8 @@ Defines the context environment for the [EmbeddableUIAbility](arkts-ability-app-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-common-export type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default--><!--Device-common-export type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _EmbeddableUIAbilityContext.default

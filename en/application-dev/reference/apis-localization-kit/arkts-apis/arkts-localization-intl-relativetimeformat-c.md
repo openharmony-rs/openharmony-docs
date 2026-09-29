@@ -12,6 +12,8 @@ Provides the relative time formatting capability.
 
 **Substitutes:** [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)
 
+<!--Device-intl-export class RelativeTimeFormat--><!--Device-intl-export class RelativeTimeFormat-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Creates a **RelativeTimeFormat** object.
 **Substitutes:** [Intl.RelativeTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormat-constructor()--><!--Device-RelativeTimeFormat-constructor()-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -64,6 +68,8 @@ Creates a **RelativeTimeFormat** object.
 **Substitutes:** [Intl.RelativeTimeFormat.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormat-constructor(locale: string | Array<string>, options?: RelativeTimeFormatInputOptions)--><!--Device-RelativeTimeFormat-constructor(locale: string | Array<string>, options?: RelativeTimeFormatInputOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -102,6 +108,8 @@ Formats a relative time.
 **Substitutes:** [Intl.RelativeTimeFormat.format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormat-format(value: double, unit: string): string--><!--Device-RelativeTimeFormat-format(value: double, unit: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -145,6 +153,8 @@ Formats the relative time
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RelativeTimeFormat-formatToParts(value: double, unit: string): Array<object>--><!--Device-RelativeTimeFormat-formatToParts(value: double, unit: string): Array<object>-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -185,6 +195,8 @@ Defines the formatting options for a **RelativeTimeFormat** object.
 **Substitutes:** [Intl.RelativeTimeFormat.resolvedOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormat-resolvedOptions(): RelativeTimeFormatResolvedOptions--><!--Device-RelativeTimeFormat-resolvedOptions(): RelativeTimeFormatResolvedOptions-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

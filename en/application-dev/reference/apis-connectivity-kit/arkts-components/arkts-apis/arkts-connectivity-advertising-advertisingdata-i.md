@@ -8,6 +8,8 @@ Represents an advertising data packet.
 
 **Since:** 26.0.0
 
+<!--Device-advertising-interface AdvertisingData--><!--Device-advertising-interface AdvertisingData-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Whether the advertising data contains the local device name. **true**: **yes**. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingData-includeDeviceName?: boolean--><!--Device-AdvertisingData-includeDeviceName?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## manufacturerData
@@ -45,6 +49,8 @@ Manufacturer data. By default, this field is not carried if it is not set.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdvertisingData-manufacturerData?: ManufacturerData[]--><!--Device-AdvertisingData-manufacturerData?: ManufacturerData[]-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Service data. By default, this field is not carried if it is not set.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AdvertisingData-serviceData?: ServiceData[]--><!--Device-AdvertisingData-serviceData?: ServiceData[]-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## serviceUuids
@@ -77,5 +85,7 @@ Service UUIDs. A UUID must contain 36 characters, including 32 hexadecimal digit
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AdvertisingData-serviceUuids?: string[]--><!--Device-AdvertisingData-serviceUuids?: string[]-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

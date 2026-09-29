@@ -14,4 +14,6 @@ CommonAttribute for ide.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare class CommonAttribute extends CommonMethod<CommonAttribute>--><!--Device-unnamed-declare class CommonAttribute extends CommonMethod<CommonAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

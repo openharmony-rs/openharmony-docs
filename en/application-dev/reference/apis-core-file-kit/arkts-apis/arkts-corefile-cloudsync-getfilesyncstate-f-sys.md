@@ -18,6 +18,8 @@ Obtains the file sync state. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-cloudSync-function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>--><!--Device-cloudSync-function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Obtains the file sync state. This API uses an asynchronous callback to return th
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
+<!--Device-cloudSync-function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<FileSyncState>>): void--><!--Device-cloudSync-function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<FileSyncState>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -126,6 +130,8 @@ function getFileSyncState(uri: string): FileSyncState
 Obtains the file sync state.
 
 **Since:** 12
+
+<!--Device-cloudSync-function getFileSyncState(uri: string): FileSyncState--><!--Device-cloudSync-function getFileSyncState(uri: string): FileSyncState-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

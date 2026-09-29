@@ -18,6 +18,8 @@ Open the view of forms belonging to the specified bundle. Client to communicatio
 
 **Required permissions:** ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
 
+<!--Device-formProvider-function openFormManagerCrossBundle(want: Want): void--><!--Device-formProvider-function openFormManagerCrossBundle(want: Want): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ The **CommonEvent** module provides capabilities to publish, subscribe to, and u
 
 **Substitutes:** [commonEventManager](arkts-basicservices-commoneventmanager.md)
 
+<!--Device-unnamed-declare namespace commonEvent--><!--Device-unnamed-declare namespace commonEvent-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 ## Modules to Import
@@ -25,8 +27,8 @@ The **CommonEvent** module provides capabilities to publish, subscribe to, and u
 | [createSubscriber](arkts-basicservices-commonevent-createsubscriber-depr-f.md#createsubscriber-1) | Creates a subscriber. This API uses a promise to return the result. |
 | [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish) | Publishes a common event with given properties. This API uses an asynchronous callback to return the result. |
 | [publish](arkts-basicservices-commonevent-publish-depr-f.md#publish-1) | Publishes a common event with given properties. This API uses an asynchronous callback to return the result. |
-| [subscribe](arkts-basicservices-commonevent-subscribe-depr-f.md#subscribe) | Subscribes to common events. This API uses an asynchronous callback to return the result. |
-| [unsubscribe](arkts-basicservices-commonevent-unsubscribe-depr-f.md#unsubscribe) | Unsubscribes from common events. This API uses an asynchronous callback to return the result. |
+| [subscribe](arkts-basicservices-commonevent-subscribe-depr-f.md) | Subscribes to common events. This API uses an asynchronous callback to return the result. |
+| [unsubscribe](arkts-basicservices-commonevent-unsubscribe-depr-f.md) | Unsubscribes from common events. This API uses an asynchronous callback to return the result. |
 
 <!--Del-->
 ### Functions(System API)

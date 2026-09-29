@@ -20,6 +20,8 @@ Obtains an [InputMethodEngine](arkts-ime-inputmethodengine-inputmethodengine-i.m
 
 **Substitutes:** [getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)()
 
+<!--Device-inputMethodEngine-function getInputMethodEngine(): InputMethodEngine--><!--Device-inputMethodEngine-function getInputMethodEngine(): InputMethodEngine-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**

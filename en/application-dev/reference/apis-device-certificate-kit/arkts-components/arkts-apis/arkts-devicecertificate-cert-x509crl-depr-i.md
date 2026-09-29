@@ -17,6 +17,8 @@ Provides APIs for X.509 CRL operations.
 
 **Substitutes:** [X509CRL](arkts-devicecertificate-cert-x509crl-i.md)
 
+<!--Device-cert-interface X509Crl--><!--Device-cert-interface X509Crl-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -43,6 +45,8 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 **Deprecated since:** 11
 
 **Substitutes:** getEncoded
+
+<!--Device-X509Crl-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509Crl-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -128,6 +132,8 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 **Substitutes:** getEncoded
 
+<!--Device-X509Crl-getEncoded(): Promise<EncodingBlob>--><!--Device-X509Crl-getEncoded(): Promise<EncodingBlob>-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -206,6 +212,8 @@ Obtains the issuer of the X.509 CRL.
 **Deprecated since:** 11
 
 **Substitutes:** getIssuerName
+
+<!--Device-X509Crl-getIssuerName(): DataBlob--><!--Device-X509Crl-getIssuerName(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -289,6 +297,8 @@ Obtains the last update date of this X.509 CRL.
 
 **Substitutes:** getLastUpdate
 
+<!--Device-X509Crl-getLastUpdate(): string--><!--Device-X509Crl-getLastUpdate(): string-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -371,6 +381,8 @@ Obtains the next update date of this CRL.
 
 **Substitutes:** getNextUpdate
 
+<!--Device-X509Crl-getNextUpdate(): string--><!--Device-X509Crl-getNextUpdate(): string-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -452,6 +464,8 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 **Deprecated since:** 11
 
 **Substitutes:** getRevokedCert
+
+<!--Device-X509Crl-getRevokedCert(serialNumber: number): X509CrlEntry--><!--Device-X509Crl-getRevokedCert(serialNumber: number): X509CrlEntry-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -542,6 +556,8 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses an
 
 **Substitutes:** getRevokedCerts
 
+<!--Device-X509Crl-getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void--><!--Device-X509Crl-getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Parameters:**
@@ -625,6 +641,8 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses a 
 
 **Substitutes:** getRevokedCerts
 
+<!--Device-X509Crl-getRevokedCerts(): Promise<Array<X509CrlEntry>>--><!--Device-X509Crl-getRevokedCerts(): Promise<Array<X509CrlEntry>>-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -702,6 +720,8 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 **Deprecated since:** 11
 
 **Substitutes:** getRevokedCertWithCert
+
+<!--Device-X509Crl-getRevokedCertWithCert(cert: X509Cert): X509CrlEntry--><!--Device-X509Crl-getRevokedCertWithCert(cert: X509Cert): X509CrlEntry-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -827,6 +847,8 @@ Obtains the signature data of the X.509 CRL.
 
 **Substitutes:** getSignature
 
+<!--Device-X509Crl-getSignature(): DataBlob--><!--Device-X509Crl-getSignature(): DataBlob-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -908,6 +930,8 @@ Obtains the signing algorithm of the X.509 CRL.
 **Deprecated since:** 11
 
 **Substitutes:** getSignatureAlgName
+
+<!--Device-X509Crl-getSignatureAlgName(): string--><!--Device-X509Crl-getSignatureAlgName(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -991,6 +1015,8 @@ Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the In
 
 **Substitutes:** getSignatureAlgOid
 
+<!--Device-X509Crl-getSignatureAlgOid(): string--><!--Device-X509Crl-getSignatureAlgOid(): string-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -1072,6 +1098,8 @@ Obtains the parameters of the X.509 CRL signing algorithm.
 **Deprecated since:** 11
 
 **Substitutes:** getSignatureAlgParams
+
+<!--Device-X509Crl-getSignatureAlgParams(): DataBlob--><!--Device-X509Crl-getSignatureAlgParams(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1156,6 +1184,8 @@ Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
 
 **Substitutes:** [getTBSInfo](arkts-devicecertificate-cert-x509crl-i.md#gettbsinfo)
 
+<!--Device-X509Crl-getTbsInfo(): DataBlob--><!--Device-X509Crl-getTbsInfo(): DataBlob-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -1238,6 +1268,8 @@ Obtains the CRL type.
 
 **Substitutes:** getType
 
+<!--Device-X509Crl-getType(): string--><!--Device-X509Crl-getType(): string-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -1306,6 +1338,8 @@ Obtains the version of the X.509 CRL.
 
 **Substitutes:** getVersion
 
+<!--Device-X509Crl-getVersion(): number--><!--Device-X509Crl-getVersion(): number-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Return value:**
@@ -1373,6 +1407,8 @@ Checks whether an X.509 certificate is revoked.
 **Deprecated since:** 11
 
 **Substitutes:** isRevoked
+
+<!--Device-X509Crl-isRevoked(cert: X509Cert): boolean--><!--Device-X509Crl-isRevoked(cert: X509Cert): boolean-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1483,6 +1519,8 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 **Deprecated since:** 11
 
 **Substitutes:** verify
+
+<!--Device-X509Crl-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void--><!--Device-X509Crl-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1645,6 +1683,8 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 **Deprecated since:** 11
 
 **Substitutes:** verify
+
+<!--Device-X509Crl-verify(key: cryptoFramework.PubKey): Promise<void>--><!--Device-X509Crl-verify(key: cryptoFramework.PubKey): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

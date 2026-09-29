@@ -20,6 +20,8 @@ Obtains the device policy of a specified user. This API allows you to obtain a s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string--><!--Device-deviceSettings-function getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

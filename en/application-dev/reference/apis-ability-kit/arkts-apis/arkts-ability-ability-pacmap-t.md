@@ -11,6 +11,8 @@ Defines the level-2 module PacMap.
 **Model restriction:** 
 - API version 11 and later: This API can be used in both the stage model and FA model.
 
+<!--Device-ability-export type PacMap = _PacMap--><!--Device-ability-export type PacMap = _PacMap-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Type:** _PacMap

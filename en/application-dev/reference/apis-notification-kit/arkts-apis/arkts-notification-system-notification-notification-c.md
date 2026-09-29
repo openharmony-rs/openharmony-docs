@@ -12,6 +12,8 @@ Manages notifications.
 
 **Substitutes:** [notification/notification](arkts-notification-notification.md)
 
+<!--Device-unnamed-declare class Notification--><!--Device-unnamed-declare class Notification-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Displays the notification.
 **Deprecated since:** 7
 
 **Substitutes:** [notification/notification](arkts-notification-notification.md)
+
+<!--Device-Notification-static show(options?: ShowNotificationOptions): void--><!--Device-Notification-static show(options?: ShowNotificationOptions): void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

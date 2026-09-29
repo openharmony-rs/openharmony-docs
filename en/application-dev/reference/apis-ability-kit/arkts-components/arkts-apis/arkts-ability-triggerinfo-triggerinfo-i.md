@@ -8,6 +8,8 @@ The module defines the information required for triggering the WantAgent. The in
 
 **Since:** 7
 
+<!--Device-unnamed-export interface TriggerInfo--><!--Device-unnamed-export interface TriggerInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## code
@@ -22,7 +24,9 @@ Common event code. This field is valid only when [OperationType](../../../refere
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TriggerInfo-code: int--><!--Device-TriggerInfo-code: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ Extra information.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TriggerInfo-extraInfo?: { [key: string]: any }--><!--Device-TriggerInfo-extraInfo?: { [key: string]: any }-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## extraInfos
@@ -56,6 +62,8 @@ Extra information. You are advised to use this property to replace **extraInfo**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TriggerInfo-extraInfos?: Record<string, Object>--><!--Device-TriggerInfo-extraInfos?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## permission
@@ -70,7 +78,9 @@ Permission required for a subscriber to receive the common event. This field is 
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TriggerInfo-permission?: string--><!--Device-TriggerInfo-permission?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -86,6 +96,8 @@ Carrier for information transfer between objects (application components).
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-TriggerInfo-want?: Want--><!--Device-TriggerInfo-want?: Want-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

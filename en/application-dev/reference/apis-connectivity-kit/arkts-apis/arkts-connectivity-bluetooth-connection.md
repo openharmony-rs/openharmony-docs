@@ -6,6 +6,8 @@ Provides methods to operate or manage Bluetooth.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace connection--><!--Device-unnamed-declare namespace connection-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -114,6 +116,17 @@ import { connection } from '@kit.ConnectivityKit';
 | [TrustedPairedDevices](arkts-connectivity-connection-trustedpaireddevices-i-sys.md) | Describes the cloud pair device. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [BluetoothAddress](arkts-connectivity-connection-bluetoothaddress-t.md) | Bluetooth device address. |
+| [MajorClass](arkts-connectivity-connection-majorclass-t.md) | Indicate the major class of a bluetooth device. |
+| [MajorMinorClass](arkts-connectivity-connection-majorminorclass-t.md) | Indicate the major minor class of a bluetooth device. |
+| [ProfileConnectionState](arkts-connectivity-connection-profileconnectionstate-t.md) | Indicate the profile connection state. |
+| [ProfileId](arkts-connectivity-connection-profileid-t.md) | Indicate the profile id. |
+| [ProfileUuids](arkts-connectivity-connection-profileuuids-t.md) | Indicate the profile uuid. |
+
 ### Enums
 
 | Name | Description |
@@ -139,14 +152,3 @@ import { connection } from '@kit.ConnectivityKit';
 | [DeviceType](arkts-connectivity-connection-devicetype-e-sys.md) | Enum for the custom type of remote device. |
 | [PinType](arkts-connectivity-connection-pintype-e-sys.md) | Enum for the type of pairing to a remote device |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [BluetoothAddress](arkts-connectivity-connection-bluetoothaddress-t.md) | Bluetooth device address. |
-| [MajorClass](arkts-connectivity-connection-majorclass-t.md) | Indicate the major class of a bluetooth device. |
-| [MajorMinorClass](arkts-connectivity-connection-majorminorclass-t.md) | Indicate the major minor class of a bluetooth device. |
-| [ProfileConnectionState](arkts-connectivity-connection-profileconnectionstate-t.md) | Indicate the profile connection state. |
-| [ProfileId](arkts-connectivity-connection-profileid-t.md) | Indicate the profile id. |
-| [ProfileUuids](arkts-connectivity-connection-profileuuids-t.md) | Indicate the profile uuid. |

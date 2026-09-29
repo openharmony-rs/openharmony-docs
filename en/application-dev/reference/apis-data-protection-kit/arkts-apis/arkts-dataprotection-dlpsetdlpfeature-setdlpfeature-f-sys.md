@@ -22,6 +22,8 @@ This API is used to enable or disable the DLP function in enterprise policies.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpSetDlpFeature-function setDlpFeature(status: DlpFeatureStatus): Promise<StatusInfoResult>--><!--Device-dlpSetDlpFeature-function setDlpFeature(status: DlpFeatureStatus): Promise<StatusInfoResult>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **System API:** This is a system API.

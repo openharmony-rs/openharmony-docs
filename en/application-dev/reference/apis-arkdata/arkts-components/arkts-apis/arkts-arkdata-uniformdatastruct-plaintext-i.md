@@ -8,6 +8,8 @@ Represents data of the plain text type.
 
 **Since:** 12
 
+<!--Device-uniformDataStruct-interface PlainText--><!--Device-uniformDataStruct-interface PlainText-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Text abstract. It is an empty string by default.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PlainText-abstract?: string--><!--Device-PlainText-abstract?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -56,6 +60,8 @@ By default, it is an empty dictionary object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PlainText-details?: Record<string, string>--><!--Device-PlainText-details?: Record<string, string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## textContent
@@ -72,6 +78,8 @@ Plaintext content.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PlainText-textContent: string--><!--Device-PlainText-textContent: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -87,5 +95,7 @@ Uniform data type, which has a fixed value of **general.plain-text**. For detail
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PlainText-readonly uniformDataType: 'general.plain-text'--><!--Device-PlainText-readonly uniformDataType: 'general.plain-text'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

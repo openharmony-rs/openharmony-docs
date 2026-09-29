@@ -16,6 +16,8 @@ Defines the extra parameters required by the device selection module in the cont
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-continuationManager-export type ContinuationExtraParams = _ContinuationExtraParams--><!--Device-continuationManager-export type ContinuationExtraParams = _ContinuationExtraParams-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 **Type:** _ContinuationExtraParams

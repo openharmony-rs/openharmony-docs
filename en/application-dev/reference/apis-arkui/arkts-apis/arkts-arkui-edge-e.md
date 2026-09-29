@@ -4,9 +4,11 @@
 declare enum Edge
 ```
 
-Edge.
+Controls the alignment position of the scrollable component in the layout.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum Edge--><!--Device-unnamed-declare enum Edge-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,11 +18,13 @@ Edge.
 Top
 ```
 
-The top is centered horizontally.
+Top edge in the vertical direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Edge-Top--><!--Device-Edge-Top-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,11 +34,15 @@ The top is centered horizontally.
 Center
 ```
 
-Center horizontal and vertical.
+Center position in the vertical direction.
+
+This API is deprecated since API version 9.
 
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-Edge-Center--><!--Device-Edge-Center-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,11 +52,13 @@ Center horizontal and vertical.
 Bottom
 ```
 
-The bottom is centered horizontally.
+Bottom edge in the vertical direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Edge-Bottom--><!--Device-Edge-Bottom-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,11 +68,15 @@ The bottom is centered horizontally.
 Baseline
 ```
 
-Cross axis direction text baseline alignment.
+Text baseline position in the cross axis direction.
+
+This API is deprecated since API version 9.
 
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-Edge-Baseline--><!--Device-Edge-Baseline-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,11 +86,13 @@ Cross axis direction text baseline alignment.
 Start
 ```
 
-Align the head of the cross axis direction.
+Start position in the horizontal direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Edge-Start--><!--Device-Edge-Start-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,11 +102,15 @@ Align the head of the cross axis direction.
 Middle
 ```
 
-Middle
+Center position in the horizontal direction.
+
+This API is deprecated since API version 9.
 
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-Edge-Middle--><!--Device-Edge-Middle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,10 +120,12 @@ Middle
 End
 ```
 
-Align the head of the cross axis direction.
+End position in the horizontal direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Edge-End--><!--Device-Edge-End-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

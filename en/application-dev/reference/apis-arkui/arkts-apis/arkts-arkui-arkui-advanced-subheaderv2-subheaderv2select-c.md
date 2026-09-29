@@ -10,6 +10,8 @@ Defines the content and events for selection.
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class SubHeaderV2Select--><!--Device-unnamed-export declare class SubHeaderV2Select-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,6 +33,8 @@ A constructor used to create a **SubHeaderV2SelectOptions** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2Select-constructor(options: SubHeaderV2SelectOptions)--><!--Device-SubHeaderV2Select-constructor(options: SubHeaderV2SelectOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ Sets the onSelect of the SubHeaderV2SelectOptions.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2Select-onSelect?: SubHeaderV2SelectOnSelect--><!--Device-SubHeaderV2Select-onSelect?: SubHeaderV2SelectOnSelect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +92,8 @@ Decorator: @Trace
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2Select-defaultFocus?: boolean--><!--Device-SubHeaderV2Select-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -105,6 +113,8 @@ Set the id for the SubHeaderV2Select.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-SubHeaderV2Select-id?: string--><!--Device-SubHeaderV2Select-id?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ Sets the options of the SubHeaderV2SelectOptions.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2Select-options: SelectOption[]--><!--Device-SubHeaderV2Select-options: SelectOption[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedContent
@@ -146,6 +158,8 @@ Sets the selected content of the SubHeaderV2SelectOptions.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2Select-selectedContent?: ResourceStr--><!--Device-SubHeaderV2Select-selectedContent?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedIndex
@@ -165,5 +179,7 @@ Sets the selected index of the SubHeaderV2SelectOptions.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2Select-selectedIndex?: number--><!--Device-SubHeaderV2Select-selectedIndex?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

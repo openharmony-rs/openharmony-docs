@@ -8,6 +8,8 @@ Definition of connect parameter.
 
 **Since:** 26.0.0
 
+<!--Device-mechanicManager-export interface ConnectParam--><!--Device-mechanicManager-export interface ConnectParam-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Data carried during device discovery Data must be in the following format:|type|
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectParam-custdata: string--><!--Device-ConnectParam-custdata: string-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ Name of the mechanical device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectParam-deviceName?: string--><!--Device-ConnectParam-deviceName?: string-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Identifer of current device. The value should be an integer.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectParam-identifier?: int--><!--Device-ConnectParam-identifier?: int-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

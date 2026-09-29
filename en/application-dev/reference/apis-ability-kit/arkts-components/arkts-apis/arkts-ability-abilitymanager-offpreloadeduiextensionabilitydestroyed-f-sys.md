@@ -20,6 +20,8 @@ Unsubscribes from loaded events of a preloaded [UIExtensionAbility](arkts-abilit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDestroyedFn): void--><!--Device-abilityManager-function offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDestroyedFn): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Queries the firewall policy for a system user ID, including the firewall switch 
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
 
+<!--Device-netFirewall-function getNetFirewallPolicy(userId: int): Promise<NetFirewallPolicy>--><!--Device-netFirewall-function getNetFirewallPolicy(userId: int): Promise<NetFirewallPolicy>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

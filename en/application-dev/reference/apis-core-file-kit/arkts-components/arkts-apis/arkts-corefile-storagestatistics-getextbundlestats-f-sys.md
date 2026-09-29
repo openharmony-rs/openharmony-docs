@@ -20,6 +20,8 @@ Obtains the space usage of a specified user, system application bundle name, or 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function getExtBundleStats(userId: int, businessName: string): Promise<ExtBundleStats>--><!--Device-storageStatistics-function getExtBundleStats(userId: int, businessName: string): Promise<ExtBundleStats>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.

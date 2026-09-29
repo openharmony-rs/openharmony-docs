@@ -25,6 +25,8 @@ compilation, which are significantly restricted by CPU resources. (In this case,
 
 **Required permissions:** ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
+<!--Device-backgroundProcessManager-function setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise<void>--><!--Device-backgroundProcessManager-function setPowerSaveMode(pid: int, powerSaveMode: PowerSaveMode): Promise<void>-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Parameters:**

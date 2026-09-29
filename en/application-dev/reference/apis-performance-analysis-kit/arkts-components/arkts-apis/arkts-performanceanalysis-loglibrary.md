@@ -1,8 +1,10 @@
-# @ohos.logLibrary
+# @ohos.logLibrary(Obtaining various system maintenance and test logs)
 
 The **logLibrary** module provides APIs for obtaining various system maintenance and test logs.
 
 **Since:** 10
+
+<!--Device-unnamed-declare namespace logLibrary--><!--Device-unnamed-declare namespace logLibrary-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.LogLibrary
 

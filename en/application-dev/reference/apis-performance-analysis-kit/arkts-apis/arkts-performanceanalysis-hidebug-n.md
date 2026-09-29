@@ -10,6 +10,8 @@ HiDebug provides multiple methods for debugging and profiling applications. With
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace hidebug--><!--Device-unnamed-declare namespace hidebug-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Provides size information of the **DrawingRenderingContext** object.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface Size--><!--Device-unnamed-declare interface Size-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -30,6 +32,8 @@ If the unit mode of the **DrawingRenderingContext** object is set to px, the uni
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Size-height: number--><!--Device-Size-height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -51,5 +55,7 @@ If the unit mode of the **DrawingRenderingContext** object is set to px, the uni
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Size-width: number--><!--Device-Size-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

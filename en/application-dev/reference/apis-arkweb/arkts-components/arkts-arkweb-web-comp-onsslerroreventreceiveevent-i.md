@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page receives an SSL err
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnSslErrorEventReceiveEvent--><!--Device-unnamed-declare interface OnSslErrorEventReceiveEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## certChainData
@@ -21,6 +23,8 @@ Certificate chain data.
 **Type:** Array&lt;Uint8Array&gt;
 
 **Since:** 15
+
+<!--Device-OnSslErrorEventReceiveEvent-certChainData?: Array<Uint8Array>--><!--Device-OnSslErrorEventReceiveEvent-certChainData?: Array<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -38,6 +42,8 @@ Error code.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnSslErrorEventReceiveEvent-error: SslError--><!--Device-OnSslErrorEventReceiveEvent-error: SslError-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -53,5 +59,7 @@ User operation.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnSslErrorEventReceiveEvent-handler: SslErrorHandler--><!--Device-OnSslErrorEventReceiveEvent-handler: SslErrorHandler-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

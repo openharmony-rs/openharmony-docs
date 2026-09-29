@@ -24,6 +24,8 @@ Configures Wi-Fi for the current device to connect to a specified network. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallback<void>): void--><!--Device-wifiManager-function setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -93,6 +95,8 @@ Configures Wi-Fi for the current device to connect to a specified network. This 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_WIFI
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-wifiManager-function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>--><!--Device-wifiManager-function setWifiProfile(admin: Want, profile: WifiProfile): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

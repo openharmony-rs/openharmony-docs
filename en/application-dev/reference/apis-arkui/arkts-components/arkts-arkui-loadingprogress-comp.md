@@ -1,10 +1,12 @@
 # LoadingProgress
 
-The **LoadingProgress** component is used to create a loading progress animation.
+The **LoadingProgress** component is used to display a loading progress bar, providing visual feedback to users during data loading to improve user experience. This component supports features such as setting the foreground color and controlling the animation display state, and is suitable for scenarios where loading progress needs to be displayed in an application.
 
-The loading progress animation stops when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) event callback: If the value is greater than 0, the component is visible.
+The loading progress animation stops when the component is invisible. The component's visibility is determined by the value of **ratios** in the [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) handler. The component is considered visible when the visibility threshold **ratios** is greater than 0.
 
-> **NOTE** > > - This component supports [WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component) since API version 26.0.0.
+> **NOTE:** 
+> 
+> - This component supports [WithTheme](arkts-arkui-withtheme-comp.md) since API version 26.0.0.
 
 ## Child Components
 
@@ -23,6 +25,8 @@ Creates a loading progress component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LoadingProgressInterface-(): LoadingProgressAttribute--><!--Device-LoadingProgressInterface-(): LoadingProgressAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

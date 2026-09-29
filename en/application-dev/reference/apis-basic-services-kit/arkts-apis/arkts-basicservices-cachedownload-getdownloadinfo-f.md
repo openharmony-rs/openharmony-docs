@@ -24,6 +24,8 @@ one.
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-cacheDownload-function getDownloadInfo(url: string): DownloadInfo | undefined--><!--Device-cacheDownload-function getDownloadInfo(url: string): DownloadInfo | undefined-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

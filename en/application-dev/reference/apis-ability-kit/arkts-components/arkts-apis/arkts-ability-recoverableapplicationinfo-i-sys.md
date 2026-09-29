@@ -12,6 +12,8 @@ The module defines the information about a preinstalled application that can be 
 
 **Since:** 11
 
+<!--Device-unnamed-export interface RecoverableApplicationInfo--><!--Device-unnamed-export interface RecoverableApplicationInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Bundle name.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-RecoverableApplicationInfo-readonly bundleName: string--><!--Device-RecoverableApplicationInfo-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,6 +48,8 @@ Bundle type.
 
 **Since:** 12
 
+<!--Device-RecoverableApplicationInfo-readonly bundleType: bundleManager.BundleType--><!--Device-RecoverableApplicationInfo-readonly bundleType: bundleManager.BundleType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Installation directory of the application.
 **Type:** Array&lt;string&gt;
 
 **Since:** 12
+
+<!--Device-RecoverableApplicationInfo-readonly codePaths: Array<string>--><!--Device-RecoverableApplicationInfo-readonly codePaths: Array<string>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -76,6 +84,8 @@ ID of the module icon.
 
 **Since:** 11
 
+<!--Device-RecoverableApplicationInfo-readonly iconId: long--><!--Device-RecoverableApplicationInfo-readonly iconId: long-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -91,6 +101,8 @@ ID of the module label.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-RecoverableApplicationInfo-readonly labelId: long--><!--Device-RecoverableApplicationInfo-readonly labelId: long-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -108,6 +120,8 @@ Module name.
 
 **Since:** 11
 
+<!--Device-RecoverableApplicationInfo-readonly moduleName: string--><!--Device-RecoverableApplicationInfo-readonly moduleName: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -123,6 +137,8 @@ Whether the application is a system application. **true** if it is a system appl
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-RecoverableApplicationInfo-readonly systemApp: boolean--><!--Device-RecoverableApplicationInfo-readonly systemApp: boolean-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

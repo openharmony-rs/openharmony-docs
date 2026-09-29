@@ -18,6 +18,8 @@ Set the preferred network for the specified SIM card slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-radio-function setPreferredNetwork(slotId: int, networkMode: PreferredNetworkMode, callback: AsyncCallback<void>): void--><!--Device-radio-function setPreferredNetwork(slotId: int, networkMode: PreferredNetworkMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Set the preferred network for the specified SIM card slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-radio-function setPreferredNetwork(slotId: int, networkMode: PreferredNetworkMode): Promise<void>--><!--Device-radio-function setPreferredNetwork(slotId: int, networkMode: PreferredNetworkMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

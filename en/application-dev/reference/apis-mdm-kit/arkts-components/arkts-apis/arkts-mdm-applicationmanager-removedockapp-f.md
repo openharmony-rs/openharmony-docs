@@ -25,6 +25,8 @@ Removes an application from the shortcut bar.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeDockApp(admin: Want, bundleName: string, abilityName: string): void--><!--Device-applicationManager-function removeDockApp(admin: Want, bundleName: string, abilityName: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

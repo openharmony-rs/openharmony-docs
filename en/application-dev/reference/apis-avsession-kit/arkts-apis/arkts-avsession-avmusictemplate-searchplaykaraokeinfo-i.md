@@ -8,6 +8,8 @@ The definition of SearchPlayKaraokeInfo.
 
 **Since:** 26.2.0
 
+<!--Device-avMusicTemplate-interface SearchPlayKaraokeInfo--><!--Device-avMusicTemplate-interface SearchPlayKaraokeInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Album name. When this value is blank, the application does not search for audio 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-albumName?: string--><!--Device-SearchPlayKaraokeInfo-albumName?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## artist
@@ -45,6 +49,8 @@ Artist name. When this value is blank, the application does not search for audio
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-artist?: string--><!--Device-SearchPlayKaraokeInfo-artist?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -62,6 +68,8 @@ Ranking name. When this parameter is left blank, the application does not search
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-billBoard?: string--><!--Device-SearchPlayKaraokeInfo-billBoard?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## decade
@@ -77,6 +85,8 @@ Age. When this value is blank, the application does not search for audio by refe
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-decade?: string--><!--Device-SearchPlayKaraokeInfo-decade?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -94,6 +104,8 @@ Audio extras. When this value is blank, the application does not search for audi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-extra?: string--><!--Device-SearchPlayKaraokeInfo-extra?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## gender
@@ -109,6 +121,8 @@ Gender. When this value is blank, the application does not search for audio by r
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-gender?: string--><!--Device-SearchPlayKaraokeInfo-gender?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -126,6 +140,8 @@ Style. When this value is blank, the application does not search for audio by re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-genre?: string--><!--Device-SearchPlayKaraokeInfo-genre?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## instrument
@@ -141,6 +157,8 @@ Musical instruments. When this value is blank, the application does not search f
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-instrument?: string--><!--Device-SearchPlayKaraokeInfo-instrument?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -158,6 +176,8 @@ Search the playlist. When this parameter is undefined or the array is empty, the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-items?: SearchPlayKaraokeItem[]--><!--Device-SearchPlayKaraokeInfo-items?: SearchPlayKaraokeItem[]-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## language
@@ -173,6 +193,8 @@ Language. When this value is blank, the application does not search for audio by
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-language?: string--><!--Device-SearchPlayKaraokeInfo-language?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -190,6 +212,8 @@ Emotions. When this value is blank, the application does not search for audio by
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-mood?: string--><!--Device-SearchPlayKaraokeInfo-mood?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## queryKeyWord
@@ -205,6 +229,8 @@ Search for keywords. When this value is blank, the application does not search f
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-queryKeyWord?: string--><!--Device-SearchPlayKaraokeInfo-queryKeyWord?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -222,6 +248,8 @@ Scene. When this parameter is left blank, the application does not search for au
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SearchPlayKaraokeInfo-scene?: string--><!--Device-SearchPlayKaraokeInfo-scene?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## songName
@@ -237,5 +265,7 @@ Song name. When this value is blank, the application does not search for audio b
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SearchPlayKaraokeInfo-songName?: string--><!--Device-SearchPlayKaraokeInfo-songName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

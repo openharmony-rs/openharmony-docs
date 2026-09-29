@@ -20,6 +20,8 @@ Opens the Ukey authentication dialog box of the USB Key credential. This API is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: UkeyAuthRequest): Promise<void>--><!--Device-certificateManagerDialog-function openAuthDialogForUkeyProvider(dialogInfo: UkeyAuthDialogInfo, ukeyAuthRequest: UkeyAuthRequest): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**

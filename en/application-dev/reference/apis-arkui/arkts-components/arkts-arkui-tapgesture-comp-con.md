@@ -12,6 +12,8 @@ Defines GestureGroup Component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare const GestureGroup: GestureGroupInterface--><!--Device-unnamed-declare const GestureGroup: GestureGroupInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LongPressGesture
@@ -25,6 +27,8 @@ Defines LongPressGesture Component.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare const LongPressGesture: LongPressGestureInterface--><!--Device-unnamed-declare const LongPressGesture: LongPressGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Defines PanGesture Component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare const PanGesture: PanGestureInterface--><!--Device-unnamed-declare const PanGesture: PanGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PinchGesture
@@ -53,6 +59,8 @@ Defines PinchGesture Component.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare const PinchGesture: PinchGestureInterface--><!--Device-unnamed-declare const PinchGesture: PinchGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +76,8 @@ Defines RotationGesture Component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare const RotationGesture: RotationGestureInterface--><!--Device-unnamed-declare const RotationGesture: RotationGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SwipeGesture
@@ -81,5 +91,7 @@ Defines SwipeGesture Component.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare const SwipeGesture: SwipeGestureInterface--><!--Device-unnamed-declare const SwipeGesture: SwipeGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

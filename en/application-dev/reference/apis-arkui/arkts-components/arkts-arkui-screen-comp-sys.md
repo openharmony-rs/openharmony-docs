@@ -14,6 +14,8 @@ Called when the Screen is used.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScreenInterface-(screenId: long): ScreenAttribute--><!--Device-ScreenInterface-(screenId: long): ScreenAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

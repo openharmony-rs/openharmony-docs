@@ -16,6 +16,8 @@ Decodes the information carried in the image. This API uses a promise to return 
 
 **Since:** 18
 
+<!--Device-metadataBinding-function decodeImage(encodedImage: image.PixelMap): Promise<string>--><!--Device-metadataBinding-function decodeImage(encodedImage: image.PixelMap): Promise<string>-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 
 **System API:** This is a system API.

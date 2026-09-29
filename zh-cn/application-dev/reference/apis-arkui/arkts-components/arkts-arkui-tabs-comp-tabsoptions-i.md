@@ -8,6 +8,8 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 
 **起始版本：** 15
 
+<!--Device-unnamed-declare interface TabsOptions--><!--Device-unnamed-declare interface TabsOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barModifier
@@ -38,6 +40,8 @@ TabContent组件的[tabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar-2)�
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsOptions-barModifier?: CommonModifier--><!--Device-TabsOptions-barModifier?: CommonModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barPosition
@@ -59,6 +63,8 @@ barPosition?: BarPosition
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabsOptions-barPosition?: BarPosition--><!--Device-TabsOptions-barPosition?: BarPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -74,6 +80,8 @@ controller?: TabsController
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsOptions-controller?: TabsController--><!--Device-TabsOptions-controller?: TabsController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,5 +115,7 @@ Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换�
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsOptions-index?: number--><!--Device-TabsOptions-index?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,11 +10,13 @@ export declare struct ComposeListItem
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果ComposeListItem设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeListItem本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ComposeListItem设置通用属性和通用事件。
+> - 如果ComposeListItem设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ComposeListItem本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ComposeListItem设置通用属性和通用事件。
 
 **起始版本：** 10
 
 **装饰器类型：** @Component
+
+<!--Device-unnamed-export declare struct ComposeListItem--><!--Device-unnamed-export declare struct ComposeListItem-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +46,8 @@ contentItem?: ContentItem
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ComposeListItem-contentItem?: ContentItem--><!--Device-ComposeListItem-contentItem?: ContentItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## operateItem
@@ -65,5 +69,7 @@ operateItem?: OperateItem
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComposeListItem-operateItem?: OperateItem--><!--Device-ComposeListItem-operateItem?: OperateItem-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

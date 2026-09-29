@@ -8,6 +8,8 @@ declare enum SheetSize
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum SheetSize--><!--Device-unnamed-declare enum SheetSize-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MEDIUM
@@ -30,6 +32,8 @@ MEDIUM = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SheetSize-MEDIUM = 0--><!--Device-SheetSize-MEDIUM = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LARGE
@@ -51,6 +55,8 @@ LARGE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetSize-LARGE = 1--><!--Device-SheetSize-LARGE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,5 +82,7 @@ API version 23开始，高度大于最大高度，则显示最大高度，高度
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetSize-FIT_CONTENT = 2--><!--Device-SheetSize-FIT_CONTENT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

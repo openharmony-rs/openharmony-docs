@@ -22,6 +22,8 @@ Registers an observer for SIM card activation state changes. This API uses an as
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-observer-function onGetSimActiveState(slotId: int, callback: Callback<boolean>): void--><!--Device-observer-function onGetSimActiveState(slotId: int, callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

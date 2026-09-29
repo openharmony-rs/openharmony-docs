@@ -20,6 +20,8 @@ Unsubscribes from changes in the static configuration information of template wi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void--><!--Device-formHost-function offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Moves the source directory to the destination directory. This API returns the re
 
 **Since:** 10
 
+<!--Device-unnamed-declare function moveDirSync(src: string, dest: string, mode?: number): void--><!--Device-unnamed-declare function moveDirSync(src: string, dest: string, mode?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

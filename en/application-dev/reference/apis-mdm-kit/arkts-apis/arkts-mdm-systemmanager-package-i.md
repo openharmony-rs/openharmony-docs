@@ -8,6 +8,8 @@ Represents the details about a system update package.
 
 **Since:** 12
 
+<!--Device-systemManager-interface Package--><!--Device-systemManager-interface Package-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ File descriptor (FD) of the system update package. Currently, you cannot pass in
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Package-fd?: number--><!--Device-Package-fd?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## path
@@ -46,6 +50,8 @@ Path of the system update package. If **fd** is specified, pass in the update pa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Package-path: string--><!--Device-Package-path: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## type
@@ -61,5 +67,7 @@ Type of the system update package.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Package-type: PackageType--><!--Device-Package-type: PackageType-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

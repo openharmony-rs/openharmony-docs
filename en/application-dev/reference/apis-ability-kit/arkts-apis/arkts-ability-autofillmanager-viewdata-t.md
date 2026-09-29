@@ -12,6 +12,8 @@ Defines the view data used for auto-fill.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-autoFillManager-export type ViewData = _ViewData.default--><!--Device-autoFillManager-export type ViewData = _ViewData.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Type:** _ViewData.default

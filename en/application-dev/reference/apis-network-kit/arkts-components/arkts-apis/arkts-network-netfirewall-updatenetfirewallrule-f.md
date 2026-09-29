@@ -20,6 +20,8 @@ Updates a firewall rule. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.MANAGE_NET_FIREWALL
 
+<!--Device-netFirewall-function updateNetFirewallRule(rule: NetFirewallRule): Promise<void>--><!--Device-netFirewall-function updateNetFirewallRule(rule: NetFirewallRule): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

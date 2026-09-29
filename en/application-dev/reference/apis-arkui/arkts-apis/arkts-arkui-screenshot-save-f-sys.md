@@ -22,6 +22,8 @@ Obtains a screenshot. This API uses an asynchronous callback to return the resul
 - API versions 22 to 24: ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API versions 7 to 21: ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screenshot-function save(options: ScreenshotOptions, callback: AsyncCallback<image.PixelMap>): void--><!--Device-screenshot-function save(options: ScreenshotOptions, callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -91,6 +93,8 @@ Obtains a screenshot. This API uses an asynchronous callback to return the resul
 - API versions 22 to 24: ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API versions 7 to 21: ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screenshot-function save(callback: AsyncCallback<image.PixelMap>): void--><!--Device-screenshot-function save(callback: AsyncCallback<image.PixelMap>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -143,6 +147,8 @@ Obtains a screenshot. This API uses a promise to return the result.
 - API version 25: N/A
 - API versions 22 to 24: ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API versions 7 to 21: ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screenshot-function save(options?: ScreenshotOptions): Promise<image.PixelMap>--><!--Device-screenshot-function save(options?: ScreenshotOptions): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

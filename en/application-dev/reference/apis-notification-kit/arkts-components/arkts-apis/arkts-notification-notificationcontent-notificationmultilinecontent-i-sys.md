@@ -18,6 +18,8 @@ Describes the multi-line text notification. This API is inherited from Notificat
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationMultiLineContent extends NotificationBasicContent--><!--Device-unnamed-export interface NotificationMultiLineContent extends NotificationBasicContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## lineWantAgents
@@ -33,6 +35,8 @@ lineWantAgents?: Array<WantAgent>
 **Since:** 20
 
 **Required permissions:** ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+<!--Device-NotificationMultiLineContent-lineWantAgents?: Array<WantAgent>--><!--Device-NotificationMultiLineContent-lineWantAgents?: Array<WantAgent>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

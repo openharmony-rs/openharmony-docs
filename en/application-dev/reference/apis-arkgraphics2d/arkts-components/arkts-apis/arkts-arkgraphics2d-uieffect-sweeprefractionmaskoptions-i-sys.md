@@ -8,6 +8,8 @@ Optional parameters for creating a SweepRefractionMask.
 
 **Since:** 26.0.1
 
+<!--Device-uiEffect-interface SweepRefractionMaskOptions--><!--Device-uiEffect-interface SweepRefractionMaskOptions-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Normalized corner radius of the prism shape, effective when shapeType is ROUNDED
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SweepRefractionMaskOptions-cornerRadius?: double--><!--Device-SweepRefractionMaskOptions-cornerRadius?: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ Normalized height of the prism. The value range is [0.01, 2], and values outside
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SweepRefractionMaskOptions-prismHeight?: double--><!--Device-SweepRefractionMaskOptions-prismHeight?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -74,6 +80,8 @@ Normalized width of the prism. The value range is [0.01, 2], and values outside 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SweepRefractionMaskOptions-prismWidth?: double--><!--Device-SweepRefractionMaskOptions-prismWidth?: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -93,6 +101,8 @@ Prism shape type.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SweepRefractionMaskOptions-shapeType?: PrismShapeType--><!--Device-SweepRefractionMaskOptions-shapeType?: PrismShapeType-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -114,6 +124,8 @@ Normalized X coordinate of the sweep center. The value range is [0, 1], and valu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SweepRefractionMaskOptions-sweepCenterX?: double--><!--Device-SweepRefractionMaskOptions-sweepCenterX?: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -133,6 +145,8 @@ Normalized Y coordinate of the sweep center. The value range is [0, 1], and valu
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SweepRefractionMaskOptions-sweepCenterY?: double --><!--Device-SweepRefractionMaskOptions-sweepCenterY?: double -End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

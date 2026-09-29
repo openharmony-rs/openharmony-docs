@@ -8,6 +8,8 @@ Describes the word break rule of the message in the dialog box.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface TextStyle--><!--Device-unnamed-declare interface TextStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## wordBreak
@@ -27,5 +29,7 @@ Default value: **WordBreak.BREAK_ALL**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextStyle-wordBreak?: WordBreak--><!--Device-TextStyle-wordBreak?: WordBreak-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

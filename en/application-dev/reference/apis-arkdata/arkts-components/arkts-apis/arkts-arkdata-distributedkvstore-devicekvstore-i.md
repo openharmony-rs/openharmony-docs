@@ -10,6 +10,8 @@ Provides APIs for querying data in a device KV store and performing cross-device
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface DeviceKVStore extends SingleKVStore--><!--Device-distributedKVStore-interface DeviceKVStore extends SingleKVStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the value of the specified key for this device. This API uses an asynchr
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-get(key: string, callback: AsyncCallback<boolean | string | long | double | Uint8Array>): void--><!--Device-DeviceKVStore-get(key: string, callback: AsyncCallback<boolean | string | long | double | Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -167,6 +171,8 @@ Obtains the value of the specified key for this device. This API uses a promise 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-get(key: string): Promise<boolean | string | long | double | Uint8Array>--><!--Device-DeviceKVStore-get(key: string): Promise<boolean | string | long | double | Uint8Array>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -319,6 +325,8 @@ Obtains a string value that matches the specified device ID and key. This API us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | long | double | Uint8Array>): void--><!--Device-DeviceKVStore-get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | long | double | Uint8Array>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -466,6 +474,8 @@ Obtains a string value that matches the specified device ID and key. This API us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-get(deviceId: string, key: string): Promise<boolean | string | long | double | Uint8Array>--><!--Device-DeviceKVStore-get(deviceId: string, key: string): Promise<boolean | string | long | double | Uint8Array>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -608,6 +618,8 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -681,6 +693,8 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getEntries(keyPrefix: string): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(keyPrefix: string): Promise<Entry[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -763,6 +777,8 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -847,6 +863,8 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -925,6 +943,8 @@ Obtains all KV pairs that match the specified **Query** object for this device. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1001,6 +1021,8 @@ Obtains all KV pairs that match the specified **Query** object for this device. 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getEntries(query: Query): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(query: Query): Promise<Entry[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1086,6 +1108,8 @@ Obtains the KV pairs that match the specified device ID and **Query** object. Th
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -1175,6 +1199,8 @@ Obtains the KV pairs that match the specified device ID and **Query** object. Th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query): Promise<Entry[]>--><!--Device-DeviceKVStore-getEntries(deviceId: string, query: Query): Promise<Entry[]>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -1251,6 +1277,8 @@ Obtains a result set with the specified prefix for this device. This API uses an
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1334,6 +1362,8 @@ Obtains a result set with the specified prefix for this device. This API uses a 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(keyPrefix: string): Promise<KVStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(keyPrefix: string): Promise<KVStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1423,6 +1453,8 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -1493,6 +1525,8 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string): Promise<KVStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(deviceId: string, keyPrefix: string): Promise<KVStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -1565,6 +1599,8 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1651,6 +1687,8 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getResultSet(query: Query): Promise<KVStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(query: Query): Promise<KVStoreResultSet>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1733,6 +1771,8 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and *
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KVStoreResultSet>): void--><!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KVStoreResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -1828,6 +1868,8 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and *
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query): Promise<KVStoreResultSet>--><!--Device-DeviceKVStore-getResultSet(deviceId: string, query: Query): Promise<KVStoreResultSet>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -1914,6 +1956,8 @@ Obtains the number of results that match the specified **Query** object for this
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKVStore-getResultSize(query: Query, callback: AsyncCallback<int>): void--><!--Device-DeviceKVStore-getResultSize(query: Query, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1987,6 +2031,8 @@ Obtains the number of results that match the specified **Query** object for this
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSize(query: Query): Promise<int>--><!--Device-DeviceKVStore-getResultSize(query: Query): Promise<int>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -2068,6 +2114,8 @@ Obtains the number of results that match the specified device ID and **Query** o
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query, callback: AsyncCallback<int>): void--><!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -2151,6 +2199,8 @@ Obtains the number of results that match the specified device ID and **Query** o
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query): Promise<int>--><!--Device-DeviceKVStore-getResultSize(deviceId: string, query: Query): Promise<int>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 

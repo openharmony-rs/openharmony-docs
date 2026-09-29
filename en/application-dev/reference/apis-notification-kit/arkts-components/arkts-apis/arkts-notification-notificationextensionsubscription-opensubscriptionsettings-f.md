@@ -18,6 +18,8 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 
+<!--Device-notificationExtensionSubscription-function openSubscriptionSettings(context: UIAbilityContext): Promise<void>--><!--Device-notificationExtensionSubscription-function openSubscriptionSettings(context: UIAbilityContext): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**

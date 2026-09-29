@@ -25,6 +25,8 @@ Notifies the system of the update packages. In intranet updates, call this API t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise<void>--><!--Device-systemManager-function notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

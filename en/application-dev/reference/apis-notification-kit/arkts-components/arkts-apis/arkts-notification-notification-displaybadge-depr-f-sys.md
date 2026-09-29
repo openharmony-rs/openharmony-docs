@@ -21,6 +21,8 @@ Sets whether to enable the notification badge for a specified application. This 
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void--><!--Device-notification-function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -51,6 +53,8 @@ Sets whether to enable the notification badge for a specified application. This 
 **Substitutes:** [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>--><!--Device-notification-function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

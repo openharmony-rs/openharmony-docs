@@ -8,6 +8,8 @@ Enumerates the error codes used in the certificate management APIs.
 
 **Since:** 11
 
+<!--Device-certificateManager-export enum CMErrorCode--><!--Device-certificateManager-export enum CMErrorCode-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_NOT_SYSTEM_APP
@@ -21,6 +23,8 @@ The caller is not a system application.
 This is a system API.
 
 **Since:** 11
+
+<!--Device-CMErrorCode-CM_ERROR_NOT_SYSTEM_APP = 202--><!--Device-CMErrorCode-CM_ERROR_NOT_SYSTEM_APP = 202-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -37,6 +41,8 @@ Indicates that the password is incorrect.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CMErrorCode-CM_ERROR_PASSWORD_IS_ERR = 17500008--><!--Device-CMErrorCode-CM_ERROR_PASSWORD_IS_ERR = 17500008-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 

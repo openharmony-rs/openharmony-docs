@@ -4,13 +4,17 @@
 export interface SubscribeDeviceOrientationOptions
 ```
 
-Defines the type of data to return for a subscription to data changes of the device orientation sensor.
+Sets the parameters for subscribing to the device orientation sensor, including the callback frequency and callback function.
+
+**Device behavior differences**: This API can be called on wearables and lite wearables, but has no effect on other device types.
 
 **Since:** 6
 
 **Deprecated since:** 8
 
 **Substitutes:** [ORIENTATION](arkts-sensorservice-sensor-sensorid-e.md#orientation)
+
+<!--Device-unnamed-export interface SubscribeDeviceOrientationOptions--><!--Device-unnamed-export interface SubscribeDeviceOrientationOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -26,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 6
 
@@ -35,6 +39,8 @@ Callback invoked when an API call fails.
 **Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeDeviceOrientationOptions-fail?: (data: string, code: number) => void--><!--Device-SubscribeDeviceOrientationOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -51,7 +57,7 @@ Callback invoked when an API call fails.
 success: (data: DeviceOrientationResponse) => void
 ```
 
-Callback invoked when the device orientation sensor data changes.
+Callback invoked when the device orientation sensor data changes. The callback parameter is a **DeviceOrientationResponse** object.
 
 **Since:** 6
 
@@ -60,6 +66,8 @@ Callback invoked when the device orientation sensor data changes.
 **Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeDeviceOrientationOptions-success: (data: DeviceOrientationResponse) => void--><!--Device-SubscribeDeviceOrientationOptions-success: (data: DeviceOrientationResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -77,11 +85,13 @@ interval: string
 
 Interval at which the callback is invoked to return the device orientation sensor data.
 
-The default value is **normal**. The options are as follows:
+Default value: **'normal'**
 
-- **game**: called at an interval of 20 ms, which is applicable to gaming scenarios.  
-- **ui**: called at an interval of 60 ms, which is applicable to UI updating scenarios.  
-- **normal**: called at an interval of 200 ms, which is applicable to power-saving scenarios.
+Possible values:
+
+- **'game'**: called at an interval of 20 ms, which is applicable to gaming scenarios.  
+- **'ui'**: called at an interval of 60 ms, which is applicable to UI updating scenarios.  
+- **'normal'**: called at an interval of 200 ms, which is applicable to power-saving scenarios.
 
 **Type:** string
 
@@ -92,5 +102,7 @@ The default value is **normal**. The options are as follows:
 **Substitutes:** [interval](arkts-sensorservice-sensor-options-i.md#interval)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeDeviceOrientationOptions-interval: string--><!--Device-SubscribeDeviceOrientationOptions-interval: string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

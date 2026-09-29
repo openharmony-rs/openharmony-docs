@@ -20,6 +20,8 @@ Moves a file. This API uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-unnamed-declare function moveFile(src: string, dest: string, mode?: number): Promise<void>--><!--Device-unnamed-declare function moveFile(src: string, dest: string, mode?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -77,6 +79,8 @@ Moves a file and forcibly overwrites the file with the same name in the destinat
 
 **Since:** 9
 
+<!--Device-unnamed-declare function moveFile(src: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function moveFile(src: string, dest: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -127,6 +131,8 @@ Moves a file with the specified mode. This API uses an asynchronous callback to 
 > This API is not supported in a distributed directory.
 
 **Since:** 9
+
+<!--Device-unnamed-declare function moveFile(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function moveFile(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

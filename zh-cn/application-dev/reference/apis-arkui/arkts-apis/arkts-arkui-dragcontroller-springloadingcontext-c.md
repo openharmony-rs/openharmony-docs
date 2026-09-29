@@ -8,6 +8,8 @@ class SpringLoadingContext
 
 **起始版本：** 20
 
+<!--Device-dragController-class SpringLoadingContext--><!--Device-dragController-class SpringLoadingContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ abort(): void
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SpringLoadingContext-abort(): void--><!--Device-SpringLoadingContext-abort(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## updateConfiguration
@@ -45,6 +49,8 @@ updateConfiguration(config: DragSpringLoadingConfiguration): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SpringLoadingContext-updateConfiguration(config: DragSpringLoadingConfiguration): void--><!--Device-SpringLoadingContext-updateConfiguration(config: DragSpringLoadingConfiguration): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ currentConfig?: DragSpringLoadingConfiguration
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SpringLoadingContext-currentConfig?: DragSpringLoadingConfiguration--><!--Device-SpringLoadingContext-currentConfig?: DragSpringLoadingConfiguration-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentNotifySequence
@@ -87,6 +95,8 @@ currentNotifySequence: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SpringLoadingContext-currentNotifySequence: number--><!--Device-SpringLoadingContext-currentNotifySequence: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +116,8 @@ dragInfos?: SpringLoadingDragInfos
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-SpringLoadingContext-dragInfos?: SpringLoadingDragInfos--><!--Device-SpringLoadingContext-dragInfos?: SpringLoadingDragInfos-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## state
@@ -123,5 +135,7 @@ state: DragSpringLoadingState
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SpringLoadingContext-state: DragSpringLoadingState--><!--Device-SpringLoadingContext-state: DragSpringLoadingState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Sets the default application for a user based on a system-defined application ty
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function setDefaultApplication(type: string, elementName: ElementName, userId: int, callback: AsyncCallback<void>) : void--><!--Device-defaultAppManager-function setDefaultApplication(type: string, elementName: ElementName, userId: int, callback: AsyncCallback<void>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.
@@ -104,6 +106,8 @@ Sets the default application based on a system-defined application type, a file 
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback<void>) : void--><!--Device-defaultAppManager-function setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback<void>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.
@@ -186,6 +190,8 @@ Sets the default application based on a system-defined application type, a file 
 **Since:** 9
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
+
+<!--Device-defaultAppManager-function setDefaultApplication(type: string, elementName: ElementName, userId?: int) : Promise<void>--><!--Device-defaultAppManager-function setDefaultApplication(type: string, elementName: ElementName, userId?: int) : Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 

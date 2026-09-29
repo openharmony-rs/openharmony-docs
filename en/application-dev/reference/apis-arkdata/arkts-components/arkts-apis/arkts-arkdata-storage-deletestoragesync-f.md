@@ -19,6 +19,8 @@ Deletes the singleton **Storage** instance of a file from the memory, and delete
 
 **Substitutes:** deletePreferences
 
+<!--Device-storage-function deleteStorageSync(path: string): void--><!--Device-storage-function deleteStorageSync(path: string): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

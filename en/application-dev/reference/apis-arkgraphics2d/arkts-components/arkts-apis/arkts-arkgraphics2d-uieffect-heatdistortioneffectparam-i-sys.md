@@ -8,6 +8,8 @@ The parameters of heat distortion effect.
 
 **Since:** 26.0.0
 
+<!--Device-uiEffect-interface HeatDistortionEffectParam--><!--Device-uiEffect-interface HeatDistortionEffectParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The intensity of the heat distortion. The value range is [0, 1], and values outs
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HeatDistortionEffectParam-intensity: double--><!--Device-HeatDistortionEffectParam-intensity: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The noise scale of the heat distortion, controlling the fineness of the noise te
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HeatDistortionEffectParam-noiseScale: double--><!--Device-HeatDistortionEffectParam-noiseScale: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -68,6 +74,8 @@ The animation progress of the heat distortion. The value range is [0, 1], and va
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HeatDistortionEffectParam-progress: double--><!--Device-HeatDistortionEffectParam-progress: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The rise weight of the heat distortion, controlling the rising speed of bubbles.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HeatDistortionEffectParam-riseWeight: double--><!--Device-HeatDistortionEffectParam-riseWeight: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

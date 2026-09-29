@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page loading ends, inclu
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface OnLoadFinishedEvent--><!--Device-unnamed-declare interface OnLoadFinishedEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -21,5 +23,7 @@ URL of the page.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-OnLoadFinishedEvent-url: string--><!--Device-OnLoadFinishedEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

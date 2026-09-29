@@ -20,6 +20,8 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 **Substitutes:** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
 
+<!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -61,6 +63,8 @@ Adds a notification slot. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
+
+<!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>--><!--Device-reminderAgent-function addNotificationSlot(slot: NotificationSlot): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

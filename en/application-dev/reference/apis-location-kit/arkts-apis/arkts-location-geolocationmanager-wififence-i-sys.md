@@ -8,6 +8,8 @@ Indicates Wi-Fi fence information.
 
 **Since:** 26.0.0
 
+<!--Device-geoLocationManager-export interface WifiFence--><!--Device-geoLocationManager-export interface WifiFence-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Indicates Wi-Fi fingerprint type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiFence-type: WifiFingerprintType--><!--Device-WifiFence-type: WifiFingerprintType-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Indicates Wi-Fi features.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiFence-wifiFeatures: Array<WirelessSignalFeature>--><!--Device-WifiFence-wifiFeatures: Array<WirelessSignalFeature>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

@@ -8,6 +8,8 @@ Represents the connection result, which is returned after the client calls **con
 
 **Since:** 20
 
+<!--Device-linkEnhance-interface ConnectResult--><!--Device-linkEnhance-interface ConnectResult-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -29,6 +31,8 @@ ID of the peer device. If the connection is successful, the device ID of the pee
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectResult-deviceId: string--><!--Device-ConnectResult-deviceId: string-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -52,6 +56,8 @@ For details about the error codes, see [Link Enhancement Error Codes](../../../r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectResult-reason: int--><!--Device-ConnectResult-reason: int-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## success
@@ -67,5 +73,7 @@ Connection result. The value **true** indicates that the connection is successfu
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectResult-success: boolean--><!--Device-ConnectResult-success: boolean-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

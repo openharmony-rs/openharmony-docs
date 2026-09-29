@@ -14,6 +14,8 @@ Provides the border information of the child component.
 
 **Substitutes:** Measurable/Layoutable
 
+<!--Device-unnamed-declare interface LayoutBorderInfo--><!--Device-unnamed-declare interface LayoutBorderInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderWidth
@@ -33,6 +35,8 @@ Edge widths in different directions of the component.
 **Substitutes:** getBorderWidth
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LayoutBorderInfo-borderWidth: EdgeWidths--><!--Device-LayoutBorderInfo-borderWidth: EdgeWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Margin values in different directions of the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LayoutBorderInfo-margin: Margin--><!--Device-LayoutBorderInfo-margin: Margin-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## padding
@@ -73,5 +79,7 @@ Padding values in different directions of the component.
 **Substitutes:** getPadding
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LayoutBorderInfo-padding: Padding--><!--Device-LayoutBorderInfo-padding: Padding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

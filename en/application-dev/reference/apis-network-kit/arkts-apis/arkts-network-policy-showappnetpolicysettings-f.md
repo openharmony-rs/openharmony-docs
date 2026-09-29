@@ -18,6 +18,8 @@ Sets whether the current application can connect to the Wi-Fi or cellular networ
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-policy-function showAppNetPolicySettings(context: Context): Promise<void>--><!--Device-policy-function showAppNetPolicySettings(context: Context): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

@@ -20,6 +20,8 @@ Checks whether there is an available network. This API uses an asynchronous call
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-connection-function hasDefaultNet(callback: AsyncCallback<boolean>): void--><!--Device-connection-function hasDefaultNet(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -65,6 +67,8 @@ Checks whether there is an available network. This API uses a promise to return 
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-connection-function hasDefaultNet(): Promise<boolean>--><!--Device-connection-function hasDefaultNet(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -8,6 +8,8 @@ Provides the state change information of the camera when the callback is trigger
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface CameraCaptureStateChangeInfo--><!--Device-unnamed-declare interface CameraCaptureStateChangeInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## newState
@@ -22,6 +24,8 @@ New state.
 
 **Since:** 23
 
+<!--Device-CameraCaptureStateChangeInfo-newState: CameraCaptureState--><!--Device-CameraCaptureStateChangeInfo-newState: CameraCaptureState-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## originalState
@@ -35,5 +39,7 @@ State before the change.
 **Type:** [CameraCaptureState](arkts-arkweb-web-comp-cameracapturestate-e.md)
 
 **Since:** 23
+
+<!--Device-CameraCaptureStateChangeInfo-originalState: CameraCaptureState--><!--Device-CameraCaptureStateChangeInfo-originalState: CameraCaptureState-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -8,6 +8,8 @@ Member information
 
 **Since:** 26.0.1
 
+<!--Device-photoAccessHelper-export class MemberInfo--><!--Device-photoAccessHelper-export class MemberInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Member identity information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MemberInfo-public member: string--><!--Device-MemberInfo-public member: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Member status.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MemberInfo-public status: ShareMemberStatus--><!--Device-MemberInfo-public status: ShareMemberStatus-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

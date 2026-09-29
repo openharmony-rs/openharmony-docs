@@ -8,9 +8,11 @@ declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttri
 
 不支持通用事件。
 
-**继承/实现关系：** EffectComponentAttribute extends CommonMethod&lt;EffectComponentAttribute&gt;
+**继承/实现关系：** EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>--><!--Device-unnamed-declare class EffectComponentAttribute extends CommonMethod<EffectComponentAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

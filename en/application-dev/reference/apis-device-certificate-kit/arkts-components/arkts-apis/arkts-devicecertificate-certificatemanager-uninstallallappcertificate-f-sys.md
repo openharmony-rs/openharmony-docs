@@ -20,6 +20,8 @@ Uninstalls all system application credentials and public user credentials. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function uninstallAllAppCertificate() : Promise<void>--><!--Device-certificateManager-function uninstallAllAppCertificate() : Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

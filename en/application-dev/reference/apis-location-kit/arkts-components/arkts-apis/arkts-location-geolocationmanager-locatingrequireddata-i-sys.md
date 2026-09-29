@@ -8,6 +8,8 @@ Describes the structure of the data required for locating.
 
 **Since:** 10
 
+<!--Device-geoLocationManager-export interface LocatingRequiredData--><!--Device-geoLocationManager-export interface LocatingRequiredData-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Bluetooth scan info.
 
 **Since:** 10
 
+<!--Device-LocatingRequiredData-bluetoothData?: BluetoothScanInfo--><!--Device-LocatingRequiredData-bluetoothData?: BluetoothScanInfo-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Indicates camped cell information.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LocatingRequiredData-campedCellInfo?: CellInfo--><!--Device-LocatingRequiredData-campedCellInfo?: CellInfo-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -66,6 +72,8 @@ Indicates neighboring cell information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LocatingRequiredData-neighboringCellInfo?: CellInfo[]--><!--Device-LocatingRequiredData-neighboringCellInfo?: CellInfo[]-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -84,6 +92,8 @@ Indicates the card slot index number. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LocatingRequiredData-slotId?: int--><!--Device-LocatingRequiredData-slotId?: int-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.
@@ -99,6 +109,8 @@ WiFi scan info.
 **Type:** [WifiScanInfo](arkts-location-geolocationmanager-wifiscaninfo-i-sys.md)
 
 **Since:** 10
+
+<!--Device-LocatingRequiredData-wifiData?: WifiScanInfo--><!--Device-LocatingRequiredData-wifiData?: WifiScanInfo-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

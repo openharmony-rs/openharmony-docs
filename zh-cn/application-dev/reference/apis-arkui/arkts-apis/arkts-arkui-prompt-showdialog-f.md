@@ -22,6 +22,8 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-prompt-function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>): void--><!--Device-prompt-function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -75,6 +77,8 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 **替代接口：** showDialog
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-prompt-function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>--><!--Device-prompt-function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

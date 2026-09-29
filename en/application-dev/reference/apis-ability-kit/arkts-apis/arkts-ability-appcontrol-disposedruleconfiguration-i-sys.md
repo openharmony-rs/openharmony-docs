@@ -8,6 +8,8 @@ Describes the configurations for setting disposed rules in batches.
 
 **Since:** 20
 
+<!--Device-appControl-export interface DisposedRuleConfiguration--><!--Device-appControl-export interface DisposedRuleConfiguration-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ appId or appIdentifier of the target application. Identical appId and appIdentif
 
 **Since:** 20
 
+<!--Device-DisposedRuleConfiguration-appId: string--><!--Device-DisposedRuleConfiguration-appId: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ The value **0** means to set the disposed rule for the main application. A value
 
 **Since:** 20
 
+<!--Device-DisposedRuleConfiguration-appIndex: int--><!--Device-DisposedRuleConfiguration-appIndex: int-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ Disposal rule of the application, including the type of the ability to be starte
 **Type:** [DisposedRule](arkts-ability-appcontrol-disposedrule-i-sys.md)
 
 **Since:** 20
+
+<!--Device-DisposedRuleConfiguration-disposedRule: DisposedRule--><!--Device-DisposedRuleConfiguration-disposedRule: DisposedRule-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 

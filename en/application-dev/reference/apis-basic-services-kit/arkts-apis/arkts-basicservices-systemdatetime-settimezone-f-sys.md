@@ -18,6 +18,8 @@ Sets the system time zone. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.SET_TIME_ZONE
 
+<!--Device-systemDateTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void--><!--Device-systemDateTime-function setTimezone(timezone: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Sets the system time zone. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.SET_TIME_ZONE
+
+<!--Device-systemDateTime-function setTimezone(timezone: string): Promise<void>--><!--Device-systemDateTime-function setTimezone(timezone: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

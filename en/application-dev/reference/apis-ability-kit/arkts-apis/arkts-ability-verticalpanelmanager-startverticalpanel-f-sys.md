@@ -23,6 +23,8 @@ Starts the vertical domain picker with panel config. If the target ability is vi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-verticalPanelManager-function startVerticalPanel(      context: common.UIAbilityContext,      wantParam: Record<string, Object>,      panelConfig: PanelConfig,      panelStartCallback: PanelStartCallback  ): Promise<void>--><!--Device-verticalPanelManager-function startVerticalPanel(      context: common.UIAbilityContext,      wantParam: Record<string, Object>,      panelConfig: PanelConfig,      panelStartCallback: PanelStartCallback  ): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Upload task information, which is the callback parameter of the on('complete' | 
 
 **Since:** 9
 
+<!--Device-request-interface TaskState--><!--Device-request-interface TaskState-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Description of the upload task result.
 
 **Since:** 9
 
+<!--Device-TaskState-message: string--><!--Device-TaskState-message: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## path
@@ -41,6 +45,8 @@ File path.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-TaskState-path: string--><!--Device-TaskState-path: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload
 
@@ -57,5 +63,7 @@ You are advised to create an upload task by using [request.agent.create](arkts-b
 **Type:** number
 
 **Since:** 9
+
+<!--Device-TaskState-responseCode: int--><!--Device-TaskState-responseCode: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload

@@ -12,6 +12,8 @@ For details about the sample code, see [onContextMenuShow&lt;sup&gt;9+&lt;/sup&g
 
 **Since:** 9
 
+<!--Device-unnamed-declare class WebContextMenuResult--><!--Device-unnamed-declare class WebContextMenuResult-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## closeContextMenu
@@ -26,6 +28,8 @@ Closes this context menu. This API must be called when no operations in **WebCon
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuResult-closeContextMenu(): void--><!--Device-WebContextMenuResult-closeContextMenu(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -39,6 +43,8 @@ Constructs a **WebContextMenuResult** object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuResult-constructor()--><!--Device-WebContextMenuResult-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -59,6 +65,8 @@ Performs the copy text operation.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuResult-copy(): void--><!--Device-WebContextMenuResult-copy(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## copyImage
@@ -78,6 +86,8 @@ When **WebContextMenuParam** contains image content, this method is used to copy
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuResult-copyImage(): void--><!--Device-WebContextMenuResult-copyImage(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## cut
@@ -96,6 +106,8 @@ Performs the cut operation.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebContextMenuResult-cut(): void--><!--Device-WebContextMenuResult-cut(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -120,6 +132,8 @@ Performs the paste operation, preserving the original format. If you need to pas
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuResult-paste(): void--><!--Device-WebContextMenuResult-paste(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## pasteAndMatchStyle
@@ -141,6 +155,8 @@ Performs the paste operation related to this context menu. The pasted content ma
 
 **Since:** 20
 
+<!--Device-WebContextMenuResult-pasteAndMatchStyle(): void--><!--Device-WebContextMenuResult-pasteAndMatchStyle(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## redo
@@ -158,6 +174,8 @@ Performs the redo operation, which re-executes the revoked operation.
 
 **Since:** 20
 
+<!--Device-WebContextMenuResult-redo(): void--><!--Device-WebContextMenuResult-redo(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## requestPasswordAutoFill
@@ -174,6 +192,8 @@ Requests the username or password data in the password vault to be automatically
 > to close the menu. Failure to do so may result in menu resources not being properly released.
 
 **Since:** 23
+
+<!--Device-WebContextMenuResult-requestPasswordAutoFill(): void--><!--Device-WebContextMenuResult-requestPasswordAutoFill(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -194,6 +214,8 @@ Saves the image related to this context menu. Calling this method triggers the d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebContextMenuResult-saveImage(): void--><!--Device-WebContextMenuResult-saveImage(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## selectAll
@@ -213,6 +235,8 @@ Performs the select all operation.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebContextMenuResult-selectAll(): void--><!--Device-WebContextMenuResult-selectAll(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## undo
@@ -229,5 +253,7 @@ Performs the undo operation, which undoes the last editing operation.
 > to close the menu. Failure to do so may result in menu resources not being properly released.
 
 **Since:** 20
+
+<!--Device-WebContextMenuResult-undo(): void--><!--Device-WebContextMenuResult-undo(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

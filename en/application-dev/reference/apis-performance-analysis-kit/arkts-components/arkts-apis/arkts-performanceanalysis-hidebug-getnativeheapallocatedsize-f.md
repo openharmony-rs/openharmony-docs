@@ -16,6 +16,8 @@ Obtains the total number of bytes occupied by the total allocated space (**uordb
 
 **Since:** 8
 
+<!--Device-hidebug-function getNativeHeapAllocatedSize() : bigint--><!--Device-hidebug-function getNativeHeapAllocatedSize() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

@@ -20,6 +20,8 @@ Synchronously queries whether a specified application or application clone of a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function isApplicationDisableForbidden(bundleName: string, userId: int, appIndex: int): boolean--><!--Device-bundleManager-function isApplicationDisableForbidden(bundleName: string, userId: int, appIndex: int): boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -4,6 +4,8 @@ The **sim** module provides basic SIM card management functions. With the APIs p
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace sim--><!--Device-unnamed-declare namespace sim-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import

@@ -18,6 +18,8 @@ Images occupy a large amount of memory. When you finish using an AuxiliaryPictur
 
 **Since:** 13
 
+<!--Device-image-function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture--><!--Device-image-function createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**

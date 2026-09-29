@@ -27,6 +27,8 @@ This API can be called to close enterprise DLP files in batches, clear file reso
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpPermission-function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<void>--><!--Device-dlpPermission-function closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

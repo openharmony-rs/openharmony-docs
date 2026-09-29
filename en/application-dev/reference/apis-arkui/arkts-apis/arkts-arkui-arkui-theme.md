@@ -1,4 +1,4 @@
-# @ohos.arkui.theme
+# @ohos.arkui.theme(Theme)
 
 ## Modules to Import
 

@@ -8,6 +8,8 @@ Enumerates the authentication result codes. They include all success codes and e
 
 **Since:** 9
 
+<!--Device-userAuth-enum UserAuthResultCode--><!--Device-userAuth-enum UserAuthResultCode-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## AUTH_TOKEN_CHECK_FAILED
@@ -19,6 +21,8 @@ AUTH_TOKEN_CHECK_FAILED = 12500015
 Failed to verify the **AuthToken**. It is an error code of the system API **verifyAuthToken**, indicating that the integrity verification of the verified **AuthToken** fails and the token may be tampered or damaged.
 
 **Since:** 18
+
+<!--Device-UserAuthResultCode-AUTH_TOKEN_CHECK_FAILED = 12500015--><!--Device-UserAuthResultCode-AUTH_TOKEN_CHECK_FAILED = 12500015-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -34,6 +38,8 @@ The **AuthToken** has expired. It is an error code of the system API **verifyAut
 
 **Since:** 18
 
+<!--Device-UserAuthResultCode-AUTH_TOKEN_EXPIRED = 12500016--><!--Device-UserAuthResultCode-AUTH_TOKEN_EXPIRED = 12500016-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -47,6 +53,8 @@ REUSE_AUTH_RESULT_FAILED = 12500017
 Failed to reuse the authentication result. It is an error code of the system API **queryReusableAuthResult**, indicating that the reusable authentication result fails to be queried. The possible causes are as follows: No authentication result that meets the reuse conditions exists, the authentication result has expired, or the credential has been changed.
 
 **Since:** 20
+
+<!--Device-UserAuthResultCode-REUSE_AUTH_RESULT_FAILED = 12500017--><!--Device-UserAuthResultCode-REUSE_AUTH_RESULT_FAILED = 12500017-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

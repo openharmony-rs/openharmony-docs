@@ -8,6 +8,8 @@ Enumerates the policies for sending cookies in cross-site requests.
 
 **Since:** 23
 
+<!--Device-webview-enum WebHttpCookieSameSitePolicy--><!--Device-webview-enum WebHttpCookieSameSitePolicy-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NONE
@@ -19,6 +21,8 @@ NONE = 0
 Cookies can be carried in cross-site requests, but the **secure** attribute must be set.
 
 **Since:** 23
+
+<!--Device-WebHttpCookieSameSitePolicy-NONE = 0--><!--Device-WebHttpCookieSameSitePolicy-NONE = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -32,6 +36,8 @@ Cookies can be carried in specific cross-site requests, such as navigation scena
 
 **Since:** 23
 
+<!--Device-WebHttpCookieSameSitePolicy-LAX = 1--><!--Device-WebHttpCookieSameSitePolicy-LAX = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## STRICT
@@ -43,5 +49,7 @@ STRICT = 2
 Cookies cannot be carried in cross-site requests.
 
 **Since:** 23
+
+<!--Device-WebHttpCookieSameSitePolicy-STRICT = 2--><!--Device-WebHttpCookieSameSitePolicy-STRICT = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

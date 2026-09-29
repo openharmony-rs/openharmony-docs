@@ -18,6 +18,8 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 
 **Required permissions:** ohos.permission.COMMONEVENT_STICKY
 
+<!--Device-commonEventManager-function removeStickyCommonEvent(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEventManager-function removeStickyCommonEvent(event: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Removes a sticky common event that has been published. This API uses a promise t
 **Since:** 10
 
 **Required permissions:** ohos.permission.COMMONEVENT_STICKY
+
+<!--Device-commonEventManager-function removeStickyCommonEvent(event: string): Promise<void>--><!--Device-commonEventManager-function removeStickyCommonEvent(event: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

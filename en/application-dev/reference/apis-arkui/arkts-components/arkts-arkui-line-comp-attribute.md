@@ -10,6 +10,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 7
 
+<!--Device-unnamed-declare class LineAttribute extends CommonShapeMethod<LineAttribute>--><!--Device-unnamed-declare class LineAttribute extends CommonShapeMethod<LineAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endPoint
@@ -27,6 +29,8 @@ Sets the coordinates of the line end point (relative to the origin at the upper 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineAttribute-endPoint(value: Array<any>): LineAttribute--><!--Device-LineAttribute-endPoint(value: Array<any>): LineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Sets the coordinates of the line start point (relative to the origin at the uppe
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineAttribute-startPoint(value: Array<any>): LineAttribute--><!--Device-LineAttribute-startPoint(value: Array<any>): LineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

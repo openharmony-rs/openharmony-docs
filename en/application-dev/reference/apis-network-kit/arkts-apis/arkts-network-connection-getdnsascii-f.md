@@ -29,6 +29,8 @@ Converts the host name from Unicode to ASCII and controls the conversion behavio
 
 **Since:** 23
 
+<!--Device-connection-function getDnsAscii(host: string, flag?: ConversionProcess): string--><!--Device-connection-function getDnsAscii(host: string, flag?: ConversionProcess): string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

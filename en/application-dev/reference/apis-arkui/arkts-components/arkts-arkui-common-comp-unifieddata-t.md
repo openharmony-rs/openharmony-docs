@@ -12,6 +12,8 @@ Defines drag-related data.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare type UnifiedData = import('../api/@ohos.data.unifiedDataChannel').default.UnifiedData--><!--Device-unnamed-declare type UnifiedData = import('../api/@ohos.data.unifiedDataChannel').default.UnifiedData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.data.unifiedDataChannel').default.UnifiedData

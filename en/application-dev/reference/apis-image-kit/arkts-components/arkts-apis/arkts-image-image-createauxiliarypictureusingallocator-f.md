@@ -19,6 +19,8 @@ Create an &lt;b&gt;AuxiliaryPicture&lt;/b&gt; object, the memory type used by th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo,    allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture--><!--Device-image-function createAuxiliaryPictureUsingAllocator(auxiliaryPictureInfo: AuxiliaryPictureInfo,    allocatorType?: AllocatorType, pixels?: ArrayBuffer): AuxiliaryPicture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**

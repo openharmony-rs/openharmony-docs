@@ -18,6 +18,8 @@ Remove a P2P group.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function removeGroup(): void--><!--Device-wifiManager-function removeGroup(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Error codes:**

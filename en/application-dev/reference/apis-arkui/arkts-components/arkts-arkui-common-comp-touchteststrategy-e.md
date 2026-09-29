@@ -8,6 +8,8 @@ Event dispatch strategy.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum TouchTestStrategy--><!--Device-unnamed-declare enum TouchTestStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -25,6 +27,8 @@ Custom dispatch has no effect; the system dispatches events based on the hit sta
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-TouchTestStrategy-DEFAULT = 0--><!--Device-TouchTestStrategy-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ The event is dispatched to a specified child node, and the system determines whe
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TouchTestStrategy-FORWARD_COMPETITION = 1--><!--Device-TouchTestStrategy-FORWARD_COMPETITION = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FORWARD
@@ -61,5 +67,7 @@ The event is dispatched to a specified child node, and the system will not dispa
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-TouchTestStrategy-FORWARD = 2--><!--Device-TouchTestStrategy-FORWARD = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

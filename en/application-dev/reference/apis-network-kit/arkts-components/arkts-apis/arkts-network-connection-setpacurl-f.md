@@ -23,6 +23,8 @@ Sets the URL of the system-level Proxy Auto Config (PAC) script.
 
 **Required permissions:** ohos.permission.SET_PAC_URL
 
+<!--Device-connection-function setPacUrl(pacUrl: string): void--><!--Device-connection-function setPacUrl(pacUrl: string): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

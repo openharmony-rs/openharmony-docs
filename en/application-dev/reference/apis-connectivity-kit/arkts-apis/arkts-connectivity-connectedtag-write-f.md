@@ -18,6 +18,8 @@ Writes data to this active tag. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function write(data: number[]): Promise<void>--><!--Device-connectedTag-function write(data: number[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Parameters:**
@@ -69,6 +71,8 @@ Writes data to this active tag. This API uses an asynchronous callback to return
 **Since:** 9
 
 **Required permissions:** ohos.permission.NFC_TAG
+
+<!--Device-connectedTag-function write(data: number[], callback: AsyncCallback<void>): void--><!--Device-connectedTag-function write(data: number[], callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.ConnectedTag
 

@@ -14,6 +14,8 @@ Provides APIs to access pages through URLs. You can use the APIs to navigate to 
 
 **Since:** 10
 
+<!--Device-unnamed-export class Router--><!--Device-unnamed-export class Router-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Returns to the previous page or a specified page.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-back(options?: router.RouterOptions): void--><!--Device-Router-back(options?: router.RouterOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,6 +77,8 @@ Returns to the specified page.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Router-back(index: number, params?: Object): void--><!--Device-Router-back(index: number, params?: Object): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +124,8 @@ Clears all historical pages in the stack and retains only the current page at th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-clear(): void--><!--Device-Router-clear(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -130,47 +138,6 @@ let uiContext: UIContext = this.getUIContext();
 
 let router: Router = uiContext.getRouter();
 router.clear();
-```
-
-## getLength
-
-```TypeScript
-getLength(): string
-```
-
-Obtains the number of pages in the current stack.
-
-> **NOTE:** 
-
-**Since:** 10
-
-**Deprecated since:** 23
-
-**Substitutes:** [getStackSize](#getstacksize)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Number of pages in the stack. The maximum value is **32**. |
-
-**Examples**
-
-See the example for [PushUrl](#pushurl).
-
-```TypeScript
-import { Router , UIContext } from '@kit.ArkUI';
-let uiContext: UIContext = this.getUIContext();
-
-let router: Router = uiContext.getRouter();
-let size = router.getLength();        
-console.info('pages stack size = ' + size);
 ```
 
 ## getParams
@@ -186,6 +153,8 @@ Obtains the parameters passed from the page that initiates redirection to the cu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-getParams(): Object--><!--Device-Router-getParams(): Object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,6 +188,8 @@ Obtains the number of pages in the current stack.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-Router-getStackSize(): number--><!--Device-Router-getStackSize(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -268,6 +239,8 @@ Obtains state information about the current page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-getState(): router.RouterState--><!--Device-Router-getState(): router.RouterState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -306,6 +279,8 @@ Obtains the status information about a page by its index.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Router-getStateByIndex(index: number): router.RouterState | undefined--><!--Device-Router-getStateByIndex(index: number): router.RouterState | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,6 +328,8 @@ Obtains the status information about a page by its URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Router-getStateByUrl(url: string): Array<router.RouterState>--><!--Device-Router-getStateByUrl(url: string): Array<router.RouterState>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -398,6 +375,8 @@ Disables the display of a confirm dialog box before returning to the previous pa
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-hideAlertBeforeBackPage(): void--><!--Device-Router-hideAlertBeforeBackPage(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -425,6 +404,8 @@ Navigates to a page using the named route. This API uses an asynchronous callbac
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void--><!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,6 +487,8 @@ Navigates to a page using the named route. This API uses a promise to return the
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions): Promise<void>--><!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -591,6 +574,8 @@ Navigates to a page using the named route. This API uses an asynchronous callbac
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void--><!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -681,6 +666,8 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>--><!--Device-Router-pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -770,6 +757,8 @@ Navigates to a specified page in the application. This API uses an asynchronous 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void--><!--Device-Router-pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -851,6 +840,8 @@ Navigates to a specified page in the application. This API uses a promise to ret
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-pushUrl(options: router.RouterOptions): Promise<void>--><!--Device-Router-pushUrl(options: router.RouterOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1001,6 +992,8 @@ Navigates to a specified page in the application. This API uses an asynchronous 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void--><!--Device-Router-pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1089,6 +1082,8 @@ Navigates to a specified page in the application. This API uses a promise to ret
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>--><!--Device-Router-pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1181,6 +1176,8 @@ Replaces the current page with another one using the named route and destroys th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void--><!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1257,6 +1254,8 @@ Replaces the current page with another one using the named route and destroys th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions): Promise<void>--><!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1338,6 +1337,8 @@ Replaces the current page with another one using the named route and destroys th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void--><!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1423,6 +1424,8 @@ Replaces the current page with another one using the named route and destroys th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>--><!--Device-Router-replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1510,6 +1513,8 @@ Replaces the current page with another one in the application and destroys the c
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void--><!--Device-Router-replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1586,6 +1591,8 @@ Replaces the current page with another one in the application and destroys the c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-replaceUrl(options: router.RouterOptions): Promise<void>--><!--Device-Router-replaceUrl(options: router.RouterOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1667,6 +1674,8 @@ Replaces the current page with another one in the application and destroys the c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void--><!--Device-Router-replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1752,6 +1761,8 @@ Replaces the current page with another one in the application and destroys the c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>--><!--Device-Router-replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1839,6 +1850,8 @@ Enables the display of a confirm dialog box before returning to the previous pag
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Router-showAlertBeforeBackPage(options: router.EnableAlertOptions): void--><!--Device-Router-showAlertBeforeBackPage(options: router.EnableAlertOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1873,4 +1886,47 @@ try {
   let code = (error as BusinessError).code;
   console.error(`showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
 }
+```
+
+## getLength
+
+```TypeScript
+getLength(): string
+```
+
+Obtains the number of pages in the current stack.
+
+> **NOTE:** 
+
+**Since:** 10
+
+**Deprecated since:** 23
+
+**Substitutes:** [getStackSize](#getstacksize)
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Router-getLength(): string--><!--Device-Router-getLength(): string-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Number of pages in the stack. The maximum value is **32**. |
+
+**Examples**
+
+See the example for [PushUrl](#pushurl).
+
+```TypeScript
+import { Router , UIContext } from '@kit.ArkUI';
+let uiContext: UIContext = this.getUIContext();
+
+let router: Router = uiContext.getRouter();
+let size = router.getLength();        
+console.info('pages stack size = ' + size);
 ```

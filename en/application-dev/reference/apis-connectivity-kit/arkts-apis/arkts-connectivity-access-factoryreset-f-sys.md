@@ -18,6 +18,8 @@ Restoring bluetooth settings.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-access-function factoryReset(callback: AsyncCallback<void>): void--><!--Device-access-function factoryReset(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Restoring bluetooth settings.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-access-function factoryReset(): Promise<void>--><!--Device-access-function factoryReset(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

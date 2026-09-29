@@ -12,6 +12,8 @@ The callback is called when only an ability is monitored.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-type AbilityCallbackFn = (ability: any) => void--><!--Device-unnamed-type AbilityCallbackFn = (ability: any) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Parameters:**

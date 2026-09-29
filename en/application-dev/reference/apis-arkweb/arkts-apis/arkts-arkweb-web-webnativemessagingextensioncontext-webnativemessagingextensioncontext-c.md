@@ -10,6 +10,8 @@ WebNativeMessagingExtensionContext is the runtime context of the native web mess
 
 **Since:** 21
 
+<!--Device-unnamed-export default class WebNativeMessagingExtensionContext extends ExtensionContext--><!--Device-unnamed-export default class WebNativeMessagingExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Starts an ability. This API uses a promise to return the result. To obtain the r
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebNativeMessagingExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-WebNativeMessagingExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -120,6 +124,8 @@ resultCode set to -1.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebNativeMessagingExtensionContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>--><!--Device-WebNativeMessagingExtensionContext-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -206,6 +212,8 @@ Stops the specified native connection. This API uses a promise to return the res
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebNativeMessagingExtensionContext-stopNativeConnection(connectionId: number): Promise<void>--><!--Device-WebNativeMessagingExtensionContext-stopNativeConnection(connectionId: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -264,6 +272,8 @@ Destroys the current native web message extension. This method returns a promise
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebNativeMessagingExtensionContext-terminateSelf(): Promise<void>--><!--Device-WebNativeMessagingExtensionContext-terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

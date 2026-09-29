@@ -1,6 +1,6 @@
 # Badge
 
-The **Badge** component is a container that can be attached to another component for notification and reminder purposes.
+A badge container component that can be attached to a single component for information reminders. It supports three badge formats: number, string, and dot. You can customize the badge style (text color, size, badge color, and size) and display position. It is suitable for scenarios where users need to be reminded of new or unread messages, such as unread message counts and new feature prompts, helping users quickly identify and focus on important information and improving user experience.
 
 ## Child Components
 
@@ -8,13 +8,13 @@ This component supports only one child component.
 
 > **NOTE:** 
 > 
-> - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](arkts-arkui-foreach-comp-attribute.md#foreachattribute), and [LazyForEach](arkts-arkui-lazyforeach-comp.md#lazy_for_each)).
+> - Child component types: system components and custom components, supporting rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
 > 
-> - A custom component defaults to a width and height of 0. You must explicitly set its width and height; otherwise,the **Badge** component will not be displayed.
+> - The width and height of a custom component are 0 by default. You need to set its width and height; otherwise, the badge component will not be displayed.
 > 
-> - When there are multiple child components, only the last child component is displayed on the UI. However, the status update of other child components will still cause the badge and its child components to be re-rendered.
+> - When there are multiple child components, only the last child component is displayed on the UI, but the state updates of the remaining child components still trigger the re-layout and re-rendering of **Badge** and all its child components.
 > 
-> - Child component layout is independent and does not automatically adjust to avoid overlapping with the badge.
+> - It does not affect the layout of child components, that is, it does not actively avoid the content of child components.
 
 ## Badge
 
@@ -22,7 +22,7 @@ This component supports only one child component.
 Badge(value: BadgeParamWithNumber)
 ```
 
-Creates a badge with the given numerical value.
+Creates a badge component based on a number.
 
 **Since:** 7
 
@@ -30,13 +30,15 @@ Creates a badge with the given numerical value.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-BadgeInterface-(value: BadgeParamWithNumber): BadgeAttribute--><!--Device-BadgeInterface-(value: BadgeParamWithNumber): BadgeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [BadgeParamWithNumber](arkts-arkui-badge-comp-badgeparamwithnumber-i.md) | Yes | Options of the numeric badge. |
+| value | [BadgeParamWithNumber](arkts-arkui-badge-comp-badgeparamwithnumber-i.md) | Yes | Parameters of the number badge component, used to configure the **Badge** component created based on a number, including the message count, display position, and style. |
 
 ## Badge
 
@@ -44,7 +46,7 @@ Creates a badge with the given numerical value.
 Badge(value: BadgeParamWithString)
 ```
 
-Creates a badge with the given string.
+Creates a badge component based on a string.
 
 **Since:** 7
 
@@ -52,13 +54,15 @@ Creates a badge with the given string.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-BadgeInterface-(value: BadgeParamWithString): BadgeAttribute--><!--Device-BadgeInterface-(value: BadgeParamWithString): BadgeAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [BadgeParamWithString](arkts-arkui-badge-comp-badgeparamwithstring-i.md) | Yes | Options of the string-type badge. |
+| value | [BadgeParamWithString](arkts-arkui-badge-comp-badgeparamwithstring-i.md) | Yes | Parameters of the string badge component. |
 
 ## Summary
 
@@ -66,16 +70,16 @@ Creates a badge with the given string.
 
 | Name | Description |
 | --- | --- |
-| [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) | Provides basic parameters for creating a badge. |
-| [BadgeParamWithNumber](arkts-arkui-badge-comp-badgeparamwithnumber-i.md) | Inherits from [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) and has all attributes of **BadgeParam**. |
-| [BadgeParamWithString](arkts-arkui-badge-comp-badgeparamwithstring-i.md) | Inherits from [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) and has all attributes of **BadgeParam**. |
-| [BadgeStyle](arkts-arkui-badge-comp-badgestyle-i.md) | Describes the badge style. It includes the font color, font size, badge color, badge size, etc. |
+| [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) | Contains the basic parameters for creating a Badge component. |
+| [BadgeParamWithNumber](arkts-arkui-badge-comp-badgeparamwithnumber-i.md) | BadgeParamWithNumber inherits from [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) and has all the attributes of BadgeParam. |
+| [BadgeParamWithString](arkts-arkui-badge-comp-badgeparamwithstring-i.md) | BadgeParamWithString inherits from [BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md) and has all the properties of BadgeParam. |
+| [BadgeStyle](arkts-arkui-badge-comp-badgestyle-i.md) | Defines the style of a badge, including the text color, size, font weight, badge color, and badge size. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [BadgePosition](arkts-arkui-badge-comp-badgeposition-e.md) | Enumerates the display positions of a badge. |
+| [BadgePosition](arkts-arkui-badge-comp-badgeposition-e.md) | Enumerates the badge display positions. |
 
 ## Examples
 

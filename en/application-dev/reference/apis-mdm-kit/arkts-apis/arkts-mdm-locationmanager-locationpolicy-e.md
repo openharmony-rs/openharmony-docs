@@ -8,6 +8,8 @@ Enumerates the location service policies.
 
 **Since:** 12
 
+<!--Device-locationManager-export enum LocationPolicy--><!--Device-locationManager-export enum LocationPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DEFAULT_LOCATION_SERVICE
@@ -21,6 +23,8 @@ Default policy. The location service is not restricted and can be controlled by 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LocationPolicy-DEFAULT_LOCATION_SERVICE = 0--><!--Device-LocationPolicy-DEFAULT_LOCATION_SERVICE = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ The location service is disabled. This policy applies to scenarios where the loc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LocationPolicy-DISALLOW_LOCATION_SERVICE = 1--><!--Device-LocationPolicy-DISALLOW_LOCATION_SERVICE = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## FORCE_OPEN_LOCATION_SERVICE
@@ -49,5 +55,7 @@ The location service is forcibly enabled. This policy applies to scenarios where
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LocationPolicy-FORCE_OPEN_LOCATION_SERVICE = 2--><!--Device-LocationPolicy-FORCE_OPEN_LOCATION_SERVICE = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

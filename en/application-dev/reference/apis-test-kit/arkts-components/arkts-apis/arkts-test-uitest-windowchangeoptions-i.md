@@ -8,6 +8,8 @@ Describes the extended configuration of window change event listening, which is 
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface WindowChangeOptions--><!--Device-unnamed-declare interface WindowChangeOptions-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -31,7 +33,9 @@ Bundle name of the window to be listened for. By default, all windows are listen
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-WindowChangeOptions-bundleName?: string--><!--Device-WindowChangeOptions-bundleName?: string-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -49,7 +53,9 @@ Listening timeout interval, in milliseconds. The value is an integer greater tha
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-WindowChangeOptions-timeout?: int--><!--Device-WindowChangeOptions-timeout?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

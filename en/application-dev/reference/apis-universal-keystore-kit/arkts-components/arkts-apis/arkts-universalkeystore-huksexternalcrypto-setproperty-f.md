@@ -18,6 +18,8 @@ The set-type operations of the external crypto extension support calling custom 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-huksExternalCrypto-function setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoParam[]): Promise<void>--><!--Device-huksExternalCrypto-function setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoParam[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 **Parameters:**

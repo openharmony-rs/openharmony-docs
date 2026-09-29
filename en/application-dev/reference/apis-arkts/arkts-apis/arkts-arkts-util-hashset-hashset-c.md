@@ -8,6 +8,8 @@ HashSet is implemented based on HashMap. In HashSet, only the value object is pr
 
 **Since:** 8
 
+<!--Device-unnamed-declare class HashSet<T>--><!--Device-unnamed-declare class HashSet<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ returns an iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HashSet-[Symbol.iterator](): IterableIterator<T>--><!--Device-HashSet-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -88,7 +92,9 @@ Adds elements to this HashSet.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-add(value: T): boolean--><!--Device-HashSet-add(value: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -128,7 +134,9 @@ Clears this HashSet and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-clear(): void--><!--Device-HashSet-clear(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -159,7 +167,9 @@ A constructor used to create a **HashSet** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-constructor()--><!--Device-HashSet-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -185,7 +195,9 @@ Returns an iterator that contains all the elements in this HashSet.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-entries(): IterableIterator<[T, T]>--><!--Device-HashSet-entries(): IterableIterator<[T, T]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -243,6 +255,8 @@ Uses a callback to traverse each element.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HashSet-forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Object): void--><!--Device-HashSet-forEach(callbackFn: (value?: T, key?: T, set?: HashSet<T>) => void, thisArg?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -292,7 +306,9 @@ Checks whether this HashSet has the specified element.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-has(value: T): boolean--><!--Device-HashSet-has(value: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -333,7 +349,9 @@ Checks whether this HashSet is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-isEmpty(): boolean--><!--Device-HashSet-isEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -367,7 +385,9 @@ Removes an element from this HashSet.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-remove(value: T): boolean--><!--Device-HashSet-remove(value: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -409,7 +429,9 @@ Returns an iterator that contains all the values in this HashSet.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HashSet-values(): IterableIterator<T>--><!--Device-HashSet-values(): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -452,5 +474,7 @@ Number of elements in a HashSet.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HashSet-length: number--><!--Device-HashSet-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

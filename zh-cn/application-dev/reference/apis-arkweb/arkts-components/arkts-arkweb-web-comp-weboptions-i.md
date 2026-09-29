@@ -8,6 +8,8 @@ declare interface WebOptions
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface WebOptions--><!--Device-unnamed-declare interface WebOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## controller
@@ -24,6 +26,8 @@ controller: WebController | WebviewController
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebOptions-controller: WebController | WebviewController--><!--Device-WebOptions-controller: WebController | WebviewController-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## emulateTouchFromMouseEvent
@@ -39,6 +43,8 @@ emulateTouchFromMouseEvent? : boolean
 **类型：** boolean
 
 **起始版本：** 22
+
+<!--Device-WebOptions-emulateTouchFromMouseEvent? : boolean--><!--Device-WebOptions-emulateTouchFromMouseEvent? : boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,6 +66,8 @@ incognitoMode? : boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebOptions-incognitoMode? : boolean--><!--Device-WebOptions-incognitoMode? : boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## renderMode
@@ -76,6 +84,8 @@ renderMode? : RenderMode
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebOptions-renderMode? : RenderMode--><!--Device-WebOptions-renderMode? : RenderMode-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## sharedRenderProcessToken
@@ -91,6 +101,8 @@ sharedRenderProcessToken? : string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-WebOptions-sharedRenderProcessToken? : string--><!--Device-WebOptions-sharedRenderProcessToken? : string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -109,5 +121,7 @@ src不能通过状态变量（例如：@State）动态更改地址，如需更�
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebOptions-src: string | Resource--><!--Device-WebOptions-src: string | Resource-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

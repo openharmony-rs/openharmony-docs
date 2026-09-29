@@ -6,6 +6,8 @@ This module provides APIs for serial port management, which are applicable to sc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace serial--><!--Device-unnamed-declare namespace serial-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 ## Modules to Import

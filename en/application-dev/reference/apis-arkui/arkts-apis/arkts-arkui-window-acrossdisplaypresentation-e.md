@@ -8,6 +8,8 @@ Enum for across-display policy used when maximizing in the half-folded state of 
 
 **Since:** 26.0.0
 
+<!--Device-window-enum AcrossDisplayPresentation--><!--Device-window-enum AcrossDisplayPresentation-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## FOLLOW_ACROSS_DISPLAY_SETTING
@@ -21,6 +23,8 @@ Indicates following the current acrossDisplayPresentation. If the acrossDisplayP
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AcrossDisplayPresentation-FOLLOW_ACROSS_DISPLAY_SETTING = 0--><!--Device-AcrossDisplayPresentation-FOLLOW_ACROSS_DISPLAY_SETTING = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -36,6 +40,8 @@ In the half-folded state of the device, the window could directly enter the acro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AcrossDisplayPresentation-ENTER_ACROSS_DISPLAY_MODE = 1--><!--Device-AcrossDisplayPresentation-ENTER_ACROSS_DISPLAY_MODE = 1-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## EXIT_ACROSS_DISPLAY_MODE
@@ -49,5 +55,7 @@ In the half-folded state of the device, the window exits across-display mode and
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AcrossDisplayPresentation-EXIT_ACROSS_DISPLAY_MODE = 2--><!--Device-AcrossDisplayPresentation-EXIT_ACROSS_DISPLAY_MODE = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

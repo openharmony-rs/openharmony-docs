@@ -8,6 +8,8 @@ GzError return value information.
 
 **Since:** 12
 
+<!--Device-zlib-interface GzErrorOutputInfo--><!--Device-zlib-interface GzErrorOutputInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Return Zlib status ReturnStatus the specific meaning is defined as enum.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GzErrorOutputInfo-status: ReturnStatus--><!--Device-GzErrorOutputInfo-status: ReturnStatus-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -44,6 +48,8 @@ The last status message reported on the zlib file.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GzErrorOutputInfo-statusMsg: string--><!--Device-GzErrorOutputInfo-statusMsg: string-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

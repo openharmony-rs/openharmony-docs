@@ -12,11 +12,13 @@ import { matrix4 } from '@kit.ArkUI';
 function identity(): Matrix4Transit
 ```
 
-Constructs an identity matrix.
+Initializes a matrix and returns an identity matrix object, which can serve as the basis for subsequent matrix transformation operations.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-matrix4-function identity(): Matrix4Transit--><!--Device-matrix4-function identity(): Matrix4Transit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

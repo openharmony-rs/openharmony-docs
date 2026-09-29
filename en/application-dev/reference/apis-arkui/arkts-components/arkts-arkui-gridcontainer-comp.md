@@ -2,7 +2,13 @@
 
 A vertical grid layout container, used only in grid layout scenarios. The grid layout implements responsive layout by dividing the container width into a specified number of columns, allowing child components to occupy different numbers of columns and offsets. It is suitable for responsive page layouts, multi-column content display, dashboard layouts, and other scenarios.
 
-> **NOTE** > > This component is deprecated since API version 9. You are advised to use the new components > [GridCol](arkts-arkui-gridcol-comp.md#grid_col) and [GridRow](arkts-arkui-gridrow-comp.md#grid_row) instead. > > This component is supported since API version 7. New APIs added in later versions are marked with superscripts to > indicate their starting version.
+> **NOTE:** 
+> 
+> This component is deprecated since API version 9. You are advised to use the new components
+> [GridCol](arkts-arkui-gridcol-comp.md) and [GridRow](arkts-arkui-gridrow-comp.md) instead.
+> 
+> This component is supported since API version 7. New APIs added in later versions are marked with superscripts to
+> indicate their starting version.
 
 ## Child Components
 
@@ -21,6 +27,8 @@ Creates a vertical grid layout container.
 **Deprecated since:** 9
 
 **Substitutes:** grid_col/GridColInterface and grid_row/GridRowInterface
+
+<!--Device-GridContainerInterface-(value?: GridContainerOptions): GridContainerAttribute--><!--Device-GridContainerInterface-(value?: GridContainerOptions): GridContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

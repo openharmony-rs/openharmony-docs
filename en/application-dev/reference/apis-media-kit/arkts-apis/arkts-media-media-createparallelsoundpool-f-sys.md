@@ -18,6 +18,8 @@ If a **SoundPool** instance created using [createSoundPool](arkts-media-media-cr
 
 **Since:** 20
 
+<!--Device-media-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>--><!--Device-media-function createParallelSoundPool(maxStreams: int, audioRenderInfo: audio.AudioRendererInfo): Promise<SoundPool>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ export interface ShowNotificationOptions
 
 **Deprecated since:** 7
 
+<!--Device-unnamed-export interface ShowNotificationOptions--><!--Device-unnamed-export interface ShowNotificationOptions-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -32,6 +34,8 @@ This API is deprecated since API version 7.
 
 **Deprecated since:** 7
 
+<!--Device-ShowNotificationOptions-clickAction?: ActionResult--><!--Device-ShowNotificationOptions-clickAction?: ActionResult-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## contentText
@@ -48,6 +52,8 @@ Notification content.
 
 **Deprecated since:** 7
 
+<!--Device-ShowNotificationOptions-contentText?: string--><!--Device-ShowNotificationOptions-contentText?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## contentTitle
@@ -63,5 +69,7 @@ Notification title.
 **Since:** 3
 
 **Deprecated since:** 7
+
+<!--Device-ShowNotificationOptions-contentTitle?: string--><!--Device-ShowNotificationOptions-contentTitle?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

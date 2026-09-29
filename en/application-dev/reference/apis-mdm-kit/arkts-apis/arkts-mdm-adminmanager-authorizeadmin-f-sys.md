@@ -20,6 +20,8 @@ Authorizes the administrator permission to a specified application. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function authorizeAdmin(admin: Want, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-adminManager-function authorizeAdmin(admin: Want, bundleName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -82,6 +84,8 @@ Authorizes the administrator permission to a specified application. This API use
 **Required permissions:** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function authorizeAdmin(admin: Want, bundleName: string): Promise<void>--><!--Device-adminManager-function authorizeAdmin(admin: Want, bundleName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

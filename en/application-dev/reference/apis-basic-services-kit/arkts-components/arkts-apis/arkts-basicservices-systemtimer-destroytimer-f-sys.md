@@ -16,6 +16,8 @@ Destroys a timer. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
+<!--Device-systemTimer-function destroyTimer(timer: long, callback: AsyncCallback<void>): void--><!--Device-systemTimer-function destroyTimer(timer: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ function destroyTimer(timer: number): Promise<void>
 Destroys a timer. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-systemTimer-function destroyTimer(timer: long): Promise<void>--><!--Device-systemTimer-function destroyTimer(timer: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

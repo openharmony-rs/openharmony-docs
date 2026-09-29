@@ -8,9 +8,11 @@ declare class RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
 
 支持通用事件。
 
-**继承/实现关系：** RemoteWindowAttribute extends CommonMethod&lt;RemoteWindowAttribute&gt;
+**继承/实现关系：** RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>--><!--Device-unnamed-declare class RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

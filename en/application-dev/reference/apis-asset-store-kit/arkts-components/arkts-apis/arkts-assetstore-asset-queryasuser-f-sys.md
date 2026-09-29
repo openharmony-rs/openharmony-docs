@@ -18,6 +18,8 @@ Queries one or more assets in the specified user space. If user authentication i
 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-asset-function queryAsUser(userId: number, query: AssetMap): Promise<Array<AssetMap>>--><!--Device-asset-function queryAsUser(userId: number, query: AssetMap): Promise<Array<AssetMap>>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

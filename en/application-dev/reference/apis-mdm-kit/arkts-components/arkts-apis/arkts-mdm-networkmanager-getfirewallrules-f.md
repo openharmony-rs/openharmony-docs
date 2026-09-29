@@ -24,6 +24,8 @@ In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 ar
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getFirewallRules(admin: Want): Array<FirewallRule>--><!--Device-networkManager-function getFirewallRules(admin: Want): Array<FirewallRule>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

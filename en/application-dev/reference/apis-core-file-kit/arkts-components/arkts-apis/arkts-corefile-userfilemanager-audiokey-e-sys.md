@@ -12,6 +12,8 @@ Defines the key information about an audio file.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
+<!--Device-userFileManager-enum AudioKey--><!--Device-userFileManager-enum AudioKey-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ URI of the file.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-URI = 0--><!--Device-AudioKey-URI = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -48,6 +52,8 @@ File name displayed.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
+<!--Device-AudioKey-DISPLAY_NAME = 1--><!--Device-AudioKey-DISPLAY_NAME = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ Date when the file was added. The value is the number of seconds elapsed since t
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-DATE_ADDED = 2--><!--Device-AudioKey-DATE_ADDED = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -84,6 +92,8 @@ Date when the file content (not the file name) was last modified. The value is t
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
+<!--Device-AudioKey-DATE_MODIFIED = 3--><!--Device-AudioKey-DATE_MODIFIED = 3-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -101,6 +111,8 @@ Title of the file.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-TITLE = 4--><!--Device-AudioKey-TITLE = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -120,6 +132,8 @@ Author of the file.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
+<!--Device-AudioKey-ARTIST = 5--><!--Device-AudioKey-ARTIST = 5-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -137,6 +151,8 @@ Audio album.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-AUDIOALBUM = 6--><!--Device-AudioKey-AUDIOALBUM = 6-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -156,6 +172,8 @@ Duration, in ms.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
+<!--Device-AudioKey-DURATION = 7--><!--Device-AudioKey-DURATION = 7-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -173,6 +191,8 @@ Whether the file is added to favorites.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-FAVORITE = 8--><!--Device-AudioKey-FAVORITE = 8-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

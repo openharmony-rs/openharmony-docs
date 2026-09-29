@@ -18,6 +18,8 @@ Obtains scanner parameters. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-scan-function getScannerParameter(scannerId: string): Promise<ScannerParameter[]>--><!--Device-scan-function getScannerParameter(scannerId: string): Promise<ScannerParameter[]>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

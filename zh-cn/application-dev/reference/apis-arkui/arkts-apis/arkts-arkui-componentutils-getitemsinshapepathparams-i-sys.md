@@ -10,6 +10,8 @@ interface GetItemsInShapePathParams
 
 **起始版本：** 23
 
+<!--Device-componentUtils-interface GetItemsInShapePathParams--><!--Device-componentUtils-interface GetItemsInShapePathParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -34,6 +36,8 @@ images: Array<ImageItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-GetItemsInShapePathParams-images: Array<ImageItem>--><!--Device-GetItemsInShapePathParams-images: Array<ImageItem>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -52,6 +56,8 @@ ratio?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-GetItemsInShapePathParams-ratio?: double--><!--Device-GetItemsInShapePathParams-ratio?: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -69,6 +75,8 @@ shapePath: Array<common2D.Point>
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>--><!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

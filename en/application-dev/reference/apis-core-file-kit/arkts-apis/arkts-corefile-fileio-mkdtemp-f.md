@@ -19,6 +19,8 @@ Creates a temporary directory. This API uses a promise to return the result.
 
 **Substitutes:** [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md)
 
+<!--Device-unnamed-declare function mkdtemp(prefix: string): Promise<string>--><!--Device-unnamed-declare function mkdtemp(prefix: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Creates a temporary directory. This API uses an asynchronous callback to return 
 **Deprecated since:** 9
 
 **Substitutes:** [mkdtemp](arkts-corefile-file-fs-mkdtemp-f.md)
+
+<!--Device-unnamed-declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

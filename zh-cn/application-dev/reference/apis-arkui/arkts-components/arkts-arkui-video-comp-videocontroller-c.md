@@ -14,6 +14,8 @@ let controller: VideoController = new VideoController();
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class VideoController--><!--Device-unnamed-declare class VideoController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -29,6 +31,8 @@ VideoController的构造函数。
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoController-constructor()--><!--Device-VideoController-constructor()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ exitFullscreen()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoController-exitFullscreen()--><!--Device-VideoController-exitFullscreen()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pause
@@ -62,6 +68,8 @@ pause()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoController-pause()--><!--Device-VideoController-pause()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## requestFullscreen
@@ -77,6 +85,8 @@ requestFullscreen(value: boolean)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoController-requestFullscreen(value: boolean)--><!--Device-VideoController-requestFullscreen(value: boolean)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +110,8 @@ reset(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoController-reset(): void--><!--Device-VideoController-reset(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## setCurrentTime
@@ -119,6 +131,8 @@ setCurrentTime(value: number)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoController-setCurrentTime(value: number)--><!--Device-VideoController-setCurrentTime(value: number)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,6 +162,8 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoController-setCurrentTime(value: number, seekMode: SeekMode)--><!--Device-VideoController-setCurrentTime(value: number, seekMode: SeekMode)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -171,6 +187,8 @@ start()
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoController-start()--><!--Device-VideoController-start()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## stop
@@ -186,5 +204,7 @@ stop()
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoController-stop()--><!--Device-VideoController-stop()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

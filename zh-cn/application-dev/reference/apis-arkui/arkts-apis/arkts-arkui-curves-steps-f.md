@@ -24,6 +24,8 @@ function steps(count: number, end: boolean): string
 
 **替代接口：** [stepsCurve](arkts-arkui-curves-stepscurve-f.md)
 
+<!--Device-curves-function steps(count: number, end: boolean): string--><!--Device-curves-function steps(count: number, end: boolean): string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

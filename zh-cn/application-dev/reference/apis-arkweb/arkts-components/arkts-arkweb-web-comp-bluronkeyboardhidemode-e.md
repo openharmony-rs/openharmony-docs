@@ -8,6 +8,8 @@ declare enum BlurOnKeyboardHideMode
 
 **起始版本：** 14
 
+<!--Device-unnamed-declare enum BlurOnKeyboardHideMode--><!--Device-unnamed-declare enum BlurOnKeyboardHideMode-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SILENT
@@ -22,6 +24,8 @@ SILENT = 0
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-BlurOnKeyboardHideMode-SILENT = 0--><!--Device-BlurOnKeyboardHideMode-SILENT = 0-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## BLUR
@@ -35,5 +39,7 @@ BLUR = 1
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-BlurOnKeyboardHideMode-BLUR = 1--><!--Device-BlurOnKeyboardHideMode-BLUR = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

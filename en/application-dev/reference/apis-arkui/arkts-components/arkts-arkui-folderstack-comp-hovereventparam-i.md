@@ -6,6 +6,8 @@ declare interface HoverEventParam
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface HoverEventParam--><!--Device-unnamed-declare interface HoverEventParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## appRotation
@@ -23,6 +25,8 @@ Rotation angle of the current app orientation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HoverEventParam-appRotation: AppRotation--><!--Device-HoverEventParam-appRotation: AppRotation-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ Current fold state of the device.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HoverEventParam-foldStatus: FoldStatus--><!--Device-HoverEventParam-foldStatus: FoldStatus-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isHoverMode
@@ -60,6 +66,8 @@ Whether hover mode is enabled. **true**: Hover mode is enabled. **false**: Hover
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HoverEventParam-isHoverMode: boolean--><!--Device-HoverEventParam-isHoverMode: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowStatusType
@@ -77,5 +85,7 @@ Window mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HoverEventParam-windowStatusType: WindowStatusType--><!--Device-HoverEventParam-windowStatusType: WindowStatusType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

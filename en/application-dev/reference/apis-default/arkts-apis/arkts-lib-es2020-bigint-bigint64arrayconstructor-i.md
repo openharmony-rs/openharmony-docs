@@ -59,6 +59,8 @@ from(arrayLike: ArrayLike<bigint>): BigInt64Array
 
 Creates an array from an array-like or iterable object.
 
+<!--Device-BigInt64ArrayConstructor-from(arrayLike: ArrayLike<bigint>): BigInt64Array--><!--Device-BigInt64ArrayConstructor-from(arrayLike: ArrayLike<bigint>): BigInt64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -89,6 +91,8 @@ of(...items: bigint[]): BigInt64Array
 
 Returns a new array from a set of elements.
 
+<!--Device-BigInt64ArrayConstructor-of(...items: bigint[]): BigInt64Array--><!--Device-BigInt64ArrayConstructor-of(...items: bigint[]): BigInt64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -104,6 +108,8 @@ readonly BYTES_PER_ELEMENT: number
 The size in bytes of each element in the array.
 
 **Type:** number
+
+<!--Device-BigInt64ArrayConstructor-readonly BYTES_PER_ELEMENT: number--><!--Device-BigInt64ArrayConstructor-readonly BYTES_PER_ELEMENT: number-End-->
 
 ## prototype
 

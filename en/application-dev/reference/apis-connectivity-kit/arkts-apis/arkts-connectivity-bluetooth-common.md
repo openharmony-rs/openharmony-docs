@@ -4,6 +4,8 @@ Provide common Bluetooth interfaces and types.
 
 **Since:** 21
 
+<!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

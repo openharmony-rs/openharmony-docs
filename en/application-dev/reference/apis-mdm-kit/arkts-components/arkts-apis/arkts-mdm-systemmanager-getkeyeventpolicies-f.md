@@ -20,6 +20,8 @@ Obtains the key event handling policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getKeyEventPolicies(admin: Want): Array<KeyEventPolicy>--><!--Device-systemManager-function getKeyEventPolicies(admin: Want): Array<KeyEventPolicy>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -79,6 +81,8 @@ Obtains the key event handling policy. This API is applicable to scenarios where
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-systemManager-function getKeyEventPolicies(admin: Want | null): Array<KeyEventPolicy>--><!--Device-systemManager-function getKeyEventPolicies(admin: Want | null): Array<KeyEventPolicy>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

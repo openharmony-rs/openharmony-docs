@@ -8,6 +8,8 @@ Defines the handle of the data network. Before calling the **NetHandle** functio
 
 **Since:** 9
 
+<!--Device-sharing-type NetHandle = connection.NetHandle--><!--Device-sharing-type NetHandle = connection.NetHandle-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Type:** [connection.NetHandle](arkts-network-connection-nethandle-i.md)

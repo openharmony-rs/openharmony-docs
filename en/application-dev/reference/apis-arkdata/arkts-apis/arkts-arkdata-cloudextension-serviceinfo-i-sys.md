@@ -8,6 +8,8 @@ Represents the cloud service information.
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface ServiceInfo--><!--Device-cloudExtension-export interface ServiceInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Whether the cloud service is enabled. The value true means that the cloud servic
 
 **Since:** 11
 
+<!--Device-ServiceInfo-enableCloud: boolean--><!--Device-ServiceInfo-enableCloud: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Cloud account ID generated using SHA-256.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-ServiceInfo-id: string--><!--Device-ServiceInfo-id: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -62,6 +68,8 @@ Available account space on the server, in KB.
 
 **Since:** 11
 
+<!--Device-ServiceInfo-remainingSpace: long--><!--Device-ServiceInfo-remainingSpace: long-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Total account space on the server, in KB.
 
 **Since:** 11
 
+<!--Device-ServiceInfo-totalSpace: long--><!--Device-ServiceInfo-totalSpace: long-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Current user ID of the device.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-ServiceInfo-user: int--><!--Device-ServiceInfo-user: int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

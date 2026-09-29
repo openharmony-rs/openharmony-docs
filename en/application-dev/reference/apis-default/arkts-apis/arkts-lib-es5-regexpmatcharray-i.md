@@ -19,6 +19,8 @@ The first match. This will always be present because `null` will be returned if 
 
 **Type:** string
 
+<!--Device-RegExpMatchArray-0: string--><!--Device-RegExpMatchArray-0: string-End-->
+
 ## index
 
 ```TypeScript
@@ -29,6 +31,8 @@ The index of the search at which the result was found.
 
 **Type:** number
 
+<!--Device-RegExpMatchArray-index?: number--><!--Device-RegExpMatchArray-index?: number-End-->
+
 ## input
 
 ```TypeScript
@@ -38,3 +42,5 @@ input?: string
 A copy of the search string.
 
 **Type:** string
+
+<!--Device-RegExpMatchArray-input?: string--><!--Device-RegExpMatchArray-input?: string-End-->

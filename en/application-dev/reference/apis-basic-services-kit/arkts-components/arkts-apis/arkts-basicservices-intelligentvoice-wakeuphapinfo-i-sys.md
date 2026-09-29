@@ -8,6 +8,8 @@ Describes wakeup hap information. @typedef WakeupHapInfo
 
 **Since:** 10
 
+<!--Device-intelligentVoice-interface WakeupHapInfo--><!--Device-intelligentVoice-interface WakeupHapInfo-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Ability name.
 
 **Since:** 10
 
+<!--Device-WakeupHapInfo-abilityName: string--><!--Device-WakeupHapInfo-abilityName: string-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Bundle name.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-WakeupHapInfo-bundleName: string--><!--Device-WakeupHapInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

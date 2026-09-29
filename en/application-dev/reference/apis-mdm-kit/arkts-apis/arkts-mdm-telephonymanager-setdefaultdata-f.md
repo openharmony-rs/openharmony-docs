@@ -20,6 +20,8 @@ Sets the SIM card in the specified slot as the default data SIM card. The device
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-telephonyManager-function setDefaultData(admin: Want, slotId: number): void--><!--Device-telephonyManager-function setDefaultData(admin: Want, slotId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -18,7 +18,9 @@ Connect to a specified candidate hotspot by networkId, only the configuration wh
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function connectToCandidateConfig(networkId: int): void--><!--Device-wifiManager-function connectToCandidateConfig(networkId: int): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -68,7 +70,9 @@ Connect to the specified candidate hotspot using connect settings.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-wifiManager-function connectToCandidateConfig(settings: ConnectSettings): Promise<void>--><!--Device-wifiManager-function connectToCandidateConfig(settings: ConnectSettings): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

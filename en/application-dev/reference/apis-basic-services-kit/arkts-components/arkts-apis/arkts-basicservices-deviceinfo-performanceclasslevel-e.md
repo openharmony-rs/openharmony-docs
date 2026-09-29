@@ -8,6 +8,8 @@ Enumerates the device capability levels.
 
 **Since:** 19
 
+<!--Device-deviceInfo-export enum PerformanceClassLevel--><!--Device-deviceInfo-export enum PerformanceClassLevel-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 ## CLASS_LEVEL_HIGH
@@ -19,6 +21,8 @@ CLASS_LEVEL_HIGH
 High
 
 **Since:** 19
+
+<!--Device-PerformanceClassLevel-CLASS_LEVEL_HIGH--><!--Device-PerformanceClassLevel-CLASS_LEVEL_HIGH-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
@@ -32,6 +36,8 @@ Medium
 
 **Since:** 19
 
+<!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM--><!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 ## CLASS_LEVEL_LOW
@@ -43,5 +49,7 @@ CLASS_LEVEL_LOW
 Low
 
 **Since:** 19
+
+<!--Device-PerformanceClassLevel-CLASS_LEVEL_LOW--><!--Device-PerformanceClassLevel-CLASS_LEVEL_LOW-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo

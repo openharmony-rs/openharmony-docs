@@ -10,6 +10,8 @@ The definition of Favorite/Subscribe.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface FavoriteData--><!--Device-avMusicTemplate-interface FavoriteData-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Favorite counts.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FavoriteData-favCounts: string--><!--Device-FavoriteData-favCounts: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isFavorite
@@ -48,6 +52,8 @@ Is favorite.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FavoriteData-isFavorite: boolean--><!--Device-FavoriteData-isFavorite: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isSupportFav
@@ -63,5 +69,7 @@ Is supported favorite.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FavoriteData-isSupportFav: boolean--><!--Device-FavoriteData-isSupportFav: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

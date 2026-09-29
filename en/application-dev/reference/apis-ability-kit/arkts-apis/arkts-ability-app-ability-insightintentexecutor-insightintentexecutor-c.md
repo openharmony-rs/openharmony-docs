@@ -8,6 +8,8 @@ The module provides the base class for intent execution. You can use this module
 
 **Since:** 11
 
+<!--Device-unnamed-declare class InsightIntentExecutor--><!--Device-unnamed-declare class InsightIntentExecutor-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Called during the ServiceExtensionAbility lifecycle when the ServiceExtensionAbi
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentExecutor-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>--><!--Device-InsightIntentExecutor-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -140,6 +144,8 @@ intent execution: onExecuteInUIAbilityBackgroundMode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-InsightIntentExecutor-onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>--><!--Device-InsightIntentExecutor-onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Parameters:**
@@ -234,6 +240,8 @@ following sequence during intent execution: onExecuteInUIAbilityForegroundMode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-InsightIntentExecutor-onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>--><!--Device-InsightIntentExecutor-onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -352,6 +360,8 @@ Called during the UIExtensionAbility lifecycle when the [UIExtensionAbility](ark
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentExecutor-onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>--><!--Device-InsightIntentExecutor-onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession):    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -461,6 +471,8 @@ Context for intent execution.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-InsightIntentExecutor-context: InsightIntentContext--><!--Device-InsightIntentExecutor-context: InsightIntentContext-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

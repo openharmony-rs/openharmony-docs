@@ -8,6 +8,8 @@ Defines the ad configuration.
 
 **Since:** 11
 
+<!--Device-advertising-export interface AdOptions--><!--Device-advertising-export interface AdOptions-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import
@@ -24,13 +26,15 @@ import { advertising } from '@kit.AdsKit';
 
 Custom parameters.
 
-&lt;!--RP1--&gt;&lt;!--RP1End--&gt;
+<!--RP1--><!--RP1End-->
 
 **Type:** number &#124; boolean &#124; string &#124; undefined
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdOptions-[key: string]: number | boolean | string | undefined--><!--Device-AdOptions-[key: string]: number | boolean | string | undefined-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -52,6 +56,8 @@ If not set, the business logic prevails.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdOptions-adContentClassification?: string--><!--Device-AdOptions-adContentClassification?: string-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## nonPersonalizedAd
@@ -72,6 +78,8 @@ If not set, the business logic prevails.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AdOptions-nonPersonalizedAd?: number--><!--Device-AdOptions-nonPersonalizedAd?: number-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## tagForChildProtection
@@ -91,5 +99,7 @@ The default value is -1.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdOptions-tagForChildProtection?: number--><!--Device-AdOptions-tagForChildProtection?: number-End-->
 
 **System capability:** SystemCapability.Advertising.Ads

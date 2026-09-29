@@ -20,6 +20,8 @@ Creates a Model instance file description
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-mindSporeLite-function loadModelFromFd(    model: int,    context?: Context): Promise<Model>--><!--Device-mindSporeLite-function loadModelFromFd(    model: int,    context?: Context): Promise<Model>-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters:**
@@ -79,6 +81,8 @@ Create a Model instance from file description
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-mindSporeLite-function loadModelFromFd(    model: int, callback: Callback<Model>): void--><!--Device-mindSporeLite-function loadModelFromFd(    model: int, callback: Callback<Model>): void-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters:**
@@ -130,6 +134,8 @@ Create a Model instance from file description
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-mindSporeLite-function loadModelFromFd(    model: int,    context: Context, callback: Callback<Model>): void--><!--Device-mindSporeLite-function loadModelFromFd(    model: int,    context: Context, callback: Callback<Model>): void-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 

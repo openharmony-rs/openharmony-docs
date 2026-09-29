@@ -8,6 +8,8 @@ Describes the pre-downloaded network information.
 
 **Since:** 20
 
+<!--Device-cacheDownload-interface NetworkInfo--><!--Device-cacheDownload-interface NetworkInfo-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -28,6 +30,8 @@ DNS servers used for downloading resources.
 
 **Since:** 20
 
+<!--Device-NetworkInfo-readonly dnsServers: string[]--><!--Device-NetworkInfo-readonly dnsServers: string[]-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## ip
@@ -41,5 +45,7 @@ IP address of the URL used for downloading resources. When the DNS resolution fa
 **Type:** string
 
 **Since:** 23
+
+<!--Device-NetworkInfo-readonly ip?: string--><!--Device-NetworkInfo-readonly ip?: string-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

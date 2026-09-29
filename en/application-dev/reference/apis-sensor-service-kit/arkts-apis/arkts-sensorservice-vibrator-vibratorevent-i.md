@@ -4,9 +4,11 @@
 interface VibratorEvent
 ```
 
-Vibration event.
+Enumerates vibration events.
 
 **Since:** 18
+
+<!--Device-vibrator-interface VibratorEvent--><!--Device-vibrator-interface VibratorEvent-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -22,11 +24,13 @@ import { vibrator } from '@kit.SensorServiceKit';
 duration?: number
 ```
 
-Vibration duration. This parameter is optional, in ms. The value range is (0,5000]. The default value is **48** for short vibration and **1000** for long vibration.
+Vibration duration, in ms. This parameter is optional. The value is an integer in the range (0, 5000]. The default value is **48** for short vibration and **1000** for long vibration.
 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-VibratorEvent-duration?: int--><!--Device-VibratorEvent-duration?: int-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -42,6 +46,8 @@ Vibration event type.
 
 **Since:** 18
 
+<!--Device-VibratorEvent-eventType: VibratorEventType--><!--Device-VibratorEvent-eventType: VibratorEventType-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## frequency
@@ -55,6 +61,8 @@ Vibration frequency. This parameter is optional. The value range is [0,100]. If 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-VibratorEvent-frequency?: int--><!--Device-VibratorEvent-frequency?: int-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -70,6 +78,8 @@ Channel number. This parameter is optional. The value range is [0,2]. If this pa
 
 **Since:** 18
 
+<!--Device-VibratorEvent-index?: int--><!--Device-VibratorEvent-index?: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## intensity
@@ -83,6 +93,8 @@ Vibration intensity. This parameter is optional. The value range is [0,100]. If 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-VibratorEvent-intensity?: int--><!--Device-VibratorEvent-intensity?: int-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -98,6 +110,8 @@ Adjustment points of the vibration curve.
 
 **Since:** 18
 
+<!--Device-VibratorEvent-points?: Array<VibratorCurvePoint>--><!--Device-VibratorEvent-points?: Array<VibratorCurvePoint>-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## time
@@ -111,5 +125,7 @@ Vibration start time, in ms. The value range is [0,1800000].
 **Type:** number
 
 **Since:** 18
+
+<!--Device-VibratorEvent-time: int--><!--Device-VibratorEvent-time: int-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice

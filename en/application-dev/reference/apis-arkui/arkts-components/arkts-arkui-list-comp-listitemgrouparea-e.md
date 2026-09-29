@@ -8,6 +8,8 @@ Enumerates the areas of **ListItemGroup**.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum ListItemGroupArea--><!--Device-unnamed-declare enum ListItemGroupArea-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -23,6 +25,8 @@ Area other than the **ListItem**, header, and footer areas in **ListItemGroup**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ListItemGroupArea-NONE = 0--><!--Device-ListItemGroupArea-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ IN_LIST_ITEM_AREA = 1
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ListItemGroupArea-IN_LIST_ITEM_AREA = 1--><!--Device-ListItemGroupArea-IN_LIST_ITEM_AREA = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## IN_HEADER_AREA
@@ -56,6 +62,8 @@ Header area in **ListItemGroup**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ListItemGroupArea-IN_HEADER_AREA = 2--><!--Device-ListItemGroupArea-IN_HEADER_AREA = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## IN_FOOTER_AREA
@@ -71,5 +79,7 @@ Footer area in **ListItemGroup**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ListItemGroupArea-IN_FOOTER_AREA = 3--><!--Device-ListItemGroupArea-IN_FOOTER_AREA = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Describes the result of check notifications.
 
 **Since:** 10
 
+<!--Device-notificationManager-export interface NotificationCheckResult--><!--Device-notificationManager-export interface NotificationCheckResult-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Result code.
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
+<!--Device-NotificationCheckResult-code: int--><!--Device-NotificationCheckResult-code: int-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -53,6 +57,8 @@ Result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+<!--Device-NotificationCheckResult-message: string--><!--Device-NotificationCheckResult-message: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

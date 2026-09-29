@@ -12,7 +12,9 @@ Distributed service instance ID.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-param-const DISTRIBUTED_SERVICE_INSTANCE_ID: string--><!--Device-param-const DISTRIBUTED_SERVICE_INSTANCE_ID: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -28,7 +30,9 @@ Distributed service name.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-param-const DISTRIBUTED_SERVICE_NAME: string--><!--Device-param-const DISTRIBUTED_SERVICE_NAME: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -44,6 +48,8 @@ Custom user ID.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-param-const USER_ID: string--><!--Device-param-const USER_ID: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

@@ -18,6 +18,8 @@ Unlock the screen.
 
 **Deprecated since:** 9
 
+<!--Device-screenLock-function unlockScreen(callback: AsyncCallback<void>): void--><!--Device-screenLock-function unlockScreen(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **Parameters:**
@@ -54,6 +56,8 @@ Unlock the screen.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-screenLock-function unlockScreen(): Promise<void>--><!--Device-screenLock-function unlockScreen(): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

@@ -8,6 +8,8 @@ Defines the struct of the template used in a subscription.
 
 **Since:** 10
 
+<!--Device-dataShare-interface Template--><!--Device-dataShare-interface Template-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Predicates to use. When [**on**](arkts-arkdata-datashare-datasharehelper-i-sys.m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Template-predicates: Record<string, string>--><!--Device-Template-predicates: Record<string, string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -55,6 +59,8 @@ The scheduler SQL statement is triggered when:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Template-scheduler: string--><!--Device-Template-scheduler: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **System API:** This is a system API.
@@ -72,6 +78,8 @@ Update SQL statement of a specified template. The default value is an empty stri
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Template-update?: string--><!--Device-Template-update?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 

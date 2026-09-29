@@ -4,9 +4,11 @@
 declare enum LineJoinStyle
 ```
 
-Line Join Style
+Sets the line connection style.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum LineJoinStyle--><!--Device-unnamed-declare enum LineJoinStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Line Join Style
 Miter
 ```
 
-Connect path segments using bevels.
+Miter is used to connect paths.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineJoinStyle-Miter--><!--Device-LineJoinStyle-Miter-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ Connect path segments using bevels.
 Round
 ```
 
-Connect path segments using sharp corners.
+Round is used to connect paths.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineJoinStyle-Round--><!--Device-LineJoinStyle-Round-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,12 +54,14 @@ Connect path segments using sharp corners.
 Bevel
 ```
 
-Connect path segments using fillets.
+Bevel is used to connect paths.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LineJoinStyle-Bevel--><!--Device-LineJoinStyle-Bevel-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ interface DataDeleteOperation
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface DataDeleteOperation--><!--Device-unnamed-interface DataDeleteOperation-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## count
@@ -28,6 +30,8 @@ count?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataDeleteOperation-count?: number--><!--Device-DataDeleteOperation-count?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -46,6 +50,8 @@ index: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataDeleteOperation-index: number--><!--Device-DataDeleteOperation-index: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -63,5 +69,7 @@ type: DataOperationType.DELETE
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataDeleteOperation-type: DataOperationType.DELETE--><!--Device-DataDeleteOperation-type: DataOperationType.DELETE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

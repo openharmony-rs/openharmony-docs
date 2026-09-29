@@ -10,6 +10,8 @@ Provides APIs to manage albums.
 
 **Since:** 12
 
+<!--Device-sendablePhotoAccessHelper-interface Album extends AbsAlbum--><!--Device-sendablePhotoAccessHelper-interface Album extends AbsAlbum-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Commits the modification on the album attributes to the database. This API uses 
 
 **Required permissions:** ohos.permission.WRITE_IMAGEVIDEO
 
+<!--Device-Album-commitModify(): Promise<void>--><!--Device-Album-commitModify(): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Return value:**
@@ -42,7 +46,7 @@ Commits the modification on the album attributes to the database. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | 14000011 | Internal system error |
 
 **Examples**
@@ -82,6 +86,8 @@ Converts this Sendable album to a non-Sendable album.
 
 **Since:** 12
 
+<!--Device-Album-convertToPhotoAlbum(): photoAccessHelper.Album--><!--Device-Album-convertToPhotoAlbum(): photoAccessHelper.Album-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Return value:**
@@ -94,8 +100,8 @@ Converts this Sendable album to a non-Sendable album.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| 14000011 | Internal system error |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(). |
 
 **Examples**
 
@@ -140,6 +146,8 @@ Number of image assets in the album
 
 **Since:** 12
 
+<!--Device-Album-readonly imageCount?: number--><!--Device-Album-readonly imageCount?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## videoCount
@@ -153,5 +161,7 @@ Number of video assets in the album
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Album-readonly videoCount?: number--><!--Device-Album-readonly videoCount?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

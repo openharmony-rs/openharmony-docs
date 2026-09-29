@@ -22,6 +22,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)
 
+<!--Device-usb-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number--><!--Device-usb-function claimInterface(pipe: USBDevicePipe, iface: USBInterface, force?: boolean): number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

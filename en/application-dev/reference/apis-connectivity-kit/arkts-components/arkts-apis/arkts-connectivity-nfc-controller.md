@@ -4,6 +4,8 @@ The **nfcController** module provides APIs for opening and closing Near-Field Co
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace nfcController--><!--Device-unnamed-declare namespace nfcController-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Core
 
 ## Modules to Import

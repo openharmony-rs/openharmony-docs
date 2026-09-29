@@ -4,6 +4,8 @@
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace cardEmulation--><!--Device-unnamed-declare namespace cardEmulation-End-->
+
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
 ## HCE and AID Declaration

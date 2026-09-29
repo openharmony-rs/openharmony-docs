@@ -20,6 +20,8 @@ Obtains device Bluetooth information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function getBluetoothInfo(admin: Want): BluetoothInfo--><!--Device-bluetoothManager-function getBluetoothInfo(admin: Want): BluetoothInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

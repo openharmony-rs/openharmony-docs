@@ -16,6 +16,8 @@ Obtains the path of the configuration file with the highest priority based on th
 
 **Since:** 11
 
+<!--Device-configPolicy-function getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): string--><!--Device-configPolicy-function getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): string-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.

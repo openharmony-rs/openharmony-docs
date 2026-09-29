@@ -19,6 +19,8 @@ function isDoubleClickAppForSelf(): Promise<boolean>
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function isDoubleClickAppForSelf(): Promise<boolean>--><!--Device-settings-function isDoubleClickAppForSelf(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Return value:**

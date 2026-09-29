@@ -20,6 +20,8 @@ Remove a geofence.
 - API version 25 and later: N/A
 - API versions 12 to 24: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function removeGnssGeofence(geofenceId: int): Promise<void>--><!--Device-geoLocationManager-function removeGnssGeofence(geofenceId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **Parameters:**

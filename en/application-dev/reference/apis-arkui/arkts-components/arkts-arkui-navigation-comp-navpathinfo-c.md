@@ -8,6 +8,8 @@ Provides the navigation page information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class NavPathInfo--><!--Device-unnamed-declare class NavPathInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -23,6 +25,8 @@ Creates a **NavPathInfo** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavPathInfo-constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Callback<PopInfo>, isEntry?: boolean)--><!--Device-NavPathInfo-constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Callback<PopInfo>, isEntry?: boolean)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ The navigation destination page serving as an entry does not respond to the in-a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavPathInfo-isEntry?: boolean--><!--Device-NavPathInfo-isEntry?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -85,6 +91,8 @@ Name of the navigation destination page. The name matches the name in the follow
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavPathInfo-name: string--><!--Device-NavPathInfo-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## navDestinationId
@@ -102,6 +110,8 @@ Unique ID of the navigation destination page. This ID is system-generated and gl
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-NavPathInfo-navDestinationId?: string--><!--Device-NavPathInfo-navDestinationId?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,6 +131,8 @@ Callback returned when [pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop-1
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavPathInfo-onPop?: import('../api/@ohos.base').Callback<PopInfo>--><!--Device-NavPathInfo-onPop?: import('../api/@ohos.base').Callback<PopInfo>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -138,5 +150,7 @@ Detailed parameters for the custom **NavDestination** page. The **unknown** type
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavPathInfo-param?: unknown--><!--Device-NavPathInfo-param?: unknown-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

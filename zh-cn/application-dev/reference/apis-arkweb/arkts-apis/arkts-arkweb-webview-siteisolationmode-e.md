@@ -8,6 +8,8 @@ enum SiteIsolationMode
 
 **起始版本：** 21
 
+<!--Device-webview-enum SiteIsolationMode--><!--Device-webview-enum SiteIsolationMode-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## PARTIAL
@@ -20,6 +22,8 @@ PARTIAL = 0
 
 **起始版本：** 21
 
+<!--Device-SiteIsolationMode-PARTIAL = 0--><!--Device-SiteIsolationMode-PARTIAL = 0-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## STRICT
@@ -31,5 +35,7 @@ STRICT = 1
 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。
 
 **起始版本：** 21
+
+<!--Device-SiteIsolationMode-STRICT = 1--><!--Device-SiteIsolationMode-STRICT = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

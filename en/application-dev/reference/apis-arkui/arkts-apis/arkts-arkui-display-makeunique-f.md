@@ -18,6 +18,8 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 **Required permissions:** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+<!--Device-display-function makeUnique(screenId: long): Promise<void>--><!--Device-display-function makeUnique(screenId: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

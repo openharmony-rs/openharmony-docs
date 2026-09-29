@@ -8,6 +8,8 @@ Defines a VPN observer object. It is used to listen for VPN-related events. Befo
 
 **Since:** 26.0.0
 
+<!--Device-vpnExtension-export interface VpnObserver--><!--Device-vpnExtension-export interface VpnObserver-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Unregisters a listener for the user authorization result.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VpnObserver-offAuthorizationResult(callback?: Callback<boolean>): void--><!--Device-VpnObserver-offAuthorizationResult(callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -77,6 +81,8 @@ Registers a listener for the user authorization result. The authorization result
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VpnObserver-onAuthorizationResult(callback: Callback<boolean>): void--><!--Device-VpnObserver-onAuthorizationResult(callback: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 

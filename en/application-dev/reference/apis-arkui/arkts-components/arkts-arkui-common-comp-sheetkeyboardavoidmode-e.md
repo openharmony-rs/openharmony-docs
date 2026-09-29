@@ -10,6 +10,8 @@ Define the mode of sheet how to avoid keyboard.
 
 **Since:** 13
 
+<!--Device-unnamed-declare enum SheetKeyboardAvoidMode--><!--Device-unnamed-declare enum SheetKeyboardAvoidMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -25,6 +27,8 @@ Sheet will not aovid keyboard.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-SheetKeyboardAvoidMode-NONE = 0--><!--Device-SheetKeyboardAvoidMode-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ Firstly sheet will avoid keyboard by changing its height. And then sheet will av
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_RESIZE = 1--><!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_RESIZE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## RESIZE_ONLY
@@ -57,6 +63,8 @@ Sheet will only avoid keyboard by resizing the content.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-SheetKeyboardAvoidMode-RESIZE_ONLY = 2--><!--Device-SheetKeyboardAvoidMode-RESIZE_ONLY = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ Firstly sheet will avoid keyboard by changing its height. And then sheet will av
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_SCROLL = 3--><!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_SCROLL = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## POPUP_SHEET
@@ -89,5 +99,7 @@ Popup sheet will avoid keyboard by default.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SheetKeyboardAvoidMode-POPUP_SHEET = 4--><!--Device-SheetKeyboardAvoidMode-POPUP_SHEET = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

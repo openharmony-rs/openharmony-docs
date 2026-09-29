@@ -12,6 +12,8 @@ Represents a screen hopping message notification.
 
 **Substitutes:** [CooperateState](arkts-distributedservice-cooperate-cooperatestate-e-sys.md)
 
+<!--Device-cooperate-enum CooperateMsg--><!--Device-cooperate-enum CooperateMsg-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ The preparation for screen hopping is finished.
 **Deprecated since:** 11
 
 **Substitutes:** [COOPERATE_PREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_prepare)
+
+<!--Device-CooperateMsg-COOPERATE_PREPARE = 0--><!--Device-CooperateMsg-COOPERATE_PREPARE = 0-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -48,6 +52,8 @@ The preparation for screen hopping is cancelled.
 
 **Substitutes:** [COOPERATE_UNPREPARE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_unprepare)
 
+<!--Device-CooperateMsg-COOPERATE_UNPREPARE = 1--><!--Device-CooperateMsg-COOPERATE_UNPREPARE = 1-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ Screen hopping starts.
 **Deprecated since:** 11
 
 **Substitutes:** [COOPERATE_ACTIVATE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate)
+
+<!--Device-CooperateMsg-COOPERATE_ACTIVATE = 2--><!--Device-CooperateMsg-COOPERATE_ACTIVATE = 2-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -84,6 +92,8 @@ Starting screen hopping succeeds.
 
 **Substitutes:** [COOPERATE_ACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate_success)
 
+<!--Device-CooperateMsg-COOPERATE_ACTIVATE_SUCCESS = 3--><!--Device-CooperateMsg-COOPERATE_ACTIVATE_SUCCESS = 3-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -101,6 +111,8 @@ Starting screen hopping fails.
 **Deprecated since:** 11
 
 **Substitutes:** [COOPERATE_ACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_activate_failure)
+
+<!--Device-CooperateMsg-COOPERATE_ACTIVATE_FAIL = 4--><!--Device-CooperateMsg-COOPERATE_ACTIVATE_FAIL = 4-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -120,6 +132,8 @@ Stopping screen hopping succeeds.
 
 **Substitutes:** [COOPERATE_DEACTIVATE_SUCCESS](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_deactivate_success)
 
+<!--Device-CooperateMsg-COOPERATE_DEACTIVATE_SUCCESS = 5--><!--Device-CooperateMsg-COOPERATE_DEACTIVATE_SUCCESS = 5-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -138,6 +152,8 @@ Stopping screen hopping fails.
 
 **Substitutes:** [COOPERATE_DEACTIVATE_FAILURE](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_deactivate_failure)
 
+<!--Device-CooperateMsg-COOPERATE_DEACTIVATE_FAIL = 6--><!--Device-CooperateMsg-COOPERATE_DEACTIVATE_FAIL = 6-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -155,6 +171,8 @@ The screen hopping session is disconnected.
 **Deprecated since:** 11
 
 **Substitutes:** [COOPERATE_SESSION_DISCONNECTED](arkts-distributedservice-cooperate-cooperatestate-e-sys.md#cooperate_session_disconnected)
+
+<!--Device-CooperateMsg-COOPERATE_SESSION_DISCONNECTED = 7--><!--Device-CooperateMsg-COOPERATE_SESSION_DISCONNECTED = 7-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

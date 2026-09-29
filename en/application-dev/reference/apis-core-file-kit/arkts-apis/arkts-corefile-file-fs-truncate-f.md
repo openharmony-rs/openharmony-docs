@@ -18,6 +18,8 @@ Truncates a file. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function truncate(file: string | number, len?: number): Promise<void>--><!--Device-unnamed-declare function truncate(file: string | number, len?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -69,6 +71,8 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function truncate(file: string | number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function truncate(file: string | number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -113,6 +117,8 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare function truncate(file: string | number, len: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function truncate(file: string | number, len: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

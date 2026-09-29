@@ -8,6 +8,8 @@ Options for setting the render target of an audio renderer. This parameter takes
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface AudioRendererTargetParams--><!--Device-audio-interface AudioRendererTargetParams-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The stream ID of the [SOURCE_TYPE_VOICE_COMMUNICATION](arkts-audio-audio-sourcet
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioRendererTargetParams-streamId: long--><!--Device-AudioRendererTargetParams-streamId: long-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The application UID of the target capture stream into which the render stream is
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioRendererTargetParams-uid: int--><!--Device-AudioRendererTargetParams-uid: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 

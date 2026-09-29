@@ -20,6 +20,8 @@ The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct SplitLayout--><!--Device-unnamed-export declare struct SplitLayout-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -42,6 +44,8 @@ Container component used to host custom component content in the lower area of t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SplitLayout-container: () => void--><!--Device-SplitLayout-container: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mainImage
@@ -59,6 +63,8 @@ Main image resource displayed in the upper area of the layout. Supports common i
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SplitLayout-mainImage: ResourceStr--><!--Device-SplitLayout-mainImage: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ Primary title content, with no length limit. Displayed in the title area of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SplitLayout-primaryText: ResourceStr--><!--Device-SplitLayout-primaryText: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryText
@@ -96,6 +104,8 @@ Secondary title content, with no length limit. Pass this parameter when a subtit
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SplitLayout-secondaryText?: ResourceStr--><!--Device-SplitLayout-secondaryText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## tertiaryText
@@ -113,5 +123,7 @@ Auxiliary text, with no length limit. Displayed below the subtitle area. Pass th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SplitLayout-tertiaryText?: ResourceStr--><!--Device-SplitLayout-tertiaryText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

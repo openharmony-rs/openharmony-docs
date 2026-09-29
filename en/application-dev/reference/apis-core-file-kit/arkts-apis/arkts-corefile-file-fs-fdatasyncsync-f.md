@@ -16,6 +16,8 @@ Synchronizes the data of a file. This API returns the result synchronously.
 
 **Since:** 9
 
+<!--Device-unnamed-declare function fdatasyncSync(fd: number): void--><!--Device-unnamed-declare function fdatasyncSync(fd: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

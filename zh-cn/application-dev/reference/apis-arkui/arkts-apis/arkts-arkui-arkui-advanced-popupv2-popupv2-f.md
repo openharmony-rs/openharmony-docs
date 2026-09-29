@@ -22,6 +22,8 @@ PopupV2用于显示特定样式的气泡，适用于提示信息、操作确认�
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare function PopupV2(options: PopupV2InitInfo): void--><!--Device-unnamed-export declare function PopupV2(options: PopupV2InitInfo): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

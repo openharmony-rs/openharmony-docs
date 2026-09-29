@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [create()](arkts-arkgraph
 
 **Since:** 9
 
+<!--Device-colorSpaceManager-interface ColorSpaceManager--><!--Device-colorSpaceManager-interface ColorSpaceManager-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ getColorSpaceName(): ColorSpace
 Obtains the color space type.
 
 **Since:** 9
+
+<!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace--><!--Device-ColorSpaceManager-getColorSpaceName(): ColorSpace-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -64,6 +68,8 @@ Obtains the gamma of the color space.
 
 **Since:** 9
 
+<!--Device-ColorSpaceManager-getGamma(): double--><!--Device-ColorSpaceManager-getGamma(): double-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Return value:**
@@ -99,6 +105,8 @@ getWhitePoint(): Array<number>
 Obtains the coordinates of the white point in the color space.
 
 **Since:** 9
+
+<!--Device-ColorSpaceManager-getWhitePoint(): Array<double>--><!--Device-ColorSpaceManager-getWhitePoint(): Array<double>-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

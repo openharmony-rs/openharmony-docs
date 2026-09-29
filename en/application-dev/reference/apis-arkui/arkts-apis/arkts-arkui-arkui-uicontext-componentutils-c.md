@@ -15,6 +15,8 @@ Provides API for obtaining the coordinates and size of the drawing area of a com
 
 **Since:** 10
 
+<!--Device-unnamed-export class ComponentUtils--><!--Device-unnamed-export class ComponentUtils-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Obtains the size, position, translation, scaling, rotation, and affine matrix in
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ComponentUtils-getRectangleById(id: string): componentUtils.ComponentInfo--><!--Device-ComponentUtils-getRectangleById(id: string): componentUtils.ComponentInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

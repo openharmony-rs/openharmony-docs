@@ -8,6 +8,8 @@ interface BlanklessInfo
 
 **起始版本：** 20
 
+<!--Device-webview-interface BlanklessInfo--><!--Device-webview-interface BlanklessInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -28,6 +30,8 @@ errCode: WebBlanklessErrorCode
 
 **起始版本：** 20
 
+<!--Device-BlanklessInfo-errCode: WebBlanklessErrorCode--><!--Device-BlanklessInfo-errCode: WebBlanklessErrorCode-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## loadingTime
@@ -42,6 +46,8 @@ loadingTime: number
 
 **起始版本：** 20
 
+<!--Device-BlanklessInfo-loadingTime: number--><!--Device-BlanklessInfo-loadingTime: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## similarity
@@ -55,5 +61,7 @@ similarity: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-BlanklessInfo-similarity: number--><!--Device-BlanklessInfo-similarity: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

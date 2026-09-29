@@ -8,6 +8,8 @@ Enumerates the reasons for the state transition of the AVPlayer or AVRecorder in
 
 **Since:** 9
 
+<!--Device-media-enum StateChangeReason--><!--Device-media-enum StateChangeReason-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## USER
@@ -20,7 +22,9 @@ State transition triggered by user behavior. It happens when a user or the clien
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-StateChangeReason-USER = 1--><!--Device-StateChangeReason-USER = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -34,6 +38,8 @@ State transition caused by background system behavior. For example, if an applic
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-StateChangeReason-BACKGROUND = 2--><!--Device-StateChangeReason-BACKGROUND = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

@@ -8,6 +8,8 @@ Defines date attributes and methods, including year, month, and day.
 
 **Since:** 11
 
+<!--Device-unnamed-declare class DateData--><!--Device-unnamed-declare class DateData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,6 +31,8 @@ DateData constructor for initializing date objects.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DateData-constructor(year: number, month: number, day: number)--><!--Device-DateData-constructor(year: number, month: number, day: number)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Returns the current date value in the string format, which is **YYYY-MM-DD**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DateData-toString(): string--><!--Device-DateData-toString(): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -78,6 +84,8 @@ Day of the inline date type. Value range: [1, 31]. The specific value is determi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DateData-day: number--><!--Device-DateData-day: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## month
@@ -96,6 +104,8 @@ Month of the inline date type. Value range: [1, 12].
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DateData-month: number--><!--Device-DateData-month: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## year
@@ -113,5 +123,7 @@ Year of the inline date type. Value range: [1, 5000].
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DateData-year: number--><!--Device-DateData-year: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

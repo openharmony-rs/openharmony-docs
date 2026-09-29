@@ -20,6 +20,8 @@ Check whether weak PIN verification is enabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function isWeakPinEnabled(): boolean--><!--Device-securityManager-function isWeakPinEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Return value:**

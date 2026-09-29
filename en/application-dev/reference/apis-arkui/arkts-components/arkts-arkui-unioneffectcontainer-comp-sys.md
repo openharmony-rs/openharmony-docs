@@ -14,6 +14,8 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UnionEffectContainerInterface-(options?: UnionEffectContainerOptions): UnionEffectContainerAttribute--><!--Device-UnionEffectContainerInterface-(options?: UnionEffectContainerOptions): UnionEffectContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -36,7 +38,7 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 
 | Name | Description |
 | --- | --- |
-| [UnionMode](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md) | Enumerates the union modes. |
+| [UnionMode](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md) | Enumerates the union effect modes. |
 
 ## Examples
 

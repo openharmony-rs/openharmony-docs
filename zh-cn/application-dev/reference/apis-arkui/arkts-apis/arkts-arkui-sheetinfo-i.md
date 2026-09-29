@@ -8,6 +8,8 @@ interface SheetInfo
 
 **起始版本：** 8
 
+<!--Device-unnamed-interface SheetInfo--><!--Device-unnamed-interface SheetInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -23,6 +25,8 @@ action: VoidCallback
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetInfo-action: VoidCallback--><!--Device-SheetInfo-action: VoidCallback-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +47,8 @@ string格式可用于加载网络图片和本地图片，常用于加载网络�
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetInfo-icon?: string | Resource--><!--Device-SheetInfo-icon?: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,5 +71,7 @@ title: string | Resource
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetInfo-title: string | Resource--><!--Device-SheetInfo-title: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

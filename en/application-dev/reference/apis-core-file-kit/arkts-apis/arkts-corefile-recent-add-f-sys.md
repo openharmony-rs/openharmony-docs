@@ -22,6 +22,8 @@ Adds the file of the specified URI to the recent file list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-recent-function add(uri: string): void--><!--Device-recent-function add(uri: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

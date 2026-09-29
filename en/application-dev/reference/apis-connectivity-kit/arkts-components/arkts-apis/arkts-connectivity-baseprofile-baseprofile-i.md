@@ -8,6 +8,8 @@ Base interface of profile.
 
 **Since:** 10
 
+<!--Device-baseProfile-export interface BaseProfile--><!--Device-baseProfile-export interface BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Obtains the connected devices list of profile. On API 26.0.0 and above, if the a
 - API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-getConnectedDevices(): Array<string>--><!--Device-BaseProfile-getConnectedDevices(): Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -79,6 +83,8 @@ Obtains the profile connection state.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-getConnectionState(deviceId: string): ProfileConnectionState--><!--Device-BaseProfile-getConnectionState(deviceId: string): ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -134,6 +140,8 @@ Unsubscribe the event reported when the profile connection state changes .
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BaseProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void--><!--Device-BaseProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -167,6 +175,8 @@ Subscribe the event reported when the profile connection state changes . On API 
 - API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BaseProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void--><!--Device-BaseProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

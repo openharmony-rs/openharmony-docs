@@ -19,6 +19,8 @@ Stops perception scanning and clears the discovered device list of the current o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-softbusBase-function stopPerceptionScan(type: PerceptionType): Promise<void>--><!--Device-softbusBase-function stopPerceptionScan(type: PerceptionType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

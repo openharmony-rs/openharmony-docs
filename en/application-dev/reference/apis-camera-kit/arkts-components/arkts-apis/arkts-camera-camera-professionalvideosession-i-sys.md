@@ -11,6 +11,8 @@ ProfessionalVideoSession extends Session, AutoExposure, ManualExposure, Focus, M
 
 **Since:** 12
 
+<!--Device-camera-interface ProfessionalVideoSession extends Session, AutoExposure, ManualExposure, Focus,    ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture--><!--Device-camera-interface ProfessionalVideoSession extends Session, AutoExposure, ManualExposure, Focus,    ManualFocus, WhiteBalance, ManualIso, Flash, Zoom, ColorEffect, Aperture-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ off(type: 'error', callback?: ErrorCallback): void
 Unsubscribes from HighResolutionPhotoSession error events.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-off(type: 'error', callback?: ErrorCallback): void--><!--Device-ProfessionalVideoSession-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -66,6 +70,8 @@ Unsubscribes from focus state change events.
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void--><!--Device-ProfessionalVideoSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -100,6 +106,8 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): 
 Unsubscribes from smooth zoom state change events.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void--><!--Device-ProfessionalVideoSession-off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -136,6 +144,8 @@ Unsubscribes from automatic ISO change events.
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-off(type: 'isoInfoChange', callback?: AsyncCallback<IsoInfo>): void--><!--Device-ProfessionalVideoSession-off(type: 'isoInfoChange', callback?: AsyncCallback<IsoInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -170,6 +180,8 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback<ExposureInfo>): void
 Unsubscribes from exposure information change events.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-off(type: 'exposureInfoChange', callback?: AsyncCallback<ExposureInfo>): void--><!--Device-ProfessionalVideoSession-off(type: 'exposureInfoChange', callback?: AsyncCallback<ExposureInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -206,6 +218,8 @@ Unsubscribes from aperture change events.
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-off(type: 'apertureInfoChange', callback?: AsyncCallback<ApertureInfo>): void--><!--Device-ProfessionalVideoSession-off(type: 'apertureInfoChange', callback?: AsyncCallback<ApertureInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -241,6 +255,8 @@ Unsubscribes from illumination change events.
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-off(type: 'luminationInfoChange', callback?: AsyncCallback<LuminationInfo>): void--><!--Device-ProfessionalVideoSession-off(type: 'luminationInfoChange', callback?: AsyncCallback<LuminationInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -275,6 +291,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-on(type: 'error', callback: ErrorCallback): void--><!--Device-ProfessionalVideoSession-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -316,6 +334,8 @@ on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void--><!--Device-ProfessionalVideoSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -362,6 +382,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void--><!--Device-ProfessionalVideoSession-on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -406,6 +428,8 @@ on(type: 'isoInfoChange', callback: AsyncCallback<IsoInfo>): void
 Subscribes to automatic ISO change events to obtain real-time ISO information. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-on(type: 'isoInfoChange', callback: AsyncCallback<IsoInfo>): void--><!--Device-ProfessionalVideoSession-on(type: 'isoInfoChange', callback: AsyncCallback<IsoInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -452,6 +476,8 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-on(type: 'exposureInfoChange', callback: AsyncCallback<ExposureInfo>): void--><!--Device-ProfessionalVideoSession-on(type: 'exposureInfoChange', callback: AsyncCallback<ExposureInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -497,6 +523,8 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 
 **Since:** 12
 
+<!--Device-ProfessionalVideoSession-on(type: 'apertureInfoChange', callback: AsyncCallback<ApertureInfo>): void--><!--Device-ProfessionalVideoSession-on(type: 'apertureInfoChange', callback: AsyncCallback<ApertureInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -541,6 +569,8 @@ on(type: 'luminationInfoChange', callback: AsyncCallback<LuminationInfo>): void
 Subscribes to illumination change events to obtain real-time illumination information. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-ProfessionalVideoSession-on(type: 'luminationInfoChange', callback: AsyncCallback<LuminationInfo>): void--><!--Device-ProfessionalVideoSession-on(type: 'luminationInfoChange', callback: AsyncCallback<LuminationInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

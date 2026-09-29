@@ -8,6 +8,8 @@ Provides configuration options for application event logging.
 
 **Since:** 9
 
+<!--Device-hiAppEvent-interface ConfigOption--><!--Device-hiAppEvent-interface ConfigOption-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Whether to enable the event logging function. The default value is **false**. If
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ConfigOption-disable?: boolean--><!--Device-ConfigOption-disable?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -53,6 +57,8 @@ The quota value must meet the following requirements:
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ConfigOption-maxStorage?: string--><!--Device-ConfigOption-maxStorage?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

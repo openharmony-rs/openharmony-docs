@@ -1,8 +1,8 @@
 # LazyForEach
 
-For details about the development, see [LazyForEach: Lazy Data Loading](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
+**LazyForEach** is a lazy loading rendering control component that iterates data on demand from the provided data source and creates corresponding components. In scenarios with a large number of child components, **LazyForEach**, when used together with methods such as cached list items, dynamic preloading, and component reuse, can further improve the sliding frame rate and reduce the memory usage of the application. For best practices, see [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
 
-In scenarios involving a large number of child components, LazyForEach, when combined with techniques such as cached list items, dynamic preloading, and component reuse, can significantly improve scrolling frame rates while reducing memory usage. For best practices, see [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
+For details about the development, see [LazyForEach: Lazy Data Loading](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
 ## LazyForEach
 
@@ -21,6 +21,8 @@ LazyForEach(
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string  ): LazyForEachAttribute--><!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string  ): LazyForEachAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +53,8 @@ Enter the value to obtain the LazyForEach.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string,    options?: LazyForEachOptions  ): LazyForEachAttribute--><!--Device-LazyForEachInterface-(    dataSource: IDataSource,    itemGenerator: (item: any, index: number) => void,    keyGenerator?: (item: any, index: number) => string,    options?: LazyForEachOptions  ): LazyForEachAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -69,16 +73,16 @@ Enter the value to obtain the LazyForEach.
 | Name | Description |
 | --- | --- |
 | [DataAddOperation](arkts-arkui-lazyforeach-comp-dataaddoperation-i.md) | Represents an operation for adding data. |
-| [DataChangeListener](arkts-arkui-lazyforeach-comp-datachangelistener-i.md) | Listener for data changes. |
+| [DataChangeListener](arkts-arkui-lazyforeach-comp-datachangelistener-i.md) | Defines the data change listener, used to notify the **LazyForEach** component to perform corresponding rendering updates when the data source changes. It supports listening for multiple data change types, including data addition, deletion, change, move, swap, and reload. |
 | [DataChangeOperation](arkts-arkui-lazyforeach-comp-datachangeoperation-i.md) | Represents an operation for changing data. |
 | [DataDeleteOperation](arkts-arkui-lazyforeach-comp-datadeleteoperation-i.md) | Represents an operation for deleting data. |
 | [DataExchangeOperation](arkts-arkui-lazyforeach-comp-dataexchangeoperation-i.md) | Represents an operation for exchanging data. |
 | [DataMoveOperation](arkts-arkui-lazyforeach-comp-datamoveoperation-i.md) | Represents an operation for moving data. |
-| [DataReloadOperation](arkts-arkui-lazyforeach-comp-datareloadoperation-i.md) | Represents an operation for reloading data. If the **onDatasetChange** event contains a **DataOperationType.RELOAD** operation, all other operations in the event are ineffective. In such cases, the framework will call **keyGenerator** to perform a comparison of keys with their corresponding values. |
+| [DataReloadOperation](arkts-arkui-lazyforeach-comp-datareloadoperation-i.md) | Reloads all data operations and configures whether to allow reuse of old child components during the update. When **onDatasetChange** contains a **DataOperationType.RELOAD** operation, all other operations become invalid, and the framework calls **keyGenerator** to compare keys. |
 | [ExchangeIndex](arkts-arkui-lazyforeach-comp-exchangeindex-i.md) | Defines position of exchange data. |
 | [ExchangeKey](arkts-arkui-lazyforeach-comp-exchangekey-i.md) | Defines new key of exchange data. |
-| [IDataSource](arkts-arkui-lazyforeach-comp-idatasource-i.md) | Data source of **LazyForEach**. |
-| [LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md) | Defines the options for LazyForEach. |
+| [IDataSource](arkts-arkui-lazyforeach-comp-idatasource-i.md) | Defines the data source of **LazyForEach**. The developer needs to implement this API to provide data access and data change notification capabilities, including obtaining the total number of data items, obtaining data by index, and registering and unregistering data change listeners. |
+| [LazyForEachOptions](arkts-arkui-lazyforeach-comp-lazyforeachoptions-i.md) | Configures the resource release strategy and memory optimization strategy of **LazyForEach**, and whether to enable custom component freezing. |
 | [MoveIndex](arkts-arkui-lazyforeach-comp-moveindex-i.md) | Defines position of moved data. |
 
 ### Types
@@ -92,9 +96,9 @@ Enter the value to obtain the LazyForEach.
 | Name | Description |
 | --- | --- |
 | [DataOperationType](arkts-arkui-lazyforeach-comp-dataoperationtype-e.md) | Enumerates the data operation types. |
-| [LazyForEachCustomComponentFreezeMode](arkts-arkui-lazyforeach-comp-lazyforeachcustomcomponentfreezemode-e.md) | Enumerates the freeze modes for cached custom nodes that have been removed from the component tree in LazyForEach. |
-| [LazyForEachMemOptStrategy](arkts-arkui-lazyforeach-comp-lazyforeachmemoptstrategy-e.md) | Defines a type for memory optimization strategy. |
-| [LazyForEachReleaseStrategy](arkts-arkui-lazyforeach-comp-lazyforeachreleasestrategy-e.md) | Enumerates the release strategies for LazyForEach discarded nodes. |
+| [LazyForEachCustomComponentFreezeMode](arkts-arkui-lazyforeach-comp-lazyforeachcustomcomponentfreezemode-e.md) | Selects whether to enable custom component freezing. |
+| [LazyForEachMemOptStrategy](arkts-arkui-lazyforeach-comp-lazyforeachmemoptstrategy-e.md) | Enumerates the memory optimization strategies of **LazyForEach**. |
+| [LazyForEachReleaseStrategy](arkts-arkui-lazyforeach-comp-lazyforeachreleasestrategy-e.md) | Selects the resource release strategy of **LazyForEach**. |
 
 ## Examples
 

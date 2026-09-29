@@ -10,6 +10,8 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class PickerOptions extends photoAccessHelper.BaseSelectOptions--><!--Device-unnamed-export declare class PickerOptions extends photoAccessHelper.BaseSelectOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Used to display only the album content corresponding to the specified bundle nam
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-PickerOptions-appAlbumFilters?: Array<string>--><!--Device-PickerOptions-appAlbumFilters?: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## backgroundColor
@@ -49,6 +53,8 @@ Background color of the Picker grid page. The value is an 8-digit hexadecimal co
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerOptions-backgroundColor?: string--><!--Device-PickerOptions-backgroundColor?: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -68,6 +74,8 @@ Background opacity of the picker. The value range is [0, 1]. **0** indicates com
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-PickerOptions-backgroundOpacity?: number--><!--Device-PickerOptions-backgroundOpacity?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## badgeConfig
@@ -83,6 +91,8 @@ Badge configuration. Currently, the **PhotoPickerComponent** supports only one t
 **Since:** 21
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-PickerOptions-badgeConfig?: BadgeConfig--><!--Device-PickerOptions-badgeConfig?: BadgeConfig-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -104,6 +114,8 @@ For example, '#FFFFFFFF' indicates a white opaque background, and '#80FF0000' in
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOptions-checkBoxColor?: string--><!--Device-PickerOptions-checkBoxColor?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## checkboxTextColor
@@ -119,6 +131,8 @@ Text color in the check box. The value is an 8-digit hexadecimal color code. (Th
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerOptions-checkboxTextColor?: string--><!--Device-PickerOptions-checkboxTextColor?: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -137,6 +151,8 @@ Information for restoring the PhotoPicker's state from the last exit.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-PickerOptions-contextRecoveryInfo?: photoAccessHelper.ContextRecoveryInfo--><!--Device-PickerOptions-contextRecoveryInfo?: photoAccessHelper.ContextRecoveryInfo-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -158,6 +174,8 @@ The default value is [EdgeEffect.Spring](../../apis-arkui/arkts-apis/arkts-arkui
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-PickerOptions-edgeEffect?: EdgeEffect--><!--Device-PickerOptions-edgeEffect?: EdgeEffect-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## gridEndOffset
@@ -173,6 +191,8 @@ Space between the bottom of the component and the last row of the grid thumbnail
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PickerOptions-gridEndOffset?: number--><!--Device-PickerOptions-gridEndOffset?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -190,6 +210,8 @@ Margin of the component on a grid page.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PickerOptions-gridMargin?: Margin--><!--Device-PickerOptions-gridMargin?: Margin-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## gridStartOffset
@@ -205,6 +227,8 @@ Space between the top of the component and the first row of the grid thumbnail. 
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PickerOptions-gridStartOffset?: number--><!--Device-PickerOptions-gridStartOffset?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -222,6 +246,8 @@ Whether a single image can be repeatedly selected. **true** if supported, **fals
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOptions-isRepeatSelectSupported?: boolean--><!--Device-PickerOptions-isRepeatSelectSupported?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## isSlidingSelectionSupported
@@ -237,6 +263,8 @@ Whether to support multiple selections by sliding. **true**: yes; **false**: no.
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-PickerOptions-isSlidingSelectionSupported?: boolean--><!--Device-PickerOptions-isSlidingSelectionSupported?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -258,6 +286,8 @@ The default value is **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-PickerOptions-isSlidingSupported?: boolean--><!--Device-PickerOptions-isSlidingSupported?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## maxPhotoSelectNumber
@@ -276,6 +306,8 @@ Maximum number of images that can be selected. The maximum value is **500**, whi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOptions-maxPhotoSelectNumber?: number--><!--Device-PickerOptions-maxPhotoSelectNumber?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## maxSelectedReminderMode
@@ -291,6 +323,8 @@ Mode of the reminder when the number of selected items reaches the maximum. The 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerOptions-maxSelectedReminderMode?: ReminderMode--><!--Device-PickerOptions-maxSelectedReminderMode?: ReminderMode-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -310,6 +344,8 @@ Maximum number of videos that can be selected. The maximum value is **500**, and
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOptions-maxVideoSelectNumber?: number--><!--Device-PickerOptions-maxVideoSelectNumber?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## orientation
@@ -325,6 +361,8 @@ Sliding preview direction of the grid page. The options are **HORIZONTAL** and *
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerOptions-orientation?: PickerOrientation--><!--Device-PickerOptions-orientation?: PickerOrientation-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -342,6 +380,8 @@ Background color of the photo browser page. The options are **AUTO**, **LIGHT**,
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOptions-photoBrowserBackgroundColorMode?: PickerColorMode--><!--Device-PickerOptions-photoBrowserBackgroundColorMode?: PickerColorMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## photoBrowserCheckboxPosition
@@ -357,6 +397,8 @@ Position of the check box on the photo browser page. The first parameter specifi
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-PickerOptions-photoBrowserCheckboxPosition?: [number, number]--><!--Device-PickerOptions-photoBrowserCheckboxPosition?: [number, number]-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -374,6 +416,8 @@ Margin of the component on a photo browser page.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PickerOptions-photoBrowserMargin?: Margin--><!--Device-PickerOptions-photoBrowserMargin?: Margin-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## pickerIndex
@@ -389,6 +433,8 @@ Unique serial number used to distinguish different picker components. The defaul
 **Since:** 21
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-PickerOptions-pickerIndex?: number--><!--Device-PickerOptions-pickerIndex?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -406,6 +452,8 @@ Array of information previously selected by the user, so that the PhotoPickerCom
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-PickerOptions-preselectedInfos?: Array<PreselectedInfo>--><!--Device-PickerOptions-preselectedInfos?: Array<PreselectedInfo>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## selectMode
@@ -422,6 +470,8 @@ Select mode, which can be **SINGLE_SELECT** or **MULTI_SELECT**. The default val
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PickerOptions-selectMode?: SelectMode--><!--Device-PickerOptions-selectMode?: SelectMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## singleLineConfig
@@ -437,6 +487,8 @@ Single-line display mode of a grid page. In single-line mode, the component does
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PickerOptions-singleLineConfig?: SingleLineConfig--><!--Device-PickerOptions-singleLineConfig?: SingleLineConfig-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -455,5 +507,7 @@ When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark b
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PickerOptions-uiComponentColorMode?: PickerColorMode--><!--Device-PickerOptions-uiComponentColorMode?: PickerColorMode-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

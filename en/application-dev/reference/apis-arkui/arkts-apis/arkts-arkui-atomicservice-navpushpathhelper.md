@@ -6,11 +6,11 @@ Not supported
 
 ## Attributes
 
-The [universal attributes](../arkts-components/arkts-arkui-common-comp.md#common) are not supported.
+The [universal attributes](../arkts-components/arkts-arkui-common-comp.md) are not supported.
 
 ## Events
 
-The [universal events](../arkts-components/arkts-arkui-common-comp.md#common) are not supported.
+The [universal events](../arkts-components/arkts-arkui-common-comp.md) are not supported.
 
 ## Modules to Import
 
@@ -24,7 +24,7 @@ import { NavPushPathHelper } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [NavPushPathHelper](arkts-arkui-atomicservice-navpushpathhelper-navpushpathhelper-c.md) | On the initial launch, the atomic service only downloads and installs the main package and its dependencies. Therefore, if the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#nav_destination) resides in a different HSP subpackage that is not a dependency of the main package, you'll need to use **NavPushPathHelper** to download and install the corresponding HSP subpackage first. After that, push the specified **NavDestination** page information onto the stack. This way, you enable [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) to support dynamic loading of the HSP subpackage before the navigation occurs. |
+| [NavPushPathHelper](arkts-arkui-atomicservice-navpushpathhelper-navpushpathhelper-c.md) | On the initial launch, the atomic service only downloads and installs the main package and its dependencies. Therefore, if the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) resides in a different HSP subpackage that is not a dependency of the main package, you'll need to use **NavPushPathHelper** to download and install the corresponding HSP subpackage first. After that, push the specified **NavDestination** page information onto the stack. This way, you enable [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) to support dynamic loading of the HSP subpackage before the navigation occurs. |
 
 ## Examples
 

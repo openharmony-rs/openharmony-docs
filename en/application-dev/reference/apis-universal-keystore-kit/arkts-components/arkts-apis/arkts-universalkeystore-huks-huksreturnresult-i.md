@@ -8,6 +8,8 @@ Represents the result returned.
 
 **Since:** 9
 
+<!--Device-huks-export interface HuksReturnResult--><!--Device-huks-export interface HuksReturnResult-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Certificate chain information. The default value is **undefined**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksReturnResult-certChains?: Array<string>--><!--Device-HuksReturnResult-certChains?: Array<string>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## outData
@@ -49,6 +53,8 @@ Challenge obtained after the [initSession](arkts-universalkeystore-huks-initsess
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksReturnResult-outData?: Uint8Array--><!--Device-HuksReturnResult-outData?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -68,6 +74,8 @@ Challenge obtained after the [initSession](arkts-universalkeystore-huks-initsess
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksReturnResult-properties?: Array<HuksParam>--><!--Device-HuksReturnResult-properties?: Array<HuksParam>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## sharedSecret
@@ -85,5 +93,7 @@ Shared key.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HuksReturnResult-sharedSecret?: Uint8Array--><!--Device-HuksReturnResult-sharedSecret?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

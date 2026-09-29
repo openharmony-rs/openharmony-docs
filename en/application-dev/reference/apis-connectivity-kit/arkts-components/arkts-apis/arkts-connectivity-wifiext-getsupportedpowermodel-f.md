@@ -22,6 +22,8 @@ Obtains the supported power model.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiext-function getSupportedPowerModel(): Promise<Array<PowerModel>>--><!--Device-wifiext-function getSupportedPowerModel(): Promise<Array<PowerModel>>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 **Return value:**
@@ -48,6 +50,8 @@ Obtains the supported power model.
 **Substitutes:** [getSupportedPowerMode](arkts-connectivity-wifimanagerext-getsupportedpowermode-f.md)
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiext-function getSupportedPowerModel(callback: AsyncCallback<Array<PowerModel>>): void--><!--Device-wifiext-function getSupportedPowerModel(callback: AsyncCallback<Array<PowerModel>>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 

@@ -8,6 +8,8 @@ A class object that functions as a thumbnail proxy.
 
 **Since:** 11
 
+<!--Device-camera-interface DeferredPhotoProxy--><!--Device-camera-interface DeferredPhotoProxy-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getThumbnail(): Promise<image.PixelMap>
 Obtains the PixelMap of a thumbnail. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-DeferredPhotoProxy-getThumbnail(): Promise<image.PixelMap>--><!--Device-DeferredPhotoProxy-getThumbnail(): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -65,6 +69,8 @@ release(): Promise<void>
 Releases depth data output resources. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-DeferredPhotoProxy-release(): Promise<void>--><!--Device-DeferredPhotoProxy-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -21,6 +21,8 @@ Obtains the snapshot of a given mission. This API uses an asynchronous callback 
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function getMissionSnapShot(deviceId: string, missionId: number, callback: AsyncCallback<MissionSnapshot>): void--><!--Device-missionManager-function getMissionSnapShot(deviceId: string, missionId: number, callback: AsyncCallback<MissionSnapshot>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Obtains the snapshot of a given mission. This API uses a promise to return the r
 **Substitutes:** [getMissionSnapShot](arkts-ability-missionmanager-getmissionsnapshot-f-sys.md)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function getMissionSnapShot(deviceId: string, missionId: number): Promise<MissionSnapshot>--><!--Device-missionManager-function getMissionSnapShot(deviceId: string, missionId: number): Promise<MissionSnapshot>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

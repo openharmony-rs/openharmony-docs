@@ -22,6 +22,8 @@ If you want to use AudioRenderer api to implement a music playback application, 
 
 **Since:** 8
 
+<!--Device-audio-function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer>): void--><!--Device-audio-function createAudioRenderer(options: AudioRendererOptions, callback: AsyncCallback<AudioRenderer>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **Parameters:**
@@ -83,6 +85,8 @@ Application developer should also be careful when app goes to background, please
 If you want to use AudioRenderer api to implement a music playback application, there are also many interactive scenes to consider, see **Developing an Audio Application** in best practices document.
 
 **Since:** 8
+
+<!--Device-audio-function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer>--><!--Device-audio-function createAudioRenderer(options: AudioRendererOptions): Promise<AudioRenderer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 

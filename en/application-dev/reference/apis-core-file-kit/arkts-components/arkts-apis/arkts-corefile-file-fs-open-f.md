@@ -18,6 +18,8 @@ Opens a file or directory. This API uses a promise to return the result. This AP
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function open(path: string, mode?: number): Promise<File>--><!--Device-unnamed-declare function open(path: string, mode?: number): Promise<File>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -80,6 +82,8 @@ Opens a file or directory. This API uses an asynchronous callback to return the 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function open(path: string, callback: AsyncCallback<File>): void--><!--Device-unnamed-declare function open(path: string, callback: AsyncCallback<File>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -136,6 +140,8 @@ This API supports the use of a URI.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare function open(path: string, mode: number, callback: AsyncCallback<File>): void--><!--Device-unnamed-declare function open(path: string, mode: number, callback: AsyncCallback<File>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

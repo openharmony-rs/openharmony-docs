@@ -21,6 +21,8 @@ Sets the device configuration. This API can be used to switch the working mode o
 
 **Since:** 9
 
+<!--Device-usbManager-function setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int--><!--Device-usbManager-function setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

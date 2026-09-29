@@ -6,6 +6,8 @@ Used to do observer layout and draw event for component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace inspector--><!--Device-unnamed-declare namespace inspector-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

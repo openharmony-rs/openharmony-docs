@@ -8,6 +8,8 @@ Defines a struct for shared configurations.
 
 **Since:** 20
 
+<!--Device-dataShare-interface ProxyData--><!--Device-dataShare-interface ProxyData-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ List of applications that can subscribe to and read shared configurations. If th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProxyData-allowList?: string[]--><!--Device-ProxyData-allowList?: string[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## isMultiValues
@@ -45,6 +49,8 @@ Indicates whether the shared configuration is multi-value type. The default valu
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProxyData-isMultiValues?: boolean--><!--Device-ProxyData-isMultiValues?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -62,6 +68,8 @@ List of applications that can add values to the shared configuration of multi-va
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProxyData-trustProviders?: string[]--><!--Device-ProxyData-trustProviders?: string[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## uri
@@ -77,6 +85,8 @@ Unique ID of a shared configuration, fixed at the format of **"datashareproxy://
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProxyData-uri: string--><!--Device-ProxyData-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -94,6 +104,8 @@ Value of a shared configuration. If not specified, the value is an empty string.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProxyData-value?: ValueType--><!--Device-ProxyData-value?: ValueType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## values
@@ -109,5 +121,7 @@ Values of the multi-value type. The first parameter in the **Record** is the key
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProxyData-values?: Record<int, ValueType>--><!--Device-ProxyData-values?: Record<int, ValueType>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer

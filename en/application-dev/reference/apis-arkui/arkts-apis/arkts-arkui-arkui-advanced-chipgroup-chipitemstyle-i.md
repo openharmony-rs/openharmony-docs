@@ -17,6 +17,8 @@ Defines the common attributes of chips.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ChipItemStyle--><!--Device-unnamed-export interface ChipItemStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -47,6 +49,8 @@ When the value is **undefined**, the default value of **backgroundColor** is use
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipItemStyle-backgroundColor?: ResourceColor--><!--Device-ChipItemStyle-backgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -70,6 +74,8 @@ When the value is **undefined**, the default value of **fontColor** is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipItemStyle-fontColor?: ResourceColor--><!--Device-ChipItemStyle-fontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +101,8 @@ When the value is **undefined**, the default value of **selectedBackgroundColor*
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipItemStyle-selectedBackgroundColor?: ResourceColor--><!--Device-ChipItemStyle-selectedBackgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedFontColor
@@ -119,6 +127,8 @@ When the value is **undefined**, the default value of **selectedFontColor** is u
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipItemStyle-selectedFontColor?: ResourceColor--><!--Device-ChipItemStyle-selectedFontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -140,5 +150,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipItemStyle-size?: ChipSize | SizeOptions--><!--Device-ChipItemStyle-size?: ChipSize | SizeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

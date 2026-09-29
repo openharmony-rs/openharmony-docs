@@ -8,6 +8,8 @@ Represents task data.
 
 **Since:** 9
 
+<!--Device-update-export interface TaskBody--><!--Device-update-export interface TaskBody-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Error message.
 
 **Since:** 9
 
+<!--Device-TaskBody-errorMessages: Array<ErrorMessage>--><!--Device-TaskBody-errorMessages: Array<ErrorMessage>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Install mode. The value range is [0, 2]. The value **0** indicates the regular u
 **Type:** number
 
 **Since:** 9
+
+<!--Device-TaskBody-installMode: int--><!--Device-TaskBody-installMode: int-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -62,6 +68,8 @@ Progress, in percentage. The value range is [0, 100]. If the value is out of the
 
 **Since:** 9
 
+<!--Device-TaskBody-progress: int--><!--Device-TaskBody-progress: int-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Upgrade status, which indicates the current execution phase of the upgrade task.
 **Type:** [UpgradeStatus](arkts-basicservices-update-upgradestatus-e-sys.md)
 
 **Since:** 9
+
+<!--Device-TaskBody-status: UpgradeStatus--><!--Device-TaskBody-status: UpgradeStatus-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -94,6 +104,8 @@ Sub-status. For details about the value range, see [UpgradeStatus](arkts-basicse
 
 **Since:** 9
 
+<!--Device-TaskBody-subStatus: int--><!--Device-TaskBody-subStatus: int-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -110,6 +122,8 @@ Version components.
 
 **Since:** 9
 
+<!--Device-TaskBody-versionComponents: Array<VersionComponent>--><!--Device-TaskBody-versionComponents: Array<VersionComponent>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -125,6 +139,8 @@ Version digest information.
 **Type:** [VersionDigestInfo](arkts-basicservices-update-versiondigestinfo-i-sys.md)
 
 **Since:** 9
+
+<!--Device-TaskBody-versionDigestInfo: VersionDigestInfo--><!--Device-TaskBody-versionDigestInfo: VersionDigestInfo-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

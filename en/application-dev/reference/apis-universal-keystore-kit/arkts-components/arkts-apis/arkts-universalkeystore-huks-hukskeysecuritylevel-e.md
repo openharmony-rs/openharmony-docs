@@ -8,6 +8,8 @@ Enumerates the key security levels.
 
 **Since:** 26.0.0
 
+<!--Device-huks-export enum HuksKeySecurityLevel--><!--Device-huks-export enum HuksKeySecurityLevel-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_KEY_SECURITY_LEVEL_TEE
@@ -23,6 +25,8 @@ The key is generated and used in the trusted execution environment.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -41,5 +45,7 @@ The key is generated and used in the secure environment.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

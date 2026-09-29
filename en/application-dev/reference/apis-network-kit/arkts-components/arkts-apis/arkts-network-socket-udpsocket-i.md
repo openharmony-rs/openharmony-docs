@@ -8,6 +8,8 @@ Defines a UDP socket connection. Before calling UDPSocket APIs, you need to call
 
 **Since:** 7
 
+<!--Device-socket-export interface UDPSocket--><!--Device-socket-export interface UDPSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Binds the IP address and port number. The port number can be customized or rando
 **Since:** 7
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UDPSocket-bind(address: NetAddress, callback: AsyncCallback<void>): void--><!--Device-UDPSocket-bind(address: NetAddress, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -77,6 +81,8 @@ Binds the IP address and port number. The port number can be customized or rando
 **Since:** 7
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UDPSocket-bind(address: NetAddress): Promise<void>--><!--Device-UDPSocket-bind(address: NetAddress): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -129,6 +135,8 @@ Closes a UDP socket connection. This API uses an asynchronous callback to return
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UDPSocket-close(callback: AsyncCallback<void>): void--><!--Device-UDPSocket-close(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -173,6 +181,8 @@ Closes a UDP socket connection. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UDPSocket-close(): Promise<void>--><!--Device-UDPSocket-close(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -214,6 +224,8 @@ Obtains the local socket address of a **UDPSocket** connection. This API uses a 
 > This API can be called only after **bind** is successfully called.
 
 **Since:** 12
+
+<!--Device-UDPSocket-getLocalAddress(): Promise<NetAddress>--><!--Device-UDPSocket-getLocalAddress(): Promise<NetAddress>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -275,6 +287,8 @@ Obtains the UDPSocket file descriptor. This API uses a promise to return the res
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UDPSocket-getSocketFd(): Promise<int>--><!--Device-UDPSocket-getSocketFd(): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -328,6 +342,8 @@ Obtains the status of the UDP socket connection. This API uses an asynchronous c
 **Since:** 7
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UDPSocket-getState(callback: AsyncCallback<SocketStateBase>): void--><!--Device-UDPSocket-getState(callback: AsyncCallback<SocketStateBase>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -388,6 +404,8 @@ Obtains the status of the UDP socket connection. This API uses a promise to retu
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UDPSocket-getState(): Promise<SocketStateBase>--><!--Device-UDPSocket-getState(): Promise<SocketStateBase>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**
@@ -437,6 +455,8 @@ Unsubscribes from **message** events of the **UDPSocket** object. This API uses 
 
 **Since:** 7
 
+<!--Device-UDPSocket-off(type: 'message', callback?: Callback<SocketMessageInfo>): void--><!--Device-UDPSocket-off(type: 'message', callback?: Callback<SocketMessageInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -480,6 +500,8 @@ Unsubscribes from **listening** events or **close** events of the **UDPSocket** 
 
 **Since:** 7
 
+<!--Device-UDPSocket-off(type: 'listening' | 'close', callback?: Callback<void>): void--><!--Device-UDPSocket-off(type: 'listening' | 'close', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -522,6 +544,8 @@ Unsubscribes from **error** events of the **UDPSocket** object. This API uses an
 
 **Since:** 7
 
+<!--Device-UDPSocket-off(type: 'error', callback?: ErrorCallback): void--><!--Device-UDPSocket-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -556,6 +580,8 @@ on(type: 'message', callback: Callback<SocketMessageInfo>): void
 Subscribes to **message** events of the **UDPSocket** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-UDPSocket-on(type: 'message', callback: Callback<SocketMessageInfo>): void--><!--Device-UDPSocket-on(type: 'message', callback: Callback<SocketMessageInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -597,6 +623,8 @@ Subscribes to **listening** events or **close** events of the **UDPSocket** obje
 
 **Since:** 7
 
+<!--Device-UDPSocket-on(type: 'listening' | 'close', callback: Callback<void>): void--><!--Device-UDPSocket-on(type: 'listening' | 'close', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -630,6 +658,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to **error** events of the **UDPSocket** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-UDPSocket-on(type: 'error', callback: ErrorCallback): void--><!--Device-UDPSocket-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -665,6 +695,8 @@ Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and p
 **Since:** 7
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UDPSocket-send(options: UDPSendOptions, callback: AsyncCallback<void>): void--><!--Device-UDPSocket-send(options: UDPSendOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -787,6 +819,8 @@ Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and p
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UDPSocket-send(options: UDPSendOptions): Promise<void>--><!--Device-UDPSocket-send(options: UDPSendOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -907,6 +941,8 @@ Sets other properties of the **UDPSocket** object. This API uses an asynchronous
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-UDPSocket-setExtraOptions(options: UDPExtraOptions, callback: AsyncCallback<void>): void--><!--Device-UDPSocket-setExtraOptions(options: UDPExtraOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**
@@ -975,6 +1011,8 @@ Sets other properties of the **UDPSocket** object. This API uses a promise to re
 **Since:** 7
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-UDPSocket-setExtraOptions(options: UDPExtraOptions): Promise<void>--><!--Device-UDPSocket-setExtraOptions(options: UDPExtraOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

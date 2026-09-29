@@ -14,6 +14,8 @@ Constructor parameters
 
 **Deprecated since:** 22
 
+<!--Device-AnimatorInterface-(value: string): AnimatorAttribute--><!--Device-AnimatorInterface-(value: string): AnimatorAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Sets the file types that can be opened by the current application.
 
 **Required permissions:** ohos.permission.MANAGE_SELF_SKILLS
 
+<!--Device-bundleManager-function setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: Array<string>): void--><!--Device-bundleManager-function setAbilityFileTypesForSelf(moduleName: string, abilityName: string, fileTypes: Array<string>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

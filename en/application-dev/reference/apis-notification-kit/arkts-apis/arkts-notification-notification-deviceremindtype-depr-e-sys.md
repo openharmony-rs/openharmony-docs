@@ -12,6 +12,8 @@ Defines the notification reminder type.
 
 **Substitutes:** [DeviceRemindType](arkts-notification-notificationmanager-deviceremindtype-e-sys.md)
 
+<!--Device-notification-export enum DeviceRemindType--><!--Device-notification-export enum DeviceRemindType-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ The device is not in use. No notification is required.
 **Deprecated since:** 9
 
 **Substitutes:** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_donot_remind)
+
+<!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0--><!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -48,6 +52,8 @@ The device is not in use.
 
 **Substitutes:** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_remind)
 
+<!--Device-DeviceRemindType-IDLE_REMIND = 1--><!--Device-DeviceRemindType-IDLE_REMIND = 1-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -66,6 +72,8 @@ The device is in use. No notification is required.
 
 **Substitutes:** [ACTIVE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#active_donot_remind)
 
+<!--Device-DeviceRemindType-ACTIVE_DONOT_REMIND = 2--><!--Device-DeviceRemindType-ACTIVE_DONOT_REMIND = 2-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -83,6 +91,8 @@ The device is in use.
 **Deprecated since:** 9
 
 **Substitutes:** [ACTIVE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#active_remind)
+
+<!--Device-DeviceRemindType-ACTIVE_REMIND = 3--><!--Device-DeviceRemindType-ACTIVE_REMIND = 3-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

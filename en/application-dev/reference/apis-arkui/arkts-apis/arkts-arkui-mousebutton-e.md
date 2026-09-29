@@ -8,6 +8,8 @@ Enumerates the mouse button types.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum MouseButton--><!--Device-unnamed-declare enum MouseButton-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -21,6 +23,8 @@ Left button on the mouse.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseButton-Left--><!--Device-MouseButton-Left-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ Right button on the mouse.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseButton-Right--><!--Device-MouseButton-Right-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Middle
@@ -49,6 +55,8 @@ Middle button on the mouse.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseButton-Middle--><!--Device-MouseButton-Middle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +72,8 @@ Back button on the left of the mouse.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseButton-Back--><!--Device-MouseButton-Back-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Forward
@@ -78,6 +88,8 @@ Forward button on the left of the mouse.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseButton-Forward--><!--Device-MouseButton-Forward-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -91,5 +103,7 @@ No button.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseButton-None--><!--Device-MouseButton-None-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

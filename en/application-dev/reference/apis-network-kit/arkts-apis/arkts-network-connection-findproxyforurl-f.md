@@ -24,6 +24,8 @@ Parses the specified URL proxy address based on the configured PAC script and re
 
 **Since:** 20
 
+<!--Device-connection-function findProxyForUrl(url: string): string--><!--Device-connection-function findProxyForUrl(url: string): string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

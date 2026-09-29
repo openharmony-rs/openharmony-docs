@@ -20,6 +20,8 @@ Set the local HOTA domain of the device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function setLocalHotaDomain(admin: Want, domain: string): void--><!--Device-systemManager-function setLocalHotaDomain(admin: Want, domain: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

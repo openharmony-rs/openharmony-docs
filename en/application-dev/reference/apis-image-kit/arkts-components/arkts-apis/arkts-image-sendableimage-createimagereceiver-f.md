@@ -18,6 +18,8 @@ Images occupy a large amount of memory. When you finish using an ImageReceiver i
 
 **Since:** 12
 
+<!--Device-sendableImage-function createImageReceiver(size: image.Size, format: image.ImageFormat, capacity: number): ImageReceiver--><!--Device-sendableImage-function createImageReceiver(size: image.Size, format: image.ImageFormat, capacity: number): ImageReceiver-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 **Parameters:**

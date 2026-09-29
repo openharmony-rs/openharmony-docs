@@ -12,6 +12,8 @@ Callback function on snapshot changed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type NotifySnapshotCallback = (deviceId: string, mission: int) => void--><!--Device-unnamed-type NotifySnapshotCallback = (deviceId: string, mission: int) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.

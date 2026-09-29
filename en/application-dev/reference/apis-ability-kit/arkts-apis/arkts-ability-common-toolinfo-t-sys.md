@@ -12,6 +12,8 @@ Define basic information about the CLI tool.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type ToolInfo = _ToolInfo--><!--Device-common-export type ToolInfo = _ToolInfo-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

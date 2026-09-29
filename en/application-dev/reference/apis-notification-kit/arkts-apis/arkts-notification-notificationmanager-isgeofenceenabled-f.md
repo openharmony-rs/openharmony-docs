@@ -16,6 +16,8 @@ Checks whether geofencing is enabled. This API uses a promise to return the resu
 
 **Since:** 23
 
+<!--Device-notificationManager-function isGeofenceEnabled(): Promise<boolean>--><!--Device-notificationManager-function isGeofenceEnabled(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Return value:**

@@ -15,6 +15,8 @@ Sets the response logic and node blocking rules for the hit test.
 
 **Since:** 9
 
+<!--Device-unnamed-declare enum HitTestMode--><!--Device-unnamed-declare enum HitTestMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -34,6 +36,8 @@ Default hit test mode. The node itself and its child nodes respond to the hit te
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-HitTestMode-Default--><!--Device-HitTestMode-Default-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ The node itself responds to the hit test and blocks the hit test of child nodes,
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-HitTestMode-Block--><!--Device-HitTestMode-Block-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -74,6 +80,8 @@ Both the node itself and its child nodes respond to the hit test and do not bloc
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +103,8 @@ The node itself does not respond to the hit test and does not block the hit test
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-HitTestMode-None--><!--Device-HitTestMode-None-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -115,6 +125,8 @@ The node itself and its child nodes respond to the hit test, preventing all sibl
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-HitTestMode-BLOCK_HIERARCHY--><!--Device-HitTestMode-BLOCK_HIERARCHY-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -125,7 +137,7 @@ The node itself and its child nodes respond to the hit test, preventing all sibl
 BLOCK_DESCENDANTS
 ```
 
-The node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
+The node itself does not respond to the hit test, and all descendants (children, grandchildren, etc.) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
 
 **Since:** 20
 
@@ -134,6 +146,8 @@ The node itself does not respond to the hit test, and all its descendants (child
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-HitTestMode-BLOCK_DESCENDANTS--><!--Device-HitTestMode-BLOCK_DESCENDANTS-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

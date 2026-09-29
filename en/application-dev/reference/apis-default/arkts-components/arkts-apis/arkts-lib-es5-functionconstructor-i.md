@@ -29,6 +29,8 @@ new(...args: string[]): Function
 
 Creates a new function.
 
+<!--Device-FunctionConstructor-new(...args: string[]): Function--><!--Device-FunctionConstructor-new(...args: string[]): Function-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

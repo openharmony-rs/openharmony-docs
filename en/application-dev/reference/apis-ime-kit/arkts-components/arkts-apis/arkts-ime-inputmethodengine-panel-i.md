@@ -8,6 +8,8 @@ You need to use [createPanel](arkts-ime-inputmethodengine-inputmethodability-i.m
 
 **Since:** 10
 
+<!--Device-inputMethodEngine-interface Panel--><!--Device-inputMethodEngine-interface Panel-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Adjusts the panel rectangle. After the API is called, the adjust request is subm
 > When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
 **Since:** 12
+
+<!--Device-Panel-adjustPanelRect(flag: PanelFlag, rect: PanelRect): void--><!--Device-Panel-adjustPanelRect(flag: PanelFlag, rect: PanelRect): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -97,6 +101,8 @@ Adjusts the panel rectangle, and customizes the avoid area and touch area. <br> 
 
 **Since:** 15
 
+<!--Device-Panel-adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void--><!--Device-Panel-adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -157,6 +163,8 @@ Changes the state type ([PanelFlag](arkts-ime-inputmethodengine-panelflag-e.md))
 
 **Since:** 10
 
+<!--Device-Panel-changeFlag(flag: PanelFlag): void--><!--Device-Panel-changeFlag(flag: PanelFlag): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -187,6 +195,8 @@ getDisplayId(): Promise<number>
 Obtains the window ID. This API uses a promise to return the result.
 
 **Since:** 15
+
+<!--Device-Panel-getDisplayId(): Promise<long>--><!--Device-Panel-getDisplayId(): Promise<long>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -225,6 +235,8 @@ Obtains the immersive mode of the input method application.
 
 **Since:** 15
 
+<!--Device-Panel-getImmersiveMode(): ImmersiveMode--><!--Device-Panel-getImmersiveMode(): ImmersiveMode-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -248,6 +260,8 @@ getSystemPanelCurrentInsets(displayId: number): Promise<SystemPanelInsets>
 Obtains the offset area of the soft keyboard relative to the system panel under the current state of the specified screen (for example, folded or unfolded) and the current state of the input method keyboard (for example, floating or fixed). This API uses a promise to return the result.
 
 **Since:** 21
+
+<!--Device-Panel-getSystemPanelCurrentInsets(displayId: number): Promise<SystemPanelInsets>--><!--Device-Panel-getSystemPanelCurrentInsets(displayId: number): Promise<SystemPanelInsets>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -304,6 +318,8 @@ Hides this panel. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
+<!--Device-Panel-hide(callback: AsyncCallback<void>): void--><!--Device-Panel-hide(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -338,6 +354,8 @@ Hides this panel. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-Panel-hide(): Promise<void>--><!--Device-Panel-hide(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -367,6 +385,8 @@ moveTo(x: number, y: number, callback: AsyncCallback<void>): void
 Moves this input method panel to the specified position. This API uses an asynchronous callback to return the result. This API does not work on panels in the [FLG_FIXED](arkts-ime-inputmethodengine-panelflag-e.md) state.
 
 **Since:** 10
+
+<!--Device-Panel-moveTo(x: int, y: int, callback: AsyncCallback<void>): void--><!--Device-Panel-moveTo(x: int, y: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -409,6 +429,8 @@ moveTo(x: number, y: number): Promise<void>
 Moves this input method panel to the specified position. This API uses a promise to return the result. This API does not work on panels in the [FLG_FIXED](arkts-ime-inputmethodengine-panelflag-e.md) state.
 
 **Since:** 10
+
+<!--Device-Panel-moveTo(x: int, y: int): Promise<void>--><!--Device-Panel-moveTo(x: int, y: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -453,6 +475,8 @@ Disables listening for the show event of this panel. This API uses an asynchrono
 
 **Since:** 10
 
+<!--Device-Panel-off(type: 'show', callback?: () => void): void--><!--Device-Panel-off(type: 'show', callback?: () => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -483,6 +507,8 @@ off(type: 'hide', callback?: () => void): void
 Disables listening for the hide event of this panel. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-Panel-off(type: 'hide', callback?: () => void): void--><!--Device-Panel-off(type: 'hide', callback?: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -521,6 +547,8 @@ Disables listening for the panel size change. This API uses an asynchronous call
 
 **Since:** 12
 
+<!--Device-Panel-off(type: 'sizeChange', callback?: SizeChangeCallback): void--><!--Device-Panel-off(type: 'sizeChange', callback?: SizeChangeCallback): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -550,6 +578,8 @@ Enables listening for the show event of this panel. This API uses an asynchronou
 
 **Since:** 10
 
+<!--Device-Panel-on(type: 'show', callback: () => void): void--><!--Device-Panel-on(type: 'show', callback: () => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -576,6 +606,8 @@ on(type: 'hide', callback: () => void): void
 Enables listening for the hide event of this panel. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-Panel-on(type: 'hide', callback: () => void): void--><!--Device-Panel-on(type: 'hide', callback: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -609,6 +641,8 @@ Enables listening for the panel size change. This API uses an asynchronous callb
 > - Since API version 15, after the [adjustPanelRect](#adjustpanelrect-1) API is called, an optional parameter of the [KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md) type is added to the callback function of this API.
 
 **Since:** 12
+
+<!--Device-Panel-on(type: 'sizeChange', callback: SizeChangeCallback): void--><!--Device-Panel-on(type: 'sizeChange', callback: SizeChangeCallback): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -648,6 +682,8 @@ Resizes this input method panel. This API uses an asynchronous callback to retur
 > When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
 **Since:** 10
+
+<!--Device-Panel-resize(width: long, height: long, callback: AsyncCallback<void>): void--><!--Device-Panel-resize(width: long, height: long, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -696,6 +732,8 @@ Resizes this input method panel. This API uses a promise to return the result. <
 
 **Since:** 10
 
+<!--Device-Panel-resize(width: long, height: long): Promise<void>--><!--Device-Panel-resize(width: long, height: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -739,6 +777,8 @@ Sets the immersive effect of the input method application. <br> <br>- Gradient m
 
 **Since:** 20
 
+<!--Device-Panel-setImmersiveEffect(effect: ImmersiveEffect): void--><!--Device-Panel-setImmersiveEffect(effect: ImmersiveEffect): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -777,6 +817,8 @@ Sets the immersive mode of the input method application. You can only set the im
 
 **Since:** 15
 
+<!--Device-Panel-setImmersiveMode(mode: ImmersiveMode): void--><!--Device-Panel-setImmersiveMode(mode: ImmersiveMode): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -812,6 +854,8 @@ Sets to keep the screen always on. This API uses a promise to return the result.
 > - You need to use this API properly. Set the attribute to **true** in necessary scenarios (for example, voice input) and reset this attribute to **false** after exiting necessary scenarios. In other scenarios, do not use this API.
 
 **Since:** 20
+
+<!--Device-Panel-setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>--><!--Device-Panel-setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -857,6 +901,8 @@ Sets the input method panel to privacy mode. In privacy mode, screenshot and scr
 
 **Required permissions:** ohos.permission.PRIVACY_WINDOW
 
+<!--Device-Panel-setPrivacyMode(isPrivacyMode: boolean): void--><!--Device-Panel-setPrivacyMode(isPrivacyMode: boolean): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -888,6 +934,8 @@ setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string
 Sets the color of the function buttons and their background color on the current panel. This API uses a promise to return the result.
 
 **Since:** 22
+
+<!--Device-Panel-setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string | undefined): Promise<void>--><!--Device-Panel-setSystemPanelButtonColor(fillColor: string | undefined, backgroundColor: string | undefined): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -933,6 +981,8 @@ Loads content from a page to this input method panel. This API uses an asynchron
 
 **Since:** 10
 
+<!--Device-Panel-setUiContent(path: string, callback: AsyncCallback<void>): void--><!--Device-Panel-setUiContent(path: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -973,6 +1023,8 @@ setUiContent(path: string): Promise<void>
 Loads content from a page to this input method panel. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Panel-setUiContent(path: string): Promise<void>--><!--Device-Panel-setUiContent(path: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1018,6 +1070,8 @@ Loads content from a page linked to LocalStorage to this input method panel. Thi
 
 **Since:** 10
 
+<!--Device-Panel-setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback<void>): void--><!--Device-Panel-setUiContent(path: string, storage: LocalStorage, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1061,6 +1115,8 @@ setUiContent(path: string, storage: LocalStorage): Promise<void>
 Loads content from a page linked to LocalStorage to this panel. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Panel-setUiContent(path: string, storage: LocalStorage): Promise<void>--><!--Device-Panel-setUiContent(path: string, storage: LocalStorage): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1107,6 +1163,8 @@ Shows this input method panel. This API uses an asynchronous callback to return 
 
 **Since:** 10
 
+<!--Device-Panel-show(callback: AsyncCallback<void>): void--><!--Device-Panel-show(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1141,6 +1199,8 @@ Shows this input method panel. This API uses a promise to return the result. It 
 
 **Since:** 10
 
+<!--Device-Panel-show(): Promise<void>--><!--Device-Panel-show(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -1170,6 +1230,8 @@ startMoving(): void
 Sends a command to start moving the window. The window can be moved only when the mouse is clicked.
 
 **Since:** 15
+
+<!--Device-Panel-startMoving(): void--><!--Device-Panel-startMoving(): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1204,6 +1266,8 @@ Update the panel rectangle. This API uses a promise to return the result. <br>
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Panel-updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise<void>--><!--Device-Panel-updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -1245,6 +1309,8 @@ Update the panel rectangle, and customizes the avoid area and touch area. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Panel-updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise<void>--><!--Device-Panel-updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1284,6 +1350,8 @@ Update the panel rectangle. <br>
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Panel-updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void--><!--Device-Panel-updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1318,6 +1386,8 @@ Update the panel rectangle, and customizes the avoid area and touch area. <br>
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Panel-updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void--><!--Device-Panel-updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -1348,6 +1418,8 @@ Updates the hot zone on the input method panel in the current state. <br> <br>
 > This API returns the result synchronously. The return only indicates that the system has received the request for updating the hot zone, not that the hot zone has been updated.
 
 **Since:** 15
+
+<!--Device-Panel-updateRegion(inputRegion: Array<window.Rect>): void--><!--Device-Panel-updateRegion(inputRegion: Array<window.Rect>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

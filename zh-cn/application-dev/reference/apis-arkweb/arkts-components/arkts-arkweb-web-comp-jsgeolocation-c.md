@@ -10,6 +10,8 @@ JsGeolocation适用于Web组件中网页主动请求地理位置权限的场景�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class JsGeolocation--><!--Device-unnamed-declare class JsGeolocation-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -24,6 +26,8 @@ JsGeolocation的构造函数。构造函数本身不直接被应用调用，通�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsGeolocation-constructor()--><!--Device-JsGeolocation-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## invoke
@@ -37,6 +41,8 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void--><!--Device-JsGeolocation-invoke(origin: string, allow: boolean, retain: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

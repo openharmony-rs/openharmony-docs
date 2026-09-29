@@ -8,6 +8,8 @@ Represents a text style, which controls the visual appearance attributes of text
 
 **Since:** 12
 
+<!--Device-text-interface TextStyle--><!--Device-text-interface TextStyle-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Text rectangle style. Pass this parameter when you need to add a background rect
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-backgroundRect?: RectStyle--><!--Device-TextStyle-backgroundRect?: RectStyle-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -44,7 +48,9 @@ Sets whether to use superscript or subscript in text layout. **TEXT_SUPERSCRIPT*
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-badgeType?: TextBadgeType--><!--Device-TextStyle-badgeType?: TextBadgeType-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,7 +66,9 @@ Text baseline type. The default value is **ALPHABETIC**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-baseline?: TextBaseline--><!--Device-TextStyle-baseline?: TextBaseline-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -76,7 +84,9 @@ Vertical offset distance of the text baseline, in physical pixels (px). The defa
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-baselineShift?: double--><!--Device-TextStyle-baselineShift?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -92,7 +102,9 @@ Text color. The default color is white.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-color?: common2D.Color--><!--Device-TextStyle-color?: common2D.Color-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -108,7 +120,9 @@ Text decoration. By default, no decoration is used.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-decoration?: Decoration--><!--Device-TextStyle-decoration?: Decoration-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -124,7 +138,9 @@ Ellipsis text. When the ellipsis takes effect, this field value replaces the ell
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-ellipsis?: string--><!--Device-TextStyle-ellipsis?: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -140,7 +156,9 @@ Ellipsis type. The default value is **END**, indicating that the ellipsis is at 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-ellipsisMode?: EllipsisMode--><!--Device-TextStyle-ellipsisMode?: EllipsisMode-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -158,7 +176,9 @@ Edge processing mode for drawing texts. The default value is **ANTI_ALIAS**.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-TextStyle-fontEdging?: drawing.FontEdging--><!--Device-TextStyle-fontEdging?: drawing.FontEdging-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -174,7 +194,9 @@ List of font family names. The default value is empty, which matches the system 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontFamilies?: Array<string>--><!--Device-TextStyle-fontFamilies?: Array<string>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -190,7 +212,9 @@ Array of text font features. Pass this parameter when you need to enable or disa
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontFeatures?: Array<FontFeature>--><!--Device-TextStyle-fontFeatures?: Array<FontFeature>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -206,7 +230,9 @@ Font size, a floating-point value with a default value of **14.0**, measured in 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontSize?: double--><!--Device-TextStyle-fontSize?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -222,7 +248,9 @@ Font style. The default value is **NORMAL**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontStyle?: FontStyle--><!--Device-TextStyle-fontStyle?: FontStyle-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -242,7 +270,9 @@ When fontTypefaces is set together with [TextStyle](arkts-arkgraphics2d-text-tex
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-TextStyle-fontTypefaces?: Array<drawing.Typeface>--><!--Device-TextStyle-fontTypefaces?: Array<drawing.Typeface>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -258,7 +288,9 @@ Array of variable font properties. Pass this parameter when you need to adjust t
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontVariations?: Array<FontVariation>--><!--Device-TextStyle-fontVariations?: Array<FontVariation>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -268,13 +300,15 @@ Array of variable font properties. Pass this parameter when you need to adjust t
 fontWeight?: FontWeight
 ```
 
-Font weight. The default value is W400. Before &lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;, only variable fonts in system fonts support font weight adjustment. Since &lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;, variable fonts in both system fonts and third-party registered fonts support font weight adjustment. For non-variable fonts, setting a font weight value less than semi-bold (W600) results in no change in font thickness, while setting a font weight value greater than or equal to semi-bold (W600) may trigger a pseudo-bold effect.
+Font weight. The default value is W400. Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, variable fonts in both system fonts and third-party registered fonts support font weight adjustment. For non-variable fonts, setting a font weight value less than semi-bold (W600) results in no change in font thickness, while setting a font weight value greater than or equal to semi-bold (W600) may trigger a pseudo-bold effect.
 
 **Type:** [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md)
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontWeight?: FontWeight--><!--Device-TextStyle-fontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -290,7 +324,9 @@ Font width. The default value is **NORMAL**.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-fontWidth?: FontWidth--><!--Device-TextStyle-fontWidth?: FontWidth-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -306,7 +342,9 @@ Whether half leading is enabled. Half leading is the leading split in half and a
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-halfLeading?: boolean--><!--Device-TextStyle-halfLeading?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -322,7 +360,9 @@ The value **true** means the text box height is set based on the font size and h
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-heightOnly?: boolean--><!--Device-TextStyle-heightOnly?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -338,7 +378,9 @@ Scale factor of the line height. The value is a floating point number. The defau
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-heightScale?: double--><!--Device-TextStyle-heightScale?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -354,7 +396,9 @@ Character spacing, a floating-point value in physical pixels (px) with a default
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-letterSpacing?: double--><!--Device-TextStyle-letterSpacing?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -370,7 +414,9 @@ Maximum line height, in physical pixels (px). If the line height is scaled, the 
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-lineHeightMaximum?: double--><!--Device-TextStyle-lineHeightMaximum?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -386,7 +432,9 @@ Minimum line height, in physical pixels (px). If the line height is scaled, the 
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-lineHeightMinimum?: double--><!--Device-TextStyle-lineHeightMinimum?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -402,7 +450,9 @@ Scaling base style of the line height. The default value is **FONT_SIZE**.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-lineHeightStyle?: LineHeightStyle--><!--Device-TextStyle-lineHeightStyle?: LineHeightStyle-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -418,7 +468,9 @@ Language type. For example, **'en-Latn'** indicates English (Latin script), **'z
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-locale?: string--><!--Device-TextStyle-locale?: string-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -434,7 +486,9 @@ Array of text shadows. Pass this parameter when you need to add shadow effects t
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-textShadows?: Array<TextShadow>--><!--Device-TextStyle-textShadows?: Array<TextShadow>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -450,6 +504,8 @@ Word spacing, a floating-point value in physical pixels (px) with a default valu
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextStyle-wordSpacing?: double--><!--Device-TextStyle-wordSpacing?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

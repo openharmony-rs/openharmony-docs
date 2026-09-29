@@ -8,6 +8,8 @@ Linear Gradient Blur Interface
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LinearGradientBlurOptions--><!--Device-unnamed-declare interface LinearGradientBlurOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -30,6 +32,8 @@ GradientDirection.Bottom
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LinearGradientBlurOptions-direction: GradientDirection--><!--Device-LinearGradientBlurOptions-direction: GradientDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fractionStops
@@ -47,5 +51,7 @@ Gradient blur stops. The value is a set of binary arrays, each of which indicate
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LinearGradientBlurOptions-fractionStops: FractionStop[]--><!--Device-LinearGradientBlurOptions-fractionStops: FractionStop[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

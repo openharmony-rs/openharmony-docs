@@ -8,6 +8,8 @@ Before calling any of the following APIs to manage the calendar, you must use [g
 
 **Since:** 10
 
+<!--Device-calendarManager-export interface CalendarManager--><!--Device-calendarManager-export interface CalendarManager-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Creates a Calendar object based on the calendar account information. This API us
 **Required permissions:** 
 - API version 21 and later: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
+
+<!--Device-CalendarManager-createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>--><!--Device-CalendarManager-createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -90,6 +94,8 @@ Creates a Calendar object based on the calendar account information. This API us
 - API version 21 and later: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
 
+<!--Device-CalendarManager-createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>): void--><!--Device-CalendarManager-createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -147,6 +153,8 @@ Deletes a specified Calendar object. This API uses a promise to return the resul
 **Required permissions:** 
 - API version 21 and later: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
+
+<!--Device-CalendarManager-deleteCalendar(calendar: Calendar): Promise<void>--><!--Device-CalendarManager-deleteCalendar(calendar: Calendar): Promise<void>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -219,6 +227,8 @@ Deletes a specified Calendar object. This API uses an asynchronous callback to r
 - API version 21 and later: ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.WRITE_CALENDAR
 
+<!--Device-CalendarManager-deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void--><!--Device-CalendarManager-deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -286,6 +296,8 @@ Events created using this API can be obtained and modified by the system calenda
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CalendarManager-editEvent(event: Event): Promise<number>--><!--Device-CalendarManager-editEvent(event: Event): Promise<number>-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -332,6 +344,8 @@ Obtains the created and default Calendar objects of the current application. Thi
 **Required permissions:** 
 - API version 21 and later: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
+
+<!--Device-CalendarManager-getAllCalendars(): Promise<Calendar[]>--><!--Device-CalendarManager-getAllCalendars(): Promise<Calendar[]>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -387,6 +401,8 @@ Obtains the created and default Calendar objects of the current application. Thi
 - API version 21 and later: ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
 
+<!--Device-CalendarManager-getAllCalendars(callback: AsyncCallback<Calendar[]>): void--><!--Device-CalendarManager-getAllCalendars(callback: AsyncCallback<Calendar[]>): void-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 **Parameters:**
@@ -440,6 +456,8 @@ Obtains the default or specified Calendar object. This API uses a promise to ret
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CalendarManager-getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>--><!--Device-CalendarManager-getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -498,6 +516,8 @@ Obtains a specified Calendar object. This API uses an asynchronous callback to r
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CalendarManager-getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>): void--><!--Device-CalendarManager-getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>): void-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -563,6 +583,8 @@ Obtains the default Calendar object, which is created when the data storage runs
 - API versions 10 to 20: ohos.permission.READ_CALENDAR
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CalendarManager-getCalendar(callback: AsyncCallback<Calendar>): void--><!--Device-CalendarManager-getCalendar(callback: AsyncCallback<Calendar>): void-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 

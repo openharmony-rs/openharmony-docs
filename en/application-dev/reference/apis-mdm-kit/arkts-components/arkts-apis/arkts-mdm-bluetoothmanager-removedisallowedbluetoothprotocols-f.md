@@ -20,6 +20,8 @@ Removes disallowed Bluetooth protocols. After removing some protocols, the user 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array<Protocol>): void--><!--Device-bluetoothManager-function removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array<Protocol>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -86,6 +88,8 @@ Removes Bluetooth protocols from the blocklist. After the setting, specified use
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bluetoothManager-function removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array<Protocol>, policy: TransferPolicy): void--><!--Device-bluetoothManager-function removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array<Protocol>, policy: TransferPolicy): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

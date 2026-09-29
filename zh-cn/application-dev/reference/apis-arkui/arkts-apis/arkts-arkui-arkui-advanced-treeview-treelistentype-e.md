@@ -8,6 +8,8 @@ export declare enum TreeListenType
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare enum TreeListenType--><!--Device-unnamed-export declare enum TreeListenType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NODE_CLICK
@@ -23,6 +25,8 @@ NODE_CLICK = "NodeClick"
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TreeListenType-NODE_CLICK = "NodeClick"--><!--Device-TreeListenType-NODE_CLICK = "NodeClick"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ NODE_ADD = "NodeAdd"
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TreeListenType-NODE_ADD = "NodeAdd"--><!--Device-TreeListenType-NODE_ADD = "NodeAdd"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NODE_DELETE
@@ -55,6 +61,8 @@ NODE_DELETE = "NodeDelete"
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TreeListenType-NODE_DELETE = "NodeDelete"--><!--Device-TreeListenType-NODE_DELETE = "NodeDelete"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ NODE_MODIFY = "NodeModify"
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TreeListenType-NODE_MODIFY = "NodeModify"--><!--Device-TreeListenType-NODE_MODIFY = "NodeModify"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NODE_MOVE
@@ -87,5 +97,7 @@ NODE_MOVE = "NodeMove"
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TreeListenType-NODE_MOVE = "NodeMove"--><!--Device-TreeListenType-NODE_MOVE = "NodeMove"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -9,6 +9,8 @@ This module provides enterprise device settings capabilities, including setting 
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace deviceSettings--><!--Device-unnamed-declare namespace deviceSettings-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

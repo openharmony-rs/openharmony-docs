@@ -8,6 +8,8 @@ Describes the system notification button.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface NotificationIconButton--><!--Device-unnamed-export interface NotificationIconButton-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Whether to hide the notification panel when the button is tapped. The default va
 
 **Since:** 18
 
+<!--Device-NotificationIconButton-hidePanel?: boolean--><!--Device-NotificationIconButton-hidePanel?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -42,6 +46,8 @@ Background image of a button.
 **Type:** [IconType](arkts-notification-icontype-t-sys.md)
 
 **Since:** 18
+
+<!--Device-NotificationIconButton-iconResource: IconType--><!--Device-NotificationIconButton-iconResource: IconType-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -59,6 +65,8 @@ Button identifier, used to distinguish multiple different buttons for the same n
 
 **Since:** 18
 
+<!--Device-NotificationIconButton-name: string--><!--Device-NotificationIconButton-name: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -74,6 +82,8 @@ Text displayed on the button, which defaults to empty. The string length cannot 
 **Type:** string
 
 **Since:** 18
+
+<!--Device-NotificationIconButton-text?: string--><!--Device-NotificationIconButton-text?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

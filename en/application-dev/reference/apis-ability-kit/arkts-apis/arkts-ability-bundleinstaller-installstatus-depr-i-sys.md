@@ -10,6 +10,8 @@ Describes the bundle installation or uninstall status.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-export interface InstallStatus--><!--Device-unnamed-export interface InstallStatus-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Installation or uninstall error code. The value must be defined in [InstallError
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallStatus-status: bundle.InstallErrorCode--><!--Device-InstallStatus-status: bundle.InstallErrorCode-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -87,6 +91,8 @@ Installation or uninstall status message.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-InstallStatus-statusMessage: string--><!--Device-InstallStatus-statusMessage: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

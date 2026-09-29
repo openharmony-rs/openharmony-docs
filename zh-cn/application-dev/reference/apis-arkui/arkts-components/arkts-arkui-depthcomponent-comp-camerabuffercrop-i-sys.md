@@ -8,6 +8,8 @@ declare interface CameraBufferCrop
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface CameraBufferCrop--><!--Device-unnamed-declare interface CameraBufferCrop-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,6 +29,8 @@ bufferHeight: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraBufferCrop-bufferHeight: int--><!--Device-CameraBufferCrop-bufferHeight: int-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ bufferWidth: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CameraBufferCrop-bufferWidth: int--><!--Device-CameraBufferCrop-bufferWidth: int-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -68,6 +74,8 @@ cropOffset: CropOffset
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CameraBufferCrop-cropOffset: CropOffset--><!--Device-CameraBufferCrop-cropOffset: CropOffset-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -87,6 +95,8 @@ cropScale: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraBufferCrop-cropScale: double--><!--Device-CameraBufferCrop-cropScale: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

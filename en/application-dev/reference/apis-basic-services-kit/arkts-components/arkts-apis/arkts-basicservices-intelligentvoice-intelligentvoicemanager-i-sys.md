@@ -8,6 +8,8 @@ Implements intelligent voice management. @typedef IntelligentVoiceManager
 
 **Since:** 10
 
+<!--Device-intelligentVoice-interface IntelligentVoiceManager--><!--Device-intelligentVoice-interface IntelligentVoiceManager-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Obtains capability information.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-IntelligentVoiceManager-getCapabilityInfo(): Array<IntelligentVoiceEngineType>--><!--Device-IntelligentVoiceManager-getCapabilityInfo(): Array<IntelligentVoiceEngineType>-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
@@ -67,6 +71,8 @@ Unsubscribes service change events.
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
 
+<!--Device-IntelligentVoiceManager-off(type: 'serviceChange', callback?: Callback<ServiceChangeType>): void--><!--Device-IntelligentVoiceManager-off(type: 'serviceChange', callback?: Callback<ServiceChangeType>): void-End-->
+
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 
 **System API:** This is a system API.
@@ -104,6 +110,8 @@ Subscribes service change events. When the state of intelligent voice service ch
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE
+
+<!--Device-IntelligentVoiceManager-on(type: 'serviceChange', callback: Callback<ServiceChangeType>): void--><!--Device-IntelligentVoiceManager-on(type: 'serviceChange', callback: Callback<ServiceChangeType>): void-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

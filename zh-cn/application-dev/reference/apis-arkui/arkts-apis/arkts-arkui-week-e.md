@@ -8,6 +8,8 @@ declare enum Week
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum Week--><!--Device-unnamed-declare enum Week-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Mon
@@ -23,6 +25,8 @@ Mon
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Week-Mon--><!--Device-Week-Mon-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Tue
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Week-Tue--><!--Device-Week-Tue-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Wed
@@ -55,6 +61,8 @@ Wed
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Week-Wed--><!--Device-Week-Wed-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Thur
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Week-Thur--><!--Device-Week-Thur-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Fri
@@ -87,6 +97,8 @@ Fri
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Week-Fri--><!--Device-Week-Fri-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ Sat
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Week-Sat--><!--Device-Week-Sat-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Sun
@@ -119,5 +133,7 @@ Sun
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Week-Sun--><!--Device-Week-Sun-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

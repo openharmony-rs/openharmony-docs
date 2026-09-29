@@ -22,6 +22,8 @@ Defines the dynamic layout container.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-DynamicLayoutInterface-(algorithm: LayoutAlgorithm): DynamicLayoutAttribute--><!--Device-DynamicLayoutInterface-(algorithm: LayoutAlgorithm): DynamicLayoutAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

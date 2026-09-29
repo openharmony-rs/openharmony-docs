@@ -4,7 +4,7 @@
 declare type OnRatingChangeCallback = (rating: number) => void
 ```
 
-Defines the callback triggered when the rating value changes.
+Called when the rating value changes.
 
 **Since:** 18
 
@@ -12,10 +12,12 @@ Defines the callback triggered when the rating value changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnRatingChangeCallback = (rating: number) => void--><!--Device-unnamed-declare type OnRatingChangeCallback = (rating: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rating | number | Yes | Rating value. |
+| rating | number | Yes | Rating value. The value range is [0, **stars**]. |

@@ -8,6 +8,8 @@ Defines the detailed permission usage information.
 
 **Since:** 9
 
+<!--Device-privacyManager-interface ActiveChangeResponse--><!--Device-privacyManager-interface ActiveChangeResponse-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Permission usage status.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-ActiveChangeResponse-activeStatus: PermissionActiveStatus--><!--Device-ActiveChangeResponse-activeStatus: PermissionActiveStatus-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Default value: **0**.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-ActiveChangeResponse-callingTokenId?: int--><!--Device-ActiveChangeResponse-callingTokenId?: int-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ ID of the device where the permission usage status change occurred.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-ActiveChangeResponse-deviceId: string--><!--Device-ActiveChangeResponse-deviceId: string-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -88,6 +96,8 @@ Extension identity, used to identify additional identity information of the call
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ActiveChangeResponse-enhancedIdentity?: string--><!--Device-ActiveChangeResponse-enhancedIdentity?: string-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -106,6 +116,8 @@ Name of the permission whose usage status has changed.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-ActiveChangeResponse-permissionName: Permissions--><!--Device-ActiveChangeResponse-permissionName: Permissions-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -123,6 +135,8 @@ Token ID of the application whose permission usage changes are subscribed to.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-ActiveChangeResponse-tokenId: int--><!--Device-ActiveChangeResponse-tokenId: int-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -143,6 +157,8 @@ Default value: NORMAL_TYPE.
 **Since:** 18
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-ActiveChangeResponse-usedType?: PermissionUsedType--><!--Device-ActiveChangeResponse-usedType?: PermissionUsedType-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

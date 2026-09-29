@@ -10,6 +10,8 @@ System Parameter is a simple and easy-to-use key-value pair access interface pro
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace systemParameterEnhance--><!--Device-unnamed-declare namespace systemParameterEnhance-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.

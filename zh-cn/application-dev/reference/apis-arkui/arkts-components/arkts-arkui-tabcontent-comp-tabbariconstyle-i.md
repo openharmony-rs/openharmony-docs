@@ -8,6 +8,8 @@ Label图标样式对象。
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface TabBarIconStyle--><!--Device-unnamed-declare interface TabBarIconStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedColor
@@ -34,6 +36,8 @@ selectedColor?: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabBarIconStyle-selectedColor?: ResourceColor--><!--Device-TabBarIconStyle-selectedColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## unselectedColor
@@ -59,5 +63,7 @@ unselectedColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabBarIconStyle-unselectedColor?: ResourceColor--><!--Device-TabBarIconStyle-unselectedColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

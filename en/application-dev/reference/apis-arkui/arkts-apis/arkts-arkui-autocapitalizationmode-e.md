@@ -4,9 +4,11 @@
 declare enum AutoCapitalizationMode
 ```
 
-Enumerates automatic capitalization modes. This only provides API capabilities; the specific implementation depends on the input method application.
+Automatic capitalization mode type. It only provides the API capability, and the specific implementation is determined by the input method app.
 
 **Since:** 20
+
+<!--Device-unnamed-declare enum AutoCapitalizationMode--><!--Device-unnamed-declare enum AutoCapitalizationMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Enumerates automatic capitalization modes. This only provides API capabilities; 
 NONE = 0
 ```
 
-Default state; automatic capitalization is disabled.
+Default state, no automatic case conversion is performed.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-AutoCapitalizationMode-NONE = 0--><!--Device-AutoCapitalizationMode-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Automatic capitalization is applied per word: The first character of each word i
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AutoCapitalizationMode-WORDS = 1--><!--Device-AutoCapitalizationMode-WORDS = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SENTENCES
@@ -56,6 +62,8 @@ Automatic capitalization is applied per sentence: The first character of each se
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AutoCapitalizationMode-SENTENCES = 2--><!--Device-AutoCapitalizationMode-SENTENCES = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALL_CHARACTERS
@@ -71,5 +79,7 @@ Automatic capitalization applied to all characters.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-AutoCapitalizationMode-ALL_CHARACTERS = 3--><!--Device-AutoCapitalizationMode-ALL_CHARACTERS = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

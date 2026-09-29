@@ -8,6 +8,8 @@ Defines a contact's nickname.
 
 **Since:** 7
 
+<!--Device-contact-class NickName--><!--Device-contact-class NickName-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Contact nickname.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NickName-nickName: string--><!--Device-NickName-nickName: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

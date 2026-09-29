@@ -12,6 +12,8 @@ Provides content options of the modal.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface ContentCoverOptions extends BindOptions--><!--Device-unnamed-declare interface ContentCoverOptions extends BindOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableSafeArea
@@ -31,6 +33,8 @@ Whether the full-screen modal adapts to the safe area. **true** indicates the fu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ContentCoverOptions-enableSafeArea?: boolean--><!--Device-ContentCoverOptions-enableSafeArea?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ This property has no effect when it is set together with **transition**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ContentCoverOptions-modalTransition?: ModalTransition--><!--Device-ContentCoverOptions-modalTransition?: ModalTransition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDismiss
@@ -80,6 +86,8 @@ After this callback is registered, touching the back button does not immediately
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContentCoverOptions-onWillDismiss?: Callback<DismissContentCoverAction>--><!--Device-ContentCoverOptions-onWillDismiss?: Callback<DismissContentCoverAction>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -97,5 +105,7 @@ Custom transition mode of the modal.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentCoverOptions-transition?: TransitionEffect--><!--Device-ContentCoverOptions-transition?: TransitionEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

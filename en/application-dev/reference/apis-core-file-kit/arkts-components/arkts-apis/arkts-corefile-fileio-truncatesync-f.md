@@ -19,6 +19,8 @@ Truncates a file based on the file path. This API returns the result synchronous
 
 **Substitutes:** [truncateSync](arkts-corefile-file-fs-truncatesync-f.md)
 
+<!--Device-unnamed-declare function truncateSync(path: string, len?: number): void--><!--Device-unnamed-declare function truncateSync(path: string, len?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

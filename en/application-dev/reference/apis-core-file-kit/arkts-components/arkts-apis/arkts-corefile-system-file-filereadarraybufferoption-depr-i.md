@@ -10,6 +10,8 @@ Defines the options used in readArrayBuffer().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileReadArrayBufferOption--><!--Device-unnamed-export interface FileReadArrayBufferOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileReadArrayBufferOption-complete?: () => void--><!--Device-FileReadArrayBufferOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadArrayBufferOption-fail?: (data: string, code: number) => void--><!--Device-FileReadArrayBufferOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -58,11 +64,13 @@ Callback invoked when the API call fails. **data** indicates the error informati
 success?: (data: FileReadArrayBufferResponse) => void
 ```
 
-Callback invoked when the API call is successful. **data** is [FileReadArrayBufferResponse](arkts-corefile-system-file-filereadarraybufferresponse-depr-i.md#filereadarraybufferresponse).
+Callback invoked when the API call is successful. **data** is [FileReadArrayBufferResponse](arkts-corefile-system-file-filereadarraybufferresponse-depr-i.md).
 
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadArrayBufferOption-success?: (data: FileReadArrayBufferResponse) => void--><!--Device-FileReadArrayBufferOption-success?: (data: FileReadArrayBufferResponse) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -86,6 +94,8 @@ Length of data to read, in bytes. If this parameter is not set, the reading proc
 
 **Deprecated since:** 10
 
+<!--Device-FileReadArrayBufferOption-length?: number--><!--Device-FileReadArrayBufferOption-length?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## position
@@ -101,6 +111,8 @@ Position where the reading starts, in bytes. The default value is the start posi
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadArrayBufferOption-position?: number--><!--Device-FileReadArrayBufferOption-position?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -119,5 +131,7 @@ URI of the file to which the content is written. Restricted by the underlying fi
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadArrayBufferOption-uri: string--><!--Device-FileReadArrayBufferOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

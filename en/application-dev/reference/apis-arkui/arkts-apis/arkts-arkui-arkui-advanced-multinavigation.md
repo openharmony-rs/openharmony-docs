@@ -20,12 +20,6 @@ import { SplitPolicy, MultiNavigation, MultiNavPathStack } from '@kit.ArkUI';
 | --- | --- |
 | [MultiNavigation](arkts-arkui-arkui-advanced-multinavigation-multinavigation-s.md) | **MultiNavigation** is a component designed for multi-column display and routing navigation on large-screen devices. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | Enumerates the types of pages in **MultiNavigation**. |
-
 ### Types
 
 | Name | Description |
@@ -33,6 +27,12 @@ import { SplitPolicy, MultiNavigation, MultiNavPathStack } from '@kit.ArkUI';
 | [NavDestinationBuildFunction](arkts-arkui-navdestinationbuildfunction-t.md) | Represents the function used by the **MultiNavigation** component to load navigation destination pages. |
 | [OnHomeShowOnTopCallback](arkts-arkui-onhomeshowontopcallback-t.md) | Represents the callback invoked when the home page is displayed at the top of the stack. |
 | [OnNavigationModeChangeCallback](arkts-arkui-onnavigationmodechangecallback-t.md) | Represents the callback invoked when the mode of the **MultiNavigation** component changes. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [SplitPolicy](arkts-arkui-arkui-advanced-multinavigation-splitpolicy-e.md) | Enumerates the types of pages in **MultiNavigation**. |
 
 ## Examples
 

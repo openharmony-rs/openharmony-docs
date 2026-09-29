@@ -4,6 +4,8 @@ The **systemTime** module provides system time and time zone features. You can o
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace systemDateTime--><!--Device-unnamed-declare namespace systemDateTime-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Defines a key-value pair object used to specify environment variable names and t
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface EnvPropsOptions--><!--Device-unnamed-declare interface EnvPropsOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultValue
@@ -24,6 +26,8 @@ Default value used if the value of the specified environment variable key is not
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EnvPropsOptions-defaultValue: number | string | boolean--><!--Device-EnvPropsOptions-defaultValue: number | string | boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -39,5 +43,7 @@ Environment variable name. For details about the value range, see [Built-in Envi
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EnvPropsOptions-key: string--><!--Device-EnvPropsOptions-key: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

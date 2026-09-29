@@ -14,6 +14,8 @@ Describes the current progress of video playback.
 
 **Since:** 18
 
+<!--Device-unnamed-interface PlaybackInfo--><!--Device-unnamed-interface PlaybackInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## time
@@ -35,5 +37,7 @@ Value range: [0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PlaybackInfo-time: number--><!--Device-PlaybackInfo-time: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

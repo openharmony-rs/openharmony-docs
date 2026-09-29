@@ -18,7 +18,7 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 > 
 > - 执行aboutToDisappear时，组件即将销毁，不能在aboutToDisappear里面做动画。
 > 
-> - 在组件出现和消失时，可以通过组件内转场添加动画效果。
+> - 在组件出现和消失时，可以通过[组件内转场](arkts-arkui-common-comp.md)添加动画效果。
 > 
 > - 组件内转场不支持的属性，可以参考[示例2](arkts-arkui-common-comp-commonmethod-c.md)，使用animateTo实现动画执行结束后组件消失的效果。
 > 
@@ -33,6 +33,8 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare function animateTo(value: AnimateParam, event: () => void): void--><!--Device-unnamed-declare function animateTo(value: AnimateParam, event: () => void): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

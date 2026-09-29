@@ -16,7 +16,9 @@ Obtains the total uplink traffic of all NICs (in bytes) from the last startup to
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-statistics-function getAllTxBytes(callback: AsyncCallback<long>): void--><!--Device-statistics-function getAllTxBytes(callback: AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -63,7 +65,9 @@ Obtains the total uplink traffic (in bytes) of all NICs from the last startup to
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-statistics-function getAllTxBytes(): Promise<long>--><!--Device-statistics-function getAllTxBytes(): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

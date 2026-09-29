@@ -8,11 +8,13 @@ export class MarqueeDynamicSyncScene extends DynamicSyncScene
 
 > **说明：** 
 > 
-> - MarqueeDynamicSyncScene继承自[DynamicSyncScene](arkts-arkui-arkui-uicontext-uicontext-c.md)，对应Marquee的动态帧率场景。
+> - MarqueeDynamicSyncScene继承自[DynamicSyncScene](arkts-arkui-arkui-uicontext-uicontext-c.md)，对应[Marquee](../arkts-components/arkts-arkui-marquee-comp.md)的动态帧率场景。
 
 **继承/实现关系：** MarqueeDynamicSyncScene extends [DynamicSyncScene](arkts-arkui-arkui-uicontext-dynamicsyncscene-c.md)
 
 **起始版本：** 14
+
+<!--Device-unnamed-export class MarqueeDynamicSyncScene extends DynamicSyncScene--><!--Device-unnamed-export class MarqueeDynamicSyncScene extends DynamicSyncScene-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,5 +42,7 @@ Marquee的动态帧率场景类型。用于指定Marquee组件的动态帧率场
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-MarqueeDynamicSyncScene-readonly type: MarqueeDynamicSyncSceneType--><!--Device-MarqueeDynamicSyncScene-readonly type: MarqueeDynamicSyncSceneType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

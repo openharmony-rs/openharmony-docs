@@ -8,6 +8,8 @@ declare interface BaseEvent
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface BaseEvent--><!--Device-unnamed-declare interface BaseEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getModifierKeyState
@@ -28,6 +30,8 @@ getModifierKeyState?(keys: Array<string>): boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BaseEvent-getModifierKeyState?(keys: Array<string>): boolean--><!--Device-BaseEvent-getModifierKeyState?(keys: Array<string>): boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -46,7 +50,7 @@ getModifierKeyState?(keys: Array<string>): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
 
 ## axisHorizontal
 
@@ -73,6 +77,8 @@ axisHorizontal?: number
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BaseEvent-axisHorizontal?: number--><!--Device-BaseEvent-axisHorizontal?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +110,8 @@ axisPinch?: number
 
 **卡片能力：** 从API版本21开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BaseEvent-axisPinch?: number--><!--Device-BaseEvent-axisPinch?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## axisVertical
@@ -132,6 +140,8 @@ axisVertical?: number
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BaseEvent-axisVertical?: number--><!--Device-BaseEvent-axisVertical?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## deviceId
@@ -153,6 +163,8 @@ deviceId?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BaseEvent-deviceId?: number--><!--Device-BaseEvent-deviceId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,6 +188,8 @@ pressure: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BaseEvent-pressure: number--><!--Device-BaseEvent-pressure: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## rollAngle
@@ -198,6 +212,8 @@ rollAngle?: number
 
 **卡片能力：** 从API版本17开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BaseEvent-rollAngle?: number--><!--Device-BaseEvent-rollAngle?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## source
@@ -215,6 +231,8 @@ source: SourceType
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BaseEvent-source: SourceType--><!--Device-BaseEvent-source: SourceType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,6 +252,8 @@ sourceTool: SourceTool
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BaseEvent-sourceTool: SourceTool--><!--Device-BaseEvent-sourceTool: SourceTool-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## target
@@ -251,6 +271,8 @@ target: EventTarget
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BaseEvent-target: EventTarget--><!--Device-BaseEvent-target: EventTarget-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,6 +296,8 @@ targetDisplayId?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-BaseEvent-targetDisplayId?: number--><!--Device-BaseEvent-targetDisplayId?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tiltX
@@ -295,6 +319,8 @@ tiltX: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BaseEvent-tiltX: number--><!--Device-BaseEvent-tiltX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,6 +344,8 @@ tiltY: number
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BaseEvent-tiltY: number--><!--Device-BaseEvent-tiltY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## timestamp
@@ -337,5 +365,7 @@ timestamp: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BaseEvent-timestamp: number--><!--Device-BaseEvent-timestamp: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

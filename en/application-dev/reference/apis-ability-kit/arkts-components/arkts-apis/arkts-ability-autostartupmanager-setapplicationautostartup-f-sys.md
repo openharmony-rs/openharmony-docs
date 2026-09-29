@@ -20,6 +20,8 @@ Sets an application component to automatically start upon system boot. This API 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoStartupManager-function setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback<void>): void--><!--Device-autoStartupManager-function setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -58,6 +60,8 @@ Sets an application component to automatically start upon system boot. This API 
 **Required permissions:** ohos.permission.MANAGE_APP_BOOT
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-autoStartupManager-function setApplicationAutoStartup(info: AutoStartupInfo): Promise<void>--><!--Device-autoStartupManager-function setApplicationAutoStartup(info: AutoStartupInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

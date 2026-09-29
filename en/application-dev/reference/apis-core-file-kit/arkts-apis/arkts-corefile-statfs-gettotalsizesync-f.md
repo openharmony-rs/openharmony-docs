@@ -16,6 +16,8 @@ Obtains the total size of the specified file system, in bytes. This API returns 
 
 **Since:** 10
 
+<!--Device-statfs-function getTotalSizeSync(path: string): long--><!--Device-statfs-function getTotalSizeSync(path: string): long-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

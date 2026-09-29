@@ -20,6 +20,8 @@ Gets allowed printer IP addresses for device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array<string>--><!--Device-systemManager-function getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

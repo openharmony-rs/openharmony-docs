@@ -4,7 +4,7 @@
 export interface HeartRateResponse
 ```
 
-Defines a **HeartRateResponse** object.
+Defines a response object of the callback function after the heart rate sensor data is changed, including the heart rate value.
 
 **Since:** 3
 
@@ -13,6 +13,8 @@ Defines a **HeartRateResponse** object.
 **Substitutes:** [HeartRateResponse](arkts-sensorservice-sensor-heartrateresponse-i.md)
 
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
+
+<!--Device-unnamed-export interface HeartRateResponse--><!--Device-unnamed-export interface HeartRateResponse-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -28,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 heartRate: number
 ```
 
-Heart rate.
+Heart rate, in bpm. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor. The resting heart rate of a normal adult ranges from 60 to 100 bpm.
 
 **Type:** number
 
@@ -41,5 +43,7 @@ Heart rate.
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-HeartRateResponse-heartRate: number--><!--Device-HeartRateResponse-heartRate: number-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

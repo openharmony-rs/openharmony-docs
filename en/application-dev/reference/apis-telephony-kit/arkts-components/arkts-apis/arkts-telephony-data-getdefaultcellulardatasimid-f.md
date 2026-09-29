@@ -16,6 +16,8 @@ Obtains the default ID of the SIM card used for mobile data.
 
 **Since:** 10
 
+<!--Device-data-function getDefaultCellularDataSimId(): int--><!--Device-data-function getDefaultCellularDataSimId(): int-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Return value:**

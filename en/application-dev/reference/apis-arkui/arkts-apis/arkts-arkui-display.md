@@ -4,6 +4,8 @@ The **Display** module provides APIs for managing displays, such as obtaining in
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace display--><!--Device-unnamed-declare namespace display-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## Modules to Import
@@ -100,6 +102,12 @@ import { display } from '@kit.ArkUI';
 | [Display](arkts-arkui-display-display-i-sys.md) | Implements a Display instance, with attributes and APIs defined. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [BrightnessCallback](arkts-arkui-display-brightnesscallback-t.md) | Defines the callback function used to listen for screen brightness information. |
+
 ### Enums
 
 | Name | Description |
@@ -111,9 +119,3 @@ import { display } from '@kit.ArkUI';
 | [FoldStatus](arkts-arkui-display-foldstatus-e.md) | Enumerates the fold statuses of a foldable device. For dual-fold axis devices, when oriented with the charging port at the bottom, the hinges are identified from right to left as the first and second fold axes, respectively. |
 | [Orientation](arkts-arkui-display-orientation-e.md) | Enumerates the orientations of a display. |
 | [ScreenShape](arkts-arkui-display-screenshape-e.md) | Enumerates the screen shapes of a display. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [BrightnessCallback](arkts-arkui-display-brightnesscallback-t.md) | Defines the callback function used to listen for screen brightness information. |

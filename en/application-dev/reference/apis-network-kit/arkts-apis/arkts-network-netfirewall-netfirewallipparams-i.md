@@ -8,6 +8,8 @@ Defines the IP parameters of the firewall rule. The IP address type can be IPv4 
 
 **Since:** 15
 
+<!--Device-netFirewall-interface NetFirewallIpParams--><!--Device-netFirewall-interface NetFirewallIpParams-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## Modules to Import
@@ -28,6 +30,8 @@ IP address. This parameter is mandatory and valid only when type is set to **1**
 
 **Since:** 15
 
+<!--Device-NetFirewallIpParams-address?: string--><!--Device-NetFirewallIpParams-address?: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## endIp
@@ -41,6 +45,8 @@ End IP address. This parameter is mandatory and valid only when type is set to *
 **Type:** string
 
 **Since:** 15
+
+<!--Device-NetFirewallIpParams-endIp?: string--><!--Device-NetFirewallIpParams-endIp?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -60,6 +66,8 @@ The default value is **IPv4**. Other values are not supported currently.
 
 **Since:** 15
 
+<!--Device-NetFirewallIpParams-family?: int--><!--Device-NetFirewallIpParams-family?: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## mask
@@ -78,6 +86,8 @@ This parameter is mandatory and valid only when type is set to **1**.
 
 **Since:** 15
 
+<!--Device-NetFirewallIpParams-mask?: int--><!--Device-NetFirewallIpParams-mask?: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## startIp
@@ -91,6 +101,8 @@ Start IP address. This parameter is mandatory and valid only when type is set to
 **Type:** string
 
 **Since:** 15
+
+<!--Device-NetFirewallIpParams-startIp?: string--><!--Device-NetFirewallIpParams-startIp?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -107,5 +119,7 @@ type: number
 **Type:** number
 
 **Since:** 15
+
+<!--Device-NetFirewallIpParams-type: int--><!--Device-NetFirewallIpParams-type: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

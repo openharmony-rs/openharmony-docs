@@ -20,6 +20,8 @@ Queries the delegated applications that can access a delegation policy and outpu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function getDelegatedBundleNames(admin: Want, policy: string): Array<string>--><!--Device-adminManager-function getDelegatedBundleNames(admin: Want, policy: string): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

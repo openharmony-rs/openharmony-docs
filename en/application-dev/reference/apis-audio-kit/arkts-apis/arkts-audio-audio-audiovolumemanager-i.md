@@ -14,6 +14,8 @@ Before calling any API in AudioVolumeManager, you must use [getVolumeManager](ar
 
 **Since:** 9
 
+<!--Device-audio-interface AudioVolumeManager--><!--Device-audio-interface AudioVolumeManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Obtains the volume of the application. (The volume range is 0 to 100.) This API 
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioVolumeManager-getAppVolumePercentage(): Promise<int>--><!--Device-AudioVolumeManager-getAppVolumePercentage(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -62,7 +66,9 @@ Obtains the maximum volume of a specified audio stream.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioVolumeManager-getMaxVolumeByStream(streamUsage: StreamUsage): int--><!--Device-AudioVolumeManager-getMaxVolumeByStream(streamUsage: StreamUsage): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -110,7 +116,9 @@ Obtains the minimum volume of a specified audio stream.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioVolumeManager-getMinVolumeByStream(streamUsage: StreamUsage): int--><!--Device-AudioVolumeManager-getMinVolumeByStream(streamUsage: StreamUsage): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -158,7 +166,9 @@ Obtains the volume of a specified audio stream.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioVolumeManager-getVolumeByStream(streamUsage: StreamUsage): int--><!--Device-AudioVolumeManager-getVolumeByStream(streamUsage: StreamUsage): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -206,6 +216,8 @@ Obtains a VolumeGroupManager instance. This API uses an asynchronous callback to
 
 **Since:** 9
 
+<!--Device-AudioVolumeManager-getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolumeGroupManager>): void--><!--Device-AudioVolumeManager-getVolumeGroupManager(groupId: int, callback: AsyncCallback<AudioVolumeGroupManager>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **Parameters:**
@@ -244,6 +256,8 @@ getVolumeGroupManager(groupId: number): Promise<AudioVolumeGroupManager>
 Obtains a VolumeGroupManager instance. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AudioVolumeManager-getVolumeGroupManager(groupId: int): Promise<AudioVolumeGroupManager>--><!--Device-AudioVolumeManager-getVolumeGroupManager(groupId: int): Promise<AudioVolumeGroupManager>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -286,7 +300,9 @@ Obtains a VolumeGroupManager instance. This API returns the result synchronously
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioVolumeManager-getVolumeGroupManagerSync(groupId: int): AudioVolumeGroupManager--><!--Device-AudioVolumeManager-getVolumeGroupManagerSync(groupId: int): AudioVolumeGroupManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -332,6 +348,8 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 Obtains the volume (in dB) calculated by the system based on the audio stream, volume level, and device type.
 
 **Since:** 20
+
+<!--Device-AudioVolumeManager-getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: int, device: DeviceType): double--><!--Device-AudioVolumeManager-getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: int, device: DeviceType): double-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -382,6 +400,8 @@ Checks whether a specified audio stream is muted.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-isSystemMutedForStream(streamUsage: StreamUsage): boolean--><!--Device-AudioVolumeManager-isSystemMutedForStream(streamUsage: StreamUsage): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **Parameters:**
@@ -418,54 +438,6 @@ try {
 }
 ```
 
-## off('volumeChange')
-
-```TypeScript
-off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void
-```
-
-Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
-
-**Since:** 12
-
-**Deprecated since:** 20
-
-**Substitutes:** streamVolumeChange
-
-**System capability:** SystemCapability.Multimedia.Audio.Volume
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| type | 'volumeChange' | Yes | Event type. The event **'volumeChange'** is triggered when the system volume is changed. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | No | Callback used to return the changed volume. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters missing; 2.Incorrect parameter types. |
-| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
-
-**Examples**
-
-```TypeScript
-// Cancel all subscriptions to the event.
-audioVolumeManager.off('volumeChange');
-
-// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
-let volumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
-};
-
-audioVolumeManager.on('volumeChange', volumeChangeCallback);
-
-audioVolumeManager.off('volumeChange', volumeChangeCallback);
-```
-
 ## off('appVolumeChange')
 
 ```TypeScript
@@ -475,6 +447,8 @@ off(type: 'appVolumeChange', callback?: Callback<VolumeEvent>): void
 Unsubscribes from the application-level volume change event of the application. This API uses an asynchronous callback to return the result.
 
 **Since:** 19
+
+<!--Device-AudioVolumeManager-off(type: 'appVolumeChange', callback?: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-off(type: 'appVolumeChange', callback?: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -519,6 +493,8 @@ Unsubscribes from the system audio volume change event, which is triggered when 
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-off(type: 'streamVolumeChange', callback?: Callback<StreamVolumeEvent>): void--><!--Device-AudioVolumeManager-off(type: 'streamVolumeChange', callback?: Callback<StreamVolumeEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **Parameters:**
@@ -546,19 +522,21 @@ audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC
 audioVolumeManager.off('streamVolumeChange', streamVolumeChangeCallback);
 ```
 
-## on('volumeChange')
+## off('volumeChange')
 
 ```TypeScript
-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
+off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void
 ```
 
-Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
+Unsubscribes from the system volume change event. This API uses an asynchronous callback to return the result.
 
-**Since:** 9
+**Since:** 12
 
 **Deprecated since:** 20
 
 **Substitutes:** streamVolumeChange
+
+<!--Device-AudioVolumeManager-off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-off(type: 'volumeChange', callback?: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -567,23 +545,31 @@ Subscribes to the system volume change event, which is triggered when the system
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'volumeChange' | Yes | Event type. The event **'volumeChange'** is triggered when the system volume is changed. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | Yes | Callback used to return the changed volume. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | No | Callback used to return the changed volume. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters missing; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
 **Examples**
 
 ```TypeScript
-audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
+// Cancel all subscriptions to the event.
+audioVolumeManager.off('volumeChange');
+
+// For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
+let volumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
   console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
   console.info(`Volume level: ${volumeEvent.volume} `);
   console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
-});
+};
+
+audioVolumeManager.on('volumeChange', volumeChangeCallback);
+
+audioVolumeManager.off('volumeChange', volumeChangeCallback);
 ```
 
 ## on('appVolumeChange')
@@ -595,6 +581,8 @@ on(type: 'appVolumeChange', callback: Callback<VolumeEvent>): void
 Subscribes to the application-level volume change event of the application (triggered when the application-level volume is changed). This API uses an asynchronous callback to return the result.
 
 **Since:** 19
+
+<!--Device-AudioVolumeManager-on(type: 'appVolumeChange', callback: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-on(type: 'appVolumeChange', callback: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -631,6 +619,8 @@ Subscribes to the system audio volume change event, which is triggered when the 
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-on(type: 'streamVolumeChange', streamUsage: StreamUsage, callback: Callback<StreamVolumeEvent>): void--><!--Device-AudioVolumeManager-on(type: 'streamVolumeChange', streamUsage: StreamUsage, callback: Callback<StreamVolumeEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **Parameters:**
@@ -657,6 +647,48 @@ audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC
 });
 ```
 
+## on('volumeChange')
+
+```TypeScript
+on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
+```
+
+Subscribes to the system volume change event, which is triggered when the system volume is changed. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** streamVolumeChange
+
+<!--Device-AudioVolumeManager-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-on(type: 'volumeChange', callback: Callback<VolumeEvent>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Volume
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | 'volumeChange' | Yes | Event type. The event **'volumeChange'** is triggered when the system volume is changed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | Yes | Callback used to return the changed volume. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
+
+**Examples**
+
+```TypeScript
+audioVolumeManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
 ## setAppVolumePercentage
 
 ```TypeScript
@@ -667,7 +699,9 @@ Sets the volume (within a range of 0 to 100) for the application. This API uses 
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-AudioVolumeManager-setAppVolumePercentage(volume: int): Promise<void>--><!--Device-AudioVolumeManager-setAppVolumePercentage(volume: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 

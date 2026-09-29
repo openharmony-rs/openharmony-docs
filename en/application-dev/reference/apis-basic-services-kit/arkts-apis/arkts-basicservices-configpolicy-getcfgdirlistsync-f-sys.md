@@ -16,6 +16,8 @@ Obtains a list of configuration level directories, in ascending order of priorit
 
 **Since:** 11
 
+<!--Device-configPolicy-function getCfgDirListSync(): Array<string>--><!--Device-configPolicy-function getCfgDirListSync(): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.ConfigPolicy
 
 **System API:** This is a system API.

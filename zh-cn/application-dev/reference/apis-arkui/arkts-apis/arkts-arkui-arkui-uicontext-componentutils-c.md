@@ -14,6 +14,8 @@ export class ComponentUtils
 
 **起始版本：** 10
 
+<!--Device-unnamed-export class ComponentUtils--><!--Device-unnamed-export class ComponentUtils-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -45,6 +47,8 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ComponentUtils-getRectangleById(id: string): componentUtils.ComponentInfo--><!--Device-ComponentUtils-getRectangleById(id: string): componentUtils.ComponentInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

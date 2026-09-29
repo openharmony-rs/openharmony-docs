@@ -8,6 +8,8 @@ Defines the application collaboration information.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-interface PeerInfo--><!--Device-abilityConnectionManager-interface PeerInfo-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Ability name of the peer application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerInfo-abilityName: string--><!--Device-PeerInfo-abilityName: string-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## bundleName
@@ -45,6 +49,8 @@ Bundle name of the application.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PeerInfo-bundleName: string--><!--Device-PeerInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -62,6 +68,8 @@ Peer device ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerInfo-deviceId: string--><!--Device-PeerInfo-deviceId: string-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## moduleName
@@ -78,6 +86,8 @@ Module name of the peer application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PeerInfo-moduleName: string--><!--Device-PeerInfo-moduleName: string-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## serviceName
@@ -93,5 +103,7 @@ Service name for the application.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PeerInfo-serviceName?: string--><!--Device-PeerInfo-serviceName?: string-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

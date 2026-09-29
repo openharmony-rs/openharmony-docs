@@ -10,6 +10,8 @@ Before calling methods of AccessibilityElement, obtain an AccessibilityElement i
 
 **Since:** 9
 
+<!--Device-unnamed-export declare interface AccessibilityElement--><!--Device-unnamed-export declare interface AccessibilityElement-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## enableScreenCurtain
@@ -21,6 +23,8 @@ enableScreenCurtain(isEnable: boolean): void
 Enables or disables the screen curtain. When the screen curtain is enabled, the screen content is hidden (the screen dims), but the device still responds to operations normally.
 
 **Since:** 12
+
+<!--Device-AccessibilityElement-enableScreenCurtain(isEnable: boolean): void--><!--Device-AccessibilityElement-enableScreenCurtain(isEnable: boolean): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -96,6 +100,8 @@ Performs an action on an accessibility node element based on the action type and
 **Since:** 20
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityElement-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void>--><!--Device-AccessibilityElement-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise<void>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -188,6 +194,8 @@ Searches for all node elements based on the accessibility text type configured i
 
 **Since:** 12
 
+<!--Device-AccessibilityElement-findElement(type: 'textType', condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElement(type: 'textType', condition: string): Promise<Array<AccessibilityElement>>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -240,6 +248,8 @@ This method and [findElementById](#findelementbyid) both find a node element by 
 
 **Since:** 12
 
+<!--Device-AccessibilityElement-findElement(type: 'elementId', condition: long): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElement(type: 'elementId', condition: long): Promise<AccessibilityElement>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -291,6 +301,8 @@ Searches for node elements by their content text, and returns all node elements 
 **Since:** 20
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityElement-findElementByContent(condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElementByContent(condition: string): Promise<Array<AccessibilityElement>>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -358,6 +370,8 @@ Compared with [findElementsByCondition](#findelementsbycondition), this method i
 **Since:** 20
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -430,6 +444,8 @@ Searches for an element based on the focus direction and focus rule type. This A
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -523,6 +539,8 @@ This method is functionally equivalent to [findElement('elementId')](arkts-acces
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityElement-findElementById(condition: long): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-findElementById(condition: long): Promise<AccessibilityElement>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -590,6 +608,8 @@ Searches for elements by hint text, and returns all node elements whose accessib
 **Since:** 20
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityElement-findElementsByAccessibilityHintText(condition: string): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-findElementsByAccessibilityHintText(condition: string): Promise<Array<AccessibilityElement>>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -663,6 +683,8 @@ Compared with [findElementByFocusDirection](#findelementbyfocusdirection), this 
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<FocusMoveResult>--><!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<FocusMoveResult>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -720,6 +742,8 @@ Searches for focusable nodes of the target type based on the rule and query cond
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise<FocusMoveResult>--><!--Device-AccessibilityElement-findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise<FocusMoveResult>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -811,6 +835,8 @@ Obtains the list of child elements of this element. This API uses a promise to r
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+<!--Device-AccessibilityElement-getChildren(): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityElement-getChildren(): Promise<Array<AccessibilityElement>>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -857,6 +883,8 @@ Obtains the cursor position in a text component. This API uses an asynchronous c
 
 **Since:** 12
 
+<!--Device-AccessibilityElement-getCursorPosition(callback: AsyncCallback<int>): void--><!--Device-AccessibilityElement-getCursorPosition(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -894,6 +922,8 @@ Obtains the cursor position in a text component. This API uses a promise to retu
 
 **Since:** 12
 
+<!--Device-AccessibilityElement-getCursorPosition(): Promise<int>--><!--Device-AccessibilityElement-getCursorPosition(): Promise<int>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -928,6 +958,8 @@ Obtains the parent element of an accessibility node. This API uses a promise to 
 **Since:** 20
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityElement-getParent(): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-getParent(): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -976,6 +1008,8 @@ Obtains the root element of the active window. This API uses a promise to return
 **Since:** 20
 
 **Required permissions:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+<!--Device-AccessibilityElement-getRoot(): Promise<AccessibilityElement>--><!--Device-AccessibilityElement-getRoot(): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1026,6 +1060,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-accessibilityFocused?: boolean--><!--Device-AccessibilityElement-accessibilityFocused?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1043,6 +1079,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-accessibilityGroup?: boolean--><!--Device-AccessibilityElement-accessibilityGroup?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1068,6 +1106,8 @@ Accessibility level of the component.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-accessibilityLevel?: string--><!--Device-AccessibilityElement-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1086,6 +1126,8 @@ Default value: **-1**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-accessibilityNextFocusId?: long--><!--Device-AccessibilityElement-accessibilityNextFocusId?: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1103,6 +1145,8 @@ Default value: **-1**.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-accessibilityPreviousFocusId?: long--><!--Device-AccessibilityElement-accessibilityPreviousFocusId?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1124,6 +1168,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-accessibilityScrollable?: boolean--><!--Device-AccessibilityElement-accessibilityScrollable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1142,6 +1188,8 @@ Custom accessibility state announcement text of the element.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityElement-accessibilityStateDescription?: string--><!--Device-AccessibilityElement-accessibilityStateDescription?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1158,6 +1206,8 @@ Accessibility text information of the element.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-accessibilityText?: string--><!--Device-AccessibilityElement-accessibilityText?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1173,6 +1223,8 @@ Whether the component is visible for accessibility. The value **true** indicates
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-accessibilityVisible?: boolean--><!--Device-AccessibilityElement-accessibilityVisible?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1192,6 +1244,8 @@ ID of the component tree to which the element belongs. Default value: **-1**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityElement-belongTreeId?: int--><!--Device-AccessibilityElement-belongTreeId?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1207,6 +1261,8 @@ Bundle name.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-bundleName?: string--><!--Device-AccessibilityElement-bundleName?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1226,6 +1282,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-checkable?: boolean--><!--Device-AccessibilityElement-checkable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1244,6 +1302,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-checked?: boolean--><!--Device-AccessibilityElement-checked?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1259,6 +1319,8 @@ List of child element IDs of the component. Default value: empty array.
 **Type:** Array&lt;number&gt;
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-childrenIds?: Array<long>--><!--Device-AccessibilityElement-childrenIds?: Array<long>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1278,6 +1340,8 @@ ID of the child component tree of the element. Default value: **-1**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityElement-childrenTreeId?: int--><!--Device-AccessibilityElement-childrenTreeId?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1296,6 +1360,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-clickable?: boolean--><!--Device-AccessibilityElement-clickable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1311,6 +1377,8 @@ Whether the component needs clipping. The value **true** indicates that clipping
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-clip?: boolean--><!--Device-AccessibilityElement-clip?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1330,6 +1398,8 @@ Default value: **-1**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-componentId?: long--><!--Device-AccessibilityElement-componentId?: long-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1346,6 +1416,8 @@ Type of the component to which the element belongs.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-componentType?: string--><!--Device-AccessibilityElement-componentType?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1361,6 +1433,8 @@ Content displayed by the element. Default value: empty array.
 **Type:** Array&lt;string&gt;
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-contents?: Array<string>--><!--Device-AccessibilityElement-contents?: Array<string>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1380,6 +1454,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-currentIndex?: int--><!--Device-AccessibilityElement-currentIndex?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1395,6 +1471,8 @@ Current item in the component grid.
 **Type:** [AccessibilityGrid](arkts-accessibility-accessibilityextensioncontext-accessibilitygrid-i-sys.md)
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-currentItem?: AccessibilityGrid--><!--Device-AccessibilityElement-currentItem?: AccessibilityGrid-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1414,6 +1492,8 @@ List of custom actions supported by the element.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityElement-customActions?: Array<string>--><!--Device-AccessibilityElement-customActions?: Array<string>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1430,6 +1510,8 @@ Custom component type. Corresponds to the [AccessibilityRoleType](../../apis-ark
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-customComponentType?: string--><!--Device-AccessibilityElement-customComponentType?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1445,6 +1527,8 @@ Description of the element.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-description?: string--><!--Device-AccessibilityElement-description?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1464,6 +1548,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-editable?: boolean--><!--Device-AccessibilityElement-editable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1482,6 +1568,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-endIndex?: int--><!--Device-AccessibilityElement-endIndex?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1498,6 +1586,8 @@ Error state of the element.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-error?: string--><!--Device-AccessibilityElement-error?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1513,6 +1603,8 @@ Extra information of the element. The value is a JSON string.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-extraInfo?: string--><!--Device-AccessibilityElement-extraInfo?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1532,6 +1624,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-focusable?: boolean--><!--Device-AccessibilityElement-focusable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1548,6 +1642,8 @@ Hint text.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-hintText?: string--><!--Device-AccessibilityElement-hintText?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1563,6 +1659,8 @@ Touchable area of the element.
 **Type:** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-hotArea?: Rect--><!--Device-AccessibilityElement-hotArea?: Rect-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1582,6 +1680,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-inputType?: int--><!--Device-AccessibilityElement-inputType?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1597,6 +1697,8 @@ Inspector key.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-inspectorKey?: string--><!--Device-AccessibilityElement-inspectorKey?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1616,6 +1718,8 @@ Default value: **true**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-isActive?: boolean--><!--Device-AccessibilityElement-isActive?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1633,6 +1737,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-isEnable?: boolean--><!--Device-AccessibilityElement-isEnable?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1652,6 +1758,8 @@ Whether the element is essential to the user. The value **true** indicates that 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityElement-isEssential?: boolean--><!--Device-AccessibilityElement-isEssential?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1669,6 +1777,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-isFocused?: boolean--><!--Device-AccessibilityElement-isFocused?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1688,6 +1798,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-isHint?: boolean--><!--Device-AccessibilityElement-isHint?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1705,6 +1817,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-isPassword?: boolean--><!--Device-AccessibilityElement-isPassword?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1724,6 +1838,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-isVisible?: boolean--><!--Device-AccessibilityElement-isVisible?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1742,6 +1858,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-itemCount?: int--><!--Device-AccessibilityElement-itemCount?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1758,6 +1876,8 @@ Content of the last item.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-lastContent?: string--><!--Device-AccessibilityElement-lastContent?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1773,6 +1893,8 @@ Display layer of the element.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-layer?: int--><!--Device-AccessibilityElement-layer?: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1792,6 +1914,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-longClickable?: boolean--><!--Device-AccessibilityElement-longClickable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1808,6 +1932,8 @@ Main window ID of the component. Default value: **-1**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-mainWindowId?: int--><!--Device-AccessibilityElement-mainWindowId?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1823,6 +1949,8 @@ Navigation destination ID of the component. Default value: **-1**.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-navDestinationId?: long--><!--Device-AccessibilityElement-navDestinationId?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1842,6 +1970,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-offset?: double--><!--Device-AccessibilityElement-offset?: double-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1860,6 +1990,8 @@ Default value: **-1**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-pageId?: int--><!--Device-AccessibilityElement-pageId?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1875,6 +2007,8 @@ Parent element ID of the component. Default value: **-1**.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-parentId?: long--><!--Device-AccessibilityElement-parentId?: long-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1894,6 +2028,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-pluralLineSupported?: boolean--><!--Device-AccessibilityElement-pluralLineSupported?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1909,6 +2045,8 @@ Area of the element.
 **Type:** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-rect?: Rect--><!--Device-AccessibilityElement-rect?: Rect-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1926,6 +2064,8 @@ Resource name of the element.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-resourceName?: string--><!--Device-AccessibilityElement-resourceName?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1941,6 +2081,8 @@ Display area of the element.
 **Type:** [Rect](arkts-accessibility-accessibilityextensioncontext-rect-i.md)
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-screenRect?: Rect--><!--Device-AccessibilityElement-screenRect?: Rect-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1960,6 +2102,8 @@ Default value: **false**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-scrollable?: boolean--><!--Device-AccessibilityElement-scrollable?: boolean-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -1977,6 +2121,8 @@ Default value: **false**.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-selected?: boolean--><!--Device-AccessibilityElement-selected?: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1996,6 +2142,8 @@ Source type of the component, used to distinguish default components from newly 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AccessibilityElement-sourceType?: AccessibilitySourceType--><!--Device-AccessibilityElement-sourceType?: AccessibilitySourceType-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2011,6 +2159,8 @@ Array of accessibility hyperlink text information of the component. Default valu
 **Type:** [AccessibilitySpan](arkts-accessibility-accessibilityextensioncontext-accessibilityspan-i-sys.md)[]
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-spans?: AccessibilitySpan[]--><!--Device-AccessibilityElement-spans?: AccessibilitySpan[]-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2030,6 +2180,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-startIndex?: int--><!--Device-AccessibilityElement-startIndex?: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2045,6 +2197,8 @@ Supported action names. Default value: empty array.
 **Type:** Array&lt;string&gt;
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-supportedActionNames?: Array<string>--><!--Device-AccessibilityElement-supportedActionNames?: Array<string>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2062,6 +2216,8 @@ Text content of the element.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-text?: string--><!--Device-AccessibilityElement-text?: string-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2077,6 +2233,8 @@ Maximum text length of the element. Default value: **0**.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-textLengthLimit?: int--><!--Device-AccessibilityElement-textLengthLimit?: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2096,6 +2254,8 @@ Default value: **char**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-textMoveUnit?: accessibility.TextMoveUnit--><!--Device-AccessibilityElement-textMoveUnit?: accessibility.TextMoveUnit-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2111,6 +2271,8 @@ Accessibility text type of the element, configured by the accessibilityTextHint 
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-textType?: string--><!--Device-AccessibilityElement-textType?: string-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2128,6 +2290,8 @@ Action that triggers the element event.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-triggerAction?: AccessibilityAction--><!--Device-AccessibilityElement-triggerAction?: AccessibilityAction-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2143,6 +2307,8 @@ Window type of the element.
 **Type:** [WindowType](arkts-accessibility-windowtype-t.md)
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-type?: WindowType--><!--Device-AccessibilityElement-type?: WindowType-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2162,6 +2328,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-valueMax?: double--><!--Device-AccessibilityElement-valueMax?: double-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2179,6 +2347,8 @@ Default value: **0**.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-valueMin?: double--><!--Device-AccessibilityElement-valueMin?: double-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2198,6 +2368,8 @@ Default value: **0**.
 
 **Since:** 20
 
+<!--Device-AccessibilityElement-valueNow?: double--><!--Device-AccessibilityElement-valueNow?: double-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -2215,6 +2387,8 @@ Default value: **-1**.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityElement-windowId?: int--><!--Device-AccessibilityElement-windowId?: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

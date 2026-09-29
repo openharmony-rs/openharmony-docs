@@ -8,6 +8,8 @@ Enumerates the ability continuation results. You can use it in [onContinue()](ar
 
 **Since:** 9
 
+<!--Device-AbilityConstant-export enum OnContinueResult--><!--Device-AbilityConstant-export enum OnContinueResult-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## AGREE
@@ -22,7 +24,9 @@ The ability continuation is accepted.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-OnContinueResult-AGREE = 0--><!--Device-OnContinueResult-AGREE = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,7 +42,9 @@ The ability continuation is rejected. If the application is abnormal in [onConti
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-OnContinueResult-REJECT = 1--><!--Device-OnContinueResult-REJECT = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,6 +60,8 @@ The version does not match. The application on the initiator can obtain the vers
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-OnContinueResult-MISMATCH = 2--><!--Device-OnContinueResult-MISMATCH = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

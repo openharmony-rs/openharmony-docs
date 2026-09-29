@@ -12,6 +12,8 @@ Inherits from [CommonOptions](arkts-arkui-arkui-advanced-counter-commonoptions-c
 
 **Since:** 11
 
+<!--Device-unnamed-declare class DateStyleOptions extends CommonOptions--><!--Device-unnamed-declare class DateStyleOptions extends CommonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DateStyleOptions-onDateChange?: (date: DateData) => void--><!--Device-DateStyleOptions-onDateChange?: (date: DateData) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -56,9 +60,9 @@ day?: number
 
 Initial day of the inline date type.
 
-Default value: **1**.
+Default value: **1**
 
-Value range: [1, 31].
+Value range: [1, 31]
 
 **Note:** The specific value range of days in each month is determined by the actual number of days in that month.
 
@@ -76,6 +80,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DateStyleOptions-day?: number--><!--Device-DateStyleOptions-day?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## month
@@ -86,9 +92,9 @@ month?: number
 
 Initial month of the inline date type.
 
-Default value: **1**.
+Default value: **1**
 
-Value range: [1, 12].
+Value range: [1, 12]
 
 If the value is out of the range, the default value is used.
 
@@ -103,6 +109,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DateStyleOptions-month?: number--><!--Device-DateStyleOptions-month?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,9 +122,9 @@ year?: number
 
 Initial year of the inline date type.
 
-Default value: **1**.
+Default value: **1**
 
-Value range: [1, 5000].
+Value range: [1, 5000]
 
 If the value is out of the range, the default value is used.
 
@@ -131,5 +139,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DateStyleOptions-year?: number--><!--Device-DateStyleOptions-year?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

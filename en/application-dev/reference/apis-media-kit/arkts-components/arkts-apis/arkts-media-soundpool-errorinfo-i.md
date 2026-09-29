@@ -8,6 +8,8 @@ Describes the error information.
 
 **Since:** 20
 
+<!--Device-unnamed-export interface ErrorInfo<T extends Error = BusinessError>--><!--Device-unnamed-export interface ErrorInfo<T extends Error = BusinessError>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## errorCode
@@ -21,6 +23,8 @@ Error code. The type of **errorCode** is [BusinessError](../../../reference/apis
 **Type:** T
 
 **Since:** 20
+
+<!--Device-ErrorInfo-errorCode: T--><!--Device-ErrorInfo-errorCode: T-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
@@ -36,6 +40,8 @@ Stage at which the error occurred.
 
 **Since:** 20
 
+<!--Device-ErrorInfo-errorType?: ErrorType--><!--Device-ErrorInfo-errorType?: ErrorType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## soundId
@@ -50,6 +56,8 @@ ID of the resource where the error occurred. It can be obtained by calling **loa
 
 **Since:** 20
 
+<!--Device-ErrorInfo-soundId?: int--><!--Device-ErrorInfo-soundId?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## streamId
@@ -63,5 +71,7 @@ ID of the audio stream where the error occurred. It can be obtained by calling *
 **Type:** number
 
 **Since:** 20
+
+<!--Device-ErrorInfo-streamId?: int--><!--Device-ErrorInfo-streamId?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool

@@ -8,6 +8,8 @@ Partition creation options.
 
 **Since:** 26.0.0
 
+<!--Device-volumeManager-export interface PartitionParams--><!--Device-volumeManager-export interface PartitionParams-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ End sector of the partition.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PartitionParams-endSector: long--><!--Device-PartitionParams-endSector: long-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Partition number.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartitionParams-partitionNum: int--><!--Device-PartitionParams-partitionNum: int-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -68,6 +74,8 @@ Start sector of the partition.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PartitionParams-startSector: long--><!--Device-PartitionParams-startSector: long-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The code of file system. Common file systems are **ext4**, **vfat**, **exfat**, 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartitionParams-typeCode: string--><!--Device-PartitionParams-typeCode: string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

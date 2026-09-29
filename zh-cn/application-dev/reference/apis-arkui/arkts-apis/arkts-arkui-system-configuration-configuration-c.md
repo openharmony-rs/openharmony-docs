@@ -6,6 +6,8 @@ export default class Configuration
 
 **起始版本：** 12
 
+<!--Device-unnamed-export default class Configuration--><!--Device-unnamed-export default class Configuration-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## 导入模块
@@ -25,6 +27,8 @@ static getLocale(): LocaleResponse
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Configuration-static getLocale(): LocaleResponse--><!--Device-Configuration-static getLocale(): LocaleResponse-End-->
 
 **返回值：**
 

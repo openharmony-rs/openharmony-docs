@@ -6,9 +6,9 @@ declare class ContainerSpanAttribute
 
 Only the following attributes are supported.
 
-The [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) are not supported.
-
 **Since:** 11
+
+<!--Device-unnamed-declare class ContainerSpanAttribute--><!--Device-unnamed-declare class ContainerSpanAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,13 +26,15 @@ Creates an attribute modifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContainerSpanAttribute-attributeModifier(modifier: AttributeModifier<ContainerSpanAttribute>): ContainerSpanAttribute--><!--Device-ContainerSpanAttribute-attributeModifier(modifier: AttributeModifier<ContainerSpanAttribute>): ContainerSpanAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md)&lt;[ContainerSpanAttribute](arkts-arkui-containerspan-comp-attribute.md)&gt; | Yes | Modifier for dynamically setting attributes on the current component. |
+| modifier | [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md)&lt;[ContainerSpanAttribute](arkts-arkui-containerspan-comp-attribute.md)&gt; | Yes | Modifier for dynamically setting attributes on the current component. You need to customize a class that inherits from the **AttributeModifier** API to receive a **ContainerSpanAttribute** instance in the **applyNormalAttribute** API and dynamically modify the value of the **ContainerSpan** attribute. |
 
 ## textBackgroundStyle
 
@@ -40,7 +42,11 @@ Creates an attribute modifier.
 textBackgroundStyle(style: TextBackgroundStyle)
 ```
 
-Span background style.
+Sets the text background style. Child components inherit this attribute value when they do not set it. When this API is not used, the default background color is **Color.Transparent** and the default corner radius is 0.
+
+> **NOTE:** 
+> 
+> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 12.
 
 **Since:** 11
 
@@ -48,10 +54,12 @@ Span background style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ContainerSpanAttribute-textBackgroundStyle(style: TextBackgroundStyle): ContainerSpanAttribute--><!--Device-ContainerSpanAttribute-textBackgroundStyle(style: TextBackgroundStyle): ContainerSpanAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [TextBackgroundStyle](arkts-arkui-span-comp-textbackgroundstyle-i.md) | Yes | The background style of span. |
+| style | [TextBackgroundStyle](arkts-arkui-span-comp-textbackgroundstyle-i.md) | Yes | Text background style, used to set the text background color and corner radius of **Span** and **ImageSpan** in the **ContainerSpan** component. Child components inherit this parameter value when they do not set it. |

@@ -12,6 +12,8 @@ interface OnFoldStatusChangeInfo
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface OnFoldStatusChangeInfo--><!--Device-unnamed-interface OnFoldStatusChangeInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## foldStatus
@@ -29,5 +31,7 @@ foldStatus: FoldStatus
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnFoldStatusChangeInfo-foldStatus: FoldStatus--><!--Device-OnFoldStatusChangeInfo-foldStatus: FoldStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

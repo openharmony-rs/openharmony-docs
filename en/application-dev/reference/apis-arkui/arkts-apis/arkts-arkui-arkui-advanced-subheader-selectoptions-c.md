@@ -8,6 +8,8 @@ Declare type SelectOption
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class SelectOptions--><!--Device-unnamed-export declare class SelectOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Callback invoked when an item in the drop-down list box is selected.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectOptions-onSelect?: (index: number, value?: string) => void--><!--Device-SelectOptions-onSelect?: (index: number, value?: string) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectOptions-defaultFocus?: boolean--><!--Device-SelectOptions-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -84,6 +90,8 @@ Set the id for the select.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-SelectOptions-id?: string--><!--Device-SelectOptions-id?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -101,6 +109,8 @@ Options of an item in the drop-down list box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectOptions-options: Array<SelectOption>--><!--Device-SelectOptions-options: Array<SelectOption>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +138,8 @@ Values less than -1 are treated as no selection.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectOptions-selected?: number--><!--Device-SelectOptions-selected?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -149,5 +161,7 @@ Note: If the text length exceeds the column width, it will be truncated. The Res
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectOptions-value?: ResourceStr--><!--Device-SelectOptions-value?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

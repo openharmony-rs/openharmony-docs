@@ -8,6 +8,8 @@ Declare type OperationOption
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class OperationOption--><!--Device-unnamed-export declare class OperationOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ action?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperationOption-action?: () => void--><!--Device-OperationOption-action?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperationOption-accessibilityDescription?: ResourceStr--><!--Device-OperationOption-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperationOption-accessibilityLevel?: string--><!--Device-OperationOption-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -101,6 +109,8 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperationOption-accessibilityText?: ResourceStr--><!--Device-OperationOption-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +138,8 @@ false：子标题尾部按钮不是默认焦点。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperationOption-defaultFocus?: boolean--><!--Device-OperationOption-defaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -148,6 +160,8 @@ id?: string
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperationOption-id?: string--><!--Device-OperationOption-id?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -165,5 +179,7 @@ value: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperationOption-value: ResourceStr--><!--Device-OperationOption-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Custom options for title bar background blur. All sub-properties are optional; u
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-declare interface SheetTitleBarBackgroundBlurOptions--><!--Device-unnamed-declare interface SheetTitleBarBackgroundBlurOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Blur style. Set to GRADIENT to enable gradient blur effect. Default value: **She
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SheetTitleBarBackgroundBlurOptions-blurStyle?: SheetTitleBarBackgroundBlur--><!--Device-SheetTitleBarBackgroundBlurOptions-blurStyle?: SheetTitleBarBackgroundBlur-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Sliding distance required for the blur effect to transition from fully hidden to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SheetTitleBarBackgroundBlurOptions-effectiveDistance?: LengthMetrics--><!--Device-SheetTitleBarBackgroundBlurOptions-effectiveDistance?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -62,6 +68,8 @@ Base color of the gradient mask. This color serves as the maximum color at the t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SheetTitleBarBackgroundBlurOptions-maskColor?: ResourceColor--><!--Device-SheetTitleBarBackgroundBlurOptions-maskColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Extra height of the gradient mask. Additional mask coverage height beyond the ti
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SheetTitleBarBackgroundBlurOptions-maskExtraHeight?: LengthMetrics--><!--Device-SheetTitleBarBackgroundBlurOptions-maskExtraHeight?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

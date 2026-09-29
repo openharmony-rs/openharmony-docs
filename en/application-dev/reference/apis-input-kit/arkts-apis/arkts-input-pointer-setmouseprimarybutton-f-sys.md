@@ -16,6 +16,8 @@ Sets the primary mouse button. This API uses an asynchronous callback to return 
 
 **Since:** 10
 
+<!--Device-pointer-function setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback<void>): void--><!--Device-pointer-function setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ function setMousePrimaryButton(primary: PrimaryButton): Promise<void>
 Sets the primary mouse button. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function setMousePrimaryButton(primary: PrimaryButton): Promise<void>--><!--Device-pointer-function setMousePrimaryButton(primary: PrimaryButton): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

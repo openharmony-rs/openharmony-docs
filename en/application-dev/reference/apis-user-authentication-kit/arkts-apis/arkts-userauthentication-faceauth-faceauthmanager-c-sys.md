@@ -8,6 +8,8 @@ Provides APIs for facial authentication management. It provides management featu
 
 **Since:** 9
 
+<!--Device-faceAuth-class FaceAuthManager--><!--Device-faceAuth-class FaceAuthManager-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.FaceAuth
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ constructor()
 Creates a face authentication manager object.
 
 **Since:** 9
+
+<!--Device-FaceAuthManager-constructor()--><!--Device-FaceAuthManager-constructor()-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.FaceAuth
 
@@ -52,6 +56,8 @@ Sets the **SurfaceId** of the face preview page during face enrollment. This API
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-FaceAuthManager-setSurfaceId(surfaceId: string): void--><!--Device-FaceAuthManager-setSurfaceId(surfaceId: string): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.FaceAuth
 
 **System API:** This is a system API.
@@ -60,7 +66,7 @@ Sets the **SurfaceId** of the face preview page during face enrollment. This API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| surfaceId | string | Yes | ID of the surface held by [XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md#xcomponent). This ID is used to display the face preview page during face enrollment. <br>**Note:** A valid **surfaceId** must be obtained through the [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid) method after **XComponent** initialization. An invalid **surfaceId** may cause the preview page to fail to display or the API call to fail. |
+| surfaceId | string | Yes | ID of the surface held by [XComponent](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp.md). This ID is used to display the face preview page during face enrollment. <br>**Note:** A valid **surfaceId** must be obtained through the [getXComponentSurfaceId](../../apis-arkui/arkts-components/arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#getxcomponentsurfaceid) method after **XComponent** initialization. An invalid **surfaceId** may cause the preview page to fail to display or the API call to fail. |
 
 **Error codes:**
 

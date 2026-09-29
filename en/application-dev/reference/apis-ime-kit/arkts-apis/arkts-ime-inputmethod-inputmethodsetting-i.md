@@ -8,84 +8,14 @@ In the following API examples, you must first use [getSetting](arkts-ime-inputme
 
 **Since:** 8
 
+<!--Device-inputMethod-interface InputMethodSetting--><!--Device-inputMethod-interface InputMethodSetting-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
 
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
-```
-
-## displayOptionalInputMethod
-
-```TypeScript
-displayOptionalInputMethod(callback: AsyncCallback<void>): void
-```
-
-Displays a dialog box for selecting an input method. This API uses an asynchronous callback to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [inputMethodList/InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in displaying optionalInputMethod.');
-});
-```
-
-<a id="displayoptionalinputmethod-1"></a>
-
-## displayOptionalInputMethod
-
-```TypeScript
-displayOptionalInputMethod(): Promise<void>
-```
-
-Displays a dialog box for selecting an input method. This API uses a promise to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [inputMethodList/InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().displayOptionalInputMethod().then(() => {
-  console.info('Succeeded in displaying optionalInputMethod.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
-})
 ```
 
 ## getAllInputMethods
@@ -97,6 +27,8 @@ getAllInputMethods(callback: AsyncCallback<Array<InputMethodProperty>>): void
 Obtains a list of all input methods. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-InputMethodSetting-getAllInputMethods(callback: AsyncCallback<Array<InputMethodProperty>>): void--><!--Device-InputMethodSetting-getAllInputMethods(callback: AsyncCallback<Array<InputMethodProperty>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -139,6 +71,8 @@ Obtains a list of all input methods. This API uses a promise to return the resul
 
 **Since:** 11
 
+<!--Device-InputMethodSetting-getAllInputMethods(): Promise<Array<InputMethodProperty>>--><!--Device-InputMethodSetting-getAllInputMethods(): Promise<Array<InputMethodProperty>>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -176,6 +110,8 @@ Obtains a list of all input methods. This API returns the result synchronously.
 
 **Since:** 11
 
+<!--Device-InputMethodSetting-getAllInputMethodsSync(): Array<InputMethodProperty>--><!--Device-InputMethodSetting-getAllInputMethodsSync(): Array<InputMethodProperty>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -211,6 +147,8 @@ Obtains a list of activated or deactivated input methods. This API uses an async
 > The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
 
 **Since:** 9
+
+<!--Device-InputMethodSetting-getInputMethods(enable: boolean, callback: AsyncCallback<Array<InputMethodProperty>>): void--><!--Device-InputMethodSetting-getInputMethods(enable: boolean, callback: AsyncCallback<Array<InputMethodProperty>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -259,6 +197,8 @@ Obtains a list of activated or deactivated input methods. This API uses a promis
 > The list of activated input methods includes the default input method and enabled input methods. The list of deactivated input methods includes all installed input methods except the enabled ones.
 
 **Since:** 9
+
+<!--Device-InputMethodSetting-getInputMethods(enable: boolean): Promise<Array<InputMethodProperty>>--><!--Device-InputMethodSetting-getInputMethods(enable: boolean): Promise<Array<InputMethodProperty>>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -309,6 +249,8 @@ Obtains a list of activated or deactivated input methods. This API returns the r
 
 **Since:** 11
 
+<!--Device-InputMethodSetting-getInputMethodsSync(enable: boolean): Array<InputMethodProperty>--><!--Device-InputMethodSetting-getInputMethodsSync(enable: boolean): Array<InputMethodProperty>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -347,6 +289,8 @@ Obtains the input method state. This API uses a promise to return the result.
 
 **Since:** 15
 
+<!--Device-InputMethodSetting-getInputMethodState(): Promise<EnabledState>--><!--Device-InputMethodSetting-getInputMethodState(): Promise<EnabledState>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -383,6 +327,8 @@ listCurrentInputMethodSubtype(callback: AsyncCallback<Array<InputMethodSubtype>>
 Obtains all subtypes of this input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodSetting-listCurrentInputMethodSubtype(callback: AsyncCallback<Array<InputMethodSubtype>>): void--><!--Device-InputMethodSetting-listCurrentInputMethodSubtype(callback: AsyncCallback<Array<InputMethodSubtype>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -427,6 +373,8 @@ Obtains all subtypes of this input method. This API uses a promise to return the
 
 **Since:** 9
 
+<!--Device-InputMethodSetting-listCurrentInputMethodSubtype(): Promise<Array<InputMethodSubtype>>--><!--Device-InputMethodSetting-listCurrentInputMethodSubtype(): Promise<Array<InputMethodSubtype>>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -457,78 +405,6 @@ inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethod
 })
 ```
 
-## listInputMethod
-
-```TypeScript
-listInputMethod(callback: AsyncCallback<Array<InputMethodProperty>>): void
-```
-
-Obtains a list of installed input methods. This API uses an asynchronous callback to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getInputMethods](#getinputmethods)
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)&gt;&gt; | Yes | Callback used to return the list of installed input methods. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
-  if (err) {
-    console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in listing inputMethod.');
-});
-```
-
-<a id="listinputmethod-1"></a>
-
-## listInputMethod
-
-```TypeScript
-listInputMethod(): Promise<Array<InputMethodProperty>>
-```
-
-Obtains a list of installed input methods. This API uses a promise to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [getInputMethods](#getinputmethods)
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;[InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)&gt;&gt; | Promise used to return the list of installed input methods. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.getSetting().listInputMethod().then((data: Array<inputMethod.InputMethodProperty>) => {
-  console.info('Succeeded in listing inputMethod.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
-})
-```
-
 ## listInputMethodSubtype
 
 ```TypeScript
@@ -541,6 +417,8 @@ listInputMethodSubtype(
 Obtains all subtypes of a specified input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodSetting-listInputMethodSubtype(      inputMethodProperty: InputMethodProperty,      callback: AsyncCallback<Array<InputMethodSubtype>>    ): void--><!--Device-InputMethodSetting-listInputMethodSubtype(      inputMethodProperty: InputMethodProperty,      callback: AsyncCallback<Array<InputMethodSubtype>>    ): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -594,6 +472,8 @@ listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise<Array<
 Obtains all subtypes of a specified input method. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodSetting-listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise<Array<InputMethodSubtype>>--><!--Device-InputMethodSetting-listInputMethodSubtype(inputMethodProperty: InputMethodProperty): Promise<Array<InputMethodSubtype>>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -651,6 +531,8 @@ Disables listening for the input method and subtype change event. This API uses 
 
 **Since:** 9
 
+<!--Device-InputMethodSetting-off(      type: 'imeChange',      callback?: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void    ): void--><!--Device-InputMethodSetting-off(      type: 'imeChange',      callback?: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void    ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -679,6 +561,8 @@ Enables listening for the input method and subtype change event. This API uses a
 
 **Since:** 9
 
+<!--Device-InputMethodSetting-on(      type: 'imeChange',      callback: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void    ): void--><!--Device-InputMethodSetting-on(      type: 'imeChange',      callback: (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype) => void    ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -700,6 +584,158 @@ inputMethod.getSetting()
   });
 ```
 
+## displayOptionalInputMethod
+
+```TypeScript
+displayOptionalInputMethod(callback: AsyncCallback<void>): void
+```
+
+Displays a dialog box for selecting an input method. This API uses an asynchronous callback to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [inputMethodList/InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
+
+<!--Device-InputMethodSetting-displayOptionalInputMethod(callback: AsyncCallback<void>): void--><!--Device-InputMethodSetting-displayOptionalInputMethod(callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in displaying optionalInputMethod.');
+});
+```
+
+<a id="displayoptionalinputmethod-1"></a>
+
+## displayOptionalInputMethod
+
+```TypeScript
+displayOptionalInputMethod(): Promise<void>
+```
+
+Displays a dialog box for selecting an input method. This API uses a promise to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [inputMethodList/InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
+
+<!--Device-InputMethodSetting-displayOptionalInputMethod(): Promise<void>--><!--Device-InputMethodSetting-displayOptionalInputMethod(): Promise<void>-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().displayOptionalInputMethod().then(() => {
+  console.info('Succeeded in displaying optionalInputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+## listInputMethod
+
+```TypeScript
+listInputMethod(callback: AsyncCallback<Array<InputMethodProperty>>): void
+```
+
+Obtains a list of installed input methods. This API uses an asynchronous callback to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getInputMethods](#getinputmethods)
+
+<!--Device-InputMethodSetting-listInputMethod(callback: AsyncCallback<Array<InputMethodProperty>>): void--><!--Device-InputMethodSetting-listInputMethod(callback: AsyncCallback<Array<InputMethodProperty>>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)&gt;&gt; | Yes | Callback used to return the list of installed input methods. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputMethod.InputMethodProperty>) => {
+  if (err) {
+    console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in listing inputMethod.');
+});
+```
+
+<a id="listinputmethod-1"></a>
+
+## listInputMethod
+
+```TypeScript
+listInputMethod(): Promise<Array<InputMethodProperty>>
+```
+
+Obtains a list of installed input methods. This API uses a promise to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [getInputMethods](#getinputmethods)
+
+<!--Device-InputMethodSetting-listInputMethod(): Promise<Array<InputMethodProperty>>--><!--Device-InputMethodSetting-listInputMethod(): Promise<Array<InputMethodProperty>>-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md)&gt;&gt; | Promise used to return the list of installed input methods. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.getSetting().listInputMethod().then((data: Array<inputMethod.InputMethodProperty>) => {
+  console.info('Succeeded in listing inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
+})
+```
+
 ## showOptionalInputMethods
 
 ```TypeScript
@@ -713,6 +749,8 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 **Deprecated since:** 18
 
 **Substitutes:** [inputMethodList/InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
+
+<!--Device-InputMethodSetting-showOptionalInputMethods(callback: AsyncCallback<boolean>): void--><!--Device-InputMethodSetting-showOptionalInputMethods(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -761,6 +799,8 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 **Deprecated since:** 18
 
 **Substitutes:** [inputMethodList/InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md)
+
+<!--Device-InputMethodSetting-showOptionalInputMethods(): Promise<boolean>--><!--Device-InputMethodSetting-showOptionalInputMethods(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

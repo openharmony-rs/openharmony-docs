@@ -8,6 +8,8 @@ Enumerates the intent execution modes. It specifies the mode of execution passed
 
 **Since:** 11
 
+<!--Device-insightIntent-enum ExecuteMode--><!--Device-insightIntent-enum ExecuteMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## UI_ABILITY_FOREGROUND
@@ -22,7 +24,9 @@ Display a UIAbility in the foreground.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ExecuteMode-UI_ABILITY_FOREGROUND = 0--><!--Device-ExecuteMode-UI_ABILITY_FOREGROUND = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,7 +42,9 @@ Start a UIAbility in the background.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ExecuteMode-UI_ABILITY_BACKGROUND = 1--><!--Device-ExecuteMode-UI_ABILITY_BACKGROUND = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -53,5 +59,7 @@ Start a UIExtensionAbility.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecuteMode-UI_EXTENSION_ABILITY = 2--><!--Device-ExecuteMode-UI_EXTENSION_ABILITY = 2-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

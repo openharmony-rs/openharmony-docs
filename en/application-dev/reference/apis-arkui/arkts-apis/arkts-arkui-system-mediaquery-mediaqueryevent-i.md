@@ -8,6 +8,8 @@ Defines a media query event.
 
 **Since:** 3
 
+<!--Device-unnamed-export interface MediaQueryEvent--><!--Device-unnamed-export interface MediaQueryEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Matching result. The value **true** means that the query condition is met, and *
 **Since:** 3
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaQueryEvent-matches: boolean--><!--Device-MediaQueryEvent-matches: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

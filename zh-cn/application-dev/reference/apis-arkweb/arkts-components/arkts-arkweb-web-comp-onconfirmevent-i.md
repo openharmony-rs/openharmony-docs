@@ -8,6 +8,8 @@ declare interface OnConfirmEvent
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface OnConfirmEvent--><!--Device-unnamed-declare interface OnConfirmEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## message
@@ -23,6 +25,8 @@ message: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnConfirmEvent-message: string--><!--Device-OnConfirmEvent-message: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ result: JsResult
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-OnConfirmEvent-result: JsResult--><!--Device-OnConfirmEvent-result: JsResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -55,5 +61,7 @@ url: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnConfirmEvent-url: string--><!--Device-OnConfirmEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

@@ -20,6 +20,8 @@ Unregister session create callback for a specific audio zone.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function offSessionCreateForAudioZone(userId: int, callback?: Callback<AVSessionDescriptor>): void--><!--Device-avSession-function offSessionCreateForAudioZone(userId: int, callback?: Callback<AVSessionDescriptor>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **Parameters:**

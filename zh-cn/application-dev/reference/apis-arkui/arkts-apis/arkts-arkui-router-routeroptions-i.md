@@ -8,6 +8,8 @@ interface RouterOptions
 
 **起始版本：** 8
 
+<!--Device-router-interface RouterOptions--><!--Device-router-interface RouterOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## 导入模块
@@ -34,6 +36,8 @@ params参数只能传递可序列化的参数，不能传递方法和系统接�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RouterOptions-params?: Object--><!--Device-RouterOptions-params?: Object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## recoverable
@@ -51,6 +55,8 @@ recoverable?: boolean
 **类型：** boolean
 
 **起始版本：** 14
+
+<!--Device-RouterOptions-recoverable?: boolean--><!--Device-RouterOptions-recoverable?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -77,5 +83,7 @@ url: string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RouterOptions-url: string--><!--Device-RouterOptions-url: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite

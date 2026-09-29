@@ -8,6 +8,8 @@ Defines the callback information triggered when the web page loading begins, inc
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface OnLoadStartedEvent--><!--Device-unnamed-declare interface OnLoadStartedEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -21,5 +23,7 @@ URL of the page.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-OnLoadStartedEvent-url: string--><!--Device-OnLoadStartedEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

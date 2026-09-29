@@ -10,6 +10,8 @@ Defines the parameter type of the [@InsightIntentFunctionMethod](../../../refere
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-insightIntentDriver-interface FunctionIntentInfo--><!--Device-insightIntentDriver-interface FunctionIntentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

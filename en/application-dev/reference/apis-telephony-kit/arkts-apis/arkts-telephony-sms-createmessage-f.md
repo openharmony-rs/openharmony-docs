@@ -16,6 +16,8 @@ Creates an SMS instance based on the protocol data unit (PDU) and specified SMS 
 
 **Since:** 6
 
+<!--Device-sms-function createMessage(pdu: Array<int>, specification: string, callback: AsyncCallback<ShortMessage>): void--><!--Device-sms-function createMessage(pdu: Array<int>, specification: string, callback: AsyncCallback<ShortMessage>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **Parameters:**
@@ -62,6 +64,8 @@ function createMessage(pdu: Array<number>, specification: string): Promise<Short
 Creates an SMS instance based on the protocol data unit (PDU) and specified SMS protocol. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-sms-function createMessage(pdu: Array<int>, specification: string): Promise<ShortMessage>--><!--Device-sms-function createMessage(pdu: Array<int>, specification: string): Promise<ShortMessage>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

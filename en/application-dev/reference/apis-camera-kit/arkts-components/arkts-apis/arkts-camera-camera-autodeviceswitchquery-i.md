@@ -10,6 +10,8 @@ interface AutoDeviceSwitchQuery
 
 **Since:** 13
 
+<!--Device-camera-interface AutoDeviceSwitchQuery--><!--Device-camera-interface AutoDeviceSwitchQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Checks whether the device supports automatic camera switch.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-AutoDeviceSwitchQuery-isAutoDeviceSwitchSupported(): boolean--><!--Device-AutoDeviceSwitchQuery-isAutoDeviceSwitchSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

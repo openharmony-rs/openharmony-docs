@@ -12,6 +12,8 @@ Provides methods to operate or manage Bluetooth.
 
 **Substitutes:** [ble/ble](arkts-connectivity-bluetooth-ble.md)
 
+<!--Device-bluetoothManager-namespace BLE--><!--Device-bluetoothManager-namespace BLE-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

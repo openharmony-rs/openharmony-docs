@@ -8,6 +8,8 @@ export interface ActionResult
 
 **Deprecated since:** 7
 
+<!--Device-unnamed-export interface ActionResult--><!--Device-unnamed-export interface ActionResult-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Name of the application ability to which the notification will be redirected aft
 
 **Deprecated since:** 7
 
+<!--Device-ActionResult-abilityName: string--><!--Device-ActionResult-abilityName: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## bundleName
@@ -46,6 +50,8 @@ Name of the application bundle to which the notification will be redirected afte
 
 **Deprecated since:** 7
 
+<!--Device-ActionResult-bundleName: string--><!--Device-ActionResult-bundleName: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## uri
@@ -61,5 +67,7 @@ URI of the page to be redirected to.
 **Since:** 3
 
 **Deprecated since:** 7
+
+<!--Device-ActionResult-uri: string--><!--Device-ActionResult-uri: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

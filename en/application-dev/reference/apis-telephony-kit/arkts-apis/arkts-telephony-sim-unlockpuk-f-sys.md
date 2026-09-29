@@ -18,6 +18,8 @@ Unlock the SIM card password in the specified card slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function unlockPuk(slotId: int, newPin: string, puk: string, callback: AsyncCallback<LockStatusResponse>): void--><!--Device-sim-function unlockPuk(slotId: int, newPin: string, puk: string, callback: AsyncCallback<LockStatusResponse>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Unlock the SIM card password in the specified card slot.
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function unlockPuk(slotId: int, newPin: string, puk: string): Promise<LockStatusResponse>--><!--Device-sim-function unlockPuk(slotId: int, newPin: string, puk: string): Promise<LockStatusResponse>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

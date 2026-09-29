@@ -10,99 +10,14 @@ Provides APIs to implement **IRemoteObject**.
 
 **Since:** 7
 
+<!--Device-rpc-class RemoteProxy extends IRemoteObject--><!--Device-rpc-class RemoteProxy extends IRemoteObject-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## Modules to Import
 
 ```TypeScript
 import { rpc } from '@kit.IPCKit';
-```
-
-## addDeathRecipient
-
-```TypeScript
-addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
-```
-
-Adds a callback for receiving death notifications of the remote object.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [registerDeathRecipient](arkts-ipc-rpc-iremoteobject-c.md#registerdeathrecipient)(recipient: DeathRecipient, flags: number)
-
-**System capability:** SystemCapability.Communication.IPC.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | Yes | Callback to add. |
-| flags | number | Yes | Flag of the death notification. This parameter is reserved. It is set to **0**. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Returns **true** if the callback is added successfully; returns **false** otherwise. |
-
-**Examples**
-
-> NOTE
-> 
-> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-
-```TypeScript
-// If the FA model is used, import featureAbility from @kit.AbilityKit.
-// import { featureAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { Want, common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let proxy: rpc.IRemoteObject | undefined;
-let connect: common.ConnectOptions = {
-  onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
-    proxy = remoteProxy;
-  },
-  onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
-  },
-  onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
-  }
-};
-let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
-};
-
-// Use this method to connect to the ability for the FA model.
-// FA.connectAbility(want,connect);
-
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let connectionId = context.connectServiceExtensionAbility(want, connect);
-```
-
-The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, addDeathRecipient() of the proxy object is called to add a callback for receiving the death notification of the remove object.
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class MyDeathRecipient implements rpc.DeathRecipient {
-  onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'server died');
-  }
-}
-if (proxy != undefined) {
-  let deathRecipient = new MyDeathRecipient();
-  proxy.addDeathRecipient(deathRecipient, 0);
-}
 ```
 
 ## getDescriptor
@@ -114,6 +29,8 @@ getDescriptor(): string
 Obtains the interface descriptor (which is a string) of this object.
 
 **Since:** 9
+
+<!--Device-RemoteProxy-getDescriptor(): string--><!--Device-RemoteProxy-getDescriptor(): string-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -190,81 +107,6 @@ if (proxy != undefined) {
 }
 ```
 
-## getInterfaceDescriptor
-
-```TypeScript
-getInterfaceDescriptor(): string
-```
-
-Obtains the interface descriptor of this proxy object.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getDescriptor](arkts-ipc-rpc-iremoteobject-c.md#getdescriptor)()
-
-**System capability:** SystemCapability.Communication.IPC.Core
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Interface descriptor obtained. |
-
-**Examples**
-
-> NOTE
-> 
-> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-
-```TypeScript
-// If the FA model is used, import featureAbility from @kit.AbilityKit.
-// import { featureAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { Want, common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let proxy: rpc.IRemoteObject | undefined;
-let connect: common.ConnectOptions = {
-  onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
-    proxy = remoteProxy;
-  },
-  onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
-  },
-  onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
-  }
-};
-let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
-};
-
-// Use this method to connect to the ability for the FA model.
-// FA.connectAbility(want,connect);
-
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let connectionId = context.connectServiceExtensionAbility(want, connect);
-```
-
-The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, getInterfaceDescriptor() of the proxy object is called to obtain the interface descriptor of the current proxy object.
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-if (proxy != undefined) {
-  let descriptor: string = proxy.getInterfaceDescriptor();
-  hilog.info(0x0000, 'testTag', 'descriptor is ' + descriptor);
-}
-```
-
 ## getLocalInterface
 
 ```TypeScript
@@ -275,13 +117,15 @@ Obtains the **LocalInterface** object of an interface token.
 
 **Since:** 9
 
+<!--Device-RemoteProxy-getLocalInterface(interfaceDes: string): IRemoteBroker--><!--Device-RemoteProxy-getLocalInterface(interfaceDes: string): IRemoteBroker-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| interfaceDes | string | Yes | Interface descriptor. |
+| interfaceDes | string | Yes | Interface token to be queried. Its length must be less than 40960. |
 
 **Return value:**
 
@@ -366,6 +210,8 @@ Checks whether the **RemoteObject** is dead.
 
 **Since:** 7
 
+<!--Device-RemoteProxy-isObjectDead(): boolean--><!--Device-RemoteProxy-isObjectDead(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 **Return value:**
@@ -427,87 +273,6 @@ if (proxy != undefined) {
 }
 ```
 
-## queryLocalInterface
-
-```TypeScript
-queryLocalInterface(interface: string): IRemoteBroker
-```
-
-Obtains the **LocalInterface** object of an interface token.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getLocalInterface](arkts-ipc-rpc-iremoteobject-c.md#getlocalinterface)(descriptor: string)
-
-**System capability:** SystemCapability.Communication.IPC.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| interface | string | Yes | Interface descriptor. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md) | Returns **Null** by default, which indicates a proxy interface. |
-
-**Examples**
-
-> NOTE
-> 
-> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-
-```TypeScript
-// If the FA model is used, import featureAbility from @kit.AbilityKit.
-// import { featureAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { Want, common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let proxy: rpc.IRemoteObject | undefined;
-let connect: common.ConnectOptions = {
-  onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
-    proxy = remoteProxy;
-  },
-  onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
-  },
-  onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
-  }
-};
-let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
-};
-
-// Use this method to connect to the ability for the FA model.
-// FA.connectAbility(want,connect);
-
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let connectionId = context.connectServiceExtensionAbility(want, connect);
-```
-
-The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, queryLocalInterface() of the proxy object is called to obtain the interface descriptor.
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-if (proxy != undefined) {
-  let broker: rpc.IRemoteBroker = proxy.queryLocalInterface("testObject");
-  hilog.info(0x0000, 'testTag', 'queryLocalInterface is ' + broker);
-}
-```
-
 ## registerDeathRecipient
 
 ```TypeScript
@@ -517,6 +282,8 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 Registers a callback for receiving death notifications of the remote object.
 
 **Since:** 9
+
+<!--Device-RemoteProxy-registerDeathRecipient(recipient: DeathRecipient, flags: int): void--><!--Device-RemoteProxy-registerDeathRecipient(recipient: DeathRecipient, flags: int): void-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -599,94 +366,6 @@ if (proxy != undefined) {
 }
 ```
 
-## removeDeathRecipient
-
-```TypeScript
-removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
-```
-
-Removes the callback used to receive death notifications of the remote object.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [unregisterDeathRecipient](arkts-ipc-rpc-iremoteobject-c.md#unregisterdeathrecipient)(recipient: DeathRecipient, flags: number)
-
-**System capability:** SystemCapability.Communication.IPC.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | Yes | Callback to remove. |
-| flags | number | Yes | Flag of the death notification. This parameter is reserved. It is set to **0**. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| boolean | Returns **true** if the callback is removed; returns **false** otherwise. |
-
-**Examples**
-
-> NOTE
-> 
-> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-
-```TypeScript
-// If the FA model is used, import featureAbility from @kit.AbilityKit.
-// import { featureAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { Want, common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let proxy: rpc.IRemoteObject | undefined;
-let connect: common.ConnectOptions = {
-  onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
-    proxy = remoteProxy;
-  },
-  onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
-  },
-  onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
-  }
-};
-let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
-};
-
-// Use this method to connect to the ability for the FA model.
-// FA.connectAbility(want,connect);
-
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let connectionId = context.connectServiceExtensionAbility(want, connect);
-```
-
-The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, removeDeathRecipient() of the proxy object is called to remove the callback used to receive the death notification of the remote object.
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class MyDeathRecipient implements rpc.DeathRecipient {
-  onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'server died');
-  }
-}
-if (proxy != undefined) {
-  let deathRecipient = new MyDeathRecipient();
-  proxy.addDeathRecipient(deathRecipient, 0);
-  proxy.removeDeathRecipient(deathRecipient, 0);
-}
-```
-
 ## sendMessageRequest
 
 ```TypeScript
@@ -698,9 +377,11 @@ sendMessageRequest(
     ): Promise<RequestResult>
 ```
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific response needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendMessageRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 **Since:** 9
+
+<!--Device-RemoteProxy-sendMessageRequest(      code: int,      data: MessageSequence,      reply: MessageSequence,      options: MessageOption    ): Promise<RequestResult>--><!--Device-RemoteProxy-sendMessageRequest(      code: int,      data: MessageSequence,      reply: MessageSequence,      options: MessageOption    ): Promise<RequestResult>-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -717,7 +398,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | Promise used to return a **requestResult** instance. |
+| Promise&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | Promise used to return the response to the request. |
 
 **Error codes:**
 
@@ -817,9 +498,11 @@ sendMessageRequest(
     ): void
 ```
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked at certain time after the response to **RequestResult** is returned, and the reply contains the returned information.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. This API uses an asynchronous callback to return the result. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific response needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the callback is executed after [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendmessagerequest) returns and the server finishes processing the request. You can read [RequestResult](arkts-ipc-rpc-requestresult-i.md) in the callback to obtain the data returned by the server.
 
 **Since:** 9
+
+<!--Device-RemoteProxy-sendMessageRequest(      code: int,      data: MessageSequence,      reply: MessageSequence,      options: MessageOption,      callback: AsyncCallback<RequestResult>    ): void--><!--Device-RemoteProxy-sendMessageRequest(      code: int,      data: MessageSequence,      reply: MessageSequence,      options: MessageOption,      callback: AsyncCallback<RequestResult>    ): void-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -831,7 +514,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 | data | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | Yes | **MessageSequence** object holding the data to send. |
 | reply | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | Yes | **MessageSequence** object that receives the response. |
 | options | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | Yes | Request sending mode, which can be synchronous (default) or asynchronous. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | Yes | Callback for receiving the sending result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestResult](arkts-ipc-rpc-requestresult-i.md)&gt; | Yes | Callback used to return the result. When the message is sent successfully, the data returned by the server can be read from **RequestResult**. |
 
 **Error codes:**
 
@@ -917,19 +600,454 @@ try {
 }
 ```
 
+## unregisterDeathRecipient
+
+```TypeScript
+unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
+```
+
+Unregisters from the callback used to receive death notifications of the remote object.
+
+**Since:** 9
+
+<!--Device-RemoteProxy-unregisterDeathRecipient(recipient: DeathRecipient, flags: int): void--><!--Device-RemoteProxy-unregisterDeathRecipient(recipient: DeathRecipient, flags: int): void-End-->
+
+**System capability:** SystemCapability.Communication.IPC.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | Yes | Callback to unregister. |
+| flags | number | Yes | Flag of the death notification. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The callback used to receive remote object death notifications is empty. |
+| [1900008](../errorcode-rpc.md#1900008-invalid-ipc-object) | The proxy or remote object is invalid. |
+
+**Examples**
+
+> NOTE
+> 
+> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// If the FA model is used, import featureAbility from @kit.AbilityKit.
+// import { featureAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { Want, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let proxy: rpc.IRemoteObject | undefined;
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'onDisconnect');
+  },
+  onFailed: () => {
+    hilog.info(0x0000, 'testTag', 'onFailed');
+  }
+};
+let want: Want = {
+  // Obtain the package name and ability name on the server.
+  bundleName: "com.ohos.server",
+  abilityName: "com.ohos.server.EntryAbility",
+};
+
+// Use this method to connect to the ability for the FA model.
+// FA.connectAbility(want,connect);
+
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let connectionId = context.connectServiceExtensionAbility(want, connect);
+```
+
+The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, unregisterDeathRecipient() of the proxy object is called to unregister the callback for receiving the death notification of the remote object.
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyDeathRecipient implements rpc.DeathRecipient {
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'server died');
+  }
+}
+if (proxy != undefined) {
+  try {
+    let deathRecipient = new MyDeathRecipient();
+    proxy.registerDeathRecipient(deathRecipient, 0);
+    proxy.unregisterDeathRecipient(deathRecipient, 0);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    hilog.error(0x0000, 'testTag', 'proxy unregister deathRecipient fail, errorCode ' + e.code);
+    hilog.error(0x0000, 'testTag', 'proxy unregister deathRecipient fail, errorMessage ' + e.message);
+  }
+}
+```
+
+## addDeathRecipient
+
+```TypeScript
+addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
+```
+
+Adds a callback for receiving death notifications of the remote object.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [registerDeathRecipient](arkts-ipc-rpc-iremoteobject-c.md#registerdeathrecipient)(recipient: DeathRecipient, flags: number)
+
+<!--Device-RemoteProxy-addDeathRecipient(recipient: DeathRecipient, flags: number): boolean--><!--Device-RemoteProxy-addDeathRecipient(recipient: DeathRecipient, flags: number): boolean-End-->
+
+**System capability:** SystemCapability.Communication.IPC.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | Yes | Callback to add. |
+| flags | number | Yes | Flag of the death notification. This parameter is reserved. It is set to **0**. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns **true** if the callback is added successfully; returns **false** otherwise. |
+
+**Examples**
+
+> NOTE
+> 
+> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// If the FA model is used, import featureAbility from @kit.AbilityKit.
+// import { featureAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { Want, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let proxy: rpc.IRemoteObject | undefined;
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'onDisconnect');
+  },
+  onFailed: () => {
+    hilog.info(0x0000, 'testTag', 'onFailed');
+  }
+};
+let want: Want = {
+  // Obtain the package name and ability name on the server.
+  bundleName: "com.ohos.server",
+  abilityName: "com.ohos.server.EntryAbility",
+};
+
+// Use this method to connect to the ability for the FA model.
+// FA.connectAbility(want,connect);
+
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let connectionId = context.connectServiceExtensionAbility(want, connect);
+```
+
+The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, addDeathRecipient() of the proxy object is called to add a callback for receiving the death notification of the remove object.
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyDeathRecipient implements rpc.DeathRecipient {
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'server died');
+  }
+}
+if (proxy != undefined) {
+  let deathRecipient = new MyDeathRecipient();
+  proxy.addDeathRecipient(deathRecipient, 0);
+}
+```
+
+## getInterfaceDescriptor
+
+```TypeScript
+getInterfaceDescriptor(): string
+```
+
+Obtains the interface descriptor of this proxy object.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getDescriptor](arkts-ipc-rpc-iremoteobject-c.md#getdescriptor)()
+
+<!--Device-RemoteProxy-getInterfaceDescriptor(): string--><!--Device-RemoteProxy-getInterfaceDescriptor(): string-End-->
+
+**System capability:** SystemCapability.Communication.IPC.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Interface descriptor obtained. |
+
+**Examples**
+
+> NOTE
+> 
+> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// If the FA model is used, import featureAbility from @kit.AbilityKit.
+// import { featureAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { Want, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let proxy: rpc.IRemoteObject | undefined;
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'onDisconnect');
+  },
+  onFailed: () => {
+    hilog.info(0x0000, 'testTag', 'onFailed');
+  }
+};
+let want: Want = {
+  // Obtain the package name and ability name on the server.
+  bundleName: "com.ohos.server",
+  abilityName: "com.ohos.server.EntryAbility",
+};
+
+// Use this method to connect to the ability for the FA model.
+// FA.connectAbility(want,connect);
+
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let connectionId = context.connectServiceExtensionAbility(want, connect);
+```
+
+The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, getInterfaceDescriptor() of the proxy object is called to obtain the interface descriptor of the current proxy object.
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+if (proxy != undefined) {
+  let descriptor: string = proxy.getInterfaceDescriptor();
+  hilog.info(0x0000, 'testTag', 'descriptor is ' + descriptor);
+}
+```
+
+## queryLocalInterface
+
+```TypeScript
+queryLocalInterface(interface: string): IRemoteBroker
+```
+
+Obtains the **LocalInterface** object of an interface token.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getLocalInterface](arkts-ipc-rpc-iremoteobject-c.md#getlocalinterface)(descriptor: string)
+
+<!--Device-RemoteProxy-queryLocalInterface(interface: string): IRemoteBroker--><!--Device-RemoteProxy-queryLocalInterface(interface: string): IRemoteBroker-End-->
+
+**System capability:** SystemCapability.Communication.IPC.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| interface | string | Yes | Interface descriptor. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md) | Returns **Null** by default, which indicates a proxy interface. |
+
+**Examples**
+
+> NOTE
+> 
+> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// If the FA model is used, import featureAbility from @kit.AbilityKit.
+// import { featureAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { Want, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let proxy: rpc.IRemoteObject | undefined;
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'onDisconnect');
+  },
+  onFailed: () => {
+    hilog.info(0x0000, 'testTag', 'onFailed');
+  }
+};
+let want: Want = {
+  // Obtain the package name and ability name on the server.
+  bundleName: "com.ohos.server",
+  abilityName: "com.ohos.server.EntryAbility",
+};
+
+// Use this method to connect to the ability for the FA model.
+// FA.connectAbility(want,connect);
+
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let connectionId = context.connectServiceExtensionAbility(want, connect);
+```
+
+The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, queryLocalInterface() of the proxy object is called to obtain the interface descriptor.
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+if (proxy != undefined) {
+  let broker: rpc.IRemoteBroker = proxy.queryLocalInterface("testObject");
+  hilog.info(0x0000, 'testTag', 'queryLocalInterface is ' + broker);
+}
+```
+
+## removeDeathRecipient
+
+```TypeScript
+removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
+```
+
+Removes the callback used to receive death notifications of the remote object.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [unregisterDeathRecipient](arkts-ipc-rpc-iremoteobject-c.md#unregisterdeathrecipient)(recipient: DeathRecipient, flags: number)
+
+<!--Device-RemoteProxy-removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean--><!--Device-RemoteProxy-removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean-End-->
+
+**System capability:** SystemCapability.Communication.IPC.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | Yes | Callback to remove. |
+| flags | number | Yes | Flag of the death notification. This parameter is reserved. It is set to **0**. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns **true** if the callback is removed; returns **false** otherwise. |
+
+**Examples**
+
+> NOTE
+> 
+> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```TypeScript
+// If the FA model is used, import featureAbility from @kit.AbilityKit.
+// import { featureAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { Want, common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let proxy: rpc.IRemoteObject | undefined;
+let connect: common.ConnectOptions = {
+  onConnect: (elementName, remoteProxy) => {
+    hilog.info(0x0000, 'testTag', 'js onConnect called');
+    proxy = remoteProxy;
+  },
+  onDisconnect: (elementName) => {
+    hilog.info(0x0000, 'testTag', 'onDisconnect');
+  },
+  onFailed: () => {
+    hilog.info(0x0000, 'testTag', 'onFailed');
+  }
+};
+let want: Want = {
+  // Obtain the package name and ability name on the server.
+  bundleName: "com.ohos.server",
+  abilityName: "com.ohos.server.EntryAbility",
+};
+
+// Use this method to connect to the ability for the FA model.
+// FA.connectAbility(want,connect);
+
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
+// Save the connection ID, which will be used for the subsequent service disconnection.
+let connectionId = context.connectServiceExtensionAbility(want, connect);
+```
+
+The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, removeDeathRecipient() of the proxy object is called to remove the callback used to receive the death notification of the remote object.
+
+```TypeScript
+import { rpc } from '@kit.IPCKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyDeathRecipient implements rpc.DeathRecipient {
+  onRemoteDied() {
+    hilog.info(0x0000, 'testTag', 'server died');
+  }
+}
+if (proxy != undefined) {
+  let deathRecipient = new MyDeathRecipient();
+  proxy.addDeathRecipient(deathRecipient, 0);
+  proxy.removeDeathRecipient(deathRecipient, 0);
+}
+```
+
 ## sendRequest
 
 ```TypeScript
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
 ```
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the API returns immediately and **reply** is empty. The specific response need to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response is returned when **sendRequest** returns, and **reply** contains the response content.
 
 **Since:** 7
 
 **Deprecated since:** 8
 
 **Substitutes:** [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendmessagerequest)(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption)
+
+<!--Device-RemoteProxy-sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean--><!--Device-RemoteProxy-sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -1032,13 +1150,15 @@ sendRequest(
     ): Promise<SendRequestResult>
 ```
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific response needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendmessagerequest)(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption)
+
+<!--Device-RemoteProxy-sendRequest(      code: number,      data: MessageParcel,      reply: MessageParcel,      options: MessageOption    ): Promise<SendRequestResult>--><!--Device-RemoteProxy-sendRequest(      code: number,      data: MessageParcel,      reply: MessageParcel,      options: MessageOption    ): Promise<SendRequestResult>-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -1055,7 +1175,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | Promise used to return a **sendRequestResult** instance. |
+| Promise&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | Promise used to return the response to the request. |
 
 **Examples**
 
@@ -1150,13 +1270,15 @@ sendRequest(
     ): void
 ```
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a callback will be called immediately, and the reply message is empty. The specific response needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a callback will be invoked when the response to **sendRequest** is returned, and the reply message contains the returned information.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [sendMessageRequest](arkts-ipc-rpc-iremoteobject-c.md#sendmessagerequest)(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption, callback: AsyncCallback&lt;RequestResult&gt;)
+
+<!--Device-RemoteProxy-sendRequest(      code: number,      data: MessageParcel,      reply: MessageParcel,      options: MessageOption,      callback: AsyncCallback<SendRequestResult>    ): void--><!--Device-RemoteProxy-sendRequest(      code: number,      data: MessageParcel,      reply: MessageParcel,      options: MessageOption,      callback: AsyncCallback<SendRequestResult>    ): void-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -1279,98 +1401,6 @@ try {
 }
 ```
 
-## unregisterDeathRecipient
-
-```TypeScript
-unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
-```
-
-Unregisters from the callback used to receive death notifications of the remote object.
-
-**Since:** 9
-
-**System capability:** SystemCapability.Communication.IPC.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| recipient | [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md) | Yes | Callback to unregister. |
-| flags | number | Yes | Flag of the death notification. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.The callback used to receive remote object death notifications is empty. |
-| [1900008](../errorcode-rpc.md#1900008-invalid-ipc-object) | The proxy or remote object is invalid. |
-
-**Examples**
-
-> NOTE
-> 
-> In the sample code provided in this topic, this.getUIContext().getHostContext() is used to obtain UIAbilityContext, where this indicates a UIAbility instance inherited from UIAbility. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
-
-```TypeScript
-// If the FA model is used, import featureAbility from @kit.AbilityKit.
-// import { featureAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { Want, common } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let proxy: rpc.IRemoteObject | undefined;
-let connect: common.ConnectOptions = {
-  onConnect: (elementName, remoteProxy) => {
-    hilog.info(0x0000, 'testTag', 'js onConnect called');
-    proxy = remoteProxy;
-  },
-  onDisconnect: (elementName) => {
-    hilog.info(0x0000, 'testTag', 'onDisconnect');
-  },
-  onFailed: () => {
-    hilog.info(0x0000, 'testTag', 'onFailed');
-  }
-};
-let want: Want = {
-  // Obtain the package name and ability name on the server.
-  bundleName: "com.ohos.server",
-  abilityName: "com.ohos.server.EntryAbility",
-};
-
-// Use this method to connect to the ability for the FA model.
-// FA.connectAbility(want,connect);
-
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let context: common.UIAbilityContext = this.getUIContext().getHostContext(); // UIAbilityContext
-// Save the connection ID, which will be used for the subsequent service disconnection.
-let connectionId = context.connectServiceExtensionAbility(want, connect);
-```
-
-The proxy object in the onConnect callback can be assigned a value only after the ability is connected asynchronously. Then, unregisterDeathRecipient() of the proxy object is called to unregister the callback for receiving the death notification of the remote object.
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class MyDeathRecipient implements rpc.DeathRecipient {
-  onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'server died');
-  }
-}
-if (proxy != undefined) {
-  try {
-    let deathRecipient = new MyDeathRecipient();
-    proxy.registerDeathRecipient(deathRecipient, 0);
-    proxy.unregisterDeathRecipient(deathRecipient, 0);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    hilog.error(0x0000, 'testTag', 'proxy unregister deathRecipient fail, errorCode ' + e.code);
-    hilog.error(0x0000, 'testTag', 'proxy unregister deathRecipient fail, errorMessage ' + e.message);
-  }
-}
-```
-
 ## DUMP_TRANSACTION
 
 ```TypeScript
@@ -1384,6 +1414,8 @@ Internal instruction code used to obtain IPC service status information.
 **Default:** 1598311760
 
 **Since:** 7
+
+<!--Device-RemoteProxy-static readonly DUMP_TRANSACTION: number--><!--Device-RemoteProxy-static readonly DUMP_TRANSACTION: number-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -1401,6 +1433,8 @@ Internal instruction code used to obtain the remote interface token.
 
 **Since:** 7
 
+<!--Device-RemoteProxy-static readonly INTERFACE_TRANSACTION: number--><!--Device-RemoteProxy-static readonly INTERFACE_TRANSACTION: number-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## MAX_TRANSACTION_ID
@@ -1416,6 +1450,8 @@ Maximum valid instruction code.
 **Default:** 0x00FFFFFF
 
 **Since:** 7
+
+<!--Device-RemoteProxy-static readonly MAX_TRANSACTION_ID: number--><!--Device-RemoteProxy-static readonly MAX_TRANSACTION_ID: number-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -1433,6 +1469,8 @@ Minimum valid instruction code.
 
 **Since:** 7
 
+<!--Device-RemoteProxy-static readonly MIN_TRANSACTION_ID: number--><!--Device-RemoteProxy-static readonly MIN_TRANSACTION_ID: number-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## PING_TRANSACTION
@@ -1448,6 +1486,8 @@ Internal instruction code used to test whether the IPC service is normal.
 **Default:** 1599098439
 
 **Since:** 7
+
+<!--Device-RemoteProxy-static readonly PING_TRANSACTION: number--><!--Device-RemoteProxy-static readonly PING_TRANSACTION: number-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 

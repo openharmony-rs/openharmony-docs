@@ -16,7 +16,9 @@ Obtains an [AbilityDelegatorArgs](../../apis-ability-kit/arkts-apis/arkts-abilit
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs--><!--Device-abilityDelegatorRegistry-function getArguments(): AbilityDelegatorArgs-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

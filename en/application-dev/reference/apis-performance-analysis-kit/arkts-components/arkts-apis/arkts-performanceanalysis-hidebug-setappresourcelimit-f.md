@@ -24,6 +24,8 @@ This API is used to construct a memory leak. For details, see Subscribing to Res
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-hidebug-function setAppResourceLimit(type: string, value: int, enableDebugLog: boolean): void--><!--Device-hidebug-function setAppResourceLimit(type: string, value: int, enableDebugLog: boolean): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Test API:** This API is used only in automated test scripts.

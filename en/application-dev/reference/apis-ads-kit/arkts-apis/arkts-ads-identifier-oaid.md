@@ -10,6 +10,8 @@ This module provides the capability of obtaining and resetting the Open Anonymou
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace identifier--><!--Device-unnamed-declare namespace identifier-End-->
+
 **System capability:** SystemCapability.Advertising.OAID
 
 ## Modules to Import

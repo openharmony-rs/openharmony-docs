@@ -4,7 +4,7 @@ The **EmbeddedComponent** is a component used to embed into the current page the
 
 It is usually used in modular development scenarios where process isolation is required.
 
-> **NOTE**
+> **NOTE:** 
 
 ## Constraints
 
@@ -33,6 +33,8 @@ Creates a cross-process embedded component to display the UI of the EmbeddedUIEx
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EmbeddedComponentInterface-(  loader: import('../api/@ohos.app.ability.Want').default,  type: EmbeddedType): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentInterface-(  loader: import('../api/@ohos.app.ability.Want').default,  type: EmbeddedType): EmbeddedComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -59,6 +61,8 @@ Construct the EmbeddedComponent.<br> Called when the EmbeddedComponent is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EmbeddedComponentInterface-(  loader: import('../api/@ohos.app.ability.Want').default,  type: EmbeddedType,  options?: EmbeddedOptions): EmbeddedComponentAttribute--><!--Device-EmbeddedComponentInterface-(  loader: import('../api/@ohos.app.ability.Want').default,  type: EmbeddedType,  options?: EmbeddedOptions): EmbeddedComponentAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

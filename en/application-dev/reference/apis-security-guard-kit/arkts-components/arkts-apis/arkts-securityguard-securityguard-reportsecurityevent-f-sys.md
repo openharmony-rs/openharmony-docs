@@ -18,6 +18,8 @@ Report security information to the security guard.
 
 **Required permissions:** ohos.permission.REPORT_SECURITY_EVENT
 
+<!--Device-securityGuard-function reportSecurityEvent(securityEvent: SecurityEvent): void--><!--Device-securityGuard-function reportSecurityEvent(securityEvent: SecurityEvent): void-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.

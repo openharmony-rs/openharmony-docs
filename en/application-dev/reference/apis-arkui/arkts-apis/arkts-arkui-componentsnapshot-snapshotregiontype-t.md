@@ -12,6 +12,8 @@ Defines the snapshot region rect type.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-componentSnapshot-type SnapshotRegionType = SnapshotRegion | LocalizedSnapshotRegion--><!--Device-componentSnapshot-type SnapshotRegionType = SnapshotRegion | LocalizedSnapshotRegion-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

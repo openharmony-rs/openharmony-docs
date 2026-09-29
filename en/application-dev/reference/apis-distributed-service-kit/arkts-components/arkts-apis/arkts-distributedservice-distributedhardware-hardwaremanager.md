@@ -10,6 +10,8 @@ The **hardwareManager** module provides the capability of controlling distribute
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace hardwareManager--><!--Device-unnamed-declare namespace hardwareManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
 **System API:** This is a system API.

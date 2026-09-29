@@ -8,6 +8,8 @@ Text button information.
 
 **Since:** 11
 
+<!--Device-unnamed-interface SegmentButtonTextItem--><!--Device-unnamed-interface SegmentButtonTextItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -37,6 +39,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-SegmentButtonTextItem-accessibilityDescription?: ResourceStr--><!--Device-SegmentButtonTextItem-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-SegmentButtonTextItem-accessibilityLevel?: string--><!--Device-SegmentButtonTextItem-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -89,5 +95,7 @@ Button text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SegmentButtonTextItem-text: ResourceStr--><!--Device-SegmentButtonTextItem-text: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

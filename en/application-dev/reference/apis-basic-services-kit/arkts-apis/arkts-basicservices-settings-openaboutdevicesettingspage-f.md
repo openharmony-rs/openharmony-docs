@@ -18,6 +18,8 @@ Open the about device settings page.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function openAboutDeviceSettingsPage(context: Context): void--><!--Device-settings-function openAboutDeviceSettingsPage(context: Context): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**

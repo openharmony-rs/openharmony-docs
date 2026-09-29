@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function on(type: 'operatingHandChanged', callback: Callback<OperatingHandStatus>): void
 ```
 
-Subscribes to operating hand change events.
+Subscribes to operating hand awareness events. The system collects user touch data through touchscreen sensors and combines gesture recognition algorithms to determine whether the current operating hand is the left hand or the right hand. This is suitable for scenarios such as gesture interaction and single-hand or dual-hand operation adaptation, optimizing the UI layout and interaction mode by identifying the user's operating hand state. It is recommended that you call off() to unsubscribe and release resources after use, to avoid unnecessary performance and power consumption overhead. Related method: off('operatingHandChanged'): unsubscribes from operating hand awareness events.
 
 If the device does not support this function, error code 801 is returned.
 
@@ -21,6 +21,8 @@ If the device does not support this function, error code 801 is returned.
 **Required permissions:** 
 - API version 20 and later: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE
 - API versions 15 to 19: ohos.permission.ACTIVITY_MOTION
+
+<!--Device-motion-function on(type: 'operatingHandChanged', callback: Callback<OperatingHandStatus>): void--><!--Device-motion-function on(type: 'operatingHandChanged', callback: Callback<OperatingHandStatus>): void-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
@@ -66,11 +68,13 @@ try {
 function on(type: 'holdingHandChanged', callback: Callback<HoldingHandStatus>): void
 ```
 
-Enables listening for holding hand status changes.
+Subscribes to the holding hand status change awareness event. The system uses sensor data combined with recognition algorithms to determine whether the current holding hand is the left hand or the right hand. This is suitable for scenarios where reading applications, video playback, and other applications need to adjust the UI layout or functions based on the user's holding hand status. It is recommended that you call off() to unsubscribe and release resources after use to avoid unnecessary performance and power consumption overhead. Related method: off('holdingHandChanged'): unsubscribes from the holding hand status change awareness event.
 
 **Since:** 20
 
 **Required permissions:** ohos.permission.DETECT_GESTURE
+
+<!--Device-motion-function on(type: 'holdingHandChanged', callback: Callback<HoldingHandStatus>): void--><!--Device-motion-function on(type: 'holdingHandChanged', callback: Callback<HoldingHandStatus>): void-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 

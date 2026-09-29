@@ -8,6 +8,8 @@ declare interface RichEditorBuilderSpanOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface RichEditorBuilderSpanOptions--><!--Device-unnamed-declare interface RichEditorBuilderSpanOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## dragBackgroundColor
@@ -25,6 +27,8 @@ dragBackgroundColor? : ColorMetrics
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RichEditorBuilderSpanOptions-dragBackgroundColor? : ColorMetrics--><!--Device-RichEditorBuilderSpanOptions-dragBackgroundColor? : ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ isDragShadowNeeded?: boolean
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RichEditorBuilderSpanOptions-isDragShadowNeeded?: boolean--><!--Device-RichEditorBuilderSpanOptions-isDragShadowNeeded?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

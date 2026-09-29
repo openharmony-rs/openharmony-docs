@@ -18,6 +18,8 @@ Obtains the SMSC address. This API uses an asynchronous callback to return the r
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-sms-function getSmscAddr(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sms-function getSmscAddr(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Obtains the SMSC address. This API uses a promise to return the result.
 **Since:** 7
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-sms-function getSmscAddr(slotId: int): Promise<string>--><!--Device-sms-function getSmscAddr(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

@@ -8,6 +8,8 @@ declare interface FormInfo
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface FormInfo--><!--Device-unnamed-declare interface FormInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -24,6 +26,8 @@ ability: string
 
 **起始版本：** 12
 
+<!--Device-FormInfo-ability: string--><!--Device-FormInfo-ability: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -39,6 +43,8 @@ bundle: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-FormInfo-bundle: string--><!--Device-FormInfo-bundle: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ dimension?: FormDimension
 
 **起始版本：** 12
 
+<!--Device-FormInfo-dimension?: FormDimension--><!--Device-FormInfo-dimension?: FormDimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -75,6 +83,8 @@ exemptAppLock?: boolean
 **类型：** boolean
 
 **起始版本：** 20
+
+<!--Device-FormInfo-exemptAppLock?: boolean--><!--Device-FormInfo-exemptAppLock?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +110,8 @@ id大于等于0小于2^32。
 
 **起始版本：** 12
 
+<!--Device-FormInfo-id: number | string--><!--Device-FormInfo-id: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -116,6 +128,8 @@ module: string
 
 **起始版本：** 12
 
+<!--Device-FormInfo-module: string--><!--Device-FormInfo-module: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -131,6 +145,8 @@ name: string
 **类型：** string
 
 **起始版本：** 12
+
+<!--Device-FormInfo-name: string--><!--Device-FormInfo-name: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,6 +171,8 @@ renderingMode?: FormRenderingMode
 
 **起始版本：** 12
 
+<!--Device-FormInfo-renderingMode?: FormRenderingMode--><!--Device-FormInfo-renderingMode?: FormRenderingMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -170,6 +188,8 @@ shape?: FormShape
 **类型：** [FormShape](arkts-arkui-formcomponent-comp-formshape-e-sys.md)
 
 **起始版本：** 12
+
+<!--Device-FormInfo-shape?: FormShape--><!--Device-FormInfo-shape?: FormShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,6 +209,8 @@ temporary?: boolean
 
 **起始版本：** 12
 
+<!--Device-FormInfo-temporary?: boolean--><!--Device-FormInfo-temporary?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -204,6 +226,8 @@ want?: import('../api/@ohos.app.ability.Want').default
 **类型：** import('../api/@ohos.app.ability.Want').default
 
 **起始版本：** 12
+
+<!--Device-FormInfo-want?: import('../api/@ohos.app.ability.Want').default--><!--Device-FormInfo-want?: import('../api/@ohos.app.ability.Want').default-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

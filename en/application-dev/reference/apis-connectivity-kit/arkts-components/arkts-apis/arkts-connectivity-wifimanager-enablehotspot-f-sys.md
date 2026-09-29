@@ -18,6 +18,8 @@ Enable Wi-Fi hotspot function. This method is asynchronous. After the Wi-Fi hots
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+<!--Device-wifiManager-function enableHotspot(): void--><!--Device-wifiManager-function enableHotspot(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.

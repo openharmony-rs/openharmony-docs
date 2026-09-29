@@ -16,6 +16,8 @@ Synchronizes the cached data of a file to storage. This API uses a promise to re
 
 **Since:** 9
 
+<!--Device-unnamed-declare function fsync(fd: number): Promise<void>--><!--Device-unnamed-declare function fsync(fd: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -54,6 +56,8 @@ declare function fsync(fd: number, callback: AsyncCallback<void>): void
 Synchronizes the cached data of a file to storage. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-unnamed-declare function fsync(fd: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function fsync(fd: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

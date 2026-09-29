@@ -8,6 +8,8 @@ Defines a contact's website.
 
 **Since:** 7
 
+<!--Device-contact-class Website--><!--Device-contact-class Website-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Website that stores the contact information.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Website-website: string--><!--Device-Website-website: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

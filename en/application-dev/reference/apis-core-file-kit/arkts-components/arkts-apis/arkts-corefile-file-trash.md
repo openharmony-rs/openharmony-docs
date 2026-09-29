@@ -12,6 +12,8 @@ The **file.trash** module provides APIs for querying, recovering, or permanently
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace trash--><!--Device-unnamed-declare namespace trash-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

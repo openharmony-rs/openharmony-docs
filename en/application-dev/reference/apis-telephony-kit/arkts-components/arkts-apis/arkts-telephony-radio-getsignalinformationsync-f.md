@@ -16,6 +16,8 @@ Obtains a list of signal strengths of the network with which the SIM card in the
 
 **Since:** 10
 
+<!--Device-radio-function getSignalInformationSync(slotId: int): Array<SignalInformation>--><!--Device-radio-function getSignalInformationSync(slotId: int): Array<SignalInformation>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

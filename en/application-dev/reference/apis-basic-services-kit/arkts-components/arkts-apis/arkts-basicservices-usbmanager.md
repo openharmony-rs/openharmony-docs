@@ -22,6 +22,8 @@ Call [usbManager.closePipe](arkts-basicservices-usbmanager-closepipe-f.md) to di
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace usbManager--><!--Device-unnamed-declare namespace usbManager-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import

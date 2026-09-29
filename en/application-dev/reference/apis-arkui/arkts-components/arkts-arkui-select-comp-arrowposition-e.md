@@ -8,6 +8,8 @@ Enumerates arrow positions.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum ArrowPosition--><!--Device-unnamed-declare enum ArrowPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -24,6 +26,8 @@ The text is in front of the arrow.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ArrowPosition-END = 0--><!--Device-ArrowPosition-END = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## START
@@ -39,5 +43,7 @@ The arrow is in front of the text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ArrowPosition-START = 1--><!--Device-ArrowPosition-START = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

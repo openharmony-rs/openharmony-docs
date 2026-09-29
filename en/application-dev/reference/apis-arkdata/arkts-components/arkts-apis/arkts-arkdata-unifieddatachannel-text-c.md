@@ -10,6 +10,8 @@ Represents the text data. It is a child class of [UnifiedRecord](arkts-arkdata-u
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-class Text extends UnifiedRecord--><!--Device-unifiedDataChannel-class Text extends UnifiedRecord-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -43,5 +45,7 @@ The default value is an empty dictionary object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Text-details?: Record<string, string>--><!--Device-Text-details?: Record<string, string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

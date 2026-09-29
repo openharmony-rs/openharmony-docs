@@ -16,6 +16,8 @@ Obtains a snapshot of the same size as the specified window. This API uses a pro
 
 **Since:** 12
 
+<!--Device-window-function getSnapshot(windowId: int): Promise<image.PixelMap>--><!--Device-window-function getSnapshot(windowId: int): Promise<image.PixelMap>-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.

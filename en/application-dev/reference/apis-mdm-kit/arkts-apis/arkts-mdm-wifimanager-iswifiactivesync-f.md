@@ -20,6 +20,8 @@ Queries the Wi-Fi status of the current device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function isWifiActiveSync(admin: Want): boolean--><!--Device-wifiManager-function isWifiActiveSync(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

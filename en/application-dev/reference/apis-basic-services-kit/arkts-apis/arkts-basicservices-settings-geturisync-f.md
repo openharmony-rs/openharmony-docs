@@ -18,6 +18,8 @@ Get settingsdata uri (synchronous method)
 
 **Deprecated since:** 26.0.0
 
+<!--Device-settings-function getUriSync(name: string): string--><!--Device-settings-function getUriSync(name: string): string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**

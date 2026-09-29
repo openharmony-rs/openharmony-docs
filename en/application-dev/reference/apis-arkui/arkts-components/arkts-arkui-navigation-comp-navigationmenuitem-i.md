@@ -8,6 +8,8 @@ Defines the navigation menu item, including the menu icon and menu information.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface NavigationMenuItem--><!--Device-unnamed-declare interface NavigationMenuItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -21,6 +23,8 @@ Callback invoked when the menu item is selected.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationMenuItem-action?: () => void--><!--Device-NavigationMenuItem-action?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,6 +41,8 @@ Icon path of the menu item.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationMenuItem-icon?: string | Resource--><!--Device-NavigationMenuItem-icon?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +62,8 @@ Enabled status. **true** (default): enabled. **false**: disabled.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavigationMenuItem-isEnabled?: boolean--><!--Device-NavigationMenuItem-isEnabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolIcon
@@ -73,6 +81,8 @@ Symbol icon for a single option on the menu bar. It has higher priority than **i
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationMenuItem-symbolIcon?: SymbolGlyphModifier--><!--Device-NavigationMenuItem-symbolIcon?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,5 +103,7 @@ Since API version 10: invisible.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationMenuItem-value: string | Resource--><!--Device-NavigationMenuItem-value: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

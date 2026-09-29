@@ -8,6 +8,8 @@ Describes the image decoding options.
 
 **Since:** 7
 
+<!--Device-image-interface DecodingOptions--><!--Device-image-interface DecodingOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Only **SCALE_FIRST** and **CROP_FIRST** are supported.
 
 **Since:** 18
 
+<!--Device-DecodingOptions-cropAndScaleStrategy?: CropAndScaleStrategy--><!--Device-DecodingOptions-cropAndScaleStrategy?: CropAndScaleStrategy-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## desiredColorSpace
@@ -43,6 +47,8 @@ Target color space. The default value is **UNKNOWN**.
 **Type:** [colorSpaceManager.ColorSpaceManager](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspacemanager-i.md)
 
 **Since:** 11
+
+<!--Device-DecodingOptions-desiredColorSpace?: colorSpaceManager.ColorSpaceManager--><!--Device-DecodingOptions-desiredColorSpace?: colorSpaceManager.ColorSpaceManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -62,6 +68,8 @@ If the platform does not support HDR, the setting is invalid and the content is 
 
 **Since:** 12
 
+<!--Device-DecodingOptions-desiredDynamicRange?: DecodingDynamicRange--><!--Device-DecodingOptions-desiredDynamicRange?: DecodingDynamicRange-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## desiredPixelFormat
@@ -76,9 +84,11 @@ Pixel format for decoding. The default value is **RGBA_8888**. Only RGBA_8888, B
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-desiredPixelFormat?: PixelMapFormat--><!--Device-DecodingOptions-desiredPixelFormat?: PixelMapFormat-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -96,9 +106,11 @@ Note: If both **desiredSize** and **desiredRegion** are passed to the decoding A
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-desiredRegion?: Region--><!--Device-DecodingOptions-desiredRegion?: Region-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -116,9 +128,11 @@ Note: If both **desiredSize** and **desiredRegion** are passed to the decoding A
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-desiredSize?: Size--><!--Device-DecodingOptions-desiredSize?: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -134,9 +148,11 @@ Whether the image is editable. **true** if editable, **false** otherwise. The de
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-editable?: boolean--><!--Device-DecodingOptions-editable?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -152,9 +168,11 @@ Pixel density, in ppi. The default value is **0**.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-fitDensity?: int--><!--Device-DecodingOptions-fitDensity?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -170,9 +188,11 @@ Index of the image to decode. The default value is **0**, indicating the first i
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-index?: int--><!--Device-DecodingOptions-index?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -188,9 +208,11 @@ Rotation angle. The default value is **0**.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-rotate?: int--><!--Device-DecodingOptions-rotate?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -206,8 +228,10 @@ Sampling size of the thumbnail. The default value is **1**. Currently, the value
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-DecodingOptions-sampleSize?: int--><!--Device-DecodingOptions-sampleSize?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource

@@ -4,6 +4,8 @@ This module provides basic capabilities for managing abstract color space object
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace colorSpaceManager--><!--Device-unnamed-declare namespace colorSpaceManager-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 ## Modules to Import

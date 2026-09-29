@@ -28,6 +28,8 @@ When unsubscribing, if no callback function is passed in, all callback functions
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-privacyManager-function off(    type: 'activeStateChange',    permissionList: Array<Permissions>,    callback?: Callback<ActiveChangeResponse>): void--><!--Device-privacyManager-function off(    type: 'activeStateChange',    permissionList: Array<Permissions>,    callback?: Callback<ActiveChangeResponse>): void-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.

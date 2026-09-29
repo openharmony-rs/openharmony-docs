@@ -8,6 +8,8 @@ Provides detailed information about the same-layer tag when the **param** elemen
 
 **Since:** 21
 
+<!--Device-unnamed-declare interface NativeEmbedParamDataInfo--><!--Device-unnamed-declare interface NativeEmbedParamDataInfo-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## embedId
@@ -21,6 +23,8 @@ Unique ID of the same-layer tag.
 **Type:** string
 
 **Since:** 21
+
+<!--Device-NativeEmbedParamDataInfo-embedId: string--><!--Device-NativeEmbedParamDataInfo-embedId: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ ID of the same-layer tag.
 
 **Since:** 21
 
+<!--Device-NativeEmbedParamDataInfo-objectAttributeId?: string--><!--Device-NativeEmbedParamDataInfo-objectAttributeId?: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## paramItems
@@ -49,5 +55,7 @@ Detailed information about the changed param elements, including the status chan
 **Type:** Array&lt;[NativeEmbedParamItem](arkts-arkweb-web-comp-nativeembedparamitem-i.md)&gt;
 
 **Since:** 21
+
+<!--Device-NativeEmbedParamDataInfo-paramItems?: Array<NativeEmbedParamItem>--><!--Device-NativeEmbedParamDataInfo-paramItems?: Array<NativeEmbedParamItem>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

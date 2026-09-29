@@ -8,6 +8,8 @@ Represents a full drawing result.
 
 **Since:** 12
 
+<!--Device-webview-interface SnapshotResult--><!--Device-webview-interface SnapshotResult-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Snapshot ID.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SnapshotResult-id?: string--><!--Device-SnapshotResult-id?: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## imagePixelMap
@@ -45,6 +49,8 @@ The **image.PixelMap** format.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SnapshotResult-imagePixelMap?: image.PixelMap--><!--Device-SnapshotResult-imagePixelMap?: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -62,6 +68,8 @@ Actual size rendered by Web. The SizeOptions object contains the width and heigh
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SnapshotResult-size?: SizeOptions--><!--Device-SnapshotResult-size?: SizeOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## status
@@ -77,5 +85,7 @@ Status of the snapshot. The value **true** indicates normal, and **false** indic
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SnapshotResult-status?: boolean--><!--Device-SnapshotResult-status?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

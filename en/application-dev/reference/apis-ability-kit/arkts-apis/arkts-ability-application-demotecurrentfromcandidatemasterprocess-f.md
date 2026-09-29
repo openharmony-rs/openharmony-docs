@@ -18,6 +18,8 @@ Removes the current process from the candidate master process list. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-application-export function demoteCurrentFromCandidateMasterProcess(): Promise<void>--><!--Device-application-export function demoteCurrentFromCandidateMasterProcess(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

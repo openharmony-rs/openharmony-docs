@@ -15,6 +15,8 @@ Defines segmented button item options.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface SegmentButtonV2ItemOptions--><!--Device-unnamed-export interface SegmentButtonV2ItemOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -43,6 +45,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SegmentButtonV2ItemOptions-accessibilityDescription?: ResourceStr--><!--Device-SegmentButtonV2ItemOptions-accessibilityDescription?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -65,6 +69,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SegmentButtonV2ItemOptions-accessibilityLevel?: string--><!--Device-SegmentButtonV2ItemOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -86,6 +92,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SegmentButtonV2ItemOptions-accessibilityText?: ResourceStr--><!--Device-SegmentButtonV2ItemOptions-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +119,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SegmentButtonV2ItemOptions-enabled?: boolean--><!--Device-SegmentButtonV2ItemOptions-enabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -130,6 +140,8 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SegmentButtonV2ItemOptions-icon?: ResourceStr--><!--Device-SegmentButtonV2ItemOptions-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,6 +163,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SegmentButtonV2ItemOptions-iconModifier?: ImageModifier--><!--Device-SegmentButtonV2ItemOptions-iconModifier?: ImageModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbol
@@ -170,6 +184,8 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SegmentButtonV2ItemOptions-symbol?: Resource--><!--Device-SegmentButtonV2ItemOptions-symbol?: Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,6 +207,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SegmentButtonV2ItemOptions-symbolModifier?: SymbolGlyphModifier--><!--Device-SegmentButtonV2ItemOptions-symbolModifier?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -211,6 +229,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SegmentButtonV2ItemOptions-text?: ResourceStr--><!--Device-SegmentButtonV2ItemOptions-text?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textModifier
@@ -230,5 +250,7 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SegmentButtonV2ItemOptions-textModifier?: TextModifier--><!--Device-SegmentButtonV2ItemOptions-textModifier?: TextModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

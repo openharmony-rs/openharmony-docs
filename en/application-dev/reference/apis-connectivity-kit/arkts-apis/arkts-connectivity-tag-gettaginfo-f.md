@@ -16,7 +16,9 @@ Obtains **TagInfo** from **Want**, which is initialized by the NFC service and c
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-function getTagInfo(want: Want): TagInfo--><!--Device-tag-function getTagInfo(want: Want): TagInfo-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

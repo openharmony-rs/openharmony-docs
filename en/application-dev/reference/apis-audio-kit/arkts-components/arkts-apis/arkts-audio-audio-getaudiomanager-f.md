@@ -16,7 +16,9 @@ Obtains an AudioManager instance.
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+
+<!--Device-audio-function getAudioManager(): AudioManager--><!--Device-audio-function getAudioManager(): AudioManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

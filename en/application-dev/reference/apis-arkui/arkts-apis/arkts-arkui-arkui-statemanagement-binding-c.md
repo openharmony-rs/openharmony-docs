@@ -8,6 +8,8 @@ Represents the generic class for read-only data binding, which can bind data of 
 
 **Since:** 20
 
+<!--Device-unnamed-export declare class Binding<T>--><!--Device-unnamed-export declare class Binding<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Obtains a bound value.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-Binding-get value(): T--><!--Device-Binding-get value(): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

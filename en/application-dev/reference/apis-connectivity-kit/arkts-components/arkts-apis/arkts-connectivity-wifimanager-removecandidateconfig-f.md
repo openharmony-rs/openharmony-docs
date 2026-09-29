@@ -18,7 +18,9 @@ Remove a specified candidate hotspot configuration, only the configuration which
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function removeCandidateConfig(networkId: int): Promise<void>--><!--Device-wifiManager-function removeCandidateConfig(networkId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -76,7 +78,9 @@ Remove a specified candidate hotspot configuration, only the configuration which
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function removeCandidateConfig(networkId: int, callback: AsyncCallback<void>): void--><!--Device-wifiManager-function removeCandidateConfig(networkId: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

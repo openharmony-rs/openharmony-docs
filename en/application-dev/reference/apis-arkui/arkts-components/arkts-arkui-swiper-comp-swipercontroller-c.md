@@ -8,6 +8,8 @@ Implements the controller for the **Swiper** component. Bind this object to a **
 
 **Since:** 7
 
+<!--Device-unnamed-declare class SwiperController--><!--Device-unnamed-declare class SwiperController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeIndex
@@ -25,6 +27,8 @@ Goes to a specified page.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SwiperController-changeIndex(index: number, useAnimation?: boolean)--><!--Device-SwiperController-changeIndex(index: number, useAnimation?: boolean)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +63,8 @@ Moves to a specific page.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-SwiperController-changeIndex(index: number, animationMode?: SwiperAnimationMode | boolean)--><!--Device-SwiperController-changeIndex(index: number, animationMode?: SwiperAnimationMode | boolean)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -81,6 +87,8 @@ A constructor used to create a **SwiperController** object.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperController-constructor()--><!--Device-SwiperController-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,6 +115,8 @@ Sets the drag distance of drag simulation.
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-SwiperController-fakeDragBy(offset: number): boolean--><!--Device-SwiperController-fakeDragBy(offset: number): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +146,8 @@ Stops an animation.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperController-finishAnimation(callback?: VoidCallback)--><!--Device-SwiperController-finishAnimation(callback?: VoidCallback)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -159,6 +171,8 @@ Obtains whether drag simulation is enabled.
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-SwiperController-isFakeDragging(): boolean--><!--Device-SwiperController-isFakeDragging(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,6 +206,8 @@ When combining with [LazyForEach](../../../ui/rendering-control/arkts-rendering-
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-SwiperController-preloadItems(indices: Optional<Array<number>>): Promise<void>--><!--Device-SwiperController-preloadItems(indices: Optional<Array<number>>): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -228,6 +244,8 @@ Turns to the next page. The page turning includes a transition animation, with t
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperController-showNext()--><!--Device-SwiperController-showNext()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showPrevious
@@ -243,6 +261,8 @@ Turns to the previous page. The page turning includes a transition animation, wi
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperController-showPrevious()--><!--Device-SwiperController-showPrevious()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -268,6 +288,8 @@ Enables drag simulation.
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-SwiperController-startFakeDrag(): boolean--><!--Device-SwiperController-startFakeDrag(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,6 +318,8 @@ Disables drag simulation.
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-SwiperController-stopFakeDrag(): boolean--><!--Device-SwiperController-stopFakeDrag(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

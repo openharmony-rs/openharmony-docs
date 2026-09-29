@@ -8,6 +8,8 @@ Provides parameters of the **WaterFlow** component.
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface WaterFlowOptions--><!--Device-unnamed-declare interface WaterFlowOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## footer
@@ -26,6 +28,8 @@ Footer component of the **WaterFlow** component, which is used to display custom
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowOptions-footer?: CustomBuilder--><!--Device-WaterFlowOptions-footer?: CustomBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## footerContent
@@ -43,6 +47,8 @@ Footer of the **WaterFlow** component. This parameter has a higher priority than
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-WaterFlowOptions-footerContent?: ComponentContent--><!--Device-WaterFlowOptions-footerContent?: ComponentContent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ Layout mode of the &lt;em&gt;WaterFlow&lt;/em&gt; component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WaterFlowOptions-layoutMode?: WaterFlowLayoutMode--><!--Device-WaterFlowOptions-layoutMode?: WaterFlowLayoutMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scroller
@@ -84,6 +92,8 @@ Controller of the scrollable component, bound to the scrollable component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowOptions-scroller?: Scroller--><!--Device-WaterFlowOptions-scroller?: Scroller-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sections
@@ -103,5 +113,7 @@ Water flow item sections, used to implement mixed layouts with different column 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowOptions-sections?: WaterFlowSections--><!--Device-WaterFlowOptions-sections?: WaterFlowSections-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

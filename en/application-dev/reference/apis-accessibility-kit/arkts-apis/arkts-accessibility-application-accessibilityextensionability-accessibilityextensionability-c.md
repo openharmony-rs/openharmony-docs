@@ -10,6 +10,8 @@ AccessibilityExtensionAbility provides accessibility extension capabilities base
 
 **Since:** 9
 
+<!--Device-unnamed-declare class AccessibilityExtensionAbility--><!--Device-unnamed-declare class AccessibilityExtensionAbility-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when an accessibility event occurs. In this API, you can implement event-
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionAbility-onAccessibilityEvent(event: AccessibilityEvent): void--><!--Device-AccessibilityExtensionAbility-onAccessibilityEvent(event: AccessibilityEvent): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -65,6 +69,8 @@ Called when the **AccessibilityExtensionAbility** is enabled and connected to th
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityExtensionAbility-onConnect(): void--><!--Device-AccessibilityExtensionAbility-onConnect(): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Examples**
@@ -91,6 +97,8 @@ Called when the **AccessibilityExtensionAbility** is disabled and disconnected f
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityExtensionAbility-onDisconnect(): void--><!--Device-AccessibilityExtensionAbility-onDisconnect(): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Examples**
@@ -116,6 +124,8 @@ Called when a physical key is pressed. In this API, you can determine whether to
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionAbility-onKeyEvent(keyEvent: KeyEvent): boolean--><!--Device-AccessibilityExtensionAbility-onKeyEvent(keyEvent: KeyEvent): boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -160,5 +170,7 @@ Indicates the context of the accessibility extension.
 **Type:** [AccessibilityExtensionContext](arkts-accessibility-accessibilityextensioncontext-t.md)
 
 **Since:** 9
+
+<!--Device-AccessibilityExtensionAbility-context: AccessibilityExtensionContext--><!--Device-AccessibilityExtensionAbility-context: AccessibilityExtensionContext-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core

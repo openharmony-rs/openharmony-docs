@@ -12,6 +12,8 @@ The context of vpn extension. It allows access to vpnExtension-specific resource
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type VpnExtensionContext = _VpnExtensionContext.default--><!--Device-common-export type VpnExtensionContext = _VpnExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _VpnExtensionContext.default

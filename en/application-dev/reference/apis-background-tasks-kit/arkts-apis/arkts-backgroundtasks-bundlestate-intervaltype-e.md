@@ -10,6 +10,8 @@ Declares interval type.
 
 **Deprecated since:** 9
 
+<!--Device-bundleState-export enum IntervalType--><!--Device-bundleState-export enum IntervalType-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 ## BY_OPTIMIZED
@@ -23,6 +25,8 @@ Indicates the interval type that will determine the optimal interval based on th
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-IntervalType-BY_OPTIMIZED = 0--><!--Device-IntervalType-BY_OPTIMIZED = 0-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -38,6 +42,8 @@ Indicates the daily interval.
 
 **Deprecated since:** 9
 
+<!--Device-IntervalType-BY_DAILY = 1--><!--Device-IntervalType-BY_DAILY = 1-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 ## BY_WEEKLY
@@ -51,6 +57,8 @@ Indicates the weekly interval.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-IntervalType-BY_WEEKLY = 2--><!--Device-IntervalType-BY_WEEKLY = 2-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -66,6 +74,8 @@ Indicates the monthly interval.
 
 **Deprecated since:** 9
 
+<!--Device-IntervalType-BY_MONTHLY = 3--><!--Device-IntervalType-BY_MONTHLY = 3-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 ## BY_ANNUALLY
@@ -79,5 +89,7 @@ Indicates the annually interval.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-IntervalType-BY_ANNUALLY = 4--><!--Device-IntervalType-BY_ANNUALLY = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App

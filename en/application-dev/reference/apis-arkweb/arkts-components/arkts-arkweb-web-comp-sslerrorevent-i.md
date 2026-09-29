@@ -8,6 +8,8 @@ Callback details triggered when an SSL error occurs during resource loading by t
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface SslErrorEvent--><!--Device-unnamed-declare interface SslErrorEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## certChainData
@@ -21,6 +23,8 @@ Certificate chain data.
 **Type:** Array&lt;Uint8Array&gt;
 
 **Since:** 20
+
+<!--Device-SslErrorEvent-certChainData?: Array<Uint8Array>--><!--Device-SslErrorEvent-certChainData?: Array<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -38,6 +42,8 @@ Error code.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SslErrorEvent-error: SslError--><!--Device-SslErrorEvent-error: SslError-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -53,6 +59,8 @@ User operation.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SslErrorEvent-handler: SslErrorHandler--><!--Device-SslErrorEvent-handler: SslErrorHandler-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -72,6 +80,8 @@ The value **true** indicates a fatal error, and **false** indicates a non-fatal 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SslErrorEvent-isFatalError: boolean--><!--Device-SslErrorEvent-isFatalError: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isMainFrame
@@ -90,6 +100,8 @@ The value **true** indicates a main resource, and **false** indicates a non-main
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SslErrorEvent-isMainFrame: boolean--><!--Device-SslErrorEvent-isMainFrame: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## originalUrl
@@ -105,6 +117,8 @@ Original URL of the request.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SslErrorEvent-originalUrl: string--><!--Device-SslErrorEvent-originalUrl: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -122,6 +136,8 @@ Referrer URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SslErrorEvent-referrer: string--><!--Device-SslErrorEvent-referrer: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -137,5 +153,7 @@ URL.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SslErrorEvent-url: string--><!--Device-SslErrorEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

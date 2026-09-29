@@ -14,6 +14,8 @@ This API inherits from [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2SuffixImageIcon extends ChipV2ImageIcon--><!--Device-unnamed-export declare class ChipV2SuffixImageIcon extends ChipV2ImageIcon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SuffixImageIcon-public action?: VoidCallback--><!--Device-ChipV2SuffixImageIcon-public action?: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -59,6 +63,8 @@ A constructor used to create a **ChipV2SuffixImageIcon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixImageIcon-constructor(config: ChipV2SuffixImageIconConfig)--><!--Device-ChipV2SuffixImageIcon-constructor(config: ChipV2SuffixImageIconConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixImageIcon-public accessibilityDescription?: ResourceStr--><!--Device-ChipV2SuffixImageIcon-public accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +138,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SuffixImageIcon-public accessibilityLevel?: string--><!--Device-ChipV2SuffixImageIcon-public accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -155,5 +165,7 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixImageIcon-public accessibilityText?: ResourceStr--><!--Device-ChipV2SuffixImageIcon-public accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

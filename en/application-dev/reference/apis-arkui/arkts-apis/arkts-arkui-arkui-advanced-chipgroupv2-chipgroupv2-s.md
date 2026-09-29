@@ -12,6 +12,8 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct ChipGroupV2--><!--Device-unnamed-export declare struct ChipGroupV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Constructs an advanced **ChipGroupV2** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2-build(): void--><!--Device-ChipGroupV2-build(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Default value: **undefined**, meaning no callback is triggered.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2-$items?: Callback<ChipGroupV2Items>--><!--Device-ChipGroupV2-$items?: Callback<ChipGroupV2Items>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## $selectedIndexes
@@ -77,6 +83,8 @@ Default value: **undefined**, meaning no callback is triggered.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2-$selectedIndexes?: Callback<Array<number>>--><!--Device-ChipGroupV2-$selectedIndexes?: Callback<Array<number>>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +110,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2-chipGroupPadding?: ChipGroupV2Padding--><!--Device-ChipGroupV2-chipGroupPadding?: ChipGroupV2Padding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## chipGroupSpace
@@ -126,6 +136,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2-chipGroupSpace?: ChipGroupV2Space--><!--Device-ChipGroupV2-chipGroupSpace?: ChipGroupV2Space-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## items
@@ -147,6 +159,8 @@ When the value is **undefined** or an empty array, **ChipGroupV2** does not rend
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2-items: ChipGroupV2Items--><!--Device-ChipGroupV2-items: ChipGroupV2Items-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,6 +188,8 @@ The icon fill colors ([fillColor](arkts-arkui-arkui-advanced-chipv2-chipv2imagei
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2-itemStyle?: ChipGroupV2ItemStyle--><!--Device-ChipGroupV2-itemStyle?: ChipGroupV2ItemStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## multiple
@@ -198,6 +214,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2-multiple?: boolean--><!--Device-ChipGroupV2-multiple?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onChange
@@ -221,6 +239,8 @@ Default value: **undefined**, meaning no event is triggered.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2-onChange?: Callback<Array<number>>--><!--Device-ChipGroupV2-onChange?: Callback<Array<number>>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,6 +270,8 @@ When **multiple** is **true**, if **selectedIndexes** is not passed in, the firs
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2-selectedIndexes?: Array<number>--><!--Device-ChipGroupV2-selectedIndexes?: Array<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## suffix
@@ -271,5 +293,7 @@ Default value: **undefined**, meaning no custom content is displayed on the far 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2-suffix?: Callback<void>--><!--Device-ChipGroupV2-suffix?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

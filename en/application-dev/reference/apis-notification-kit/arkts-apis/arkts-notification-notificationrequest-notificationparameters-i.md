@@ -8,6 +8,8 @@ Describes part of the **wantAgent** information in NotificationRequest.
 
 **Since:** 24
 
+<!--Device-unnamed-export interface NotificationParameters--><!--Device-unnamed-export interface NotificationParameters-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## wantAction
@@ -23,6 +25,8 @@ wantAction?:string
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationParameters-wantAction?:string--><!--Device-NotificationParameters-wantAction?:string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -40,6 +44,8 @@ wantParameters?:Record<string, Object>
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationParameters-wantParameters?:Record<string, Object>--><!--Device-NotificationParameters-wantParameters?:Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## wantUri
@@ -55,5 +61,7 @@ wantUri?:string
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationParameters-wantUri?:string--><!--Device-NotificationParameters-wantUri?:string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

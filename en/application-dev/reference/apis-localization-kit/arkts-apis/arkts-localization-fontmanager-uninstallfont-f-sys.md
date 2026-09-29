@@ -18,6 +18,8 @@ Uninstalls an installed font file from the system font library by font name. Thi
 
 **Required permissions:** ohos.permission.UPDATE_FONT
 
+<!--Device-fontManager-function uninstallFont(fullName: string): Promise<int>--><!--Device-fontManager-function uninstallFont(fullName: string): Promise<int>-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **System API:** This is a system API.

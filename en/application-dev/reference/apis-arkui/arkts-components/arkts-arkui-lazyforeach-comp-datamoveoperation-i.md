@@ -8,6 +8,8 @@ Represents an operation for moving data.
 
 **Since:** 12
 
+<!--Device-unnamed-interface DataMoveOperation--><!--Device-unnamed-interface DataMoveOperation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -16,7 +18,7 @@ Represents an operation for moving data.
 index: MoveIndex
 ```
 
-Positions for the movement. The value range is [0, data source length - 1].
+Move position. The value range is [0, data source length - 1]. Rendering is abnormal when the value exceeds the value range.
 
 **Type:** [MoveIndex](arkts-arkui-lazyforeach-comp-moveindex-i.md)
 
@@ -25,6 +27,8 @@ Positions for the movement. The value range is [0, data source length - 1].
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DataMoveOperation-index: MoveIndex--><!--Device-DataMoveOperation-index: MoveIndex-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ New key to assign to the moved data. The original key is used by default.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DataMoveOperation-key?: string--><!--Device-DataMoveOperation-key?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -52,7 +58,7 @@ New key to assign to the moved data. The original key is used by default.
 type: DataOperationType.MOVE
 ```
 
-Type of data movement.
+Data move type.
 
 **Type:** [DataOperationType.MOVE](arkts-arkui-lazyforeach-comp-dataoperationtype-e.md)
 
@@ -61,5 +67,7 @@ Type of data movement.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DataMoveOperation-type: DataOperationType.MOVE--><!--Device-DataMoveOperation-type: DataOperationType.MOVE-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

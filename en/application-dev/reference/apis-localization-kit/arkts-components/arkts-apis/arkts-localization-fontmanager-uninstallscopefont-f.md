@@ -20,6 +20,8 @@ Uninstall installed application-level or session-level fonts based on the font p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fontManager-function uninstallScopeFont(url: string): Promise<void>--><!--Device-fontManager-function uninstallScopeFont(url: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **Parameters:**

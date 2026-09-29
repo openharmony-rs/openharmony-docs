@@ -18,6 +18,8 @@ Specifies whether to enable a function key (for example, **CapsLock**). This API
 
 **Required permissions:** ohos.permission.INPUT_KEYBOARD_CONTROLLER
 
+<!--Device-inputDevice-function setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise<void>--><!--Device-inputDevice-function setFunctionKeyEnabled(functionKey: FunctionKey, enabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Parameters:**

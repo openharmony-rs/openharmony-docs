@@ -16,6 +16,8 @@ Obtains the altitude based on the atmospheric pressure. This API uses an asynchr
 
 **Since:** 9
 
+<!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double, callback: AsyncCallback<double>): void--><!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double, callback: AsyncCallback<double>): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -68,6 +70,8 @@ function getDeviceAltitude(seaPressure: number, currentPressure: number): Promis
 Obtains the altitude based on the atmospheric pressure. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double): Promise<double>--><!--Device-sensor-function getDeviceAltitude(seaPressure: double, currentPressure: double): Promise<double>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

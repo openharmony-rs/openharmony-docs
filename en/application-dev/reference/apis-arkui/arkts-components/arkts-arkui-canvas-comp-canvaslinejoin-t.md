@@ -14,6 +14,8 @@ Defines the type of join between two non-zero-length segments (lines, arcs, and 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type CanvasLineJoin = "bevel" | "miter" | "round"--><!--Device-unnamed-declare type CanvasLineJoin = "bevel" | "miter" | "round"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

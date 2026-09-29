@@ -10,6 +10,8 @@ Defines the router table configuration of the module.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-bundleManager-export type RouterItem = _HapModuleInfo.RouterItem--><!--Device-bundleManager-export type RouterItem = _HapModuleInfo.RouterItem-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Type:** [_HapModuleInfo.RouterItem](arkts-ability-hapmoduleinfo-routeritem-i.md)

@@ -21,6 +21,8 @@ Locks a given mission. This API uses an asynchronous callback to return the resu
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function lockMission(missionId: number, callback: AsyncCallback<void>): void--><!--Device-missionManager-function lockMission(missionId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -72,6 +74,8 @@ Locks a given mission. This API uses a promise to return the result.
 **Substitutes:** [lockMission](arkts-ability-missionmanager-lockmission-f-sys.md)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function lockMission(missionId: number): Promise<void>--><!--Device-missionManager-function lockMission(missionId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

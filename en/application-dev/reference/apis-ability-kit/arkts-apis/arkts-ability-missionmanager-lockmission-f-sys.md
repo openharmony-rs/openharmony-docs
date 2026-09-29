@@ -18,6 +18,8 @@ Locks a given mission. This API is applicable to scenarios where a mission needs
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function lockMission(missionId: int, callback: AsyncCallback<void>): void--><!--Device-missionManager-function lockMission(missionId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Locks a given mission. This API is applicable to scenarios where a mission needs
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function lockMission(missionId: int): Promise<void>--><!--Device-missionManager-function lockMission(missionId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

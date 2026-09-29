@@ -9,13 +9,15 @@ The ModuleInfo module provides module information of an application.
 > **NOTE:** 
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use
-> [bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md#hapmoduleinfo) instead.
+> [bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md#hapmoduleinfo)
+**Substitutes:** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
+
+<!--Device-unnamed-export interface ModuleInfo--><!--Device-unnamed-export interface ModuleInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -37,6 +39,8 @@ The module name.
 
 **Substitutes:** name
 
+<!--Device-ModuleInfo-readonly moduleName: string--><!--Device-ModuleInfo-readonly moduleName: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## moduleSourceDir
@@ -54,5 +58,7 @@ The module source path.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-ModuleInfo-readonly moduleSourceDir: string--><!--Device-ModuleInfo-readonly moduleSourceDir: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

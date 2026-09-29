@@ -10,6 +10,8 @@ Defines the base class **BaseSpan**, including the universal attributes of the *
 
 **Since:** 11
 
+<!--Device-unnamed-declare class BaseSpan<T> extends CommonMethod<T>--><!--Device-unnamed-declare class BaseSpan<T> extends CommonMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## baselineOffset
@@ -18,7 +20,7 @@ Defines the base class **BaseSpan**, including the universal attributes of the *
 baselineOffset(value: LengthMetrics): T
 ```
 
-Sets the offset of the baseline. This attribute coexists with the **baselineOffset** attribute of the parent component.
+Sets the baseline offset of the Span. This is applicable to scenarios such as superscript and subscript layout and fine-tuning alignment of mixed-font-size text. This attribute coexists with the baselineOffset of the parent component. If this API is not used, the default offset is 0.
 
 **Since:** 12
 
@@ -26,19 +28,21 @@ Sets the offset of the baseline. This attribute coexists with the **baselineOffs
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BaseSpan-baselineOffset(value: LengthMetrics): T--><!--Device-BaseSpan-baselineOffset(value: LengthMetrics): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | LengthMetrics | Yes | Offset of the baseline. If the value specified is a percentage, the default value is used.<br>A positive value moves the content upwards, while a negative value moves it downwards.<br>Default value: **0**<br>In the **ImageSpan**, when this parameter is set to a non-zero value, the [verticalAlign](arkts-arkui-imagespan-comp-attribute.md#verticalalign) is fixed to **ImageSpanAlignment.BASELINE**; when this parameter is set to **0**, [verticalAlign](arkts-arkui-imagespan-comp-attribute.md#verticalalign) must be set to **ImageSpanAlignment.BASELINE** for the baseline alignment strategy to take effect. |
+| value | LengthMetrics | Yes | Sets the baseline offset of the Span. If this value is set to a percentage, the default value is used. <br>A positive value shifts the content upward, and a negative value shifts it downward. <br>In ImageSpan, when this value is set to a non-zero value, [verticalAlign](arkts-arkui-imagespan-comp-attribute.md#verticalalign) is fixed to ImageSpanAlignment.BASELINE. When this value is set to 0, to make the baseline alignment policy take effect, you must also set [verticalAlign](arkts-arkui-imagespan-comp-attribute.md#verticalalign) to ImageSpanAlignment.BASELINE. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T | Attributes of the span. |
+| T | Attribute object of the current Span, used for chained calls. |
 
 ## textBackgroundStyle
 
@@ -46,7 +50,7 @@ Sets the offset of the baseline. This attribute coexists with the **baselineOffs
 textBackgroundStyle(style: TextBackgroundStyle): T
 ```
 
-Background style. This attribute prioritizes the value separately set for the component. If it is not set, the component can inherit the settings from its parent [ContainerSpan](arkts-arkui-containerspan-comp-attribute.md#containerspanattribute).
+Sets the text background style. When used as a child component of [ContainerSpan](arkts-arkui-containerspan-comp-attribute.md#containerspanattribute), this attribute value can be inherited, and the component's own setting takes precedence. If this API is not used, the default background color is Color.Transparent and the corner radius is 0.
 
 **Since:** 11
 
@@ -54,16 +58,18 @@ Background style. This attribute prioritizes the value separately set for the co
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BaseSpan-textBackgroundStyle(style: TextBackgroundStyle): T--><!--Device-BaseSpan-textBackgroundStyle(style: TextBackgroundStyle): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [TextBackgroundStyle](arkts-arkui-span-comp-textbackgroundstyle-i.md) | Yes | Sets the background style.<br>Default value:<br>{<br> color: Color.Transparent,<br> radius: 0<br>} |
+| style | [TextBackgroundStyle](arkts-arkui-span-comp-textbackgroundstyle-i.md) | Yes | Text background style. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T | Attributes of the span. |
+| T | Attribute object of the current Span. |

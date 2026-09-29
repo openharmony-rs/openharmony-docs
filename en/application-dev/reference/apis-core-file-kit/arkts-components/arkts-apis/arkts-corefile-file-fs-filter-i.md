@@ -8,6 +8,8 @@ Defines the file filtering configuration used by **listFile()**.
 
 **Since:** 10
 
+<!--Device-unnamed-export interface Filter--><!--Device-unnamed-export interface Filter-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Locate files that fuzzy match the specified file names, which are of the OR rela
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Filter-displayName?: Array<string>--><!--Device-Filter-displayName?: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## excludeMedia
@@ -48,6 +52,8 @@ The value **true** means to exclude the files already in **Media**; the value **
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Filter-excludeMedia?: boolean--><!--Device-Filter-excludeMedia?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## fileSizeOver
@@ -63,6 +69,8 @@ Locate files that are greater than the specified size, in bytes.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Filter-fileSizeOver?: number--><!--Device-Filter-fileSizeOver?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -80,6 +88,8 @@ Locate files whose last modification time is the same or later than the specifie
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Filter-lastModifiedAfter?: number--><!--Device-Filter-lastModifiedAfter?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## mimeType
@@ -96,6 +106,8 @@ Locate files that fully match the specified MIME types, which are of the OR rela
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Filter-mimeType?: Array<string>--><!--Device-Filter-mimeType?: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## suffix
@@ -111,5 +123,7 @@ Locate files that fully match the specified file name extensions, which are of t
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Filter-suffix?: Array<string>--><!--Device-Filter-suffix?: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

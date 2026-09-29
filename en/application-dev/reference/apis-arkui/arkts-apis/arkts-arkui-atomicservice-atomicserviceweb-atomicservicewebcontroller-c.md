@@ -10,6 +10,8 @@ Implements an **AtomicServiceWebController** object for controlling the behavior
 
 **Decorator:** @Observed
 
+<!--Device-unnamed-export declare class AtomicServiceWebController--><!--Device-unnamed-export declare class AtomicServiceWebController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Checks whether going to the previous page can be performed on this page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWebController-accessBackward(): boolean--><!--Device-AtomicServiceWebController-accessBackward(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Checks whether going to the next page can be performed on this page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWebController-accessForward(): boolean--><!--Device-AtomicServiceWebController-accessForward(): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -81,6 +87,8 @@ Checks whether this page can navigate forward or backward by the specified numbe
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWebController-accessStep(step: number): boolean--><!--Device-AtomicServiceWebController-accessStep(step: number): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,6 +123,8 @@ Moves to the previous page based on the history stack. This API is generally use
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWebController-backward(): void--><!--Device-AtomicServiceWebController-backward(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes:**
@@ -135,6 +145,8 @@ Moves to the next page based on the history stack. This API is generally used to
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWebController-forward(): void--><!--Device-AtomicServiceWebController-forward(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes:**
@@ -154,6 +166,8 @@ Obtains a custom user agent.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWebController-getCustomUserAgent(): string--><!--Device-AtomicServiceWebController-getCustomUserAgent(): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,6 +195,8 @@ Obtains the default user agent of this web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWebController-getUserAgent(): string--><!--Device-AtomicServiceWebController-getUserAgent(): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -206,6 +222,8 @@ Loads a specified URL.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWebController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void--><!--Device-AtomicServiceWebController-loadUrl(url: string | Resource, headers?: Array<WebHeader>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +255,8 @@ Refreshes the web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AtomicServiceWebController-refresh(): void--><!--Device-AtomicServiceWebController-refresh(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes:**
@@ -264,6 +284,8 @@ Set the user agent in the **onControllerAttached** callback to ensure that it ta
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AtomicServiceWebController-setCustomUserAgent(userAgent: string): void--><!--Device-AtomicServiceWebController-setCustomUserAgent(userAgent: string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -20,6 +20,8 @@ Updates the voice zone when the voice subscribes to the spatial point engine cap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function updateSpatialActionZone(zone: number): void--><!--Device-carAwareness-function updateSpatialActionZone(zone: number): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.

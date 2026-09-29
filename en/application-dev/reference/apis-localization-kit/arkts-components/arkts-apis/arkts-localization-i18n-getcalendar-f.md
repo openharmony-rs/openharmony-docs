@@ -16,7 +16,9 @@ Obtains the **Calendar** object for the specified locale and calendar type.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-i18n-export function getCalendar(locale: string, type?: string): Calendar--><!--Device-i18n-export function getCalendar(locale: string, type?: string): Calendar-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

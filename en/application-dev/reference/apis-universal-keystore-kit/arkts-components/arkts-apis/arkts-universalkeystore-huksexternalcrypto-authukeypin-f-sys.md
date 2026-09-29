@@ -16,6 +16,8 @@ Authenticates a UKey PIN. This API uses a promise to return the result.
 
 **Since:** 22
 
+<!--Device-huksExternalCrypto-function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>): Promise<void>--><!--Device-huksExternalCrypto-function authUkeyPin(resourceId: string, params: Array<HuksExternalCryptoParam>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Enumerates the identity authentication types. This enum defines the authenticati
 
 **Since:** 8
 
+<!--Device-userAuth-enum UserAuthType--><!--Device-userAuth-enum UserAuthType-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## PIN
@@ -20,7 +22,9 @@ PIN authentication. It indicates that the user enters the PIN to complete authen
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthType-PIN = 1--><!--Device-UserAuthType-PIN = 1-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -34,7 +38,9 @@ Face authentication. It indicates that the system checks whether the facial feat
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthType-FACE = 2--><!--Device-UserAuthType-FACE = 2-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -48,7 +54,9 @@ Fingerprint authentication. It indicates that the user is authenticated through 
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthType-FINGERPRINT = 4--><!--Device-UserAuthType-FINGERPRINT = 4-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -64,6 +72,8 @@ Companion device authentication. It indicates that the user completes the authen
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-UserAuthType-COMPANION_DEVICE = 64--><!--Device-UserAuthType-COMPANION_DEVICE = 64-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

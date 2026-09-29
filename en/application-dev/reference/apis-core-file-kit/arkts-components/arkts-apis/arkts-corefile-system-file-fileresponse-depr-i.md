@@ -10,6 +10,8 @@ Returns a file, including the file information.
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileResponse--><!--Device-unnamed-export interface FileResponse-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Timestamp when the file is stored the last time, which is the number of millisec
 
 **Deprecated since:** 10
 
+<!--Device-FileResponse-lastModifiedTime: number--><!--Device-FileResponse-lastModifiedTime: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## length
@@ -46,6 +50,8 @@ File length, in bytes.
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileResponse-length: number--><!--Device-FileResponse-length: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -63,6 +69,8 @@ List of files. When the recursive value is true and the type is dir, the file in
 
 **Deprecated since:** 10
 
+<!--Device-FileResponse-subFiles?: Array<FileResponse>--><!--Device-FileResponse-subFiles?: Array<FileResponse>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## type
@@ -79,6 +87,8 @@ File type. Available values are as follows: **dir**: directory **file**: file
 
 **Deprecated since:** 10
 
+<!--Device-FileResponse-type: 'dir' | 'file'--><!--Device-FileResponse-type: 'dir' | 'file'-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## uri
@@ -94,5 +104,7 @@ URI of the file.
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileResponse-uri: string--><!--Device-FileResponse-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

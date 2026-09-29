@@ -20,6 +20,8 @@ PermissionRequest 是 Web 组件用于授权或拒绝权限请求的对象。当
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class PermissionRequest--><!--Device-unnamed-declare class PermissionRequest-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -33,6 +35,8 @@ PermissionRequest的构造函数。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PermissionRequest-constructor()--><!--Device-PermissionRequest-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,6 +52,8 @@ deny(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PermissionRequest-deny(): void--><!--Device-PermissionRequest-deny(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## getAccessibleResource
@@ -61,6 +67,8 @@ getAccessibleResource(): Array<string>
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PermissionRequest-getAccessibleResource(): Array<string>--><!--Device-PermissionRequest-getAccessibleResource(): Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -82,6 +90,8 @@ getOrigin(): string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PermissionRequest-getOrigin(): string--><!--Device-PermissionRequest-getOrigin(): string-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -101,6 +111,8 @@ grant(resources: Array<string>): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PermissionRequest-grant(resources: Array<string>): void--><!--Device-PermissionRequest-grant(resources: Array<string>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

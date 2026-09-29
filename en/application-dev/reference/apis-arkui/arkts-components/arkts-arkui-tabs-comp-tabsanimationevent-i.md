@@ -8,6 +8,8 @@ Describes the animation information of the **Tabs** component.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface TabsAnimationEvent--><!--Device-unnamed-declare interface TabsAnimationEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentOffset
@@ -31,6 +33,8 @@ Default value: **0**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TabsAnimationEvent-currentOffset: number--><!--Device-TabsAnimationEvent-currentOffset: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Default value: **0**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TabsAnimationEvent-targetOffset: number--><!--Device-TabsAnimationEvent-targetOffset: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -77,5 +83,7 @@ Default value: **0**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TabsAnimationEvent-velocity: number--><!--Device-TabsAnimationEvent-velocity: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

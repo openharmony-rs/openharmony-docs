@@ -10,6 +10,8 @@ Image options setted when need to get the image objects.
 
 **Since:** 23
 
+<!--Device-componentUtils-interface GetItemsInShapePathParams--><!--Device-componentUtils-interface GetItemsInShapePathParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ image information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GetItemsInShapePathParams-images: Array<ImageItem>--><!--Device-GetItemsInShapePathParams-images: Array<ImageItem>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ The proportion of non-transparent blank pixels in the selected area relative to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GetItemsInShapePathParams-ratio?: double--><!--Device-GetItemsInShapePathParams-ratio?: double-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ Indicates the path points information.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>--><!--Device-GetItemsInShapePathParams-shapePath: Array<common2D.Point>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

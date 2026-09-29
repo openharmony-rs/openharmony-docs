@@ -6,6 +6,8 @@ The namespace of privacyComputation, providing privacy-preserving computation ca
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace privacyComputation--><!--Device-unnamed-declare namespace privacyComputation-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import

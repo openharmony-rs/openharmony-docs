@@ -16,6 +16,8 @@ You can use the APIs of this module to start, terminate, connect, and disconnect
 
 **Since:** 9
 
+<!--Device-unnamed-declare class ServiceExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class ServiceExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Connects this ability to a ServiceExtensionAbility. This API can be called only 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long--><!--Device-ServiceExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -135,6 +139,8 @@ This API can be properly called on phones and tablets. If it is called on other 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-connectServiceExtensionAbilityWithAccount(want: Want, accountId: int, options: ConnectOptions): long--><!--Device-ServiceExtensionContext-connectServiceExtensionAbilityWithAccount(want: Want, accountId: int, options: ConnectOptions): long-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -227,6 +233,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -292,6 +300,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>--><!--Device-ServiceExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -367,6 +377,8 @@ Starts an atomic service based on an application ID. This API uses a promise to 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<void>--><!--Device-ServiceExtensionContext-openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -451,6 +463,8 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-openLink(link: string, options?: OpenLinkOptions): Promise<void>--><!--Device-ServiceExtensionContext-openLink(link: string, options?: OpenLinkOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -549,6 +563,8 @@ If parameter verification is successful but the atomic service fails to start, y
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-preStartMission(bundleName: string, moduleName: string, abilityName: string, startTime: string): Promise<void>--><!--Device-ServiceExtensionContext-preStartMission(bundleName: string, moduleName: string, abilityName: string, startTime: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -641,6 +657,8 @@ Before starting the UIExtensionAbility, ensure that the focused application has 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-requestModalUIExtension(pickerWant: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -724,6 +742,8 @@ Before starting the UIExtensionAbility, ensure that the focused application has 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-requestModalUIExtension(pickerWant: Want): Promise<void>--><!--Device-ServiceExtensionContext-requestModalUIExtension(pickerWant: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -814,6 +834,8 @@ Before starting the UIExtensionAbility, ensure that the focused application has 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise<void>--><!--Device-ServiceExtensionContext-requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -893,6 +915,8 @@ Starts an ability. This API can be called only on the main thread. It uses an as
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startAbility(want: Want, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -980,6 +1004,8 @@ Starts an ability. This API can be called only on the main thread. It uses an as
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1072,6 +1098,8 @@ Starts an ability. This API can be called only on the main thread. It uses a pro
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-ServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1172,6 +1200,8 @@ Starts an ability with the caller information specified. The caller information 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -1257,6 +1287,8 @@ Starts an ability with the caller information and start options specified. The c
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1346,6 +1378,8 @@ Starts an ability with the start options specified. The caller information is ca
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>--><!--Device-ServiceExtensionContext-startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1448,6 +1482,8 @@ ohos.permission.START_INVISIBLE_ABILITY permission.
 **Required permissions:** ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbilityByCall(want: Want): Promise<Caller>--><!--Device-ServiceExtensionContext-startAbilityByCall(want: Want): Promise<Caller>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1582,6 +1618,8 @@ ohos.permission.START_INVISIBLE_ABILITY permission.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startAbilityByCallWithAccount(want: Want, accountId: int): Promise<Caller>--><!--Device-ServiceExtensionContext-startAbilityByCallWithAccount(want: Want, accountId: int): Promise<Caller>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -1677,6 +1715,8 @@ Starts an ability with the account ID specified. This API can be called only on 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1775,6 +1815,8 @@ Starts an ability with the account ID and start options specified. This API can 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbilityWithAccount(want: Want, accountId: int, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startAbilityWithAccount(want: Want, accountId: int, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1878,6 +1920,8 @@ Starts an ability with the account ID specified. This API can be called only on 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startAbilityWithAccount(want: Want, accountId: int, options?: StartOptions): Promise<void>--><!--Device-ServiceExtensionContext-startAbilityWithAccount(want: Want, accountId: int, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1983,6 +2027,8 @@ Starts an ability. If the ability has multiple instances, the latest instance is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startRecentAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startRecentAbility(want: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -2076,6 +2122,8 @@ You can use this API to carry start options.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2174,6 +2222,8 @@ Starts an ability. If the ability has multiple instances, the latest instance is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startRecentAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-ServiceExtensionContext-startRecentAbility(want: Want, options?: StartOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -2268,6 +2318,8 @@ Starts a ServiceExtensionAbility. This API uses an asynchronous callback to retu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -2344,6 +2396,8 @@ Starts a ServiceExtensionAbility. This API uses a promise to return the result a
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startServiceExtensionAbility(want: Want): Promise<void>--><!--Device-ServiceExtensionContext-startServiceExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2434,6 +2488,8 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses an
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-startServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -2522,6 +2578,8 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses a 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise<void>--><!--Device-ServiceExtensionContext-startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2615,6 +2673,8 @@ This API can be properly called on phones and tablets. If it is called on other 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startUIAbilities(wantList: Array<Want>): Promise<void>--><!--Device-ServiceExtensionContext-startUIAbilities(wantList: Array<Want>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -2706,6 +2766,8 @@ Starts a new [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceexte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-startUIServiceExtensionAbility(want: Want): Promise<void>--><!--Device-ServiceExtensionContext-startUIServiceExtensionAbility(want: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -2775,6 +2837,8 @@ Stops a ServiceExtensionAbility. This API uses an asynchronous callback to retur
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-stopServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-stopServiceExtensionAbility(want: Want, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2848,6 +2912,8 @@ Stops a ServiceExtensionAbility. This API uses a promise to return the result as
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-stopServiceExtensionAbility(want: Want): Promise<void>--><!--Device-ServiceExtensionContext-stopServiceExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2931,6 +2997,8 @@ Stops a ServiceExtensionAbility with the specified account. This API uses an asy
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -3013,6 +3081,8 @@ Stops a ServiceExtensionAbility with the specified account. This API uses a prom
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise<void>--><!--Device-ServiceExtensionContext-stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -3092,6 +3162,8 @@ Terminates this ability. This API can be called only on the main thread. It uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceExtensionContext-terminateSelf(callback: AsyncCallback<void>): void--><!--Device-ServiceExtensionContext-terminateSelf(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -3148,6 +3220,8 @@ Terminates this ability. This API can be called only on the main thread. It uses
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceExtensionContext-terminateSelf(): Promise<void>--><!--Device-ServiceExtensionContext-terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

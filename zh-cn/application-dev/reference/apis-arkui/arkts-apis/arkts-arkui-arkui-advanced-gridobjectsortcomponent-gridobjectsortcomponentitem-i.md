@@ -8,6 +8,8 @@ export interface GridObjectSortComponentItem
 
 **起始版本：** 11
 
+<!--Device-unnamed-export interface GridObjectSortComponentItem--><!--Device-unnamed-export interface GridObjectSortComponentItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ id: number | string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GridObjectSortComponentItem-id: number | string--><!--Device-GridObjectSortComponentItem-id: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## order
@@ -56,6 +60,8 @@ order: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GridObjectSortComponentItem-order: number--><!--Device-GridObjectSortComponentItem-order: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selected
@@ -73,6 +79,8 @@ selected: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridObjectSortComponentItem-selected: boolean--><!--Device-GridObjectSortComponentItem-selected: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +100,8 @@ GridObjectSortComponentType类型为IMAGE_TEXT时，用于配置Symbol图标资�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-GridObjectSortComponentItem-symbolStyle?: SymbolGlyphModifier--><!--Device-GridObjectSortComponentItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -110,6 +120,8 @@ text: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GridObjectSortComponentItem-text: ResourceStr--><!--Device-GridObjectSortComponentItem-text: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## url
@@ -127,5 +139,7 @@ GridObjectSortComponentType类型为IMAGE_TEXT时，用于配置图片地址；�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GridObjectSortComponentItem-url?: ResourceStr--><!--Device-GridObjectSortComponentItem-url?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

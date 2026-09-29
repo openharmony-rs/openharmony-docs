@@ -8,6 +8,8 @@ Enumerates the display modes of the title bar.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum NavigationTitleMode--><!--Device-unnamed-declare enum NavigationTitleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Free
@@ -28,6 +30,8 @@ For this effect to work when the content is less than one screen in a scrollable
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationTitleMode-Free = 0--><!--Device-NavigationTitleMode-Free = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Full
@@ -43,6 +47,8 @@ Default value: If there is only a main title, the title bar height is 112 vp; if
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationTitleMode-Full--><!--Device-NavigationTitleMode-Full-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,5 +69,7 @@ Since API version 12, the title bar height is 56 vp.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationTitleMode-Mini--><!--Device-NavigationTitleMode-Mini-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

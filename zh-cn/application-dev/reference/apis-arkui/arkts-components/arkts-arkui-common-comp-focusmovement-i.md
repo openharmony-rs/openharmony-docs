@@ -14,6 +14,8 @@ declare interface FocusMovement
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface FocusMovement--><!--Device-unnamed-declare interface FocusMovement-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backward
@@ -33,6 +35,8 @@ backward?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusMovement-backward?: string--><!--Device-FocusMovement-backward?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ down?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-FocusMovement-down?: string--><!--Device-FocusMovement-down?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## forward
@@ -73,6 +79,8 @@ forward?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusMovement-forward?: string--><!--Device-FocusMovement-forward?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ left?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-FocusMovement-left?: string--><!--Device-FocusMovement-left?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -114,6 +124,8 @@ right?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-FocusMovement-right?: string--><!--Device-FocusMovement-right?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## up
@@ -133,5 +145,7 @@ up?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusMovement-up?: string--><!--Device-FocusMovement-up?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,9 +10,11 @@ WebDownloadItem is a class in the ArkWeb framework used to represent and manage 
 > 
 > - During the download process, the download progress is notified to the user through WebDownloadDelegate, and the user can operate the download task through the WebDownloadItem parameter.
 > 
-> - The maximum length of the download file path (including the file name) supported by WebDownloadItem is 255bytes&lt;!--RP1--&gt;&lt;!--RP1End--&gt;.
+> - The maximum length of the download file path (including the file name) supported by WebDownloadItem is 255bytes<!--RP1--><!--RP1End-->.
 
 **Since:** 11
+
+<!--Device-webview-class WebDownloadItem--><!--Device-webview-class WebDownloadItem-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -33,6 +35,8 @@ Cancels the download task.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-cancel(): void--><!--Device-WebDownloadItem-cancel(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -119,6 +123,8 @@ Deserializes the serialized byte array into a **WebDownloadItem** object.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem--><!--Device-WebDownloadItem-static deserialize(serializedData: Uint8Array): WebDownloadItem-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -214,6 +220,8 @@ Obtains the download speed, in bytes per second.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-getCurrentSpeed(): number--><!--Device-WebDownloadItem-getCurrentSpeed(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -284,6 +292,8 @@ Obtains the full path of the downloaded file on the disk.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-getFullPath(): string--><!--Device-WebDownloadItem-getFullPath(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -357,6 +367,8 @@ Obtains the unique ID of this download task.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-getGuid(): string--><!--Device-WebDownloadItem-getGuid(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -427,6 +439,8 @@ Obtains the download error code.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode--><!--Device-WebDownloadItem-getLastErrorCode(): WebDownloadErrorCode-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -500,6 +514,8 @@ Obtains the request mode of this download task.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-getMethod(): string--><!--Device-WebDownloadItem-getMethod(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -570,6 +586,8 @@ Obtains the MIME type of this download task (for example, a sound file may be ma
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-getMimeType(): string--><!--Device-WebDownloadItem-getMimeType(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -642,6 +660,8 @@ Obtains the original URL address of the download file.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebDownloadItem-getOriginalUrl(): string--><!--Device-WebDownloadItem-getOriginalUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -713,6 +733,8 @@ Obtains the download progress. The value **100** indicates that the download is 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-getPercentComplete(): number--><!--Device-WebDownloadItem-getPercentComplete(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -783,6 +805,8 @@ Obtains the number of received bytes.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-getReceivedBytes(): number--><!--Device-WebDownloadItem-getReceivedBytes(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -856,6 +880,8 @@ Obtains the referrer address of the download file.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebDownloadItem-getReferrerUrl(): string--><!--Device-WebDownloadItem-getReferrerUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -926,6 +952,8 @@ Obtains the download state.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-getState(): WebDownloadState--><!--Device-WebDownloadItem-getState(): WebDownloadState-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -998,6 +1026,8 @@ Obtains the suggested file name for this download task.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-getSuggestedFileName(): string--><!--Device-WebDownloadItem-getSuggestedFileName(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -1068,6 +1098,8 @@ Obtains the total length of the file to be downloaded.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-getTotalBytes(): number--><!--Device-WebDownloadItem-getTotalBytes(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1140,6 +1172,8 @@ Obtains the download request URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-getUrl(): string--><!--Device-WebDownloadItem-getUrl(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -1210,6 +1244,8 @@ Pauses the download task.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-pause(): void--><!--Device-WebDownloadItem-pause(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1310,6 +1346,8 @@ Resumes a download task.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-resume(): void--><!--Device-WebDownloadItem-resume(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1419,6 +1457,8 @@ Serializes the failed download to a byte array.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebDownloadItem-serialize(): Uint8Array--><!--Device-WebDownloadItem-serialize(): Uint8Array-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -1501,6 +1541,8 @@ Starts downloading to the specified directory. The parameter specifies the disk 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadItem-start(downloadPath: string): void--><!--Device-WebDownloadItem-start(downloadPath: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

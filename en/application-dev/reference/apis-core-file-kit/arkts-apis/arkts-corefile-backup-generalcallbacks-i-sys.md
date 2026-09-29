@@ -10,6 +10,8 @@ General callbacks for both backup and restore procedure. The backup service will
 
 **Since:** 10
 
+<!--Device-backup-interface GeneralCallbacks--><!--Device-backup-interface GeneralCallbacks-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Callback called when the backup_sa service return result information. The first 
 
 **Since:** 18
 
+<!--Device-GeneralCallbacks-onBackupSizeReport?: OnBackupSizeReport--><!--Device-GeneralCallbacks-onBackupSizeReport?: OnBackupSizeReport-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Callback called when the backup service tries to send files to the client. The F
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GeneralCallbacks-onFileReadyBatch?: OnFileReadyBatch--><!--Device-GeneralCallbacks-onFileReadyBatch?: OnFileReadyBatch-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -72,6 +78,8 @@ Callback called when the backup_sa service return result information. The first 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GeneralCallbacks-onProcess(bundleName: string, process: string): void--><!--Device-GeneralCallbacks-onProcess(bundleName: string, process: string): void-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -122,6 +130,8 @@ Callback called when the backup service return result information. The first ret
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GeneralCallbacks-onResultReport(bundleName: string, result: string): void--><!--Device-GeneralCallbacks-onResultReport(bundleName: string, result: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -168,6 +178,8 @@ Callback called when the all the bundles to backup/restore are done or aborted u
 
 **Since:** 10
 
+<!--Device-GeneralCallbacks-onAllBundlesEnd: AsyncCallback<undefined>--><!--Device-GeneralCallbacks-onAllBundlesEnd: AsyncCallback<undefined>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -209,6 +221,8 @@ Callback called when the backup service dies unexpectedly.
 
 **Since:** 10
 
+<!--Device-GeneralCallbacks-onBackupServiceDied: Callback<undefined>--><!--Device-GeneralCallbacks-onBackupServiceDied: Callback<undefined>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -232,6 +246,8 @@ Callback called when a backup/restore procedure for an bundle is started. The fi
 **Type:** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string, void &#124; string&gt;
 
 **Since:** 12
+
+<!--Device-GeneralCallbacks-onBundleBegin: AsyncCallback<string, void | string>--><!--Device-GeneralCallbacks-onBundleBegin: AsyncCallback<string, void | string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -276,6 +292,8 @@ Callback called when a backup/restore procedure for an bundle ends successfully 
 
 **Since:** 12
 
+<!--Device-GeneralCallbacks-onBundleEnd: AsyncCallback<string, void | string>--><!--Device-GeneralCallbacks-onBundleEnd: AsyncCallback<string, void | string>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -318,6 +336,8 @@ Callback called when the backup service tries to send files to the client. The F
 **Type:** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[File](arkts-corefile-file-fs-file-i.md)&gt;
 
 **Since:** 10
+
+<!--Device-GeneralCallbacks-onFileReady: AsyncCallback<File>--><!--Device-GeneralCallbacks-onFileReady: AsyncCallback<File>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -363,6 +383,8 @@ Callback called when the migrate result is reported. The first return string par
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GeneralCallbacks-onMigrateResult?: AsyncCallback<string, void | string>--><!--Device-GeneralCallbacks-onMigrateResult?: AsyncCallback<string, void | string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

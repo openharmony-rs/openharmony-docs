@@ -12,6 +12,8 @@ Defines the values of **deviceFlags** used in **RootInfo**. **deviceFlags** is u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileExtensionInfo-namespace DeviceFlag--><!--Device-fileExtensionInfo-namespace DeviceFlag-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

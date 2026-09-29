@@ -10,6 +10,8 @@ The definition of the operate result.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface OperResult--><!--Device-avMusicTemplate-interface OperResult-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -32,6 +34,8 @@ error code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OperResult-errorCode: int--><!--Device-OperResult-errorCode: int-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## errorMsg
@@ -47,5 +51,7 @@ error message.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OperResult-errorMsg?: string--><!--Device-OperResult-errorMsg?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

@@ -1,18 +1,11 @@
 # Image
 
-The **Image** component is usually used to display images in applications. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md), [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md), and [DrawableDescriptor](arkts-arkui-image-comp-drawabledescriptor-t.md). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, HEIF, and TIFF. Note that the APNG and SVGA formats are not supported.
+The **Image** component is usually used to display images in applications.
 
-> **NOTE**
-
-> - This component supports the TIFF image format since API version 23. > > - When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused > state. For instructions on how to set focus, see > [Setting Whether a Component Is Focusable] > (../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). > By default, the **Image** component is not focusable. To enable it to gain focus, set both the > [focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable) and [focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch) attributes to > **true**. > > - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](arkts-arkui-common-comp.md#common). > > - For animated images, animation playback is disabled by default and depends on the visibility of the **Image** > component. When the component is visible, the animation is started through the callback. When the component is > invisible, the animation is stopped. The visibility status of the **Image** component can be identified through the > > [onVisibleAreaChange] > [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) > event. If the value of **ratios** is greater than 0, the component is visible. > > - For details about how to resolve white block issues during image loading, see > [Solution to White Image Blocks] > (https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). > For details about how to address slow image loading, see > [Optimizing Preset Image Loading] > (https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve- > performance#section91526132216). >
-
-Required Permissions
-
-The **ohos.permission.INTERNET** permission is required for using online images. For details about how to apply for a permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md).
-
-Child Components
-
-Not supported
+> **NOTE:** 
+> 
+> This topic describes only system APIs provided by the module. For details about its public APIs, see
+> [Image](arkts-arkui-image-comp.md).
 
 ## Image
 
@@ -68,6 +61,8 @@ If the **Image** component does not have its width and height set, its size adap
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor): ImageAttribute--><!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -91,6 +86,8 @@ Obtains an image. The [ImageContent](arkts-arkui-image-comp-imagecontent-e.md) t
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent): ImageAttribute--><!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +113,8 @@ Set src to obtain images
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent, reloadKey?: string): ImageAttribute--><!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent, reloadKey?: string): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -138,6 +137,8 @@ Obtains an image. The [imageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIOptions): ImageAttribute--><!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIOptions): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,6 +163,8 @@ Set src and ai options to obtain images
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor,      imageAIOptions?: ImageAIOptions, reloadKey?: string): ImageAttribute--><!--Device-ImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor,      imageAIOptions?: ImageAIOptions, reloadKey?: string): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +198,7 @@ Set src and ai options to obtain images
 | [ImageErrorCallback](arkts-arkui-image-comp-imageerrorcallback-t.md) | Triggered when an error occurs during image loading. |
 | [ImageMatrix](arkts-arkui-image-comp-imagematrix-t.md) | Represents the current matrix object. |
 | [RequestDownloadInfo](arkts-arkui-image-comp-requestdownloadinfo-t.md) | Describes the download information when an online image fails to load or encounters an exception. This object contains resource information, network information, and performance statistics of the download task, which can be used to locate the cause of the loading exception. |
-| [ResolutionQuality](arkts-arkui-image-comp-resolutionquality-t-sys.md) | Enumerates all the levels available for the image resolution quality. |
+| [ResolutionQuality](arkts-arkui-image-comp-resolutionquality-t-sys.md) | Sets a resolution quality level. |
 
 ### Enums
 

@@ -8,6 +8,8 @@ Represents brief information about a credential.
 
 **Since:** 11
 
+<!--Device-certificateManager-export interface CredentialAbstract--><!--Device-certificateManager-export interface CredentialAbstract-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Alias of a credential. The value contains up to 128 bytes.
 
 **Since:** 11
 
+<!--Device-CredentialAbstract-alias: string--><!--Device-CredentialAbstract-alias: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## keyUri
@@ -42,6 +46,8 @@ Unique identifier of a credential. The value contains up to 256 bytes.
 
 **Since:** 11
 
+<!--Device-CredentialAbstract-keyUri: string--><!--Device-CredentialAbstract-keyUri: string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## type
@@ -55,5 +61,7 @@ Type of a credential. The value contains up to 8 bytes.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-CredentialAbstract-type: string--><!--Device-CredentialAbstract-type: string-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

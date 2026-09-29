@@ -12,6 +12,8 @@ declare interface Font
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface Font--><!--Device-unnamed-declare interface Font-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## family
@@ -29,6 +31,8 @@ family?: string | Resource
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Font-family?: string | Resource--><!--Device-Font-family?: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ size?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Font-size?: Length--><!--Device-Font-size?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -66,6 +72,8 @@ style?: FontStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Font-style?: FontStyle--><!--Device-Font-style?: FontStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## weight
@@ -83,5 +91,7 @@ weight?: FontWeight | number | string
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Font-weight?: FontWeight | number | string--><!--Device-Font-weight?: FontWeight | number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

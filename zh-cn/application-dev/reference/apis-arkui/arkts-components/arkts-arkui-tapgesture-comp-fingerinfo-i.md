@@ -8,6 +8,8 @@ interface FingerInfo
 
 **起始版本：** 8
 
+<!--Device-unnamed-interface FingerInfo--><!--Device-unnamed-interface FingerInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCurrentLocalPosition
@@ -23,6 +25,8 @@ getCurrentLocalPosition?(): Coordinate2D
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FingerInfo-getCurrentLocalPosition?(): Coordinate2D--><!--Device-FingerInfo-getCurrentLocalPosition?(): Coordinate2D-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ displayX: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FingerInfo-displayX: number--><!--Device-FingerInfo-displayX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -69,6 +75,8 @@ displayY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FingerInfo-displayY: number--><!--Device-FingerInfo-displayY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +98,8 @@ globalDisplayX?: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-FingerInfo-globalDisplayX?: number--><!--Device-FingerInfo-globalDisplayX?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayY
@@ -110,6 +120,8 @@ globalDisplayY?: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-FingerInfo-globalDisplayY?: number--><!--Device-FingerInfo-globalDisplayY?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalX
@@ -127,6 +139,8 @@ globalX: number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FingerInfo-globalX: number--><!--Device-FingerInfo-globalX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,6 +160,8 @@ globalY: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FingerInfo-globalY: number--><!--Device-FingerInfo-globalY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hand
@@ -163,6 +179,8 @@ hand?: InteractionHand
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FingerInfo-hand?: InteractionHand--><!--Device-FingerInfo-hand?: InteractionHand-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,6 +204,8 @@ id: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FingerInfo-id: number--><!--Device-FingerInfo-id: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## localX
@@ -204,6 +224,8 @@ localX: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FingerInfo-localX: number--><!--Device-FingerInfo-localX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## localY
@@ -221,5 +243,7 @@ localY: number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FingerInfo-localY: number--><!--Device-FingerInfo-localY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

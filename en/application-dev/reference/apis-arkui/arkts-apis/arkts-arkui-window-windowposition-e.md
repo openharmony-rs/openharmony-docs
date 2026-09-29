@@ -8,6 +8,8 @@ Enumerates the target z-order to which the z-order of a main window can be adjus
 
 **Since:** 26.0.1
 
+<!--Device-window-enum WindowPosition--><!--Device-window-enum WindowPosition-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## NOT_TOPMOST
@@ -21,6 +23,8 @@ Not topmost, normal mode. Used as an independent action to cancel the global top
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowPosition-NOT_TOPMOST = -3--><!--Device-WindowPosition-NOT_TOPMOST = -3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -36,6 +40,8 @@ Global topmost. To set this value, you need the ohos.permission.WINDOW_TOPMOST p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowPosition-TOPMOST = -2--><!--Device-WindowPosition-TOPMOST = -2-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## BOTTOM
@@ -50,6 +56,8 @@ Places the main window at the bottom of all application main windows,for a singl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowPosition-BOTTOM = -1--><!--Device-WindowPosition-BOTTOM = -1-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## TOP
@@ -63,5 +71,7 @@ Places the main window at the top of all application main windows, for a single 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowPosition-TOP = 0--><!--Device-WindowPosition-TOP = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

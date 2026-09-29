@@ -10,6 +10,8 @@ Object used for store least recently used sendable Object.
 
 **Decorator:** @Sendable
 
+<!--Device-utils-class SendableLruCache<K, V>--><!--Device-utils-class SendableLruCache<K, V>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Clear all key-value pairs from the SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-clear(): void--><!--Device-SendableLruCache-clear(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## constructor
@@ -43,6 +47,8 @@ Default constructor.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-constructor(capacity?: number)--><!--Device-SendableLruCache-constructor(capacity?: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -63,6 +69,8 @@ Check whether the given key exists in the SendableLruCache. If exists, returns t
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-contains(key: K): boolean--><!--Device-SendableLruCache-contains(key: K): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -90,6 +98,8 @@ Returns an iterable of key-value pairs for each element in the SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-entries(): IterableIterator<[K, V]>--><!--Device-SendableLruCache-entries(): IterableIterator<[K, V]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -109,6 +119,8 @@ Get the value associated with a specified key in the SendableLruCache.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-get(key: K): V | undefined--><!--Device-SendableLruCache-get(key: K): V | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -136,6 +148,8 @@ Get the Capacity of the SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-getCapacity(): number--><!--Device-SendableLruCache-getCapacity(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -155,6 +169,8 @@ Get the number of times createDefault in the SendableLruCache.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-getCreateCount(): number--><!--Device-SendableLruCache-getCreateCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -176,6 +192,8 @@ Get the number of times that the queried values are matched in the SendableLruCa
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-getMatchCount(): number--><!--Device-SendableLruCache-getMatchCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -195,6 +213,8 @@ Get the number of times that the queried values are not matched in the SendableL
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-getMissCount(): number--><!--Device-SendableLruCache-getMissCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -216,6 +236,8 @@ Get the number of times that values are added to SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-getPutCount(): number--><!--Device-SendableLruCache-getPutCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -235,6 +257,8 @@ Get the number of times that values are removed from the SendableLruCache.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-getRemoveCount(): number--><!--Device-SendableLruCache-getRemoveCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -256,6 +280,8 @@ Checks whether the SendableLruCache is empty.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-isEmpty(): boolean--><!--Device-SendableLruCache-isEmpty(): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -276,6 +302,8 @@ Returns a list of all keys in the SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-keys(): K[]--><!--Device-SendableLruCache-keys(): K[]-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -295,6 +323,8 @@ Adds a key-value pair to the SendableLruCache.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-put(key: K, value: V): V--><!--Device-SendableLruCache-put(key: K, value: V): V-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -323,6 +353,8 @@ Remove a specified key and its associated value from the SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-remove(key: K): V | undefined--><!--Device-SendableLruCache-remove(key: K): V | undefined-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -349,6 +381,8 @@ Return the string representation of the object. The returned string format is: S
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-toString(): string--><!--Device-SendableLruCache-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -369,6 +403,8 @@ Update the capacity of the SendableLruCache.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SendableLruCache-updateCapacity(newCapacity: number): void--><!--Device-SendableLruCache-updateCapacity(newCapacity: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -388,6 +424,8 @@ Returns a list of all values in the SendableLruCache.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-values(): V[]--><!--Device-SendableLruCache-values(): V[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -410,5 +448,7 @@ The length of the SendableLruCache.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SendableLruCache-readonly length: number--><!--Device-SendableLruCache-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

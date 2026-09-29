@@ -1,10 +1,12 @@
-# @ohos.resourceschedule.deviceStandby
+# @ohos.resourceschedule.deviceStandby(Device Standby)
 
 Provides methods for managing device standby, including the methods for querying standby status and exemption list.
 
 @namespace deviceStandby
 
 **Since:** 10
+
+<!--Device-unnamed-declare namespace deviceStandby--><!--Device-unnamed-declare namespace deviceStandby-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 

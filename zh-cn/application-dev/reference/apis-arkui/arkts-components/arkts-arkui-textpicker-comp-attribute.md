@@ -4,13 +4,15 @@
 declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** TextPickerAttribute extends CommonMethod&lt;TextPickerAttribute&gt;
+**继承/实现关系：** TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>--><!--Device-unnamed-declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ canLoop(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-canLoop(value: boolean): TextPickerAttribute--><!--Device-TextPickerAttribute-canLoop(value: boolean): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ canLoop(isLoop: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-canLoop(isLoop: Optional<boolean>): TextPickerAttribute--><!--Device-TextPickerAttribute-canLoop(isLoop: Optional<boolean>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -73,6 +79,8 @@ defaultPickerItemHeight(value: number | string)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-defaultPickerItemHeight(value: number | string): TextPickerAttribute--><!--Device-TextPickerAttribute-defaultPickerItemHeight(value: number | string): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ defaultPickerItemHeight(height: Optional<number | string>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-defaultPickerItemHeight(height: Optional<number | string>): TextPickerAttribute--><!--Device-TextPickerAttribute-defaultPickerItemHeight(height: Optional<number | string>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -120,13 +130,15 @@ defaultTextStyle(style: TextPickerTextStyle)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-defaultTextStyle(style: TextPickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-defaultTextStyle(style: TextPickerTextStyle): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| style | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | 是 | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br>默认值：与Text组件默认值相同。 |
+| style | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | 是 | 设置关闭滑动过程中文本样式变化的动效时，各个选项的文本样式。<br>默认值：与[Text](arkts-arkui-text-comp.md)组件默认值相同。 |
 
 ## digitalCrownSensitivity
 
@@ -141,6 +153,8 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): TextPickerAttribute--><!--Device-TextPickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,13 +178,15 @@ disableTextStyleAnimation(disabled: boolean)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-disableTextStyleAnimation(disabled: boolean): TextPickerAttribute--><!--Device-TextPickerAttribute-disableTextStyleAnimation(disabled: boolean): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| disabled | boolean | 是 | 是否关闭滑动过程中文本样式变化的动效。<br>- true：关闭文本样式变化动效。<br>- false：不关闭文本样式变化动效。<br>默认值：false <br>**说明：** <br>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)属性设置的样式。如未设置[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)，则显示为Text组件默认样式。设置为false时，使用系统默认的滑动文本样式变化动效。 |
+| disabled | boolean | 是 | 是否关闭滑动过程中文本样式变化的动效。<br>- true：关闭文本样式变化动效。<br>- false：不关闭文本样式变化动效。<br>默认值：false <br>**说明：** <br>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)属性设置的样式。如未设置[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)，则显示为[Text](arkts-arkui-text-comp.md)组件默认样式。设置为false时，使用系统默认的滑动文本样式变化动效。 |
 
 ## disappearTextStyle
 
@@ -185,6 +201,8 @@ disappearTextStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-disappearTextStyle(value: PickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-disappearTextStyle(value: PickerTextStyle): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,6 +228,8 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -234,6 +254,8 @@ disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -257,6 +279,8 @@ divider(value: DividerOptions | null)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-divider(value: DividerOptions | null): TextPickerAttribute--><!--Device-TextPickerAttribute-divider(value: DividerOptions | null): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,6 +308,8 @@ divider(textDivider: Optional<DividerOptions | null>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-divider(textDivider: Optional<DividerOptions | null>): TextPickerAttribute--><!--Device-TextPickerAttribute-divider(textDivider: Optional<DividerOptions | null>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -306,6 +332,8 @@ enableHapticFeedback(enable: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-enableHapticFeedback(enable: Optional<boolean>): TextPickerAttribute--><!--Device-TextPickerAttribute-enableHapticFeedback(enable: Optional<boolean>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -327,6 +355,8 @@ gradientHeight(value: Dimension)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-gradientHeight(value: Dimension): TextPickerAttribute--><!--Device-TextPickerAttribute-gradientHeight(value: Dimension): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,6 +382,8 @@ gradientHeight(height: Optional<Dimension>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-gradientHeight(height: Optional<Dimension>): TextPickerAttribute--><!--Device-TextPickerAttribute-gradientHeight(height: Optional<Dimension>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -375,6 +407,8 @@ onChange(callback: (value: string[], index: number[]) => void)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute--><!--Device-TextPickerAttribute-onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -401,6 +435,8 @@ onChange(callback: Optional<OnTextPickerChangeCallback>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-onChange(callback: Optional<OnTextPickerChangeCallback>): TextPickerAttribute--><!--Device-TextPickerAttribute-onChange(callback: Optional<OnTextPickerChangeCallback>): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -434,6 +470,8 @@ onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback): TextPickerAttribute--><!--Device-TextPickerAttribute-onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -463,6 +501,8 @@ onScrollStop(callback: TextPickerScrollStopCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-onScrollStop(callback: TextPickerScrollStopCallback): TextPickerAttribute--><!--Device-TextPickerAttribute-onScrollStop(callback: TextPickerScrollStopCallback): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -496,6 +536,8 @@ onScrollStop(callback: Optional<TextPickerScrollStopCallback>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-onScrollStop(callback: Optional<TextPickerScrollStopCallback>): TextPickerAttribute--><!--Device-TextPickerAttribute-onScrollStop(callback: Optional<TextPickerScrollStopCallback>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -518,6 +560,8 @@ selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -539,6 +583,8 @@ selectedIndex(value: number[])
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-selectedIndex(value: number | number[]): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedIndex(value: number | number[]): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,6 +610,8 @@ selectedIndex(index: Optional<number[]>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-selectedIndex(index: Optional<number | number[]>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedIndex(index: Optional<number | number[]>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -585,6 +633,8 @@ selectedTextStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-selectedTextStyle(value: PickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedTextStyle(value: PickerTextStyle): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -610,6 +660,8 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -634,6 +686,8 @@ selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -655,6 +709,8 @@ textStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerAttribute-textStyle(value: PickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-textStyle(value: PickerTextStyle): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,6 +736,8 @@ textStyle(style: Optional<PickerTextStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -704,6 +762,8 @@ textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -718,7 +778,7 @@ textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 onAccept(callback: (value: string, index: number) => void)
 ```
 
-点击弹窗中的“确定”按钮时触发该回调。该事件仅在文本滑动选择器弹窗中生效。
+点击弹窗中的“确定”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md)中生效。
 
 > **说明：** 
 > 
@@ -729,6 +789,8 @@ onAccept(callback: (value: string, index: number) => void)
 **废弃版本：** 10
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-TextPickerAttribute-onAccept(callback: (value: string, index: number) => void): TextPickerAttribute--><!--Device-TextPickerAttribute-onAccept(callback: (value: string, index: number) => void): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -744,7 +806,7 @@ onAccept(callback: (value: string, index: number) => void)
 onCancel(callback: () => void)
 ```
 
-点击弹窗中的“取消”按钮时触发该回调。该事件仅在文本滑动选择器弹窗中生效。
+点击弹窗中的“取消”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](arkts-arkui-textpicker-comp.md)中生效。
 
 > **说明：** 
 > 
@@ -755,6 +817,8 @@ onCancel(callback: () => void)
 **废弃版本：** 10
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-TextPickerAttribute-onCancel(callback: () => void): TextPickerAttribute--><!--Device-TextPickerAttribute-onCancel(callback: () => void): TextPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

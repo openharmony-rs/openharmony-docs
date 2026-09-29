@@ -8,6 +8,8 @@ The **cryptoFramework** module provides APIs for cryptographic operations, shiel
 - API version 12 and later: This API can be used in both the stage model and FA model.
 - API versions 9 to 11: This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace cryptoFramework--><!--Device-unnamed-declare namespace cryptoFramework-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework
 
 ## Modules to Import

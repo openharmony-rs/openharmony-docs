@@ -4,13 +4,15 @@
 declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>
 ```
 
-**继承/实现关系：** StepperItemAttribute extends CommonMethod&lt;StepperItemAttribute&gt;
+**继承/实现关系：** StepperItemAttribute extends CommonMethod<StepperItemAttribute>
 
 **起始版本：** 8
 
 **废弃版本：** 22
 
 **替代接口：** [SwiperAttribute](arkts-arkui-swiper-comp-attribute.md)
+
+<!--Device-unnamed-declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>--><!--Device-unnamed-declare class StepperItemAttribute extends CommonMethod<StepperItemAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ nextLabel(value: string)
 **替代接口：** showNext
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StepperItemAttribute-nextLabel(value: string): StepperItemAttribute--><!--Device-StepperItemAttribute-nextLabel(value: string): StepperItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ prevLabel(value: string)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-StepperItemAttribute-prevLabel(value: string): StepperItemAttribute--><!--Device-StepperItemAttribute-prevLabel(value: string): StepperItemAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -89,6 +95,8 @@ status(value?: ItemState)
 **替代接口：** [indicatorInteractive](arkts-arkui-swiper-comp-attribute.md#indicatorinteractive)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-StepperItemAttribute-status(value?: ItemState): StepperItemAttribute--><!--Device-StepperItemAttribute-status(value?: ItemState): StepperItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

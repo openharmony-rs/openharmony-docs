@@ -16,6 +16,8 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 
 **Since:** 20
 
+<!--Device-formProvider-function deactivateSceneAnimation(formId: string): Promise<void>--><!--Device-formProvider-function deactivateSceneAnimation(formId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

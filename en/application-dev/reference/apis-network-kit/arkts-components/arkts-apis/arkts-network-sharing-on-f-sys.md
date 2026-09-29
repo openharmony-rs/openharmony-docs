@@ -18,6 +18,8 @@ Registers the network sharing status change event. This API uses an asynchronous
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function on(type: 'sharingStateChange', callback: Callback<boolean>): void--><!--Device-sharing-function on(type: 'sharingStateChange', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -60,6 +62,8 @@ Subscribes to network sharing state changes of a specified NIC. This API uses an
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function on(type: 'interfaceSharingStateChange', callback: Callback<InterfaceSharingStateInfo>): void--><!--Device-sharing-function on(type: 'interfaceSharingStateChange', callback: Callback<InterfaceSharingStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -101,6 +105,8 @@ Subscribes to upstream network changes. This API uses an asynchronous callback t
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function on(type: 'sharingUpstreamChange', callback: Callback<NetHandle>): void--><!--Device-sharing-function on(type: 'sharingUpstreamChange', callback: Callback<NetHandle>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

@@ -20,6 +20,8 @@ Disable the geographical location simulation function.
 - API version 20 and later: ohos.permission.MOCK_LOCATION
 - API versions 9 to 19: N/A
 
+<!--Device-geoLocationManager-function disableLocationMock(): void--><!--Device-geoLocationManager-function disableLocationMock(): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

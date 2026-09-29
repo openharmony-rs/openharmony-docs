@@ -18,6 +18,8 @@ Sets the enabling state of geofencing. This API uses a promise to return the res
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setGeofenceEnabled(enabled: boolean): Promise<void>--><!--Device-notificationManager-function setGeofenceEnabled(enabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

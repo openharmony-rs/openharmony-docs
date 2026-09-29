@@ -4,13 +4,15 @@
 declare class DataPanelAttribute extends CommonMethod<DataPanelAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
 @extends CommonMethod [since 7 - 10] @extends CommonMethod&lt;DataPanelAttribute&gt; [since 11]
 
-**继承/实现关系：** DataPanelAttribute extends CommonMethod&lt;DataPanelAttribute&gt;
+**继承/实现关系：** DataPanelAttribute extends CommonMethod<DataPanelAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class DataPanelAttribute extends CommonMethod<DataPanelAttribute>--><!--Device-unnamed-declare class DataPanelAttribute extends CommonMethod<DataPanelAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ closeEffect(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DataPanelAttribute-closeEffect(value: boolean): DataPanelAttribute--><!--Device-DataPanelAttribute-closeEffect(value: boolean): DataPanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ contentModifier(modifier: ContentModifier<DataPanelConfiguration>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataPanelAttribute-contentModifier(modifier: ContentModifier<DataPanelConfiguration>): DataPanelAttribute--><!--Device-DataPanelAttribute-contentModifier(modifier: ContentModifier<DataPanelConfiguration>): DataPanelAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -71,6 +77,8 @@ strokeWidth(value: Length)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataPanelAttribute-strokeWidth(value: Length): DataPanelAttribute--><!--Device-DataPanelAttribute-strokeWidth(value: Length): DataPanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ trackBackgroundColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataPanelAttribute-trackBackgroundColor(value: ResourceColor): DataPanelAttribute--><!--Device-DataPanelAttribute-trackBackgroundColor(value: ResourceColor): DataPanelAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -116,6 +126,8 @@ trackShadow(value: DataPanelShadowOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataPanelAttribute-trackShadow(value: DataPanelShadowOptions): DataPanelAttribute--><!--Device-DataPanelAttribute-trackShadow(value: DataPanelShadowOptions): DataPanelAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -137,6 +149,8 @@ valueColors(value: Array<ResourceColor | LinearGradient>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataPanelAttribute-valueColors(value: Array<ResourceColor | LinearGradient>): DataPanelAttribute--><!--Device-DataPanelAttribute-valueColors(value: Array<ResourceColor | LinearGradient>): DataPanelAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

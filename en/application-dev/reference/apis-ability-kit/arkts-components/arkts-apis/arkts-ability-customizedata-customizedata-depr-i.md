@@ -17,6 +17,8 @@ The CustomizeData module provides custom metadata.
 
 **Substitutes:** [Metadata](arkts-ability-metadata-i.md)
 
+<!--Device-unnamed-export interface CustomizeData--><!--Device-unnamed-export interface CustomizeData-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## extra
@@ -36,6 +38,8 @@ Custom format of the data element. The value is an index to the resource that id
 **Deprecated since:** 9
 
 **Substitutes:** resource
+
+<!--Device-CustomizeData-extra: string--><!--Device-CustomizeData-extra: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -57,6 +61,8 @@ Key that identifies a data element.
 
 **Substitutes:** name
 
+<!--Device-CustomizeData-name: string--><!--Device-CustomizeData-name: string-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## value
@@ -76,5 +82,7 @@ Value of the data element.
 **Deprecated since:** 9
 
 **Substitutes:** value
+
+<!--Device-CustomizeData-value: string--><!--Device-CustomizeData-value: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

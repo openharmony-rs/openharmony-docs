@@ -10,6 +10,8 @@ The definition of command to be sent to the session
 
 **Since:** 10
 
+<!--Device-avSession-interface AVControlCommand--><!--Device-avSession-interface AVControlCommand-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ The command value [AVControlCommandType](arkts-avsession-avsession-avcontrolcomm
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVControlCommand-command: AVControlCommandType--><!--Device-AVControlCommand-command: AVControlCommandType-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -46,6 +50,8 @@ The command value [CommandInfo](arkts-avsession-avsession-commandinfo-i.md)
 
 **Since:** 22
 
+<!--Device-AVControlCommand-commandInfo?: CommandInfo--><!--Device-AVControlCommand-commandInfo?: CommandInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## parameter
@@ -60,6 +66,8 @@ parameter of the command. Whether this command requires parameters, see AVSessio
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVControlCommand-parameter?: LoopMode | string | double--><!--Device-AVControlCommand-parameter?: LoopMode | string | double-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core

@@ -18,6 +18,8 @@ Checks whether the ability that matches a given AbilityInfo object is enabled. T
 
 **Deprecated since:** 9
 
+<!--Device-bundle-function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void--><!--Device-bundle-function isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **Parameters:**
@@ -60,6 +62,8 @@ Checks whether the ability that matches a given AbilityInfo object is enabled. T
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-bundle-function isAbilityEnabled(info: AbilityInfo): Promise<boolean>--><!--Device-bundle-function isAbilityEnabled(info: AbilityInfo): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

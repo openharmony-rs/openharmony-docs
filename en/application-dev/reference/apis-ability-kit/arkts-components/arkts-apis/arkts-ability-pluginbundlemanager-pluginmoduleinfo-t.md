@@ -10,6 +10,8 @@ Indicates the plugin module info.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-pluginBundleManager-export type PluginModuleInfo = _PluginModuleInfo--><!--Device-pluginBundleManager-export type PluginModuleInfo = _PluginModuleInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Type:** _PluginModuleInfo

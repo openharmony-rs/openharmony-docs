@@ -8,6 +8,8 @@ A Caller UIAbility can use the [startAbilityByCall](arkts-ability-uiabilityconte
 
 **Since:** 9
 
+<!--Device-unnamed-export interface Caller--><!--Device-unnamed-export interface Caller-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Used by a Caller UIAbility to send serialized data, as agreed upon by both parti
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Caller-call(method: string, data: rpc.Parcelable): Promise<void>--><!--Device-Caller-call(method: string, data: rpc.Parcelable): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -122,6 +126,8 @@ Used by a Caller UIAbility to send serialized data to a Callee UIAbility and ret
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Caller-callWithResult(method: string, data: rpc.Parcelable): Promise<rpc.MessageSequence>--><!--Device-Caller-callWithResult(method: string, data: rpc.Parcelable): Promise<rpc.MessageSequence>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -221,6 +227,8 @@ Unregisters the listener for disconnection notifications from the Callee UIAbili
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Caller-off(type: 'release', callback: OnReleaseCallback): void--><!--Device-Caller-off(type: 'release', callback: OnReleaseCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Parameters:**
@@ -279,6 +287,8 @@ Unregisters the listener for disconnection notifications from the Callee UIAbili
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Caller-off(type: 'release'): void--><!--Device-Caller-off(type: 'release'): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -339,6 +349,8 @@ Used by the Caller UIAbility to register a listener for disconnection notificati
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Caller-on(type: 'release', callback: OnReleaseCallback): void--><!--Device-Caller-on(type: 'release', callback: OnReleaseCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Parameters:**
@@ -398,6 +410,8 @@ Used by the Caller UIAbility to register a listener for disconnection notificati
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Caller-onRelease(callback: OnReleaseCallback): void--><!--Device-Caller-onRelease(callback: OnReleaseCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Parameters:**
@@ -454,6 +468,8 @@ Called when the remote UIAbility state changes in the collaboration scenario. Th
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Caller-onRemoteStateChange(callback: OnRemoteStateChangeCallback): void--><!--Device-Caller-onRemoteStateChange(callback: OnRemoteStateChangeCallback): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -514,6 +530,8 @@ Used by a Caller UIAbility to proactively release the connection with the Callee
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Caller-release(): void--><!--Device-Caller-release(): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

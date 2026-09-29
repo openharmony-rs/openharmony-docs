@@ -16,6 +16,8 @@ Obtains the type of the SIM card in the specified slot. This API uses an asynchr
 
 **Since:** 7
 
+<!--Device-sim-function getCardType(slotId: int, callback: AsyncCallback<CardType>): void--><!--Device-sim-function getCardType(slotId: int, callback: AsyncCallback<CardType>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -59,6 +61,8 @@ function getCardType(slotId: number): Promise<CardType>
 Obtains the type of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-sim-function getCardType(slotId: int): Promise<CardType>--><!--Device-sim-function getCardType(slotId: int): Promise<CardType>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

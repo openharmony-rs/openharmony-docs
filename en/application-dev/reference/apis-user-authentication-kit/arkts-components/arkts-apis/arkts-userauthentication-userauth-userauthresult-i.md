@@ -8,6 +8,8 @@ Represents the user authentication result. If the authentication is successful, 
 
 **Since:** 10
 
+<!--Device-userAuth-interface UserAuthResult--><!--Device-userAuth-interface UserAuthResult-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Authentication type that is actually used when the authentication is successful.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResult-authType?: UserAuthType--><!--Device-UserAuthResult-authType?: UserAuthType-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -44,7 +48,9 @@ Enrolled credential status returned when the authentication is successful. It co
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResult-enrolledState?: EnrolledState--><!--Device-UserAuthResult-enrolledState?: EnrolledState-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -69,7 +75,9 @@ For details about the complete error code list, see [UserAuthResultCode](arkts-u
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResult-result: int--><!--Device-UserAuthResult-result: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -85,6 +93,8 @@ Token information returned when the authentication is successful. The token cont
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-UserAuthResult-token?: Uint8Array--><!--Device-UserAuthResult-token?: Uint8Array-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

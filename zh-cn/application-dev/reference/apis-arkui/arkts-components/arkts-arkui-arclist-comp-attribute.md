@@ -4,11 +4,13 @@
 export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>
 ```
 
-除支持通用属性外，还支持以下属性（不支持[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)）：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性（不支持[滚动组件通用属性](arkts-arkui-common-comp-scrollablecommonmethod-c.md)）：
 
-**继承/实现关系：** ArcListAttribute extends CommonMethod&lt;ArcListAttribute&gt;
+**继承/实现关系：** ArcListAttribute extends CommonMethod<ArcListAttribute>
 
 **起始版本：** 18
+
+<!--Device-unnamed-export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>--><!--Device-unnamed-export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -29,6 +31,8 @@ cachedCount(count: Optional<number>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-cachedCount(count: Optional<number>): ArcListAttribute--><!--Device-ArcListAttribute-cachedCount(count: Optional<number>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -52,6 +56,8 @@ chainAnimation(enable: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-chainAnimation(enable: Optional<boolean>): ArcListAttribute--><!--Device-ArcListAttribute-chainAnimation(enable: Optional<boolean>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -71,6 +77,8 @@ childrenMainSize(size: Optional<ChildrenMainSize>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute--><!--Device-ArcListAttribute-childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -92,6 +100,8 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribute--><!--Device-ArcListAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -111,6 +121,8 @@ enableScrollInteraction(enable: Optional<boolean>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute--><!--Device-ArcListAttribute-enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -132,6 +144,8 @@ fadingEdge(enable: Optional<boolean>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-fadingEdge(enable: Optional<boolean>): ArcListAttribute--><!--Device-ArcListAttribute-fadingEdge(enable: Optional<boolean>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -151,6 +165,8 @@ flingSpeedLimit(speed: Optional<number>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-flingSpeedLimit(speed: Optional<number>): ArcListAttribute--><!--Device-ArcListAttribute-flingSpeedLimit(speed: Optional<number>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -172,6 +188,8 @@ friction(friction: Optional<number>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-friction(friction: Optional<number>): ArcListAttribute--><!--Device-ArcListAttribute-friction(friction: Optional<number>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -191,6 +209,8 @@ onDidScroll(handler: Optional<OnScrollCallback>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -214,6 +234,8 @@ ArcList边缘效果为弹簧效果时，滑动经过末尾位置时触发一次�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -235,6 +257,8 @@ onReachStart(handler: Optional<VoidCallback>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-onReachStart(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onReachStart(handler: Optional<VoidCallback>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -258,6 +282,8 @@ ArcList的边缘效果为弹簧效果时，在ArcList滑动到边缘后继续滑
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute--><!--Device-ArcListAttribute-onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -277,6 +303,8 @@ onScrollStart(handler: Optional<VoidCallback>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -298,6 +326,8 @@ onScrollStop(handler: Optional<VoidCallback>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -317,6 +347,8 @@ onWillScroll(handler: Optional<OnWillScrollCallback>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -338,6 +370,8 @@ scrollBar(status: Optional<BarState>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-scrollBar(status: Optional<BarState>): ArcListAttribute--><!--Device-ArcListAttribute-scrollBar(status: Optional<BarState>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -357,6 +391,8 @@ scrollBarColor(color: Optional<ColorMetrics>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute--><!--Device-ArcListAttribute-scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -378,6 +414,8 @@ scrollBarWidth(width: Optional<LengthMetrics>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListAttribute-scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute--><!--Device-ArcListAttribute-scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数：**
@@ -397,6 +435,8 @@ space(space: Optional<LengthMetrics>)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcListAttribute-space(space: Optional<LengthMetrics>): ArcListAttribute--><!--Device-ArcListAttribute-space(space: Optional<LengthMetrics>): ArcListAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

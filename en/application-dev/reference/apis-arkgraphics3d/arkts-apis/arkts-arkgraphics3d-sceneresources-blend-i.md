@@ -10,6 +10,8 @@ Controls the transparency of materials.
 
 **Since:** 20
 
+<!--Device-unnamed-export interface Blend--><!--Device-unnamed-export interface Blend-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## enabled
@@ -23,5 +25,7 @@ Whether the transparency of the material is enabled. true if enabled, false othe
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-Blend-enabled: boolean--><!--Device-Blend-enabled: boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

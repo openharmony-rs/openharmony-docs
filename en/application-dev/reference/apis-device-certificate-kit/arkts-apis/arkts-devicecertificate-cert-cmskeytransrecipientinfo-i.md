@@ -8,6 +8,8 @@ Represents KeyTrans recipient information for CMS enveloped data.
 
 **Since:** 22
 
+<!--Device-cert-interface CmsKeyTransRecipientInfo--><!--Device-cert-interface CmsKeyTransRecipientInfo-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -28,6 +30,8 @@ RSA certificate.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsKeyTransRecipientInfo-cert: X509Cert--><!--Device-CmsKeyTransRecipientInfo-cert: X509Cert-End-->
 
 **System capability:** SystemCapability.Security.Cert

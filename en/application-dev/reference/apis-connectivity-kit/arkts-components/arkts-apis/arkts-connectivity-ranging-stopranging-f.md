@@ -20,6 +20,8 @@ Stops ongoing ranging operations. If no target device is specified, stops rangin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function stopRanging(callback: Callback<RangingResult>, params?: RangingParams): void--><!--Device-ranging-function stopRanging(callback: Callback<RangingResult>, params?: RangingParams): void-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Parameters:**

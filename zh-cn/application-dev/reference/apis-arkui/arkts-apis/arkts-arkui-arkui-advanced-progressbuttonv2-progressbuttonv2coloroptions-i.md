@@ -12,6 +12,8 @@ export declare interface ProgressButtonV2ColorOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions--><!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ backgroundColor?: ColorMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonV2ColorOptions-backgroundColor?: ColorMetrics--><!--Device-ProgressButtonV2ColorOptions-backgroundColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderColor
@@ -53,6 +57,8 @@ borderColor?: ColorMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonV2ColorOptions-borderColor?: ColorMetrics--><!--Device-ProgressButtonV2ColorOptions-borderColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ progressColor?: ColorMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButtonV2ColorOptions-progressColor?: ColorMetrics--><!--Device-ProgressButtonV2ColorOptions-progressColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## textColor
@@ -89,5 +97,7 @@ textColor?: ColorMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButtonV2ColorOptions-textColor?: ColorMetrics--><!--Device-ProgressButtonV2ColorOptions-textColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

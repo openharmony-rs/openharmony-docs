@@ -10,6 +10,8 @@ CommonShapeMethod
 
 **Since:** 7
 
+<!--Device-unnamed-declare class CommonShapeMethod<T> extends CommonMethod<T>--><!--Device-unnamed-declare class CommonShapeMethod<T> extends CommonMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -25,6 +27,8 @@ constructor.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonShapeMethod-constructor()--><!--Device-CommonShapeMethod-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,6 +8,8 @@ The **brightness** module provides an API for setting the screen brightness.
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace brightness--><!--Device-unnamed-declare namespace brightness-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager
 
 **System API:** This is a system API.

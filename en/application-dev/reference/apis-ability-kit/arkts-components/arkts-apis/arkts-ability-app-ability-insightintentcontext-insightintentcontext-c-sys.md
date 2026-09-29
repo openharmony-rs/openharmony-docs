@@ -8,6 +8,8 @@ The module provides the context for intent execution. It is used as a property i
 
 **Since:** 11
 
+<!--Device-unnamed-declare class InsightIntentContext--><!--Device-unnamed-declare class InsightIntentContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Tool call ID passed by the caller, used to associate this intent execute with a 
 **Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentContext-readonly toolCallId?: string--><!--Device-InsightIntentContext-readonly toolCallId?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

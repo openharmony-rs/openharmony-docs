@@ -12,4 +12,6 @@ The context of print extension. It allows access to serviceExtension-specific re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class PrintExtensionContext extends ExtensionContext--><!--Device-unnamed-export default class PrintExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework

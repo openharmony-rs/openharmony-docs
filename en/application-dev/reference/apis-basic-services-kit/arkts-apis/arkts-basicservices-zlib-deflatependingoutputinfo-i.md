@@ -8,6 +8,8 @@ DeflatePending return value information.
 
 **Since:** 12
 
+<!--Device-zlib-interface DeflatePendingOutputInfo--><!--Device-zlib-interface DeflatePendingOutputInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Number of output bits that have been generated.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeflatePendingOutputInfo-bits: int--><!--Device-DeflatePendingOutputInfo-bits: int-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -44,7 +48,9 @@ Number of output bytes that have been generated.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeflatePendingOutputInfo-pending: int--><!--Device-DeflatePendingOutputInfo-pending: int-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -60,6 +66,8 @@ For details, see [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md).
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeflatePendingOutputInfo-status: ReturnStatus--><!--Device-DeflatePendingOutputInfo-status: ReturnStatus-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

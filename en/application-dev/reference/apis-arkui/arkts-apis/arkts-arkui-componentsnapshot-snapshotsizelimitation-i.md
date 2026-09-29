@@ -8,6 +8,8 @@ Defines the size limit of a component screenshot.
 
 **Since:** 26.0.0
 
+<!--Device-componentSnapshot-interface SnapshotSizeLimitation--><!--Device-componentSnapshot-interface SnapshotSizeLimitation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Unit: px.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SnapshotSizeLimitation-maxHeight: int--><!--Device-SnapshotSizeLimitation-maxHeight: int-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxWidth
@@ -57,5 +61,7 @@ Unit: px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SnapshotSizeLimitation-maxWidth: int--><!--Device-SnapshotSizeLimitation-maxWidth: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

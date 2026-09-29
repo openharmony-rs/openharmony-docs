@@ -8,6 +8,8 @@ Defines the target element for privacy computation, including the raw element da
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-interface TargetElement--><!--Device-privacyComputation-interface TargetElement-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -31,6 +33,8 @@ The raw data of the target element to be searched for.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-TargetElement-elemData: Uint8Array--><!--Device-TargetElement-elemData: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## hashAlg
@@ -48,5 +52,7 @@ The hash algorithm used for hashing the target element. If not specified, the el
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-TargetElement-hashAlg?: HashAlg--><!--Device-TargetElement-hashAlg?: HashAlg-End-->
 
 **System capability:** SystemCapability.Security.Asset

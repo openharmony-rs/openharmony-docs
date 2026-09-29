@@ -8,6 +8,8 @@ Defines the options used in **createWriteStream()**.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface WriteStreamOptions--><!--Device-unnamed-export interface WriteStreamOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -44,6 +46,8 @@ is not allowed.
 
 **Since:** 12
 
+<!--Device-WriteStreamOptions-mode?: number--><!--Device-WriteStreamOptions-mode?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## start
@@ -57,5 +61,7 @@ Start position to write the data, in bytes. This parameter is optional. By defau
 **Type:** number
 
 **Since:** 12
+
+<!--Device-WriteStreamOptions-start?: number--><!--Device-WriteStreamOptions-start?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

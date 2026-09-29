@@ -18,6 +18,8 @@ Records the trigger event type and time before the start of the animation scene.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-performanceMonitor-function recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): void--><!--Device-performanceMonitor-function recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

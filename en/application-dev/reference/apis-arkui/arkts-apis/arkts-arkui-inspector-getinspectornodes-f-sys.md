@@ -14,6 +14,8 @@ Get inspector node infos.
 
 **Substitutes:** [getInspectorTree](arkts-arkui-global-getinspectortree-f.md)
 
+<!--Device-unnamed-declare function getInspectorNodes(): object--><!--Device-unnamed-declare function getInspectorNodes(): object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

@@ -21,6 +21,8 @@ Removes all notifications for a specified application. This API uses an asynchro
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function removeAll(bundle: BundleOption, callback: AsyncCallback<void>): void--><!--Device-notification-function removeAll(bundle: BundleOption, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -51,6 +53,8 @@ Removes all notifications. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function removeAll(callback: AsyncCallback<void>): void--><!--Device-notification-function removeAll(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -79,6 +83,8 @@ Removes all notifications for a specified user. This API uses an asynchronous ca
 **Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function removeAll(userId: number, callback: AsyncCallback<void>): void--><!--Device-notification-function removeAll(userId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -109,6 +115,8 @@ Removes all notifications for a specified user. This API uses a promise to retur
 **Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function removeAll(userId: number): Promise<void>--><!--Device-notification-function removeAll(userId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -144,6 +152,8 @@ Removes all notifications for a specified application. This API uses a promise t
 **Substitutes:** [removeAll](arkts-notification-notificationsubscribe-removeall-f-sys.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function removeAll(bundle?: BundleOption): Promise<void>--><!--Device-notification-function removeAll(bundle?: BundleOption): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

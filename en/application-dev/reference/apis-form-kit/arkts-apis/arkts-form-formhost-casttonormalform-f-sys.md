@@ -18,6 +18,8 @@ Converts a temporary widget to a normal one. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function castToNormalForm(formId: string, callback: AsyncCallback<void>): void--><!--Device-formHost-function castToNormalForm(formId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ Converts a temporary widget to a normal one. This API uses a promise to return t
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function castToNormalForm(formId: string): Promise<void>--><!--Device-formHost-function castToNormalForm(formId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

@@ -18,6 +18,8 @@ Obtains the information about a specified network interface. This API uses an as
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-ethernet-function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfiguration>): void--><!--Device-ethernet-function getIfaceConfig(iface: string, callback: AsyncCallback<InterfaceConfiguration>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Obtains the information about a specified network interface. This API uses a pro
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-ethernet-function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>--><!--Device-ethernet-function getIfaceConfig(iface: string): Promise<InterfaceConfiguration>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 

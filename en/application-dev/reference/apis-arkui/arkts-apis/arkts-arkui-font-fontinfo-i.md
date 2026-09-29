@@ -8,6 +8,8 @@ Information about the system font.
 
 **Since:** 10
 
+<!--Device-font-interface FontInfo--><!--Device-font-interface FontInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Family of the system font.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FontInfo-family: string--><!--Device-FontInfo-family: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fullName
@@ -50,6 +54,8 @@ Name of the system font.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FontInfo-fullName: string--><!--Device-FontInfo-fullName: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## italic
@@ -62,7 +68,7 @@ Whether the system font is italic.
 
 Default value: **false**
 
-**true**: The system font is italic. **false**: The system font is not italic.
+The value **true** indicates an italic font, and **false** indicates a non-italic font.
 
 **Type:** boolean
 
@@ -71,6 +77,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FontInfo-italic: boolean--><!--Device-FontInfo-italic: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +92,7 @@ Whether the system font is monospaced.
 
 Default value: **false**
 
-**true**: The system font is monospaced. **false**: The system font is not monospaced.
+The value **true** indicates a monospaced font, and **false** indicates a non-monospaced font.
 
 **Type:** boolean
 
@@ -93,6 +101,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FontInfo-monoSpace: boolean--><!--Device-FontInfo-monoSpace: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +122,8 @@ File path of the system font.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FontInfo-path: string--><!--Device-FontInfo-path: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## postScriptName
@@ -129,6 +141,8 @@ PostScript name of the system font.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FontInfo-postScriptName: string--><!--Device-FontInfo-postScriptName: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,6 +162,8 @@ Subfamily of the system font.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FontInfo-subfamily: string--><!--Device-FontInfo-subfamily: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolic
@@ -156,11 +172,11 @@ Subfamily of the system font.
 symbolic: boolean
 ```
 
-Whether the system font supports symbols.
+Whether the system font supports symbolic fonts.
 
 Default value: **false**
 
-**true**: The system font supports symbols. **false**: The system font does not support symbols.
+The value **true** indicates that symbolic fonts are supported, and **false** indicates that symbolic fonts are not supported.
 
 **Type:** boolean
 
@@ -169,6 +185,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FontInfo-symbolic: boolean--><!--Device-FontInfo-symbolic: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,9 +198,7 @@ weight: number
 
 Weight of the system font.
 
-Value range: [100, 900], with intervals of 100, corresponding to the values in the [FontWeight](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontweight-e.md) enum
-
-Default value: **100**
+Value range: [100, 900], with an interval of 100, corresponding to the values in [FontWeight](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontweight-e.md).
 
 **Type:** number
 
@@ -191,6 +207,8 @@ Default value: **100**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FontInfo-weight: number--><!--Device-FontInfo-weight: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -202,7 +220,7 @@ width: number
 
 Width of the system font.
 
-Value range: [1, 9], with intervals of 1, corresponding to the values in the [FontWidth](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontwidth-e.md) enum
+Value range: [1, 9], with an interval of 1, corresponding to the values in [FontWidth](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontwidth-e.md).
 
 **Type:** number
 
@@ -211,5 +229,7 @@ Value range: [1, 9], with intervals of 1, corresponding to the values in the [Fo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FontInfo-width: number--><!--Device-FontInfo-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

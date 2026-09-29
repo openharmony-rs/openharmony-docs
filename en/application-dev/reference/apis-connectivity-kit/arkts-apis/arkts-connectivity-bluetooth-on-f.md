@@ -22,6 +22,8 @@ Subscribe the event reported when a remote Bluetooth device is discovered.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function on(type: 'bluetoothDeviceFind', callback: Callback<Array<string>>): void--><!--Device-bluetooth-function on(type: 'bluetoothDeviceFind', callback: Callback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -56,6 +58,8 @@ Subscribe the event reported when a remote Bluetooth device is bonded.
 **Substitutes:** bondStateChange
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-bluetooth-function on(type: 'bondStateChange', callback: Callback<BondStateParam>): void--><!--Device-bluetooth-function on(type: 'bondStateChange', callback: Callback<BondStateParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -92,6 +96,8 @@ Subscribe the event of a pairing request from a remote Bluetooth device.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-bluetooth-function on(type: 'pinRequired', callback: Callback<PinRequiredParam>): void--><!--Device-bluetooth-function on(type: 'pinRequired', callback: Callback<PinRequiredParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -127,6 +133,8 @@ Subscribe the event reported when the Bluetooth state changes.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function on(type: 'stateChange', callback: Callback<BluetoothState>): void--><!--Device-bluetooth-function on(type: 'stateChange', callback: Callback<BluetoothState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -159,6 +167,8 @@ Subscribe the event reported when data is read from the socket.
 **Deprecated since:** 9
 
 **Substitutes:** sppRead
+
+<!--Device-bluetooth-function on(type: 'sppRead', clientSocket: number, callback: Callback<ArrayBuffer>): void--><!--Device-bluetooth-function on(type: 'sppRead', clientSocket: number, callback: Callback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

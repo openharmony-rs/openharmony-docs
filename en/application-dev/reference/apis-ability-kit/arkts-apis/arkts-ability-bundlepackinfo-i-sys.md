@@ -8,6 +8,8 @@ The bundle pack info class.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface BundlePackInfo--><!--Device-unnamed-export interface BundlePackInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Package configuration information in the **pack.info** file.
 
 **Since:** 9
 
+<!--Device-BundlePackInfo-readonly packages: Array<PackageConfig>--><!--Device-BundlePackInfo-readonly packages: Array<PackageConfig>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Package summary information in the **pack.info** file.
 **Type:** [PackageSummary](arkts-ability-bundlepackinfo-packagesummary-i-sys.md)
 
 **Since:** 9
+
+<!--Device-BundlePackInfo-readonly summary: PackageSummary--><!--Device-BundlePackInfo-readonly summary: PackageSummary-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

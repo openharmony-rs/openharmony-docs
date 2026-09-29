@@ -8,6 +8,8 @@ Defines the notification flags.
 
 **Since:** 8
 
+<!--Device-unnamed-export interface NotificationFlags--><!--Device-unnamed-export interface NotificationFlags-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## bannerEnabled
@@ -22,6 +24,8 @@ Settings of banner for the notification. The default value is **TYPE_NONE**. Onl
 
 **Since:** 23
 
+<!--Device-NotificationFlags-bannerEnabled?: NotificationFlagStatus--><!--Device-NotificationFlags-bannerEnabled?: NotificationFlagStatus-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## lockScreenEnabled
@@ -35,6 +39,8 @@ Settings of screen lock for the notification. The default value is **TYPE_NONE**
 **Type:** [NotificationFlagStatus](arkts-notification-notificationflags-notificationflagstatus-e.md)
 
 **Since:** 23
+
+<!--Device-NotificationFlags-lockScreenEnabled?: NotificationFlagStatus--><!--Device-NotificationFlags-lockScreenEnabled?: NotificationFlagStatus-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -52,6 +58,8 @@ Settings of sound for the notification. The default value is **TYPE_NONE**. This
 
 **Since:** 8
 
+<!--Device-NotificationFlags-soundEnabled?: NotificationFlagStatus--><!--Device-NotificationFlags-soundEnabled?: NotificationFlagStatus-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## vibrationEnabled
@@ -67,5 +75,7 @@ Settings of vibration for the notification. The default value is **TYPE_NONE**. 
 **Type:** [NotificationFlagStatus](arkts-notification-notificationflags-notificationflagstatus-e.md)
 
 **Since:** 8
+
+<!--Device-NotificationFlags-vibrationEnabled?: NotificationFlagStatus--><!--Device-NotificationFlags-vibrationEnabled?: NotificationFlagStatus-End-->
 
 **System capability:** SystemCapability.Notification.Notification

@@ -9,6 +9,8 @@ The **socket** module implements data transfer over TCP, UDP, Web, and TLS socke
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace socket--><!--Device-unnamed-declare namespace socket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -65,18 +67,18 @@ import { socket } from '@kit.NetworkKit';
 | [UDPSendOptions](arkts-network-socket-udpsendoptions-i.md) | Defines the parameters for sending data over a UDP socket connection. |
 | [UDPSocket](arkts-network-socket-udpsocket-i.md) | Defines a UDP socket connection. Before calling UDPSocket APIs, you need to call [socket.constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md) to create a **UDPSocket** object. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | Defines the certificate raw data. |
+
 ### Enums
 
 | Name | Description |
 | --- | --- |
 | [Protocol](arkts-network-socket-protocol-e.md) | Enumerates TLS protocol versions. |
 | [ProxyTypes](arkts-network-socket-proxytypes-e.md) | Enumerates socket proxy types. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | Defines the certificate raw data. |
 
 ### Properties
 

@@ -20,6 +20,8 @@ If no asset is found, an exception indicating that no asset is found is thrown i
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function query(query: AssetMap): Promise<Array<AssetMap>>--><!--Device-asset-function query(query: AssetMap): Promise<Array<AssetMap>>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

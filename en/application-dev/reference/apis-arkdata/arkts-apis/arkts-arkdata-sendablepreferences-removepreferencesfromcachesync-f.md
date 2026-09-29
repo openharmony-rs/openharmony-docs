@@ -18,6 +18,8 @@ Removes a **Preferences** instance from the cache. This API returns the result s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendablePreferences-function removePreferencesFromCacheSync(context: Context, options: Options): void--><!--Device-sendablePreferences-function removePreferencesFromCacheSync(context: Context, options: Options): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**

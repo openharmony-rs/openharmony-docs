@@ -8,6 +8,8 @@ build的可选参数。
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface BuildOptions--><!--Device-unnamed-export interface BuildOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableProvideConsumeCrossing
@@ -32,6 +34,8 @@ true表示支持，false表示不支持。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-BuildOptions-enableProvideConsumeCrossing?: boolean--><!--Device-BuildOptions-enableProvideConsumeCrossing?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## localStorage
@@ -51,6 +55,8 @@ localStorage?: LocalStorage
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuildOptions-localStorage?: LocalStorage--><!--Device-BuildOptions-localStorage?: LocalStorage-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,5 +79,7 @@ nestingBuilderSupported?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BuildOptions-nestingBuilderSupported?: boolean--><!--Device-BuildOptions-nestingBuilderSupported?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

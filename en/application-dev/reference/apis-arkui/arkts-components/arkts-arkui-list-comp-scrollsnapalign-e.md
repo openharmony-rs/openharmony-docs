@@ -8,6 +8,8 @@ Enumerates the alignment modes of list items when scrolling ends.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum ScrollSnapAlign--><!--Device-unnamed-declare enum ScrollSnapAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NONE
@@ -16,13 +18,15 @@ Enumerates the alignment modes of list items when scrolling ends.
 NONE = 0
 ```
 
-No alignment. This is the default value.
+No list item scroll-end alignment effect by default.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScrollSnapAlign-NONE = 0--><!--Device-ScrollSnapAlign-NONE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ When the list hits the end, the items at the end must be completely displayed. I
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScrollSnapAlign-START = 1--><!--Device-ScrollSnapAlign-START = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER
@@ -64,6 +70,8 @@ The top and end items can be aligned to the center of the list. In this case, wh
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScrollSnapAlign-CENTER = 2--><!--Device-ScrollSnapAlign-CENTER = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -83,5 +91,7 @@ When the list hits the start, the items at the start must be completely displaye
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScrollSnapAlign-END = 3--><!--Device-ScrollSnapAlign-END = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

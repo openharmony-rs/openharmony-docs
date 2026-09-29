@@ -820,7 +820,7 @@
   - [DatePickerResult](arkts-arkui-datepicker-comp-datepickerresult-i.md)
   - [LunarSwitchStyle](arkts-arkui-datepicker-comp-lunarswitchstyle-i.md)
   - [DatePickerMode](arkts-arkui-datepicker-comp-datepickermode-e.md)
-- [DepthComponent](arkts-arkui-depthcomponent-comp-sys.md)
+- [DepthComponent(System API)](arkts-arkui-depthcomponent-comp-sys.md)
   - [DepthComponent properties/events](arkts-arkui-depthcomponent-comp-attribute.md)
   <!--Del-->
   - [CameraBufferCrop(system api)](arkts-arkui-depthcomponent-comp-camerabuffercrop-i-sys.md)<!--DelEnd-->
@@ -1495,7 +1495,7 @@
   - [ProgressType](arkts-arkui-progress-comp-progresstype-e.md)
 - [QRCode](arkts-arkui-qrcode-comp.md)
   - [QRCode properties/events](arkts-arkui-qrcode-comp-attribute.md)
-- [Radio](arkts-arkui-radio-comp.md)
+- [Radio(Radio)](arkts-arkui-radio-comp.md)
   - [Radio properties/events](arkts-arkui-radio-comp-attribute.md)
   - [RadioConfiguration](arkts-arkui-radio-comp-radioconfiguration-i.md)
   - [RadioOptions](arkts-arkui-radio-comp-radiooptions-i.md)
@@ -1547,7 +1547,7 @@
   - [RRect(system api)](arkts-arkui-remotewindow-comp-rrect-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [WindowAnimationTarget(system api)](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md)<!--DelEnd-->
-- [Repeat(Defines Repeat component.)](arkts-arkui-repeat-comp.md)
+- [Repeat](arkts-arkui-repeat-comp.md)
   - [Repeat properties/events](arkts-arkui-repeat-comp-attribute.md)
   - [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md)
   - [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md)
@@ -1891,6 +1891,7 @@
   - [DrawableTabBarIndicator](arkts-arkui-tabcontent-comp-drawabletabbarindicator-i.md)
   - [IndicatorStyle](arkts-arkui-tabcontent-comp-indicatorstyle-i.md)
   - [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md)
+  - [TabBarBadgeStyle](arkts-arkui-tabcontent-comp-tabbarbadgestyle-i.md)
   - [TabBarIconStyle](arkts-arkui-tabcontent-comp-tabbariconstyle-i.md)
   - [TabBarOptions](arkts-arkui-tabcontent-comp-tabbaroptions-i.md)
   - [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md)
@@ -1900,9 +1901,11 @@
   - [DrawableTabBarIndicator](arkts-arkui-tabcontent-comp-drawabletabbarindicator-i.md)
   - [IndicatorStyle](arkts-arkui-tabcontent-comp-indicatorstyle-i.md)
   - [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md)
+  - [TabBarBadgeStyle](arkts-arkui-tabcontent-comp-tabbarbadgestyle-i.md)
   - [TabBarIconStyle](arkts-arkui-tabcontent-comp-tabbariconstyle-i.md)
   - [TabBarOptions](arkts-arkui-tabcontent-comp-tabbaroptions-i.md)
   - [DrawableDescriptor](arkts-arkui-tabcontent-comp-drawabledescriptor-t.md)
+  - [TabBarBadgeType](arkts-arkui-tabcontent-comp-tabbarbadgetype-t.md)
   - [LayoutMode](arkts-arkui-tabcontent-comp-layoutmode-e.md)
   - [SelectedMode](arkts-arkui-tabcontent-comp-selectedmode-e.md)
   - [TabVisibility](arkts-arkui-tabcontent-comp-tabvisibility-e.md)

@@ -8,6 +8,8 @@ Provides the video recorder profile definitions.
 
 **Since:** 9
 
+<!--Device-media-interface VideoRecorderProfile--><!--Device-media-interface VideoRecorderProfile-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the audio bit rate, in bit/s.
 
 **Since:** 9
 
+<!--Device-VideoRecorderProfile-readonly audioBitrate: int--><!--Device-VideoRecorderProfile-readonly audioBitrate: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates the number of audio channels.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-VideoRecorderProfile-readonly audioChannels: int--><!--Device-VideoRecorderProfile-readonly audioChannels: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -62,6 +68,8 @@ Indicates the audio encoding format.
 
 **Since:** 9
 
+<!--Device-VideoRecorderProfile-readonly audioCodec: CodecMimeType--><!--Device-VideoRecorderProfile-readonly audioCodec: CodecMimeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Indicates the audio sampling rate, in Hz.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-VideoRecorderProfile-readonly audioSampleRate: int--><!--Device-VideoRecorderProfile-readonly audioSampleRate: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -94,6 +104,8 @@ Indicates the output file format.
 
 **Since:** 9
 
+<!--Device-VideoRecorderProfile-readonly fileFormat: ContainerFormatType--><!--Device-VideoRecorderProfile-readonly fileFormat: ContainerFormatType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Indicates the video bit rate, in bit/s.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-VideoRecorderProfile-readonly videoBitrate: int--><!--Device-VideoRecorderProfile-readonly videoBitrate: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -126,6 +140,8 @@ Indicates the video encoding format.
 
 **Since:** 9
 
+<!--Device-VideoRecorderProfile-readonly videoCodec: CodecMimeType--><!--Device-VideoRecorderProfile-readonly videoCodec: CodecMimeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -141,6 +157,8 @@ Indicates the video height, in px.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-VideoRecorderProfile-readonly videoFrameHeight: int--><!--Device-VideoRecorderProfile-readonly videoFrameHeight: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -158,6 +176,8 @@ Indicates the video frame rate, in fps.
 
 **Since:** 9
 
+<!--Device-VideoRecorderProfile-readonly videoFrameRate: int--><!--Device-VideoRecorderProfile-readonly videoFrameRate: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -173,6 +193,8 @@ Indicates the video width, in px.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-VideoRecorderProfile-readonly videoFrameWidth: int--><!--Device-VideoRecorderProfile-readonly videoFrameWidth: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 

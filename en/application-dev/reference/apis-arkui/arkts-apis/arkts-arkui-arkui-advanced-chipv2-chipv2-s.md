@@ -16,6 +16,8 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct ChipV2--><!--Device-unnamed-export declare struct ChipV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Constructs the UI structure of the advanced **ChipV2** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2-build(): void--><!--Device-ChipV2-build(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## chipV2Options
@@ -57,5 +61,7 @@ Parameters of the **ChipV2** component, which are used to customize the appearan
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2-readonly chipV2Options: ChipV2Options--><!--Device-ChipV2-readonly chipV2Options: ChipV2Options-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

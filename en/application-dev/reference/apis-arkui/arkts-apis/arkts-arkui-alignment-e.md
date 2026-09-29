@@ -4,9 +4,11 @@
 declare enum Alignment
 ```
 
-Alignment enumeration description.
+Defines the alignment mode for child elements in the container drawing area.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum Alignment--><!--Device-unnamed-declare enum Alignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ Alignment enumeration description.
 TopStart
 ```
 
-Top Start.
+Top start.
 
 **Since:** 7
 
@@ -25,6 +27,8 @@ Top Start.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +38,7 @@ Top Start.
 Top
 ```
 
-The top is centered horizontally.
+Horizontally centered on the top.
 
 **Since:** 7
 
@@ -43,6 +47,8 @@ The top is centered horizontally.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,7 @@ The top is centered horizontally.
 TopEnd
 ```
 
-Top tail end.
+Top end.
 
 **Since:** 7
 
@@ -61,6 +67,8 @@ Top tail end.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +78,7 @@ Top tail end.
 Start
 ```
 
-The starting end is centered longitudinally.
+Vertically centered start.
 
 **Since:** 7
 
@@ -79,6 +87,8 @@ The starting end is centered longitudinally.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +98,7 @@ The starting end is centered longitudinally.
 Center
 ```
 
-Center horizontal and vertical.
+Horizontally and vertically centered.
 
 **Since:** 7
 
@@ -97,6 +107,8 @@ Center horizontal and vertical.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-Center--><!--Device-Alignment-Center-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +118,7 @@ Center horizontal and vertical.
 End
 ```
 
-The tail end is centered longitudinally.
+Vertically centered end.
 
 **Since:** 7
 
@@ -115,6 +127,8 @@ The tail end is centered longitudinally.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-End--><!--Device-Alignment-End-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +138,7 @@ The tail end is centered longitudinally.
 BottomStart
 ```
 
-Bottom starting end.
+Bottom start.
 
 **Since:** 7
 
@@ -133,6 +147,8 @@ Bottom starting end.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +158,7 @@ Bottom starting end.
 Bottom
 ```
 
-The bottom is centered horizontally.
+Horizontally centered on the bottom.
 
 **Since:** 7
 
@@ -151,6 +167,8 @@ The bottom is centered horizontally.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,5 +187,7 @@ Bottom end.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

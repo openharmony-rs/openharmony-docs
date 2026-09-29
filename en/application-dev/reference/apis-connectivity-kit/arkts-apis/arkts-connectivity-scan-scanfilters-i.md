@@ -8,6 +8,8 @@ Defines the scan filters
 
 **Since:** 26.0.0
 
+<!--Device-scan-interface ScanFilters--><!--Device-scan-interface ScanFilters-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Device address. By default, this field is not used if it is not set. The address
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScanFilters-address?: string--><!--Device-ScanFilters-address?: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## deviceName
@@ -45,6 +49,8 @@ Device name. The value contains 0 to 30 characters. By default, this field is no
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanFilters-deviceName?: string--><!--Device-ScanFilters-deviceName?: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Manufacturer data. By default, this field is not used if it is not set. **manufa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScanFilters-manufacturerData?: ArrayBuffer--><!--Device-ScanFilters-manufacturerData?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## manufacturerDataMask
@@ -77,6 +85,8 @@ Manufacturer data mask. By default, this field is not used if it is not set. Thi
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanFilters-manufacturerDataMask?: ArrayBuffer--><!--Device-ScanFilters-manufacturerDataMask?: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -94,6 +104,8 @@ Manufacturer ID. The value range is [1, 65535]. By default, this field is not us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScanFilters-manufacturerId?: int--><!--Device-ScanFilters-manufacturerId?: int-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## rssi
@@ -109,5 +121,7 @@ RSSI threshold, in dBm. The value range is this threshold will be filtered out. 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScanFilters-rssi?: int--><!--Device-ScanFilters-rssi?: int-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

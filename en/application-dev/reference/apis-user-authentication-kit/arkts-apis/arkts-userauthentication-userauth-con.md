@@ -12,6 +12,8 @@ Maximum reuse duration of the authentication result, in milliseconds. The value 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-userAuth-const MAX_ALLOWABLE_REUSE_DURATION: 300000--><!--Device-userAuth-const MAX_ALLOWABLE_REUSE_DURATION: 300000-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## PERMANENT_LOCKOUT_DURATION
@@ -25,5 +27,7 @@ Permanent lockout duration, in milliseconds. The value is **0x7fffffff**. When t
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-userAuth-const PERMANENT_LOCKOUT_DURATION: int = 0x7fffffff--><!--Device-userAuth-const PERMANENT_LOCKOUT_DURATION: int = 0x7fffffff-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

@@ -23,6 +23,8 @@ Updates a widget. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** [updateForm](arkts-form-formprovider-updateform-f.md)
 
+<!--Device-formProvider-function updateForm(    formId: string,    formBindingData: formBindingData.FormBindingData,    callback: AsyncCallback<void>  ): void--><!--Device-formProvider-function updateForm(    formId: string,    formBindingData: formBindingData.FormBindingData,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **Parameters:**
@@ -69,6 +71,8 @@ Updates a widget. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [updateForm](arkts-form-formprovider-updateform-f.md)
+
+<!--Device-formProvider-function updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise<void>--><!--Device-formProvider-function updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

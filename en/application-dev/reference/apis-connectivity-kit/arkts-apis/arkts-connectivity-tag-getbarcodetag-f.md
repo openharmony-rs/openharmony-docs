@@ -16,7 +16,9 @@ Obtains a **BarcodeTag** object, which allows access to the tags in the BarcodeT
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-tag-function getBarcodeTag(tagInfo: TagInfo): BarcodeTag--><!--Device-tag-function getBarcodeTag(tagInfo: TagInfo): BarcodeTag-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

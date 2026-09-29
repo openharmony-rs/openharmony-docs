@@ -12,6 +12,8 @@ Sets the rotation angle of the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type Rotation = Vector3--><!--Device-unnamed-export type Rotation = Vector3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [Vector3](arkts-arkui-graphics-vector3-i.md)

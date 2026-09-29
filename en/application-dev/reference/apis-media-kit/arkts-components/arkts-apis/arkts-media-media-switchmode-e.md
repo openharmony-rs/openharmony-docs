@@ -10,6 +10,8 @@ SwitchMode can be passed as a parameter through the **selectTrack** method. Curr
 
 **Since:** 12
 
+<!--Device-media-enum SwitchMode--><!--Device-media-enum SwitchMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## SMOOTH
@@ -22,7 +24,9 @@ Smooth playback is ensured after the switching. This mode has a delay, that is, 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SwitchMode-SMOOTH = 0--><!--Device-SwitchMode-SMOOTH = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -36,7 +40,9 @@ The playback starts from the start position of the current segment after the swi
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SwitchMode-SEGMENT = 1--><!--Device-SwitchMode-SEGMENT = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -50,6 +56,8 @@ The playback starts from the frame closest to the current playback time. In this
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SwitchMode-CLOSEST = 2--><!--Device-SwitchMode-CLOSEST = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

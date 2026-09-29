@@ -12,6 +12,8 @@ Describes the Gatt service.
 
 **Substitutes:** [GattService](arkts-connectivity-bluetoothmanager-gattservice-i.md)
 
+<!--Device-bluetooth-interface GattService--><!--Device-bluetooth-interface GattService-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The [BLECharacteristic](arkts-connectivity-bluetooth-blecharacteristic-i.md) lis
 
 **Substitutes:** [characteristics](arkts-connectivity-bluetoothmanager-gattservice-i.md#characteristics)
 
+<!--Device-GattService-characteristics: Array<BLECharacteristic>--><!--Device-GattService-characteristics: Array<BLECharacteristic>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## includeServices
@@ -53,6 +57,8 @@ The list of GATT services contained in the service
 **Deprecated since:** 9
 
 **Substitutes:** [includeServices](arkts-connectivity-bluetoothmanager-gattservice-i.md#includeservices)
+
+<!--Device-GattService-includeServices?: Array<GattService>--><!--Device-GattService-includeServices?: Array<GattService>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -72,6 +78,8 @@ Indicates whether the GattService instance is primary or secondary.
 
 **Substitutes:** [isPrimary](arkts-connectivity-bluetoothmanager-gattservice-i.md#isprimary)
 
+<!--Device-GattService-isPrimary: boolean--><!--Device-GattService-isPrimary: boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## serviceUuid
@@ -89,5 +97,7 @@ The UUID of a GattService instance
 **Deprecated since:** 9
 
 **Substitutes:** [serviceUuid](arkts-connectivity-bluetoothmanager-gattservice-i.md#serviceuuid)
+
+<!--Device-GattService-serviceUuid: string--><!--Device-GattService-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

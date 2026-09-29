@@ -20,6 +20,8 @@ Send system control command. The system automatically selects the recipient.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<string>--><!--Device-avSession-function sendSystemCommonCommand(command: string, args: ExtraInfo): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.

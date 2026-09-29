@@ -18,6 +18,8 @@ Query security event information from security guard.
 
 **Required permissions:** ohos.permission.QUERY_SECURITY_EVENT
 
+<!--Device-securityGuard-function querySecurityEvent(rules: Array<SecurityEventRule>, querier: Querier): void--><!--Device-securityGuard-function querySecurityEvent(rules: Array<SecurityEventRule>, querier: Querier): void-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.

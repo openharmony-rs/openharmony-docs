@@ -37,6 +37,8 @@ declare interface ContextMenuOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface ContextMenuOptions--><!--Device-unnamed-declare interface ContextMenuOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## distortionMode
@@ -54,6 +56,8 @@ distortionMode?: DistortionMode
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContextMenuOptions-distortionMode?: DistortionMode--><!--Device-ContextMenuOptions-distortionMode?: DistortionMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +78,8 @@ edgeLightMode?: EdgeLightMode
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContextMenuOptions-edgeLightMode?: EdgeLightMode--><!--Device-ContextMenuOptions-edgeLightMode?: EdgeLightMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

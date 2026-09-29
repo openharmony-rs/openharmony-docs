@@ -19,6 +19,8 @@ declare interface RadialGradientOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface RadialGradientOptions--><!--Device-unnamed-declare interface RadialGradientOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## center
@@ -36,6 +38,8 @@ center: [Length, Length]
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RadialGradientOptions-center: [Length, Length]--><!--Device-RadialGradientOptions-center: [Length, Length]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ colors: Array<[ResourceColor, number]>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RadialGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-RadialGradientOptions-colors: Array<[ResourceColor, number]>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radius
@@ -76,6 +82,8 @@ radius: Length
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RadialGradientOptions-radius: Length--><!--Device-RadialGradientOptions-radius: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,5 +111,7 @@ false：渐变效果仅在指定范围内显示一次。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RadialGradientOptions-repeating?: boolean--><!--Device-RadialGradientOptions-repeating?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

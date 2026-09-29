@@ -8,7 +8,9 @@ Describes the resource information, including the application package name, appl
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-resourceManager-export type Resource = _Resource--><!--Device-resourceManager-export type Resource = _Resource-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 

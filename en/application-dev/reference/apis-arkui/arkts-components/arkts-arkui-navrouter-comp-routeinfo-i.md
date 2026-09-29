@@ -12,6 +12,8 @@ Route information.
 
 **Substitutes:** NavPathStack and navDestination
 
+<!--Device-unnamed-declare interface RouteInfo--><!--Device-unnamed-declare interface RouteInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -34,6 +36,8 @@ Name of the navigation destination page to be redirected to.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RouteInfo-name: string--><!--Device-RouteInfo-name: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -55,5 +59,7 @@ Parameter transferred during redirection.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouteInfo-param?: unknown--><!--Device-RouteInfo-param?: unknown-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

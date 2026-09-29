@@ -4,9 +4,11 @@
 export declare interface CustomComponentLifecycleObserver
 ```
 
-Observes lifecycle status changes of a custom component, and triggers the lifecycle callback in the listener when detecting lifecycle status changes.
+After developers register a custom component lifecycle callback, when the lifecycle of the custom component changes, the corresponding lifecycle callback in the listener is triggered. The difference from the lifecycle decorators is that the lifecycle decorators respond to lifecycle events by the component itself, while **CustomComponentLifecycleObserver** observes component lifecycle events from the outside. If only the component itself needs to respond to lifecycle changes, use the lifecycle decorators. If you need to centrally monitor the lifecycles of multiple components, use **CustomComponentLifecycleObserver**.
 
 **Since:** 23
+
+<!--Device-unnamed-export declare interface CustomComponentLifecycleObserver--><!--Device-unnamed-export declare interface CustomComponentLifecycleObserver-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,13 +24,15 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 aboutToAppear?(): void
 ```
 
-Called after a new instance of the custom component is created and before its **build()** function is executed. You can modify the status variables in this phase. Its function is similar to that of [aboutToAppear](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear), but it is triggered under the constraints of the custom component state machine.
+Called after a new instance of a custom component is created and before its **build()** function is executed. Developers can modify state variables in this phase, and the changes will take effect in the subsequent execution of the **build()** function. Its function is similar to [aboutToAppear](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear). It is subject to the custom component state machine and triggers the callback when the monitored custom component transitions to **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).APPEARED**.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycleObserver-aboutToAppear?(): void--><!--Device-CustomComponentLifecycleObserver-aboutToAppear?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,13 +42,15 @@ Called after a new instance of the custom component is created and before its **
 aboutToDisappear?(): void
 ```
 
-Called before the custom component is destroyed. You are advised not to change state variables in the **aboutToDisappear** function. Modifying the **@Link** decorated variable may lead to unstable application behavior. This function is similar to the earlier **aboutToDisappear** function, which is triggered under the constraints of the custom component state machine. Therefore, this function is added for compatibility.
+Executed before a custom component is destroyed. It is not recommended to modify state variables in the **aboutToDisappear** function. In particular, modifying **\@Link** variables may cause unstable app behavior. Its function is similar to [aboutToDisappear](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#abouttodisappear). The difference is that the **aboutToDisappear** function in **CustomComponentLifecycleObserver** is subject to the state machine and triggers the callback only before the state of the monitored custom component transitions to **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).DISAPPEARED**.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycleObserver-aboutToDisappear?(): void--><!--Device-CustomComponentLifecycleObserver-aboutToDisappear?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,13 +60,15 @@ Called before the custom component is destroyed. You are advised not to change s
 aboutToRecycle?(): void
 ```
 
-Called after necessary component recycling operations defined in the application are performed. Then, the component is frozen to prevent UI updates when the component is in the recycling pool. At last, the **aboutToRecycle** function recursively traverses all child components, and the **aboutToRecycle** function in each recycled child component will be called.
+After a component is recycled, the recycling operations such as resource release defined in the app are performed first. After the recycling is complete, the **aboutToRecycle** function is called. It is subject to the custom component state machine, that is, it triggers the callback in the stage from **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).BUILT** to **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).RECYCLED**. Then the component is frozen to avoid UI updates while the component is in the reuse pool. Finally, recycling recursively traverses all child components, and for each child component that completes recycling, the **aboutToRecycle** function registered in the child component is called.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycleObserver-aboutToRecycle?(): void--><!--Device-CustomComponentLifecycleObserver-aboutToRecycle?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,13 +169,21 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 ```
 
-Called when a reusable custom component is re-added to the node tree from the cache to receive the component constructors. The value of **params** is not **undefined** in the reuse callback of the V1 component. The value of **params** is **undefined** in the reuse callback of the V2 component.
+Called when a reusable custom component is re-added to the node tree from the cache. It is subject to the custom component state machine, that is, it triggers the callback in the stage from **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).RECYCLED** to **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).BUILT**. Finally, reuse recursively traverses all child components, and for each child component that completes reuse, the **aboutToReuse** function registered in the child component is called. In a state management V1 component, this function can have one input parameter or no parameter. When **params** exists, it indicates the reuse callback of a V1 component. In a state management V2 component, this function has no input parameter.
+
+> **NOTE:** 
+> 
+> - In a state management V1 component, the **aboutToReuse** function can have one input parameter or no parameter. The input parameter **params** is recommended to be of the Record\&lt;string, Object \| undefined \| null\&gt; type.
+> 
+> - In a state management V2 component, the **aboutToReuse** function has no input parameter.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycleObserver-aboutToReuse?(params?: Record<string, Object | undefined | null>): void--><!--Device-CustomComponentLifecycleObserver-aboutToReuse?(params?: Record<string, Object | undefined | null>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,7 +191,7 @@ Called when a reusable custom component is re-added to the node tree from the ca
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| params | Record&lt;string, Object &#124; undefined &#124; null&gt; | No | The value is not **undefined** in the reuse callback of the V1 component and is **undefined** in the reuse callback of the V2 component. |
+| params | Record&lt;string, Object &#124; undefined &#124; null&gt; | No | Construction parameters received when the component is reused. Only the reuse callback of a V1 component supports this parameter. If this parameter is not passed, the reuse callback function has no input parameter. |
 
 ## onDidBuild
 
@@ -183,12 +199,14 @@ Called when a reusable custom component is re-added to the node tree from the ca
 onDidBuild?(): void
 ```
 
-Called after a new instance of the custom component is created and its **build()** function is executed. You can use this callback for actions that do not affect the UI, such as event data reporting.
+Called after the **build()** function of a custom component is executed. It is subject to the custom component state machine and triggers the callback when the state of the monitored custom component transitions to **[CustomComponentLifecycleState](arkts-arkui-arkui-statemanagement-customcomponentlifecyclestate-e.md).BUILT**. Developers can implement functions that do not affect the actual UI in this phase, such as event data reporting.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycleObserver-onDidBuild?(): void--><!--Device-CustomComponentLifecycleObserver-onDidBuild?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

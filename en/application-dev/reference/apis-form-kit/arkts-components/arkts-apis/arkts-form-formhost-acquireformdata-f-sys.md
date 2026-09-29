@@ -20,6 +20,8 @@ Requests data from the widget provider. This API uses an asynchronous callback t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function acquireFormData(formId: string, callback: AsyncCallback<Record<string, Object>>): void--><!--Device-formHost-function acquireFormData(formId: string, callback: AsyncCallback<Record<string, Object>>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -59,6 +61,8 @@ Requests data from the widget provider. This API uses a promise to return the re
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-formHost-function acquireFormData(formId: string): Promise<Record<string, Object>>--><!--Device-formHost-function acquireFormData(formId: string): Promise<Record<string, Object>>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

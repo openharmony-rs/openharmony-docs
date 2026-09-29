@@ -16,6 +16,8 @@ For details about the audio and video recording demo, see [Audio Recording](../.
 
 **Since:** 9
 
+<!--Device-media-interface AVRecorder--><!--Device-media-interface AVRecorder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 ## Modules to Import
@@ -33,6 +35,8 @@ getInputMetaSurface(type: MetaSourceType): Promise<string>
 Get input meta surface for specified meta source type. it must be called between prepare completed and start.
 
 **Since:** 12
+
+<!--Device-AVRecorder-getInputMetaSurface(type: MetaSourceType): Promise<string>--><!--Device-AVRecorder-getInputMetaSurface(type: MetaSourceType): Promise<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -72,6 +76,8 @@ This API can be called after the prepare(), start(), or paused() event is trigge
 
 **Since:** 13
 
+<!--Device-AVRecorder-isWatermarkSupported(): Promise<boolean>--><!--Device-AVRecorder-isWatermarkSupported(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 
 **System API:** This is a system API.
@@ -105,6 +111,8 @@ Sets a watermark for the AVRecorder. This API uses a promise to return the resul
 This API can be called only after the prepare() event is triggered and before the start() event is triggered.
 
 **Since:** 13
+
+<!--Device-AVRecorder-setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>--><!--Device-AVRecorder-setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVRecorder
 

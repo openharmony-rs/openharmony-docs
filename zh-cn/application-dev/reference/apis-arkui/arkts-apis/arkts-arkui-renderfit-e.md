@@ -14,6 +14,8 @@ declare enum RenderFit
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum RenderFit--><!--Device-unnamed-declare enum RenderFit-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER
@@ -31,6 +33,8 @@ CENTER = 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-CENTER = 0--><!--Device-RenderFit-CENTER = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ TOP = 1
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-TOP = 1--><!--Device-RenderFit-TOP = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -67,6 +73,8 @@ BOTTOM = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-BOTTOM = 2--><!--Device-RenderFit-BOTTOM = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +94,8 @@ LEFT = 3
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-LEFT = 3--><!--Device-RenderFit-LEFT = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RIGHT
@@ -103,6 +113,8 @@ RIGHT = 4
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-RIGHT = 4--><!--Device-RenderFit-RIGHT = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +134,8 @@ TOP_LEFT = 5
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-TOP_LEFT = 5--><!--Device-RenderFit-TOP_LEFT = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP_RIGHT
@@ -139,6 +153,8 @@ TOP_RIGHT = 6
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-TOP_RIGHT = 6--><!--Device-RenderFit-TOP_RIGHT = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +174,8 @@ BOTTOM_LEFT = 7
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-BOTTOM_LEFT = 7--><!--Device-RenderFit-BOTTOM_LEFT = 7-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_RIGHT
@@ -175,6 +193,8 @@ BOTTOM_RIGHT = 8
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-BOTTOM_RIGHT = 8--><!--Device-RenderFit-BOTTOM_RIGHT = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,6 +214,8 @@ RESIZE_FILL = 9
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-RESIZE_FILL = 9--><!--Device-RenderFit-RESIZE_FILL = 9-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RESIZE_CONTAIN
@@ -211,6 +233,8 @@ RESIZE_CONTAIN = 10
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-RESIZE_CONTAIN = 10--><!--Device-RenderFit-RESIZE_CONTAIN = 10-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,6 +254,8 @@ RESIZE_CONTAIN_TOP_LEFT = 11
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-RESIZE_CONTAIN_TOP_LEFT = 11--><!--Device-RenderFit-RESIZE_CONTAIN_TOP_LEFT = 11-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RESIZE_CONTAIN_BOTTOM_RIGHT
@@ -247,6 +273,8 @@ RESIZE_CONTAIN_BOTTOM_RIGHT = 12
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-RESIZE_CONTAIN_BOTTOM_RIGHT = 12--><!--Device-RenderFit-RESIZE_CONTAIN_BOTTOM_RIGHT = 12-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,6 +294,8 @@ RESIZE_COVER = 13
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-RESIZE_COVER = 13--><!--Device-RenderFit-RESIZE_COVER = 13-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RESIZE_COVER_TOP_LEFT
@@ -284,6 +314,8 @@ RESIZE_COVER_TOP_LEFT = 14
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RenderFit-RESIZE_COVER_TOP_LEFT = 14--><!--Device-RenderFit-RESIZE_COVER_TOP_LEFT = 14-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RESIZE_COVER_BOTTOM_RIGHT
@@ -301,5 +333,7 @@ RESIZE_COVER_BOTTOM_RIGHT = 15
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RenderFit-RESIZE_COVER_BOTTOM_RIGHT = 15--><!--Device-RenderFit-RESIZE_COVER_BOTTOM_RIGHT = 15-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

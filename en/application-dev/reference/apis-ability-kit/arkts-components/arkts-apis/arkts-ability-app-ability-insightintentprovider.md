@@ -6,6 +6,8 @@ Insight intent Provider. @namespace insightIntentProvider
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace insightIntentProvider--><!--Device-unnamed-declare namespace insightIntentProvider-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

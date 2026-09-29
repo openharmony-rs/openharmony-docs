@@ -12,6 +12,8 @@ Represents a FrameNode of the **Swiper** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>--><!--Device-typeNode-type Swiper = TypedFrameNode<SwiperInterface, SwiperAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SwiperInterface, [SwiperAttribute](../arkts-components/arkts-arkui-swiper-comp-attribute.md)&gt;

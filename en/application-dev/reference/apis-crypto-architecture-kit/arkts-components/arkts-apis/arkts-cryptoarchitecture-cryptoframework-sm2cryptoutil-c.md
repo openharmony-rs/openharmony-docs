@@ -8,6 +8,8 @@ Provides APIs for SM2 cryptographic operations.
 
 **Since:** 12
 
+<!--Device-cryptoFramework-class SM2CryptoUtil--><!--Device-cryptoFramework-class SM2CryptoUtil-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Generates SM2 ciphertext in ASN.1 format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SM2CryptoUtil-static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob--><!--Device-SM2CryptoUtil-static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 
@@ -84,7 +88,9 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SM2CryptoUtil-static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec--><!--Device-SM2CryptoUtil-static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Cipher
 

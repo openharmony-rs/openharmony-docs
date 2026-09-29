@@ -20,6 +20,8 @@ Disables the real-time weather awareness function.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function offRealTimeWeather(callback?: Callback<RealTimeWeatherInfo>): void--><!--Device-carAwareness-function offRealTimeWeather(callback?: Callback<RealTimeWeatherInfo>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters:**

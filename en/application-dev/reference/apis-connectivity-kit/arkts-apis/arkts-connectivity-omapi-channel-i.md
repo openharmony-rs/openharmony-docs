@@ -8,6 +8,8 @@ A **Channel** instance indicates a channel set up by a **Session** instance. The
 
 **Since:** 10
 
+<!--Device-omapi-export interface Channel--><!--Device-omapi-export interface Channel-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 ## Modules to Import
@@ -25,6 +27,8 @@ close(): void
 Closes this channel.
 
 **Since:** 10
+
+<!--Device-Channel-close(): void--><!--Device-Channel-close(): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -59,6 +63,8 @@ getSelectResponse(): number[]
 Obtains the response data including the status word of **SELECT Applet**.
 
 **Since:** 10
+
+<!--Device-Channel-getSelectResponse(): number[]--><!--Device-Channel-getSelectResponse(): number[]-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -100,6 +106,8 @@ getSession(): Session
 Obtains the session used to open this channel.
 
 **Since:** 10
+
+<!--Device-Channel-getSession(): Session--><!--Device-Channel-getSession(): Session-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -143,6 +151,8 @@ Checks whether this channel is a basic channel.
 
 **Since:** 10
 
+<!--Device-Channel-isBasicChannel(): boolean--><!--Device-Channel-isBasicChannel(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Return value:**
@@ -184,6 +194,8 @@ Checks whether this channel is closed.
 
 **Since:** 10
 
+<!--Device-Channel-isClosed(): boolean--><!--Device-Channel-isClosed(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Return value:**
@@ -224,6 +236,8 @@ transmit(command: number[]): Promise<number[]>
 Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Channel-transmit(command: number[]): Promise<number[]>--><!--Device-Channel-transmit(command: number[]): Promise<number[]>-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -282,6 +296,8 @@ transmit(command: number[], callback: AsyncCallback<number[]>): void
 Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-Channel-transmit(command: number[], callback: AsyncCallback<number[]>): void--><!--Device-Channel-transmit(command: number[], callback: AsyncCallback<number[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 

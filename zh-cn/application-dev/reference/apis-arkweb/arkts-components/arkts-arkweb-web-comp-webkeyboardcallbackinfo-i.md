@@ -4,9 +4,11 @@
 declare interface WebKeyboardCallbackInfo
 ```
 
-拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](arkts-arkweb-web-comp.md#webweb控制器)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
+拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](arkts-arkweb-web-comp.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare interface WebKeyboardCallbackInfo--><!--Device-unnamed-declare interface WebKeyboardCallbackInfo-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -24,6 +26,8 @@ attributes: Record<string, string>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebKeyboardCallbackInfo-attributes: Record<string, string>--><!--Device-WebKeyboardCallbackInfo-attributes: Record<string, string>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## controller
@@ -39,5 +43,7 @@ controller: WebKeyboardController
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebKeyboardCallbackInfo-controller: WebKeyboardController--><!--Device-WebKeyboardCallbackInfo-controller: WebKeyboardController-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

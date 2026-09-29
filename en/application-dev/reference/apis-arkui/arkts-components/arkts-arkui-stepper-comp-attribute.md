@@ -16,6 +16,8 @@ Defines the stepper attribute functions
 
 **Substitutes:** [SwiperAttribute](arkts-arkui-swiper-comp-attribute.md#swiperattribute)
 
+<!--Device-unnamed-declare class StepperAttribute extends CommonMethod<StepperAttribute>--><!--Device-unnamed-declare class StepperAttribute extends CommonMethod<StepperAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onChange
@@ -35,6 +37,8 @@ Triggered when the step navigation switches by clicking [prevLabel](arkts-arkui-
 **Substitutes:** onChange
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StepperAttribute-onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute--><!--Device-StepperAttribute-onChange(callback: (prevIndex: number, index: number) => void): StepperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ Triggered when [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-StepperAttribute-onFinish(callback: () => void): StepperAttribute--><!--Device-StepperAttribute-onFinish(callback: () => void): StepperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -87,6 +93,8 @@ Triggered when switching to the next step by clicking [nextLabel](arkts-arkui-st
 **Substitutes:** onChange
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StepperAttribute-onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute--><!--Device-StepperAttribute-onNext(callback: (index: number, pendingIndex: number) => void): StepperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +122,8 @@ Triggered when switching to the previous step by clicking [prevLabel](arkts-arku
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-StepperAttribute-onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute--><!--Device-StepperAttribute-onPrevious(callback: (index: number, pendingIndex: number) => void): StepperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -139,6 +149,8 @@ Triggered when [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) 
 **Substitutes:** onChange
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-StepperAttribute-onSkip(callback: () => void): StepperAttribute--><!--Device-StepperAttribute-onSkip(callback: () => void): StepperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

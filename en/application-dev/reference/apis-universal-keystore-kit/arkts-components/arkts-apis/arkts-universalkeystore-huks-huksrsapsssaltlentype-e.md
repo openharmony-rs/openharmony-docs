@@ -8,6 +8,8 @@ Enumerates the **salt_len** types to set when PSS padding is used in RSA signing
 
 **Since:** 10
 
+<!--Device-huks-export enum HuksRsaPssSaltLenType--><!--Device-huks-export enum HuksRsaPssSaltLenType-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 10 to 11: SystemCapability.Security.Huks.Extension
@@ -26,6 +28,8 @@ HUKS_RSA_PSS_SALT_LEN_DIGEST = 0
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksRsaPssSaltLenType-HUKS_RSA_PSS_SALT_LEN_DIGEST = 0--><!--Device-HuksRsaPssSaltLenType-HUKS_RSA_PSS_SALT_LEN_DIGEST = 0-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 10 to 11: SystemCapability.Security.Huks.Extension
@@ -43,6 +47,8 @@ HUKS_RSA_PSS_SALT_LEN_MAX = 1
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksRsaPssSaltLenType-HUKS_RSA_PSS_SALT_LEN_MAX = 1--><!--Device-HuksRsaPssSaltLenType-HUKS_RSA_PSS_SALT_LEN_MAX = 1-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core

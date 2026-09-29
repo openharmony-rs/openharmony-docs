@@ -8,6 +8,8 @@ UIExtensionContentSession is the UI operation class for the UIExtensionAbility. 
 
 **Since:** 10
 
+<!--Device-unnamed-declare class UIExtensionContentSession--><!--Device-unnamed-declare class UIExtensionContentSession-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains the window object corresponding to the current UIExtension to notify the
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy--><!--Device-UIExtensionContentSession-getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -103,6 +107,8 @@ Sends data to the UIExtensionComponent.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContentSession-sendData(data: Record<string, Object>): void--><!--Device-UIExtensionContentSession-sendData(data: Record<string, Object>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -167,6 +173,8 @@ Sets a callback to receive data from the UIExtensionComponent. This API uses an 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContentSession-setReceiveDataCallback(callback: (data: Record<string, Object>) => void): void--><!--Device-UIExtensionContentSession-setReceiveDataCallback(callback: (data: Record<string, Object>) => void): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -223,6 +231,8 @@ Sets a callback with a return value to receive data from the UIExtensionComponen
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Record<string, Object>): void--><!--Device-UIExtensionContentSession-setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Record<string, Object>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -281,6 +291,8 @@ Sets the background color for the loading page of the UIExtensionAbility. This A
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-setWindowBackgroundColor(color: string): void--><!--Device-UIExtensionContentSession-setWindowBackgroundColor(color: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -347,6 +359,8 @@ Starts an ability. This API uses an asynchronous callback to return the result. 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-startAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContentSession-startAbility(want: Want, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -425,6 +439,8 @@ Starts an ability with **options** specified. This API uses an asynchronous call
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContentSession-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -507,6 +523,8 @@ Starts an ability. This API uses a promise to return the result. UI extension us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContentSession-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-UIExtensionContentSession-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -586,6 +604,8 @@ Starts an ability as the caller. The initial ability places its caller informati
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContentSession-startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContentSession-startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -661,6 +681,8 @@ Starts an ability as the caller, with **options** specified. The initial ability
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-UIExtensionContentSession-startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -740,6 +762,8 @@ Starts an ability as the caller. The initial ability places its caller informati
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>--><!--Device-UIExtensionContentSession-startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -839,6 +863,8 @@ is returned to the caller.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UIExtensionContentSession-startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void--><!--Device-UIExtensionContentSession-startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -922,6 +948,8 @@ is returned to the caller.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void--><!--Device-UIExtensionContentSession-startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1009,6 +1037,8 @@ is returned to the caller.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UIExtensionContentSession-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>--><!--Device-UIExtensionContentSession-startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

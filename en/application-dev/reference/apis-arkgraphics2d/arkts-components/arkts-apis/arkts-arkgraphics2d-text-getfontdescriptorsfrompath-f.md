@@ -22,7 +22,9 @@ Obtains an array of font descriptors by font file path. This API uses a promise 
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-text-function getFontDescriptorsFromPath(path: string | Resource): Promise<Array<FontDescriptor>>--><!--Device-text-function getFontDescriptorsFromPath(path: string | Resource): Promise<Array<FontDescriptor>>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

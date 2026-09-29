@@ -20,6 +20,8 @@ Obtains the global material level, which is related to the device computing powe
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-uiMaterial-function getGlobalMaterialLevel(): MaterialLevel--><!--Device-uiMaterial-function getGlobalMaterialLevel(): MaterialLevel-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**

@@ -8,6 +8,8 @@ declare enum BlankScreenDetectionMethod
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare enum BlankScreenDetectionMethod--><!--Device-unnamed-declare enum BlankScreenDetectionMethod-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## DETECTION_CONTENTFUL_NODES_SEVENTEEN
@@ -27,5 +29,7 @@ DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0
 内部网格交点 (16个)：在页面区域内定义一个5×5 的均匀网格，这16个点即为页面内4条垂直等分线和4条水平等分线的交点。
 
 **起始版本：** 22
+
+<!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0--><!--Device-BlankScreenDetectionMethod-DETECTION_CONTENTFUL_NODES_SEVENTEEN = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

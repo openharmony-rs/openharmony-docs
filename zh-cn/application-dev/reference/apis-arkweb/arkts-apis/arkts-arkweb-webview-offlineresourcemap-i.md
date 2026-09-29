@@ -8,6 +8,8 @@ interface OfflineResourceMap
 
 **起始版本：** 12
 
+<!--Device-webview-interface OfflineResourceMap--><!--Device-webview-interface OfflineResourceMap-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -28,6 +30,8 @@ resource: Uint8Array
 
 **起始版本：** 12
 
+<!--Device-OfflineResourceMap-resource: Uint8Array--><!--Device-OfflineResourceMap-resource: Uint8Array-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## responseHeaders
@@ -41,6 +45,8 @@ responseHeaders: Array<WebHeader>
 **类型：** Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt;
 
 **起始版本：** 12
+
+<!--Device-OfflineResourceMap-responseHeaders: Array<WebHeader>--><!--Device-OfflineResourceMap-responseHeaders: Array<WebHeader>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -56,6 +62,8 @@ type: OfflineResourceType
 
 **起始版本：** 12
 
+<!--Device-OfflineResourceMap-type: OfflineResourceType--><!--Device-OfflineResourceMap-type: OfflineResourceType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## urlList
@@ -69,5 +77,7 @@ urlList: Array<string>
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 12
+
+<!--Device-OfflineResourceMap-urlList: Array<string>--><!--Device-OfflineResourceMap-urlList: Array<string>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

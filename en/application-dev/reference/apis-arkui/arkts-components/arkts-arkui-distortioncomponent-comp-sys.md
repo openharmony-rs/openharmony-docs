@@ -14,6 +14,8 @@ Creates a DistortionComponent with content.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistortionComponentInterface-(options?: DistortionComponentOptions): DistortionComponentAttribute--><!--Device-DistortionComponentInterface-(options?: DistortionComponentOptions): DistortionComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -30,7 +32,7 @@ Creates a DistortionComponent with content.
 
 | Name | Description |
 | --- | --- |
-| [DistortionComponentOptions](arkts-arkui-distortioncomponent-comp-distortioncomponentoptions-i-sys.md) | Defines the DistortionComponent constructor options. |
+| [DistortionComponentOptions](arkts-arkui-distortioncomponent-comp-distortioncomponentoptions-i-sys.md) | Defines the spatial distortion options. |
 | [DistortionParam](arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | Defines the spatial distortion parameters. |
 
 ### Types

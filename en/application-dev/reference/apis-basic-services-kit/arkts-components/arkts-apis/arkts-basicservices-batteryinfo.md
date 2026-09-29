@@ -4,6 +4,8 @@ The **batteryInfo** module provides APIs for querying the charger type, battery 
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace batteryInfo--><!--Device-unnamed-declare namespace batteryInfo-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 ## Modules to Import

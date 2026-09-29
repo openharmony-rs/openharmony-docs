@@ -24,6 +24,8 @@ This API is used to check whether the current application is allowed to send not
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function isNotificationEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isNotificationEnabled(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -79,6 +81,8 @@ This API is used to check whether the current application is allowed to send not
 **Required permissions:** 
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function isNotificationEnabled(): Promise<boolean>--><!--Device-notificationManager-function isNotificationEnabled(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

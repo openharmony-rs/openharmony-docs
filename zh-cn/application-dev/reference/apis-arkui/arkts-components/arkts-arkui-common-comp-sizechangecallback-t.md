@@ -18,6 +18,8 @@ newValue表示目标元素变化之后的宽高。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void--><!--Device-unnamed-declare type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

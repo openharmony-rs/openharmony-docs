@@ -15,6 +15,8 @@ Computes a new string in which certain characters have been replaced by a hexade
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-unnamed-declare function escape(string: string): string--><!--Device-unnamed-declare function escape(string: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

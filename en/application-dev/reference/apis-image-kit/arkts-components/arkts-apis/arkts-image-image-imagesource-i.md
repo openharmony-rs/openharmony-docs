@@ -14,6 +14,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Since:** 6
 
+<!--Device-image-interface ImageSource--><!--Device-image-interface ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Obtains raw data from an image.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImageSource-createImageRawData(): Promise<ImageRawData>--><!--Device-ImageSource-createImageRawData(): Promise<ImageRawData>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -86,6 +90,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 13
 
+<!--Device-ImageSource-createPicture(options?: DecodingOptionsForPicture): Promise<Picture>--><!--Device-ImageSource-createPicture(options?: DecodingOptionsForPicture): Promise<Picture>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -137,6 +143,8 @@ Images occupy a large amount of memory. When you finish using a Picture instance
 Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 20
+
+<!--Device-ImageSource-createPictureAtIndex(index: int): Promise<Picture>--><!--Device-ImageSource-createPictureAtIndex(index: int): Promise<Picture>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -202,6 +210,8 @@ Starting from API version 15, you are advised to use [createPixelMapUsingAllocat
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-ImageSource-createPixelMap(options?: DecodingOptions): Promise<PixelMap>--><!--Device-ImageSource-createPixelMap(options?: DecodingOptions): Promise<PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -256,6 +266,8 @@ Starting from API version 15, you are advised to use [createPixelMapUsingAllocat
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-ImageSource-createPixelMap(callback: AsyncCallback<PixelMap>): void--><!--Device-ImageSource-createPixelMap(callback: AsyncCallback<PixelMap>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -305,6 +317,8 @@ Starting from API version 15, you are advised to use [createPixelMapUsingAllocat
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageSource-createPixelMap(options: DecodingOptions, callback: AsyncCallback<PixelMap>): void--><!--Device-ImageSource-createPixelMap(options: DecodingOptions, callback: AsyncCallback<PixelMap>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -363,6 +377,8 @@ For dynamic images such as GIF and WebP images, this API returns the data of eac
 > - This function decodes all frames at once. If the number of frames is high or the size of individual frames is large, it can lead to significant memory usage. In these cases, you are advised to use the **Image** component for displaying animations. The **Image** component decodes frames one by one, which uses less memory than this function.
 
 **Since:** 10
+
+<!--Device-ImageSource-createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>--><!--Device-ImageSource-createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -442,6 +458,8 @@ For dynamic images such as GIF and WebP images, this API returns the data of eac
 
 **Since:** 10
 
+<!--Device-ImageSource-createPixelMapList(callback: AsyncCallback<Array<PixelMap>>): void--><!--Device-ImageSource-createPixelMapList(callback: AsyncCallback<Array<PixelMap>>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -507,6 +525,8 @@ For dynamic images such as GIF and WebP images, this API returns the data of eac
 > - This function decodes all frames at once. If the number of frames is high or the size of individual frames is large, it can lead to significant memory usage. In these cases, you are advised to use the **Image** component for displaying animations. The **Image** component decodes frames one by one, which uses less memory than this function.
 
 **Since:** 10
+
+<!--Device-ImageSource-createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array<PixelMap>>): void--><!--Device-ImageSource-createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array<PixelMap>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -582,6 +602,8 @@ Starting from API version 15, you are advised to use [createPixelMapUsingAllocat
 
 **Since:** 12
 
+<!--Device-ImageSource-createPixelMapSync(options?: DecodingOptions): PixelMap--><!--Device-ImageSource-createPixelMapSync(options?: DecodingOptions): PixelMap-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -640,6 +662,8 @@ Creates a PixelMap object based on decoding options and memory type. This API us
 > - Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 15
+
+<!--Device-ImageSource-createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise<PixelMap>--><!--Device-ImageSource-createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise<PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -716,6 +740,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 15
 
+<!--Device-ImageSource-createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap--><!--Device-ImageSource-createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -781,6 +807,8 @@ Creates a thumbnail image based on image decoding parameters. This method uses a
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImageSource-createThumbnail(options?: DecodingOptionsForThumbnail): Promise<PixelMap | undefined>--><!--Device-ImageSource-createThumbnail(options?: DecodingOptionsForThumbnail): Promise<PixelMap | undefined>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -855,6 +883,8 @@ Synchronously creates a thumbnail image based on image decoding parameters. This
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageSource-createThumbnailSync(options?: DecodingOptionsForThumbnail): PixelMap | undefined--><!--Device-ImageSource-createThumbnailSync(options?: DecodingOptionsForThumbnail): PixelMap | undefined-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -927,6 +957,8 @@ Obtains an array of delay times. This API uses a promise to return the result. T
 
 **Since:** 10
 
+<!--Device-ImageSource-getDelayTimeList(): Promise<Array<int>>--><!--Device-ImageSource-getDelayTimeList(): Promise<Array<int>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Return value:**
@@ -973,6 +1005,8 @@ getDelayTimeList(callback: AsyncCallback<Array<number>>): void
 Obtains an array of delay times. This API uses an asynchronous callback to return the result. This API applies only to images in GIF or WebP format.
 
 **Since:** 10
+
+<!--Device-ImageSource-getDelayTimeList(callback: AsyncCallback<Array<int>>): void--><!--Device-ImageSource-getDelayTimeList(callback: AsyncCallback<Array<int>>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1021,6 +1055,8 @@ Obtains the list of disposal types. This API uses a promise to return the result
 
 **Since:** 12
 
+<!--Device-ImageSource-getDisposalTypeList(): Promise<Array<int>>--><!--Device-ImageSource-getDisposalTypeList(): Promise<Array<int>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Return value:**
@@ -1061,6 +1097,8 @@ getFrameCount(): Promise<number>
 Obtains the number of frames. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-ImageSource-getFrameCount(): Promise<int>--><!--Device-ImageSource-getFrameCount(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1109,6 +1147,8 @@ getFrameCount(callback: AsyncCallback<number>): void
 Obtains the number of frames. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-ImageSource-getFrameCount(callback: AsyncCallback<int>): void--><!--Device-ImageSource-getFrameCount(callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1162,6 +1202,8 @@ Obtains the image information with the specified index. This API uses an asynchr
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-ImageSource-getImageInfo(index: int, callback: AsyncCallback<ImageInfo>): void--><!--Device-ImageSource-getImageInfo(index: int, callback: AsyncCallback<ImageInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1203,6 +1245,8 @@ Obtains the image information. This API uses an asynchronous callback to return 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-ImageSource-getImageInfo(callback: AsyncCallback<ImageInfo>): void--><!--Device-ImageSource-getImageInfo(callback: AsyncCallback<ImageInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1242,6 +1286,8 @@ Obtains the image information. This API uses a promise to return the result.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageSource-getImageInfo(index?: int): Promise<ImageInfo>--><!--Device-ImageSource-getImageInfo(index?: int): Promise<ImageInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1289,6 +1335,8 @@ Obtains the image information with the specified index. This API returns the res
 
 **Since:** 12
 
+<!--Device-ImageSource-getImageInfoSync(index?: int): ImageInfo--><!--Device-ImageSource-getImageInfoSync(index?: int): ImageInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1332,6 +1380,8 @@ Obtains the values of properties with the given names in this image. This API us
 This API applies only to images that are in JPEG, PNG, HEIF, WEBP&lt;sup&gt;23+&lt;/sup&gt;, or DNG&lt;sup&gt;23+&lt;/sup&gt;format and contain Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 12
+
+<!--Device-ImageSource-getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|null>>--><!--Device-ImageSource-getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|null>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1383,6 +1433,8 @@ Obtains the value of a property with the specified index in this image. This API
 This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/sup&gt;, WEBP&lt;sup&gt;23+&lt;/sup&gt;, or DNG&lt;sup&gt;23+&lt;/ sup&gt; format and contain Exif information. (The supported formats may vary depending on the hardware.)
 
 **Since:** 11
+
+<!--Device-ImageSource-getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1450,6 +1502,8 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 
 **Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
 
+<!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1498,6 +1552,8 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 
 **Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
 
+<!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1538,6 +1594,8 @@ Obtains the value of a property in this image. This API uses an asynchronous cal
 **Deprecated since:** 11
 
 **Substitutes:** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+
+<!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1583,6 +1641,8 @@ Obtains the value of a specified Exif property. This API returns the result sync
 > - This API operates synchronously and will block the current thread during execution. It should not be invoked from the main thread, as doing so can lead to application lag, frame drops, or delayed responsiveness. For details, see [Overview of Concurrency in Time-Consuming Tasks](../../../arkts-utils/time-consuming-task-overview.md).
 
 **Since:** 20
+
+<!--Device-ImageSource-getImagePropertySync(key: PropertyKey): string--><!--Device-ImageSource-getImagePropertySync(key: PropertyKey): string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1640,6 +1700,8 @@ This API applies only to images that are in JPEG, PNG, HEIF, or WEBP&lt;sup&gt;2
 > path, but not an ImageSource instance created based on buffers.
 
 **Since:** 12
+
+<!--Device-ImageSource-modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>--><!--Device-ImageSource-modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1705,6 +1767,8 @@ Modifies image properties in batches. This API uses a promise to return the resu
 
 **Since:** 22
 
+<!--Device-ImageSource-modifyImagePropertiesEnhanced(records: Record<string, string | null>): Promise<void>--><!--Device-ImageSource-modifyImagePropertiesEnhanced(records: Record<string, string | null>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1768,6 +1832,8 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 > , but not an ImageSource instance created based on buffers.
 
 **Since:** 11
+
+<!--Device-ImageSource-modifyImageProperty(key: PropertyKey, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: PropertyKey, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1834,6 +1900,8 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 
 **Substitutes:** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
 
+<!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -1888,6 +1956,8 @@ This API applies only to images that are in JPEG, PNG, HEIF&lt;sup&gt;12+&lt;/su
 **Deprecated since:** 11
 
 **Substitutes:** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+
+<!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1970,6 +2040,8 @@ This API applies only to images that are in JPEG, PNG, HEIF, WEBP, or DNG format
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageSource-readImageMetadata(propertyKeys?: string[], index?: int): Promise<ImageMetadata>--><!--Device-ImageSource-readImageMetadata(propertyKeys?: string[], index?: int): Promise<ImageMetadata>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -2050,6 +2122,8 @@ This API applies only to images that are in JPEG, PNG, HEIF, WEBP, DNG, or HEIFS
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageSource-readImageMetadataByType(metadataTypes?: MetadataType[], index?: int): Promise<ImageMetadata>--><!--Device-ImageSource-readImageMetadataByType(metadataTypes?: MetadataType[], index?: int): Promise<ImageMetadata>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -2105,7 +2179,9 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ImageSource-release(callback: AsyncCallback<void>): void--><!--Device-ImageSource-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2147,7 +2223,9 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ImageSource-release(): Promise<void>--><!--Device-ImageSource-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2180,6 +2258,8 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 Updates incremental data. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-ImageSource-updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length: int): Promise<void>--><!--Device-ImageSource-updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2230,6 +2310,8 @@ updateData(
 Updates incremental data. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-ImageSource-updateData(      buf: ArrayBuffer,      isFinished: boolean,      offset: int,      length: int,      callback: AsyncCallback<void>    ): void--><!--Device-ImageSource-updateData(      buf: ArrayBuffer,      isFinished: boolean,      offset: int,      length: int,      callback: AsyncCallback<void>    ): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2284,6 +2366,8 @@ Modifies image properties in batches. This API uses a promise to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageSource-writeImageMetadata(imageMetadata: ImageMetadata): Promise<void>--><!--Device-ImageSource-writeImageMetadata(imageMetadata: ImageMetadata): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -2336,5 +2420,7 @@ Supported image formats.
 **Type:** Array&lt;string&gt;
 
 **Since:** 10
+
+<!--Device-ImageSource-readonly supportedFormats: Array<string>--><!--Device-ImageSource-readonly supportedFormats: Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource

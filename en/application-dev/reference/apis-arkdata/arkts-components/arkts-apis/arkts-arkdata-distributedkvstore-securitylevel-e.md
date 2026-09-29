@@ -19,6 +19,8 @@ Enumerates the KV store security levels.
 
 **Since:** 9
 
+<!--Device-distributedKVStore-enum SecurityLevel--><!--Device-distributedKVStore-enum SecurityLevel-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## S1
@@ -32,6 +34,8 @@ S1: means the db is in the low security level There are some low impact when the
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SecurityLevel-S1--><!--Device-SecurityLevel-S1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -47,6 +51,8 @@ S2: means the db is in the middle security level There are some major impact whe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SecurityLevel-S2--><!--Device-SecurityLevel-S2-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## S3
@@ -61,6 +67,8 @@ S3: means the db is in the high security level There are some severity impact wh
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SecurityLevel-S3--><!--Device-SecurityLevel-S3-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## S4
@@ -74,5 +82,7 @@ S4: means the db is in the critical security level There are some critical impac
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SecurityLevel-S4--><!--Device-SecurityLevel-S4-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

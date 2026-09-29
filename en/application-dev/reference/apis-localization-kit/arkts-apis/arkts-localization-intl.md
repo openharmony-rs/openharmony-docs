@@ -4,6 +4,8 @@ The **intl** module provides basic i18n capabilities, such as time and date form
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace intl--><!--Device-unnamed-declare namespace intl-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import

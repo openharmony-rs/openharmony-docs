@@ -31,11 +31,13 @@ function init(
   ): Matrix4Transit
 ```
 
-Matrix constructor, which is used to create a 4 x 4 matrix with the input parameters. Column-major order is used.
+Constructor of **Matrix4**. It is used to create a 4 x 4 matrix based on the input parameters. The matrix is column -major, that is, the 16 values in the input array are filled into the matrix column by column: array[0] to array[3] form the first column, array[4] to array[7] form the second column, array[8] to array[11] form the third column, and array[12] to array[15] form the fourth column. When only an identity matrix is required, you are advised to use **matrix4.identity()**.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-matrix4-function init(    options: [      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number    ]  ): Matrix4Transit--><!--Device-matrix4-function init(    options: [      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number,      number    ]  ): Matrix4Transit-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,7 +45,7 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number     ] | Yes | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1, 0, 0, 0,<br>0, 1, 0, 0,<br>0, 0, 1, 0,<br>0, 0, 0, 1] |
+| options | [       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number     ] | Yes | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞) <br>Default value: <br>[1, 0, 0, 0, <br>0, 1, 0, 0, <br>0, 0, 1, 0, <br>0, 0, 0, 1] |
 
 **Return value:**
 

@@ -8,6 +8,8 @@ Describes the point coordinates, which are used for focus and exposure configura
 
 **Since:** 10
 
+<!--Device-camera-interface Point--><!--Device-camera-interface Point-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ X coordinate of a point.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Point-x: double--><!--Device-Point-x: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -44,6 +48,8 @@ Y coordinate of a point.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Point-y: double--><!--Device-Point-y: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

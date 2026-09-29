@@ -8,6 +8,8 @@ Set configures of a watermark to AVRecorder. The position starts at top left cor
 
 **Since:** 13
 
+<!--Device-media-interface WatermarkConfig--><!--Device-media-interface WatermarkConfig-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Offset of the watermark to the left line of pixel.
 
 **Since:** 13
 
+<!--Device-WatermarkConfig-left: int--><!--Device-WatermarkConfig-left: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Offset of the watermark to the top line of pixel.
 **Type:** number
 
 **Since:** 13
+
+<!--Device-WatermarkConfig-top: int--><!--Device-WatermarkConfig-top: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 

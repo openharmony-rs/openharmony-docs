@@ -8,6 +8,8 @@ interface ParticleColorPropertyUpdaterConfigs
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface ParticleColorPropertyUpdaterConfigs--><!--Device-unnamed-interface ParticleColorPropertyUpdaterConfigs-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleUpdater.CURVE]
@@ -25,6 +27,8 @@ interface ParticleColorPropertyUpdaterConfigs
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleColorPropertyUpdaterConfigs-[ParticleUpdater.CURVE]: Array<ParticlePropertyAnimation<ResourceColor>>--><!--Device-ParticleColorPropertyUpdaterConfigs-[ParticleUpdater.CURVE]: Array<ParticlePropertyAnimation<ResourceColor>>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ interface ParticleColorPropertyUpdaterConfigs
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleColorPropertyUpdaterConfigs-[ParticleUpdater.NONE]: void--><!--Device-ParticleColorPropertyUpdaterConfigs-[ParticleUpdater.NONE]: void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleUpdater.RANDOM]
@@ -61,5 +67,7 @@ interface ParticleColorPropertyUpdaterConfigs
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleColorPropertyUpdaterConfigs-[ParticleUpdater.RANDOM]: ParticleColorOptions--><!--Device-ParticleColorPropertyUpdaterConfigs-[ParticleUpdater.RANDOM]: ParticleColorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

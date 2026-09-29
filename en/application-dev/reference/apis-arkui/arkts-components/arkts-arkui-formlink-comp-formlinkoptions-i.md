@@ -8,6 +8,8 @@ Defines the FormLink options.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface FormLinkOptions--><!--Device-unnamed-declare interface FormLinkOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## abilityName
@@ -27,6 +29,8 @@ This API can be used in ArkTS widgets since API version 10.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-FormLinkOptions-abilityName?: string--><!--Device-FormLinkOptions-abilityName?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ This API can be used in ArkTS widgets since API version 10.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-FormLinkOptions-action: string--><!--Device-FormLinkOptions-action: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bundleName
@@ -77,6 +83,8 @@ This API can be used in ArkTS widgets since API version 10.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-FormLinkOptions-bundleName?: string--><!--Device-FormLinkOptions-bundleName?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## moduleName
@@ -96,6 +104,8 @@ This API can be used in ArkTS widgets since API version 10.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-FormLinkOptions-moduleName?: string--><!--Device-FormLinkOptions-moduleName?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,6 +131,8 @@ This API can be used in ArkTS widgets since API version 10.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-FormLinkOptions-params?: Object--><!--Device-FormLinkOptions-params?: Object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## uri
@@ -140,5 +152,7 @@ This API can be used in ArkTS widgets since API version 11.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-FormLinkOptions-uri?: string--><!--Device-FormLinkOptions-uri?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

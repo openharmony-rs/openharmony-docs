@@ -12,6 +12,8 @@ Defines the options for saving images or videos.
 
 **Substitutes:** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp-savebuttonoptions-i.md)
 
+<!--Device-picker-class PhotoSaveOptions--><!--Device-picker-class PhotoSaveOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -35,5 +37,7 @@ File name of the image or video to save. If this parameter is not specified, the
 **Deprecated since:** 18
 
 **Substitutes:** [SaveButtonOptions](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp-savebuttonoptions-i.md)
+
+<!--Device-PhotoSaveOptions-newFileNames?: Array<string>--><!--Device-PhotoSaveOptions-newFileNames?: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService

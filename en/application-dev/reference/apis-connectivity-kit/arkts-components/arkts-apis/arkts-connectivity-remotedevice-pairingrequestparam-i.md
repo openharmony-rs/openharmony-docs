@@ -8,6 +8,8 @@ Describes pairing request parameters.
 
 **Since:** 26.0.0
 
+<!--Device-remoteDevice-interface PairingRequestParam--><!--Device-remoteDevice-interface PairingRequestParam-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates the device address. The length must be 17, The value consists of hexad
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PairingRequestParam-address: string--><!--Device-PairingRequestParam-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## pairingType
@@ -46,6 +50,8 @@ Indicates the pairing type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PairingRequestParam-pairingType: PairingType--><!--Device-PairingRequestParam-pairingType: PairingType-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## passkey
@@ -61,5 +67,7 @@ Key for the device pairing.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PairingRequestParam-passkey: string--><!--Device-PairingRequestParam-passkey: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

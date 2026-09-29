@@ -19,6 +19,8 @@ Unregisters a listener for wallpaper changes.
 
 **Since:** 10
 
+<!--Device-wallpaper-function off(    type: 'wallpaperChange',    callback?: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void--><!--Device-wallpaper-function off(    type: 'wallpaperChange',    callback?: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.

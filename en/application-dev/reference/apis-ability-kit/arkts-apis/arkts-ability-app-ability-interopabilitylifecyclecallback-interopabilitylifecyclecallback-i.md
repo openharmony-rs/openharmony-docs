@@ -10,6 +10,8 @@ The interop ability lifecycle callback.
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface InteropAbilityLifecycleCallback--><!--Device-unnamed-declare interface InteropAbilityLifecycleCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Called back when the state of an ability changes to background.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onAbilityBackground: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityBackground: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onAbilityContinue
@@ -43,6 +47,8 @@ Called back when an ability prepares to continue.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onAbilityContinue?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityContinue?: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -58,6 +64,8 @@ Called back when an ability is started for initialization.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onAbilityCreate: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityCreate: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onAbilityDestroy
@@ -71,6 +79,8 @@ Called back when an ability is destroyed.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onAbilityDestroy: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityDestroy: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -86,6 +96,8 @@ Called back when the state of an ability changes to foreground.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onAbilityForeground: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityForeground: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onAbilitySaveState
@@ -99,6 +111,8 @@ Called back when the ability has called onSaveState.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onAbilitySaveState?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilitySaveState?: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -114,6 +128,8 @@ Called back before the state of an ability changes to background.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onAbilityWillBackground?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillBackground?: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onAbilityWillContinue
@@ -127,6 +143,8 @@ Called back when the ability prepares to call onContinue.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onAbilityWillContinue?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillContinue?: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -142,6 +160,8 @@ Called back before an ability is started for initialization.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onAbilityWillCreate?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillCreate?: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onAbilityWillDestroy
@@ -155,6 +175,8 @@ Called back before an ability is destroyed.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onAbilityWillDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillDestroy?: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -170,6 +192,8 @@ Called back before the state of an ability changes to foreground.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onAbilityWillForeground?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillForeground?: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onAbilityWillSaveState
@@ -183,6 +207,8 @@ Called back when the ability prepares to call onSaveState.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onAbilityWillSaveState?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onAbilityWillSaveState?: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -198,6 +224,8 @@ Called back after the UIAbility called onNewWant.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onNewWant?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onNewWant?: AbilityCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onWillNewWant
@@ -211,6 +239,8 @@ Called back before the UIAbility will called onNewWant.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onWillNewWant?: AbilityCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWillNewWant?: AbilityCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -226,6 +256,8 @@ Called back when a window stage is active.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageActive?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageActive?: WindowStageCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onWindowStageCreate
@@ -239,6 +271,8 @@ Called back when a window stage is created.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageCreate: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageCreate: WindowStageCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -254,6 +288,8 @@ Called back when a window stage is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageDestroy: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageDestroy: WindowStageCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onWindowStageInactive
@@ -267,6 +303,8 @@ Called back when a window stage is inactive.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageInactive?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageInactive?: WindowStageCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -282,6 +320,8 @@ Called back when the ability has called onWindowStageRestore.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageRestore?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageRestore?: WindowStageCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onWindowStageWillCreate
@@ -295,6 +335,8 @@ Called back before a window stage is created.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageWillCreate?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageWillCreate?: WindowStageCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -310,6 +352,8 @@ Called back before a window stage is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageWillDestroy?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageWillDestroy?: WindowStageCallbackFn-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## onWindowStageWillRestore
@@ -323,5 +367,7 @@ Called back when the ability has called onWindowStageWillRestore.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteropAbilityLifecycleCallback-onWindowStageWillRestore?: WindowStageCallbackFn--><!--Device-InteropAbilityLifecycleCallback-onWindowStageWillRestore?: WindowStageCallbackFn-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore

@@ -10,6 +10,8 @@ Provide a DateTime formatting interface that supports custom symbols. This inter
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export class SymbolDateTimeFormat extends Intl.DateTimeFormat--><!--Device-i18n-export class SymbolDateTimeFormat extends Intl.DateTimeFormat-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -31,6 +33,8 @@ A constructor used to create a SymbolDateTimeFormat object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolDateTimeFormat-public constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)--><!--Device-SymbolDateTimeFormat-public constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -73,6 +77,8 @@ Formats the date and time.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SymbolDateTimeFormat-public format(date?: Date | number): string--><!--Device-SymbolDateTimeFormat-public format(date?: Date | number): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -113,6 +119,8 @@ Formats date and time ranges.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolDateTimeFormat-public formatRange(startDate: Date | number | bigint, endDate: Date | number | bigint): string--><!--Device-SymbolDateTimeFormat-public formatRange(startDate: Date | number | bigint, endDate: Date | number | bigint): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -159,6 +167,8 @@ Formats a date time range to Parts.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SymbolDateTimeFormat-public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint):      Intl.DateTimeRangeFormatPart[]--><!--Device-SymbolDateTimeFormat-public formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint):      Intl.DateTimeRangeFormatPart[]-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -203,6 +213,8 @@ Formats a date to parts.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SymbolDateTimeFormat-public formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]--><!--Device-SymbolDateTimeFormat-public formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -243,6 +255,8 @@ Parse a date time localized string to Unix timestamp. Unix timestamp, indicating
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolDateTimeFormat-public parse(text: string, lenientMode: boolean): number--><!--Device-SymbolDateTimeFormat-public parse(text: string, lenientMode: boolean): number-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -290,6 +304,8 @@ Obtains the options for creating a SymbolDateTimeFormat object. This will allow 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolDateTimeFormat-public resolvedOptions(): ResolvedSymbolDateTimeFormatOptions--><!--Device-SymbolDateTimeFormat-public resolvedOptions(): ResolvedSymbolDateTimeFormatOptions-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

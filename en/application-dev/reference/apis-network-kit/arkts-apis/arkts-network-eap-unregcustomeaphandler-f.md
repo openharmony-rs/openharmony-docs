@@ -18,6 +18,8 @@ Unregisters the custom handler of EAP packets for extensible authentication. Thi
 
 **Required permissions:** ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
+<!--Device-eap-function unregCustomEapHandler(netType:int, eapCode: int, eapType: int, callback: Callback<EapData>): void--><!--Device-eap-function unregCustomEapHandler(netType:int, eapCode: int, eapType: int, callback: Callback<EapData>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 **Parameters:**

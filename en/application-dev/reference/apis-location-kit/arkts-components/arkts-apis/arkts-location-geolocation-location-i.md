@@ -16,6 +16,8 @@ Provides information about geographic locations
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-export interface Location--><!--Device-geolocation-export interface Location-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## Modules to Import
@@ -42,6 +44,8 @@ Indicates location accuracy, in meters.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-Location-accuracy: number--><!--Device-Location-accuracy: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## additions
@@ -61,6 +65,8 @@ Indicates additional information.
 **Substitutes:** [additions](arkts-location-geolocationmanager-location-i.md#additions)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-Location-additions?: Array<string>--><!--Device-Location-additions?: Array<string>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -82,6 +88,8 @@ Indicates the amount of additional descriptive information.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-Location-additionSize?: number--><!--Device-Location-additionSize?: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## altitude
@@ -101,6 +109,8 @@ Indicates location altitude, in meters.
 **Substitutes:** [altitude](arkts-location-geolocationmanager-location-i.md#altitude)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-Location-altitude: number--><!--Device-Location-altitude: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -122,6 +132,8 @@ Indicates direction information.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-Location-direction: number--><!--Device-Location-direction: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## latitude
@@ -141,6 +153,8 @@ Indicates latitude information. A positive value indicates north latitude, and a
 **Substitutes:** [latitude](arkts-location-geolocationmanager-location-i.md#latitude)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-Location-latitude: number--><!--Device-Location-latitude: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -162,6 +176,8 @@ Indicates Longitude information. A positive value indicates east longitude , and
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-Location-longitude: number--><!--Device-Location-longitude: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## speed
@@ -181,6 +197,8 @@ Indicates speed, in m/s.
 **Substitutes:** [speed](arkts-location-geolocationmanager-location-i.md#speed)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-Location-speed: number--><!--Device-Location-speed: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -202,6 +220,8 @@ Indicates location timestamp since boot.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-Location-timeSinceBoot: number--><!--Device-Location-timeSinceBoot: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## timeStamp
@@ -221,5 +241,7 @@ Indicates location timestamp in the UTC format.
 **Substitutes:** [timeStamp](arkts-location-geolocationmanager-location-i.md#timestamp)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-Location-timeStamp: number--><!--Device-Location-timeStamp: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

@@ -16,6 +16,8 @@ Sets the child process priority. After a child process is suppressed, the CPU re
 
 **Since:** 17
 
+<!--Device-backgroundProcessManager-function setProcessPriority(pid: int, priority: ProcessPriority): Promise<void>--><!--Device-backgroundProcessManager-function setProcessPriority(pid: int, priority: ProcessPriority): Promise<void>-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Parameters:**

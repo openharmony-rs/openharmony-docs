@@ -8,6 +8,8 @@ Defines the CPU level of the efficiency resource.
 
 **Since:** 23
 
+<!--Device-backgroundTaskManager-export enum EfficiencyResourcesCpuLevel--><!--Device-backgroundTaskManager-export enum EfficiencyResourcesCpuLevel-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The background task runs on small CPU cores. This level caters to lightweight ba
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EfficiencyResourcesCpuLevel-SMALL_CPU = 0--><!--Device-EfficiencyResourcesCpuLevel-SMALL_CPU = 0-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -40,6 +44,8 @@ The background task can run on medium CPU cores at maximum. The system determine
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EfficiencyResourcesCpuLevel-MEDIUM_CPU = 1--><!--Device-EfficiencyResourcesCpuLevel-MEDIUM_CPU = 1-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ The background task can run on large CPU cores at maximum. The system determines
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EfficiencyResourcesCpuLevel-LARGE_CPU = 2--><!--Device-EfficiencyResourcesCpuLevel-LARGE_CPU = 2-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 

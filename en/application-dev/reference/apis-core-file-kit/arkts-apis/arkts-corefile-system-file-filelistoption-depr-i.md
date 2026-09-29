@@ -10,6 +10,8 @@ Defines the options used in list().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileListOption--><!--Device-unnamed-export interface FileListOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileListOption-complete?: () => void--><!--Device-FileListOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileListOption-fail?: (data: string, code: number) => void--><!--Device-FileListOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -58,11 +64,13 @@ Callback invoked when the API call fails. **data** indicates the error informati
 success?: (data: FileListResponse) => void
 ```
 
-Callback invoked when the API call is successful. **data** is [FileListResponse](arkts-corefile-system-file-filelistresponse-depr-i.md#filelistresponse).
+Callback invoked when the API call is successful. **data** is [FileListResponse](arkts-corefile-system-file-filelistresponse-depr-i.md).
 
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileListOption-success?: (data: FileListResponse) => void--><!--Device-FileListOption-success?: (data: FileListResponse) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -87,5 +95,7 @@ URI of the directory. Restricted by the underlying file system of lite wearables
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileListOption-uri: string--><!--Device-FileListOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

@@ -24,6 +24,8 @@ In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 ar
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function getDomainFilterRules(admin: Want): Array<DomainFilterRule>--><!--Device-networkManager-function getDomainFilterRules(admin: Want): Array<DomainFilterRule>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

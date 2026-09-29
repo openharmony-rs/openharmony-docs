@@ -8,6 +8,8 @@ Defines the constraint change information.
 
 **Since:** 23
 
+<!--Device-osAccount-interface ConstraintChangeInfo--><!--Device-osAccount-interface ConstraintChangeInfo-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ constraint: string
 
 **Since:** 23
 
+<!--Device-ConstraintChangeInfo-constraint: string--><!--Device-ConstraintChangeInfo-constraint: string-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ The value **true** indicates that the target constraint is enabled, and **false*
 **Type:** boolean
 
 **Since:** 23
+
+<!--Device-ConstraintChangeInfo-isEnabled: boolean--><!--Device-ConstraintChangeInfo-isEnabled: boolean-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

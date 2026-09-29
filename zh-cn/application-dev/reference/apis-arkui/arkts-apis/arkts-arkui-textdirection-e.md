@@ -8,6 +8,8 @@ declare enum TextDirection
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare enum TextDirection--><!--Device-unnamed-declare enum TextDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LTR
@@ -23,6 +25,8 @@ LTR = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDirection-LTR = 0--><!--Device-TextDirection-LTR = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ RTL = 1
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextDirection-RTL = 1--><!--Device-TextDirection-RTL = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -56,6 +62,8 @@ DEFAULT = 2
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextDirection-DEFAULT = 2--><!--Device-TextDirection-DEFAULT = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO
@@ -71,5 +79,7 @@ AUTO = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDirection-AUTO = 3--><!--Device-TextDirection-AUTO = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

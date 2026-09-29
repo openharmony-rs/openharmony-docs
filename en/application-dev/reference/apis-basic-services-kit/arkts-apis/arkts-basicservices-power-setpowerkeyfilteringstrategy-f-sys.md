@@ -20,6 +20,8 @@ For details about the power key filtering strategy, see [power.PowerKeyFiltering
 
 **Required permissions:** ohos.permission.POWER_MANAGER
 
+<!--Device-power-function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void--><!--Device-power-function setPowerKeyFilteringStrategy(strategy: PowerKeyFilteringStrategy): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

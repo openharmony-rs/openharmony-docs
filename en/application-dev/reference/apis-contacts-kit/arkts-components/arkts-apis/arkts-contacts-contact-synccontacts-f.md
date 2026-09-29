@@ -24,6 +24,8 @@ A maximum of 400 contacts can be synchronized at a time. The caller must be runn
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-contact-function syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array<Contact>): Promise<Array<int>>--><!--Device-contact-function syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array<Contact>): Promise<Array<int>>-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 **Parameters:**
@@ -45,7 +47,7 @@ A maximum of 400 contacts can be synchronized at a time. The caller must be runn
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [16700001](../errorcode-contacts.md#16700001-system-internal-error) | General error. |
 | [16700002](../errorcode-contacts.md#16700002-parameter-check-failed) | Invalid parameter value. |
 | [16700003](../errorcode-contacts.md#16700003-background-service-calling-prohibited) | Background usage is prohibited. |

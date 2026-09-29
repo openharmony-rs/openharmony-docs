@@ -4,6 +4,8 @@ The **osAccount** module provides basic capabilities for managing system (OS) ac
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace osAccount--><!--Device-unnamed-declare namespace osAccount-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import

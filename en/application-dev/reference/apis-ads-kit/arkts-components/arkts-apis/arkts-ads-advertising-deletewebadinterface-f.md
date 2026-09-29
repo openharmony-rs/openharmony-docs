@@ -18,6 +18,8 @@ Deletes the ad JavaScript object injected through **registerWebAdInterface** (th
 
 **Atomic service API:** This API can be used in atomic services since API version 16.
 
+<!--Device-advertising-function deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boolean): void--><!--Device-advertising-function deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boolean): void-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 **Parameters:**

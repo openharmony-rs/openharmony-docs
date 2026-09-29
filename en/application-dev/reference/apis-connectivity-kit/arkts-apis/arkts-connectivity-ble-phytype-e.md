@@ -8,6 +8,8 @@ Phy type used during scan.
 
 **Since:** 12
 
+<!--Device-ble-enum PhyType--><!--Device-ble-enum PhyType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## PHY_LE_1M
@@ -22,7 +24,9 @@ Use 1M phy for scanning.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PhyType-PHY_LE_1M = 1--><!--Device-PhyType-PHY_LE_1M = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -38,6 +42,8 @@ Use all supported Phys for scanning.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PhyType-PHY_LE_ALL_SUPPORTED = 255--><!--Device-PhyType-PHY_LE_ALL_SUPPORTED = 255-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

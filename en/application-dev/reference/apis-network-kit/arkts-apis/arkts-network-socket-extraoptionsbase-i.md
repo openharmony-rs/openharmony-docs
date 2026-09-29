@@ -8,6 +8,8 @@ Defines base properties of the **LocalSocket** object.
 
 **Since:** 7
 
+<!--Device-socket-export interface ExtraOptionsBase--><!--Device-socket-export interface ExtraOptionsBase-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Size of the RX buffer, in bytes. The value ranges from 0 to 262144. If this para
 
 **Since:** 7
 
+<!--Device-ExtraOptionsBase-receiveBufferSize?: int--><!--Device-ExtraOptionsBase-receiveBufferSize?: int-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## reuseAddress
@@ -41,6 +45,8 @@ Whether to reuse addresses. The value **true** means to reuse addresses, and the
 **Type:** boolean
 
 **Since:** 7
+
+<!--Device-ExtraOptionsBase-reuseAddress?: boolean--><!--Device-ExtraOptionsBase-reuseAddress?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -56,6 +62,8 @@ Size of the TX buffer, in bytes. The value ranges from 0 to 262144. If this para
 
 **Since:** 7
 
+<!--Device-ExtraOptionsBase-sendBufferSize?: int--><!--Device-ExtraOptionsBase-sendBufferSize?: int-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## socketTimeout
@@ -69,5 +77,7 @@ Timeout duration of the local socket connection, in ms.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-ExtraOptionsBase-socketTimeout?: int--><!--Device-ExtraOptionsBase-socketTimeout?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

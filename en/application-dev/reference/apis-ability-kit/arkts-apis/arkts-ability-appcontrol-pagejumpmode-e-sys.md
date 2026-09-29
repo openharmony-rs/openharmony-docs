@@ -8,6 +8,8 @@ Enumerates the page jump modes used when an application is blocked.
 
 **Since:** 26.0.0
 
+<!--Device-appControl-export enum PageJumpMode--><!--Device-appControl-export enum PageJumpMode-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ A page is displayed when the target application is blocked.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PageJumpMode-PAGE_JUMP_WINDOW_SHOW = 0--><!--Device-PageJumpMode-PAGE_JUMP_WINDOW_SHOW = 0-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ No page is displayed when the target application is blocked.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PageJumpMode-PAGE_JUMP_WINDOW_NOT_SHOW = 1--><!--Device-PageJumpMode-PAGE_JUMP_WINDOW_NOT_SHOW = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 

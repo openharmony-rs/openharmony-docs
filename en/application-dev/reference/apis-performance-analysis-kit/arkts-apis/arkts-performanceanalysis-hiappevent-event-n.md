@@ -8,6 +8,8 @@ Provides event name constants, including system event name constants and applica
 
 **Since:** 9
 
+<!--Device-hiAppEvent-namespace event--><!--Device-hiAppEvent-namespace event-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import

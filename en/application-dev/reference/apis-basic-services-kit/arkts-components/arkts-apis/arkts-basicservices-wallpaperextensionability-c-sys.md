@@ -10,6 +10,8 @@ class of wallpaper extension ability.
 
 **Deprecated since:** 23
 
+<!--Device-unnamed-declare class WallpaperExtensionAbility--><!--Device-unnamed-declare class WallpaperExtensionAbility-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ Called once to initialize the extension ability.
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WallpaperExtensionAbility-onCreate(want: object): void--><!--Device-WallpaperExtensionAbility-onCreate(want: object): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
@@ -71,6 +75,8 @@ Called once to destroy the extension ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WallpaperExtensionAbility-onDestroy(): void--><!--Device-WallpaperExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.
@@ -100,6 +106,8 @@ The onWallpaperChange callback is triggered when the user modifies the wallpaper
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WallpaperExtensionAbility-onWallpaperChange(wallpaperType: number): void--><!--Device-WallpaperExtensionAbility-onWallpaperChange(wallpaperType: number): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

@@ -20,6 +20,8 @@ Unregisters the font service status listener.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fontManager-function offFontObserver(): void--><!--Device-fontManager-function offFontObserver(): void-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **Error codes:**

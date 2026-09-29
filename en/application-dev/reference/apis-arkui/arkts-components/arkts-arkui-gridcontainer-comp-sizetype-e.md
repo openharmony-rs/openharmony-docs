@@ -12,6 +12,8 @@ Enumerates device width types, used to distinguish device types of different wid
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
+<!--Device-unnamed-declare enum SizeType--><!--Device-unnamed-declare enum SizeType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -27,6 +29,8 @@ Automatically matches the appropriate size type based on the device width.
 **Deprecated since:** 9
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
+
+<!--Device-SizeType-Auto--><!--Device-SizeType-Auto-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Device with minimum width. Width ≤320 vp.
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
+<!--Device-SizeType-XS--><!--Device-SizeType-XS-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SM
@@ -59,6 +65,8 @@ Device with small width. Width 320 vp–600 vp.
 **Deprecated since:** 9
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
+
+<!--Device-SizeType-SM--><!--Device-SizeType-SM-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +84,8 @@ Device with medium width. Width 600 vp–840 vp.
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
+<!--Device-SizeType-MD--><!--Device-SizeType-MD-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LG
@@ -91,5 +101,7 @@ Device with large width. Width ≥840 vp.
 **Deprecated since:** 9
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
+
+<!--Device-SizeType-LG--><!--Device-SizeType-LG-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Describes the notification information delivered to the [onReceiveMessage](arkts
 
 **Since:** 22
 
+<!--Device-notificationExtensionSubscription-export type NotificationInfo = _NotificationInfo--><!--Device-notificationExtensionSubscription-export type NotificationInfo = _NotificationInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Type:** _NotificationInfo

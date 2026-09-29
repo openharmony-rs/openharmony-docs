@@ -18,7 +18,9 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-emitter-function off(eventId: long): void--><!--Device-emitter-function off(eventId: long): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -50,7 +52,9 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-emitter-function off(eventId: string): void--><!--Device-emitter-function off(eventId: string): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -82,7 +86,9 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-emitter-function off(eventId: long, callback: Callback<EventData>): void--><!--Device-emitter-function off(eventId: long, callback: Callback<EventData>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -123,6 +129,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-emitter-function off(eventId: string, callback: Callback<EventData>): void--><!--Device-emitter-function off(eventId: string, callback: Callback<EventData>): void-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 **Parameters:**
@@ -161,6 +169,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-emitter-function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-emitter-function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 

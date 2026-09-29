@@ -8,6 +8,8 @@ interface WindowDensityInfo
 
 **起始版本：** 15
 
+<!--Device-window-interface WindowDensityInfo--><!--Device-window-interface WindowDensityInfo-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,7 +30,9 @@ customDensity: number
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowDensityInfo-customDensity: double--><!--Device-WindowDensityInfo-customDensity: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ defaultDensity: number
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowDensityInfo-defaultDensity: double--><!--Device-WindowDensityInfo-defaultDensity: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -60,6 +66,8 @@ systemDensity: number
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowDensityInfo-systemDensity: double--><!--Device-WindowDensityInfo-systemDensity: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

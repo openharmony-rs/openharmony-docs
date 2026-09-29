@@ -4,6 +4,8 @@ The HiChecker module allows you to check issues that may be easily ignored durin
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace hichecker--><!--Device-unnamed-declare namespace hichecker-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## Modules to Import

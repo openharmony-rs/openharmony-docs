@@ -18,6 +18,8 @@ Called when the panel slidable panel pops up.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelInterface-(show: boolean): PanelAttribute--><!--Device-PanelInterface-(show: boolean): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

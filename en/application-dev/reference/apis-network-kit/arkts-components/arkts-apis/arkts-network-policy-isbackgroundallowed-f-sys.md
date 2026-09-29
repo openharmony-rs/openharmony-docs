@@ -18,6 +18,8 @@ Checks whether the current application is allowed to access the network in the b
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function isBackgroundAllowed(callback: AsyncCallback<boolean>): void--><!--Device-policy-function isBackgroundAllowed(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Checks whether the current application is allowed to access the network in the b
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function isBackgroundAllowed(): Promise<boolean>--><!--Device-policy-function isBackgroundAllowed(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

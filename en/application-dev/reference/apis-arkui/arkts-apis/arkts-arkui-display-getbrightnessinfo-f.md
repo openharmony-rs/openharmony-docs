@@ -16,7 +16,9 @@ Obtains the screen brightness information of a display. If the screen does not s
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-display-function getBrightnessInfo(displayId: long): BrightnessInfo--><!--Device-display-function getBrightnessInfo(displayId: long): BrightnessInfo-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

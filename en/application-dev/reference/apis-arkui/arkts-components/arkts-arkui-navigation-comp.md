@@ -2,9 +2,22 @@
 
 The **Navigation** component is the root view container for navigation. It typically functions as the root container of a page and includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of **Navigation**) and non-home page content (child components of NavDestination) through routing.
 
-> **NOTE**
+> **NOTE:** 
 
-> - Since API version 11, this component supports the safe area attribute by default, with the default attribute > value being > **expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**. > You can override this attribute to change the default behavior. In earlier versions, you need to use the > [expandSafeArea](arkts-arkui-common-comp-commonmethod-c.md#expandsafearea) attribute to implement the safe area feature. > > - When [NavBar](arkts-arkui-navigation-comp-navbar-t.md) is nested within a **Navigation** component, the lifecycle of the inner > **NavDestination** component does not synchronize with the outer **NavDestination** component or the lifecycle of a > modal. > > - If the [title](arkts-arkui-navigation-comp-attribute.md#title) and [subTitle](arkts-arkui-navigation-comp-attribute.md#subtitle) are not set > and [hideBackButton](arkts-arkui-navigation-comp-attribute.md#hidebackbutton) is set to **true**, the title bar is not displayed. > > - During subpage navigation within **Navigation**, the new page actively requests focus. > > - You are not advised to use stack operations in [aboutToAppear](arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear), as the > page has not yet finished building at this stage, which may lead to issues such as white screens or navigation > failures.
+> - Since API version 11, this component supports the safe area attribute by default, with the default attribute value being
+> **expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**.
+> You can override this attribute to change the default behavior. In earlier versions, you need to use the
+> [expandSafeArea](arkts-arkui-common-comp-commonmethod-c.md#expandsafearea) attribute to implement the safe area feature.
+> 
+> - When [NavBar](arkts-arkui-navigation-comp-navbar-t.md) is nested within a **Navigation** component, the lifecycle of the inner
+> **NavDestination** component does not synchronize with the outer **NavDestination** component or the lifecycle of a
+> modal.
+> 
+> - If the [title](arkts-arkui-navigation-comp-attribute.md#title) and [subTitle](arkts-arkui-navigation-comp-attribute.md#subtitle) are not set and [hideBackButton](arkts-arkui-navigation-comp-attribute.md#hidebackbutton) is set to **true**, the title bar is not displayed.
+> 
+> - During subpage navigation within **Navigation**, the new page actively requests focus.
+> 
+> - You are not advised to use stack operations in [aboutToAppear](arkts-arkui-common-comp-basecustomcomponent-c.md#abouttoappear), as the page has not yet finished building at this stage, which may lead to issues such as white screens or navigation failures.
 
 ## Child Components
 
@@ -26,6 +39,8 @@ Creates a root view container for route navigation, suitable for page routing us
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationInterface-(): NavigationAttribute--><!--Device-NavigationInterface-(): NavigationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Navigation
@@ -41,6 +56,8 @@ Binds a navigation controller to the **Navigation** component, suitable for page
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationInterface-(pathInfos: NavPathStack): NavigationAttribute--><!--Device-NavigationInterface-(pathInfos: NavPathStack): NavigationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +80,8 @@ Binds a routing stack to the **Navigation** component and specifies a **NavDesti
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-NavigationInterface-(pathInfos: NavPathStack, homeDestination: HomePathInfo): NavigationAttribute--><!--Device-NavigationInterface-(pathInfos: NavPathStack, homeDestination: HomePathInfo): NavigationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -22,6 +22,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [controlTransfer](arkts-basicservices-usbmanager-controltransfer-f.md)
 
+<!--Device-usb-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>--><!--Device-usb-function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout?: number): Promise<number>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

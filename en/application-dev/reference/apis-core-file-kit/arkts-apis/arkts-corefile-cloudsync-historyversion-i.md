@@ -8,6 +8,8 @@ Represents the historical version information of the device-cloud file when the 
 
 **Since:** 20
 
+<!--Device-cloudSync-interface HistoryVersion--><!--Device-cloudSync-interface HistoryVersion-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ When the application is set to automatically resolve conflicts, the device side 
 
 **Since:** 20
 
+<!--Device-HistoryVersion-autoResolved: boolean--><!--Device-HistoryVersion-autoResolved: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## editedTime
@@ -45,6 +49,8 @@ File content modification timestamp, in milliseconds.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-HistoryVersion-editedTime: long--><!--Device-HistoryVersion-editedTime: long-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -60,6 +66,8 @@ File size in bytes.
 
 **Since:** 20
 
+<!--Device-HistoryVersion-fileSize: long--><!--Device-HistoryVersion-fileSize: long-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## originalFileName
@@ -73,6 +81,8 @@ File name of the current version.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-HistoryVersion-originalFileName: string--><!--Device-HistoryVersion-originalFileName: string-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -88,6 +98,8 @@ Hash value of the file content of the current version.
 
 **Since:** 20
 
+<!--Device-HistoryVersion-sha256: string--><!--Device-HistoryVersion-sha256: string-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## versionId
@@ -101,5 +113,7 @@ File version.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-HistoryVersion-versionId: string--><!--Device-HistoryVersion-versionId: string-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

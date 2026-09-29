@@ -19,6 +19,8 @@ declare enum EffectType
 
 **起始版本：** 14
 
+<!--Device-unnamed-declare enum EffectType--><!--Device-unnamed-declare enum EffectType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -35,6 +37,8 @@ DEFAULT = 0
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-EffectType-DEFAULT = 0--><!--Device-EffectType-DEFAULT = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_EFFECT
@@ -50,5 +54,7 @@ WINDOW_EFFECT = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-EffectType-WINDOW_EFFECT = 1--><!--Device-EffectType-WINDOW_EFFECT = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

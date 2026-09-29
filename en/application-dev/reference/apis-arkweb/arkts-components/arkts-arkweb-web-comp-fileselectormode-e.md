@@ -8,6 +8,8 @@ Defines the file selector mode, which controls how the file selector is opened a
 
 **Since:** 9
 
+<!--Device-unnamed-declare enum FileSelectorMode--><!--Device-unnamed-declare enum FileSelectorMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## FileOpenMode
@@ -21,6 +23,8 @@ Open and upload a file.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FileSelectorMode-FileOpenMode = 0--><!--Device-FileSelectorMode-FileOpenMode = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ Open and upload multiple files.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorMode-FileOpenMultipleMode = 1--><!--Device-FileSelectorMode-FileOpenMultipleMode = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## FileOpenFolderMode
@@ -50,6 +56,8 @@ Open and upload a folder.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorMode-FileOpenFolderMode = 2--><!--Device-FileSelectorMode-FileOpenFolderMode = 2-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## FileSaveMode
@@ -63,5 +71,7 @@ Save a file.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FileSelectorMode-FileSaveMode = 3--><!--Device-FileSelectorMode-FileSaveMode = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -16,6 +16,8 @@ Obtains the actual time calculated based on the last updated NTP time. This API 
 
 **Since:** 14
 
+<!--Device-systemDateTime-function getNtpTime(): long--><!--Device-systemDateTime-function getNtpTime(): long-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.

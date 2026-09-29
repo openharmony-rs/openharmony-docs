@@ -8,6 +8,8 @@ Provides system attribute configuration functions, including translating languag
 
 **Since:** 9
 
+<!--Device-i18n-export class System--><!--Device-i18n-export class System-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Obtains the preferred language of an application.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getAppPreferredLanguage(): string--><!--Device-System-static getAppPreferredLanguage(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -54,7 +58,9 @@ Obtains the country/region display name in the specified language.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string--><!--Device-System-static getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -103,7 +109,9 @@ Obtains the language display name in the specified language.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-System-static getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string--><!--Device-System-static getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -153,7 +161,9 @@ Obtains the first day of a week in the system settings.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-System-static getFirstDayOfWeek(): WeekDay--><!--Device-System-static getFirstDayOfWeek(): WeekDay-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -181,7 +191,9 @@ Obtains the first language in the preferred language list.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getFirstPreferredLanguage(): string--><!--Device-System-static getFirstPreferredLanguage(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -209,7 +221,9 @@ Obtains the list of preferred languages.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getPreferredLanguageList(): Array<string>--><!--Device-System-static getPreferredLanguageList(): Array<string>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -237,7 +251,9 @@ Obtains the simplified representation of a language. For example, the simplified
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-System-static getSimplifiedLanguage(language?: string): string--><!--Device-System-static getSimplifiedLanguage(language?: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -287,7 +303,9 @@ Obtains the list of countries/regions supported for the specified language.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getSystemCountries(language: string): Array<string>--><!--Device-System-static getSystemCountries(language: string): Array<string>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -335,9 +353,11 @@ Obtains the current system language. To listen for system language changes, enab
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 11.
+
+<!--Device-System-static getSystemLanguage(): string--><!--Device-System-static getSystemLanguage(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -365,7 +385,9 @@ Obtains the list of system languages. Since API version 11, this API is supporte
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getSystemLanguages(): Array<string>--><!--Device-System-static getSystemLanguages(): Array<string>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -384,38 +406,6 @@ import { i18n } from '@kit.LocalizationKit';
 let systemLanguages: Array<string> = i18n.System.getSystemLanguages();
 ```
 
-## getSystemLocale
-
-```TypeScript
-static getSystemLocale(): string
-```
-
-Obtains the current system locale.
-
-**Since:** 9
-
-**Deprecated since:** 20
-
-**Substitutes:** [getSystemLocaleInstance](#getsystemlocaleinstance)
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.Global.I18n
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Locale ID. |
-
-**Examples**
-
-```TypeScript
-import { i18n } from '@kit.LocalizationKit';
-
-let systemLocale: string = i18n.System.getSystemLocale(); // If the system language is simplified Chinese and the system region is China, then systemLocale is zh-Hans-CN.
-```
-
 ## getSystemLocaleInstance
 
 ```TypeScript
@@ -426,7 +416,9 @@ Obtains the current system locale. To listen for system locale changes, enable l
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-System-static getSystemLocaleInstance(): Intl.Locale--><!--Device-System-static getSystemLocaleInstance(): Intl.Locale-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -454,7 +446,9 @@ Obtains the current system country/region. To listen for system region changes, 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getSystemRegion(): string--><!--Device-System-static getSystemRegion(): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -482,7 +476,9 @@ Obtains the name of a temperature unit.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-System-static getTemperatureName(type: TemperatureType): string--><!--Device-System-static getTemperatureName(type: TemperatureType): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -529,7 +525,9 @@ Obtains the temperature unit of the system.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-System-static getTemperatureType(): TemperatureType--><!--Device-System-static getTemperatureType(): TemperatureType-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -557,7 +555,9 @@ Checks whether use of local digits is enabled.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static getUsingLocalDigit(): boolean--><!--Device-System-static getUsingLocalDigit(): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -585,9 +585,11 @@ Checks whether the 24-hour clock is used. To listen for system time format chang
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 11.
+
+<!--Device-System-static is24HourClock(): boolean--><!--Device-System-static is24HourClock(): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -615,7 +617,9 @@ Checks whether a language is a suggested language in the specified region. It ca
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static isSuggested(language: string, region?: string): boolean--><!--Device-System-static isSuggested(language: string, region?: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -664,7 +668,9 @@ Sets the preferred language of the application. Resources are loaded in the pref
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-System-static setAppPreferredLanguage(language: string): void--><!--Device-System-static setAppPreferredLanguage(language: string): void-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -693,4 +699,38 @@ try {
   let err: BusinessError = error as BusinessError;
   console.error(`call System.setAppPreferredLanguage failed, error code: ${err.code}, message: ${err.message}.`);
 }
+```
+
+## getSystemLocale
+
+```TypeScript
+static getSystemLocale(): string
+```
+
+Obtains the current system locale.
+
+**Since:** 9
+
+**Deprecated since:** 20
+
+**Substitutes:** [getSystemLocaleInstance](#getsystemlocaleinstance)
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-System-static getSystemLocale(): string--><!--Device-System-static getSystemLocale(): string-End-->
+
+**System capability:** SystemCapability.Global.I18n
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Locale ID. |
+
+**Examples**
+
+```TypeScript
+import { i18n } from '@kit.LocalizationKit';
+
+let systemLocale: string = i18n.System.getSystemLocale(); // If the system language is simplified Chinese and the system region is China, then systemLocale is zh-Hans-CN.
 ```

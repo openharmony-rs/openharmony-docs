@@ -4,7 +4,9 @@
 declare const Computed: MethodDecorator
 ```
 
-Defining Computed MethodDecorator.
+**@Computed** is a method decorator used in [State Management V2](../../../ui/state-management/arkts-state-management-overview.md) to decorate a **getter** method, turning it into a computed property. Its return value is cached and recalculated only when the dependent source data changes, reducing the overhead of repeated computation.
+
+For details, see [@Computed Decorator: Declaring Computed Properties](../../../ui/state-management/arkts-new-computed.md).
 
 **Since:** 12
 
@@ -13,5 +15,7 @@ Defining Computed MethodDecorator.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-unnamed-declare const Computed: MethodDecorator--><!--Device-unnamed-declare const Computed: MethodDecorator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

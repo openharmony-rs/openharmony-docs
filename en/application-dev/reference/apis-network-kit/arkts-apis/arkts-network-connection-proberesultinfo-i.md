@@ -8,6 +8,8 @@ Defines the network probe result information.
 
 **Since:** 26.0.0
 
+<!--Device-connection-export interface ProbeResultInfo--><!--Device-connection-export interface ProbeResultInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Packet loss rate. The value range is [0, 100]. For example, 100 indicates 100% p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProbeResultInfo-lossRate: int--><!--Device-ProbeResultInfo-lossRate: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## rtt
@@ -45,5 +49,7 @@ Round-trip time (RTT), in milliseconds. Multiple probe packets are sent to the t
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProbeResultInfo-rtt: int[]--><!--Device-ProbeResultInfo-rtt: int[]-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

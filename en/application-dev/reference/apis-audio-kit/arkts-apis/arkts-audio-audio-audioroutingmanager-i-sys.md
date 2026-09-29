@@ -14,6 +14,8 @@ Before calling any API in AudioRoutingManager, you must use [getRoutingManager](
 
 **Since:** 9
 
+<!--Device-audio-interface AudioRoutingManager--><!--Device-audio-interface AudioRoutingManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Exclude output devices. After calling this function successfully, audio will not
 **Required permissions:** 
 - API version 23 and later: N/A
 - API versions 18 to 22: ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioRoutingManager-excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promise<void>--><!--Device-AudioRoutingManager-excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -105,6 +109,8 @@ Gets the active output device descriptors for the current audio device. The acti
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioRoutingManager-getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>--><!--Device-AudioRoutingManager-getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -141,6 +147,8 @@ getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 Get excluded devices by filter.
 
 **Since:** 18
+
+<!--Device-AudioRoutingManager-getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -187,6 +195,8 @@ getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescrip
 Get the preferred input device for the target audio capturer filter.
 
 **Since:** 18
+
+<!--Device-AudioRoutingManager-getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -242,6 +252,8 @@ getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescri
 Get the preferred output devices by the target audio renderer filter.
 
 **Since:** 18
+
+<!--Device-AudioRoutingManager-getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -299,6 +311,8 @@ UnSubscribes to prefer output device change events.
 
 **Since:** 21
 
+<!--Device-AudioRoutingManager-off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -353,6 +367,8 @@ Unsubscribes to preferred input device change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioRoutingManager-offPreferredInputDeviceChangeByFilter(callback?: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-offPreferredInputDeviceChangeByFilter(callback?: Callback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -403,6 +419,8 @@ Subscribes to prefer output device change events. When preferred device for targ
 
 **Since:** 21
 
+<!--Device-AudioRoutingManager-on(type: 'preferredOutputDeviceChangeByFilter', filter: AudioRendererFilter, callback: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-on(type: 'preferredOutputDeviceChangeByFilter', filter: AudioRendererFilter, callback: Callback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -451,6 +469,8 @@ Subscribes to preferred input device change events. When the preferred device fo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioRoutingManager-onPreferredInputDeviceChangeByFilter(filter: AudioCapturerFilter, callback: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-onPreferredInputDeviceChangeByFilter(filter: AudioCapturerFilter, callback: Callback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -496,6 +516,8 @@ Restores the output device for the specified audio renderer filter to the defaul
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioRoutingManager-restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise<void>--><!--Device-AudioRoutingManager-restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -552,6 +574,8 @@ Select the input device. This method uses an asynchronous callback to return the
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback<void>): void--><!--Device-AudioRoutingManager-selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -606,6 +630,8 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise<void>
 Select the input device. This method uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise<void>--><!--Device-AudioRoutingManager-selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -662,6 +688,8 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 Select the input device with desired AudioCapturer. This method uses a promise to return the result.
 
 **Since:** 18
+
+<!--Device-AudioRoutingManager-selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioDeviceDescriptors): Promise<void>--><!--Device-AudioRoutingManager-selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioDeviceDescriptors): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -737,6 +765,8 @@ Select the output device. This method uses an asynchronous callback to return th
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback<void>): void--><!--Device-AudioRoutingManager-selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -790,6 +820,8 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise<void>
 Select the output device. This method uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise<void>--><!--Device-AudioRoutingManager-selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -846,6 +878,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 Select the output device with desired AudioRenderer. This method uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback<void>): void--><!--Device-AudioRoutingManager-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -910,6 +944,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 Select the output device with desired AudioRenderer. This method uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors): Promise<void>--><!--Device-AudioRoutingManager-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -978,6 +1014,8 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 Select the output device with desired AudioRenderer. This method uses a promise to return the result.
 
 **Since:** 21
+
+<!--Device-AudioRoutingManager-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, strategy: AudioDevcieSelectStrategy): Promise<void>--><!--Device-AudioRoutingManager-selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: AudioDeviceDescriptors, strategy: AudioDevcieSelectStrategy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1055,6 +1093,8 @@ Unexclude output devices. This function will unexclude target output devices bel
 - API version 23 and later: N/A
 - API versions 18 to 22: ohos.permission.MANAGE_AUDIO_CONFIG
 
+<!--Device-AudioRoutingManager-unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promise<void>--><!--Device-AudioRoutingManager-unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -1127,6 +1167,8 @@ Unexclude output devices. This function will unexclude all output devices belong
 **Required permissions:** 
 - API version 23 and later: N/A
 - API versions 18 to 22: ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioRoutingManager-unexcludeOutputDevices(usage: DeviceUsage): Promise<void>--><!--Device-AudioRoutingManager-unexcludeOutputDevices(usage: DeviceUsage): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 

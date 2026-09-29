@@ -8,6 +8,8 @@ Provides text transliteration capabilities, such as obtaining the supported lang
 
 **Since:** 9
 
+<!--Device-i18n-export class Transliterator--><!--Device-i18n-export class Transliterator-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Obtains a list of IDs supported by the **Transliterator** object.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Transliterator-static getAvailableIDs(): string[]--><!--Device-Transliterator-static getAvailableIDs(): string[]-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -56,7 +60,9 @@ Creates a **Transliterator** object based on the specified ID.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Transliterator-static getInstance(id: string): Transliterator--><!--Device-Transliterator-static getInstance(id: string): Transliterator-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -90,7 +96,9 @@ Converts the input text from the source format to the target format.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Transliterator-transform(text: string): string--><!--Device-Transliterator-transform(text: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

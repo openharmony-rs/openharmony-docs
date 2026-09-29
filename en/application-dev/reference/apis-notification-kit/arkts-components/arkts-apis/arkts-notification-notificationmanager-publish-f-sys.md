@@ -22,6 +22,8 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 - API version 18 and later: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.SEND_NOTIFICATION_CROSS_USER
 - API versions 9 to 17: ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function publish(request: NotificationRequest, userId: int, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function publish(request: NotificationRequest, userId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -107,6 +109,8 @@ Publishes a notification to a specified user. This API uses a promise to return 
 **Required permissions:** 
 - API version 18 and later: ohos.permission.NOTIFICATION_CONTROLLER or ohos.permission.SEND_NOTIFICATION_CROSS_USER
 - API versions 9 to 17: ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function publish(request: NotificationRequest, userId: int): Promise<void>--><!--Device-notificationManager-function publish(request: NotificationRequest, userId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

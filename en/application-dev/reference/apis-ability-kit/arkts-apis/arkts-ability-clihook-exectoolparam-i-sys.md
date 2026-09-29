@@ -8,6 +8,8 @@ Tool execution parameter for hook interception.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface ExecToolParam--><!--Device-unnamed-export interface ExecToolParam-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Indicates the tool arguments.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecToolParam-args: Record<string, Object>--><!--Device-ExecToolParam-args: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,6 +48,8 @@ Indicates the challenge code for permission verification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecToolParam-challenge: string--><!--Device-ExecToolParam-challenge: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Indicates the execution options.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecToolParam-execOptions?: ExecOptions--><!--Device-ExecToolParam-execOptions?: ExecOptions-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -80,6 +88,8 @@ Indicates the subcommand.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecToolParam-subCommand: string--><!--Device-ExecToolParam-subCommand: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -97,6 +107,8 @@ Indicates the tool name.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecToolParam-toolName: string--><!--Device-ExecToolParam-toolName: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

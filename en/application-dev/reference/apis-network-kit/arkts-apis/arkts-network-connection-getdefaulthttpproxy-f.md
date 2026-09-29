@@ -22,6 +22,8 @@ Obtains the default HTTP proxy configuration of the network. This API uses an as
 
 **Since:** 10
 
+<!--Device-connection-function getDefaultHttpProxy(callback: AsyncCallback<HttpProxy>): void--><!--Device-connection-function getDefaultHttpProxy(callback: AsyncCallback<HttpProxy>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -70,6 +72,8 @@ Obtains the default HTTP proxy configuration of the network. This API uses a pro
 > - If [setAppNet](arkts-network-connection-setappnet-f.md) is used to bind the application to the network specified by [NetHandle](arkts-network-connection-nethandle-i.md), the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.
 
 **Since:** 10
+
+<!--Device-connection-function getDefaultHttpProxy(): Promise<HttpProxy>--><!--Device-connection-function getDefaultHttpProxy(): Promise<HttpProxy>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

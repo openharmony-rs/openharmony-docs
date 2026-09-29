@@ -17,11 +17,11 @@ The **inputMethodList** module is oriented to system applications and input meth
 
 ## Attributes
 
-<br><br>The [universal attributes](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common) are not supported.<br><br>
+<br><br>The [universal attributes](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are not supported.<br><br>
 
 ## Events
 
-<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md#common) are not supported.<br><br>## Example<br><br>```ts
+<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are not supported.<br><br>## Example<br><br>```ts
  <br>import { Pattern, PatternOptions } from '@kit.IMEKit';
  <br>
  <br>@Entry

@@ -8,6 +8,8 @@ Defines the peer image resolution in a video call.
 
 **Since:** 11
 
+<!--Device-call-export interface PeerDimensionsDetail--><!--Device-call-export interface PeerDimensionsDetail-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Call ID.
 
 **Since:** 11
 
+<!--Device-PeerDimensionsDetail-callId: int--><!--Device-PeerDimensionsDetail-callId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Height of the peer image, in pixels.
 
 **Since:** 11
 
+<!--Device-PeerDimensionsDetail-height: int--><!--Device-PeerDimensionsDetail-height: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Width of the peer image, in pixels.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-PeerDimensionsDetail-width: int--><!--Device-PeerDimensionsDetail-width: int-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

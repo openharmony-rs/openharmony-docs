@@ -8,6 +8,8 @@ HDR-adaptive darken blender, used to add a darken effect to a specified componen
 
 **Since:** 26.0.0
 
+<!--Device-uiEffect-interface HdrDarkenBlender--><!--Device-uiEffect-interface HdrDarkenBlender-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Converts RGB colors to grayscale values. The weights of the grayscale conversion
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HdrDarkenBlender-grayscaleFactor?: [double, double, double]--><!--Device-HdrDarkenBlender-grayscaleFactor?: [double, double, double]-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -55,6 +59,8 @@ HDR brightness ratio. The value range is [1.0, the maximum brightness ratio supp
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HdrDarkenBlender-hdrBrightnessRatio: double--><!--Device-HdrDarkenBlender-hdrBrightnessRatio: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

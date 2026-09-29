@@ -8,6 +8,8 @@ Defines a struct for the data proxy configuration.
 
 **Since:** 20
 
+<!--Device-dataShare-interface DataProxyConfig--><!--Device-dataShare-interface DataProxyConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Sets the maximum length of the data proxy value. The default value is MAX_LENGTH
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyConfig-maxValueLength?: DataProxyMaxValueLength--><!--Device-DataProxyConfig-maxValueLength?: DataProxyMaxValueLength-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## type
@@ -45,5 +49,7 @@ Type of the data proxy.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyConfig-type: DataProxyType--><!--Device-DataProxyConfig-type: DataProxyType-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer

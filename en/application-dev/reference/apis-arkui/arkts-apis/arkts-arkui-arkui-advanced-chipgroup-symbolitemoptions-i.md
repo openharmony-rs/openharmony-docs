@@ -8,6 +8,8 @@ Defines the suffix icon option type for **ChipGroup**.
 
 **Since:** 14
 
+<!--Device-unnamed-export interface SymbolItemOptions--><!--Device-unnamed-export interface SymbolItemOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ If the value is **undefined**, there is no tail icon response event.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-SymbolItemOptions-action: VoidCallback--><!--Device-SymbolItemOptions-action: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -53,6 +57,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-SymbolItemOptions-accessibilityDescription?: ResourceStr--><!--Device-SymbolItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-SymbolItemOptions-accessibilityLevel?: string--><!--Device-SymbolItemOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -110,6 +118,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-SymbolItemOptions-accessibilityText?: ResourceStr--><!--Device-SymbolItemOptions-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbol
@@ -127,5 +137,7 @@ symbol: SymbolGlyphModifier
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-SymbolItemOptions-symbol: SymbolGlyphModifier--><!--Device-SymbolItemOptions-symbol: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Switch类型的样式。
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SwitchStyle--><!--Device-unnamed-declare interface SwitchStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## pointColor
@@ -27,6 +29,8 @@ pointColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwitchStyle-pointColor?: ResourceColor--><!--Device-SwitchStyle-pointColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ pointRadius?: number | Resource
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwitchStyle-pointRadius?: number | Resource--><!--Device-SwitchStyle-pointRadius?: number | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## trackBorderRadius
@@ -80,6 +86,8 @@ trackBorderRadius?: number | Resource
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwitchStyle-trackBorderRadius?: number | Resource--><!--Device-SwitchStyle-trackBorderRadius?: number | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## unselectedColor
@@ -99,5 +107,7 @@ unselectedColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwitchStyle-unselectedColor?: ResourceColor--><!--Device-SwitchStyle-unselectedColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

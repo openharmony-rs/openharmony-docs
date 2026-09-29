@@ -10,6 +10,8 @@ Describes the partner device address.
 
 **Since:** 23
 
+<!--Device-partnerAgent-export interface PartnerDeviceAddress--><!--Device-partnerAgent-export interface PartnerDeviceAddress-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Bluetooth address of the partner device.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PartnerDeviceAddress-bluetoothAddress?: common.BluetoothAddress--><!--Device-PartnerDeviceAddress-bluetoothAddress?: common.BluetoothAddress-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

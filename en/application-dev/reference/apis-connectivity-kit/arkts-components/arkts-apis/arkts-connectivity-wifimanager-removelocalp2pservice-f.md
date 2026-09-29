@@ -20,6 +20,8 @@ Remove a registered local P2P service added with the [addDnsSdLocalP2pService](a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void--><!--Device-wifiManager-function removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**

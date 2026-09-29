@@ -10,6 +10,8 @@ Provides progress indicator configuration. Inherits from [CommonConfiguration](a
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>--><!--Device-unnamed-declare interface ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## total
@@ -18,13 +20,13 @@ Provides progress indicator configuration. Inherits from [CommonConfiguration](a
 total: number
 ```
 
-Total progress.
+Total progress length.
 
-Default value: **100**
+Value range: (0, +∞)
 
 **NOTE:** 
 
-If the value of **total** is a negative number, it is treated as 100.
+When total is less than or equal to 0, it is handled as 100.
 
 **Type:** number
 
@@ -33,6 +35,8 @@ If the value of **total** is a negative number, it is treated as 100.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ProgressConfiguration-total: number--><!--Device-ProgressConfiguration-total: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,11 +46,13 @@ If the value of **total** is a negative number, it is treated as 100.
 value: number
 ```
 
-Current progress. Values less than 0 are adjusted to **0**. Values greater than the value of **total** are capped at the value of **total**.
+Current progress value. When the set value is less than 0, it is set to 0. When the set value is greater than total, it is set to total.
 
-Default value: **0**
+Default value: 0
 
 Value range: [0, total]
+
+**Note:** When the status of a Ring type progress bar is set to ProgressStatus.LOADING, the set progress value does not take effect.
 
 **Type:** number
 
@@ -55,5 +61,7 @@ Value range: [0, total]
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ProgressConfiguration-value: number--><!--Device-ProgressConfiguration-value: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

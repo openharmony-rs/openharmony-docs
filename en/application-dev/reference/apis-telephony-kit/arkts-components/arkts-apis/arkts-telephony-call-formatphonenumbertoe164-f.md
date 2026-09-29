@@ -18,6 +18,8 @@ The phone number must match the specified country code. For example, for a China
 
 **Since:** 7
 
+<!--Device-call-function formatPhoneNumberToE164(phoneNumber: string, countryCode: string, callback: AsyncCallback<string>): void--><!--Device-call-function formatPhoneNumberToE164(phoneNumber: string, countryCode: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**
@@ -68,6 +70,8 @@ The phone number must match the specified country code. For example, for a China
 All country codes are supported.
 
 **Since:** 7
+
+<!--Device-call-function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Promise<string>--><!--Device-call-function formatPhoneNumberToE164(phoneNumber: string, countryCode: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

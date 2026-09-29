@@ -10,6 +10,8 @@ Provides methods for setting information about input methods, including automati
 
 **Since:** 7
 
+<!--Device-settings-namespace input--><!--Device-settings-namespace input-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

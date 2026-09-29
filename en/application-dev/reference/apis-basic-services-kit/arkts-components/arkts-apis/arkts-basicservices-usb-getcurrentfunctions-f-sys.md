@@ -20,6 +20,8 @@ Obtains the numeric mask combination for the USB function list in Device mode.
 
 **Substitutes:** [getCurrentFunctions](arkts-basicservices-usbmanager-getcurrentfunctions-f-sys.md)
 
+<!--Device-usb-function getCurrentFunctions(): FunctionType--><!--Device-usb-function getCurrentFunctions(): FunctionType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getAuthorizedAppList(keyUri: string) : Promise<CMResult>--><!--Device-certificateManager-function getAuthorizedAppList(keyUri: string) : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ declare interface KeyframeAnimateParam
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface KeyframeAnimateParam--><!--Device-unnamed-declare interface KeyframeAnimateParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFinish
@@ -23,6 +25,8 @@ onFinish?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-KeyframeAnimateParam-onFinish?: () => void--><!--Device-KeyframeAnimateParam-onFinish?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ delay?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-KeyframeAnimateParam-delay?: number--><!--Device-KeyframeAnimateParam-delay?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## expectedFrameRateRange
@@ -77,6 +83,8 @@ expectedFrameRateRange?: ExpectedFrameRateRange
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-KeyframeAnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange--><!--Device-KeyframeAnimateParam-expectedFrameRateRange?: ExpectedFrameRateRange-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,5 +115,7 @@ iterations?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-KeyframeAnimateParam-iterations?: number--><!--Device-KeyframeAnimateParam-iterations?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

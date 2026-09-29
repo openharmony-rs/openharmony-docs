@@ -8,6 +8,8 @@ Describes the window parameters during application startup.
 
 **Since:** 20
 
+<!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The params of start animation
 
 **Since:** 20
 
+<!--Device-WindowCreateParams-animationParams?: StartAnimationParams--><!--Device-WindowCreateParams-animationParams?: StartAnimationParams-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## excludeFromDock
@@ -45,6 +49,8 @@ Whether to hide the dock icon and the hover thumbnail preview. If true, the curr
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowCreateParams-excludeFromDock?: boolean--><!--Device-WindowCreateParams-excludeFromDock?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -64,6 +70,8 @@ Whether to hide the window from the multitasking center. If true, the current wi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowCreateParams-excludeFromRecent?: boolean--><!--Device-WindowCreateParams-excludeFromRecent?: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## minimizeOnStart
@@ -82,6 +90,8 @@ Whether the window starts in a minimized state. If true, the window will not be 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowCreateParams-minimizeOnStart?: boolean--><!--Device-WindowCreateParams-minimizeOnStart?: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## needAnimation
@@ -97,5 +107,7 @@ Whether to need start animation
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowCreateParams-needAnimation?: boolean--><!--Device-WindowCreateParams-needAnimation?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

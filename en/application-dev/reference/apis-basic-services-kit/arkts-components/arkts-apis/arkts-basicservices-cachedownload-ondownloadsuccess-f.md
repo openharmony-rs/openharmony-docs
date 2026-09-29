@@ -16,6 +16,8 @@ Subscribes to the pre-download completion events. This API uses an asynchronous 
 
 **Since:** 23
 
+<!--Device-cacheDownload-function onDownloadSuccess(url: string, callback: Callback<void>): void--><!--Device-cacheDownload-function onDownloadSuccess(url: string, callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

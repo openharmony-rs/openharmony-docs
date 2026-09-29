@@ -16,6 +16,8 @@ Checks whether this application is the default application of a system-defined a
 
 **Since:** 9
 
+<!--Device-defaultAppManager-function isDefaultApplication(type: string, callback: AsyncCallback<boolean>) : void--><!--Device-defaultAppManager-function isDefaultApplication(type: string, callback: AsyncCallback<boolean>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **Parameters:**
@@ -59,6 +61,8 @@ function isDefaultApplication(type: string) : Promise<boolean>
 Checks whether this application is the default application of a system-defined application type or a [uniform data type](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-defaultAppManager-function isDefaultApplication(type: string) : Promise<boolean>--><!--Device-defaultAppManager-function isDefaultApplication(type: string) : Promise<boolean>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 

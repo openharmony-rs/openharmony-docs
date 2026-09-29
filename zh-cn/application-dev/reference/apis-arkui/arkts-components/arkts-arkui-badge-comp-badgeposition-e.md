@@ -8,6 +8,8 @@ declare enum BadgePosition
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum BadgePosition--><!--Device-unnamed-declare enum BadgePosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## RightTop
@@ -23,6 +25,8 @@ RightTop
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BadgePosition-RightTop--><!--Device-BadgePosition-RightTop-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Right
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BadgePosition-Right--><!--Device-BadgePosition-Right-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Left
@@ -55,5 +61,7 @@ Left
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BadgePosition-Left--><!--Device-BadgePosition-Left-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

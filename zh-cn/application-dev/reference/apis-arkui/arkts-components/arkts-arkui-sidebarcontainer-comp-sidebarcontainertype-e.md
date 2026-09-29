@@ -8,6 +8,8 @@ declare enum SideBarContainerType
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare enum SideBarContainerType--><!--Device-unnamed-declare enum SideBarContainerType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Embed
@@ -32,6 +34,8 @@ Embed = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SideBarContainerType-Embed = 0--><!--Device-SideBarContainerType-Embed = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Overlay
@@ -45,6 +49,8 @@ Overlay = 1
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SideBarContainerType-Overlay = 1--><!--Device-SideBarContainerType-Overlay = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ AUTO = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SideBarContainerType-AUTO = 2--><!--Device-SideBarContainerType-AUTO = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISPLACE
@@ -81,5 +89,7 @@ DISPLACE = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SideBarContainerType-DISPLACE = 3--><!--Device-SideBarContainerType-DISPLACE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

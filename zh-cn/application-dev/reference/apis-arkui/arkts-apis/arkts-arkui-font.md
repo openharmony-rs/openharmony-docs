@@ -10,6 +10,8 @@
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare namespace font--><!--Device-unnamed-declare namespace font-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块

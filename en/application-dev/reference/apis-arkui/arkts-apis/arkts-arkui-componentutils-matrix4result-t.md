@@ -29,6 +29,8 @@ The matrix is column-first fourth-order matrix.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]--><!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [

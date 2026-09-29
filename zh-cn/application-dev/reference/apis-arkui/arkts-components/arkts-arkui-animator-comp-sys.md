@@ -14,6 +14,8 @@ Animator(value: string)
 
 **废弃版本：** 22
 
+<!--Device-AnimatorInterface-(value: string): AnimatorAttribute--><!--Device-AnimatorInterface-(value: string): AnimatorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。

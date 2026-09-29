@@ -18,6 +18,8 @@ Describes the multi-line text notification. This API is inherited from Notificat
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationMultiLineContent extends NotificationBasicContent--><!--Device-unnamed-export interface NotificationMultiLineContent extends NotificationBasicContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## briefText
@@ -31,6 +33,8 @@ Notification summary content, which is a summary of the notification content and
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationMultiLineContent-briefText: string--><!--Device-NotificationMultiLineContent-briefText: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -46,6 +50,8 @@ List of multi-line text displayed after the notification is expanded. Each line 
 
 **Since:** 7
 
+<!--Device-NotificationMultiLineContent-lines: Array<string>--><!--Device-NotificationMultiLineContent-lines: Array<string>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## longTitle
@@ -59,5 +65,7 @@ Title when the notification is expanded. It cannot be an empty string. The size 
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationMultiLineContent-longTitle: string--><!--Device-NotificationMultiLineContent-longTitle: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

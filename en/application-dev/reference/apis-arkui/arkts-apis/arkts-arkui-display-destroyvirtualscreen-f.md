@@ -18,6 +18,8 @@ Destroys a virtual screen. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+<!--Device-display-function destroyVirtualScreen(screenId: long): Promise<void>--><!--Device-display-function destroyVirtualScreen(screenId: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

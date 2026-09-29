@@ -22,6 +22,8 @@ Obtain current location switch status
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function isLocationEnabled(callback: AsyncCallback<boolean>): void--><!--Device-geolocation-function isLocationEnabled(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -62,6 +64,8 @@ Obtain current location switch status
 **Substitutes:** [isLocationEnabled](arkts-location-geolocationmanager-islocationenabled-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function isLocationEnabled(): Promise<boolean>--><!--Device-geolocation-function isLocationEnabled(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

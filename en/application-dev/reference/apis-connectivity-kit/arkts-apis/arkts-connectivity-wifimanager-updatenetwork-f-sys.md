@@ -18,6 +18,8 @@ Update the specified Wi-Fi configuration.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
+<!--Device-wifiManager-function updateNetwork(config: WifiDeviceConfig): int--><!--Device-wifiManager-function updateNetwork(config: WifiDeviceConfig): int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

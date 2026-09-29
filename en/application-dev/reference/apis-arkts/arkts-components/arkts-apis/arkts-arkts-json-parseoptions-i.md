@@ -8,6 +8,8 @@ Describes the parsing options, which can define the mode for processing BigInt.
 
 **Since:** 12
 
+<!--Device-json-interface ParseOptions--><!--Device-json-interface ParseOptions-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Mode for processing BigInt.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ParseOptions-bigIntMode: BigIntMode--><!--Device-ParseOptions-bigIntMode: BigIntMode-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## parseReturnType
@@ -47,5 +51,7 @@ The return type for parsing. When omitted, defaults to OBJECT. Only effective fo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-ParseOptions-parseReturnType?: ParseReturnType--><!--Device-ParseOptions-parseReturnType?: ParseReturnType-End-->
 
 **System capability:** SystemCapability.Utils.Lang

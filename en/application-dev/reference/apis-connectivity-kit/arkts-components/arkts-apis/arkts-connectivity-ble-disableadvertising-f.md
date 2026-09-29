@@ -20,6 +20,8 @@ Disable the advertising with a specific ID temporarily.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ble-function disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback: AsyncCallback<void>): void--><!--Device-ble-function disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -126,6 +128,8 @@ Disable the advertising with a specific ID temporarily.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ble-function disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise<void>--><!--Device-ble-function disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

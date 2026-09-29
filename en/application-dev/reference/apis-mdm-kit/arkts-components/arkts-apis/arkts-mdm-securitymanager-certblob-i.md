@@ -8,6 +8,8 @@ Represents the certificate information.
 
 **Since:** 12
 
+<!--Device-securityManager-export interface CertBlob--><!--Device-securityManager-export interface CertBlob-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Certificate alias. The value length must be less than 40 characters.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CertBlob-alias: string--><!--Device-CertBlob-alias: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## inData
@@ -45,5 +49,7 @@ Binary content of the certificate.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CertBlob-inData: Uint8Array--><!--Device-CertBlob-inData: Uint8Array-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

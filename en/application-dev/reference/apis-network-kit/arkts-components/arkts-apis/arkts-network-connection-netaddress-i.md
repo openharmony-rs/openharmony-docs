@@ -8,6 +8,8 @@ Defines a network address.
 
 **Since:** 8
 
+<!--Device-connection-export interface NetAddress--><!--Device-connection-export interface NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Network address.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NetAddress-address: string--><!--Device-NetAddress-address: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -44,7 +48,9 @@ Address family identifier. The value is **1** for IPv4 and **2** for IPv6. The d
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NetAddress-family?: int--><!--Device-NetAddress-family?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -60,6 +66,8 @@ Port number. The value range is [0, 65535]. The default value is **0**.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NetAddress-port?: int--><!--Device-NetAddress-port?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

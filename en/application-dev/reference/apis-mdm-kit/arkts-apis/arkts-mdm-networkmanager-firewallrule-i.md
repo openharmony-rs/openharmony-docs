@@ -12,6 +12,8 @@ In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 ar
 
 **Since:** 12
 
+<!--Device-networkManager-interface FirewallRule--><!--Device-networkManager-interface FirewallRule-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -38,6 +40,8 @@ This parameter is optional when a firewall is removed. If this parameter is left
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FirewallRule-action?: Action--><!--Device-FirewallRule-action?: Action-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appUid
@@ -53,6 +57,8 @@ UID of the application.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FirewallRule-appUid?: string--><!--Device-FirewallRule-appUid?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -70,6 +76,8 @@ Destination IP address. An IP address segment, for example, **192.168.0.0/22** o
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FirewallRule-destAddr?: string--><!--Device-FirewallRule-destAddr?: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## destPort
@@ -85,6 +93,8 @@ Destination port.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FirewallRule-destPort?: string--><!--Device-FirewallRule-destPort?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -106,6 +116,8 @@ This parameter is optional when a firewall is removed. If this parameter is left
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FirewallRule-direction?: Direction--><!--Device-FirewallRule-direction?: Direction-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## family
@@ -121,6 +133,8 @@ IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FirewallRule-family?: number--><!--Device-FirewallRule-family?: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -144,6 +158,8 @@ When obtaining firewall filter rules, the **logType** field can be obtained only
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FirewallRule-logType?: LogType--><!--Device-FirewallRule-logType?: LogType-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## protocol
@@ -159,6 +175,8 @@ Network protocol. If the value is **ALL** or **ICMP**, the settings of **srcPort
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FirewallRule-protocol?: Protocol--><!--Device-FirewallRule-protocol?: Protocol-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -176,6 +194,8 @@ Source IP address. An IP address segment, for example, **192.168.0.0/22** or **1
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FirewallRule-srcAddr?: string--><!--Device-FirewallRule-srcAddr?: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## srcPort
@@ -191,5 +211,7 @@ Source port.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FirewallRule-srcPort?: string--><!--Device-FirewallRule-srcPort?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

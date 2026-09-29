@@ -12,6 +12,8 @@ Represents a FrameNode of the **TextClock** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>--><!--Device-typeNode-type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextClockInterface, [TextClockAttribute](../arkts-components/arkts-arkui-textclock-comp-attribute.md)&gt;

@@ -8,6 +8,8 @@ class Material
 
 **起始版本：** 26.0.0
 
+<!--Device-uiMaterial-class Material--><!--Device-uiMaterial-class Material-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -29,6 +31,8 @@ Material的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Material-constructor(options?: MaterialOptions)--><!--Device-Material-constructor(options?: MaterialOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

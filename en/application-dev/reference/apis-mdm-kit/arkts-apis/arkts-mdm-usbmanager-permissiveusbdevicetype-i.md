@@ -14,6 +14,8 @@ parameters in this API are optional, allowing for more flexible USB device disab
 
 **Since:** 26.0.0
 
+<!--Device-usbManager-export interface PermissiveUsbDeviceType--><!--Device-usbManager-export interface PermissiveUsbDeviceType-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Type code. The value range is [0, 255]. If **descriptor** is **DEVICE**, this pa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PermissiveUsbDeviceType-baseClass: number--><!--Device-PermissiveUsbDeviceType-baseClass: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## descriptor
@@ -51,6 +55,8 @@ USB descriptor. If **USBDevice.clazz** is **0**, locate the value of **USBDevice
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissiveUsbDeviceType-descriptor?: Descriptor--><!--Device-PermissiveUsbDeviceType-descriptor?: Descriptor-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,6 +74,8 @@ Protocol code. The value range is [0, 255]. If **descriptor** is **DEVICE**, thi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PermissiveUsbDeviceType-protocol?: number--><!--Device-PermissiveUsbDeviceType-protocol?: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## subClass
@@ -83,5 +91,7 @@ Subtype code. The value range is [0, 255]. If **descriptor** is **DEVICE**, this
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissiveUsbDeviceType-subClass?: number--><!--Device-PermissiveUsbDeviceType-subClass?: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

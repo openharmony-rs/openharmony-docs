@@ -18,6 +18,8 @@ Enables or disables the WantAgent multithreading feature.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wantAgent-function setWantAgentMultithreading(isMultithreadingSupported: boolean) : void--><!--Device-wantAgent-function setWantAgentMultithreading(isMultithreadingSupported: boolean) : void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

@@ -1,10 +1,14 @@
 # SymbolSpan
 
-As a child component of the **Text** component, the **SymbolSpan** component is used to display small icons.
+As a child component of the **Text** component, **SymbolSpan** is used to display the system preset small icon symbols (Symbol icons) in text. It supports setting attributes such as color, size, font weight, rendering strategy, and effect strategy, and is suitable for scenarios where icon symbols need to be embedded in text, such as status indication and function identification. **SymbolSpan** supports only system preset symbol resources and can inherit the attribute settings of the parent **Text** component.
 
-> **NOTE**
-
-> - This component can inherit attribute settings from its parent component **Text**. This means that, if an > attribute is not set in this component, it takes the value of the attribute (if set) from its parent component. > > - The **SymbolSpan** component is not dimmed when dragged.
+> **NOTE:** 
+> 
+> - This component is supported since API version 11. New APIs of later versions are marked with a superscript to indicate their
+> 
+> - This component supports inheriting the attributes of the parent **Text** component. That is, if the child component does not set an attribute but the parent component does, the child component inherits all the attributes set by the parent component.
+> 
+> - **SymbolSpan** does not gray out when dragged.
 
 ## Child Components
 
@@ -26,13 +30,15 @@ Defines the constructor of SymbolSpan.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-SymbolSpanInterface-(value: Resource): SymbolSpanAttribute--><!--Device-SymbolSpanInterface-(value: Resource): SymbolSpanAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Resource of the **SymbolSpan** component, for example, **$r('sys.symbol.ohos_wifi')**. |
+| value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Resource reference of the SymbolSpan component, for example, $r('sys.symbol.ohos_wifi'). Only system preset symbol resources are supported. Referencing a non-symbol resource will cause display exceptions. |
 
 ## Summary
 

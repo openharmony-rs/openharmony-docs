@@ -25,6 +25,8 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-componentSnapshot-function getSync(id: string, options?: SnapshotOptions): image.PixelMap--><!--Device-componentSnapshot-function getSync(id: string, options?: SnapshotOptions): image.PixelMap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

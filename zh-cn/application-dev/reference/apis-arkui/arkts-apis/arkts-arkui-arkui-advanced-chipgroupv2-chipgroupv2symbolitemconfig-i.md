@@ -8,6 +8,8 @@ ChipGroupV2SymbolItemConfig定义了尾部Symbol图标的配置类型。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2SymbolItemConfig--><!--Device-unnamed-export interface ChipGroupV2SymbolItemConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ action: VoidCallback
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2SymbolItemConfig-action: VoidCallback--><!--Device-ChipGroupV2SymbolItemConfig-action: VoidCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -51,6 +55,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2SymbolItemConfig-accessibilityDescription?: ResourceStr--><!--Device-ChipGroupV2SymbolItemConfig-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2SymbolItemConfig-accessibilityLevel?: string--><!--Device-ChipGroupV2SymbolItemConfig-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -110,6 +118,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2SymbolItemConfig-accessibilityText?: ResourceStr--><!--Device-ChipGroupV2SymbolItemConfig-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbol
@@ -122,12 +132,14 @@ symbol: SymbolGlyphModifier
 
 **说明：** 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy)设置动效。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2SymbolItemConfig-symbol: SymbolGlyphModifier--><!--Device-ChipGroupV2SymbolItemConfig-symbol: SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

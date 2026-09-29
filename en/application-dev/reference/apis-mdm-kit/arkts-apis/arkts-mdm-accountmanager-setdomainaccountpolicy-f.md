@@ -20,6 +20,8 @@ Sets the domain account policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo, policy: DomainAccountPolicy): void--><!--Device-accountManager-function setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountInfo, policy: DomainAccountPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

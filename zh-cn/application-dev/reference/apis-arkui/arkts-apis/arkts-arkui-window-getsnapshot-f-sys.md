@@ -16,6 +16,8 @@ function getSnapshot(windowId: number): Promise<image.PixelMap>
 
 **起始版本：** 12
 
+<!--Device-window-function getSnapshot(windowId: int): Promise<image.PixelMap>--><!--Device-window-function getSnapshot(windowId: int): Promise<image.PixelMap>-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。

@@ -20,6 +20,8 @@ Queries the status of a specified type of sensitive data key under the lock scre
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA or ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
+<!--Device-screenLockFileManager-function queryAppKeyState(dataType: DataType): KeyStatus--><!--Device-screenLockFileManager-function queryAppKeyState(dataType: DataType): KeyStatus-End-->
+
 **System capability:** SystemCapability.Security.ScreenLockFileManager
 
 **System API:** This is a system API.

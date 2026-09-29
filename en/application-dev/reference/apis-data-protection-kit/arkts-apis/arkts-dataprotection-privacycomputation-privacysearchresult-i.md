@@ -8,6 +8,8 @@ Defines the result of a privacy search operation, containing the result cipherte
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-interface PrivacySearchResult--><!--Device-privacyComputation-interface PrivacySearchResult-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -18,18 +20,20 @@ Defines the result of a privacy search operation, containing the result cipherte
 ## resultCipherText
 
 ```TypeScript
-resultCipherText: Array<Uint8Array>
+resultCipherText: Uint8Array[]
 ```
 
 The array of result ciphertexts generated during the privacy search. These ciphertexts encode the search result and need to be decrypted by getSearchResult.
 
-**Type:** Array&lt;Uint8Array&gt;
+**Type:** Uint8Array[]
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PrivacySearchResult-resultCipherText: Uint8Array[]--><!--Device-PrivacySearchResult-resultCipherText: Uint8Array[]-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -48,5 +52,7 @@ The array of value ciphertexts generated during the privacy search when using PI
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PrivacySearchResult-valueCipherText?: Uint8Array[]--><!--Device-PrivacySearchResult-valueCipherText?: Uint8Array[]-End-->
 
 **System capability:** SystemCapability.Security.Asset

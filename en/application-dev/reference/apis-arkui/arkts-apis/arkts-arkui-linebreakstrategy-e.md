@@ -4,9 +4,11 @@
 declare enum LineBreakStrategy
 ```
 
-The line break rule.
+Sets the line break rule.
 
 **Since:** 12
+
+<!--Device-unnamed-declare enum LineBreakStrategy--><!--Device-unnamed-declare enum LineBreakStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ Places as many words on a line as possible and moves to the next line only if no
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LineBreakStrategy-GREEDY = 0--><!--Device-LineBreakStrategy-GREEDY = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## HIGH_QUALITY
@@ -32,13 +36,15 @@ Places as many words on a line as possible and moves to the next line only if no
 HIGH_QUALITY = 1
 ```
 
-Fills in lines as much as possible on the basis of **BALANCED**, which may results in a large blank area on the last line.
+Fills in lines as much as possible on the basis of **BALANCED**, which may result in a large blank area on the last line.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LineBreakStrategy-HIGH_QUALITY = 1--><!--Device-LineBreakStrategy-HIGH_QUALITY = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,5 +61,7 @@ Without splitting words, the width of each line in a paragraph is the same as mu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LineBreakStrategy-BALANCED = 2--><!--Device-LineBreakStrategy-BALANCED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

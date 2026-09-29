@@ -8,6 +8,8 @@ Provides character attribute management capabilities, such as checking whether a
 
 **Since:** 9
 
+<!--Device-i18n-export class Unicode--><!--Device-i18n-export class Unicode-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Detects the encoding information of the input byte stream.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-Unicode-static detectEncoding(bytes: Uint8Array): EncodingInfo--><!--Device-Unicode-static detectEncoding(bytes: Uint8Array): EncodingInfo-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -63,7 +67,9 @@ Obtains the type of the input character.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static getType(ch: string): string--><!--Device-Unicode-static getType(ch: string): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -97,7 +103,9 @@ Checks whether the input character is a digit.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isDigit(ch: string): boolean--><!--Device-Unicode-static isDigit(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -131,7 +139,9 @@ Checks whether the input character is an ideographic character.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isIdeograph(ch: string): boolean--><!--Device-Unicode-static isIdeograph(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -165,7 +175,9 @@ Checks whether the input character is a letter.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isLetter(ch: string): boolean--><!--Device-Unicode-static isLetter(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -199,7 +211,9 @@ Checks whether the input character is a lowercase letter.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isLowerCase(ch: string): boolean--><!--Device-Unicode-static isLowerCase(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -233,7 +247,9 @@ Checks whether the input character is of the right to left (RTL) language.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isRTL(ch: string): boolean--><!--Device-Unicode-static isRTL(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -267,7 +283,9 @@ Checks whether the input character is a space.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isSpaceChar(ch: string): boolean--><!--Device-Unicode-static isSpaceChar(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -301,7 +319,9 @@ Checks whether the input character is an uppercase letter.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isUpperCase(ch: string): boolean--><!--Device-Unicode-static isUpperCase(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -335,7 +355,9 @@ Checks whether the input character is a whitespace.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Unicode-static isWhitespace(ch: string): boolean--><!--Device-Unicode-static isWhitespace(ch: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

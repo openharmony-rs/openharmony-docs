@@ -20,6 +20,8 @@ Checks whether swipe-to-unlock is disabled for the current user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function isScreenLockDisabledForAccount(admin: Want): boolean--><!--Device-securityManager-function isScreenLockDisabledForAccount(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

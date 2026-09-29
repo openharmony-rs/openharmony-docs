@@ -8,6 +8,8 @@ Enumerates the focus modes.
 
 **Since:** 23
 
+<!--Device-image-enum FocusMode--><!--Device-image-enum FocusMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## AF_A
@@ -21,6 +23,8 @@ Intelligent autofocus.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FocusMode-AF_A = 0--><!--Device-FocusMode-AF_A = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -36,6 +40,8 @@ Single autofocus.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FocusMode-AF_S = 1--><!--Device-FocusMode-AF_S = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## AF_C
@@ -50,6 +56,8 @@ Continuous auto focus.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FocusMode-AF_C = 2--><!--Device-FocusMode-AF_C = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## MF
@@ -63,5 +71,7 @@ Manual focus.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FocusMode-MF = 3--><!--Device-FocusMode-MF = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

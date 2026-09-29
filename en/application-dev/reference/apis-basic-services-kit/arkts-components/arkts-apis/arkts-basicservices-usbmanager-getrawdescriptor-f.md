@@ -16,6 +16,8 @@ Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may 
 
 **Since:** 9
 
+<!--Device-usbManager-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array--><!--Device-usbManager-function getRawDescriptor(pipe: USBDevicePipe): Uint8Array-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

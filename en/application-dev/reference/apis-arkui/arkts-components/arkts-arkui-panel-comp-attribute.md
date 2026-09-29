@@ -12,6 +12,8 @@ Pane Attribute.
 
 **Deprecated since:** 12
 
+<!--Device-unnamed-declare class PanelAttribute extends CommonMethod<PanelAttribute>--><!--Device-unnamed-declare class PanelAttribute extends CommonMethod<PanelAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundMask
@@ -29,6 +31,8 @@ Called when the panel background mask is requested.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelAttribute-backgroundMask(color: ResourceColor): PanelAttribute--><!--Device-PanelAttribute-backgroundMask(color: ResourceColor): PanelAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Sets the height. It is valid only when PanelType is set to Custom.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelAttribute-customHeight(value: Dimension | PanelHeight): PanelAttribute--><!--Device-PanelAttribute-customHeight(value: Dimension | PanelHeight): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -77,6 +83,8 @@ Called when determining whether dragbar exists.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelAttribute-dragBar(value: boolean): PanelAttribute--><!--Device-PanelAttribute-dragBar(value: boolean): PanelAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +110,8 @@ Called when the height in the full state is specified.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelAttribute-fullHeight(value: number | string): PanelAttribute--><!--Device-PanelAttribute-fullHeight(value: number | string): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -125,6 +135,8 @@ Called when the height in the half state is specified.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelAttribute-halfHeight(value: number | string): PanelAttribute--><!--Device-PanelAttribute-halfHeight(value: number | string): PanelAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,6 +162,8 @@ Called when the height in the mini state is specified.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelAttribute-miniHeight(value: number | string): PanelAttribute--><!--Device-PanelAttribute-miniHeight(value: number | string): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -173,6 +187,8 @@ Called when the initial state of the slidable panel is set.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelAttribute-mode(value: PanelMode): PanelAttribute--><!--Device-PanelAttribute-mode(value: PanelMode): PanelAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,6 +249,8 @@ Called when the state of the slidable panel changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelAttribute-onChange(    event: (    /**     * Width of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 7 dynamiconly     * @deprecated since 12     */      width: number,    /**     * Height of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 7 dynamiconly     * @deprecated since 12     */      height: number,    /**     * Initial state.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 7 dynamiconly     * @deprecated since 12     */      mode: PanelMode,    ) => void,  ): PanelAttribute--><!--Device-PanelAttribute-onChange(    event: (    /**     * Width of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 7 dynamiconly     * @deprecated since 12     */      width: number,    /**     * Height of content area.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 7 dynamiconly     * @deprecated since 12     */      height: number,    /**     * Initial state.     *     * @syscap SystemCapability.ArkUI.ArkUI.Full     * @FaAndStageModel     * @atomicservice     * @since 7 dynamiconly     * @deprecated since 12     */      mode: PanelMode,    ) => void,  ): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -256,6 +274,8 @@ Called when height of the panel is changed
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelAttribute-onHeightChange(callback: (value: number) => void): PanelAttribute--><!--Device-PanelAttribute-onHeightChange(callback: (value: number) => void): PanelAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,6 +301,8 @@ Called when the panel slidable panel pops up.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelAttribute-show(value: boolean): PanelAttribute--><!--Device-PanelAttribute-show(value: boolean): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -305,6 +327,8 @@ Called when the panel show close icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelAttribute-showCloseIcon(value: boolean): PanelAttribute--><!--Device-PanelAttribute-showCloseIcon(value: boolean): PanelAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -328,6 +352,8 @@ Called when the slidable panel type is set.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelAttribute-type(value: PanelType): PanelAttribute--><!--Device-PanelAttribute-type(value: PanelType): PanelAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

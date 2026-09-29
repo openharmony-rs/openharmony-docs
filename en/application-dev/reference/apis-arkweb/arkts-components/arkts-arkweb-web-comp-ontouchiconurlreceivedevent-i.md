@@ -8,6 +8,8 @@ Defines the callback information triggered when an apple-touch-icon URL is recei
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnTouchIconUrlReceivedEvent--><!--Device-unnamed-declare interface OnTouchIconUrlReceivedEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## precomposed
@@ -26,6 +28,8 @@ Whether the apple-touch-icon is precomposed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnTouchIconUrlReceivedEvent-precomposed: boolean--><!--Device-OnTouchIconUrlReceivedEvent-precomposed: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## url
@@ -41,5 +45,7 @@ Received apple-touch-icon URL.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnTouchIconUrlReceivedEvent-url: string--><!--Device-OnTouchIconUrlReceivedEvent-url: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

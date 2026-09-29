@@ -19,6 +19,8 @@ Publishes a common event with given properties. This API uses an asynchronous ca
 
 **Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md)(event: string, callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **Parameters:**
@@ -62,6 +64,8 @@ Publishes a common event with given properties. This API uses an asynchronous ca
 **Deprecated since:** 9
 
 **Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

@@ -16,7 +16,9 @@ Create an image processing instance.
 
 **Since:** 18
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 18.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+
+<!--Device-videoProcessingEngine-function create(): ImageProcessor--><!--Device-videoProcessingEngine-function create(): ImageProcessor-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 

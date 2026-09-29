@@ -12,6 +12,8 @@ The &lt;div&gt; component provides a div container.
 
 **Since:** 6
 
+<!--Device-unnamed-export interface DivElement extends Element--><!--Device-unnamed-export interface DivElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getScrollOffset
@@ -25,6 +27,8 @@ Returns the offset of the current scrolling. The return value type is Object.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DivElement-getScrollOffset(): ScrollOffset--><!--Device-DivElement-getScrollOffset(): ScrollOffset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ Scrolls the div for a certain distance.
 **Since:** 6
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-DivElement-scrollBy(data: ScrollParam): void--><!--Device-DivElement-scrollBy(data: ScrollParam): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,6 +8,8 @@ Describes a color in ARGB format.
 
 **Since:** 20
 
+<!--Device-common2D-interface Color4f--><!--Device-common2D-interface Color4f-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Alpha component of the color. The value is a floating point number ranging from 
 
 **Since:** 20
 
+<!--Device-Color4f-alpha: double--><!--Device-Color4f-alpha: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## blue
@@ -41,6 +45,8 @@ Blue component of the color. The value is a floating point number ranging from 0
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Color4f-blue: double--><!--Device-Color4f-blue: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -56,6 +62,8 @@ Green component of the color. The value is a floating point number ranging from 
 
 **Since:** 20
 
+<!--Device-Color4f-green: double--><!--Device-Color4f-green: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## red
@@ -69,5 +77,7 @@ Red component of the color. The value is a floating point number ranging from 0.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Color4f-red: double--><!--Device-Color4f-red: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

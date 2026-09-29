@@ -8,6 +8,8 @@ declare interface DialogButton
 
 **起始版本：** 26.0.1
 
+<!--Device-dialog-declare interface DialogButton--><!--Device-dialog-declare interface DialogButton-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ action: VoidCallback
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogButton-action: VoidCallback--><!--Device-DialogButton-action: VoidCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -47,6 +51,8 @@ backgroundColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogButton-backgroundColor?: ResourceColor--><!--Device-DialogButton-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ enabled?: boolean
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogButton-enabled?: boolean--><!--Device-DialogButton-enabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -86,6 +94,8 @@ fontColor?: ResourceColor
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogButton-fontColor?: ResourceColor--><!--Device-DialogButton-fontColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primary
@@ -103,6 +113,8 @@ primary?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogButton-primary?: boolean--><!--Device-DialogButton-primary?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +136,8 @@ style?: DialogButtonStyle
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogButton-style?: DialogButtonStyle--><!--Device-DialogButton-style?: DialogButtonStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -141,5 +155,7 @@ value: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogButton-value: ResourceStr--><!--Device-DialogButton-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

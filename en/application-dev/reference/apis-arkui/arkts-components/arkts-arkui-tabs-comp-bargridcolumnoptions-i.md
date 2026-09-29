@@ -8,6 +8,8 @@ Implements a **BarGridColumnOptions** object for setting the visible area of the
 
 **Since:** 10
 
+<!--Device-unnamed-interface BarGridColumnOptions--><!--Device-unnamed-interface BarGridColumnOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gutter
@@ -30,6 +32,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BarGridColumnOptions-gutter?: Dimension--><!--Device-BarGridColumnOptions-gutter?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lg
@@ -49,6 +53,8 @@ The value must be a non-negative even number. The default value is **-1**, indic
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BarGridColumnOptions-lg?: number--><!--Device-BarGridColumnOptions-lg?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BarGridColumnOptions-margin?: Dimension--><!--Device-BarGridColumnOptions-margin?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## md
@@ -92,6 +100,8 @@ The value must be a non-negative even number. The default value is **-1**, indic
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BarGridColumnOptions-md?: number--><!--Device-BarGridColumnOptions-md?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sm
@@ -111,5 +121,7 @@ The value must be a non-negative even number. The default value is **-1**, indic
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BarGridColumnOptions-sm?: number--><!--Device-BarGridColumnOptions-sm?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

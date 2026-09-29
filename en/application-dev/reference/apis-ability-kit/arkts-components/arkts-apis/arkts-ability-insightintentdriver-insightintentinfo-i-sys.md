@@ -8,6 +8,8 @@ Defines the intent information, which is the specific parameter configuration of
 
 **Since:** 20
 
+<!--Device-insightIntentDriver-interface InsightIntentInfo--><!--Device-insightIntentDriver-interface InsightIntentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Bundle name of the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly bundleName: string--><!--Device-InsightIntentInfo-readonly bundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Development mode of the intent.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly developType?: DevelopType--><!--Device-InsightIntentInfo-readonly developType?: DevelopType-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +74,8 @@ Description of the intent displayed in the InsightIntent framework.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly displayDescription: string--><!--Device-InsightIntentInfo-readonly displayDescription: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Name of the intent displayed in the InsightIntent framework.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly displayName: string--><!--Device-InsightIntentInfo-readonly displayName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -104,6 +114,8 @@ Vertical domain of the intent. It is used to categorize intents by vertical fiel
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly domain: string--><!--Device-InsightIntentInfo-readonly domain: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -121,6 +133,8 @@ Entity information contained in the intent.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly entities: Array<EntityInfo>--><!--Device-InsightIntentInfo-readonly entities: Array<EntityInfo>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -140,6 +154,8 @@ Icon of the intent.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly icon: string--><!--Device-InsightIntentInfo-readonly icon: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -157,6 +173,8 @@ Intent name.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly intentName: string--><!--Device-InsightIntentInfo-readonly intentName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -180,6 +198,8 @@ For intents developed using a configuration file, the return value of this field
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly intentType: InsightIntentType--><!--Device-InsightIntentInfo-readonly intentType: InsightIntentType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -197,6 +217,8 @@ Version number of the intent. It is used to distinguish and manage intents when 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly intentVersion: string--><!--Device-InsightIntentInfo-readonly intentVersion: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -216,6 +238,8 @@ Search keywords for the intent.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly keywords: string[]--><!--Device-InsightIntentInfo-readonly keywords: string[]-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -233,6 +257,8 @@ Function of an intent, which helps large language models understand the intent.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly llmDescription: string--><!--Device-InsightIntentInfo-readonly llmDescription: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -252,6 +278,8 @@ Module name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly moduleName: string--><!--Device-InsightIntentInfo-readonly moduleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -269,6 +297,8 @@ Data format of intent parameters, which is used to define the input data format 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly parameters: Record<string, Object>--><!--Device-InsightIntentInfo-readonly parameters: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -288,6 +318,8 @@ Execution result returned.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly result: Record<string, Object>--><!--Device-InsightIntentInfo-readonly result: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -305,6 +337,8 @@ Standard intent name. If an intent in the standard intent list matches both the 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly schema: string--><!--Device-InsightIntentInfo-readonly schema: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -328,6 +362,8 @@ For intents developed using a configuration file, the return value of this field
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfo-readonly subIntentInfo: LinkIntentInfo | PageIntentInfo | FunctionIntentInfo | FormIntentInfo | EntryIntentInfo--><!--Device-InsightIntentInfo-readonly subIntentInfo: LinkIntentInfo | PageIntentInfo | FunctionIntentInfo | FormIntentInfo | EntryIntentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -345,6 +381,8 @@ Unique information about the intent developed using a configuration file.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly subIntentInfoForConfiguration?: SubIntentInfoForConfiguration--><!--Device-InsightIntentInfo-readonly subIntentInfoForConfiguration?: SubIntentInfoForConfiguration-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

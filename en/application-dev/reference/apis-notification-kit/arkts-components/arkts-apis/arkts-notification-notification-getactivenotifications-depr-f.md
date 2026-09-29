@@ -19,6 +19,8 @@ Obtains active notifications of this application. This API uses an asynchronous 
 
 **Substitutes:** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)
 
+<!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void--><!--Device-notification-function getActiveNotifications(callback: AsyncCallback<Array<NotificationRequest>>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -43,6 +45,8 @@ Obtains active notifications of this application. This API uses a promise to ret
 **Deprecated since:** 9
 
 **Substitutes:** [getActiveNotifications](arkts-notification-notificationmanager-getactivenotifications-f.md)
+
+<!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>--><!--Device-notification-function getActiveNotifications(): Promise<Array<NotificationRequest>>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

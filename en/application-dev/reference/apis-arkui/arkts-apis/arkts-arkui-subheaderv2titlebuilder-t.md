@@ -12,4 +12,6 @@ Defines the callback used to customize the content of the title area.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-export type SubHeaderV2TitleBuilder = () => void--><!--Device-unnamed-export type SubHeaderV2TitleBuilder = () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

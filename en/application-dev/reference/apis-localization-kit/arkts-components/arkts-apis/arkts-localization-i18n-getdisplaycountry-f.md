@@ -20,6 +20,8 @@ Obtains the localized name of the specified country/region.
 
 **Substitutes:** [getDisplayCountry](arkts-localization-i18n-system-c.md#getdisplaycountry)
 
+<!--Device-i18n-export function getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string--><!--Device-i18n-export function getDisplayCountry(country: string, locale: string, sentenceCase?: boolean): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**

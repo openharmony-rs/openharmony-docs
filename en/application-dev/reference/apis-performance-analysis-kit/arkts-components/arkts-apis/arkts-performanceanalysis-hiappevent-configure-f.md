@@ -16,7 +16,9 @@ Configures the application event logging function, such as setting the logging s
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-hiAppEvent-function configure(config: ConfigOption): void--><!--Device-hiAppEvent-function configure(config: ConfigOption): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

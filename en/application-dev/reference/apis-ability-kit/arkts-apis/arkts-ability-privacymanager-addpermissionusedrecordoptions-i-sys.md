@@ -8,6 +8,8 @@ Represents the options for adding a permission usage record.
 
 **Since:** 12
 
+<!--Device-privacyManager-interface AddPermissionUsedRecordOptions--><!--Device-privacyManager-interface AddPermissionUsedRecordOptions-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Extension identity, used to identify additional identity information of the call
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AddPermissionUsedRecordOptions-enhancedIdentity?: string--><!--Device-AddPermissionUsedRecordOptions-enhancedIdentity?: string-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Default value: NORMAL_TYPE.
 **Since:** 12
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AddPermissionUsedRecordOptions-usedType?: PermissionUsedType--><!--Device-AddPermissionUsedRecordOptions-usedType?: PermissionUsedType-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

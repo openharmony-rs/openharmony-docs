@@ -8,6 +8,8 @@ Defines the call disconnection cause.
 
 **Since:** 9
 
+<!--Device-call-export interface DisconnectedDetails--><!--Device-call-export interface DisconnectedDetails-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Call ending message.
 
 **Since:** 9
 
+<!--Device-DisconnectedDetails-message: string--><!--Device-DisconnectedDetails-message: string-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Defines the call disconnection cause.
 **Type:** [DisconnectedReason](arkts-telephony-call-disconnectedreason-e-sys.md)
 
 **Since:** 9
+
+<!--Device-DisconnectedDetails-reason: DisconnectedReason--><!--Device-DisconnectedDetails-reason: DisconnectedReason-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

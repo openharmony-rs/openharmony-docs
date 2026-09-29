@@ -10,6 +10,8 @@ Configuration stream result for AI-generated text tasks.
 
 **Since:** 23
 
+<!--Device-imageGeneration-interface GenerateTextTaskPartialResult--><!--Device-imageGeneration-interface GenerateTextTaskPartialResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Final data in AI-generated text task, available in partial result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GenerateTextTaskPartialResult-content?: string--><!--Device-GenerateTextTaskPartialResult-content?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Information of the partial error corresponding to AI-generated text task, availa
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GenerateTextTaskPartialResult-partialFail?: BusinessError--><!--Device-GenerateTextTaskPartialResult-partialFail?: BusinessError-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Think information in AI-generated text task, available in partial result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GenerateTextTaskPartialResult-reasoningContent?: string--><!--Device-GenerateTextTaskPartialResult-reasoningContent?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ The type information used for AI-generated text task.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GenerateTextTaskPartialResult-type: PartialResultType--><!--Device-GenerateTextTaskPartialResult-type: PartialResultType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

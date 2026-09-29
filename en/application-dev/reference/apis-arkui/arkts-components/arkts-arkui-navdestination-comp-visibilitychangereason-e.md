@@ -8,6 +8,8 @@ Enumerates reasons for **NavDestination** visibility changes.
 
 **Since:** 21
 
+<!--Device-unnamed-declare enum VisibilityChangeReason--><!--Device-unnamed-declare enum VisibilityChangeReason-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## TRANSITION
@@ -23,6 +25,8 @@ Visibility changes due to page navigation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-VisibilityChangeReason-TRANSITION = 0--><!--Device-VisibilityChangeReason-TRANSITION = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Visibility changes due to the opening or closing of a modal page.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-VisibilityChangeReason-CONTENT_COVER = 1--><!--Device-VisibilityChangeReason-CONTENT_COVER = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## APP_STATE
@@ -55,5 +61,7 @@ Visibility changes due to switching between the foreground and background states
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-VisibilityChangeReason-APP_STATE = 2--><!--Device-VisibilityChangeReason-APP_STATE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

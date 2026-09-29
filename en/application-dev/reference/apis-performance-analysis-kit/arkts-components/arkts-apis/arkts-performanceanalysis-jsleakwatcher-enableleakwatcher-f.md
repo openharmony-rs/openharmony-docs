@@ -18,6 +18,8 @@ This API can detect the ArkTS object memory leak, which is simpler than the meth
 
 **Since:** 20
 
+<!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback: Callback<Array<string>>): void--><!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: Array<string>, callback: Callback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**
@@ -64,6 +66,8 @@ This API can detect memory leaks of ArkTS objects with a single call, which is s
 **Since:** 24
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Callback<Array<string>>): void--><!--Device-jsLeakWatcher-function enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Callback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 

@@ -14,6 +14,8 @@ Import the frame node type object for Canvas.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-unnamed-declare type FrameNode = import('../api/arkui/FrameNode').FrameNode--><!--Device-unnamed-declare type FrameNode = import('../api/arkui/FrameNode').FrameNode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/arkui/FrameNode').FrameNode

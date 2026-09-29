@@ -16,6 +16,8 @@ This API will be deprecated. Use [Album](arkts-corefile-userfilemanager-album-i-
 
 **Substitutes:** [Album](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-album-i.md)
 
+<!--Device-userFileManager-interface PrivateAlbum extends AbsAlbum--><!--Device-userFileManager-interface PrivateAlbum extends AbsAlbum-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -43,6 +45,8 @@ This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfi
 **Substitutes:** deleteAlbumsWithUri
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO and ohos.permission.WRITE_AUDIO
+
+<!--Device-PrivateAlbum-delete(uri: string, callback: AsyncCallback<void>): void--><!--Device-PrivateAlbum-delete(uri: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -103,6 +107,8 @@ This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfi
 **Substitutes:** deleteAlbumsWithUri
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO and ohos.permission.WRITE_AUDIO
+
+<!--Device-PrivateAlbum-delete(uri: string): Promise<void>--><!--Device-PrivateAlbum-delete(uri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -165,6 +171,8 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userf
 **Substitutes:** recoverAssetsWithUri
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO and ohos.permission.WRITE_AUDIO
+
+<!--Device-PrivateAlbum-recover(uri: string, callback: AsyncCallback<void>): void--><!--Device-PrivateAlbum-recover(uri: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -233,6 +241,8 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userf
 **Substitutes:** recoverAssetsWithUri
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO or ohos.permission.READ_AUDIO and ohos.permission.WRITE_AUDIO
+
+<!--Device-PrivateAlbum-recover(uri: string): Promise<void>--><!--Device-PrivateAlbum-recover(uri: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

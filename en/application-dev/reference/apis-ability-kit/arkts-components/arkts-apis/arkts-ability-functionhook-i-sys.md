@@ -10,6 +10,8 @@ The hook object may implement any subset of the optional methods. Only implement
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface FunctionHook--><!--Device-unnamed-export interface FunctionHook-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Called after a function is invoked. The returned object replaces the original re
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FunctionHook-onAfterInvokeFunction?(param: FunctionResultWrap): FunctionResultWrap--><!--Device-FunctionHook-onAfterInvokeFunction?(param: FunctionResultWrap): FunctionResultWrap-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -53,6 +57,8 @@ Called before a function is invoked. The returned object replaces the original a
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FunctionHook-onBeforeInvokeFunction?(param: InvokeFunctionParam): InvokeFunctionParam--><!--Device-FunctionHook-onBeforeInvokeFunction?(param: InvokeFunctionParam): InvokeFunctionParam-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

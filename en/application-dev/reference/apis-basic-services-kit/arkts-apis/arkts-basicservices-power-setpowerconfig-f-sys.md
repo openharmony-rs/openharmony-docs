@@ -20,6 +20,8 @@ Update the power configuration value for a given scene name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-power-function setPowerConfig(sceneName: string, value: string): void--><!--Device-power-function setPowerConfig(sceneName: string, value: string): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ Sets whether to lock the current fold status of the foldable device.
 
 **Since:** 11
 
+<!--Device-display-function setFoldStatusLocked(locked: boolean): void--><!--Device-display-function setFoldStatusLocked(locked: boolean): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.

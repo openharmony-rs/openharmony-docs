@@ -22,6 +22,8 @@ Starts pairing with a remote Bluetooth device.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-bluetooth-function pairDevice(deviceId: string): boolean--><!--Device-bluetooth-function pairDevice(deviceId: string): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

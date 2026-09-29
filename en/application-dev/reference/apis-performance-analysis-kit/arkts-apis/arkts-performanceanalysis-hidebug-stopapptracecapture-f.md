@@ -18,6 +18,8 @@ If **startAppTraceCapture ()** is called without a properly specified **limitSiz
 
 **Since:** 12
 
+<!--Device-hidebug-function stopAppTraceCapture(): void--><!--Device-hidebug-function stopAppTraceCapture(): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Error codes:**

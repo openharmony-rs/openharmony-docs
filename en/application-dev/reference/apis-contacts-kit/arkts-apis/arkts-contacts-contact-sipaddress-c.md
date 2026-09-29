@@ -8,6 +8,8 @@ Defines a contact's SIP address.
 
 **Since:** 7
 
+<!--Device-contact-class SipAddress--><!--Device-contact-class SipAddress-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Custom SIP address type, the default value is **0**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SipAddress-static readonly CUSTOM_LABEL: 0--><!--Device-SipAddress-static readonly CUSTOM_LABEL: 0-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## INVALID_LABEL_ID
@@ -45,6 +49,8 @@ Invalid SIP address type, the default value is **-1**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SipAddress-static readonly INVALID_LABEL_ID: -1--><!--Device-SipAddress-static readonly INVALID_LABEL_ID: -1-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -62,6 +68,8 @@ SIP address type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SipAddress-labelId?: number--><!--Device-SipAddress-labelId?: number-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## labelName
@@ -77,6 +85,8 @@ SIP address type name.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SipAddress-labelName?: string--><!--Device-SipAddress-labelName?: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -94,6 +104,8 @@ Home SIP address, the default value is **1**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SipAddress-static readonly SIP_HOME: 1--><!--Device-SipAddress-static readonly SIP_HOME: 1-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## SIP_OTHER
@@ -109,6 +121,8 @@ Other SIP address, the default value is **3**.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SipAddress-static readonly SIP_OTHER: 3--><!--Device-SipAddress-static readonly SIP_OTHER: 3-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData
 
@@ -126,6 +140,8 @@ Work SIP address, the default value is **2**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SipAddress-static readonly SIP_WORK: 2--><!--Device-SipAddress-static readonly SIP_WORK: 2-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## sipAddress
@@ -141,5 +157,7 @@ SIP address.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SipAddress-sipAddress: string--><!--Device-SipAddress-sipAddress: string-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

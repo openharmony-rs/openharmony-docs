@@ -8,6 +8,8 @@ Provides APIs to obtain the manual exposure range supported.
 
 **Since:** 24
 
+<!--Device-camera-interface ManualExposureQuery--><!--Device-camera-interface ManualExposureQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getSupportedExposureRange(): Array<number>
 Obtains the supported manual exposure durations.
 
 **Since:** 11
+
+<!--Device-ManualExposureQuery-getSupportedExposureRange(): Array<int>--><!--Device-ManualExposureQuery-getSupportedExposureRange(): Array<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

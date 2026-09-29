@@ -14,6 +14,8 @@ DatePickerComponent组件用于选择日期（年月日）和时间（时分秒�
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-export declare struct DatePickerComponent--><!--Device-unnamed-export declare struct DatePickerComponent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -39,5 +41,7 @@ options: DatePickerComponentOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerComponent-options: DatePickerComponentOptions--><!--Device-DatePickerComponent-options: DatePickerComponentOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,13 +4,13 @@
 declare class SliderAttribute extends CommonMethod<SliderAttribute>
 ```
 
-All the universal attributes except **responseRegion** are supported.
-
-In addition to the universal events, the following events are supported.
+All the [universal attributes](arkts-arkui-common-comp.md) except **responseRegion** are supported.
 
 **Inheritance/Implementation:** SliderAttribute extends CommonMethod<SliderAttribute>
 
 **Since:** 7
+
+<!--Device-unnamed-declare class SliderAttribute extends CommonMethod<SliderAttribute>--><!--Device-unnamed-declare class SliderAttribute extends CommonMethod<SliderAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +33,8 @@ When **SliderBlockType.SHAPE** is used, **blockBorderColor** sets the border col
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SliderAttribute-blockBorderColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-blockBorderColor(value: ResourceColor): SliderAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,13 +64,15 @@ When **SliderBlockType.SHAPE** is used, **blockBorderWidth** sets the border wid
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderAttribute-blockBorderWidth(value: Length): SliderAttribute--><!--Device-SliderAttribute-blockBorderWidth(value: Length): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Border width of the slider in the block direction.<br>**NOTE:** <br>For the string type, percentage values are not supported. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Border width of the slider.<br>**Note:** <br>For the string type, percentage values are not supported. |
 
 ## blockColor
 
@@ -92,6 +96,8 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderAttribute-blockColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-blockColor(value: ResourceColor): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -108,7 +114,7 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 blockColor(value: ResourceColor | LinearGradient)
 ```
 
-Sets the color of the slider. Gradient colors are supported.
+Sets the color of the slider. Gradient colors are supported. Compared with **blockColor**, it supports the **LinearGradient** type.
 
 When **SliderBlockType.DEFAULT** is used, **blockColor** sets the color of the round thumb.
 
@@ -124,13 +130,15 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 21.
 
+<!--Device-SliderAttribute-blockColor(value: ResourceColor | LinearGradient): SliderAttribute--><!--Device-SliderAttribute-blockColor(value: ResourceColor | LinearGradient): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the slider. <br>Default value: `$r('sys.color.ohos_id_color_foreground_contrary')`<br>**Note:** <br>When the slider shape is set to **SliderBlockType.IMAGE**, the slider has no fill, and setting **blockColor** does not take effect. |
 
 ## blockSize
 
@@ -152,13 +160,15 @@ When the slider type is set to **SliderBlockType.SHAPE**, this API sets the size
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderAttribute-blockSize(value: SizeOptions): SliderAttribute--><!--Device-SliderAttribute-blockSize(value: SizeOptions): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SizeOptions](../arkts-apis/arkts-arkui-sizeoptions-i.md) | Yes | Size of the slider in the block direction.<br>Default value:<br>- For [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet: **{width: 18, height: 18}**<br>- For [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet: **{width: 12, height: 12}**<br>- For [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).NONE: This parameter is not effective.<br>If the set **blockSize** has different width and height values, the smaller value is taken. If one or both of the width and height values are less than or equal to 0, the default value is used instead. |
+| value | [SizeOptions](../arkts-apis/arkts-arkui-sizeoptions-i.md) | Yes | Slider size.<br>Default value: When the value of the **style** parameter is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet, the default value is {width: 18, height: 18}; when the value of the **style** parameter is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet, the default value is {width: 12, height: 12}; when the value of the **style** parameter is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).NONE, this parameter does not take effect.<br>If the set **blockSize** has different width and height values, the smaller value is taken. If one or both of the width and height values are less than or equal to 0, the default value is used instead. |
 
 ## blockStyle
 
@@ -174,13 +184,15 @@ Sets the style of the slider in the block direction.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderAttribute-blockStyle(value: SliderBlockStyle): SliderAttribute--><!--Device-SliderAttribute-blockStyle(value: SliderBlockStyle): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SliderBlockStyle](arkts-arkui-slider-comp-sliderblockstyle-i.md) | Yes | Style of the slider in the block direction.<br>Default value: **SliderBlockType.DEFAULT**, indicating the round slider. |
+| value | [SliderBlockStyle](arkts-arkui-slider-comp-sliderblockstyle-i.md) | Yes | Slider style.<br>The default value is **SliderBlockType.DEFAULT**, indicating a circular slider. |
 
 ## contentModifier
 
@@ -196,13 +208,15 @@ Creates a content modifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderAttribute-contentModifier(modifier: ContentModifier<SliderConfiguration>): SliderAttribute--><!--Device-SliderAttribute-contentModifier(modifier: ContentModifier<SliderConfiguration>): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md)&gt; | Yes | Content modifier to apply to the slider.<br> **ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md)&gt; | Yes | Content modifier to apply to the **Slider** component.<br>**ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
 ## digitalCrownSensitivity
 
@@ -221,6 +235,8 @@ Sets the sensitivity to the digital crown rotation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SliderAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): SliderAttribute--><!--Device-SliderAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): SliderAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,34 +262,7 @@ To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** perm
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable haptic feedback.<br>**true**: Enable haptic feedback. **false**: Disable haptic feedback.<br>Default value: **true** |
-
-## maxLabel
-
-```TypeScript
-maxLabel(value: string)
-```
-
-Sets the maximum value.
-
-> **NOTE:** 
-> 
-> This attribute is supported since API version 7 and deprecated since API version 9. You are advised to use
-> **max** instead. **max** is an attribute of [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** max
-
-**Model restriction:** This API can be used in both the stage model and FA model.
+<!--Device-SliderAttribute-enableHapticFeedback(enabled: boolean): SliderAttribute--><!--Device-SliderAttribute-enableHapticFeedback(enabled: boolean): SliderAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,36 +270,7 @@ Sets the maximum value.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Maximum value. |
-
-## minLabel
-
-```TypeScript
-minLabel(value: string)
-```
-
-Sets the minimum value.
-
-> **NOTE:** 
-> 
-> This attribute is supported since API version 7 and deprecated since API version 9. You are advised to use
-> **min** instead. **min** is an attribute of [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** min
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | string | Yes | Minimum value. |
+| enabled | boolean | Yes | Whether to enable haptic feedback.<br>**true**: enable haptic feedback; **false**: disable haptic feedback.<br>Default value: **true** |
 
 ## minResponsiveDistance
 
@@ -318,7 +278,7 @@ Sets the minimum value.
 minResponsiveDistance(value: number)
 ```
 
-Sets the minimum distance required for the slider to respond.
+Sets the minimum response distance for the slider to start sliding.
 
 **Since:** 12
 
@@ -326,13 +286,15 @@ Sets the minimum distance required for the slider to respond.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderAttribute-minResponsiveDistance(value: number): SliderAttribute--><!--Device-SliderAttribute-minResponsiveDistance(value: number): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Minimum distance required for the slider to respond. The slider will only move when the sliding distance exceeds this threshold.<br>Default value: **0**<br>**NOTE:** <br>The unit is consistent with that of the **min** and **max** properties in [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).<br>If the value is less than 0, greater than the result of (**max** – **min**), or invalid, the default value is used. |
+| value | number | Yes | Minimum response distance for the slider to start sliding.<br>Default value: **0**&lt;br/ &gt;**Note:** <br>The unit is the same as that of the **min** and **max** attributes in [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).<br>If the value is less than 0, greater than **max** – **min**, **NaN**, or of a non-numeric type, the default value is used. |
 
 ## onChange
 
@@ -353,6 +315,8 @@ If the coherent action is a drag action, the **Click** state will not be trigger
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderAttribute-onChange(callback: (value: number, mode: SliderChangeMode) => void): SliderAttribute--><!--Device-SliderAttribute-onChange(callback: (value: number, mode: SliderChangeMode) => void): SliderAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,6 +340,8 @@ Sets the prefix of the slider.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SliderAttribute-prefix(content: ComponentContent, options?: SliderPrefixOptions): SliderAttribute--><!--Device-SliderAttribute-prefix(content: ComponentContent, options?: SliderPrefixOptions): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -383,7 +349,7 @@ Sets the prefix of the slider.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | ComponentContent | Yes | Visual content of the slider prefix, which will be displayed at the start of the slider. |
-| options | [SliderPrefixOptions](arkts-arkui-slider-comp-sliderprefixoptions-i.md) | No | Accessibility configuration of the slider prefix. |
+| options | [SliderPrefixOptions](arkts-arkui-slider-comp-sliderprefixoptions-i.md) | No | Configuration options of the slider prefix, used to set accessibility- related attributes.<br>Default value: **null** |
 
 ## selectedBorderRadius
 
@@ -399,13 +365,15 @@ Set the corner radius of the selected (highlighted) part of the slider.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderAttribute-selectedBorderRadius(value: Dimension): SliderAttribute--><!--Device-SliderAttribute-selectedBorderRadius(value: Dimension): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Corner radius of the selected part of the slider.<br>Default value:<br>- For **SliderStyle.InSet** or **SliderStyle.OutSet**: same as the corner radius of the background<br>- **SliderStyle.NONE**: **0**<br>**NOTE:** <br>Percentage values are not supported. If the value is less than 0, the default value is used. |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Corner radius of the selected part of the slider.<br>Default value: When **style** is set to **SliderStyle.InSet** or **SliderStyle.OutSet**, the default value follows the corner radius of the track; when **style** is set to **SliderStyle.NONE**, the default value is **0**.<br>**Note:** <br> Percentage values are not supported. If the value is less than 0, the default value is used. |
 
 ## selectedColor
 
@@ -423,13 +391,15 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderAttribute-selectedColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-selectedColor(value: ResourceColor): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb.<br> Default value: **$r('sys.color.ohos_id_color_emphasize')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')** |
 
 <a id="selectedcolor-1"></a>
 
@@ -449,13 +419,15 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-SliderAttribute-selectedColor(selectedColor: ResourceColor | LinearGradient): SliderAttribute--><!--Device-SliderAttribute-selectedColor(selectedColor: ResourceColor | LinearGradient): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
+| selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')** <br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
 
 ## showSteps
 
@@ -463,7 +435,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 showSteps(value: boolean)
 ```
 
-Sets whether to display the step markers along the slider track.
+Sets whether to display the step markers.
 
 **Since:** 7
 
@@ -473,13 +445,15 @@ Sets whether to display the step markers along the slider track.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderAttribute-showSteps(value: boolean): SliderAttribute--><!--Device-SliderAttribute-showSteps(value: boolean): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false** |
+| value | boolean | Yes | Whether to display the step markers.<br>**true**: display the step markers; **false**: do not display the step markers.<br>Default Value: **false** |
 
 <a id="showsteps-1"></a>
 
@@ -503,14 +477,16 @@ The accessibility text settings take effect only when the step markers are displ
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-SliderAttribute-showSteps(value: boolean, options?: SliderShowStepOptions): SliderAttribute--><!--Device-SliderAttribute-showSteps(value: boolean, options?: SliderShowStepOptions): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false** |
-| options | [SliderShowStepOptions](arkts-arkui-slider-comp-slidershowstepoptions-i.md) | No | Accessibility configuration of step markers.<br>Default value: **null** |
+| value | boolean | Yes | Whether to display the step markers.<br>**true**: display the step markers; **false**: do not display the step markers.<br>Default value: **false** |
+| options | [SliderShowStepOptions](arkts-arkui-slider-comp-slidershowstepoptions-i.md) | No | Configuration options of the accessibility text of the step markers.<br>Default value: **null** |
 
 ## showTips
 
@@ -520,7 +496,7 @@ showTips(value: boolean, content?: ResourceStr)
 
 Sets whether to display a tooltip when the user drags the slider.
 
-When **direction** is set to **Axis.Horizontal**, the tooltip is displayed right above the slider; if there is insufficient space above, it will be displayed below. When **direction** is set to **Axis.Vertical**, the tooltip is displayed on the left of the slider; if there is insufficient space on the left, it will be displayed on the right. If the margins are not set or are set to small values, the tooltip may be clipped.
+When **direction** is set to **Axis.Horizontal**, the tooltip is displayed above the block. If the space above is insufficient to display the complete tooltip, it is displayed below. When **direction** is set to **Axis.Vertical**, the tooltip is displayed to the left of the slider. If the space on the left is insufficient to display the complete tooltip, it is displayed on the right. When no surrounding margin is set, or the margin is smaller than the space required by the tooltip, the tooltip is truncated.
 
 The drawing area of the tooltip is the overlay of the slider.
 
@@ -532,14 +508,16 @@ The drawing area of the tooltip is the overlay of the slider.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderAttribute-showTips(value: boolean, content?: ResourceStr): SliderAttribute--><!--Device-SliderAttribute-showTips(value: boolean, content?: ResourceStr): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display a tooltip when the user drags the slider.<br>**true**: Display a tooltip. **false**: Do not display a tooltip.<br>Default value: **false** |
-| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | No | Content of the tooltip. By default, the tooltip shows the current percentage value.<br>**Since:** 10 |
+| value | boolean | Yes | Whether to display a tooltip when the user drags the slider.<br>**true**: Display a tooltip. **false**: Do not display a tooltip. <br>Default value: **false** |
+| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | No | Text content of the tooltip. When passed in, custom text is displayed (used when a specific format or additional information needs to be shown); when not passed in, the current percentage value is displayed by default.<br><br>**Since:** 10 |
 
 ## slideRange
 
@@ -547,7 +525,7 @@ The drawing area of the tooltip is the overlay of the slider.
 slideRange(value: SlideRange)
 ```
 
-Sets the slide range.
+Sets the valid sliding range. After this attribute is set, the sliding range of the slider is limited to [from, to]. Taps and gestures outside this range do not trigger sliding. If the initial value of **value** exceeds the range, it is automatically adjusted to the boundary of the range.
 
 **Since:** 12
 
@@ -555,13 +533,15 @@ Sets the slide range.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderAttribute-slideRange(value: SlideRange): SliderAttribute--><!--Device-SliderAttribute-slideRange(value: SlideRange): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SlideRange](arkts-arkui-slider-comp-sliderange-i.md) | Yes | Slide range. |
+| value | [SlideRange](arkts-arkui-slider-comp-sliderange-i.md) | Yes | Valid sliding range. |
 
 ## sliderInteractionMode
 
@@ -577,13 +557,15 @@ Sets the interaction mode between the user and the slider.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SliderAttribute-sliderInteractionMode(value: SliderInteraction): SliderAttribute--><!--Device-SliderAttribute-sliderInteractionMode(value: SliderInteraction): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SliderInteraction](arkts-arkui-slider-comp-sliderinteraction-e.md) | Yes | Interaction mode between the user and the slider.<br> Default value: **SliderInteraction.SLIDE_AND_CLICK** |
+| value | [SliderInteraction](arkts-arkui-slider-comp-sliderinteraction-e.md) | Yes | Interaction mode between the user and the slider.<br>Default value: **SliderInteraction.SLIDE_AND_CLICK**. |
 
 ## stepColor
 
@@ -599,13 +581,15 @@ Sets the step color.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderAttribute-stepColor(value: ResourceColor): SliderAttribute--><!--Device-SliderAttribute-stepColor(value: ResourceColor): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Step color.<br>Default value:<br>**$r('sys.color.ohos_id_color_foreground')** mixed with **$r('sys.color.ohos_id_alpha_normal_bg')** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Step color.<br>Default value:<br>The `$r('sys.color.ohos_id_color_foreground')` color mixed with the transparency of `$r('sys.color.ohos_id_alpha_normal_bg')`. |
 
 ## stepSize
 
@@ -621,13 +605,15 @@ Sets the step size (diameter). If the value is 0, the step size is not displayed
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderAttribute-stepSize(value: Length): SliderAttribute--><!--Device-SliderAttribute-stepSize(value: Length): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Step size (diameter).<br>Default value: **'4vp'**<br>Value range: [0, [trackThickness](#trackthickness)) |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Step size (diameter). <br>Default value: **'4vp'**<br>Value range: [0, [trackThickness](#trackthickness)), in vp |
 
 ## suffix
 
@@ -643,14 +629,16 @@ Sets the suffix of the slider.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SliderAttribute-suffix(content: ComponentContent, options?: SliderSuffixOptions): SliderAttribute--><!--Device-SliderAttribute-suffix(content: ComponentContent, options?: SliderSuffixOptions): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| content | ComponentContent | Yes | Visual content of the slider suffix, which will be displayed at the end of the slider. |
-| options | [SliderSuffixOptions](arkts-arkui-slider-comp-slidersuffixoptions-i.md) | No | Accessibility configuration of the slider suffix. |
+| content | ComponentContent | Yes | Visual content of the slider suffix, which will be displayed at the end position of the slider. |
+| options | [SliderSuffixOptions](arkts-arkui-slider-comp-slidersuffixoptions-i.md) | No | Configuration options of the slider suffix, used to set accessibility- related attributes.<br>Default value: **null** |
 
 ## trackBorderRadius
 
@@ -666,13 +654,15 @@ Sets the radius of the rounded corner of the track.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderAttribute-trackBorderRadius(value: Length): SliderAttribute--><!--Device-SliderAttribute-trackBorderRadius(value: Length): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Radius of the rounded corner of the track.<br>Default value:<br>**'2vp'** when **style** is **SliderStyle.OutSet**<br>**'10vp'** when **style** is **SliderStyle.InSet**<br>**NOTE:** <br>If the value is less than 0, the default value is used. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Radius of the rounded corner of the track.<br>Default value:<br>The default value is **2vp** when **style** is set to **SliderStyle.OutSet**.<br>The default value is **10vp** when **style** is set to **SliderStyle.InSet**.<br>**Note:** <br>If the value is less than 0, the default value is used. |
 
 ## trackColor
 
@@ -682,7 +672,7 @@ trackColor(value: ResourceColor | LinearGradient)
 
 Sets the background color of the track.
 
-Since API version 12, **LinearGradient** can be used to create a gradient effect for the track.
+Since API version 12, the **LinearGradient** type can be used to set the gradient color of the track.
 
 **Since:** 7
 
@@ -692,13 +682,15 @@ Since API version 12, **LinearGradient** can be used to create a gradient effect
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderAttribute-trackColor(value: ResourceColor | LinearGradient): SliderAttribute--><!--Device-SliderAttribute-trackColor(value: ResourceColor | LinearGradient): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Background color of the track.<br>Default value: **$r('sys.color.ohos_id_color_component_normal')**<br>**NOTE:** <br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type cannot be used in atomic services.<br>**Since:** 12 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Background color of the track.<br>Default value: `$r('sys.color.ohos_id_color_component_normal')`<br>**Note:** <br>1. When a gradient color is set, if the color value of a color stop is invalid or the gradient color stop is empty, the gradient color does not take effect.<br>2. The **LinearGradient** type in this API is not supported in atomic services.<br>**Since:** 12 |
 
 ## trackColorMetrics
 
@@ -706,7 +698,7 @@ Since API version 12, **LinearGradient** can be used to create a gradient effect
 trackColorMetrics(color: ColorMetricsLinearGradient)
 ```
 
-Sets the linear gradient background color of the track.
+Sets the linear gradient background color of the track. Compared with **trackColor**, it uses the **ColorMetricsLinearGradient** type to support gradients in a specified color gamut.
 
 **Since:** 23
 
@@ -714,13 +706,15 @@ Sets the linear gradient background color of the track.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SliderAttribute-trackColorMetrics(color: ColorMetricsLinearGradient): SliderAttribute--><!--Device-SliderAttribute-trackColorMetrics(color: ColorMetricsLinearGradient): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [ColorMetricsLinearGradient](arkts-arkui-slider-comp-colormetricslineargradient-c.md) | Yes | Linear gradient background color of the track.<br>If **color** is **undefined**, the gradient color setting is invalid. The default background color of the track is **$r('sys.color.ohos_id_color_component_normal')**. |
+| color | [ColorMetricsLinearGradient](arkts-arkui-slider-comp-colormetricslineargradient-c.md) | Yes | Linear gradient background color of the track.<br>When a gradient color is set, if the value of **color** is **undefined**, the gradient color setting does not take effect, and the default background color of the track is `$r('sys.color.ohos_id_color_component_normal')`. |
 
 ## trackThickness
 
@@ -732,7 +726,7 @@ Sets the thickness of the track. If the value is less than or equal to 0, the de
 
 To ensure [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md) works as expected for the thumb and track, [blockSize](#blocksize) should increase or decrease proportionally with **trackThickness**.
 
-Specially, when **style** is **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet**, trackThickness: [blockSize](#blocksize) = 1:4; when **style** is **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet**, trackThickness: [blockSize](#blocksize) = 5:3.
+When **style** is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet, trackThickness: [blockSize](#blocksize)=1:4. When **style** is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet, trackThickness:[blockSize](#blocksize)=5:3.
 
 If the value of **trackThickness** or [blockSize](#blocksize) exceeds the width or height of the **Slider** component, the default value is used.
 
@@ -746,10 +740,64 @@ When [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md) is set to **OutSet*
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderAttribute-trackThickness(value: Length): SliderAttribute--><!--Device-SliderAttribute-trackThickness(value: Length): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Thickness of the track.<br>Default value: 4.0vp when **style** is set to **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet**; 20.0vp when **style** is set to **[SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).InSet** |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Thickness of the track.<br>Default value: **4.0vp** when **style** is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md).OutSet, and **20.0vp** when style is set to [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md). InSet. |
+
+## maxLabel
+
+```TypeScript
+maxLabel(value: string)
+```
+
+Sets the text content of the maximum value label.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** max
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SliderAttribute-maxLabel(value: string): SliderAttribute--><!--Device-SliderAttribute-maxLabel(value: string): SliderAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | string | Yes | Text of the maximum value label. |
+
+## minLabel
+
+```TypeScript
+minLabel(value: string)
+```
+
+Sets the text content of the minimum value label.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** min
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SliderAttribute-minLabel(value: string): SliderAttribute--><!--Device-SliderAttribute-minLabel(value: string): SliderAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | string | Yes | Text of the minimum value label. |

@@ -8,6 +8,8 @@ Device Information Definition
 
 **Since:** 10
 
+<!--Device-avSession-interface DeviceInfo--><!--Device-avSession-interface DeviceInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Audio capabilities supported by the device.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-DeviceInfo-audioCapabilities?: AudioCapabilities--><!--Device-DeviceInfo-audioCapabilities?: AudioCapabilities-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -44,7 +48,9 @@ The playback type supported by the device. See [AVCastCategory](arkts-avsession-
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeviceInfo-castCategory: AVCastCategory--><!--Device-DeviceInfo-castCategory: AVCastCategory-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -60,7 +66,9 @@ Audio device id.The length of the audioDeviceId array is greater than 1 if outpu
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeviceInfo-deviceId: string--><!--Device-DeviceInfo-deviceId: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -76,7 +84,9 @@ Device name. The length of the deviceName array is greater than 1 if output to m
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeviceInfo-deviceName: string--><!--Device-DeviceInfo-deviceName: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -92,7 +102,9 @@ device type.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeviceInfo-deviceType: DeviceType--><!--Device-DeviceInfo-deviceType: DeviceType-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -108,7 +120,9 @@ Device manufacturer.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 13.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+
+<!--Device-DeviceInfo-manufacturer?: string--><!--Device-DeviceInfo-manufacturer?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -124,7 +138,9 @@ Device model name.
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 13.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+
+<!--Device-DeviceInfo-modelName?: string--><!--Device-DeviceInfo-modelName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -140,7 +156,9 @@ The drm capability supported by current device, each drm is represented by uuid.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeviceInfo-supportedDrmCapabilities?: Array<string>--><!--Device-DeviceInfo-supportedDrmCapabilities?: Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -156,7 +174,9 @@ The protocols supported by current device, can be union of [ProtocolType](arkts-
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-DeviceInfo-supportedProtocols?: int--><!--Device-DeviceInfo-supportedProtocols?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -172,6 +192,8 @@ Whether the device supports pull-end playback, including a collection of pull-en
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-DeviceInfo-supportedPullClients?: Array<int>--><!--Device-DeviceInfo-supportedPullClients?: Array<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

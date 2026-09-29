@@ -19,6 +19,8 @@ Begins an assessment session. A confirmation dialog box will be displayed for th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-assessment-function begin(context: UIAbilityContext, config: AssessmentConfig, callback: IAssessmentCallback): void--><!--Device-assessment-function begin(context: UIAbilityContext, config: AssessmentConfig, callback: IAssessmentCallback): void-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 **Parameters:**

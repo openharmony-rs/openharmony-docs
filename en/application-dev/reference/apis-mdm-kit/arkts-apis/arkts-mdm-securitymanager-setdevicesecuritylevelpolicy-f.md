@@ -20,6 +20,8 @@ Sets the device security level policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void--><!--Device-securityManager-function setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

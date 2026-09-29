@@ -61,6 +61,8 @@ The SVG tags are supported since API version 10. The used version is (SVG) 1.1, 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-image-function createImageSource(uri: string): ImageSource--><!--Device-image-function createImageSource(uri: string): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -145,6 +147,8 @@ The SVG tags are supported since API version 10. The used version is (SVG) 1.1, 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-image-function createImageSource(uri: string, options: SourceOptions): ImageSource--><!--Device-image-function createImageSource(uri: string, options: SourceOptions): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -187,6 +191,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-image-function createImageSource(fd: int): ImageSource--><!--Device-image-function createImageSource(fd: int): ImageSource-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -234,6 +240,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-image-function createImageSource(fd: int, options: SourceOptions): ImageSource--><!--Device-image-function createImageSource(fd: int, options: SourceOptions): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -280,6 +288,8 @@ Creates an ImageSource instance based on buffers. The data passed by **buf** mus
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-image-function createImageSource(buf: ArrayBuffer): ImageSource--><!--Device-image-function createImageSource(buf: ArrayBuffer): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -320,6 +330,8 @@ Creates an ImageSource instance based on buffers. The data passed by **buf** mus
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-image-function createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource--><!--Device-image-function createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -359,6 +371,8 @@ Creates an ImageSource instance based on the raw file descriptor of an image res
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-image-function createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource--><!--Device-image-function createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 

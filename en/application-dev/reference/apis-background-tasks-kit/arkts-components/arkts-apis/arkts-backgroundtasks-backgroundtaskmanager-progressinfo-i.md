@@ -8,6 +8,8 @@ Notify progress data.
 
 **Since:** 26.0.1
 
+<!--Device-backgroundTaskManager-export interface ProgressInfo--><!--Device-backgroundTaskManager-export interface ProgressInfo-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Notification content.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProgressInfo-fileName: string--><!--Device-ProgressInfo-fileName: string-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## isMute
@@ -45,6 +49,8 @@ Whether to ring when the download progress reaches 100%.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProgressInfo-isMute?: boolean--><!--Device-ProgressInfo-isMute?: boolean-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -62,6 +68,8 @@ Download progress. If this field does not exist, the progress ring will not be d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ProgressInfo-progressValue?: int--><!--Device-ProgressInfo-progressValue?: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## title
@@ -77,5 +85,7 @@ Notification title.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ProgressInfo-title: string--><!--Device-ProgressInfo-title: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

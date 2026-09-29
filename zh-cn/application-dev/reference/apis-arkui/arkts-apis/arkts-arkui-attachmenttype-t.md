@@ -12,6 +12,8 @@ declare type AttachmentType = ImageAttachmentInterface | ResourceImageAttachment
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type AttachmentType = ImageAttachmentInterface | ResourceImageAttachmentOptions--><!--Device-unnamed-declare type AttachmentType = ImageAttachmentInterface | ResourceImageAttachmentOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |

@@ -10,6 +10,8 @@ Provide a Number formatting interface that supports custom symbols. This interfa
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export class SymbolNumberFormat implements Intl.NumberFormat--><!--Device-i18n-export class SymbolNumberFormat implements Intl.NumberFormat-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -31,6 +33,8 @@ A constructor used to create a SymbolNumberFormat object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolNumberFormat-public constructor(locale?: Intl.Locale, options?: SymbolNumberFormatOptions)--><!--Device-SymbolNumberFormat-public constructor(locale?: Intl.Locale, options?: SymbolNumberFormatOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -67,6 +71,8 @@ Formats a number with give locale and SymbolNumberFormatOptions.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolNumberFormat-public format(value: number | bigint): string--><!--Device-SymbolNumberFormat-public format(value: number | bigint): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -109,6 +115,8 @@ Formats a number range.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolNumberFormat-public formatRange(startRange: number, endRange: number): string--><!--Device-SymbolNumberFormat-public formatRange(startRange: number, endRange: number): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -153,6 +161,8 @@ Formats a number range into parts.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SymbolNumberFormat-public formatRangeToParts(startRange: number, endRange: number): Intl.NumberFormatPart[]--><!--Device-SymbolNumberFormat-public formatRangeToParts(startRange: number, endRange: number): Intl.NumberFormatPart[]-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -196,6 +206,8 @@ Formats a number into parts.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SymbolNumberFormat-public formatToParts(value?: number | bigint): Intl.NumberFormatPart[]--><!--Device-SymbolNumberFormat-public formatToParts(value?: number | bigint): Intl.NumberFormatPart[]-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -237,6 +249,8 @@ Parse a localized string to number object. For example, "123,456" will parse to 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolNumberFormat-public parse(text: string, lenientMode: boolean): number--><!--Device-SymbolNumberFormat-public parse(text: string, lenientMode: boolean): number-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -282,6 +296,8 @@ Represents optional element for the ResolvedSymbolDateTimeFormatOptions object. 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SymbolNumberFormat-public resolvedOptions(): ResolvedSymbolNumberFormatOptions--><!--Device-SymbolNumberFormat-public resolvedOptions(): ResolvedSymbolNumberFormatOptions-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

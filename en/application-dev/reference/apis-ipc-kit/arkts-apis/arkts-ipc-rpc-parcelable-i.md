@@ -8,6 +8,8 @@ Writes an object to a **MessageSequence** and reads it from the **MessageSequenc
 
 **Since:** 9
 
+<!--Device-rpc-interface Parcelable--><!--Device-rpc-interface Parcelable-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ marshalling(dataOut: MessageSequence): boolean
 Marshals this **Parcelable** object into a **MessageSequence** object.
 
 **Since:** 9
+
+<!--Device-Parcelable-marshalling(dataOut: MessageSequence): boolean--><!--Device-Parcelable-marshalling(dataOut: MessageSequence): boolean-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 
@@ -86,6 +90,8 @@ unmarshalling(dataIn: MessageSequence): boolean
 Unmarshals this **Parcelable** object from a **MessageSequence** object.
 
 **Since:** 9
+
+<!--Device-Parcelable-unmarshalling(dataIn: MessageSequence): boolean--><!--Device-Parcelable-unmarshalling(dataIn: MessageSequence): boolean-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 

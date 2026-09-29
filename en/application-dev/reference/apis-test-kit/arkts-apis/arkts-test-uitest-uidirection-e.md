@@ -8,6 +8,8 @@ Describes the direction of a UI operation such as fling.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum UiDirection--><!--Device-unnamed-declare enum UiDirection-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -22,7 +24,9 @@ Leftward.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UiDirection-LEFT = 0--><!--Device-UiDirection-LEFT = 0-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -38,7 +42,9 @@ Rightward.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UiDirection-RIGHT = 1--><!--Device-UiDirection-RIGHT = 1-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -54,7 +60,9 @@ Upward.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UiDirection-UP = 2--><!--Device-UiDirection-UP = 2-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -70,7 +78,9 @@ Downward.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-UiDirection-DOWN = 3--><!--Device-UiDirection-DOWN = 3-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

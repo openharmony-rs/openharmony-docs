@@ -4,9 +4,11 @@
 declare class RatingAttribute extends CommonMethod<RatingAttribute>
 ```
 
-**继承/实现关系：** RatingAttribute extends CommonMethod&lt;RatingAttribute&gt;
+**继承/实现关系：** RatingAttribute extends CommonMethod<RatingAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class RatingAttribute extends CommonMethod<RatingAttribute>--><!--Device-unnamed-declare class RatingAttribute extends CommonMethod<RatingAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ contentModifier(modifier: ContentModifier<RatingConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RatingAttribute-contentModifier(modifier: ContentModifier<RatingConfiguration>): RatingAttribute--><!--Device-RatingAttribute-contentModifier(modifier: ContentModifier<RatingConfiguration>): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-RatingAttribute-contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>): RatingAttribute--><!--Device-RatingAttribute-contentModifier(modifier: Optional<ContentModifier<RatingConfiguration>>): RatingAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -71,6 +77,8 @@ onChange(callback: (value: number) => void)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingAttribute-onChange(callback: (value: number) => void): RatingAttribute--><!--Device-RatingAttribute-onChange(callback: (value: number) => void): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ onChange(callback: Optional<OnRatingChangeCallback>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RatingAttribute-onChange(callback: Optional<OnRatingChangeCallback>): RatingAttribute--><!--Device-RatingAttribute-onChange(callback: Optional<OnRatingChangeCallback>): RatingAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -121,6 +131,8 @@ stars(value: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingAttribute-stars(value: number): RatingAttribute--><!--Device-RatingAttribute-stars(value: number): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +159,8 @@ stars(starCount: Optional<number>)
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingAttribute-stars(starCount: Optional<number>): RatingAttribute--><!--Device-RatingAttribute-stars(starCount: Optional<number>): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,6 +189,8 @@ starStyle(options: StarStyleOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingAttribute-starStyle(options: StarStyleOptions): RatingAttribute--><!--Device-RatingAttribute-starStyle(options: StarStyleOptions): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,6 +224,8 @@ starStyle(options: Optional<StarStyleOptions>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RatingAttribute-starStyle(options: Optional<StarStyleOptions>): RatingAttribute--><!--Device-RatingAttribute-starStyle(options: Optional<StarStyleOptions>): RatingAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -231,6 +249,8 @@ stepSize(value: number)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingAttribute-stepSize(value: number): RatingAttribute--><!--Device-RatingAttribute-stepSize(value: number): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,6 +277,8 @@ stepSize(size: Optional<number>)
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RatingAttribute-stepSize(size: Optional<number>): RatingAttribute--><!--Device-RatingAttribute-stepSize(size: Optional<number>): RatingAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

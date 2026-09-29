@@ -20,6 +20,8 @@ Recovers recycled widgets and updates their status to non-recyclable, or updates
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function recoverForms(formIds: Array<string>): Promise<void>--><!--Device-formHost-function recoverForms(formIds: Array<string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ Recovers widgets. This API uses an asynchronous callback to return the result.
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-formHost-function recoverForms(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function recoverForms(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

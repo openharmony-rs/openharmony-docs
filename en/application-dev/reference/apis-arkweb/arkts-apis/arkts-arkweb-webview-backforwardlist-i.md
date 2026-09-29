@@ -10,6 +10,8 @@ BackForwardList is an interface in the ArkWeb framework for accessing the browsi
 
 **Since:** 9
 
+<!--Device-webview-interface BackForwardList--><!--Device-webview-interface BackForwardList-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the information of the history item at the specified index in the histor
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BackForwardList-getItemAtIndex(index: number): HistoryItem--><!--Device-BackForwardList-getItemAtIndex(index: number): HistoryItem-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -66,6 +70,8 @@ Index of the current page in the backforward list.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-BackForwardList-currentIndex: number--><!--Device-BackForwardList-currentIndex: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## size
@@ -81,5 +87,7 @@ Number of history records in the history list. A maximum of 50 records are saved
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BackForwardList-size: number--><!--Device-BackForwardList-size: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

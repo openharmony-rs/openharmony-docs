@@ -8,6 +8,8 @@ export declare class OperateButton
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class OperateButton--><!--Device-unnamed-export declare class OperateButton-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,6 +35,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateButton-accessibilityDescription?: ResourceStr--><!--Device-OperateButton-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateButton-accessibilityLevel?: string--><!--Device-OperateButton-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -86,6 +92,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateButton-accessibilityText?: ResourceStr--><!--Device-OperateButton-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -105,5 +113,7 @@ text?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateButton-text?: ResourceStr--><!--Device-OperateButton-text?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

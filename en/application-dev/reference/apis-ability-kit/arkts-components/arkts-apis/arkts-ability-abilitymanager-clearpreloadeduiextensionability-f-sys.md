@@ -20,6 +20,8 @@ Clears a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiext
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function clearPreloadedUIExtensionAbility(preloadId: int): Promise<void>--><!--Device-abilityManager-function clearPreloadedUIExtensionAbility(preloadId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

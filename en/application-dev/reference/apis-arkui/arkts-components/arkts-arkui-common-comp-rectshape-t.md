@@ -14,6 +14,8 @@ Defines the RectShape type.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape--><!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.arkui.shape').RectShape

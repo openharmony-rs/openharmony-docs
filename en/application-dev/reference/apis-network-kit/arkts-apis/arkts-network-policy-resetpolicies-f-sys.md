@@ -18,6 +18,8 @@ Restores all the policies (cellular network, background network, firewall, and a
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function resetPolicies(simId: string, callback: AsyncCallback<void>): void--><!--Device-policy-function resetPolicies(simId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ Resets the cellular network, background network policy, firewall policy, and app
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function resetPolicies(simId: string): Promise<void>--><!--Device-policy-function resetPolicies(simId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -8,6 +8,8 @@ export declare enum TabBarPosition
 
 **起始版本：** 12
 
+<!--Device-unnamed-export declare enum TabBarPosition--><!--Device-unnamed-export declare enum TabBarPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LEFT
@@ -22,6 +24,8 @@ LEFT = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabBarPosition-LEFT = 0--><!--Device-TabBarPosition-LEFT = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -35,5 +39,7 @@ BOTTOM = 1
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabBarPosition-BOTTOM = 1--><!--Device-TabBarPosition-BOTTOM = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

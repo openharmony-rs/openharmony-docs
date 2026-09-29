@@ -24,6 +24,8 @@ Obtains the name of a peer Bluetooth device. On API 10 and above, the permission
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function getRemoteDeviceName(deviceId: string): string--><!--Device-bluetoothManager-function getRemoteDeviceName(deviceId: string): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

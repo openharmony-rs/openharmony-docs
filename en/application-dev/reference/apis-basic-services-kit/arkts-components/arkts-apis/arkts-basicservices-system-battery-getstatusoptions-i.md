@@ -10,6 +10,8 @@ Object that contains the API calling result.
 
 **Deprecated since:** 6
 
+<!--Device-unnamed-export interface GetStatusOptions--><!--Device-unnamed-export interface GetStatusOptions-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Called when an API call is complete.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-GetStatusOptions-complete?: () => void--><!--Device-GetStatusOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## fail
@@ -47,6 +51,8 @@ Called when an API call has failed. **data** indicates the error information, an
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-GetStatusOptions-fail?: (data: string, code: number) => void--><!--Device-GetStatusOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
@@ -70,6 +76,8 @@ Called when an API call is successful. **data** is a return value of the [Batter
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-GetStatusOptions-success?: (data: BatteryResponse) => void--><!--Device-GetStatusOptions-success?: (data: BatteryResponse) => void-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 

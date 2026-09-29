@@ -8,6 +8,8 @@ declare interface EnvPropsOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface EnvPropsOptions--><!--Device-unnamed-declare interface EnvPropsOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultValue
@@ -24,6 +26,8 @@ defaultValue: number | string | boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EnvPropsOptions-defaultValue: number | string | boolean--><!--Device-EnvPropsOptions-defaultValue: number | string | boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -39,5 +43,7 @@ key: string
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EnvPropsOptions-key: string--><!--Device-EnvPropsOptions-key: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

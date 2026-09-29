@@ -25,6 +25,8 @@ Subscribes to the state changes of animation reduction mode. This API uses an as
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function onAnimationReduceStateChange(callback: Callback<boolean>): void--><!--Device-accessibility-function onAnimationReduceStateChange(callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

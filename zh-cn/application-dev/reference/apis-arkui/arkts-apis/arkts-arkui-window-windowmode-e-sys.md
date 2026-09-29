@@ -8,6 +8,8 @@ enum WindowMode
 
 **起始版本：** 7
 
+<!--Device-window-enum WindowMode--><!--Device-window-enum WindowMode-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,6 +23,8 @@ UNDEFINED = 1
 表示APP未定义窗口模式。
 
 **起始版本：** 7
+
+<!--Device-WindowMode-UNDEFINED = 1--><!--Device-WindowMode-UNDEFINED = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,6 +40,8 @@ FULLSCREEN = 2
 
 **起始版本：** 7
 
+<!--Device-WindowMode-FULLSCREEN = 2--><!--Device-WindowMode-FULLSCREEN = 2-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -49,6 +55,8 @@ PRIMARY = 3
 表示APP分屏多窗口主要模式。上下分屏时，上分屏为主要模式。左右分屏时，左分屏为主要模式。
 
 **起始版本：** 7
+
+<!--Device-WindowMode-PRIMARY = 3--><!--Device-WindowMode-PRIMARY = 3-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -64,6 +72,8 @@ SECONDARY = 4
 
 **起始版本：** 7
 
+<!--Device-WindowMode-SECONDARY = 4--><!--Device-WindowMode-SECONDARY = 4-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +87,8 @@ FLOATING = 5
 表示APP自由悬浮形式窗口模式。
 
 **起始版本：** 7
+
+<!--Device-WindowMode-FLOATING = 5--><!--Device-WindowMode-FLOATING = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

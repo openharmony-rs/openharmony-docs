@@ -18,6 +18,8 @@ Terminates a continuous task in the task pool. It is called after the continuous
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-taskpool-function terminateTask(longTask: LongTask): void--><!--Device-taskpool-function terminateTask(longTask: LongTask): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

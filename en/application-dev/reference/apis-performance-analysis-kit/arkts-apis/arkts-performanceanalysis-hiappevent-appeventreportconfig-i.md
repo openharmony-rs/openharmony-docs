@@ -8,6 +8,8 @@ Defines the event configuration for the data processor to report.
 
 **Since:** 11
 
+<!--Device-hiAppEvent-interface AppEventReportConfig--><!--Device-hiAppEvent-interface AppEventReportConfig-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Event domain. The value is a string that contains a maximum of 32 characters, in
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventReportConfig-domain?: string--><!--Device-AppEventReportConfig-domain?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -44,7 +48,9 @@ Whether to report events in real time. The value **true** indicates that events 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventReportConfig-isRealTime?: boolean--><!--Device-AppEventReportConfig-isRealTime?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -60,6 +66,8 @@ Event name. The value is string that contains a maximum of 48 characters, includ
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventReportConfig-name?: string--><!--Device-AppEventReportConfig-name?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

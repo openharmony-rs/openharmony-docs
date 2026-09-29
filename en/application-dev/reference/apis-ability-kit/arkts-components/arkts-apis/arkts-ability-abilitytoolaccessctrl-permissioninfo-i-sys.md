@@ -8,6 +8,8 @@ Permission information.
 
 **Since:** 26.0.0
 
+<!--Device-abilityToolAccessCtrl-interface PermissionInfo--><!--Device-abilityToolAccessCtrl-interface PermissionInfo-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Authorization status information.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionInfo-authStatusInfo?: AuthStatusInfo--><!--Device-PermissionInfo-authStatusInfo?: AuthStatusInfo-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Permission name.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionInfo-permission: string--><!--Device-PermissionInfo-permission: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -66,6 +72,8 @@ Permission status.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionInfo-permissionStatus: abilityAccessCtrl.PermissionStatus--><!--Device-PermissionInfo-permissionStatus: abilityAccessCtrl.PermissionStatus-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

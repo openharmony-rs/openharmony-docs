@@ -1,6 +1,6 @@
 # @ohos.bundle
 
-The module provides APIs for obtaining information about an application, including [bundle information](arkts-ability-bundleinfo.md), [application information](arkts-ability-applicationinfo-applicationinfo-depr-i.md#applicationinfo), and [ability information](arkts-ability-abilityinfo-abilityinfo-depr-i.md#abilityinfo). It also provides APIs to obtain and set the application disabling state.
+The module provides APIs for obtaining information about an application, including [bundle information](arkts-ability-bundleinfo.md), [application information](arkts-ability-applicationinfo-applicationinfo-depr-i.md), and [ability information](arkts-ability-abilityinfo-abilityinfo-depr-i.md). It also provides APIs to obtain and set the application disabling state.
 
 > **NOTE:** 
 > 
@@ -12,6 +12,8 @@ The module provides APIs for obtaining information about an application, includi
 **Deprecated since:** 9
 
 **Substitutes:** [bundleManager](arkts-ability-bundle-bundlemanager.md)
+
+<!--Device-unnamed-declare namespace bundle--><!--Device-unnamed-declare namespace bundle-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

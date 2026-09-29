@@ -24,6 +24,8 @@ Switches to another input method. This API uses an asynchronous callback to retu
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.CONNECT_IME_ABILITY
 
+<!--Device-inputMethod-function switchInputMethod(target: InputMethodProperty, callback: AsyncCallback<boolean>): void--><!--Device-inputMethod-function switchInputMethod(target: InputMethodProperty, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -81,6 +83,8 @@ Switches to another input method. This API uses a promise to return the result. 
 **Required permissions:** 
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.CONNECT_IME_ABILITY
+
+<!--Device-inputMethod-function switchInputMethod(target: InputMethodProperty): Promise<boolean>--><!--Device-inputMethod-function switchInputMethod(target: InputMethodProperty): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

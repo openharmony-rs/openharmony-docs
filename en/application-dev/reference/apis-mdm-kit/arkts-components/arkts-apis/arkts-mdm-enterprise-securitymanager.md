@@ -11,6 +11,8 @@ This module provides enterprise device security management capabilities, includi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace securityManager--><!--Device-unnamed-declare namespace securityManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

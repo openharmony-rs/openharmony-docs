@@ -8,6 +8,8 @@ Enumerates the intent parameter categories available for the [@InsightIntentLink
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum LinkParamCategory--><!--Device-unnamed-declare enum LinkParamCategory-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## LINK
@@ -24,6 +26,8 @@ Category of link. Intent parameters are appended to the end of a URI link and pa
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-LinkParamCategory-LINK = 'link'--><!--Device-LinkParamCategory-LINK = 'link'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## WANT
@@ -39,5 +43,7 @@ Category of want. Intent parameters are passed to the application through the **
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-LinkParamCategory-WANT = 'want'--><!--Device-LinkParamCategory-WANT = 'want'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -16,6 +16,8 @@ function resizeVirtualScreen(screenId:number, width: number, height: number): Pr
 
 **起始版本：** 24
 
+<!--Device-screen-function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<void>--><!--Device-screen-function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

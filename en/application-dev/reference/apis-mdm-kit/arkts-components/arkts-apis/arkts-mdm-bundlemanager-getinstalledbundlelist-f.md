@@ -20,6 +20,8 @@ Obtains the applications installed by a specified user on a device. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getInstalledBundleList(admin: Want, accountId: number): Promise<Array<BundleInfo>>--><!--Device-bundleManager-function getInstalledBundleList(admin: Want, accountId: number): Promise<Array<BundleInfo>>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -80,6 +82,8 @@ Obtains the list of applications installed by a specified user based on the spec
 **Required permissions:** ohos.permission.ENTERPRISE_GET_ALL_BUNDLE_INFO
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function getInstalledBundleList(admin: Want, accountId: int, bundleInfoGetFlag: int): Promise<Array<BundleInfo>>--><!--Device-bundleManager-function getInstalledBundleList(admin: Want, accountId: int, bundleInfoGetFlag: int): Promise<Array<BundleInfo>>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

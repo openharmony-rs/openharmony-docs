@@ -8,6 +8,8 @@ Represents the base controller for **TextInput**, **TextArea**, and **Search** c
 
 **Since:** 10
 
+<!--Device-unnamed-declare abstract class TextContentControllerBase--><!--Device-unnamed-declare abstract class TextContentControllerBase-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getText
@@ -23,6 +25,8 @@ Obtains the text content within a specified range.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-TextContentControllerBase-getText(range?: TextRange): string--><!--Device-TextContentControllerBase-getText(range?: TextRange): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

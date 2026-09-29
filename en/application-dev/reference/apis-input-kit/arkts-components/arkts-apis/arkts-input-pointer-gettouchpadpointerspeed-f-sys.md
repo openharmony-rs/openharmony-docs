@@ -16,6 +16,8 @@ Obtains the touchpad pointer speed. This API uses an asynchronous callback to re
 
 **Since:** 10
 
+<!--Device-pointer-function getTouchpadPointerSpeed(callback: AsyncCallback<int>): void--><!--Device-pointer-function getTouchpadPointerSpeed(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getTouchpadPointerSpeed(): Promise<number>
 Obtains the touchpad pointer speed. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getTouchpadPointerSpeed(): Promise<int>--><!--Device-pointer-function getTouchpadPointerSpeed(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

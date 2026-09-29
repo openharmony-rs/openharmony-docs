@@ -12,6 +12,8 @@ ListItem吸顶效果枚举。
 
 **替代接口：** [list/StickyStyle](arkts-arkui-list-comp-stickystyle-e.md)
 
+<!--Device-unnamed-declare enum Sticky--><!--Device-unnamed-declare enum Sticky-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -27,6 +29,8 @@ None
 **废弃版本：** 9
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Sticky-None--><!--Device-Sticky-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Normal mode
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-Sticky-Normal--><!--Device-Sticky-Normal-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Opacity
@@ -59,5 +65,7 @@ Set opacity.
 **废弃版本：** 9
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Sticky-Opacity--><!--Device-Sticky-Opacity-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

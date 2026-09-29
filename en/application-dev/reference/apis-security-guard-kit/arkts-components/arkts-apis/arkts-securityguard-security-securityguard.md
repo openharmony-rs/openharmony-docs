@@ -6,6 +6,8 @@ Provides security event management and security model management. Based on event
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace securityGuard--><!--Device-unnamed-declare namespace securityGuard-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.

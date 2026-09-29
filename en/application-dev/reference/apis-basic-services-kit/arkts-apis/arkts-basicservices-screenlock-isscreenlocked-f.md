@@ -18,6 +18,8 @@ Checks whether the screen is currently locked.
 
 **Deprecated since:** 9
 
+<!--Device-screenLock-function isScreenLocked(callback: AsyncCallback<boolean>): void--><!--Device-screenLock-function isScreenLocked(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **Parameters:**
@@ -54,6 +56,8 @@ Checks whether the screen is currently locked.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-screenLock-function isScreenLocked(): Promise<boolean>--><!--Device-screenLock-function isScreenLocked(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

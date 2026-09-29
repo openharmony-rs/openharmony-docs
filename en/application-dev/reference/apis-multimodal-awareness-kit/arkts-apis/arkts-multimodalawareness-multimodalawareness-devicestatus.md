@@ -1,8 +1,10 @@
-# @ohos.multimodalAwareness.deviceStatus
+# @ohos.multimodalAwareness.deviceStatus(Device status awareness)
 
-The **deviceStatus** module provides the device status awareness functionality.
+This module provides the capability of sensing the device status. It senses the physical status of the device in real time through sensors, helping you adjust application behavior based on the physical status of the device.
 
 **Since:** 18
+
+<!--Device-unnamed-declare namespace deviceStatus--><!--Device-unnamed-declare namespace deviceStatus-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -19,7 +21,7 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 | Name | Description |
 | --- | --- |
 | [off](arkts-multimodalawareness-devicestatus-off-f.md#offsteadystandingdetect) | Unsubscribes from steady standing state events. |
-| [on](arkts-multimodalawareness-devicestatus-on-f.md#onsteadystandingdetect) | Subscribes to steady standing state events. |
+| [on](arkts-multimodalawareness-devicestatus-on-f.md#onsteadystandingdetect) | Subscribes to the device steady standing state (stand mode) event. It is recommended to call off() to unsubscribe when it is no longer needed to release resources. |
 
 <!--Del-->
 ### Functions(System API)

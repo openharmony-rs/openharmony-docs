@@ -16,6 +16,8 @@ Obtains the specified system GC statistics based on parameters.
 
 **Since:** 12
 
+<!--Device-hidebug-function getVMRuntimeStat(item: string): long--><!--Device-hidebug-function getVMRuntimeStat(item: string): long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Parameters:**

@@ -18,6 +18,8 @@ Calls the API for adding a contact to open the UI. This API uses a promise to re
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-contact-function addContactViaUI(context: Context, contact: Contact): Promise<number>--><!--Device-contact-function addContactViaUI(context: Context, contact: Contact): Promise<number>-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 **Parameters:**
@@ -38,7 +40,7 @@ Calls the API for adding a contact to open the UI. This API uses a promise to re
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | The specified SystemCapability name was not found. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | [16700001](../errorcode-contacts.md#16700001-system-internal-error) | General error. |
 | [16700102](../errorcode-contacts.md#16700102-database-data-addition-deletion-or-modification-failed) | Failed to set value to contacts data. |
 | [16700103](../errorcode-contacts.md#16700103-operation-canceled) | User cancel. |

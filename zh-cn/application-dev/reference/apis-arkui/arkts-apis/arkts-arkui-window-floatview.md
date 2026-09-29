@@ -27,13 +27,15 @@
 
 > **说明：** 
 > 
-> - 针对系统能力SystemCapability.Window.SessionManager，请先使用canIUse()接口判断当前设备是否支持此syscap及对应接口。
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../../../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 > 
 > - 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-unnamed-declare namespace floatView--><!--Device-unnamed-declare namespace floatView-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

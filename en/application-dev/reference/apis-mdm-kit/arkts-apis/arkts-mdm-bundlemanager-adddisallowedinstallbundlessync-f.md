@@ -20,6 +20,8 @@ Adds the applications that are not allowed to be installed by the current or spe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function addDisallowedInstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void--><!--Device-bundleManager-function addDisallowedInstallBundlesSync(admin: Want, appIds: Array<string>, accountId?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

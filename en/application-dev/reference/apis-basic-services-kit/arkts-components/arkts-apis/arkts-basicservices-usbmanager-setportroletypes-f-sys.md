@@ -18,6 +18,8 @@ Sets the role types of a specified port, including **powerRole** (for charging) 
 
 **Required permissions:** ohos.permission.MANAGE_USB_CONFIG
 
+<!--Device-usbManager-function setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>--><!--Device-usbManager-function setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise<void>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

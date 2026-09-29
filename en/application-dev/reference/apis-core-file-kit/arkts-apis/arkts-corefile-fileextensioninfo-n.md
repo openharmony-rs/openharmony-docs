@@ -10,6 +10,8 @@ The **fileExtensionInfo** module defines attributes in **RootInfo** and **FileIn
 
 **Deprecated since:** 23
 
+<!--Device-unnamed-declare namespace fileExtensionInfo--><!--Device-unnamed-declare namespace fileExtensionInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

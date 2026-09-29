@@ -8,6 +8,8 @@ Swiper组件的内容区信息，包含Swiper组件标识、唯一标识符及�
 
 **起始版本：** 22
 
+<!--Device-unnamed-export interface SwiperContentInfo--><!--Device-unnamed-export interface SwiperContentInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ Swiper组件通过通用属性id设置的标识符，由开发者指定。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperContentInfo-id: string--><!--Device-SwiperContentInfo-id: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## swiperItemInfos
@@ -53,6 +57,8 @@ swiperItemInfos: Array<SwiperItemInfo>
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwiperContentInfo-swiperItemInfos: Array<SwiperItemInfo>--><!--Device-SwiperContentInfo-swiperItemInfos: Array<SwiperItemInfo>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## uniqueId
@@ -70,5 +76,7 @@ Swiper组件的唯一标识符。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwiperContentInfo-uniqueId: number--><!--Device-SwiperContentInfo-uniqueId: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

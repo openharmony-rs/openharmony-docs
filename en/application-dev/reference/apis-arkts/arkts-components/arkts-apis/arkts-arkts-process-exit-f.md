@@ -22,6 +22,8 @@ Exercise caution when using this API. After this API is called, the application 
 
 **Substitutes:** [exit](arkts-arkts-process-processmanager-c.md#exit)
 
+<!--Device-process-function exit(code: number): void--><!--Device-process-function exit(code: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

@@ -10,6 +10,8 @@ interface PanGestureEvent extends BaseGestureEvent
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface PanGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface PanGestureEvent extends BaseGestureEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -27,6 +29,8 @@ offsetX: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanGestureEvent-offsetX: number--><!--Device-PanGestureEvent-offsetX: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ offsetY: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanGestureEvent-offsetY: number--><!--Device-PanGestureEvent-offsetY: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -63,6 +69,8 @@ velocity: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanGestureEvent-velocity: number--><!--Device-PanGestureEvent-velocity: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ velocityX: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PanGestureEvent-velocityX: number--><!--Device-PanGestureEvent-velocityX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocityY
@@ -99,5 +109,7 @@ velocityY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanGestureEvent-velocityY: number--><!--Device-PanGestureEvent-velocityY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

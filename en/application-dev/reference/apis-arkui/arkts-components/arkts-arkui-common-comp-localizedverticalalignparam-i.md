@@ -10,6 +10,8 @@ Defines the localized vertical align param of relative container.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedVerticalAlignParam--><!--Device-unnamed-declare interface LocalizedVerticalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## align
@@ -28,6 +30,8 @@ Vertical alignment mode relative to the anchor component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LocalizedVerticalAlignParam-align: VerticalAlign--><!--Device-LocalizedVerticalAlignParam-align: VerticalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## anchor
@@ -45,5 +49,7 @@ ID of the component that serves as the anchor.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LocalizedVerticalAlignParam-anchor: string--><!--Device-LocalizedVerticalAlignParam-anchor: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

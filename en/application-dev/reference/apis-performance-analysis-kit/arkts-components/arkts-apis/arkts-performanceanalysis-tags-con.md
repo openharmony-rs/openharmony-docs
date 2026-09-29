@@ -12,6 +12,8 @@ Capability management. The corresponding HiTrace command is **tagName:ability**.
 
 **Since:** 12
 
+<!--Device-tags-const ABILITY_MANAGER: long--><!--Device-tags-const ABILITY_MANAGER: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## ARK
@@ -25,6 +27,8 @@ JSVM VM. The corresponding HiTrace command is **tagName:ark**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const ARK: long--><!--Device-tags-const ARK: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -40,6 +44,8 @@ ArkUI development framework. The corresponding HiTrace command is **tagName:ace*
 
 **Since:** 12
 
+<!--Device-tags-const ARKUI: long--><!--Device-tags-const ARKUI: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## AUDIO
@@ -53,6 +59,8 @@ Audio module. The corresponding HiTrace command is **tagName:zaudio**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const AUDIO: long--><!--Device-tags-const AUDIO: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -68,6 +76,8 @@ Bluetooth. The corresponding HiTrace command is **tagName:bluetooth**.
 
 **Since:** 12
 
+<!--Device-tags-const BLUETOOTH: long--><!--Device-tags-const BLUETOOTH: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## CAMERA
@@ -81,6 +91,8 @@ Camera module. The corresponding HiTrace command is **tagName:zcamera**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const CAMERA: long--><!--Device-tags-const CAMERA: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -96,6 +108,8 @@ Common library subsystem. The corresponding HiTrace command is **tagName:commonl
 
 **Since:** 12
 
+<!--Device-tags-const COMMON_LIBRARY: long--><!--Device-tags-const COMMON_LIBRARY: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## DISTRIBUTED_AUDIO
@@ -109,6 +123,8 @@ Distributed audio. The corresponding HiTrace command is **tagName:daudio**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const DISTRIBUTED_AUDIO: long--><!--Device-tags-const DISTRIBUTED_AUDIO: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -124,6 +140,8 @@ Distributed camera. The corresponding HiTrace command is **tagName:dcamera**.
 
 **Since:** 12
 
+<!--Device-tags-const DISTRIBUTED_CAMERA: long--><!--Device-tags-const DISTRIBUTED_CAMERA: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## DISTRIBUTED_DATA
@@ -137,6 +155,8 @@ Distributed data management. The corresponding HiTrace command is **tagName:dist
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const DISTRIBUTED_DATA: long--><!--Device-tags-const DISTRIBUTED_DATA: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -152,6 +172,8 @@ Distributed hardware device management. The corresponding HiTrace command is **t
 
 **Since:** 12
 
+<!--Device-tags-const DISTRIBUTED_HARDWARE_DEVICE_MANAGER: long--><!--Device-tags-const DISTRIBUTED_HARDWARE_DEVICE_MANAGER: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## DISTRIBUTED_HARDWARE_FRAMEWORK
@@ -165,6 +187,8 @@ Distributed hardware framework. The corresponding HiTrace command is **tagName:d
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const DISTRIBUTED_HARDWARE_FRAMEWORK: long--><!--Device-tags-const DISTRIBUTED_HARDWARE_FRAMEWORK: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -180,6 +204,8 @@ Distributed input. The corresponding HiTrace command is **tagName:dinput**.
 
 **Since:** 12
 
+<!--Device-tags-const DISTRIBUTED_INPUT: long--><!--Device-tags-const DISTRIBUTED_INPUT: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## DISTRIBUTED_SCHEDULER
@@ -193,6 +219,8 @@ Distributed scheduler. The corresponding HiTrace command is **tagName:dsched**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const DISTRIBUTED_SCHEDULER: long--><!--Device-tags-const DISTRIBUTED_SCHEDULER: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -208,6 +236,8 @@ Distributed screen. The corresponding HiTrace command is **tagName:dscreen**.
 
 **Since:** 12
 
+<!--Device-tags-const DISTRIBUTED_SCREEN: long--><!--Device-tags-const DISTRIBUTED_SCREEN: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## FFRT
@@ -221,6 +251,8 @@ FFRT task. The corresponding HiTrace command is **tagName:ffrt**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const FFRT: long--><!--Device-tags-const FFRT: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -236,6 +268,8 @@ File management system. The corresponding HiTrace command is **tagName:filemanag
 
 **Since:** 12
 
+<!--Device-tags-const FILE_MANAGEMENT: long--><!--Device-tags-const FILE_MANAGEMENT: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## GLOBAL_RESOURCE_MANAGER
@@ -249,6 +283,8 @@ Global resource management. The corresponding HiTrace command is **tagName:greso
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const GLOBAL_RESOURCE_MANAGER: long--><!--Device-tags-const GLOBAL_RESOURCE_MANAGER: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -264,6 +300,8 @@ Graphics module. The corresponding HiTrace command is **tagName:graphic**.
 
 **Since:** 12
 
+<!--Device-tags-const GRAPHICS: long--><!--Device-tags-const GRAPHICS: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## HDF
@@ -277,6 +315,8 @@ HDF subsystem. The corresponding HiTrace command is **tagName:hdf**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const HDF: long--><!--Device-tags-const HDF: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -292,6 +332,8 @@ Image module. The corresponding HiTrace command is **tagName:zimage**.
 
 **Since:** 12
 
+<!--Device-tags-const IMAGE: long--><!--Device-tags-const IMAGE: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## MEDIA
@@ -305,6 +347,8 @@ Media module. The corresponding HiTrace command is **tagName:zmedia**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const MEDIA: long--><!--Device-tags-const MEDIA: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -320,6 +364,8 @@ MISC module. The corresponding HiTrace command is **tagName:misc**.
 
 **Since:** 12
 
+<!--Device-tags-const MISC: long--><!--Device-tags-const MISC: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## MULTIMODAL_INPUT
@@ -333,6 +379,8 @@ Multi-modal input module. The corresponding HiTrace command is **tagName:multimo
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const MULTIMODAL_INPUT: long--><!--Device-tags-const MULTIMODAL_INPUT: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -348,6 +396,8 @@ Network. The corresponding HiTrace command is **tagName:net**.
 
 **Since:** 12
 
+<!--Device-tags-const NET: long--><!--Device-tags-const NET: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## NOTIFICATION
@@ -361,6 +411,8 @@ Notification module. The corresponding HiTrace command is **tagName:notification
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const NOTIFICATION: long--><!--Device-tags-const NOTIFICATION: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -376,6 +428,8 @@ Nweb. The corresponding HiTrace command is **tagName:nweb**.
 
 **Since:** 12
 
+<!--Device-tags-const NWEB: long--><!--Device-tags-const NWEB: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## OHOS
@@ -389,6 +443,8 @@ OHOS. The corresponding HiTrace command is **tagName:ohos**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const OHOS: long--><!--Device-tags-const OHOS: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -404,6 +460,8 @@ Power management. The corresponding HiTrace command is **tagName:power**.
 
 **Since:** 12
 
+<!--Device-tags-const POWER_MANAGER: long--><!--Device-tags-const POWER_MANAGER: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## RPC
@@ -417,6 +475,8 @@ RPC. The corresponding HiTrace command is **tagName:rpc**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const RPC: long--><!--Device-tags-const RPC: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -432,6 +492,8 @@ System capability management. The corresponding HiTrace command is **tagName:sam
 
 **Since:** 12
 
+<!--Device-tags-const SAMGR: long--><!--Device-tags-const SAMGR: long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## WINDOW_MANAGER
@@ -445,5 +507,7 @@ Window management. The corresponding HiTrace command is **tagName:window**.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-tags-const WINDOW_MANAGER: long--><!--Device-tags-const WINDOW_MANAGER: long-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

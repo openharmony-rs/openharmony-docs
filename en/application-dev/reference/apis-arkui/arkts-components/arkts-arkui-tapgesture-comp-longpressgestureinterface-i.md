@@ -15,6 +15,8 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 
 **Since:** 7
 
+<!--Device-unnamed-interface LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>--><!--Device-unnamed-interface LongPressGestureInterface extends GestureInterface<LongPressGestureInterface>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## [[Call]]
@@ -34,6 +36,8 @@ If the long press duration reaches or exceeds 500 milliseconds, the system prior
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LongPressGestureInterface-(value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface--><!--Device-LongPressGestureInterface-(value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +75,8 @@ If the long press duration reaches or exceeds 500 milliseconds, the system prior
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-LongPressGestureInterface-(options?: LongPressGestureHandlerOptions): LongPressGestureInterface--><!--Device-LongPressGestureInterface-(options?: LongPressGestureHandlerOptions): LongPressGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -97,6 +103,8 @@ Registers the callback for successful long press gesture recognition.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LongPressGestureInterface-onAction(event: (event: GestureEvent) => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onAction(event: (event: GestureEvent) => void): LongPressGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -122,6 +130,8 @@ Registers the callback for long press gesture cancellation. This callback is tri
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LongPressGestureInterface-onActionCancel(event: () => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionCancel(event: () => void): LongPressGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,6 +163,8 @@ Registers the callback for long press gesture cancellation. This callback is tri
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-LongPressGestureInterface-onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionCancel(event: Callback<GestureEvent>): LongPressGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -178,6 +190,8 @@ Registers the callback for long press gesture completion. This callback is trigg
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LongPressGestureInterface-onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface--><!--Device-LongPressGestureInterface-onActionEnd(event: (event: GestureEvent) => void): LongPressGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

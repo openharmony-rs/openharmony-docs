@@ -19,6 +19,8 @@ Unsubscribes from the state changes in mono audio mode. This API uses an asynchr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function offAudioMonoStateChange(callback?: Callback<boolean>): void--><!--Device-accessibility-function offAudioMonoStateChange(callback?: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**

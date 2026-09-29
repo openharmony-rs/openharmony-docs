@@ -8,6 +8,8 @@ declare interface StyledStringController
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface StyledStringController--><!--Device-unnamed-declare interface StyledStringController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getStyledString
@@ -23,6 +25,8 @@ getStyledString(): MutableStyledString
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-StyledStringController-getStyledString(): MutableStyledString--><!--Device-StyledStringController-getStyledString(): MutableStyledString-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ setStyledString(styledString: StyledString): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-StyledStringController-setStyledString(styledString: StyledString): void--><!--Device-StyledStringController-setStyledString(styledString: StyledString): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

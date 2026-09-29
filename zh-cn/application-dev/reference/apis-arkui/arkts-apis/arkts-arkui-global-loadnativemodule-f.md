@@ -27,6 +27,8 @@ export declare function loadNativeModule(moduleName: string): Object
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-export declare function loadNativeModule(moduleName: string): Object--><!--Device-unnamed-export declare function loadNativeModule(moduleName: string): Object-End-->
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -45,5 +47,5 @@ export declare function loadNativeModule(moduleName: string): Object
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | The parameter check failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. |
 | [10200301](../../apis-arkts/errorcode-utils.md#10200301-加载native模块失败) | Loading native module failed. |

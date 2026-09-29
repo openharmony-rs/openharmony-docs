@@ -20,6 +20,8 @@ Queries the list of applications whose home screen icons are hidden for the curr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getHideLauncherIcon(admin: Want | null): Array<string>--><!--Device-applicationManager-function getHideLauncherIcon(admin: Want | null): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

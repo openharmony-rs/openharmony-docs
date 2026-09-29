@@ -8,6 +8,8 @@ Defines the content of a data change notification, including inserted data, upda
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface ChangeNotification--><!--Device-distributedKVStore-interface ChangeNotification-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Data deleted.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ChangeNotification-deleteEntries: Entry[]--><!--Device-ChangeNotification-deleteEntries: Entry[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## deviceId
@@ -45,6 +49,8 @@ UUID of the device.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChangeNotification-deviceId: string--><!--Device-ChangeNotification-deviceId: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -62,6 +68,8 @@ Data inserted.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ChangeNotification-insertEntries: Entry[]--><!--Device-ChangeNotification-insertEntries: Entry[]-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## updateEntries
@@ -77,5 +85,7 @@ Data updated.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChangeNotification-updateEntries: Entry[]--><!--Device-ChangeNotification-updateEntries: Entry[]-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

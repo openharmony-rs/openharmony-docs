@@ -30,6 +30,8 @@ Obtains the current system dark mode configuration.
 - API version 20 and later: N/A
 - API versions 10 to 19: ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-uiAppearance-function getDarkMode(): DarkMode--><!--Device-uiAppearance-function getDarkMode(): DarkMode-End-->
+
 **System capability:** SystemCapability.ArkUI.UiAppearance
 
 **Return value:**

@@ -8,6 +8,8 @@ ChipGroup的后缀图标选项类型。
 
 **起始版本：** 14
 
+<!--Device-unnamed-export interface SymbolItemOptions--><!--Device-unnamed-export interface SymbolItemOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ action: VoidCallback
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolItemOptions-action: VoidCallback--><!--Device-SymbolItemOptions-action: VoidCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -51,6 +55,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-SymbolItemOptions-accessibilityDescription?: ResourceStr--><!--Device-SymbolItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +92,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolItemOptions-accessibilityLevel?: string--><!--Device-SymbolItemOptions-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -108,6 +116,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-SymbolItemOptions-accessibilityText?: ResourceStr--><!--Device-SymbolItemOptions-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbol
@@ -118,12 +128,14 @@ symbol: SymbolGlyphModifier
 
 尾部图标的SymbolGlyphModifier配置对象，用于设置图标的显示样式、渲染模式等。
 
-**类型：** SymbolGlyphModifier
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-SymbolItemOptions-symbol: SymbolGlyphModifier--><!--Device-SymbolItemOptions-symbol: SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

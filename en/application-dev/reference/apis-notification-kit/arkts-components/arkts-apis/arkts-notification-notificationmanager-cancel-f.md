@@ -20,6 +20,8 @@ Compared with notificationManager.cancel(id, label, callback), which includes th
 
 **Since:** 9
 
+<!--Device-notificationManager-function cancel(id: int, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function cancel(id: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -80,6 +82,8 @@ Compared with notificationManager.cancel(id, callback), which requires only the 
 
 **Since:** 9
 
+<!--Device-notificationManager-function cancel(id: int, label: string, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function cancel(id: int, label: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -138,6 +142,8 @@ Cancels a published notification based on the notification ID and label. This AP
 After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user.
 
 **Since:** 9
+
+<!--Device-notificationManager-function cancel(id: int, label?: string): Promise<void>--><!--Device-notificationManager-function cancel(id: int, label?: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

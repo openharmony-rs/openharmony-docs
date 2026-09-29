@@ -12,6 +12,8 @@ Corresponds to an incremental application, including its last incremental time a
 
 **Since:** 12
 
+<!--Device-backup-interface IncrementalBackupData extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority--><!--Device-backup-interface IncrementalBackupData extends IncrementalBackupTime, FileManifestData, BackupParams, BackupPriority-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

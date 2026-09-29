@@ -10,6 +10,8 @@ The member types are the union of the types listed in the following table.
 
 **Since:** 10
 
+<!--Device-photoAccessHelper-type MemberType = int | long | double | string | boolean--><!--Device-photoAccessHelper-type MemberType = int | long | double | string | boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Type | Description |

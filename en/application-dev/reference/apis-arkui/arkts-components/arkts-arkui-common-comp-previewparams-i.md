@@ -13,6 +13,8 @@ Implements a configuration object for @Preview parameters. Defines preview devic
 
 **Since:** 9
 
+<!--Device-unnamed-interface PreviewParams--><!--Device-unnamed-interface PreviewParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -30,6 +32,8 @@ Light or dark mode to display. The value can be light or dark. The default value
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PreviewParams-colorMode?: string--><!--Device-PreviewParams-colorMode?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Device type on which the component preview is rendered. The default value is Pho
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PreviewParams-deviceType?: string--><!--Device-PreviewParams-deviceType?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## dpi
@@ -71,6 +77,8 @@ Screen DPI of the preview device. The default value is 480. The value is an inte
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PreviewParams-dpi?: number--><!--Device-PreviewParams-dpi?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -88,6 +96,8 @@ Height of the preview device, in px. The default value is 2340px. The value is a
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PreviewParams-height?: number--><!--Device-PreviewParams-height?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,6 +117,8 @@ Language and region of the preview device, for example, zh_CN and en_US. The def
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PreviewParams-locale?: string--><!--Device-PreviewParams-locale?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## orientation
@@ -124,6 +136,8 @@ Screen orientation of the preview device. Options: **portrait** (default), **lan
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PreviewParams-orientation?: string--><!--Device-PreviewParams-orientation?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,6 +157,8 @@ Whether the preview screen is circular. Default value: **false**. **true**: circ
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PreviewParams-roundScreen?: boolean--><!--Device-PreviewParams-roundScreen?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -161,6 +177,8 @@ Title of the component preview. The default value is the custom component name. 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PreviewParams-title?: string--><!--Device-PreviewParams-title?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -178,5 +196,7 @@ Width of the preview device, in px. The default value is 1080px. The value is an
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PreviewParams-width?: number--><!--Device-PreviewParams-width?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

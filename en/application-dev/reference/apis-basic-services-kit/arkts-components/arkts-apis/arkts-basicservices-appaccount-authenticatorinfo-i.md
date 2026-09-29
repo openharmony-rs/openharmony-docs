@@ -8,6 +8,8 @@ Defines OAuth authenticator information.
 
 **Since:** 8
 
+<!--Device-appAccount-interface AuthenticatorInfo--><!--Device-appAccount-interface AuthenticatorInfo-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import
@@ -28,6 +30,8 @@ ID of the authenticator icon.
 
 **Since:** 8
 
+<!--Device-AuthenticatorInfo-iconId: long--><!--Device-AuthenticatorInfo-iconId: long-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## labelId
@@ -42,6 +46,8 @@ ID of the authenticator label.
 
 **Since:** 8
 
+<!--Device-AuthenticatorInfo-labelId: long--><!--Device-AuthenticatorInfo-labelId: long-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## owner
@@ -55,5 +61,7 @@ Owner of the authenticator. The value is the bundle name of the application.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-AuthenticatorInfo-owner: string--><!--Device-AuthenticatorInfo-owner: string-End-->
 
 **System capability:** SystemCapability.Account.AppAccount

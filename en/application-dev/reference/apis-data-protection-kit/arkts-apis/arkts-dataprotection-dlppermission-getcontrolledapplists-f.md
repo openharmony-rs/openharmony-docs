@@ -24,6 +24,8 @@ Obtains the list of applications controlled by enterprise DLP for the current us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpPermission-function getControlledAppLists(): Promise<Array<string>>--><!--Device-dlpPermission-function getControlledAppLists(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**

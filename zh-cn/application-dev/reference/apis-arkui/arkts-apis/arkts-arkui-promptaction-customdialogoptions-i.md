@@ -10,6 +10,8 @@ interface CustomDialogOptions extends BaseDialogOptions
 
 **起始版本：** 11
 
+<!--Device-promptAction-interface CustomDialogOptions extends BaseDialogOptions--><!--Device-promptAction-interface CustomDialogOptions extends BaseDialogOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogOptions-backgroundBlurStyle?: BlurStyle--><!--Device-CustomDialogOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -53,6 +57,8 @@ backgroundColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogOptions-backgroundColor?: ResourceColor--><!--Device-CustomDialogOptions-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ borderColor?: ResourceColor | EdgeColors
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogOptions-borderColor?: ResourceColor | EdgeColors--><!--Device-CustomDialogOptions-borderColor?: ResourceColor | EdgeColors-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderStyle
@@ -89,6 +97,8 @@ borderStyle?: BorderStyle | EdgeStyles
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogOptions-borderStyle?: BorderStyle | EdgeStyles--><!--Device-CustomDialogOptions-borderStyle?: BorderStyle | EdgeStyles-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ borderWidth?: Dimension | EdgeWidths
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogOptions-borderWidth?: Dimension | EdgeWidths--><!--Device-CustomDialogOptions-borderWidth?: Dimension | EdgeWidths-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -125,6 +137,8 @@ builder: CustomBuilder
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogOptions-builder: CustomBuilder--><!--Device-CustomDialogOptions-builder: CustomBuilder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +158,8 @@ cornerRadius?: Dimension | BorderRadiuses
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogOptions-cornerRadius?: Dimension | BorderRadiuses--><!--Device-CustomDialogOptions-cornerRadius?: Dimension | BorderRadiuses-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -161,6 +177,8 @@ height?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogOptions-height?: Dimension--><!--Device-CustomDialogOptions-height?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,6 +198,8 @@ shadow?: ShadowOptions | ShadowStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-CustomDialogOptions-shadow?: ShadowOptions | ShadowStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -197,5 +217,7 @@ width?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogOptions-width?: Dimension--><!--Device-CustomDialogOptions-width?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

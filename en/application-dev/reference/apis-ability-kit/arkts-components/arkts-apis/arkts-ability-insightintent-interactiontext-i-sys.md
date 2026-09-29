@@ -10,6 +10,8 @@ Defines the information of the Text to be displayed as the interaction UI after 
 
 **Since:** 26.0.1
 
+<!--Device-insightIntent-interface InteractionText extends InteractionUI--><!--Device-insightIntent-interface InteractionText extends InteractionUI-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Buttons passed to the target TEXT.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteractionText-buttons?: Array<string>--><!--Device-InteractionText-buttons?: Array<string>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Type of the interaction UI. The value is fixed to 'TEXT'.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InteractionText-interactionUIType: 'TEXT'--><!--Device-InteractionText-interactionUIType: 'TEXT'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ Parameters passed to the target TEXT.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteractionText-parameters: Record<string, Object>--><!--Device-InteractionText-parameters: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

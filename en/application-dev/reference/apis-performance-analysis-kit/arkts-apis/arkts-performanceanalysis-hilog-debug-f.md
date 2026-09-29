@@ -20,6 +20,8 @@ DEBUG logs are not recorded in official versions by default. They are available 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-hilog-function debug(domain: number, tag: string, format: string, ...args: any[]): void--><!--Device-hilog-function debug(domain: number, tag: string, format: string, ...args: any[]): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiLog
 
 **Parameters:**

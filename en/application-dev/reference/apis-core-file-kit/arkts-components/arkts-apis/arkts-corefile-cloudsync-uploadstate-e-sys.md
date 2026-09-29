@@ -8,6 +8,8 @@ Describes the State type of file upload.
 
 **Since:** 26.0.0
 
+<!--Device-cloudSync-enum UploadState--><!--Device-cloudSync-enum UploadState-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Indicates that the upload task is in waiting state.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadState-WAITING = 0--><!--Device-UploadState-WAITING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -40,6 +44,8 @@ Indicates that the upload task is in process now.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UploadState-RUNNING = 1--><!--Device-UploadState-RUNNING = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Indicates that the upload task finished.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadState-COMPLETED = 2--><!--Device-UploadState-COMPLETED = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -72,6 +80,8 @@ Indicates that the upload task failed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UploadState-FAILED = 3--><!--Device-UploadState-FAILED = 3-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -88,6 +98,8 @@ Indicates that the upload task stopped.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UploadState-STOPPED = 4--><!--Device-UploadState-STOPPED = 4-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -103,6 +115,8 @@ Indicates that the upload task paused.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadState-PAUSED = 5--><!--Device-UploadState-PAUSED = 5-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

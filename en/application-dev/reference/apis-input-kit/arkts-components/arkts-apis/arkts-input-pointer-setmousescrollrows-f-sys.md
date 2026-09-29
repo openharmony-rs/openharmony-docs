@@ -16,6 +16,8 @@ Sets the number of mouse scroll lines. This API uses an asynchronous callback to
 
 **Since:** 10
 
+<!--Device-pointer-function setMouseScrollRows(rows: int, callback: AsyncCallback<void>): void--><!--Device-pointer-function setMouseScrollRows(rows: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -77,6 +79,8 @@ function setMouseScrollRows(rows: number): Promise<void>
 Sets the number of mouse scroll lines. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function setMouseScrollRows(rows: int): Promise<void>--><!--Device-pointer-function setMouseScrollRows(rows: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

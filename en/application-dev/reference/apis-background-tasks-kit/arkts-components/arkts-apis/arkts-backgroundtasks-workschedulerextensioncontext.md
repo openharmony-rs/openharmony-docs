@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext(ExtensionAbility Context for Deferred Task Scheduling Callbacks)
+# WorkSchedulerExtensionContext(Work Scheduler Callback Context)
 
 ## Summary
 

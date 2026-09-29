@@ -10,6 +10,8 @@ Implements a generic task. **GenericsTask** inherits from [Task](arkts-arkts-tas
 
 **Since:** 13
 
+<!--Device-taskpool-class GenericsTask<A extends Array<Object>, R> extends Task--><!--Device-taskpool-class GenericsTask<A extends Array<Object>, R> extends Task-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -29,6 +31,8 @@ A constructor used to create a **GenericsTask** object.
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-GenericsTask-constructor(func: (...args: A) => R | Promise<R>, ...args: A)--><!--Device-GenericsTask-constructor(func: (...args: A) => R | Promise<R>, ...args: A)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -84,6 +88,8 @@ A constructor used to create a **GenericsTask** instance, with the task name spe
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-GenericsTask-constructor(name: string, func: (...args: A) => R | Promise<R>, ...args: A)--><!--Device-GenericsTask-constructor(name: string, func: (...args: A) => R | Promise<R>, ...args: A)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

@@ -18,6 +18,8 @@ Sets the enabling status of the priority notification.
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setPriorityEnabled(enable: boolean): Promise<void>--><!--Device-notificationManager-function setPriorityEnabled(enable: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

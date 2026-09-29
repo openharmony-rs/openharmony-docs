@@ -13,6 +13,8 @@ enabling combined processing of multiple image effects through chained calls.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace effectKit--><!--Device-unnamed-declare namespace effectKit-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -50,6 +52,15 @@ import { effectKit } from '@kit.ArkGraphics2D';
 | [Filter](arkts-arkgraphics2d-effectkit-filter-i-sys.md) | An image effect class used to add a specified effect to the effect chain through chained calls. It is suitable for scenarios such as image filter processing, visual effect enhancement, and image beautification. Before calling the methods of Filter, you need to create a Filter instance via createEffect. After adding effects, you need to call getEffectPixelMap to obtain the processed image. |
 <!--DelEnd-->
 
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [EllipticalMaskCenter](arkts-arkgraphics2d-effectkit-ellipticalmaskcenter-t-sys.md) | Defines the center point of the elliptical mask. |
+| [EllipticalMaskRadius](arkts-arkgraphics2d-effectkit-ellipticalmaskradius-t-sys.md) | Defines the radius of the elliptical mask. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -64,13 +75,4 @@ import { effectKit } from '@kit.ArkGraphics2D';
 | [PictureComplexityDegree](arkts-arkgraphics2d-effectkit-picturecomplexitydegree-e-sys.md) | Enumerates the complexity degree of the image. |
 | [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | Enum for the brightness of image colors. |
 | [PictureShadeDegree](arkts-arkgraphics2d-effectkit-pictureshadedegree-e-sys.md) | Enumerates the shade degrees of image colors. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [EllipticalMaskCenter](arkts-arkgraphics2d-effectkit-ellipticalmaskcenter-t-sys.md) | Defines the center point of the elliptical mask. |
-| [EllipticalMaskRadius](arkts-arkgraphics2d-effectkit-ellipticalmaskradius-t-sys.md) | Defines the radius of the elliptical mask. |
 <!--DelEnd-->

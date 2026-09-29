@@ -8,6 +8,8 @@ Stack is implemented based on the array data structure. It follows the principle
 
 **Since:** 8
 
+<!--Device-unnamed-declare class Stack<T>--><!--Device-unnamed-declare class Stack<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ returns an ES6 iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Stack-[Symbol.iterator](): IterableIterator<T>--><!--Device-Stack-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -83,7 +87,9 @@ A constructor used to create a **Stack** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Stack-constructor()--><!--Device-Stack-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -110,6 +116,8 @@ Uses a callback to traverse each element in the **Stack** instance.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Stack-forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisArg?: Object): void--><!--Device-Stack-forEach(callbackFn: (value: T, index?: number, stack?: Stack<T>) => void, thisArg?: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -153,7 +161,9 @@ Checks whether this Stack is empty (contains no elements).
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Stack-isEmpty(): boolean--><!--Device-Stack-isEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -191,7 +201,9 @@ Obtains the index of the first occurrence of the specified element in this Stack
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Stack-locate(element: T): int--><!--Device-Stack-locate(element: T): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -235,7 +247,9 @@ Obtains the top element of this Stack. If the Stack is empty, **undefined** is r
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Stack-peek(): T--><!--Device-Stack-peek(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -274,7 +288,9 @@ Removes the top element from this Stack.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Stack-pop(): T--><!--Device-Stack-pop(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -314,7 +330,9 @@ Adds an element at the top of this Stack.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Stack-push(item: T): T--><!--Device-Stack-push(item: T): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -364,5 +382,7 @@ Number of elements in a Stack.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Stack-length: number--><!--Device-Stack-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

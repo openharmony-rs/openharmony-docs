@@ -13,6 +13,8 @@ all callbacks associated with user-tapped button types under the application are
 
 **Since:** 23
 
+<!--Device-reminderAgentManager-interface ReminderState--><!--Device-reminderAgentManager-interface ReminderState-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Button type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReminderState-buttonType: ActionButtonType--><!--Device-ReminderState-buttonType: ActionButtonType-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## isMessageResent
@@ -56,6 +60,8 @@ callback function after the user taps a button on the agent-powered reminder not
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReminderState-isMessageResent: boolean--><!--Device-ReminderState-isMessageResent: boolean-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## reminderId
@@ -71,5 +77,7 @@ Reminder ID. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ReminderState-reminderId: int--><!--Device-ReminderState-reminderId: int-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

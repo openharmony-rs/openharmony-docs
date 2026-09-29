@@ -22,6 +22,8 @@ Subscribe location changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function on(type: 'locationChange', request: LocationRequest, callback: Callback<Location>): void--><!--Device-geolocation-function on(type: 'locationChange', request: LocationRequest, callback: Callback<Location>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -60,6 +62,8 @@ Subscribe location switch changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function on(type: 'locationServiceState', callback: Callback<boolean>): void--><!--Device-geolocation-function on(type: 'locationServiceState', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -95,6 +99,8 @@ Subscribe to cache GNSS locations update messages
 **Substitutes:** cachedGnssLocationsChange
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function on(type: 'cachedGnssLocationsReporting', request: CachedGnssLocationsRequest, callback: Callback<Array<Location>>): void--><!--Device-geolocation-function on(type: 'cachedGnssLocationsReporting', request: CachedGnssLocationsRequest, callback: Callback<Array<Location>>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -134,6 +140,8 @@ Subscribe gnss status changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function on(type: 'gnssStatusChange', callback: Callback<SatelliteStatusInfo>): void--><!--Device-geolocation-function on(type: 'gnssStatusChange', callback: Callback<SatelliteStatusInfo>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -170,6 +178,8 @@ Subscribe nmea message changed
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function on(type: 'nmeaMessageChange', callback: Callback<string>): void--><!--Device-geolocation-function on(type: 'nmeaMessageChange', callback: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -205,6 +215,8 @@ Add a geofence and subscribe geo fence status changed
 **Substitutes:** gnssFenceStatusChange
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function on(type: 'fenceStatusChange', request: GeofenceRequest, want: WantAgent): void--><!--Device-geolocation-function on(type: 'fenceStatusChange', request: GeofenceRequest, want: WantAgent): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

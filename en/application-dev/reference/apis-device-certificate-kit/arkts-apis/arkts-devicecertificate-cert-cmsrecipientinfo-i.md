@@ -12,6 +12,8 @@ Represents recipient information for the CMS message.
 
 **Since:** 22
 
+<!--Device-cert-interface CmsRecipientInfo--><!--Device-cert-interface CmsRecipientInfo-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -32,7 +34,9 @@ KeyAgree recipient information.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsRecipientInfo-keyAgreeInfo?: CmsKeyAgreeRecipientInfo--><!--Device-CmsRecipientInfo-keyAgreeInfo?: CmsKeyAgreeRecipientInfo-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -48,6 +52,8 @@ KeyTrans recipient information.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-CmsRecipientInfo-keyTransInfo?: CmsKeyTransRecipientInfo--><!--Device-CmsRecipientInfo-keyTransInfo?: CmsKeyTransRecipientInfo-End-->
 
 **System capability:** SystemCapability.Security.Cert

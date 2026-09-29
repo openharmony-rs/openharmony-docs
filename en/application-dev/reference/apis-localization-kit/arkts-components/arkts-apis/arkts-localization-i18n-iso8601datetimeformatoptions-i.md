@@ -8,6 +8,8 @@ Represents optional configuration items for the ISO8601DateTimeFormat object. Th
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export interface ISO8601DateTimeFormatOptions--><!--Device-i18n-export interface ISO8601DateTimeFormatOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -32,6 +34,8 @@ The ISO 8601 date format to format. The value can be: "calendar", the format is 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ISO8601DateTimeFormatOptions-dateFormat?: 'calendar' | 'ordinal' | 'week'--><!--Device-ISO8601DateTimeFormatOptions-dateFormat?: 'calendar' | 'ordinal' | 'week'-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## displayTimeZone
@@ -49,6 +53,8 @@ Check if need to show time zone part. Default value is true that show time zone.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ISO8601DateTimeFormatOptions-displayTimeZone?: boolean--><!--Device-ISO8601DateTimeFormatOptions-displayTimeZone?: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -68,6 +74,8 @@ The date time separator style. The value can be: "extended": with -/:, "basic": 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ISO8601DateTimeFormatOptions-separatorStyle?: 'extended' | 'basic'--><!--Device-ISO8601DateTimeFormatOptions-separatorStyle?: 'extended' | 'basic'-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## timePrecision
@@ -86,6 +94,8 @@ The ISO 8601 time precision to format. The value can be: "dateOnly", "hours", "m
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ISO8601DateTimeFormatOptions-timePrecision?: 'dateOnly' | 'hours' | 'minutes' | 'seconds' | 'milliSeconds'--><!--Device-ISO8601DateTimeFormatOptions-timePrecision?: 'dateOnly' | 'hours' | 'minutes' | 'seconds' | 'milliSeconds'-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## timeZone
@@ -103,5 +113,7 @@ TimeZone object used to format date, default value UTC.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ISO8601DateTimeFormatOptions-timeZone?: TimeZone--><!--Device-ISO8601DateTimeFormatOptions-timeZone?: TimeZone-End-->
 
 **System capability:** SystemCapability.Global.I18n

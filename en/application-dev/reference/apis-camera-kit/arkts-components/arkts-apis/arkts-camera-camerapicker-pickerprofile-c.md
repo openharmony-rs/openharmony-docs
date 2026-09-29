@@ -8,6 +8,8 @@ Defines the configuration information about the camera picker.
 
 **Since:** 11
 
+<!--Device-cameraPicker-class PickerProfile--><!--Device-cameraPicker-class PickerProfile-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Camera position.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PickerProfile-cameraPosition: camera.CameraPosition--><!--Device-PickerProfile-cameraPosition: camera.CameraPosition-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -44,7 +48,9 @@ URI for saving the configuration information. For details about the default valu
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PickerProfile-saveUri?: string--><!--Device-PickerProfile-saveUri?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -60,6 +66,8 @@ Maximum video duration, in seconds. The default value is **0**, indicating that 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-PickerProfile-videoDuration?: int--><!--Device-PickerProfile-videoDuration?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

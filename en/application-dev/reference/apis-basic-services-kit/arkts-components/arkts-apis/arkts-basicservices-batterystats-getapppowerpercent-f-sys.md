@@ -16,6 +16,8 @@ Obtains the proportion of the power consumption of an application.
 
 **Since:** 8
 
+<!--Device-batteryStats-function getAppPowerPercent(uid: int): double--><!--Device-batteryStats-function getAppPowerPercent(uid: int): double-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 
 **System API:** This is a system API.

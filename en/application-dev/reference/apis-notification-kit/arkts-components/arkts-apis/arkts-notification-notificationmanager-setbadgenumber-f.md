@@ -20,6 +20,8 @@ This API can be properly called on devices other than wearables. If it is called
 
 **Since:** 10
 
+<!--Device-notificationManager-function setBadgeNumber(badgeNumber: int, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function setBadgeNumber(badgeNumber: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md) obtains the number of active notifications of this application.
@@ -74,6 +76,8 @@ A badge is a numeric identifier displayed in the upper right corner of an applic
 This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Since:** 10
+
+<!--Device-notificationManager-function setBadgeNumber(badgeNumber: int): Promise<void>--><!--Device-notificationManager-function setBadgeNumber(badgeNumber: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -20,6 +20,8 @@ Sets the result for the operation of adding a widget to the home screen.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void--><!--Device-formHost-function setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

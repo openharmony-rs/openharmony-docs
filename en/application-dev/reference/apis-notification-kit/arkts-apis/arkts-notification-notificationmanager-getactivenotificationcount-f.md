@@ -18,6 +18,8 @@ This API is used to query the number of active notifications published by the cu
 
 **Since:** 9
 
+<!--Device-notificationManager-function getActiveNotificationCount(callback: AsyncCallback<long>): void--><!--Device-notificationManager-function getActiveNotificationCount(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
@@ -67,6 +69,8 @@ Obtains the number of active notifications of this application. This API uses a 
 This API is used to query the number of active notifications published by the current application in the notification center. This is suitable for scenarios where an unread notification count prompt needs to be displayed.
 
 **Since:** 9
+
+<!--Device-notificationManager-function getActiveNotificationCount(): Promise<long>--><!--Device-notificationManager-function getActiveNotificationCount(): Promise<long>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

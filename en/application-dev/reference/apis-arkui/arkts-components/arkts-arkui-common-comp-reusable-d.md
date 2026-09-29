@@ -12,4 +12,6 @@ Defining Reusable ClassDecorator.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare const Reusable: ClassDecorator & ((options: ReusableOptions) => ClassDecorator)--><!--Device-unnamed-declare const Reusable: ClassDecorator & ((options: ReusableOptions) => ClassDecorator)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

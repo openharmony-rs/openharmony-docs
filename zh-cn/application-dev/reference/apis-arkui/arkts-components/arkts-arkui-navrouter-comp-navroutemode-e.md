@@ -12,6 +12,8 @@ declare enum NavRouteMode
 
 **替代接口：** NavPathStack and navDestination
 
+<!--Device-unnamed-declare enum NavRouteMode--><!--Device-unnamed-declare enum NavRouteMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PUSH_WITH_RECREATE
@@ -32,6 +34,8 @@ PUSH_WITH_RECREATE
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavRouteMode-PUSH_WITH_RECREATE--><!--Device-NavRouteMode-PUSH_WITH_RECREATE-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PUSH
@@ -50,6 +54,8 @@ PUSH
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavRouteMode-PUSH--><!--Device-NavRouteMode-PUSH-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## REPLACE
@@ -67,5 +73,7 @@ REPLACE
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavRouteMode-REPLACE--><!--Device-NavRouteMode-REPLACE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

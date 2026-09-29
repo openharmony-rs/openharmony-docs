@@ -6,6 +6,8 @@ The FeatureAbility module provides APIs that enable user interaction. You can us
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-declare namespace featureAbility--><!--Device-unnamed-declare namespace featureAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 ## Modules to Import
@@ -40,6 +42,14 @@ import { featureAbility } from '@kit.AbilityKit';
 | [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult) | Terminates this ability. This API uses an asynchronous callback to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called. |
 | [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult-1) | Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AppVersionInfo](arkts-ability-featureability-appversioninfo-t.md) | Defines an AppVersionInfo object. |
+| [Context](arkts-ability-featureability-context-t.md) | Defines the Context module. |
+| [ProcessInfo](arkts-ability-featureability-processinfo-t.md) | Defines a ProcessInfo object. |
+
 ### Enums
 
 | Name | Description |
@@ -48,11 +58,3 @@ import { featureAbility } from '@kit.AbilityKit';
 | [AbilityWindowConfiguration](arkts-ability-featureability-abilitywindowconfiguration-e.md) | Defines the window configuration corresponding to this ability. The configuration is obtained through **featureAbility.AbilityWindowConfiguration**. |
 | [DataAbilityOperationType](arkts-ability-featureability-dataabilityoperationtype-e.md) | Enumerates the operation types of a DataAbility. The DataAbility can use an enumerated value to specify the operation type when operating data in batches. |
 | [ErrorCode](arkts-ability-featureability-errorcode-e.md) | Enumerates the error codes that may be returned when an ability is started. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AppVersionInfo](arkts-ability-featureability-appversioninfo-t.md) | Defines an AppVersionInfo object. |
-| [Context](arkts-ability-featureability-context-t.md) | Defines the Context module. |
-| [ProcessInfo](arkts-ability-featureability-processinfo-t.md) | Defines a ProcessInfo object. |

@@ -22,6 +22,8 @@ Create an avsession controller
 - API version 23 and later: ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 - API versions 9 to 22: ohos.permission.MANAGE_MEDIA_RESOURCES
 
+<!--Device-avSession-function createController(sessionId: string): Promise<AVSessionController>--><!--Device-avSession-function createController(sessionId: string): Promise<AVSessionController>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **Parameters:**

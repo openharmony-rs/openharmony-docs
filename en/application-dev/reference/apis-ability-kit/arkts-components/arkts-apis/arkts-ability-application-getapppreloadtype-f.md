@@ -24,6 +24,8 @@ Obtains the preloading type of the current application process.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-application-export function getAppPreloadType(): AppPreloadType--><!--Device-application-export function getAppPreloadType(): AppPreloadType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

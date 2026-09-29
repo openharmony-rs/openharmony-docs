@@ -8,6 +8,8 @@ Defines a USB accessory handle, including the accessory file descriptor. This AP
 
 **Since:** 14
 
+<!--Device-usbManager-interface USBAccessoryHandle--><!--Device-usbManager-interface USBAccessoryHandle-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -27,5 +29,7 @@ Accessory file descriptor. A valid **accessoryFd** is a positive integer.
 **Type:** number
 
 **Since:** 14
+
+<!--Device-USBAccessoryHandle-accessoryFd: int--><!--Device-USBAccessoryHandle-accessoryFd: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager

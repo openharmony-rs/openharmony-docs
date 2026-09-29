@@ -8,6 +8,8 @@ export declare struct Filter
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-export declare struct Filter--><!--Device-unnamed-export declare struct Filter-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ container: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Filter-container: () => void--><!--Device-Filter-container: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onFilterChanged
@@ -45,6 +49,8 @@ onFilterChanged: (filterResults: Array<FilterResult>) => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Filter-onFilterChanged: (filterResults: Array<FilterResult>) => void--><!--Device-Filter-onFilterChanged: (filterResults: Array<FilterResult>) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ additionFilters?: FilterParams
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Filter-additionFilters?: FilterParams--><!--Device-Filter-additionFilters?: FilterParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## filterType
@@ -90,6 +98,8 @@ filterType?: FilterType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Filter-filterType?: FilterType--><!--Device-Filter-filterType?: FilterType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## multiFilters
@@ -107,5 +117,7 @@ multiFilters: Array<FilterParams>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Filter-multiFilters: Array<FilterParams>--><!--Device-Filter-multiFilters: Array<FilterParams>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

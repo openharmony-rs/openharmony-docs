@@ -19,6 +19,8 @@ Creates a symbolic link based on the file path. This API uses a promise to retur
 
 **Substitutes:** [symlink](arkts-corefile-file-fs-symlink-f.md)
 
+<!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>--><!--Device-unnamed-declare function symlink(target: string, srcPath: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -50,6 +52,8 @@ Creates a symbolic link based on the file path. This API uses an asynchronous ca
 **Deprecated since:** 9
 
 **Substitutes:** [symlink](arkts-corefile-file-fs-symlink-f.md)
+
+<!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

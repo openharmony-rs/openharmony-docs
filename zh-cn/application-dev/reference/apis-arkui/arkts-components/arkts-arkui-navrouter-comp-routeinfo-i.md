@@ -12,6 +12,8 @@ declare interface RouteInfo
 
 **替代接口：** NavPathStack and navDestination
 
+<!--Device-unnamed-declare interface RouteInfo--><!--Device-unnamed-declare interface RouteInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -34,6 +36,8 @@ name: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RouteInfo-name: string--><!--Device-RouteInfo-name: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## param
@@ -55,5 +59,7 @@ param?: unknown
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RouteInfo-param?: unknown--><!--Device-RouteInfo-param?: unknown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

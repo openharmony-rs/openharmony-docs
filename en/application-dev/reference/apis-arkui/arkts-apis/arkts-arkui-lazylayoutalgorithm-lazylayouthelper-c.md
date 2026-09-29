@@ -8,6 +8,8 @@ Helper class for lazy layout algorithm. Provides layout direction and view posit
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export class LazyLayoutHelper--><!--Device-unnamed-export class LazyLayoutHelper-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getLazyLayoutDirection
@@ -23,6 +25,8 @@ Get the lazy layout direction.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyLayoutHelper-getLazyLayoutDirection(): LazyLayoutDirection--><!--Device-LazyLayoutHelper-getLazyLayoutDirection(): LazyLayoutDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Get the end position of the visible view.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-LazyLayoutHelper-getViewEnd(): int--><!--Device-LazyLayoutHelper-getViewEnd(): int-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -68,6 +74,8 @@ Get the start position of the visible view.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-LazyLayoutHelper-getViewStart(): int--><!--Device-LazyLayoutHelper-getViewStart(): int-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -89,6 +97,8 @@ Set the adjusted offset for the lazy layout.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyLayoutHelper-setAdjustedOffset(offset: int): void--><!--Device-LazyLayoutHelper-setAdjustedOffset(offset: int): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,6 +123,8 @@ If child components are generated via ForEach or Repeat without virtualScroll, t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-LazyLayoutHelper-setChildrenInactive(children: int[]): void--><!--Device-LazyLayoutHelper-setChildrenInactive(children: int[]): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

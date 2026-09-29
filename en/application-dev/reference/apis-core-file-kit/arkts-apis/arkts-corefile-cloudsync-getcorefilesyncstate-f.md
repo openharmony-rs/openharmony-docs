@@ -16,6 +16,8 @@ Obtains the upload sync state of a cloud file. This API returns the result synch
 
 **Since:** 20
 
+<!--Device-cloudSync-function getCoreFileSyncState(uri: string): FileState--><!--Device-cloudSync-function getCoreFileSyncState(uri: string): FileState-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Parameters:**

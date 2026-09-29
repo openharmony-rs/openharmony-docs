@@ -12,6 +12,8 @@ Indicates the maximum length of a key (80 characters).
 
 **Deprecated since:** 9
 
+<!--Device-storage-const MAX_KEY_LENGTH: 80--><!--Device-storage-const MAX_KEY_LENGTH: 80-End-->
+
 ## MAX_VALUE_LENGTH
 
 ```TypeScript
@@ -23,3 +25,5 @@ Indicates the maximum length of a string (8192 characters).
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-storage-const MAX_VALUE_LENGTH: 8192--><!--Device-storage-const MAX_VALUE_LENGTH: 8192-End-->

@@ -8,6 +8,8 @@ Provides methods to create a **Query** object, which defines different data quer
 
 **Since:** 9
 
+<!--Device-distributedKVStore-class Query--><!--Device-distributedKVStore-class Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Creates a **Query** object with the AND condition.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-and(): Query--><!--Device-Query-and(): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -68,6 +72,8 @@ Creates a **Query** object for a query condition group with a left parenthesis.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-beginGroup(): Query--><!--Device-Query-beginGroup(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -108,6 +114,8 @@ Defines a constructor used to create a **Query** instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-constructor()--><!--Device-Query-constructor()-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## deviceId
@@ -129,6 +137,8 @@ Creates a **Query** object with the device ID as the key prefix.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-deviceId(deviceId: string): Query--><!--Device-Query-deviceId(deviceId: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -179,6 +189,8 @@ Creates a **Query** object for a query condition group with a right parenthesis.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-endGroup(): Query--><!--Device-Query-endGroup(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -226,6 +238,8 @@ Creates a **Query** object to match the specified field whose value is equal to 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-equalTo(field: string, value: long | double | string | boolean): Query--><!--Device-Query-equalTo(field: string, value: long | double | string | boolean): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -278,6 +292,8 @@ Obtains the query statement of the **Query** object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-getSqlLike(): string--><!--Device-Query-getSqlLike(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -322,6 +338,8 @@ Creates a **Query** object to match the specified field whose value is greater t
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-greaterThan(field: string, value: long | double | string | boolean): Query--><!--Device-Query-greaterThan(field: string, value: long | double | string | boolean): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -382,6 +400,8 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-greaterThanOrEqualTo(field: string, value: long | double | string): Query--><!--Device-Query-greaterThanOrEqualTo(field: string, value: long | double | string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -440,6 +460,8 @@ Creates a **Query** object to match the specified field whose value is within th
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-inNumber(field: string, valueList: long[] | double[]): Query--><!--Device-Query-inNumber(field: string, valueList: long[] | double[]): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -500,6 +522,8 @@ Creates a **Query** object to match the specified field whose value is within th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-inString(field: string, valueList: string[]): Query--><!--Device-Query-inString(field: string, valueList: string[]): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -559,6 +583,8 @@ Creates a **Query** object to match the specified field whose value is not **nul
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-isNotNull(field: string): Query--><!--Device-Query-isNotNull(field: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -617,6 +643,8 @@ Creates a **Query** object to match the specified field whose value is **null**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-isNull(field: string): Query--><!--Device-Query-isNull(field: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -674,6 +702,8 @@ Creates a **Query** object to match the specified field whose value is less than
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-lessThan(field: string, value: long | double | string): Query--><!--Device-Query-lessThan(field: string, value: long | double | string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -734,6 +764,8 @@ Creates a **Query** object to match the specified field whose value is less than
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-lessThanOrEqualTo(field: string, value: long | double | string): Query--><!--Device-Query-lessThanOrEqualTo(field: string, value: long | double | string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -793,6 +825,8 @@ Creates a **Query** object to match the specified field whose value is similar t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-like(field: string, value: string): Query--><!--Device-Query-like(field: string, value: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -843,6 +877,8 @@ Creates a **Query** object to specify the number of records of the query result 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-limit(total: int, offset: int): Query--><!--Device-Query-limit(total: int, offset: int): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -906,6 +942,8 @@ Creates a **Query** object to match the specified field whose value is not equal
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-notEqualTo(field: string, value: long | double | string | boolean): Query--><!--Device-Query-notEqualTo(field: string, value: long | double | string | boolean): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -964,6 +1002,8 @@ Creates a **Query** object to match the specified field whose value is not withi
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-notInNumber(field: string, valueList: long[] | double[]): Query--><!--Device-Query-notInNumber(field: string, valueList: long[] | double[]): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1024,6 +1064,8 @@ Creates a **Query** object to match the specified field whose value is not withi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-notInString(field: string, valueList: string[]): Query--><!--Device-Query-notInString(field: string, valueList: string[]): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1075,6 +1117,8 @@ Creates a **Query** object with the OR condition.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-or(): Query--><!--Device-Query-or(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -1122,6 +1166,8 @@ Creates a **Query** object to sort the query results in ascending order.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-orderByAsc(field: string): Query--><!--Device-Query-orderByAsc(field: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1182,6 +1228,8 @@ Creates a **Query** object to sort the query results in descending order.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-orderByDesc(field: string): Query--><!--Device-Query-orderByDesc(field: string): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1232,6 +1280,8 @@ Creates a **Query** object with a specified key prefix.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-prefixKey(prefix: string): Query--><!--Device-Query-prefixKey(prefix: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1284,6 +1334,8 @@ Resets the **Query** object.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Query-reset(): Query--><!--Device-Query-reset(): Query-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -1323,6 +1375,8 @@ Creates a **Query** object with an index preferentially used for query.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-setSuggestIndex(index: string): Query--><!--Device-Query-setSuggestIndex(index: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1382,6 +1436,8 @@ Creates a **Query** object to match the specified field whose value is not simil
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Query-unlike(field: string, value: string): Query--><!--Device-Query-unlike(field: string, value: string): Query-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

@@ -8,6 +8,8 @@ Indicates the options of the editable title bar.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare interface EditableTitleBarOptions--><!--Device-unnamed-export declare interface EditableTitleBarOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **BlurStyle.NONE**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditableTitleBarOptions-backgroundBlurStyle?: BlurStyle--><!--Device-EditableTitleBarOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -53,6 +57,8 @@ Default value: **'#00000000'**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EditableTitleBarOptions-backgroundColor?: ResourceColor--><!--Device-EditableTitleBarOptions-backgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ Default value: **[SafeAreaEdge.TOP]**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditableTitleBarOptions-safeAreaEdges?: Array<SafeAreaEdge>--><!--Device-EditableTitleBarOptions-safeAreaEdges?: Array<SafeAreaEdge>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## safeAreaTypes
@@ -93,5 +101,7 @@ Default value: **[SafeAreaType.SYSTEM]**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EditableTitleBarOptions-safeAreaTypes?: Array<SafeAreaType>--><!--Device-EditableTitleBarOptions-safeAreaTypes?: Array<SafeAreaType>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

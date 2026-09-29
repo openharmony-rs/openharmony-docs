@@ -12,6 +12,8 @@ The definition of Single song.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface Single extends MediaEntity--><!--Device-avMusicTemplate-interface Single extends MediaEntity-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -34,6 +36,8 @@ DownloadProgress of the song.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Single-downloadProgress?: int--><!--Device-Single-downloadProgress?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## downloadStatus
@@ -49,6 +53,8 @@ DownloadStatus of the song.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Single-downloadStatus?: DownloadStatus--><!--Device-Single-downloadStatus?: DownloadStatus-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -66,6 +72,8 @@ Favorite/Subscribe information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Single-favSubscribeData: FavoriteData--><!--Device-Single-favSubscribeData: FavoriteData-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## isVip
@@ -81,6 +89,8 @@ Is vip song.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Single-isVip: boolean--><!--Device-Single-isVip: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -98,6 +108,8 @@ Play information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Single-playInfo: PlayInfo--><!--Device-Single-playInfo: PlayInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## settings
@@ -113,6 +125,8 @@ Settings of the song.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Single-settings?: SettingItem[]--><!--Device-Single-settings?: SettingItem[]-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
@@ -130,6 +144,8 @@ Singer name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Single-singer: string--><!--Device-Single-singer: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## tags
@@ -145,5 +161,7 @@ Tags of the song.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Single-tags?: string[]--><!--Device-Single-tags?: string[]-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

@@ -10,6 +10,8 @@ Represents the display area of the element object that triggers the event.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface EventTarget--><!--Device-unnamed-declare interface EventTarget-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## area
@@ -27,6 +29,8 @@ Area information of the target element.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-EventTarget-area: Area--><!--Device-EventTarget-area: Area-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,5 +51,7 @@ Custom node [ID](arkts-arkui-common-comp-commonmethod-c.md#id). Default value: *
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-EventTarget-id?: string--><!--Device-EventTarget-id?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

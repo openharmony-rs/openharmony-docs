@@ -16,6 +16,8 @@ Obtains a **DistributedAccountAbility** instance.
 
 **Since:** 7
 
+<!--Device-distributedAccount-function getDistributedAccountAbility(): DistributedAccountAbility--><!--Device-distributedAccount-function getDistributedAccountAbility(): DistributedAccountAbility-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Return value:**

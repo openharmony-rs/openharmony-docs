@@ -4,7 +4,7 @@
 export class NodeContent extends Content
 ```
 
-**NodeContent** is the ArkUI-provided manager for [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md#content_slot).
+**NodeContent** is a manager for [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md) provided by ArkUI. It manages the FrameNode node content mounted on **ContentSlot**, and supports dynamic addition and removal of FrameNodes. It is applicable to scenarios where FrameNode node content needs to be dynamically managed through **ContentSlot**, for example, dynamically adding or removing custom FrameNodes such as text and images based on user interactions.
 
 > **NOTE:** 
 > 
@@ -14,6 +14,8 @@ export class NodeContent extends Content
 
 **Since:** 12
 
+<!--Device-unnamed-export class NodeContent extends Content--><!--Device-unnamed-export class NodeContent extends Content-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## addFrameNode
@@ -22,7 +24,7 @@ export class NodeContent extends Content
 addFrameNode(node: FrameNode): void
 ```
 
-Adds a FrameNode to this **NodeContent** object.
+Adds a FrameNode to **NodeContent**. After being added, the FrameNode is rendered and displayed through the associated **ContentSlot**. This is applicable to scenarios where the content nodes displayed in **ContentSlot** need to be dynamically managed, for example, dynamically adding custom FrameNodes such as text and images based on user interactions.
 
 **Since:** 12
 
@@ -30,13 +32,15 @@ Adds a FrameNode to this **NodeContent** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeContent-addFrameNode(node: FrameNode): void--><!--Device-NodeContent-addFrameNode(node: FrameNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to add. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to add, which must be a valid FrameNode that can be added. |
 
 **Error codes:**
 
@@ -57,6 +61,8 @@ A constructor used to create a **NodeContent** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NodeContent-constructor()--><!--Device-NodeContent-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +96,7 @@ struct Parent {
 removeFrameNode(node: FrameNode): void
 ```
 
-Removes a FrameNode from this **NodeContent** object.
+Removes a FrameNode from **NodeContent**. After being removed, the FrameNode is no longer displayed through **ContentSlot**. This is applicable to scenarios where added content nodes need to be dynamically removed, for example, removing specified custom FrameNodes such as text and images after user interactions.
 
 **Since:** 12
 
@@ -98,13 +104,15 @@ Removes a FrameNode from this **NodeContent** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NodeContent-removeFrameNode(node: FrameNode): void--><!--Device-NodeContent-removeFrameNode(node: FrameNode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to remove. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | Yes | FrameNode to remove. The node must have been added to the current **NodeContent**; otherwise, the removal is invalid. |
 
 **Examples**
 

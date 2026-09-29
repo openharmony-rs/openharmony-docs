@@ -10,6 +10,8 @@ declare namespace cursorControl
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-unnamed-declare namespace cursorControl--><!--Device-unnamed-declare namespace cursorControl-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 汇总

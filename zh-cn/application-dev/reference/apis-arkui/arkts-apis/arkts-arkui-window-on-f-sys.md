@@ -16,6 +16,8 @@ function on(type: 'systemBarTintChange', callback: Callback<SystemBarTintState>)
 
 **起始版本：** 8
 
+<!--Device-window-function on(type: 'systemBarTintChange', callback: Callback<SystemBarTintState>): void--><!--Device-window-function on(type: 'systemBarTintChange', callback: Callback<SystemBarTintState>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -56,6 +58,8 @@ function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>)
 添加手势导航启用状态变化的监听。
 
 **起始版本：** 10
+
+<!--Device-window-function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>): void--><!--Device-window-function on(type: 'gestureNavigationEnabledChange', callback: Callback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -99,6 +103,8 @@ function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void
 添加水印启用状态变化的监听。
 
 **起始版本：** 10
+
+<!--Device-window-function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void--><!--Device-window-function on(type: 'waterMarkFlagChange', callback: Callback<boolean>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -6,7 +6,7 @@
 > 
 > - 该组件从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 该组件从API版本26.0.0开始支持WithTheme。
+> - 该组件从API版本26.0.0开始支持[WithTheme](arkts-arkui-withtheme-comp.md)。
 > 
 > - [startAngle](arkts-arkui-gauge-comp-attribute.md#startangle)和[endAngle](arkts-arkui-gauge-comp-attribute.md#endangle)仅决定圆弧路径范围，不影响组件大小。角度差值越小，圆弧在组件内占比越小，`min`/`max`标记与圆弧间留白越大。
 
@@ -36,6 +36,8 @@ Gauge(options: GaugeOptions)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-GaugeInterface-(options: GaugeOptions): GaugeAttribute--><!--Device-GaugeInterface-(options: GaugeOptions): GaugeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -59,7 +61,7 @@ Gauge(options: GaugeOptions)
 
 ### 示例1（设置多色量规图）
 
-该示例通过colors接口，实现了多色量规图效果。
+该示例通过[colors](#colors)接口，实现了多色量规图效果。
 
 
 
@@ -128,7 +130,7 @@ struct Gauge1 {
 
 ### 示例2（设置单色量规图）
 
-该示例通过colors接口，实现了单色量规图效果。
+该示例通过[colors](#colors)接口，实现了单色量规图效果。
 
 
 
@@ -172,7 +174,7 @@ struct Gauge2 {
 
 ### 示例3（设置定制说明区）
 
-该示例通过description接口，实现了说明区的设置功能。
+该示例通过[description](#description11)接口，实现了说明区的设置功能。
 
 
 
@@ -289,7 +291,7 @@ struct Gauge4 {
 
 ### 示例5（设置最大最小值）
 
-该示例通过设置GaugeOptions的min、max属性，实现了量规图的最大最小值设置的功能。
+该示例通过设置[GaugeOptions](#gaugeoptions18对象说明)的min、max属性，实现了量规图的最大最小值设置的功能。
 
 
 
@@ -331,7 +333,7 @@ struct Gauge5 {
 
 ### 示例6（设置指针）
 
-该示例通过indicator接口，实现了设置量规图的指针的功能。
+该示例通过[indicator](#indicator11)接口，实现了设置量规图的指针的功能。
 
 
 
@@ -379,7 +381,7 @@ struct Gauge6 {
 
 ### 示例7（设置起止角度）
 
-该示例通过startAngle和endAngle接口，实现了量规图起止角度设置的功能。
+该示例通过[startAngle](#startangle)和[endAngle](#endangle)接口，实现了量规图起止角度设置的功能。
 
 
 
@@ -419,7 +421,7 @@ struct Gauge7 {
 
 ### 示例8（设置定制内容区）
 
-该示例通过contentModifier接口，实现了定制量规图内容区的功能。
+该示例通过[contentModifier](#contentmodifier12)接口，实现了定制量规图内容区的功能。
 
 
 
@@ -502,7 +504,7 @@ struct RefreshExample {
 
 ### 示例9（设置隐私隐藏）
 
-该示例展示了privacySensitive接口的调用方式。实际隐私隐藏效果需要卡片框架支持。
+该示例展示了[privacySensitive](#privacysensitive12)接口的调用方式。实际隐私隐藏效果需要卡片框架支持。
 
 
 
@@ -533,7 +535,7 @@ struct GaugeExample {
 
 ### 示例10（设置自定义指针）
 
-该示例通过indicator接口，实现了自定义指针功能，开发者导入svg类型的图片以替换默认指针。
+该示例通过[indicator](#indicator11)接口，实现了自定义指针功能，开发者导入svg类型的图片以替换默认指针。
 
 ```TypeScript
 @Entry

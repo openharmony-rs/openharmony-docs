@@ -14,6 +14,8 @@ Defines the linear gradient parameters.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface LinearGradientOptions--><!--Device-unnamed-declare interface LinearGradientOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -41,6 +43,8 @@ When specified as a string, valid values are pure numbers or numbers followed by
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-LinearGradientOptions-angle?: number | string--><!--Device-LinearGradientOptions-angle?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## colors
@@ -60,6 +64,8 @@ Default value: **[]**, meaning no gradient effect.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LinearGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-LinearGradientOptions-colors: Array<[ResourceColor, number]>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,6 +89,8 @@ Default value: **GradientDirection.Bottom**.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LinearGradientOptions-direction?: GradientDirection--><!--Device-LinearGradientOptions-direction?: GradientDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,5 +118,7 @@ Default value: **false**.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-LinearGradientOptions-repeating?: boolean--><!--Device-LinearGradientOptions-repeating?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

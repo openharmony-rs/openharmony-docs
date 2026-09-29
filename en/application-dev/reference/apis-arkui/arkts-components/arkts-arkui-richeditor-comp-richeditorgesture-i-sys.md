@@ -8,6 +8,8 @@ Defines a user gesture event.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface RichEditorGesture--><!--Device-unnamed-declare interface RichEditorGesture-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDoubleClick
@@ -23,6 +25,8 @@ Callback for the double-click event, triggered when the user completes a double-
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RichEditorGesture-onDoubleClick?: Callback<GestureEvent>--><!--Device-RichEditorGesture-onDoubleClick?: Callback<GestureEvent>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

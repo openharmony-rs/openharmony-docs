@@ -8,9 +8,11 @@ declare class StackAttribute extends CommonMethod<StackAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** StackAttribute extends CommonMethod&lt;StackAttribute&gt;
+**继承/实现关系：** StackAttribute extends CommonMethod<StackAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class StackAttribute extends CommonMethod<StackAttribute>--><!--Device-unnamed-declare class StackAttribute extends CommonMethod<StackAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ alignContent(value: Alignment)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StackAttribute-alignContent(value: Alignment): StackAttribute--><!--Device-StackAttribute-alignContent(value: Alignment): StackAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ syncLoad(enable: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-StackAttribute-syncLoad(enable: boolean): StackAttribute--><!--Device-StackAttribute-syncLoad(enable: boolean): StackAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

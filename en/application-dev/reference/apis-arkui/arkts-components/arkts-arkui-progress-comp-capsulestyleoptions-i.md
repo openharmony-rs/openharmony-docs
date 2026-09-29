@@ -12,6 +12,8 @@ Inherits from [ScanEffectOptions](arkts-arkui-progress-comp-scaneffectoptions-i.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface CapsuleStyleOptions extends ScanEffectOptions, CommonProgressStyleOptions--><!--Device-unnamed-declare interface CapsuleStyleOptions extends ScanEffectOptions, CommonProgressStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderColor
@@ -20,13 +22,13 @@ Inherits from [ScanEffectOptions](arkts-arkui-progress-comp-scaneffectoptions-i.
 borderColor?: ResourceColor
 ```
 
-Border color.
+Inner stroke color.
 
 Default value:
 
-API version 10: **'#33006cde'**
+API version 10: '#33006cde'
 
-API version 11 or later: **'#33007dff'**
+API version 11 and later: '#33007dff'
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -36,6 +38,8 @@ API version 11 or later: **'#33007dff'**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CapsuleStyleOptions-borderColor?: ResourceColor--><!--Device-CapsuleStyleOptions-borderColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderRadius
@@ -44,13 +48,11 @@ API version 11 or later: **'#33007dff'**
 borderRadius?: LengthMetrics
 ```
 
-Border radius. Percentage values are not supported.
+Corner radius of the capsule progress bar (percentage setting not supported).
 
-Value range: [0, min(width, height)/2]
+Value range: [0, component height/2]. Default value: component height/2.
 
-Default value: min(width, height)/2
-
-If an invalid value is set, the default value is used.
+An invalid value is handled as the default value.
 
 **Type:** LengthMetrics
 
@@ -62,6 +64,8 @@ If an invalid value is set, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CapsuleStyleOptions-borderRadius?: LengthMetrics--><!--Device-CapsuleStyleOptions-borderRadius?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderWidth
@@ -70,9 +74,13 @@ If an invalid value is set, the default value is used.
 borderWidth?: Length
 ```
 
-Border width. Percentage values are not supported.
+Inner stroke width.
 
-Default value: **1vp**
+Default value: 1vp
+
+Value range: a value greater than or equal to 0. Percentage setting not supported.
+
+A value out of range or an invalid value is handled as the default value.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -82,6 +90,8 @@ Default value: **1vp**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CapsuleStyleOptions-borderWidth?: Length--><!--Device-CapsuleStyleOptions-borderWidth?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -90,7 +100,11 @@ Default value: **1vp**
 content?: ResourceStr
 ```
 
-Text content, which can be customized.
+Text content, which can be customized by the application.
+
+Pass this parameter when custom text needs to be displayed on the capsule progress bar. If it is not passed, no text is displayed (to display the percentage text, set showDefaultPercentage to true).
+
+Since API version 20, the Resource type is supported.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -99,6 +113,8 @@ Text content, which can be customized.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CapsuleStyleOptions-content?: ResourceStr--><!--Device-CapsuleStyleOptions-content?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,9 +128,9 @@ Text style.
 
 Default value:
 
-Font size (percentage values are not supported): **12fp**
+Text size (percentage setting not supported): 12fp
 
-Other text parameters are subject to the theme values of the [Text](arkts-arkui-text-comp.md#text) component.
+Other text parameters follow the theme values of the [Text](arkts-arkui-text-comp.md) component.
 
 **Type:** Font
 
@@ -124,6 +140,8 @@ Other text parameters are subject to the theme values of the [Text](arkts-arkui-
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CapsuleStyleOptions-font?: Font--><!--Device-CapsuleStyleOptions-font?: Font-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -132,9 +150,9 @@ Other text parameters are subject to the theme values of the [Text](arkts-arkui-
 fontColor?: ResourceColor
 ```
 
-Font color.
+Text color.
 
-Default value: **'#ff182431'**
+Default value: '#ff182431'
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -144,6 +162,8 @@ Default value: **'#ff182431'**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CapsuleStyleOptions-fontColor?: ResourceColor--><!--Device-CapsuleStyleOptions-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showDefaultPercentage
@@ -152,11 +172,11 @@ Default value: **'#ff182431'**
 showDefaultPercentage?: boolean
 ```
 
-Whether to display the percentage text. After this feature is enabled, the progress percentage is displayed on the progress indicator. This property does not take effect when **content** is set.
+Whether to display the percentage text. When enabled, the progress bar displays the percentage of the current progress. This attribute does not take effect when the content attribute is set.
 
-**true**: The percentage text is displayed. **false**: The percentage text is not displayed.
+true: displays the percentage text; false: does not display the percentage text.
 
-Default value: **false**
+Default value: false
 
 **Type:** boolean
 
@@ -167,5 +187,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CapsuleStyleOptions-showDefaultPercentage?: boolean--><!--Device-CapsuleStyleOptions-showDefaultPercentage?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

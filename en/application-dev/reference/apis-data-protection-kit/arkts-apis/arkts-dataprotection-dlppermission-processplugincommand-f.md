@@ -20,6 +20,8 @@ Process the plugin-related commands in the transparent encryption and decryption
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpPermission-function processPluginCommand(code: PluginCmd, message: string): Promise<string>--><!--Device-dlpPermission-function processPluginCommand(code: PluginCmd, message: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

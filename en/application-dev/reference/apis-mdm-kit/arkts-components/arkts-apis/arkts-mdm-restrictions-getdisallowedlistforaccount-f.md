@@ -20,6 +20,8 @@ Obtains the list of applications that are not allowed to use a feature for a spe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function getDisallowedListForAccount(admin: Want, feature: string, accountId: number): Array<string>--><!--Device-restrictions-function getDisallowedListForAccount(admin: Want, feature: string, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

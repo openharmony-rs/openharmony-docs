@@ -8,6 +8,8 @@ Describes the attendees in a meeting.
 
 **Since:** 10
 
+<!--Device-calendarManager-export interface Attendee--><!--Device-calendarManager-export interface Attendee-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Email address of the attendee, with a maximum of 5,000 characters.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Attendee-email: string--><!--Device-Attendee-email: string-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## name
@@ -45,6 +49,8 @@ Name of the attendee, with a maximum of 5,000 characters.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Attendee-name: string--><!--Device-Attendee-name: string-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -62,6 +68,8 @@ Role of the Attendee.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Attendee-role?: AttendeeRole--><!--Device-Attendee-role?: AttendeeRole-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## status
@@ -78,6 +86,8 @@ Status of the attendee. If this parameter is not set, the default value is empty
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Attendee-status?: AttendeeStatus--><!--Device-Attendee-status?: AttendeeStatus-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## type
@@ -93,5 +103,7 @@ Type of the attendee. If this parameter is not set, the default value is empty.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Attendee-type?: AttendeeType--><!--Device-Attendee-type?: AttendeeType-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

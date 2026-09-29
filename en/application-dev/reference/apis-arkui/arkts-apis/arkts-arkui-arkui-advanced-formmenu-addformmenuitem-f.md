@@ -22,7 +22,9 @@ Build function of AddFormMenuItem.
 
 **Decorator:** @Builder
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-unnamed-export declare function AddFormMenuItem(  want: Want,  componentId: string,  options?: AddFormOptions): void--><!--Device-unnamed-export declare function AddFormMenuItem(  want: Want,  componentId: string,  options?: AddFormOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

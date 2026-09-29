@@ -15,6 +15,8 @@ The APIs of this module are deprecated. You are advised to use [@ohos.distribute
 
 **Substitutes:** [distributedDeviceManager](arkts-distributedservice-distributeddevicemanager.md)
 
+<!--Device-unnamed-declare namespace deviceManager--><!--Device-unnamed-declare namespace deviceManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## Modules to Import

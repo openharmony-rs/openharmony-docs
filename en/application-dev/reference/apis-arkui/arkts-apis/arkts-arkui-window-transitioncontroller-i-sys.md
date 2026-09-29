@@ -8,6 +8,8 @@ Implements the transition animation controller. Before calling any API, you must
 
 **Since:** 9
 
+<!--Device-window-interface TransitionController--><!--Device-window-interface TransitionController-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ animationForHidden(context: TransitionContext): void
 Customizes the animation for the scenario when the window is hidden.
 
 **Since:** 9
+
+<!--Device-TransitionController-animationForHidden(context: TransitionContext): void--><!--Device-TransitionController-animationForHidden(context: TransitionContext): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -112,6 +116,8 @@ animationForShown(context: TransitionContext): void
 Customizes the animation for the scenario when the window is shown.
 
 **Since:** 9
+
+<!--Device-TransitionController-animationForShown(context: TransitionContext): void--><!--Device-TransitionController-animationForShown(context: TransitionContext): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

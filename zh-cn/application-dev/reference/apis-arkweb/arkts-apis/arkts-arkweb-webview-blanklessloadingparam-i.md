@@ -8,6 +8,8 @@ interface BlanklessLoadingParam
 
 **起始版本：** 23
 
+<!--Device-webview-interface BlanklessLoadingParam--><!--Device-webview-interface BlanklessLoadingParam-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -32,6 +34,8 @@ callback?: Callback<BlanklessFrameInterpolationInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-BlanklessLoadingParam-callback?: Callback<BlanklessFrameInterpolationInfo>--><!--Device-BlanklessLoadingParam-callback?: Callback<BlanklessFrameInterpolationInfo>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## duration
@@ -52,6 +56,8 @@ duration?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-BlanklessLoadingParam-duration?: number--><!--Device-BlanklessLoadingParam-duration?: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## enable
@@ -69,6 +75,8 @@ true表示启用，false表示不启用。
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlanklessLoadingParam-enable: boolean--><!--Device-BlanklessLoadingParam-enable: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -89,5 +97,7 @@ expirationTime?: number
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BlanklessLoadingParam-expirationTime?: number--><!--Device-BlanklessLoadingParam-expirationTime?: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

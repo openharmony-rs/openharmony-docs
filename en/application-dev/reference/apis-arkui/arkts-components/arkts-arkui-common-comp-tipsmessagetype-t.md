@@ -12,6 +12,8 @@ Provides information about the tooltip.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-unnamed-declare type TipsMessageType = ResourceStr | StyledString--><!--Device-unnamed-declare type TipsMessageType = ResourceStr | StyledString-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

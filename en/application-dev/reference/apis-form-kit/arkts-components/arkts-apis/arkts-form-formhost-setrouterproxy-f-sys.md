@@ -26,6 +26,8 @@ Sets a router proxy for widgets and obtains the Want information required for re
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>, callback: AsyncCallback<void>): void--><!--Device-formHost-function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Sets a router proxy for widgets and obtains the Want information required for re
 **Since:** 11
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>): Promise<void>--><!--Device-formHost-function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

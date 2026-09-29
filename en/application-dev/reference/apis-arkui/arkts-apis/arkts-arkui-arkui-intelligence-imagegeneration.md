@@ -8,6 +8,8 @@ Module for AI-generated images using UI Component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace imageGeneration--><!--Device-unnamed-declare namespace imageGeneration-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -27,7 +29,6 @@ import { imageGeneration } from '@kit.ArkUI';
 | --- | --- |
 | [closeGeneratorDialog](arkts-arkui-imagegeneration-closegeneratordialog-f-sys.md) | Close the AI image generation task popup. |
 | [closeGeneratorNodeGraph](arkts-arkui-imagegeneration-closegeneratornodegraph-f-sys.md) | Close the AI node graph Sheet. |
-| [hasRecoverCacheInGeneratorDialog](arkts-arkui-imagegeneration-hasrecovercacheingeneratordialog-f-sys.md) | Check whether cache files that can be restored exist in GeneratorDialog. The persistent cache file is used to store configuration parameters for AI image generation. |
 | [hideGeneratorDialog](arkts-arkui-imagegeneration-hidegeneratordialog-f-sys.md) | Hide the AI image generation task popup. |
 | [hideGeneratorNodeGraph](arkts-arkui-imagegeneration-hidegeneratornodegraph-f-sys.md) | Hide the AI node graph Sheet. |
 | [openGeneratorNodeGraph](arkts-arkui-imagegeneration-opengeneratornodegraph-f-sys.md) | Open the AI node graph Sheet. |
@@ -62,17 +63,17 @@ import { imageGeneration } from '@kit.ArkUI';
 <!--DelEnd-->
 
 <!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [PartialResultType](arkts-arkui-imagegeneration-partialresulttype-e-sys.md) | Provides stream output result type definition. |
-<!--DelEnd-->
-
-<!--Del-->
 ### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [CustomImportCallback](arkts-arkui-imagegeneration-customimportcallback-t-sys.md) | Async callback type for custom import operation. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [PartialResultType](arkts-arkui-imagegeneration-partialresulttype-e-sys.md) | Provides stream output result type definition. |
 <!--DelEnd-->

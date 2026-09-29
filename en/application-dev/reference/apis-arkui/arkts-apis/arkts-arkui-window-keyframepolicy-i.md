@@ -8,6 +8,8 @@ Describes the configuration for keyframe policies.
 
 **Since:** 20
 
+<!--Device-window-interface KeyFramePolicy--><!--Device-window-interface KeyFramePolicy-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Delay before the animation for keyframe layout changes starts, in ms. The defaul
 
 **Since:** 20
 
+<!--Device-KeyFramePolicy-animationDelay?: long--><!--Device-KeyFramePolicy-animationDelay?: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## animationDuration
@@ -45,6 +49,8 @@ Duration of the animation for keyframe layout changes, in ms. The default value 
 **Default:** 100
 
 **Since:** 20
+
+<!--Device-KeyFramePolicy-animationDuration?: long--><!--Device-KeyFramePolicy-animationDuration?: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,6 +68,8 @@ Distance interval for triggering keyframe layout changes via dragging, in px. Th
 
 **Since:** 20
 
+<!--Device-KeyFramePolicy-distance?: int--><!--Device-KeyFramePolicy-distance?: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## enable
@@ -75,6 +83,8 @@ Whether to enable keyframes. **true** to enable, **false** otherwise.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-KeyFramePolicy-enable: boolean--><!--Device-KeyFramePolicy-enable: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -91,5 +101,7 @@ Time interval for triggering keyframe layout changes via dragging, in ms. The de
 **Default:** 1000
 
 **Since:** 20
+
+<!--Device-KeyFramePolicy-interval?: long--><!--Device-KeyFramePolicy-interval?: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

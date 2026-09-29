@@ -12,6 +12,8 @@ An app only needs to create one [Client](arkts-connectivity-ssap-client-i.md) in
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface Client--><!--Device-ssap-interface Client-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Closes the client and disconnects from the remote server. To terminate the curre
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-close(): void--><!--Device-Client-close(): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -57,6 +61,8 @@ Initiates a connection to the server. This API uses a promise to return the resu
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-connect(): Promise<void>--><!--Device-Client-connect(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -88,6 +94,8 @@ Initiates a disconnection to the server, disconnecting an existing connection or
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-disconnect(): Promise<void>--><!--Device-Client-disconnect(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**
@@ -118,6 +126,8 @@ Obtains the list of services supported by the server. This API uses a promise to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-getServices(): Promise<Service[]>--><!--Device-Client-getServices(): Promise<Service[]>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**
@@ -146,6 +156,8 @@ Unsubscribes from the connection status change event. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void--><!--Device-Client-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -166,6 +178,8 @@ Unsubscribes from the MTU change event. This API uses an asynchronous callback t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-offMtuChange(callback?: Callback<int>): void--><!--Device-Client-offMtuChange(callback?: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -185,6 +199,8 @@ Unsubscribes from the property change event. This API uses an asynchronous callb
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-offPropertyChange(callback?: Callback<Property>): void--><!--Device-Client-offPropertyChange(callback?: Callback<Property>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -208,6 +224,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void--><!--Device-Client-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -229,6 +247,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-onMtuChange(callback: Callback<int>): void--><!--Device-Client-onMtuChange(callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -252,6 +272,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-onPropertyChange(callback: Callback<Property>): void--><!--Device-Client-onPropertyChange(callback: Callback<Property>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -273,6 +295,8 @@ Reads a server attribute. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-readProperty(property: Property): Promise<Property>--><!--Device-Client-readProperty(property: Property): Promise<Property>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -312,6 +336,8 @@ Initiates an MTU negotiation request. This API uses a promise to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Client-requestMtuSize(mtu: int): Promise<void>--><!--Device-Client-requestMtuSize(mtu: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -347,6 +373,8 @@ Sets a [Property](arkts-connectivity-ssap-property-i.md) change notification. Th
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-setPropertyNotification(property: Property, enable: boolean): Promise<void>--><!--Device-Client-setPropertyNotification(property: Property, enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -386,6 +414,8 @@ Writes a property to the server. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Client-writeProperty(property: Property, writeType: PropertyWriteType): Promise<void>--><!--Device-Client-writeProperty(property: Property, writeType: PropertyWriteType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 

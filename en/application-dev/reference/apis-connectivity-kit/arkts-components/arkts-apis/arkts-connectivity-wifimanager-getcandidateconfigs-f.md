@@ -18,7 +18,9 @@ Obtain the list of all existed candidate Wi-Fi configurations which added by our
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function getCandidateConfigs(): Array<WifiDeviceConfig>--><!--Device-wifiManager-function getCandidateConfigs(): Array<WifiDeviceConfig>-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

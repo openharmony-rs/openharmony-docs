@@ -8,6 +8,8 @@ Enumerates call states.
 
 **Since:** 6
 
+<!--Device-call-export enum CallState--><!--Device-call-export enum CallState-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 ## CALL_STATE_UNKNOWN
@@ -19,6 +21,8 @@ CALL_STATE_UNKNOWN = -1
 The call status fails to be obtained and is unknown.
 
 **Since:** 6
+
+<!--Device-CallState-CALL_STATE_UNKNOWN = -1--><!--Device-CallState-CALL_STATE_UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -32,6 +36,8 @@ No call is in progress.
 
 **Since:** 6
 
+<!--Device-CallState-CALL_STATE_IDLE = 0--><!--Device-CallState-CALL_STATE_IDLE = 0-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 ## CALL_STATE_RINGING
@@ -43,6 +49,8 @@ CALL_STATE_RINGING = 1
 The call is in the ringing or waiting state.
 
 **Since:** 6
+
+<!--Device-CallState-CALL_STATE_RINGING = 1--><!--Device-CallState-CALL_STATE_RINGING = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -56,6 +64,8 @@ At least one call is in dialing, active, or on hold, and no new incoming call is
 
 **Since:** 6
 
+<!--Device-CallState-CALL_STATE_OFFHOOK = 2--><!--Device-CallState-CALL_STATE_OFFHOOK = 2-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 ## CALL_STATE_ANSWERED
@@ -67,5 +77,7 @@ CALL_STATE_ANSWERED = 3
 The incoming call is answered.
 
 **Since:** 11
+
+<!--Device-CallState-CALL_STATE_ANSWERED = 3--><!--Device-CallState-CALL_STATE_ANSWERED = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager

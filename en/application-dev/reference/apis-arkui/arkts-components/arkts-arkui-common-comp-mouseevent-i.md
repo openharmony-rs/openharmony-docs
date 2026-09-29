@@ -10,6 +10,8 @@ Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md).
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface MouseEvent extends BaseEvent--><!--Device-unnamed-declare interface MouseEvent extends BaseEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCurrentLocalPosition
@@ -25,6 +27,8 @@ Gets the coordinates of the top-left corner of the current component based on it
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MouseEvent-getCurrentLocalPosition?(): Coordinate2D--><!--Device-MouseEvent-getCurrentLocalPosition?(): Coordinate2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ This API can only be called from [MouseEvent](arkts-arkui-common-comp-mouseevent
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-MouseEvent-getHistoricalPoints?(): Array<MouseHistoricalPoint>--><!--Device-MouseEvent-getHistoricalPoints?(): Array<MouseHistoricalPoint>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -70,6 +76,8 @@ Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#even
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseEvent-stopPropagation: () => void--><!--Device-MouseEvent-stopPropagation: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -86,6 +94,8 @@ Mouse action.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseEvent-action: MouseAction--><!--Device-MouseEvent-action: MouseAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## button
@@ -101,6 +111,8 @@ Mouse button.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseEvent-button: MouseButton--><!--Device-MouseEvent-button: MouseButton-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +134,8 @@ Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseEvent-displayX: number--><!--Device-MouseEvent-displayX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -141,6 +155,8 @@ Unit: vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseEvent-displayY: number--><!--Device-MouseEvent-displayY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +184,8 @@ Using the same **eventHandleId** for multiple event dispatches will cause abnorm
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-MouseEvent-eventHandleId?: number--><!--Device-MouseEvent-eventHandleId?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayX
@@ -189,6 +207,8 @@ Value range: (-∞, +∞).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-MouseEvent-globalDisplayX?: number--><!--Device-MouseEvent-globalDisplayX?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +232,8 @@ Value range: (-∞, +∞).
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-MouseEvent-globalDisplayY?: number--><!--Device-MouseEvent-globalDisplayY?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pressedButtons
@@ -229,6 +251,8 @@ Set of buttons being pressed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-MouseEvent-pressedButtons?: MouseButton[]--><!--Device-MouseEvent-pressedButtons?: MouseButton[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,6 +276,8 @@ Before API version 26.0.0, the return value of **rawDeltaX** was not the origina
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-MouseEvent-rawDeltaX?: number--><!--Device-MouseEvent-rawDeltaX?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rawDeltaY
@@ -273,6 +299,92 @@ Before API version 26.0.0, the return value of **rawDeltaY** was not the origina
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-MouseEvent-rawDeltaY?: number--><!--Device-MouseEvent-rawDeltaY?: number-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## windowX
+
+```TypeScript
+windowX: number
+```
+
+X coordinate of the mouse position in the coordinate system of the current application window.
+
+Unit: vp.
+
+**Type:** number
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseEvent-windowX: number--><!--Device-MouseEvent-windowX: number-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## windowY
+
+```TypeScript
+windowY: number
+```
+
+Y coordinate of the mouse position in the coordinate system of the current application window.
+
+Unit: vp.
+
+**Type:** number
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseEvent-windowY: number--><!--Device-MouseEvent-windowY: number-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## x
+
+```TypeScript
+x: number
+```
+
+X coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event- responsive component.
+
+Unit: vp.
+
+**Type:** number
+
+**Since:** 8
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseEvent-x: number--><!--Device-MouseEvent-x: number-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## y
+
+```TypeScript
+y: number
+```
+
+Y coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event- responsive component.
+
+Unit: vp.
+
+**Type:** number
+
+**Since:** 8
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseEvent-y: number--><!--Device-MouseEvent-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,6 +408,8 @@ Note: This API is supported since API version 8 and deprecated since API version
 
 **Substitutes:** [windowX](#windowx)
 
+<!--Device-MouseEvent-screenX: number--><!--Device-MouseEvent-screenX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## screenY
@@ -318,80 +432,6 @@ Note: This API is supported since API version 8 and deprecated since API version
 
 **Substitutes:** [windowY](#windowy)
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## windowX
-
-```TypeScript
-windowX: number
-```
-
-X coordinate of the mouse position in the coordinate system of the current application window.
-
-Unit: vp.
-
-**Type:** number
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## windowY
-
-```TypeScript
-windowY: number
-```
-
-Y coordinate of the mouse position in the coordinate system of the current application window.
-
-Unit: vp.
-
-**Type:** number
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## x
-
-```TypeScript
-x: number
-```
-
-X coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event- responsive component.
-
-Unit: vp.
-
-**Type:** number
-
-**Since:** 8
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## y
-
-```TypeScript
-y: number
-```
-
-Y coordinate of the mouse point in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the event- responsive component.
-
-Unit: vp.
-
-**Type:** number
-
-**Since:** 8
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
+<!--Device-MouseEvent-screenY: number--><!--Device-MouseEvent-screenY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

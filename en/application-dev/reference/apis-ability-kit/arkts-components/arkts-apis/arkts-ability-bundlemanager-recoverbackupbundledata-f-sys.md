@@ -18,6 +18,8 @@ Restores the backup data for a specified application under a given user. This AP
 
 **Required permissions:** ohos.permission.RECOVER_BUNDLE
 
+<!--Device-bundleManager-function recoverBackupBundleData(bundleName: string, userId: int, appIndex: int): Promise<void>--><!--Device-bundleManager-function recoverBackupBundleData(bundleName: string, userId: int, appIndex: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

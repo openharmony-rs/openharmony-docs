@@ -8,6 +8,8 @@ Defines the device service ID. It uniquely identifies a device and its user, inc
 
 **Since:** 23
 
+<!--Device-companionDeviceAuth-interface DeviceKey--><!--Device-companionDeviceAuth-interface DeviceKey-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Device ID. It is a string that uniquely identifies a device. The format is deter
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKey-deviceId: string--><!--Device-DeviceKey-deviceId: string-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Enumerates device ID types. They are used to specify the type of the device serv
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKey-deviceIdType: int--><!--Device-DeviceKey-deviceIdType: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
@@ -70,6 +76,8 @@ Device sub-profile ID. It is an integer greater than or equal to 0 and is used t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceKey-deviceSubProfileId?: int--><!--Device-DeviceKey-deviceSubProfileId?: int-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Device user ID. It is an integer greater than or equal to 0 and is used to disti
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceKey-deviceUserId: int--><!--Device-DeviceKey-deviceUserId: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 

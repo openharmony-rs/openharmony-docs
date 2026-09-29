@@ -8,6 +8,8 @@ Optional enhanced configuration for the hue-preserving brightening and darkening
 
 **Since:** 26.2.0
 
+<!--Device-uiEffect-interface ColorfulBrightnessBlenderOptions--><!--Device-uiEffect-interface ColorfulBrightnessBlenderOptions-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ Foreground darken weight, which controls the direction and strength of brighteni
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-ColorfulBrightnessBlenderOptions-darkenWeight?: double--><!--Device-ColorfulBrightnessBlenderOptions-darkenWeight?: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -57,6 +61,8 @@ Whether to actively enable HDR. When set to true, HDR is actively enabled and th
 **Model restriction:** This API can be used only in the stage model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+
+<!--Device-ColorfulBrightnessBlenderOptions-hdrEnabled?: boolean--><!--Device-ColorfulBrightnessBlenderOptions-hdrEnabled?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -80,6 +86,8 @@ Luma difference threshold to ensure readability, used to constrain the luma diff
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-ColorfulBrightnessBlenderOptions-lumaDiff?: double--><!--Device-ColorfulBrightnessBlenderOptions-lumaDiff?: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -102,6 +110,8 @@ Input color influence, which controls the degree to which the input color partic
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-ColorfulBrightnessBlenderOptions-tintedColorPercent?: double--><!--Device-ColorfulBrightnessBlenderOptions-tintedColorPercent?: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -123,6 +133,8 @@ Color enhancement strength, which controls the degree of saturation enhancement 
 **Model restriction:** This API can be used only in the stage model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+
+<!--Device-ColorfulBrightnessBlenderOptions-vibrancyStrength?: double--><!--Device-ColorfulBrightnessBlenderOptions-vibrancyStrength?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

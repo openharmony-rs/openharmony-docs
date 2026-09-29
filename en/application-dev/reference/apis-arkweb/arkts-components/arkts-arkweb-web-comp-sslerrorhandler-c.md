@@ -8,6 +8,8 @@ SslErrorHandler is a class in the Web component for handling SSL certificate ver
 
 **Since:** 9
 
+<!--Device-unnamed-declare class SslErrorHandler--><!--Device-unnamed-declare class SslErrorHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -21,6 +23,8 @@ Constructs a **SslErrorHandler** object.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SslErrorHandler-constructor()--><!--Device-SslErrorHandler-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ Notifies the Web component to cancel this request and stops the current SSL cert
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SslErrorHandler-handleCancel(): void--><!--Device-SslErrorHandler-handleCancel(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 <a id="handlecancel-1"></a>
@@ -49,6 +55,8 @@ handleCancel(abortLoading: boolean): void
 Cancels this request and determines whether to stop loading based on the **abortLoading** parameter.
 
 **Since:** 20
+
+<!--Device-SslErrorHandler-handleCancel(abortLoading: boolean): void--><!--Device-SslErrorHandler-handleCancel(abortLoading: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -69,5 +77,7 @@ Ignores the SSL certificate verification error and continues loading the page.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SslErrorHandler-handleConfirm(): void--><!--Device-SslErrorHandler-handleConfirm(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

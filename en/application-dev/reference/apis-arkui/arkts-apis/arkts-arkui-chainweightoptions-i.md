@@ -8,6 +8,8 @@ Defines the layout weight of a component in a chain.
 
 **Since:** 14
 
+<!--Device-unnamed-declare interface ChainWeightOptions--><!--Device-unnamed-declare interface ChainWeightOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## horizontal
@@ -30,6 +32,8 @@ Invalid values are treated as **0**.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ChainWeightOptions-horizontal?: number--><!--Device-ChainWeightOptions-horizontal?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## vertical
@@ -51,5 +55,7 @@ Invalid values are treated as **0**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ChainWeightOptions-vertical?: number--><!--Device-ChainWeightOptions-vertical?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

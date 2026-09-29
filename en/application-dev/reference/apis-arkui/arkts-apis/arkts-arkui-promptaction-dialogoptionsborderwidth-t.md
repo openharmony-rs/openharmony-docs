@@ -14,6 +14,8 @@ Defines the allowed data types for specifying the background border width of a d
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-declare type DialogOptionsBorderWidth = Dimension | EdgeWidths--><!--Device-promptAction-declare type DialogOptionsBorderWidth = Dimension | EdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

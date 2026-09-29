@@ -12,6 +12,8 @@ Enumerates the album subtypes.
 
 **Substitutes:** [AlbumSubtype](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md)
 
+<!--Device-userFileManager-enum AlbumSubType--><!--Device-userFileManager-enum AlbumSubType-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ User album.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [USER_GENERIC](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md#user_generic)
+
+<!--Device-AlbumSubType-USER_GENERIC = 1--><!--Device-AlbumSubType-USER_GENERIC = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -48,6 +52,8 @@ Favorites.
 
 **Substitutes:** [FAVORITE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md#favorite)
 
+<!--Device-AlbumSubType-FAVORITE = 1025--><!--Device-AlbumSubType-FAVORITE = 1025-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +71,8 @@ Video album.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [VIDEO](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md#video)
+
+<!--Device-AlbumSubType-VIDEO = 1026--><!--Device-AlbumSubType-VIDEO = 1026-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -84,6 +92,8 @@ Hidden album.
 
 **Substitutes:** [HIDDEN](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e-sys.md#hidden)
 
+<!--Device-AlbumSubType-HIDDEN = 1027--><!--Device-AlbumSubType-HIDDEN = 1027-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -101,6 +111,8 @@ Trash.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [TRASH](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e-sys.md#trash)
+
+<!--Device-AlbumSubType-TRASH = 1028--><!--Device-AlbumSubType-TRASH = 1028-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -120,6 +132,8 @@ Album for screenshots and screen recording files.
 
 **Substitutes:** [SCREENSHOT](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e-sys.md#screenshot)
 
+<!--Device-AlbumSubType-SCREENSHOT = 1029--><!--Device-AlbumSubType-SCREENSHOT = 1029-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -138,6 +152,8 @@ Album for photos and videos taken by the camera.
 
 **Substitutes:** [CAMERA](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e-sys.md#camera)
 
+<!--Device-AlbumSubType-CAMERA = 1030--><!--Device-AlbumSubType-CAMERA = 1030-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
@@ -155,6 +171,8 @@ Any album.
 **Deprecated since:** 26.0.0
 
 **Substitutes:** [ANY](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumsubtype-e.md#any)
+
+<!--Device-AlbumSubType-ANY = 2147483647--><!--Device-AlbumSubType-ANY = 2147483647-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

@@ -8,6 +8,8 @@ MDNS service attribute information.
 
 **Since:** 10
 
+<!--Device-mdns-export interface ServiceAttribute--><!--Device-mdns-export interface ServiceAttribute-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## Modules to Import
@@ -30,6 +32,8 @@ MDNS service attribute key. The value contains a maximum of 9 characters.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ServiceAttribute-key: string--><!--Device-ServiceAttribute-key: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## value
@@ -45,5 +49,7 @@ MDNS service attribute value.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ServiceAttribute-value: Array<int>--><!--Device-ServiceAttribute-value: Array<int>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS

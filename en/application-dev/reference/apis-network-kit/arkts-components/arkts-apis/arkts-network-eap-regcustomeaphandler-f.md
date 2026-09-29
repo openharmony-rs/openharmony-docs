@@ -20,6 +20,8 @@ The system will encapsulate the eligible EAP packets into the callback function 
 
 **Required permissions:** ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
+<!--Device-eap-function regCustomEapHandler(netType: int, eapCode: int, eapType: int, callback: Callback<EapData>): void--><!--Device-eap-function regCustomEapHandler(netType: int, eapCode: int, eapType: int, callback: Callback<EapData>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
 **Parameters:**

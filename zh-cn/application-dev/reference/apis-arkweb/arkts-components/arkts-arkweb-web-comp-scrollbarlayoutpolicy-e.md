@@ -8,6 +8,8 @@ declare enum ScrollbarLayoutPolicy
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare enum ScrollbarLayoutPolicy--><!--Device-unnamed-declare enum ScrollbarLayoutPolicy-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## CONTENT
@@ -22,6 +24,8 @@ CONTENT = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-ScrollbarLayoutPolicy-CONTENT = 0--><!--Device-ScrollbarLayoutPolicy-CONTENT = 0-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## SYSTEM
@@ -35,5 +39,7 @@ SYSTEM = 1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ScrollbarLayoutPolicy-SYSTEM = 1--><!--Device-ScrollbarLayoutPolicy-SYSTEM = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

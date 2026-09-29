@@ -18,6 +18,8 @@ This API is used to obtain the standard extension of the DLP file, which can be 
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getDLPSuffix(): string--><!--Device-dlpPermission-function getDLPSuffix(): string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Test API:** This API is used only in automated test scripts.

@@ -12,6 +12,8 @@ Shader resource, which inherits from SceneResource.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Shader extends SceneResource--><!--Device-unnamed-export interface Shader extends SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## setShaderInputs
@@ -25,6 +27,8 @@ Sets the inputs for the shader. This API delivers better performance than direct
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Shader-setShaderInputs(inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>): void--><!--Device-Shader-setShaderInputs(inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -84,5 +88,7 @@ Inputs of the shader.
 **Type:** Record&lt;string, number &#124; [Vec2](arkts-arkgraphics3d-scenetypes-vec2-i.md) &#124; [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md) &#124; [Vec4](arkts-arkgraphics3d-scenetypes-vec4-i.md) &#124; [Image](arkts-arkgraphics3d-sceneresources-image-i.md)&gt;
 
 **Since:** 12
+
+<!--Device-Shader-readonly inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>--><!--Device-Shader-readonly inputs: Record<string, double | Vec2 | Vec3 | Vec4 | Image>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

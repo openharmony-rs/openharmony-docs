@@ -21,6 +21,8 @@ Reads data from the serial port device asynchronously. The read data is stored i
 
 **Since:** 19
 
+<!--Device-serialManager-function read(portId: int, buffer: Uint8Array, timeout?: int): Promise<int>--><!--Device-serialManager-function read(portId: int, buffer: Uint8Array, timeout?: int): Promise<int>-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

@@ -8,6 +8,8 @@ Implements a paragraph builder that uses the builder pattern to construct paragr
 
 **Since:** 12
 
+<!--Device-text-class ParagraphBuilder--><!--Device-text-class ParagraphBuilder-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Inserts a placeholder when building a text paragraph. After insertion, the place
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-addPlaceholder(placeholderSpan: PlaceholderSpan): void--><!--Device-ParagraphBuilder-addPlaceholder(placeholderSpan: PlaceholderSpan): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -81,7 +85,9 @@ Inserts a symbol into the paragraph being built.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-addSymbol(symbolId: int): void--><!--Device-ParagraphBuilder-addSymbol(symbolId: int): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -135,7 +141,9 @@ Inserts a text string into the paragraph being built.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-addText(text: string): void--><!--Device-ParagraphBuilder-addText(text: string): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -188,7 +196,9 @@ Builds a paragraph and generates a paragraph object that can be used for subsequ
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-build(): Paragraph--><!--Device-ParagraphBuilder-build(): Paragraph-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -242,7 +252,9 @@ Builds a line typesetter and generates a LineTypeset object that can be used for
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-buildLineTypeset(): LineTypeset--><!--Device-ParagraphBuilder-buildLineTypeset(): LineTypeset-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -291,7 +303,9 @@ A constructor used to create a **ParagraphBuilder** object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-constructor(paragraphStyle: ParagraphStyle, fontCollection: FontCollection)--><!--Device-ParagraphBuilder-constructor(paragraphStyle: ParagraphStyle, fontCollection: FontCollection)-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -350,7 +364,9 @@ Restores the previous text style.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-popStyle(): void--><!--Device-ParagraphBuilder-popStyle(): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -402,7 +418,9 @@ Applies a new style to the current text blob.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-ParagraphBuilder-pushStyle(textStyle: TextStyle): void--><!--Device-ParagraphBuilder-pushStyle(textStyle: TextStyle): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

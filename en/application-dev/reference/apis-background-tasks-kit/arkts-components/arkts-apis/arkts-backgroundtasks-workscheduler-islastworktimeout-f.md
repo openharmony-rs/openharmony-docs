@@ -22,6 +22,8 @@ Checks whether the last execution of a task timed out. This API uses an asynchro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boolean--><!--Device-workScheduler-function isLastWorkTimeOut(workId: number, callback: AsyncCallback<void>): boolean-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**
@@ -90,6 +92,8 @@ Checks whether the last execution of a task timed out. This API uses an asynchro
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function isLastWorkTimeOut(workId: int, callback: AsyncCallback<boolean>): void--><!--Device-workScheduler-function isLastWorkTimeOut(workId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**
@@ -138,6 +142,8 @@ Checks whether the last execution of a task timed out. This API uses a promise t
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-workScheduler-function isLastWorkTimeOut(workId: int): Promise<boolean>--><!--Device-workScheduler-function isLastWorkTimeOut(workId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

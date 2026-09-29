@@ -18,6 +18,8 @@ Moves log files of the specified type to the target application directory. This 
 
 **Required permissions:** ohos.permission.WRITE_HIVIEW_SYSTEM
 
+<!--Device-logLibrary-function move(logType: string, logName: string, dest: string): Promise<void>--><!--Device-logLibrary-function move(logType: string, logName: string, dest: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ Moves log files of the specified type to the target application directory. This 
 **Since:** 10
 
 **Required permissions:** ohos.permission.WRITE_HIVIEW_SYSTEM
+
+<!--Device-logLibrary-function move(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-logLibrary-function move(logType: string, logName: string, dest: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.LogLibrary
 

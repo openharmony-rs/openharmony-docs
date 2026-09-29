@@ -18,6 +18,8 @@ Unsubscribes from **policy** changes. This API uses an asynchronous callback to 
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function off(type: 'netUidPolicyChange', callback?: Callback<NetUidPolicyInfo>): void--><!--Device-policy-function off(type: 'netUidPolicyChange', callback?: Callback<NetUidPolicyInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -52,6 +54,8 @@ Unsubscribes from **rule** changes. This API uses an asynchronous callback to re
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function off(type: 'netUidRuleChange', callback?: Callback<NetUidRuleInfo>): void--><!--Device-policy-function off(type: 'netUidRuleChange', callback?: Callback<NetUidRuleInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -88,6 +92,8 @@ Unsubscribes from the changes of the metering interface. This API uses an asynch
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function off(type: 'netMeteredIfacesChange', callback?: Callback<Array<string>>): void--><!--Device-policy-function off(type: 'netMeteredIfacesChange', callback?: Callback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -123,6 +129,8 @@ Unsubscribes from the changes of the metering network policy. This API uses an a
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function off(type: 'netQuotaPolicyChange', callback?: Callback<Array<NetQuotaPolicy>>): void--><!--Device-policy-function off(type: 'netQuotaPolicyChange', callback?: Callback<Array<NetQuotaPolicy>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -157,6 +165,8 @@ Unsubscribes from background network policy changes. This API uses an asynchrono
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function off(type: 'netBackgroundPolicyChange', callback?: Callback<boolean>): void--><!--Device-policy-function off(type: 'netBackgroundPolicyChange', callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

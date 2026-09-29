@@ -18,6 +18,8 @@ Sets a surface for a virtual screen. This API uses a promise to return the resul
 
 **Required permissions:** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+<!--Device-display-function setVirtualScreenSurface(screenId: long, surfaceId: string): Promise<void>--><!--Device-display-function setVirtualScreenSurface(screenId: long, surfaceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

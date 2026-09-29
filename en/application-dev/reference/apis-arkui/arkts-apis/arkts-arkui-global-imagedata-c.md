@@ -8,6 +8,8 @@ An ImageData object is a common object that stores the actual pixel data of a Ca
 
 **Since:** 11
 
+<!--Device-unnamed-export declare class ImageData--><!--Device-unnamed-export declare class ImageData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## data
@@ -25,6 +27,8 @@ A one-dimensional array of color values. The color values are sorted in the RGBA
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImageData-data: Uint8ClampedArray--><!--Device-ImageData-data: Uint8ClampedArray-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Actual height of the ImageData object, in pixels.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ImageData-height: number--><!--Device-ImageData-height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -61,5 +67,7 @@ Actual width of the ImageData object, in pixels.
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImageData-width: number--><!--Device-ImageData-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

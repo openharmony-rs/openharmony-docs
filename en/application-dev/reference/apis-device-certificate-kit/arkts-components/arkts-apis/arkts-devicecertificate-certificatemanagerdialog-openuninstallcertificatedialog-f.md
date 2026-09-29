@@ -20,6 +20,8 @@ Open the Certificate Management Uninstall Certificate dialog. The corresponding 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise<void>--><!--Device-certificateManagerDialog-function openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**

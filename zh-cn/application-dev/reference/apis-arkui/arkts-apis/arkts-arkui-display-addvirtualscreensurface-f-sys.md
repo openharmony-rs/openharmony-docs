@@ -18,6 +18,8 @@ function addVirtualScreenSurface(screenId: number, surfaceId: string, surfaceReg
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-display-function addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceRegion?: Rect): Promise<void>--><!--Device-display-function addVirtualScreenSurface(screenId: long, surfaceId: string, surfaceRegion?: Rect): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

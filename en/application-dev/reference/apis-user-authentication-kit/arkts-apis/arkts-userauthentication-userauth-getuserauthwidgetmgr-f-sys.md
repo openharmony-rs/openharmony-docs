@@ -23,6 +23,8 @@ Obtains the authentication widget manager object. It is used to obtain the **Use
 
 **Required permissions:** ohos.permission.SUPPORT_USER_AUTH
 
+<!--Device-userAuth-function getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr--><!--Device-userAuth-function getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

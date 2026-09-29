@@ -18,6 +18,8 @@ function onApplicationFocusStateChange(callback: Callback<boolean>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-window-function onApplicationFocusStateChange(callback: Callback<boolean>): void--><!--Device-window-function onApplicationFocusStateChange(callback: Callback<boolean>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**

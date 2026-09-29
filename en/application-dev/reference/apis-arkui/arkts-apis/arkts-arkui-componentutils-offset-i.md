@@ -8,6 +8,8 @@ Defines the offset property.
 
 **Since:** 10
 
+<!--Device-componentUtils-interface Offset--><!--Device-componentUtils-interface Offset-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Unit: px
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Offset-x: number--><!--Device-Offset-x: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -53,5 +57,7 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Offset-y: number--><!--Device-Offset-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

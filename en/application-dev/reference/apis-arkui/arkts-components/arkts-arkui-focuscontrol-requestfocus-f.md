@@ -14,6 +14,8 @@ For scenarios requiring immediate focus changes, it is recommended that you use 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-focusControl-function requestFocus(value: string): boolean--><!--Device-focusControl-function requestFocus(value: string): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -8,6 +8,8 @@ WebResourceError is a class that provides error information when resource loadin
 
 **Since:** 8
 
+<!--Device-unnamed-declare class WebResourceError--><!--Device-unnamed-declare class WebResourceError-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -22,6 +24,8 @@ Constructor of WebResourceError. Creates a WebResourceError object to encapsulat
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebResourceError-constructor()--><!--Device-WebResourceError-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## getCustomErrorCode
@@ -33,6 +37,8 @@ getCustomErrorCode(): number
 Gets the custom error code of the Web resource.
 
 **Since:** 26.0.1
+
+<!--Device-WebResourceError-getCustomErrorCode(): number--><!--Device-WebResourceError-getCustomErrorCode(): number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -54,6 +60,8 @@ Obtains the error code of the resource loading. It is used to determine the spec
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebResourceError-getErrorCode(): number--><!--Device-WebResourceError-getErrorCode(): number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -73,6 +81,8 @@ Obtains the error information of the resource loading. It is used to describe th
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebResourceError-getErrorInfo(): string--><!--Device-WebResourceError-getErrorInfo(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -4,11 +4,13 @@
 export declare class OperateItemV2
 ```
 
-Declare OperateItemV2
+Defines the element types for the right element of list items.
 
 **Since:** 26.0.0
 
 **Decorator:** @ObservedV2
+
+<!--Device-unnamed-export declare class OperateItemV2--><!--Device-unnamed-export declare class OperateItemV2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +26,7 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 constructor(options?: OperateItemV2Options)
 ```
 
-The constructor of OperateItemV2.
+A constructor used to create an **OperateItemV2** object.
 
 **Since:** 26.0.0
 
@@ -32,13 +34,15 @@ The constructor of OperateItemV2.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-constructor(options?: OperateItemV2Options)--><!--Device-OperateItemV2-constructor(options?: OperateItemV2Options)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [OperateItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2options-i.md) | No | The options of OperateItemV2 |
+| options | [OperateItemV2Options](arkts-arkui-arkui-advanced-composelistitemv2-operateitemv2options-i.md) | No | Configuration of the right element of the list item.<br>If not set or set to undefined, an object is created based on the default effect of each attribute. |
 
 ## arrow
 
@@ -46,7 +50,9 @@ The constructor of OperateItemV2.
 public arrow?: OperateIconV2
 ```
 
-Sets the arrow.
+Arrow, sized 12 × 24 vp.
+
+By default, this attribute is not set or set to **undefined**, and the arrow is not displayed.
 
 **Type:** [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md)
 
@@ -58,6 +64,8 @@ Sets the arrow.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public arrow?: OperateIconV2--><!--Device-OperateItemV2-public arrow?: OperateIconV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## button
@@ -66,7 +74,9 @@ Sets the arrow.
 public button?: OperateButtonV2
 ```
 
-Sets the button.
+Button.
+
+By default, this attribute is not set or set to **undefined**, and the button is not displayed.
 
 **Type:** [OperateButtonV2](arkts-arkui-arkui-advanced-composelistitemv2-operatebuttonv2-c.md)
 
@@ -78,6 +88,8 @@ Sets the button.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public button?: OperateButtonV2--><!--Device-OperateItemV2-public button?: OperateButtonV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## checkbox
@@ -86,7 +98,9 @@ Sets the button.
 public checkbox?: OperateCheckV2
 ```
 
-Sets the checkBox.
+Checkbox, sized 24 × 24 vp.
+
+By default, this attribute is not set or set to **undefined**, and the checkbox is not displayed.
 
 **Type:** [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md)
 
@@ -98,6 +112,8 @@ Sets the checkBox.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public checkbox?: OperateCheckV2--><!--Device-OperateItemV2-public checkbox?: OperateCheckV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -106,7 +122,9 @@ Sets the checkBox.
 public icon?: OperateIconV2
 ```
 
-Sets the icon.
+First icon, sized 24 × 24 vp.
+
+By default, this attribute is not set or set to **undefined**, and the icon is not displayed.
 
 **Type:** [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md)
 
@@ -118,6 +136,8 @@ Sets the icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public icon?: OperateIconV2--><!--Device-OperateItemV2-public icon?: OperateIconV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## image
@@ -126,7 +146,11 @@ Sets the icon.
 public image?: ResourceStr
 ```
 
-Sets the image.
+Image resource, sized 48 × 48 vp.
+
+By default, this attribute is not set or set to **undefined**, and the image is not displayed.
+
+If symbolStyle is also set, only the symbol icon is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -138,6 +162,8 @@ Sets the image.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public image?: ResourceStr--><!--Device-OperateItemV2-public image?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## radio
@@ -146,7 +172,9 @@ Sets the image.
 public radio?: OperateCheckV2
 ```
 
-Sets the radio.
+Radio button, sized 24 × 24 vp.
+
+By default, this attribute is not set or set to **undefined**, and the radio button is not displayed.
 
 **Type:** [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md)
 
@@ -158,6 +186,8 @@ Sets the radio.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public radio?: OperateCheckV2--><!--Device-OperateItemV2-public radio?: OperateCheckV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## subIcon
@@ -166,7 +196,9 @@ Sets the radio.
 public subIcon?: OperateIconV2
 ```
 
-Sets the subIcon.
+Second icon, sized 24 × 24 vp.
+
+By default, this attribute is not set or set to **undefined**, and the second icon is not displayed.
 
 **Type:** [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md)
 
@@ -178,6 +210,8 @@ Sets the subIcon.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public subIcon?: OperateIconV2--><!--Device-OperateItemV2-public subIcon?: OperateIconV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -186,7 +220,9 @@ Sets the subIcon.
 public symbolStyle?: SymbolGlyphModifier
 ```
 
-Sets the symbolStyle.
+Symbol icon resource, sized 48 × 48 vp. It has a higher priority than image, and only the symbol icon is displayed when both are set.
+
+By default, this attribute is not set or set to **undefined**, and the symbol icon is not displayed.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -198,6 +234,8 @@ Sets the symbolStyle.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public symbolStyle?: SymbolGlyphModifier--><!--Device-OperateItemV2-public symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -206,7 +244,9 @@ Sets the symbolStyle.
 public text?: ResourceStr
 ```
 
-Sets the text.
+Text.
+
+By default, this attribute is not set or set to **undefined**, and the text is not displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -218,6 +258,8 @@ Sets the text.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-OperateItemV2-public text?: ResourceStr--><!--Device-OperateItemV2-public text?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## toggle
@@ -226,7 +268,9 @@ Sets the text.
 public toggle?: OperateCheckV2
 ```
 
-Sets the toggle.
+Toggle.
+
+By default, this attribute is not set or set to **undefined**, and the toggle is not displayed.
 
 **Type:** [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md)
 
@@ -237,5 +281,7 @@ Sets the toggle.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-OperateItemV2-public toggle?: OperateCheckV2--><!--Device-OperateItemV2-public toggle?: OperateCheckV2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

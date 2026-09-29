@@ -13,6 +13,8 @@ declare interface DataChangeListener
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface DataChangeListener--><!--Device-unnamed-declare interface DataChangeListener-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDataAdd
@@ -32,6 +34,8 @@ onDataAdd(index: number): void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataChangeListener-onDataAdd(index: number): void--><!--Device-DataChangeListener-onDataAdd(index: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ onDataChange(index: number): void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataChangeListener-onDataChange(index: number): void--><!--Device-DataChangeListener-onDataChange(index: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,6 +93,8 @@ onDataDelete(index: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataChangeListener-onDataDelete(index: number): void--><!--Device-DataChangeListener-onDataDelete(index: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -115,6 +123,8 @@ onDataMove(from: number, to: number): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataChangeListener-onDataMove(from: number, to: number): void--><!--Device-DataChangeListener-onDataMove(from: number, to: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -142,6 +152,8 @@ onDataReloaded(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataChangeListener-onDataReloaded(): void--><!--Device-DataChangeListener-onDataReloaded(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <a id="ondatareloaded-1"></a>
@@ -165,6 +177,8 @@ onDataReloaded(reuseImmediately: boolean): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataChangeListener-onDataReloaded(reuseImmediately: boolean): void--><!--Device-DataChangeListener-onDataReloaded(reuseImmediately: boolean): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,6 +208,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataChangeListener-onDatasetChange(dataOperations: DataOperation[]): void--><!--Device-DataChangeListener-onDatasetChange(dataOperations: DataOperation[]): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -221,6 +237,8 @@ onDataAdded(index: number): void
 **替代接口：** [onDataAdd](#ondataadd)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-DataChangeListener-onDataAdded(index: number): void--><!--Device-DataChangeListener-onDataAdded(index: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,6 +268,8 @@ onDataChanged(index: number): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-DataChangeListener-onDataChanged(index: number): void--><!--Device-DataChangeListener-onDataChanged(index: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -277,6 +297,8 @@ onDataDeleted(index: number): void
 **替代接口：** [onDataDelete](#ondatadelete)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-DataChangeListener-onDataDeleted(index: number): void--><!--Device-DataChangeListener-onDataDeleted(index: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -307,6 +329,8 @@ onDataMoved(from: number, to: number): void
 **替代接口：** [onDataMove](#ondatamove)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-DataChangeListener-onDataMoved(from: number, to: number): void--><!--Device-DataChangeListener-onDataMoved(from: number, to: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

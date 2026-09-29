@@ -16,6 +16,8 @@ Dumps the list of leaked objects and VM memory snapshot.
 
 **Since:** 12
 
+<!--Device-jsLeakWatcher-function dump(filePath: string): Array<string>--><!--Device-jsLeakWatcher-function dump(filePath: string): Array<string>-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**

@@ -22,6 +22,8 @@ Obtains the Bluetooth scanning mode of a device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function getBluetoothScanMode(): ScanMode--><!--Device-bluetooth-function getBluetoothScanMode(): ScanMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

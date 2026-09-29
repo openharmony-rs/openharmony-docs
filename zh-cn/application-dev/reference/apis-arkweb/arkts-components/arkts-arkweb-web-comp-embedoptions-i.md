@@ -8,6 +8,8 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 **起始版本：** 16
 
+<!--Device-unnamed-declare interface EmbedOptions--><!--Device-unnamed-declare interface EmbedOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## supportCssDisplayChange
@@ -29,6 +31,8 @@ supportCssDisplayChange?: boolean
 **默认值：** false
 
 **起始版本：** 20
+
+<!--Device-EmbedOptions-supportCssDisplayChange?: boolean--><!--Device-EmbedOptions-supportCssDisplayChange?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -56,6 +60,8 @@ supportDefaultIntrinsicSize?: boolean
 
 **起始版本：** 16
 
+<!--Device-EmbedOptions-supportDefaultIntrinsicSize?: boolean--><!--Device-EmbedOptions-supportDefaultIntrinsicSize?: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## supportTransformRotateAndSkew
@@ -79,5 +85,7 @@ supportTransformRotateAndSkew?: boolean
 **起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EmbedOptions-supportTransformRotateAndSkew?: boolean--><!--Device-EmbedOptions-supportTransformRotateAndSkew?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

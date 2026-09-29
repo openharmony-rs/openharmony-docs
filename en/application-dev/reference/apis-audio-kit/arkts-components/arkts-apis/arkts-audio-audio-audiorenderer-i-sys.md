@@ -14,6 +14,8 @@ Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkt
 
 **Since:** 8
 
+<!--Device-audio-interface AudioRenderer--><!--Device-audio-interface AudioRenderer-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 ## Modules to Import
@@ -31,6 +33,8 @@ getTarget(): RenderTarget
 Gets the currently render target of this audio renderer. If the render target has not been changed, the default value [PLAYBACK](arkts-audio-audio-rendertarget-e-sys.md#playback) will be returned. If the [setTarget](#settarget) has been called before calling this interface, ensure its promise object has been resolved successfully, otherwise, the obtained value may be inaccurate.
 
 **Since:** 22
+
+<!--Device-AudioRenderer-getTarget(): RenderTarget--><!--Device-AudioRenderer-getTarget(): RenderTarget-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -81,6 +85,8 @@ return error code 6800301.
 **Since:** 22
 
 **Required permissions:** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+<!--Device-AudioRenderer-setTarget(target: RenderTarget): Promise<void>--><!--Device-AudioRenderer-setTarget(target: RenderTarget): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -147,6 +153,8 @@ This API uses a promise to return the result.
 **Required permissions:** ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioRenderer-setTarget(target: RenderTarget, targetParams?: AudioRendererTargetParams): Promise<void>--><!--Device-AudioRenderer-setTarget(target: RenderTarget, targetParams?: AudioRendererTargetParams): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 

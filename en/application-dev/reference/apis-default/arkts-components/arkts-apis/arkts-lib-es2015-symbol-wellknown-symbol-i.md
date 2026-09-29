@@ -17,6 +17,8 @@ interface Symbol
 
 Converts a Symbol object to a symbol.
 
+<!--Device-Symbol-[Symbol.toPrimitive](hint: string): symbol--><!--Device-Symbol-[Symbol.toPrimitive](hint: string): symbol-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

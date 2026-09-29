@@ -16,6 +16,8 @@ Move a mechanical device with the specified parameters.
 
 **Since:** 26.0.0
 
+<!--Device-mechanicManager-function move(mechId: int, params: MoveParams): Promise<Result>--><!--Device-mechanicManager-function move(mechId: int, params: MoveParams): Promise<Result>-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

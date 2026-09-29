@@ -14,6 +14,8 @@ declare class ScreenCaptureHandler
 
 **Since:** 10
 
+<!--Device-unnamed-declare class ScreenCaptureHandler--><!--Device-unnamed-declare class ScreenCaptureHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -27,6 +29,8 @@ Constructs a **ScreenCaptureHandler** object.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScreenCaptureHandler-constructor()--><!--Device-ScreenCaptureHandler-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -42,6 +46,8 @@ Denies the screen capture operation initiated by a web page. This method is call
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScreenCaptureHandler-deny(): void--><!--Device-ScreenCaptureHandler-deny(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## getOrigin
@@ -55,6 +61,8 @@ Obtains the origin of the web page. This method is used to verify the trustworth
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScreenCaptureHandler-getOrigin(): string--><!--Device-ScreenCaptureHandler-getOrigin(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -75,6 +83,8 @@ Grants permission for the screen capture operation accessed by a web page. This 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScreenCaptureHandler-grant(config: ScreenCaptureConfig): void--><!--Device-ScreenCaptureHandler-grant(config: ScreenCaptureConfig): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

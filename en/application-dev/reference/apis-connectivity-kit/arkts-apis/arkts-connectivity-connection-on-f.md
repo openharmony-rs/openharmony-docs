@@ -25,6 +25,8 @@ Subscribe the event reported when a remote Bluetooth device is discovered. On AP
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-connection-function on(type: 'bluetoothDeviceFind', callback: Callback<Array<string>>): void--><!--Device-connection-function on(type: 'bluetoothDeviceFind', callback: Callback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -76,6 +78,8 @@ Subscribe the event reported when a remote Bluetooth device is discovered. On AP
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function on(type: 'discoveryResult', callback: Callback<Array<DiscoveryResult>>): void--><!--Device-connection-function on(type: 'discoveryResult', callback: Callback<Array<DiscoveryResult>>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -125,6 +129,8 @@ Subscribe the event reported when a remote Bluetooth device is bonded. On API 26
 - API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function on(type: 'bondStateChange', callback: Callback<BondStateParam>): void--><!--Device-connection-function on(type: 'bondStateChange', callback: Callback<BondStateParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -176,6 +182,8 @@ Subscribe the event of a pairing request from a remote Bluetooth device. On API 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function on(type: 'pinRequired', callback: Callback<PinRequiredParam>): void--><!--Device-connection-function on(type: 'pinRequired', callback: Callback<PinRequiredParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -222,6 +230,8 @@ Subscribe the event of battery state changed from a remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function on(type: 'batteryChange', callback: Callback<BatteryInfo>): void--><!--Device-connection-function on(type: 'batteryChange', callback: Callback<BatteryInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

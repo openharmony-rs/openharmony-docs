@@ -20,6 +20,8 @@ The notification slot NotificationSlot defines the reminder type (such as alert 
 
 **Since:** 9
 
+<!--Device-notificationManager-function addSlot(type: SlotType, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function addSlot(type: SlotType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -77,6 +79,8 @@ Adds a notification slot of a specified type. This API uses a promise to return 
 The notification slot NotificationSlot defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
 
 **Since:** 9
+
+<!--Device-notificationManager-function addSlot(type: SlotType): Promise<void>--><!--Device-notificationManager-function addSlot(type: SlotType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

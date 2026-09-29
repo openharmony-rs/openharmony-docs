@@ -8,6 +8,8 @@ Defines the specific configuration parameters for the rendering context.
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface RenderingContextOptions--><!--Device-unnamed-declare interface RenderingContextOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## antialias
@@ -25,5 +27,7 @@ Whether to enable anti-aliasing for the **RenderingContext**. <br>The abnormal v
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-RenderingContextOptions-antialias?: boolean--><!--Device-RenderingContextOptions-antialias?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

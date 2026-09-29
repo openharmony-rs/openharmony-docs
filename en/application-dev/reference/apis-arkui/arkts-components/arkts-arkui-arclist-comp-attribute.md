@@ -4,11 +4,13 @@
 export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the universal attributes, the following attributes are supported (the [scrollable component common attributes](arkts-arkui-common-comp-scrollablecommonmethod-c.md) are not supported):
 
 **Inheritance/Implementation:** ArcListAttribute extends CommonMethod<ArcListAttribute>
 
 **Since:** 18
+
+<!--Device-unnamed-export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>--><!--Device-unnamed-export declare class ArcListAttribute extends CommonMethod<ArcListAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -24,11 +26,13 @@ import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@k
 cachedCount(count: Optional<number>)
 ```
 
-Sets the number of arc list items to be preloaded (cached). In a lazy loading scenario, only the content equivalent to **cachedCount** outside the visible area of the arc list is preloaded. In a non-lazy loading scenario, all items are loaded at once. For both lazy and non-lazy loading, only the content within the visible area of the arc list plus the content equivalent to **cachedCount** outside the visible area is laid out. When **cachedCount** is set for the arc list, the system preloads and lays out the **cachedCount**-specified number of rows of arc list items both above and below the currently visible area of the arc list.
+Sets the number of arc list items to be preloaded (cached). In a lazy loading scenario, only the content equivalent to **cachedCount** outside the visible area of the arc list is preloaded. In a non-lazy loading scenario, all items are loaded at once. For both lazy and non-lazy loading, only the content within the visible area of the arc list plus the content equivalent to **cachedCount** outside the visible area is laid out.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-cachedCount(count: Optional<number>): ArcListAttribute--><!--Device-ArcListAttribute-cachedCount(count: Optional<number>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -36,7 +40,7 @@ Sets the number of arc list items to be preloaded (cached). In a lazy loading sc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Number of list items to preload.<br> Default value: number of nodes visible on the screen, with the maximum value of 16.<br> Value range: [0, +∞) |
+| count | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Number of **ArcListItem** items to preload.<br>Default value: set based on the number of nodes displayed on the screen, with a maximum of 16. <br>Value range: [0, +∞) <br>If this parameter is set to a negative number, **1** is used. |
 
 ## chainAnimation
 
@@ -44,11 +48,15 @@ Sets the number of arc list items to be preloaded (cached). In a lazy loading sc
 chainAnimation(enable: Optional<boolean>)
 ```
 
-Sets whether to enable chained animations, which provide a visually connected, or"chained," effect when the **ArcList** component is scrolled or its top or bottom edge is dragged. The list items are separated with even space, and one item animation starts after the previous animation during basic sliding interactions. The chained animation effect is similar with spring physics. For chained animations to work properly, the edge scrolling effect of the **ArcList** component must be set to **EdgeEffect.Spring**.
+Sets whether to enable chained animations, which provide a visually connected, or "chained," effect when the **ArcList** component is scrolled or its top or bottom edge is dragged.
+
+The list items are separated with even space, and one item animation starts after the previous animation during basic sliding interactions. The chained animation effect is similar with spring physics.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-chainAnimation(enable: Optional<boolean>): ArcListAttribute--><!--Device-ArcListAttribute-chainAnimation(enable: Optional<boolean>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -56,7 +64,7 @@ Sets whether to enable chained animations, which provide a visually connected, o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable chained animations.<br> **false** (default): Chained animations are disabled. **true**: Chained animations are enabled. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the chained linkage effect. The chained linkage effect takes effect only when the edge effect is [EdgeEffect.Spring](../arkts-apis/arkts-arkui-edgeeffect-e.md#spring). <br>Default value: **false**, the chained linkage is not enabled; **true**, the chained linkage is enabled. |
 
 ## childrenMainSize
 
@@ -70,13 +78,15 @@ Sets the size information of the child components of the **ArcList** component a
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute--><!--Device-ArcListAttribute-childrenMainSize(size: Optional<ChildrenMainSize>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md)&gt; | Yes | Precise size information for all child components along the main axis. This ensures accurate scrolling positions in scenarios where child components have varying sizes, are added or removed, or when APIs like **scrollToIndex** are used. It guarantees that **scrollTo** can accurately navigate to the specified position, **currentOffset** or **offset** can accurately reflect the current scrolling position, and the built-in scrollbar can move smoothly without any jumps or abrupt changes. The **offset** API is added from API version 23.<br> **NOTE:** <br>The provided sizes must match the actual sizes of the child components. Any changes to the sizes, or any additions or removals of child components, must be notified to the **ArcList** component through the **ChildrenMainSize** object. |
+| size | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md)&gt; | Yes | Provides precise size information of all child components in the main axis direction to the **ArcList** component through the [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) object. This ensures that the **ArcList** component can maintain the accuracy of its scroll position in scenarios such as inconsistent child component main axis sizes, addition or removal of child components, and when using [scrollToIndex](arkts-arkui-scroll-comp-scroller-c.md#scrolltoindex). It further guarantees that [scrollTo](arkts-arkui-scroll-comp-scroller-c.md#scrollto) can accurately jump to the specified position, [currentOffset](arkts-arkui-scroll-comp-scroller-c.md#currentoffset) or [offset](arkts-arkui-scroll-comp-scroller-c.md#offset) accurately reflects the current scroll position, and the built-in scrollbar can move smoothly without any jumps or abrupt changes. Since API version 23, the **offset** API is added. <br> **NOTE:** <br>The provided main axis size must be consistent with the actual main axis size of the child components. Otherwise, the **ArcList** component may display abnormally. When the main axis size of a child component changes or when child components are added or removed, the **ArcList** component must be notified of the changes by calling the methods of the **ChildrenMainSize** object. Otherwise, the **ArcList** component may display abnormally. |
 
 ## digitalCrownSensitivity
 
@@ -84,11 +94,13 @@ Sets the size information of the child components of the **ArcList** component a
 digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 ```
 
-Sets the sensitivity of the digital crown's event response.
+Sets the crown response sensitivity.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribute--><!--Device-ArcListAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -96,7 +108,7 @@ Sets the sensitivity of the digital crown's event response.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Sensitivity of the digital crown's event response.<br>Default value: **CrownSensitivity.MEDIUM**, indicating moderate response speed. |
+| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Crown response sensitivity.<br>Default value: **CrownSensitivity.MEDIUM**, which indicates a moderate response speed. |
 
 ## enableScrollInteraction
 
@@ -110,13 +122,15 @@ Sets whether to enable scroll gestures.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute--><!--Device-ArcListAttribute-enableScrollInteraction(enable: Optional<boolean>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the **Scroller**.<br>Default value: **true** |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to support the scroll gesture. When set to **true**, the list can be scrolled by finger or mouse. When set to **false**, the list cannot be scrolled by finger or mouse, but the scrolling API of the [Scroller](arkts-arkui-scroll-comp-scroller-c.md) controller is not affected. <br>Default value: **true** |
 
 ## fadingEdge
 
@@ -130,13 +144,15 @@ Sets whether to enable the edge fading effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-fadingEdge(enable: Optional<boolean>): ArcListAttribute--><!--Device-ArcListAttribute-fadingEdge(enable: Optional<boolean>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the edge fading effect.<br> When **fadingEdge** is set to **true**, it overrides the **.overlay()** attribute of the component.<br>With **fadingEdge** set to **true**, avoid setting background-related attributes on the component, as this may affect the display of the fading effect.<br> When **fadingEdge** is set to **true**, the component is clipped to the boundary. If the **clip** attribute of the component is set to **false**, the setting does not take effect.<br>With the value **true**, the edge fading effect is enabled. With the value **false**, the edge fading effect is disabled.<br>Default value: **false**. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the edge fading effect. <br>When **fadingEdge** takes effect, it overrides the `.overlay()` attribute of the original component. <br>When **fadingEdge** takes effect, it is recommended not to set background-related attributes on this component, as they may affect the fading display effect. <br>When **fadingEdge** takes effect, the component is clipped to the boundary, and setting the component's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute to **false** does not take effect. <br>The value **true** enables the edge fading effect, and **false** disables it. <br>Default value: **false** |
 
 ## flingSpeedLimit
 
@@ -150,13 +166,15 @@ Sets the maximum initial speed for inertial scrolling after a fling gesture. If 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-flingSpeedLimit(speed: Optional<number>): ArcListAttribute--><!--Device-ArcListAttribute-flingSpeedLimit(speed: Optional<number>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum initial speed for inertial scrolling.<br> Default value: **9000**.<br>Unit: vp/s.<br>Value range: (0, +∞) |
+| speed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum initial speed when the inertial scrolling animation starts. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **9000** <br>Unit: vp/s <br>Value range: (0, +∞) <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## friction
 
@@ -164,11 +182,13 @@ Sets the maximum initial speed for inertial scrolling after a fling gesture. If 
 friction(friction: Optional<number>)
 ```
 
-Sets the friction coefficient. It applies only to gestures in the scrolling area, and it affects only the inertial scrolling process. If this attribute is set to a value less than or equal to 0, the default value is used.
+Sets the friction coefficient, which takes effect when manually swiping the scroll area and only affects the inertial scrolling process. If the value is set to 0 or less, the default value is used.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-friction(friction: Optional<number>): ArcListAttribute--><!--Device-ArcListAttribute-friction(friction: Optional<number>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -176,7 +196,7 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| friction | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Friction coefficient.<br> Default value: **0.8**<br>Value range: (0, +∞) |
+| friction | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Friction coefficient. It takes effect when manually swiping the scroll area and affects only the inertial scrolling process. If set to a value less than or equal to 0, the default value is used.<br>Default value: **0.8** <br>Value range: (0, +∞) |
 
 ## onDidScroll
 
@@ -189,6 +209,8 @@ Triggered when the list scrolls. The return value is the offset amount by which 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onDidScroll(handler: Optional<OnScrollCallback>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -204,11 +226,15 @@ Triggered when the list scrolls. The return value is the offset amount by which 
 onReachEnd(handler: Optional<VoidCallback>)
 ```
 
-Triggered when the list reaches the end position. If the edge scrolling effect is set to spring, this event is triggered when scrolling past the end position and again when bouncing back to it.
+Triggered when the list reaches the end position.
+
+When the edge effect of **ArcList** is set to the spring effect, this event is triggered once when swiping past the end position, and triggered again when the list springs back to the end position.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onReachEnd(handler: Optional<VoidCallback>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -224,11 +250,15 @@ Triggered when the list reaches the end position. If the edge scrolling effect i
 onReachStart(handler: Optional<VoidCallback>)
 ```
 
-Triggered when the list reaches the start position. This event is triggered during initialization of the **ArcList** component if **initialIndex** is set to **0**, and whenever the list scrolls to the start position. If the edge scrolling effect is set to spring, this event is triggered when scrolling past the start position and again when bouncing back to it.
+Triggered when the list reaches the start position.
+
+This event is triggered during initialization of the **ArcList** component if [initialIndex](arkts-arkui-arclist-comp-arklistoptions-i.md) is set to **0**, and whenever the list scrolls to the start position. If the edge scrolling effect is set to spring, this event is triggered when scrolling past the start position and again when bouncing back to it.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-onReachStart(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onReachStart(handler: Optional<VoidCallback>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -244,11 +274,15 @@ Triggered when the list reaches the start position. This event is triggered duri
 onScrollIndex(handler: Optional<ArcScrollIndexHandler>)
 ```
 
-Triggered when a child component enters or leaves the visible area of the **ArcList** component. This event is triggered during initialization of the **ArcList** component and when the index of the first or last child component in the visible area changes, or when the center child component changes. If the edge scrolling effect of the **ArcList** component is set to spring, this event is not triggered during continued scrolling at the edge or during the bounce-back process.
+Triggered when a child component enters or leaves the visible area of the **ArcList** component. This event is triggered during initialization of the **ArcList** component and when the index of the first or last child component in the visible area changes, or when the center child component changes.
+
+When the edge effect of **ArcList** is set to the spring effect, the **onScrollIndex** event is not triggered during the process of continuing to swipe after the **ArcList** reaches the edge and during the spring-back process after release.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute--><!--Device-ArcListAttribute-onScrollIndex(handler: Optional<ArcScrollIndexHandler>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -264,11 +298,13 @@ Triggered when a child component enters or leaves the visible area of the **ArcL
 onScrollStart(handler: Optional<VoidCallback>)
 ```
 
-Triggered when the list starts scrolling initiated by the user's finger dragging the list or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by **Scroller** starts.
+Triggered when the list starts scrolling initiated by the user's finger dragging the list or its scrollbar. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroll-comp-scroller-c.md) starts.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onScrollStart(handler: Optional<VoidCallback>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -284,11 +320,13 @@ Triggered when the list starts scrolling initiated by the user's finger dragging
 onScrollStop(handler: Optional<VoidCallback>)
 ```
 
-Triggered when the list stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by **Scroller** stops.
+Triggered when the list stops scrolling after the user's finger leaves the screen. This event is also triggered when the animation contained in the scrolling triggered by [Scroller](arkts-arkui-scroll-comp-scroller-c.md) stops.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onScrollStop(handler: Optional<VoidCallback>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -310,6 +348,8 @@ Triggered before each frame during list scrolling. The callback returns the offs
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute--><!--Device-ArcListAttribute-onWillScroll(handler: Optional<OnWillScrollCallback>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
@@ -330,13 +370,15 @@ Sets the state of the scrollbar.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-scrollBar(status: Optional<BarState>): ArcListAttribute--><!--Device-ArcListAttribute-scrollBar(status: Optional<BarState>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| status | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarState](../arkts-apis/arkts-arkui-barstate-e.md)&gt; | Yes | State of the scrollbar.<br> Default value: **BarState.Auto** |
+| status | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarState](../arkts-apis/arkts-arkui-barstate-e.md)&gt; | Yes | Scroll bar status.<br>Default value: **BarState.Auto** |
 
 ## scrollBarColor
 
@@ -350,13 +392,15 @@ Sets the color of the scrollbar.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListAttribute-scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute--><!--Device-ArcListAttribute-scrollBarColor(color: Optional<ColorMetrics>): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Color of the scrollbar.<br> Default value: **ColorMetrics.numeric(0xA9FFFFFF)** |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0xA9FFFFFF)** <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## scrollBarWidth
 
@@ -364,11 +408,13 @@ Sets the color of the scrollbar.
 scrollBarWidth(width: Optional<LengthMetrics>)
 ```
 
-Sets the width of the scrollbar. Once the width is set, the scrollbar will use this width in its pressed state.
+Sets the width of the **ArcList** scrollbar in the pressed state. If not set, the pressed state width is **LengthMetrics.vp(24)**. The non-pressed state width is fixed at **LengthMetrics.vp(4)** and is not affected by this attribute.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute--><!--Device-ArcListAttribute-scrollBarWidth(width: Optional<LengthMetrics>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -376,7 +422,7 @@ Sets the width of the scrollbar. Once the width is set, the scrollbar will use t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Width of the scrollbar.<br> Default value: **LengthMetrics.vp(24)**.<br>Minimum value: **LengthMetrics.vp(4)**<br>Unit: vp |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Width of the **ArcList** scrollbar in the pressed state.<br>Default value: **LengthMetrics.vp(24)** <br>Width in the unpressed state: **LengthMetrics.vp(4)** <br>If this parameter is set to an abnormal value such as a negative value or **undefined**, the width of the scrollbar in the normal state is used. <br>Unit: vp |
 
 ## space
 
@@ -384,11 +430,13 @@ Sets the width of the scrollbar. Once the width is set, the scrollbar will use t
 space(space: Optional<LengthMetrics>)
 ```
 
-Sets the spacing between list items.
+Sets the spacing between list child items.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcListAttribute-space(space: Optional<LengthMetrics>): ArcListAttribute--><!--Device-ArcListAttribute-space(space: Optional<LengthMetrics>): ArcListAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -396,4 +444,4 @@ Sets the spacing between list items.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| space | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Spacing between list items.<br> Default value: **LengthMetrics.vp(0)**.<br>Child components of **ArcList** whose visibility attribute is set to **None** are not displayed, but the spacing above and below them still takes effect. |
+| space | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Spacing between child components in the list. <br>Default value: **LengthMetrics.vp(0)** <br>When the [visibility](arkts-arkui-common-comp-commonmethod-c.md#visibility) attribute of an **ArcList** child component is set to **None**, the child component is not displayed, but the **space** above and below it still takes effect. |

@@ -18,6 +18,8 @@ Unregisters the callback used to obtain the quick start result when an applicati
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-continueManager-function off(type: 'prepareContinue', context: Context, callback?: AsyncCallback<ContinueResultInfo>): void--><!--Device-continueManager-function off(type: 'prepareContinue', context: Context, callback?: AsyncCallback<ContinueResultInfo>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **Parameters:**

@@ -10,6 +10,8 @@ Configure RdbPredicates to match the specified field whose data type is ValueTyp
 
 **Deprecated since:** 9
 
+<!--Device-rdb-export type ResultSet = _ResultSet--><!--Device-rdb-export type ResultSet = _ResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Type:** _ResultSet

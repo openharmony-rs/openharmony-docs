@@ -8,6 +8,8 @@ This module provides accessibility features, including obtaining the accessibili
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace accessibility--><!--Device-unnamed-declare namespace accessibility-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## Modules to Import

@@ -8,6 +8,8 @@ declare interface HistoricalPoint
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface HistoricalPoint--><!--Device-unnamed-declare interface HistoricalPoint-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## force
@@ -30,6 +32,8 @@ force: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-HistoricalPoint-force: number--><!--Device-HistoricalPoint-force: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -49,6 +53,8 @@ size: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HistoricalPoint-size: number--><!--Device-HistoricalPoint-size: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ timestamp: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-HistoricalPoint-timestamp: number--><!--Device-HistoricalPoint-timestamp: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## touchObject
@@ -87,5 +95,7 @@ touchObject: TouchObject
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HistoricalPoint-touchObject: TouchObject--><!--Device-HistoricalPoint-touchObject: TouchObject-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

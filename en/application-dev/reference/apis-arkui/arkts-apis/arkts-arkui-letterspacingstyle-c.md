@@ -4,9 +4,11 @@
 declare class LetterSpacingStyle
 ```
 
-Describes the letter spacing style.
+Describes the text character spacing object. It is suitable for scenarios that require adjusting character spacing, such as widening the spacing of title text to enhance the visual effect and narrowing the spacing of dense text to save space.
 
 **Since:** 12
+
+<!--Device-unnamed-declare class LetterSpacingStyle--><!--Device-unnamed-declare class LetterSpacingStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,13 +26,15 @@ A constructor used to create a text letter spacing style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LetterSpacingStyle-constructor(value: LengthMetrics)--><!--Device-LetterSpacingStyle-constructor(value: LengthMetrics)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Yes | Letter spacing options. This API does not work if **unit** of **LengthMetrics** is percent. |
+| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Yes | Text character spacing setting. If the unit value of **LengthMetrics** is **PERCENT**, this setting does not take effect. |
 
 ## letterSpacing
 
@@ -38,9 +42,9 @@ A constructor used to create a text letter spacing style.
 readonly letterSpacing: number
 ```
 
-Letter spacing.
+Text character spacing of the styled string.
 
-Unit: vp
+Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -49,5 +53,7 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LetterSpacingStyle-readonly letterSpacing: number--><!--Device-LetterSpacingStyle-readonly letterSpacing: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

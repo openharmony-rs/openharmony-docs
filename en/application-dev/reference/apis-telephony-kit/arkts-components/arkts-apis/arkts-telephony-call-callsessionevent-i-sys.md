@@ -8,6 +8,8 @@ Defines the video call event information.
 
 **Since:** 11
 
+<!--Device-call-export interface CallSessionEvent--><!--Device-call-export interface CallSessionEvent-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Call ID.
 
 **Since:** 11
 
+<!--Device-CallSessionEvent-callId: int--><!--Device-CallSessionEvent-callId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Video call event.
 **Type:** [CallSessionEventId](arkts-telephony-call-callsessioneventid-e-sys.md)
 
 **Since:** 11
+
+<!--Device-CallSessionEvent-eventId: CallSessionEventId--><!--Device-CallSessionEvent-eventId: CallSessionEventId-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

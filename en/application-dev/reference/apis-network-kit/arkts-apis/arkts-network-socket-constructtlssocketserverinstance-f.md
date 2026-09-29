@@ -16,6 +16,8 @@ Creates a **TLSSocketServer** object.
 
 **Since:** 10
 
+<!--Device-socket-function constructTLSSocketServerInstance(): TLSSocketServer--><!--Device-socket-function constructTLSSocketServerInstance(): TLSSocketServer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

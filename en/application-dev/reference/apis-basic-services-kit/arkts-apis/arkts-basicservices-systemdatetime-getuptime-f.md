@@ -16,6 +16,8 @@ Obtains the time elapsed since system startup. This API returns the result synch
 
 **Since:** 10
 
+<!--Device-systemDateTime-function getUptime(timeType: TimeType, isNanoseconds?: boolean): long--><!--Device-systemDateTime-function getUptime(timeType: TimeType, isNanoseconds?: boolean): long-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **Parameters:**
@@ -35,7 +37,7 @@ Obtains the time elapsed since system startup. This API returns the result synch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. This error code was added due to missing issues.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 

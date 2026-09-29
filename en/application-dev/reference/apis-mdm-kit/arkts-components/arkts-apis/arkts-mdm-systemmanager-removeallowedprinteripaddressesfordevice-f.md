@@ -20,6 +20,8 @@ Removes allowed printer IP addresses for device. The policy takes effect for all
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array<string>): void--><!--Device-systemManager-function removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

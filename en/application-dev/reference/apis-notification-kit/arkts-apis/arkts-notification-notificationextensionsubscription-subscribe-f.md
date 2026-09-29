@@ -18,6 +18,8 @@ Subscribes to the notification extension. You can subscribe to the notification 
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 
+<!--Device-notificationExtensionSubscription-function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>--><!--Device-notificationExtensionSubscription-function subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**

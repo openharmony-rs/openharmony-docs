@@ -8,6 +8,8 @@ Defines the options for the searchable sidebar tab bar.
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare interface TabsSidebarSearchableOptions--><!--Device-unnamed-declare interface TabsSidebarSearchableOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## searchCallback
@@ -23,6 +25,8 @@ Callback triggered when the search text changes.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsSidebarSearchableOptions-searchCallback?: (text: string) => void--><!--Device-TabsSidebarSearchableOptions-searchCallback?: (text: string) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Filter function to determine whether a tab should be displayed based on the sear
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-TabsSidebarSearchableOptions-searchFilter?: TabsSidebarSearchFilterCallback--><!--Device-TabsSidebarSearchableOptions-searchFilter?: TabsSidebarSearchFilterCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## placeholder
@@ -64,6 +70,8 @@ Placeholder text displayed when the search input is empty.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-TabsSidebarSearchableOptions-placeholder?: ResourceStr--><!--Device-TabsSidebarSearchableOptions-placeholder?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## searchText
@@ -81,5 +89,7 @@ Sets the text input in the search text box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsSidebarSearchableOptions-searchText?: ResourceStr--><!--Device-TabsSidebarSearchableOptions-searchText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ The Scope interface is used to describe the valid range of a field.
 
 **Substitutes:** [ScopeHelper](arkts-arkts-util-scopehelper-c.md)
 
+<!--Device-util-class Scope--><!--Device-util-class Scope-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Limits a value to this **Scope**.
 **Deprecated since:** 9
 
 **Substitutes:** [clamp](arkts-arkts-util-scopehelper-c.md#clamp)
+
+<!--Device-Scope-clamp(value: ScopeType): ScopeType--><!--Device-Scope-clamp(value: ScopeType): ScopeType-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -94,6 +98,8 @@ A constructor used to create a **Scope** object with the specified upper and low
 
 **Substitutes:** constructor
 
+<!--Device-Scope-constructor(lowerObj: ScopeType, upperObj: ScopeType)--><!--Device-Scope-constructor(lowerObj: ScopeType, upperObj: ScopeType)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -145,7 +151,9 @@ Checks whether a value is within this **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** [contains](arkts-arkts-util-lrucache-c.md#contains)
+**Substitutes:** contains
+
+<!--Device-Scope-contains(value: ScopeType): boolean--><!--Device-Scope-contains(value: ScopeType): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -207,7 +215,9 @@ Checks whether a range is within this **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** [contains](arkts-arkts-util-lrucache-c.md#contains)
+**Substitutes:** contains
+
+<!--Device-Scope-contains(range: Scope): boolean--><!--Device-Scope-contains(range: Scope): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -270,6 +280,8 @@ Obtains the union set of this **Scope** and the given lower and upper limits.
 **Deprecated since:** 9
 
 **Substitutes:** expand
+
+<!--Device-Scope-expand(lowerObj: ScopeType, upperObj: ScopeType): Scope--><!--Device-Scope-expand(lowerObj: ScopeType, upperObj: ScopeType): Scope-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -335,6 +347,8 @@ Obtains the union set of this **Scope** and the given **Scope**.
 
 **Substitutes:** expand
 
+<!--Device-Scope-expand(range: Scope): Scope--><!--Device-Scope-expand(range: Scope): Scope-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -399,6 +413,8 @@ Obtains the union set of this **Scope** and the given value.
 
 **Substitutes:** expand
 
+<!--Device-Scope-expand(value: ScopeType): Scope--><!--Device-Scope-expand(value: ScopeType): Scope-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -459,6 +475,8 @@ Obtains the lower limit of this **Scope**.
 
 **Substitutes:** [getLower](arkts-arkts-util-scopehelper-c.md#getlower)
 
+<!--Device-Scope-getLower(): ScopeType--><!--Device-Scope-getLower(): ScopeType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -512,6 +530,8 @@ Obtains the upper limit of this **Scope**.
 
 **Substitutes:** [getUpper](arkts-arkts-util-scopehelper-c.md#getupper)
 
+<!--Device-Scope-getUpper(): ScopeType--><!--Device-Scope-getUpper(): ScopeType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -564,6 +584,8 @@ Obtains the intersection of this **Scope** and the given **Scope**.
 **Deprecated since:** 9
 
 **Substitutes:** intersect
+
+<!--Device-Scope-intersect(range: Scope): Scope--><!--Device-Scope-intersect(range: Scope): Scope-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -629,6 +651,8 @@ Obtains the intersection of this **Scope** and the given lower and upper limits.
 
 **Substitutes:** intersect
 
+<!--Device-Scope-intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope--><!--Device-Scope-intersect(lowerObj: ScopeType, upperObj: ScopeType): Scope-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -689,7 +713,9 @@ Obtains a string representation that contains this **Scope**.
 
 **Deprecated since:** 9
 
-**Substitutes:** [toString](arkts-arkts-util-lrucache-c.md#tostring)
+**Substitutes:** toString
+
+<!--Device-Scope-toString(): string--><!--Device-Scope-toString(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

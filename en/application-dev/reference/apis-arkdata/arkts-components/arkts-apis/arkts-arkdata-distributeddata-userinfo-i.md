@@ -10,6 +10,8 @@ Defines user information.
 
 **Deprecated since:** 9
 
+<!--Device-distributedData-interface UserInfo--><!--Device-distributedData-interface UserInfo-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ User ID. The default value is **0**.
 
 **Deprecated since:** 9
 
+<!--Device-UserInfo-userId?: string--><!--Device-UserInfo-userId?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## userType
@@ -46,5 +50,7 @@ User type. The default value is **0**.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-UserInfo-userType?: UserType--><!--Device-UserInfo-userType?: UserType-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

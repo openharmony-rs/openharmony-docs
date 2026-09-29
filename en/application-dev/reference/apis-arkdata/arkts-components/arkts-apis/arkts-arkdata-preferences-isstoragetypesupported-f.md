@@ -16,7 +16,9 @@ Checks whether the specified storage type is supported. This API returns the res
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-preferences-function isStorageTypeSupported(type: StorageType): boolean--><!--Device-preferences-function isStorageTypeSupported(type: StorageType): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 

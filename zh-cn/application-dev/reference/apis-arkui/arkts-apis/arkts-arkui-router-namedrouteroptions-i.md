@@ -8,6 +8,8 @@ interface NamedRouterOptions
 
 **起始版本：** 10
 
+<!--Device-router-interface NamedRouterOptions--><!--Device-router-interface NamedRouterOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ name: string
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NamedRouterOptions-name: string--><!--Device-NamedRouterOptions-name: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## params
@@ -58,6 +62,8 @@ params参数不能传递方法和系统接口返回的对象（例如，媒体�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NamedRouterOptions-params?: Object--><!--Device-NamedRouterOptions-params?: Object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## recoverable
@@ -75,5 +81,7 @@ recoverable?: boolean
 **类型：** boolean
 
 **起始版本：** 14
+
+<!--Device-NamedRouterOptions-recoverable?: boolean--><!--Device-NamedRouterOptions-recoverable?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite

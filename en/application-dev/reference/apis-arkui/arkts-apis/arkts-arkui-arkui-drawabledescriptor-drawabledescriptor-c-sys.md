@@ -8,6 +8,8 @@ Represents the base class providing overridable methods for [PixelMap](../../api
 
 **Since:** 10
 
+<!--Device-unnamed-export class DrawableDescriptor--><!--Device-unnamed-export class DrawableDescriptor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Creates a new DrawableDescriptor.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DrawableDescriptor-constructor()--><!--Device-DrawableDescriptor-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ set svg resource limit level.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DrawableDescriptor-setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void--><!--Device-DrawableDescriptor-setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

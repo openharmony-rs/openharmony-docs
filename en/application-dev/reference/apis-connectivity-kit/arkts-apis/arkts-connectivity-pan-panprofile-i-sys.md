@@ -10,6 +10,8 @@ Manager pan host profile.
 
 **Since:** 10
 
+<!--Device-pan-interface PanProfile extends BaseProfile--><!--Device-pan-interface PanProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Initiate the PAN connection with the remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanProfile-connect(deviceId: string): void--><!--Device-PanProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -66,6 +70,8 @@ Disconnect the PAN connection with the remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanProfile-disconnect(deviceId: string): void--><!--Device-PanProfile-disconnect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -115,6 +121,8 @@ Enable bluetooth tethering.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanProfile-setTethering(enable: boolean): void--><!--Device-PanProfile-setTethering(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

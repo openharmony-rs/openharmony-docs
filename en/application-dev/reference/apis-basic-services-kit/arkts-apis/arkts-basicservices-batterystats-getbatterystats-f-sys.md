@@ -16,6 +16,8 @@ Obtains the power consumption information list. This API uses a promise to retur
 
 **Since:** 8
 
+<!--Device-batteryStats-function getBatteryStats(): Promise<Array<BatteryStatsInfo>>--><!--Device-batteryStats-function getBatteryStats(): Promise<Array<BatteryStatsInfo>>-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 Obtains the power consumption information list. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-batteryStats-function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void--><!--Device-batteryStats-function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryStatistics
 

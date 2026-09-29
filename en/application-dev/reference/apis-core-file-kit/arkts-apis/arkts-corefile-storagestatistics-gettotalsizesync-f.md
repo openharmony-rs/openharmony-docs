@@ -20,6 +20,8 @@ Obtains the total space of the built-in storage, in bytes. This API returns the 
 - API version 15 and later: N/A
 - API versions 10 to 14: ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getTotalSizeSync(): long--><!--Device-storageStatistics-function getTotalSizeSync(): long-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Return value:**

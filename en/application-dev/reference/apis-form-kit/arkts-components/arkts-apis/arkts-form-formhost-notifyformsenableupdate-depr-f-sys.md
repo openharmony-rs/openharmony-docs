@@ -25,6 +25,8 @@ Instructs the widgets to enable or disable updates. This API uses an asynchronou
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function notifyFormsEnableUpdate(    formIds: Array<string>,    isEnableUpdate: boolean,    callback: AsyncCallback<void>  ): void--><!--Device-formHost-function notifyFormsEnableUpdate(    formIds: Array<string>,    isEnableUpdate: boolean,    callback: AsyncCallback<void>  ): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -55,6 +57,8 @@ Instructs the widgets to enable or disable updates. This API uses a promise to r
 **Substitutes:** [notifyFormsEnableUpdate](arkts-form-formhost-notifyformsenableupdate-f-sys.md)
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function notifyFormsEnableUpdate(formIds: Array<string>, isEnableUpdate: boolean): Promise<void>--><!--Device-formHost-function notifyFormsEnableUpdate(formIds: Array<string>, isEnableUpdate: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

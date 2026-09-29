@@ -20,6 +20,8 @@ Removes allowed Bluetooth devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function removeAllowedBluetoothDevices(admin: Want, deviceIds: Array<string>): void--><!--Device-bluetoothManager-function removeAllowedBluetoothDevices(admin: Want, deviceIds: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -14,6 +14,8 @@ When browsing web pages in Privacy Mode, data such as cookies and caches are not
 
 **Since:** 9
 
+<!--Device-webview-class WebCookieManager--><!--Device-webview-class WebCookieManager-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Clears all cookies, including session cookies and persistent cookies. This API u
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static clearAllCookies(): Promise<void>--><!--Device-WebCookieManager-static clearAllCookies(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -92,6 +96,8 @@ Clears all cookies, including session cookies and persistent cookies. This API u
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static clearAllCookies(callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static clearAllCookies(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -150,6 +156,8 @@ Clears all cookies, including session cookies and persistent cookies. To clear o
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static clearAllCookiesSync(incognito?: boolean): void--><!--Device-WebCookieManager-static clearAllCookiesSync(incognito?: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -192,6 +200,8 @@ Clears all session cookies. This API uses a promise to return the result.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static clearSessionCookie(): Promise<void>--><!--Device-WebCookieManager-static clearSessionCookie(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -255,6 +265,8 @@ Clears all session cookies. This API uses an asynchronous callback to return the
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static clearSessionCookie(callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static clearSessionCookie(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -313,6 +325,8 @@ Deletes all session cookies.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static clearSessionCookieSync(): void--><!--Device-WebCookieManager-static clearSessionCookieSync(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -365,6 +379,8 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static configCookie(url: string, value: string): Promise<void>--><!--Device-WebCookieManager-static configCookie(url: string, value: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -448,6 +464,8 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > - If the specified value contains the "Secure" attribute, the URL must use the "https://" protocol.
 
 **Since:** 14
+
+<!--Device-WebCookieManager-static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise<void>--><!--Device-WebCookieManager-static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -538,6 +556,8 @@ Sets a single cookie value for a specified URL. This API uses an asynchronous ca
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static configCookie(url: string, value: string, callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static configCookie(url: string, value: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -616,6 +636,8 @@ Sets a cookie for the specified URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static configCookieSync(url: string, value: string, incognito?: boolean): void--><!--Device-WebCookieManager-static configCookieSync(url: string, value: string, incognito?: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -689,6 +711,8 @@ Sets a single cookie value for a specified URL.
 
 **Since:** 14
 
+<!--Device-WebCookieManager-static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void--><!--Device-WebCookieManager-static configCookieSync(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -737,84 +761,6 @@ struct WebComponent {
 }
 ```
 
-## deleteEntireCookie
-
-```TypeScript
-static deleteEntireCookie(): void
-```
-
-Deletes all cookies.
-
-**Since:** 9
-
-**Deprecated since:** 11
-
-**Substitutes:** [clearAllCookiesSync](#clearallcookiessync)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Examples**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('deleteEntireCookie')
-        .onClick(() => {
-          webview.WebCookieManager.deleteEntireCookie();
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-## deleteSessionCookie
-
-```TypeScript
-static deleteSessionCookie(): void
-```
-
-Deletes all session cookies.
-
-**Since:** 9
-
-**Deprecated since:** 11
-
-**Substitutes:** [clearSessionCookieSync](#clearsessioncookiesync)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Examples**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('deleteSessionCookie')
-        .onClick(() => {
-          webview.WebCookieManager.deleteSessionCookie();
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## existCookie
 
 ```TypeScript
@@ -826,6 +772,8 @@ Checks whether cookies exist.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static existCookie(incognito?: boolean): boolean--><!--Device-WebCookieManager-static existCookie(incognito?: boolean): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -874,6 +822,8 @@ static fetchAllCookies(incognito: boolean): Promise<Array<WebHttpCookie>>
 Obtains all cookies. This API uses a promise to return the result.
 
 **Since:** 23
+
+<!--Device-WebCookieManager-static fetchAllCookies(incognito: boolean): Promise<Array<WebHttpCookie>>--><!--Device-WebCookieManager-static fetchAllCookies(incognito: boolean): Promise<Array<WebHttpCookie>>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -942,6 +892,8 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static fetchCookie(url: string): Promise<string>--><!--Device-WebCookieManager-static fetchCookie(url: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1008,6 +960,8 @@ static fetchCookie(url: string, incognito: boolean): Promise<string>
 Obtains the cookie value of a specified URL. This API uses a promise to return the result.
 
 **Since:** 14
+
+<!--Device-WebCookieManager-static fetchCookie(url: string, incognito: boolean): Promise<string>--><!--Device-WebCookieManager-static fetchCookie(url: string, incognito: boolean): Promise<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1079,6 +1033,8 @@ Obtains the cookies corresponding to a specified URL. The parameter incognito sp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebCookieManager-static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise<string>--><!--Device-WebCookieManager-static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1148,6 +1104,8 @@ Obtains the cookie value of a specified URL. This API uses an asynchronous callb
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static fetchCookie(url: string, callback: AsyncCallback<string>): void--><!--Device-WebCookieManager-static fetchCookie(url: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1220,6 +1178,8 @@ Obtains the cookie value of the specified URL.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static fetchCookieSync(url: string, incognito?: boolean): string--><!--Device-WebCookieManager-static fetchCookieSync(url: string, incognito?: boolean): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1294,6 +1254,8 @@ Obtains the cookies corresponding to a specified URL. The optional parameter inc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebCookieManager-static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string--><!--Device-WebCookieManager-static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1345,70 +1307,6 @@ struct WebComponent {
 }
 ```
 
-## getCookie
-
-```TypeScript
-static getCookie(url: string): string
-```
-
-Obtains the cookie value of the specified URL.
-
-**Since:** 9
-
-**Deprecated since:** 11
-
-**Substitutes:** [fetchCookieSync](#fetchcookiesync)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| url | string | Yes | URL for which the cookie is to be obtained. A complete URL is recommended. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| string | Cookie value corresponding to the specified URL. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
-| [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-
-**Examples**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('getCookie')
-        .onClick(() => {
-          try {
-            let value = webview.WebCookieManager.getCookie('https://www.example.com');
-            console.info("value: " + value);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
 ## isCookieAllowed
 
 ```TypeScript
@@ -1420,6 +1318,8 @@ Checks whether the **WebCookieManager** instance has the permission to send and 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static isCookieAllowed(): boolean--><!--Device-WebCookieManager-static isCookieAllowed(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1465,6 +1365,8 @@ Checks whether the **WebCookieManager** instance has the permission to send and 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static isThirdPartyCookieAllowed(): boolean--><!--Device-WebCookieManager-static isThirdPartyCookieAllowed(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -1508,6 +1410,8 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static putAcceptCookieEnabled(accept: boolean): void--><!--Device-WebCookieManager-static putAcceptCookieEnabled(accept: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1562,6 +1466,8 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static putAcceptThirdPartyCookieEnabled(accept: boolean): void--><!--Device-WebCookieManager-static putAcceptThirdPartyCookieEnabled(accept: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1620,6 +1526,8 @@ Saves all cookies that can be obtained through fetchCookie and need to be persis
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCookieManager-static saveCookieAsync(): Promise<void>--><!--Device-WebCookieManager-static saveCookieAsync(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1687,6 +1595,8 @@ Asynchronously saves all cookies (that can be obtained through **fetchCookie** a
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCookieManager-static saveCookieAsync(callback: AsyncCallback<void>): void--><!--Device-WebCookieManager-static saveCookieAsync(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1749,6 +1659,8 @@ Synchronously saves all cookies (that can be obtained through **fetchCookie** an
 
 **Since:** 15
 
+<!--Device-WebCookieManager-static saveCookieSync(): void--><!--Device-WebCookieManager-static saveCookieSync(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -1779,6 +1691,208 @@ struct WebComponent {
 }
 ```
 
+## setLazyInitializeWebEngine
+
+```TypeScript
+static setLazyInitializeWebEngine(lazy: boolean): void
+```
+
+Sets whether to delay the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not delayed by default.
+
+> **NOTE:** 
+> 
+> - This API is a global static method. It must be called before using ArkWeb components and initializing the ArkWeb kernel. Otherwise, the setting does not take effect.
+> 
+> - This API applies only to APIs that initialize CookieManager when called, such as other APIs of this class WebCookieManager. After this API is called and set to **true**, calling applicable APIs skips the initialization of the ArkWeb kernel when initializing CookieManager. You need to initialize the ArkWeb kernel separately afterwards.
+> 
+> -Since API version 26.0.1, when set to **true**, CookieManager interfaces can be used in asynchronous threads.
+
+**Since:** 22
+
+<!--Device-WebCookieManager-static setLazyInitializeWebEngine(lazy: boolean): void--><!--Device-WebCookieManager-static setLazyInitializeWebEngine(lazy: boolean): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| lazy | boolean | Yes | Controls whether to delay the initialization of the web engine. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+webview.WebCookieManager.setLazyInitializeWebEngine(true);
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  aboutToAppear(): void {
+    webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+    webview.WebCookieManager.fetchCookieSync('https://www.example.com');
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## deleteEntireCookie
+
+```TypeScript
+static deleteEntireCookie(): void
+```
+
+Deletes all cookies.
+
+**Since:** 9
+
+**Deprecated since:** 11
+
+**Substitutes:** [clearAllCookiesSync](#clearallcookiessync)
+
+<!--Device-WebCookieManager-static deleteEntireCookie(): void--><!--Device-WebCookieManager-static deleteEntireCookie(): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteEntireCookie')
+        .onClick(() => {
+          webview.WebCookieManager.deleteEntireCookie();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## deleteSessionCookie
+
+```TypeScript
+static deleteSessionCookie(): void
+```
+
+Deletes all session cookies.
+
+**Since:** 9
+
+**Deprecated since:** 11
+
+**Substitutes:** [clearSessionCookieSync](#clearsessioncookiesync)
+
+<!--Device-WebCookieManager-static deleteSessionCookie(): void--><!--Device-WebCookieManager-static deleteSessionCookie(): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteSessionCookie')
+        .onClick(() => {
+          webview.WebCookieManager.deleteSessionCookie();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getCookie
+
+```TypeScript
+static getCookie(url: string): string
+```
+
+Obtains the cookie value of the specified URL.
+
+**Since:** 9
+
+**Deprecated since:** 11
+
+**Substitutes:** [fetchCookieSync](#fetchcookiesync)
+
+<!--Device-WebCookieManager-static getCookie(url: string): string--><!--Device-WebCookieManager-static getCookie(url: string): string-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| url | string | Yes | URL for which the cookie is to be obtained. A complete URL is recommended. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Cookie value corresponding to the specified URL. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
+
+**Examples**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getCookie')
+        .onClick(() => {
+          try {
+            let value = webview.WebCookieManager.getCookie('https://www.example.com');
+            console.info("value: " + value);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setCookie
 
 ```TypeScript
@@ -1792,6 +1906,8 @@ Sets a cookie for the specified URL.
 **Deprecated since:** 11
 
 **Substitutes:** [configCookieSync](#configcookiesync)
+
+<!--Device-WebCookieManager-static setCookie(url: string, value: string): void--><!--Device-WebCookieManager-static setCookie(url: string, value: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1832,58 +1948,6 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
-
-## setLazyInitializeWebEngine
-
-```TypeScript
-static setLazyInitializeWebEngine(lazy: boolean): void
-```
-
-Sets whether to delay the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not delayed by default.
-
-> **NOTE:** 
-> 
-> - This API is a global static method. It must be called before using ArkWeb components and initializing the ArkWeb kernel. Otherwise, the setting does not take effect.
-> 
-> - This API applies only to APIs that initialize CookieManager when called, such as other APIs of this class WebCookieManager. After this API is called and set to **true**, calling applicable APIs skips the initialization of the ArkWeb kernel when initializing CookieManager. You need to initialize the ArkWeb kernel separately afterwards.
-> 
-> -Since API version 26.0.1, when set to **true**, CookieManager interfaces can be used in asynchronous threads.
-
-**Since:** 22
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| lazy | boolean | Yes | Controls whether to delay the initialization of the web engine. |
-
-**Examples**
-
-```TypeScript
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-
-webview.WebCookieManager.setLazyInitializeWebEngine(true);
-
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  aboutToAppear(): void {
-    webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
-    webview.WebCookieManager.fetchCookieSync('https://www.example.com');
-  }
-
-  build() {
-    Column() {
       Web({ src: 'www.example.com', controller: this.controller })
     }
   }

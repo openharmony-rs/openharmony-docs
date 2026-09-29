@@ -15,11 +15,11 @@ Shape组件的两种使用方式：
 > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
-包含Rect、Path、Circle、[Ellipse](arkts-arkui-canvas-comp-canvaspath-c.md#ellipse)、Polyline、Polygon、Image、Text、Column、Row和Shape子组件。
+包含Rect、Path、Circle、[Ellipse](arkts-arkui-canvas-comp-canvaspath-c.md#ellipse)、Polyline、[Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon)、Image、Text、[Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column)、Row和Shape子组件。
 
 ## Shape
 
@@ -34,6 +34,8 @@ Use the new function to create Shape.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute--><!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +61,8 @@ Shape(value: PixelMap)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ShapeInterface-(value: PixelMap): ShapeAttribute--><!--Device-ShapeInterface-(value: PixelMap): ShapeAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -82,6 +86,8 @@ Called when a component is drawn.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeInterface-(): ShapeAttribute--><!--Device-ShapeInterface-(): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

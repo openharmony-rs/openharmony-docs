@@ -8,6 +8,8 @@ The module describes the startup configuration of a child process. When starting
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ChildProcessOptions--><!--Device-unnamed-export interface ChildProcessOptions-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Controls the sandbox isolation level and network access permissions of the child
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ChildProcessOptions-isolationMode?: boolean--><!--Device-ChildProcessOptions-isolationMode?: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## isolationUid
@@ -45,6 +49,8 @@ Whether the child process uses an independent UID. **true** if the child process
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChildProcessOptions-isolationUid?: boolean--><!--Device-ChildProcessOptions-isolationUid?: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

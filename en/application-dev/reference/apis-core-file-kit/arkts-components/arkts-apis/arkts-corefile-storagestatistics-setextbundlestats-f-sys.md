@@ -25,6 +25,8 @@ Reports the space usage of system applications or system services. This API uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function setExtBundleStats(userId: int, stats: ExtBundleStats): Promise<void>--><!--Device-storageStatistics-function setExtBundleStats(userId: int, stats: ExtBundleStats): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.

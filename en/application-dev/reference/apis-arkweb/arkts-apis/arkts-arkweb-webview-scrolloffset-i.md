@@ -8,6 +8,8 @@ Represents the current scrolling offset of a web page.
 
 **Since:** 13
 
+<!--Device-webview-interface ScrollOffset--><!--Device-webview-interface ScrollOffset-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-ScrollOffset-x: number--><!--Device-ScrollOffset-x: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## y
@@ -57,5 +61,7 @@ Unit: vp.
 **Since:** 13
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-ScrollOffset-y: number--><!--Device-ScrollOffset-y: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

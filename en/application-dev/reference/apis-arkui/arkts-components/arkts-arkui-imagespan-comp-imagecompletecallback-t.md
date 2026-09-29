@@ -4,13 +4,15 @@
 type ImageCompleteCallback = (result: ImageLoadResult) => void
 ```
 
-Defines the callback triggered when the image is successfully loaded or decoded.
+Triggered when the image is successfully loaded and decoded.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-unnamed-type ImageCompleteCallback = (result: ImageLoadResult) => void--><!--Device-unnamed-type ImageCompleteCallback = (result: ImageLoadResult) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

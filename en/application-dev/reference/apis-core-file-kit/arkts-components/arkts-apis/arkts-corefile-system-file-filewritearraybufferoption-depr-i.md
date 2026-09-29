@@ -10,6 +10,8 @@ Defines the options used in writeArrayBuffer().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileWriteArrayBufferOption--><!--Device-unnamed-export interface FileWriteArrayBufferOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileWriteArrayBufferOption-complete?: () => void--><!--Device-FileWriteArrayBufferOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteArrayBufferOption-fail?: (data: string, code: number) => void--><!--Device-FileWriteArrayBufferOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -64,6 +70,8 @@ Callback invoked when the API call is successful.
 
 **Deprecated since:** 10
 
+<!--Device-FileWriteArrayBufferOption-success?: () => void--><!--Device-FileWriteArrayBufferOption-success?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## append
@@ -79,6 +87,8 @@ Whether to enable the append mode. The default value is **false**. If the value 
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteArrayBufferOption-append?: boolean--><!--Device-FileWriteArrayBufferOption-append?: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -96,6 +106,8 @@ Buffer from which the data is derived.
 
 **Deprecated since:** 10
 
+<!--Device-FileWriteArrayBufferOption-buffer: Uint8Array--><!--Device-FileWriteArrayBufferOption-buffer: Uint8Array-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## position
@@ -111,6 +123,8 @@ Offset of the position in the file where writing starts, in bytes. The default v
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteArrayBufferOption-position?: number--><!--Device-FileWriteArrayBufferOption-position?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -129,5 +143,7 @@ URI of a local file. If it does not exist, a file will be created. Restricted by
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileWriteArrayBufferOption-uri: string--><!--Device-FileWriteArrayBufferOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

@@ -8,6 +8,8 @@ Out Of Band data used in Bluetooth device pairing.
 
 **Since:** 23
 
+<!--Device-connection-interface OobData--><!--Device-connection-interface OobData-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Confirmation data in OOB pairing, with a size of 16 octets.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OobData-confirmationHash: Uint8Array--><!--Device-OobData-confirmationHash: Uint8Array-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The address of remote Bluetooth device.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OobData-deviceId: BluetoothAddress--><!--Device-OobData-deviceId: BluetoothAddress-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -68,6 +74,8 @@ The name of the remote Bluetooth device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OobData-deviceName?: string--><!--Device-OobData-deviceName?: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ The role of the remote Bluetooth device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OobData-deviceRole?: DeviceRole--><!--Device-OobData-deviceRole?: DeviceRole-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ Randomizer data in OOB pairing, with a size of 16 octets.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OobData-randomizerHash?: Uint8Array--><!--Device-OobData-randomizerHash?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

@@ -18,6 +18,8 @@ Performs preprocessing for the asset query in the specified user space. This API
 
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-asset-function preQueryAsUser(userId: number, query: AssetMap): Promise<Uint8Array>--><!--Device-asset-function preQueryAsUser(userId: number, query: AssetMap): Promise<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

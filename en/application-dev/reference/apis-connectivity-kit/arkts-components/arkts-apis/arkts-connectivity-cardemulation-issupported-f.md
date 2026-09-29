@@ -27,6 +27,8 @@ Checks whether a certain type of card emulation is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cardEmulation-function isSupported(feature: number): boolean--><!--Device-cardEmulation-function isSupported(feature: number): boolean-End-->
+
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
 **Parameters:**

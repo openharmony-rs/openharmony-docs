@@ -1,4 +1,4 @@
-# @ohos.app.ability.autoFillManager
+# @ohos.app.ability.autoFillManager(Auto Fill Framework)
 
 The autoFillManager module provides applications with the auto-fill capability for user information such as accounts, passwords, addresses, and phone numbers.
 
@@ -7,6 +7,8 @@ Unlike the system's auto-save feature that triggers during page transitions, thi
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare namespace autoFillManager--><!--Device-unnamed-declare namespace autoFillManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

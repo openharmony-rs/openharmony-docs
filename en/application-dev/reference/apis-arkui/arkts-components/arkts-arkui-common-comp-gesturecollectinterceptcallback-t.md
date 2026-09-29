@@ -13,6 +13,8 @@ Defines the callback type used in [onGestureCollectIntercept](arkts-arkui-common
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-declare type GestureCollectInterceptCallback = (recognizers: Array<GestureRecognizer>,   touchRecognizers?: Array<TouchRecognizer>) => GestureCollectIntervention--><!--Device-unnamed-declare type GestureCollectInterceptCallback = (recognizers: Array<GestureRecognizer>,   touchRecognizers?: Array<TouchRecognizer>) => GestureCollectIntervention-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

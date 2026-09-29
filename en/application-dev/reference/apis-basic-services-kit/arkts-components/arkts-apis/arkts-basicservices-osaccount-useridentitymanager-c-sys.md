@@ -8,6 +8,8 @@ Provides APIs for managing the user identity.
 
 **Since:** 8
 
+<!--Device-osAccount-class UserIdentityManager--><!--Device-osAccount-class UserIdentityManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Adds credentials of specified types, including the credential type, subtype, and
 **Since:** 8
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
+
+<!--Device-UserIdentityManager-addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void--><!--Device-UserIdentityManager-addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -107,6 +111,8 @@ Cancels an entry based on the challenge value.
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-cancel(challenge: Uint8Array): void--><!--Device-UserIdentityManager-cancel(challenge: Uint8Array): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -154,6 +160,8 @@ Closes this session to terminate IDM.
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-closeSession(accountId?: int): void--><!--Device-UserIdentityManager-closeSession(accountId?: int): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -193,6 +201,8 @@ A **constructor()** used to create an instance for managing the user identity.
 
 **Since:** 8
 
+<!--Device-UserIdentityManager-constructor()--><!--Device-UserIdentityManager-constructor()-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -220,6 +230,8 @@ Deletes user credentials.
 **Since:** 8
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
+
+<!--Device-UserIdentityManager-delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void--><!--Device-UserIdentityManager-delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -278,6 +290,8 @@ Deletes a user with an authentication token. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-delUser(token: Uint8Array, callback: IIdmCallback): void--><!--Device-UserIdentityManager-delUser(token: Uint8Array, callback: IIdmCallback): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -331,6 +345,8 @@ Obtains authentication information. This API uses an asynchronous callback to re
 
 **Required permissions:** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void--><!--Device-UserIdentityManager-getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -383,6 +399,8 @@ Obtains authentication information of the specified type. This API uses an async
 **Since:** 8
 
 **Required permissions:** ohos.permission.USE_USER_IDM
+
+<!--Device-UserIdentityManager-getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>): void--><!--Device-UserIdentityManager-getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -439,6 +457,8 @@ Obtains authentication information. This API uses a promise to return the result
 **Since:** 8
 
 **Required permissions:** ohos.permission.USE_USER_IDM
+
+<!--Device-UserIdentityManager-getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>--><!--Device-UserIdentityManager-getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -497,6 +517,8 @@ Obtains authentication information. This API uses a promise to return the result
 **Since:** 12
 
 **Required permissions:** ohos.permission.USE_USER_IDM
+
+<!--Device-UserIdentityManager-getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>--><!--Device-UserIdentityManager-getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -559,6 +581,8 @@ Obtains the ID of the enrolled credential based on the credential type and accou
 
 **Required permissions:** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>--><!--Device-UserIdentityManager-getEnrolledId(authType: AuthType, accountId?: int): Promise<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -620,6 +644,8 @@ Unsubscribes from credential change events. If no callback is not specified, thi
 **Since:** 23
 
 **Required permissions:** ohos.permission.USE_USER_IDM
+
+<!--Device-UserIdentityManager-offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void--><!--Device-UserIdentityManager-offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -685,6 +711,8 @@ Subscribes to one or more types of credential change events. This API uses a cal
 
 **Required permissions:** ohos.permission.USE_USER_IDM
 
+<!--Device-UserIdentityManager-onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialChangeInfo>): void--><!--Device-UserIdentityManager-onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -744,6 +772,8 @@ Opens a session to obtain the challenge value. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
 
+<!--Device-UserIdentityManager-openSession(callback: AsyncCallback<Uint8Array>): void--><!--Device-UserIdentityManager-openSession(callback: AsyncCallback<Uint8Array>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -796,6 +826,8 @@ Opens a session. This API returns a challenge value, which can be used to determ
 **Since:** 8
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
+
+<!--Device-UserIdentityManager-openSession(accountId?: int): Promise<Uint8Array>--><!--Device-UserIdentityManager-openSession(accountId?: int): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -853,6 +885,8 @@ Updates credentials. This API uses an asynchronous callback to return the result
 **Since:** 8
 
 **Required permissions:** ohos.permission.MANAGE_USER_IDM
+
+<!--Device-UserIdentityManager-updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void--><!--Device-UserIdentityManager-updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

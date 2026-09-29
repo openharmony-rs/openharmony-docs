@@ -8,6 +8,8 @@ declare enum InputType
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum InputType--><!--Device-unnamed-declare enum InputType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
@@ -23,6 +25,8 @@ Normal
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-InputType-Normal--><!--Device-InputType-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-Number--><!--Device-InputType-Number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## PhoneNumber
@@ -56,6 +62,8 @@ PhoneNumber
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-PhoneNumber--><!--Device-InputType-PhoneNumber-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Email
@@ -71,6 +79,8 @@ Email
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-InputType-Email--><!--Device-InputType-Email-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +104,8 @@ TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-Password--><!--Device-InputType-Password-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NUMBER_PASSWORD
@@ -116,6 +128,8 @@ TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-NUMBER_PASSWORD = 8--><!--Device-InputType-NUMBER_PASSWORD = 8-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## USER_NAME
@@ -133,6 +147,8 @@ USER_NAME = 10
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InputType-USER_NAME = 10--><!--Device-InputType-USER_NAME = 10-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,6 +172,8 @@ TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-NEW_PASSWORD = 11--><!--Device-InputType-NEW_PASSWORD = 11-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NUMBER_DECIMAL
@@ -174,6 +192,8 @@ NUMBER_DECIMAL = 12
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-NUMBER_DECIMAL = 12--><!--Device-InputType-NUMBER_DECIMAL = 12-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## URL
@@ -190,6 +210,8 @@ URL = 13
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputType-URL = 13--><!--Device-InputType-URL = 13-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ONE_TIME_CODE
@@ -205,5 +227,7 @@ ONE_TIME_CODE = 14
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-InputType-ONE_TIME_CODE = 14--><!--Device-InputType-ONE_TIME_CODE = 14-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

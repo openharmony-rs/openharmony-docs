@@ -20,6 +20,8 @@ Sets automatic unlocking upon device reboot. This setting takes effect only on d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void--><!--Device-systemManager-function setAutoUnlockAfterReboot(admin: Want, isAllowed: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

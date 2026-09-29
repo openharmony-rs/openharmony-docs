@@ -14,6 +14,8 @@ WebController is suitable for scenarios where active control of the embedded Web
 
 **Substitutes:** WebviewController
 
+<!--Device-unnamed-declare class WebController--><!--Device-unnamed-declare class WebController-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## accessBackward
@@ -29,6 +31,8 @@ Checks whether going to the previous page can be performed on the current page.
 **Deprecated since:** 9
 
 **Substitutes:** accessBackward
+
+<!--Device-WebController-accessBackward(): boolean--><!--Device-WebController-accessBackward(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -74,6 +78,8 @@ Checks whether going to the next page can be performed on the current page.
 
 **Substitutes:** accessForward
 
+<!--Device-WebController-accessForward(): boolean--><!--Device-WebController-accessForward(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -117,6 +123,8 @@ Checks whether the current page can move forward or backward by the given step.
 **Deprecated since:** 9
 
 **Substitutes:** accessStep
+
+<!--Device-WebController-accessStep(step: number): boolean--><!--Device-WebController-accessStep(step: number): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -169,6 +177,8 @@ Goes backward by one page in the history stack. You are advised to call [accessB
 
 **Substitutes:** backward
 
+<!--Device-WebController-backward()--><!--Device-WebController-backward()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -206,6 +216,8 @@ Clears the browsing history.
 
 **Substitutes:** clearHistory
 
+<!--Device-WebController-clearHistory(): void--><!--Device-WebController-clearHistory(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -224,6 +236,8 @@ Constructs a **WebController** object.
 
 **Substitutes:** constructor
 
+<!--Device-WebController-constructor()--><!--Device-WebController-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## deleteJavaScriptRegister
@@ -239,6 +253,8 @@ Deletes a specific application JavaScript object that is registered with the win
 **Deprecated since:** 9
 
 **Substitutes:** deleteJavaScriptRegister
+
+<!--Device-WebController-deleteJavaScriptRegister(name: string)--><!--Device-WebController-deleteJavaScriptRegister(name: string)-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -284,6 +300,8 @@ Goes forward by one page in the history stack. You are advised to call [accessFo
 
 **Substitutes:** forward
 
+<!--Device-WebController-forward()--><!--Device-WebController-forward()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -321,13 +339,15 @@ Obtains the cookie management object of the **Web** component.
 
 **Substitutes:** [WebCookieManager](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md)
 
+<!--Device-WebController-getCookieManager(): WebCookie--><!--Device-WebController-getCookieManager(): WebCookie-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Cookie management object of the **Web** component. For details, see [WebCookie](arkts-arkweb-web-comp.md#web). |
+| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Cookie management object of the **Web** component. For details, see [WebCookie](arkts-arkweb-web-comp.md). |
 
 **Examples**
 
@@ -363,6 +383,8 @@ Obtains the element type of the area being clicked.
 **Deprecated since:** 9
 
 **Substitutes:** [getHitTest](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#gethittest)
+
+<!--Device-WebController-getHitTest(): HitTestType--><!--Device-WebController-getHitTest(): HitTestType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -411,6 +433,8 @@ If **baseUrl** is set to an HTTP or HTTPS URL, the encoded data string will be p
 **Deprecated since:** 9
 
 **Substitutes:** loadData
+
+<!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })--><!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -463,6 +487,8 @@ The object injected through **registerJavaScriptProxy** is still valid on a new 
 
 **Substitutes:** loadUrl
 
+<!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })--><!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -506,6 +532,8 @@ Called when the **Web** component enters the active state.
 
 **Substitutes:** onActive
 
+<!--Device-WebController-onActive(): void--><!--Device-WebController-onActive(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -542,6 +570,8 @@ Called when the **Web** component enters the inactive state.
 **Deprecated since:** 9
 
 **Substitutes:** onInactive
+
+<!--Device-WebController-onInactive(): void--><!--Device-WebController-onInactive(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -580,6 +610,8 @@ Called when the **Web** component refreshes the web page.
 
 **Substitutes:** refresh
 
+<!--Device-WebController-refresh()--><!--Device-WebController-refresh()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -616,6 +648,8 @@ Injects a JavaScript object into the window object and calls the methods of the 
 **Deprecated since:** 9
 
 **Substitutes:** registerJavaScriptProxy
+
+<!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })--><!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -700,6 +734,8 @@ Makes the current web page obtain focus.
 
 **Substitutes:** requestFocus
 
+<!--Device-WebController-requestFocus()--><!--Device-WebController-requestFocus()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -736,6 +772,8 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 **Deprecated since:** 9
 
 **Substitutes:** runJavaScript
+
+<!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })--><!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -810,6 +848,8 @@ Stops page loading.
 
 **Substitutes:** stop
 
+<!--Device-WebController-stop()--><!--Device-WebController-stop()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -846,6 +886,8 @@ Sets a zoom factor for the current web page.
 **Deprecated since:** 9
 
 **Substitutes:** [zoom](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#zoom)
+
+<!--Device-WebController-zoom(factor: number): void--><!--Device-WebController-zoom(factor: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

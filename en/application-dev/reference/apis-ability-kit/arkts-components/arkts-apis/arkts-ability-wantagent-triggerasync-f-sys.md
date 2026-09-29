@@ -18,6 +18,8 @@ Asynchronously triggers a predefined operation encration encapsulated in a Wanta
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wantAgent-function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Promise<CompleteData>--><!--Device-wantAgent-function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Promise<CompleteData>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

@@ -12,6 +12,8 @@ Provides APIs for managing the **UserAuth** object.
 
 **Substitutes:** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
 
+<!--Device-userAuth-class UserAuth--><!--Device-userAuth-class UserAuth-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -40,6 +42,8 @@ Starts user authentication. This API uses a callback to return the result.
 **Substitutes:** [start](arkts-userauthentication-userauth-authinstance-i.md#start)
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: UserAuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array--><!--Device-UserAuth-auth(      challenge: Uint8Array,      authType: UserAuthType,      authTrustLevel: AuthTrustLevel,      callback: IUserAuthCallback    ): Uint8Array-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -97,6 +101,8 @@ Cancels the authentication based on the context ID.
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
+<!--Device-UserAuth-cancelAuth(contextID: Uint8Array): number--><!--Device-UserAuth-cancelAuth(contextID: Uint8Array): number-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **Parameters:**
@@ -141,6 +147,8 @@ A constructor used to create a **UserAuth** instance.
 
 **Substitutes:** [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
 
+<!--Device-UserAuth-constructor()--><!--Device-UserAuth-constructor()-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **Examples**
@@ -166,6 +174,8 @@ Checks whether the specified authentication capability is supported.
 **Substitutes:** [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md)
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-UserAuth-getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): number--><!--Device-UserAuth-getAvailableStatus(authType: UserAuthType, authTrustLevel: AuthTrustLevel): number-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -209,6 +219,8 @@ Obtains the version of this authenticator.
 **Deprecated since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-UserAuth-getVersion(): number--><!--Device-UserAuth-getVersion(): number-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

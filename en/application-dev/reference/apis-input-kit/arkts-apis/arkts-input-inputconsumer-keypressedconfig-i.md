@@ -8,6 +8,8 @@ Sets the key event consumption configuration.
 
 **Since:** 16
 
+<!--Device-inputConsumer-interface KeyPressedConfig--><!--Device-inputConsumer-interface KeyPressedConfig-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 ## Modules to Import
@@ -32,6 +34,8 @@ In API version 20 or earlier versions, the value of this parameter can only be s
 
 **Since:** 16
 
+<!--Device-KeyPressedConfig-action: int--><!--Device-KeyPressedConfig-action: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 ## isRepeat
@@ -45,6 +49,8 @@ Whether to report repeated key events. The value **true** means to report repeat
 **Type:** boolean
 
 **Since:** 16
+
+<!--Device-KeyPressedConfig-isRepeat: boolean--><!--Device-KeyPressedConfig-isRepeat: boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -65,5 +71,7 @@ In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](arkts-input-
 **Type:** number
 
 **Since:** 16
+
+<!--Device-KeyPressedConfig-key: int--><!--Device-KeyPressedConfig-key: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer

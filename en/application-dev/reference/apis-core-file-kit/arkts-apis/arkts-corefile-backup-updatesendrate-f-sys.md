@@ -18,6 +18,8 @@ Update send file fd rate.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-backup-function updateSendRate(bundleName: string, sendRate: int): boolean--><!--Device-backup-function updateSendRate(bundleName: string, sendRate: int): boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.

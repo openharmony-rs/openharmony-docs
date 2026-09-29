@@ -8,6 +8,8 @@ interface DragAndDropInfo
 
 **起始版本：** 11
 
+<!--Device-dragController-interface DragAndDropInfo--><!--Device-dragController-interface DragAndDropInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ event: DragEvent
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragAndDropInfo-event: DragEvent--><!--Device-DragAndDropInfo-event: DragEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraParams
@@ -50,6 +54,8 @@ extraParams?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragAndDropInfo-extraParams?: string--><!--Device-DragAndDropInfo-extraParams?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## status
@@ -67,5 +73,7 @@ status: DragStatus
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragAndDropInfo-status: DragStatus--><!--Device-DragAndDropInfo-status: DragStatus-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

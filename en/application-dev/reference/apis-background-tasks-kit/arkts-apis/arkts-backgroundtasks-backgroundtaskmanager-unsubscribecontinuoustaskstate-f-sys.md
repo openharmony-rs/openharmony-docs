@@ -20,6 +20,8 @@ Unregisters the callback for continuous task changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-backgroundTaskManager-function unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void--><!--Device-backgroundTaskManager-function unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **System API:** This is a system API.

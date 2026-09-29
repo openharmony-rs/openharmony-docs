@@ -10,6 +10,8 @@ Provides the web native messaging capability and is inherited from ExtensionAbil
 
 **Since:** 21
 
+<!--Device-unnamed-export default class WebNativeMessagingExtensionAbility extends ExtensionAbility--><!--Device-unnamed-export default class WebNativeMessagingExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when a web native message connection is established. In this callback, yo
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebNativeMessagingExtensionAbility-onConnectNative(info: ConnectionInfo): void--><!--Device-WebNativeMessagingExtensionAbility-onConnectNative(info: ConnectionInfo): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -65,6 +69,8 @@ Called when the WebNativeMessagingExtensionAbility is destroyed. In this callbac
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebNativeMessagingExtensionAbility-onDestroy(): void--><!--Device-WebNativeMessagingExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -91,6 +97,8 @@ Called when a web native message connection is disconnected. In this callback, y
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebNativeMessagingExtensionAbility-onDisconnectNative(info: ConnectionInfo): void--><!--Device-WebNativeMessagingExtensionAbility-onDisconnectNative(info: ConnectionInfo): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -127,5 +135,7 @@ Context of the current web native message ExtensionAbility.
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext--><!--Device-WebNativeMessagingExtensionAbility-context: WebNativeMessagingExtensionContext-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

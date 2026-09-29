@@ -4,6 +4,8 @@ The wantConstant module provides the actions, entities, and flags used in Want o
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace wantConstant--><!--Device-unnamed-declare namespace wantConstant-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## Modules to Import

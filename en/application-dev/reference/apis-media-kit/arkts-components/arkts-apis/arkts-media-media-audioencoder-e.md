@@ -12,6 +12,8 @@ Enumerates the audio encoding formats.
 
 **Substitutes:** [CodecMimeType](arkts-media-media-codecmimetype-e.md)
 
+<!--Device-media-enum AudioEncoder--><!--Device-media-enum AudioEncoder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## DEFAULT
@@ -29,6 +31,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 **Since:** 6
 
 **Deprecated since:** 8
+
+<!--Device-AudioEncoder-DEFAULT = 0--><!--Device-AudioEncoder-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -50,6 +54,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 
 **Substitutes:** [AUDIO_AMR_NB](arkts-media-media-codecmimetype-e.md#audio_amr_nb)
 
+<!--Device-AudioEncoder-AMR_NB = 1--><!--Device-AudioEncoder-AMR_NB = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## AMR_WB
@@ -70,6 +76,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 
 **Substitutes:** [AUDIO_AMR_WB](arkts-media-media-codecmimetype-e.md#audio_amr_wb)
 
+<!--Device-AudioEncoder-AMR_WB = 2--><!--Device-AudioEncoder-AMR_WB = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 ## AAC_LC
@@ -87,6 +95,8 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 **Deprecated since:** 8
 
 **Substitutes:** [AUDIO_AAC](arkts-media-media-codecmimetype-e.md#audio_aac)
+
+<!--Device-AudioEncoder-AAC_LC = 3--><!--Device-AudioEncoder-AAC_LC = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
@@ -107,5 +117,7 @@ Note: It is supported since API version 6 and deprecated since API version 8. Yo
 **Deprecated since:** 8
 
 **Substitutes:** [AUDIO_AAC](arkts-media-media-codecmimetype-e.md#audio_aac)
+
+<!--Device-AudioEncoder-HE_AAC = 4--><!--Device-AudioEncoder-HE_AAC = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder

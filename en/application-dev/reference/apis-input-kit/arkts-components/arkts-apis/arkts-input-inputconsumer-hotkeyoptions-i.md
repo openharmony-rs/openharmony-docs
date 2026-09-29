@@ -8,6 +8,8 @@ Defines shortcut key options.
 
 **Since:** 14
 
+<!--Device-inputConsumer-interface HotkeyOptions--><!--Device-inputConsumer-interface HotkeyOptions-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.
 
 **Since:** 14
 
+<!--Device-HotkeyOptions-finalKey: int--><!--Device-HotkeyOptions-finalKey: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 ## isRepeat
@@ -43,6 +47,8 @@ Whether to report repeated key events. The value **true** means to report repeat
 **Type:** boolean
 
 **Since:** 14
+
+<!--Device-HotkeyOptions-isRepeat?: boolean--><!--Device-HotkeyOptions-isRepeat?: boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -59,5 +65,7 @@ For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.
 **Type:** Array&lt;number&gt;
 
 **Since:** 14
+
+<!--Device-HotkeyOptions-preKeys: Array<int>--><!--Device-HotkeyOptions-preKeys: Array<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer

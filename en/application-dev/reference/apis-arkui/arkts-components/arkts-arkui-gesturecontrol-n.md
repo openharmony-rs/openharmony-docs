@@ -10,6 +10,8 @@ Enumerates gesture competition results.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace GestureControl--><!--Device-unnamed-declare namespace GestureControl-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Summary

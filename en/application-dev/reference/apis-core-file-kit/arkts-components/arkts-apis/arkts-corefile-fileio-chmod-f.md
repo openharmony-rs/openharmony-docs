@@ -17,6 +17,8 @@ Changes file permissions. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function chmod(path: string, mode: number): Promise<void>--><!--Device-unnamed-declare function chmod(path: string, mode: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -46,6 +48,8 @@ Changes file permissions. This API uses an asynchronous callback to return the r
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-unnamed-declare function chmod(path: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function chmod(path: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

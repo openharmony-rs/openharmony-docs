@@ -18,6 +18,8 @@ Disable the specified DeviceConfig by networkId. The disabled DeviceConfig will 
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function disableNetwork(netId: int): void--><!--Device-wifiManager-function disableNetwork(netId: int): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ Disable the specified DeviceConfig by networkId for a period of time. The disabl
 **Since:** 23
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
+
+<!--Device-wifiManager-function disableNetwork(netId: int, blockDuration: int): void--><!--Device-wifiManager-function disableNetwork(netId: int, blockDuration: int): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

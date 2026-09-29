@@ -20,6 +20,8 @@ Sets the confirmation of pairing with a certain device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setDevicePairingConfirmation(deviceId: string, accept: boolean): void--><!--Device-connection-function setDevicePairingConfirmation(deviceId: string, accept: boolean): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

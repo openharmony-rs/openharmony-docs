@@ -18,6 +18,8 @@ Creates a virtual screen. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_VIRTUAL_SCREEN
 
+<!--Device-display-function createVirtualScreen(config: VirtualScreenConfig): Promise<long>--><!--Device-display-function createVirtualScreen(config: VirtualScreenConfig): Promise<long>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

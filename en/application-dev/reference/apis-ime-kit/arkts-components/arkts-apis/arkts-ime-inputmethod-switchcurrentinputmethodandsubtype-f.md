@@ -28,6 +28,8 @@ Switches to a specified subtype of a specified input method. This API uses an as
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.CONNECT_IME_ABILITY
 
+<!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype,    callback: AsyncCallback<boolean>  ): void--><!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype,    callback: AsyncCallback<boolean>  ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -91,6 +93,8 @@ Switches to a specified subtype of a specified input method. This API uses a pro
 **Required permissions:** 
 - API version 11 and later: N/A
 - API versions 9 to 10: ohos.permission.CONNECT_IME_ABILITY
+
+<!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype  ): Promise<boolean>--><!--Device-inputMethod-function switchCurrentInputMethodAndSubtype(    inputMethodProperty: InputMethodProperty,    inputMethodSubtype: InputMethodSubtype  ): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

@@ -8,6 +8,8 @@ Defines the range of the **RichEditor**.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorRange--><!--Device-unnamed-declare interface RichEditorRange-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## end
@@ -28,6 +30,8 @@ End position of the text. If this parameter is omitted or exceeds the text range
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorRange-end?: number--><!--Device-RichEditorRange-end?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -47,5 +51,7 @@ Start position of the text. If this parameter is omitted or set to a negative va
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorRange-start?: number--><!--Device-RichEditorRange-start?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Get the detailed error information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-huksExternalCrypto-function getErrorInfo(): HuksExternalErrorInfo--><!--Device-huksExternalCrypto-function getErrorInfo(): HuksExternalErrorInfo-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 **Return value:**

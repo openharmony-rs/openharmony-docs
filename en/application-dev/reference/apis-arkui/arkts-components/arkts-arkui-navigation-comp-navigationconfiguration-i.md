@@ -8,6 +8,8 @@ Navigation configuration options.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface NavigationConfiguration--><!--Device-unnamed-declare interface NavigationConfiguration-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## clearContentStackOnPrimaryNavigation
@@ -30,6 +32,8 @@ In Navigation split mode, when enabled, navigaiton triggered from the primary si
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-NavigationConfiguration-clearContentStackOnPrimaryNavigation?: boolean--><!--Device-NavigationConfiguration-clearContentStackOnPrimaryNavigation?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## recyclePagesOnLowMemory
@@ -51,6 +55,8 @@ When enabled, Navigation recycles invisible NavDestination page instance after r
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-NavigationConfiguration-recyclePagesOnLowMemory?: boolean--><!--Device-NavigationConfiguration-recyclePagesOnLowMemory?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,5 +85,7 @@ in FIFO (First-In-First-Out) order.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-NavigationConfiguration-stackSizeLimit?: int--><!--Device-NavigationConfiguration-stackSizeLimit?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

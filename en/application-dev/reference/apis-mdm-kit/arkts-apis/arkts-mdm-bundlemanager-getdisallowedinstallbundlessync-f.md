@@ -20,6 +20,8 @@ Obtains the applications that cannot be installed by the current or specified us
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array<string>--><!--Device-bundleManager-function getDisallowedInstallBundlesSync(admin: Want, accountId?: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -81,6 +83,8 @@ Obtains the applications that cannot be installed by the current or specified us
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array<string>--><!--Device-bundleManager-function getDisallowedInstallBundlesSync(admin: Want | null, accountId?: number): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

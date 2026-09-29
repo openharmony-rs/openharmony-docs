@@ -14,6 +14,8 @@ Manager handsfree AG profile.
 
 **Substitutes:** [HandsFreeAudioGatewayProfile](arkts-connectivity-bluetoothmanager-handsfreeaudiogatewayprofile-i.md)
 
+<!--Device-bluetooth-interface HandsFreeAudioGatewayProfile extends BaseProfile--><!--Device-bluetooth-interface HandsFreeAudioGatewayProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Connect to device with hfp.
 **Substitutes:** [connect](arkts-connectivity-bluetoothmanager-handsfreeaudiogatewayprofile-i.md#connect)
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-HandsFreeAudioGatewayProfile-connect(device: string): boolean--><!--Device-HandsFreeAudioGatewayProfile-connect(device: string): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -76,6 +80,8 @@ Disconnect to device with hfp.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-HandsFreeAudioGatewayProfile-disconnect(device: string): boolean--><!--Device-HandsFreeAudioGatewayProfile-disconnect(device: string): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -112,6 +118,8 @@ Unsubscribe the event reported when the profile connection state changes .
 
 **Substitutes:** connectionStateChange
 
+<!--Device-HandsFreeAudioGatewayProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void--><!--Device-HandsFreeAudioGatewayProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -134,6 +142,8 @@ Subscribe the event reported when the profile connection state changes .
 **Deprecated since:** 9
 
 **Substitutes:** connectionStateChange
+
+<!--Device-HandsFreeAudioGatewayProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void--><!--Device-HandsFreeAudioGatewayProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

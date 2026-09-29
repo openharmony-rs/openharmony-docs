@@ -4,6 +4,8 @@ This module allows you to share your device's network connectivity with other co
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace sharing--><!--Device-unnamed-declare namespace sharing-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 ## Modules to Import
@@ -55,6 +57,12 @@ import { sharing } from '@kit.NetworkKit';
 | [InterfaceSharingStateInfo](arkts-network-sharing-interfacesharingstateinfo-i-sys.md) | Wakes up the listener for network sharing state changes of an NIC. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [NetHandle](arkts-network-sharing-nethandle-t.md) | Defines the handle of the data network. Before calling the **NetHandle** function, call the **getNetHandle** function to obtain a **NetHandle** object. |
+
 <!--Del-->
 ### Enums(System API)
 
@@ -63,9 +71,3 @@ import { sharing } from '@kit.NetworkKit';
 | [SharingIfaceState](arkts-network-sharing-sharingifacestate-e-sys.md) | Enumerates the network sharing states of an NIC. |
 | [SharingIfaceType](arkts-network-sharing-sharingifacetype-e-sys.md) | Enumerates the network sharing types of an NIC. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [NetHandle](arkts-network-sharing-nethandle-t.md) | Defines the handle of the data network. Before calling the **NetHandle** function, call the **getNetHandle** function to obtain a **NetHandle** object. |

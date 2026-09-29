@@ -8,6 +8,8 @@ Defines the notification source type.
 
 **Since:** 9
 
+<!--Device-notificationManager-export enum SourceType--><!--Device-notificationManager-export enum SourceType-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ TYPE_NORMAL = 0
 Normal notification.
 
 **Since:** 9
+
+<!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -36,6 +40,8 @@ Continuous notification.
 
 **Since:** 9
 
+<!--Device-SourceType-TYPE_CONTINUOUS = 1--><!--Device-SourceType-TYPE_CONTINUOUS = 1-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ TYPE_TIMER = 2
 Timed notification.
 
 **Since:** 9
+
+<!--Device-SourceType-TYPE_TIMER = 2--><!--Device-SourceType-TYPE_TIMER = 2-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

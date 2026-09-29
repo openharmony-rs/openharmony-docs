@@ -8,6 +8,8 @@ Configuring parameters in location requests.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface LocationRequest--><!--Device-geoLocationManager-export interface LocationRequest-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Location report distance interval.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LocationRequest-distanceInterval?: double--><!--Device-LocationRequest-distanceInterval?: double-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -44,7 +48,9 @@ Accuracy requirements for reporting locations.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LocationRequest-maxAccuracy?: double--><!--Device-LocationRequest-maxAccuracy?: double-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -60,7 +66,9 @@ Priority of the location request.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LocationRequest-priority?: LocationRequestPriority--><!--Device-LocationRequest-priority?: LocationRequestPriority-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -76,7 +84,9 @@ User scenario of the location request.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LocationRequest-scenario?: LocationRequestScenario--><!--Device-LocationRequest-scenario?: LocationRequestScenario-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -92,6 +102,8 @@ Location report interval.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-LocationRequest-timeInterval?: int--><!--Device-LocationRequest-timeInterval?: int-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

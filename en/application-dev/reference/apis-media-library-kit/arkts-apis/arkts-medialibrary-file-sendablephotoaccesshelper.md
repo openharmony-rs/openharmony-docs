@@ -4,6 +4,8 @@ The module provides APIs for album management, including creating an album and a
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace sendablePhotoAccessHelper--><!--Device-unnamed-declare namespace sendablePhotoAccessHelper-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import

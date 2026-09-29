@@ -8,6 +8,8 @@ Enumerates the ArkWeb renderer subprocess mode types. You can select the appropr
 
 **Since:** 12
 
+<!--Device-webview-enum RenderProcessMode--><!--Device-webview-enum RenderProcessMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## SINGLE
@@ -22,6 +24,8 @@ ArkWeb single render subprocess mode. In this mode, multiple **Web** components 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RenderProcessMode-SINGLE = 0--><!--Device-RenderProcessMode-SINGLE = 0-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## MULTIPLE
@@ -35,5 +39,7 @@ ArkWeb multi-render subprocess mode. In this mode, each **Web** component has a 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RenderProcessMode-MULTIPLE = 1--><!--Device-RenderProcessMode-MULTIPLE = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

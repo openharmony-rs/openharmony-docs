@@ -8,6 +8,8 @@ Defines the listener for the completion of the first frame rendering of the UIAb
 
 **Since:** 12
 
+<!--Device-appManager-export type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default--><!--Device-appManager-export type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

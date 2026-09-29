@@ -4,13 +4,17 @@
 export interface LightResponse
 ```
 
-Defines a **LightResponse** object.
+Callback invoked when the ambient light sensor data changes. The response object contains the ambient light intensity data.
+
+**Device behavior differences**: This API can be called on wearables and lite wearables, but has no effect on other device types.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
 **Substitutes:** [LightResponse](arkts-sensorservice-sensor-lightresponse-i.md)
+
+<!--Device-unnamed-export interface LightResponse--><!--Device-unnamed-export interface LightResponse-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -26,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 intensity: number
 ```
 
-Light intensity, in lux.
+Ambient light intensity, in lux. Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.
 
 **Type:** number
 
@@ -37,5 +41,7 @@ Light intensity, in lux.
 **Substitutes:** [intensity](arkts-sensorservice-sensor-lightresponse-i.md#intensity)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-LightResponse-intensity: number--><!--Device-LightResponse-intensity: number-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

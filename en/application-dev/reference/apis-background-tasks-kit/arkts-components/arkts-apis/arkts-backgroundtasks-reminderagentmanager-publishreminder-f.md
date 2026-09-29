@@ -24,6 +24,8 @@ Publishes a reminder. This API uses an asynchronous callback to return the resul
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
 
+<!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<int>): void--><!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -82,6 +84,8 @@ Publishes a reminder. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
+
+<!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest): Promise<int>--><!--Device-reminderAgentManager-function publishReminder(reminderReq: ReminderRequest): Promise<int>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

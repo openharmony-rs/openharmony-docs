@@ -8,6 +8,8 @@ declare interface EventLocationInfo
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface EventLocationInfo--><!--Device-unnamed-declare interface EventLocationInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getCurrentLocalPosition
@@ -23,6 +25,8 @@ getCurrentLocalPosition?(): Coordinate2D
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventLocationInfo-getCurrentLocalPosition?(): Coordinate2D--><!--Device-EventLocationInfo-getCurrentLocalPosition?(): Coordinate2D-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ displayX: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-EventLocationInfo-displayX: number--><!--Device-EventLocationInfo-displayX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayY
@@ -73,6 +79,8 @@ displayY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventLocationInfo-displayY: number--><!--Device-EventLocationInfo-displayY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +104,8 @@ globalDisplayX?: number
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-EventLocationInfo-globalDisplayX?: number--><!--Device-EventLocationInfo-globalDisplayX?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalDisplayY
@@ -117,6 +127,8 @@ globalDisplayY?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventLocationInfo-globalDisplayY?: number--><!--Device-EventLocationInfo-globalDisplayY?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +152,8 @@ windowX: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-EventLocationInfo-windowX: number--><!--Device-EventLocationInfo-windowX: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowY
@@ -161,6 +175,8 @@ windowY: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventLocationInfo-windowY: number--><!--Device-EventLocationInfo-windowY: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,6 +200,8 @@ x: number
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-EventLocationInfo-x: number--><!--Device-EventLocationInfo-x: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -205,5 +223,7 @@ y: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventLocationInfo-y: number--><!--Device-EventLocationInfo-y: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

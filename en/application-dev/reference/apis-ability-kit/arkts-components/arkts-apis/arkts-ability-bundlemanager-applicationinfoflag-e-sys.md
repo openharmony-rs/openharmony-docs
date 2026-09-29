@@ -8,6 +8,8 @@ Enumerates the application information flag, which describes the status between 
 
 **Since:** 12
 
+<!--Device-bundleManager-export enum ApplicationInfoFlag--><!--Device-bundleManager-export enum ApplicationInfoFlag-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ FLAG_INSTALLED = 0x00000001
 The application is installed for the specified user.
 
 **Since:** 12
+
+<!--Device-ApplicationInfoFlag-FLAG_INSTALLED = 0x00000001--><!--Device-ApplicationInfoFlag-FLAG_INSTALLED = 0x00000001-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,6 +40,8 @@ The application is installed for users other than the specified user.
 
 **Since:** 15
 
+<!--Device-ApplicationInfoFlag-FLAG_OTHER_INSTALLED = 0x00000010--><!--Device-ApplicationInfoFlag-FLAG_OTHER_INSTALLED = 0x00000010-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -50,6 +56,8 @@ The application is a preinstalled application.
 
 **Since:** 15
 
+<!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP = 0x00000020--><!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP = 0x00000020-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -63,6 +71,8 @@ FLAG_PREINSTALLED_APP_UPDATE = 0x00000040
 The preinstalled application is updated.
 
 **Since:** 15
+
+<!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP_UPDATE = 0x00000040--><!--Device-ApplicationInfoFlag-FLAG_PREINSTALLED_APP_UPDATE = 0x00000040-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

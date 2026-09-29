@@ -20,6 +20,8 @@ Removes the non-stoppable application list for a specified user. After the remov
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function removeUserNonStopApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void--><!--Device-applicationManager-function removeUserNonStopApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

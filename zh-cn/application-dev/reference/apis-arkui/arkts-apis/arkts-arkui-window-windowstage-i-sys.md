@@ -10,6 +10,8 @@ interface WindowStage
 
 **起始版本：** 9
 
+<!--Device-window-interface WindowStage--><!--Device-window-interface WindowStage-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -31,6 +33,8 @@ disableWindowDecor(): void
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowStage-disableWindowDecor(): void--><!--Device-WindowStage-disableWindowDecor(): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -79,6 +83,8 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 - API版本22-25：N/A
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowStage-setImageForRecent(imageResource: long | image.PixelMap, value: ImageFit): Promise<void>--><!--Device-WindowStage-setImageForRecent(imageResource: long | image.PixelMap, value: ImageFit): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -186,6 +192,8 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowStage-setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>--><!--Device-WindowStage-setImageForRecent(imgResourceId: number, value: ImageFit): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -250,6 +258,8 @@ setShowOnLockScreen(showOnLockScreen: boolean): void
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowStage-setShowOnLockScreen(showOnLockScreen: boolean): void--><!--Device-WindowStage-setShowOnLockScreen(showOnLockScreen: boolean): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

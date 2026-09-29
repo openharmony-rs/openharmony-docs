@@ -6,11 +6,13 @@ type ProgressListener = (progress: Progress) => void
 
 Indicates the type of the progress of batch operation.
 
-Progress callback, which can be the size or numberof files.
+Progress callback, which can be the size or number of files.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-photoAccessHelper-type ProgressListener = (progress: Progress) => void--><!--Device-photoAccessHelper-type ProgressListener = (progress: Progress) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

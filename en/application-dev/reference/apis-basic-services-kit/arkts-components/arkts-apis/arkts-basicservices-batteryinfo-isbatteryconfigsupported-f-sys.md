@@ -16,6 +16,8 @@ Checks whether the battery configuration is enabled based on the specified scena
 
 **Since:** 11
 
+<!--Device-batteryInfo-function isBatteryConfigSupported(sceneName: string): boolean--><!--Device-batteryInfo-function isBatteryConfigSupported(sceneName: string): boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
 **System API:** This is a system API.

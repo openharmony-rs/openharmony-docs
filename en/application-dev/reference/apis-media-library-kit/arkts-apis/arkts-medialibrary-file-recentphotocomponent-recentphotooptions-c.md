@@ -8,6 +8,8 @@ Represents the configuration of the recent image or video.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class RecentPhotoOptions--><!--Device-unnamed-export declare class RecentPhotoOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ By default, it follows the system's dark/light color mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-RecentPhotoOptions-colorMode?: PickerColorMode--><!--Device-RecentPhotoOptions-colorMode?: PickerColorMode-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## isAutoRefreshSupported
@@ -54,6 +58,8 @@ The default value is **false**, indicating that the component does not automatic
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-RecentPhotoOptions-isAutoRefreshSupported?: boolean--><!--Device-RecentPhotoOptions-isAutoRefreshSupported?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## MIMEType
@@ -69,6 +75,8 @@ Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VID
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RecentPhotoOptions-MIMEType?: photoAccessHelper.PhotoViewMIMETypes--><!--Device-RecentPhotoOptions-MIMEType?: photoAccessHelper.PhotoViewMIMETypes-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -88,6 +96,8 @@ If the value is less than or equal to 0, greater than 86400, or not set, the mos
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RecentPhotoOptions-period?: number--><!--Device-RecentPhotoOptions-period?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## photoSource
@@ -103,5 +113,7 @@ Source of the recent image or video, for example, image or video taken by the ca
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RecentPhotoOptions-photoSource?: PhotoSource--><!--Device-RecentPhotoOptions-photoSource?: PhotoSource-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -9,7 +9,7 @@ The LauncherAbilityInfo module provides information about the launcher ability, 
 > **NOTE:** 
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use
-> [bundleManager-LauncherAbilityInfo](#launcherabilityinfo-system-api) instead.
+> [bundleManager-LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md) instead.
 > 
 > The APIs provided by this module are system APIs.
 
@@ -17,7 +17,9 @@ The LauncherAbilityInfo module provides information about the launcher ability, 
 
 **Deprecated since:** 9
 
-**Substitutes:** [LauncherAbilityInfo](#launcherabilityinfo-system-api)
+**Substitutes:** [LauncherAbilityInfo](arkts-ability-launcherabilityinfo-launcherabilityinfo-depr-i-sys.md)
+
+<!--Device-unnamed-export interface LauncherAbilityInfo--><!--Device-unnamed-export interface LauncherAbilityInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -39,6 +41,8 @@ Application information of the launcher ability.
 
 **Substitutes:** applicationInfo
 
+<!--Device-LauncherAbilityInfo-readonly applicationInfo: ApplicationInfo--><!--Device-LauncherAbilityInfo-readonly applicationInfo: ApplicationInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -58,6 +62,8 @@ Element name of the launcher ability.
 **Deprecated since:** 9
 
 **Substitutes:** elementName
+
+<!--Device-LauncherAbilityInfo-readonly elementName: ElementName--><!--Device-LauncherAbilityInfo-readonly elementName: ElementName-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -79,6 +85,8 @@ ID of the launcher ability icon.
 
 **Substitutes:** iconId
 
+<!--Device-LauncherAbilityInfo-readonly iconId: number--><!--Device-LauncherAbilityInfo-readonly iconId: number-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -98,6 +106,8 @@ Timestamp when the launcher ability was installed, in milliseconds.
 **Deprecated since:** 9
 
 **Substitutes:** installTime
+
+<!--Device-LauncherAbilityInfo-readonly installTime: number--><!--Device-LauncherAbilityInfo-readonly installTime: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -119,6 +129,8 @@ ID of the launcher ability label.
 
 **Substitutes:** labelId
 
+<!--Device-LauncherAbilityInfo-readonly labelId: number--><!--Device-LauncherAbilityInfo-readonly labelId: number-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -138,6 +150,8 @@ User ID of the launcher ability.
 **Deprecated since:** 9
 
 **Substitutes:** userId
+
+<!--Device-LauncherAbilityInfo-readonly userId: number--><!--Device-LauncherAbilityInfo-readonly userId: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

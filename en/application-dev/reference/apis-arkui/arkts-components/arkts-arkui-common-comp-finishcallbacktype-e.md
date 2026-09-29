@@ -8,6 +8,8 @@ Defines the type of the **onFinish** callback.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum FinishCallbackType--><!--Device-unnamed-declare enum FinishCallbackType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## REMOVED
@@ -26,6 +28,8 @@ The callback is invoked when the entire animation is removed once it has finishe
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-FinishCallbackType-REMOVED = 0--><!--Device-FinishCallbackType-REMOVED = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LOGICALLY
@@ -43,5 +47,7 @@ The callback is invoked when the animation logically enters the falling state, t
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-FinishCallbackType-LOGICALLY = 1--><!--Device-FinishCallbackType-LOGICALLY = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

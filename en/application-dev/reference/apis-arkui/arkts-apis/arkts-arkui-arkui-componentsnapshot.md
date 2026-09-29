@@ -18,6 +18,8 @@ For typical use cases (for example, long screenshots) and best practices of comp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace componentSnapshot--><!--Device-unnamed-declare namespace componentSnapshot-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

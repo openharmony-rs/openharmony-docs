@@ -8,6 +8,8 @@ declare enum ModifierKey
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum ModifierKey--><!--Device-unnamed-declare enum ModifierKey-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CTRL
@@ -23,6 +25,8 @@ CTRL
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ModifierKey-CTRL--><!--Device-ModifierKey-CTRL-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ SHIFT
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ModifierKey-SHIFT--><!--Device-ModifierKey-SHIFT-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ALT
@@ -55,5 +61,7 @@ ALT
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ModifierKey-ALT--><!--Device-ModifierKey-ALT-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

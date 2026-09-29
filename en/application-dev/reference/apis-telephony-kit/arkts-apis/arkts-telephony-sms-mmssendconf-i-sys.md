@@ -8,6 +8,8 @@ Defines the MMS message sending configuration.
 
 **Since:** 8
 
+<!--Device-sms-export interface MmsSendConf--><!--Device-sms-export interface MmsSendConf-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Message ID.
 
 **Since:** 8
 
+<!--Device-MmsSendConf-messageId?: string--><!--Device-MmsSendConf-messageId?: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Response status.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MmsSendConf-responseState: int--><!--Device-MmsSendConf-responseState: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,6 +68,8 @@ Transaction ID.
 
 **Since:** 8
 
+<!--Device-MmsSendConf-transactionId: string--><!--Device-MmsSendConf-transactionId: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Version.
 **Type:** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
 **Since:** 8
+
+<!--Device-MmsSendConf-version: MmsVersionType--><!--Device-MmsSendConf-version: MmsVersionType-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

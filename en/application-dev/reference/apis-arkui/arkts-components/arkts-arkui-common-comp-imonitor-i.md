@@ -4,9 +4,11 @@
 declare interface IMonitor
 ```
 
-Define IMonitor interface
+When the monitored state variable changes, the state management framework will call the registered function and pass the change information of the **IMonitor** type.
 
 **Since:** 12
+
+<!--Device-unnamed-declare interface IMonitor--><!--Device-unnamed-declare interface IMonitor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ Define IMonitor interface
 value<T>(path?: string): IMonitorValue<T> | undefined
 ```
 
-Return the pair of the value before the most recent change and current value for given path. If path does not exist, return undefined; If path is not specified, return the value pair corresponding to the first path in dirty.
+Obtains the change information for the specified path.
 
 **Since:** 12
 
@@ -26,19 +28,21 @@ Return the pair of the value before the most recent change and current value for
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-IMonitor-value<T>(path?: string): IMonitorValue<T> | undefined--><!--Device-IMonitor-value<T>(path?: string): IMonitorValue<T> | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string | No |  |
+| path | string | No | Path name of the monitored state variable. If it is not specified, the first path in the **dirty** array is used by default. Since API version 26.0.0, the first non-wildcard path in **dirty** is used by default. If the specified path is a wildcard path, **undefined** is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [IMonitorValue](arkts-arkui-common-comp-imonitorvalue-i.md)&lt;T&gt; &#124; undefined |  |
+| [IMonitorValue](arkts-arkui-common-comp-imonitorvalue-i.md)&lt;T&gt; &#124; undefined | Path and change information for the variable monitored by **\@Monitor**.<br>**T** is the type of the monitored state variable. <br>If the monitored path does not exist, **undefined** is returned. <br>Prior to API version 26.0.0, if no path is specified, this parameter returns information corresponding to the first path in the **dirty** array of changed paths by default. <br>Since API version 26.0.0, if no path is specified, this parameter returns the first non-wildcard path in the **dirty** array of changed paths by default. <br>If the specified path is a wildcard path, **undefined** is returned. <br>If no path is specified and all paths in the **dirty** array are wildcard paths, **undefined** is returned. |
 
 **Examples**
 
@@ -93,7 +97,7 @@ struct Index {
 dirty: Array<string>
 ```
 
-Array of changed paths(keys)
+Array of paths where properties have changed in the monitored state variable. The path format is the same as that of the variable name path specified by **\@Monitor**. Nested property paths separated by periods (.) are supported, for example, **'a.b.c'**. Since API version 26.0.0, when the wildcard capability is enabled, this array may contain wildcard paths, and querying wildcard paths through [value](#value)() will return **undefined**.
 
 **Type:** Array&lt;string&gt;
 
@@ -104,5 +108,7 @@ Array of changed paths(keys)
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-IMonitor-dirty: Array<string>--><!--Device-IMonitor-dirty: Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

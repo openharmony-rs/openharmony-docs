@@ -8,6 +8,8 @@ Provides APIs for interrupting a copy task.
 
 **Since:** 12
 
+<!--Device-unnamed-export class TaskSignal--><!--Device-unnamed-export class TaskSignal-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -25,6 +27,8 @@ cancel(): void
 Cancels a copy task.
 
 **Since:** 12
+
+<!--Device-TaskSignal-cancel(): void--><!--Device-TaskSignal-cancel(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -93,6 +97,8 @@ Subscribes to the event reported when a copy task is canceled.
 **Since:** 12
 
 **Deprecated since:** 24
+
+<!--Device-TaskSignal-onCancel(): Promise<string>--><!--Device-TaskSignal-onCancel(): Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

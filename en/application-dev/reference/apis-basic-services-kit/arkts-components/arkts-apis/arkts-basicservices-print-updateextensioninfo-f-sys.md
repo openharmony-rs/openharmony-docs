@@ -18,6 +18,8 @@ Updates the printer extension information. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function updateExtensionInfo(info: string, callback: AsyncCallback<void>): void--><!--Device-print-function updateExtensionInfo(info: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Updates the printer extension information. This API uses a promise to return the
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function updateExtensionInfo(info: string): Promise<void>--><!--Device-print-function updateExtensionInfo(info: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

@@ -20,6 +20,8 @@ Removes a preferred language from the specified position on the preferred langua
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-i18n-export function removePreferredLanguage(index: int): boolean--><!--Device-i18n-export function removePreferredLanguage(index: int): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**

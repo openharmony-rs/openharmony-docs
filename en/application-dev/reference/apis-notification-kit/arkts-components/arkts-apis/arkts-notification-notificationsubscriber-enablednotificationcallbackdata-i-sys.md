@@ -8,6 +8,8 @@ Returns the changes of the application enabling state.
 
 **Since:** 8
 
+<!--Device-unnamed-export interface EnabledNotificationCallbackData--><!--Device-unnamed-export interface EnabledNotificationCallbackData-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Bundle name of the application.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-EnabledNotificationCallbackData-readonly bundle: string--><!--Device-EnabledNotificationCallbackData-readonly bundle: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -42,6 +46,8 @@ Whether the application notification is enabled.
 
 **Since:** 8
 
+<!--Device-EnabledNotificationCallbackData-readonly enable: boolean--><!--Device-EnabledNotificationCallbackData-readonly enable: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -57,6 +63,8 @@ UID of the application.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-EnabledNotificationCallbackData-readonly uid: int--><!--Device-EnabledNotificationCallbackData-readonly uid: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

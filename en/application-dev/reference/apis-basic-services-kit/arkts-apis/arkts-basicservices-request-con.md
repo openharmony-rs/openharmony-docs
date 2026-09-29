@@ -12,6 +12,8 @@ const ERROR_CANNOT_RESUME: number
 
 **Since:** 7
 
+<!--Device-request-const ERROR_CANNOT_RESUME: int--><!--Device-request-const ERROR_CANNOT_RESUME: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## ERROR_DEVICE_NOT_FOUND
@@ -25,6 +27,8 @@ const ERROR_DEVICE_NOT_FOUND: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const ERROR_DEVICE_NOT_FOUND: int--><!--Device-request-const ERROR_DEVICE_NOT_FOUND: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -40,6 +44,8 @@ const ERROR_FILE_ALREADY_EXISTS: number
 
 **Since:** 7
 
+<!--Device-request-const ERROR_FILE_ALREADY_EXISTS: int--><!--Device-request-const ERROR_FILE_ALREADY_EXISTS: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## ERROR_FILE_ERROR
@@ -53,6 +59,8 @@ const ERROR_FILE_ERROR: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const ERROR_FILE_ERROR: int--><!--Device-request-const ERROR_FILE_ERROR: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -68,6 +76,8 @@ const ERROR_HTTP_DATA_ERROR: number
 
 **Since:** 7
 
+<!--Device-request-const ERROR_HTTP_DATA_ERROR: int--><!--Device-request-const ERROR_HTTP_DATA_ERROR: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## ERROR_INSUFFICIENT_SPACE
@@ -81,6 +91,8 @@ const ERROR_INSUFFICIENT_SPACE: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const ERROR_INSUFFICIENT_SPACE: int--><!--Device-request-const ERROR_INSUFFICIENT_SPACE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -96,6 +108,8 @@ const ERROR_OFFLINE: number
 
 **Since:** 9
 
+<!--Device-request-const ERROR_OFFLINE: int--><!--Device-request-const ERROR_OFFLINE: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## ERROR_TOO_MANY_REDIRECTS
@@ -110,6 +124,8 @@ const ERROR_TOO_MANY_REDIRECTS: number
 
 **Since:** 7
 
+<!--Device-request-const ERROR_TOO_MANY_REDIRECTS: int--><!--Device-request-const ERROR_TOO_MANY_REDIRECTS: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## ERROR_UNHANDLED_HTTP_CODE
@@ -123,6 +139,8 @@ const ERROR_UNHANDLED_HTTP_CODE: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const ERROR_UNHANDLED_HTTP_CODE: int--><!--Device-request-const ERROR_UNHANDLED_HTTP_CODE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -140,6 +158,8 @@ In API version 12 or earlier, only serial connection to the IP addresses associa
 
 **Since:** 7
 
+<!--Device-request-const ERROR_UNKNOWN: int--><!--Device-request-const ERROR_UNKNOWN: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## ERROR_UNSUPPORTED_NETWORK_TYPE
@@ -153,6 +173,8 @@ const ERROR_UNSUPPORTED_NETWORK_TYPE: number
 **Type:** number
 
 **Since:** 9
+
+<!--Device-request-const ERROR_UNSUPPORTED_NETWORK_TYPE: int--><!--Device-request-const ERROR_UNSUPPORTED_NETWORK_TYPE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -168,6 +190,8 @@ const EXCEPTION_FILEIO: number
 
 **Since:** 9
 
+<!--Device-request-const EXCEPTION_FILEIO: int--><!--Device-request-const EXCEPTION_FILEIO: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## EXCEPTION_FILEPATH
@@ -181,6 +205,8 @@ const EXCEPTION_FILEPATH: number
 **Type:** number
 
 **Since:** 9
+
+<!--Device-request-const EXCEPTION_FILEPATH: int--><!--Device-request-const EXCEPTION_FILEPATH: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -196,6 +222,8 @@ const EXCEPTION_OTHERS: number
 
 **Since:** 9
 
+<!--Device-request-const EXCEPTION_OTHERS: int--><!--Device-request-const EXCEPTION_OTHERS: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## EXCEPTION_PARAMCHECK
@@ -209,6 +237,8 @@ const EXCEPTION_PARAMCHECK: number
 **Type:** number
 
 **Since:** 9
+
+<!--Device-request-const EXCEPTION_PARAMCHECK: int--><!--Device-request-const EXCEPTION_PARAMCHECK: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -224,6 +254,8 @@ const EXCEPTION_PERMISSION: number
 
 **Since:** 9
 
+<!--Device-request-const EXCEPTION_PERMISSION: int--><!--Device-request-const EXCEPTION_PERMISSION: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## EXCEPTION_SERVICE
@@ -237,6 +269,8 @@ const EXCEPTION_SERVICE: number
 **Type:** number
 
 **Since:** 9
+
+<!--Device-request-const EXCEPTION_SERVICE: int--><!--Device-request-const EXCEPTION_SERVICE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -252,6 +286,8 @@ const EXCEPTION_UNSUPPORTED: number
 
 **Since:** 9
 
+<!--Device-request-const EXCEPTION_UNSUPPORTED: int--><!--Device-request-const EXCEPTION_UNSUPPORTED: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## NETWORK_MOBILE
@@ -265,6 +301,8 @@ const NETWORK_MOBILE: number
 **Type:** number
 
 **Since:** 6
+
+<!--Device-request-const NETWORK_MOBILE: int--><!--Device-request-const NETWORK_MOBILE: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -280,6 +318,8 @@ const NETWORK_WIFI: number
 
 **Since:** 6
 
+<!--Device-request-const NETWORK_WIFI: int--><!--Device-request-const NETWORK_WIFI: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## PAUSED_BY_USER
@@ -293,6 +333,8 @@ const PAUSED_BY_USER: number
 **Type:** number
 
 **Since:** 9
+
+<!--Device-request-const PAUSED_BY_USER: int--><!--Device-request-const PAUSED_BY_USER: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -308,6 +350,8 @@ const PAUSED_QUEUED_FOR_WIFI: number
 
 **Since:** 7
 
+<!--Device-request-const PAUSED_QUEUED_FOR_WIFI: int--><!--Device-request-const PAUSED_QUEUED_FOR_WIFI: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## PAUSED_UNKNOWN
@@ -321,6 +365,8 @@ const PAUSED_UNKNOWN: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const PAUSED_UNKNOWN: int--><!--Device-request-const PAUSED_UNKNOWN: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -338,6 +384,8 @@ Example: network disconnection
 
 **Since:** 7
 
+<!--Device-request-const PAUSED_WAITING_FOR_NETWORK: int--><!--Device-request-const PAUSED_WAITING_FOR_NETWORK: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## PAUSED_WAITING_TO_RETRY
@@ -351,6 +399,8 @@ const PAUSED_WAITING_TO_RETRY: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const PAUSED_WAITING_TO_RETRY: int--><!--Device-request-const PAUSED_WAITING_TO_RETRY: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -366,6 +416,8 @@ const SESSION_FAILED: number
 
 **Since:** 7
 
+<!--Device-request-const SESSION_FAILED: int--><!--Device-request-const SESSION_FAILED: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## SESSION_PAUSED
@@ -379,6 +431,8 @@ const SESSION_PAUSED: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const SESSION_PAUSED: int--><!--Device-request-const SESSION_PAUSED: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -394,6 +448,8 @@ const SESSION_PENDING: number
 
 **Since:** 7
 
+<!--Device-request-const SESSION_PENDING: int--><!--Device-request-const SESSION_PENDING: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## SESSION_RUNNING
@@ -408,6 +464,8 @@ const SESSION_RUNNING: number
 
 **Since:** 7
 
+<!--Device-request-const SESSION_RUNNING: int--><!--Device-request-const SESSION_RUNNING: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## SESSION_SUCCESSFUL
@@ -421,5 +479,7 @@ const SESSION_SUCCESSFUL: number
 **Type:** number
 
 **Since:** 7
+
+<!--Device-request-const SESSION_SUCCESSFUL: int--><!--Device-request-const SESSION_SUCCESSFUL: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

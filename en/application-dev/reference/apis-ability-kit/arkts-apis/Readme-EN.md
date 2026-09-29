@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-abilitykit-->
 
-- [@ohos.ability.ability](arkts-ability-ability-ability.md)
+- [@ohos.ability.ability(Ability Module)](arkts-ability-ability-ability.md)
   - [AbilityResult](arkts-ability-ability-abilityresult-t.md)
   - [ConnectOptions](arkts-ability-ability-connectoptions-t.md)
   - [DataAbilityHelper](arkts-ability-ability-dataabilityhelper-t.md)
@@ -13,7 +13,7 @@
   - [deleteId](arkts-ability-datauriutils-deleteid-depr-f.md)
   - [getId](arkts-ability-datauriutils-getid-depr-f.md)
   - [updateId](arkts-ability-datauriutils-updateid-depr-f.md)
-- [@ohos.ability.errorCode](arkts-ability-ability-errorcode.md)
+- [@ohos.ability.errorCode(ErrorCode)](arkts-ability-ability-errorcode.md)
   - [ErrorCode](arkts-ability-ability-errorcode-errorcode-e.md)
 - [@ohos.ability.featureAbility(FeatureAbility Module)](arkts-ability-ability-featureability.md)
   - [acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md)
@@ -133,9 +133,9 @@
   - [RemoteGrantStatus(system api)](arkts-ability-abilitytoolaccessctrl-remotegrantstatus-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Role(system api)](arkts-ability-abilitytoolaccessctrl-role-e-sys.md)<!--DelEnd-->
-- [@ohos.app.ability.Ability](arkts-ability-app-ability-ability.md)
+- [@ohos.app.ability.Ability(Ability Base Class)](arkts-ability-app-ability-ability.md)
   - [Ability](arkts-ability-app-ability-ability-ability-c.md)
-- [@ohos.app.ability.AbilityConstant](arkts-ability-app-ability-abilityconstant.md)
+- [@ohos.app.ability.AbilityConstant(Ability Constants)](arkts-ability-app-ability-abilityconstant.md)
   - [LastExitDetailInfo](arkts-ability-abilityconstant-lastexitdetailinfo-i.md)
   - [LaunchParam](arkts-ability-abilityconstant-launchparam-i.md)
   - [CollaborateResult](arkts-ability-abilityconstant-collaborateresult-e.md)
@@ -153,7 +153,7 @@
   - [Constants](arkts-ability-abilityconstant-con.md)
 - [@ohos.app.ability.AbilityLifecycleCallback(UIAbility Lifecycle Callback Listener)](arkts-ability-app-ability-abilitylifecyclecallback.md)
   - [AbilityLifecycleCallback](arkts-ability-app-ability-abilitylifecyclecallback-abilitylifecyclecallback-c.md)
-- [@ohos.app.ability.abilityManager](arkts-ability-app-ability-abilitymanager.md)
+- [@ohos.app.ability.abilityManager(Ability Information Management)](arkts-ability-app-ability-abilitymanager.md)
   <!--Del-->
   - [acquireShareData(system api)](arkts-ability-abilitymanager-acquiresharedata-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -337,13 +337,13 @@
   - [SaveOccasionFlag](arkts-ability-apprecovery-saveoccasionflag-e.md)
 - [@ohos.app.ability.AppServiceExtensionAbility(ExtensionAbility for Application Background Services)](arkts-ability-app-ability-appserviceextensionability.md)
   - [AppServiceExtensionAbility](arkts-ability-app-ability-appserviceextensionability-appserviceextensionability-c.md)
-- [@ohos.app.ability.AtomicServiceOptions](arkts-ability-app-ability-atomicserviceoptions.md)
+- [@ohos.app.ability.AtomicServiceOptions(openAtomicService Options)](arkts-ability-app-ability-atomicserviceoptions.md)
   - [AtomicServiceOptions](arkts-ability-app-ability-atomicserviceoptions-atomicserviceoptions-c.md)
 <!--Del-->
-- [@ohos.app.ability.AutoFillExtensionAbility](arkts-ability-app-ability-autofillextensionability.md)<!--DelEnd-->
+- [@ohos.app.ability.AutoFillExtensionAbility(AutoFillExtensionAbility)](arkts-ability-app-ability-autofillextensionability.md)<!--DelEnd-->
   <!--Del-->
   - [AutoFillExtensionAbility(system api)](arkts-ability-app-ability-autofillextensionability-autofillextensionability-c-sys.md)<!--DelEnd-->
-- [@ohos.app.ability.autoFillManager](arkts-ability-app-ability-autofillmanager.md)
+- [@ohos.app.ability.autoFillManager(Auto Fill Framework)](arkts-ability-app-ability-autofillmanager.md)
   - [requestAutoFill](arkts-ability-autofillmanager-requestautofill-f.md)
   - [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md)
   - [AutoFillCallback](arkts-ability-autofillmanager-autofillcallback-i.md)
@@ -453,14 +453,14 @@
   - [UIServiceHostProxy(system api)](arkts-ability-common-uiservicehostproxy-t-sys.md)<!--DelEnd-->
   - [UIServiceProxy](arkts-ability-common-uiserviceproxy-t.md)
   - [VpnExtensionContext](arkts-ability-common-vpnextensioncontext-t.md)
-- [@ohos.app.ability.CompletionHandler](arkts-ability-app-ability-completionhandler.md)
+- [@ohos.app.ability.CompletionHandler(Completion Handler)](arkts-ability-app-ability-completionhandler.md)
   - [CompletionHandler](arkts-ability-app-ability-completionhandler-completionhandler-c.md)
-- [@ohos.app.ability.CompletionHandlerForAbilityStartCallback](arkts-ability-app-ability-completionhandlerforabilitystartcallback.md)
+- [@ohos.app.ability.CompletionHandlerForAbilityStartCallback(Completion Handler for Ability Start Callback)](arkts-ability-app-ability-completionhandlerforabilitystartcallback.md)
   - [CompletionHandlerForAbilityStartCallback](arkts-ability-app-ability-completionhandlerforabilitystartcallback-completionhandlerforabilitystartcallback-c.md)
   - [OnRequestFailureFn](arkts-ability-onrequestfailurefn-t.md)
   - [OnRequestSuccessFn](arkts-ability-onrequestsuccessfn-t.md)
   - [AbilityStartFailureCode](arkts-ability-app-ability-completionhandlerforabilitystartcallback-abilitystartfailurecode-e.md)
-- [@ohos.app.ability.CompletionHandlerForAtomicService](arkts-ability-app-ability-completionhandlerforatomicservice.md)
+- [@ohos.app.ability.CompletionHandlerForAtomicService(Completion Handler for Atomic Service)](arkts-ability-app-ability-completionhandlerforatomicservice.md)
   - [CompletionHandlerForAtomicService](arkts-ability-app-ability-completionhandlerforatomicservice-completionhandlerforatomicservice-c.md)
   - [FailureCode](arkts-ability-app-ability-completionhandlerforatomicservice-failurecode-e.md)
 - [@ohos.app.ability.Configuration(Environment Variables)](arkts-ability-app-ability-configuration.md)
@@ -487,7 +487,7 @@
   - [deleteId](arkts-ability-datauriutils-deleteid-f.md)
   - [getId](arkts-ability-datauriutils-getid-f.md)
   - [updateId](arkts-ability-datauriutils-updateid-f.md)
-- [@ohos.app.ability.dialogRequest](arkts-ability-app-ability-dialogrequest.md)
+- [@ohos.app.ability.dialogRequest(dialogRequest Module)](arkts-ability-app-ability-dialogrequest.md)
   - [getRequestCallback](arkts-ability-dialogrequest-getrequestcallback-f.md)
   - [getRequestInfo](arkts-ability-dialogrequest-getrequestinfo-f.md)
   - [RequestCallback](arkts-ability-dialogrequest-requestcallback-i.md)
@@ -496,7 +496,7 @@
   - [WindowRect](arkts-ability-dialogrequest-windowrect-i.md)
   - [ResultCode](arkts-ability-dialogrequest-resultcode-e.md)
 <!--Del-->
-- [@ohos.app.ability.dialogSession](arkts-ability-app-ability-dialogsession.md)<!--DelEnd-->
+- [@ohos.app.ability.dialogSession(dialogSession)](arkts-ability-app-ability-dialogsession.md)<!--DelEnd-->
   <!--Del-->
   - [getDialogSessionInfo(system api)](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -641,14 +641,14 @@
   - [InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback-interopabilitylifecyclecallback-i.md)
   - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
   - [WindowStageCallbackFn](arkts-ability-windowstagecallbackfn-t.md)
-- [@ohos.app.ability.kioskManager](arkts-ability-app-ability-kioskmanager.md)
+- [@ohos.app.ability.kioskManager(Kiosk Mode Management)](arkts-ability-app-ability-kioskmanager.md)
   - [enterKioskMode](arkts-ability-kioskmanager-enterkioskmode-f.md)
   - [exitKioskMode](arkts-ability-kioskmanager-exitkioskmode-f.md)
   <!--Del-->
   - [getKioskStatus(system api)](arkts-ability-kioskmanager-getkioskstatus-f-sys.md)<!--DelEnd-->
   - [KioskStatus](arkts-ability-kioskmanager-kioskstatus-t.md)
 <!--Del-->
-- [@ohos.app.ability.missionManager](arkts-ability-app-ability-missionmanager.md)<!--DelEnd-->
+- [@ohos.app.ability.missionManager(missionManager)](arkts-ability-app-ability-missionmanager.md)<!--DelEnd-->
   <!--Del-->
   - [clearAllMissions(system api)](arkts-ability-missionmanager-clearallmissions-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -681,12 +681,12 @@
   - [MissionListener(system api)](arkts-ability-missionmanager-missionlistener-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [MissionSnapshot(system api)](arkts-ability-missionmanager-missionsnapshot-t-sys.md)<!--DelEnd-->
-- [@ohos.app.ability.OpenLinkOptions](arkts-ability-app-ability-openlinkoptions.md)
+- [@ohos.app.ability.OpenLinkOptions(openLink Options)](arkts-ability-app-ability-openlinkoptions.md)
   - [OpenLinkOptions](arkts-ability-app-ability-openlinkoptions-openlinkoptions-i.md)
 - [@ohos.app.ability.PhotoEditorExtensionAbility](arkts-ability-app-ability-photoeditorextensionability.md)
   - [PhotoEditorExtensionAbility](arkts-ability-app-ability-photoeditorextensionability-photoeditorextensionability-c.md)
 <!--Del-->
-- [@ohos.app.ability.quickFixManager](arkts-ability-app-ability-quickfixmanager.md)<!--DelEnd-->
+- [@ohos.app.ability.quickFixManager(quickFixManager)](arkts-ability-app-ability-quickfixmanager.md)<!--DelEnd-->
   <!--Del-->
   - [applyQuickFix(system api)](arkts-ability-quickfixmanager-applyquickfix-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -717,7 +717,7 @@
   - [ServiceExtensionAbility(system api)](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md)<!--DelEnd-->
 - [@ohos.app.ability.ShareExtensionAbility(ExtensionAbility for Share Detail Page Integration)](arkts-ability-app-ability-shareextensionability.md)
   - [ShareExtensionAbility](arkts-ability-app-ability-shareextensionability-shareextensionability-c.md)
-- [@ohos.app.ability.StartOptions](arkts-ability-app-ability-startoptions.md)
+- [@ohos.app.ability.StartOptions(startAbility Options)](arkts-ability-app-ability-startoptions.md)
   - [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)
   <!--Del-->
   - [StartOptions(system api)](arkts-ability-app-ability-startoptions-startoptions-c-sys.md)<!--DelEnd-->
@@ -746,7 +746,7 @@
   <!--Del-->
   - [UIExtensionContentSession(system api)](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.app.ability.UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability.md)<!--DelEnd-->
+- [@ohos.app.ability.UIServiceExtensionAbility(UIServiceExtensionAbility)](arkts-ability-app-ability-uiserviceextensionability.md)<!--DelEnd-->
   <!--Del-->
   - [UIServiceExtensionAbility(system api)](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)<!--DelEnd-->
 <!--Del-->
@@ -805,16 +805,16 @@
   <!--Del-->
   - [Params(system api)](arkts-ability-wantconstant-params-e-sys.md)<!--DelEnd-->
   - [ShowMode](arkts-ability-wantconstant-showmode-e.md)
-- [@ohos.app.agent.agentConstant](arkts-ability-app-agent-agentconstant.md)
+- [@ohos.app.agent.agentConstant(Agent Constants)](arkts-ability-app-agent-agentconstant.md)
   - [AgentCardType](arkts-ability-agentconstant-agentcardtype-e.md)
   <!--Del-->
   - [AgentCardType(system api)](arkts-ability-agentconstant-agentcardtype-e-sys.md)<!--DelEnd-->
-- [@ohos.app.agent.AgentExtensionAbility](arkts-ability-app-agent-agentextensionability.md)
+- [@ohos.app.agent.AgentExtensionAbility(Agent Extension Ability)](arkts-ability-app-agent-agentextensionability.md)
   - [AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)
   <!--Del-->
   - [AgentExtensionAbility(system api)](arkts-ability-app-agent-agentextensionability-agentextensionability-c-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.app.agent.agentManager](arkts-ability-app-agent-agentmanager.md)<!--DelEnd-->
+- [@ohos.app.agent.agentManager(Agent Manager)](arkts-ability-app-agent-agentmanager.md)<!--DelEnd-->
   <!--Del-->
   - [connectAgentExtensionAbility(system api)](arkts-ability-agentmanager-connectagentextensionability-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -854,7 +854,7 @@
 - [@ohos.app.appstartup.StartupTask](arkts-ability-app-appstartup-startuptask.md)
   - [StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)
 <!--Del-->
-- [@ohos.app.businessAbilityRouter](arkts-ability-app-businessabilityrouter.md)<!--DelEnd-->
+- [@ohos.app.businessAbilityRouter(Business Ability Router)](arkts-ability-app-businessabilityrouter.md)<!--DelEnd-->
   <!--Del-->
   - [queryBusinessAbilityInfo(system api)](arkts-ability-businessabilityrouter-querybusinessabilityinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -863,42 +863,34 @@
   - [BusinessAbilityInfo(system api)](arkts-ability-businessabilityrouter-businessabilityinfo-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [BusinessType(system api)](arkts-ability-businessabilityrouter-businesstype-e-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.app.cli.cliManager](arkts-ability-app-cli-climanager.md)<!--DelEnd-->
-  <!--Del-->
-  - [clearSession(system api)](arkts-ability-climanager-clearsession-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [execCmd(system api)](arkts-ability-climanager-execcmd-f-sys.md)<!--DelEnd-->
+- [@ohos.app.cli.cliManager(CLI Tool Management)](arkts-ability-app-cli-climanager.md)
+  - [clearSession](arkts-ability-climanager-clearsession-f.md)
+  - [execCmd](arkts-ability-climanager-execcmd-f.md)
   <!--Del-->
   - [execTool(system api)](arkts-ability-climanager-exectool-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getToolInfoByName(system api)](arkts-ability-climanager-gettoolinfobyname-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [querySession(system api)](arkts-ability-climanager-querysession-f-sys.md)<!--DelEnd-->
+  - [querySession](arkts-ability-climanager-querysession-f.md)
   <!--Del-->
   - [queryTools(system api)](arkts-ability-climanager-querytools-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [queryToolSummaries(system api)](arkts-ability-climanager-querytoolsummaries-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [registerCliHook(system api)](arkts-ability-climanager-registerclihook-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [sendMessage(system api)](arkts-ability-climanager-sendmessage-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [subscribeSession(system api)](arkts-ability-climanager-subscribesession-f-sys.md)<!--DelEnd-->
+  - [sendMessage](arkts-ability-climanager-sendmessage-f.md)
+  - [subscribeSession](arkts-ability-climanager-subscribesession-f.md)
   <!--Del-->
   - [unregisterCliHook(system api)](arkts-ability-climanager-unregisterclihook-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [CliSessionInfo(system api)](arkts-ability-climanager-clisessioninfo-i-sys.md)<!--DelEnd-->
+  - [CliSessionInfo](arkts-ability-climanager-clisessioninfo-i.md)
+  - [ExecCmdOptions](arkts-ability-climanager-execcmdoptions-i.md)
   <!--Del-->
   - [ExecCmdOptions(system api)](arkts-ability-climanager-execcmdoptions-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ExecOptions(system api)](arkts-ability-climanager-execoptions-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [ExecResult(system api)](arkts-ability-climanager-execresult-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [SessionStatus(system api)](arkts-ability-climanager-sessionstatus-e-sys.md)<!--DelEnd-->
+  - [ExecResult](arkts-ability-climanager-execresult-i.md)
+  - [SessionStatus](arkts-ability-climanager-sessionstatus-e.md)
 <!--Del-->
-- [@ohos.app.function.functionManager](arkts-ability-app-function-functionmanager.md)<!--DelEnd-->
+- [@ohos.app.function.functionManager(Function Manager)](arkts-ability-app-function-functionmanager.md)<!--DelEnd-->
   <!--Del-->
   - [invokeFunction(system api)](arkts-ability-functionmanager-invokefunction-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -964,7 +956,8 @@
   - [unlockMission(system api)](arkts-ability-missionmanager-unlockmission-depr-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [unregisterMissionListener(system api)](arkts-ability-missionmanager-unregistermissionlistener-depr-f-sys.md)<!--DelEnd-->
-- [@ohos.application.uriPermissionManager](arkts-ability-application-uripermissionmanager.md)
+<!--Del-->
+- [@ohos.application.uriPermissionManager(URI Permission Manager)](arkts-ability-application-uripermissionmanager.md)<!--DelEnd-->
   <!--Del-->
   - [grantUriPermission(system api)](arkts-ability-uripermissionmanager-granturipermission-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1577,7 +1570,8 @@
   - [MissionParameter(system api)](arkts-ability-distributedmissionmanager-missionparameter-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ContinueState(system api)](arkts-ability-distributedmissionmanager-continuestate-e-sys.md)<!--DelEnd-->
-- [@ohos.privacyManager(Privacy Management)](arkts-ability-privacymanager.md)
+<!--Del-->
+- [@ohos.privacyManager(Privacy Management)](arkts-ability-privacymanager.md)<!--DelEnd-->
   <!--Del-->
   - [addPermissionUsedRecord(system api)](arkts-ability-privacymanager-addpermissionusedrecord-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1682,20 +1676,20 @@
   - [abilityDelegatorArgs(AbilityDelegatorArgs)](arkts-ability-abilitydelegatorargs.md)
     - [AbilityDelegatorArgs](arkts-ability-abilitydelegatorargs-abilitydelegatorargs-i.md)
   <!--Del-->
-  - [AbilityFirstFrameStateData](arkts-ability-abilityfirstframestatedata.md)<!--DelEnd-->
+  - [AbilityFirstFrameStateData(Ability First Frame State Data)](arkts-ability-abilityfirstframestatedata.md)<!--DelEnd-->
     <!--Del-->
     - [AbilityFirstFrameStateData(system api)](arkts-ability-abilityfirstframestatedata-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver.md)<!--DelEnd-->
+  - [AbilityFirstFrameStateObserver(Ability First Frame State Observer)](arkts-ability-abilityfirstframestateobserver.md)<!--DelEnd-->
     <!--Del-->
     - [AbilityFirstFrameStateObserver(system api)](arkts-ability-abilityfirstframestateobserver-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AbilityForegroundStateObserver](arkts-ability-abilityforegroundstateobserver.md)<!--DelEnd-->
+  - [AbilityForegroundStateObserver(Ability Foreground State Observer)](arkts-ability-abilityforegroundstateobserver.md)<!--DelEnd-->
     <!--Del-->
     - [AbilityForegroundStateObserver(system api)](arkts-ability-abilityforegroundstateobserver-c-sys.md)<!--DelEnd-->
   - [AbilityMonitor(AbilityMonitor)](arkts-ability-abilitymonitor.md)
     - [AbilityMonitor](arkts-ability-abilitymonitor-i.md)
-  - [AbilityRunningInfo](arkts-ability-abilityrunninginfo.md)
+  - [AbilityRunningInfo(Ability Running Info)](arkts-ability-abilityrunninginfo.md)
     - [AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)
   - [AbilityStageContext(AbilityStageContext)](arkts-ability-abilitystagecontext.md)
     - [AbilityStageContext](arkts-ability-abilitystagecontext-c.md)
@@ -1703,9 +1697,9 @@
     - [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md)
   - [AbilityStartCallback](arkts-ability-abilitystartcallback.md)
     - [AbilityStartCallback](arkts-ability-abilitystartcallback-c.md)
-  - [AbilityStateData](arkts-ability-abilitystatedata.md)
+  - [AbilityStateData(Ability State Data)](arkts-ability-abilitystatedata.md)
     - [AbilityStateData](arkts-ability-abilitystatedata-c.md)
-  - [AgentCard](arkts-ability-agentcard.md)
+  - [AgentCard(Agent Card)](arkts-ability-agentcard.md)
     - [AgentAppInfo](arkts-ability-agentcard-agentappinfo-i.md)
     - [AgentCapabilities](arkts-ability-agentcard-agentcapabilities-i.md)
     - [AgentCard](arkts-ability-agentcard-i.md)
@@ -1715,7 +1709,7 @@
   - [AgentExtensionConnectCallback](arkts-ability-agentextensionconnectcallback.md)<!--DelEnd-->
     <!--Del-->
     - [AgentExtensionConnectCallback(system api)](arkts-ability-agentextensionconnectcallback-i-sys.md)<!--DelEnd-->
-  - [AgentExtensionContext](arkts-ability-agentextensioncontext.md)
+  - [AgentExtensionContext(Agent Extension Context)](arkts-ability-agentextensioncontext.md)
     - [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md)
   - [AgentHostProxy](arkts-ability-agenthostproxy.md)
     - [AgentHostProxy](arkts-ability-agenthostproxy-i.md)
@@ -1739,7 +1733,7 @@
   - [AppStateData(AppStateData)](arkts-ability-appstatedata.md)
     - [AppStateData](arkts-ability-appstatedata-c.md)
   <!--Del-->
-  - [AutoFillExtensionContext](arkts-ability-autofillextensioncontext.md)<!--DelEnd-->
+  - [AutoFillExtensionContext(Auto Fill Extension Context)](arkts-ability-autofillextensioncontext.md)<!--DelEnd-->
     <!--Del-->
     - [AutoFillExtensionContext(system api)](arkts-ability-autofillextensioncontext-c-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1750,9 +1744,9 @@
     - [PopupSize(system api)](arkts-ability-autofillpopupconfig-popupsize-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [PopupPlacement(system api)](arkts-ability-autofillpopupconfig-popupplacement-e-sys.md)<!--DelEnd-->
-  - [AutoFillRect](arkts-ability-autofillrect.md)
+  - [AutoFillRect(Auto Fill Rectangular Area)](arkts-ability-autofillrect.md)
     - [AutoFillRect](arkts-ability-autofillrect-i.md)
-  - [AutoFillRequest](arkts-ability-autofillrequest.md)
+  - [AutoFillRequest(AutoFillRequest)](arkts-ability-autofillrequest.md)
     - [FillFailureResult](arkts-ability-autofillrequest-fillfailureresult-i.md)
     - [FillRequest](arkts-ability-autofillrequest-fillrequest-i.md)
     <!--Del-->
@@ -1766,9 +1760,9 @@
     - [SaveRequestCallback(system api)](arkts-ability-autofillrequest-saverequestcallback-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [UpdateRequest(system api)](arkts-ability-autofillrequest-updaterequest-i-sys.md)<!--DelEnd-->
-  - [AutoFillTriggerType](arkts-ability-autofilltriggertype.md)
+  - [AutoFillTriggerType(Auto Fill Trigger Type)](arkts-ability-autofilltriggertype.md)
     - [AutoFillTriggerType](arkts-ability-autofilltriggertype-e.md)
-  - [AutoFillType](arkts-ability-autofilltype.md)
+  - [AutoFillType(Auto Fill Type)](arkts-ability-autofilltype.md)
     - [AutoFillType](arkts-ability-autofilltype-e.md)
     <!--Del-->
     - [AutoFillType(system api)](arkts-ability-autofilltype-e-sys.md)<!--DelEnd-->
@@ -1798,12 +1792,9 @@
     - [ExecResultWrap(system api)](arkts-ability-clihook-execresultwrap-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [ExecToolParam(system api)](arkts-ability-clihook-exectoolparam-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [CliToolEvent](arkts-ability-clitoolevent.md)<!--DelEnd-->
-    <!--Del-->
-    - [CliToolEvent(system api)](arkts-ability-clitoolevent-i-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [ToolEventType(system api)](arkts-ability-clitoolevent-tooleventtype-e-sys.md)<!--DelEnd-->
+  - [CliToolEvent(CLI Tool Session Event)](arkts-ability-clitoolevent.md)
+    - [CliToolEvent](arkts-ability-clitoolevent-i.md)
+    - [ToolEventType](arkts-ability-clitoolevent-tooleventtype-e.md)
   - [Context(Context Base Class of the Stage Model)](arkts-ability-context.md)
     - [Context](arkts-ability-context-c.md)
     <!--Del-->
@@ -1827,7 +1818,7 @@
     <!--Del-->
     - [ContinueMissionInfo(system api)](arkts-ability-continuemissioninfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [CustomData](arkts-ability-customdata.md)<!--DelEnd-->
+  - [CustomData(Custom Data)](arkts-ability-customdata.md)<!--DelEnd-->
     <!--Del-->
     - [CustomData(system api)](arkts-ability-customdata-i-sys.md)<!--DelEnd-->
   - [EmbeddableUIAbilityContext(EmbeddableUIAbilityContext)](arkts-ability-embeddableuiabilitycontext.md)
@@ -1851,13 +1842,13 @@
     <!--Del-->
     - [InvokeFunctionParam(system api)](arkts-ability-functionhook-invokefunctionparam-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [FunctionInfo](arkts-ability-functioninfo.md)<!--DelEnd-->
+  - [FunctionInfo(Function Info)](arkts-ability-functioninfo.md)<!--DelEnd-->
     <!--Del-->
     - [FunctionInfo(system api)](arkts-ability-functioninfo-i-sys.md)<!--DelEnd-->
   - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor.md)
     - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor-i.md)
     - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
-  - [KioskStatus](arkts-ability-kioskstatus.md)
+  - [KioskStatus(Kiosk Status)](arkts-ability-kioskstatus.md)
     - [KioskStatus](arkts-ability-kioskstatus-i.md)
   - [LoopObserver](arkts-ability-loopobserver.md)
     - [LoopObserver](arkts-ability-loopobserver-i.md)
@@ -1876,11 +1867,11 @@
     <!--Del-->
     - [MissionDeviceInfo(system api)](arkts-ability-missiondeviceinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [MissionInfo](arkts-ability-missioninfo.md)<!--DelEnd-->
+  - [MissionInfo(Mission Info)](arkts-ability-missioninfo.md)<!--DelEnd-->
     <!--Del-->
     - [MissionInfo(system api)](arkts-ability-missioninfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [MissionListener](arkts-ability-missionlistener.md)<!--DelEnd-->
+  - [MissionListener(Mission Listener)](arkts-ability-missionlistener.md)<!--DelEnd-->
     <!--Del-->
     - [MissionListener(system api)](arkts-ability-missionlistener-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1888,14 +1879,14 @@
     <!--Del-->
     - [MissionParameter(system api)](arkts-ability-missionparameter-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [MissionSnapshot](arkts-ability-missionsnapshot.md)<!--DelEnd-->
+  - [MissionSnapshot(Mission Snapshot)](arkts-ability-missionsnapshot.md)<!--DelEnd-->
     <!--Del-->
     - [MissionSnapshot(system api)](arkts-ability-missionsnapshot-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [MultiAppMode](arkts-ability-multiappmode.md)<!--DelEnd-->
+  - [MultiAppMode(Multi App Mode)](arkts-ability-multiappmode.md)<!--DelEnd-->
     <!--Del-->
     - [MultiAppMode(system api)](arkts-ability-multiappmode-e-sys.md)<!--DelEnd-->
-  - [PageNodeInfo](arkts-ability-pagenodeinfo.md)
+  - [PageNodeInfo(Page Node Info)](arkts-ability-pagenodeinfo.md)
     - [PageNodeInfo](arkts-ability-pagenodeinfo-i.md)
     <!--Del-->
     - [PageNodeInfo(system api)](arkts-ability-pagenodeinfo-i-sys.md)<!--DelEnd-->
@@ -1908,15 +1899,15 @@
   - [ProcessRunningInfo(ProcessRunningInfo)](arkts-ability-processrunninginfo.md)
     - [ProcessRunningInfo](arkts-ability-processrunninginfo-i.md)
   <!--Del-->
-  - [RunningAppClone](arkts-ability-runningappclone.md)<!--DelEnd-->
+  - [RunningAppClone(RunningAppClone)](arkts-ability-runningappclone.md)<!--DelEnd-->
     <!--Del-->
     - [RunningAppClone(system api)](arkts-ability-runningappclone-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [RunningMultiAppInfo](arkts-ability-runningmultiappinfo.md)<!--DelEnd-->
+  - [RunningMultiAppInfo(RunningMultiAppInfo)](arkts-ability-runningmultiappinfo.md)<!--DelEnd-->
     <!--Del-->
     - [RunningMultiAppInfo(system api)](arkts-ability-runningmultiappinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [RunningMultiInstanceInfo](arkts-ability-runningmultiinstanceinfo.md)<!--DelEnd-->
+  - [RunningMultiInstanceInfo(RunningMultiInstanceInfo)](arkts-ability-runningmultiinstanceinfo.md)<!--DelEnd-->
     <!--Del-->
     - [RunningMultiInstanceInfo(system api)](arkts-ability-runningmultiinstanceinfo-i-sys.md)<!--DelEnd-->
   - [SendableContext](arkts-ability-sendablecontext.md)
@@ -1927,21 +1918,18 @@
     - [ServiceExtensionContext(system api)](arkts-ability-serviceextensioncontext-c-sys.md)<!--DelEnd-->
   - [shellCmdResult(ShellCmdResult)](arkts-ability-shellcmdresult.md)
     - [ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)
+  - [ToolEventCallback(CLI Tool Event Callback)](arkts-ability-tooleventcallback.md)
+    - [ToolEventCallback](arkts-ability-tooleventcallback-i.md)
+    - [OnEventFn](arkts-ability-oneventfn-t.md)
   <!--Del-->
-  - [ToolEventCallback](arkts-ability-tooleventcallback.md)<!--DelEnd-->
-    <!--Del-->
-    - [ToolEventCallback(system api)](arkts-ability-tooleventcallback-i-sys.md)<!--DelEnd-->
-    <!--Del-->
-    - [OnEventFn(system api)](arkts-ability-oneventfn-t-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [ToolInfo](arkts-ability-toolinfo.md)<!--DelEnd-->
+  - [ToolInfo(CLI Tool Information)](arkts-ability-toolinfo.md)<!--DelEnd-->
     <!--Del-->
     - [SubCommandInfo(system api)](arkts-ability-toolinfo-subcommandinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [ToolInfo(system api)](arkts-ability-toolinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [ToolSummary(system api)](arkts-ability-toolinfo-toolsummary-i-sys.md)<!--DelEnd-->
-  - [UIAbilityContext](arkts-ability-uiabilitycontext.md)
+  - [UIAbilityContext(UIAbility Context)](arkts-ability-uiabilitycontext.md)
     - [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)
     <!--Del-->
     - [UIAbilityContext(system api)](arkts-ability-uiabilitycontext-c-sys.md)<!--DelEnd-->
@@ -1961,7 +1949,7 @@
     - [UIServiceHostProxy(system api)](arkts-ability-uiservicehostproxy-i-sys.md)<!--DelEnd-->
   - [UIServiceProxy(UIServiceProxy)](arkts-ability-uiserviceproxy.md)
     - [UIServiceProxy](arkts-ability-uiserviceproxy-i.md)
-  - [ViewData](arkts-ability-viewdata.md)
+  - [ViewData(View Data)](arkts-ability-viewdata.md)
     - [ViewData](arkts-ability-viewdata-i.md)
     <!--Del-->
     - [ViewData(system api)](arkts-ability-viewdata-i-sys.md)<!--DelEnd-->

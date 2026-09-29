@@ -8,6 +8,8 @@ Provides APIs for setting and obtaining ringtone parameters as well as playing a
 
 **Since:** 10
 
+<!--Device-unnamed-export interface RingtonePlayer--><!--Device-unnamed-export interface RingtonePlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ configure(options: RingtoneOptions, callback: AsyncCallback<void>): void
 Sets ringtone parameters. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-configure(options: RingtoneOptions, callback: AsyncCallback<void>): void--><!--Device-RingtonePlayer-configure(options: RingtoneOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -64,6 +68,8 @@ configure(options: RingtoneOptions): Promise<void>
 Sets ringtone parameters. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-configure(options: RingtoneOptions): Promise<void>--><!--Device-RingtonePlayer-configure(options: RingtoneOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -109,6 +115,8 @@ Obtains the information about the audio renderer used by the ringtone. This API 
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-getAudioRendererInfo(callback: AsyncCallback<audio.AudioRendererInfo>): void--><!--Device-RingtonePlayer-getAudioRendererInfo(callback: AsyncCallback<audio.AudioRendererInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -149,6 +157,8 @@ Obtains the information about the audio renderer used by the ringtone. This API 
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-getAudioRendererInfo(): Promise<audio.AudioRendererInfo>--><!--Device-RingtonePlayer-getAudioRendererInfo(): Promise<audio.AudioRendererInfo>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -184,6 +194,8 @@ getTitle(callback: AsyncCallback<string>): void
 Obtains the title of the ringtone. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-getTitle(callback: AsyncCallback<string>): void--><!--Device-RingtonePlayer-getTitle(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -221,6 +233,8 @@ Obtains the title of the ringtone. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-getTitle(): Promise<string>--><!--Device-RingtonePlayer-getTitle(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -252,6 +266,8 @@ off(type: 'audioInterrupt'): void
 Unsubscribes from the audio interruption event.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-off(type: 'audioInterrupt'): void--><!--Device-RingtonePlayer-off(type: 'audioInterrupt'): void-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -285,6 +301,8 @@ on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void
 Subscribes to the audio interruption event, which is triggered when the audio focus is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void--><!--Device-RingtonePlayer-on(type: 'audioInterrupt', callback: Callback<audio.InterruptEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -364,6 +382,8 @@ Releases the ringtone player. This API uses an asynchronous callback to return t
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-release(callback: AsyncCallback<void>): void--><!--Device-RingtonePlayer-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -400,6 +420,8 @@ Releases the ringtone player. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-release(): Promise<void>--><!--Device-RingtonePlayer-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -431,6 +453,8 @@ start(callback: AsyncCallback<void>): void
 Starts playing the ringtone. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-start(callback: AsyncCallback<void>): void--><!--Device-RingtonePlayer-start(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -468,6 +492,8 @@ Starts playing the ringtone. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-start(): Promise<void>--><!--Device-RingtonePlayer-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -499,6 +525,8 @@ stop(callback: AsyncCallback<void>): void
 Stops playing the ringtone. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-stop(callback: AsyncCallback<void>): void--><!--Device-RingtonePlayer-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -536,6 +564,8 @@ Stops playing the ringtone. This API uses a promise to return the result.
 
 **Since:** 10
 
+<!--Device-RingtonePlayer-stop(): Promise<void>--><!--Device-RingtonePlayer-stop(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -569,6 +599,8 @@ Gets player state.
 **Type:** [media.AVPlayerState](../../apis-media-kit/arkts-apis/arkts-media-media-avplayerstate-t.md)
 
 **Since:** 10
+
+<!--Device-RingtonePlayer-readonly state: media.AVPlayerState--><!--Device-RingtonePlayer-readonly state: media.AVPlayerState-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

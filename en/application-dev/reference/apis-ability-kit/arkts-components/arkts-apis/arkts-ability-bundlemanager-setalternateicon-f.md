@@ -18,6 +18,8 @@ Sets the alternate icon of the caller based on the given alternate icon name. Th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function setAlternateIcon(alternateIconName: string): Promise<void>--><!--Device-bundleManager-function setAlternateIcon(alternateIconName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Parameters:**

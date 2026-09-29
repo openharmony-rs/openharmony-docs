@@ -1,4 +1,4 @@
-# @system.device
+# @system.device(Device Information)
 
 This module provides information about the current device.
  It reads system configurations to obtain basic information such as the device brand,
@@ -12,7 +12,7 @@ This module provides information about the current device.
  >    \- For lite wearables, this module is constantly maintained and available.
  >
  >    \- For other device types, this module is no longer maintained since API version 6,
- >       and you are advised to use @ohos.deviceInfo (supported since API version 6)
+ >       and you are advised to use [@ohos.deviceInfo](arkts-basicservices-deviceinfo.md) (supported since API version 6)
  >       to query device information.
  >
  > - The initial APIs of this module are supported since API version 3.

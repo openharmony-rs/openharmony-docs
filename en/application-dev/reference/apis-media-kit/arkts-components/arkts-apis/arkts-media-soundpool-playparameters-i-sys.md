@@ -10,6 +10,8 @@ These parameters are used to control the playback volume, number of loops, and p
 
 **Since:** 10
 
+<!--Device-unnamed-export interface PlayParameters--><!--Device-unnamed-export interface PlayParameters-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## parallelPlayFlag
@@ -25,6 +27,8 @@ This is a system API.
 **Type:** boolean
 
 **Since:** 10
+
+<!--Device-PlayParameters-parallelPlayFlag?: boolean--><!--Device-PlayParameters-parallelPlayFlag?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 

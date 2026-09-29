@@ -20,6 +20,8 @@ Checks whether a specified API version is available on the current device. This 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-deviceInfo-function apiAvailable(version: string | number): boolean--><!--Device-deviceInfo-function apiAvailable(version: string | number): boolean-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **Parameters:**

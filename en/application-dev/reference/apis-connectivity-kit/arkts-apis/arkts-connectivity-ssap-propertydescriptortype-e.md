@@ -8,6 +8,8 @@ Enumerates the property descriptor types.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-enum PropertyDescriptorType--><!--Device-ssap-enum PropertyDescriptorType-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## PROPERTY
@@ -21,6 +23,8 @@ Property.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyDescriptorType-PROPERTY = 1--><!--Device-PropertyDescriptorType-PROPERTY = 1-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -36,6 +40,8 @@ Property configuration on the client.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyDescriptorType-CLIENT_PROPERTY_CONFIG = 2--><!--Device-PropertyDescriptorType-CLIENT_PROPERTY_CONFIG = 2-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## SERVER_PROPERTY_CONFIG
@@ -49,6 +55,8 @@ Property configuration on the server.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyDescriptorType-SERVER_PROPERTY_CONFIG = 3--><!--Device-PropertyDescriptorType-SERVER_PROPERTY_CONFIG = 3-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -64,6 +72,8 @@ Property format.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyDescriptorType-PROPERTY_FORMAT = 4--><!--Device-PropertyDescriptorType-PROPERTY_FORMAT = 4-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## TYPE_VENDOR
@@ -77,5 +87,7 @@ Vendor-defined field.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyDescriptorType-TYPE_VENDOR = 255--><!--Device-PropertyDescriptorType-TYPE_VENDOR = 255-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

@@ -8,6 +8,8 @@ In the following API examples, you must first use [getInputMethodAbility](arkts-
 
 **Since:** 9
 
+<!--Device-inputMethodEngine-interface InputMethodAbility--><!--Device-inputMethodEngine-interface InputMethodAbility-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -26,9 +28,11 @@ Creates an input method panel. This API can be called only by the input method a
 > **NOTE:** <br>
 > <br>
 > Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br> <br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-custom_dialog_controller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or set **showInSubwindow** to **false**.
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or set **showInSubwindow** to **false**.
 
 **Since:** 10
+
+<!--Device-InputMethodAbility-createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): void--><!--Device-InputMethodAbility-createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -89,9 +93,11 @@ Creates an input method panel. This API can be called only by the input method a
 > <br>
 > Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br>
 > <br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-custom_dialog_controller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or set **showInSubwindow** to **false**.
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or set **showInSubwindow** to **false**.
 
 **Since:** 10
+
+<!--Device-InputMethodAbility-createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>--><!--Device-InputMethodAbility-createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -151,6 +157,8 @@ destroyPanel(panel: Panel, callback: AsyncCallback<void>): void
 Destroys the specified input method panel. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodAbility-destroyPanel(panel: Panel, callback: AsyncCallback<void>): void--><!--Device-InputMethodAbility-destroyPanel(panel: Panel, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -212,6 +220,8 @@ destroyPanel(panel: Panel): Promise<void>
 Destroys the specified input method panel. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-InputMethodAbility-destroyPanel(panel: Panel): Promise<void>--><!--Device-InputMethodAbility-destroyPanel(panel: Panel): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -275,6 +285,8 @@ Obtains the current security mode of the input method.
 
 **Since:** 11
 
+<!--Device-InputMethodAbility-getSecurityMode(): SecurityMode--><!--Device-InputMethodAbility-getSecurityMode(): SecurityMode-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -306,6 +318,8 @@ Disables listening for the input method binding event. This API uses an asynchro
 
 **Since:** 9
 
+<!--Device-InputMethodAbility-off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClient: InputClient) => void): void--><!--Device-InputMethodAbility-off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClient: InputClient) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -330,6 +344,8 @@ off(type: 'inputStop', callback: () => void): void
 Disables listening for the input method stop event. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodAbility-off(type: 'inputStop', callback: () => void): void--><!--Device-InputMethodAbility-off(type: 'inputStop', callback: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -358,6 +374,8 @@ Disables listening for the window invocation setting event. This API uses an asy
 
 **Since:** 9
 
+<!--Device-InputMethodAbility-off(type: 'setCallingWindow', callback: (wid: number) => void): void--><!--Device-InputMethodAbility-off(type: 'setCallingWindow', callback: (wid: number) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -384,6 +402,8 @@ off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void
 Disables listening for a keyboard visibility event. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodAbility-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void--><!--Device-InputMethodAbility-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -415,6 +435,8 @@ Disables listening for the input method subtype setting event. This API uses an 
 
 **Since:** 9
 
+<!--Device-InputMethodAbility-off(type: 'setSubtype', callback?: (inputMethodSubtype: InputMethodSubtype) => void): void--><!--Device-InputMethodAbility-off(type: 'setSubtype', callback?: (inputMethodSubtype: InputMethodSubtype) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -441,6 +463,8 @@ off(type: 'securityModeChange', callback?: Callback<SecurityMode>): void
 Disables listening for the security mode changes of the input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-InputMethodAbility-off(type: 'securityModeChange', callback?: Callback<SecurityMode>): void--><!--Device-InputMethodAbility-off(type: 'securityModeChange', callback?: Callback<SecurityMode>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -472,6 +496,8 @@ off(type: 'privateCommand', callback?: Callback<Record<string, CommandDataType>>
 Disables listening for the private data event of the input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-InputMethodAbility-off(type: 'privateCommand', callback?: Callback<Record<string, CommandDataType>>): void--><!--Device-InputMethodAbility-off(type: 'privateCommand', callback?: Callback<Record<string, CommandDataType>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -511,6 +537,8 @@ Disables listening for changes of the screen ID of the window associated with th
 
 **Since:** 18
 
+<!--Device-InputMethodAbility-off(type: 'callingDisplayDidChange', callback?: Callback<number>): void--><!--Device-InputMethodAbility-off(type: 'callingDisplayDidChange', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -538,6 +566,8 @@ Unsubscribes from the event of discarding candidate words and sends the event to
 
 **Since:** 20
 
+<!--Device-InputMethodAbility-off(type: 'discardTypingText', callback?: Callback<void>): void--><!--Device-InputMethodAbility-off(type: 'discardTypingText', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -564,6 +594,8 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient:
 Enables listening for the input method binding event. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodAbility-on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void): void--><!--Device-InputMethodAbility-on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -595,6 +627,8 @@ Enables listening for the input method unbinding event. This API uses an asynchr
 
 **Since:** 9
 
+<!--Device-InputMethodAbility-on(type: 'inputStop', callback: () => void): void--><!--Device-InputMethodAbility-on(type: 'inputStop', callback: () => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -622,6 +656,8 @@ Enables listening for the window invocation setting event. This API uses an asyn
 
 **Since:** 9
 
+<!--Device-InputMethodAbility-on(type: 'setCallingWindow', callback: (wid: number) => void): void--><!--Device-InputMethodAbility-on(type: 'setCallingWindow', callback: (wid: number) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -648,6 +684,8 @@ on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void
 Enables listening for a keyboard visibility event. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-InputMethodAbility-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void--><!--Device-InputMethodAbility-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -679,6 +717,8 @@ Enables listening for the input method subtype setting event. This API uses an a
 
 **Since:** 9
 
+<!--Device-InputMethodAbility-on(type: 'setSubtype', callback: (inputMethodSubtype: InputMethodSubtype) => void): void--><!--Device-InputMethodAbility-on(type: 'setSubtype', callback: (inputMethodSubtype: InputMethodSubtype) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -708,6 +748,8 @@ Enables listening for the security mode changes of the input method. This API us
 
 **Since:** 11
 
+<!--Device-InputMethodAbility-on(type: 'securityModeChange', callback: Callback<SecurityMode>): void--><!--Device-InputMethodAbility-on(type: 'securityModeChange', callback: Callback<SecurityMode>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -735,6 +777,8 @@ on(type: 'privateCommand', callback: Callback<Record<string, CommandDataType>>):
 Enables listening for the private data event of the input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-InputMethodAbility-on(type: 'privateCommand', callback: Callback<Record<string, CommandDataType>>): void--><!--Device-InputMethodAbility-on(type: 'privateCommand', callback: Callback<Record<string, CommandDataType>>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -773,6 +817,8 @@ Enables listening for changes of the screen ID of the window associated with the
 
 **Since:** 18
 
+<!--Device-InputMethodAbility-on(type: 'callingDisplayDidChange', callback: Callback<number>): void--><!--Device-InputMethodAbility-on(type: 'callingDisplayDidChange', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -806,6 +852,8 @@ on(type: 'discardTypingText', callback: Callback<void>): void
 Subscribes to the event of discarding candidate words and sends the event to the input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-InputMethodAbility-on(type: 'discardTypingText', callback: Callback<void>): void--><!--Device-InputMethodAbility-on(type: 'discardTypingText', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

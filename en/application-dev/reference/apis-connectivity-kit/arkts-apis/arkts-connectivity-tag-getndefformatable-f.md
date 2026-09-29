@@ -16,7 +16,9 @@ Obtains an **NdefFormatableTag** object, which allows access to the tags that ar
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-function getNdefFormatable(tagInfo: TagInfo): NdefFormatableTag--><!--Device-tag-function getNdefFormatable(tagInfo: TagInfo): NdefFormatableTag-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

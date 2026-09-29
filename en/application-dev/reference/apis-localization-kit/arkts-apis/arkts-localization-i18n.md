@@ -15,6 +15,8 @@ are defined as follows:
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace i18n--><!--Device-unnamed-declare namespace i18n-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import

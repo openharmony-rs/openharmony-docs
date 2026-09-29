@@ -16,6 +16,8 @@ Creates a SystemSoundPlayer instance. This function uses a promise to return the
 
 **Since:** 23
 
+<!--Device-systemSoundManager-function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>--><!--Device-systemSoundManager-function createSystemSoundPlayer(): Promise<SystemSoundPlayer | null>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **Return value:**

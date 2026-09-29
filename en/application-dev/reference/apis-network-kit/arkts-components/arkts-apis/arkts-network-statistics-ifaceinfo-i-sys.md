@@ -8,6 +8,8 @@ Defines the parameters for querying historical traffic of an NIC.
 
 **Since:** 10
 
+<!--Device-statistics-export interface IfaceInfo--><!--Device-statistics-export interface IfaceInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ End time of the query, which is a timestamp in seconds.
 
 **Since:** 10
 
+<!--Device-IfaceInfo-endTime: int--><!--Device-IfaceInfo-endTime: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ NIC name.
 
 **Since:** 10
 
+<!--Device-IfaceInfo-iface: string--><!--Device-IfaceInfo-iface: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Start time of the query, which is a timestamp in seconds.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-IfaceInfo-startTime: int--><!--Device-IfaceInfo-startTime: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

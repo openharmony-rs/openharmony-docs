@@ -18,6 +18,8 @@ Unsubscribes from the NearLink advertising state change event. This API uses an 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-advertising-function offAdvertisingStateChange(callback?: Callback<AdvertisingStateChangeInfo>): void--><!--Device-advertising-function offAdvertisingStateChange(callback?: Callback<AdvertisingStateChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

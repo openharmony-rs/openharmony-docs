@@ -18,7 +18,9 @@ Check whether the Wi-Fi connection has been set up.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function isConnected(): boolean--><!--Device-wifiManager-function isConnected(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

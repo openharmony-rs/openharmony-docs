@@ -8,6 +8,8 @@ Describes the bundle options used to set or query application information.
 
 **Since:** 20
 
+<!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions--><!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

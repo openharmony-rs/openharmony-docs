@@ -10,6 +10,8 @@ In addition to the universal attributes, the following attributes are supported.
 
 **Since:** 8
 
+<!--Device-unnamed-declare class SelectAttribute extends CommonMethod<SelectAttribute>--><!--Device-unnamed-declare class SelectAttribute extends CommonMethod<SelectAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrowModifier
@@ -29,6 +31,8 @@ Creates an arrow modifier to customize the drop-down arrow icon style of the **S
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SelectAttribute-arrowModifier(modifier: Optional<SymbolGlyphModifier>): SelectAttribute--><!--Device-SelectAttribute-arrowModifier(modifier: Optional<SymbolGlyphModifier>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Sets the alignment between the text and arrow of an option.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-arrowPosition(value: ArrowPosition): SelectAttribute--><!--Device-SelectAttribute-arrowPosition(value: ArrowPosition): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ Sets the alignment between the text and arrow of an option. Compared with [arrow
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-arrowPosition(position: Optional<ArrowPosition>): SelectAttribute--><!--Device-SelectAttribute-arrowPosition(position: Optional<ArrowPosition>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -98,6 +106,8 @@ Sets the avoidance mode for the drop-down menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-SelectAttribute-avoidance(mode: AvoidanceMode): SelectAttribute--><!--Device-SelectAttribute-avoidance(mode: AvoidanceMode): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -119,6 +129,8 @@ Sets the size of the **Select** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectAttribute-controlSize(value: ControlSize): SelectAttribute--><!--Device-SelectAttribute-controlSize(value: ControlSize): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +156,8 @@ Sets the size of the **Select** component. Compared with [controlSize](#controls
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-controlSize(size: Optional<ControlSize>): SelectAttribute--><!--Device-SelectAttribute-controlSize(size: Optional<ControlSize>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -165,6 +179,8 @@ Sets the divider style. If this attribute is not set, the divider is displayed b
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectAttribute-divider(options: Optional<DividerOptions> | null): SelectAttribute--><!--Device-SelectAttribute-divider(options: Optional<DividerOptions> | null): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +204,8 @@ Sets the divider style. If this attribute is not set, the divider is displayed b
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-SelectAttribute-dividerStyle(style: Optional<DividerStyleOptions>): SelectAttribute--><!--Device-SelectAttribute-dividerStyle(style: Optional<DividerStyleOptions>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -210,13 +228,15 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectAttribute-font(value: Font): SelectAttribute--><!--Device-SelectAttribute-font(value: Font): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text style of the drop-down list button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size: `$r('sys.float.ohos_id_text_size_button1')`,<br>weight: FontWeight.Medium<br>} <br>Since API version 12: The default value of **size** is **$r('sys.float.ohos_id_text_size_button2')** in the case of **controlSize.SMALL** and **$r('sys.float.ohos_id_text_size_button1')** in other cases. |
+| value | Font | Yes | Text style of the drop-down list button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size: `$r('sys.float.ohos_id_text_size_button1')`,<br>weight: FontWeight.Medium<br>} <br>Since API version 12: The default value of **size** is **$r('sys.float.ohos_id_text_size_button2')** in the case of **controlSize.SMALL** and **$r('sys.float.ohos_id_text_size_button1')** in other cases. |
 
 <a id="font-1"></a>
 
@@ -233,6 +253,8 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectAttribute-font(selectFont: Optional<Font>): SelectAttribute--><!--Device-SelectAttribute-font(selectFont: Optional<Font>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -255,6 +277,8 @@ Sets the font color of the drop-down button.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-fontColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-fontColor(value: ResourceColor): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,6 +304,8 @@ Sets the font color of the drop-down button. Compared with [fontColor](#fontcolo
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-fontColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-fontColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -302,6 +328,8 @@ Sets whether the drop-down menu avoids the soft keyboard. If this API is not use
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SelectAttribute-keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>): SelectAttribute--><!--Device-SelectAttribute-keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -323,6 +351,8 @@ Sets the alignment between the drop-down button and the drop-down menu.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-menuAlign(alignType: MenuAlignType, offset?: Offset): SelectAttribute--><!--Device-SelectAttribute-menuAlign(alignType: MenuAlignType, offset?: Offset): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,6 +378,8 @@ Sets the alignment between the drop-down button and the drop-down menu. Compared
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectAttribute-menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset): SelectAttribute--><!--Device-SelectAttribute-menuAlign(alignType: Optional<MenuAlignType>, offset?: Offset): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,6 +408,8 @@ Sets the background blur style of the drop-down menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SelectAttribute-menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundBlurStyle(value: BlurStyle): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -400,6 +434,8 @@ Sets the background blur style of the drop-down menu. Compared with [menuBackgro
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-menuBackgroundBlurStyle(style: Optional<BlurStyle>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundBlurStyle(style: Optional<BlurStyle>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -421,6 +457,8 @@ Defines the select menu's background blur style with options
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SelectAttribute-menuBackgroundBlurStyleOptions(blurStyle: Optional<BackgroundBlurStyleOptions>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundBlurStyleOptions(blurStyle: Optional<BackgroundBlurStyleOptions>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,6 +486,8 @@ Sets the background color of the drop-down menu.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SelectAttribute-menuBackgroundColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundColor(value: ResourceColor): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -472,6 +512,8 @@ Sets the background color of the drop-down menu. Compared with [menuBackgroundCo
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-menuBackgroundColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -493,6 +535,8 @@ Defines the select menu's background effect with options
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SelectAttribute-menuBackgroundEffect(effect: Optional<BackgroundEffectOptions>): SelectAttribute--><!--Device-SelectAttribute-menuBackgroundEffect(effect: Optional<BackgroundEffectOptions>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -519,6 +563,8 @@ Creates a content modifier for the drop-down menu. After **menuItemContentModifi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectAttribute-menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>): SelectAttribute--><!--Device-SelectAttribute-menuItemContentModifier(modifier: ContentModifier<MenuItemConfiguration>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -548,6 +594,8 @@ Creates a content modifier for the drop-down menu. Compared with [menuItemConten
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration>>): SelectAttribute--><!--Device-SelectAttribute-menuItemContentModifier(modifier: Optional<ContentModifier<MenuItemConfiguration>>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -569,6 +617,8 @@ Sets the outline style for the drop-down menu.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SelectAttribute-menuOutline(outline: MenuOutlineOptions): SelectAttribute--><!--Device-SelectAttribute-menuOutline(outline: MenuOutlineOptions): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -594,6 +644,8 @@ Device Behavior Differences:The effect of the same material may vary across diff
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SelectAttribute-menuSystemMaterial(material: Optional<SystemUiMaterial>): SelectAttribute--><!--Device-SelectAttribute-menuSystemMaterial(material: Optional<SystemUiMaterial>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -616,6 +668,8 @@ Sets the minimum distance for the **Select** component to avoid the soft keyboar
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SelectAttribute-minKeyboardAvoidDistance(distance: Optional<LengthMetrics>): SelectAttribute--><!--Device-SelectAttribute-minKeyboardAvoidDistance(distance: Optional<LengthMetrics>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -637,6 +691,8 @@ Triggered when a drop-down menu option is selected.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-onSelect(callback: (index: number, value: string) => void): SelectAttribute--><!--Device-SelectAttribute-onSelect(callback: (index: number, value: string) => void): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,6 +718,8 @@ Triggered when a drop-down menu option is selected. Compared with [onSelect](#on
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-onSelect(callback: Optional<OnSelectCallback>): SelectAttribute--><!--Device-SelectAttribute-onSelect(callback: Optional<OnSelectCallback>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -683,6 +741,8 @@ Sets the background color of options in the drop-down menu.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-optionBgColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-optionBgColor(value: ResourceColor): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -708,6 +768,8 @@ Sets the background color of options in the drop-down menu. Compared with [optio
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-optionBgColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-optionBgColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -730,13 +792,15 @@ Sets the text font of options in the drop-down menu. When **size** is set to **0
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectAttribute-optionFont(value: Font): SelectAttribute--><!--Device-SelectAttribute-optionFont(value: Font): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text font of options in the drop-down menu.<br>Default value:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| value | Font | Yes | Text font of options in the drop-down menu.<br>Default value:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
 
 <a id="optionfont-1"></a>
 
@@ -756,13 +820,15 @@ Compared with [optionFont](#optionfont), this API supports the **undefined** typ
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-optionFont(selectFont: Optional<Font>): SelectAttribute--><!--Device-SelectAttribute-optionFont(selectFont: Optional<Font>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Text font of options in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Text font of options in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
 
 ## optionFontColor
 
@@ -777,6 +843,8 @@ Sets the font color of options in the drop-down menu.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-optionFontColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-optionFontColor(value: ResourceColor): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -801,6 +869,8 @@ Sets the font color of options in the drop-down menu. Compared with [optionFontC
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectAttribute-optionFontColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-optionFontColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -827,6 +897,8 @@ If the actual height of all drop-down menu options is less than the set height, 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectAttribute-optionHeight(value: Dimension): SelectAttribute--><!--Device-SelectAttribute-optionHeight(value: Dimension): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,6 +928,8 @@ If the actual height of all drop-down menu options is less than the set height, 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-optionHeight(height: Optional<Dimension>): SelectAttribute--><!--Device-SelectAttribute-optionHeight(height: Optional<Dimension>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -884,6 +958,8 @@ If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SelectAttribute-optionTextModifier(modifier: Optional<TextModifier>): SelectAttribute--><!--Device-SelectAttribute-optionTextModifier(modifier: Optional<TextModifier>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -909,6 +985,8 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SelectAttribute-optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute--><!--Device-SelectAttribute-optionWidth(value: Dimension | OptionWidthMode ): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -938,6 +1016,8 @@ The **Select** component maintains 16 vp spacing from both left and right screen
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-optionWidth(width: Optional<Dimension | OptionWidthMode> ): SelectAttribute--><!--Device-SelectAttribute-optionWidth(width: Optional<Dimension | OptionWidthMode> ): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -963,6 +1043,8 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-selected(value: number | Resource): SelectAttribute--><!--Device-SelectAttribute-selected(value: number | Resource): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -990,6 +1072,8 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-selected(numCount: Optional<number | Resource>): SelectAttribute--><!--Device-SelectAttribute-selected(numCount: Optional<number | Resource>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1011,6 +1095,8 @@ Sets the background color of the selected option in the drop-down menu.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-selectedOptionBgColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-selectedOptionBgColor(value: ResourceColor): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1036,6 +1122,8 @@ Sets the background color of the selected option in the drop-down menu. Compared
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-selectedOptionBgColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionBgColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1058,13 +1146,15 @@ Sets the text font of the selected option in the drop-down menu. When **size** i
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectAttribute-selectedOptionFont(value: Font): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFont(value: Font): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text font of the selected option in the drop-down menu.<br>Default value:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
+| value | Font | Yes | Text font of the selected option in the drop-down menu.<br>Default value:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br>weight: FontWeight.Regular<br>} |
 
 <a id="selectedoptionfont-1"></a>
 
@@ -1082,13 +1172,15 @@ Sets the text font of the selected option in the drop-down menu. When **size** i
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectAttribute-selectedOptionFont(selectFont: Optional<Font>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFont(selectFont: Optional<Font>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Text font of the selected option in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br> weight: FontWeight.Regular<br>} |
+| selectFont | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Text font of the selected option in the drop-down menu.<br>If **selectFont** is set to **undefined**, the default value is used:<br>{<br>size: $r('sys.float.ohos_id_text_size_body1'),<br> weight: FontWeight.Regular<br>} |
 
 ## selectedOptionFontColor
 
@@ -1103,6 +1195,8 @@ Sets the font color of the selected option in the drop-down menu.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-selectedOptionFontColor(value: ResourceColor): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFontColor(value: ResourceColor): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1127,6 +1221,8 @@ Sets the font color of the selected option in the drop-down menu. Compared with 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectAttribute-selectedOptionFontColor(resColor: Optional<ResourceColor>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionFontColor(resColor: Optional<ResourceColor>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1156,6 +1252,8 @@ If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOpti
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SelectAttribute-selectedOptionTextModifier(modifier: Optional<TextModifier>): SelectAttribute--><!--Device-SelectAttribute-selectedOptionTextModifier(modifier: Optional<TextModifier>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1177,6 +1275,8 @@ Sets whether to display the default selection icon.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-SelectAttribute-showDefaultSelectedIcon(show: boolean): SelectAttribute--><!--Device-SelectAttribute-showDefaultSelectedIcon(show: boolean): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1200,6 +1300,8 @@ Sets whether the drop-down menu is displayed in the subwindow. If this API is no
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SelectAttribute-showInSubWindow(showInSubWindow: Optional<boolean>): SelectAttribute--><!--Device-SelectAttribute-showInSubWindow(showInSubWindow: Optional<boolean>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1221,6 +1323,8 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectAttribute-space(value: Length): SelectAttribute--><!--Device-SelectAttribute-space(value: Length): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1245,6 +1349,8 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectAttribute-space(spaceLength: Optional<Length>): SelectAttribute--><!--Device-SelectAttribute-space(spaceLength: Optional<Length>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1272,6 +1378,8 @@ Creates a text modifier to customize the text style of the **Select** button. Af
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-SelectAttribute-textModifier(modifier: Optional<TextModifier>): SelectAttribute--><!--Device-SelectAttribute-textModifier(modifier: Optional<TextModifier>): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1298,6 +1406,8 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SelectAttribute-value(value: ResourceStr): SelectAttribute--><!--Device-SelectAttribute-value(value: ResourceStr): SelectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1323,6 +1433,8 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectAttribute-value(resStr: Optional<ResourceStr>): SelectAttribute--><!--Device-SelectAttribute-value(resStr: Optional<ResourceStr>): SelectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

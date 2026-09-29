@@ -8,6 +8,8 @@ Provides a callback for setting the modal dialog box request result.
 
 **Since:** 9
 
+<!--Device-dialogRequest-export interface RequestCallback--><!--Device-dialogRequest-export interface RequestCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Sets the result of the request for the modal dialog box.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RequestCallback-setRequestResult(result: RequestResult): void--><!--Device-RequestCallback-setRequestResult(result: RequestResult): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

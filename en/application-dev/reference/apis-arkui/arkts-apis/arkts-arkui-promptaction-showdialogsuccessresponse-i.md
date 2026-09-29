@@ -8,6 +8,8 @@ Describes the dialog box response result.
 
 **Since:** 9
 
+<!--Device-promptAction-interface ShowDialogSuccessResponse--><!--Device-promptAction-interface ShowDialogSuccessResponse-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Index of the selected button in the **buttons** array, starting from **0**.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowDialogSuccessResponse-index: number--><!--Device-ShowDialogSuccessResponse-index: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Obtains the Bluetooth local name of a device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function getLocalName(): string--><!--Device-connection-function getLocalName(): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

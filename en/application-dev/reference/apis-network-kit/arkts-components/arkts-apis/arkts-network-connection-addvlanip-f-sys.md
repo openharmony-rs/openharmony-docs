@@ -24,6 +24,8 @@ Adds a specified IP address and subnet mask for the VLAN specified by **vlanId**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>--><!--Device-connection-function addVlanIp(ifName: string, vlanId: int, address: LinkAddress): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

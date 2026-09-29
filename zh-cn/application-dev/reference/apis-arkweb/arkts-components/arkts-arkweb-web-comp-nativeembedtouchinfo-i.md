@@ -10,6 +10,8 @@ declare interface NativeEmbedTouchInfo
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface NativeEmbedTouchInfo--><!--Device-unnamed-declare interface NativeEmbedTouchInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## embedId
@@ -25,6 +27,8 @@ embedId?: string
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NativeEmbedTouchInfo-embedId?: string--><!--Device-NativeEmbedTouchInfo-embedId?: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -42,6 +46,8 @@ result?: EventResult
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NativeEmbedTouchInfo-result?: EventResult--><!--Device-NativeEmbedTouchInfo-result?: EventResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## touchEvent
@@ -57,5 +63,7 @@ touchEvent?: TouchEvent
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NativeEmbedTouchInfo-touchEvent?: TouchEvent--><!--Device-NativeEmbedTouchInfo-touchEvent?: TouchEvent-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

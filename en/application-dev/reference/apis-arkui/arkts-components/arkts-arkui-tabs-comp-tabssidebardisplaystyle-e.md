@@ -8,6 +8,8 @@ Enumerates the display styles of the tab side bar.
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare enum TabsSidebarDisplayStyle--><!--Device-unnamed-declare enum TabsSidebarDisplayStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMBED
@@ -24,6 +26,8 @@ The embedded style. The tab bar is embedded in the content area of the **Tabs** 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-TabsSidebarDisplayStyle-EMBED = 0--><!--Device-TabsSidebarDisplayStyle-EMBED = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISPLACE
@@ -39,5 +43,7 @@ The displaced style. The tab bar is displayed as a sidebar, pushing the content 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsSidebarDisplayStyle-DISPLACE = 1--><!--Device-TabsSidebarDisplayStyle-DISPLACE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines divider information.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface DividerStyleOptions--><!--Device-unnamed-declare interface DividerStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -25,6 +27,8 @@ Color of the divider.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DividerStyleOptions-color?: ResourceColor--><!--Device-DividerStyleOptions-color?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Distance between the divider and the end edge of the menu side.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DividerStyleOptions-endMargin?: LengthMetrics--><!--Device-DividerStyleOptions-endMargin?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -61,6 +67,8 @@ Sets the divider mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-DividerStyleOptions-mode?: DividerMode--><!--Device-DividerStyleOptions-mode?: DividerMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ Distance between the divider and the start edge of the menu side.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DividerStyleOptions-startMargin?: LengthMetrics--><!--Device-DividerStyleOptions-startMargin?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -97,5 +107,7 @@ Width of the divider line.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DividerStyleOptions-strokeWidth?: LengthMetrics--><!--Device-DividerStyleOptions-strokeWidth?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Checks whether the application (caller) has been granted the operator permission
 
 **Since:** 7
 
+<!--Device-sim-function hasOperatorPrivileges(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-sim-function hasOperatorPrivileges(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -58,6 +60,8 @@ function hasOperatorPrivileges(slotId: number): Promise<boolean>
 Checks whether the application (caller) has been granted the operator permission. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-sim-function hasOperatorPrivileges(slotId: int): Promise<boolean>--><!--Device-sim-function hasOperatorPrivileges(slotId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

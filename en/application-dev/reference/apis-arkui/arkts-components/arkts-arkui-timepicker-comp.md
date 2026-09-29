@@ -1,17 +1,18 @@
 # TimePicker
 
-**TimePicker** is a component that allows users to select a time from the given range through scrolling.
+**TimePicker** is a component for selecting a time by sliding. It supports 12/24-hour formats, multiple time formats (hour/minute/second), loop scrolling, style customization, and time range restrictions. It is suitable for scenarios where users need to select a time, such as schedule arrangement, time reservation, and task management. It improves user experience, reduces input errors, and can be quickly integrated into applications.
 
-**NOTE**
+> **NOTE:** 
+> 
+> - This component is supported since API version 8. New APIs added in later versions are marked with a superscript to indicate their
+> 
+> - It is not recommended to modify attribute data of this component during animation.
+> 
+> - The maximum number of displayed rows differs between landscape and portrait modes. In portrait mode, the default is 5 rows. In landscape mode, it depends on the system configuration, and the default is 3 rows when not configured. You can use the following parameter to view the specific configuration value: $r('sys.float.ohos_id_picker_show_count_landscape').
 
-- Avoid changing component attributes during animation processes.
+## Child Components
 
-- The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default
-number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode, use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
-
-Child Components
-
-Not supported
+This is a basic component, and it is not recommended to include child components.
 
 ## TimePicker
 
@@ -19,7 +20,7 @@ Not supported
 TimePicker(options?: TimePickerOptions)
 ```
 
-Creates a time picker, which uses the 24-hour time format by default.
+Creates a sliding picker, which uses a 24-hour time range by default. It is suitable for scenarios where a time needs to be selected, such as schedule arrangement, alarm setting, and time recording.
 
 **Since:** 8
 
@@ -27,13 +28,15 @@ Creates a time picker, which uses the 24-hour time format by default.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TimePickerInterface-(options?: TimePickerOptions): TimePickerAttribute--><!--Device-TimePickerInterface-(options?: TimePickerOptions): TimePickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TimePickerOptions](arkts-arkui-timepicker-comp-timepickeroptions-i.md) | No | Parameters of the time picker. |
+| options | [TimePickerOptions](arkts-arkui-timepicker-comp-timepickeroptions-i.md) | No | Parameters for configuring the TimePicker component. Pass this parameter when you need to customize the initial selected time, time format, time range, and other configurations. If this parameter is not passed, the default configuration is used (the initial selected time is the current system time, the time format is hour and minute by default, and the time range is 00:00-23:59 by default, with the default end time being 23:59:59). |
 
 ## Summary
 
@@ -43,7 +46,7 @@ Creates a time picker, which uses the 24-hour time format by default.
 | --- | --- |
 | [TimePickerDialogOptions](arkts-arkui-timepicker-comp-timepickerdialogoptions-i.md) | Defines the configuration options of the time picker dialog box. |
 | [TimePickerOptions](arkts-arkui-timepicker-comp-timepickeroptions-i.md) | Describes the parameters of the time picker. |
-| [TimePickerResult](arkts-arkui-timepicker-comp-timepickerresult-i.md) | Describes a time in 24-hour format. |
+| [TimePickerResult](arkts-arkui-timepicker-comp-timepickerresult-i.md) | Returns the selected time result, where hour ranges from 0 to 23, regardless of the display format. |
 
 ### Types
 

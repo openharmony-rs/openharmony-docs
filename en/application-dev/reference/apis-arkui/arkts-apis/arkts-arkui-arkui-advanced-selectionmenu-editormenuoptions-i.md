@@ -8,6 +8,8 @@ Describes the edit menu options.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface EditorMenuOptions--><!--Device-unnamed-export interface EditorMenuOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,13 +24,15 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 action?: () => void
 ```
 
-Action triggered when the menu option is clicked.
+Event callback for tapping a menu item. When both builder and action are configured, tapping the icon triggers both. When not set, no response occurs on tap.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EditorMenuOptions-action?: () => void--><!--Device-EditorMenuOptions-action?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,13 +42,15 @@ Action triggered when the menu option is clicked.
 builder?: () => void
 ```
 
-Builder of the custom component displayed upon click. It must be used with @Builder for building the custom component.
+Displays a user-defined component when tapped. The custom component is used with @Builder during construction. When not set, no custom component is displayed.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EditorMenuOptions-builder?: () => void--><!--Device-EditorMenuOptions-builder?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +60,7 @@ Builder of the custom component displayed upon click. It must be used with @Buil
 icon: ResourceStr
 ```
 
-Icon.
+Icon resource of the edit menu item. If symbolStyle is also set, this attribute does not take effect.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -64,6 +70,8 @@ Icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-EditorMenuOptions-icon: ResourceStr--><!--Device-EditorMenuOptions-icon: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -72,7 +80,7 @@ Icon.
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon resource, which has higher priority than **icon**.
+Symbol icon resource. Pass this parameter when a system Symbol icon (supporting advanced features such as dynamic color and multi-color) is needed. When not passed, the icon resource specified by the icon attribute is used. Has higher priority than icon. When both are set, symbolStyle is used preferentially.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -81,5 +89,7 @@ Symbol icon resource, which has higher priority than **icon**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-EditorMenuOptions-symbolStyle?: SymbolGlyphModifier--><!--Device-EditorMenuOptions-symbolStyle?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

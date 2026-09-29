@@ -18,6 +18,8 @@ Checks whether the screen lock of the current device is secure.
 
 **Deprecated since:** 9
 
+<!--Device-screenLock-function isSecureMode(callback: AsyncCallback<boolean>): void--><!--Device-screenLock-function isSecureMode(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **Parameters:**
@@ -54,6 +56,8 @@ Checks whether the screen lock of the current device is secure.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-screenLock-function isSecureMode(): Promise<boolean>--><!--Device-screenLock-function isSecureMode(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

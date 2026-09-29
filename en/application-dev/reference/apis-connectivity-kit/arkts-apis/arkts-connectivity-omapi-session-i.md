@@ -8,6 +8,8 @@ A **Session** instance indicates a session created on an SE **Reader** instance.
 
 **Since:** 10
 
+<!--Device-omapi-export interface Session--><!--Device-omapi-export interface Session-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 ## Modules to Import
@@ -25,6 +27,8 @@ close(): void
 Closes the session with the SE. All channels opened by this session will be closed.
 
 **Since:** 10
+
+<!--Device-Session-close(): void--><!--Device-Session-close(): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -62,6 +66,8 @@ Closes all channels opened on this session.
 
 **Since:** 10
 
+<!--Device-Session-closeChannels(): void--><!--Device-Session-closeChannels(): void-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Error codes:**
@@ -97,6 +103,8 @@ getATR(): number[]
 Obtains the Answer to Reset (ATR) of this SE. If the ATR of this SE is not available, an empty array will be returned.
 
 **Since:** 10
+
+<!--Device-Session-getATR(): number[]--><!--Device-Session-getATR(): number[]-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -140,6 +148,8 @@ getReader(): Reader
 Obtains the reader that provides this session.
 
 **Since:** 10
+
+<!--Device-Session-getReader(): Reader--><!--Device-Session-getReader(): Reader-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -195,6 +205,8 @@ Check if this session is closed.
 
 **Since:** 10
 
+<!--Device-Session-isClosed(): boolean--><!--Device-Session-isClosed(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Return value:**
@@ -236,6 +248,8 @@ openBasicChannel(aid: number[]): Promise<Channel>
 Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide the basic channel or the application does not have the permission to access the SE, null is returned. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Session-openBasicChannel(aid: number[]): Promise<Channel>--><!--Device-Session-openBasicChannel(aid: number[]): Promise<Channel>-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -303,6 +317,8 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Since:** 10
 
+<!--Device-Session-openBasicChannel(aid: number[], callback: AsyncCallback<Channel>): void--><!--Device-Session-openBasicChannel(aid: number[], callback: AsyncCallback<Channel>): void-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Parameters:**
@@ -365,6 +381,8 @@ openBasicChannel(aid: number[], p2: number): Promise<Channel>
 Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide the basic channel or the application does not have the permission to access the SE, null is returned. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Session-openBasicChannel(aid: number[], p2: number): Promise<Channel>--><!--Device-Session-openBasicChannel(aid: number[], p2: number): Promise<Channel>-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -434,6 +452,8 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Since:** 10
 
+<!--Device-Session-openBasicChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): void--><!--Device-Session-openBasicChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): void-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Parameters:**
@@ -496,6 +516,8 @@ openLogicalChannel(aid: number[]): Promise<Channel>
 Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide the logical channel or the application does not have the permission to access the SE, null is returned. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Session-openLogicalChannel(aid: number[]): Promise<Channel>--><!--Device-Session-openLogicalChannel(aid: number[]): Promise<Channel>-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -563,6 +585,8 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Since:** 10
 
+<!--Device-Session-openLogicalChannel(aid: number[], callback: AsyncCallback<Channel>): void--><!--Device-Session-openLogicalChannel(aid: number[], callback: AsyncCallback<Channel>): void-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 **Parameters:**
@@ -625,6 +649,8 @@ openLogicalChannel(aid: number[], p2: number): Promise<Channel>
 Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide the logical channel or the application does not have the permission to access the SE, null is returned. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-Session-openLogicalChannel(aid: number[], p2: number): Promise<Channel>--><!--Device-Session-openLogicalChannel(aid: number[], p2: number): Promise<Channel>-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 
@@ -693,6 +719,8 @@ openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>):
 Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide the logical channel or the application does not have the permission to access the SE, null is returned. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-Session-openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): void--><!--Device-Session-openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 

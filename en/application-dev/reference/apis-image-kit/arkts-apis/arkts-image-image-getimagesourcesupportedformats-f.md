@@ -16,6 +16,8 @@ Obtains the supported decoding formats, represented by MIME types.
 
 **Since:** 20
 
+<!--Device-image-function getImageSourceSupportedFormats(): string[]--><!--Device-image-function getImageSourceSupportedFormats(): string[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Return value:**

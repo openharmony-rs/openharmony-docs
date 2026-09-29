@@ -8,6 +8,8 @@ Describes the function name, error code, and message of the error returned when 
 
 **Since:** 23
 
+<!--Device-unnamed-export declare class PickerError--><!--Device-unnamed-export declare class PickerError-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Error code.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-PickerError-errorCode: number--><!--Device-PickerError-errorCode: number-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## functionName
@@ -50,6 +54,8 @@ Function name of the error.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-PickerError-functionName: string--><!--Device-PickerError-functionName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## message
@@ -67,5 +73,7 @@ Error message.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-PickerError-message: string--><!--Device-PickerError-message: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -10,6 +10,8 @@ interface SwipeGestureEvent extends BaseGestureEvent
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface SwipeGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface SwipeGestureEvent extends BaseGestureEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -32,6 +34,8 @@ angle: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwipeGestureEvent-angle: number--><!--Device-SwipeGestureEvent-angle: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## speed
@@ -49,5 +53,7 @@ speed: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeGestureEvent-speed: number--><!--Device-SwipeGestureEvent-speed: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

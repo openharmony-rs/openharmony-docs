@@ -8,6 +8,8 @@ Defines the type of the icon element on the right of the **ComposeListItem** com
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class OperateIcon--><!--Device-unnamed-export declare class OperateIcon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Click event of the icon or arrow on the right.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-OperateIcon-action?: () => void--><!--Device-OperateIcon-action?: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ Default value: **"Double-tap to activate"**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperateIcon-accessibilityDescription?: ResourceStr--><!--Device-OperateIcon-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperateIcon-accessibilityLevel?: string--><!--Device-OperateIcon-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -101,6 +109,8 @@ Default value: **""**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperateIcon-accessibilityText?: ResourceStr--><!--Device-OperateIcon-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +132,8 @@ If this parameter is not set or is set to **undefined**, the symbol icon is not 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperateIcon-symbolStyle?: SymbolGlyphModifier--><!--Device-OperateIcon-symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -139,5 +151,7 @@ Resource of the icon or arrow on the right.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateIcon-value: ResourceStr--><!--Device-OperateIcon-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -21,6 +21,8 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function addSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-notification-function addSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -50,6 +52,8 @@ Adds a notification slot. This API uses a promise to return the result.
 **Substitutes:** [addSlot](arkts-notification-notificationmanager-addslot-f.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function addSlot(slot: NotificationSlot): Promise<void>--><!--Device-notification-function addSlot(slot: NotificationSlot): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

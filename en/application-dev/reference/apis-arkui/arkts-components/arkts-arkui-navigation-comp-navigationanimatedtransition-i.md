@@ -8,6 +8,8 @@ Defines the custom transition animation protocol. You need to implement this pro
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface NavigationAnimatedTransition--><!--Device-unnamed-declare interface NavigationAnimatedTransition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onTransitionEnd
@@ -25,6 +27,8 @@ Callback invoked when the transition is complete.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationAnimatedTransition-onTransitionEnd?: (success: boolean) => void--><!--Device-NavigationAnimatedTransition-onTransitionEnd?: (success: boolean) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ Callback for executing the custom transition animation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationAnimatedTransition-transition: (transitionProxy: NavigationTransitionProxy) => void--><!--Device-NavigationAnimatedTransition-transition: (transitionProxy: NavigationTransitionProxy) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavigationAnimatedTransition-isInteractive?: boolean--><!--Device-NavigationAnimatedTransition-isInteractive?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## timeout
@@ -103,5 +111,7 @@ Default value: no default value for interactive animations; 1000 ms for non-inte
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationAnimatedTransition-timeout?: number--><!--Device-NavigationAnimatedTransition-timeout?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

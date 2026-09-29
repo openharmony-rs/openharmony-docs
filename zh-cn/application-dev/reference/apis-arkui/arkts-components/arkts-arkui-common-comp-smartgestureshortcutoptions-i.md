@@ -8,6 +8,8 @@ declare interface SmartGestureShortcutOptions
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface SmartGestureShortcutOptions--><!--Device-unnamed-declare interface SmartGestureShortcutOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -27,6 +29,8 @@ action?: GestureShortcut
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SmartGestureShortcutOptions-action?: GestureShortcut--><!--Device-SmartGestureShortcutOptions-action?: GestureShortcut-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ true表示组件响应智慧手势，false表示组件不响应智慧手势。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SmartGestureShortcutOptions-enabled?: boolean--><!--Device-SmartGestureShortcutOptions-enabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectable
@@ -71,5 +77,7 @@ true表示显示选中框，false表示不显示选中框。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SmartGestureShortcutOptions-selectable?: boolean--><!--Device-SmartGestureShortcutOptions-selectable?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ Describes a continuous task. **LongTask** inherits from [Task](arkts-arkts-taskp
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-taskpool-class LongTask extends Task--><!--Device-taskpool-class LongTask extends Task-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

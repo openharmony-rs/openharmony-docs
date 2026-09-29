@@ -27,6 +27,8 @@ Blank(min?: number | string)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-BlankInterface-(min?: number | string): BlankAttribute--><!--Device-BlankInterface-(min?: number | string): BlankAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**

@@ -4,11 +4,11 @@
 export declare enum MarginTypeV2
 ```
 
-Control margin status of ExceptionPromptV2.
-
-@enum { number }
+Defines the margin type of the exception prompt.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export declare enum MarginTypeV2--><!--Device-unnamed-export declare enum MarginTypeV2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +18,19 @@ Control margin status of ExceptionPromptV2.
 DEFAULT_MARGIN = 0
 ```
 
-Default margin of MarginTypeV2, Margin 1: references ohos_id_card_margin_start, margin 2: references ohos_id_card_margin_end.
+Default margin:
+
+Left margin: references **$r('sys.float.ohos_id_card_margin_start')**.
+
+Right margin: references **$r('sys.float.ohos_id_card_margin_end')**.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MarginTypeV2-DEFAULT_MARGIN = 0--><!--Device-MarginTypeV2-DEFAULT_MARGIN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,12 +40,18 @@ Default margin of MarginTypeV2, Margin 1: references ohos_id_card_margin_start, 
 FIT_MARGIN = 1
 ```
 
-Margins can be adapted of MarginTypeV2, wider than the default margin. Margin 1: references ohos_id_max_padding_start, margin 2: references ohos_id_max_padding_end.
+Adaptable margin:
+
+Left margin: references **$r('sys.float.ohos_id_max_padding_start')**.
+
+Right margin: references **$r('sys.float.ohos_id_max_padding_end')**.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-MarginTypeV2-FIT_MARGIN = 1--><!--Device-MarginTypeV2-FIT_MARGIN = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

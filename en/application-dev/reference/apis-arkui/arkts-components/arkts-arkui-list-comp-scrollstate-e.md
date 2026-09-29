@@ -8,6 +8,8 @@ Enumerates the scrolling states.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum ScrollState--><!--Device-unnamed-declare enum ScrollState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Idle
@@ -26,6 +28,8 @@ Idle state. Triggered when the scroll state returns to idle, and when the contro
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ScrollState-Idle--><!--Device-ScrollState-Idle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Scroll
@@ -43,6 +47,8 @@ Scrolling state. Triggered when the list is dragged with the finger, when the sc
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ScrollState-Scroll--><!--Device-ScrollState-Scroll-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,5 +71,7 @@ Scrolling controlled by the animated methods provided by the scroller.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ScrollState-Fling--><!--Device-ScrollState-Fling-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

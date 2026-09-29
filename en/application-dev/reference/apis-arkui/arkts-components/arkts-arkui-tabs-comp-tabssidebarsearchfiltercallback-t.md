@@ -12,6 +12,8 @@ Search filter callback.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-unnamed-declare type TabsSidebarSearchFilterCallback = (tabIndex: number, text: string) => boolean--><!--Device-unnamed-declare type TabsSidebarSearchFilterCallback = (tabIndex: number, text: string) => boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

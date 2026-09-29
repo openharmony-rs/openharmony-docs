@@ -21,6 +21,8 @@ Obtains the uplink traffic of the specified socket (in bytes). This API uses an 
 
 **Since:** 11
 
+<!--Device-statistics-function getSockfdTxBytes(sockfd: int, callback: AsyncCallback<long>): void--><!--Device-statistics-function getSockfdTxBytes(sockfd: int, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -72,6 +74,8 @@ Obtains the uplink traffic (in bytes) of the specified socket. This API uses a p
 > be queried after the socket is closed.
 
 **Since:** 11
+
+<!--Device-statistics-function getSockfdTxBytes(sockfd: int): Promise<long>--><!--Device-statistics-function getSockfdTxBytes(sockfd: int): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

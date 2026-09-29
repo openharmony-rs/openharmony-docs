@@ -10,6 +10,8 @@ declare interface DialogCustomOptions extends DialogBaseOptions
 
 **起始版本：** 26.0.1
 
+<!--Device-dialog-declare interface DialogCustomOptions extends DialogBaseOptions--><!--Device-dialog-declare interface DialogCustomOptions extends DialogBaseOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,5 +37,7 @@ customStyle?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogCustomOptions-customStyle?: boolean--><!--Device-DialogCustomOptions-customStyle?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,11 +4,11 @@
 export declare interface AdvancedDialogV2ButtonOptions
 ```
 
-Declare the options of AdvancedDialogV2Button
-
-@interface AdvancedDialogV2ButtonOptions
+Provides options used to initialize an **AdvancedDialogV2Button** object.
 
 **Since:** 18
+
+<!--Device-unnamed-export declare interface AdvancedDialogV2ButtonOptions--><!--Device-unnamed-export declare interface AdvancedDialogV2ButtonOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,13 +24,17 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 action?: AdvancedDialogV2ButtonAction
 ```
 
-Sets the Button Callback.
+Action triggered when the button is clicked.
+
+By default, there is no event.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AdvancedDialogV2ButtonOptions-action?: AdvancedDialogV2ButtonAction--><!--Device-AdvancedDialogV2ButtonOptions-action?: AdvancedDialogV2ButtonAction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +44,9 @@ Sets the Button Callback.
 background?: ColorMetrics
 ```
 
-Sets the background color of a button.
+Background of the button.
+
+The setting follows **buttonStyle** by default.
 
 **Type:** ColorMetrics
 
@@ -50,6 +56,8 @@ Sets the background color of a button.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-background?: ColorMetrics--><!--Device-AdvancedDialogV2ButtonOptions-background?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonStyle
@@ -58,7 +66,9 @@ Sets the background color of a button.
 buttonStyle?: ButtonStyleMode
 ```
 
-Describes the Button style.
+Style of the button.
+
+Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices
 
 **Type:** [ButtonStyleMode](../arkts-components/arkts-arkui-button-comp-buttonstylemode-e.md)
 
@@ -70,6 +80,8 @@ Describes the Button style.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-buttonStyle?: ButtonStyleMode--><!--Device-AdvancedDialogV2ButtonOptions-buttonStyle?: ButtonStyleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -78,7 +90,7 @@ Describes the Button style.
 content: ResourceStr
 ```
 
-Sets the Display Content of a Button.
+Content of the button.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -88,6 +100,8 @@ Sets the Display Content of a Button.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-content: ResourceStr--><!--Device-AdvancedDialogV2ButtonOptions-content: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultFocus
@@ -96,7 +110,13 @@ Sets the Display Content of a Button.
 defaultFocus?: boolean
 ```
 
-Set the default focus of a button.
+Whether the button is the default focus.
+
+**true**: The button is the default focus.
+
+**false**: The button is not the default focus.
+
+Default value: **false**.
 
 **Type:** boolean
 
@@ -108,6 +128,8 @@ Set the default focus of a button.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-defaultFocus?: boolean--><!--Device-AdvancedDialogV2ButtonOptions-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enabled
@@ -116,7 +138,13 @@ Set the default focus of a button.
 enabled?: boolean
 ```
 
-Set the availability of the button.
+Whether the button is enabled.
+
+**true**: The button is enabled.
+
+**false**: The button is disabled.
+
+Default value: **true**.
 
 **Type:** boolean
 
@@ -128,6 +156,8 @@ Set the availability of the button.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-enabled?: boolean--><!--Device-AdvancedDialogV2ButtonOptions-enabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -136,7 +166,9 @@ Set the availability of the button.
 fontColor?: ColorMetrics
 ```
 
-Sets the Button Text Color.
+Font color of the button.
+
+The setting follows **buttonStyle** by default.
 
 **Type:** ColorMetrics
 
@@ -146,6 +178,8 @@ Sets the Button Text Color.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-fontColor?: ColorMetrics--><!--Device-AdvancedDialogV2ButtonOptions-fontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## role
@@ -154,7 +188,9 @@ Sets the Button Text Color.
 role?: ButtonRole
 ```
 
-Describes the Button role.
+Role of the button.
+
+Default value: **ButtonRole.NORMAL**
 
 **Type:** [ButtonRole](../arkts-components/arkts-arkui-button-comp-buttonrole-e.md)
 
@@ -166,6 +202,8 @@ Describes the Button role.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AdvancedDialogV2ButtonOptions-role?: ButtonRole--><!--Device-AdvancedDialogV2ButtonOptions-role?: ButtonRole-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -174,7 +212,9 @@ Describes the Button role.
 textAlign?: TextAlign
 ```
 
-Set the alignment mode for the button label.
+Alignment method of the button text.
+
+Default value: **TextAlign.Start**
 
 **Type:** [TextAlign](arkts-arkui-textalign-e.md)
 
@@ -185,5 +225,7 @@ Set the alignment mode for the button label.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-AdvancedDialogV2ButtonOptions-textAlign?: TextAlign--><!--Device-AdvancedDialogV2ButtonOptions-textAlign?: TextAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

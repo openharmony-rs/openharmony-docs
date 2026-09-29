@@ -8,6 +8,8 @@ Provides methods for switching components.
 
 **Since:** 15
 
+<!--Device-unnamed-declare class IndicatorComponentController--><!--Device-unnamed-declare class IndicatorComponentController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## changeIndex
@@ -25,6 +27,8 @@ Controlling IndicatorComponent to change to the specified subcomponent.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-IndicatorComponentController-changeIndex(index: number, useAnimation?: boolean):void--><!--Device-IndicatorComponentController-changeIndex(index: number, useAnimation?: boolean):void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ constructor.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-IndicatorComponentController-constructor()--><!--Device-IndicatorComponentController-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showNext
@@ -69,6 +75,8 @@ Called when the next child component is displayed.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-IndicatorComponentController-showNext():void--><!--Device-IndicatorComponentController-showNext():void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showPrevious
@@ -86,5 +94,7 @@ Called when the previous subcomponent is displayed.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-IndicatorComponentController-showPrevious():void--><!--Device-IndicatorComponentController-showPrevious():void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the attributes required for initiating a drag action and information car
 
 **Since:** 10
 
+<!--Device-dragController-interface DragInfo--><!--Device-dragController-interface DragInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -40,6 +42,8 @@ You need to restore the component display status as required in the drag end cal
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-DragInfo-autoHideComponentUniqueIds?: int | int[]--><!--Device-DragInfo-autoHideComponentUniqueIds?: int | int[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## data
@@ -59,6 +63,8 @@ The default value is null.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragInfo-data?: unifiedDataChannel.UnifiedData--><!--Device-DragInfo-data?: unifiedDataChannel.UnifiedData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +86,8 @@ The default value is null.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-DragInfo-dataLoadParams?: unifiedDataChannel.DataLoadParams--><!--Device-DragInfo-dataLoadParams?: unifiedDataChannel.DataLoadParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraParams
@@ -100,6 +108,8 @@ The default value is null.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DragInfo-extraParams?: string--><!--Device-DragInfo-extraParams?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pointerId
@@ -117,6 +127,8 @@ ID of the touch point on the screen when dragging is started. The value is an in
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragInfo-pointerId: number--><!--Device-DragInfo-pointerId: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +148,8 @@ Processing mode of the drag preview and the display of the number badge during d
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DragInfo-previewOptions?: DragPreviewOptions--><!--Device-DragInfo-previewOptions?: DragPreviewOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## touchPoint
@@ -153,5 +167,7 @@ Coordinates of the touch point. If this parameter is not set, the touch point is
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragInfo-touchPoint?: TouchPoint--><!--Device-DragInfo-touchPoint?: TouchPoint-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -22,6 +22,8 @@ are supported since API version 22. This task type must be used independently an
 
 **Since:** 21
 
+<!--Device-backgroundTaskManager-export class ContinuousTaskRequest--><!--Device-backgroundTaskManager-export class ContinuousTaskRequest-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## Modules to Import
@@ -44,13 +46,15 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskRequest-checkSpecialScenarioAuth(context: Context): Promise<UserAuthResult>--><!--Device-ContinuousTaskRequest-checkSpecialScenarioAuth(context: Context): Promise<UserAuthResult>-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context. <br>For details about the application context of the FA model, see Context.<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model. |
+| context | Context | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model. |
 
 **Return value:**
 
@@ -102,6 +106,8 @@ Check whether the application can request MODE_SPECIAL_SCENARIO_PROCESSING. No e
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskRequest-checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>--><!--Device-ContinuousTaskRequest-checkSpecialScenarioAuthResult(context: Context): Promise<UserAuthResult>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -160,7 +166,9 @@ Checks whether **BackgroundTaskMode** specified in [ContinuousTaskRequest](arkts
 
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-isModeSupported(): boolean--><!--Device-ContinuousTaskRequest-isModeSupported(): boolean-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -214,13 +222,15 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskRequest-requestAuthFromUser(context: Context, callback: Callback<UserAuthResult>): void--><!--Device-ContinuousTaskRequest-requestAuthFromUser(context: Context, callback: Callback<UserAuthResult>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context. <br>For details about the application context of the FA model, see Context.<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model. |
+| context | Context | Yes | Application context. <br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserAuthResult](arkts-backgroundtasks-backgroundtaskmanager-userauthresult-e.md)&gt; | Yes | Callback used to return the user authorization result. |
 
 **Error codes:**
@@ -272,6 +282,8 @@ Requesting MODE_SPECIAL_SCENARIO_PROCESSING authorization from users, a dialog b
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskRequest-requestAuthFromUserByDialog(context: Context, callback: Callback<UserAuthResult>): void--><!--Device-ContinuousTaskRequest-requestAuthFromUserByDialog(context: Context, callback: Callback<UserAuthResult>): void-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -338,7 +350,9 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-get backgroundTaskModes(): BackgroundTaskMode[]--><!--Device-ContinuousTaskRequest-get backgroundTaskModes(): BackgroundTaskMode[]-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -354,7 +368,9 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-set backgroundTaskModes(value: BackgroundTaskMode[])--><!--Device-ContinuousTaskRequest-set backgroundTaskModes(value: BackgroundTaskMode[])-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -372,7 +388,9 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-get backgroundTaskSubmodes(): BackgroundTaskSubmode[]--><!--Device-ContinuousTaskRequest-get backgroundTaskSubmodes(): BackgroundTaskSubmode[]-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -388,7 +406,9 @@ Note: The main type must match the subtype.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])--><!--Device-ContinuousTaskRequest-set backgroundTaskSubmodes(value: BackgroundTaskSubmode[])-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -407,6 +427,8 @@ Note: This property does not take effect in [updateBackgroundRunning](arkts-back
 **Since:** 21
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-combinedTaskNotification?: boolean--><!--Device-ContinuousTaskRequest-combinedTaskNotification?: boolean-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -430,6 +452,8 @@ You can call the [getAllContinuousTasks](arkts-backgroundtasks-backgroundtaskman
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ContinuousTaskRequest-continuousTaskId?: number--><!--Device-ContinuousTaskRequest-continuousTaskId?: number-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## progressInfo
@@ -445,6 +469,8 @@ Notify progress data.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskRequest-progressInfo?: ProgressInfo--><!--Device-ContinuousTaskRequest-progressInfo?: ProgressInfo-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -462,7 +488,9 @@ Notification parameters, which are used to specify the target page that is redir
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-get wantAgent(): WantAgent--><!--Device-ContinuousTaskRequest-get wantAgent(): WantAgent-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -476,6 +504,8 @@ Notification parameters, which are used to specify the target page that is redir
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ContinuousTaskRequest-set wantAgent(value: WantAgent)--><!--Device-ContinuousTaskRequest-set wantAgent(value: WantAgent)-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

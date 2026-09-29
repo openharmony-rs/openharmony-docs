@@ -10,6 +10,8 @@ Defines the options used in access().
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileAccessOption--><!--Device-unnamed-export interface FileAccessOption-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Callback invoked when the API call is complete.
 
 **Deprecated since:** 10
 
+<!--Device-FileAccessOption-complete?: () => void--><!--Device-FileAccessOption-complete?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## fail
@@ -42,6 +46,8 @@ Callback invoked when the API call fails. **data** indicates the error informati
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileAccessOption-fail?: (data: string, code: number) => void--><!--Device-FileAccessOption-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -64,6 +70,8 @@ Callback invoked when the API call is successful.
 
 **Deprecated since:** 10
 
+<!--Device-FileAccessOption-success?: () => void--><!--Device-FileAccessOption-success?: () => void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## uri
@@ -81,5 +89,7 @@ URI of the directory or file. Restricted by the underlying file system of lite w
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileAccessOption-uri: string--><!--Device-FileAccessOption-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

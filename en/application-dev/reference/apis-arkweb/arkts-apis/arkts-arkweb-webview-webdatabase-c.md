@@ -12,6 +12,8 @@ Implements a **WebDataBase** object.
 
 **Since:** 9
 
+<!--Device-webview-class WebDataBase--><!--Device-webview-class WebDataBase-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Deletes all HTTP authentication credentials saved in the cache. This API returns
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDataBase-static deleteHttpAuthCredentials(): void--><!--Device-WebDataBase-static deleteHttpAuthCredentials(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -73,6 +77,8 @@ Checks whether any saved HTTP authentication credentials exist. This API returns
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDataBase-static existHttpAuthCredentials(): boolean--><!--Device-WebDataBase-static existHttpAuthCredentials(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -125,6 +131,8 @@ Retrieves HTTP authentication credentials for a given host and realm. This API r
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDataBase-static getHttpAuthCredentials(host: string, realm: string): Array<string>--><!--Device-WebDataBase-static getHttpAuthCredentials(host: string, realm: string): Array<string>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -190,6 +198,8 @@ Saves HTTP authentication credentials for a given host and realm. This API retur
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDataBase-static saveHttpAuthCredentials(host: string, realm: string, username: string, password: string): void--><!--Device-WebDataBase-static saveHttpAuthCredentials(host: string, realm: string, username: string, password: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

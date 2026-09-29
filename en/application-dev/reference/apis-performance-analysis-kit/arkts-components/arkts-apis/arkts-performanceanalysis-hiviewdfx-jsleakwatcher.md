@@ -4,6 +4,8 @@ This module provides the capability of monitoring whether ArkTS objects are leak
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace jsLeakWatcher--><!--Device-unnamed-declare namespace jsLeakWatcher-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 ## Modules to Import

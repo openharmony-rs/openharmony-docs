@@ -14,6 +14,8 @@ declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape--><!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/@ohos.arkui.shape').EllipseShape

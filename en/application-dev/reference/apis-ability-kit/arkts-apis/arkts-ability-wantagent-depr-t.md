@@ -14,6 +14,8 @@ Defines the WantAgent object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type WantAgent = object--><!--Device-unnamed-export type WantAgent = object-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** object

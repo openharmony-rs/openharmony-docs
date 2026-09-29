@@ -4,11 +4,11 @@
 export interface ShowActionMenuOptions
 ```
 
-Defines the option of ShowActionMenu.
+Describes the options for showing the action menu.
 
-@interface ShowActionMenuOptions
+**Since:** 6
 
-**Since:** 11
+<!--Device-unnamed-export interface ShowActionMenuOptions--><!--Device-unnamed-export interface ShowActionMenuOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,13 +24,15 @@ import { Prompt, Button, ShowActionMenuOptions, ShowDialogOptions, ShowDialogSuc
 complete?: () => void
 ```
 
-Called when the dialog box is closed.
+Callback invoked when the API call is complete.
 
-**Since:** 11
+**Since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowActionMenuOptions-complete?: () => void--><!--Device-ShowActionMenuOptions-complete?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,13 +42,15 @@ Called when the dialog box is closed.
 fail?: (errMsg: string) => void
 ```
 
-Called when the operation is cancelled.
+Callback invoked upon failure.
 
-**Since:** 11
+**Since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowActionMenuOptions-fail?: (errMsg: string) => void--><!--Device-ShowActionMenuOptions-fail?: (errMsg: string) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,13 +66,15 @@ Called when the operation is cancelled.
 success?: (tapIndex: number, errMsg: string) => void
 ```
 
-Called when the dialog box is displayed.
+Callback invoked when an action menu item is selected successfully.
 
-**Since:** 11
+**Since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowActionMenuOptions-success?: (tapIndex: number, errMsg: string) => void--><!--Device-ShowActionMenuOptions-success?: (tapIndex: number, errMsg: string) => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,15 +91,17 @@ Called when the dialog box is displayed.
 buttons: [Button, Button?, Button?, Button?, Button?, Button?]
 ```
 
-Array of buttons in the dialog box. The array structure is {text:'button', color: '#666666'}. One to six buttons are supported.
+Array of buttons in the action menu. The structure is {text: 'button', color: '#666666'}, which supports 1 to 6 buttons.
 
 **Type:** [Button, Button?, Button?, Button?, Button?, Button?]
 
-**Since:** 11
+**Since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]--><!--Device-ShowActionMenuOptions-buttons: [Button, Button?, Button?, Button?, Button?, Button?]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,10 +115,12 @@ Title of the text to display.
 
 **Type:** string
 
-**Since:** 11
+**Since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShowActionMenuOptions-title?: string--><!--Device-ShowActionMenuOptions-title?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

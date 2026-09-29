@@ -24,6 +24,8 @@ In the following scenario, attempting to enable Wi-Fi using this API will fail, 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function turnOnWifi(admin: Want, isForce: boolean): void--><!--Device-wifiManager-function turnOnWifi(admin: Want, isForce: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

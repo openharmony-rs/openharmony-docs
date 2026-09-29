@@ -4,13 +4,15 @@
 declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)外，还支持[OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md)、[StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md)、[StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md)和以下事件：
 
-**继承/实现关系：** RichEditorAttribute extends CommonMethod&lt;RichEditorAttribute&gt;
+**继承/实现关系：** RichEditorAttribute extends CommonMethod<RichEditorAttribute>
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>--><!--Device-unnamed-declare class RichEditorAttribute extends CommonMethod<RichEditorAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-aboutToDelete(callback: Callback<RichEditorDeleteValue, boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-aboutToIMEInput(callback: Callback<RichEditorInsertValue, boolean>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -84,6 +90,8 @@ RichEditor滚动条的显示模式。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-barState(state: BarState): RichEditorAttribute--><!--Device-RichEditorAttribute-barState(state: BarState): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -99,13 +107,15 @@ bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, response
     options?: SelectionMenuOptions)
 ```
 
-设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套Scroll组件使用，避免键盘被遮挡。
+设置自定义选择菜单。支持自定义菜单风格和触发条件，适合需要深度自定义菜单的场景。自定义菜单超长时，建议内部嵌套[Scroll](arkts-arkui-scroll-comp.md)组件使用，避免键盘被遮挡。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType,    options?: SelectionMenuOptions): RichEditorAttribute--><!--Device-RichEditorAttribute-bindSelectionMenu(spanType: RichEditorSpanType, content: CustomBuilder, responseType: ResponseType | RichEditorResponseType,    options?: SelectionMenuOptions): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,6 +141,8 @@ caretColor(value: ResourceColor)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-caretColor(value: ResourceColor): RichEditorAttribute--><!--Device-RichEditorAttribute-caretColor(value: ResourceColor): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,6 +173,8 @@ compressLeadingPunctuation(enabled: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -193,6 +207,8 @@ copyOptions不为CopyOptions.None时，长按组件内容，会弹出文本选�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-copyOptions(value: CopyOptions): RichEditorAttribute--><!--Device-RichEditorAttribute-copyOptions(value: CopyOptions): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,6 +247,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined,
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined,                 options?: KeyboardOptions | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined,                 options?: KeyboardOptions | undefined): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -262,6 +280,8 @@ dataDetectorConfig(config: TextDataDetectorConfig)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-dataDetectorConfig(config: TextDataDetectorConfig): RichEditorAttribute--><!--Device-RichEditorAttribute-dataDetectorConfig(config: TextDataDetectorConfig): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -292,6 +312,8 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-editMenuOptions(editMenu: EditMenuOptions): RichEditorAttribute--><!--Device-RichEditorAttribute-editMenuOptions(editMenu: EditMenuOptions): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -313,6 +335,8 @@ enableAutoSpacing(enable: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-enableAutoSpacing(enable: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-enableAutoSpacing(enable: Optional<boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,6 +372,8 @@ enableDataDetector(enable: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-enableDataDetector(enable: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enableDataDetector(enable: boolean): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -374,6 +400,8 @@ enableHapticFeedback(isEnabled: boolean)
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-enableHapticFeedback(isEnabled: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enableHapticFeedback(isEnabled: boolean): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -399,6 +427,8 @@ enableKeyboardOnFocus(isEnabled: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-enableKeyboardOnFocus(isEnabled: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enableKeyboardOnFocus(isEnabled: boolean): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -427,6 +457,8 @@ enablePreviewText(enable: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-enablePreviewText(enable: boolean): RichEditorAttribute--><!--Device-RichEditorAttribute-enablePreviewText(enable: boolean): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,6 +490,8 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-enableSelectedDataDetector(enable: boolean | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-enableSelectedDataDetector(enable: boolean | undefined): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -481,6 +515,8 @@ enterKeyType(value: EnterKeyType)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-enterKeyType(value: EnterKeyType): RichEditorAttribute--><!--Device-RichEditorAttribute-enterKeyType(value: EnterKeyType): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -508,6 +544,8 @@ fallbackLineSpacing(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-fallbackLineSpacing(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-fallbackLineSpacing(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -530,6 +568,8 @@ horizontalScrolling(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-horizontalScrolling(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-horizontalScrolling(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -551,6 +591,8 @@ includeFontPadding(include: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-includeFontPadding(include: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-includeFontPadding(include: Optional<boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,6 +618,8 @@ keyboardAppearance(appearance: Optional<KeyboardAppearance>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): RichEditorAttribute--><!--Device-RichEditorAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -598,6 +642,8 @@ maxLength(maxLength: Optional<number>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-maxLength(maxLength: Optional<number>): RichEditorAttribute--><!--Device-RichEditorAttribute-maxLength(maxLength: Optional<number>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -619,6 +665,8 @@ maxLines(maxLines: Optional<number>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-maxLines(maxLines: Optional<number>): RichEditorAttribute--><!--Device-RichEditorAttribute-maxLines(maxLines: Optional<number>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,6 +692,8 @@ onCopy(callback: Callback<CopyEvent>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onCopy(callback: Callback<CopyEvent>): RichEditorAttribute--><!--Device-RichEditorAttribute-onCopy(callback: Callback<CopyEvent>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -668,6 +718,8 @@ onCut(callback: Callback<CutEvent>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onCut(callback: Callback<CutEvent>): RichEditorAttribute--><!--Device-RichEditorAttribute-onCut(callback: Callback<CutEvent>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -691,6 +743,8 @@ onDeleteComplete(callback: Callback<void>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-onDeleteComplete(callback: Callback<void>): RichEditorAttribute--><!--Device-RichEditorAttribute-onDeleteComplete(callback: Callback<void>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -720,6 +774,8 @@ onDidChange(callback: OnDidChangeCallback) : RichEditorAttribute
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onDidChange(callback: OnDidChangeCallback) : RichEditorAttribute--><!--Device-RichEditorAttribute-onDidChange(callback: OnDidChangeCallback) : RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -748,6 +804,8 @@ onDidIMEInput(callback: Callback<TextRange>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onDidIMEInput(callback: Callback<TextRange>): RichEditorAttribute--><!--Device-RichEditorAttribute-onDidIMEInput(callback: Callback<TextRange>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -769,6 +827,8 @@ onEditingChange(callback: Callback<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-onEditingChange(callback: Callback<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-onEditingChange(callback: Callback<boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -796,6 +856,8 @@ onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>): RichEditorAttribute--><!--Device-RichEditorAttribute-onIMEInputComplete(callback: Callback<RichEditorTextSpanResult>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -820,6 +882,8 @@ onPaste(callback: PasteEventCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onPaste(callback: PasteEventCallback): RichEditorAttribute--><!--Device-RichEditorAttribute-onPaste(callback: PasteEventCallback): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -841,6 +905,8 @@ onReady(callback: Callback<void>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-onReady(callback: Callback<void>): RichEditorAttribute--><!--Device-RichEditorAttribute-onReady(callback: Callback<void>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -870,6 +936,8 @@ onSelect(callback: Callback<RichEditorSelection>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onSelect(callback: Callback<RichEditorSelection>): RichEditorAttribute--><!--Device-RichEditorAttribute-onSelect(callback: Callback<RichEditorSelection>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -891,6 +959,8 @@ onSelectionChange(callback: Callback<RichEditorRange>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-onSelectionChange(callback: Callback<RichEditorRange>): RichEditorAttribute--><!--Device-RichEditorAttribute-onSelectionChange(callback: Callback<RichEditorRange>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -914,6 +984,8 @@ onSubmit(callback: SubmitCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onSubmit(callback: SubmitCallback): RichEditorAttribute--><!--Device-RichEditorAttribute-onSubmit(callback: SubmitCallback): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -936,13 +1008,15 @@ onWillAttachIME(callback: Callback<IMEClient> | undefined)
 
 <!--Del-->
 
-从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口setKeyboardAppearanceConfig设置键盘的样式。&lt;!--DelEnd- -&gt;
+从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c-sys.md#setkeyboardappearanceconfig)设置键盘的样式。&lt;!--DelEnd- -&gt;
 
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-onWillAttachIME(callback: Callback<IMEClient> | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-onWillAttachIME(callback: Callback<IMEClient> | undefined): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -972,6 +1046,8 @@ onWillChange(callback: Callback<RichEditorChangeValue, boolean>) : RichEditorAtt
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-onWillChange(callback: Callback<RichEditorChangeValue, boolean>) : RichEditorAttribute--><!--Device-RichEditorAttribute-onWillChange(callback: Callback<RichEditorChangeValue, boolean>) : RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -995,6 +1071,8 @@ orphanCharOptimization(enabled: Optional<boolean>)
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-orphanCharOptimization(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-orphanCharOptimization(enabled: Optional<boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1024,6 +1102,8 @@ placeholder(value: ResourceStr, style?: PlaceholderStyle)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-placeholder(value: ResourceStr, style?: PlaceholderStyle): RichEditorAttribute--><!--Device-RichEditorAttribute-placeholder(value: ResourceStr, style?: PlaceholderStyle): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1049,6 +1129,8 @@ punctuationOverflow(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-punctuationOverflow(enabled: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-punctuationOverflow(enabled: Optional<boolean>): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1070,6 +1152,8 @@ scrollBarColor(color: Optional<ColorMetrics>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-scrollBarColor(color: Optional<ColorMetrics>): RichEditorAttribute--><!--Device-RichEditorAttribute-scrollBarColor(color: Optional<ColorMetrics>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1093,6 +1177,8 @@ selectedBackgroundColor(value: ResourceColor)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-selectedBackgroundColor(value: ResourceColor): RichEditorAttribute--><!--Device-RichEditorAttribute-selectedBackgroundColor(value: ResourceColor): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1114,6 +1200,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1141,6 +1229,8 @@ singleLine(isEnable: boolean | undefined)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichEditorAttribute-singleLine(isEnable: boolean | undefined): RichEditorAttribute--><!--Device-RichEditorAttribute-singleLine(isEnable: boolean | undefined): RichEditorAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1162,6 +1252,8 @@ stopBackPress(isStopped: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-stopBackPress(isStopped: Optional<boolean>): RichEditorAttribute--><!--Device-RichEditorAttribute-stopBackPress(isStopped: Optional<boolean>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1186,6 +1278,8 @@ undoStyle(style: Optional<UndoStyle>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichEditorAttribute-undoStyle(style: Optional<UndoStyle>): RichEditorAttribute--><!--Device-RichEditorAttribute-undoStyle(style: Optional<UndoStyle>): RichEditorAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

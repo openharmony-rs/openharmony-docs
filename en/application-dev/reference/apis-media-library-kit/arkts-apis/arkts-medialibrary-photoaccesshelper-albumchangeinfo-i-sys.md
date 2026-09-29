@@ -8,6 +8,8 @@ Describes the information about an album.
 
 **Since:** 20
 
+<!--Device-photoAccessHelper-interface AlbumChangeInfo--><!--Device-photoAccessHelper-interface AlbumChangeInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Sorting value of the album.
 
 **Since:** 23
 
+<!--Device-AlbumChangeInfo-albumOrder?: int--><!--Device-AlbumChangeInfo-albumOrder?: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Information of the album cover asset.
 **Type:** [PhotoAssetChangeInfo](arkts-medialibrary-photoaccesshelper-photoassetchangeinfo-i.md)
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-coverInfo?: PhotoAssetChangeInfo--><!--Device-AlbumChangeInfo-coverInfo?: PhotoAssetChangeInfo-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,6 +68,8 @@ Whether the album is hidden. **true** if hidden, **false** otherwise.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AlbumChangeInfo-hidden?: boolean--><!--Device-AlbumChangeInfo-hidden?: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Number of hidden assets in the album.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-hiddenCount: int--><!--Device-AlbumChangeInfo-hiddenCount: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -94,6 +104,8 @@ Information of the hidden album cover asset.
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfo-hiddenCoverInfo?: PhotoAssetChangeInfo--><!--Device-AlbumChangeInfo-hiddenCoverInfo?: PhotoAssetChangeInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ URI of the hidden cover asset in the album.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-hiddenCoverUri: string--><!--Device-AlbumChangeInfo-hiddenCoverUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -126,6 +140,8 @@ Whether the file content of the album cover has changed. **true** if changed, **
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfo-isCoverChanged: boolean--><!--Device-AlbumChangeInfo-isCoverChanged: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -141,6 +157,8 @@ Whether the file content of the hidden album cover has changed. **true** if chan
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-isHiddenCoverChanged: boolean--><!--Device-AlbumChangeInfo-isHiddenCoverChanged: boolean-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -160,6 +178,8 @@ The virtual path of album.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AlbumChangeInfo-lpath?: string--><!--Device-AlbumChangeInfo-lpath?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -175,6 +195,8 @@ Section that defines the order of the album, specifying where the album is displ
 **Type:** number
 
 **Since:** 23
+
+<!--Device-AlbumChangeInfo-orderSection?: int--><!--Device-AlbumChangeInfo-orderSection?: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -193,6 +215,8 @@ The risk status of share album.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumChangeInfo-shareRiskStatus?: ShareAlbumRiskStatus--><!--Device-AlbumChangeInfo-shareRiskStatus?: ShareAlbumRiskStatus-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -21,6 +21,8 @@ Sends an accessibility event. The event will be distributed to registered access
 
 **Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md)(event: EventInfo, callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-accessibility-function sendEvent(event: EventInfo, callback: AsyncCallback<void>): void--><!--Device-accessibility-function sendEvent(event: EventInfo, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -67,6 +69,8 @@ Sends an accessibility event. The event will be distributed to registered access
 **Deprecated since:** 9
 
 **Substitutes:** [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent-1)(event: EventInfo)
+
+<!--Device-accessibility-function sendEvent(event: EventInfo): Promise<void>--><!--Device-accessibility-function sendEvent(event: EventInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

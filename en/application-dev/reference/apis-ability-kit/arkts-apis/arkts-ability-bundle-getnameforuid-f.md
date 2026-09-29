@@ -20,6 +20,8 @@ Obtains bundle name by the given uid.
 
 **Substitutes:** [getBundleNameByUid](arkts-ability-bundlemanager-getbundlenamebyuid-f.md)
 
+<!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void--><!--Device-bundle-function getNameForUid(uid: number, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **Parameters:**
@@ -61,6 +63,8 @@ Obtains the bundle name based on a UID. This API uses a promise to return the re
 **Deprecated since:** 9
 
 **Substitutes:** null
+
+<!--Device-bundle-function getNameForUid(uid: number): Promise<string>--><!--Device-bundle-function getNameForUid(uid: number): Promise<string>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

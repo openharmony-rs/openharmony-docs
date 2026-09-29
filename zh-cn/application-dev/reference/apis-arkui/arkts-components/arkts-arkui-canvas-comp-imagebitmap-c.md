@@ -8,6 +8,8 @@ ImageBitmap对象可以存储canvas渲染的像素数据。从API version 11开�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class ImageBitmap--><!--Device-unnamed-declare class ImageBitmap-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## close
@@ -32,6 +34,8 @@ close(): void
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageBitmap-close(): void--><!--Device-ImageBitmap-close(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -49,6 +53,8 @@ constructor(src: string)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageBitmap-constructor(src: string)--><!--Device-ImageBitmap-constructor(src: string)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ constructor(src: string, unit: LengthMetricsUnit)
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageBitmap-constructor(src: string, unit: LengthMetricsUnit)--><!--Device-ImageBitmap-constructor(src: string, unit: LengthMetricsUnit)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -101,6 +109,8 @@ constructor(data: PixelMap)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ImageBitmap-constructor(data: PixelMap)--><!--Device-ImageBitmap-constructor(data: PixelMap)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -124,6 +134,8 @@ constructor(data: PixelMap, unit: LengthMetricsUnit)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageBitmap-constructor(data: PixelMap, unit: LengthMetricsUnit)--><!--Device-ImageBitmap-constructor(data: PixelMap, unit: LengthMetricsUnit)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +164,8 @@ constructor(data: Resource, unit?: LengthMetricsUnit)
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageBitmap-constructor(data: Resource, unit?: LengthMetricsUnit)--><!--Device-ImageBitmap-constructor(data: Resource, unit?: LengthMetricsUnit)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -179,6 +193,8 @@ ImageBitmap的像素高度。<br>默认单位为vp。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageBitmap-readonly height: number--><!--Device-ImageBitmap-readonly height: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -198,5 +214,7 @@ ImageBitmap的像素宽度。<br>默认单位为vp。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageBitmap-readonly width: number--><!--Device-ImageBitmap-readonly width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

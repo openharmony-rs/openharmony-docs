@@ -11,6 +11,8 @@ The **dateTimeManager** module provides APIs for system time management.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace dateTimeManager--><!--Device-unnamed-declare namespace dateTimeManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

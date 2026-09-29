@@ -8,6 +8,8 @@ Provides the widget error information.
 
 **Since:** 18
 
+<!--Device-unnamed-interface ErrorInformation--><!--Device-unnamed-interface ErrorInformation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ errcode: number
 
 **Since:** 18
 
+<!--Device-ErrorInformation-errcode: number--><!--Device-ErrorInformation-errcode: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Error message.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-ErrorInformation-msg: string--><!--Device-ErrorInformation-msg: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

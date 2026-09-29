@@ -4,7 +4,7 @@
 export interface SubscribeGyroscopeOptions
 ```
 
-Defines the type of data to return for a subscription to data changes of the gyroscope sensor.
+Defines the parameters for subscribing to the gyroscope sensor, including the callback frequency and callback function.
 
 **Since:** 6
 
@@ -13,6 +13,8 @@ Defines the type of data to return for a subscription to data changes of the gyr
 **Substitutes:** [GYROSCOPE](arkts-sensorservice-sensor-sensorid-e.md#gyroscope)
 
 **Required permissions:** ohos.permission.GYROSCOPE
+
+<!--Device-unnamed-export interface SubscribeGyroscopeOptions--><!--Device-unnamed-export interface SubscribeGyroscopeOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -28,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 6
 
@@ -39,6 +41,8 @@ Callback invoked when an API call fails.
 **Required permissions:** ohos.permission.GYROSCOPE
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeGyroscopeOptions-fail?: (data: string, code: number) => void--><!--Device-SubscribeGyroscopeOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -55,7 +59,7 @@ Callback invoked when an API call fails.
 success: (data: GyroscopeResponse) => void
 ```
 
-Callback invoked when the gyroscope sensor data changes.
+Callback invoked when the gyroscope sensor data changes. The callback parameter is a **GyroscopeResponse** object.
 
 **Since:** 6
 
@@ -66,6 +70,8 @@ Callback invoked when the gyroscope sensor data changes.
 **Required permissions:** ohos.permission.GYROSCOPE
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeGyroscopeOptions-success: (data: GyroscopeResponse) => void--><!--Device-SubscribeGyroscopeOptions-success: (data: GyroscopeResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -83,11 +89,13 @@ interval: string
 
 Interval at which the callback is invoked to return the gyroscope sensor data.
 
-The default value is **normal**. The options are as follows:
+Default value: **'normal'**
 
-- **game**: called at an interval of 20 ms, which is applicable to gaming scenarios.  
-- **ui**: called at an interval of 60 ms, which is applicable to UI updating scenarios.  
-- **normal**: called at an interval of 200 ms, which is applicable to power-saving scenarios.
+Possible values:
+
+- **'game'**: called at an interval of 20 ms, which is applicable to gaming scenarios.  
+- **'ui'**: called at an interval of 60 ms, which is applicable to UI updating scenarios.  
+- **'normal'**: called at an interval of 200 ms, which is applicable to power-saving scenarios.
 
 **Type:** string
 
@@ -100,5 +108,7 @@ The default value is **normal**. The options are as follows:
 **Required permissions:** ohos.permission.GYROSCOPE
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeGyroscopeOptions-interval: string--><!--Device-SubscribeGyroscopeOptions-interval: string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

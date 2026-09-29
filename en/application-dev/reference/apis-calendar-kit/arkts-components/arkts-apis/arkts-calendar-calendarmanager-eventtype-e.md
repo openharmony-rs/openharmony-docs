@@ -8,6 +8,8 @@ Enumerates event types.
 
 **Since:** 10
 
+<!--Device-calendarManager-enum EventType--><!--Device-calendarManager-enum EventType-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## NORMAL
@@ -22,6 +24,8 @@ Normal event, such as conference or an alarm clock.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-EventType-NORMAL = 0--><!--Device-EventType-NORMAL = 0-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## IMPORTANT
@@ -35,5 +39,7 @@ Important event, such as wedding anniversary, are not recommended for third-part
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EventType-IMPORTANT = 1--><!--Device-EventType-IMPORTANT = 1-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

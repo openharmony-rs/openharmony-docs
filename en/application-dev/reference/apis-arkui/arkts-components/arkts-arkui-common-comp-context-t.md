@@ -12,6 +12,8 @@ Get context.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare type Context = import('../api/application/Context').default--><!--Device-unnamed-declare type Context = import('../api/application/Context').default-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/application/Context').default

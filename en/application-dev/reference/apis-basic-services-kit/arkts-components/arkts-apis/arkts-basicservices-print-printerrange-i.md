@@ -8,6 +8,8 @@ Defines the print range.
 
 **Since:** 24
 
+<!--Device-print-interface PrinterRange--><!--Device-print-interface PrinterRange-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ End page. The default value is the maximum number of pages of the file to be pri
 
 **Since:** 24
 
+<!--Device-PrinterRange-endPage?: int--><!--Device-PrinterRange-endPage?: int-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## pages
@@ -42,6 +46,8 @@ Page range set of the file to print. The default value is empty.
 
 **Since:** 24
 
+<!--Device-PrinterRange-pages?: Array<int>--><!--Device-PrinterRange-pages?: Array<int>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## startPage
@@ -55,5 +61,7 @@ Start page. The default value is **1**.
 **Type:** number
 
 **Since:** 24
+
+<!--Device-PrinterRange-startPage?: int--><!--Device-PrinterRange-startPage?: int-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

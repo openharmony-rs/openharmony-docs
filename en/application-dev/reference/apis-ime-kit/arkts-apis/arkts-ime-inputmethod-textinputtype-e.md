@@ -8,6 +8,8 @@ Enumerates the text input types.
 
 **Since:** 10
 
+<!--Device-inputMethod-export enum TextInputType--><!--Device-inputMethod-export enum TextInputType-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## NONE
@@ -19,6 +21,8 @@ NONE = -1
 None.
 
 **Since:** 10
+
+<!--Device-TextInputType-NONE = -1--><!--Device-TextInputType-NONE = -1-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -32,6 +36,8 @@ Text.
 
 **Since:** 10
 
+<!--Device-TextInputType-TEXT = 0--><!--Device-TextInputType-TEXT = 0-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## MULTILINE
@@ -43,6 +49,8 @@ MULTILINE
 Multi-line.
 
 **Since:** 10
+
+<!--Device-TextInputType-MULTILINE--><!--Device-TextInputType-MULTILINE-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -56,6 +64,8 @@ Number.
 
 **Since:** 10
 
+<!--Device-TextInputType-NUMBER--><!--Device-TextInputType-NUMBER-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## PHONE
@@ -67,6 +77,8 @@ PHONE
 Phone number.
 
 **Since:** 10
+
+<!--Device-TextInputType-PHONE--><!--Device-TextInputType-PHONE-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -80,6 +92,8 @@ Date.
 
 **Since:** 10
 
+<!--Device-TextInputType-DATETIME--><!--Device-TextInputType-DATETIME-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## EMAIL_ADDRESS
@@ -91,6 +105,8 @@ EMAIL_ADDRESS
 Email address.
 
 **Since:** 10
+
+<!--Device-TextInputType-EMAIL_ADDRESS--><!--Device-TextInputType-EMAIL_ADDRESS-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -104,6 +120,8 @@ URL.
 
 **Since:** 10
 
+<!--Device-TextInputType-URL--><!--Device-TextInputType-URL-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## VISIBLE_PASSWORD
@@ -115,6 +133,8 @@ VISIBLE_PASSWORD
 Password.
 
 **Since:** 10
+
+<!--Device-TextInputType-VISIBLE_PASSWORD--><!--Device-TextInputType-VISIBLE_PASSWORD-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -128,6 +148,8 @@ Numeric password.
 
 **Since:** 11
 
+<!--Device-TextInputType-NUMBER_PASSWORD--><!--Device-TextInputType-NUMBER_PASSWORD-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## SCREEN_LOCK_PASSWORD
@@ -139,6 +161,8 @@ SCREEN_LOCK_PASSWORD
 Lock screen password.
 
 **Since:** 20
+
+<!--Device-TextInputType-SCREEN_LOCK_PASSWORD--><!--Device-TextInputType-SCREEN_LOCK_PASSWORD-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -152,6 +176,8 @@ Username.
 
 **Since:** 20
 
+<!--Device-TextInputType-USER_NAME--><!--Device-TextInputType-USER_NAME-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## NEW_PASSWORD
@@ -163,6 +189,8 @@ NEW_PASSWORD
 New password.
 
 **Since:** 20
+
+<!--Device-TextInputType-NEW_PASSWORD--><!--Device-TextInputType-NEW_PASSWORD-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -176,6 +204,8 @@ Number with a decimal point.
 
 **Since:** 20
 
+<!--Device-TextInputType-NUMBER_DECIMAL--><!--Device-TextInputType-NUMBER_DECIMAL-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## ONE_TIME_CODE
@@ -187,5 +217,7 @@ ONE_TIME_CODE
 Verification code.
 
 **Since:** 20
+
+<!--Device-TextInputType-ONE_TIME_CODE--><!--Device-TextInputType-ONE_TIME_CODE-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

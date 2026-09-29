@@ -4,6 +4,8 @@ The module provides APIs for image processing based on the [Sendable](../../../a
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace sendableImage--><!--Device-unnamed-declare namespace sendableImage-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import

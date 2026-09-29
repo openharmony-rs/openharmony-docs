@@ -24,6 +24,8 @@ Defines the key-value object type used to construct URL query parameters.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-http-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>--><!--Device-http-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Type:** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;

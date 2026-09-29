@@ -18,6 +18,8 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 **Required permissions:** ohos.permission.ACCESS_DDK_DRIVERS
 
+<!--Device-deviceManager-function bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback<long>): Promise<RemoteDeviceDriver>--><!--Device-deviceManager-function bindDriverWithDeviceId(deviceId: long, onDisconnect: AsyncCallback<long>): Promise<RemoteDeviceDriver>-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 **Parameters:**

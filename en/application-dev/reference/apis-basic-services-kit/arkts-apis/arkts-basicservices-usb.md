@@ -15,6 +15,8 @@ The **usb** module provides USB device management functions, including USB devic
 
 **Substitutes:** [usbManager](arkts-basicservices-usbmanager.md)
 
+<!--Device-unnamed-declare namespace usb--><!--Device-unnamed-declare namespace usb-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import

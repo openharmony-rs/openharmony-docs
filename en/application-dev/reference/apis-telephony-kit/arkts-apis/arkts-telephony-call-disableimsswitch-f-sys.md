@@ -18,6 +18,8 @@ Disables the IMS service. This API uses an asynchronous callback to return the r
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function disableImsSwitch(slotId: int, callback: AsyncCallback<void>): void--><!--Device-call-function disableImsSwitch(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Disables the IMS service. This API uses a promise to return the result.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function disableImsSwitch(slotId: int): Promise<void>--><!--Device-call-function disableImsSwitch(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

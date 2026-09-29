@@ -2,7 +2,8 @@
 
 - [@ohos.app.ability.FenceExtensionAbility](arkts-location-app-ability-fenceextensionability.md)
   - [FenceExtensionAbility](arkts-location-app-ability-fenceextensionability-fenceextensionability-c.md)
-- [@ohos.app.ability.FenceExtensionContext](arkts-location-app-ability-fenceextensioncontext.md)
+<!--Del-->
+- [@ohos.app.ability.FenceExtensionContext](arkts-location-app-ability-fenceextensioncontext.md)<!--DelEnd-->
   <!--Del-->
   - [FenceExtensionContext(system api)](arkts-location-app-ability-fenceextensioncontext-fenceextensioncontext-c-sys.md)<!--DelEnd-->
 - [@ohos.geolocation](arkts-location-geolocation.md)

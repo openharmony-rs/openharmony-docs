@@ -10,6 +10,8 @@ UserAgentBrandVersion provides methods for setting and obtaining the brand name 
 
 **Since:** 24
 
+<!--Device-webview-class UserAgentBrandVersion--><!--Device-webview-class UserAgentBrandVersion-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the brand name.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentBrandVersion-getBrand(): string--><!--Device-UserAgentBrandVersion-getBrand(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -54,6 +58,8 @@ Obtains the full version number.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentBrandVersion-getFullVersion(): string--><!--Device-UserAgentBrandVersion-getFullVersion(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -77,6 +83,8 @@ Obtains the major version number.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentBrandVersion-getMajorVersion(): string--><!--Device-UserAgentBrandVersion-getMajorVersion(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -102,6 +110,8 @@ Sets the brand name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentBrandVersion-setBrand(brand: string): void--><!--Device-UserAgentBrandVersion-setBrand(brand: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -126,6 +136,8 @@ Sets the full version number.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentBrandVersion-setFullVersion(fullVersion: string): void--><!--Device-UserAgentBrandVersion-setFullVersion(fullVersion: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -149,6 +161,8 @@ Sets the major version number.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentBrandVersion-setMajorVersion(majorVersion: string): void--><!--Device-UserAgentBrandVersion-setMajorVersion(majorVersion: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

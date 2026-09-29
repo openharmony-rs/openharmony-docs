@@ -8,6 +8,8 @@ Represents chinese calendar time element for the ChineseCalendar object.
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export interface ChineseCalendarTime--><!--Device-i18n-export interface ChineseCalendarTime-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -32,6 +34,8 @@ The cyclical year of date. If you need to convert between the chinese calendar a
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChineseCalendarTime-cyclicalYear: int--><!--Device-ChineseCalendarTime-cyclicalYear: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## date
@@ -49,6 +53,8 @@ Date of the chinese calendar time.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChineseCalendarTime-date: int--><!--Device-ChineseCalendarTime-date: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -68,6 +74,8 @@ The gregorian year of date. If you need to convert between the chinese calendar 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChineseCalendarTime-gregorianYear: int--><!--Device-ChineseCalendarTime-gregorianYear: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## hour
@@ -85,6 +93,8 @@ Hour of the chinese calendar time.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChineseCalendarTime-hour?: int--><!--Device-ChineseCalendarTime-hour?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -104,6 +114,8 @@ Determines whether the input month is a leap month.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChineseCalendarTime-isLeapMonth?: boolean--><!--Device-ChineseCalendarTime-isLeapMonth?: boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## minute
@@ -121,6 +133,8 @@ Minute of the chinese calendar time.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChineseCalendarTime-minute?: int--><!--Device-ChineseCalendarTime-minute?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -140,6 +154,8 @@ Month of the chinese calendar time. Note: The month starts from 0. For example, 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChineseCalendarTime-month: int--><!--Device-ChineseCalendarTime-month: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## second
@@ -157,5 +173,7 @@ Second of the chinese calendar time.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChineseCalendarTime-second?: int--><!--Device-ChineseCalendarTime-second?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n

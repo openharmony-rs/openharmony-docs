@@ -8,6 +8,8 @@ The module defines the application state information. Once an application state 
 
 **Since:** 14
 
+<!--Device-unnamed-declare class AppStateData--><!--Device-unnamed-declare class AppStateData-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## bundleName
@@ -21,6 +23,8 @@ Bundle name.
 **Type:** string
 
 **Since:** 14
+
+<!--Device-AppStateData-bundleName: string--><!--Device-AppStateData-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ Whether the application is in floating window mode.
 
 **Since:** 14
 
+<!--Device-AppStateData-isFloatingWindowMode: boolean--><!--Device-AppStateData-isFloatingWindowMode: boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## isSplitScreenMode
@@ -57,6 +63,8 @@ Whether the application is in split-screen mode.
 **Type:** boolean
 
 **Since:** 14
+
+<!--Device-AppStateData-isSplitScreenMode: boolean--><!--Device-AppStateData-isSplitScreenMode: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -84,6 +92,8 @@ Application state.
 
 **Since:** 14
 
+<!--Device-AppStateData-state: int--><!--Device-AppStateData-state: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## uid
@@ -97,5 +107,7 @@ UID of the application.
 **Type:** number
 
 **Since:** 14
+
+<!--Device-AppStateData-uid: int--><!--Device-AppStateData-uid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

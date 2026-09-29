@@ -8,6 +8,8 @@ Defines cookie-related fields.
 
 **Since:** 23
 
+<!--Device-webview-interface WebHttpCookie--><!--Device-webview-interface WebHttpCookie-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Domain names that can access the cookie.
 
 **Since:** 23
 
+<!--Device-WebHttpCookie-domain: string--><!--Device-WebHttpCookie-domain: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## expiresDate
@@ -41,6 +45,8 @@ Expiration time of the cookie. For details about the time format, see [Date](htt
 **Type:** string
 
 **Since:** 23
+
+<!--Device-WebHttpCookie-expiresDate: string--><!--Device-WebHttpCookie-expiresDate: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -58,6 +64,8 @@ The value **true** means the cookie can be accessed only through HTTP, not throu
 
 **Since:** 23
 
+<!--Device-WebHttpCookie-isHttpOnly: boolean--><!--Device-WebHttpCookie-isHttpOnly: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isSecure
@@ -73,6 +81,8 @@ The value **true** means the cookie can be sent only through HTTPS, not through 
 **Type:** boolean
 
 **Since:** 23
+
+<!--Device-WebHttpCookie-isSecure: boolean--><!--Device-WebHttpCookie-isSecure: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -90,6 +100,8 @@ The value **true** indicates that the cookie is a session cookie, and **false** 
 
 **Since:** 23
 
+<!--Device-WebHttpCookie-isSessionCookie: boolean--><!--Device-WebHttpCookie-isSessionCookie: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## name
@@ -103,6 +115,8 @@ Name of the cookie.
 **Type:** string
 
 **Since:** 23
+
+<!--Device-WebHttpCookie-name: string--><!--Device-WebHttpCookie-name: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -118,6 +132,8 @@ Path of the cookie.
 
 **Since:** 23
 
+<!--Device-WebHttpCookie-path: string--><!--Device-WebHttpCookie-path: string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## samesitePolicy
@@ -132,6 +148,8 @@ Same-site policy of the cookie.
 
 **Since:** 23
 
+<!--Device-WebHttpCookie-samesitePolicy: WebHttpCookieSameSitePolicy--><!--Device-WebHttpCookie-samesitePolicy: WebHttpCookieSameSitePolicy-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## value
@@ -145,5 +163,7 @@ Value of the cookie.
 **Type:** string
 
 **Since:** 23
+
+<!--Device-WebHttpCookie-value: string--><!--Device-WebHttpCookie-value: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

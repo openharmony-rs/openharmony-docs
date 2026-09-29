@@ -22,6 +22,8 @@ Stops Bluetooth device scanning.
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-bluetooth-function stopBluetoothDiscovery(): boolean--><!--Device-bluetooth-function stopBluetoothDiscovery(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

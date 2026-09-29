@@ -4,6 +4,8 @@ The distributedDataObject module provides basic data object management, includin
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace distributedDataObject--><!--Device-unnamed-declare namespace distributedDataObject-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataObject.DistributedObject
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Wi-Fi connection information. @typedef WifiLinkedInfo
 
 **Since:** 12
 
+<!--Device-wifiManager-interface WifiLinkedInfo--><!--Device-wifiManager-interface WifiLinkedInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The frequency band of a Wi-Fi access point.
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-band: int--><!--Device-WifiLinkedInfo-band: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## bssid
@@ -42,7 +46,9 @@ The BSSID of the Wi-Fi hotspot
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiLinkedInfo-bssid: string--><!--Device-WifiLinkedInfo-bssid: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -58,6 +64,8 @@ Channel width of the connected hotspot.
 
 **Since:** 10
 
+<!--Device-WifiLinkedInfo-channelWidth: WifiChannelWidth--><!--Device-WifiLinkedInfo-channelWidth: WifiChannelWidth-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## connState
@@ -71,6 +79,8 @@ The state of this Wi-Fi connection.
 **Type:** [ConnState](arkts-connectivity-wifimanager-connstate-e.md)
 
 **Since:** 9
+
+<!--Device-WifiLinkedInfo-connState: ConnState--><!--Device-WifiLinkedInfo-connState: ConnState-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -86,7 +96,9 @@ The frequency of a Wi-Fi access point.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiLinkedInfo-frequency: int--><!--Device-WifiLinkedInfo-frequency: int-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -102,6 +114,8 @@ The IP address of this Wi-Fi connection.
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-ipAddress: int--><!--Device-WifiLinkedInfo-ipAddress: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## isHidden
@@ -115,6 +129,8 @@ Whether the SSID of the access point (AP) of this Wi-Fi connection is hidden.
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-WifiLinkedInfo-isHidden: boolean--><!--Device-WifiLinkedInfo-isHidden: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -130,6 +146,8 @@ Whether the Wi-Fi hotspot is HiLink network.
 
 **Since:** 12
 
+<!--Device-WifiLinkedInfo-isHiLinkNetwork: boolean--><!--Device-WifiLinkedInfo-isHiLinkNetwork: boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## isRestricted
@@ -143,6 +161,8 @@ Whether this Wi-Fi connection restricts the data volume.
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-WifiLinkedInfo-isRestricted: boolean--><!--Device-WifiLinkedInfo-isRestricted: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -158,6 +178,8 @@ The speed of a Wi-Fi access point.
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-linkSpeed: int--><!--Device-WifiLinkedInfo-linkSpeed: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## macAddress
@@ -171,6 +193,8 @@ The Wi-Fi MAC address of a device.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-WifiLinkedInfo-macAddress: string--><!--Device-WifiLinkedInfo-macAddress: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -186,6 +210,8 @@ Type of macAddress: 0 - real mac, 1 - random mac.
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-macType: int--><!--Device-WifiLinkedInfo-macType: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## maxSupportedRxLinkSpeed
@@ -199,6 +225,8 @@ Max rx speed of a Wi-Fi access point.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-WifiLinkedInfo-maxSupportedRxLinkSpeed: int--><!--Device-WifiLinkedInfo-maxSupportedRxLinkSpeed: int-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -214,6 +242,8 @@ Max tx speed of a Wi-Fi access point.
 
 **Since:** 10
 
+<!--Device-WifiLinkedInfo-maxSupportedTxLinkSpeed: int--><!--Device-WifiLinkedInfo-maxSupportedTxLinkSpeed: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## rssi
@@ -228,7 +258,9 @@ The RSSI(dBm) of a Wi-Fi access point.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiLinkedInfo-rssi: int--><!--Device-WifiLinkedInfo-rssi: int-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -244,6 +276,8 @@ The rx speed of a Wi-Fi access point.
 
 **Since:** 10
 
+<!--Device-WifiLinkedInfo-rxLinkSpeed: int--><!--Device-WifiLinkedInfo-rxLinkSpeed: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## ssid
@@ -258,7 +292,9 @@ The SSID of the Wi-Fi hotspot
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WifiLinkedInfo-ssid: string--><!--Device-WifiLinkedInfo-ssid: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -274,6 +310,8 @@ Supported wifi category
 
 **Since:** 12
 
+<!--Device-WifiLinkedInfo-supportedWifiCategory: WifiCategory--><!--Device-WifiLinkedInfo-supportedWifiCategory: WifiCategory-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## wifiLinkType
@@ -288,6 +326,8 @@ Wi-Fi link type
 
 **Since:** 18
 
+<!--Device-WifiLinkedInfo-wifiLinkType?: WifiLinkType--><!--Device-WifiLinkedInfo-wifiLinkType?: WifiLinkType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## wifiStandard
@@ -301,5 +341,7 @@ Wifi standard of current connection.
 **Type:** [WifiStandard](arkts-connectivity-wifimanager-wifistandard-e.md)
 
 **Since:** 10
+
+<!--Device-WifiLinkedInfo-wifiStandard: WifiStandard--><!--Device-WifiLinkedInfo-wifiStandard: WifiStandard-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

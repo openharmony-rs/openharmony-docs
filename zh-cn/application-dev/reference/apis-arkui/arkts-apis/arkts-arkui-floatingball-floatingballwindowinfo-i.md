@@ -8,6 +8,8 @@ interface FloatingBallWindowInfo
 
 **起始版本：** 20
 
+<!--Device-floatingBall-interface FloatingBallWindowInfo--><!--Device-floatingBall-interface FloatingBallWindowInfo-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -27,5 +29,7 @@ readonly windowId: number
 **类型：** number
 
 **起始版本：** 20
+
+<!--Device-FloatingBallWindowInfo-readonly windowId: int--><!--Device-FloatingBallWindowInfo-readonly windowId: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

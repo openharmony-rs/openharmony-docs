@@ -12,6 +12,8 @@ FlashQuery provides APIs to query the flash status and mode of a camera device.
 
 **Since:** 12
 
+<!--Device-camera-interface FlashQuery--><!--Device-camera-interface FlashQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ isLcdFlashSupported(): boolean
 Checks whether the LCD flash is supported.
 
 **Since:** 12
+
+<!--Device-FlashQuery-isLcdFlashSupported(): boolean--><!--Device-FlashQuery-isLcdFlashSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

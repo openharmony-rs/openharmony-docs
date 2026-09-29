@@ -6,9 +6,11 @@ interface RotationGestureInterface extends GestureInterface<RotationGestureInter
 
 用于触发旋转手势，最少需要2指，最多5指，最小改变度数为1度。该手势不支持通过触控板双指旋转操作触发。
 
-**继承/实现关系：** RotationGestureInterface extends GestureInterface&lt;RotationGestureInterface&gt;
+**继承/实现关系：** RotationGestureInterface extends GestureInterface<RotationGestureInterface>
 
 **起始版本：** 7
+
+<!--Device-unnamed-interface RotationGestureInterface extends GestureInterface<RotationGestureInterface>--><!--Device-unnamed-interface RotationGestureInterface extends GestureInterface<RotationGestureInterface>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ interface RotationGestureInterface extends GestureInterface<RotationGestureInter
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotationGestureInterface-(value?: { fingers?: number; angle?: number }): RotationGestureInterface--><!--Device-RotationGestureInterface-(value?: { fingers?: number; angle?: number }): RotationGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ interface RotationGestureInterface extends GestureInterface<RotationGestureInter
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-RotationGestureInterface-(options?: RotationGestureHandlerOptions): RotationGestureInterface--><!--Device-RotationGestureInterface-(options?: RotationGestureHandlerOptions): RotationGestureInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -79,6 +85,8 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotationGestureInterface-onActionCancel(event: () => void): RotationGestureInterface--><!--Device-RotationGestureInterface-onActionCancel(event: () => void): RotationGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,6 +118,8 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与[on
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-RotationGestureInterface-onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface--><!--Device-RotationGestureInterface-onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -135,6 +145,8 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotationGestureInterface-onActionEnd(event: (event: GestureEvent) => void): RotationGestureInterface--><!--Device-RotationGestureInterface-onActionEnd(event: (event: GestureEvent) => void): RotationGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,6 +174,8 @@ Rotation手势识别成功后触发的回调。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RotationGestureInterface-onActionStart(event: (event: GestureEvent) => void): RotationGestureInterface--><!--Device-RotationGestureInterface-onActionStart(event: (event: GestureEvent) => void): RotationGestureInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -187,6 +201,8 @@ Rotation手势移动过程中触发的回调。
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotationGestureInterface-onActionUpdate(event: (event: GestureEvent) => void): RotationGestureInterface--><!--Device-RotationGestureInterface-onActionUpdate(event: (event: GestureEvent) => void): RotationGestureInterface-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

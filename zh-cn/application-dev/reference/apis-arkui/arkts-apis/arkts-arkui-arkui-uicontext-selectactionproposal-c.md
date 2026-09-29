@@ -10,6 +10,8 @@ export class SelectActionProposal extends TargetedGestureProposal
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export class SelectActionProposal extends TargetedGestureProposal--><!--Device-unnamed-export class SelectActionProposal extends TargetedGestureProposal-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ constructor(node: FrameNode)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectActionProposal-constructor(node: FrameNode)--><!--Device-SelectActionProposal-constructor(node: FrameNode)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -45,7 +49,7 @@ constructor(node: FrameNode)
 
 **示例**
 
-本示例实现了在智慧手势监听回调中，自定义智慧手势动作处理为智慧手势选中动作处理，完整示例请参考示例1（启用智慧手势并自定义动作处理）。
+本示例实现了在智慧手势监听回调中，自定义智慧手势动作处理为智慧手势选中动作处理，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](./arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
 
 ```TypeScript
 import {

@@ -1,12 +1,18 @@
 # TextInput
 
-The **TextInput** component provides single-line text input.
+A single-line text input box component used to receive single-line text input from users. It supports multiple input types (such as text, password, email, and number), custom styles (font, color, underline, decoration line, and more), input filtering, password input mode, auto-fill, and other features. It is suitable for various scenarios such as login and registration, search, and form filling. It can address common requirements such as text input validation, formatting, and secure input, simplifying the development process, improving user experience, and enhancing data security.
 
-> **NOTE** > > This component supports plain text only. For rich text, use the [RichEditor](arkts-arkui-richeditor-comp.md#rich_editor) component.
+> **NOTE:** 
+> 
+> - This component is supported since API version 7. Newly added APIs in later versions are marked with a superscript to indicate their initial version.
+> 
+> - This component supports only a single text style. To implement rich text style, use the [RichEditor](arkts-arkui-richeditor-comp.md) component.
+> 
+> - To set whether to clear text selection and handles when touching outside the text component, use the [setTextSelectionClearPolicy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#settextselectionclearpolicy) API.
 
 ## Child Components
 
-Not supported
+None
 
 ## TextInput
 
@@ -20,13 +26,15 @@ Defines the constructor of TextInput.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextInputInterface-(value?: TextInputOptions): TextInputAttribute--><!--Device-TextInputInterface-(value?: TextInputOptions): TextInputAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextInputOptions](arkts-arkui-textinput-comp-textinputoptions-i.md) | No | Parameters of the **TextInput** component. |
+| value | [TextInputOptions](arkts-arkui-textinput-comp-textinputoptions-i.md) | No | Parameters of the TextInput component. The default value is undefined. When this parameter is not set, the input box is initialized to empty. |
 
 ## Summary
 
@@ -35,26 +43,26 @@ Defines the constructor of TextInput.
 | Name | Description |
 | --- | --- |
 | [PasswordIcon](arkts-arkui-textinput-comp-passwordicon-i.md) | PasswordIcon object. |
-| [SubmitEvent](arkts-arkui-textinput-comp-submitevent-i.md) | Defines the user submission event. |
-| [TextInputOptions](arkts-arkui-textinput-comp-textinputoptions-i.md) | **TextInput** initialization parameters. |
+| [SubmitEvent](arkts-arkui-textinput-comp-submitevent-i.md) | Defines the user submit event. |
+| [TextInputOptions](arkts-arkui-textinput-comp-textinputoptions-i.md) | Initialization parameters of TextInput. |
 | [UnderlineColor](arkts-arkui-textinput-comp-underlinecolor-i.md) | Defines the underline color width property. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnContentScrollCallback](arkts-arkui-textinput-comp-oncontentscrollcallback-t.md) | Defines the callback for text content scrolling. |
-| [OnPasteCallback](arkts-arkui-textinput-comp-onpastecallback-t.md) | Defines the callback used to return the pasted text content. |
-| [OnSubmitCallback](arkts-arkui-textinput-comp-onsubmitcallback-t.md) | Defines the callback for submission. |
-| [OnTextSelectionChangeCallback](arkts-arkui-textinput-comp-ontextselectionchangecallback-t.md) | Defines the callback for text selection changes or caret position changes. |
+| [OnContentScrollCallback](arkts-arkui-textinput-comp-oncontentscrollcallback-t.md) | Callback for text content scrolling. |
+| [OnPasteCallback](arkts-arkui-textinput-comp-onpastecallback-t.md) | Paste callback. |
+| [OnSubmitCallback](arkts-arkui-textinput-comp-onsubmitcallback-t.md) | Callback for submission. |
+| [OnTextSelectionChangeCallback](arkts-arkui-textinput-comp-ontextselectionchangecallback-t.md) | Callback for text selection changes or cursor position changes. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [ContentType](arkts-arkui-textinput-comp-contenttype-e.md) | Enumerates the content types for autofill. |
-| [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Type of the Enter key. |
-| [InputType](arkts-arkui-textinput-comp-inputtype-e.md) | Sets the single-line text box type. |
+| [ContentType](arkts-arkui-textinput-comp-contenttype-e.md) | Enumerates autofill types. |
+| [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Type of the Enter key on the input method. |
+| [InputType](arkts-arkui-textinput-comp-inputtype-e.md) | Type of the single-line text input box. |
 | [TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md) | Text input style. |
 
 ## Examples

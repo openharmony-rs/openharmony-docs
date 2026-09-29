@@ -8,6 +8,8 @@ Defines the touch point information.
 
 **Since:** 9
 
+<!--Device-unnamed-export declare interface Touch--><!--Device-unnamed-export declare interface Touch-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ X coordinate of the touch event in the global coordinate system with the upper-l
 
 **Since:** 20
 
+<!--Device-Touch-globalX?: int--><!--Device-Touch-globalX?: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## globalY
@@ -41,6 +45,8 @@ Y coordinate of the touch event in the global coordinate system with the upper-l
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Touch-globalY?: int--><!--Device-Touch-globalY?: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -56,6 +62,8 @@ Height of the touch area, in pixels. The value can only be an integer.
 
 **Since:** 9
 
+<!--Device-Touch-height: int--><!--Device-Touch-height: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## id
@@ -69,6 +77,8 @@ Touch event ID.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-id: int--><!--Device-Touch-id: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -84,6 +94,8 @@ Press timestamp, in microseconds (μs) since the system starts.
 
 **Since:** 9
 
+<!--Device-Touch-pressedTime: long--><!--Device-Touch-pressedTime: long-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## pressure
@@ -97,6 +109,8 @@ Pressure value. The value range is [0.0, 1.0]. The value **0.0** indicates that 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-pressure: double--><!--Device-Touch-pressure: double-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -112,6 +126,8 @@ X coordinate of the input device. Currently, only integers are supported. The un
 
 **Since:** 9
 
+<!--Device-Touch-rawX: int--><!--Device-Touch-rawX: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## rawY
@@ -125,6 +141,8 @@ Y coordinate of the input device. Currently, only integers are supported. The un
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-rawY: int--><!--Device-Touch-rawY: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -140,6 +158,8 @@ X coordinate of the touch event in the relative coordinate system with the upper
 
 **Since:** 9
 
+<!--Device-Touch-screenX: int--><!--Device-Touch-screenX: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## screenY
@@ -153,6 +173,8 @@ Y coordinate of the touch event in the relative coordinate system with the upper
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-screenY: int--><!--Device-Touch-screenY: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -168,6 +190,8 @@ Angle relative to the YZ plane, in degrees. The value range is [-90, 90]. A posi
 
 **Since:** 9
 
+<!--Device-Touch-tiltX: int--><!--Device-Touch-tiltX: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## tiltY
@@ -181,6 +205,8 @@ Angle relative to the XZ plane, in degrees. The value range is [-90, 90]. A posi
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-tiltY: int--><!--Device-Touch-tiltY: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -196,6 +222,8 @@ Height of the tool area, in pixels. The value can only be an integer.
 
 **Since:** 9
 
+<!--Device-Touch-toolHeight: int--><!--Device-Touch-toolHeight: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## toolType
@@ -209,6 +237,8 @@ Tool type.
 **Type:** [ToolType](arkts-input-multimodalinput-touchevent-tooltype-e.md)
 
 **Since:** 9
+
+<!--Device-Touch-toolType: ToolType--><!--Device-Touch-toolType: ToolType-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -224,6 +254,8 @@ Width of the tool area, in pixels. The value can only be an integer.
 
 **Since:** 9
 
+<!--Device-Touch-toolWidth: int--><!--Device-Touch-toolWidth: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## toolX
@@ -237,6 +269,8 @@ X coordinate of the tool area center in the relative coordinate system with the 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-toolX: int--><!--Device-Touch-toolX: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -252,6 +286,8 @@ Y coordinate of the tool area center in the relative coordinate system with the 
 
 **Since:** 9
 
+<!--Device-Touch-toolY: int--><!--Device-Touch-toolY: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## width
@@ -265,6 +301,8 @@ Width of the touch area, in pixels. The value can only be an integer.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-width: int--><!--Device-Touch-width: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -280,6 +318,8 @@ X coordinate in the relative coordinate system with the upper-left corner of the
 
 **Since:** 9
 
+<!--Device-Touch-windowX: int--><!--Device-Touch-windowX: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## windowY
@@ -293,5 +333,7 @@ Y coordinate in the relative coordinate system with the upper-left corner of the
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Touch-windowY: int--><!--Device-Touch-windowY: int-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

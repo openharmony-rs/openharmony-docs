@@ -44,7 +44,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [SmartGestureController](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md) | Provides the capability to enable smart gestures, monitor them, control the selection state, and dynamically determine smart gesture behavior. |
 | [SwiperDynamicSyncScene](arkts-arkui-arkui-uicontext-swiperdynamicsyncscene-c.md) | Provides frame rate configuration APIs for the **Swiper** component. |
 | [TargetedGestureProposal](arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md) | Base class for smart gesture handling with a target node. |
-| [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | Provides the capability to control text menus. |
+| [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | The TextMenuController class is used to control the behavior of the text selection menu. It supports setting menu display options (such as displaying in a separate window with priority), disabling system service menu items or specific menu items. It is applicable to app scenarios where the text selection menu display mode needs to be customized or specific menu functions need to be restricted, such as disabling translation, search, and other functions in specific business scenarios. |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Implements a **UIContext** instance. |
 | [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | Provides APIs for registering the component layout and drawing display completion callbacks. |
 | [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md) | Provides APIs for listening for UI component behavior changes. |
@@ -82,20 +82,6 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [BackgroundLuminanceSamplingConfigs](arkts-arkui-arkui-uicontext-backgroundluminancesamplingconfigs-i-sys.md) | Sets the background luminance sampling parameters. |
 <!--DelEnd-->
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [CustomKeyboardContinueFeature](arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | Enum of CustomKeyboardContinueFeature |
-| [GestureActionPhase](arkts-arkui-arkui-uicontext-gestureactionphase-e.md) | Enumerates triggering phases of gesture callbacks, corresponding to the action callbacks defined in **gesture.d.ts**. However, different gesture types support different phases (for example, **SwipeGesture** only includes the **WILL_START** enumerated value). |
-| [GestureListenerType](arkts-arkui-arkui-uicontext-gesturelistenertype-e.md) | Enumerates the types of gestures to be listened for. |
-| [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | Enumerates the modes in which the layout responds when the keyboard is displayed. |
-| [MarqueeDynamicSyncSceneType](arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md) | Enum of scene type for Marquee |
-| [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | An enumeration type that identifies the current node's rendering state. The UI components used in the application are automatically managed by the system and controlled for participation in graphical rendering by either mounting them onto the render tree or removing them from it. Only nodes that participate in graphical rendering have the potential to be displayed. However, participating in rendering does not equal to the node's visibility, as there may be many occlusion scenarios in the actual implementation of the application. Nevertheless, if a node does not participate in rendering, it will definitely not be visible. |
-| [ResolveStrategy](arkts-arkui-arkui-uicontext-resolvestrategy-e.md) | Enumerates resolution strategies for **UIContext** objects. |
-| [SwiperDynamicSyncSceneType](arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md) | Enum of SwiperDynamicSyncSceneType |
-| [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | Enum of TextSelectionClearPolicy |
-
 ### Types
 
 | Name | Description |
@@ -110,6 +96,20 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [OnOverlayBackPressCallback](arkts-arkui-onoverlaybackpresscallback-t.md) | Defines the callback type for intercepting a back-press event on an overlay. |
 | [PanListenerCallback](arkts-arkui-panlistenercallback-t.md) | Defines a callback for pan gesture events. |
 | [PointerStyle](arkts-arkui-pointerstyle-t.md) | Defines the pointer style. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [CustomKeyboardContinueFeature](arkts-arkui-arkui-uicontext-customkeyboardcontinuefeature-e.md) | Enum of CustomKeyboardContinueFeature |
+| [GestureActionPhase](arkts-arkui-arkui-uicontext-gestureactionphase-e.md) | Enumerates triggering phases of gesture callbacks, corresponding to the action callbacks defined in **gesture.d.ts**. However, different gesture types support different phases (for example, **SwipeGesture** only includes the **WILL_START** enumerated value). |
+| [GestureListenerType](arkts-arkui-arkui-uicontext-gesturelistenertype-e.md) | Enumerates the types of gestures to be listened for. |
+| [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | Enumerates the modes in which the layout responds when the keyboard is displayed. |
+| [MarqueeDynamicSyncSceneType](arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md) | Enum of scene type for Marquee |
+| [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | An enumeration type that identifies the current node's rendering state. The UI components used in the application are automatically managed by the system and controlled for participation in graphical rendering by either mounting them onto the render tree or removing them from it. Only nodes that participate in graphical rendering have the potential to be displayed. However, participating in rendering does not equal to the node's visibility, as there may be many occlusion scenarios in the actual implementation of the application. Nevertheless, if a node does not participate in rendering, it will definitely not be visible. |
+| [ResolveStrategy](arkts-arkui-arkui-uicontext-resolvestrategy-e.md) | Enumerates resolution strategies for **UIContext** objects. |
+| [SwiperDynamicSyncSceneType](arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md) | Enum of SwiperDynamicSyncSceneType |
+| [TextSelectionClearPolicy](arkts-arkui-arkui-uicontext-textselectionclearpolicy-e.md) | Enum of TextSelectionClearPolicy |
 
 ## Examples
 

@@ -8,6 +8,8 @@ Implements a serial queue, in which all tasks are executed in sequence.
 
 **Since:** 11
 
+<!--Device-taskpool-class SequenceRunner--><!--Device-taskpool-class SequenceRunner-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ A constructor used to create a **SequenceRunner** instance.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SequenceRunner-constructor(priority?: Priority)--><!--Device-SequenceRunner-constructor(priority?: Priority)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -62,6 +66,8 @@ A constructor used to create a **SequenceRunner** instance. This instance repres
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SequenceRunner-constructor(name: string, priority?: Priority)--><!--Device-SequenceRunner-constructor(name: string, priority?: Priority)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -94,6 +100,8 @@ Adds a task to the serial queue for execution. Before using this API, you must c
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SequenceRunner-execute(task: Task): Promise<Object>--><!--Device-SequenceRunner-execute(task: Task): Promise<Object>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

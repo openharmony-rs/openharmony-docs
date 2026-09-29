@@ -8,6 +8,8 @@ Provides attribute names and value types of a node element. For details, see [El
 
 **Since:** 10
 
+<!--Device-unnamed-export type ElementAttributeValues = _ElementAttributeValues--><!--Device-unnamed-export type ElementAttributeValues = _ElementAttributeValues-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Type:** _ElementAttributeValues

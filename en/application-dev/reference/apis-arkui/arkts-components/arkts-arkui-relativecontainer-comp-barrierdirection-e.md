@@ -8,6 +8,8 @@ Defines the direction of a barrier.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum BarrierDirection--><!--Device-unnamed-declare enum BarrierDirection-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -26,6 +28,8 @@ The barrier is at the leftmost position of all its [referencedId](arkts-arkui-re
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BarrierDirection-LEFT--><!--Device-BarrierDirection-LEFT-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## RIGHT
@@ -41,6 +45,8 @@ The barrier is at the rightmost position of all its [referencedId](arkts-arkui-r
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BarrierDirection-RIGHT--><!--Device-BarrierDirection-RIGHT-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +64,8 @@ The barrier is at the topmost position of all its [referencedId](arkts-arkui-rel
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BarrierDirection-TOP--><!--Device-BarrierDirection-TOP-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
@@ -73,5 +81,7 @@ The barrier is at the bottommost position of all its [referencedId](arkts-arkui-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BarrierDirection-BOTTOM--><!--Device-BarrierDirection-BOTTOM-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

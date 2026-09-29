@@ -18,6 +18,8 @@ Deletes the disposed status for an application. This API uses an asynchronous ca
 
 **Required permissions:** ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
+<!--Device-appControl-function deleteDisposedStatus(appId: string, callback: AsyncCallback<void>): void--><!--Device-appControl-function deleteDisposedStatus(appId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Deletes the disposed status for an application. This API uses a promise to retur
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+
+<!--Device-appControl-function deleteDisposedStatus(appId: string): Promise<void>--><!--Device-appControl-function deleteDisposedStatus(appId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 

@@ -18,6 +18,8 @@ Clears the router proxy set for widgets. This API uses an asynchronous callback 
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function clearRouterProxy(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function clearRouterProxy(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -55,6 +57,8 @@ Clears the router proxy set for widgets. This API uses a promise to return the r
 **Since:** 11
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function clearRouterProxy(formIds: Array<string>): Promise<void>--><!--Device-formHost-function clearRouterProxy(formIds: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

@@ -21,6 +21,8 @@ Unregisters the observer for cell information change events. This API uses an as
 
 **Since:** 8
 
+<!--Device-observer-function off(type: 'cellInfoChange', callback?: Callback<Array<CellInformation>>): void--><!--Device-observer-function off(type: 'cellInfoChange', callback?: Callback<Array<CellInformation>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **System API:** This is a system API.

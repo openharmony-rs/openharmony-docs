@@ -16,6 +16,8 @@ Clears this file cache.
 
 **Since:** 23
 
+<!--Device-cacheDownload-function clearFileCache(): void--><!--Device-cacheDownload-function clearFileCache(): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Examples**

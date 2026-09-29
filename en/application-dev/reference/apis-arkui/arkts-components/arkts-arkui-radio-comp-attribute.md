@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 8
 
+<!--Device-unnamed-declare class RadioAttribute extends CommonMethod<RadioAttribute>--><!--Device-unnamed-declare class RadioAttribute extends CommonMethod<RadioAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## checked
@@ -33,6 +35,8 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RadioAttribute-checked(value: boolean): RadioAttribute--><!--Device-RadioAttribute-checked(value: boolean): RadioAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-RadioAttribute-checked(isChecked: Optional<boolean>): RadioAttribute--><!--Device-RadioAttribute-checked(isChecked: Optional<boolean>): RadioAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -83,6 +89,8 @@ Creates a content modifier.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RadioAttribute-contentModifier(modifier: ContentModifier<RadioConfiguration>): RadioAttribute--><!--Device-RadioAttribute-contentModifier(modifier: ContentModifier<RadioConfiguration>): RadioAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +116,8 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier)&lt
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-RadioAttribute-contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>): RadioAttribute--><!--Device-RadioAttribute-contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>): RadioAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -131,6 +141,8 @@ Triggered when the selected state of the radio button changes.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RadioAttribute-onChange(callback: (isChecked: boolean) => void): RadioAttribute--><!--Device-RadioAttribute-onChange(callback: (isChecked: boolean) => void): RadioAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +170,8 @@ Triggered when the selected state of the radio button changes. Compared with [on
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-RadioAttribute-onChange(callback: Optional<OnRadioChangeCallback>): RadioAttribute--><!--Device-RadioAttribute-onChange(callback: Optional<OnRadioChangeCallback>): RadioAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -181,6 +195,8 @@ Since API version 10, this API is supported in ArkTS widgets.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RadioAttribute-radioStyle(value?: RadioStyle): RadioAttribute--><!--Device-RadioAttribute-radioStyle(value?: RadioStyle): RadioAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -20,6 +20,8 @@ Unsubscribes from data receive events and no longer receives data through the ca
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-proxyChannelManager-function off(type: 'receiveData', channelId: number, callback?: Callback<DataInfo>): void--><!--Device-proxyChannelManager-function off(type: 'receiveData', channelId: number, callback?: Callback<DataInfo>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -81,6 +83,8 @@ Unsubscribes from channel state events. This is applicable to scenarios where th
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-proxyChannelManager-function off(type: 'channelStateChange', channelId: number, callback?: Callback<ChannelStateInfo>): void--><!--Device-proxyChannelManager-function off(type: 'channelStateChange', channelId: number, callback?: Callback<ChannelStateInfo>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

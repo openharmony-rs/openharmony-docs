@@ -16,6 +16,8 @@ Joins a conference call. This API uses an asynchronous callback to return the re
 
 **Since:** 8
 
+<!--Device-call-function joinConference(mainCallId: int, callNumberList: Array<string>, callback: AsyncCallback<void>): void--><!--Device-call-function joinConference(mainCallId: int, callNumberList: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ function joinConference(mainCallId: number, callNumberList: Array<string>): Prom
 Joins a conference call. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-call-function joinConference(mainCallId: int, callNumberList: Array<string>): Promise<void>--><!--Device-call-function joinConference(mainCallId: int, callNumberList: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

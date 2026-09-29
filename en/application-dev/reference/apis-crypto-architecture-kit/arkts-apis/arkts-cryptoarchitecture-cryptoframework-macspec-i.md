@@ -12,6 +12,8 @@ Represents the message authentication code (MAC) parameters. You need to constru
 
 **Since:** 18
 
+<!--Device-cryptoFramework-interface MacSpec--><!--Device-cryptoFramework-interface MacSpec-End-->
+
 **System capability:** SystemCapability.Security.CryptoFramework.Mac
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Algorithm to use.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-MacSpec-algName: string--><!--Device-MacSpec-algName: string-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Mac

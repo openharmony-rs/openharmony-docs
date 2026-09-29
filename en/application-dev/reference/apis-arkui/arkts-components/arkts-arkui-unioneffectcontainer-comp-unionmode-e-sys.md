@@ -4,9 +4,11 @@
 declare enum UnionMode
 ```
 
-Enumerates the union modes.
+Enumerates the union effect modes.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare enum UnionMode--><!--Device-unnamed-declare enum UnionMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,11 +20,17 @@ Enumerates the union modes.
 SMOOTH_UNION = 0
 ```
 
-Smooth union mode.
+Smooth union deformation effect, suitable for union scenarios that require smooth transitions and natural connections.
+
+**NOTE:** 
+
+When this type is set, the union effect is produced only when descendant components set the [useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect) attribute.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnionMode-SMOOTH_UNION = 0--><!--Device-UnionMode-SMOOTH_UNION = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,15 +42,17 @@ Smooth union mode.
 GRAVITY_UNION = 1
 ```
 
-Gravity union mode.
+Union deformation effect under gravity, suitable for union scenarios that require simulating a gravitational attraction effect, such as the visual representation of attraction and approaching trends between elements.
 
 **NOTE:** 
 
-This mode takes effect only when [useUnionEffect](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md#useunioneffect-1) is used and **gravityCenter** of [GravityCenterOptions](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions) is set to **true**.
+When this type is set, it takes effect only when used together with [useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect-1) and when **gravityCenter** of [GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md) is set to **true**. If the preceding conditions are not met, **GRAVITY_UNION** does not take effect.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnionMode-GRAVITY_UNION = 1--><!--Device-UnionMode-GRAVITY_UNION = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

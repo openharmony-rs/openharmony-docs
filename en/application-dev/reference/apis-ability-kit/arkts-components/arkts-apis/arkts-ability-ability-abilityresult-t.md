@@ -10,6 +10,8 @@ Defines the level-2 module AbilityResult.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ability-export type AbilityResult = _AbilityResult--><!--Device-ability-export type AbilityResult = _AbilityResult-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 **Type:** _AbilityResult

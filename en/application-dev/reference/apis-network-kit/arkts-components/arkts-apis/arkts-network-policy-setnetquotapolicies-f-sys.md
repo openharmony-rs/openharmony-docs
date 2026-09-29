@@ -18,6 +18,8 @@ Sets the metering network policy. This API uses an asynchronous callback to retu
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>, callback: AsyncCallback<void>): void--><!--Device-policy-function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -82,6 +84,8 @@ Sets the metering network policy. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>): Promise<void>--><!--Device-policy-function setNetQuotaPolicies(quotaPolicies: Array<NetQuotaPolicy>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

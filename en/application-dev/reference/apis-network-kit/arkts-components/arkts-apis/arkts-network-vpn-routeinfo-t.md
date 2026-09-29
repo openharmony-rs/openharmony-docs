@@ -8,6 +8,8 @@ Defines the network route information.
 
 **Since:** 10
 
+<!--Device-vpn-export type RouteInfo = connection.RouteInfo--><!--Device-vpn-export type RouteInfo = connection.RouteInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Type:** [connection.RouteInfo](arkts-network-connection-routeinfo-i.md)

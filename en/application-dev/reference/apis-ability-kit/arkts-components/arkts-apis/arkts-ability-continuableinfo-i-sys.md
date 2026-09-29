@@ -8,6 +8,8 @@ The module provides the mission continuation information to be returned when the
 
 **Since:** 10
 
+<!--Device-unnamed-export interface ContinuableInfo--><!--Device-unnamed-export interface ContinuableInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Bundle name of the target application to which the mission belongs.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuableInfo-bundleName: string--><!--Device-ContinuableInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -44,6 +48,8 @@ Continuation type of the application to which the mission belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuableInfo-continueType?: string--><!--Device-ContinuableInfo-continueType?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Bundle name of the source application to which the mission belongs. The value is
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuableInfo-srcBundleName?: string--><!--Device-ContinuableInfo-srcBundleName?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -80,6 +88,8 @@ ID of the source device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuableInfo-srcDeviceId: string--><!--Device-ContinuableInfo-srcDeviceId: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -97,6 +107,8 @@ Target AppId list of the application to which the mission belongs.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuableInfo-targetAppIds?: Array<string>--><!--Device-ContinuableInfo-targetAppIds?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

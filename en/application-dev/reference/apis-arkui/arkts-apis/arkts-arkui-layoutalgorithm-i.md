@@ -19,4 +19,6 @@ Basic layout algorithm of the [DynamicLayout](../arkts-components/arkts-arkui-dy
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-unnamed-export interface LayoutAlgorithm--><!--Device-unnamed-export interface LayoutAlgorithm-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

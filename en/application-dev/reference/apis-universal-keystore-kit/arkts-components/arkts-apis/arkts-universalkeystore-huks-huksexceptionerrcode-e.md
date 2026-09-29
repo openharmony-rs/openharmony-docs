@@ -10,6 +10,8 @@ For details about the error codes, see [Universal Error Codes](../../../referenc
 
 **Since:** 9
 
+<!--Device-huks-export enum HuksExceptionErrCode--><!--Device-huks-export enum HuksExceptionErrCode-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_PERMISSION_FAIL
@@ -26,6 +28,8 @@ Permission verification failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PERMISSION_FAIL = 201--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PERMISSION_FAIL = 201-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_NOT_SYSTEM_APP
@@ -39,6 +43,8 @@ The caller is not a system application and cannot call the system API.
 **Since:** 12
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SYSTEM_APP = 202--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SYSTEM_APP = 202-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -56,6 +62,8 @@ Invalid parameters are detected. Possible causes: 1. Mandatory parameters are le
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ILLEGAL_ARGUMENT = 401-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_NOT_SUPPORTED_API
@@ -71,6 +79,8 @@ The API is not supported.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SUPPORTED_API = 801--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NOT_SUPPORTED_API = 801-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -88,6 +98,8 @@ The feature is not supported.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FEATURE_NOT_SUPPORTED = 12000001-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT
@@ -103,6 +115,8 @@ Key algorithm parameters are missing.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_MISSING_CRYPTO_ALG_ARGUMENT = 12000002-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -120,6 +134,8 @@ Invalid key algorithm parameters are detected.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_CRYPTO_ALG_ARGUMENT = 12000003-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_FILE_OPERATION_FAIL
@@ -135,6 +151,8 @@ The file operation failed.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_FILE_OPERATION_FAIL = 12000004-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -152,6 +170,8 @@ The communication failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_COMMUNICATION_FAIL = 12000005-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_CRYPTO_FAIL
@@ -167,6 +187,8 @@ Failed to operate the algorithm library.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CRYPTO_FAIL = 12000006--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CRYPTO_FAIL = 12000006-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -184,6 +206,8 @@ Failed to access the key because the key has expired.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_PERMANENTLY_INVALIDATED = 12000007-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED
@@ -199,6 +223,8 @@ Failed to access the key because the authentication has failed.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_VERIFY_FAILED = 12000008-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -216,6 +242,8 @@ Key access timed out.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_AUTH_TIME_OUT = 12000009-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_SESSION_LIMIT
@@ -231,6 +259,8 @@ The number of key operation sessions has reached the limit.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SESSION_LIMIT = 12000010--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SESSION_LIMIT = 12000010-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -248,6 +278,8 @@ The target object does not exist.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_NOT_EXIST = 12000011-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_EXTERNAL_ERROR
@@ -263,6 +295,8 @@ An external error occurs.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_ERROR = 12000012-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -280,6 +314,8 @@ The credential does not exist.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CREDENTIAL_NOT_EXIST = 12000013-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_INSUFFICIENT_MEMORY
@@ -295,6 +331,8 @@ The memory is insufficient.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INSUFFICIENT_MEMORY = 12000014-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -312,6 +350,8 @@ Failed to call other system services.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_CALL_SERVICE_FAILED = 12000015-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET
@@ -325,6 +365,8 @@ The required lock screen password is not set.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
@@ -342,6 +384,8 @@ A key with the same name already exists.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_INVALID_ARGUMENT
@@ -357,6 +401,8 @@ The argument is invalid.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -374,6 +420,8 @@ A provider with the same name has been registered.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_EXISTS = 12000019--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_ITEM_EXISTS = 12000019-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_EXTERNAL_MODULE
@@ -390,6 +438,8 @@ The external module on which this API depends returns an error.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_PIN_LOCKED
@@ -403,6 +453,8 @@ The UKey PIN is locked.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_LOCKED = 12000021--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_LOCKED = 12000021-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
@@ -418,6 +470,8 @@ The UKey PIN is incorrect.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_INCORRECT = 12000022--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_INCORRECT = 12000022-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## HUKS_ERR_CODE_PIN_NO_AUTH
@@ -431,6 +485,8 @@ The UKey PIN is not authenticated.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_NO_AUTH = 12000023--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_PIN_NO_AUTH = 12000023-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
@@ -448,6 +504,8 @@ The device or resource is busy.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_BUSY = 12000024--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_BUSY = 12000024-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_EXCEED_LIMIT
@@ -463,6 +521,8 @@ The resource limit is exceeded.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXCEED_LIMIT = 12000025--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_EXCEED_LIMIT = 12000025-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -480,6 +540,8 @@ The secure element is faulty.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SE_FAULT = 12000026--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_SE_FAULT = 12000026-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_ERR_CODE_NETWORK_UNAVAILABLE
@@ -495,5 +557,7 @@ The network is unavailable.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NETWORK_UNAVAILABLE = 12000027--><!--Device-HuksExceptionErrCode-HUKS_ERR_CODE_NETWORK_UNAVAILABLE = 12000027-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

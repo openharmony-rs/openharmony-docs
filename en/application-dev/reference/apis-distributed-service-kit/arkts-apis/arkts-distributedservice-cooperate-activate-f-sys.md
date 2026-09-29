@@ -20,6 +20,8 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 **Substitutes:** [activateCooperate](arkts-distributedservice-cooperate-activatecooperate-f-sys.md)(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback<void>): void--><!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ Starts screen hopping. This API uses a promise to return the result.
 **Deprecated since:** 11
 
 **Substitutes:** [activateCooperate](arkts-distributedservice-cooperate-activatecooperate-f-sys.md)(targetNetworkId: string, inputDeviceId: number)
+
+<!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>--><!--Device-cooperate-function activate(targetNetworkId: string, inputDeviceId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

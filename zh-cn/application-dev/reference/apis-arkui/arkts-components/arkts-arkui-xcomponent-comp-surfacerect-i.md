@@ -19,6 +19,8 @@ declare interface SurfaceRect
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface SurfaceRect--><!--Device-unnamed-declare interface SurfaceRect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -38,6 +40,8 @@ surface矩形相对于XComponent左上角的X坐标。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SurfaceRect-offsetX?: number--><!--Device-SurfaceRect-offsetX?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +63,8 @@ surface矩形相对于XComponent左上角的Y坐标。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SurfaceRect-offsetY?: number--><!--Device-SurfaceRect-offsetY?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## surfaceHeight
@@ -79,6 +85,8 @@ surface矩形的高度。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SurfaceRect-surfaceHeight: number--><!--Device-SurfaceRect-surfaceHeight: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## surfaceWidth
@@ -98,5 +106,7 @@ surface矩形的宽度。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SurfaceRect-surfaceWidth: number--><!--Device-SurfaceRect-surfaceWidth: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

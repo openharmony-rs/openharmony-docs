@@ -14,6 +14,8 @@ Defines the CustomBuilder type with parameter.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type CustomBuilderT<T> = (t: T) => void--><!--Device-unnamed-declare type CustomBuilderT<T> = (t: T) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

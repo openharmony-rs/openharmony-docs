@@ -8,6 +8,8 @@ Defines the gesture API.
 
 **Since:** 11
 
+<!--Device-unnamed-interface GestureInterface<T>--><!--Device-unnamed-interface GestureInterface<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## allowedTypes
@@ -23,6 +25,8 @@ Sets the input types that can trigger the gesture response.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-GestureInterface-allowedTypes(types: Array<SourceTool>): T--><!--Device-GestureInterface-allowedTypes(types: Array<SourceTool>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Sets a gesture tag.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GestureInterface-tag(tag: string): T--><!--Device-GestureInterface-tag(tag: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-nfcController-function on(type: "nfcStateChange", callback: Callback<NfcState>): void--><!--Device-nfcController-function on(type: "nfcStateChange", callback: Callback<NfcState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Core
 
 **Parameters:**

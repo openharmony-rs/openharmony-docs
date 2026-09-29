@@ -8,6 +8,8 @@ declare interface VisibleAreaEventOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface VisibleAreaEventOptions--><!--Device-unnamed-declare interface VisibleAreaEventOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## expectedUpdateInterval
@@ -29,6 +31,8 @@ expectedUpdateInterval?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VisibleAreaEventOptions-expectedUpdateInterval?: number--><!--Device-VisibleAreaEventOptions-expectedUpdateInterval?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ measureFromViewport设置为true时，祖先节点设置[scale](arkts-arkui-comm
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-VisibleAreaEventOptions-measureFromViewport?: boolean--><!--Device-VisibleAreaEventOptions-measureFromViewport?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ratios
@@ -73,5 +79,7 @@ ratios: Array<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VisibleAreaEventOptions-ratios: Array<number>--><!--Device-VisibleAreaEventOptions-ratios: Array<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Describes the width and height of the auto-fill pop-up.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface PopupSize--><!--Device-unnamed-export interface PopupSize-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Height of the auto-fill pop-up. The unit is px.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PopupSize-height: double--><!--Device-PopupSize-height: double-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Width of the auto-fill pop-up. The unit is px.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PopupSize-width: double--><!--Device-PopupSize-width: double-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

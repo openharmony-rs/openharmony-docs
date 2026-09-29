@@ -8,6 +8,8 @@ The module defines the task listener used in [App Startup](../../../application-
 
 **Since:** 12
 
+<!--Device-unnamed-declare class StartupListener--><!--Device-unnamed-declare class StartupListener-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called when all startup tasks complete.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupListener-onCompleted?(error: BusinessError<void>): void--><!--Device-StartupListener-onCompleted?(error: BusinessError<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AppStartup
 

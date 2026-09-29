@@ -16,6 +16,8 @@ declare interface SaveButtonOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface SaveButtonOptions--><!--Device-unnamed-declare interface SaveButtonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonType
@@ -33,6 +35,8 @@ buttonType?: ButtonType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonOptions-buttonType?: ButtonType--><!--Device-SaveButtonOptions-buttonType?: ButtonType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ icon?: SaveIconStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SaveButtonOptions-icon?: SaveIconStyle--><!--Device-SaveButtonOptions-icon?: SaveIconStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -69,5 +75,7 @@ text?: SaveDescription
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SaveButtonOptions-text?: SaveDescription--><!--Device-SaveButtonOptions-text?: SaveDescription-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

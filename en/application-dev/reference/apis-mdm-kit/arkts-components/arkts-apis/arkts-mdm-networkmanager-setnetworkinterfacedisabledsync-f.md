@@ -20,6 +20,8 @@ Disables the device from using the specified network interface. This API is suit
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisabled: boolean): void--><!--Device-networkManager-function setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

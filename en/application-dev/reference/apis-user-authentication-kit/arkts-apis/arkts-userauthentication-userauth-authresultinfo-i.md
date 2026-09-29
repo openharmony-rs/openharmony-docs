@@ -12,6 +12,8 @@ Represents the authentication result.
 
 **Substitutes:** [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
 
+<!--Device-userAuth-interface AuthResultInfo--><!--Device-userAuth-interface AuthResultInfo-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Lock duration of the authentication operation, in ms.
 
 **Substitutes:** [lockoutDuration](arkts-userauthentication-userauth-authlockstate-i.md#lockoutduration)
 
+<!--Device-AuthResultInfo-lockoutDuration?: number--><!--Device-AuthResultInfo-lockoutDuration?: number-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## remainAttempts
@@ -53,6 +57,8 @@ Number of remaining authentication attempts.
 **Deprecated since:** 11
 
 **Substitutes:** [remainingAuthAttempts](arkts-userauthentication-userauth-authlockstate-i.md#remainingauthattempts)
+
+<!--Device-AuthResultInfo-remainAttempts?: number--><!--Device-AuthResultInfo-remainAttempts?: number-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -72,6 +78,8 @@ Authentication result.
 
 **Substitutes:** [result](arkts-userauthentication-userauth-userauthresult-i.md#result)
 
+<!--Device-AuthResultInfo-result: number--><!--Device-AuthResultInfo-result: number-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## token
@@ -89,5 +97,7 @@ Token that has passed the user identity authentication.
 **Deprecated since:** 11
 
 **Substitutes:** [token](arkts-userauthentication-userauth-userauthresult-i.md#token)
+
+<!--Device-AuthResultInfo-token?: Uint8Array--><!--Device-AuthResultInfo-token?: Uint8Array-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

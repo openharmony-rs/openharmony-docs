@@ -18,6 +18,8 @@ Marks the end of a user scene. Call this API when the scene ends.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-performanceMonitor-function end(scene: string): void--><!--Device-performanceMonitor-function end(scene: string): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

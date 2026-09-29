@@ -4,9 +4,17 @@
 declare class DrawModifier
 ```
 
-Defined the draw modifier of node. Provides draw callbacks for the associated Node. Each DrawModifier instance can be set for only one component. Repeated setting is not allowed.
+DrawModifier can set the drawing methods of the mask layer (drawOverlay&lt;sup&gt;23+&lt;/sup&gt;), foreground (drawForeground&lt;sup&gt;20+&lt;/sup&gt;), content foreground (drawFront), content (drawContent), and content background (drawBehind), and also provides the [invalidate](#invalidate) method to actively trigger redrawing. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited.
+
+> **NOTE:** 
+> 
+> The drawing order from bottom to top is: content background (drawBehind) → content (drawContent) → content
+> foreground (drawFront) → foreground (drawForeground) → mask layer (drawOverlay). Each layer is drawn
+> independently, and the methods of each layer are optional to implement.
 
 **Since:** 12
+
+<!--Device-unnamed-declare class DrawModifier--><!--Device-unnamed-declare class DrawModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +24,7 @@ Defined the draw modifier of node. Provides draw callbacks for the associated No
 drawBehind?(drawContext: DrawContext): void
 ```
 
-drawBehind Method. Executed before drawing associated Node.
+Draws the content background. Override this method to implement custom content background drawing. The background is located below the component content layer, and is suitable for scenarios where decorative background elements need to be added at the bottom layer of the component. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -24,13 +32,15 @@ drawBehind Method. Executed before drawing associated Node.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DrawModifier-drawBehind?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawBehind?(drawContext: DrawContext): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Examples**
 
@@ -42,7 +52,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawContent?(drawContext: DrawContext): void
 ```
 
-drawContent Method. Executed when associated Node is drawing, the default drawContent method will be replaced if this method is set.
+Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function. It is suitable for scenarios where the component content drawing needs to be fully customized and the component's original content drawing logic is not used. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -50,13 +60,15 @@ drawContent Method. Executed when associated Node is drawing, the default drawCo
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DrawModifier-drawContent?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawContent?(drawContext: DrawContext): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Examples**
 
@@ -68,7 +80,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawForeground(drawContext: DrawContext): void
 ```
 
-drawforeground Method. This method is executed after drawing the associated Node and its children. It allows you to perform additional drawing operations on top of the already rendered content. This can be useful for adding visual elements that should appear above the main content.
+Draws the foreground. Override this method to implement custom foreground drawing. Compared with [drawFront](#drawfront) (content foreground), drawForeground is at a higher layer and is drawn above the content foreground and below the mask layer. drawFront is suitable for drawing the foreground effect of the component content itself, while drawForeground is suitable for scenarios where an additional foreground effect needs to be added above the content foreground. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 20
 
@@ -76,13 +88,15 @@ drawforeground Method. This method is executed after drawing the associated Node
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-DrawModifier-drawForeground(drawContext: DrawContext): void--><!--Device-DrawModifier-drawForeground(drawContext: DrawContext): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Examples**
 
@@ -94,7 +108,7 @@ See [Example 2: Implementing Custom Foreground Drawing for a Container Through D
 drawFront?(drawContext: DrawContext): void
 ```
 
-drawFront Method. Executed after drawing associated Node.
+Draws the content foreground. Override this method to implement custom content foreground drawing. The content foreground is located between the content and the foreground, and is suitable for scenarios where drawing content needs to be added above the component content and below the component foreground. The Canvas in the [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 12
 
@@ -102,13 +116,15 @@ drawFront Method. Executed after drawing associated Node.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DrawModifier-drawFront?(drawContext: DrawContext): void--><!--Device-DrawModifier-drawFront?(drawContext: DrawContext): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | The drawContext used to draw. |
+| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Examples**
 
@@ -120,12 +136,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawOverlay(drawContext: DrawContext): void
 ```
 
-Draws content in the overlay layer after the associated Node and all its children have been drawn.
-
-Custom drawing consists of five layers: Behind, Content, Front, Foreground, and Overlay.
-
-- The Foreground and Overlay layers are drawn after child nodes.  
-- The Overlay layer differs from Foreground in that it can draw outside the bounds of the component.
+Interface for custom drawing of the mask. If this method is overridden, custom drawing of the mask can be performed. The mask is the topmost drawing layer, suitable for scenarios where a mask effect (such as highlighting or masking) needs to be added to the topmost layer of a component. The Canvas in [DrawContext](../arkts-apis/arkts-arkui-graphics-drawcontext-c.md) of this interface is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Since:** 23
 
@@ -133,13 +144,15 @@ Custom drawing consists of five layers: Behind, Content, Front, Foreground, and 
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-DrawModifier-drawOverlay(drawContext: DrawContext): void--><!--Device-DrawModifier-drawOverlay(drawContext: DrawContext): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | The drawContext used to draw |
+| drawContext | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Examples**
 
@@ -208,13 +221,15 @@ struct DrawModifierExample {
 invalidate(): void
 ```
 
-Invalidate the component, which will cause a re-render of the component. No overloading is allowed or needed.
+Interface for proactively triggering redrawing. Developers do not need to and cannot override this method. Calling it triggers redrawing of the bound component. When the attributes that custom drawing depends on (such as size, color, and position) change, for example, when drawing parameters are dynamically updated during an animation, call this method to make the latest drawing effect take effect.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DrawModifier-invalidate(): void--><!--Device-DrawModifier-invalidate(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

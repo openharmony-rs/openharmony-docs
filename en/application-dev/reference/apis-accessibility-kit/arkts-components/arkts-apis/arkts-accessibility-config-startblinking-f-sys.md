@@ -20,6 +20,8 @@ Enables the flash or screen for blinking reminders.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-config-function startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode--><!--Device-config-function startBlinking(mode: BlinkingMode, scenario: BlinkingScenario): BlinkResultCode-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

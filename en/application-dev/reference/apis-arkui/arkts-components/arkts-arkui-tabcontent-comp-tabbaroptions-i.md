@@ -14,6 +14,28 @@ Defines the options for configuring images and text content on the tabs.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface TabBarOptions--><!--Device-unnamed-declare interface TabBarOptions-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## badge
+
+```TypeScript
+badge?: TabBarBadgeStyle
+```
+
+Badge style of the tab. If this parameter is not set, no badge is displayed.
+
+**Type:** [TabBarBadgeStyle](arkts-arkui-tabcontent-comp-tabbarbadgestyle-i.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-TabBarOptions-badge?: TabBarBadgeStyle--><!--Device-TabBarOptions-badge?: TabBarBadgeStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -30,6 +52,8 @@ Image for the tab. If this parameter is not set, no image is displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TabBarOptions-icon?: string | Resource--><!--Device-TabBarOptions-icon?: string | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -45,5 +69,7 @@ Text for the tab. If this parameter is not set, no text is displayed.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TabBarOptions-text?: string | Resource--><!--Device-TabBarOptions-text?: string | Resource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

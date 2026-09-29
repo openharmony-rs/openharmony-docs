@@ -20,6 +20,8 @@ Authenticate a print job.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function authPrintJob(jobId: string, userName: string, password: string): Promise<boolean>--><!--Device-print-function authPrintJob(jobId: string, userName: string, password: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

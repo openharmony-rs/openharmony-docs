@@ -8,6 +8,8 @@ Defines the icon options.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface PopupIconOptions--><!--Device-unnamed-export interface PopupIconOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,9 +24,9 @@ import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOpt
 borderRadius?: Length | BorderRadiuses
 ```
 
-Rounded corner of the icon.
+Icon corner radius. Unit: vp.
 
-Default value: **$r('sys.float.ohos_id_corner_radius_default_s')**
+Default value: `$r('sys.float.ohos_id_corner_radius_default_s')`
 
 **Type:** [Length](arkts-arkui-length-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
@@ -33,6 +35,8 @@ Default value: **$r('sys.float.ohos_id_corner_radius_default_s')**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupIconOptions-borderRadius?: Length | BorderRadiuses--><!--Device-PopupIconOptions-borderRadius?: Length | BorderRadiuses-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ By default, the icon color is not changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupIconOptions-fillColor?: ResourceColor--><!--Device-PopupIconOptions-fillColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -62,9 +68,9 @@ By default, the icon color is not changed.
 height?: Dimension
 ```
 
-Icon height.
+Icon height. Unit: vp.
 
-Default value: **32VP**
+Default value: **32vp**
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -73,6 +79,8 @@ Default value: **32VP**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupIconOptions-height?: Dimension--><!--Device-PopupIconOptions-height?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +100,8 @@ Icon content.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupIconOptions-image: ResourceStr--><!--Device-PopupIconOptions-image: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -100,9 +110,9 @@ Icon content.
 width?: Dimension
 ```
 
-Icon width.
+Icon width. Unit: vp.
 
-Default value: **32VP**
+Default value: **32vp**
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -111,5 +121,7 @@ Default value: **32VP**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupIconOptions-width?: Dimension--><!--Device-PopupIconOptions-width?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

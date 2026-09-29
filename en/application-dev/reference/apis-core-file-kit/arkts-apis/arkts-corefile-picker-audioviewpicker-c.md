@@ -8,6 +8,8 @@ Provides APIs for selecting and saving audio clips. Before using the APIs of **A
 
 **Since:** 9
 
+<!--Device-picker-class AudioViewPicker--><!--Device-picker-class AudioViewPicker-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -26,7 +28,9 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioViewPicker-constructor()--><!--Device-AudioViewPicker-constructor()-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -48,7 +52,9 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioViewPicker-constructor(context: Context)--><!--Device-AudioViewPicker-constructor(context: Context)-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -56,7 +62,7 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see Context. |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
 
 **Examples**
 
@@ -96,7 +102,9 @@ Starts an **audioPicker** page (currently, a **documentPicker** page is displaye
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -147,6 +155,8 @@ Starts an **audioPicker** page (currently, a **documentPicker** page is displaye
 
 **Since:** 9
 
+<!--Device-AudioViewPicker-save(option: AudioSaveOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-save(option: AudioSaveOptions, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -193,6 +203,8 @@ Starts an **audioPicker** page (currently, a **documentPicker** page is displaye
 
 **Since:** 9
 
+<!--Device-AudioViewPicker-save(callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-save(callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -234,7 +246,9 @@ Starts an **audioPicker** page for the user to select one or more audio clips. T
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -284,6 +298,8 @@ Starts an **audioPicker** page for the user to select one or more audio clips. T
 
 **Since:** 9
 
+<!--Device-AudioViewPicker-select(option: AudioSelectOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-select(option: AudioSelectOptions, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -328,6 +344,8 @@ select(callback: AsyncCallback<Array<string>>): void
 Starts an **audioPicker** page for the user to select one or more audio clips. This API uses an asynchronous callback to return the result. **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Since:** 9
+
+<!--Device-AudioViewPicker-select(callback: AsyncCallback<Array<string>>): void--><!--Device-AudioViewPicker-select(callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

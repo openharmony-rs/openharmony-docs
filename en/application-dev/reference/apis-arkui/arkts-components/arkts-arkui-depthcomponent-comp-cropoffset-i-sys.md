@@ -4,9 +4,11 @@
 declare interface CropOffset
 ```
 
-2D offset for crop frame.
+Provides crop offset.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare interface CropOffset--><!--Device-unnamed-declare interface CropOffset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +20,7 @@ declare interface CropOffset
 x: number
 ```
 
-X coordinate.
+Horizontal offset, in pixels.
 
 **Type:** number
 
@@ -27,6 +29,8 @@ X coordinate.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CropOffset-x: int--><!--Device-CropOffset-x: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,7 +42,7 @@ X coordinate.
 y: number
 ```
 
-Y coordinate.
+Vertical offset, in pixels.
 
 **Type:** number
 
@@ -47,6 +51,8 @@ Y coordinate.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CropOffset-y: int--><!--Device-CropOffset-y: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

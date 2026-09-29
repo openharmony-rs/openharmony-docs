@@ -8,6 +8,8 @@ declare enum LoadingProgressStyle
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare enum LoadingProgressStyle--><!--Device-unnamed-declare enum LoadingProgressStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Default
@@ -23,6 +25,8 @@ Default
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LoadingProgressStyle-Default--><!--Device-LoadingProgressStyle-Default-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Circular
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LoadingProgressStyle-Circular--><!--Device-LoadingProgressStyle-Circular-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Orbital
@@ -55,5 +61,7 @@ Orbital
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LoadingProgressStyle-Orbital--><!--Device-LoadingProgressStyle-Orbital-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

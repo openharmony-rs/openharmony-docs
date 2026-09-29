@@ -10,6 +10,8 @@ Indicates a row of data with an array.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-relationalStore-type RowData = Array<ValueType>--><!--Device-relationalStore-type RowData = Array<ValueType>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Type:** Array&lt;[ValueType](arkts-arkdata-relationalstore-valuetype-t.md)&gt;

@@ -8,6 +8,8 @@ ArcButton内进度条的参数配置。
 
 **起始版本：** 23
 
+<!--Device-unnamed-export declare class ArcButtonProgressConfig--><!--Device-unnamed-export declare class ArcButtonProgressConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -34,6 +36,8 @@ color?: ResourceColor
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonProgressConfig-color?: ResourceColor--><!--Device-ArcButtonProgressConfig-color?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## total
@@ -58,6 +62,8 @@ total?: number
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonProgressConfig-total?: number--><!--Device-ArcButtonProgressConfig-total?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## value
@@ -79,5 +85,7 @@ value: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonProgressConfig-value: number--><!--Device-ArcButtonProgressConfig-value: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

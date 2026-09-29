@@ -14,6 +14,8 @@ Wi-Fi IP information.
 
 **Substitutes:** [IpInfo](arkts-connectivity-wifimanager-ipinfo-i.md)
 
+<!--Device-wifi-interface IpInfo--><!--Device-wifi-interface IpInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -38,6 +40,8 @@ The gateway of the Wi-Fi connection
 
 **Substitutes:** [gateway](arkts-connectivity-wifimanager-ipinfo-i.md#gateway)
 
+<!--Device-IpInfo-gateway: number--><!--Device-IpInfo-gateway: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 ## ipAddress
@@ -55,6 +59,8 @@ The IP address of the Wi-Fi connection
 **Deprecated since:** 9
 
 **Substitutes:** [ipAddress](arkts-connectivity-wifimanager-ipinfo-i.md#ipaddress)
+
+<!--Device-IpInfo-ipAddress: number--><!--Device-IpInfo-ipAddress: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
@@ -74,6 +80,8 @@ The IP address lease duration of the Wi-Fi connection
 
 **Substitutes:** [leaseDuration](arkts-connectivity-wifimanager-ipinfo-i.md#leaseduration)
 
+<!--Device-IpInfo-leaseDuration: number--><!--Device-IpInfo-leaseDuration: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 ## netmask
@@ -91,6 +99,8 @@ The network mask of the Wi-Fi connection
 **Deprecated since:** 9
 
 **Substitutes:** [netmask](arkts-connectivity-wifimanager-ipinfo-i.md#netmask)
+
+<!--Device-IpInfo-netmask: number--><!--Device-IpInfo-netmask: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
@@ -110,6 +120,8 @@ The primary DNS server IP address of the Wi-Fi connection
 
 **Substitutes:** [primaryDns](arkts-connectivity-wifimanager-ipinfo-i.md#primarydns)
 
+<!--Device-IpInfo-primaryDns: number--><!--Device-IpInfo-primaryDns: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 ## secondDns
@@ -128,6 +140,8 @@ T he secondary DNS server IP address of the Wi-Fi connection
 
 **Substitutes:** [secondDns](arkts-connectivity-wifimanager-ipinfo-i.md#seconddns)
 
+<!--Device-IpInfo-secondDns: number--><!--Device-IpInfo-secondDns: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 ## serverIp
@@ -145,5 +159,7 @@ The DHCP server IP address of the Wi-Fi connection
 **Deprecated since:** 9
 
 **Substitutes:** [serverIp](arkts-connectivity-wifimanager-ipinfo-i.md#serverip)
+
+<!--Device-IpInfo-serverIp: number--><!--Device-IpInfo-serverIp: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core

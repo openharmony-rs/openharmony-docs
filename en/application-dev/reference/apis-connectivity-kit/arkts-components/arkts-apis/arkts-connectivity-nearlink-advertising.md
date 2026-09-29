@@ -6,6 +6,8 @@ This module provides Nearlink advertising functions, including starting and stop
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace advertising--><!--Device-unnamed-declare namespace advertising-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import

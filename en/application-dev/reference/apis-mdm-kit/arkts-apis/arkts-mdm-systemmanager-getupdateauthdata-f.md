@@ -20,6 +20,8 @@ Obtains the authentication data for system update verification. This API uses a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getUpdateAuthData(admin: Want): Promise<string>--><!--Device-systemManager-function getUpdateAuthData(admin: Want): Promise<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

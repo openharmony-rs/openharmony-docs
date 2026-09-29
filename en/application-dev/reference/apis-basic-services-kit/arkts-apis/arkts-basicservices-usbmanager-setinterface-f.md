@@ -24,6 +24,8 @@ Sets a USB interface. After the API is successfully called, the specified altern
 
 **Since:** 9
 
+<!--Device-usbManager-function setInterface(pipe: USBDevicePipe, iface: USBInterface): int--><!--Device-usbManager-function setInterface(pipe: USBDevicePipe, iface: USBInterface): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

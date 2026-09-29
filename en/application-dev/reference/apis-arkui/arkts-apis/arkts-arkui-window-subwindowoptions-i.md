@@ -8,6 +8,8 @@ Describes the parameters used for creating a child window.
 
 **Since:** 11
 
+<!--Device-window-interface SubWindowOptions--><!--Device-window-interface SubWindowOptions-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Whether decorations are displayed in the child window. **true** if displayed, **
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SubWindowOptions-decorEnabled: boolean--><!--Device-SubWindowOptions-decorEnabled: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ Whether the modal property is enabled for the child window. **true** if enabled,
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SubWindowOptions-isModal?: boolean--><!--Device-SubWindowOptions-isModal?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -62,7 +68,9 @@ This parameter can be used properly on devices that support the [freeform window
 
 **Since:** 19
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-SubWindowOptions-maximizeSupported?: boolean--><!--Device-SubWindowOptions-maximizeSupported?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -78,7 +86,9 @@ Modality type of the child window. This parameter takes effect only when the mod
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-SubWindowOptions-modalityType?: ModalityType--><!--Device-SubWindowOptions-modalityType?: ModalityType-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -96,7 +106,9 @@ This parameter can be properly used on 2-in-1 devices. If it is used as an input
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-SubWindowOptions-outlineEnabled?: boolean--><!--Device-SubWindowOptions-outlineEnabled?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -112,7 +124,9 @@ Title of the child window. The title display area should not go past the left si
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SubWindowOptions-title: string--><!--Device-SubWindowOptions-title: string-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -128,7 +142,9 @@ Rectangle of the child window, and the size of the child window is limited. For 
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-SubWindowOptions-windowRect?: Rect--><!--Device-SubWindowOptions-windowRect?: Rect-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -144,7 +160,9 @@ Z-level of the child window. This parameter is valid only when the modal propert
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-SubWindowOptions-zLevel?: int--><!--Device-SubWindowOptions-zLevel?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -162,6 +180,8 @@ Indicates whether loose the restriction of sub window z-level above parent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-SubWindowOptions-zLevelAboveParentLoosened?: boolean--><!--Device-SubWindowOptions-zLevelAboveParentLoosened?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

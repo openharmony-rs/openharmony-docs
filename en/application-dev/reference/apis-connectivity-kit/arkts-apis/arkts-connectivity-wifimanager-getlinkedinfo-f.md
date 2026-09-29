@@ -18,7 +18,9 @@ Obtain connection information about the Wi-Fi connection. If does't have the per
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function getLinkedInfo(): Promise<WifiLinkedInfo>--><!--Device-wifiManager-function getLinkedInfo(): Promise<WifiLinkedInfo>-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -63,6 +65,8 @@ Obtain connection information about the Wi-Fi connection.
 **Since:** 12
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void--><!--Device-wifiManager-function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

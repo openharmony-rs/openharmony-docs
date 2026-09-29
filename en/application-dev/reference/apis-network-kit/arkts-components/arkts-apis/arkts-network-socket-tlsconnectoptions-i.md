@@ -8,6 +8,8 @@ Defines TLS connection options.
 
 **Since:** 9
 
+<!--Device-socket-export interface TLSConnectOptions--><!--Device-socket-export interface TLSConnectOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Gateway address.
 
 **Since:** 9
 
+<!--Device-TLSConnectOptions-address: NetAddress--><!--Device-TLSConnectOptions-address: NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## ALPNProtocols
@@ -41,6 +45,8 @@ ALPN protocol. The value range is ["spdy/1", "http/1.1"]. The default value is *
 **Type:** Array&lt;string&gt;
 
 **Since:** 9
+
+<!--Device-TLSConnectOptions-ALPNProtocols?: Array<string>--><!--Device-TLSConnectOptions-ALPNProtocols?: Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -56,6 +62,8 @@ Proxy option. By default, no proxy is used.
 
 **Since:** 18
 
+<!--Device-TLSConnectOptions-proxy?: ProxyOptions--><!--Device-TLSConnectOptions-proxy?: ProxyOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## secureOptions
@@ -69,6 +77,8 @@ TLS security options.
 **Type:** [TLSSecureOptions](arkts-network-socket-tlssecureoptions-i.md)
 
 **Since:** 9
+
+<!--Device-TLSConnectOptions-secureOptions: TLSSecureOptions--><!--Device-TLSConnectOptions-secureOptions: TLSSecureOptions-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -84,6 +94,8 @@ Whether to skip certificate authentication on the server. The default value is *
 
 **Since:** 12
 
+<!--Device-TLSConnectOptions-skipRemoteValidation?: boolean--><!--Device-TLSConnectOptions-skipRemoteValidation?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## timeout
@@ -97,5 +109,7 @@ Connection timeout interval, in milliseconds. The default value is **0**. The in
 **Type:** number
 
 **Since:** 22
+
+<!--Device-TLSConnectOptions-timeout?: int--><!--Device-TLSConnectOptions-timeout?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

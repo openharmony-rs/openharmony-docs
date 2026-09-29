@@ -20,6 +20,8 @@ Obtains the port channel connection state with a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataTransfer-function getConnectionState(params: ConnectionStateParams): ConnectionState--><!--Device-dataTransfer-function getConnectionState(params: ConnectionStateParams): ConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**

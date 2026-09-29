@@ -8,6 +8,8 @@ Enumerates the types of screens.
 
 **Since:** 26.0.0
 
+<!--Device-screen-enum ScreenType--><!--Device-screen-enum ScreenType-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The built-in, on-board screen that is physically integrated into the device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScreenType-BUILT_IN = 0--><!--Device-ScreenType-BUILT_IN = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -40,6 +44,8 @@ An external physical display connected via a wired interface.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ScreenType-EXTERNAL = 1--><!--Device-ScreenType-EXTERNAL = 1-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ An virtual display created by software, typically used for screen casting, scree
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScreenType-VIRTUAL = 2--><!--Device-ScreenType-VIRTUAL = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

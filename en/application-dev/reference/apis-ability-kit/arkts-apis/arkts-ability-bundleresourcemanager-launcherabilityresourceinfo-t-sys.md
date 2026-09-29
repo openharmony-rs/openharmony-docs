@@ -10,6 +10,8 @@ Defines the entry icon and name of an application.
 
 **Since:** 11
 
+<!--Device-bundleResourceManager-export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo--><!--Device-bundleResourceManager-export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.

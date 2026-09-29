@@ -8,6 +8,8 @@ Defines the common attributes of icons.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface IconOptions--><!--Device-unnamed-export interface IconOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -41,6 +43,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-IconOptions-size?: SizeOptions--><!--Device-IconOptions-size?: SizeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -58,5 +62,7 @@ Icon source, which can be a specific image resource or an image address referenc
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-IconOptions-src: ResourceStr--><!--Device-IconOptions-src: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

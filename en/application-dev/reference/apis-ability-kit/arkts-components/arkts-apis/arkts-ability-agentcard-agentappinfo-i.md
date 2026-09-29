@@ -10,6 +10,8 @@ Application-related information for the agent.
 
 **Since:** 24
 
+<!--Device-unnamed-export interface AgentAppInfo--><!--Device-unnamed-export interface AgentAppInfo-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## abilityName
@@ -26,7 +28,9 @@ The agent extension ability name the agent card belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentAppInfo-abilityName: string--><!--Device-AgentAppInfo-abilityName: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,7 +48,9 @@ The bundle name the agent card belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentAppInfo-bundleName: string--><!--Device-AgentAppInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -62,7 +68,9 @@ Device types supported by the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentAppInfo-deviceTypes?: Array<string>--><!--Device-AgentAppInfo-deviceTypes?: Array<string>-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -80,7 +88,9 @@ Agent's minimum supported application version.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentAppInfo-minAppVersion?: string--><!--Device-AgentAppInfo-minAppVersion?: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -98,6 +108,8 @@ The module name the agent card belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-AgentAppInfo-moduleName: string--><!--Device-AgentAppInfo-moduleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

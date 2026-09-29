@@ -8,6 +8,8 @@ export declare enum SubHeaderV2OperationType
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare enum SubHeaderV2OperationType--><!--Device-unnamed-export declare enum SubHeaderV2OperationType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_ARROW
@@ -23,6 +25,8 @@ TEXT_ARROW = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2OperationType-TEXT_ARROW = 0--><!--Device-SubHeaderV2OperationType-TEXT_ARROW = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ BUTTON = 1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2OperationType-BUTTON = 1--><!--Device-SubHeaderV2OperationType-BUTTON = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ICON_GROUP
@@ -56,6 +62,8 @@ ICON_GROUP = 2
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2OperationType-ICON_GROUP = 2--><!--Device-SubHeaderV2OperationType-ICON_GROUP = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LOADING
@@ -71,5 +79,7 @@ LOADING = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2OperationType-LOADING = 3--><!--Device-SubHeaderV2OperationType-LOADING = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

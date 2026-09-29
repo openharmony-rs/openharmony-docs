@@ -20,6 +20,8 @@ Obtains the name of an application with the specified package name and clone ind
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getApplicationLabel(bundleName: string, appIndex: int): Promise<string>--><!--Device-bundleManager-function getApplicationLabel(bundleName: string, appIndex: int): Promise<string>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **Parameters:**

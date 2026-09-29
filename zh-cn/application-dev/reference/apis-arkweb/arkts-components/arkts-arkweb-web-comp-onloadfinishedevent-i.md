@@ -8,6 +8,8 @@ declare interface OnLoadFinishedEvent
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface OnLoadFinishedEvent--><!--Device-unnamed-declare interface OnLoadFinishedEvent-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## url
@@ -21,5 +23,7 @@ url: string
 **类型：** string
 
 **起始版本：** 20
+
+<!--Device-OnLoadFinishedEvent-url: string--><!--Device-OnLoadFinishedEvent-url: string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

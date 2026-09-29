@@ -10,6 +10,8 @@ The class of a running form information.
 
 **Since:** 20
 
+<!--Device-formInfo-interface RunningFormInfo--><!--Device-formInfo-interface RunningFormInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Obtains the class name of the ability to which this form belongs.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly abilityName: string--><!--Device-RunningFormInfo-readonly abilityName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -50,7 +54,9 @@ Obtains the bundle name of the application to which this form belongs.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly bundleName: string--><!--Device-RunningFormInfo-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -68,7 +74,9 @@ Obtains the grid style of this form. The value must be a positive integer, refer
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly dimension: int--><!--Device-RunningFormInfo-readonly dimension: int-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -86,7 +94,9 @@ Obtains the id of the this form.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly formId: string--><!--Device-RunningFormInfo-readonly formId: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -104,7 +114,9 @@ The location of this form.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly formLocation: FormLocation--><!--Device-RunningFormInfo-readonly formLocation: FormLocation-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -122,7 +134,9 @@ Obtains the name of this form.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly formName: string--><!--Device-RunningFormInfo-readonly formName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -140,6 +154,8 @@ Obtains the name of the application module to which this form belongs.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-RunningFormInfo-readonly moduleName: string--><!--Device-RunningFormInfo-readonly moduleName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form

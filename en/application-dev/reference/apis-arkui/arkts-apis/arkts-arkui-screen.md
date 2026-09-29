@@ -4,6 +4,8 @@ The module implements basic screen management. You can use the APIs of this modu
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace screen--><!--Device-unnamed-declare namespace screen-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.

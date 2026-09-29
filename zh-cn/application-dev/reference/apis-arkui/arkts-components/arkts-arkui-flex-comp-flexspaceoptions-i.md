@@ -8,6 +8,8 @@ declare interface FlexSpaceOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface FlexSpaceOptions--><!--Device-unnamed-declare interface FlexSpaceOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## cross
@@ -28,6 +30,8 @@ Flex容器交叉轴上相邻行之间的间距。设置后，交叉轴方向相�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FlexSpaceOptions-cross?: LengthMetrics--><!--Device-FlexSpaceOptions-cross?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## main
@@ -47,5 +51,7 @@ Flex容器主轴上相邻子组件之间的间距。设置后，主轴方向相�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FlexSpaceOptions-main?: LengthMetrics--><!--Device-FlexSpaceOptions-main?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

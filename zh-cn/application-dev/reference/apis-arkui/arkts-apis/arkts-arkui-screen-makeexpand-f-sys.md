@@ -18,6 +18,8 @@ function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<number>
 
 **废弃版本：** 20
 
+<!--Device-screen-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void--><!--Device-screen-function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<long>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -78,6 +80,8 @@ function makeExpand(options:Array<ExpandOption>): Promise<number>
 **起始版本：** 9
 
 **废弃版本：** 20
+
+<!--Device-screen-function makeExpand(options:Array<ExpandOption>): Promise<long>--><!--Device-screen-function makeExpand(options:Array<ExpandOption>): Promise<long>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

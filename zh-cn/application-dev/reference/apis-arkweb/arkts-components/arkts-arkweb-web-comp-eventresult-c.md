@@ -12,6 +12,8 @@ EventResult是ArkWeb Kit中用于通知Web组件同层事件消费结果的类�
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class EventResult--><!--Device-unnamed-declare class EventResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -26,6 +28,8 @@ EventResult的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EventResult-constructor()--><!--Device-EventResult-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## setGestureEventResult
@@ -39,6 +43,8 @@ setGestureEventResult(result: boolean): void
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EventResult-setGestureEventResult(result: boolean): void--><!--Device-EventResult-setGestureEventResult(result: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +70,8 @@ setGestureEventResult(result: boolean, stopPropagation: boolean): void
 
 **起始版本：** 14
 
+<!--Device-EventResult-setGestureEventResult(result: boolean, stopPropagation: boolean): void--><!--Device-EventResult-setGestureEventResult(result: boolean, stopPropagation: boolean): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -86,6 +94,8 @@ setMouseEventResult(result: boolean, stopPropagation?: boolean): void
 设置鼠标事件消费结果和冒泡控制。
 
 **起始版本：** 20
+
+<!--Device-EventResult-setMouseEventResult(result: boolean, stopPropagation?: boolean): void--><!--Device-EventResult-setMouseEventResult(result: boolean, stopPropagation?: boolean): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

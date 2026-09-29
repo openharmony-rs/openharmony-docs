@@ -16,6 +16,8 @@ Sets whether the mouse pointer is visible in the current window. This API return
 
 **Since:** 10
 
+<!--Device-pointer-function setPointerVisibleSync(visible: boolean): void--><!--Device-pointer-function setPointerVisibleSync(visible: boolean): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters:**

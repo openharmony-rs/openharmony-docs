@@ -13,6 +13,8 @@ The **InputMethodExtensionContext** module, inherited from **ExtensionContext**,
 
 **Since:** 9
 
+<!--Device-unnamed-declare class InputMethodExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class InputMethodExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Connects this ability to a ServiceExtensionAbility.
 **Deprecated since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-connectAbility(want: Want, options: ConnectOptions): number--><!--Device-InputMethodExtensionContext-connectAbility(want: Want, options: ConnectOptions): number-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -84,6 +88,8 @@ Connects to a ServiceExtensionAbility with a specified account.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionContext-connectAbilityWithAccount(want: Want, accountId: number): number--><!--Device-InputMethodExtensionContext-connectAbilityWithAccount(want: Want, accountId: number): number-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -133,6 +139,8 @@ Connects this ability to a ServiceExtensionAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number--><!--Device-InputMethodExtensionContext-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -180,6 +188,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionContext-disconnectAbility(connection: number, callback: AsyncCallback<void>): void--><!--Device-InputMethodExtensionContext-disconnectAbility(connection: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -214,6 +224,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 **Deprecated since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-disconnectAbility(connection: number): Promise<void>--><!--Device-InputMethodExtensionContext-disconnectAbility(connection: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -253,6 +265,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionContext-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<void>): void--><!--Device-InputMethodExtensionContext-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -287,6 +301,8 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 **Deprecated since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-disconnectServiceExtensionAbility(connection: number): Promise<void>--><!--Device-InputMethodExtensionContext-disconnectServiceExtensionAbility(connection: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -327,6 +343,8 @@ Starts an ability with a specified account. This API uses an asynchronous callba
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<void>): void--><!--Device-InputMethodExtensionContext-startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -380,6 +398,8 @@ Starts an ability with a specified account. This API uses a promise to return th
 **Required permissions:** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-startAbilityWithAccount(want: Want, accountId: number): Promise<void>--><!--Device-InputMethodExtensionContext-startAbilityWithAccount(want: Want, accountId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -437,6 +457,8 @@ Destroys this input method extension. This API uses an asynchronous callback to 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionContext-terminateSelf(callback: AsyncCallback<void>): void--><!--Device-InputMethodExtensionContext-terminateSelf(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -464,6 +486,8 @@ Destroys this input method extension. This API uses a promise to return the resu
 **Substitutes:** [destroy](arkts-ime-inputmethodextensioncontext-c.md#destroy)()
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-terminateSelf(): Promise<void>--><!--Device-InputMethodExtensionContext-terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

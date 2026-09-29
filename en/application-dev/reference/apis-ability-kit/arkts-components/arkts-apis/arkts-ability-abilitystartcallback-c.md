@@ -8,6 +8,8 @@ The module describes the callback invoked to return the UIExtensionAbility start
 
 **Since:** 11
 
+<!--Device-unnamed-export default class AbilityStartCallback--><!--Device-unnamed-export default class AbilityStartCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onError
@@ -23,6 +25,8 @@ Called when the UIExtensionAbility fails to start.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AbilityStartCallback-onError(code: int, name: string, message: string): void--><!--Device-AbilityStartCallback-onError(code: int, name: string, message: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -48,6 +52,8 @@ Called when the UIExtensionAbility is terminated.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AbilityStartCallback-onResult?(parameter: AbilityResult): void--><!--Device-AbilityStartCallback-onResult?(parameter: AbilityResult): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -71,5 +77,7 @@ Callback invoked when the ability of a specified type is started.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-AbilityStartCallback-completionHandler?: CompletionHandlerForAbilityStartCallback--><!--Device-AbilityStartCallback-completionHandler?: CompletionHandlerForAbilityStartCallback-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

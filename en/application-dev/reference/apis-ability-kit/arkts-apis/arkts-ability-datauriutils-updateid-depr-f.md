@@ -19,6 +19,8 @@ Updates the ID in a given URI.
 
 **Substitutes:** [updateId](arkts-ability-datauriutils-updateid-f.md)
 
+<!--Device-dataUriUtils-function updateId(uri: string, id: number): string--><!--Device-dataUriUtils-function updateId(uri: string, id: number): string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

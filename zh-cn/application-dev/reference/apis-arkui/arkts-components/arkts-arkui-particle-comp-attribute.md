@@ -4,15 +4,17 @@
 declare class ParticleAttribute extends CommonMethod<ParticleAttribute>
 ```
 
-除支持通用属性外还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外还支持以下属性：
 
-支持通用事件。
+支持[通用事件](arkts-arkui-common-comp.md)。
 
 @extends CommonMethod&lt;ParticleAttribute&gt;
 
-**继承/实现关系：** ParticleAttribute extends CommonMethod&lt;ParticleAttribute&gt;
+**继承/实现关系：** ParticleAttribute extends CommonMethod<ParticleAttribute>
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class ParticleAttribute extends CommonMethod<ParticleAttribute>--><!--Device-unnamed-declare class ParticleAttribute extends CommonMethod<ParticleAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ disturbanceFields(fields: Array<DisturbanceFieldOptions>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleAttribute-disturbanceFields(fields: Array<DisturbanceFieldOptions>): ParticleAttribute--><!--Device-ParticleAttribute-disturbanceFields(fields: Array<DisturbanceFieldOptions>): ParticleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ emitter(value: Array<EmitterProperty>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleAttribute-emitter(value: Array<EmitterProperty>): ParticleAttribute--><!--Device-ParticleAttribute-emitter(value: Array<EmitterProperty>): ParticleAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,6 +80,8 @@ rippleFields(fields: Array<RippleFieldOptions> | undefined)
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleAttribute-rippleFields(fields: Array<RippleFieldOptions> | undefined): ParticleAttribute--><!--Device-ParticleAttribute-rippleFields(fields: Array<RippleFieldOptions> | undefined): ParticleAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -95,6 +103,8 @@ velocityFields(fields: Array<VelocityFieldOptions> | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleAttribute-velocityFields(fields: Array<VelocityFieldOptions> | undefined): ParticleAttribute--><!--Device-ParticleAttribute-velocityFields(fields: Array<VelocityFieldOptions> | undefined): ParticleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

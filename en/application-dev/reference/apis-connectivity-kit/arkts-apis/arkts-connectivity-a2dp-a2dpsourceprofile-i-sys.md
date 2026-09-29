@@ -10,6 +10,8 @@ Manager a2dp source profile.
 
 **Since:** 10
 
+<!--Device-a2dp-interface A2dpSourceProfile extends BaseProfile--><!--Device-a2dp-interface A2dpSourceProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Initiate an A2DP connection to a remote device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-connect(deviceId: string): void--><!--Device-A2dpSourceProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -64,6 +68,8 @@ Turn off the absolute volume switch.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-disableAbsoluteVolume(deviceId: string): Promise<void>--><!--Device-A2dpSourceProfile-disableAbsoluteVolume(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -107,6 +113,8 @@ Turn off the absolute volume switch..
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-disableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-A2dpSourceProfile-disableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -141,6 +149,8 @@ Restriction devices to play music within `duration` milliseconds of connection.
 **Since:** 12
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-disableAutoPlay(deviceId: string, duration: int): Promise<void>--><!--Device-A2dpSourceProfile-disableAutoPlay(deviceId: string, duration: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -183,6 +193,8 @@ Disconnect the A2DP connection with the remote device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-disconnect(deviceId: string): void--><!--Device-A2dpSourceProfile-disconnect(deviceId: string): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -217,6 +229,8 @@ Turn on the absolute volume switch.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-enableAbsoluteVolume(deviceId: string): Promise<void>--><!--Device-A2dpSourceProfile-enableAbsoluteVolume(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -260,6 +274,8 @@ Turn on the absolute volume switch..
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-enableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-A2dpSourceProfile-enableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -294,6 +310,8 @@ Allow devices to automatically play music when connected.
 **Since:** 12
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-enableAutoPlay(deviceId: string): Promise<void>--><!--Device-A2dpSourceProfile-enableAutoPlay(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -335,6 +353,8 @@ Obtains the duration for which automatic playback is disabled.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-getAutoPlayDisabledDuration(deviceId: string): Promise<int>--><!--Device-A2dpSourceProfile-getAutoPlayDisabledDuration(deviceId: string): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -374,6 +394,8 @@ Get codec information.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-getCurrentCodecInfo(deviceId: string): CodecInfo--><!--Device-A2dpSourceProfile-getCurrentCodecInfo(deviceId: string): CodecInfo-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -415,6 +437,8 @@ Get the full codec capabilities negotiated between the active device and the loc
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]--><!--Device-A2dpSourceProfile-getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -454,6 +478,8 @@ Checks whether the absolute volume is enabled.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>--><!--Device-A2dpSourceProfile-isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -497,6 +523,8 @@ Checks whether the absolute volume is enabled.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback<boolean>): void--><!--Device-A2dpSourceProfile-isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -531,6 +559,8 @@ Checks whether the device supports absolute volume.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-isAbsoluteVolumeSupported(deviceId: string): Promise<boolean>--><!--Device-A2dpSourceProfile-isAbsoluteVolumeSupported(deviceId: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -574,6 +604,8 @@ Checks whether the device supports absolute volume.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
+<!--Device-A2dpSourceProfile-isAbsoluteVolumeSupported(deviceId: string, callback: AsyncCallback<boolean>): void--><!--Device-A2dpSourceProfile-isAbsoluteVolumeSupported(deviceId: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -608,6 +640,8 @@ Set codec information.
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+
+<!--Device-A2dpSourceProfile-setCurrentCodecInfo(deviceId: string, codecInfo: CodecInfo): void--><!--Device-A2dpSourceProfile-setCurrentCodecInfo(deviceId: string, codecInfo: CodecInfo): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

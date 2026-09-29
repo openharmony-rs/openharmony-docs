@@ -8,6 +8,8 @@ Describes a scene.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class Scene--><!--Device-unnamed-export declare class Scene-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## cloneNode
@@ -19,6 +21,8 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 Clones a node in the current scene. Cross-scene node cloning is not supported.
 
 **Since:** 23
+
+<!--Device-Scene-cloneNode(node: Node, parent: Node, name: string): Node | null--><!--Device-Scene-cloneNode(node: Node, parent: Node, name: string): Node | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -47,6 +51,8 @@ createComponent(node: Node, name: string): Promise<SceneComponent>
 Creates a component and attaches it to a node. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-Scene-createComponent(node: Node, name: string): Promise<SceneComponent>--><!--Device-Scene-createComponent(node: Node, name: string): Promise<SceneComponent>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -97,6 +103,8 @@ Destroys this scene and releases all scene resources.
 
 **Since:** 12
 
+<!--Device-Scene-destroy(): void--><!--Device-Scene-destroy(): void-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Examples**
@@ -125,6 +133,8 @@ getComponent(node: Node, name: string): SceneComponent | null
 Obtains the component instance from a node based on the component name.
 
 **Since:** 20
+
+<!--Device-Scene-getComponent(node: Node, name: string): SceneComponent | null--><!--Device-Scene-getComponent(node: Node, name: string): SceneComponent | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -175,6 +185,8 @@ Obtains the rendering context associated with the current graphics object.
 
 **Since:** 20
 
+<!--Device-Scene-static getDefaultRenderContext(): RenderContext | null--><!--Device-Scene-static getDefaultRenderContext(): RenderContext | null-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Return value:**
@@ -208,6 +220,8 @@ getNodeByPath(path: string, type?: NodeType): Node | null
 Obtains a node by path.
 
 **Since:** 12
+
+<!--Device-Scene-getNodeByPath(path: string, type?: NodeType): Node | null--><!--Device-Scene-getNodeByPath(path: string, type?: NodeType): Node | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -251,6 +265,8 @@ Obtains the scene resource factory.
 
 **Since:** 12
 
+<!--Device-Scene-getResourceFactory(): SceneResourceFactory--><!--Device-Scene-getResourceFactory(): SceneResourceFactory-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Return value:**
@@ -285,6 +301,8 @@ importNode(name: string, node: Node, parent: Node | null): Node
 Generally used for importing nodes from other scenes.
 
 **Since:** 18
+
+<!--Device-Scene-importNode(name: string, node: Node, parent: Node | null): Node--><!--Device-Scene-importNode(name: string, node: Node, parent: Node | null): Node-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -336,6 +354,8 @@ Imports another scene into the current one.
 
 **Since:** 18
 
+<!--Device-Scene-importScene(name: string, scene: Scene, parent: Node | null): Node--><!--Device-Scene-importScene(name: string, scene: Scene, parent: Node | null): Node-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -379,6 +399,8 @@ static load(uri? : ResourceStr): Promise<Scene>
 Loads a resource by path. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-Scene-static load(uri? : ResourceStr): Promise<Scene>--><!--Device-Scene-static load(uri? : ResourceStr): Promise<Scene>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -452,6 +474,8 @@ Renders frames on demand, such as controlling the frame rate.
 
 **Since:** 15
 
+<!--Device-Scene-renderFrame(params?: RenderParameters): boolean--><!--Device-Scene-renderFrame(params?: RenderParameters): boolean-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -496,6 +520,8 @@ Animation objects in the 3D scene.
 
 **Since:** 12
 
+<!--Device-Scene-get animations(): Animation[]--><!--Device-Scene-get animations(): Animation[]-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## environment
@@ -510,6 +536,8 @@ Environment object.
 
 **Since:** 12
 
+<!--Device-Scene-get environment(): Environment--><!--Device-Scene-get environment(): Environment-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ```TypeScript
@@ -521,6 +549,8 @@ Environment object.
 **Type:** [Environment](arkts-arkgraphics3d-sceneresources-environment-i.md)
 
 **Since:** 12
+
+<!--Device-Scene-set environment(value: Environment)--><!--Device-Scene-set environment(value: Environment)-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -536,6 +566,8 @@ Rendering configuration.
 
 **Since:** 23
 
+<!--Device-Scene-get renderConfiguration(): RenderConfiguration--><!--Device-Scene-get renderConfiguration(): RenderConfiguration-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## root
@@ -549,5 +581,7 @@ Root node of the 3D scene tree.
 **Type:** [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 
 **Since:** 12
+
+<!--Device-Scene-get root(): Node | null--><!--Device-Scene-get root(): Node | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

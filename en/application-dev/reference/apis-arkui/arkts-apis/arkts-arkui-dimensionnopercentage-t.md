@@ -12,6 +12,8 @@ The percentage length union type is not supported.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type DimensionNoPercentage = PX | VP | FP | LPX | Resource--><!--Device-unnamed-declare type DimensionNoPercentage = PX | VP | FP | LPX | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

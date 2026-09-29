@@ -20,6 +20,8 @@ Obtains the list of applications that can be set as the default application of t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-defaultAppManager-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int, userId?: int): Promise<Array<AbilityInfo>>--><!--Device-defaultAppManager-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int, userId?: int): Promise<Array<AbilityInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.

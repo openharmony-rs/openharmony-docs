@@ -16,6 +16,8 @@ Obtains the carrier name of the SIM card in the specified slot. This API uses an
 
 **Since:** 7
 
+<!--Device-radio-function getOperatorName(slotId: int, callback: AsyncCallback<string>): void--><!--Device-radio-function getOperatorName(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -62,6 +64,8 @@ function getOperatorName(slotId: number): Promise<string>
 Obtains the carrier name of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-radio-function getOperatorName(slotId: int): Promise<string>--><!--Device-radio-function getOperatorName(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

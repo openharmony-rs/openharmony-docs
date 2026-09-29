@@ -4,13 +4,15 @@
 interface RoundRectShapeOptions extends ShapeSize
 ```
 
-Represents the parameter of the constructor used to create a **RectShape** object with rounded corners.
+Represents the parameters of the constructor used to create a **RectShape** object with rounded corners.
 
 This API inherits from [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md).
 
 **Inheritance/Implementation:** RoundRectShapeOptions extends [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)
 
 **Since:** 12
+
+<!--Device-unnamed-interface RoundRectShapeOptions extends ShapeSize--><!--Device-unnamed-interface RoundRectShapeOptions extends ShapeSize-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,11 +30,13 @@ radiusHeight?: number | string
 
 Radius height of the rectangle border corners.
 
-When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkts-arkui-length-t.md) type specification.
+If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkts-arkui-length-t.md).
 
-Unit: vp.
+Unit: vp
 
-If the value is invalid, 0 vp is used.
+Default value: **0vp**
+
+If an abnormal value is set, **0vp** is used.
 
 **Type:** number &#124; string
 
@@ -43,6 +47,8 @@ If the value is invalid, 0 vp is used.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-RoundRectShapeOptions-radiusHeight?: number | string--><!--Device-RoundRectShapeOptions-radiusHeight?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,11 +60,13 @@ radiusWidth?: number | string
 
 Radius width of the rectangle border corners.
 
-When the parameter type is number, the valid value range is [0, +∞). When the parameter type is string, the value must conform to the [Length](arkts-arkui-length-t.md) type specification.
+If the type is number, the value range is [0, +∞); if the type is string, the value is specified by [Length](arkts-arkui-length-t.md).
 
-Unit: vp.
+Unit: vp
 
-If the value is invalid, 0 vp is used.
+Default value: **0vp**
+
+If an abnormal value is set, **0vp** is used.
 
 **Type:** number &#124; string
 
@@ -69,5 +77,7 @@ If the value is invalid, 0 vp is used.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-RoundRectShapeOptions-radiusWidth?: number | string--><!--Device-RoundRectShapeOptions-radiusWidth?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

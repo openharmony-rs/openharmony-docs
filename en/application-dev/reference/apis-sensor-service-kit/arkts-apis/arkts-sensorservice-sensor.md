@@ -1,8 +1,49 @@
-# @ohos.sensor
+# @ohos.sensor(Sensor module)
 
-The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
+The **@ohos.sensor** module is a sensor service module provided by HarmonyOS in Sensor Service Kit. This module provides unified APIs to access sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device. The **sensor** module provides unified APIs to access sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device. Use this module to subscribe to sensor data when your app needs to detect the device motion status (such as shake and flip), detect environmental conditions (such as automatic screen brightness adjustment and atmospheric pressure measurement for altitude estimation), obtain the device orientation (such as compass navigation), or monitor health data (such as heart rate and step count). When mathematical transformation and calculation of sensor data are required, use the sensor algorithm APIs.
+
+> **NOTE:** 
+
+> [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md)
+> 
+> to obtain the target sensor. For details about how to use the API, see
+> 
+> 
+> [Sensor Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/sensor-guidelines#how-to-develop)
+> 
+> . If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure
+> that the
+> 
+> **on**
+> 
+> and
+> 
+> **off**
+> 
+> APIs are used in pairs.The **sensor** module provides APIs for subscribing to and querying sensor data. The core
+> process is as follows:
+
+1. Use [sensor.getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md)
+or [sensor.getSensorListSync](arkts-sensorservice-sensor-getsensorlistsync-f.md) to query sensor information and ensure that the device supports the target sensor.
+2. Use **sensor.on** to subscribe to sensor data and continuously receive data callbacks.
+3. Use **sensor.once** to obtain sensor data once, which is suitable for scenarios where continuous listening is not
+required.
+4. Use **sensor.off** to cancel the subscription. Ensure that **on** and **off** are called in pairs.
+Differences between **sensor.on** and **sensor.once** are as follows:
+
+- **sensor.on** continuously subscribes to sensor data and repeatedly reports the data through the callback. It is  
+suitable for scenarios that require real-time monitoring.  
+- **sensor.once** obtains sensor data only once. The callback is triggered only once, and the subscription is  
+automatically canceled. It is suitable for scenarios where data needs to be collected only once. Note:  
+- Before subscribing to a sensor, you are advised to use **getSingleSensor** to check whether the device supports the  
+sensor.  
+- The **on** API for subscription and the **off** API for cancellation must be used in pairs to avoid resource leak.  
+- For sensors that require permissions (such as the accelerometer, gyroscope, heart rate sensor, and pedometer), you  
+must request the corresponding permissions first.
 
 **Since:** 8
+
+<!--Device-unnamed-declare namespace sensor--><!--Device-unnamed-declare namespace sensor-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -50,166 +91,166 @@ import { sensor } from '@kit.SensorServiceKit';
 | [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-1) | Obtains the rotation matrix from a rotation vector. This API uses a promise to return the result. |
 | [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-2) | Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses an asynchronous callback to return the result. |
 | [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-3) | Obtains the rotation matrix based on a gravity vector and geomagnetic vector. This API uses a promise to return the result. |
-| [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist) | Obtains information about all sensors on the device. This API uses an asynchronous callback to return the result. |
+| [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist) | Obtains information about all sensors on the device. This API uses an asynchronous callback to return the result. To obtain the sensor list synchronously, use **getSensorListSync**. |
 | [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist-1) | Obtains information about all sensors on the device. This API uses a promise to return the result. |
-| [getSensorListByDeviceSync](arkts-sensorservice-sensor-getsensorlistbydevicesync-f.md) | Obtains the information about all sensors on the device. |
+| [getSensorListByDeviceSync](arkts-sensorservice-sensor-getsensorlistbydevicesync-f.md) | Obtains the information about all sensors on the device. **getSensorListByDeviceSync** returns information about all sensors on the device, and **getSingleSensorByDeviceSync** returns information about a specified sensor. |
 | [getSensorListSync](arkts-sensorservice-sensor-getsensorlistsync-f.md) | Obtains information about all sensors on the device. This API returns the result synchronously. |
 | [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor) | Obtains information about the sensor of a specific type. This API uses an asynchronous callback to return the result. |
 | [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-1) | Obtains information about the sensor of a specific type. This API uses a promise to return the result. |
-| [getSingleSensorByDeviceSync](arkts-sensorservice-sensor-getsinglesensorbydevicesync-f.md) | Obtains information about the sensor of a specific type. |
+| [getSingleSensorByDeviceSync](arkts-sensorservice-sensor-getsinglesensorbydevicesync-f.md) | Obtains information about the sensor of a specific type. If peripherals exist and no device ID is specified, the obtained sensors will be all local and peripheral sensors that match the specified sensor type. If no peripherals exist, only local sensors are obtained. |
 | [getSingleSensorSync](arkts-sensorservice-sensor-getsinglesensorsync-f.md) | Obtains information about the sensor of a specific type. This API returns the result synchronously. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-4) | Unsubscribes from data of the acceleration sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-5) | Unsubscribes from data of the acceleration sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-6) | Unsubscribes from data of the uncalibrated acceleration sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-7) | Unsubscribes from data of the uncalibrated acceleration sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-8) | Unsubscribes from data of the ambient light sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-9) | Unsubscribes from data of the ambient light sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-10) | Unsubscribes from data of the ambient temperature sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-11) | Unsubscribes from data of the ambient temperature sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-12) | Unsubscribes from data of the barometer sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-13) | Unsubscribes from data of the barometer sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-14) | Unsubscribes from data of the gravity sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-15) | Unsubscribes from data of the gravity sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-16) | Unsubscribes from data of the gyroscope sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-17) | Unsubscribes from data of the gyroscope sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-18) | Unsubscribes from data of the uncalibrated gyroscope sensor. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-4) | Unsubscribes from data of the acceleration sensor. Call this method to cancel the subscription when you no longer need to receive data from the acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-5) | Unsubscribes from data of the acceleration sensor. Call this method to cancel the subscription when the acceleration sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-6) | Unsubscribes from data of the uncalibrated acceleration sensor. Call this method when you no longer need to receive data of the uncalibrated acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-7) | Unsubscribes from data of the uncalibrated acceleration sensor. Call this method when you no longer need to receive data of the uncalibrated acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-8) | Unsubscribes from data of the ambient light sensor. When the ambient light sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-9) | Unsubscribes from data of the ambient light sensor. When the ambient light sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-10) | Unsubscribes from data of the ambient temperature sensor. When the ambient temperature sensor data is no longer needed, call this API to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-11) | Unsubscribes from data of the ambient temperature sensor. When the ambient temperature sensor data is no longer needed, call this API to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-12) | Unsubscribes from data of the barometer sensor. Call this method to cancel the subscription when the barometric pressure sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-13) | Unsubscribes from data of the barometer sensor. Call this method to cancel the subscription when the barometric pressure sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-14) | Unsubscribes from data of the gravity sensor. When the gravity sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-15) | Unsubscribes from data of the gravity sensor. When the gravity sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-16) | Unsubscribes from data of the gyroscope sensor. Call this method to cancel the subscription when gyroscope sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-17) | Unsubscribes from data of the gyroscope sensor. This API is called to cancel the subscription when gyroscope sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-18) | Unsubscribes from data of the uncalibrated gyroscope sensor. When the uncalibrated gyroscope sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
 | [off](arkts-sensorservice-sensor-off-f.md#off-19) | Unsubscribes from data of the uncalibrated gyroscope sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-20) | Unsubscribes from data of the Hall effect sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-21) | Unsubscribes from data of the Hall effect sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-22) | Unsubscribes from data of the heart rate sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-23) | Unsubscribes from data of the heart rate sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-24) | Unsubscribes from data of the humidity sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-25) | Unsubscribes from data of the humidity sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-26) | Unsubscribes from data of the linear acceleration sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-27) | Unsubscribes from data of the linear acceleration sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-28) | Unsubscribes from data of the magnetic field sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-29) | Unsubscribes from data of the magnetic field sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-30) | Unsubscribes from data of the uncalibrated magnetic field sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-31) | Unsubscribes from data of the uncalibrated magnetic field sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-32) | Unsubscribes from data of the orientation sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-33) | Unsubscribes from data of the orientation sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-34) | Unsubscribes from data of the pedometer sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-35) | Unsubscribes from data of the pedometer sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-36) | Unsubscribes from data of the pedometer detection sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-37) | Unsubscribes from data of the pedometer detection sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-38) | Unsubscribes from data of the proximity sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-39) | Unsubscribes from data of the proximity sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-40) | Unsubscribes from data of the rotation vector sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-41) | Unsubscribes from data of the rotation vector sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-42) | Unsubscribes from valid motion sensor data. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-43) | Unsubscribes from valid motion sensor data. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-44) | Unsubscribes from data of the wear detection sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-45) | Unsubscribes from the fused pressure sensor data. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-46) | Unsubscribes from data of the wear detection sensor. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-47) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-48) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-49) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-50) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-51) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-52) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-53) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-54) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-55) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-56) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-57) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-58) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-59) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-60) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-61) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-62) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-63) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-64) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-65) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-66) | Unsubscribes from valid motion sensor data. |
-| [off](arkts-sensorservice-sensor-off-f.md#off-67) | Unsubscribes from sensor data changes. |
-| [off](arkts-sensorservice-sensor-off-f.md#offsensorstatuschange) | Disables listening for sensor status changes. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-2) | Subscribes to data of the acceleration sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-3) | Subscribes to data of the uncalibrated acceleration sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-4) | Subscribes to data of the ambient light sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-5) | Subscribes to data of the ambient temperature sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-6) | Subscribes to data of the barometer sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-7) | Subscribes to data of the gravity sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-8) | Subscribes to data of the gyroscope sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-9) | Subscribes to data of the uncalibrated gyroscope sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-10) | Subscribes to data of the Hall effect sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-11) | Subscribes to data of the heart rate sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-12) | Subscribes to data of the humidity sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-13) | Subscribes to data of the linear acceleration sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-14) | Subscribes to data of the magnetic field sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-15) | Subscribes to data of the uncalibrated magnetic field sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-16) | Subscribes to data of the orientation sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-17) | Subscribes to data of the pedometer sensor. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-18) | Subscribes to data of the pedometer detection sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-19) | Subscribes to data of the proximity sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-20) | Subscribes to data of the rotation vector sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-21) | Subscribes to the significant motion sensor data. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-22) | Subscribes to data of the wear detection sensor. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-23) | Subscribes to the fused pressure sensor data. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-24) | Subscribes to data changes of the acceleration sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-25) | Subscribes to data changes of the uncalibrated acceleration sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-26) | Subscribes to data changes of the ambient light sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-27) | Subscribes to data changes of the ambient temperature sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-28) | Subscribes to data changes of the barometer sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-29) | Subscribes to data changes of the gravity sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-30) | Subscribes to data changes of the gyroscope sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-31) | Subscribes to data changes of the uncalibrated gyroscope sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-32) | Subscribes to data changes of the Hall effect sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-33) | Subscribes to data changes of the heart rate sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-34) | Subscribes to data changes of the humidity sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-35) | Subscribes to data changes of the linear acceleration sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-36) | Subscribes to data changes of the magnetic field sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-37) | Subscribes to data changes of the uncalibrated magnetic field sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-38) | Subscribes to data changes of the orientation sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-39) | Subscribes to data changes of the pedometer sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-40) | Subscribes to data changes of the pedometer detection sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-41) | Subscribes to data changes of the proximity sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-42) | Subscribes to data changes of the rotation vector sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-43) | Subscribes to data changes of the significant motion sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#on-44) | Subscribes to data changes of the wear detection sensor. If this API is called multiple times for the same application, the last call takes effect. |
-| [on](arkts-sensorservice-sensor-on-f.md#onsensorstatuschange) | Enables listening for sensor status changes. This API asynchronously returns the result through a callback. |
-| [once](arkts-sensorservice-sensor-once-f.md#once) | Obtains data of the acceleration sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-1) | Obtains data of the uncalibrated acceleration sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-2) | Obtains data of the ambient light sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-3) | Obtains data of the temperature sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-4) | Obtains data of the barometer sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-5) | Obtains data of the gravity sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-6) | Obtains data of the gyroscope sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-7) | Obtains data of the uncalibrated gyroscope sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-8) | Obtains data of the Hall effect sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-9) | Obtains data of the heart rate sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-10) | Obtains data of the humidity sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-11) | Obtains data of the linear acceleration sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-12) | Obtains data of the magnetic field sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-13) | Obtains data of the uncalibrated magnetic field sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-14) | Obtains data of the orientation sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-15) | Obtains data of the pedometer sensor once. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-16) | Obtains data of the pedometer sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-17) | Obtains data of the proximity sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-18) | Obtains data of the rotation vector sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-19) | Obtains the significant motion sensor data once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-20) | Obtains data of the wear detection sensor once. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-21) | Subscribes to only one data change of the acceleration sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-22) | Subscribes to only one data change of the uncalibrated acceleration sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-23) | Subscribes to only one data change of the ambient light sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-24) | Subscribes to only one data change of the ambient temperature sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-25) | Subscribes to only one data change of the barometer sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-26) | Subscribes to only one data change of the gravity sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-27) | Subscribes to only one data change of the gyroscope sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-28) | Subscribes to only one data change of the uncalibrated gyroscope sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-29) | Subscribes to only one data change of the Hall effect sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-30) | Subscribes to only one data change of the heart rate sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-31) | Subscribes to only one data change of the humidity sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-32) | Subscribes to only one data change of the linear acceleration sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-33) | Subscribes to only one data change of the magnetic field sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-34) | Subscribes to only one data change of the uncalibrated magnetic field sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-35) | Subscribes to only one data change of the orientation sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-36) | Subscribes to only one data change of the pedometer sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-37) | Subscribes to only one data change of the pedometer detection sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-38) | Subscribes to only one data change of the proximity sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-39) | Subscribes to only one data change of the rotation vector sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-40) | Subscribes to only one data change of the significant motion sensor. |
-| [once](arkts-sensorservice-sensor-once-f.md#once-41) | Subscribes to only one data change of the wear detection sensor. |
-| [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem) | Rotates a rotation vector so that it can represent the coordinate system in different ways. This API uses an asynchronous callback to return the result. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-20) | Unsubscribes from data of the Hall effect sensor. Call this API when you no longer need to receive data of the Hall effect sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-21) | Unsubscribes from data of the Hall effect sensor. Call this method to unsubscribe from the Hall effect sensor data when it is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-22) | Unsubscribes from data of the heart rate sensor. Call this method to cancel the subscription when the heart rate sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-23) | Unsubscribes from data of the heart rate sensor. Call this method to cancel the subscription when you no longer need to receive data of the heart rate sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-24) | Unsubscribes from data of the humidity sensor. When the humidity sensor data is no longer needed, call this API to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-25) | Unsubscribes from data of the humidity sensor. When the humidity sensor data is no longer needed, call this API to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-26) | Unsubscribes from data of the linear acceleration sensor. Call this method to cancel the subscription when the linear acceleration sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-27) | Unsubscribes from data of the linear acceleration sensor. Call this method to cancel the subscription when the linear acceleration sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-28) | Unsubscribes from data of the magnetic field sensor. When the magnetic field sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-29) | Unsubscribes from data of the magnetic field sensor. When the magnetic field sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-30) | Unsubscribes from data of the uncalibrated magnetic field sensor. When the uncalibrated magnetic field sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-31) | Unsubscribes from data of the uncalibrated magnetic field sensor. When the uncalibrated magnetic field sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-32) | Unsubscribes from data of the orientation sensor. Call this method to unsubscribe from data of the orientation sensor when the data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-33) | Unsubscribes from data of the orientation sensor. Call this method to unsubscribe from data of the orientation sensor when the data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-34) | Unsubscribes from data of the pedometer sensor. Call this method to cancel the subscription when the pedometer sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-35) | Unsubscribes from data of the pedometer sensor. When the pedometer sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-36) | Unsubscribes from data of the pedometer detection sensor. Call this method when you no longer need to receive data of the pedometer detection sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-37) | Unsubscribes from data of the pedometer detection sensor. Call this method when you no longer need to receive data of the pedometer detection sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-38) | Unsubscribes from data of the proximity sensor. When the proximity sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-39) | Unsubscribes from data of the proximity sensor. When the proximity sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-40) | Unsubscribes from data of the rotation vector sensor. Call this method to cancel the subscription when the rotation vector sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-41) | Unsubscribes from data of the rotation vector sensor. Call this method to cancel the subscription when the rotation vector sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-42) | Unsubscribes from significant motion sensor data. Call this API to unsubscribe from significant motion sensor data when it is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-43) | Unsubscribes from significant motion sensor data. Call this API to unsubscribe from significant motion sensor data when it is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-44) | Unsubscribes from data of the wear detection sensor. Call this method to unsubscribe from data of the wear detection sensor when the data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-45) | Unsubscribes from the fused pressure sensor data. Call this method to cancel the subscription when the fused pressure sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-46) | Unsubscribes from data of the wear detection sensor. Call this method to unsubscribe from data of the wear detection sensor when the data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-47) | Unsubscribes from data of the acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-48) | Unsubscribes from data of the uncalibrated acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-49) | Unsubscribes from data of the ambient light sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-50) | Unsubscribes from data of the ambient temperature sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-51) | Unsubscribes from data of the barometer sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-52) | Unsubscribes from data of the gravity sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-53) | Unsubscribes from data of the gyroscope sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-54) | Unsubscribes from data of the uncalibrated gyroscope sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-55) | Unsubscribes from data of the Hall effect sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-56) | Unsubscribes from data of the heart rate sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-57) | Unsubscribes from data of the humidity sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-58) | Unsubscribes from data of the linear acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-59) | Unsubscribes from data of the magnetic field sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-60) | Unsubscribes from data of the uncalibrated magnetic field sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-61) | Unsubscribes from data of the orientation sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-62) | Unsubscribes from data of the pedometer sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-63) | Unsubscribes from data of the pedometer detection sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-64) | Unsubscribes from data of the proximity sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-65) | Unsubscribes from data of the rotation vector sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-66) | Unsubscribes from significant motion sensor data. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#off-67) | Unsubscribes from data of the wear detection sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [off](arkts-sensorservice-sensor-off-f.md#offsensorstatuschange) | Disables listening for sensor status changes. Call this API when you no longer need to detect sensor status changes. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-2) | Subscribes to data of the acceleration sensor. This API uses an asynchronous callback to return the result. The acceleration sensor measures the acceleration of the device along the x, y, and z axes, including the gravity acceleration component. This sensor is applicable to scenarios where the device motion status needs to be detected, such as screen rotation, game control, and step counting. After this method is called, the system continuously reports acceleration data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-3) | Subscribes to data of the uncalibrated acceleration sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated acceleration sensor and the acceleration sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated acceleration sensor are not calibrated by the system. This sensor is suitable for scenarios where raw acceleration data is required or a custom calibration algorithm is implemented. Compared with **sensor.on('SensorId.ACCELEROMETER')**, this API provides additional bias information, which is suitable for scenarios where device calibration bias needs to be analyzed. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-4) | Subscribes to data of the ambient light sensor. This API uses an asynchronous callback to return the result. The ambient light sensor is used to measure the light intensity of the surrounding environment. It is applicable to scenarios such as automatic screen brightness adjustment and determining the brightness of the environment. After this method is called, the system continuously reports ambient light intensity data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-5) | Subscribes to data of the ambient temperature sensor. This API uses an asynchronous callback to return the result. The temperature sensor is used to measure the ambient temperature around the device. It is applicable to scenarios such as ambient temperature monitoring and temperature compensation. After this method is called, the system continuously reports temperature data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-6) | Subscribes to data of the barometer sensor. This API uses an asynchronous callback to return the result. The barometric pressure sensor is used to measure atmospheric pressure. It is applicable to scenarios such as altitude estimation and weather forecast assistance. After this method is called, the system continuously reports barometric pressure data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-7) | Subscribes to data of the gravity sensor. This API uses an asynchronous callback to return the result. The gravity sensor measures the gravity acceleration components of the device along the x, y, and z axes. It is applicable to scenarios where the gravity component needs to be separated for motion analysis, such as game control and motion detection. After this method is called, the system continuously reports gravity component data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-8) | Subscribes to data of the gyroscope sensor. This API uses an asynchronous callback to return the result. The gyroscope sensor is used to measure the angular velocity of a device around the x, y, and z axes. It is applicable to scenarios such as device rotation detection, posture tracking, and game control. After this method is called, the system continuously reports angular velocity data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-9) | Subscribes to data of the uncalibrated gyroscope sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated gyroscope sensor and the gyroscope sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated gyroscope sensor are not calibrated by the system. This sensor is suitable for scenarios where raw gyroscope data is required or where the calibration algorithm needs to be implemented by the app. Compared with **sensor.on('SensorId.GYROSCOPE')**, this API additionally provides bias information, which is suitable for scenarios where the gyroscope calibration bias needs to be analyzed. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-10) | Subscribes to data of the Hall effect sensor. This API uses an asynchronous callback to return the result. The Hall effect sensor is used to detect magnetic field changes, and is often used to detect the opening and closing status of a flip phone or leather case. When Hall effect events are frequently triggered, you can use the **options** parameter to set the data reporting frequency. After this method is called, the system continuously reports Hall effect sensor data through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-11) | Subscribes to data of the heart rate sensor. This API uses an asynchronous callback to return the result. The heart rate sensor is used to measure the heart rate of a user. It is applicable to scenarios such as health monitoring and exercise assistance. After this method is called, the system continuously reports heart rate data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-12) | Subscribes to data of the humidity sensor. This API uses an asynchronous callback to return the result. The humidity sensor is used to measure the relative humidity of the surrounding environment. It is applicable to scenarios such as ambient humidity monitoring and collaboration with other smart home devices. After this method is called, the system continuously reports humidity data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-13) | Subscribes to data of the linear acceleration sensor. This API uses an asynchronous callback to return the result. The linear acceleration sensor measures the acceleration (excluding the gravity component) of the device along the x, y, and z axes. It is applicable to scenarios where the pure motion acceleration of the device needs to be sensed, such as motion tracking and collision detection. Compared with **sensor.on('SensorId.ACCELEROMETER')**, this API does not contain the gravity component and is applicable to scenarios where only the device's motion acceleration is required. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-14) | Subscribes to data of the magnetic field sensor. This API uses an asynchronous callback to return the result. The magnetic field sensor is used to measure the magnetic field strength around the device in the x, y, and z axes. It is applicable to scenarios such as compass, direction detection, and metal detection. After this method is called, the system continuously reports magnetic field component data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-15) | Subscribes to data of the uncalibrated magnetic field sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated magnetic field sensor and the magnetic field sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated magnetic field sensor are not calibrated by the system. This sensor is suitable for scenarios where raw magnetic field data is required or a custom calibration algorithm is implemented. Compared with **sensor.on('SensorId.MAGNETIC_FIELD')**, this API provides the bias information, which is suitable for scenarios where the geomagnetic calibration deviation of the device needs to be analyzed. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-16) | Subscribes to data of the orientation sensor. This API uses an asynchronous callback to return the result. The orientation sensor measures the angles of rotation around the Z-axis (alpha), X-axis (beta), and Y-axis (gamma). It is applicable to scenarios such as screen rotation, compass, and posture sensing. After this method is called, the system continuously reports orientation data at the specified frequency through the callback. Applications or services invoking this API can prompt users to use figure-8 calibration to improve the accuracy of the direction sensor. The sensor has a theoretical error of ±5 degrees, but the specific precision may vary depending on different driver implementations and algorithmic designs. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-17) | Subscribes to data of the pedometer sensor. This API uses an asynchronous callback to return the result. The pedometer sensor is used to count the number of steps taken by a user. It is applicable to scenarios such as fitness tracking and health management. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations. After this method is called, the system continuously reports step count data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-18) | Subscribes to data of the pedometer detection sensor. This API uses an asynchronous callback to return the result. The pedometer detection sensor is used to detect whether a step event (such as a step) occurs. It is applicable to scenarios where the walking status needs to be detected in real time. Compared with **sensor.on('SensorId.PEDOMETER')**, this API reports the scalar value of a step event instead of the accumulated step count. It is applicable to scenarios where single-step events need to be detected. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-19) | Subscribes to data of the proximity sensor. This API uses an asynchronous callback to return the result. The proximity sensor is used to detect the distance between an object and the device. It is often used to automatically turn off the screen during a call to prevent accidental touches. When proximity sensor events are frequently triggered, you can use the **options** parameter to set the event reporting frequency. After this method is called, the system continuously reports proximity sensor data through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-20) | Subscribes to data of the rotation vector sensor. This API uses an asynchronous callback to return the result. The rotation vector sensor is used to indicate the orientation of a device. The data consists of the X, Y, and Z components and the scalar W, and can be used for device orientation estimation and AR/VR scenarios. After this method is called, the system continuously reports rotation vector data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-21) | Subscribes to significant motion sensor data to detect significant motion events such as picking up the device, obvious movement, or violent shaking. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where the device needs to be woken up, an app needs to be started, or the mode needs to be switched based on the user's activity state. After this method is called, the system continuously reports significant motion event data through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-22) | Subscribes to data of the wear detection sensor. This API uses an asynchronous callback to return the result. The wear detection sensor is used to detect whether a wearable device, such as a smart watch, is being worn by a user, so that the device can automatically switch its working mode. After this method is called, the system continuously reports wear detection data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-23) | Subscribes to the fused pressure sensor data. This API uses an asynchronous callback to return the result. The fused pressure sensor is used to obtain pressure data processed by the fusion algorithm. It applies only to smart watches. This is applicable to health monitoring scenarios where wrist pressure data needs to be obtained. After this method is called, the system continuously reports acceleration data at the specified frequency through the callback. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-24) | Subscribes to data changes of the acceleration sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the device motion status needs to be detected, such as screen rotation and game control. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-25) | Subscribes to data changes of the uncalibrated acceleration sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where you need to obtain the raw acceleration data that contains deviation calibration data. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-26) | Subscribes to data changes of the ambient light sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where the ambient light intensity needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-27) | Subscribes to data changes of the ambient temperature sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the ambient temperature needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-28) | Subscribes to data changes of the barometer sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the ambient barometric pressure needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-29) | Subscribes to data changes of the gravity sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the device gravity direction needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-30) | Subscribes to data changes of the gyroscope sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the device's angular velocity needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-31) | Subscribes to data changes of the uncalibrated gyroscope sensor. This API uses an asynchronous callback to return the result. This method is applicable to scenarios where you need to obtain the raw gyroscope data that contains bias calibration data. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-32) | Subscribes to data changes of the Hall effect sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where the device cover or magnet status needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-33) | Subscribes to data changes of the heart rate sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the user's heart rate data needs to be obtained. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-34) | Subscribes to data changes of the humidity sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the ambient humidity needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-35) | Subscribes to data changes of the linear acceleration sensor. This API uses an asynchronous callback to return the result. This API applies to scenarios where you need to obtain the linear acceleration data excluding the effect of gravity. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-36) | Subscribes to data changes of the magnetic field sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the strength and direction of the magnetic field around the device need to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-37) | Subscribes to data changes of the uncalibrated magnetic field sensor. This API uses an asynchronous callback to return the result. This method applies to scenarios where you need to obtain the raw magnetic field data that contains the deviation calibration data. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-38) | Subscribes to data changes of the orientation sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the device orientation needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-39) | Subscribes to data changes of the pedometer sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the user's step count needs to be obtained. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-40) | Subscribes to data changes of the pedometer detection sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where you need to detect whether a user is walking. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-41) | Subscribes to data changes of the proximity sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the proximity of an object to the device needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-42) | Subscribes to data changes of the rotation vector sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the device rotation status in three-dimensional space needs to be detected. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-43) | Subscribes to data changes of the significant motion sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where you need to detect whether the device has significant motion. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#on-44) | Subscribes to data changes of the wear detection sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where you need to check whether a device is being worn. If this API is called multiple times for the same application, the last call takes effect. |
+| [on](arkts-sensorservice-sensor-on-f.md#onsensorstatuschange) | Listens for sensor status changes. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where sensor status changes need to be detected, for example, when a remote sensor is connected or disconnected, the sensor list or subscription status needs to be automatically updated. |
+| [once](arkts-sensorservice-sensor-once-f.md#once) | Obtains data of the acceleration sensor once. This method applies to scenarios where the current acceleration data needs to be obtained only once and continuous listening is not required. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-1) | Obtains data of the uncalibrated acceleration sensor once. This method applies to scenarios where the raw acceleration and offset data needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-2) | Obtains data of the ambient light sensor once. This method applies to scenarios where the current ambient light intensity needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-3) | Obtains data of the temperature sensor once. This method applies to scenarios where the current ambient temperature needs to be obtained only once. After the API is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-4) | Obtains data of the barometer sensor once. This method applies to scenarios where only the current atmospheric pressure value needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-5) | Obtains data of the gravity sensor once. This method applies to the scenario where only the current gravity component needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-6) | Obtains data of the gyroscope sensor once. This method applies to scenarios where only the current angular velocity needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-7) | Obtains data of the uncalibrated gyroscope sensor once. This method applies to scenarios where the raw angular velocity and offset data needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-8) | Obtains data of the Hall effect sensor once. This method applies to scenarios where the current Hall effect status needs to be detected only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-9) | Obtains data of the heart rate sensor once. This method applies to scenarios where only the current heart rate needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-10) | Obtains data of the humidity sensor once. This method applies to the scenario where the current humidity needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-11) | Obtains data of the linear acceleration sensor once. This method applies to scenarios where only the current linear acceleration (excluding the gravity component) needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-12) | Obtains data of the magnetic field sensor once. This method applies to scenarios where only the current magnetic field component needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-13) | Obtains data of the uncalibrated magnetic field sensor once. This method applies to scenarios where the raw magnetic field and offset data needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-14) | Obtains data of the orientation sensor once. This method applies to scenarios where the current device orientation needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-15) | Obtains data of the pedometer sensor once. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations. This method is applicable to scenarios where only the current step count needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-16) | Obtains data of the pedometer sensor once. This method applies to scenarios where only one-time step counting is required. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-17) | Obtains data of the proximity sensor once. This method applies to scenarios where detection of the current proximity status is required only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-18) | Obtains data of the rotation vector sensor once. This method applies to scenarios where the current device posture needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-19) | Obtains the significant motion sensor data once. This API applies to scenarios where significant motion needs to be detected only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-20) | Obtains data of the wear detection sensor once. This API applies to scenarios where the wear status needs to be detected only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-21) | Subscribes to only one data change of the acceleration sensor. This method applies to scenarios where only the current acceleration data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-22) | Subscribes to only one data change of the uncalibrated acceleration sensor. This method applies to scenarios where only the current uncalibrated acceleration data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-23) | Subscribes to only one data change of the ambient light sensor. This method applies to scenarios where only the current ambient light data needs to be obtained at a time. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-24) | Subscribes to only one data change of the ambient temperature sensor. This method applies to scenarios where the current ambient temperature data needs to be obtained only once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-25) | Subscribes to only one data change of the barometer sensor. This method applies to scenarios where only the current barometric pressure data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-26) | Subscribes to only one data change of the gravity sensor. This method applies to scenarios where only the current gravity data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-27) | Subscribes to only one data change of the gyroscope sensor. This method applies to scenarios where only the current gyroscope data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-28) | Subscribes to only one data change of the uncalibrated gyroscope sensor. This method applies to scenarios where only the current uncalibrated gyroscope data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-29) | Subscribes to only one data change of the Hall effect sensor. This method applies to scenarios where only the current Hall effect sensor data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-30) | Subscribes to only one data change of the heart rate sensor. This method applies to scenarios where only the current heart rate data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-31) | Subscribes to only one data change of the humidity sensor. This method applies to scenarios where only the current humidity data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-32) | Subscribes to only one data change of the linear acceleration sensor. This method applies to scenarios where only the current linear acceleration data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-33) | Subscribes to only one data change of the magnetic field sensor. This method applies to scenarios where only the current magnetic field data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-34) | Subscribes to only one data change of the uncalibrated magnetic field sensor. This method applies to scenarios where only the current uncalibrated magnetic field data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-35) | Subscribes to only one data change of the orientation sensor. This method applies to scenarios where only the current orientation data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-36) | Subscribes to only one data change of the pedometer sensor. This method applies to scenarios where only the current step count data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-37) | Subscribes to only one data change of the pedometer detection sensor. This method applies to scenarios where only the current pedometer detection data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-38) | Subscribes to only one data change of the proximity sensor. This method applies to scenarios where only the current proximity sensor data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-39) | Subscribes to only one data change of the rotation vector sensor. This method applies to scenarios where only the current rotation vector data needs to be obtained at a time. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-40) | Subscribes to only one data change of the significant motion sensor. This method applies to scenarios where only the current significant motion data needs to be obtained once. |
+| [once](arkts-sensorservice-sensor-once-f.md#once-41) | Subscribes to only one data change of the wear detection sensor. This method applies to scenarios where only the current wear detection data needs to be obtained once. |
+| [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem) | Rotates a rotation vector so that it can represent the coordinate system in different ways. This API uses an asynchronous callback to return the result. This API uses an asynchronous callback to return the result. |
 | [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem-1) | Rotates a rotation vector so that it can represent the coordinate system in different ways. This API uses a promise to return the result. |
 | [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md#transformrotationmatrix) | Transforms a rotation vector based on the coordinate system. This API uses an asynchronous callback to return the result. |
 | [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md#transformrotationmatrix-1) | Transforms a rotation vector based on the coordinate system. This API uses a promise to return the result. |
@@ -219,12 +260,12 @@ import { sensor } from '@kit.SensorServiceKit';
 
 | Name | Description |
 | --- | --- |
-| [off](arkts-sensorservice-sensor-off-f-sys.md#off) | Unsubscribes from data of the color sensor. |
-| [off](arkts-sensorservice-sensor-off-f-sys.md#off-1) | Unsubscribes from data of the color sensor. |
-| [off](arkts-sensorservice-sensor-off-f-sys.md#off-2) | Unsubscribes from data of the SAR sensor. |
-| [off](arkts-sensorservice-sensor-off-f-sys.md#off-3) | Unsubscribes from data of the SAR sensor. |
-| [on](arkts-sensorservice-sensor-on-f-sys.md#on) | Subscribes to data of the color sensor. |
-| [on](arkts-sensorservice-sensor-on-f-sys.md#on-1) | Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor. |
+| [off](arkts-sensorservice-sensor-off-f-sys.md#off) | Unsubscribes from data of the color sensor. After this method is called, the callback for the color sensor will not be triggered. |
+| [off](arkts-sensorservice-sensor-off-f-sys.md#off-1) | Unsubscribes from data of the color sensor. Compared with the **off** API in API version 10, the **sensorInfoParam** parameter is added to this API. You can use **deviceId** and **sensorIndex** to specify the callback of a specific sensor on a device. This API is applicable to multi-device scenarios. |
+| [off](arkts-sensorservice-sensor-off-f-sys.md#off-2) | Unsubscribes from data of the SAR sensor. After this method is called, the callback for the SAR sensor will not be triggered. |
+| [off](arkts-sensorservice-sensor-off-f-sys.md#off-3) | Unsubscribes from data of the SAR sensor. Compared with the **off** API in API version 10, the **sensorInfoParam** parameter is added to this API. You can use **deviceId** and **sensorIndex** to specify the callback of a specific sensor on a device. This API is applicable to multi-device scenarios. |
+| [on](arkts-sensorservice-sensor-on-f-sys.md#on) | Subscribes to data changes of the color sensor. This API uses an asynchronous callback to return the result. The color sensor data is reported asynchronously through a callback. The data is reported through a **ColorResponse** object, which contains two number fields: **lightIntensity** and **colorTemperature**. |
+| [on](arkts-sensorservice-sensor-on-f-sys.md#on-1) | Subscribes to data changes of the Sodium Adsorption Ratio (SAR) sensor. This API uses an asynchronous callback to return the result. The SAR sensor data is reported asynchronously through a callback. The data is reported through a **SarResponse** object, which contains one number field: **absorptionRatio**. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -232,12 +273,12 @@ import { sensor } from '@kit.SensorServiceKit';
 | Name | Description |
 | --- | --- |
 | [AccelerometerResponse](arkts-sensorservice-sensor-accelerometerresponse-i.md) | Describes the acceleration sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [AccelerometerUncalibratedResponse](arkts-sensorservice-sensor-accelerometeruncalibratedresponse-i.md) | Describes the uncalibrated acceleration sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
+| [AccelerometerUncalibratedResponse](arkts-sensorservice-sensor-accelerometeruncalibratedresponse-i.md) | Describes the uncalibrated acceleration sensor data. It is inherited from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [AmbientTemperatureResponse](arkts-sensorservice-sensor-ambienttemperatureresponse-i.md) | Describes the ambient temperature sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [BarometerResponse](arkts-sensorservice-sensor-barometerresponse-i.md) | Describes the barometer sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | Describes the coordinate options. |
+| [CoordinatesOptions](arkts-sensorservice-sensor-coordinatesoptions-i.md) | Coordinate option object, which is used to specify the transformation direction of the coordinate system. |
 | [FusionPressureResponse](arkts-sensorservice-sensor-fusionpressureresponse-i.md) | Describes the fusion pressure sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [GeomagneticResponse](arkts-sensorservice-sensor-geomagneticresponse-i.md) | Describes a geomagnetic response object. |
+| [GeomagneticResponse](arkts-sensorservice-sensor-geomagneticresponse-i.md) | Sets the geomagnetic response object, which describes the geomagnetic field information of a specified geographical location. |
 | [GravityResponse](arkts-sensorservice-sensor-gravityresponse-i.md) | Describes the gravity sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md) | Describes the gyroscope sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [GyroscopeUncalibratedResponse](arkts-sensorservice-sensor-gyroscopeuncalibratedresponse-i.md) | Describes the uncalibrated gyroscope sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
@@ -246,20 +287,20 @@ import { sensor } from '@kit.SensorServiceKit';
 | [HumidityResponse](arkts-sensorservice-sensor-humidityresponse-i.md) | Describes the humidity sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [LightResponse](arkts-sensorservice-sensor-lightresponse-i.md) | Describes the ambient light sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [LinearAccelerometerResponse](arkts-sensorservice-sensor-linearaccelerometerresponse-i.md) | Describes the linear acceleration sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [LocationOptions](arkts-sensorservice-sensor-locationoptions-i.md) | Describes the geographical location. |
+| [LocationOptions](arkts-sensorservice-sensor-locationoptions-i.md) | Indicates the geographical location, which is used to pass the longitude, latitude, and altitude information for calculating the geomagnetic field. |
 | [MagneticFieldResponse](arkts-sensorservice-sensor-magneticfieldresponse-i.md) | Describes the magnetic field sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [MagneticFieldUncalibratedResponse](arkts-sensorservice-sensor-magneticfielduncalibratedresponse-i.md) | Describes the uncalibrated magnetic field sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [Options](arkts-sensorservice-sensor-options-i.md) | Describes the sensor data reporting frequency. |
+| [Options](arkts-sensorservice-sensor-options-i.md) | Sets the sensor reporting frequency and sensor selection parameters. |
 | [OrientationResponse](arkts-sensorservice-sensor-orientationresponse-i.md) | Describes the orientation sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [PedometerDetectionResponse](arkts-sensorservice-sensor-pedometerdetectionresponse-i.md) | Describes the pedometer detection sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [PedometerResponse](arkts-sensorservice-sensor-pedometerresponse-i.md) | Describes the pedometer sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [ProximityResponse](arkts-sensorservice-sensor-proximityresponse-i.md) | Describes the proximity sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [Response](arkts-sensorservice-sensor-response-i.md) | Describes the timestamp of the sensor data. |
-| [RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md) | Describes the response for setting the rotation matrix. |
+| [Response](arkts-sensorservice-sensor-response-i.md) | Defines the base class for the timestamp and accuracy information of sensor data. All sensor response types inherit from this class. |
+| [RotationMatrixResponse](arkts-sensorservice-sensor-rotationmatrixresponse-i.md) | Response object for setting the rotation matrix, which describes the calculation results of the rotation matrix and tilt matrix. |
 | [RotationVectorResponse](arkts-sensorservice-sensor-rotationvectorresponse-i.md) | Describes the rotation vector sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [Sensor](arkts-sensorservice-sensor-sensor-i.md) | Describes the sensor information. |
 | [SensorInfoParam](arkts-sensorservice-sensor-sensorinfoparam-i.md) | Defines sensor parameters, including **deviceId** and **sensorIndex**. |
-| [SensorStatusEvent](arkts-sensorservice-sensor-sensorstatusevent-i.md) | Defines a device status change event. |
+| [SensorStatusEvent](arkts-sensorservice-sensor-sensorstatusevent-i.md) | Defines the sensor status change event, which is used to describe the sensor online and offline events. |
 | [SignificantMotionResponse](arkts-sensorservice-sensor-significantmotionresponse-i.md) | Describes the significant motion sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 | [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md) | Describes the wear detection sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
 
@@ -268,9 +309,15 @@ import { sensor } from '@kit.SensorServiceKit';
 
 | Name | Description |
 | --- | --- |
-| [ColorResponse](arkts-sensorservice-sensor-colorresponse-i-sys.md) | Describes the color sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
-| [SarResponse](arkts-sensorservice-sensor-sarresponse-i-sys.md) | Describes the SAR sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). |
+| [ColorResponse](arkts-sensorservice-sensor-colorresponse-i-sys.md) | Describes the color sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). This method is used to represent the response data reported by the color sensor, including the light intensity and color temperature information. |
+| [SarResponse](arkts-sensorservice-sensor-sarresponse-i-sys.md) | Describes the SAR sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md). This method is used to represent the response data reported by the SAR sensor, including the SAR information. |
 <!--DelEnd-->
+
+### Types
+
+| Name | Description |
+| --- | --- |
+| [SensorFrequency](arkts-sensorservice-sensor-sensorfrequency-t.md) | Defines the sensor reporting frequency modes. The predefined frequency levels are provided, allowing you to quickly set the reporting frequency. |
 
 ### Enums
 
@@ -287,9 +334,3 @@ import { sensor } from '@kit.SensorServiceKit';
 | --- | --- |
 | [SensorId](arkts-sensorservice-sensor-sensorid-e-sys.md) | Enumerates the sensor types. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [SensorFrequency](arkts-sensorservice-sensor-sensorfrequency-t.md) | Defines the reporting frequency mode of the sensor. |

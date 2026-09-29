@@ -8,6 +8,8 @@ Queries portrait parameters.
 
 **Since:** 12
 
+<!--Device-camera-interface PortraitQuery--><!--Device-camera-interface PortraitQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getSupportedPortraitEffects(): Array<PortraitEffect>
 Obtains the supported portrait effects.
 
 **Since:** 10
+
+<!--Device-PortraitQuery-getSupportedPortraitEffects(): Array<PortraitEffect>--><!--Device-PortraitQuery-getSupportedPortraitEffects(): Array<PortraitEffect>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

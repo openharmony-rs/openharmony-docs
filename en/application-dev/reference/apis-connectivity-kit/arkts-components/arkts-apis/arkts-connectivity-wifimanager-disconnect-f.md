@@ -18,6 +18,8 @@ Disconnect connection between sta and Wi-Fi hotspot.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and (ohos.permission.MANAGE_WIFI_CONNECTION or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION)
 
+<!--Device-wifiManager-function disconnect(): void--><!--Device-wifiManager-function disconnect(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Error codes:**

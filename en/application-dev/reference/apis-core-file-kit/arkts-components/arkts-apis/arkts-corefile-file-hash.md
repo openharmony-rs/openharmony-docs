@@ -4,6 +4,8 @@ The **FileHash** module implements hash processing on files.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace hash--><!--Device-unnamed-declare namespace hash-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import

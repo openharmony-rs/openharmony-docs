@@ -16,6 +16,8 @@ Obtains the SMS format supported by the IMS, for example, **3gpp**, **3gpp2**, o
 
 **Since:** 8
 
+<!--Device-sms-function getImsShortMessageFormat(callback: AsyncCallback<string>): void--><!--Device-sms-function getImsShortMessageFormat(callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -60,6 +62,8 @@ function getImsShortMessageFormat(): Promise<string>
 Obtains the SMS format supported by the IMS, for example, **3gpp**, **3gpp2**, or **unknown**. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-sms-function getImsShortMessageFormat(): Promise<string>--><!--Device-sms-function getImsShortMessageFormat(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

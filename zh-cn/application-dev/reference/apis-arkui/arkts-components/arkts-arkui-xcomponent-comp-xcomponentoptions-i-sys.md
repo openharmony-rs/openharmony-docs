@@ -8,6 +8,8 @@ declare interface XComponentOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface XComponentOptions--><!--Device-unnamed-declare interface XComponentOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## screenId
@@ -23,6 +25,8 @@ screenId?: number
 **起始版本：** 17
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XComponentOptions-screenId?: number--><!--Device-XComponentOptions-screenId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

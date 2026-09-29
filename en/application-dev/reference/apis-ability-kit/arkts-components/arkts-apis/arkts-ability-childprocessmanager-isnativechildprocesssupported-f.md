@@ -18,6 +18,8 @@ Checks whether the caller is allowed to create native child processes on this de
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-childProcessManager-function isNativeChildProcessSupported(): boolean--><!--Device-childProcessManager-function isNativeChildProcessSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

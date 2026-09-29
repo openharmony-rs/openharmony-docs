@@ -12,6 +12,8 @@ Enumerates the widget parameters.
 
 **Substitutes:** [FormParam](arkts-form-forminfo-formparam-e.md)
 
+<!--Device-formInfo-enum FormParam--><!--Device-formInfo-enum FormParam-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## IDENTITY_KEY
@@ -29,6 +31,8 @@ This is a system API.
 **Deprecated since:** 9
 
 **Substitutes:** [IDENTITY_KEY](arkts-form-forminfo-formparam-e.md#identity_key)
+
+<!--Device-FormParam-IDENTITY_KEY = 'ohos.extra.param.key.form_identity'--><!--Device-FormParam-IDENTITY_KEY = 'ohos.extra.param.key.form_identity'-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

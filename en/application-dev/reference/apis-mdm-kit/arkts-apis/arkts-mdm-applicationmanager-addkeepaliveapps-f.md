@@ -26,6 +26,8 @@ To use similar functions on phones or tablets, call [addUserNonStopApps](arkts-m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: number): void--><!--Device-applicationManager-function addKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -92,6 +94,8 @@ To use similar functions on phones or tablets, call [addUserNonStopApps](arkts-m
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function addKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: number, disallowModify: boolean): void--><!--Device-applicationManager-function addKeepAliveApps(admin: Want, bundleNames: Array<string>, accountId: number, disallowModify: boolean): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

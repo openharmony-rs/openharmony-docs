@@ -8,6 +8,8 @@ An image effect class used to add a specified effect to the effect chain through
 
 **Since:** 9
 
+<!--Device-effectKit-interface Filter--><!--Device-effectKit-interface Filter-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,9 +32,11 @@ Adds the blur effect to the effect chain and returns the instance of the chain. 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Filter-blur(radius: double): Filter--><!--Device-Filter-blur(radius: double): Filter-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -130,6 +134,8 @@ Adds the blur effect to the effect chain and returns the instance of the chain. 
 
 **Since:** 14
 
+<!--Device-Filter-blur(radius: double, tileMode: TileMode): Filter--><!--Device-Filter-blur(radius: double, tileMode: TileMode): Filter-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -221,9 +227,11 @@ Adds the brightness effect to the effect chain and returns the instance of the c
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Filter-brightness(bright: double): Filter--><!--Device-Filter-brightness(bright: double): Filter-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -319,9 +327,11 @@ Obtains image.PixelMap of the source image to which the effect chain has been ad
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Filter-getEffectPixelMap(): Promise<image.PixelMap>--><!--Device-Filter-getEffectPixelMap(): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -373,9 +383,11 @@ Obtains image.PixelMap of the source image with the linked list effect. The rend
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 20.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 20.
+
+<!--Device-Filter-getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>--><!--Device-Filter-getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -417,53 +429,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-## getPixelMap
-
-```TypeScript
-getPixelMap(): image.PixelMap
-```
-
-Obtains image.PixelMap of the source image to which the effect chain has been added. It is commonly used in scenarios where the processed image needs to be saved or displayed.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 9 and deprecated since API version 11. Use getEffectPixelMap instead.
-
-**Since:** 9
-
-**Deprecated since:** 11
-
-**Substitutes:** [getEffectPixelMap](#geteffectpixelmap)
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | [image.PixelMap of the source image with the effect chain applied.](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) |
-
-**Examples**
-
-```TypeScript
-import { image } from '@kit.ImageKit';
-import { effectKit } from '@kit.ArkGraphics2D';
-
-const colorBuffer = new ArrayBuffer(96);
-let opts: image.InitializationOptions = {
-  editable: true,
-  pixelFormat: 3,
-  size: {
-    height: 4,
-    width: 6
-  }
-};
-image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
-  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
-  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
-});
-```
-
 ## grayscale
 
 ```TypeScript
@@ -474,9 +439,11 @@ Adds the grayscale effect to the effect chain and returns the instance of the ch
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Filter-grayscale(): Filter--><!--Device-Filter-grayscale(): Filter-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -560,6 +527,8 @@ Adds the invert effect to the effect chain and returns the instance of the chain
 
 **Since:** 12
 
+<!--Device-Filter-invert(): Filter--><!--Device-Filter-invert(): Filter-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -641,6 +610,8 @@ setColorMatrix(colorMatrix: Array<number>): Filter
 Performs color transformation on the image using a custom color matrix, adds the effect to the effect chain, and returns the instance of the chain. It is commonly used in scenarios such as implementing custom color effects not supported by preset filters, such as vintage tones and warm/cool tone adjustments.
 
 **Since:** 12
+
+<!--Device-Filter-setColorMatrix(colorMatrix: Array<double>): Filter--><!--Device-Filter-setColorMatrix(colorMatrix: Array<double>): Filter-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -731,4 +702,53 @@ struct Index {
     .width('100%')
   }
 }
+```
+
+## getPixelMap
+
+```TypeScript
+getPixelMap(): image.PixelMap
+```
+
+Obtains image.PixelMap of the source image to which the effect chain has been added. It is commonly used in scenarios where the processed image needs to be saved or displayed.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 9 and deprecated since API version 11. Use getEffectPixelMap instead.
+
+**Since:** 9
+
+**Deprecated since:** 11
+
+**Substitutes:** [getEffectPixelMap](#geteffectpixelmap)
+
+<!--Device-Filter-getPixelMap(): image.PixelMap--><!--Device-Filter-getPixelMap(): image.PixelMap-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | [image.PixelMap of the source image with the effect chain applied.](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) |
+
+**Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { effectKit } from '@kit.ArkGraphics2D';
+
+const colorBuffer = new ArrayBuffer(96);
+let opts: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: {
+    height: 4,
+    width: 6
+  }
+};
+image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
+  let pixel = effectKit.createEffect(pixelMap).grayscale().getPixelMap();
+  console.info('getPixelBytesNumber = ', pixel.getPixelBytesNumber());
+});
 ```

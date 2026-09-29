@@ -8,6 +8,8 @@ Enumerates USB port roles. **currentMode** indicates the current USB mode of the
 
 **Since:** 9
 
+<!--Device-usbManager-interface USBPortStatus--><!--Device-usbManager-interface USBPortStatus-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Current data transfer role of the device. For details, see [DataRoleType](arkts-
 
 **Since:** 9
 
+<!--Device-USBPortStatus-currentDataRole: int--><!--Device-USBPortStatus-currentDataRole: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Current USB mode. For details, see [PortModeType](arkts-basicservices-usbmanager
 
 **Since:** 9
 
+<!--Device-USBPortStatus-currentMode: int--><!--Device-USBPortStatus-currentMode: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Current power role of the device. For details, see [PowerRoleType](arkts-basicse
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBPortStatus-currentPowerRole: int--><!--Device-USBPortStatus-currentPowerRole: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

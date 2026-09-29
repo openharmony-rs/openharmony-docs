@@ -8,6 +8,8 @@ export interface SubHeaderV2SelectOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-export interface SubHeaderV2SelectOptions--><!--Device-unnamed-export interface SubHeaderV2SelectOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ onSelect?: SubHeaderV2SelectOnSelect
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2SelectOptions-onSelect?: SubHeaderV2SelectOnSelect--><!--Device-SubHeaderV2SelectOptions-onSelect?: SubHeaderV2SelectOnSelect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ false：下拉按钮不是默认焦点。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2SelectOptions-defaultFocus?: boolean--><!--Device-SubHeaderV2SelectOptions-defaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -78,6 +84,8 @@ id?: string
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2SelectOptions-id?: string--><!--Device-SubHeaderV2SelectOptions-id?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -96,6 +104,8 @@ options: SelectOption[]
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2SelectOptions-options: SelectOption[]--><!--Device-SubHeaderV2SelectOptions-options: SelectOption[]-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedContent
@@ -113,6 +123,8 @@ selectedContent?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2SelectOptions-selectedContent?: ResourceStr--><!--Device-SubHeaderV2SelectOptions-selectedContent?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,5 +149,7 @@ selectedIndex?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2SelectOptions-selectedIndex?: number--><!--Device-SubHeaderV2SelectOptions-selectedIndex?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

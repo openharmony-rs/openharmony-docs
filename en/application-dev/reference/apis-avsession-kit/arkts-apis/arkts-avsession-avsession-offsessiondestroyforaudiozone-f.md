@@ -20,6 +20,8 @@ Unregister session destroy callback for a specific audio zone.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function offSessionDestroyForAudioZone(userId: int, callback?: Callback<AVSessionDescriptor>): void--><!--Device-avSession-function offSessionDestroyForAudioZone(userId: int, callback?: Callback<AVSessionDescriptor>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **Parameters:**

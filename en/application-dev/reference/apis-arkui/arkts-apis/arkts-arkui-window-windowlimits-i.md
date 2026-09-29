@@ -30,6 +30,8 @@ The actual window size limits applied are determined by the intersection of the 
 
 **Since:** 11
 
+<!--Device-window-interface WindowLimits--><!--Device-window-interface WindowLimits-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -50,7 +52,9 @@ Maximum window height.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowLimits-maxHeight?: int--><!--Device-WindowLimits-maxHeight?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -66,7 +70,9 @@ Maximum window width.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowLimits-maxWidth?: int--><!--Device-WindowLimits-maxWidth?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -82,7 +88,9 @@ Minimum window height.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowLimits-minHeight?: int--><!--Device-WindowLimits-minHeight?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -98,7 +106,9 @@ Minimum window width.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-WindowLimits-minWidth?: int--><!--Device-WindowLimits-minWidth?: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -113,5 +123,7 @@ Unit of the window size limits. The default value is **px**. The value can be **
 **Type:** [PixelUnit](arkts-arkui-window-pixelunit-e.md)
 
 **Since:** 22
+
+<!--Device-WindowLimits-pixelUnit?: PixelUnit--><!--Device-WindowLimits-pixelUnit?: PixelUnit-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

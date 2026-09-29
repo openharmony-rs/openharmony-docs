@@ -14,6 +14,8 @@ Called when the WindowScene is used.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowSceneInterface-(persistentId: number): WindowSceneAttribute--><!--Device-WindowSceneInterface-(persistentId: number): WindowSceneAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

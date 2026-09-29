@@ -4,6 +4,8 @@ The appManager module implements application management. You can use the APIs of
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace appManager--><!--Device-unnamed-declare namespace appManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Test API:** This API is used only in automated test scripts.
@@ -88,6 +90,27 @@ import { appManager } from '@kit.AbilityKit';
 | [KeepAliveBundleInfo](arkts-ability-appmanager-keepalivebundleinfo-i-sys.md) | Describes the keep-alive application information, which can be obtained by calling [getKeepAliveBundles](arkts-ability-appmanager-getkeepalivebundles-f-sys.md) or [getKeepAliveAppServiceExtensions](arkts-ability-appmanager-getkeepaliveappserviceextensions-f-sys.md). |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Defines the ability state data. |
+| [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | Defines the observer used to listen for application state changes. |
+| [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | Defines the application state data. |
+| [ProcessData](arkts-ability-appmanager-processdata-t.md) | Defines the process data. |
+| [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | Defines the process information. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [AbilityFirstFrameStateData](arkts-ability-appmanager-abilityfirstframestatedata-t-sys.md) | Defines the data structure reported when the first frame rendering of the UIAbility is complete. |
+| [AbilityFirstFrameStateObserver](arkts-ability-appmanager-abilityfirstframestateobserver-t-sys.md) | Defines the listener for the completion of the first frame rendering of the UIAbility. |
+| [AppForegroundStateObserver](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md) | Defines the listener for the state of application launch and exit. |
+| [RunningMultiAppInfo](arkts-ability-appmanager-runningmultiappinfo-t-sys.md) | Defines the information of an application in multi-app mode in the running state. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -108,25 +131,4 @@ import { appManager } from '@kit.AbilityKit';
 | [KeepAliveAppType](arkts-ability-appmanager-keepaliveapptype-e-sys.md) | Enumerates the types of applications to be kept alive. |
 | [KeepAliveSetter](arkts-ability-appmanager-keepalivesetter-e-sys.md) | Enumerates the types of parties that set to keep applications alive. |
 | [PreloadMode](arkts-ability-appmanager-preloadmode-e-sys.md) | Enumerates the modes used for preloading an application process. |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AbilityStateData](arkts-ability-appmanager-abilitystatedata-t.md) | Defines the ability state data. |
-| [ApplicationStateObserver](arkts-ability-appmanager-applicationstateobserver-t.md) | Defines the observer used to listen for application state changes. |
-| [AppStateData](arkts-ability-appmanager-appstatedata-t.md) | Defines the application state data. |
-| [ProcessData](arkts-ability-appmanager-processdata-t.md) | Defines the process data. |
-| [ProcessInformation](arkts-ability-appmanager-processinformation-t.md) | Defines the process information. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [AbilityFirstFrameStateData](arkts-ability-appmanager-abilityfirstframestatedata-t-sys.md) | Defines the data structure reported when the first frame rendering of the UIAbility is complete. |
-| [AbilityFirstFrameStateObserver](arkts-ability-appmanager-abilityfirstframestateobserver-t-sys.md) | Defines the listener for the completion of the first frame rendering of the UIAbility. |
-| [AppForegroundStateObserver](arkts-ability-appmanager-appforegroundstateobserver-t-sys.md) | Defines the listener for the state of application launch and exit. |
-| [RunningMultiAppInfo](arkts-ability-appmanager-runningmultiappinfo-t-sys.md) | Defines the information of an application in multi-app mode in the running state. |
 <!--DelEnd-->

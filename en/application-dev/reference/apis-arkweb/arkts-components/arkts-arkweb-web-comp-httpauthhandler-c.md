@@ -8,6 +8,8 @@ HttpAuthHandler is a handler class used by the Web component to process HTTP aut
 
 **Since:** 9
 
+<!--Device-unnamed-declare class HttpAuthHandler--><!--Device-unnamed-declare class HttpAuthHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## cancel
@@ -22,6 +24,8 @@ Cancels HTTP authentication as requested by the user.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HttpAuthHandler-cancel(): void--><!--Device-HttpAuthHandler-cancel(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## confirm
@@ -35,6 +39,8 @@ Performs HTTP authentication with the user name and password provided by the use
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HttpAuthHandler-confirm(userName: string, password: string): boolean--><!--Device-HttpAuthHandler-confirm(userName: string, password: string): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -63,6 +69,8 @@ Constructs an **HttpAuthHandler**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HttpAuthHandler-constructor()--><!--Device-HttpAuthHandler-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isHttpAuthInfoSaved
@@ -76,6 +84,8 @@ Checks whether the credentials stored for the current host are applicable. The c
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HttpAuthHandler-isHttpAuthInfoSaved(): boolean--><!--Device-HttpAuthHandler-isHttpAuthInfoSaved(): boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

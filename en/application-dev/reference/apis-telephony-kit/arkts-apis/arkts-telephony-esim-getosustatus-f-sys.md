@@ -18,6 +18,8 @@ Obtains the OS upgrade status for the eSIM in the specified slot. This API uses 
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function getOsuStatus(slotId: int): Promise<OsuStatus>--><!--Device-eSIM-function getOsuStatus(slotId: int): Promise<OsuStatus>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

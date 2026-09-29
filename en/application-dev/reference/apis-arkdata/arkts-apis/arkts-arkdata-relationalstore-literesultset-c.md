@@ -16,6 +16,8 @@ In the following API examples, you need to obtain an **LiteResultSet** instance 
 
 **Since:** 23
 
+<!--Device-relationalStore-class LiteResultSet--><!--Device-relationalStore-class LiteResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Closes this **resultSet** to release memory. If the **resultSet** is not closed,
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-close(): void--><!--Device-LiteResultSet-close(): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -67,6 +71,8 @@ If the data type of the current column is Asset, the value is returned as an Ass
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getAsset(columnIndex: int): Asset--><!--Device-LiteResultSet-getAsset(columnIndex: int): Asset-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -122,6 +128,8 @@ If the data type of the current column is Assets, the value is returned as Asset
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getAssets(columnIndex: int): Assets--><!--Device-LiteResultSet-getAssets(columnIndex: int): Assets-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -180,6 +188,8 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getBlob(columnIndex: int): Uint8Array--><!--Device-LiteResultSet-getBlob(columnIndex: int): Uint8Array-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -232,6 +242,8 @@ Obtains the column index based on the column name.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getColumnIndex(columnName: string): int--><!--Device-LiteResultSet-getColumnIndex(columnName: string): int-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -291,6 +303,8 @@ Obtains the column name based on the column index.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getColumnName(columnIndex: int): string--><!--Device-LiteResultSet-getColumnName(columnIndex: int): string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -354,6 +368,8 @@ The column names are returned in a string array. The sequence of strings in the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getColumnNames(): Array<string>--><!--Device-LiteResultSet-getColumnNames(): Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -404,6 +420,8 @@ Obtains the column type based on the specified column index or column name. This
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getColumnType(columnIdentifier: int | string): Promise<ColumnType>--><!--Device-LiteResultSet-getColumnType(columnIdentifier: int | string): Promise<ColumnType>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -474,6 +492,8 @@ Obtains the column type based on the specified column index or column name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getColumnTypeSync(columnIdentifier: int | string): ColumnType--><!--Device-LiteResultSet-getColumnTypeSync(columnIdentifier: int | string): ColumnType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -543,6 +563,8 @@ Obtains the values of all columns in this row.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getCurrentRowData(): RowData--><!--Device-LiteResultSet-getCurrentRowData(): RowData-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -601,6 +623,8 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getDouble(columnIndex: int): double--><!--Device-LiteResultSet-getDouble(columnIndex: int): double-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -658,6 +682,8 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getLong(columnIndex: int): long--><!--Device-LiteResultSet-getLong(columnIndex: int): long-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -711,6 +737,8 @@ Obtains data for the current row.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getRow(): ValuesBucket--><!--Device-LiteResultSet-getRow(): ValuesBucket-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -763,6 +791,8 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getRows(maxCount: int, position?: int): Promise<Array<ValuesBucket>>--><!--Device-LiteResultSet-getRows(maxCount: int, position?: int): Promise<Array<ValuesBucket>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -841,6 +871,8 @@ Obtains data of a specified number of rows from the specified position. This API
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getRowsData(maxCount: int, position?: int): Promise<RowsData>--><!--Device-LiteResultSet-getRowsData(maxCount: int, position?: int): Promise<RowsData>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -935,6 +967,8 @@ If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getString(columnIndex: int): string--><!--Device-LiteResultSet-getString(columnIndex: int): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -990,6 +1024,8 @@ If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INT
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-getValue(columnIndex: int): ValueType--><!--Device-LiteResultSet-getValue(columnIndex: int): ValueType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -1042,6 +1078,8 @@ Moves the result set to the next row.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LiteResultSet-goToNextRow(): boolean--><!--Device-LiteResultSet-goToNextRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -1093,6 +1131,8 @@ Checks whether the value in the specified column is null.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-isColumnNull(columnIndex: int): boolean--><!--Device-LiteResultSet-isColumnNull(columnIndex: int): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

@@ -20,6 +20,8 @@ Subscribes to data receive events. This API uses an asynchronous callback to ret
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-proxyChannelManager-function on(type: 'receiveData', channelId: number, callback: Callback<DataInfo>): void--><!--Device-proxyChannelManager-function on(type: 'receiveData', channelId: number, callback: Callback<DataInfo>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -83,6 +85,8 @@ Subscribes to channel state events. This API uses an asynchronous callback to re
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-proxyChannelManager-function on(type: 'channelStateChange', channelId: number, callback: Callback<ChannelStateInfo>): void--><!--Device-proxyChannelManager-function on(type: 'channelStateChange', channelId: number, callback: Callback<ChannelStateInfo>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

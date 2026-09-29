@@ -8,6 +8,8 @@ Defines motion path configuration options of the component.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface MotionPathOptions--><!--Device-unnamed-declare interface MotionPathOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## from
@@ -32,6 +34,8 @@ Values less than 0.0 or greater than 1.0 are treated as the default value 0.0.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MotionPathOptions-from?: number--><!--Device-MotionPathOptions-from?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -49,6 +53,8 @@ If this parameter is set to an empty string, the path animation is not set.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MotionPathOptions-path: string--><!--Device-MotionPathOptions-path: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +75,8 @@ Default value: **false**
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MotionPathOptions-rotatable?: boolean--><!--Device-MotionPathOptions-rotatable?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,5 +101,7 @@ Values less than 0.0 or greater than 1.0 are treated as the default value 1.0. A
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MotionPathOptions-to?: number--><!--Device-MotionPathOptions-to?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

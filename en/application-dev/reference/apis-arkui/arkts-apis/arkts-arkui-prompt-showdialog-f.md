@@ -12,7 +12,7 @@ import { prompt } from '@kit.ArkUI';
 function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>): void
 ```
 
-Displays the dialog box.
+Shows a dialog box. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -22,14 +22,16 @@ Displays the dialog box.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-prompt-function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>): void--><!--Device-prompt-function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDialogSuccessResponse>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | Yes | Options. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | Yes |  |
+| options | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | Yes | Dialog box options. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | Yes | Callback used to return the dialog box response result. |
 
 **Examples**
 
@@ -66,7 +68,7 @@ prompt.showDialog({
 function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>
 ```
 
-Displays the dialog box.
+Shows a dialog box. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -76,19 +78,21 @@ Displays the dialog box.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-prompt-function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>--><!--Device-prompt-function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessResponse>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | Yes | Options. |
+| options | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | Yes | Dialog box options. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; |  |
+| Promise&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | Promise used to return the dialog box response result. |
 
 **Examples**
 

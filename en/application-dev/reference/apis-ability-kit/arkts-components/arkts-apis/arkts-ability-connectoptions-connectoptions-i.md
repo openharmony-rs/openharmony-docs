@@ -8,6 +8,8 @@ export interface ConnectOptions
 
 **Since:** 7
 
+<!--Device-unnamed-export interface ConnectOptions--><!--Device-unnamed-export interface ConnectOptions-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onConnect
@@ -19,6 +21,8 @@ onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 Called when a connection is set up.
 
 **Since:** 7
+
+<!--Device-ConnectOptions-onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void--><!--Device-ConnectOptions-onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,6 +74,8 @@ Called when a connection is interrupted.
 
 **Since:** 7
 
+<!--Device-ConnectOptions-onDisconnect(elementName: ElementName): void--><!--Device-ConnectOptions-onDisconnect(elementName: ElementName): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -118,6 +124,8 @@ onFailed(code: number): void
 Called when a connection fails.
 
 **Since:** 7
+
+<!--Device-ConnectOptions-onFailed(code: number): void--><!--Device-ConnectOptions-onFailed(code: number): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

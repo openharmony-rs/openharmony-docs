@@ -8,6 +8,8 @@ Implements a **BackForwardCacheOptions** object to set back-forward cache option
 
 **Since:** 12
 
+<!--Device-webview-class BackForwardCacheOptions--><!--Device-webview-class BackForwardCacheOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ constructor()
 Constructs a **BackForwardCacheOptions** object.
 
 **Since:** 12
+
+<!--Device-BackForwardCacheOptions-constructor()--><!--Device-BackForwardCacheOptions-constructor()-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -46,6 +50,8 @@ The Web component reclaims the cache for memory pressure.
 
 **Since:** 12
 
+<!--Device-BackForwardCacheOptions-size: number--><!--Device-BackForwardCacheOptions-size: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## timeToLive
@@ -65,5 +71,7 @@ Unit: second
 **Type:** number
 
 **Since:** 12
+
+<!--Device-BackForwardCacheOptions-timeToLive: number--><!--Device-BackForwardCacheOptions-timeToLive: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

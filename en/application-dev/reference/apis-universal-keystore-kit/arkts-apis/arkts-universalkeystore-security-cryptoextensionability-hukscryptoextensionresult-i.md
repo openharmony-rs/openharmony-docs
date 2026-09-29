@@ -8,6 +8,8 @@ Represents the operation result of crypto extension.
 
 **Since:** 22
 
+<!--Device-unnamed-export interface HuksCryptoExtensionResult--><!--Device-unnamed-export interface HuksCryptoExtensionResult-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Auth state.
 
 **Since:** 22
 
+<!--Device-HuksCryptoExtensionResult-authState?: int--><!--Device-HuksCryptoExtensionResult-authState?: int-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## certs
@@ -41,6 +45,8 @@ The cert array.
 **Type:** Array&lt;[HuksCryptoExtensionCertInfo](arkts-universalkeystore-security-cryptoextensionability-hukscryptoextensioncertinfo-i.md)&gt;
 
 **Since:** 22
+
+<!--Device-HuksCryptoExtensionResult-certs?: Array<HuksCryptoExtensionCertInfo>--><!--Device-HuksCryptoExtensionResult-certs?: Array<HuksCryptoExtensionCertInfo>-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
@@ -58,6 +64,8 @@ The detailed error information returned.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HuksCryptoExtensionResult-errInfo?: huksExternalCrypto.HuksExternalErrorInfo--><!--Device-HuksCryptoExtensionResult-errInfo?: huksExternalCrypto.HuksExternalErrorInfo-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## handle
@@ -71,6 +79,8 @@ The provider resource handle.
 **Type:** string
 
 **Since:** 22
+
+<!--Device-HuksCryptoExtensionResult-handle?: string--><!--Device-HuksCryptoExtensionResult-handle?: string-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
@@ -86,6 +96,8 @@ Returned data.
 
 **Since:** 22
 
+<!--Device-HuksCryptoExtensionResult-outData?: Uint8Array--><!--Device-HuksCryptoExtensionResult-outData?: Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## property
@@ -99,6 +111,8 @@ Returned property info.
 **Type:** Array&lt;[huksExternalCrypto.HuksExternalCryptoParam](arkts-universalkeystore-huksexternalcrypto-huksexternalcryptoparam-i.md)&gt;
 
 **Since:** 22
+
+<!--Device-HuksCryptoExtensionResult-property?: Array<huksExternalCrypto.HuksExternalCryptoParam>--><!--Device-HuksCryptoExtensionResult-property?: Array<huksExternalCrypto.HuksExternalCryptoParam>-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
@@ -116,6 +130,8 @@ The returned resource ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-HuksCryptoExtensionResult-resourceId?: string--><!--Device-HuksCryptoExtensionResult-resourceId?: string-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## resultCode
@@ -130,6 +146,8 @@ Returned code.
 
 **Since:** 22
 
+<!--Device-HuksCryptoExtensionResult-resultCode: int--><!--Device-HuksCryptoExtensionResult-resultCode: int-End-->
+
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
 ## retryCount
@@ -143,5 +161,7 @@ The remaining retry count when the PIN is incorrect.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-HuksCryptoExtensionResult-retryCount?: int--><!--Device-HuksCryptoExtensionResult-retryCount?: int-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension

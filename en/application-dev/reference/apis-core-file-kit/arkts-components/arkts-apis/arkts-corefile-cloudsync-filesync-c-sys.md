@@ -8,6 +8,8 @@ Provides APIs for the file manager application to perform device-cloud sync of t
 
 **Since:** 12
 
+<!--Device-cloudSync-class FileSync--><!--Device-cloudSync-class FileSync-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ constructor(bundleName: string)
 A constructor used to create a **FileSync** instance.
 
 **Since:** 12
+
+<!--Device-FileSync-constructor(bundleName: string)--><!--Device-FileSync-constructor(bundleName: string)-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -64,6 +68,8 @@ Query the upload state of the cloud file list.
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileSync-getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>--><!--Device-FileSync-getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -104,6 +110,8 @@ Pause the upload of the cloud file.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileSync-pauseUpload(uri: string): void--><!--Device-FileSync-pauseUpload(uri: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -138,6 +146,8 @@ Registers to cloud file upload progress change. This method uses a callback to g
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileSync-registerUploadProgress(callback: Callback<UploadProgress>): void--><!--Device-FileSync-registerUploadProgress(callback: Callback<UploadProgress>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -170,6 +180,8 @@ Resume the upload of the cloud file.
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileSync-resumeUpload(uri: string): void--><!--Device-FileSync-resumeUpload(uri: string): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -204,6 +216,8 @@ Unregisters from cloud file upload progress change.
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileSync-unregisterUploadProgress(): void--><!--Device-FileSync-unregisterUploadProgress(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

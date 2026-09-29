@@ -8,6 +8,8 @@ Declare CallbackParam
 
 **Since:** 10
 
+<!--Device-unnamed-export interface CallbackParam--><!--Device-unnamed-export interface CallbackParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Default value: **-1**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CallbackParam-childIndex?: number--><!--Device-CallbackParam-childIndex?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentNodeId
@@ -55,6 +59,8 @@ The value must be greater than or equal to 0.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CallbackParam-currentNodeId: number--><!--Device-CallbackParam-currentNodeId: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,5 +83,7 @@ Default value: **-1**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CallbackParam-parentNodeId?: number--><!--Device-CallbackParam-parentNodeId?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

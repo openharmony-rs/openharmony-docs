@@ -19,6 +19,8 @@ Writes event information to the event file of the current day. This API uses a p
 
 **Substitutes:** [write](arkts-performanceanalysis-hiappevent-write-f.md)
 
+<!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object): Promise<void>--><!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object): Promise<void>-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 **Parameters:**
@@ -70,6 +72,8 @@ Writes event information to the event file of the current day. This API uses an 
 **Deprecated since:** 9
 
 **Substitutes:** [write](arkts-performanceanalysis-hiappevent-write-f.md)
+
+<!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object, callback: AsyncCallback<void>): void--><!--Device-hiAppEvent-function write(eventName: string, eventType: EventType, keyValues: object, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

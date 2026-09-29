@@ -17,6 +17,8 @@ fromCodePoint(...codePoints: number[]): string
 
 Return the String value whose elements are, in order, the elements in the List elements. If length is 0, the empty string is returned.
 
+<!--Device-StringConstructor-fromCodePoint(...codePoints: number[]): string--><!--Device-StringConstructor-fromCodePoint(...codePoints: number[]): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -30,6 +32,8 @@ raw(template: { raw: readonly string[] | ArrayLike<string>}, ...substitutions: a
 ```
 
 String.raw is usually used as a tag function of a Tagged Template String. When called as such, the first argument will be a well formed template call site object and the rest parameter will contain the substitution values. It can also be called directly, for example, to interleave strings and values from your own tag function, and in this case the only thing it needs from the first argument is the raw property.
+
+<!--Device-StringConstructor-raw(template: { raw: readonly string[] | ArrayLike<string>}, ...substitutions: any[]): string--><!--Device-StringConstructor-raw(template: { raw: readonly string[] | ArrayLike<string>}, ...substitutions: any[]): string-End-->
 
 **Parameters:**
 

@@ -8,6 +8,8 @@ Defines the background style configuration for selected picker items.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface PickerBackgroundStyle--><!--Device-unnamed-declare interface PickerBackgroundStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderRadius
@@ -16,15 +18,19 @@ Defines the background style configuration for selected picker items.
 borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses
 ```
 
-Border radius of the selected item.
+Corner radius of the border of the selected item.
 
-Default value: **{ value:24, unit:LengthUnit.VP }**, meaning 24 vp for all corners.
+Default value: { value:24, unit:LengthUnit.VP }, that is, the radius of all four corners is 24vp.
+
+Unit: vp by default. The unit can be specified through the LengthMetrics or LocalizedBorderRadiuses type.
 
 **NOTE:** 
 
-1. [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md): uniform radius with a customizable unit
-2. [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md): per-corner radius values (vp units only)
-3. [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md): per-corner radius values with individual units
+1. The value parameter of the [LengthMetrics](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md) type applies to the
+radius of all four corners, and the unit parameter is used to set the unit.
+2. The [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md) type can set four different corner radii, with all units fixed to vp.
+3. The [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md) type can set four different corner radii, and the
+unit of each corner can be set separately.
 
 **Type:** LengthMetrics &#124; [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md) &#124; [LocalizedBorderRadiuses](../arkts-apis/arkts-arkui-localizedborderradiuses-i.md)
 
@@ -36,6 +42,8 @@ Default value: **{ value:24, unit:LengthUnit.VP }**, meaning 24 vp for all corne
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-PickerBackgroundStyle-borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses--><!--Device-PickerBackgroundStyle-borderRadius?: LengthMetrics | BorderRadiuses | LocalizedBorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -46,7 +54,11 @@ color?: ResourceColor
 
 Background color of the selected item.
 
-Default value: 'sys.color.comp_background_tertiary'
+Default value:
+
+'sys.color.comp_background_tertiary'
+
+**Note:** If this attribute is not set, the default value is used.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -57,5 +69,7 @@ Default value: 'sys.color.comp_background_tertiary'
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PickerBackgroundStyle-color?: ResourceColor--><!--Device-PickerBackgroundStyle-color?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

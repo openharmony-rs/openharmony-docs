@@ -16,7 +16,9 @@ Creates a **PasteData** object of the specified type.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-pasteboard-function createData(mimeType: string, value: ValueType): PasteData--><!--Device-pasteboard-function createData(mimeType: string, value: ValueType): PasteData-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -51,6 +53,8 @@ function createData(data: Record<string, ValueType>): PasteData
 Creates a **PasteData** object that contains multiple types of data.
 
 **Since:** 14
+
+<!--Device-pasteboard-function createData(data: Record<string, ValueType>): PasteData--><!--Device-pasteboard-function createData(data: Record<string, ValueType>): PasteData-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 

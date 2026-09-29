@@ -8,6 +8,8 @@ Represents a **Connection** object, which provides methods for connecting to and
 
 **Since:** 20
 
+<!--Device-linkEnhance-interface Connection--><!--Device-linkEnhance-interface Connection-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Destroys the **Connection** object to release resources. If the device needs to 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Connection-close(): void--><!--Device-Connection-close(): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -77,6 +81,8 @@ Connects to the server on the client after the **Connection** object is successf
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Connection-connect(): void--><!--Device-Connection-connect(): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -129,6 +135,8 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Connection-disconnect(): void--><!--Device-Connection-disconnect(): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Error codes:**
@@ -177,6 +185,8 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Connection-getPeerDeviceId(): string--><!--Device-Connection-getPeerDeviceId(): string-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Return value:**
@@ -224,6 +234,8 @@ Unregisters the listener for **connectResult** events.
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Connection-off(type: 'connectResult', callback?: Callback<ConnectResult>): void--><!--Device-Connection-off(type: 'connectResult', callback?: Callback<ConnectResult>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -281,6 +293,8 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Connection-off(type: 'disconnected', callback?: Callback<number>): void--><!--Device-Connection-off(type: 'disconnected', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -336,6 +350,8 @@ Unregisters the listener for **dataReceived** events.
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Connection-off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void--><!--Device-Connection-off(type: 'dataReceived', callback?: Callback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -394,6 +410,8 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Connection-on(type: 'connectResult', callback: Callback<ConnectResult>): void--><!--Device-Connection-on(type: 'connectResult', callback: Callback<ConnectResult>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -450,6 +468,8 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Connection-on(type: 'disconnected', callback: Callback<number>): void--><!--Device-Connection-on(type: 'disconnected', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**
@@ -502,6 +522,8 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Connection-on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void--><!--Device-Connection-on(type: 'dataReceived', callback: Callback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -557,6 +579,8 @@ Sends data to the server after a connection is established successfully. When th
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Connection-sendData(data: ArrayBuffer): void--><!--Device-Connection-sendData(data: ArrayBuffer): void-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

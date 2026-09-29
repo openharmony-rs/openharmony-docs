@@ -12,6 +12,8 @@ Defines the schema of a KV store. You can create a **Schema** object and place i
 
 **Substitutes:** Schema
 
+<!--Device-distributedData-class Schema--><!--Device-distributedData-class Schema-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## Modules to Import
@@ -33,6 +35,8 @@ A constructor used to create a **Schema** instance.
 
 **Substitutes:** constructor
 
+<!--Device-Schema-constructor()--><!--Device-Schema-constructor()-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## indexes
@@ -50,6 +54,8 @@ String array in JSON format.
 **Deprecated since:** 9
 
 **Substitutes:** indexes
+
+<!--Device-Schema-indexes: Array<string>--><!--Device-Schema-indexes: Array<string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -69,6 +75,8 @@ Schema mode.
 
 **Substitutes:** mode
 
+<!--Device-Schema-mode: number--><!--Device-Schema-mode: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## root
@@ -87,6 +95,8 @@ JSON root object.
 
 **Substitutes:** root
 
+<!--Device-Schema-root: FieldNode--><!--Device-Schema-root: FieldNode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## skip
@@ -104,5 +114,7 @@ Size of a skip of the schema.
 **Deprecated since:** 9
 
 **Substitutes:** skip
+
+<!--Device-Schema-skip: number--><!--Device-Schema-skip: number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore

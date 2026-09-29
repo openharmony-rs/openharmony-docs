@@ -16,7 +16,9 @@ Removes a **Preferences** instance from the cache. This API uses an asynchronous
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-preferences-function removePreferencesFromCache(context: Context, name: string, callback: AsyncCallback<void>): void--><!--Device-preferences-function removePreferencesFromCache(context: Context, name: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -24,7 +26,7 @@ Removes a **Preferences** instance from the cache. This API uses an asynchronous
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see Context.<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
+| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | name | string | Yes | Name of the **Preferences** instance. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
@@ -87,7 +89,9 @@ Removes a **Preferences** instance from the cache. This API uses an asynchronous
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-preferences-function removePreferencesFromCache(context: Context, options: Options, callback: AsyncCallback<void>): void--><!--Device-preferences-function removePreferencesFromCache(context: Context, options: Options, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -95,7 +99,7 @@ Removes a **Preferences** instance from the cache. This API uses an asynchronous
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see Context.<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
+| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | options | [Options](arkts-arkdata-preferences-options-i.md) | Yes | Configuration options of the **Preferences** instance. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
@@ -163,7 +167,9 @@ Removes a **Preferences** instance from the cache. This API uses a promise to re
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-preferences-function removePreferencesFromCache(context: Context, name: string): Promise<void>--><!--Device-preferences-function removePreferencesFromCache(context: Context, name: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -171,7 +177,7 @@ Removes a **Preferences** instance from the cache. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see Context.<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
+| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | name | string | Yes | Name of the **Preferences** instance. |
 
 **Return value:**
@@ -237,7 +243,9 @@ Removes a **Preferences** instance from the cache. This API uses a promise to re
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-preferences-function removePreferencesFromCache(context: Context, options: Options): Promise<void>--><!--Device-preferences-function removePreferencesFromCache(context: Context, options: Options): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -245,7 +253,7 @@ Removes a **Preferences** instance from the cache. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see Context.<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
+| context | Context | Yes | Application context.<br>For details about the application context of the FA model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md).<br>For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md). |
 | options | [Options](arkts-arkdata-preferences-options-i.md) | Yes | Configuration options of the **Preferences** instance. |
 
 **Return value:**

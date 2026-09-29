@@ -8,6 +8,8 @@ Defines the customizable attributes of a segment button component.
 
 **Since:** 11
 
+<!--Device-unnamed-interface CommonSegmentButtonOptions--><!--Device-unnamed-interface CommonSegmentButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-backgroundBlurStyle?: BlurStyle--><!--Device-CommonSegmentButtonOptions-backgroundBlurStyle?: BlurStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonSegmentButtonOptions-backgroundBorderRadius?: LengthMetrics--><!--Device-CommonSegmentButtonOptions-backgroundBorderRadius?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -89,6 +95,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-backgroundColor?: ResourceColor--><!--Device-CommonSegmentButtonOptions-backgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +122,8 @@ Since API version 26.0.0, except for capsule-type multi-select segment buttons (
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonSegmentButtonOptions-backgroundSystemMaterial?: uiMaterial.Material--><!--Device-CommonSegmentButtonOptions-backgroundSystemMaterial?: uiMaterial.Material-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderRadiusMode
@@ -137,6 +147,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonSegmentButtonOptions-borderRadiusMode?: BorderRadiusMode--><!--Device-CommonSegmentButtonOptions-borderRadiusMode?: BorderRadiusMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +180,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-buttonPadding?: Padding | Dimension--><!--Device-CommonSegmentButtonOptions-buttonPadding?: Padding | Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -190,6 +204,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-direction?: Direction--><!--Device-CommonSegmentButtonOptions-direction?: Direction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -211,6 +227,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-fontColor?: ResourceColor--><!--Device-CommonSegmentButtonOptions-fontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,6 +256,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-fontSize?: DimensionNoPercentage--><!--Device-CommonSegmentButtonOptions-fontSize?: DimensionNoPercentage-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
@@ -261,6 +281,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-fontWeight?: FontWeight--><!--Device-CommonSegmentButtonOptions-fontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -292,6 +314,8 @@ The `imageSize` attribute takes effect only for icon buttons and icon + text but
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-imageSize?: SizeOptions--><!--Device-CommonSegmentButtonOptions-imageSize?: SizeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemBorderRadius
@@ -322,6 +346,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonSegmentButtonOptions-itemBorderRadius?: LengthMetrics--><!--Device-CommonSegmentButtonOptions-itemBorderRadius?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## localizedButtonPadding
@@ -350,6 +376,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-localizedButtonPadding?: LocalizedPadding--><!--Device-CommonSegmentButtonOptions-localizedButtonPadding?: LocalizedPadding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## localizedTextPadding
@@ -373,6 +401,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-localizedTextPadding?: LocalizedPadding--><!--Device-CommonSegmentButtonOptions-localizedTextPadding?: LocalizedPadding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -400,6 +430,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-selectedBackgroundColor?: ResourceColor--><!--Device-CommonSegmentButtonOptions-selectedBackgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedFontColor
@@ -425,6 +457,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-selectedFontColor?: ResourceColor--><!--Device-CommonSegmentButtonOptions-selectedFontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,6 +486,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonSegmentButtonOptions-selectedFontSize?: DimensionNoPercentage--><!--Device-CommonSegmentButtonOptions-selectedFontSize?: DimensionNoPercentage-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedFontWeight
@@ -475,6 +511,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-selectedFontWeight?: FontWeight--><!--Device-CommonSegmentButtonOptions-selectedFontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -501,5 +539,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonSegmentButtonOptions-textPadding?: Padding | Dimension--><!--Device-CommonSegmentButtonOptions-textPadding?: Padding | Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

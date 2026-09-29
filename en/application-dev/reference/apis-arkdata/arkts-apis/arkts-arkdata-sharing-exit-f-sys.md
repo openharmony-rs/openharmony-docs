@@ -16,6 +16,8 @@ Exits the share of the specified shared resource. This API uses an asynchronous 
 
 **Since:** 11
 
+<!--Device-sharing-function exit(sharingResource: string, callback: AsyncCallback<Result<void>>): void--><!--Device-sharing-function exit(sharingResource: string, callback: AsyncCallback<Result<void>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ function exit(sharingResource: string): Promise<Result<void>>
 Exits the share of the specified shared resource. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-sharing-function exit(sharingResource: string): Promise<Result<void>>--><!--Device-sharing-function exit(sharingResource: string): Promise<Result<void>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

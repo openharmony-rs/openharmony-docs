@@ -4,6 +4,8 @@ The **esim** module provides basic eSIM management capabilities, including check
 
 **Since:** 18
 
+<!--Device-unnamed-declare namespace eSIM--><!--Device-unnamed-declare namespace eSIM-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 ## Modules to Import

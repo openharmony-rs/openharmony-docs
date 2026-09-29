@@ -8,6 +8,8 @@ Enumerates authorization result codes.
 
 **Since:** 26.0.1
 
+<!--Device-authorization-enum AuthorizationResultCode--><!--Device-authorization-enum AuthorizationResultCode-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## AUTHORIZATION_GRANTED
@@ -21,6 +23,8 @@ The authorization is granted.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -43,6 +47,8 @@ Possible causes: The user explicitly dismissed the authorization dialog (e.g., c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizationResultCode-AUTHORIZATION_CANCELED = 12300301--><!--Device-AuthorizationResultCode-AUTHORIZATION_CANCELED = 12300301-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## AUTHORIZATION_DENIED
@@ -64,6 +70,8 @@ Possible causes: The authorization policy for the privilege is not met. For exam
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303--><!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## AUTHORIZATION_NOT_SUPPORTED
@@ -83,5 +91,7 @@ Possible causes: A newer application version containing cutting-edge system feat
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationResultCode-AUTHORIZATION_NOT_SUPPORTED = 12300305--><!--Device-AuthorizationResultCode-AUTHORIZATION_NOT_SUPPORTED = 12300305-End-->
 
 **System capability:** SystemCapability.Account.OsAccount

@@ -8,6 +8,8 @@ UIPickerComponent容器的参数说明。
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare interface UIPickerComponentOptions--><!--Device-unnamed-declare interface UIPickerComponentOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedIndex
@@ -35,5 +37,7 @@ selectedIndex?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIPickerComponentOptions-selectedIndex?: number--><!--Device-UIPickerComponentOptions-selectedIndex?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

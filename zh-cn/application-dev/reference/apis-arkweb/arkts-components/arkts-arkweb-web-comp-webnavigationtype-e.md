@@ -8,6 +8,8 @@ declare enum WebNavigationType
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare enum WebNavigationType--><!--Device-unnamed-declare enum WebNavigationType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## UNKNOWN
@@ -21,6 +23,8 @@ UNKNOWN = 0
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebNavigationType-UNKNOWN = 0--><!--Device-WebNavigationType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ MAIN_FRAME_NEW_ENTRY = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebNavigationType-MAIN_FRAME_NEW_ENTRY = 1--><!--Device-WebNavigationType-MAIN_FRAME_NEW_ENTRY = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## MAIN_FRAME_EXISTING_ENTRY
@@ -49,6 +55,8 @@ MAIN_FRAME_EXISTING_ENTRY = 2
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2--><!--Device-WebNavigationType-MAIN_FRAME_EXISTING_ENTRY = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ NAVIGATION_TYPE_NEW_SUBFRAME = 4
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebNavigationType-NAVIGATION_TYPE_NEW_SUBFRAME = 4--><!--Device-WebNavigationType-NAVIGATION_TYPE_NEW_SUBFRAME = 4-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NAVIGATION_TYPE_AUTO_SUBFRAME
@@ -77,5 +87,7 @@ NAVIGATION_TYPE_AUTO_SUBFRAME = 5
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5--><!--Device-WebNavigationType-NAVIGATION_TYPE_AUTO_SUBFRAME = 5-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

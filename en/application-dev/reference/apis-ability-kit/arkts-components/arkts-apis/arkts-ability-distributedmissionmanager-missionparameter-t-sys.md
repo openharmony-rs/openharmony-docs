@@ -10,6 +10,8 @@ Defines the parameters required for mission synchronization. It is used an input
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedMissionManager-export type MissionParameter = _MissionParameter--><!--Device-distributedMissionManager-export type MissionParameter = _MissionParameter-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.

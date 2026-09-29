@@ -8,6 +8,8 @@ Enumerates the callbacks used for the request for loading an ad.
 
 **Since:** 11
 
+<!--Device-advertising-export interface AdLoadListener--><!--Device-advertising-export interface AdLoadListener-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called when an ad request fails.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdLoadListener-onAdLoadFailure(errorCode: number, errorMsg: string): void--><!--Device-AdLoadListener-onAdLoadFailure(errorCode: number, errorMsg: string): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -64,6 +68,8 @@ Called when an ad request is successful.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdLoadListener-onAdLoadSuccess(ads: Array<Advertisement>): void--><!--Device-AdLoadListener-onAdLoadSuccess(ads: Array<Advertisement>): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 

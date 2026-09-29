@@ -10,6 +10,8 @@ AnimateStyle
 
 **Since:** 4
 
+<!--Device-unnamed-export interface AnimateStyle--><!--Device-unnamed-export interface AnimateStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -25,6 +27,8 @@ Background color applied to the component after the animation is executed. The d
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateStyle-backgroundColor: string--><!--Device-AnimateStyle-backgroundColor: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ The value format is "x y", in percentage or pixels. The first value indicates th
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateStyle-backgroundPosition: string--><!--Device-AnimateStyle-backgroundPosition: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -57,6 +63,8 @@ bottom offset applied to the component after the animation is executed.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateStyle-bottom: number--><!--Device-AnimateStyle-bottom: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ Height value applied to the component after the animation is executed.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateStyle-height: number--><!--Device-AnimateStyle-height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## left
@@ -89,6 +99,8 @@ left offset applied to the component after the animation is executed.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateStyle-left: number--><!--Device-AnimateStyle-left: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +118,8 @@ The value of offset must be within (0.0,1.0] and sorted in ascending order if it
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateStyle-offset?: number--><!--Device-AnimateStyle-offset?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## opacity
@@ -121,6 +135,8 @@ Opacity applied to the component. The value ranges from 0 to 1. The default valu
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateStyle-opacity: number--><!--Device-AnimateStyle-opacity: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +154,8 @@ right offset applied to the component after the animation is executed.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateStyle-right: number--><!--Device-AnimateStyle-right: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -153,6 +171,8 @@ top offset applied to the component after the animation is executed.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateStyle-top: number--><!--Device-AnimateStyle-top: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -170,6 +190,8 @@ Transformation type applied to an element.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateStyle-transform: "none" | TransformObject--><!--Device-AnimateStyle-transform: "none" | TransformObject-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## transformOrigin
@@ -186,6 +208,8 @@ Origin position of the transformed element. The first value indicates the x-axis
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimateStyle-transformOrigin: string--><!--Device-AnimateStyle-transformOrigin: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -201,5 +225,7 @@ Width value applied to the component after the animation is executed.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimateStyle-width: number--><!--Device-AnimateStyle-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

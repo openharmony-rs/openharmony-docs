@@ -18,6 +18,8 @@ Queries the NearLink status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function getState(): NearlinkState--><!--Device-manager-function getState(): NearlinkState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**

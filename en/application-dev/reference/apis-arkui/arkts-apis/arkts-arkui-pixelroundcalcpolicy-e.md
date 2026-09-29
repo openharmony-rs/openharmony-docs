@@ -4,11 +4,11 @@
 declare enum PixelRoundCalcPolicy
 ```
 
-Pixel Round Direction
-
-@enum { number }
+Enumerates the pixel rounding policies for component boundaries.
 
 **Since:** 11
+
+<!--Device-unnamed-declare enum PixelRoundCalcPolicy--><!--Device-unnamed-declare enum PixelRoundCalcPolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,7 @@ Pixel Round Direction
 NO_FORCE_ROUND = 0
 ```
 
-No Force round the component boundary coordinates to integer pixel.
+The value is not rounded off.
 
 **Since:** 11
 
@@ -27,6 +27,8 @@ No Force round the component boundary coordinates to integer pixel.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-PixelRoundCalcPolicy-NO_FORCE_ROUND = 0--><!--Device-PixelRoundCalcPolicy-NO_FORCE_ROUND = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,7 @@ No Force round the component boundary coordinates to integer pixel.
 FORCE_CEIL = 1
 ```
 
-Force ceil the component boundary coordinates to integer pixel.
+Rounded-up calculation.
 
 **Since:** 11
 
@@ -45,6 +47,8 @@ Force ceil the component boundary coordinates to integer pixel.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-PixelRoundCalcPolicy-FORCE_CEIL = 1--><!--Device-PixelRoundCalcPolicy-FORCE_CEIL = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +58,7 @@ Force ceil the component boundary coordinates to integer pixel.
 FORCE_FLOOR = 2
 ```
 
-Force floor the component boundary coordinates to integer pixel.
+Rounded-down calculation.
 
 **Since:** 11
 
@@ -63,5 +67,7 @@ Force floor the component boundary coordinates to integer pixel.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-PixelRoundCalcPolicy-FORCE_FLOOR = 2--><!--Device-PixelRoundCalcPolicy-FORCE_FLOOR = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

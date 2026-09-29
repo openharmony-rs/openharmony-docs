@@ -25,6 +25,8 @@ layout behavior caused by automatic value inheritance.
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface GridColColumnOption--><!--Device-unnamed-declare interface GridColColumnOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lg
@@ -42,6 +44,8 @@ Number of grid columns occupied by the grid child component on a large-width dev
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColColumnOption-lg?: number--><!--Device-GridColColumnOption-lg?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +65,8 @@ Number of grid columns occupied by the grid child component on a medium-width de
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridColColumnOption-md?: number--><!--Device-GridColColumnOption-md?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sm
@@ -78,6 +84,8 @@ Number of grid columns occupied by the grid child component on a small-width dev
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColColumnOption-sm?: number--><!--Device-GridColColumnOption-sm?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,6 +105,8 @@ Number of grid columns occupied by the grid child component on an extra-large-wi
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridColColumnOption-xl?: number--><!--Device-GridColColumnOption-xl?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## xs
@@ -115,6 +125,8 @@ Number of grid columns occupied by the grid child component on a minimum-width d
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-GridColColumnOption-xs?: number--><!--Device-GridColColumnOption-xs?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## xxl
@@ -132,5 +144,7 @@ Number of grid columns occupied by the grid child component on an extra-extra-la
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GridColColumnOption-xxl?: number--><!--Device-GridColColumnOption-xxl?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -23,18 +23,18 @@ import { ExtraRegionPosition, ExpandedRegionLayoutOptions, HoverModeRegionLayout
 | [HoverModeRegionLayoutOptions](arkts-arkui-arkui-advanced-foldsplitcontainer-hovermoderegionlayoutoptions-i.md) | Defines layout information for the hover state. |
 | [HoverModeStatus](arkts-arkui-arkui-advanced-foldsplitcontainer-hovermodestatus-i.md) | Provides device or application information covering fold status, hover mode, application rotation, and window status type. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [OnHoverStatusChangeHandler](arkts-arkui-onhoverstatuschangehandler-t.md) | Defines an event handler for hover state changes. |
+
 ### Enums
 
 | Name | Description |
 | --- | --- |
 | [ExtraRegionPosition](arkts-arkui-arkui-advanced-foldsplitcontainer-extraregionposition-e.md) | Provides the position information of the extra region. |
 | [PresetSplitRatio](arkts-arkui-arkui-advanced-foldsplitcontainer-presetsplitratio-e.md) | Enumerates the split ratios. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [OnHoverStatusChangeHandler](arkts-arkui-onhoverstatuschangehandler-t.md) | Defines an event handler for hover state changes. |
 
 ## Examples
 

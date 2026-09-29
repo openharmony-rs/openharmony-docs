@@ -8,6 +8,8 @@ Defines the callback information for the file selector result, including the res
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnShowFileSelectorEvent--><!--Device-unnamed-declare interface OnShowFileSelectorEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## fileSelector
@@ -24,6 +26,8 @@ Information about the file selector.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnShowFileSelectorEvent-fileSelector: FileSelectorParam--><!--Device-OnShowFileSelectorEvent-fileSelector: FileSelectorParam-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## result
@@ -39,5 +43,7 @@ File selection result to be sent to the **Web** component.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnShowFileSelectorEvent-result: FileSelectorResult--><!--Device-OnShowFileSelectorEvent-result: FileSelectorResult-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

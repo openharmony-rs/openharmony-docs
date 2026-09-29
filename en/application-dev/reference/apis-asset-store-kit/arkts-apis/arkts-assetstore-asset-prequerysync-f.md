@@ -18,6 +18,8 @@ Performs preprocessing for the asset query. This API is used when user authentic
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-asset-function preQuerySync(query: AssetMap): Uint8Array--><!--Device-asset-function preQuerySync(query: AssetMap): Uint8Array-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

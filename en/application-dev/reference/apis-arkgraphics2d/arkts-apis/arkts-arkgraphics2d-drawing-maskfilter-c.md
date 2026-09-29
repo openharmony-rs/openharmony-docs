@@ -16,6 +16,8 @@ Implements a mask filter.
 
 **Since:** 12
 
+<!--Device-drawing-class MaskFilter--><!--Device-drawing-class MaskFilter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -33,6 +35,8 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 Creates a mask filter with a blur effect.
 
 **Since:** 12
+
+<!--Device-MaskFilter-static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter--><!--Device-MaskFilter-static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

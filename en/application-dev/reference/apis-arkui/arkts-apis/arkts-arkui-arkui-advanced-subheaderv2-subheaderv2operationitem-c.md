@@ -10,6 +10,8 @@ Represents an item in the operation area.
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class SubHeaderV2OperationItem--><!--Device-unnamed-export declare class SubHeaderV2OperationItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ callback function when operate the text or icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItem-action?: SubHeaderV2OperationItemAction--><!--Device-SubHeaderV2OperationItem-action?: SubHeaderV2OperationItemAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -49,6 +53,8 @@ Constructor of **SubHeaderV2OperationItem**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2OperationItem-constructor(options: SubHeaderV2OperationItemOptions)--><!--Device-SubHeaderV2OperationItem-constructor(options: SubHeaderV2OperationItemOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ The accessibilityDescription of this text or icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItem-accessibilityDescription?: ResourceStr--><!--Device-SubHeaderV2OperationItem-accessibilityDescription?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityLevel
@@ -98,6 +106,8 @@ The accessibilityLevel of this text or icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItem-accessibilityLevel?: string--><!--Device-SubHeaderV2OperationItem-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -118,6 +128,8 @@ The accessibilityText of this text or icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItem-accessibilityText?: ResourceStr--><!--Device-SubHeaderV2OperationItem-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -137,6 +149,8 @@ The content of text or the address of icon.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2OperationItem-content: SubHeaderV2OperationItemType--><!--Device-SubHeaderV2OperationItem-content: SubHeaderV2OperationItemType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,6 +174,8 @@ Sets the default focus state of the text or icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2OperationItem-defaultFocus?: boolean--><!--Device-SubHeaderV2OperationItem-defaultFocus?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -179,5 +195,7 @@ Set the id for SubHeaderV2OperationItem.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-SubHeaderV2OperationItem-id?: string--><!--Device-SubHeaderV2OperationItem-id?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

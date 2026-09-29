@@ -12,6 +12,8 @@ Defines the callback type for listening for click events in **UIObserver**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void--><!--Device-unnamed-declare type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -20,6 +20,8 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DynamicComponentInterface-(options: DynamicOptions): DynamicComponentAttribute--><!--Device-DynamicComponentInterface-(options: DynamicOptions): DynamicComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

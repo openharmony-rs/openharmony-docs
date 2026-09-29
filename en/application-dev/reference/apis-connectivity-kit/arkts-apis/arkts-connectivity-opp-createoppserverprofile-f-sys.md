@@ -18,6 +18,8 @@ create the instance of OPP server profile.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-opp-function createOppServerProfile(): OppServerProfile--><!--Device-opp-function createOppServerProfile(): OppServerProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

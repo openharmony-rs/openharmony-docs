@@ -4,9 +4,11 @@
 declare enum ScrollSource
 ```
 
-The possible source of scroll event @enum { number } ScrollSource
+Enumerates the sources of scroll operations.
 
 **Since:** 12
+
+<!--Device-unnamed-declare enum ScrollSource--><!--Device-unnamed-declare enum ScrollSource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ The possible source of scroll event @enum { number } ScrollSource
 DRAG = 0
 ```
 
-Drag events.
+Drag event.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-DRAG = 0--><!--Device-ScrollSource-DRAG = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ Drag events.
 FLING
 ```
 
-Fling after the drag has ended with velocity.
+Inertia scrolling after the drag ends.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-FLING--><!--Device-ScrollSource-FLING-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,15 @@ Fling after the drag has ended with velocity.
 EDGE_EFFECT
 ```
 
-Over scroll with EdgeEffect.Spring.
+Edge scrolling effect with **EdgeEffect.Spring**.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-EDGE_EFFECT--><!--Device-ScrollSource-EDGE_EFFECT-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +72,15 @@ Over scroll with EdgeEffect.Spring.
 OTHER_USER_INPUT
 ```
 
-Other user input except drag, such as mouse wheel, key event.
+Other user inputs aside from dragging, such as those from the mouse wheel and keyboard events.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-OTHER_USER_INPUT--><!--Device-ScrollSource-OTHER_USER_INPUT-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,13 +90,15 @@ Other user input except drag, such as mouse wheel, key event.
 SCROLL_BAR
 ```
 
-Drag events of scroll bar.
+Drag event from the scrollbar.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-SCROLL_BAR--><!--Device-ScrollSource-SCROLL_BAR-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,13 +108,15 @@ Drag events of scroll bar.
 SCROLL_BAR_FLING
 ```
 
-Fling after the drag on scroll bar has ended with velocity.
+Inertia scrolling with velocity after the scrollbar is released.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-SCROLL_BAR_FLING--><!--Device-ScrollSource-SCROLL_BAR_FLING-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,13 +126,15 @@ Fling after the drag on scroll bar has ended with velocity.
 SCROLLER
 ```
 
-Member methods of Scroller without animation.
+Non-animated methods of the **Scroller** object.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-SCROLLER--><!--Device-ScrollSource-SCROLLER-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,12 +144,14 @@ Member methods of Scroller without animation.
 SCROLLER_ANIMATION
 ```
 
-Member methods of Scroller with animation.
+Animated methods of the **Scroller** object.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-SCROLLER_ANIMATION--><!--Device-ScrollSource-SCROLLER_ANIMATION-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

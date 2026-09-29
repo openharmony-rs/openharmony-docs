@@ -8,6 +8,8 @@ Upgrade flag, which is for internal use only.
 
 **Since:** 9
 
+<!--Device-freeInstall-export enum UpgradeFlag--><!--Device-freeInstall-export enum UpgradeFlag-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ NOT_UPGRADE = 0
 No module needs an upgrade.
 
 **Since:** 9
+
+<!--Device-UpgradeFlag-NOT_UPGRADE = 0--><!--Device-UpgradeFlag-NOT_UPGRADE = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
@@ -36,6 +40,8 @@ A single module needs an upgrade.
 
 **Since:** 9
 
+<!--Device-UpgradeFlag-SINGLE_UPGRADE = 1--><!--Device-UpgradeFlag-SINGLE_UPGRADE = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -49,6 +55,8 @@ RELATION_UPGRADE = 2
 The module that has a relationship with the current one needs an upgrade.
 
 **Since:** 9
+
+<!--Device-UpgradeFlag-RELATION_UPGRADE = 2--><!--Device-UpgradeFlag-RELATION_UPGRADE = 2-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

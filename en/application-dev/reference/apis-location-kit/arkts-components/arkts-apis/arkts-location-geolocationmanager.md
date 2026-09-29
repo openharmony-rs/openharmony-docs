@@ -4,6 +4,8 @@ Provides interfaces for acquiring location information, managing location switch
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace geoLocationManager--><!--Device-unnamed-declare namespace geoLocationManager-End-->
+
 **System capability:** 
 - API version 11 and later: SystemCapability.Location.Location.Core
 

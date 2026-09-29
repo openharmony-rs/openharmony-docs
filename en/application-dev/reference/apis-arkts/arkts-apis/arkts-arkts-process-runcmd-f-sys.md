@@ -19,6 +19,8 @@ Returns a child process object and spawns a new ChildProcess to run the command.
 
 **Since:** 7
 
+<!--Device-process-function runCmd(    command: string,    options?: ConditionType  ): ChildProcess--><!--Device-process-function runCmd(    command: string,    options?: ConditionType  ): ChildProcess-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ SelectionContainer组件的控制器。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export declare class SelectionContainerController--><!--Device-unnamed-export declare class SelectionContainerController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ clearTextSelection(): void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionContainerController-clearTextSelection(): void--><!--Device-SelectionContainerController-clearTextSelection(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## closeSelectionMenu
@@ -45,5 +49,7 @@ closeSelectionMenu(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectionContainerController-closeSelectionMenu(): void--><!--Device-SelectionContainerController-closeSelectionMenu(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

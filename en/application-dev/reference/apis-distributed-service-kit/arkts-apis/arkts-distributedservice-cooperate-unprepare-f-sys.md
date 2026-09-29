@@ -20,6 +20,8 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 **Substitutes:** [unprepareCooperate](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function unprepare(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 **Deprecated since:** 11
 
 **Substitutes:** [unprepareCooperate](arkts-distributedservice-cooperate-unpreparecooperate-f-sys.md)()
+
+<!--Device-cooperate-function unprepare(): Promise<void>--><!--Device-cooperate-function unprepare(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

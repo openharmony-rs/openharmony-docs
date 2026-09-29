@@ -8,6 +8,8 @@ MediaLibrary availability.
 
 **Since:** 26.0.0
 
+<!--Device-photoAccessHelper-interface MediaLibraryAvailability--><!--Device-photoAccessHelper-interface MediaLibraryAvailability-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ MediaLibrary availability status.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MediaLibraryAvailability-availabilityStatus: AvailabilityStatus--><!--Device-MediaLibraryAvailability-availabilityStatus: AvailabilityStatus-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## unavailabilityReason
@@ -45,5 +49,7 @@ MediaLibrary unavailability reason.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaLibraryAvailability-unavailabilityReason: string--><!--Device-MediaLibraryAvailability-unavailabilityReason: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

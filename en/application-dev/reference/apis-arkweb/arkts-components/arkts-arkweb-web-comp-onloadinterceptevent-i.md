@@ -8,6 +8,8 @@ Defines the callback information triggered when resource loading is intercepted,
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnLoadInterceptEvent--><!--Device-unnamed-declare interface OnLoadInterceptEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## data
@@ -23,5 +25,7 @@ Information about the URL request.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnLoadInterceptEvent-data: WebResourceRequest--><!--Device-OnLoadInterceptEvent-data: WebResourceRequest-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

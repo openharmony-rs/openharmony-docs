@@ -20,6 +20,8 @@ Revokes permission for application-shared directories
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileShare-function revokeSharedDirectoryPermission(): Promise<void>--><!--Device-fileShare-function revokeSharedDirectoryPermission(): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **System API:** This is a system API.

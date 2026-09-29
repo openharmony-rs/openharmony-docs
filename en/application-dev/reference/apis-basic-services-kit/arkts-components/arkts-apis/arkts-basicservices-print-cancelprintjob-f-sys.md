@@ -18,6 +18,8 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
 
+<!--Device-print-function cancelPrintJob(jobId: string, callback: AsyncCallback<void>): void--><!--Device-print-function cancelPrintJob(jobId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Cancels the specified print job, which is on the print queue of the printer. Thi
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_PRINT_JOB
+
+<!--Device-print-function cancelPrintJob(jobId: string): Promise<void>--><!--Device-print-function cancelPrintJob(jobId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

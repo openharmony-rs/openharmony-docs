@@ -10,6 +10,8 @@ AI session execution operation callback function type. Used to implement custom 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type OnExecuteAIAction = (id: string, params: string, result: OnAISessionCallback) => void--><!--Device-unnamed-type OnExecuteAIAction = (id: string, params: string, result: OnAISessionCallback) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

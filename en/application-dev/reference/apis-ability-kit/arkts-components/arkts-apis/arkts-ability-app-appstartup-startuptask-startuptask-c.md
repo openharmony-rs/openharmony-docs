@@ -10,6 +10,8 @@ The module provides capabilities related to startup tasks in [AppStartup](../../
 
 **Decorator:** @Sendable
 
+<!--Device-unnamed-declare class StartupTask--><!--Device-unnamed-declare class StartupTask-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when all the dependent startup tasks are complete. You can initialize the
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupTask-init(context: AbilityStageContext): Promise<Object | void>--><!--Device-StartupTask-init(context: AbilityStageContext): Promise<Object | void>-End-->
 
 **System capability:** SystemCapability.Ability.AppStartup
 
@@ -79,6 +83,8 @@ Called when the dependent startup task is complete.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupTask-onDependencyCompleted?(dependency: string, result: Object): void--><!--Device-StartupTask-onDependencyCompleted?(dependency: string, result: Object): void-End-->
 
 **System capability:** SystemCapability.Ability.AppStartup
 

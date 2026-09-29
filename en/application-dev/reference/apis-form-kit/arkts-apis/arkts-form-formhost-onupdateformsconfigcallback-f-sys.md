@@ -20,6 +20,8 @@ Register the callback for updating form config.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function onUpdateFormsConfigCallback(callback: formInfo.UpdateFormsConfigCallback): void--><!--Device-formHost-function onUpdateFormsConfigCallback(callback: formInfo.UpdateFormsConfigCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -20,6 +20,8 @@ Starts pairing with a credible remote Bluetooth device with transport. This inte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: AsyncCallback<void>): void--><!--Device-connection-function pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ Starts pairing with a credible remote Bluetooth device with transport. This inte
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise<void>--><!--Device-connection-function pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

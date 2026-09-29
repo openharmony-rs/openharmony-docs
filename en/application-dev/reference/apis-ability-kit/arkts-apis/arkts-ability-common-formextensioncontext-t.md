@@ -14,6 +14,8 @@ The context of form extension. It allows access to formExtension-specific resour
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-common-export type FormExtensionContext = _FormExtensionContext.default--><!--Device-common-export type FormExtensionContext = _FormExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _FormExtensionContext.default

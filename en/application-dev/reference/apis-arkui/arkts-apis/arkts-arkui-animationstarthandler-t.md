@@ -10,6 +10,8 @@ Defines the callback triggered when the page transition animation starts.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type AnimationStartHandler = (index: number, targetIndex: number, event: SwiperAnimationEvent) => void--><!--Device-unnamed-declare type AnimationStartHandler = (index: number, targetIndex: number, event: SwiperAnimationEvent) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**

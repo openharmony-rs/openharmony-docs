@@ -18,6 +18,8 @@ Set the SIM card display name of the specified card slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function setShowName(slotId: int, name: string, callback: AsyncCallback<void>): void--><!--Device-sim-function setShowName(slotId: int, name: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Set the SIM card display name of the specified card slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function setShowName(slotId: int, name: string): Promise<void>--><!--Device-sim-function setShowName(slotId: int, name: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

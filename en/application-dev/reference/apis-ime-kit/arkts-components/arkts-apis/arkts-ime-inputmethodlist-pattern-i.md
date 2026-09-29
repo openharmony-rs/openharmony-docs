@@ -6,6 +6,8 @@ export interface Pattern
 
 **Since:** 11
 
+<!--Device-unnamed-export interface Pattern--><!--Device-unnamed-export interface Pattern-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -26,6 +28,8 @@ Mandatory. Default icon.
 
 **Since:** 11
 
+<!--Device-Pattern-icon: Resource--><!--Device-Pattern-icon: Resource-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## selectedIcon
@@ -39,5 +43,7 @@ Mandatory. Icon for the selected option.
 **Type:** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
 
 **Since:** 11
+
+<!--Device-Pattern-selectedIcon: Resource--><!--Device-Pattern-selectedIcon: Resource-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

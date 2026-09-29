@@ -8,6 +8,8 @@ interface VoiceButtonOptions
 
 **起始版本：** 23
 
+<!--Device-unnamed-interface VoiceButtonOptions--><!--Device-unnamed-interface VoiceButtonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -31,6 +33,8 @@ true表示启用语音按钮，false表示禁用语音按钮。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-VoiceButtonOptions-enabled?: boolean--><!--Device-VoiceButtonOptions-enabled?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

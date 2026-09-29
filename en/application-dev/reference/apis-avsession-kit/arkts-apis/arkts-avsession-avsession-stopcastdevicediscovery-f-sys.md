@@ -16,6 +16,8 @@ Stop device discovery.
 
 **Since:** 10
 
+<!--Device-avSession-function stopCastDeviceDiscovery(callback: AsyncCallback<void>): void--><!--Device-avSession-function stopCastDeviceDiscovery(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -52,6 +54,8 @@ function stopCastDeviceDiscovery(): Promise<void>
 Stop device discovery.
 
 **Since:** 10
+
+<!--Device-avSession-function stopCastDeviceDiscovery(): Promise<void>--><!--Device-avSession-function stopCastDeviceDiscovery(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

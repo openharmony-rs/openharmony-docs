@@ -20,6 +20,8 @@ Unsubscribes from the NFC tag card read event. The device exits the reader mode 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-function off(type: 'readerMode', elementName: ElementName, callback?: AsyncCallback<TagInfo>): void--><!--Device-tag-function off(type: 'readerMode', elementName: ElementName, callback?: AsyncCallback<TagInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 **Parameters:**
@@ -54,6 +56,8 @@ Unsubscribes from the NFC tag card read event. The device exits the reader mode 
 **Required permissions:** ohos.permission.NFC_TAG
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-tag-function off(type: 'readerModeWithInterval', elementName: ElementName, callback?: Callback<TagInfo>): void--><!--Device-tag-function off(type: 'readerModeWithInterval', elementName: ElementName, callback?: Callback<TagInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

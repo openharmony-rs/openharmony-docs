@@ -18,6 +18,8 @@ Migrates files from the source path to the destination path. This API uses a pro
 
 **Required permissions:** ohos.permission.MIGRATE_DATA
 
+<!--Device-bundleManager-function migrateData(sourcePaths: Array<string>, destinationPath: string): Promise<void>--><!--Device-bundleManager-function migrateData(sourcePaths: Array<string>, destinationPath: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Defines the options for initializing a **SubHeaderV2Title** object.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface SubHeaderV2TitleOptions--><!--Device-unnamed-export interface SubHeaderV2TitleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Set the id of the title.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-SubHeaderV2TitleOptions-id?: string--><!--Device-SubHeaderV2TitleOptions-id?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitle
@@ -51,6 +55,8 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2TitleOptions-primaryTitle?: ResourceStr--><!--Device-SubHeaderV2TitleOptions-primaryTitle?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2TitleOptions-primaryTitleModifier?: TextModifier--><!--Device-SubHeaderV2TitleOptions-primaryTitleModifier?: TextModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitle
@@ -92,6 +100,8 @@ Default value: **undefined**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SubHeaderV2TitleOptions-secondaryTitle?: ResourceStr--><!--Device-SubHeaderV2TitleOptions-secondaryTitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitleModifier
@@ -111,6 +121,8 @@ Default value: **undefined**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SubHeaderV2TitleOptions-secondaryTitleModifier?: TextModifier--><!--Device-SubHeaderV2TitleOptions-secondaryTitleModifier?: TextModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,5 +145,7 @@ If the value is **undefined**, the title content displayed by the component is r
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-SubHeaderV2TitleOptions-titleAccessibilityText?: ResourceStr--><!--Device-SubHeaderV2TitleOptions-titleAccessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the information required for triggering a local WantAgent object. The in
 
 **Since:** 20
 
+<!--Device-unnamed-export interface LocalWantAgentInfo--><!--Device-unnamed-export interface LocalWantAgentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Type of the operation to execute.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LocalWantAgentInfo-operationType?: abilityWantAgent.OperationType--><!--Device-LocalWantAgentInfo-operationType?: abilityWantAgent.OperationType-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,6 +48,8 @@ Custom request code, which is used to identify the operation to execute.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LocalWantAgentInfo-requestCode: int--><!--Device-LocalWantAgentInfo-requestCode: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Array of all Want objects. Currently, only one Want object is supported. If mult
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LocalWantAgentInfo-wants: Array<Want>--><!--Device-LocalWantAgentInfo-wants: Array<Want>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

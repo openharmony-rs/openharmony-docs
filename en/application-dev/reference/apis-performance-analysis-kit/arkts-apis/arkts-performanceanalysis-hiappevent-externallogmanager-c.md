@@ -8,6 +8,8 @@ Defines an external log manager for external log management.
 
 **Since:** 26.0.1
 
+<!--Device-hiAppEvent-class ExternalLogManager--><!--Device-hiAppEvent-class ExternalLogManager-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -28,7 +30,9 @@ This function is called when external log directory capacity is reached
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogManager-onCapacityReached(container: ExternalLogContainer): void--><!--Device-ExternalLogManager-onCapacityReached(container: ExternalLogContainer): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

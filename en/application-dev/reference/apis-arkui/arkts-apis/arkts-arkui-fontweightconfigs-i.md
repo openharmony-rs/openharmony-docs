@@ -8,6 +8,8 @@ Defines font weight configurations. When the configuration object (including an 
 
 **Since:** 24
 
+<!--Device-unnamed-declare interface FontWeightConfigs--><!--Device-unnamed-declare interface FontWeightConfigs-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableDeviceFontWeightCategory
@@ -16,13 +18,13 @@ Defines font weight configurations. When the configuration object (including an 
 enableDeviceFontWeightCategory?: boolean
 ```
 
-Whether to automatically synchronize the font weight with the device's font weight setting.
+Whether to automatically update the font weight with the device font weight level.
 
 Default value: **true**
 
-**true**: The font weight is automatically synchronized when the device's font weight setting changes.
+**true**: When the device font weight level changes, the font weight is automatically updated.
 
-**false**: The font weight is not automatically synchronized when the device's font weight setting changes.
+**false**: When the device font weight level changes, the font weight is not automatically updated.
 
 **Type:** boolean
 
@@ -31,6 +33,8 @@ Default value: **true**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-FontWeightConfigs-enableDeviceFontWeightCategory?: boolean--><!--Device-FontWeightConfigs-enableDeviceFontWeightCategory?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,13 +44,13 @@ Default value: **true**
 enableVariableFontWeight?: boolean
 ```
 
-Whether to enable variable font weight adjustment. When **weight** is set to a non-multiple of 100 within [100, 900], **enableVariableFontWeight** is used to set whether the **weight** value takes effect.
+Whether to enable variable font weight adjustment. When the font weight value **weight** is set to a non-hundred value within [100, 900], **enableVariableFontWeight** determines whether the **weight** value takes effect.
 
 Default value: **false**
 
-**true**: Enable variable font weight adjustment. If the value of **weight** is any integer within [100, 900], the value is used. Otherwise, the default value **400** is used.
+**true**: Variable font weight adjustment is enabled. In this case, if **weight** is any integer within [100, 900], the font weight is **weight**; otherwise, the default value 400 is used.
 
-**false**: Disable variable font weight adjustment. If the value of **weight** is a multiple of 100 within [100, 900], the value is used. If **weight** is a non-multiple of 100, the default value **400** is used.
+**false**: Variable font weight adjustment is disabled. In this case, if **weight** is a hundred value within [100, 900], the font weight is **weight**; if **weight** is a non-hundred value, the default value 400 is used.
 
 **Type:** boolean
 
@@ -55,5 +59,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-FontWeightConfigs-enableVariableFontWeight?: boolean--><!--Device-FontWeightConfigs-enableVariableFontWeight?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

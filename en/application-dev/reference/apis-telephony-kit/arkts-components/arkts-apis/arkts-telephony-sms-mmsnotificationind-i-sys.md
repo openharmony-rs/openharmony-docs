@@ -8,6 +8,8 @@ Defines an MMS notification index.
 
 **Since:** 8
 
+<!--Device-sms-export interface MmsNotificationInd--><!--Device-sms-export interface MmsNotificationInd-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Content class.
 
 **Since:** 8
 
+<!--Device-MmsNotificationInd-contentClass?: int--><!--Device-MmsNotificationInd-contentClass?: int-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Content location.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-MmsNotificationInd-contentLocation: string--><!--Device-MmsNotificationInd-contentLocation: string-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,6 +68,8 @@ Status report.
 
 **Since:** 8
 
+<!--Device-MmsNotificationInd-deliveryReport?: int--><!--Device-MmsNotificationInd-deliveryReport?: int-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Expiration.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MmsNotificationInd-expiry: int--><!--Device-MmsNotificationInd-expiry: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -94,6 +104,8 @@ Source address.
 
 **Since:** 8
 
+<!--Device-MmsNotificationInd-from?: MmsAddress--><!--Device-MmsNotificationInd-from?: MmsAddress-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Message class.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MmsNotificationInd-messageClass: int--><!--Device-MmsNotificationInd-messageClass: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -126,6 +140,8 @@ Message size.
 
 **Since:** 8
 
+<!--Device-MmsNotificationInd-messageSize: long--><!--Device-MmsNotificationInd-messageSize: long-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -141,6 +157,8 @@ Subject.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-MmsNotificationInd-subject?: string--><!--Device-MmsNotificationInd-subject?: string-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -158,6 +176,8 @@ Transaction ID.
 
 **Since:** 8
 
+<!--Device-MmsNotificationInd-transactionId: string--><!--Device-MmsNotificationInd-transactionId: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -173,6 +193,8 @@ Version.
 **Type:** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
 **Since:** 8
+
+<!--Device-MmsNotificationInd-version: MmsVersionType--><!--Device-MmsNotificationInd-version: MmsVersionType-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

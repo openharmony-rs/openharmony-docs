@@ -22,6 +22,8 @@ Obtain the scanned sta list.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or (ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION))
 
+<!--Device-wifiManager-function getScanResults(): Promise<Array<WifiScanInfo>>--><!--Device-wifiManager-function getScanResults(): Promise<Array<WifiScanInfo>>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**
@@ -101,6 +103,8 @@ Obtain the scanned sta list.
 **Substitutes:** [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md)
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or (ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION))
+
+<!--Device-wifiManager-function getScanResults(callback: AsyncCallback<Array<WifiScanInfo>>): void--><!--Device-wifiManager-function getScanResults(callback: AsyncCallback<Array<WifiScanInfo>>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

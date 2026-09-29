@@ -2,7 +2,10 @@
 
 You can use the **ToolBarItem** component to add toolbar items to the title bar using the [toolbar](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md#toolbar) universal attribute.
 
-> **NOTE** > > This component is typically used with the > [toolbar](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md#toolbar) universal attribute.
+> **NOTE:** 
+> 
+> This component is typically used with the
+> [toolbar](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md#toolbar) universal attribute.
 
 ## Child Components
 
@@ -19,6 +22,8 @@ Creates a toolbar item at the beginning of the corresponding column in the title
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ToolBarItemInterface-(options?: ToolBarItemOptions): ToolBarItemAttribute--><!--Device-ToolBarItemInterface-(options?: ToolBarItemOptions): ToolBarItemAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

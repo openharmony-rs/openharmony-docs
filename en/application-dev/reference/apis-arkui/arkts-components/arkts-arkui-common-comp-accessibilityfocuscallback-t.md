@@ -14,6 +14,8 @@ Defines the callback type used in accessibility focus. The value of isFocus indi
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-unnamed-declare type AccessibilityFocusCallback = (isFocus: boolean) => void--><!--Device-unnamed-declare type AccessibilityFocusCallback = (isFocus: boolean) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

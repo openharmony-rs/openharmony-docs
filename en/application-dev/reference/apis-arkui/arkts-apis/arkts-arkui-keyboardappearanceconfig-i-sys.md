@@ -8,6 +8,8 @@ Describes the keyboard visual style configuration.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface KeyboardAppearanceConfig--><!--Device-unnamed-declare interface KeyboardAppearanceConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ Default value: **KeyboardFluidLightMode.NONE**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyboardAppearanceConfig-fluidLightMode?: KeyboardFluidLightMode--><!--Device-KeyboardAppearanceConfig-fluidLightMode?: KeyboardFluidLightMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Default value: **KeyboardGradientMode.NONE**
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyboardAppearanceConfig-gradientMode?: KeyboardGradientMode--><!--Device-KeyboardAppearanceConfig-gradientMode?: KeyboardGradientMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -12,6 +12,8 @@ In the following API examples, you must first use [getInputMethodEngine](arkts-i
 
 **Substitutes:** [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i.md)
 
+<!--Device-inputMethodEngine-interface InputMethodEngine--><!--Device-inputMethodEngine-interface InputMethodEngine-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Disables listening for the input method binding event.
 **Deprecated since:** 23
 
 **Substitutes:** [off](arkts-ime-inputmethodengine-inputmethodability-i.md#offinputstart)(type: 'inputStart', callback?: (kbController: KeyboardController, inputClient: InputClient) =&gt; void)
+
+<!--Device-InputMethodEngine-off(      type: 'inputStart',      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void--><!--Device-InputMethodEngine-off(      type: 'inputStart',      callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -70,6 +74,8 @@ Disables listening for a keyboard visibility event. This API uses an asynchronou
 
 **Substitutes:** off(type: 'keyboardShow' | 'keyboardHide', callback?: () =&gt; void)
 
+<!--Device-InputMethodEngine-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void--><!--Device-InputMethodEngine-off(type: 'keyboardShow' | 'keyboardHide', callback?: () => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**
@@ -102,6 +108,8 @@ Enables listening for the input method binding event. This API uses an asynchron
 **Deprecated since:** 23
 
 **Substitutes:** [on](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart)(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) =&gt; void)
+
+<!--Device-InputMethodEngine-on(      type: 'inputStart',      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void--><!--Device-InputMethodEngine-on(      type: 'inputStart',      callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void    ): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -136,6 +144,8 @@ Enables listening for a keyboard visibility event. This API uses an asynchronous
 **Deprecated since:** 23
 
 **Substitutes:** on(type: 'keyboardShow' | 'keyboardHide', callback: () =&gt; void)
+
+<!--Device-InputMethodEngine-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void--><!--Device-InputMethodEngine-on(type: 'keyboardShow' | 'keyboardHide', callback: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

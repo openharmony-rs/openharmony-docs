@@ -8,6 +8,8 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 **起始版本：** 22
 
+<!--Device-display-type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void--><!--Device-display-type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**

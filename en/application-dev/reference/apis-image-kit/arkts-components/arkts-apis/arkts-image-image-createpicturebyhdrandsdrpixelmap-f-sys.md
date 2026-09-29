@@ -16,6 +16,8 @@ Creates a Picture object based on an HDR PixelMap and an SDR PixelMap. The syste
 
 **Since:** 20
 
+<!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): Promise<Picture>--><!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): Promise<Picture>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
@@ -92,6 +94,8 @@ Creates a Picture object by a HDR PixelMap and a SDR PixelMap with specified opt
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap,       params: GainmapParams): Promise<Picture>--><!--Device-image-function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap,       params: GainmapParams): Promise<Picture>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

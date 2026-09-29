@@ -8,6 +8,8 @@ Enumerates audio session behavior flags.
 
 **Since:** 24
 
+<!--Device-audio-enum AudioSessionBehaviorFlags--><!--Device-audio-enum AudioSessionBehaviorFlags-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## DEFAULT_BEHAVIOR
@@ -21,6 +23,8 @@ Default behavior, used to clear behavior settings.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionBehaviorFlags-DEFAULT_BEHAVIOR = 0x00000000--><!--Device-AudioSessionBehaviorFlags-DEFAULT_BEHAVIOR = 0x00000000-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -36,6 +40,8 @@ When the system needs to stop or pause the audio stream, it performs a forced mu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioSessionBehaviorFlags-MUTE_WHEN_INTERRUPTED = 0x00000002--><!--Device-AudioSessionBehaviorFlags-MUTE_WHEN_INTERRUPTED = 0x00000002-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## PAUSE_WHEN_INTERRUPTED
@@ -49,5 +55,7 @@ When the system needs to stop the audio stream, it performs a pause instead. In 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionBehaviorFlags-PAUSE_WHEN_INTERRUPTED = 0x00000004--><!--Device-AudioSessionBehaviorFlags-PAUSE_WHEN_INTERRUPTED = 0x00000004-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

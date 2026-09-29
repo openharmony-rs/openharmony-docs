@@ -10,6 +10,8 @@ Defines the top and bottom padding of **ChipGroupV2**, which is used to control 
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipGroupV2Padding--><!--Device-unnamed-export declare class ChipGroupV2Padding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,6 +33,8 @@ A constructor used to create a **ChipGroupV2Padding** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2Padding-constructor(config: ChipGroupV2PaddingConfig)--><!--Device-ChipGroupV2Padding-constructor(config: ChipGroupV2PaddingConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Decorator: **@Trace**
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroupV2Padding-public bottom: Length--><!--Device-ChipGroupV2Padding-public bottom: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -93,5 +99,7 @@ Decorator: **@Trace**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2Padding-public top: Length--><!--Device-ChipGroupV2Padding-public top: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

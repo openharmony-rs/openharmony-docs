@@ -28,6 +28,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-unnamed-export declare class DynamicLayoutAttribute extends CommonMethod<DynamicLayoutAttribute>--><!--Device-unnamed-export declare class DynamicLayoutAttribute extends CommonMethod<DynamicLayoutAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

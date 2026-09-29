@@ -18,6 +18,8 @@ Requests a widget update. This API uses an asynchronous callback to return the r
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function requestForm(formId: string, callback: AsyncCallback<void>): void--><!--Device-formHost-function requestForm(formId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ Requests a widget update. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function requestForm(formId: string): Promise<void>--><!--Device-formHost-function requestForm(formId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

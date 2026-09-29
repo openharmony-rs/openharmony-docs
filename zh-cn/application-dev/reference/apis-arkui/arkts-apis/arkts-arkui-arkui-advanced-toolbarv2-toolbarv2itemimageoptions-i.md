@@ -8,6 +8,8 @@ Declare the options of ToolBarV2ItemImage
 
 **起始版本：** 18
 
+<!--Device-unnamed-export interface ToolBarV2ItemImageOptions--><!--Device-unnamed-export interface ToolBarV2ItemImageOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ Icon fillColor when the item is activated.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarV2ItemImageOptions-activatedColor?: ColorMetrics--><!--Device-ToolBarV2ItemImageOptions-activatedColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -50,6 +54,8 @@ Define icon fillColor.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarV2ItemImageOptions-color?: ColorMetrics--><!--Device-ToolBarV2ItemImageOptions-color?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -67,5 +73,7 @@ Define icon resource.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarV2ItemImageOptions-src: ResourceStr--><!--Device-ToolBarV2ItemImageOptions-src: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ Upgrades the OS if the OS version of the eSIM in the specified slot is not the l
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function startOsu(slotId: int): Promise<OsuStatus>--><!--Device-eSIM-function startOsu(slotId: int): Promise<OsuStatus>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

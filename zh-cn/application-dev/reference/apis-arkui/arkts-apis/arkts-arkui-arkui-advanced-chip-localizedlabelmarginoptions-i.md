@@ -8,6 +8,8 @@ LocalizedLabelMarginOptions用于定义本地化文本与左右侧图标之间�
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface LocalizedLabelMarginOptions--><!--Device-unnamed-export interface LocalizedLabelMarginOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -44,6 +46,8 @@ size为ChipSize.NORMAL时，end默认值：
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocalizedLabelMarginOptions-end?: LengthMetrics--><!--Device-LocalizedLabelMarginOptions-end?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -73,5 +77,7 @@ size为ChipSize.NORMAL时，start默认值：
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocalizedLabelMarginOptions-start?: LengthMetrics--><!--Device-LocalizedLabelMarginOptions-start?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

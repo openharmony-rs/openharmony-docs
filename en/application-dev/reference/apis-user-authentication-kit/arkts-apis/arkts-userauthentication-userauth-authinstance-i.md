@@ -12,6 +12,8 @@ Implements user authentication.
 
 **Substitutes:** [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md)
 
+<!--Device-userAuth-interface AuthInstance--><!--Device-userAuth-interface AuthInstance-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Cancels this authentication.
 **Substitutes:** [cancel](arkts-userauthentication-userauth-userauthinstance-i.md#cancel)
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-AuthInstance-cancel: () => void--><!--Device-AuthInstance-cancel: () => void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -91,6 +95,8 @@ authentication result, and the value **tip** means to unsubscribe from the authe
 **Deprecated since:** 10
 
 **Substitutes:** [off](arkts-userauthentication-userauth-userauthinstance-i.md#off)
+
+<!--Device-AuthInstance-off: (name: AuthEventKey) => void--><!--Device-AuthInstance-off: (name: AuthEventKey) => void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -153,6 +159,8 @@ authentication result, and the value **tip** means that the callback returns the
 **Deprecated since:** 10
 
 **Substitutes:** [on](arkts-userauthentication-userauth-userauthinstance-i.md#on)
+
+<!--Device-AuthInstance-on: (name: AuthEventKey, callback: AuthEvent) => void--><!--Device-AuthInstance-on: (name: AuthEventKey, callback: AuthEvent) => void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -228,6 +236,8 @@ Starts authentication.
 **Substitutes:** [start](arkts-userauthentication-userauth-userauthinstance-i.md#start)
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-AuthInstance-start: () => void--><!--Device-AuthInstance-start: () => void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

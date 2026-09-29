@@ -8,6 +8,8 @@ Provides APIs for managing the X.509 certificate chain.
 
 **Since:** 11
 
+<!--Device-cert-interface X509CertChain--><!--Device-cert-interface X509CertChain-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Obtains the X.509 certificate list.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CertChain-getCertList(): Array<X509Cert>--><!--Device-X509CertChain-getCertList(): Array<X509Cert>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -146,7 +150,9 @@ Obtains the hash value of the data in DER format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CertChain-hashCode(): Uint8Array--><!--Device-X509CertChain-hashCode(): Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -276,7 +282,9 @@ Converts the object data into a string.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CertChain-toString(): string--><!--Device-X509CertChain-toString(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -406,7 +414,9 @@ Validates a certificate chain. This API uses a promise to return the result.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CertChain-validate(param: CertChainValidationParameters): Promise<CertChainValidationResult>--><!--Device-X509CertChain-validate(param: CertChainValidationParameters): Promise<CertChainValidationResult>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -565,7 +575,9 @@ Validates a certificate chain. This API uses an asynchronous callback to return 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509CertChain-validate(param: CertChainValidationParameters, callback: AsyncCallback<CertChainValidationResult>): void--><!--Device-X509CertChain-validate(param: CertChainValidationParameters, callback: AsyncCallback<CertChainValidationResult>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

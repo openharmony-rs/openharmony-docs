@@ -8,6 +8,8 @@ Provides the API to obtain the color effects supported.
 
 **Since:** 12
 
+<!--Device-camera-interface ColorEffectQuery--><!--Device-camera-interface ColorEffectQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getSupportedColorEffects(): Array<ColorEffectType>
 Obtains the supported color effects.
 
 **Since:** 11
+
+<!--Device-ColorEffectQuery-getSupportedColorEffects(): Array<ColorEffectType>--><!--Device-ColorEffectQuery-getSupportedColorEffects(): Array<ColorEffectType>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -18,6 +18,8 @@ Obtains the hash value of an object. If no hash value has been obtained, a rando
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-util-function getHash(object: object): number--><!--Device-util-function getHash(object: object): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

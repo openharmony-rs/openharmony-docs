@@ -6,6 +6,8 @@ interface BigInt64Array
 
 A typed array of 64-bit signed integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated, an exception is raised.
 
+<!--Device-unnamed-interface BigInt64Array--><!--Device-unnamed-interface BigInt64Array-End-->
+
 ## Modules to Import
 
 ```TypeScript
@@ -25,6 +27,8 @@ copyWithin(target: number, start: number, end?: number): this
 
 Returns the this object after copying a section of the array identified by start and end to the same array starting at position target
 
+<!--Device-BigInt64Array-copyWithin(target: number, start: number, end?: number): this--><!--Device-BigInt64Array-copyWithin(target: number, start: number, end?: number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -41,6 +45,8 @@ entries(): IterableIterator<[number, bigint]>
 
 Yields index, value pairs for every entry in the array.
 
+<!--Device-BigInt64Array-entries(): IterableIterator<[number, bigint]>--><!--Device-BigInt64Array-entries(): IterableIterator<[number, bigint]>-End-->
+
 ## every
 
 ```TypeScript
@@ -48,6 +54,8 @@ every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean
 ```
 
 Determines whether all the members of an array satisfy the specified test.
+
+<!--Device-BigInt64Array-every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean--><!--Device-BigInt64Array-every(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean-End-->
 
 **Test API:** This API is used only in automated test scripts.
 
@@ -66,6 +74,8 @@ fill(value: bigint, start?: number, end?: number): this
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
+<!--Device-BigInt64Array-fill(value: bigint, start?: number, end?: number): this--><!--Device-BigInt64Array-fill(value: bigint, start?: number, end?: number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -82,6 +92,8 @@ filter(predicate: (value: bigint, index: number, array: BigInt64Array) => any, t
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
+<!--Device-BigInt64Array-filter(predicate: (value: bigint, index: number, array: BigInt64Array) => any, thisArg?: any): BigInt64Array--><!--Device-BigInt64Array-filter(predicate: (value: bigint, index: number, array: BigInt64Array) => any, thisArg?: any): BigInt64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -96,6 +108,8 @@ find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean,
 ```
 
 Returns the value of the first element in the array where predicate is true, and undefined otherwise.
+
+<!--Device-BigInt64Array-find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): bigint | undefined--><!--Device-BigInt64Array-find(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): bigint | undefined-End-->
 
 **Parameters:**
 
@@ -112,6 +126,8 @@ findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boo
 
 Returns the index of the first element in the array where predicate is true, and -1 otherwise.
 
+<!--Device-BigInt64Array-findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): number--><!--Device-BigInt64Array-findIndex(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -126,6 +142,8 @@ forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void
 ```
 
 Performs the specified action for each element in an array.
+
+<!--Device-BigInt64Array-forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void, thisArg?: any): void--><!--Device-BigInt64Array-forEach(callbackfn: (value: bigint, index: number, array: BigInt64Array) => void, thisArg?: any): void-End-->
 
 **Parameters:**
 
@@ -142,6 +160,8 @@ includes(searchElement: bigint, fromIndex?: number): boolean
 
 Determines whether an array includes a certain element, returning true or false as appropriate.
 
+<!--Device-BigInt64Array-includes(searchElement: bigint, fromIndex?: number): boolean--><!--Device-BigInt64Array-includes(searchElement: bigint, fromIndex?: number): boolean-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -156,6 +176,8 @@ indexOf(searchElement: bigint, fromIndex?: number): number
 ```
 
 Returns the index of the first occurrence of a value in an array.
+
+<!--Device-BigInt64Array-indexOf(searchElement: bigint, fromIndex?: number): number--><!--Device-BigInt64Array-indexOf(searchElement: bigint, fromIndex?: number): number-End-->
 
 **Parameters:**
 
@@ -172,6 +194,8 @@ join(separator?: string): string
 
 Adds all the elements of an array separated by the specified separator string.
 
+<!--Device-BigInt64Array-join(separator?: string): string--><!--Device-BigInt64Array-join(separator?: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -186,6 +210,8 @@ keys(): IterableIterator<number>
 
 Yields each index in the array.
 
+<!--Device-BigInt64Array-keys(): IterableIterator<number>--><!--Device-BigInt64Array-keys(): IterableIterator<number>-End-->
+
 ## lastIndexOf
 
 ```TypeScript
@@ -193,6 +219,8 @@ lastIndexOf(searchElement: bigint, fromIndex?: number): number
 ```
 
 Returns the index of the last occurrence of a value in an array.
+
+<!--Device-BigInt64Array-lastIndexOf(searchElement: bigint, fromIndex?: number): number--><!--Device-BigInt64Array-lastIndexOf(searchElement: bigint, fromIndex?: number): number-End-->
 
 **Parameters:**
 
@@ -209,6 +237,8 @@ map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint, 
 
 Calls a defined callback function on each element of an array, and returns an array that contains the results.
 
+<!--Device-BigInt64Array-map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint, thisArg?: any): BigInt64Array--><!--Device-BigInt64Array-map(callbackfn: (value: bigint, index: number, array: BigInt64Array) => bigint, thisArg?: any): BigInt64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -223,6 +253,8 @@ reduce(callbackfn: (previousValue: bigint, currentValue: bigint, currentIndex: n
 ```
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-BigInt64Array-reduce(callbackfn: (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigInt64Array) => bigint): bigint--><!--Device-BigInt64Array-reduce(callbackfn: (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigInt64Array) => bigint): bigint-End-->
 
 **Parameters:**
 
@@ -240,6 +272,8 @@ reduce<U>(callbackfn: (previousValue: U, currentValue: bigint, currentIndex: num
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-BigInt64Array-reduce<U>(callbackfn: (previousValue: U, currentValue: bigint, currentIndex: number, array: BigInt64Array) => U, initialValue: U): U--><!--Device-BigInt64Array-reduce<U>(callbackfn: (previousValue: U, currentValue: bigint, currentIndex: number, array: BigInt64Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -254,6 +288,8 @@ reduceRight(callbackfn: (previousValue: bigint, currentValue: bigint, currentInd
 ```
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-BigInt64Array-reduceRight(callbackfn: (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigInt64Array) => bigint): bigint--><!--Device-BigInt64Array-reduceRight(callbackfn: (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigInt64Array) => bigint): bigint-End-->
 
 **Parameters:**
 
@@ -271,6 +307,8 @@ reduceRight<U>(callbackfn: (previousValue: U, currentValue: bigint, currentIndex
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-BigInt64Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: bigint, currentIndex: number, array: BigInt64Array) => U, initialValue: U): U--><!--Device-BigInt64Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: bigint, currentIndex: number, array: BigInt64Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -286,6 +324,8 @@ reverse(): this
 
 Reverses the elements in the array.
 
+<!--Device-BigInt64Array-reverse(): this--><!--Device-BigInt64Array-reverse(): this-End-->
+
 ## set
 
 ```TypeScript
@@ -293,6 +333,8 @@ set(array: ArrayLike<bigint>, offset?: number): void
 ```
 
 Sets a value or an array of values.
+
+<!--Device-BigInt64Array-set(array: ArrayLike<bigint>, offset?: number): void--><!--Device-BigInt64Array-set(array: ArrayLike<bigint>, offset?: number): void-End-->
 
 **Parameters:**
 
@@ -309,6 +351,8 @@ slice(start?: number, end?: number): BigInt64Array
 
 Returns a section of an array.
 
+<!--Device-BigInt64Array-slice(start?: number, end?: number): BigInt64Array--><!--Device-BigInt64Array-slice(start?: number, end?: number): BigInt64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -323,6 +367,8 @@ some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean,
 ```
 
 Determines whether the specified callback function returns true for any element of an array.
+
+<!--Device-BigInt64Array-some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean--><!--Device-BigInt64Array-some(predicate: (value: bigint, index: number, array: BigInt64Array) => boolean, thisArg?: any): boolean-End-->
 
 **Parameters:**
 
@@ -339,6 +385,8 @@ sort(compareFn?: (a: bigint, b: bigint) => number | bigint): this
 
 Sorts the array.
 
+<!--Device-BigInt64Array-sort(compareFn?: (a: bigint, b: bigint) => number | bigint): this--><!--Device-BigInt64Array-sort(compareFn?: (a: bigint, b: bigint) => number | bigint): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -352,6 +400,8 @@ subarray(begin?: number, end?: number): BigInt64Array
 ```
 
 Gets a new BigInt64Array view of the ArrayBuffer store for this array, referencing the elements at begin, inclusive, up to end, exclusive.
+
+<!--Device-BigInt64Array-subarray(begin?: number, end?: number): BigInt64Array--><!--Device-BigInt64Array-subarray(begin?: number, end?: number): BigInt64Array-End-->
 
 **Parameters:**
 
@@ -368,6 +418,8 @@ toLocaleString(): string
 
 Converts the array to a string by using the current locale.
 
+<!--Device-BigInt64Array-toLocaleString(): string--><!--Device-BigInt64Array-toLocaleString(): string-End-->
+
 ## toString
 
 ```TypeScript
@@ -375,6 +427,8 @@ toString(): string
 ```
 
 Returns a string representation of the array.
+
+<!--Device-BigInt64Array-toString(): string--><!--Device-BigInt64Array-toString(): string-End-->
 
 ## valueOf
 
@@ -384,6 +438,8 @@ valueOf(): BigInt64Array
 
 Returns the primitive value of the specified object.
 
+<!--Device-BigInt64Array-valueOf(): BigInt64Array--><!--Device-BigInt64Array-valueOf(): BigInt64Array-End-->
+
 ## values
 
 ```TypeScript
@@ -391,6 +447,8 @@ values(): IterableIterator<bigint>
 ```
 
 Yields each value in the array.
+
+<!--Device-BigInt64Array-values(): IterableIterator<bigint>--><!--Device-BigInt64Array-values(): IterableIterator<bigint>-End-->
 
 ## [index: number]
 
@@ -418,6 +476,8 @@ The ArrayBuffer instance referenced by the array.
 
 **Type:** [ArrayBufferLike](arkts-arraybufferlike-t.md)
 
+<!--Device-BigInt64Array-readonly buffer: ArrayBufferLike--><!--Device-BigInt64Array-readonly buffer: ArrayBufferLike-End-->
+
 ## byteLength
 
 ```TypeScript
@@ -427,6 +487,8 @@ readonly byteLength: number
 The length in bytes of the array.
 
 **Type:** number
+
+<!--Device-BigInt64Array-readonly byteLength: number--><!--Device-BigInt64Array-readonly byteLength: number-End-->
 
 ## byteOffset
 
@@ -438,6 +500,8 @@ The offset in bytes of the array.
 
 **Type:** number
 
+<!--Device-BigInt64Array-readonly byteOffset: number--><!--Device-BigInt64Array-readonly byteOffset: number-End-->
+
 ## BYTES_PER_ELEMENT
 
 ```TypeScript
@@ -448,6 +512,8 @@ The size in bytes of each element in the array.
 
 **Type:** number
 
+<!--Device-BigInt64Array-readonly BYTES_PER_ELEMENT: number--><!--Device-BigInt64Array-readonly BYTES_PER_ELEMENT: number-End-->
+
 ## length
 
 ```TypeScript
@@ -457,3 +523,5 @@ readonly length: number
 The length of the array.
 
 **Type:** number
+
+<!--Device-BigInt64Array-readonly length: number--><!--Device-BigInt64Array-readonly length: number-End-->

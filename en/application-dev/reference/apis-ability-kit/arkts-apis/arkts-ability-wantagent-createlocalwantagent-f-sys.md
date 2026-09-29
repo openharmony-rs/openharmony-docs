@@ -18,6 +18,8 @@ Create a local WantAgent object. The WantAgent created by this interface stores 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wantAgent-function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent--><!--Device-wantAgent-function createLocalWantAgent(info: LocalWantAgentInfo): WantAgent-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

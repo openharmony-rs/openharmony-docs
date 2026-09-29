@@ -18,6 +18,8 @@ Queries all device administrator applications of the current user. This API uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function getAdmins(): Promise<Array<Want>>--><!--Device-adminManager-function getAdmins(): Promise<Array<Want>>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

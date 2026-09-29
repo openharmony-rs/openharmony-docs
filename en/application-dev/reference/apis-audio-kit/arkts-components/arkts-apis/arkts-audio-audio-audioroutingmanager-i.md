@@ -14,6 +14,8 @@ Before calling any API in AudioRoutingManager, you must use [getRoutingManager](
 
 **Since:** 9
 
+<!--Device-audio-interface AudioRoutingManager--><!--Device-audio-interface AudioRoutingManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Declares the original device types that the application has adapted to. By defau
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioRoutingManager-declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void--><!--Device-AudioRoutingManager-declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -57,6 +61,8 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 Obtains the available audio devices. This API returns the result synchronously.
 
 **Since:** 12
+
+<!--Device-AudioRoutingManager-getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -103,6 +109,8 @@ Obtains the audio devices with a specific flag. This API uses an asynchronous ca
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -137,6 +145,8 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 Obtains the audio devices with a specific flag. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>--><!--Device-AudioRoutingManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -173,6 +183,8 @@ getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors
 Obtains the audio devices with a specific flag. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -218,6 +230,8 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 Obtains the output device with the highest priority based on the audio renderer information. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: AsyncCallback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: AsyncCallback<AudioDeviceDescriptors>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -266,6 +280,8 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise<A
 Obtains the output device with the highest priority based on the audio renderer information. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise<AudioDeviceDescriptors>--><!--Device-AudioRoutingManager-getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise<AudioDeviceDescriptors>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -316,6 +332,8 @@ Obtains the input device with the highest priority based on the audio capturer i
 
 **Since:** 10
 
+<!--Device-AudioRoutingManager-getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback: AsyncCallback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback: AsyncCallback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -363,6 +381,8 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise
 Obtains the input device with the highest priority based on the audio capturer information. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise<AudioDeviceDescriptors>--><!--Device-AudioRoutingManager-getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise<AudioDeviceDescriptors>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -412,6 +432,8 @@ getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): Aud
 Gets preferred input device for target audio capturer info.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -463,6 +485,8 @@ Obtains the output device with the highest priority based on the audio renderer 
 
 **Since:** 10
 
+<!--Device-AudioRoutingManager-getPreferredOutputDeviceForRendererInfoSync(rendererInfo: AudioRendererInfo): AudioDeviceDescriptors--><!--Device-AudioRoutingManager-getPreferredOutputDeviceForRendererInfoSync(rendererInfo: AudioRendererInfo): AudioDeviceDescriptors-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -513,6 +537,8 @@ Checks whether a communication device is active. This API uses an asynchronous c
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: AsyncCallback<boolean>): void--><!--Device-AudioRoutingManager-isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
 **Parameters:**
@@ -548,6 +574,8 @@ Checks whether a communication device is active. This API uses a promise to retu
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise<boolean>--><!--Device-AudioRoutingManager-isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
 **Parameters:**
@@ -579,6 +607,8 @@ isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean
 Checks whether a communication device is active. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean--><!--Device-AudioRoutingManager-isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
@@ -625,6 +655,8 @@ Checks whether the current device supports microphone blocking detection. This A
 
 **Since:** 13
 
+<!--Device-AudioRoutingManager-isMicBlockDetectionSupported():Promise<boolean>--><!--Device-AudioRoutingManager-isMicBlockDetectionSupported():Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Return value:**
@@ -650,6 +682,8 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void
 Unsubscribes from the event indicating that the connection status of an audio device is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void--><!--Device-AudioRoutingManager-off(type: 'deviceChange', callback?: Callback<DeviceChangeAction>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -696,6 +730,8 @@ Unsubscribes from the event indicating that the connection status of an availabl
 
 **Since:** 12
 
+<!--Device-AudioRoutingManager-off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): void--><!--Device-AudioRoutingManager-off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -741,6 +777,8 @@ Unsubscribes from the change event of the output device with the highest priorit
 
 **Since:** 10
 
+<!--Device-AudioRoutingManager-off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -784,6 +822,8 @@ off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<Audio
 Unsubscribes from the change event of the input device with the highest priority. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<AudioDeviceDescriptors>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -829,6 +869,8 @@ Unsubscribes from the microphone blocked status change event. This API uses an a
 
 **Since:** 13
 
+<!--Device-AudioRoutingManager-off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo>): void--><!--Device-AudioRoutingManager-off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -871,6 +913,8 @@ Subscribes to the event indicating that the connection status of an audio device
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChangeAction>): void--><!--Device-AudioRoutingManager-on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChangeAction>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -909,6 +953,8 @@ Subscribes to the event indicating that the connection status of an available au
 
 **Since:** 12
 
+<!--Device-AudioRoutingManager-on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<DeviceChangeAction>): void--><!--Device-AudioRoutingManager-on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<DeviceChangeAction>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -946,6 +992,8 @@ on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererI
 Subscribes to the change event of the output device with the highest priority, which is triggered when the output device with the highest priority is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererInfo, callback: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererInfo, callback: Callback<AudioDeviceDescriptors>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -986,6 +1034,8 @@ on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapture
 Subscribes to the change event of the input device with the highest priority, which is triggered when the input device with the highest priority is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-AudioRoutingManager-on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapturerInfo, callback: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioRoutingManager-on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapturerInfo, callback: Callback<AudioDeviceDescriptors>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1028,6 +1078,8 @@ Subscribes to the microphone blocked status change event. This API uses an async
 Before using this API, check whether the current device supports microphone blocking detection. This event is triggered when the microphone blocked status changes during recording. Currently, this API takes effect only for the microphone on the local device.
 
 **Since:** 13
+
+<!--Device-AudioRoutingManager-on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo>): void--><!--Device-AudioRoutingManager-on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -1073,6 +1125,8 @@ You are advised to use the [AVCastPicker component](../../../media/avsession/usi
 
 **Since:** 9
 
+<!--Device-AudioRoutingManager-setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioRoutingManager-setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
 **Parameters:**
@@ -1112,6 +1166,8 @@ This API will be deprecated in a later version due to function design is changed
 You are advised to use the [AVCastPicker component](../../../media/avsession/using-switch-call-devices.md) provided by AVSession to switch between call devices.
 
 **Since:** 9
+
+<!--Device-AudioRoutingManager-setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Promise<void>--><!--Device-AudioRoutingManager-setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 

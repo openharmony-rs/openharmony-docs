@@ -4,9 +4,11 @@
 interface VirtualScrollOptions
 ```
 
-Configures the expected total number of data items to be loaded in lazy loading mode, the reuse capability, and the precise data lazy loading capability.
+Configures the expected total number of data items to be loaded in lazy loading mode, the reuse capability, and the precise data lazy loading capability. Since API version 26.0.0, the memory optimization strategy can be configured.
 
 **Since:** 12
+
+<!--Device-unnamed-interface VirtualScrollOptions--><!--Device-unnamed-interface VirtualScrollOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,16 +29,18 @@ data exists at the index.
 format: arr[index] =..., where **arr** indicates the array passed to **Repeat**. Array operations except **[]** are not allowed, and elements except the specified index cannot be written. Otherwise, the system throws an exception.  
 - After the **onLazyLoading** method is executed, if no data exists in the specified index, the components  
 corresponding to the current index and subsequent indexes cannot be loaded.  
-- The precise lazy loading capability is optional. If **onLazyLoading** is not specified and the return value of  
-**totalCount** or **onTotalCount** is greater than the data source length, **Repeat** does not render the list scrolling to the bottom.  
-- Avoid using the **onLazyLoading** method to execute time-consuming operations. If data loading takes a long time,  
-you are advised to create a placeholder for the data in the **onLazyLoading** method and then create an asynchronous task to load the data.
+- The precise lazy loading capability is an optional configuration item. If **onLazyLoading** is not specified and  
+the return value of **totalCount** or **onTotalCount** is greater than the data source length, **Repeat** does not render the missing subsequent data when the list scrolls to the end of the data source.  
+- Avoid blocking time-consuming operations (such as synchronous network requests and complex computations) in the  
+**onLazyLoading** method. If data loading may take a long time and affect scrolling smoothness, you are advised to first create a placeholder for the data in the **onLazyLoading** method, and then create an asynchronous task to load the data.
 
 **Since:** 19
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-VirtualScrollOptions-onLazyLoading?(index: number): void--><!--Device-VirtualScrollOptions-onLazyLoading?(index: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,14 +73,14 @@ onTotalCount?(): number
 
 (Optional) Calculates the expected total number of data items to be loaded. You need to provide a calculation method, and its return value may not be equal to the data source length (length of the array passed to **Repeat**).
 
-Both the return values of [totalCount](arkts-arkui-repeat-comp-virtualscrolloptions-i.md) and **onTotalCount()** indicate the expected total number of data items to be loaded. You can directly set the **totalCount** attribute to specify the expected total number of data items to be loaded, or use **onTotalCount()** to set a custom method to calculate the expected total number of data items to be loaded. Use either **totalCount** or **onTotalCount**. If neither is set, the default value is used. If both are set, **totalCount** is ignored.
+Both the return values of [totalCount](arkts-arkui-repeat-comp-virtualscrolloptions-i.md) and **onTotalCount()** indicate the expected total number of data items to be loaded. You can directly set the **totalCount** attribute to specify the expected total number of data items to be loaded, or use **onTotalCount()** to define a custom method for calculating the expected total number of data items to be loaded. At most one of **totalCount** and **onTotalCount()** can be set. If neither is set, the default value is used: the data source length. If both are set, **totalCount** is ignored.
 
 The data loading rules for different return values of **onTotalCount()** are the same as those for **totalCount**. The details are as follows:
 
 - If the return value of **onTotalCount()** is **0**, no data is loaded.  
 - If the return value of **onTotalCount()** is in the range (0, Data source length], only data in the index range [0, Return value – 1] is loaded.  
 - If the return value of **onTotalCount()** is greater than the data source length, the **Repeat** component  
-expects to load data in the index range [0, Return value – 1]. The scrollbar style of the container component changes according to the value of **totalCount**. During the scrolling of the container component, the application must ensure that subsequent data is requested before the list is about to reach the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. You are advised to use [onLazyLoading](#onlazyloading) to implement lazy loading.  
+expects to load data in the index range [0, Return value of onTotalCount() – 1]. The scrollbar style of the container component changes based on the return value of **onTotalCount()**. During the scrolling process of the container component, the application must ensure that subsequent data is requested when the list is about to scroll to the end of the data source. The developer needs to protect against error scenarios of data requests (such as network latency) until the data source is fully loaded. Otherwise, abnormal scrolling effects may occur during list scrolling. It is recommended to use [onLazyLoading](#onlazyloading) to implement data lazy loading.  
 - If the return value of **onTotalCount()** is not a natural number, the data source length will be used as the  
 return value.
 
@@ -85,6 +89,8 @@ return value.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-VirtualScrollOptions-onTotalCount?(): number--><!--Device-VirtualScrollOptions-onTotalCount?(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +106,11 @@ return value.
 memoryOptimizationStrategy?: RepeatMemOptStrategy
 ```
 
-Memory optimization strategy for Repeat VirtualScroll.
+Memory optimization strategy of **Repeat**. This parameter is set when **Repeat** is created and does not support dynamic modification.
+
+Default value: [DEFAULT](arkts-arkui-repeat-comp-repeatmemoptstrategy-e.md)
+
+**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.
 
 **Type:** [RepeatMemOptStrategy](arkts-arkui-repeat-comp-repeatmemoptstrategy-e.md)
 
@@ -110,6 +120,8 @@ Memory optimization strategy for Repeat VirtualScroll.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-VirtualScrollOptions-memoryOptimizationStrategy?: RepeatMemOptStrategy--><!--Device-VirtualScrollOptions-memoryOptimizationStrategy?: RepeatMemOptStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## reusable
@@ -118,13 +130,15 @@ Memory optimization strategy for Repeat VirtualScroll.
 reusable?: boolean
 ```
 
-Whether to enable the reuse feature.
+Whether to enable the reuse capability. When the child component of **Repeat** is a custom component decorated by [@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md), the reuse capability of **Repeat** itself takes precedence over that of @ReusableV2. If the developer wants to use the reuse capability of @ReusableV2, it is recommended to disable the reuse capability of **Repeat** itself.
 
-**true**: Enable the reuse feature.
+**true**: enables reuse.
 
-**false**: Disable the reuse feature.
+**false**: disables reuse.
 
-Default value: **true**.
+Default value: **true**
+
+**Atomic service API:** Since API version 18, this API is supported in atomic services.
 
 **Type:** boolean
 
@@ -134,6 +148,8 @@ Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-VirtualScrollOptions-reusable?: boolean--><!--Device-VirtualScrollOptions-reusable?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## totalCount
@@ -142,19 +158,23 @@ Default value: **true**.
 totalCount?: number
 ```
 
-Expected total number of data items to be loaded, which may not be equal to the data source length (length of the array passed to **Repeat**).
+Total number of expected data items to load, which can be different from the data source length (the length of the array actually passed to Repeat).
 
-Value range: natural numbers
+Value range: natural number.
 
-If **totalCount** is not specified or exceeds the value range, **totalCount** takes the value of the data source length, and the list scrolls normally.
+At most one of totalCount and onTotalCount() can be set. If neither is set, the default value is used: the data source length. If both are set, totalCount is ignored.
 
-If **totalCount** is set to **0**, no data is loaded.
+If totalCount is omitted or out of the value range, totalCount takes the value of the data source length, and the list scrolls normally.
 
-If the value of **totalCount** is in the range (0, Data source length], only data in the range [0, **totalCount** – 1] is rendered on the GUI.
+If totalCount = 0, no data is loaded.
 
-If the value of **totalCount** is greater than the data source length, the **Repeat** component renders data in the range [0, **totalCount** – 1], and the scrollbar style of the container component changes according to the value of **totalCount**. During the scrolling of the container component, the application must ensure that subsequent data is requested before the list is about to reach the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. You are advised to use [onLazyLoading](#onlazyloading) to implement lazy loading.
+If 0 &lt; totalCount &lt;= data source length, only the data in the range [0, totalCount - 1] is rendered in the UI.
 
-In addition to the **totalCount** attribute, you can also use the [onTotalCount](#ontotalcount) method to set a custom method to calculate the expected total number of data items to be loaded.
+If totalCount &gt; data source length, **Repeat** renders the data in the range [0, totalCount - 1], and the scrollbar style of the container component changes based on the totalCount value. During scrolling of the container component, the application must ensure that subsequent data is requested when the list is about to scroll to the end of the data source. The developer needs to protect against error scenarios of data requests (such as network latency) until the data source is fully loaded; otherwise, abnormal scrolling effects may occur during list scrolling. It is recommended to use [onLazyLoading](#onlazyloading) to implement data lazy loading.
+
+In addition to the totalCount attribute, the developer can also set a custom method through [onTotalCount](#ontotalcount) to calculate the expected total number of data items to load.
+
+**Atomic service API:** Since API version 12, this API is supported in atomic services.
 
 **Type:** number
 
@@ -163,5 +183,7 @@ In addition to the **totalCount** attribute, you can also use the [onTotalCount]
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-VirtualScrollOptions-totalCount?: number--><!--Device-VirtualScrollOptions-totalCount?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

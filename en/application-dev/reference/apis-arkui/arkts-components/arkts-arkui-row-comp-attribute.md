@@ -12,6 +12,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class RowAttribute extends CommonMethod<RowAttribute>--><!--Device-unnamed-declare class RowAttribute extends CommonMethod<RowAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignItems
@@ -27,6 +29,8 @@ Sets the alignment format of child components in the vertical direction. After t
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RowAttribute-alignItems(value: VerticalAlign): RowAttribute--><!--Device-RowAttribute-alignItems(value: VerticalAlign): RowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Sets the alignment format of child components in the horizontal direction. After
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RowAttribute-justifyContent(value: FlexAlign): RowAttribute--><!--Device-RowAttribute-justifyContent(value: FlexAlign): RowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +96,8 @@ Sets whether to reverse the arrangement order of child components in the horizon
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-RowAttribute-reverse(isReversed: Optional<boolean>): RowAttribute--><!--Device-RowAttribute-reverse(isReversed: Optional<boolean>): RowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

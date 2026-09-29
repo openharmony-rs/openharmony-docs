@@ -24,6 +24,8 @@ Unsubscribes from widget uninstall events. This API uses an asynchronous callbac
 
 **Substitutes:** [off](arkts-form-formhost-off-f-sys.md)
 
+<!--Device-formHost-function off(type: 'formUninstall', callback?: Callback<string>): void--><!--Device-formHost-function off(type: 'formUninstall', callback?: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

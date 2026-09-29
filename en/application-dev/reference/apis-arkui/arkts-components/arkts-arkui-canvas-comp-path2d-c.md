@@ -23,6 +23,8 @@ A path object that supports path description and combination through its APIs, a
 
 **Since:** 8
 
+<!--Device-unnamed-declare class Path2D extends CanvasPath--><!--Device-unnamed-declare class Path2D extends CanvasPath-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## addPath
@@ -40,6 +42,8 @@ Adds a path to this path.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Path2D-addPath(path: Path2D, transform?: Matrix2D): void--><!--Device-Path2D-addPath(path: Path2D, transform?: Matrix2D): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Constructs an empty **Path2D** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-Path2D-constructor()--><!--Device-Path2D-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 <a id="constructor-1"></a>
@@ -85,6 +91,8 @@ Constructs an empty Path2D object. The unit mode of the Path2D object can be con
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Path2D-constructor(unit: LengthMetricsUnit)--><!--Device-Path2D-constructor(unit: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ Constructs a Path2D object using a path object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-Path2D-constructor(path: Path2D)--><!--Device-Path2D-constructor(path: Path2D)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -137,6 +147,8 @@ When a path object is used to construct a Path2D object, the unit mode of the Pa
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Path2D-constructor(path: Path2D, unit: LengthMetricsUnit)--><!--Device-Path2D-constructor(path: Path2D, unit: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -165,6 +177,8 @@ Constructs a Path2D object using a path string that complies with the SVG path d
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-Path2D-constructor(d: string)--><!--Device-Path2D-constructor(d: string)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -190,6 +204,8 @@ Constructs a Path2D object using a path string that complies with the SVG path s
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-Path2D-constructor(description: string, unit: LengthMetricsUnit)--><!--Device-Path2D-constructor(description: string, unit: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

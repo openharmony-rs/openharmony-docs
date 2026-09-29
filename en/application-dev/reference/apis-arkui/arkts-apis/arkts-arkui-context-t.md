@@ -14,6 +14,8 @@ The base context of an ability or an application. It allows access to applicatio
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type Context = common.Context--><!--Device-unnamed-export type Context = common.Context-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)

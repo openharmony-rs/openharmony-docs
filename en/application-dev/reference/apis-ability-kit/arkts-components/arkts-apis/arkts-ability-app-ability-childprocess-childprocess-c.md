@@ -8,6 +8,8 @@ ChildProcess is the base class for you to customize child processes. When starti
 
 **Since:** 11
 
+<!--Device-unnamed-declare class ChildProcess--><!--Device-unnamed-declare class ChildProcess-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Entrypoint method of the child process. This callback is triggered when the chil
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChildProcess-onStart(args?: ChildProcessArgs): void--><!--Device-ChildProcess-onStart(args?: ChildProcessArgs): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

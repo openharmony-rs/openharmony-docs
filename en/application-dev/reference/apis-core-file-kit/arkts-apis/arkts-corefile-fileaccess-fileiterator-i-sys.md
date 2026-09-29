@@ -10,6 +10,8 @@ Provides the **FileIterator** object.
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-interface FileIterator--><!--Device-fileAccess-interface FileIterator-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Obtains information about the next-level files or directories.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileIterator-next(): { value: FileInfo, done: boolean }--><!--Device-FileIterator-next(): { value: FileInfo, done: boolean }-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

@@ -20,6 +20,8 @@ Obtains the applications that are allowed to access device notifications for the
 
 **Required permissions:** ohos.permission.SUBSCRIBE_NOTIFICATION
 
+<!--Device-notificationExtensionSubscription-function getUserGrantedEnabledBundles(): Promise<GrantedBundleInfo[]>--><!--Device-notificationExtensionSubscription-function getUserGrantedEnabledBundles(): Promise<GrantedBundleInfo[]>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Return value:**

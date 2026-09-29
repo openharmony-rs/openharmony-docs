@@ -8,6 +8,8 @@ Geofence transition status.
 
 **Since:** 12
 
+<!--Device-geoLocationManager-export interface GeofenceTransition--><!--Device-geoLocationManager-export interface GeofenceTransition-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Indicate the beaconFence which transitionEvent occurs.
 
 **Since:** 20
 
+<!--Device-GeofenceTransition-beaconFence?: BeaconFence--><!--Device-GeofenceTransition-beaconFence?: BeaconFence-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## geofenceId
@@ -42,6 +46,8 @@ ID of the geofence.
 
 **Since:** 12
 
+<!--Device-GeofenceTransition-geofenceId: int--><!--Device-GeofenceTransition-geofenceId: int-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## transitionEvent
@@ -55,5 +61,7 @@ Indicates the geofence transition status.
 **Type:** [GeofenceTransitionEvent](arkts-location-geolocationmanager-geofencetransitionevent-e.md)
 
 **Since:** 12
+
+<!--Device-GeofenceTransition-transitionEvent: GeofenceTransitionEvent--><!--Device-GeofenceTransition-transitionEvent: GeofenceTransitionEvent-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence

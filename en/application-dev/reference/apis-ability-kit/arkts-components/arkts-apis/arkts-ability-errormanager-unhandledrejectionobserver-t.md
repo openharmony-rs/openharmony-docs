@@ -10,6 +10,8 @@ Defines an observer to capture the cause of a rejected promise.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-errorManager-export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<any>) => void--><!--Device-errorManager-export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<any>) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

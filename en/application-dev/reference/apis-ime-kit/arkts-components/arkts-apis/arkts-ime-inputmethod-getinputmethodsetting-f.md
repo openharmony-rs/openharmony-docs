@@ -20,6 +20,8 @@ Obtains an [InputMethodSetting](arkts-ime-inputmethod-inputmethodsetting-i.md) i
 
 **Substitutes:** [getSetting](arkts-ime-inputmethod-getsetting-f.md)
 
+<!--Device-inputMethod-function getInputMethodSetting(): InputMethodSetting--><!--Device-inputMethod-function getInputMethodSetting(): InputMethodSetting-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**

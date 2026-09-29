@@ -27,6 +27,8 @@ Sends an SMS message.
 
 **Required permissions:** ohos.permission.SEND_MESSAGES
 
+<!--Device-sms-function sendMessage(options: SendMessageOptions): void--><!--Device-sms-function sendMessage(options: SendMessageOptions): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **Parameters:**

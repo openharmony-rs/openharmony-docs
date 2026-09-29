@@ -16,6 +16,8 @@ Obtains the top ability, which is the ability that has the window focus. This AP
 
 **Since:** 9
 
+<!--Device-abilityManager-function getTopAbility(): Promise<ElementName>--><!--Device-abilityManager-function getTopAbility(): Promise<ElementName>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -45,6 +47,8 @@ function getTopAbility(callback: AsyncCallback<ElementName>): void
 Obtains the top ability, which is the ability that has the window focus. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-abilityManager-function getTopAbility(callback: AsyncCallback<ElementName>): void--><!--Device-abilityManager-function getTopAbility(callback: AsyncCallback<ElementName>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

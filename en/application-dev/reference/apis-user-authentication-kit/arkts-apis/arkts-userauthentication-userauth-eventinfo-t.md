@@ -14,6 +14,8 @@ It consists of the fields in **Type** in the following table.
 
 **Substitutes:** [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
 
+<!--Device-userAuth-type EventInfo = AuthResultInfo | TipInfo--><!--Device-userAuth-type EventInfo = AuthResultInfo | TipInfo-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 | Type | Description |

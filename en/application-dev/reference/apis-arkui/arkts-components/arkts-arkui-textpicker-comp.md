@@ -1,14 +1,20 @@
 # TextPicker
 
-**TextPicker** is a component that allows users to select text, images, or hybrid content through scrolling. It supports three usage modes: single-column picker, multi-column independent picker, and multi-column cascading picker.
+A component that allows users to select text, images, or hybrid content through scrolling. Users can create a single- column data picker, a multi-column non-linked data picker, and a multi-column linkage data picker as needed. It is applicable to needs where users select data from preset options, such as date selection, region selection, and configuration item settings. The component supports features such as cyclic scrolling, custom text styles, divider style, fade effect, selection item height adjustment, haptic feedback, and crown sensitivity setting, providing a smooth scrolling interaction experience and flexible data display.
 
-> **NOTE**
+> **NOTE:** 
+> 
+> - This component is supported since API version 8. New APIs added in later versions are marked with a superscript to indicate their
+> 
+> - It is not recommended for developers to modify attribute data during animation.
+> 
+> - The maximum display rows differ between landscape and portrait modes. In portrait mode, the default is 5 rows. In landscape mode, it depends on the system configuration, and the default is 3 rows when not configured. You can view the specific configuration value through the following parameter: $r('sys.float.ohos_id_picker_show_count_landscape ').
+> 
+> - The multi-column non-linked data picker and the multi-column linkage data picker are collectively referred to as the multi-column data picker in the following sections.
 
-> - Avoid changing the attribute data during the animation process of this component. > > - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default > number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system > configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode, > use **$r('sys.float.ohos_id_picker_show_count_landscape')**. > > - Multi-column independent pickers and multi-column cascading pickers are collectively referred to as multi-column > pickers in this document.
+## Child Components
 
-Child Components
-
-Not supported
+This is a basic component, and it is not recommended to include child components.
 
 ## TextPicker
 
@@ -24,13 +30,15 @@ Creates a text picker based on the specified data list.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerInterface-(options?: TextPickerOptions): TextPickerAttribute--><!--Device-TextPickerInterface-(options?: TextPickerOptions): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) | No | Parameters of the text picker. |
+| options | [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) | No | Parameters for configuring the text picker. Pass this parameter when you need to customize the data source, selected item, column width, and other configurations of the picker. If this parameter is not set, the component cannot be displayed. |
 
 ## Summary
 
@@ -41,11 +49,11 @@ Creates a text picker based on the specified data list.
 | [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) | Define the divider configuration options. |
 | [PickerBackgroundStyle](arkts-arkui-textpicker-comp-pickerbackgroundstyle-i.md) | Defines the background style configuration for selected picker items. |
 | [TextCascadePickerRangeContent](arkts-arkui-textpicker-comp-textcascadepickerrangecontent-i.md) | Defines the content for multi-column picker options. |
-| [TextPickerDialogOptions](arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) | Defines the TextPickerDialogOptions for Text Picker Dialog. |
-| [TextPickerDialogOptionsExt](arkts-arkui-textpicker-comp-textpickerdialogoptionsext-i.md) | Defines the TextPickerDialogOptionsExt for Text Picker Dialog. |
+| [TextPickerDialogOptions](arkts-arkui-textpicker-comp-textpickerdialogoptions-i.md) | Inherits from [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md). |
+| [TextPickerDialogOptionsExt](arkts-arkui-textpicker-comp-textpickerdialogoptionsext-i.md) | Inherits from [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md). |
 | [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) | Defines the configuration options of the text picker. |
 | [TextPickerRangeContent](arkts-arkui-textpicker-comp-textpickerrangecontent-i.md) | Defines the content for single-column picker options. |
-| [TextPickerResult](arkts-arkui-textpicker-comp-textpickerresult-i.md) | Defines the struct of TextPickerResult. |
+| [TextPickerResult](arkts-arkui-textpicker-comp-textpickerresult-i.md) | Represents the selection result of a **TextPicker** component. |
 | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | Defines the text style options for the text picker. Inherits from [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md). |
 
 ### Types

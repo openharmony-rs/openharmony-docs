@@ -4,7 +4,7 @@
 export interface SubscribeStepCounterOptions
 ```
 
-Defines the type of data to return for a subscription to data changes of the step counter sensor.
+Sets the parameters for subscribing to the step counter sensor, including the callback function.
 
 **Since:** 3
 
@@ -13,6 +13,8 @@ Defines the type of data to return for a subscription to data changes of the ste
 **Substitutes:** PEDOMETER
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
+
+<!--Device-unnamed-export interface SubscribeStepCounterOptions--><!--Device-unnamed-export interface SubscribeStepCounterOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -28,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 3
 
@@ -39,6 +41,8 @@ Callback invoked when an API call fails.
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeStepCounterOptions-fail?: (data: string, code: number) => void--><!--Device-SubscribeStepCounterOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -55,7 +59,7 @@ Callback invoked when an API call fails.
 success: (data: StepCounterResponse) => void
 ```
 
-Defines a **StepCounterResponse** object.
+Callback function invoked when the step counter sensor data changes. The callback parameter is a **StepCounterResponse** object.
 
 **Since:** 3
 
@@ -66,6 +70,8 @@ Defines a **StepCounterResponse** object.
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-SubscribeStepCounterOptions-success: (data: StepCounterResponse) => void--><!--Device-SubscribeStepCounterOptions-success: (data: StepCounterResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 

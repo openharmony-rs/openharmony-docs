@@ -18,6 +18,8 @@ Checks whether the specified UID can access the background network. This API use
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function getBackgroundPolicyByUid(uid: int, callback: AsyncCallback<NetBackgroundPolicy>): void--><!--Device-policy-function getBackgroundPolicyByUid(uid: int, callback: AsyncCallback<NetBackgroundPolicy>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Obtains whether the UID can access the network of the background. This API uses 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function getBackgroundPolicyByUid(uid: int): Promise<NetBackgroundPolicy>--><!--Device-policy-function getBackgroundPolicyByUid(uid: int): Promise<NetBackgroundPolicy>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -8,6 +8,8 @@ Sets whether the asset with the specified URI is selected.
 
 **Since:** 23
 
+<!--Device-unnamed-export declare class ClickResult--><!--Device-unnamed-export declare class ClickResult-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Sets whether the specified media asset is selected. The value **true** indicates
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ClickResult-isSelected: boolean--><!--Device-ClickResult-isSelected: boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## uri
@@ -49,5 +53,7 @@ URI of the media asset.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ClickResult-uri: string--><!--Device-ClickResult-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

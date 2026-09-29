@@ -22,6 +22,8 @@ Describes the rectangle of the surface held by the **XComponent**.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface SurfaceRect--><!--Device-unnamed-declare interface SurfaceRect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -41,6 +43,8 @@ Unit: px
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SurfaceRect-offsetX?: number--><!--Device-SurfaceRect-offsetX?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +66,8 @@ Unit: px
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SurfaceRect-offsetY?: number--><!--Device-SurfaceRect-offsetY?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## surfaceHeight
@@ -82,6 +88,8 @@ Unit: px.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SurfaceRect-surfaceHeight: number--><!--Device-SurfaceRect-surfaceHeight: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## surfaceWidth
@@ -101,5 +109,7 @@ Unit: px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SurfaceRect-surfaceWidth: number--><!--Device-SurfaceRect-surfaceWidth: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Describes the filter for application lifecycle change events. It can be used as 
 
 **Since:** 21
 
+<!--Device-appManager-export interface AppStateFilter--><!--Device-appManager-export interface AppStateFilter-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ example, "appManager.FilterAbilityStateType.CREATE | appManager.FilterAbilitySta
 
 **Since:** 21
 
+<!--Device-AppStateFilter-abilityStateTypes?: int--><!--Device-AppStateFilter-abilityStateTypes?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -56,6 +60,8 @@ Type of application state to filter. The options are as follows:
 
 **Since:** 21
 
+<!--Device-AppStateFilter-appStateTypes?: int--><!--Device-AppStateFilter-appStateTypes?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -76,6 +82,8 @@ appManager.FilterBundleType.APP | appManager.FilterBundleType.ATOMIC_SERVICE" li
 **Type:** number
 
 **Since:** 21
+
+<!--Device-AppStateFilter-bundleTypes?: int--><!--Device-AppStateFilter-bundleTypes?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -99,6 +107,8 @@ by default.
 
 **Since:** 21
 
+<!--Device-AppStateFilter-callbacks?: int--><!--Device-AppStateFilter-callbacks?: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -119,6 +129,8 @@ example, "appManager.FilterProcessStateType.CREATE | appManager.FilterProcessSta
 **Type:** number
 
 **Since:** 21
+
+<!--Device-AppStateFilter-processStateTypes?: int--><!--Device-AppStateFilter-processStateTypes?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ Provides optional attributes for the selection area.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface SelectParams--><!--Device-unnamed-export interface SelectParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Callback when the select is selected.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-onSelect?: OnSelectCallback--><!--Device-SelectParams-onSelect?: OnSelectCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrowPosition
@@ -43,6 +47,8 @@ Set the layout direction for text and arrow in select.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-arrowPosition?: ArrowPosition--><!--Device-SelectParams-arrowPosition?: ArrowPosition-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +66,8 @@ Sets the divider of select.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-divider?: Optional<DividerOptions> | null--><!--Device-SelectParams-divider?: Optional<DividerOptions> | null-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## font
@@ -75,6 +83,8 @@ Sets the text properties of the select button itself.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-font?: Font--><!--Device-SelectParams-font?: Font-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +102,8 @@ Sets the text color of the select button itself.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-fontColor?: ResourceColor--><!--Device-SelectParams-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## menuAlign
@@ -107,6 +119,8 @@ Set the alignment between select and menu.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-menuAlign?: MenuAlignParams--><!--Device-SelectParams-menuAlign?: MenuAlignParams-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +138,8 @@ Set menu background blur Style.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-menuBackgroundBlurStyle?: BlurStyle--><!--Device-SelectParams-menuBackgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## menuBackgroundColor
@@ -139,6 +155,8 @@ Set the menu's background color.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-menuBackgroundColor?: ResourceColor--><!--Device-SelectParams-menuBackgroundColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,6 +174,8 @@ Register a ContentModifier for each menu item.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-menuItemContentModifier?: ContentModifier<MenuItemConfiguration>--><!--Device-SelectParams-menuItemContentModifier?: ContentModifier<MenuItemConfiguration>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## optionBgColor
@@ -171,6 +191,8 @@ Sets the background color of the select item.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-optionBgColor?: ResourceColor--><!--Device-SelectParams-optionBgColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +210,8 @@ Sets the text style for select items.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-optionFont?: Font--><!--Device-SelectParams-optionFont?: Font-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## optionFontColor
@@ -203,6 +227,8 @@ Sets the text color for select items.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-optionFontColor?: ResourceColor--><!--Device-SelectParams-optionFontColor?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -220,6 +246,8 @@ Set the height of each option.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-optionHeight?: Dimension--><!--Device-SelectParams-optionHeight?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -235,6 +263,8 @@ SubOption array of the select.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-options?: Array<SelectOption>--><!--Device-SelectParams-options?: Array<SelectOption>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,6 +282,8 @@ Set the width of each option and set whether the option width fit the trigger.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-optionWidth?: Dimension | OptionWidthMode--><!--Device-SelectParams-optionWidth?: Dimension | OptionWidthMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selected
@@ -267,6 +299,8 @@ The default selected index.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-selected?: number--><!--Device-SelectParams-selected?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,6 +318,8 @@ Sets the background color of the selected items in the select.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-selectedOptionBgColor?: ResourceColor--><!--Device-SelectParams-selectedOptionBgColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedOptionFont
@@ -299,6 +335,8 @@ Sets the text style of the selected items in the select.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-selectedOptionFont?: Font--><!--Device-SelectParams-selectedOptionFont?: Font-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,6 +354,8 @@ Sets the text color of the selected item in the select.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-selectedOptionFontColor?: ResourceColor--><!--Device-SelectParams-selectedOptionFontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectValue
@@ -332,6 +372,8 @@ The default text value.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SelectParams-selectValue?: ResourceStr--><!--Device-SelectParams-selectValue?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -347,5 +389,7 @@ Set the space for text and icon in select.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectParams-space?: Length--><!--Device-SelectParams-space?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

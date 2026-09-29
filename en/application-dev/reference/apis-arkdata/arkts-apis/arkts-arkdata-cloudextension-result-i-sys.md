@@ -8,6 +8,8 @@ Represents the data sharing result.
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface Result<T>--><!--Device-cloudExtension-export interface Result<T>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Error code.
 
 **Since:** 11
 
+<!--Device-Result-code: int--><!--Device-Result-code: int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Detailed description of the error code. The default value is undefined.
 
 **Since:** 11
 
+<!--Device-Result-description?: string--><!--Device-Result-description?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Value returned. The specific type is specified by the T parameter. The default v
 **Type:** T
 
 **Since:** 11
+
+<!--Device-Result-value?: T--><!--Device-Result-value?: T-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

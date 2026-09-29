@@ -4,7 +4,7 @@
 declare type OnContentScrollCallback = (totalOffsetX: number, totalOffsetY: number) => void
 ```
 
-Defines the callback for text content scrolling.
+Callback for text content scrolling.
 
 **Since:** 18
 
@@ -12,11 +12,13 @@ Defines the callback for text content scrolling.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnContentScrollCallback = (totalOffsetX: number, totalOffsetY: number) => void--><!--Device-unnamed-declare type OnContentScrollCallback = (totalOffsetX: number, totalOffsetY: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| totalOffsetX | number | Yes | Offset in the X coordinate of the text in the content area, in px. |
-| totalOffsetY | number | Yes | Offset in the Y coordinate of the text in the content area, in px. |
+| totalOffsetX | number | Yes | Horizontal offset of the text in the content area, in px. |
+| totalOffsetY | number | Yes | Vertical offset of the text in the content area, in px. |

@@ -8,6 +8,8 @@ Defines the callback information triggered when a request to obtain the geolocat
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnGeolocationShowEvent--><!--Device-unnamed-declare interface OnGeolocationShowEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## geolocation
@@ -24,6 +26,8 @@ User operation.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-OnGeolocationShowEvent-geolocation: JsGeolocation--><!--Device-OnGeolocationShowEvent-geolocation: JsGeolocation-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## origin
@@ -39,5 +43,7 @@ Origin of the web page that initiates the geolocation permission request, used t
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnGeolocationShowEvent-origin: string--><!--Device-OnGeolocationShowEvent-origin: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

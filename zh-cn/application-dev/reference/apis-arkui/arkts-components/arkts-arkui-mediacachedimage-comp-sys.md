@@ -14,6 +14,8 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-MediaCachedImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource): MediaCachedImageAttribute--><!--Device-MediaCachedImageInterface-(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource): MediaCachedImageAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -22,7 +24,7 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| src | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; DrawableDescriptor &#124; ASTCResource | 是 |  |
+| src | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; DrawableDescriptor &#124; [ASTCResource](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md) | 是 |  |
 
 ## 汇总
 
@@ -30,7 +32,7 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 | 名称 | 说明 |
 | --- | --- |
-| ASTCResource | 定义可以使用 ASTC 的资源。 |
+| [ASTCResource](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md) | 定义可以使用 ASTC 的资源。 |
 
 ## 示例
 

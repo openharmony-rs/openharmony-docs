@@ -18,6 +18,8 @@ Checks whether this domain account is supported. This API uses a promise to retu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-osAccount-function isDomainAccountSupported(): Promise<boolean>--><!--Device-osAccount-function isDomainAccountSupported(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Return value:**

@@ -18,6 +18,8 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
+<!--Device-vcard-function importVCard(context: Context, filePath: string, accountId: int, callback: AsyncCallback<void>): void--><!--Device-vcard-function importVCard(context: Context, filePath: string, accountId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -73,6 +75,8 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 **Since:** 23
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
+
+<!--Device-vcard-function importVCard(context: Context, filePath: string, accountId?: int): Promise<void>--><!--Device-vcard-function importVCard(context: Context, filePath: string, accountId?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -136,6 +140,8 @@ Imports a VCard file (that is, **.vcf** file) to the contact database. This API 
 **Since:** 23
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
+
+<!--Device-vcard-function importVCard(context: Context, filePath: string, callback: AsyncCallback<void>): void--><!--Device-vcard-function importVCard(context: Context, filePath: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

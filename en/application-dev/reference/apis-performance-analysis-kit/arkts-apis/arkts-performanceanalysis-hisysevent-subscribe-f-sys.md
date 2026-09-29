@@ -18,6 +18,8 @@ Subscribes to real-time system events that occur occasionally or occur in a low 
 
 **Required permissions:** ohos.permission.READ_DFX_SYSEVENT
 
+<!--Device-hiSysEvent-function subscribe(rules: QueryRule[]): long--><!--Device-hiSysEvent-function subscribe(rules: QueryRule[]): long-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.

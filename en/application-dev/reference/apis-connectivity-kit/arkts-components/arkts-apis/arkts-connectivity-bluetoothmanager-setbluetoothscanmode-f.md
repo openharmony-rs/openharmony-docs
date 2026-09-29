@@ -24,6 +24,8 @@ Sets the Bluetooth scan mode for a device. On API 10 and above, the permission r
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function setBluetoothScanMode(mode: ScanMode, duration: number): void--><!--Device-bluetoothManager-function setBluetoothScanMode(mode: ScanMode, duration: number): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

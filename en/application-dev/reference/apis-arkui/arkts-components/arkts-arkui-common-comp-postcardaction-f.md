@@ -16,6 +16,8 @@ Post Card Action.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-unnamed-declare function postCardAction(component: Object, action: Object): void--><!--Device-unnamed-declare function postCardAction(component: Object, action: Object): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

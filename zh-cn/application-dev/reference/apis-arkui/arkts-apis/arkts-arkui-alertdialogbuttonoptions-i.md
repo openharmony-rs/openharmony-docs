@@ -10,6 +10,8 @@ declare interface AlertDialogButtonOptions extends AlertDialogButtonBaseOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface AlertDialogButtonOptions extends AlertDialogButtonBaseOptions--><!--Device-unnamed-declare interface AlertDialogButtonOptions extends AlertDialogButtonBaseOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primary
@@ -29,5 +31,7 @@ primary?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialogButtonOptions-primary?: boolean--><!--Device-AlertDialogButtonOptions-primary?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

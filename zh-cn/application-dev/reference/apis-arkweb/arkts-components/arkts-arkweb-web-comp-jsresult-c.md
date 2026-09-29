@@ -8,6 +8,8 @@ JsResult是Web组件在处理JavaScript弹窗事件时返回的结果处理对�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class JsResult--><!--Device-unnamed-declare class JsResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -21,6 +23,8 @@ JsResult的构造函数。用于处理JavaScript弹窗事件。
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsResult-constructor()--><!--Device-JsResult-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ handleCancel(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsResult-handleCancel(): void--><!--Device-JsResult-handleCancel(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handleConfirm
@@ -50,6 +56,8 @@ handleConfirm(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-JsResult-handleConfirm(): void--><!--Device-JsResult-handleConfirm(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handlePromptConfirm
@@ -63,6 +71,8 @@ handlePromptConfirm(result: string): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-JsResult-handlePromptConfirm(result: string): void--><!--Device-JsResult-handlePromptConfirm(result: string): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

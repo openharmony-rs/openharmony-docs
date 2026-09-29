@@ -27,6 +27,8 @@ Reads data from a file. This API uses a promise to return the result.
 
 **Substitutes:** [read](arkts-corefile-file-fs-read-f.md)
 
+<!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options?: {    offset?: number;    length?: number;    position?: number;  }): Promise<ReadOut>--><!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options?: {    offset?: number;    length?: number;    position?: number;  }): Promise<ReadOut>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -59,6 +61,8 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 **Deprecated since:** 9
 
 **Substitutes:** [read](arkts-corefile-file-fs-read-f.md)
+
+<!--Device-unnamed-declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<ReadOut>): void--><!--Device-unnamed-declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<ReadOut>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -95,6 +99,8 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 **Deprecated since:** 9
 
 **Substitutes:** [read](arkts-corefile-file-fs-read-f.md)
+
+<!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options: {    offset?: number;    length?: number;    position?: number;  },  callback: AsyncCallback<ReadOut>): void--><!--Device-unnamed-declare function read(  fd: number,  buffer: ArrayBuffer,  options: {    offset?: number;    length?: number;    position?: number;  },  callback: AsyncCallback<ReadOut>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

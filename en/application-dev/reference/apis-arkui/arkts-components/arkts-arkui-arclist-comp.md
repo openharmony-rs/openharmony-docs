@@ -1,14 +1,28 @@
 # ArcList
 
-The **ArcList** component is a circular layout container that displays a series of list items in an arc shape. It is suitable for presenting homogeneous data, such as images and text, in a continuous, multi-row format.
+An arc list consists of a series of list items arranged along an arc, suitable for circular screen devices. It is ideal for continuously presenting multiple rows of similar data, such as images and text.
 
-> **NOTE**
-
-> - This component is supported since API version 18. Updates will be marked with a > superscript to indicate their earliest API version. > > - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. > In API version 22 and earlier versions, a compilation warning will be reported when this > component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can > still run properly.
+> **NOTE:** 
+> 
+> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1devices, tablets, and TVs, but the component can still run properly.
 
 ## Child Components
 
-Only the [ArcListItem](#ohosarkuiarclist) component is supported.
+Only the [ArcListItem](arkts-arkui-arclist-comp-con.md#arclistitem) component is supported.
+
+> **NOTE:** 
+> 
+> Rules for calculating the index value of child components in **ArcList**:
+> 
+> - The index value increments sequentially based on the order of child components.
+> 
+> - In an [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) statement, only the child components in the branch where the condition is true participate in index value calculation. Child components in branches where the condition is false are not counted.
+> 
+> - In a [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) statement, the index values of all expanded child components are calculated.
+> 
+> - When [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the child component index values are updated.
+> 
+> - Child components of **ArcList** with the [visibility](arkts-arkui-common-comp-commonmethod-c.md#visibility) attribute set to **Hidden** or **None** still have their index values calculated.
 
 ## ArcList
 
@@ -22,13 +36,15 @@ Creates an **ArcList** component instance with specified configuration options.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcListInterface-(options?: ArkListOptions): ArcListAttribute--><!--Device-ArcListInterface-(options?: ArkListOptions): ArcListAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ArkListOptions](arkts-arkui-arclist-comp-arklistoptions-i.md) | No |  |
+| options | [ArkListOptions](arkts-arkui-arclist-comp-arklistoptions-i.md) | No | Configuration options for the arc list, used to set the initial loading position, scroll controller, and header component. |
 
 ## Summary
 
@@ -36,7 +52,7 @@ Creates an **ArcList** component instance with specified configuration options.
 
 | Name | Description |
 | --- | --- |
-| [ArcListItemInterface](arkts-arkui-arclist-comp-arclistiteminterface-i.md) | The **ArcListItem** component is used to display individual child components in an [ArcList](#ohosarkuiarclist) component and must be used in conjunction with **ArcList**. |
+| [ArcListItemInterface](arkts-arkui-arclist-comp-arclistiteminterface-i.md) | A child component used to display items in an arc list. It must be used in conjunction with [ArcList](arkts-arkui-arclist-comp.md). |
 | [ArkListOptions](arkts-arkui-arclist-comp-arklistoptions-i.md) | Provides basic parameters for creating an **ArcList** component. |
 
 ### Types

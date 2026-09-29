@@ -21,6 +21,8 @@ Sets the parameters of the specified serial port. You need to call [open](arkts-
 
 **Since:** 19
 
+<!--Device-serialManager-function setAttribute(portId: int, attribute: SerialAttribute): void--><!--Device-serialManager-function setAttribute(portId: int, attribute: SerialAttribute): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

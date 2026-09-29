@@ -8,6 +8,8 @@ Provides an option for determining whether a call is a video call.
 
 **Since:** 9
 
+<!--Device-call-export interface DialCallOptions--><!--Device-call-export interface DialCallOptions-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ Account ID.
 
 **Since:** 9
 
+<!--Device-DialCallOptions-accountId?: int--><!--Device-DialCallOptions-accountId?: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Dialup scenario.
 **Type:** [DialScene](arkts-telephony-call-dialscene-e-sys.md)
 
 **Since:** 9
+
+<!--Device-DialCallOptions-dialScene?: DialScene--><!--Device-DialCallOptions-dialScene?: DialScene-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -65,6 +71,8 @@ Dialup type.
 
 **Since:** 9
 
+<!--Device-DialCallOptions-dialType?: DialType--><!--Device-DialCallOptions-dialType?: DialType-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -81,6 +89,8 @@ Indicates the extra call parameters.
 
 **Since:** 14
 
+<!--Device-DialCallOptions-extraParams?: Record<string, Object>--><!--Device-DialCallOptions-extraParams?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -96,6 +106,8 @@ Video state type.
 **Type:** [VideoStateType](arkts-telephony-call-videostatetype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-DialCallOptions-videoState?: VideoStateType--><!--Device-DialCallOptions-videoState?: VideoStateType-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -114,6 +126,8 @@ XCALL type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DialCallOptions-xCallType?: XCallType--><!--Device-DialCallOptions-xCallType?: XCallType-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

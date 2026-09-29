@@ -10,7 +10,9 @@ Navigation type.
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
+
+<!--Device-unnamed-declare enum NavigationType--><!--Device-unnamed-declare enum NavigationType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,6 +36,8 @@ This API is supported since API version 7 and deprecated since API version 13. Y
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationType-Push--><!--Device-NavigationType-Push-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Back
@@ -56,6 +60,8 @@ This API is supported since API version 7 and deprecated since API version 13. Y
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationType-Back--><!--Device-NavigationType-Back-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Replace
@@ -77,5 +83,7 @@ This API is supported since API version 7 and deprecated since API version 13. Y
 **Substitutes:** [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationType-Replace--><!--Device-NavigationType-Replace-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

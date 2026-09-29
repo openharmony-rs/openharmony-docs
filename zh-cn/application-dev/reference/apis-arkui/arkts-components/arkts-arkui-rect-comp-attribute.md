@@ -4,11 +4,13 @@
 declare class RectAttribute extends CommonShapeMethod<RectAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
 
-**继承/实现关系：** RectAttribute extends CommonShapeMethod&lt;RectAttribute&gt;
+**继承/实现关系：** RectAttribute extends CommonShapeMethod<RectAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class RectAttribute extends CommonShapeMethod<RectAttribute>--><!--Device-unnamed-declare class RectAttribute extends CommonShapeMethod<RectAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ radius(value: Length | Array<any>)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RectAttribute-radius(value: Length | Array<any>): RectAttribute--><!--Device-RectAttribute-radius(value: Length | Array<any>): RectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ radiusHeight(value: Length)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-RectAttribute-radiusHeight(value: Length): RectAttribute--><!--Device-RectAttribute-radiusHeight(value: Length): RectAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -75,6 +81,8 @@ radiusWidth(value: Length)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RectAttribute-radiusWidth(value: Length): RectAttribute--><!--Device-RectAttribute-radiusWidth(value: Length): RectAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

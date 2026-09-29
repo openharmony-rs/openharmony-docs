@@ -8,6 +8,8 @@ NativeMediaPlayerHandler is the parameter of the [CreateNativeMediaPlayerCallbac
 
 **Since:** 12
 
+<!--Device-webview-interface NativeMediaPlayerHandler--><!--Device-webview-interface NativeMediaPlayerHandler-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called to notify the ArkWeb engine of the buffer time when the buffer time chang
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerHandler-handleBufferedEndTimeChanged(bufferedEndTime: number): void--><!--Device-NativeMediaPlayerHandler-handleBufferedEndTimeChanged(bufferedEndTime: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -52,6 +56,8 @@ Called to notify the ArkWeb engine of the total duration of the media.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleDurationChanged(duration: number): void--><!--Device-NativeMediaPlayerHandler-handleDurationChanged(duration: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -76,6 +82,8 @@ When media playback ends, this method is called to notify the ArkWeb kernel of t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleEnded(): void--><!--Device-NativeMediaPlayerHandler-handleEnded(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -93,6 +101,8 @@ When an error occurs in the player, this method is called to notify the ArkWeb k
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerHandler-handleError(error: MediaError, errorMessage: string): void--><!--Device-NativeMediaPlayerHandler-handleError(error: MediaError, errorMessage: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -119,6 +129,8 @@ Called to notify the ArkWeb engine of the full screen status of the player when 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleFullscreenChanged(fullscreen: boolean): void--><!--Device-NativeMediaPlayerHandler-handleFullscreenChanged(fullscreen: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -142,6 +154,8 @@ Called to notify the ArkWeb engine of the muted status of the player when the mu
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerHandler-handleMutedChanged(muted: boolean): void--><!--Device-NativeMediaPlayerHandler-handleMutedChanged(muted: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -167,6 +181,8 @@ Called to notify the ArkWeb engine of the network status of the player when the 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleNetworkStateChanged(state: NetworkState): void--><!--Device-NativeMediaPlayerHandler-handleNetworkStateChanged(state: NetworkState): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -190,6 +206,8 @@ When the playback rate of the player changes, this method is called to notify th
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerHandler-handlePlaybackRateChanged(playbackRate: number): void--><!--Device-NativeMediaPlayerHandler-handlePlaybackRateChanged(playbackRate: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -215,6 +233,8 @@ Called to notify the ArkWeb engine of the cache status of the player when the ca
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleReadyStateChanged(state: ReadyState): void--><!--Device-NativeMediaPlayerHandler-handleReadyStateChanged(state: ReadyState): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -239,6 +259,8 @@ When the player completes seeking, this method is called to notify the ArkWeb ke
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleSeekFinished(): void--><!--Device-NativeMediaPlayerHandler-handleSeekFinished(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -257,6 +279,8 @@ When the player enters the seek state, this method is called to notify the ArkWe
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleSeeking(): void--><!--Device-NativeMediaPlayerHandler-handleSeeking(): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Examples**
@@ -274,6 +298,8 @@ Called to notify the ArkWeb engine of the playback status of the player when the
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerHandler-handleStatusChanged(status: PlaybackStatus): void--><!--Device-NativeMediaPlayerHandler-handleStatusChanged(status: PlaybackStatus): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -299,6 +325,8 @@ Called to notify the ArkWeb engine of the playback progress when the playback pr
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleTimeUpdate(currentPlayTime: number): void--><!--Device-NativeMediaPlayerHandler-handleTimeUpdate(currentPlayTime: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -323,6 +351,8 @@ When the player parses the video dimensions, this method is called to notify the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NativeMediaPlayerHandler-handleVideoSizeChanged(width: number, height: number): void--><!--Device-NativeMediaPlayerHandler-handleVideoSizeChanged(width: number, height: number): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -345,6 +375,8 @@ Called to notify the ArkWeb engine of the volume of the player when the volume c
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NativeMediaPlayerHandler-handleVolumeChanged(volume: number): void--><!--Device-NativeMediaPlayerHandler-handleVolumeChanged(volume: number): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

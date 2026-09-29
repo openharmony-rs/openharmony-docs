@@ -8,6 +8,8 @@ The module defines the observer used to listen for the first frame rendering com
 
 **Since:** 12
 
+<!--Device-unnamed-export interface AbilityFirstFrameStateObserver--><!--Device-unnamed-export interface AbilityFirstFrameStateObserver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ onAbilityFirstFrameDrawn(data: AbilityFirstFrameStateData): void
 Called when the first frame of the ability is rendered.
 
 **Since:** 12
+
+<!--Device-AbilityFirstFrameStateObserver-onAbilityFirstFrameDrawn(data: AbilityFirstFrameStateData): void--><!--Device-AbilityFirstFrameStateObserver-onAbilityFirstFrameDrawn(data: AbilityFirstFrameStateData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ Describes the parameters supported by the [@InsightIntentEntity](../../../refere
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface IntentEntityDecoratorInfo--><!--Device-unnamed-declare interface IntentEntityDecoratorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Category of the intent entity. Intents can be classified based on intent entity 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-IntentEntityDecoratorInfo-entityCategory: string--><!--Device-IntentEntityDecoratorInfo-entityCategory: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## parameters
@@ -50,6 +54,8 @@ Data format of the intent entity.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-IntentEntityDecoratorInfo-parameters?: Record<string, Object>--><!--Device-IntentEntityDecoratorInfo-parameters?: Record<string, Object>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## supportedQueryProperties
@@ -67,5 +73,7 @@ Supported query properties.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-IntentEntityDecoratorInfo-supportedQueryProperties?: string[]--><!--Device-IntentEntityDecoratorInfo-supportedQueryProperties?: string[]-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

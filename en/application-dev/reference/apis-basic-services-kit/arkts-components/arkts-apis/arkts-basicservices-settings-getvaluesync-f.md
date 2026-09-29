@@ -22,6 +22,8 @@ Get value from settingsdata(synchronous method)
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-settings-function getValueSync(dataAbilityHelper: DataAbilityHelper, name: string, defValue: string): string--><!--Device-settings-function getValueSync(dataAbilityHelper: DataAbilityHelper, name: string, defValue: string): string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -63,6 +65,8 @@ Get value from settingsdata(synchronous method)
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function getValueSync(context: Context, name: string, defValue: string): string--><!--Device-settings-function getValueSync(context: Context, name: string, defValue: string): string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -106,6 +110,8 @@ Get value from settingsdata(synchronous method). [USER_SECURE] domain need ohos.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function getValueSync(context: Context, name: string, defValue: string, domainName: string): string--><!--Device-settings-function getValueSync(context: Context, name: string, defValue: string, domainName: string): string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

@@ -19,6 +19,8 @@ Creates a **KVManager** instance to manage KV stores. This API uses an asynchron
 
 **Substitutes:** createKVManager
 
+<!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void--><!--Device-distributedData-function createKVManager(config: KVManagerConfig, callback: AsyncCallback<KVManager>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -69,6 +71,8 @@ Creates a **KVManager** instance to manage KV stores. This API uses a promise to
 **Deprecated since:** 9
 
 **Substitutes:** createKVManager
+
+<!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>--><!--Device-distributedData-function createKVManager(config: KVManagerConfig): Promise<KVManager>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

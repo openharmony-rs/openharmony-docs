@@ -18,6 +18,8 @@ Unsubscribes from vpn connect state changes.
 
 **Required permissions:** ohos.permission.MANAGE_VPN
 
+<!--Device-vpn-function off(type: 'connect', callback?: Callback<VpnConnectState>): void--><!--Device-vpn-function off(type: 'connect', callback?: Callback<VpnConnectState>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.
@@ -52,6 +54,8 @@ Unsubscribes from vpn connect state changes.
 **Since:** 20
 
 **Required permissions:** ohos.permission.MANAGE_VPN
+
+<!--Device-vpn-function off(type: 'connectMulti', callback?: Callback<MultiVpnConnectState>): void--><!--Device-vpn-function off(type: 'connectMulti', callback?: Callback<MultiVpnConnectState>): void-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 

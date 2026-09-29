@@ -10,6 +10,8 @@ BadgeParamWithString继承自[BadgeParam](arkts-arkui-badge-comp-badgeparam-i.md
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface BadgeParamWithString extends BadgeParam--><!--Device-unnamed-declare interface BadgeParamWithString extends BadgeParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -33,5 +35,7 @@ value为空字符串时不显示文本，仅显示圆点标记。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BadgeParamWithString-value: ResourceStr--><!--Device-BadgeParamWithString-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

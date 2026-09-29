@@ -20,6 +20,8 @@ If the device is registered with a 3GPP-compliant network, the international mob
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-radio-function getUniqueDeviceId(slotId: int, callback: AsyncCallback<string>): void--><!--Device-radio-function getUniqueDeviceId(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ If the device is registered with a 3GPP-compliant network, the international mob
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-radio-function getUniqueDeviceId(slotId?: int): Promise<string>--><!--Device-radio-function getUniqueDeviceId(slotId?: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -132,6 +136,8 @@ If the device is registered with a 3GPP-compliant network, the international mob
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-radio-function getUniqueDeviceId(callback: AsyncCallback<string>): void--><!--Device-radio-function getUniqueDeviceId(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

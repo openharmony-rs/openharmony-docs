@@ -8,6 +8,8 @@ declare interface TextPickerResult
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface TextPickerResult--><!--Device-unnamed-declare interface TextPickerResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
@@ -25,6 +27,8 @@ index: number[]
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerResult-index: number | number[]--><!--Device-TextPickerResult-index: number | number[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ value: string[]
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextPickerResult-value: string | string[]--><!--Device-TextPickerResult-value: string | string[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

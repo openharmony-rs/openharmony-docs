@@ -18,6 +18,8 @@ Clears data of a specified application based on the bundle name and application 
 
 **Required permissions:** ohos.permission.CLEAN_APPLICATION_DATA
 
+<!--Device-appManager-function clearUpAppData(bundleName: string, appCloneIndex?: int): Promise<void>--><!--Device-appManager-function clearUpAppData(bundleName: string, appCloneIndex?: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

@@ -1,6 +1,13 @@
 # TextTimer
 
-The **TextTimer** component displays timing information and is controlled in text format.
+**TextTimer** is a component that displays timing information in text format and controls the timer state. It supports both count-up and countdown modes and allows custom display formats. It is suitable for scenarios that need to show the passage of time, such as stopwatches and event countdowns. It is commonly used in countdown scenarios, such as exam countdowns, limited-time activities, and sports timing.
+
+When the component is invisible (not in the locked-screen state or the application background state), the UI time change stops (that is, the component is not drawn at this time), but [onTimer](arkts-arkui-texttimer-comp-attribute.md#ontimer) is still triggered normally.
+
+> **NOTE:** 
+> 
+> This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate
+> their
 
 ## Child Components
 
@@ -20,13 +27,15 @@ Create TextTimer component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-TextTimerInterface-(options?: TextTimerOptions): TextTimerAttribute--><!--Device-TextTimerInterface-(options?: TextTimerOptions): TextTimerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md) | No | Parameters of the **TextTimer** component. The default value is inherited from [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md). |
+| options | [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md) | No | Component parameter that displays timing information through text and controls the timer state. Pass this parameter when you need to customize the timer configuration (for example, set the countdown switch, timing duration, initial time, controller, and so on); if it is not passed, the default configuration of TextTimerOptions is used. <br>The default value inherits from [TextTimerOptions](arkts-arkui-texttimer-comp-texttimeroptions-i.md). |
 
 ## Summary
 

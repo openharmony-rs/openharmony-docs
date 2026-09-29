@@ -10,6 +10,8 @@ Represents the custom data type for applications only. It is a child class of [U
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-class ApplicationDefinedRecord extends UnifiedRecord--><!--Device-unifiedDataChannel-class ApplicationDefinedRecord extends UnifiedRecord-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Indicates the type of data, should always be started with 'ApplicationDefined.',
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ApplicationDefinedRecord-get applicationDefinedType(): string--><!--Device-ApplicationDefinedRecord-get applicationDefinedType(): string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -48,7 +52,9 @@ Indicates the type of data, should always be started with 'ApplicationDefined.',
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ApplicationDefinedRecord-set applicationDefinedType(value: string)--><!--Device-ApplicationDefinedRecord-set applicationDefinedType(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -66,7 +72,9 @@ Indicates the raw data of application defined data
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ApplicationDefinedRecord-get rawData(): Uint8Array--><!--Device-ApplicationDefinedRecord-get rawData(): Uint8Array-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -82,6 +90,8 @@ Indicates the raw data of application defined data
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ApplicationDefinedRecord-set rawData(value: Uint8Array)--><!--Device-ApplicationDefinedRecord-set rawData(value: Uint8Array)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

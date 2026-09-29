@@ -24,6 +24,8 @@ Sets the system time. This API uses an asynchronous callback to return the resul
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dateTimeManager-function setDateTime(admin: Want, time: number, callback: AsyncCallback<void>): void--><!--Device-dateTimeManager-function setDateTime(admin: Want, time: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -88,6 +90,8 @@ Sets the system time. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_SET_DATETIME
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-dateTimeManager-function setDateTime(admin: Want, time: number): Promise<void>--><!--Device-dateTimeManager-function setDateTime(admin: Want, time: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

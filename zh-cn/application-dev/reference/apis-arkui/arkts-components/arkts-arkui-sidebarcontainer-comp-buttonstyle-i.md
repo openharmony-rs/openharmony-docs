@@ -8,6 +8,8 @@ declare interface ButtonStyle
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface ButtonStyle--><!--Device-unnamed-declare interface ButtonStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -36,6 +38,8 @@ API version 9及之前版本：32vp
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ButtonStyle-height?: number--><!--Device-ButtonStyle-height?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icons
@@ -53,6 +57,8 @@ icons?: ButtonIconOptions
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ButtonStyle-icons?: ButtonIconOptions--><!--Device-ButtonStyle-icons?: ButtonIconOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ left?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ButtonStyle-left?: number--><!--Device-ButtonStyle-left?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -101,6 +109,8 @@ top?: number
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ButtonStyle-top?: number--><!--Device-ButtonStyle-top?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,5 +139,7 @@ API version 9及之前版本：32vp
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ButtonStyle-width?: number--><!--Device-ButtonStyle-width?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

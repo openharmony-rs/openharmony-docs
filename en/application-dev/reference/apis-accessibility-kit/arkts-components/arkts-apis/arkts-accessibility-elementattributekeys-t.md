@@ -8,6 +8,8 @@ Describes the attribute name of [ElementAttributeValues](arkts-accessibility-acc
 
 **Since:** 10
 
+<!--Device-unnamed-export type ElementAttributeKeys = keyof ElementAttributeValues--><!--Device-unnamed-export type ElementAttributeKeys = keyof ElementAttributeValues-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Type:** keyof ElementAttributeValues

@@ -22,6 +22,8 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -85,6 +87,8 @@ Sets whether to enable distributed notification for a specified application. Thi
 **Substitutes:** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md)(bundle: BundleOption, deviceType: string, enable: boolean)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise<void>--><!--Device-notificationManager-function setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

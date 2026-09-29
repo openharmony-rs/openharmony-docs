@@ -18,6 +18,8 @@ Parameters of the shared element transition animation.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface sharedTransitionOptions--><!--Device-unnamed-declare interface sharedTransitionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## curve
@@ -42,6 +44,8 @@ Default value: **Curve.Linear**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-sharedTransitionOptions-curve?: Curve | string | ICurve--><!--Device-sharedTransitionOptions-curve?: Curve | string | ICurve-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## delay
@@ -63,6 +67,8 @@ Unit: ms
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-sharedTransitionOptions-delay?: number--><!--Device-sharedTransitionOptions-delay?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ Value range: [0, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-sharedTransitionOptions-duration?: number--><!--Device-sharedTransitionOptions-duration?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## motionPath
@@ -103,6 +111,8 @@ Motion path.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-sharedTransitionOptions-motionPath?: MotionPathOptions--><!--Device-sharedTransitionOptions-motionPath?: MotionPathOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +134,8 @@ Default value: **SharedTransitionEffectType.Exchange**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-sharedTransitionOptions-type?: SharedTransitionEffectType--><!--Device-sharedTransitionOptions-type?: SharedTransitionEffectType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## zIndex
@@ -143,5 +155,7 @@ Default value: **0**
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-sharedTransitionOptions-zIndex?: number--><!--Device-sharedTransitionOptions-zIndex?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

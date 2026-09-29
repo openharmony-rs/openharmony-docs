@@ -8,6 +8,8 @@ The module provides a set of camera service APIs for you to easily develop a cam
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace camera--><!--Device-unnamed-declare namespace camera-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -207,11 +209,18 @@ import { camera } from '@kit.CameraKit';
 | [ZoomQuery](arkts-camera-camera-zoomquery-i-sys.md) | ZoomQuery provides APIs to query the zoom feature of a device camera, including the API to obtain the supported zoom ratio range. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [ImageType](arkts-camera-camera-imagetype-t.md) | Defines the image container type, which is used to obtain full-quality images or uncompressed images (YUV). |
+
 ### Enums
 
 | Name | Description |
 | --- | --- |
 | [AutomotiveCameraPosition](arkts-camera-camera-automotivecameraposition-e.md) | Enum for automotive camera position. |
+| [CameraAuxiliaryPhotoType](arkts-camera-camera-cameraauxiliaryphototype-e.md) | Enumerates the auxiliary photo types. |
 | [CameraConcurrentType](arkts-camera-camera-cameraconcurrenttype-e.md) | Enumerates the camera concurrency types. |
 | [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) | Enumerates the camera error codes, |
 | [CameraFormat](arkts-camera-camera-cameraformat-e.md) | Enumerates the camera output formats. |
@@ -286,9 +295,3 @@ import { camera } from '@kit.CameraKit';
 | [UsageType](arkts-camera-camera-usagetype-e-sys.md) | Enum for usage type used in capture session. |
 | [VideoMetaType](arkts-camera-camera-videometatype-e-sys.md) | Video meta type. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [ImageType](arkts-camera-camera-imagetype-t.md) | Defines the image container type, which is used to obtain full-quality images or uncompressed images (YUV). |

@@ -18,6 +18,8 @@ Decomposes an HDR Pixelmap object to a Picture object which contains an SDR Pixe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-function decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOptions): Promise<Picture | undefined>--><!--Device-image-function decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOptions): Promise<Picture | undefined>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.

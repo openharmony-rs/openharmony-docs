@@ -12,4 +12,6 @@ Occlusion material: occludes other objects in the scene but does not occlude the
 
 **Since:** 23
 
+<!--Device-unnamed-export interface OcclusionMaterial extends Material--><!--Device-unnamed-export interface OcclusionMaterial extends Material-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D

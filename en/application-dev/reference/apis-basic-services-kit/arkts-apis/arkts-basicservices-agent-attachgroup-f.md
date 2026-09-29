@@ -18,6 +18,8 @@ If any task ID does not meet the attachment conditions, all tasks in the list wi
 
 **Since:** 15
 
+<!--Device-agent-function attachGroup(gid: string, tids: string[]): Promise<void>--><!--Device-agent-function attachGroup(gid: string, tids: string[]): Promise<void>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

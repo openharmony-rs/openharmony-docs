@@ -12,6 +12,8 @@ Creates a **KVManager** object to obtain KV store information. Before calling an
 
 **Substitutes:** KVManager
 
+<!--Device-distributedData-interface KVManager--><!--Device-distributedData-interface KVManager-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core @version 1
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Closes a KV store. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** closeKVStore
+
+<!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -86,6 +90,8 @@ Closes a KV store. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** closeKVStore
+
+<!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -148,6 +154,8 @@ Deletes a KV store. This API uses an asynchronous callback to return the result.
 
 **Substitutes:** deleteKVStore
 
+<!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -200,6 +208,8 @@ Deletes a KV store. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** deleteKVStore
+
+<!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -261,6 +271,8 @@ Obtains the IDs of all KV stores that are created by getKVStore() and have not b
 
 **Substitutes:** getAllKVStoreId
 
+<!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void--><!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -299,6 +311,8 @@ Obtains the IDs of all KV stores that are created by getKVStore() and have not b
 **Deprecated since:** 9
 
 **Substitutes:** getAllKVStoreId
+
+<!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>--><!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -344,6 +358,8 @@ Creates and obtains a KV store. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** getKVStore
+
+<!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -401,6 +417,8 @@ Creates and obtains a KV store. This API uses an asynchronous callback to return
 
 **Substitutes:** getKVStore
 
+<!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -452,6 +470,8 @@ Unsubscribes from service status changes.
 
 **Substitutes:** off
 
+<!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void--><!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 **Parameters:**
@@ -489,6 +509,8 @@ Subscribes to service status changes.
 **Deprecated since:** 9
 
 **Substitutes:** on
+
+<!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void--><!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 

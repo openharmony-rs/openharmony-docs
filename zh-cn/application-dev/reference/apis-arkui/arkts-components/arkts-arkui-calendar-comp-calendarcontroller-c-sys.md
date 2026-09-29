@@ -10,6 +10,8 @@ Calendar controller.
 
 **废弃版本：** 20
 
+<!--Device-unnamed-declare class CalendarController--><!--Device-unnamed-declare class CalendarController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -29,6 +31,8 @@ Back to day.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CalendarController-backToToday()--><!--Device-CalendarController-backToToday()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Constructor.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CalendarController-constructor()--><!--Device-CalendarController-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -69,6 +75,8 @@ To the specified element.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CalendarController-goTo(value: { year: number; month: number; day: number })--><!--Device-CalendarController-goTo(value: { year: number; month: number; day: number })-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

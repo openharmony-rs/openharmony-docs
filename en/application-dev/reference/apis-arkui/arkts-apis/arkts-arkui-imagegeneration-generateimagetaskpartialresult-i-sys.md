@@ -10,6 +10,8 @@ Configuration stream result for AI-generated image tasks.
 
 **Since:** 23
 
+<!--Device-imageGeneration-interface GenerateImageTaskPartialResult--><!--Device-imageGeneration-interface GenerateImageTaskPartialResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Image data of the image corresponding to AI-generated image task, available in p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GenerateImageTaskPartialResult-imageData?: string--><!--Device-GenerateImageTaskPartialResult-imageData?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Sequence number of the image corresponding to AI-generated image task, available
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GenerateImageTaskPartialResult-imageIndex?: int--><!--Device-GenerateImageTaskPartialResult-imageIndex?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Information of the partial error corresponding to AI-generated image task, avail
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GenerateImageTaskPartialResult-partialFail?: BusinessError--><!--Device-GenerateImageTaskPartialResult-partialFail?: BusinessError-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -88,6 +96,8 @@ Total number of the image corresponding to AI-generated image task, available in
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GenerateImageTaskPartialResult-totalCount?: int--><!--Device-GenerateImageTaskPartialResult-totalCount?: int-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -105,6 +115,8 @@ The type information used for AI-generated image task.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GenerateImageTaskPartialResult-type: PartialResultType--><!--Device-GenerateImageTaskPartialResult-type: PartialResultType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

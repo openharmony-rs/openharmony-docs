@@ -8,6 +8,8 @@ Defines the icon type of the element on the left of the **ComposeListItem** comp
 
 **Since:** 10
 
+<!--Device-unnamed-export declare enum IconType--><!--Device-unnamed-export declare enum IconType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BADGE
@@ -23,6 +25,8 @@ Badge with an icon size of 8 x 8 vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-IconType-BADGE = 1--><!--Device-IconType-BADGE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Small icon with an icon size of 16 x 16 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IconType-NORMAL_ICON = 2--><!--Device-IconType-NORMAL_ICON = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SYSTEM_ICON
@@ -55,6 +61,8 @@ System icon with an icon size of 24 x 24 vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-IconType-SYSTEM_ICON = 3--><!--Device-IconType-SYSTEM_ICON = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Profile picture with an icon size of 40 x 40 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IconType-HEAD_SCULPTURE = 4--><!--Device-IconType-HEAD_SCULPTURE = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## APP_ICON
@@ -87,6 +97,8 @@ Application icon with an icon size of 64 x 64 vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-IconType-APP_ICON = 5--><!--Device-IconType-APP_ICON = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ Preview image with an icon size of 96 x 96 vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IconType-PREVIEW = 6--><!--Device-IconType-PREVIEW = 6-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LONGITUDINAL
@@ -120,6 +134,8 @@ Icon with a horizontal special ratio (width is greater than height), keeping the
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IconType-LONGITUDINAL = 7--><!--Device-IconType-LONGITUDINAL = 7-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## VERTICAL
@@ -135,5 +151,7 @@ Icon with a vertical special ratio (height is greater than width), keeping the l
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-IconType-VERTICAL = 8--><!--Device-IconType-VERTICAL = 8-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

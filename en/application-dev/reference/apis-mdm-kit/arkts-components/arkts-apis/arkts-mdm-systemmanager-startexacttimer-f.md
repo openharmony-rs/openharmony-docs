@@ -20,6 +20,8 @@ Starts an exact timer. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function startExactTimer(timer: number, triggerTime: number): Promise<void>--><!--Device-systemManager-function startExactTimer(timer: number, triggerTime: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

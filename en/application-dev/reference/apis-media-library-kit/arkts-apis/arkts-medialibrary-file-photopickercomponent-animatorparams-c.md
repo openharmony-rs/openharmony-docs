@@ -8,6 +8,8 @@ Defines animation parameters for entering or exiting the photo browser page.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class AnimatorParams--><!--Device-unnamed-export declare class AnimatorParams-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Animation curve.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AnimatorParams-curve?: Curve | ICurve | string--><!--Device-AnimatorParams-curve?: Curve | ICurve | string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## duration
@@ -45,5 +49,7 @@ Animation duration, in ms.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AnimatorParams-duration?: number--><!--Device-AnimatorParams-duration?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -8,6 +8,8 @@ Defines the application window state information.
 
 **Since:** 26.0.0
 
+<!--Device-applicationManager-interface WindowStateInfo--><!--Device-applicationManager-interface WindowStateInfo-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Whether the application window is displayed on the bottom dock. For application 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowStateInfo-isOnDock: boolean--><!--Device-WindowStateInfo-isOnDock: boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## name
@@ -45,6 +49,8 @@ Application window name.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStateInfo-name: string--><!--Device-WindowStateInfo-name: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ Application window state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowStateInfo-state: WindowState--><!--Device-WindowStateInfo-state: WindowState-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## windowId
@@ -77,5 +85,7 @@ Application window ID.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowStateInfo-windowId: number--><!--Device-WindowStateInfo-windowId: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

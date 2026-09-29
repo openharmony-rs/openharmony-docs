@@ -8,6 +8,8 @@ Defines the accessibility options of the suffix icon.
 
 **Since:** 14
 
+<!--Device-unnamed-export interface AccessibilityOptions--><!--Device-unnamed-export interface AccessibilityOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-AccessibilityOptions-accessibilityDescription?: ResourceStr--><!--Device-AccessibilityOptions-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-AccessibilityOptions-accessibilityLevel?: string--><!--Device-AccessibilityOptions-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -91,5 +97,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-AccessibilityOptions-accessibilityText?: ResourceStr--><!--Device-AccessibilityOptions-accessibilityText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -19,6 +19,8 @@ import { ProgressButton } from '@kit.ArkUI';
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-export declare struct ProgressButton--><!--Device-unnamed-export declare struct ProgressButton-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -41,6 +43,8 @@ clickCallback: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButton-clickCallback: () => void--><!--Device-ProgressButton-clickCallback: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorOptions
@@ -60,6 +64,8 @@ colorOptions?: ProgressButtonColorOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButton-colorOptions?: ProgressButtonColorOptions--><!--Device-ProgressButton-colorOptions?: ProgressButtonColorOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +91,8 @@ content: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButton-content: ResourceStr--><!--Device-ProgressButton-content: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enable
@@ -109,6 +117,8 @@ false：不可点击。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButton-enable: boolean--><!--Device-ProgressButton-enable: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## progress
@@ -132,6 +142,8 @@ progress: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButton-progress: number--><!--Device-ProgressButton-progress: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,6 +171,8 @@ progressButtonRadius?: LengthMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ProgressButton-progressButtonRadius?: LengthMetrics--><!--Device-ProgressButton-progressButtonRadius?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## progressButtonWidth
@@ -180,5 +194,7 @@ progressButtonWidth?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProgressButton-progressButtonWidth?: Length--><!--Device-ProgressButton-progressButtonWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

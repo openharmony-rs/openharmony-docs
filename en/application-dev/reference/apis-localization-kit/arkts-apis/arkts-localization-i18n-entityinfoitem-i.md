@@ -8,6 +8,8 @@ Defines a list of entities.
 
 **Since:** 11
 
+<!--Device-i18n-export interface EntityInfoItem--><!--Device-i18n-export interface EntityInfoItem-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Start position of the entity in the input string.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EntityInfoItem-begin: int--><!--Device-EntityInfoItem-begin: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -44,7 +48,9 @@ End position of the entity the input string.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EntityInfoItem-end: int--><!--Device-EntityInfoItem-end: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -60,6 +66,8 @@ Entity type. The value can be **phone_number** or **date**. **phone_number** ind
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-EntityInfoItem-type: string--><!--Device-EntityInfoItem-type: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

@@ -1,6 +1,10 @@
 # ImageSpan
 
-As a child of the [Text](arkts-arkui-text-comp.md#text) and [ContainerSpan](arkts-arkui-containerspan-comp-attribute.md#containerspanattribute) components, the **ImageSpan** component is used to display inline images.
+**ImageSpan** is a child component of [Text](arkts-arkui-text-comp.md) and [ContainerSpan](arkts-arkui-containerspan-comp-attribute.md#containerspanattribute), used to display inline images in text. It supports setting the image alignment, scale type, loading placeholder image, and color filter, and is suitable for scenarios where images need to be embedded in text paragraphs to implement image- text layout.
+
+> **NOTE:** 
+> 
+> - This component is supported since API version 10. Newly added APIs will be marked with a superscript to indicate their
 
 ## Child Components
 
@@ -20,6 +24,8 @@ Defines the constructor of ImageSpan.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ImageSpanInterface-(value: ResourceStr | PixelMap): ImageSpanAttribute--><!--Device-ImageSpanInterface-(value: ResourceStr | PixelMap): ImageSpanAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -28,7 +34,7 @@ Defines the constructor of ImageSpan.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Image source. Both local and network images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **$r** to reference image resources that need to be used globally.<br>- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>- Base64 strings are supported. The value format is data:image/[png&#124;jpeg&#124;bmp&#124;webp&#124;heif];base64, [base64 data], where *[base64 data]* is a Base64 string.<br>- Character string prefixed with file://data/ storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path. |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Image data source, which supports local and network images. <br>When a network image is used, the ohos.permission.INTERNET permission is required. For details about how to request the permission, see [Declaring Permissions](../../../security/AccessToken/declare-permissions.md). <br>When a relative path is used to reference an image resource, for example, `ImageSpan("common/test.jpg")`, cross-package or cross-module invocation of the ImageSpan component is not supported. You are advised to use `$r` to manage image resources that need to be used globally. <br>- The supported image formats include png, jpg, bmp, svg, gif, webp, and heif. <br>- `Base64` strings are supported. The format is `data:image/[png&#124;jpeg&#124;bmp&#124;webp&#124;heif];base64,[base64 data]`, where `[base64 data]` is the `Base64` string data. <br>- Strings with the file://data/storage path prefix are supported, which are used to read image resources in the file folder under the installation directory of the application. Ensure that the files under the application installation directory have read permission. |
 
 ## Summary
 
@@ -42,7 +48,7 @@ Defines the constructor of ImageSpan.
 
 | Name | Description |
 | --- | --- |
-| [ImageCompleteCallback](arkts-arkui-imagespan-comp-imagecompletecallback-t.md) | Defines the callback triggered when the image is successfully loaded or decoded. |
+| [ImageCompleteCallback](arkts-arkui-imagespan-comp-imagecompletecallback-t.md) | Triggered when the image is successfully loaded and decoded. |
 
 ## Examples
 

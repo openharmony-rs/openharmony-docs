@@ -8,6 +8,8 @@ declare interface VideoOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface VideoOptions--><!--Device-unnamed-declare interface VideoOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -28,6 +30,8 @@ controller?: VideoController
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoOptions-controller?: VideoController--><!--Device-VideoOptions-controller?: VideoController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controllerAsync
@@ -47,6 +51,8 @@ controllerAsync?: VideoControllerAsync
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoOptions-controllerAsync?: VideoControllerAsync--><!--Device-VideoOptions-controllerAsync?: VideoControllerAsync-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +84,8 @@ string格式支持number格式取值的字符串形式："0.75"，"1.0"，"1.25"
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoOptions-currentProgressRate?: number | string | PlaybackSpeed--><!--Device-VideoOptions-currentProgressRate?: number | string | PlaybackSpeed-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageAIOptions
@@ -96,6 +104,8 @@ imageAIOptions?: ImageAIOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-VideoOptions-imageAIOptions?: ImageAIOptions--><!--Device-VideoOptions-imageAIOptions?: ImageAIOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## posterOptions
@@ -113,6 +123,8 @@ posterOptions?: PosterOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoOptions-posterOptions?: PosterOptions--><!--Device-VideoOptions-posterOptions?: PosterOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +159,8 @@ Resource格式可以跨包/跨模块访问资源文件。
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoOptions-previewUri?: string | PixelMap | Resource--><!--Device-VideoOptions-previewUri?: string | PixelMap | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,5 +199,7 @@ string格式可用于加载网络视频和本地视频，常用于加载网络�
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoOptions-src?: string | Resource--><!--Device-VideoOptions-src?: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

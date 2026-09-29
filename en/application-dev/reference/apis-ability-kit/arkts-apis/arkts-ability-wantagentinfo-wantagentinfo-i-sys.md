@@ -8,6 +8,8 @@ Defines the information required for triggering a WantAgent object. The informat
 
 **Since:** 7
 
+<!--Device-unnamed-export interface WantAgentInfo--><!--Device-unnamed-export interface WantAgentInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## userId
@@ -29,6 +31,8 @@ This API can be used only in the stage model.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WantAgentInfo-userId?: int--><!--Device-WantAgentInfo-userId?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ Defines the data operation performed by the UDMF. It includes three optional par
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-interface Options--><!--Device-unifiedDataChannel-interface Options-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Type of the data channel related to the data operation.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Options-intention?: Intention--><!--Device-Options-intention?: Intention-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -52,7 +56,9 @@ The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** w
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Options-key?: string--><!--Device-Options-key?: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -72,6 +78,8 @@ Data visibility level. This parameter is effective only when specified during da
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Options-visibility?: Visibility--><!--Device-Options-visibility?: Visibility-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

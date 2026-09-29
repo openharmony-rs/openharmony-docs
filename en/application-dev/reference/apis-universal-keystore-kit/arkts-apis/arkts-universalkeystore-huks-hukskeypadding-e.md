@@ -8,6 +8,8 @@ Enumerates the padding algorithms.
 
 **Since:** 8
 
+<!--Device-huks-export enum HuksKeyPadding--><!--Device-huks-export enum HuksKeyPadding-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_PADDING_NONE
@@ -24,6 +26,8 @@ No padding algorithm is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-HuksKeyPadding-HUKS_PADDING_NONE = 0--><!--Device-HuksKeyPadding-HUKS_PADDING_NONE = 0-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_PADDING_OAEP
@@ -39,6 +43,8 @@ Optimal Asymmetric Encryption Padding (OAEP).
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_OAEP = 1--><!--Device-HuksKeyPadding-HUKS_PADDING_OAEP = 1-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -58,6 +64,8 @@ Probabilistic Signature Scheme (PSS).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2--><!--Device-HuksKeyPadding-HUKS_PADDING_PSS = 2-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
@@ -75,6 +83,8 @@ Public Key Cryptography Standards (PKCS) #1 v1.5.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_PKCS1_V1_5 = 3--><!--Device-HuksKeyPadding-HUKS_PADDING_PKCS1_V1_5 = 3-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -94,6 +104,8 @@ PKCS #5.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksKeyPadding-HUKS_PADDING_PKCS5 = 4--><!--Device-HuksKeyPadding-HUKS_PADDING_PKCS5 = 4-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
@@ -112,6 +124,8 @@ PKCS #7.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksKeyPadding-HUKS_PADDING_PKCS7 = 5--><!--Device-HuksKeyPadding-HUKS_PADDING_PKCS7 = 5-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_PADDING_ISO_IEC_9796_2
@@ -128,6 +142,8 @@ ISO_IEC_9796_2<!--Del--> (not supported currently)<!--DelEnd-->.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9796_2 = 6-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 ## HUKS_PADDING_ISO_IEC_9797_1
@@ -143,5 +159,7 @@ ISO_IEC_9797_1<!--Del--> (not supported currently)<!--DelEnd-->.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7--><!--Device-HuksKeyPadding-HUKS_PADDING_ISO_IEC_9797_1 = 7-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

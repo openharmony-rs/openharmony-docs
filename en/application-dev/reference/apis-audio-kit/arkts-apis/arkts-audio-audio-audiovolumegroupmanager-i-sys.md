@@ -14,6 +14,8 @@ Before calling any API in AudioVolumeGroupManager, you must use [getVolumeGroupM
 
 **Since:** 9
 
+<!--Device-audio-interface AudioVolumeGroupManager--><!--Device-audio-interface AudioVolumeGroupManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Adjusts system volume by step for target volume type. This method uses an asynch
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioVolumeGroupManager-adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType, callback: AsyncCallback<void>): void--><!--Device-AudioVolumeGroupManager-adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -82,6 +86,8 @@ Adjusts system volume by step for target volume type. This method uses a promise
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioVolumeGroupManager-adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType): Promise<void>--><!--Device-AudioVolumeGroupManager-adjustSystemVolumeByStep(volumeType: AudioVolumeType, adjustType: VolumeAdjustType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -133,6 +139,8 @@ Adjusts system volume by step, volume type is decided by system. This method use
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeGroupManager-adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback<void>): void--><!--Device-AudioVolumeGroupManager-adjustVolumeByStep(adjustType: VolumeAdjustType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -182,6 +190,8 @@ Adjusts system volume by step, volume type is decided by system. This method use
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeGroupManager-adjustVolumeByStep(adjustType: VolumeAdjustType): Promise<void>--><!--Device-AudioVolumeGroupManager-adjustVolumeByStep(adjustType: VolumeAdjustType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -229,6 +239,8 @@ Obtains the active volume type in the calling moment. This method returns in syn
 
 **Since:** 13
 
+<!--Device-AudioVolumeGroupManager-getActiveVolumeTypeSync(uid: int): AudioVolumeType--><!--Device-AudioVolumeGroupManager-getActiveVolumeTypeSync(uid: int): AudioVolumeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -273,6 +285,8 @@ Checks whether the persistent microphone status is muted.
 
 **Required permissions:** ohos.permission.MICROPHONE_CONTROL
 
+<!--Device-AudioVolumeGroupManager-isPersistentMicMute(): boolean--><!--Device-AudioVolumeGroupManager-isPersistentMicMute(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -307,6 +321,8 @@ Mutes a stream. This method uses an asynchronous callback to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioVolumeGroupManager-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void--><!--Device-AudioVolumeGroupManager-mute(volumeType: AudioVolumeType, mute: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -348,6 +364,8 @@ Mutes a stream. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeGroupManager-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>--><!--Device-AudioVolumeGroupManager-mute(volumeType: AudioVolumeType, mute: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -384,6 +402,8 @@ Mutes or unmutes the microphone. This method uses a promise to return the result
 **Since:** 11
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeGroupManager-setMicMute(mute: boolean): Promise<void>--><!--Device-AudioVolumeGroupManager-setMicMute(mute: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -429,6 +449,8 @@ Mutes or unmutes the microphone. This method uses a promise to return the result
 **Since:** 12
 
 **Required permissions:** ohos.permission.MICROPHONE_CONTROL
+
+<!--Device-AudioVolumeGroupManager-setMicMutePersistent(mute: boolean, type: PolicyType): Promise<void>--><!--Device-AudioVolumeGroupManager-setMicMutePersistent(mute: boolean, type: PolicyType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -476,6 +498,8 @@ Sets the ringer mode. This method uses an asynchronous callback to return the re
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeGroupManager-setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void--><!--Device-AudioVolumeGroupManager-setRingerMode(mode: AudioRingMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -515,6 +539,8 @@ Sets the ringer mode. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeGroupManager-setRingerMode(mode: AudioRingMode): Promise<void>--><!--Device-AudioVolumeGroupManager-setRingerMode(mode: AudioRingMode): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -550,6 +576,8 @@ Sets the volume for a stream. This method uses an asynchronous callback to retur
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioVolumeGroupManager-setVolume(volumeType: AudioVolumeType, volume: int, callback: AsyncCallback<void>): void--><!--Device-AudioVolumeGroupManager-setVolume(volumeType: AudioVolumeType, volume: int, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -591,6 +619,8 @@ Sets the volume for a stream. This method uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeGroupManager-setVolume(volumeType: AudioVolumeType, volume: int): Promise<void>--><!--Device-AudioVolumeGroupManager-setVolume(volumeType: AudioVolumeType, volume: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -627,6 +657,8 @@ Sets the volume for a stream. This method uses a promise to return the result.
 **Since:** 12
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
+
+<!--Device-AudioVolumeGroupManager-setVolumeWithFlag(volumeType: AudioVolumeType, volume: int, flags: int): Promise<void>--><!--Device-AudioVolumeGroupManager-setVolumeWithFlag(volumeType: AudioVolumeType, volume: int, flags: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 

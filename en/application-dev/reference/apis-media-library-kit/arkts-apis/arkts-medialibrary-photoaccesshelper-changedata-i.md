@@ -8,6 +8,8 @@ Defines the return value of the listener callback.
 
 **Since:** 10
 
+<!--Device-photoAccessHelper-interface ChangeData--><!--Device-photoAccessHelper-interface ChangeData-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ URIs of the changed files in the album. The value may be undefined. Check whethe
 
 **Since:** 10
 
+<!--Device-ChangeData-extraUris: Array<string>--><!--Device-ChangeData-extraUris: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## type
@@ -42,6 +46,8 @@ Notification type.
 
 **Since:** 10
 
+<!--Device-ChangeData-type: NotifyType--><!--Device-ChangeData-type: NotifyType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## uris
@@ -55,5 +61,7 @@ All URIs with the same [NotifyType](arkts-medialibrary-photoaccesshelper-notifyt
 **Type:** Array&lt;string&gt;
 
 **Since:** 10
+
+<!--Device-ChangeData-uris: Array<string>--><!--Device-ChangeData-uris: Array<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

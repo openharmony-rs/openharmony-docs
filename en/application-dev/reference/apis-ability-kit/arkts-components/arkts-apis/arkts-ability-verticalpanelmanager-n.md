@@ -12,6 +12,8 @@ Defines a vertical domain panel manager.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace verticalPanelManager--><!--Device-unnamed-declare namespace verticalPanelManager-End-->
+
 **System capability:** SystemCapability.Ability.AppExtension.VerticalPanel
 
 **System API:** This is a system API.

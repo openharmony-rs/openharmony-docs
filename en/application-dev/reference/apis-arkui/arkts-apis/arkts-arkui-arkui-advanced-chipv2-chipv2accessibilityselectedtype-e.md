@@ -8,11 +8,13 @@ Defines the selected state types that can be specified for **ChipV2**. This API 
 
 | Name | Value | Description |  
 | ---- | -- | ---- |  
-| [CLICKED](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityselectedtype-e.md) | 0 | Click type. The component does not report any selected state to the accessibility service and is used only as a clickable component. This is suitable for scenarios where an action is performed but no state is maintained, such as a regular button. |
-| [CHECKED](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityselectedtype-e.md) | 1 | Check type. The component reports its selected state to the accessibility service through the [accessibilityChecked](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked) attribute. This is suitable for multi-select scenarios, such as tag filtering and attribute selection.|
-| [SELECTED](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityselectedtype-e.md) | 2 | Select type. The component reports its selected state to the accessibility service through the [accessibilitySelected](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected) attribute. This is suitable for scenarios indicating the currently selected item, such as navigation bar tabs and single-select list items.|
+| CLICKED | 0 | Click type. The component does not report any selected state to the accessibility service and is used only as a clickable component. This is suitable for scenarios where an action is performed but no state is maintained, such as a regular button. |
+| CHECKED | 1 | Check type. The component reports its selected state to the accessibility service through the [accessibilityChecked](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitychecked) attribute. This is suitable for multi-select scenarios, such as tag filtering and attribute selection.|
+| SELECTED | 2 | Select type. The component reports its selected state to the accessibility service through the [accessibilitySelected](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilityselected) attribute. This is suitable for scenarios indicating the currently selected item, such as navigation bar tabs and single-select list items.|
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export declare enum ChipV2AccessibilitySelectedType--><!--Device-unnamed-export declare enum ChipV2AccessibilitySelectedType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ Default type.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0--><!--Device-ChipV2AccessibilitySelectedType-CLICKED = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CHECKED
@@ -46,6 +50,8 @@ Checked type.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2AccessibilitySelectedType-CHECKED = 1--><!--Device-ChipV2AccessibilitySelectedType-CHECKED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SELECTED
@@ -61,5 +67,7 @@ Selected type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2AccessibilitySelectedType-SELECTED = 2--><!--Device-ChipV2AccessibilitySelectedType-SELECTED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

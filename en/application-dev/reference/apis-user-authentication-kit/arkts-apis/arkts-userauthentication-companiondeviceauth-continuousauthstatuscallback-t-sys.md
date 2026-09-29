@@ -10,6 +10,8 @@ Defines the callback triggered for receiving notifications of continuous authent
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-type ContinuousAuthStatusCallback = (isAuthPassed: boolean, authTrustLevel?: UserAuth.AuthTrustLevel) => void--><!--Device-companionDeviceAuth-type ContinuousAuthStatusCallback = (isAuthPassed: boolean, authTrustLevel?: UserAuth.AuthTrustLevel) => void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ The site isolation mechanism isolates websites from different origins in differe
 
 **Since:** 21
 
+<!--Device-webview-enum SiteIsolationMode--><!--Device-webview-enum SiteIsolationMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## PARTIAL
@@ -20,6 +22,8 @@ Partial site isolation, that is, new sites are loaded in the same renderer proce
 
 **Since:** 21
 
+<!--Device-SiteIsolationMode-PARTIAL = 0--><!--Device-SiteIsolationMode-PARTIAL = 0-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## STRICT
@@ -31,5 +35,7 @@ STRICT = 1
 Strict site isolation. Iframes from different sites are switched to new render processes.
 
 **Since:** 21
+
+<!--Device-SiteIsolationMode-STRICT = 1--><!--Device-SiteIsolationMode-STRICT = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

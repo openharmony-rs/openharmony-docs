@@ -10,6 +10,8 @@ Sets the initial state of the slidable panel.
 
 **Deprecated since:** 12
 
+<!--Device-unnamed-declare enum PanelMode--><!--Device-unnamed-declare enum PanelMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Mini
@@ -27,6 +29,8 @@ Minimum state.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelMode-Mini = 0--><!--Device-PanelMode-Mini = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ SHalf-screen-like status
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PanelMode-Half--><!--Device-PanelMode-Half-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Full
@@ -63,5 +69,7 @@ Class Full Screen Status.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelMode-Full--><!--Device-PanelMode-Full-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

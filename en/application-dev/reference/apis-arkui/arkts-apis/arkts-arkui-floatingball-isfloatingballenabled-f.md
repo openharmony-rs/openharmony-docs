@@ -16,6 +16,8 @@ Checks whether the device supports floating balls.
 
 **Since:** 20
 
+<!--Device-floatingBall-function isFloatingBallEnabled(): boolean--><!--Device-floatingBall-function isFloatingBallEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**

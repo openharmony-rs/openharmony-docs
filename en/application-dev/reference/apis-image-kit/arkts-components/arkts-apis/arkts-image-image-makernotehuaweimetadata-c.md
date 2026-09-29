@@ -12,6 +12,8 @@ Photo metadata from Huawei cameras.
 
 **Since:** 23
 
+<!--Device-image-class MakerNoteHuaweiMetadata implements Metadata--><!--Device-image-class MakerNoteHuaweiMetadata implements Metadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Clones [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimetadata-c.md)
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-clone(): Promise<MakerNoteHuaweiMetadata>--><!--Device-MakerNoteHuaweiMetadata-clone(): Promise<MakerNoteHuaweiMetadata>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -82,6 +86,8 @@ Returns an empty [MakerNoteHuaweiMetadata](arkts-image-image-makernotehuaweimeta
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-static createInstance(): MakerNoteHuaweiMetadata--><!--Device-MakerNoteHuaweiMetadata-static createInstance(): MakerNoteHuaweiMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -112,6 +118,8 @@ Obtains all properties and their values from the image metadata. This API return
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-getAllProperties(): Promise<Record<string, string | null>>--><!--Device-MakerNoteHuaweiMetadata-getAllProperties(): Promise<Record<string, string | null>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -163,6 +171,8 @@ Obtains the metadata in binary format. This API uses a promise to return the res
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-getBlob(): Promise<ArrayBuffer>--><!--Device-MakerNoteHuaweiMetadata-getBlob(): Promise<ArrayBuffer>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -207,6 +217,8 @@ Obtains the property values from image metadata. This API returns the result asy
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>--><!--Device-MakerNoteHuaweiMetadata-getProperties(key: Array<string>): Promise<Record<string, string | null>>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -268,6 +280,8 @@ Replaces the current metadata with binary data. This API uses a promise to retur
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-setBlob(blob: ArrayBuffer): Promise<void>--><!--Device-MakerNoteHuaweiMetadata-setBlob(blob: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -332,6 +346,8 @@ For details about the properties, see [PropertyKey](arkts-image-image-propertyke
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-setProperties(records: Record<string, string | null>): Promise<void>--><!--Device-MakerNoteHuaweiMetadata-setProperties(records: Record<string, string | null>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -400,6 +416,8 @@ Number of burst shots. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-burstNumber?: int--><!--Device-MakerNoteHuaweiMetadata-burstNumber?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## captureMode
@@ -415,6 +433,8 @@ Capture mode. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-captureMode?: int--><!--Device-MakerNoteHuaweiMetadata-captureMode?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -432,6 +452,8 @@ Cloud enhancement label.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-cloudLabel?: string--><!--Device-MakerNoteHuaweiMetadata-cloudLabel?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## faceConfidences
@@ -447,6 +469,8 @@ Confidences of a specified number of faces.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-faceConfidences?: int[]--><!--Device-MakerNoteHuaweiMetadata-faceConfidences?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -464,6 +488,8 @@ Number of faces. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-faceCount?: int--><!--Device-MakerNoteHuaweiMetadata-faceCount?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## faceSmileScores
@@ -479,6 +505,8 @@ Smile scores of a specified number of faces.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-faceSmileScores?: int[]--><!--Device-MakerNoteHuaweiMetadata-faceSmileScores?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -496,6 +524,8 @@ Lens focus control policy, which determines how the camera adjusts the focal len
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-focusMode?: FocusMode--><!--Device-MakerNoteHuaweiMetadata-focusMode?: FocusMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## isCloudEnhanced
@@ -511,6 +541,8 @@ Whether the image has been cloud-enhanced. **true** indicates yes; **false** ind
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-isCloudEnhanced?: boolean--><!--Device-MakerNoteHuaweiMetadata-isCloudEnhanced?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -528,6 +560,8 @@ Whether to use the front camera. **true** indicates yes; **false** indicates no.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-isFrontCamera?: boolean--><!--Device-MakerNoteHuaweiMetadata-isFrontCamera?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## isWindSnapshot
@@ -543,6 +577,8 @@ Whether the wind snapshot mode is used. **true** indicates yes; **false** indica
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-isWindSnapshot?: boolean--><!--Device-MakerNoteHuaweiMetadata-isWindSnapshot?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -560,6 +596,8 @@ Whether XMAGE is supported. **true** indicates yes; **false** indicates no.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-isXmageSupported?: boolean--><!--Device-MakerNoteHuaweiMetadata-isXmageSupported?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## physicalAperture
@@ -575,6 +613,8 @@ Physical aperture, in fNumber. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-physicalAperture?: int--><!--Device-MakerNoteHuaweiMetadata-physicalAperture?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -592,6 +632,8 @@ Pitch angle. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-pitchAngle?: int--><!--Device-MakerNoteHuaweiMetadata-pitchAngle?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## rollAngle
@@ -607,6 +649,8 @@ Horizontal pan angle. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-rollAngle?: int--><!--Device-MakerNoteHuaweiMetadata-rollAngle?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -624,6 +668,8 @@ Capture scene: beach confidence. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-sceneBeachConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneBeachConfidence?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## sceneBlueSkyConfidence
@@ -639,6 +685,8 @@ Capture scene: blue sky confidence. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-sceneBlueSkyConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneBlueSkyConfidence?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -656,6 +704,8 @@ Capture scene: flower confidence. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-sceneFlowersConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneFlowersConfidence?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## sceneFoodConfidence
@@ -671,6 +721,8 @@ Capture scene: food confidence. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-sceneFoodConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneFoodConfidence?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -688,6 +740,8 @@ Capture scene: green plant confidence. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-sceneGreenPlantConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneGreenPlantConfidence?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## sceneNightConfidence
@@ -703,6 +757,8 @@ Capture scene: night scene confidence. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-sceneNightConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneNightConfidence?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -720,6 +776,8 @@ Capture scene: snow confidence. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-sceneSnowConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneSnowConfidence?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## sceneStageConfidence
@@ -735,6 +793,8 @@ Capture scene: stage performance confidence. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-sceneStageConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneStageConfidence?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -752,6 +812,8 @@ Capture scene: sunset confidence. The value range is all integers.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-sceneSunsetConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneSunsetConfidence?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## sceneTextConfidence
@@ -767,6 +829,8 @@ Capture scene: text confidence. The value range is all integers.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-sceneTextConfidence?: int--><!--Device-MakerNoteHuaweiMetadata-sceneTextConfidence?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -784,6 +848,8 @@ Version number of the scene recognition algorithm. The value range is all intege
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-sceneVersion?: int--><!--Device-MakerNoteHuaweiMetadata-sceneVersion?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## xmageBottom
@@ -799,6 +865,8 @@ Vertical coordinate of the bottom boundary of the effective content area (exclud
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-xmageBottom?: int--><!--Device-MakerNoteHuaweiMetadata-xmageBottom?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -816,6 +884,8 @@ XMAGE color mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-xmageColorMode?: XmageColorMode--><!--Device-MakerNoteHuaweiMetadata-xmageColorMode?: XmageColorMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## xmageLeft
@@ -831,6 +901,8 @@ Horizontal coordinate of the left boundary of the effective content area (exclud
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-xmageLeft?: int--><!--Device-MakerNoteHuaweiMetadata-xmageLeft?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -848,6 +920,8 @@ Horizontal coordinate of the right boundary of the effective content area (exclu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-xmageRight?: int--><!--Device-MakerNoteHuaweiMetadata-xmageRight?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## xmageTop
@@ -864,6 +938,8 @@ Vertical coordinate of the top boundary of the effective content area (excluding
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MakerNoteHuaweiMetadata-xmageTop?: int--><!--Device-MakerNoteHuaweiMetadata-xmageTop?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## xmageWatermarkMode
@@ -879,5 +955,7 @@ XMAGE watermark mode. For details, see Constants. The value range is all integer
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MakerNoteHuaweiMetadata-xmageWatermarkMode?: int--><!--Device-MakerNoteHuaweiMetadata-xmageWatermarkMode?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

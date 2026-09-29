@@ -17,6 +17,8 @@ interface RegExp
 
 Matches a string with this regular expression, and returns an iterable of matches containing the results of that search.
 
+<!--Device-RegExp-[Symbol.matchAll](str: string): IterableIterator<RegExpMatchArray>--><!--Device-RegExp-[Symbol.matchAll](str: string): IterableIterator<RegExpMatchArray>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

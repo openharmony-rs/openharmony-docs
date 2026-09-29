@@ -18,6 +18,8 @@ Obtains the APN ID corresponding to the specified **ApnInfo**. This API returns 
 
 **Required permissions:** ohos.permission.MANAGE_APN_SETTING
 
+<!--Device-data-function queryApnIds(apnInfo: ApnInfo): Promise<Array<int>>--><!--Device-data-function queryApnIds(apnInfo: ApnInfo): Promise<Array<int>>-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**

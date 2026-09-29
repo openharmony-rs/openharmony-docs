@@ -22,6 +22,8 @@ All APIs provided in the **By** class are synchronous. You are advised to use th
 
 **Substitutes:** [On](arkts-test-uitest-on-c.md)
 
+<!--Device-unnamed-declare class By--><!--Device-unnamed-declare class By-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -46,6 +48,8 @@ Specifies the clickable attribute of the target component.
 **Deprecated since:** 9
 
 **Substitutes:** [clickable](arkts-test-uitest-on-c.md#clickable)
+
+<!--Device-By-clickable(b?: boolean): By--><!--Device-By-clickable(b?: boolean): By-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -86,6 +90,8 @@ Specifies the enabled attribute of the target component.
 
 **Substitutes:** [enabled](arkts-test-uitest-on-c.md#enabled)
 
+<!--Device-By-enabled(b?: boolean): By--><!--Device-By-enabled(b?: boolean): By-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -124,6 +130,8 @@ Specifies the focused attribute of the target component.
 **Deprecated since:** 9
 
 **Substitutes:** [focused](arkts-test-uitest-on-c.md#focused)
+
+<!--Device-By-focused(b?: boolean): By--><!--Device-By-focused(b?: boolean): By-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -164,6 +172,8 @@ Specifies the ID attribute of the target component.
 
 **Substitutes:** [id](arkts-test-uitest-on-c.md#id)(id: string)
 
+<!--Device-By-id(id: number): By--><!--Device-By-id(id: number): By-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -202,6 +212,8 @@ Specifies that the target component is located after the given attribute compone
 **Deprecated since:** 9
 
 **Substitutes:** [isAfter](arkts-test-uitest-on-c.md#isafter)(on: On)
+
+<!--Device-By-isAfter(by: By): By--><!--Device-By-isAfter(by: By): By-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -243,6 +255,8 @@ Specifies that the target component is located before the given attribute compon
 
 **Substitutes:** [isBefore](arkts-test-uitest-on-c.md#isbefore)(on: On)
 
+<!--Device-By-isBefore(by: By): By--><!--Device-By-isBefore(by: By): By-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -283,6 +297,8 @@ Specifies the key attribute of the target component.
 
 **Substitutes:** [id](arkts-test-uitest-on-c.md#id)(id: string)
 
+<!--Device-By-key(key: string): By--><!--Device-By-key(key: string): By-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -321,6 +337,8 @@ Specifies the scrollable attribute of the target component.
 **Deprecated since:** 9
 
 **Substitutes:** [scrollable](arkts-test-uitest-on-c.md#scrollable)
+
+<!--Device-By-scrollable(b?: boolean): By--><!--Device-By-scrollable(b?: boolean): By-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -361,6 +379,8 @@ Specifies the selected status of the target component.
 
 **Substitutes:** [selected](arkts-test-uitest-on-c.md#selected)
 
+<!--Device-By-selected(b?: boolean): By--><!--Device-By-selected(b?: boolean): By-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -399,6 +419,8 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 **Deprecated since:** 9
 
 **Substitutes:** [text](arkts-test-uitest-on-c.md#text)
+
+<!--Device-By-text(txt: string, pattern?: MatchPattern): By--><!--Device-By-text(txt: string, pattern?: MatchPattern): By-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -439,6 +461,8 @@ Specifies the type attribute of the target component.
 **Deprecated since:** 9
 
 **Substitutes:** [type](arkts-test-uitest-on-c.md#type)(tp: string)
+
+<!--Device-By-type(tp: string): By--><!--Device-By-type(tp: string): By-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

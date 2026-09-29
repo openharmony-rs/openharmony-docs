@@ -8,6 +8,8 @@ Defines information about the call status.
 
 **Since:** 11
 
+<!--Device-observer-export interface CallStateInfo--><!--Device-observer-export interface CallStateInfo-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Phone number.
 
 **Since:** 11
 
+<!--Device-CallStateInfo-number: string--><!--Device-CallStateInfo-number: string-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 ## state
@@ -41,5 +45,7 @@ Call type.
 **Type:** [CallState](arkts-telephony-observer-callstate-t.md)
 
 **Since:** 11
+
+<!--Device-CallStateInfo-state: CallState--><!--Device-CallStateInfo-state: CallState-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry

@@ -8,6 +8,8 @@ The module provides APIs for you to install, uninstall, and recover bundles on d
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace installer--><!--Device-unnamed-declare namespace installer-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -4,6 +4,8 @@ The **pointer** module provides APIs related to pointer attribute management, su
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace pointer--><!--Device-unnamed-declare namespace pointer-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 ## Modules to Import

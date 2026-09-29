@@ -16,7 +16,9 @@ Obtains the UUID of the DRM content protection system supported by the specified
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-drm-function getMediaKeySystemUuid(name: string): string--><!--Device-drm-function getMediaKeySystemUuid(name: string): string-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 

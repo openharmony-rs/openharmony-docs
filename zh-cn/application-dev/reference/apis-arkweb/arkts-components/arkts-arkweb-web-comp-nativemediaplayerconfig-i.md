@@ -8,6 +8,8 @@ declare interface NativeMediaPlayerConfig
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface NativeMediaPlayerConfig--><!--Device-unnamed-declare interface NativeMediaPlayerConfig-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## enable
@@ -28,6 +30,8 @@ true表示开启应用接管网页媒体播放功能，false表示关闭该功�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NativeMediaPlayerConfig-enable: boolean--><!--Device-NativeMediaPlayerConfig-enable: boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## shouldOverlay
@@ -47,5 +51,7 @@ true表示改变视频图层的层级，覆盖网页内容。false表示保持�
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NativeMediaPlayerConfig-shouldOverlay: boolean--><!--Device-NativeMediaPlayerConfig-shouldOverlay: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

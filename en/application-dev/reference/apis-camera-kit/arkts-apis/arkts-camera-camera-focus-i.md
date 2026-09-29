@@ -12,6 +12,8 @@ It provides APIs related to focus operations.
 
 **Since:** 11
 
+<!--Device-camera-interface Focus extends FocusQuery--><!--Device-camera-interface Focus extends FocusQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Obtains the focal length in use.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Focus-getFocalLength(): double--><!--Device-Focus-getFocalLength(): double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -75,7 +79,9 @@ Obtains the focus mode in use.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Focus-getFocusMode(): FocusMode--><!--Device-Focus-getFocusMode(): FocusMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -119,7 +125,9 @@ Obtains the focal point in use.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Focus-getFocusPoint(): Point--><!--Device-Focus-getFocusPoint(): Point-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -165,7 +173,9 @@ Lock focus tracking.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Focus-lockFocusTracking(focusPoint: Point): void--><!--Device-Focus-lockFocusTracking(focusPoint: Point): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -211,7 +221,9 @@ Before the setting, call [isFocusModeSupported](arkts-camera-camera-focusquery-i
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Focus-setFocusMode(afMode: FocusMode): void--><!--Device-Focus-setFocusMode(afMode: FocusMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -255,7 +267,9 @@ The coordinate system is based on the horizontal device direction with the devic
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Focus-setFocusPoint(point: Point): void--><!--Device-Focus-setFocusPoint(point: Point): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -300,7 +314,9 @@ Unlock focus tracking.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-Focus-unlockFocusTracking(): void--><!--Device-Focus-unlockFocusTracking(): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

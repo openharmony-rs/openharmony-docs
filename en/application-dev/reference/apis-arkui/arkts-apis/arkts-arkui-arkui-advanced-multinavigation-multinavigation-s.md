@@ -20,6 +20,8 @@ export declare struct MultiNavigation
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct MultiNavigation--><!--Device-unnamed-export declare struct MultiNavigation-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ Routing rules for loading the target page.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavigation-navDestination: NavDestinationBuildFunction--><!--Device-MultiNavigation-navDestination: NavDestinationBuildFunction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onHomeShowOnTop
@@ -60,6 +64,8 @@ Callback invoked when the home page is on the top of the navigation stack.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-MultiNavigation-onHomeShowOnTop?: OnHomeShowOnTopCallback--><!--Device-MultiNavigation-onHomeShowOnTop?: OnHomeShowOnTopCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onNavigationModeChange
@@ -75,6 +81,8 @@ Callback invoked when the mode of the **MultiNavigation** component changes.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavigation-onNavigationModeChange?: OnNavigationModeChangeCallback--><!--Device-MultiNavigation-onNavigationModeChange?: OnNavigationModeChangeCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,5 +103,7 @@ Navigation stack.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-MultiNavigation-multiStack: MultiNavPathStack--><!--Device-MultiNavigation-multiStack: MultiNavPathStack-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

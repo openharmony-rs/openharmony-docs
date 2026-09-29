@@ -10,6 +10,8 @@ Represents Sendable resource-related information for cross-thread transmission, 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendableResourceManager-export type SendableResource = _SendableResource--><!--Device-sendableResourceManager-export type SendableResource = _SendableResource-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 **Type:** _SendableResource

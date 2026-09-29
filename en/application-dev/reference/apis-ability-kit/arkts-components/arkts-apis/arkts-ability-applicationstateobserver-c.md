@@ -8,6 +8,8 @@ The module defines an observer to listen for application state changes. It can b
 
 **Since:** 14
 
+<!--Device-unnamed-export default class ApplicationStateObserver--><!--Device-unnamed-export default class ApplicationStateObserver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## onAbilityStateChanged
@@ -19,6 +21,8 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 Called when the ability state changes.
 
 **Since:** 14
+
+<!--Device-ApplicationStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void--><!--Device-ApplicationStateObserver-onAbilityStateChanged(abilityStateData: AbilityStateData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,6 +42,8 @@ Called when the first process of the application is created.
 
 **Since:** 14
 
+<!--Device-ApplicationStateObserver-onAppStarted(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onAppStarted(appStateData: AppStateData): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -55,6 +61,8 @@ onAppStopped(appStateData: AppStateData): void
 Called when the last process of the application is destroyed.
 
 **Since:** 14
+
+<!--Device-ApplicationStateObserver-onAppStopped(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onAppStopped(appStateData: AppStateData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -74,6 +82,8 @@ Called when the foreground or background state of an application changes.
 
 **Since:** 14
 
+<!--Device-ApplicationStateObserver-onForegroundApplicationChanged(appStateData: AppStateData): void--><!--Device-ApplicationStateObserver-onForegroundApplicationChanged(appStateData: AppStateData): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -91,6 +101,8 @@ onProcessCreated(processData: ProcessData): void
 Called when a process is created.
 
 **Since:** 14
+
+<!--Device-ApplicationStateObserver-onProcessCreated(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessCreated(processData: ProcessData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -110,6 +122,8 @@ Called when a process is destroyed.
 
 **Since:** 14
 
+<!--Device-ApplicationStateObserver-onProcessDied(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessDied(processData: ProcessData): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -127,6 +141,8 @@ onProcessStateChanged(processData: ProcessData): void
 Called when the process state is changed.
 
 **Since:** 14
+
+<!--Device-ApplicationStateObserver-onProcessStateChanged(processData: ProcessData): void--><!--Device-ApplicationStateObserver-onProcessStateChanged(processData: ProcessData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

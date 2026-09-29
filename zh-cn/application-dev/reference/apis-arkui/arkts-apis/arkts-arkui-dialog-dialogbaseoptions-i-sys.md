@@ -8,6 +8,8 @@ declare interface DialogBaseOptions
 
 **起始版本：** 26.0.1
 
+<!--Device-dialog-declare interface DialogBaseOptions--><!--Device-dialog-declare interface DialogBaseOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ distortionMode?: DistortionMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-DialogBaseOptions-distortionMode?: DistortionMode--><!--Device-DialogBaseOptions-distortionMode?: DistortionMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -51,6 +55,8 @@ edgeLightMode?: EdgeLightMode
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DialogBaseOptions-edgeLightMode?: EdgeLightMode--><!--Device-DialogBaseOptions-edgeLightMode?: EdgeLightMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

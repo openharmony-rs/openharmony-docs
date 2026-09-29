@@ -16,7 +16,9 @@ Obtains a **MifareUltralightTag** object, which allows access to the tags that u
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-function getMifareUltralight(tagInfo: TagInfo): MifareUltralightTag--><!--Device-tag-function getMifareUltralight(tagInfo: TagInfo): MifareUltralightTag-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

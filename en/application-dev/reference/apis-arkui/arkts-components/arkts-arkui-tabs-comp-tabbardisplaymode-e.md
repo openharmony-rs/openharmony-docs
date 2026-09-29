@@ -8,6 +8,8 @@ Enumerates the actual display modes of the tab bar under different Tabs containe
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare enum TabBarDisplayMode--><!--Device-unnamed-declare enum TabBarDisplayMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM_TABBAR
@@ -24,6 +26,8 @@ The tab bar is displayed at the bottom.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-TabBarDisplayMode-BOTTOM_TABBAR = 0--><!--Device-TabBarDisplayMode-BOTTOM_TABBAR = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SIDEBAR
@@ -39,5 +43,7 @@ The tab bar is displayed as a sidebar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabBarDisplayMode-SIDEBAR = 1--><!--Device-TabBarDisplayMode-SIDEBAR = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

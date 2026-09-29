@@ -20,6 +20,8 @@ Sets the mouse pointer color. This API uses an asynchronous callback to return t
 
 **Since:** 10
 
+<!--Device-pointer-function setPointerColor(color: int, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerColor(color: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -85,6 +87,8 @@ Sets the mouse pointer color. This API uses a promise to return the result.
 > When performing this operation, you need to connect an external device, such as a mouse or Bluetooth device.
 
 **Since:** 10
+
+<!--Device-pointer-function setPointerColor(color: int): Promise<void>--><!--Device-pointer-function setPointerColor(color: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

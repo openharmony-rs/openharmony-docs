@@ -21,6 +21,8 @@ Queries the network access policy of an application (whether cellular or Wi-Fi n
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-policy-function getNetAccessPolicy(): Promise<NetAccessPolicy>--><!--Device-policy-function getNetAccessPolicy(): Promise<NetAccessPolicy>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

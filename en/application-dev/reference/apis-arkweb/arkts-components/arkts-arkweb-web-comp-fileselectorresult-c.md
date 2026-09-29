@@ -10,6 +10,8 @@ For details about the sample code, see [onShowFileSelector](arkts-arkweb-web-com
 
 **Since:** 9
 
+<!--Device-unnamed-declare class FileSelectorResult--><!--Device-unnamed-declare class FileSelectorResult-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -24,6 +26,8 @@ Constructs a **FileSelectorResult**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-FileSelectorResult-constructor()--><!--Device-FileSelectorResult-constructor()-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handleFileList
@@ -37,6 +41,8 @@ Notifies the Web component of the user-selected files through the passed file li
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FileSelectorResult-handleFileList(fileList: Array<string>): void--><!--Device-FileSelectorResult-handleFileList(fileList: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

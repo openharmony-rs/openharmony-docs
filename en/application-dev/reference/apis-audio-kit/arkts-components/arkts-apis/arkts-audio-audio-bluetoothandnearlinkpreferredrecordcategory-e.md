@@ -8,6 +8,8 @@ Enumerates the preferred device categories available for recording with Bluetoot
 
 **Since:** 21
 
+<!--Device-audio-enum BluetoothAndNearlinkPreferredRecordCategory--><!--Device-audio-enum BluetoothAndNearlinkPreferredRecordCategory-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## PREFERRED_NONE
@@ -19,6 +21,8 @@ PREFERRED_NONE = 0
 No specific device preference.
 
 **Since:** 21
+
+<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -32,6 +36,8 @@ Prefers using Bluetooth or NearLink devices for recording; whether to use low-la
 
 **Since:** 21
 
+<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_DEFAULT = 1--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_DEFAULT = 1-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## PREFERRED_LOW_LATENCY
@@ -44,6 +50,8 @@ Prefers using Bluetooth or NearLink devices in low-latency mode for recording.
 
 **Since:** 21
 
+<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_LOW_LATENCY = 2--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_LOW_LATENCY = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## PREFERRED_HIGH_QUALITY
@@ -55,5 +63,7 @@ PREFERRED_HIGH_QUALITY = 3
 Prefers using Bluetooth or NearLink devices in high-quality mode for recording.
 
 **Since:** 21
+
+<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

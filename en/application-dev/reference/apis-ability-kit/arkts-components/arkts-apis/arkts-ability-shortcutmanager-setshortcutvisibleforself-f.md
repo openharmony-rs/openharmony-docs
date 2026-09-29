@@ -16,6 +16,8 @@ Sets whether to display the specified shortcut for the current application. This
 
 **Since:** 20
 
+<!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>--><!--Device-shortcutManager-function setShortcutVisibleForSelf(id: string, visible: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **Parameters:**

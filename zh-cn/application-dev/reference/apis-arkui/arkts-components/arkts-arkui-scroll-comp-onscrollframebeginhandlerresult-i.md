@@ -12,6 +12,8 @@ interface OnScrollFrameBeginHandlerResult
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface OnScrollFrameBeginHandlerResult--><!--Device-unnamed-interface OnScrollFrameBeginHandlerResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetRemain
@@ -29,5 +31,7 @@ offsetRemain: number
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnScrollFrameBeginHandlerResult-offsetRemain: number--><!--Device-OnScrollFrameBeginHandlerResult-offsetRemain: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Enumerates user status atomic capabilities.
 
 **Since:** 26.0.0
 
+<!--Device-userStatus-export enum UserStatusAtomicCap--><!--Device-userStatus-export enum UserStatusAtomicCap-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Unknown atomic capability.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-ATOMIC_UNKNOWN = 0--><!--Device-UserStatusAtomicCap-ATOMIC_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -40,6 +44,8 @@ Detects face position relative to screen.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1--><!--Device-UserStatusAtomicCap-FACE_RELATIVE_POSITION = 1-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Detects face number changes.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-FACE_NUM_CHANGE = 2--><!--Device-UserStatusAtomicCap-FACE_NUM_CHANGE = 2-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -72,6 +80,8 @@ Detects user hand gestures.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-GESTURE = 3--><!--Device-UserStatusAtomicCap-GESTURE = 3-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ Detects face angle relative to screen.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-FACE_ANGLE = 4--><!--Device-UserStatusAtomicCap-FACE_ANGLE = 4-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -104,6 +116,8 @@ Detects sensor gravity data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-SENSOR_GRAVITY = 5--><!--Device-UserStatusAtomicCap-SENSOR_GRAVITY = 5-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -119,6 +133,8 @@ Detects sensor gyroscope data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-SENSOR_GYROSCOPE = 6--><!--Device-UserStatusAtomicCap-SENSOR_GYROSCOPE = 6-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -136,6 +152,8 @@ Detects sensor accelerometer data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7--><!--Device-UserStatusAtomicCap-SENSOR_ACCELEROMETER = 7-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -151,6 +169,8 @@ Detects sensor linear acceleration data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-SENSOR_LINEAR_ACCELERATION = 8--><!--Device-UserStatusAtomicCap-SENSOR_LINEAR_ACCELERATION = 8-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -168,6 +188,8 @@ Detects sensor rotation vector data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9--><!--Device-UserStatusAtomicCap-SENSOR_ROTATION_VECTOR = 9-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -183,6 +205,8 @@ Detects sensor orientation data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-SENSOR_ORIENTATION = 10--><!--Device-UserStatusAtomicCap-SENSOR_ORIENTATION = 10-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -200,6 +224,8 @@ Detects user blow data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11--><!--Device-UserStatusAtomicCap-BLOWING_STATUS = 11-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -215,6 +241,8 @@ Detects user emotion data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-MOOD_STATUS = 12--><!--Device-UserStatusAtomicCap-MOOD_STATUS = 12-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
@@ -232,6 +260,8 @@ Detects user ambient sound intensity.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-ENV_SOUND = 13--><!--Device-UserStatusAtomicCap-ENV_SOUND = 13-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -248,6 +278,8 @@ Detects user noise intensity.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserStatusAtomicCap-NOISE_SOUND = 14--><!--Device-UserStatusAtomicCap-NOISE_SOUND = 14-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -263,6 +295,8 @@ Detects whether user is gazing at screen.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15--><!--Device-UserStatusAtomicCap-EYE_GAZE_SCREEN = 15-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

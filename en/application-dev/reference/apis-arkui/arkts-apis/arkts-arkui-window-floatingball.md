@@ -8,6 +8,8 @@ This module provides essential functionalities for floating balls. It lets you c
 
 **Since:** 20
 
+<!--Device-unnamed-declare namespace floatingBall--><!--Device-unnamed-declare namespace floatingBall-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import

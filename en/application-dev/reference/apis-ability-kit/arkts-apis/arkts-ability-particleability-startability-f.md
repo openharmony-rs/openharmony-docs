@@ -23,6 +23,8 @@ Starts a ParticleAbility. This API uses an asynchronous callback to return the r
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-particleAbility-function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<void>): void--><!--Device-particleAbility-function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -80,6 +82,8 @@ Starts a ParticleAbility. This API uses a promise to return the result.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-particleAbility-function startAbility(parameter: StartAbilityParameter): Promise<void>--><!--Device-particleAbility-function startAbility(parameter: StartAbilityParameter): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

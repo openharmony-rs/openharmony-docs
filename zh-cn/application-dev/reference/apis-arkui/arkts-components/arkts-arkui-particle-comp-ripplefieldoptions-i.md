@@ -8,6 +8,8 @@ declare interface RippleFieldOptions
 
 **起始版本：** 22
 
+<!--Device-unnamed-declare interface RippleFieldOptions--><!--Device-unnamed-declare interface RippleFieldOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## amplitude
@@ -33,6 +35,8 @@ amplitude?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-RippleFieldOptions-amplitude?: number--><!--Device-RippleFieldOptions-amplitude?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ attenuation?: number
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-RippleFieldOptions-attenuation?: number--><!--Device-RippleFieldOptions-attenuation?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## center
@@ -82,6 +88,8 @@ center?: PositionT<number>
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-RippleFieldOptions-center?: PositionT<number>--><!--Device-RippleFieldOptions-center?: PositionT<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## region
@@ -103,6 +111,8 @@ region?: FieldRegion
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-RippleFieldOptions-region?: FieldRegion--><!--Device-RippleFieldOptions-region?: FieldRegion-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +140,8 @@ wavelength?: number
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-RippleFieldOptions-wavelength?: number--><!--Device-RippleFieldOptions-wavelength?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## waveSpeed
@@ -155,5 +167,7 @@ waveSpeed?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-RippleFieldOptions-waveSpeed?: number--><!--Device-RippleFieldOptions-waveSpeed?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -24,6 +24,8 @@ Obtains the applications that can be installed by the current user. This API use
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getAllowedInstallBundles(admin: Want, callback: AsyncCallback<Array<string>>): void--><!--Device-bundleManager-function getAllowedInstallBundles(admin: Want, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Obtains the applications that can be installed by the user specified by **userId
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function getAllowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback<Array<string>>): void--><!--Device-bundleManager-function getAllowedInstallBundles(admin: Want, userId: number, callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -150,6 +154,8 @@ Obtains the list of applications that are allowed to be installed by the current
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function getAllowedInstallBundles(admin: Want, userId?: number): Promise<Array<string>>--><!--Device-bundleManager-function getAllowedInstallBundles(admin: Want, userId?: number): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

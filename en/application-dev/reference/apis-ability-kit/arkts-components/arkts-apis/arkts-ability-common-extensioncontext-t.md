@@ -12,6 +12,8 @@ Defines the context environment for the [ExtensionAbility](arkts-ability-app-abi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-common-export type ExtensionContext = _ExtensionContext.default--><!--Device-common-export type ExtensionContext = _ExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _ExtensionContext.default

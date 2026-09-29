@@ -8,6 +8,8 @@ Preview image processing mode and badge count during dragging.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface DragPreviewOptions--><!--Device-unnamed-declare interface DragPreviewOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## mode
@@ -29,6 +31,8 @@ If **DragPreviewMode.AUTO** is set concurrently with other enumerated values, **
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DragPreviewOptions-mode?: DragPreviewMode | Array<DragPreviewMode>--><!--Device-DragPreviewOptions-mode?: DragPreviewMode | Array<DragPreviewMode>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Default value: empty (unmodifiable).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DragPreviewOptions-modifier?: ImageModifier--><!--Device-DragPreviewOptions-modifier?: ImageModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## numberBadge
@@ -90,6 +96,8 @@ Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DragPreviewOptions-numberBadge?: boolean | number--><!--Device-DragPreviewOptions-numberBadge?: boolean | number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## sizeChangeEffect
@@ -109,5 +117,7 @@ Default value: **DraggingSizeChangeEffect.DEFAULT**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-DragPreviewOptions-sizeChangeEffect?: DraggingSizeChangeEffect--><!--Device-DragPreviewOptions-sizeChangeEffect?: DraggingSizeChangeEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

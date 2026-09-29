@@ -8,6 +8,8 @@ KeyEvent object description.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface KeyEvent--><!--Device-unnamed-declare interface KeyEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getModifierKeyState
@@ -23,6 +25,8 @@ Obtains the pressed status of modifier keys.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-KeyEvent-getModifierKeyState?(keys: Array<string>): boolean--><!--Device-KeyEvent-getModifierKeyState?(keys: Array<string>): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Blocks [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-KeyEvent-stopPropagation: () => void--><!--Device-KeyEvent-stopPropagation: () => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## deviceId
@@ -71,6 +77,8 @@ ID of the input device that triggers the key event.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-KeyEvent-deviceId: number--><!--Device-KeyEvent-deviceId: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ Default value: **IntentionCode.INTENTION_UNKNOWN**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-KeyEvent-intentionCode: IntentionCode--><!--Device-KeyEvent-intentionCode: IntentionCode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isCapsLockOn
@@ -111,6 +121,8 @@ CapsLock state. **true**: locked. **false**: unlocked.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-KeyEvent-isCapsLockOn?: boolean--><!--Device-KeyEvent-isCapsLockOn?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +142,8 @@ NumLock state. **true**: locked. **false**: unlocked.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-KeyEvent-isNumLockOn?: boolean--><!--Device-KeyEvent-isNumLockOn?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isScrollLockOn
@@ -148,6 +162,8 @@ ScrollLock state. **true**: locked. **false**: unlocked.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-KeyEvent-isScrollLockOn?: boolean--><!--Device-KeyEvent-isScrollLockOn?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyCode
@@ -163,6 +179,8 @@ Key value. For details about the key values provided by the key-based input devi
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-KeyEvent-keyCode: number--><!--Device-KeyEvent-keyCode: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,6 +198,8 @@ Type of the input device that triggers the key event.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-KeyEvent-keySource: KeySource--><!--Device-KeyEvent-keySource: KeySource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyText
@@ -195,6 +215,8 @@ Name of the key.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-KeyEvent-keyText: string--><!--Device-KeyEvent-keyText: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +234,8 @@ State of the Meta key (the key located next to the **Ctrl** key in the lower lef
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-KeyEvent-metaKey: number--><!--Device-KeyEvent-metaKey: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## timestamp
@@ -228,6 +252,8 @@ Timestamp of the event. It is the interval between the time when the event is tr
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-KeyEvent-timestamp: number--><!--Device-KeyEvent-timestamp: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -243,6 +269,8 @@ Key type.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-KeyEvent-type: KeyType--><!--Device-KeyEvent-type: KeyType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -261,5 +289,7 @@ Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-KeyEvent-unicode?: number--><!--Device-KeyEvent-unicode?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

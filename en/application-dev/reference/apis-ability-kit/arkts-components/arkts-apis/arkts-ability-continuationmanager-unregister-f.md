@@ -22,6 +22,8 @@ Unregisters the continuation management service. This API uses an asynchronous c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-continuationManager-function unregister(token: number, callback: AsyncCallback<void>): void--><!--Device-continuationManager-function unregister(token: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters:**
@@ -64,6 +66,8 @@ Unregisters the continuation management service. This API uses a promise to retu
 **Substitutes:** [off](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#offdevicestatechange)(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-continuationManager-function unregister(token: number): Promise<void>--><!--Device-continuationManager-function unregister(token: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 

@@ -10,6 +10,8 @@ export declare class ToolBarOption
 
 **装饰器类型：** @Observed
 
+<!--Device-unnamed-export declare class ToolBarOption--><!--Device-unnamed-export declare class ToolBarOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ action?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-action?: () => void--><!--Device-ToolBarOption-action?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -51,6 +55,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarOption-accessibilityDescription?: ResourceStr--><!--Device-ToolBarOption-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-accessibilityLevel?: string--><!--Device-ToolBarOption-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -103,6 +111,8 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarOption-accessibilityText?: ResourceStr--><!--Device-ToolBarOption-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ activatedIconColor?: ResourceColor
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-activatedIconColor?: ResourceColor--><!--Device-ToolBarOption-activatedIconColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## activatedTextColor
@@ -146,6 +158,8 @@ activatedTextColor?: ResourceColor
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-activatedTextColor?: ResourceColor--><!--Device-ToolBarOption-activatedTextColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -163,6 +177,8 @@ content: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarOption-content: ResourceStr--><!--Device-ToolBarOption-content: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,6 +202,8 @@ icon?: Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-icon?: Resource--><!--Device-ToolBarOption-icon?: Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconColor
@@ -208,6 +226,8 @@ iconColor?: ResourceColor
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-iconColor?: ResourceColor--><!--Device-ToolBarOption-iconColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## state
@@ -227,6 +247,8 @@ state?: ItemState
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarOption-state?: ItemState--><!--Device-ToolBarOption-state?: ItemState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,6 +270,8 @@ textColor?: ResourceColor
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarOption-textColor?: ResourceColor--><!--Device-ToolBarOption-textColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## toolBarSymbolOptions
@@ -265,5 +289,7 @@ toolBarSymbolOptions?: ToolBarSymbolGlyphOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarOption-toolBarSymbolOptions?: ToolBarSymbolGlyphOptions--><!--Device-ToolBarOption-toolBarSymbolOptions?: ToolBarSymbolGlyphOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

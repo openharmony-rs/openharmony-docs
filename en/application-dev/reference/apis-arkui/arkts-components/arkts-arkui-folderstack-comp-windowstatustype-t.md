@@ -12,6 +12,8 @@ Enumerates the window modes.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType--><!--Device-unnamed-declare type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.window').default.WindowStatusType

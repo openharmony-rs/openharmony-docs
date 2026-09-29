@@ -20,6 +20,8 @@ Query recommend printer drivers by printer ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function queryRecommendDriversById(printerId: string): Promise<PpdInfo[]>--><!--Device-print-function queryRecommendDriversById(printerId: string): Promise<PpdInfo[]>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **System API:** This is a system API.

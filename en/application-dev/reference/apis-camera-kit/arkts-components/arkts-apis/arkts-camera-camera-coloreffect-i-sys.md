@@ -10,6 +10,8 @@ ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sy
 
 **Since:** 11
 
+<!--Device-camera-interface ColorEffect extends ColorEffectQuery--><!--Device-camera-interface ColorEffect extends ColorEffectQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ getColorEffect(): ColorEffectType
 Obtains the color effect in use.
 
 **Since:** 11
+
+<!--Device-ColorEffect-getColorEffect(): ColorEffectType--><!--Device-ColorEffect-getColorEffect(): ColorEffectType-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -65,6 +69,8 @@ setColorEffect(type: ColorEffectType): void
 Sets a color effect. Before the setting, call [getSupportedColorEffects](arkts-camera-camera-coloreffectquery-i-sys.md#getsupportedcoloreffects) to obtain the supported color effects.
 
 **Since:** 11
+
+<!--Device-ColorEffect-setColorEffect(type: ColorEffectType): void--><!--Device-ColorEffect-setColorEffect(type: ColorEffectType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

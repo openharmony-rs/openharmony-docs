@@ -8,6 +8,8 @@ export interface MenuAlignParams
 
 **起始版本：** 18
 
+<!--Device-unnamed-export interface MenuAlignParams--><!--Device-unnamed-export interface MenuAlignParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ alignType: MenuAlignType
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuAlignParams-alignType: MenuAlignType--><!--Device-MenuAlignParams-alignType: MenuAlignType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -45,5 +49,7 @@ offset?: Offset
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuAlignParams-offset?: Offset--><!--Device-MenuAlignParams-offset?: Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.
 
 **Since:** 11
 
+<!--Device-unnamed-interface PinchGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface PinchGestureEvent extends BaseGestureEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pinchCenterX
@@ -27,6 +29,8 @@ X-coordinate of the center of the pinch gesture, in vp, relative to the original
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PinchGestureEvent-pinchCenterX: number--><!--Device-PinchGestureEvent-pinchCenterX: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Y-coordinate of the center of the pinch gesture, in vp, relative to the original
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PinchGestureEvent-pinchCenterY: number--><!--Device-PinchGestureEvent-pinchCenterY: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scale
@@ -63,5 +69,7 @@ Scale factor.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PinchGestureEvent-scale: number--><!--Device-PinchGestureEvent-scale: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -1,4 +1,4 @@
-# AutoFillRect
+# AutoFillRect(Auto Fill Rectangular Area)
 
 ## Summary
 

@@ -8,6 +8,8 @@ Defines the icon symbol options.
 
 **Since:** 13
 
+<!--Device-unnamed-export interface ToolBarSymbolGlyphOptions--><!--Device-unnamed-export interface ToolBarSymbolGlyphOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **fontColor: $r('sys.color.icon_emphasize'), fontSize: 24vp**
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-ToolBarSymbolGlyphOptions-activated?: SymbolGlyphModifier--><!--Device-ToolBarSymbolGlyphOptions-activated?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -53,5 +57,7 @@ Default value: **fontColor: $r('sys.color.icon_primary'), fontSize: 24vp**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-ToolBarSymbolGlyphOptions-normal?: SymbolGlyphModifier--><!--Device-ToolBarSymbolGlyphOptions-normal?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

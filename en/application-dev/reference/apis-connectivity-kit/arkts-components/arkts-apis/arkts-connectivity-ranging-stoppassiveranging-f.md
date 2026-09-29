@@ -22,6 +22,8 @@ Stops the passive ranging broadcast and cleans up associated resources based on 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ranging-function stopPassiveRanging(handle: int, capabilityType: RangingTypes): void--><!--Device-ranging-function stopPassiveRanging(handle: int, capabilityType: RangingTypes): void-End-->
+
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
 **Parameters:**

@@ -1,4 +1,4 @@
-# @ohos.arkui.advanced.Dialog
+# @ohos.arkui.advanced.Dialog(Dialog)
 
 ## Modules to Import
 
@@ -12,25 +12,25 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 
 | Name | Description |
 | --- | --- |
-| [ButtonOptions](arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md) | Declare ButtonOptions |
+| [ButtonOptions](arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md) |  |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md) | Declare CustomDialog AlertDialog |
-| [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md) | Declare CustomDialog ConfirmDialog |
-| [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md) | Declare custom content dialog |
-| [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md) | Declare CustomDialog LoadingDialog |
-| [PopoverDialog](arkts-arkui-arkui-advanced-dialog-popoverdialog-s.md) | Declare struct PopoverDialog |
-| [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md) | Declare CustomDialog SelectDialog |
-| [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md) | Declare CustomDialog TipsDialog |
+| [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md) | AlertDialog({controller: CustomDialogController, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content: ResourceStr, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
+| [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md) | ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, onCheckedChange?: Callback\&lt;boolean&gt;, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
+| [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md) | CustomContentDialog({controller: CustomDialogController, contentBuilder: () =&gt; void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, localizedContentAreaPadding?: LocalizedPadding, contentAreaPadding?: Padding, buttons?: ButtonOptions[], theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
+| [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md) | LoadingDialog({Controller: CustomDialogController, content?: ResourceStr, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
+| [PopoverDialog](arkts-arkui-arkui-advanced-dialog-popoverdialog-s.md) | A dialog is a modal window that temporarily displays information that requires user attention or actions that need to be performed, while preserving the current context. Users must complete the interaction before exiting this modal state. |
+| [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md) | SelectDialog({controller: CustomDialogController, title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: ButtonOptions, radioContent: Array&lt;SheetInfo&gt;, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
+| [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md) | TipsDialog({controller: CustomDialogController, imageRes: ResourceStr &#124; PixelMap, imageSize?: SizeOptions, title?: ResourceStr, content?: ResourceStr, checkTips?: ResourceStr, isChecked?: boolean, checkAction?: (isChecked: boolean) =&gt; void, onCheckedChange?: Callback\&lt;boolean&gt;, primaryButton?: ButtonOptions, secondaryButton?: ButtonOptions, theme?: Theme &#124; CustomTheme, themeColorMode?: ThemeColorMode}) |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [PopoverOptions](arkts-arkui-arkui-advanced-dialog-popoveroptions-i.md) | Defines PopoverDialog Options |
+| [PopoverOptions](arkts-arkui-arkui-advanced-dialog-popoveroptions-i.md) | Defines a set of options used to configure the popover dialog box, including its content and position. |
 
 ## Examples
 

@@ -8,6 +8,8 @@ Enumerates the options for whether to retain the original style upon undo operat
 
 **Since:** 20
 
+<!--Device-unnamed-declare enum UndoStyle--><!--Device-unnamed-declare enum UndoStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CLEAR_STYLE
@@ -24,6 +26,8 @@ The original style is not retained upon undo operations.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-UndoStyle-CLEAR_STYLE = 0--><!--Device-UndoStyle-CLEAR_STYLE = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## KEEP_STYLE
@@ -39,5 +43,7 @@ The original style is retained upon undo operations.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-UndoStyle-KEEP_STYLE = 1--><!--Device-UndoStyle-KEEP_STYLE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ function makeUnique(uniqueScreen: Array<number>): Promise<Array<number>>
 
 **起始版本：** 18
 
+<!--Device-screen-function makeUnique(uniqueScreen: Array<long>): Promise<Array<long>>--><!--Device-screen-function makeUnique(uniqueScreen: Array<long>): Promise<Array<long>>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

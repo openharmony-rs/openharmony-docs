@@ -12,6 +12,8 @@ This API inherits from [ChipV2SymbolIconConfig](arkts-arkui-arkui-advanced-chipv
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2SuffixSymbolIconConfig extends ChipV2SymbolIconConfig--><!--Device-unnamed-export interface ChipV2SuffixSymbolIconConfig extends ChipV2SymbolIconConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SuffixSymbolIconConfig-action?: VoidCallback--><!--Device-ChipV2SuffixSymbolIconConfig-action?: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## activatedAccessibility
@@ -58,6 +62,8 @@ Default value: **undefined**, meaning no content is read aloud.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SuffixSymbolIconConfig-activatedAccessibility?: ChipV2AccessibilityConfig--><!--Device-ChipV2SuffixSymbolIconConfig-activatedAccessibility?: ChipV2AccessibilityConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normalAccessibility
@@ -77,5 +83,7 @@ Default value: **undefined**, meaning no content is read aloud.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixSymbolIconConfig-normalAccessibility?: ChipV2AccessibilityConfig--><!--Device-ChipV2SuffixSymbolIconConfig-normalAccessibility?: ChipV2AccessibilityConfig-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

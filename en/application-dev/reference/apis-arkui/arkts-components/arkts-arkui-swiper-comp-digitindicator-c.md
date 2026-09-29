@@ -20,6 +20,8 @@ A constructor used to create a **DigitIndicator** object. It inherits from [Indi
 
 **Since:** 10
 
+<!--Device-unnamed-declare class DigitIndicator extends Indicator<DigitIndicator>--><!--Device-unnamed-declare class DigitIndicator extends Indicator<DigitIndicator>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -46,6 +48,8 @@ A constructor used to create a **DotIndicator** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DigitIndicator-constructor()--><!--Device-DigitIndicator-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## digitFont
@@ -63,6 +67,8 @@ Sets the font style of the digit-style navigation indicator.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-DigitIndicator-digitFont(value: Font): DigitIndicator--><!--Device-DigitIndicator-digitFont(value: Font): DigitIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +100,8 @@ Sets the font color of the digit-style navigation indicator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DigitIndicator-fontColor(value: ResourceColor): DigitIndicator--><!--Device-DigitIndicator-fontColor(value: ResourceColor): DigitIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -124,6 +132,8 @@ Sets the font style of the selected digit-style navigation indicator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-DigitIndicator-selectedDigitFont(value: Font): DigitIndicator--><!--Device-DigitIndicator-selectedDigitFont(value: Font): DigitIndicator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -153,6 +163,8 @@ Sets the font color of the selected digit-style navigation indicator.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-DigitIndicator-selectedFontColor(value: ResourceColor): DigitIndicator--><!--Device-DigitIndicator-selectedFontColor(value: ResourceColor): DigitIndicator-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

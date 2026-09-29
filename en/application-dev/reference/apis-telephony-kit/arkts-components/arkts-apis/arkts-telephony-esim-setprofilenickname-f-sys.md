@@ -18,6 +18,8 @@ Sets a nickname for the specified profile. This API uses a promise to return the
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_ESIM_STATE
 
+<!--Device-eSIM-function setProfileNickname(slotId: int, iccid: string, nickname: string): Promise<ResultCode>--><!--Device-eSIM-function setProfileNickname(slotId: int, iccid: string, nickname: string): Promise<ResultCode>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.

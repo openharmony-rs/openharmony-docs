@@ -12,6 +12,8 @@ Describes the Gatt characteristic.
 
 **Substitutes:** [BLECharacteristic](arkts-connectivity-bluetoothmanager-blecharacteristic-i.md)
 
+<!--Device-bluetooth-interface BLECharacteristic--><!--Device-bluetooth-interface BLECharacteristic-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The UUID of a BLECharacteristic instance
 
 **Substitutes:** [characteristicUuid](arkts-connectivity-bluetoothmanager-blecharacteristic-i.md#characteristicuuid)
 
+<!--Device-BLECharacteristic-characteristicUuid: string--><!--Device-BLECharacteristic-characteristicUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## characteristicValue
@@ -53,6 +57,8 @@ The value of a BLECharacteristic instance
 **Deprecated since:** 9
 
 **Substitutes:** [characteristicValue](arkts-connectivity-bluetoothmanager-blecharacteristic-i.md#characteristicvalue)
+
+<!--Device-BLECharacteristic-characteristicValue: ArrayBuffer--><!--Device-BLECharacteristic-characteristicValue: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -72,6 +78,8 @@ The list of [BLEDescriptor](arkts-connectivity-bluetooth-bledescriptor-i.md) con
 
 **Substitutes:** [descriptors](arkts-connectivity-bluetoothmanager-blecharacteristic-i.md#descriptors)
 
+<!--Device-BLECharacteristic-descriptors: Array<BLEDescriptor>--><!--Device-BLECharacteristic-descriptors: Array<BLEDescriptor>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## serviceUuid
@@ -89,5 +97,7 @@ The UUID of the [GattService](arkts-connectivity-bluetooth-gattservice-i.md) ins
 **Deprecated since:** 9
 
 **Substitutes:** [serviceUuid](arkts-connectivity-bluetoothmanager-blecharacteristic-i.md#serviceuuid)
+
+<!--Device-BLECharacteristic-serviceUuid: string--><!--Device-BLECharacteristic-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

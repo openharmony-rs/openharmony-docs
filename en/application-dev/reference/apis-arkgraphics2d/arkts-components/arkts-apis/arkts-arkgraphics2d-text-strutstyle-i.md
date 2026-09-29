@@ -8,6 +8,8 @@ Describes the strut style, which determines the line spacing, baseline alignment
 
 **Since:** 12
 
+<!--Device-text-interface StrutStyle--><!--Device-text-interface StrutStyle-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Whether to enable the strut style. The value **true** means to enable the strut 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-enabled?: boolean--><!--Device-StrutStyle-enabled?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -44,7 +48,9 @@ Array of font families. By default, the array is empty, indicating that all syst
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-fontFamilies?: Array<string>--><!--Device-StrutStyle-fontFamilies?: Array<string>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,7 +66,9 @@ Font size, a floating-point value with a default value of **14.0**, measured in 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-fontSize?: double--><!--Device-StrutStyle-fontSize?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -76,7 +84,9 @@ Font style. The default value is **NORMAL**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-fontStyle?: FontStyle--><!--Device-StrutStyle-fontStyle?: FontStyle-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -86,13 +96,15 @@ Font style. The default value is **NORMAL**.
 fontWeight?: FontWeight
 ```
 
-Font weight. The default value is **W400**. Before &lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;, only variable fonts in system fonts support font weight adjustment. Since &lt;!--RP1--&gt;OpenHarmony 6.1&lt;!--RP1End--&gt;, both system fonts and variable fonts in third-party registered fonts support font weight adjustment. For non-variable fonts, the font thickness does not change when the font weight value is set to less than **W600**, and a faux bold effect may be triggered when the font weight value is set to **W600** or greater.
+Font weight. The default value is **W400**. Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, both system fonts and variable fonts in third-party registered fonts support font weight adjustment. For non-variable fonts, the font thickness does not change when the font weight value is set to less than **W600**, and a faux bold effect may be triggered when the font weight value is set to **W600** or greater.
 
 **Type:** [FontWeight](arkts-arkgraphics2d-text-fontweight-e.md)
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-fontWeight?: FontWeight--><!--Device-StrutStyle-fontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -108,7 +120,9 @@ Font width. The default value is **NORMAL**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-fontWidth?: FontWidth--><!--Device-StrutStyle-fontWidth?: FontWidth-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -124,7 +138,9 @@ Whether to forcibly use the strut height for all lines. The value **true** means
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-forceHeight?: boolean--><!--Device-StrutStyle-forceHeight?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -140,7 +156,9 @@ Whether half leading is enabled. Half leading is the leading split in half and a
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-halfLeading?: boolean--><!--Device-StrutStyle-halfLeading?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -156,7 +174,9 @@ Scale factor of the line height. The value is a floating point number. The defau
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-height?: double--><!--Device-StrutStyle-height?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -172,7 +192,9 @@ Whether to override the height. The value **true** means to override the height,
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-heightOverride?: boolean--><!--Device-StrutStyle-heightOverride?: boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -188,6 +210,8 @@ Custom line spacing applied to the strut, a floating-point value in physical pix
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-StrutStyle-leading?: double--><!--Device-StrutStyle-leading?: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

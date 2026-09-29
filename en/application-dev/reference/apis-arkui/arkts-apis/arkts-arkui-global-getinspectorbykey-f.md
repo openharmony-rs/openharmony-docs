@@ -17,6 +17,8 @@ Obtains all attributes of the component with the specified ID.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-export declare function getInspectorByKey(id: string): string--><!--Device-unnamed-export declare function getInspectorByKey(id: string): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.

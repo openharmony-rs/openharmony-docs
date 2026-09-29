@@ -8,6 +8,8 @@ barrier参数，用于定义一条支持镜像模式的barrier的id、方向和�
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface LocalizedBarrierStyle--><!--Device-unnamed-declare interface LocalizedBarrierStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -25,6 +27,8 @@ barrier的id，用于标识屏障，子组件可通过此id引用该屏障作为
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocalizedBarrierStyle-id : string--><!--Device-LocalizedBarrierStyle-id : string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ localizedDirection : LocalizedBarrierDirection
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocalizedBarrierStyle-localizedDirection : LocalizedBarrierDirection--><!--Device-LocalizedBarrierStyle-localizedDirection : LocalizedBarrierDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## referencedId
@@ -67,5 +73,7 @@ referencedId : Array<string>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocalizedBarrierStyle-referencedId : Array<string>--><!--Device-LocalizedBarrierStyle-referencedId : Array<string>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

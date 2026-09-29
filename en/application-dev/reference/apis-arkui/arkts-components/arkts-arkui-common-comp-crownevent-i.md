@@ -8,6 +8,8 @@ Defines a data structure for the crown event received by a component. It include
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface CrownEvent--><!--Device-unnamed-declare interface CrownEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -25,6 +27,8 @@ Crown action.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CrownEvent-action: CrownAction--><!--Device-CrownEvent-action: CrownAction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ Unit: deg/s
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CrownEvent-angularVelocity: number--><!--Device-CrownEvent-angularVelocity: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Value range: [-360, 360]
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CrownEvent-degree: number--><!--Device-CrownEvent-degree: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## stopPropagation
@@ -85,6 +93,8 @@ Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#even
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CrownEvent-stopPropagation: Callback<void>--><!--Device-CrownEvent-stopPropagation: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,5 +115,7 @@ Unit: ns
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CrownEvent-timestamp: number--><!--Device-CrownEvent-timestamp: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

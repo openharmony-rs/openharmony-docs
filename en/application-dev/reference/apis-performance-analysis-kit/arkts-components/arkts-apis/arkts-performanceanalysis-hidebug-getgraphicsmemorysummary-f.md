@@ -16,7 +16,9 @@ Obtains the GPU memory data of an application. This API uses a promise to return
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 21.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+
+<!--Device-hidebug-function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary>--><!--Device-hidebug-function getGraphicsMemorySummary(interval?: int): Promise<GraphicsMemorySummary>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 

@@ -10,6 +10,8 @@ Enumerates the scene resource types, which are used to classify resources in a s
 
 **Since:** 12
 
+<!--Device-unnamed-export enum SceneResourceType--><!--Device-unnamed-export enum SceneResourceType-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## UNKNOWN
@@ -21,6 +23,8 @@ UNKNOWN = 0
 Unknown.
 
 **Since:** 12
+
+<!--Device-SceneResourceType-UNKNOWN = 0--><!--Device-SceneResourceType-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -34,6 +38,8 @@ Node type.
 
 **Since:** 12
 
+<!--Device-SceneResourceType-NODE = 1--><!--Device-SceneResourceType-NODE = 1-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## ENVIRONMENT
@@ -45,6 +51,8 @@ ENVIRONMENT = 2
 Environment resource.
 
 **Since:** 12
+
+<!--Device-SceneResourceType-ENVIRONMENT = 2--><!--Device-SceneResourceType-ENVIRONMENT = 2-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -58,6 +66,8 @@ Material type.
 
 **Since:** 12
 
+<!--Device-SceneResourceType-MATERIAL = 3--><!--Device-SceneResourceType-MATERIAL = 3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## MESH
@@ -69,6 +79,8 @@ MESH = 4
 Mesh resource.
 
 **Since:** 12
+
+<!--Device-SceneResourceType-MESH = 4--><!--Device-SceneResourceType-MESH = 4-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -82,6 +94,8 @@ Animation resource.
 
 **Since:** 12
 
+<!--Device-SceneResourceType-ANIMATION = 5--><!--Device-SceneResourceType-ANIMATION = 5-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## SHADER
@@ -93,6 +107,8 @@ SHADER = 6
 Shader resource.
 
 **Since:** 12
+
+<!--Device-SceneResourceType-SHADER = 6--><!--Device-SceneResourceType-SHADER = 6-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -106,6 +122,8 @@ Image resource.
 
 **Since:** 12
 
+<!--Device-SceneResourceType-IMAGE = 7--><!--Device-SceneResourceType-IMAGE = 7-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## MESH_RESOURCE
@@ -118,6 +136,8 @@ Mesh resource.
 
 **Since:** 18
 
+<!--Device-SceneResourceType-MESH_RESOURCE = 8--><!--Device-SceneResourceType-MESH_RESOURCE = 8-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## EFFECT
@@ -129,5 +149,7 @@ EFFECT = 9
 Post-processing effect resource.
 
 **Since:** 21
+
+<!--Device-SceneResourceType-EFFECT = 9--><!--Device-SceneResourceType-EFFECT = 9-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

@@ -8,6 +8,8 @@ export interface DialogDismissal
 
 **起始版本：** 26.0.1
 
+<!--Device-unnamed-export interface DialogDismissal--><!--Device-unnamed-export interface DialogDismissal-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ dismiss: VoidCallback
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogDismissal-dismiss: VoidCallback--><!--Device-DialogDismissal-dismiss: VoidCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reason
@@ -47,5 +51,7 @@ reason: DismissReason
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogDismissal-reason: DismissReason--><!--Device-DialogDismissal-reason: DismissReason-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

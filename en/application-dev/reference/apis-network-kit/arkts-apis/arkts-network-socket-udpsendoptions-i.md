@@ -8,6 +8,8 @@ Defines the parameters for sending data over a UDP socket connection.
 
 **Since:** 7
 
+<!--Device-socket-export interface UDPSendOptions--><!--Device-socket-export interface UDPSendOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Destination address.
 
 **Since:** 7
 
+<!--Device-UDPSendOptions-address: NetAddress--><!--Device-UDPSendOptions-address: NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## data
@@ -42,6 +46,8 @@ Data to send.
 
 **Since:** 7
 
+<!--Device-UDPSendOptions-data: string | ArrayBuffer--><!--Device-UDPSendOptions-data: string | ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## proxy
@@ -55,5 +61,7 @@ Proxy option. By default, no proxy is used.
 **Type:** [ProxyOptions](arkts-network-socket-proxyoptions-i.md)
 
 **Since:** 18
+
+<!--Device-UDPSendOptions-proxy?: ProxyOptions--><!--Device-UDPSendOptions-proxy?: ProxyOptions-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

@@ -22,6 +22,8 @@ Obtains the number of remaining days for enabling GWP-ASan.
 
 **Since:** 20
 
+<!--Device-hidebug-function getGwpAsanGrayscaleState(): int--><!--Device-hidebug-function getGwpAsanGrayscaleState(): int-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

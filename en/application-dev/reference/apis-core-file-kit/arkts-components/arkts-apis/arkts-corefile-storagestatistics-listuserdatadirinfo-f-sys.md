@@ -20,6 +20,8 @@ Queries the space usage of the **\/data** directory on the user device. This API
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function listUserdataDirInfo(): Promise<Array<UserdataDirInfo>>--><!--Device-storageStatistics-function listUserdataDirInfo(): Promise<Array<UserdataDirInfo>>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Describes visible area change configuration options.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface VisibleAreaEventOptions--><!--Device-unnamed-declare interface VisibleAreaEventOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## expectedUpdateInterval
@@ -29,6 +31,8 @@ Default value: **1000**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-VisibleAreaEventOptions-expectedUpdateInterval?: number--><!--Device-VisibleAreaEventOptions-expectedUpdateInterval?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ When **measureFromViewport** is set to **true**, and an ancestor node has the [s
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-VisibleAreaEventOptions-measureFromViewport?: boolean--><!--Device-VisibleAreaEventOptions-measureFromViewport?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ratios
@@ -73,5 +79,7 @@ Threshold array. Each threshold represents a ratio of the component's visible ar
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-VisibleAreaEventOptions-ratios: Array<number>--><!--Device-VisibleAreaEventOptions-ratios: Array<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

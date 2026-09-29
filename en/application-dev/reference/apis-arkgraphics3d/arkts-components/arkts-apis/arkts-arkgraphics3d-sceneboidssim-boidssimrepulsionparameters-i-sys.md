@@ -8,6 +8,8 @@ Repulsion field parameters, used to configure the repulsion field in the scene.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface BoidsSimRepulsionParameters--><!--Device-unnamed-export interface BoidsSimRepulsionParameters-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ The magnitude of the repulsion acceleration applied to the individual, whose dir
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BoidsSimRepulsionParameters-accelerationMag?: double--><!--Device-BoidsSimRepulsionParameters-accelerationMag?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ The radius of the repulsion field. Only individuals strictly within this distanc
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BoidsSimRepulsionParameters-radius?: double--><!--Device-BoidsSimRepulsionParameters-radius?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

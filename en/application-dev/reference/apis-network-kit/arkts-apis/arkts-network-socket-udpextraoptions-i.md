@@ -10,6 +10,8 @@ Defines other properties of the **UDPSocket** object. This object is inherited f
 
 **Since:** 7
 
+<!--Device-socket-export interface UDPExtraOptions extends ExtraOptionsBase--><!--Device-socket-export interface UDPExtraOptions extends ExtraOptionsBase-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -29,5 +31,7 @@ Whether to send broadcast messages. The value **true** indicates that broadcast 
 **Type:** boolean
 
 **Since:** 7
+
+<!--Device-UDPExtraOptions-broadcast?: boolean--><!--Device-UDPExtraOptions-broadcast?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

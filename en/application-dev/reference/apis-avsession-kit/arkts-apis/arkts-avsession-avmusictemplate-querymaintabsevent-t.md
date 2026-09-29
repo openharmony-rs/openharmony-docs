@@ -12,4 +12,6 @@ The query main tabs event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type QueryMainTabsEvent = () => Promise<MediaTab[]>--><!--Device-avMusicTemplate-type QueryMainTabsEvent = () => Promise<MediaTab[]>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

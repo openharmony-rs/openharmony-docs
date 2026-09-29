@@ -19,6 +19,8 @@ Creates a directory. This API returns the result synchronously.
 
 **Substitutes:** [mkdirSync](arkts-corefile-file-fs-mkdirsync-f.md)
 
+<!--Device-unnamed-declare function mkdirSync(path: string, mode?: number): void--><!--Device-unnamed-declare function mkdirSync(path: string, mode?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

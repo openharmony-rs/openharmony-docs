@@ -8,6 +8,8 @@ Web net error list.
 
 **Since:** 12
 
+<!--Device-unnamed-export declare enum WebNetErrorList--><!--Device-unnamed-export declare enum WebNetErrorList-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NET_OK
@@ -21,6 +23,8 @@ Normal.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-NET_OK = 0--><!--Device-WebNetErrorList-NET_OK = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ An asynchronous IO operation is not yet complete. This usually does not indicate
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_IO_PENDING = -1--><!--Device-WebNetErrorList-ERR_IO_PENDING = -1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FAILED
@@ -49,6 +55,8 @@ A generic failure occurred.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FAILED = -2--><!--Device-WebNetErrorList-ERR_FAILED = -2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ An operation was aborted (due to user action).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ABORTED = -3--><!--Device-WebNetErrorList-ERR_ABORTED = -3-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_ARGUMENT
@@ -77,6 +87,8 @@ An argument to the function is incorrect.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INVALID_ARGUMENT = -4--><!--Device-WebNetErrorList-ERR_INVALID_ARGUMENT = -4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -92,6 +104,8 @@ The handle or file descriptor is invalid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INVALID_HANDLE = -5--><!--Device-WebNetErrorList-ERR_INVALID_HANDLE = -5-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_NOT_FOUND
@@ -105,6 +119,8 @@ The file or directory cannot be found.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FILE_NOT_FOUND = -6--><!--Device-WebNetErrorList-ERR_FILE_NOT_FOUND = -6-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -120,6 +136,8 @@ An operation timed out.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_TIMED_OUT = -7--><!--Device-WebNetErrorList-ERR_TIMED_OUT = -7-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_TOO_LARGE
@@ -133,6 +151,8 @@ The file is too large.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FILE_TOO_LARGE = -8--><!--Device-WebNetErrorList-ERR_FILE_TOO_LARGE = -8-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -148,6 +168,8 @@ An unexpected error. This may be caused by a programming mistake or an invalid a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_UNEXPECTED = -9--><!--Device-WebNetErrorList-ERR_UNEXPECTED = -9-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_ACCESS_DENIED
@@ -161,6 +183,8 @@ Permission to access a resource, other than the network, was denied.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_ACCESS_DENIED = -10--><!--Device-WebNetErrorList-ERR_ACCESS_DENIED = -10-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -176,6 +200,8 @@ The operation failed because of unimplemented functionality.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NOT_IMPLEMENTED = -11--><!--Device-WebNetErrorList-ERR_NOT_IMPLEMENTED = -11-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INSUFFICIENT_RESOURCES
@@ -189,6 +215,8 @@ There were not enough resources to complete the operation.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INSUFFICIENT_RESOURCES = -12--><!--Device-WebNetErrorList-ERR_INSUFFICIENT_RESOURCES = -12-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -204,6 +232,8 @@ Memory allocation failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_OUT_OF_MEMORY = -13--><!--Device-WebNetErrorList-ERR_OUT_OF_MEMORY = -13-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UPLOAD_FILE_CHANGED
@@ -217,6 +247,8 @@ The file upload failed because the file's modification time was different from t
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UPLOAD_FILE_CHANGED = -14--><!--Device-WebNetErrorList-ERR_UPLOAD_FILE_CHANGED = -14-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -232,6 +264,8 @@ The socket is not connected.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SOCKET_NOT_CONNECTED = -15--><!--Device-WebNetErrorList-ERR_SOCKET_NOT_CONNECTED = -15-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_EXISTS
@@ -245,6 +279,8 @@ The file already exists.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FILE_EXISTS = -16--><!--Device-WebNetErrorList-ERR_FILE_EXISTS = -16-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -260,6 +296,8 @@ The path or file name is too long.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_FILE_PATH_TOO_LONG = -17--><!--Device-WebNetErrorList-ERR_FILE_PATH_TOO_LONG = -17-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FILE_NO_SPACE
@@ -273,6 +311,8 @@ Not enough room left on the disk.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FILE_NO_SPACE = -18--><!--Device-WebNetErrorList-ERR_FILE_NO_SPACE = -18-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -288,6 +328,8 @@ The file has a virus.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_FILE_VIRUS_INFECTED = -19--><!--Device-WebNetErrorList-ERR_FILE_VIRUS_INFECTED = -19-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_CLIENT
@@ -301,6 +343,8 @@ The client chose to block the request.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_BLOCKED_BY_CLIENT = -20--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_CLIENT = -20-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -316,6 +360,8 @@ The network changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NETWORK_CHANGED = -21--><!--Device-WebNetErrorList-ERR_NETWORK_CHANGED = -21-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_ADMINISTRATOR
@@ -329,6 +375,8 @@ The request was blocked by the URL block list configured by the domain administr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_BLOCKED_BY_ADMINISTRATOR = -22--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_ADMINISTRATOR = -22-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -344,6 +392,8 @@ The socket is already connected.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SOCKET_CONNECTED = -23--><!--Device-WebNetErrorList-ERR_SOCKET_CONNECTED = -23-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED
@@ -357,6 +407,8 @@ The upload failed because the upload stream needed to be re-read, due to a retry
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25--><!--Device-WebNetErrorList-ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED = -25-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -372,6 +424,8 @@ The request failed because the URLRequestContext is shutting down, or has been s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CONTEXT_SHUT_DOWN = -26--><!--Device-WebNetErrorList-ERR_CONTEXT_SHUT_DOWN = -26-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_RESPONSE
@@ -385,6 +439,8 @@ The request failed because the response was delivered along with requirements wh
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_BLOCKED_BY_RESPONSE = -27--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_RESPONSE = -27-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -400,6 +456,8 @@ The request was blocked by system policy disallowing some or all cleartext reque
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CLEARTEXT_NOT_PERMITTED = -29--><!--Device-WebNetErrorList-ERR_CLEARTEXT_NOT_PERMITTED = -29-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_CSP
@@ -413,6 +471,8 @@ The request was blocked by a Content Security Policy.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_BLOCKED_BY_CSP = -30--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_CSP = -30-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -428,6 +488,8 @@ The request was blocked because of no H/2 or QUIC session.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_H2_OR_QUIC_REQUIRED = -31--><!--Device-WebNetErrorList-ERR_H2_OR_QUIC_REQUIRED = -31-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_BLOCKED_BY_ORB
@@ -441,6 +503,8 @@ The request was blocked by CORB or ORB.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_BLOCKED_BY_ORB = -32--><!--Device-WebNetErrorList-ERR_BLOCKED_BY_ORB = -32-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -456,6 +520,8 @@ A connection was closed (corresponding to a TCP FIN).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CONNECTION_CLOSED = -100--><!--Device-WebNetErrorList-ERR_CONNECTION_CLOSED = -100-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CONNECTION_RESET
@@ -469,6 +535,8 @@ A connection was reset (corresponding to a TCP RST).
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CONNECTION_RESET = -101--><!--Device-WebNetErrorList-ERR_CONNECTION_RESET = -101-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -484,6 +552,8 @@ A connection attempt was refused.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CONNECTION_REFUSED = -102--><!--Device-WebNetErrorList-ERR_CONNECTION_REFUSED = -102-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CONNECTION_ABORTED
@@ -497,6 +567,8 @@ A connection timed out as a result of not receiving an ACK for data sent. This c
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CONNECTION_ABORTED = -103--><!--Device-WebNetErrorList-ERR_CONNECTION_ABORTED = -103-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -512,6 +584,8 @@ A connection attempt failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CONNECTION_FAILED = -104--><!--Device-WebNetErrorList-ERR_CONNECTION_FAILED = -104-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_NAME_NOT_RESOLVED
@@ -525,6 +599,8 @@ The host name could not be resolved.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_NAME_NOT_RESOLVED = -105--><!--Device-WebNetErrorList-ERR_NAME_NOT_RESOLVED = -105-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -540,6 +616,8 @@ The Internet connection has been lost.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INTERNET_DISCONNECTED = -106--><!--Device-WebNetErrorList-ERR_INTERNET_DISCONNECTED = -106-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_PROTOCOL_ERROR
@@ -553,6 +631,8 @@ An SSL protocol error occurred.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_PROTOCOL_ERROR = -107--><!--Device-WebNetErrorList-ERR_SSL_PROTOCOL_ERROR = -107-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -568,6 +648,8 @@ The IP address or port number is invalid (e.g., cannot connect to the IP address
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ADDRESS_INVALID = -108--><!--Device-WebNetErrorList-ERR_ADDRESS_INVALID = -108-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_ADDRESS_UNREACHABLE
@@ -581,6 +663,8 @@ The IP address is unreachable. This usually means that there is no route to the 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_ADDRESS_UNREACHABLE = -109--><!--Device-WebNetErrorList-ERR_ADDRESS_UNREACHABLE = -109-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -596,6 +680,8 @@ The server requested a client certificate for SSL client authentication.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NEEDED = -110-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_TUNNEL_CONNECTION_FAILED
@@ -609,6 +695,8 @@ A tunnel connection through the proxy could not be established.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_TUNNEL_CONNECTION_FAILED = -111--><!--Device-WebNetErrorList-ERR_TUNNEL_CONNECTION_FAILED = -111-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -624,6 +712,8 @@ No SSL protocol versions are enabled.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NO_SSL_VERSIONS_ENABLED = -112--><!--Device-WebNetErrorList-ERR_NO_SSL_VERSIONS_ENABLED = -112-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_VERSION_OR_CIPHER_MISMATCH
@@ -637,6 +727,8 @@ The client and server don't support a common SSL protocol version or cipher suit
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113--><!--Device-WebNetErrorList-ERR_SSL_VERSION_OR_CIPHER_MISMATCH = -113-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -652,6 +744,8 @@ The server requested a renegotiation (rehandshake).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_RENEGOTIATION_REQUESTED = -114--><!--Device-WebNetErrorList-ERR_SSL_RENEGOTIATION_REQUESTED = -114-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PROXY_AUTH_UNSUPPORTED
@@ -665,6 +759,8 @@ The proxy requested authentication (for tunnel establishment) with an unsupporte
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PROXY_AUTH_UNSUPPORTED = -115--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_UNSUPPORTED = -115-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -680,6 +776,8 @@ The SSL handshake failed because of a bad or missing client certificate.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_BAD_SSL_CLIENT_AUTH_CERT = -117--><!--Device-WebNetErrorList-ERR_BAD_SSL_CLIENT_AUTH_CERT = -117-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CONNECTION_TIMED_OUT
@@ -693,6 +791,8 @@ A connection attempt timed out.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CONNECTION_TIMED_OUT = -118--><!--Device-WebNetErrorList-ERR_CONNECTION_TIMED_OUT = -118-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -708,6 +808,8 @@ There are too many pending DNS resolves, so a request in the queue was aborted.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119--><!--Device-WebNetErrorList-ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SOCKS_CONNECTION_FAILED
@@ -721,6 +823,8 @@ Failed establishing a connection to the SOCKS proxy server for a target host.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_FAILED = -120--><!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_FAILED = -120-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -736,6 +840,8 @@ The SOCKS proxy server failed establishing connection to the target host because
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121--><!--Device-WebNetErrorList-ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_ALPN_NEGOTIATION_FAILED
@@ -749,6 +855,8 @@ The request to negotiate an alternate protocol failed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_ALPN_NEGOTIATION_FAILED = -122--><!--Device-WebNetErrorList-ERR_ALPN_NEGOTIATION_FAILED = -122-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -764,6 +872,8 @@ The peer sent an SSL no_renegotiation alert message.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_NO_RENEGOTIATION = -123--><!--Device-WebNetErrorList-ERR_SSL_NO_RENEGOTIATION = -123-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES
@@ -777,6 +887,8 @@ Winsock sometimes reports more data written than passed. This is probably due to
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124--><!--Device-WebNetErrorList-ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES = -124-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -792,6 +904,8 @@ An SSL peer sent us a fatal decompression_failure alert. This typically occurs w
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125--><!--Device-WebNetErrorList-ERR_SSL_DECOMPRESSION_FAILURE_ALERT = -125-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_BAD_RECORD_MAC_ALERT
@@ -805,6 +919,8 @@ An SSL peer sent us a fatal bad_record_mac alert. This has been observed from se
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_BAD_RECORD_MAC_ALERT = -126--><!--Device-WebNetErrorList-ERR_SSL_BAD_RECORD_MAC_ALERT = -126-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -820,6 +936,8 @@ The proxy requested authentication (for tunnel establishment).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED = -127--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED = -127-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PROXY_CONNECTION_FAILED
@@ -833,6 +951,8 @@ Could not create a connection to the proxy server. An error occurred either in r
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PROXY_CONNECTION_FAILED = -130--><!--Device-WebNetErrorList-ERR_PROXY_CONNECTION_FAILED = -130-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -848,6 +968,8 @@ A mandatory proxy configuration could not be used. Currently this means that a m
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131--><!--Device-WebNetErrorList-ERR_MANDATORY_PROXY_CONFIGURATION_FAILED = -131-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PRECONNECT_MAX_SOCKET_LIMIT
@@ -861,6 +983,8 @@ We've hit the max socket limit for the socket pool while preconnecting. We don't
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133--><!--Device-WebNetErrorList-ERR_PRECONNECT_MAX_SOCKET_LIMIT = -133-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -876,6 +1000,8 @@ The permission to use the SSL client certificate's private key was denied.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_PRIVATE_KEY_ACCESS_DENIED = -134-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY
@@ -889,6 +1015,8 @@ The SSL client certificate has no private key.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -904,6 +1032,8 @@ The certificate presented by the HTTPS Proxy was invalid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PROXY_CERTIFICATE_INVALID = -136--><!--Device-WebNetErrorList-ERR_PROXY_CERTIFICATE_INVALID = -136-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_NAME_RESOLUTION_FAILED
@@ -917,6 +1047,8 @@ An error occurred when trying to do a name resolution (DNS).
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_NAME_RESOLUTION_FAILED = -137--><!--Device-WebNetErrorList-ERR_NAME_RESOLUTION_FAILED = -137-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -932,6 +1064,8 @@ Permission to access the network was denied. This is used to distinguish errors 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NETWORK_ACCESS_DENIED = -138--><!--Device-WebNetErrorList-ERR_NETWORK_ACCESS_DENIED = -138-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_TEMPORARILY_THROTTLED
@@ -945,6 +1079,8 @@ The request throttler module cancelled this request to avoid DDOS.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_TEMPORARILY_THROTTLED = -139--><!--Device-WebNetErrorList-ERR_TEMPORARILY_THROTTLED = -139-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -960,6 +1096,8 @@ A request to create an SSL tunnel connection through the HTTPS proxy received a 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140--><!--Device-WebNetErrorList-ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED
@@ -973,6 +1111,8 @@ We were unable to sign the CertificateVerify data of an SSL client auth handshak
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -988,6 +1128,8 @@ The message was too large for the transport. (for example a UDP message which ex
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_MSG_TOO_BIG = -142--><!--Device-WebNetErrorList-ERR_MSG_TOO_BIG = -142-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_WS_PROTOCOL_ERROR
@@ -1001,6 +1143,8 @@ Websocket protocol error. Indicates that we are terminating the connection due t
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_WS_PROTOCOL_ERROR = -145--><!--Device-WebNetErrorList-ERR_WS_PROTOCOL_ERROR = -145-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1016,6 +1160,8 @@ Returned when attempting to bind an address that is already in use.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ADDRESS_IN_USE = -147--><!--Device-WebNetErrorList-ERR_ADDRESS_IN_USE = -147-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_HANDSHAKE_NOT_COMPLETED
@@ -1029,6 +1175,8 @@ An operation failed because the SSL handshake has not completed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148--><!--Device-WebNetErrorList-ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1044,6 +1192,8 @@ SSL peer's public key is invalid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_BAD_PEER_PUBLIC_KEY = -149--><!--Device-WebNetErrorList-ERR_SSL_BAD_PEER_PUBLIC_KEY = -149-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN
@@ -1057,6 +1207,8 @@ The certificate didn't match the built-in public key pins for the host name. The
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150--><!--Device-WebNetErrorList-ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN = -150-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1072,6 +1224,8 @@ Server request for client certificate did not contain any types we support.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151--><!--Device-WebNetErrorList-ERR_CLIENT_AUTH_CERT_TYPE_UNSUPPORTED = -151-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_DECRYPT_ERROR_ALERT
@@ -1085,6 +1239,8 @@ An SSL peer sent us a fatal decrypt_error alert. This typically occurs when a pe
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_DECRYPT_ERROR_ALERT = -153--><!--Device-WebNetErrorList-ERR_SSL_DECRYPT_ERROR_ALERT = -153-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1100,6 +1256,8 @@ There are too many pending WebSocketJob instances, so the new job was not pushed
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154--><!--Device-WebNetErrorList-ERR_WS_THROTTLE_QUEUE_TOO_LARGE = -154-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_SERVER_CERT_CHANGED
@@ -1113,6 +1271,8 @@ The SSL server certificate changed in a renegotiation.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_CHANGED = -156--><!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_CHANGED = -156-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1128,6 +1288,8 @@ The SSL server sent us a fatal unrecognized_name alert.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159--><!--Device-WebNetErrorList-ERR_SSL_UNRECOGNIZED_NAME_ALERT = -159-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR
@@ -1141,6 +1303,8 @@ Failed to set the socket's receive buffer size as requested.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160--><!--Device-WebNetErrorList-ERR_SOCKET_SET_RECEIVE_BUFFER_SIZE_ERROR = -160-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1156,6 +1320,8 @@ Failed to set the socket's send buffer size as requested.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161--><!--Device-WebNetErrorList-ERR_SOCKET_SET_SEND_BUFFER_SIZE_ERROR = -161-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE
@@ -1169,6 +1335,8 @@ Failed to set the socket's receive buffer size as requested, despite success ret
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162--><!--Device-WebNetErrorList-ERR_SOCKET_RECEIVE_BUFFER_SIZE_UNCHANGEABLE = -162-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1184,6 +1352,8 @@ Failed to set the socket's send buffer size as requested, despite success return
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163--><!--Device-WebNetErrorList-ERR_SOCKET_SEND_BUFFER_SIZE_UNCHANGEABLE = -163-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT
@@ -1197,6 +1367,8 @@ Failed to import a client certificate from the platform store into the SSL libra
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT = -164-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1212,6 +1384,8 @@ Resolving a hostname to an IP address list included the IPv4 address"127.0.53.53
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ICANN_NAME_COLLISION = -166--><!--Device-WebNetErrorList-ERR_ICANN_NAME_COLLISION = -166-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_SERVER_CERT_BAD_FORMAT
@@ -1225,6 +1399,8 @@ The SSL server presented a certificate which could not be decoded. This is not a
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_BAD_FORMAT = -167--><!--Device-WebNetErrorList-ERR_SSL_SERVER_CERT_BAD_FORMAT = -167-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1240,6 +1416,8 @@ Certificate Transparency: Received a signed tree head that failed to parse.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CT_STH_PARSING_FAILED = -168--><!--Device-WebNetErrorList-ERR_CT_STH_PARSING_FAILED = -168-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CT_STH_INCOMPLETE
@@ -1253,6 +1431,8 @@ Certificate Transparency: Received a signed tree head whose JSON parsing was OK 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CT_STH_INCOMPLETE = -169--><!--Device-WebNetErrorList-ERR_CT_STH_INCOMPLETE = -169-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1268,6 +1448,8 @@ The attempt to reuse a connection to send proxy auth credentials failed before t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170--><!--Device-WebNetErrorList-ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH = -170-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED
@@ -1281,6 +1463,8 @@ Certificate Transparency: Failed to parse the received consistency proof.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171--><!--Device-WebNetErrorList-ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED = -171-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1296,6 +1480,8 @@ The SSL server required an unsupported cipher suite that has since been removed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_CIPHER = -172--><!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_CIPHER = -172-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_WS_UPGRADE
@@ -1309,6 +1495,8 @@ When a WebSocket handshake is done successfully and the connection has been upgr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_WS_UPGRADE = -173--><!--Device-WebNetErrorList-ERR_WS_UPGRADE = -173-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1324,6 +1512,8 @@ Socket ReadIfReady support is not implemented. This error should not be user vis
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_READ_IF_READY_NOT_IMPLEMENTED = -174--><!--Device-WebNetErrorList-ERR_READ_IF_READY_NOT_IMPLEMENTED = -174-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_NO_BUFFER_SPACE
@@ -1337,6 +1527,8 @@ No socket buffer space is available.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_NO_BUFFER_SPACE = -176--><!--Device-WebNetErrorList-ERR_NO_BUFFER_SPACE = -176-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1352,6 +1544,8 @@ There were no common signature algorithms between our client certificate private
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177--><!--Device-WebNetErrorList-ERR_SSL_CLIENT_AUTH_NO_COMMON_ALGORITHMS = -177-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_EARLY_DATA_REJECTED
@@ -1365,6 +1559,8 @@ TLS 1.3 early data was rejected by the server. This will be received before any 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_EARLY_DATA_REJECTED = -178--><!--Device-WebNetErrorList-ERR_EARLY_DATA_REJECTED = -178-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1380,6 +1576,8 @@ TLS 1.3 early data was offered, but the server responded with TLS 1.2 or earlier
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_WRONG_VERSION_ON_EARLY_DATA = -179--><!--Device-WebNetErrorList-ERR_WRONG_VERSION_ON_EARLY_DATA = -179-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_TLS13_DOWNGRADE_DETECTED
@@ -1393,6 +1591,8 @@ TLS 1.3 was enabled, but a lower version was negotiated and the server returned 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_TLS13_DOWNGRADE_DETECTED = -180--><!--Device-WebNetErrorList-ERR_TLS13_DOWNGRADE_DETECTED = -180-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1408,6 +1608,8 @@ The server's certificate has a keyUsage extension incompatible with the negotiat
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181--><!--Device-WebNetErrorList-ERR_SSL_KEY_USAGE_INCOMPATIBLE = -181-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_ECH_CONFIG_LIST
@@ -1421,6 +1623,8 @@ The ECHConfigList fetched over DNS cannot be parsed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INVALID_ECH_CONFIG_LIST = -182--><!--Device-WebNetErrorList-ERR_INVALID_ECH_CONFIG_LIST = -182-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1436,6 +1640,8 @@ ECH was enabled, but the server was unable to decrypt the encrypted ClientHello.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ECH_NOT_NEGOTIATED = -183--><!--Device-WebNetErrorList-ERR_ECH_NOT_NEGOTIATED = -183-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_ECH_FALLBACK_CERTIFICATE_INVALID
@@ -1449,6 +1655,8 @@ ECH was enabled, the server was unable to decrypt the encrypted ClientHello, and
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184--><!--Device-WebNetErrorList-ERR_ECH_FALLBACK_CERTIFICATE_INVALID = -184-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1471,6 +1679,8 @@ a certificate for the abbreviated name in the address bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_COMMON_NAME_INVALID = -200--><!--Device-WebNetErrorList-ERR_CERT_COMMON_NAME_INVALID = -200-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_DATE_INVALID
@@ -1489,6 +1699,8 @@ managed to obtain the private key.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_DATE_INVALID = -201--><!--Device-WebNetErrorList-ERR_CERT_DATE_INVALID = -201-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1510,6 +1722,8 @@ defense against active attackers (but foiling passive attackers).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_AUTHORITY_INVALID = -202--><!--Device-WebNetErrorList-ERR_CERT_AUTHORITY_INVALID = -202-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_CONTAINS_ERRORS
@@ -1524,6 +1738,8 @@ The server responded with a certificate that contains errors. This error is not 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_CONTAINS_ERRORS = -203--><!--Device-WebNetErrorList-ERR_CERT_CONTAINS_ERRORS = -203-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_NO_REVOCATION_MECHANISM
@@ -1537,6 +1753,8 @@ The certificate has no mechanism for determining if it is revoked. In effect, th
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_NO_REVOCATION_MECHANISM = -204--><!--Device-WebNetErrorList-ERR_CERT_NO_REVOCATION_MECHANISM = -204-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1557,6 +1775,8 @@ unavailable.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205--><!--Device-WebNetErrorList-ERR_CERT_UNABLE_TO_CHECK_REVOCATION = -205-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_REVOKED
@@ -1570,6 +1790,8 @@ The server responded with a certificate has been revoked. We have the capability
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_REVOKED = -206--><!--Device-WebNetErrorList-ERR_CERT_REVOKED = -206-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1585,6 +1807,8 @@ The server responded with a certificate that is invalid. This error is not recov
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_INVALID = -207--><!--Device-WebNetErrorList-ERR_CERT_INVALID = -207-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_WEAK_SIGNATURE_ALGORITHM
@@ -1598,6 +1822,8 @@ The server responded with a certificate that is signed using a weak signature al
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208--><!--Device-WebNetErrorList-ERR_CERT_WEAK_SIGNATURE_ALGORITHM = -208-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1613,6 +1839,8 @@ The host name specified in the certificate is not unique.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_NON_UNIQUE_NAME = -210--><!--Device-WebNetErrorList-ERR_CERT_NON_UNIQUE_NAME = -210-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_WEAK_KEY
@@ -1626,6 +1854,8 @@ The server responded with a certificate that contains a weak key (e.g. a too-sma
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_WEAK_KEY = -211--><!--Device-WebNetErrorList-ERR_CERT_WEAK_KEY = -211-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1641,6 +1871,8 @@ The certificate claimed DNS names that are in violation of name constraints.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212--><!--Device-WebNetErrorList-ERR_CERT_NAME_CONSTRAINT_VIOLATION = -212-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_VALIDITY_TOO_LONG
@@ -1654,6 +1886,8 @@ The certificate's validity period is too long.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_VALIDITY_TOO_LONG = -213--><!--Device-WebNetErrorList-ERR_CERT_VALIDITY_TOO_LONG = -213-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1669,6 +1903,8 @@ Certificate Transparency was required for this connection, but the server did no
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214--><!--Device-WebNetErrorList-ERR_CERTIFICATE_TRANSPARENCY_REQUIRED = -214-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_SYMANTEC_LEGACY
@@ -1682,6 +1918,8 @@ The certificate chained to a legacy Symantec root that is no longer trusted.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_SYMANTEC_LEGACY = -215--><!--Device-WebNetErrorList-ERR_CERT_SYMANTEC_LEGACY = -215-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1697,6 +1935,8 @@ The certificate is known to be used for interception by an entity other the devi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217--><!--Device-WebNetErrorList-ERR_CERT_KNOWN_INTERCEPTION_BLOCKED = -217-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SSL_OBSOLETE_VERSION_OR_CIPHER
@@ -1710,6 +1950,8 @@ The connection uses an obsolete version of SSL/TLS or cipher.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218--><!--Device-WebNetErrorList-ERR_SSL_OBSOLETE_VERSION_OR_CIPHER = -218-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1725,6 +1967,8 @@ The value immediately past the last certificate error code.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_END = -219--><!--Device-WebNetErrorList-ERR_CERT_END = -219-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_URL
@@ -1738,6 +1982,8 @@ The URL is invalid.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INVALID_URL = -300--><!--Device-WebNetErrorList-ERR_INVALID_URL = -300-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1753,6 +1999,8 @@ The scheme of the URL is disallowed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_DISALLOWED_URL_SCHEME = -301--><!--Device-WebNetErrorList-ERR_DISALLOWED_URL_SCHEME = -301-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UNKNOWN_URL_SCHEME
@@ -1766,6 +2014,8 @@ The scheme of the URL is unknown.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UNKNOWN_URL_SCHEME = -302--><!--Device-WebNetErrorList-ERR_UNKNOWN_URL_SCHEME = -302-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1781,6 +2031,8 @@ Attempting to load an URL resulted in a redirect to an invalid URL.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INVALID_REDIRECT = -303--><!--Device-WebNetErrorList-ERR_INVALID_REDIRECT = -303-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_TOO_MANY_REDIRECTS
@@ -1794,6 +2046,8 @@ Attempting to load an URL resulted in too many redirects.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_TOO_MANY_REDIRECTS = -310--><!--Device-WebNetErrorList-ERR_TOO_MANY_REDIRECTS = -310-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1809,6 +2063,8 @@ Attempting to load an URL resulted in an unsafe redirect (e.g., a redirect to fi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_UNSAFE_REDIRECT = -311--><!--Device-WebNetErrorList-ERR_UNSAFE_REDIRECT = -311-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UNSAFE_PORT
@@ -1822,6 +2078,8 @@ Attempting to load an URL with an unsafe port number.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UNSAFE_PORT = -312--><!--Device-WebNetErrorList-ERR_UNSAFE_PORT = -312-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1837,6 +2095,8 @@ The server's response was invalid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INVALID_RESPONSE = -320--><!--Device-WebNetErrorList-ERR_INVALID_RESPONSE = -320-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_CHUNKED_ENCODING
@@ -1850,6 +2110,8 @@ Error in chunked transfer encoding.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INVALID_CHUNKED_ENCODING = -321--><!--Device-WebNetErrorList-ERR_INVALID_CHUNKED_ENCODING = -321-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1865,6 +2127,8 @@ The server did not support the request method.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_METHOD_UNSUPPORTED = -322--><!--Device-WebNetErrorList-ERR_METHOD_UNSUPPORTED = -322-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UNEXPECTED_PROXY_AUTH
@@ -1878,6 +2142,8 @@ The response was 407 (Proxy Authentication Required), yet we did not send the re
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UNEXPECTED_PROXY_AUTH = -323--><!--Device-WebNetErrorList-ERR_UNEXPECTED_PROXY_AUTH = -323-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1893,6 +2159,8 @@ The server closed the connection without sending any data.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_EMPTY_RESPONSE = -324--><!--Device-WebNetErrorList-ERR_EMPTY_RESPONSE = -324-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_RESPONSE_HEADERS_TOO_BIG
@@ -1906,6 +2174,8 @@ The headers section of the response is too large.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TOO_BIG = -325--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TOO_BIG = -325-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1921,6 +2191,8 @@ The evaluation of the PAC script failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PAC_SCRIPT_FAILED = -327--><!--Device-WebNetErrorList-ERR_PAC_SCRIPT_FAILED = -327-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_REQUEST_RANGE_NOT_SATISFIABLE
@@ -1934,6 +2206,8 @@ The response was 416 (Requested range not satisfiable) and the server cannot sat
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328--><!--Device-WebNetErrorList-ERR_REQUEST_RANGE_NOT_SATISFIABLE = -328-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1949,6 +2223,8 @@ The identity used for authentication is invalid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_MALFORMED_IDENTITY = -329--><!--Device-WebNetErrorList-ERR_MALFORMED_IDENTITY = -329-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CONTENT_DECODING_FAILED
@@ -1962,6 +2238,8 @@ Content decoding of the response body failed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CONTENT_DECODING_FAILED = -330--><!--Device-WebNetErrorList-ERR_CONTENT_DECODING_FAILED = -330-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1977,6 +2255,8 @@ An operation could not be completed because all network IO is suspended.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NETWORK_IO_SUSPENDED = -331--><!--Device-WebNetErrorList-ERR_NETWORK_IO_SUSPENDED = -331-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_SYN_REPLY_NOT_RECEIVED
@@ -1990,6 +2270,8 @@ FLIP data received without receiving a SYN_REPLY on the stream.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_SYN_REPLY_NOT_RECEIVED = -332--><!--Device-WebNetErrorList-ERR_SYN_REPLY_NOT_RECEIVED = -332-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2005,6 +2287,8 @@ Converting the response to target encoding failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ENCODING_CONVERSION_FAILED = -333--><!--Device-WebNetErrorList-ERR_ENCODING_CONVERSION_FAILED = -333-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT
@@ -2018,6 +2302,8 @@ The server sent an FTP directory listing in a format we do not understand.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334--><!--Device-WebNetErrorList-ERR_UNRECOGNIZED_FTP_DIRECTORY_LISTING_FORMAT = -334-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2033,6 +2319,8 @@ There are no supported proxies in the provided list.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NO_SUPPORTED_PROXIES = -336--><!--Device-WebNetErrorList-ERR_NO_SUPPORTED_PROXIES = -336-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_PROTOCOL_ERROR
@@ -2046,6 +2334,8 @@ There is an HTTP/2 protocol error.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP2_PROTOCOL_ERROR = -337--><!--Device-WebNetErrorList-ERR_HTTP2_PROTOCOL_ERROR = -337-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2061,6 +2351,8 @@ Credentials could not be established during HTTP Authentication.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INVALID_AUTH_CREDENTIALS = -338--><!--Device-WebNetErrorList-ERR_INVALID_AUTH_CREDENTIALS = -338-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_UNSUPPORTED_AUTH_SCHEME
@@ -2074,6 +2366,8 @@ An HTTP Authentication scheme was tried which is not supported on this machine.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_UNSUPPORTED_AUTH_SCHEME = -339--><!--Device-WebNetErrorList-ERR_UNSUPPORTED_AUTH_SCHEME = -339-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2089,6 +2383,8 @@ Detecting the encoding of the response failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_ENCODING_DETECTION_FAILED = -340--><!--Device-WebNetErrorList-ERR_ENCODING_DETECTION_FAILED = -340-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_MISSING_AUTH_CREDENTIALS
@@ -2102,6 +2398,8 @@ ERR_MISSING_AUTH_CREDENTIALS = -341
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_MISSING_AUTH_CREDENTIALS = -341--><!--Device-WebNetErrorList-ERR_MISSING_AUTH_CREDENTIALS = -341-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2117,6 +2415,8 @@ An unexpected, but documented, SSPI or GSSAPI status code was returned.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342--><!--Device-WebNetErrorList-ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS = -342-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_MISCONFIGURED_AUTH_ENVIRONMENT
@@ -2130,6 +2430,8 @@ The environment was not set up correctly for authentication (for example, no KDC
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343--><!--Device-WebNetErrorList-ERR_MISCONFIGURED_AUTH_ENVIRONMENT = -343-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2145,6 +2447,8 @@ An undocumented SSPI or GSSAPI status code was returned.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344--><!--Device-WebNetErrorList-ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS = -344-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN
@@ -2158,6 +2462,8 @@ The HTTP response was too big to drain.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345--><!--Device-WebNetErrorList-ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN = -345-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2173,6 +2479,8 @@ The HTTP response contained multiple distinct Content-Length headers.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH = -346-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INCOMPLETE_HTTP2_HEADERS
@@ -2186,6 +2494,8 @@ HTTP/2 headers have been received, but not all of them - status or version heade
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INCOMPLETE_HTTP2_HEADERS = -347--><!--Device-WebNetErrorList-ERR_INCOMPLETE_HTTP2_HEADERS = -347-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2201,6 +2511,8 @@ No PAC URL configuration could be retrieved from DHCP. This can indicate either 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PAC_NOT_IN_DHCP = -348--><!--Device-WebNetErrorList-ERR_PAC_NOT_IN_DHCP = -348-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION
@@ -2214,6 +2526,8 @@ The HTTP response contained multiple Content-Disposition headers.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2229,6 +2543,8 @@ The HTTP response contained multiple Location headers.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_SERVER_REFUSED_STREAM
@@ -2242,6 +2558,8 @@ HTTP/2 server refused the request without processing, and sent either a GOAWAY f
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP2_SERVER_REFUSED_STREAM = -351--><!--Device-WebNetErrorList-ERR_HTTP2_SERVER_REFUSED_STREAM = -351-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2257,6 +2575,8 @@ HTTP/2 server didn't respond to the PING message.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_PING_FAILED = -352--><!--Device-WebNetErrorList-ERR_HTTP2_PING_FAILED = -352-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CONTENT_LENGTH_MISMATCH
@@ -2270,6 +2590,8 @@ The HTTP response body transferred fewer bytes than were advertised by the Conte
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CONTENT_LENGTH_MISMATCH = -354--><!--Device-WebNetErrorList-ERR_CONTENT_LENGTH_MISMATCH = -354-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2285,6 +2607,8 @@ The HTTP response body is transferred with Chunked-Encoding, but the terminating
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INCOMPLETE_CHUNKED_ENCODING = -355--><!--Device-WebNetErrorList-ERR_INCOMPLETE_CHUNKED_ENCODING = -355-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_QUIC_PROTOCOL_ERROR
@@ -2298,6 +2622,8 @@ There is a QUIC protocol error.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_QUIC_PROTOCOL_ERROR = -356--><!--Device-WebNetErrorList-ERR_QUIC_PROTOCOL_ERROR = -356-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2313,6 +2639,8 @@ The HTTP headers were truncated by an EOF.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TRUNCATED = -357--><!--Device-WebNetErrorList-ERR_RESPONSE_HEADERS_TRUNCATED = -357-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_QUIC_HANDSHAKE_FAILED
@@ -2326,6 +2654,8 @@ The QUIC crypto handshake failed. This means that the server was unable to read 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_QUIC_HANDSHAKE_FAILED = -358--><!--Device-WebNetErrorList-ERR_QUIC_HANDSHAKE_FAILED = -358-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2341,6 +2671,8 @@ Transport security is inadequate for the HTTP/2 version.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360--><!--Device-WebNetErrorList-ERR_HTTP2_INADEQUATE_TRANSPORT_SECURITY = -360-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_FLOW_CONTROL_ERROR
@@ -2354,6 +2686,8 @@ The peer violated HTTP/2 flow control.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP2_FLOW_CONTROL_ERROR = -361--><!--Device-WebNetErrorList-ERR_HTTP2_FLOW_CONTROL_ERROR = -361-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2369,6 +2703,8 @@ The peer sent an improperly sized HTTP/2 frame.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_FRAME_SIZE_ERROR = -362--><!--Device-WebNetErrorList-ERR_HTTP2_FRAME_SIZE_ERROR = -362-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_COMPRESSION_ERROR
@@ -2382,6 +2718,8 @@ Decoding or encoding of compressed HTTP/2 headers failed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP2_COMPRESSION_ERROR = -363--><!--Device-WebNetErrorList-ERR_HTTP2_COMPRESSION_ERROR = -363-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2397,6 +2735,8 @@ Proxy Auth Requested without a valid Client Socket Handle.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364--><!--Device-WebNetErrorList-ERR_PROXY_AUTH_REQUESTED_WITH_NO_CONNECTION = -364-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP_1_1_REQUIRED
@@ -2410,6 +2750,8 @@ HTTP_1_1_REQUIRED error code received on HTTP/2 session.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP_1_1_REQUIRED = -365--><!--Device-WebNetErrorList-ERR_HTTP_1_1_REQUIRED = -365-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2425,6 +2767,8 @@ HTTP_1_1_REQUIRED error code received on HTTP/2 session to proxy.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PROXY_HTTP_1_1_REQUIRED = -366--><!--Device-WebNetErrorList-ERR_PROXY_HTTP_1_1_REQUIRED = -366-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PAC_SCRIPT_TERMINATED
@@ -2438,6 +2782,8 @@ The PAC script terminated fatally and must be reloaded.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PAC_SCRIPT_TERMINATED = -367--><!--Device-WebNetErrorList-ERR_PAC_SCRIPT_TERMINATED = -367-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2453,6 +2799,8 @@ The server was expected to return an HTTP/1.x response, but did not. Rather than
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INVALID_HTTP_RESPONSE = -370--><!--Device-WebNetErrorList-ERR_INVALID_HTTP_RESPONSE = -370-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CONTENT_DECODING_INIT_FAILED
@@ -2466,6 +2814,8 @@ Initializing content decoding failed.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CONTENT_DECODING_INIT_FAILED = -371--><!--Device-WebNetErrorList-ERR_CONTENT_DECODING_INIT_FAILED = -371-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2481,6 +2831,8 @@ Received HTTP/2 RST_STREAM frame with NO_ERROR error code. This error should be 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372--><!--Device-WebNetErrorList-ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED = -372-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE
@@ -2494,6 +2846,8 @@ The pushed stream claimed by the request is no longer available.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373--><!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE = -373-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2509,6 +2863,8 @@ A pushed stream was claimed and later reset by the server. When this happens, th
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374--><!--Device-WebNetErrorList-ERR_HTTP2_CLAIMED_PUSHED_STREAM_RESET_BY_SERVER = -374-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_TOO_MANY_RETRIES
@@ -2522,6 +2878,8 @@ An HTTP transaction was retried too many times due for authentication or invalid
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_TOO_MANY_RETRIES = -375--><!--Device-WebNetErrorList-ERR_TOO_MANY_RETRIES = -375-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2537,6 +2895,8 @@ Received an HTTP/2 frame on a closed stream.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_STREAM_CLOSED = -376--><!--Device-WebNetErrorList-ERR_HTTP2_STREAM_CLOSED = -376-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP2_CLIENT_REFUSED_STREAM
@@ -2550,6 +2910,8 @@ Client is refusing an HTTP/2 stream.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP2_CLIENT_REFUSED_STREAM = -377--><!--Device-WebNetErrorList-ERR_HTTP2_CLIENT_REFUSED_STREAM = -377-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2565,6 +2927,8 @@ A pushed HTTP/2 stream was claimed by a request based on matching URL and reques
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378--><!--Device-WebNetErrorList-ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH = -378-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_HTTP_RESPONSE_CODE_FAILURE
@@ -2578,6 +2942,8 @@ The server returned a non-2xx HTTP response code.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_HTTP_RESPONSE_CODE_FAILURE = -379--><!--Device-WebNetErrorList-ERR_HTTP_RESPONSE_CODE_FAILURE = -379-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2593,6 +2959,8 @@ The certificate presented on a QUIC connection does not chain to a known root an
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_QUIC_UNKNOWN_CERT_ROOT = -380--><!--Device-WebNetErrorList-ERR_QUIC_UNKNOWN_CERT_ROOT = -380-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED
@@ -2606,6 +2974,8 @@ A GOAWAY frame has been received indicating that the request has not been proces
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381--><!--Device-WebNetErrorList-ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED = -381-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2621,6 +2991,8 @@ The ACCEPT_CH restart has been triggered too many times.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382--><!--Device-WebNetErrorList-ERR_TOO_MANY_ACCEPT_CH_RESTARTS = -382-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INCONSISTENT_IP_ADDRESS_SPACE
@@ -2634,6 +3006,8 @@ The IP address space of the remote endpoint differed from the previous observed 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383--><!--Device-WebNetErrorList-ERR_INCONSISTENT_IP_ADDRESS_SPACE = -383-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2649,6 +3023,8 @@ The IP address space of the cached remote endpoint is blocked by local network a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384--><!--Device-WebNetErrorList-ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY = -384-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_MISS
@@ -2662,6 +3038,8 @@ The cache does not have the requested entry.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_MISS = -400--><!--Device-WebNetErrorList-ERR_CACHE_MISS = -400-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2677,6 +3055,8 @@ Unable to read from the disk cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_READ_FAILURE = -401--><!--Device-WebNetErrorList-ERR_CACHE_READ_FAILURE = -401-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_WRITE_FAILURE
@@ -2690,6 +3070,8 @@ Unable to write to the disk cache.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_WRITE_FAILURE = -402--><!--Device-WebNetErrorList-ERR_CACHE_WRITE_FAILURE = -402-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2705,6 +3087,8 @@ The operation is not supported for this entry.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_OPERATION_UNSUPPORTED = -403--><!--Device-WebNetErrorList-ERR_CACHE_OPERATION_UNSUPPORTED = -403-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_OPEN_FAILURE
@@ -2718,6 +3102,8 @@ The disk cache is unable to open this entry.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_OPEN_FAILURE = -404--><!--Device-WebNetErrorList-ERR_CACHE_OPEN_FAILURE = -404-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2733,6 +3119,8 @@ The disk cache is unable to create this entry.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_CREATE_FAILURE = -405--><!--Device-WebNetErrorList-ERR_CACHE_CREATE_FAILURE = -405-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_RACE
@@ -2746,6 +3134,8 @@ Multiple transactions are racing to create disk cache entries.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_RACE = -406--><!--Device-WebNetErrorList-ERR_CACHE_RACE = -406-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2761,6 +3151,8 @@ The cache was unable to read a checksum record on an entry.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_READ_FAILURE = -407--><!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_READ_FAILURE = -407-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_CHECKSUM_MISMATCH
@@ -2774,6 +3166,8 @@ The cache found an entry with an invalid checksum.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_MISMATCH = -408--><!--Device-WebNetErrorList-ERR_CACHE_CHECKSUM_MISMATCH = -408-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2789,6 +3183,8 @@ Internal error code for the HTTP cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_LOCK_TIMEOUT = -409--><!--Device-WebNetErrorList-ERR_CACHE_LOCK_TIMEOUT = -409-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_AUTH_FAILURE_AFTER_READ
@@ -2802,6 +3198,8 @@ Received a challenge after the transaction has read some data, and the credentia
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410--><!--Device-WebNetErrorList-ERR_CACHE_AUTH_FAILURE_AFTER_READ = -410-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2817,6 +3215,8 @@ Internal not-quite error code for the HTTP cache.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_ENTRY_NOT_SUITABLE = -411--><!--Device-WebNetErrorList-ERR_CACHE_ENTRY_NOT_SUITABLE = -411-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CACHE_DOOM_FAILURE
@@ -2830,6 +3230,8 @@ The disk cache is unable to doom this entry.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CACHE_DOOM_FAILURE = -412--><!--Device-WebNetErrorList-ERR_CACHE_DOOM_FAILURE = -412-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2845,6 +3247,8 @@ The disk cache is unable to open or create this entry.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413--><!--Device-WebNetErrorList-ERR_CACHE_OPEN_OR_CREATE_FAILURE = -413-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INSECURE_RESPONSE
@@ -2858,6 +3262,8 @@ The server's response was insecure (e.g. there was a cert error).
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INSECURE_RESPONSE = -501--><!--Device-WebNetErrorList-ERR_INSECURE_RESPONSE = -501-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2873,6 +3279,8 @@ An attempt to import a client certificate failed, as the user's key database lac
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_NO_PRIVATE_KEY_FOR_CERT = -502--><!--Device-WebNetErrorList-ERR_NO_PRIVATE_KEY_FOR_CERT = -502-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_ADD_USER_CERT_FAILED
@@ -2886,6 +3294,8 @@ An error adding a certificate to the OS certificate database.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_ADD_USER_CERT_FAILED = -503--><!--Device-WebNetErrorList-ERR_ADD_USER_CERT_FAILED = -503-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2901,6 +3311,8 @@ An error occurred while handling a signed exchange.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_INVALID_SIGNED_EXCHANGE = -504--><!--Device-WebNetErrorList-ERR_INVALID_SIGNED_EXCHANGE = -504-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_INVALID_WEB_BUNDLE
@@ -2914,6 +3326,8 @@ An error occurred while handling a Web Bundle source.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_INVALID_WEB_BUNDLE = -505--><!--Device-WebNetErrorList-ERR_INVALID_WEB_BUNDLE = -505-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2929,6 +3343,8 @@ A Trust Tokens protocol operation-executing request failed for one of a number o
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_FAILED = -506--><!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_FAILED = -506-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST
@@ -2942,6 +3358,8 @@ When handling a Trust Tokens protocol operation-executing request, the system wa
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507--><!--Device-WebNetErrorList-ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST = -507-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2957,6 +3375,8 @@ A generic error for failed FTP control connection command. If possible, please u
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_FTP_FAILED = -601--><!--Device-WebNetErrorList-ERR_FTP_FAILED = -601-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_SERVICE_UNAVAILABLE
@@ -2970,6 +3390,8 @@ The server cannot fulfill the request at this point. This is a temporary error. 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FTP_SERVICE_UNAVAILABLE = -602--><!--Device-WebNetErrorList-ERR_FTP_SERVICE_UNAVAILABLE = -602-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2985,6 +3407,8 @@ The server has aborted the transfer. FTP response code 426.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_FTP_TRANSFER_ABORTED = -603--><!--Device-WebNetErrorList-ERR_FTP_TRANSFER_ABORTED = -603-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_FILE_BUSY
@@ -2998,6 +3422,8 @@ The file is busy, or some other temporary error condition on opening the file. F
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FTP_FILE_BUSY = -604--><!--Device-WebNetErrorList-ERR_FTP_FILE_BUSY = -604-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3013,6 +3439,8 @@ Server rejected our command because of syntax errors. FTP response codes 500, 50
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_FTP_SYNTAX_ERROR = -605--><!--Device-WebNetErrorList-ERR_FTP_SYNTAX_ERROR = -605-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_FTP_COMMAND_UNSUPPORTED
@@ -3026,6 +3454,8 @@ Server does not support the command we issued. FTP response codes 502, 504.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_FTP_COMMAND_UNSUPPORTED = -606--><!--Device-WebNetErrorList-ERR_FTP_COMMAND_UNSUPPORTED = -606-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3041,6 +3471,8 @@ Server rejected our command because we didn't issue the commands in right order.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_FTP_BAD_COMMAND_SEQUENCE = -607--><!--Device-WebNetErrorList-ERR_FTP_BAD_COMMAND_SEQUENCE = -607-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PKCS12_IMPORT_BAD_PASSWORD
@@ -3054,6 +3486,8 @@ PKCS #12 import failed due to incorrect password.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_BAD_PASSWORD = -701--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_BAD_PASSWORD = -701-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3069,6 +3503,8 @@ PKCS #12 import failed due to other error.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_FAILED = -702--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_FAILED = -702-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_IMPORT_CA_CERT_NOT_CA
@@ -3082,6 +3518,8 @@ CA import failed - not a CA cert.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_NOT_CA = -703--><!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_NOT_CA = -703-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3097,6 +3535,8 @@ Import failed - certificate already exists in database.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_IMPORT_CERT_ALREADY_EXISTS = -704--><!--Device-WebNetErrorList-ERR_IMPORT_CERT_ALREADY_EXISTS = -704-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_IMPORT_CA_CERT_FAILED
@@ -3110,6 +3550,8 @@ CA import failed due to some other error.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_FAILED = -705--><!--Device-WebNetErrorList-ERR_IMPORT_CA_CERT_FAILED = -705-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3125,6 +3567,8 @@ Server certificate import failed due to some internal error.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_IMPORT_SERVER_CERT_FAILED = -706--><!--Device-WebNetErrorList-ERR_IMPORT_SERVER_CERT_FAILED = -706-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PKCS12_IMPORT_INVALID_MAC
@@ -3138,6 +3582,8 @@ PKCS #12 import failed due to invalid MAC.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_MAC = -707--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_MAC = -707-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3153,6 +3599,8 @@ PKCS #12 import failed due to invalid/corrupt file.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_FILE = -708--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_INVALID_FILE = -708-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PKCS12_IMPORT_UNSUPPORTED
@@ -3166,6 +3614,8 @@ PKCS #12 import failed due to unsupported features.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_UNSUPPORTED = -709--><!--Device-WebNetErrorList-ERR_PKCS12_IMPORT_UNSUPPORTED = -709-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3181,6 +3631,8 @@ Key generation failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_KEY_GENERATION_FAILED = -710--><!--Device-WebNetErrorList-ERR_KEY_GENERATION_FAILED = -710-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_PRIVATE_KEY_EXPORT_FAILED
@@ -3194,6 +3646,8 @@ Failure to export private key.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_PRIVATE_KEY_EXPORT_FAILED = -712--><!--Device-WebNetErrorList-ERR_PRIVATE_KEY_EXPORT_FAILED = -712-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3209,6 +3663,8 @@ Self-signed certificate generation failed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713--><!--Device-WebNetErrorList-ERR_SELF_SIGNED_CERT_GENERATION_FAILED = -713-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_CERT_DATABASE_CHANGED
@@ -3222,6 +3678,8 @@ The certificate database changed in some way.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_CERT_DATABASE_CHANGED = -714--><!--Device-WebNetErrorList-ERR_CERT_DATABASE_CHANGED = -714-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3237,6 +3695,8 @@ The certificate verifier configuration changed in some way.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_CERT_VERIFIER_CHANGED = -716--><!--Device-WebNetErrorList-ERR_CERT_VERIFIER_CHANGED = -716-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_MALFORMED_RESPONSE
@@ -3250,6 +3710,8 @@ DNS resolver received a malformed response.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_DNS_MALFORMED_RESPONSE = -800--><!--Device-WebNetErrorList-ERR_DNS_MALFORMED_RESPONSE = -800-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3265,6 +3727,8 @@ DNS server requires TCP.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_DNS_SERVER_REQUIRES_TCP = -801--><!--Device-WebNetErrorList-ERR_DNS_SERVER_REQUIRES_TCP = -801-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_SERVER_FAILED
@@ -3278,6 +3742,8 @@ DNS server failed. This error is returned for all of the following error conditi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_DNS_SERVER_FAILED = -802--><!--Device-WebNetErrorList-ERR_DNS_SERVER_FAILED = -802-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3293,6 +3759,8 @@ DNS transaction timed out.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_DNS_TIMED_OUT = -803--><!--Device-WebNetErrorList-ERR_DNS_TIMED_OUT = -803-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_CACHE_MISS
@@ -3306,6 +3774,8 @@ The entry was not found in cache or other local sources, for lookups where only 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_DNS_CACHE_MISS = -804--><!--Device-WebNetErrorList-ERR_DNS_CACHE_MISS = -804-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3321,6 +3791,8 @@ Suffix search list rules prevent resolution of the given host name.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_DNS_SEARCH_EMPTY = -805--><!--Device-WebNetErrorList-ERR_DNS_SEARCH_EMPTY = -805-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_SORT_ERROR
@@ -3334,6 +3806,8 @@ Failed to sort addresses according to RFC3484.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_DNS_SORT_ERROR = -806--><!--Device-WebNetErrorList-ERR_DNS_SORT_ERROR = -806-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3349,6 +3823,8 @@ Failed to resolve the hostname of a DNS-over-HTTPS server.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808--><!--Device-WebNetErrorList-ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_NAME_HTTPS_ONLY
@@ -3362,6 +3838,8 @@ DNS identified the request as disallowed for insecure connection (http/ws). Erro
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_DNS_NAME_HTTPS_ONLY = -809--><!--Device-WebNetErrorList-ERR_DNS_NAME_HTTPS_ONLY = -809-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3377,6 +3855,8 @@ All DNS requests associated with this job have been cancelled.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebNetErrorList-ERR_DNS_REQUEST_CANCELED = -810--><!--Device-WebNetErrorList-ERR_DNS_REQUEST_CANCELED = -810-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ERR_DNS_NO_MATCHING_SUPPORTED_ALPN
@@ -3390,5 +3870,7 @@ The hostname resolution of HTTPS record was expected to be resolved with alpn va
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebNetErrorList-ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811--><!--Device-WebNetErrorList-ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

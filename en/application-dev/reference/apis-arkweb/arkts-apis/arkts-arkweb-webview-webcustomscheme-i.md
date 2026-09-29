@@ -10,6 +10,8 @@ Defines a custom URL scheme.
 
 **Since:** 9
 
+<!--Device-webview-interface WebCustomScheme--><!--Device-webview-interface WebCustomScheme-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: false.
 
 **Since:** 12
 
+<!--Device-WebCustomScheme-isCodeCacheSupported?: boolean--><!--Device-WebCustomScheme-isCodeCacheSupported?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isCspBypassing
@@ -56,6 +60,8 @@ When **isStandard** is set to **true**, this value should not be set. If **isCsp
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebCustomScheme-isCspBypassing?: boolean--><!--Device-WebCustomScheme-isCspBypassing?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isDisplayIsolated
@@ -75,6 +81,8 @@ Default value: true.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebCustomScheme-isDisplayIsolated?: boolean--><!--Device-WebCustomScheme-isDisplayIsolated?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -96,6 +104,8 @@ Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebCustomScheme-isLocal?: boolean--><!--Device-WebCustomScheme-isLocal?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isSecure
@@ -113,6 +123,8 @@ Default value: **true**.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebCustomScheme-isSecure?: boolean--><!--Device-WebCustomScheme-isSecure?: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -134,6 +146,8 @@ Default value: true.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebCustomScheme-isStandard?: boolean--><!--Device-WebCustomScheme-isStandard?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## isSupportCORS
@@ -153,6 +167,8 @@ Default value: **true**.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCustomScheme-isSupportCORS: boolean--><!--Device-WebCustomScheme-isSupportCORS: boolean-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -174,6 +190,8 @@ Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebCustomScheme-isSupportFetch: boolean--><!--Device-WebCustomScheme-isSupportFetch: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## schemeName
@@ -189,5 +207,7 @@ Custom protocol name. The maximum length is 32, and only lowercase letters, digi
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebCustomScheme-schemeName: string--><!--Device-WebCustomScheme-schemeName: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

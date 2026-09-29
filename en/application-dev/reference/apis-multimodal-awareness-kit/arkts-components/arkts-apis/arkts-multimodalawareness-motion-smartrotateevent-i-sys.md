@@ -8,6 +8,8 @@ The basic data structure of the smart rotate sensor event.
 
 **Since:** 26.0.0
 
+<!--Device-motion-interface SmartRotateEvent--><!--Device-motion-interface SmartRotateEvent-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The logical orientation adjusted by smart algorithms.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SmartRotateEvent-logicalOrientation?: LogicalOrientation--><!--Device-SmartRotateEvent-logicalOrientation?: LogicalOrientation-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The physical orientation reported by the gravity sensor.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SmartRotateEvent-physicalOrientation: PhysicalOrientation--><!--Device-SmartRotateEvent-physicalOrientation: PhysicalOrientation-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 

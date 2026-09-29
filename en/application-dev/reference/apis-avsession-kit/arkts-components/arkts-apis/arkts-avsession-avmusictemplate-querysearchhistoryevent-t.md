@@ -12,4 +12,6 @@ The query search history event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type QuerySearchHistoryEvent = () => Promise<string[]>--><!--Device-avMusicTemplate-type QuerySearchHistoryEvent = () => Promise<string[]>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

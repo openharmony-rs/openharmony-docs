@@ -8,6 +8,8 @@ Defines the number of cached items.
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface CacheCountInfo--><!--Device-unnamed-declare interface CacheCountInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxCount
@@ -26,6 +28,8 @@ Maximum number of cached items. When the actual number of cached items exceeds t
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-CacheCountInfo-maxCount: number--><!--Device-CacheCountInfo-maxCount: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## minCount
@@ -43,5 +47,7 @@ Minimum number of cached items. When the actual number of cached items is lower 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-CacheCountInfo-minCount: number--><!--Device-CacheCountInfo-minCount: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

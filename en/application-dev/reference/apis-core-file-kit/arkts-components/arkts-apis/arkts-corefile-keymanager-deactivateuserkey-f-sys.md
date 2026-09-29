@@ -18,6 +18,8 @@ When the screen is locked, the specified user key is uninstalled synchronously. 
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER_CRYPT
 
+<!--Device-keyManager-function deactivateUserKey(userId: long):void--><!--Device-keyManager-function deactivateUserKey(userId: long):void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Encryption
 
 **System API:** This is a system API.

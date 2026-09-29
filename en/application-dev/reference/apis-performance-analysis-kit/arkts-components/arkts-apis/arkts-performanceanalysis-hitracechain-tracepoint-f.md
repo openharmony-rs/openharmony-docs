@@ -20,6 +20,8 @@ The trace points for **CS** and **CR** types must be used as a pair; likewise, t
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTraceId, msg?: string): void--><!--Device-hiTraceChain-function tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTraceId, msg?: string): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

@@ -20,6 +20,8 @@ Subscribe to the rtt error event.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-call-function onRttErrCause(callback: Callback<RttErrorInfo>): void--><!--Device-call-function onRttErrCause(callback: Callback<RttErrorInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

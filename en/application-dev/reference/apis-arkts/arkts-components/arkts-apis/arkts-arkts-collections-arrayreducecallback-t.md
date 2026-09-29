@@ -11,6 +11,8 @@ Defines the ArkTS Array reduction function, which is used by the 'reduceRight' A
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-collections-type ArrayReduceCallback<AccType, ElementType, ArrayType> =    (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType--><!--Device-collections-type ArrayReduceCallback<AccType, ElementType, ArrayType> =    (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

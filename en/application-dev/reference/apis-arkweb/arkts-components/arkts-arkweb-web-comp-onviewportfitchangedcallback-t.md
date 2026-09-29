@@ -10,6 +10,8 @@ Defines a callback invoked when the **viewport-fit** configuration in the web pa
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void--><!--Device-unnamed-type OnViewportFitChangedCallback = (viewportFit: ViewportFit) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

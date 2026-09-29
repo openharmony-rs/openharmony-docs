@@ -12,6 +12,8 @@ Represents the type of a file asset member.
 
 **Substitutes:** [MemberType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-membertype-t.md)
 
+<!--Device-userFileManager-type MemberType = number | string | boolean--><!--Device-userFileManager-type MemberType = number | string | boolean-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.

@@ -18,6 +18,8 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-connection-function setAppNet(netHandle: NetHandle, callback: AsyncCallback<void>): void--><!--Device-connection-function setAppNet(netHandle: NetHandle, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -102,6 +104,8 @@ Binds an application to the network specified by **netHandle**, so that the appl
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-connection-function setAppNet(netHandle: NetHandle): Promise<void>--><!--Device-connection-function setAppNet(netHandle: NetHandle): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

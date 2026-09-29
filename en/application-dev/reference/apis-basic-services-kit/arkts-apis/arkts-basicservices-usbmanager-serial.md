@@ -15,6 +15,8 @@ printers, scanners, and modems, for data transmission and reception.
 
 **Since:** 19
 
+<!--Device-unnamed-declare namespace serialManager--><!--Device-unnamed-declare namespace serialManager-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 ## Modules to Import

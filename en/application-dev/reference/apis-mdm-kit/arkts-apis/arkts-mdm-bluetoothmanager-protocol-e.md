@@ -8,6 +8,8 @@ Represents the Bluetooth protocol type.
 
 **Since:** 20
 
+<!--Device-bluetoothManager-export enum Protocol--><!--Device-bluetoothManager-export enum Protocol-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## GATT
@@ -21,6 +23,8 @@ GATT = 0
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Protocol-GATT = 0--><!--Device-Protocol-GATT = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ SPP = 1
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Protocol-SPP = 1--><!--Device-Protocol-SPP = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## OPP
@@ -49,5 +55,7 @@ OPP = 2
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Protocol-OPP = 2--><!--Device-Protocol-OPP = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -8,6 +8,8 @@ CommonMethod.
 
 **Since:** 11
 
+<!--Device-unnamed-declare class CommonMethod<T>--><!--Device-unnamed-declare class CommonMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityActionOptions
@@ -25,6 +27,8 @@ Provides optional parameters for setting accessibility operations of a component
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-CommonMethod-accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T--><!--Device-CommonMethod-accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Sets the checked state for the accessibility node. This API is used in multi-sel
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 13.
 
+<!--Device-CommonMethod-accessibilityChecked(isCheck: boolean): T--><!--Device-CommonMethod-accessibilityChecked(isCheck: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -85,6 +91,8 @@ Sets the custom accessibility operations of the component, allowing developers t
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-CommonMethod-accessibilityCustomActions(actions: Array<AccessibilityCustomAction> | undefined): T--><!--Device-CommonMethod-accessibilityCustomActions(actions: Array<AccessibilityCustomAction> | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +124,8 @@ Sets the initial screen reader focus on the page.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-accessibilityDefaultFocus(focus: boolean): T--><!--Device-CommonMethod-accessibilityDefaultFocus(focus: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -145,6 +155,8 @@ Sets the accessibility description. <br>This attribute provides additional conte
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-accessibilityDescription(value: string): T--><!--Device-CommonMethod-accessibilityDescription(value: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +190,8 @@ Sets the accessibility description, with support for resource references using R
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-accessibilityDescription(description: Resource): T--><!--Device-CommonMethod-accessibilityDescription(description: Resource): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -207,6 +221,8 @@ Sets the drawing level for the accessibility focus highlight (green frame).
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
+
+<!--Device-CommonMethod-accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T--><!--Device-CommonMethod-accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +255,8 @@ Sets whether to enable accessibility grouping.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-accessibilityGroup(value: boolean): T--><!--Device-CommonMethod-accessibilityGroup(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,6 +294,8 @@ Sets whether to enable accessibility grouping.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 14.
 
+<!--Device-CommonMethod-accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T--><!--Device-CommonMethod-accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -307,6 +327,8 @@ Sets the accessibility level. This property determines whether the component can
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-accessibilityLevel(value: string): T--><!--Device-CommonMethod-accessibilityLevel(value: string): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -336,6 +358,8 @@ Sets the next component to receive focus during screen reader navigation.
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-CommonMethod-accessibilityNextFocusId(nextId: string): T--><!--Device-CommonMethod-accessibilityNextFocusId(nextId: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,6 +393,8 @@ Sets the next component to receive focus during screen reader navigation, with o
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-CommonMethod-accessibilityNextFocusId(nextId: string, nextFocusParams : AccessibilityNextFocusParams | undefined): T--><!--Device-CommonMethod-accessibilityNextFocusId(nextId: string, nextFocusParams : AccessibilityNextFocusParams | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -400,6 +426,8 @@ Sets the role type of the accessibility component, which affects how the compone
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-accessibilityRole(role: AccessibilityRoleType): T--><!--Device-CommonMethod-accessibilityRole(role: AccessibilityRoleType): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -429,6 +457,8 @@ Sets whether the accessibility node triggers automatic screen scrolling. When no
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-CommonMethod-accessibilityScrollTriggerable(isTriggerable: boolean): T--><!--Device-CommonMethod-accessibilityScrollTriggerable(isTriggerable: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,6 +490,8 @@ Sets the checked state for the accessibility node. This API is used in single-se
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 13.
 
+<!--Device-CommonMethod-accessibilitySelected(isSelect: boolean): T--><!--Device-CommonMethod-accessibilitySelected(isSelect: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -490,6 +522,8 @@ Sets the state description of a component for broadcasting, which clearly descri
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-CommonMethod-accessibilityStateDescription(description: string | Resource | undefined): T--><!--Device-CommonMethod-accessibilityStateDescription(description: string | Resource | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -519,6 +553,8 @@ Sets the accessibility text. When a component does not contain a text attribute,
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-accessibilityText(value: string): T--><!--Device-CommonMethod-accessibilityText(value: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -554,6 +590,8 @@ Sets the accessibility text.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-accessibilityText(text: Resource): T--><!--Device-CommonMethod-accessibilityText(text: Resource): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -583,6 +621,8 @@ Sets the text hint for the component, which can be queried by accessibility serv
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-accessibilityTextHint(value: string): T--><!--Device-CommonMethod-accessibilityTextHint(value: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -614,6 +654,8 @@ Sets the same-page mode for the current component and its host application.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T--><!--Device-CommonMethod-accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -644,6 +686,8 @@ Sets an accessibility virtual child node. For custom drawing components, a **Cus
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-accessibilityVirtualNode(builder: CustomBuilder): T--><!--Device-CommonMethod-accessibilityVirtualNode(builder: CustomBuilder): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -672,13 +716,15 @@ Sets the alignment mode for child components within the component's drawing area
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-align(value: Alignment): T--><!--Device-CommonMethod-align(value: Alignment): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | Yes | Sets the alignment mode of child components within the drawing region of the current component. <br>This attribute takes effect only in Stack, [FolderStack](arkts-arkui-folderstack-comp.md#folderstack), [Shape](arkts-arkui-shape-comp.md#shape), Button, Marquee, [StepperItem](arkts-arkui-stepperitem-comp.md#stepperitem), Text, TextArea, TextInput, [RichEditor](arkts-arkui-richeditor-comp.md#richeditor), Hyperlink, SymbolGlyph, ListItem, GridItem, Scroll, FlowItem, [ImageAnimator](arkts-arkui-imageanimator-comp.md#imageanimator), LoadingProgress, [PatternLock](arkts-arkui-patternlock-comp.md#patternlock), Progress, QRCode, TextClock, TextTimer, [MenuItem](arkts-arkui-menuitem-comp.md#menuitem), Toggle, Checkbox, and [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainer). For text-related components **Marquee**, **Text**, **TextArea**, **TextInput**, **RichEditor**, and **Hyperlink**, the align result refers to [textAlign](arkts-arkui-text-comp-attribute.md#textalign). <br>Components that do not support the **textAlign** attribute cannot set horizontal text alignment. <br>Default value: **Alignment.Center** <br>**NOTE:** <br> This attribute supports mirroring on the Stack component, but not on other components. <br>In **Stack**, this attribute has the same effect as **alignContent** and can only set the alignment mode of child components within the current component. |
+| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | Yes | Sets the alignment mode of child components within the drawing region of the current component. <br>This attribute takes effect only in Stack, [FolderStack](arkts-arkui-folderstack-comp.md), [Shape](arkts-arkui-shape-comp.md), Button, Marquee, [StepperItem](arkts-arkui-stepperitem-comp.md), Text, TextArea, TextInput, [RichEditor](arkts-arkui-richeditor-comp.md), Hyperlink, SymbolGlyph, ListItem, GridItem, Scroll, FlowItem, [ImageAnimator](arkts-arkui-imageanimator-comp.md), LoadingProgress, [PatternLock](arkts-arkui-patternlock-comp.md), Progress, QRCode, TextClock, TextTimer, [MenuItem](arkts-arkui-menuitem-comp.md), Toggle, Checkbox, and [NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md#nodecontainer). For text-related components **Marquee**, **Text**, **TextArea**, **TextInput**, **RichEditor**, and **Hyperlink**, the align result refers to [textAlign](arkts-arkui-text-comp-attribute.md#textalign). <br>Components that do not support the **textAlign** attribute cannot set horizontal text alignment. <br>Default value: **Alignment.Center** <br>**NOTE:** <br> This attribute supports mirroring on the Stack component, but not on other components. <br>In **Stack**, this attribute has the same effect as **alignContent** and can only set the alignment mode of child components within the current component. |
 
 **Return value:**
 
@@ -704,13 +750,15 @@ Sets the alignment mode for child components within the component's drawing area
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-CommonMethod-align(alignment: Alignment | LocalizedAlignment): T--><!--Device-CommonMethod-align(alignment: Alignment | LocalizedAlignment): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alignment | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) &#124; [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) | Yes | Sets the alignment mode of child components within the drawing region of the current component, and adds the mirroring capability. The [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) type is effective only in the following components: [Shape](arkts-arkui-shape-comp.md#shape), Button, GridItem, FlowItem, [ImageAnimator](arkts-arkui-imageanimator-comp.md#imageanimator), LoadingProgress, [PatternLock](arkts-arkui-patternlock-comp.md#patternlock), Progress, QRCode, TextClock, TextTimer, [StepperItem](arkts-arkui-stepperitem-comp.md#stepperitem), [MenuItem](arkts-arkui-menuitem-comp.md#menuitem), Toggle, Checkbox, and ListItem. Among them, except that ListItem behaves the same as [Alignment](../arkts-apis/arkts-arkui-alignment-e.md), mirroring switching takes effect for all other components; components for which **LocalizedAlignment** has no effect are displayed according to their default behavior. <br>Default value: **Alignment.Center**, **LocalizedAlignment.CENTER** <br>If an invalid value is set, the default value is used, and the component is displayed centered. <br>**NOTE:** <br> The [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) type does not support the mirroring capability; the [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) type supports the mirroring capability. Select an enum value in [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) to implement mirroring switching based on the change of direction or the system language direction. The priority of **direction** is higher than that of the system language direction. When **direction** is set and is not **auto**, the mirroring of [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) performs layout according to **direction**; when **direction** is set to **auto** or is not set, the mirroring of [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) performs layout according to the system language direction. |
+| alignment | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) &#124; [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) | Yes | Sets the alignment mode of child components within the drawing region of the current component, and adds the mirroring capability. The [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) type is effective only in the following components: [Shape](arkts-arkui-shape-comp.md), Button, GridItem, FlowItem, [ImageAnimator](arkts-arkui-imageanimator-comp.md), LoadingProgress, [PatternLock](arkts-arkui-patternlock-comp.md), Progress, QRCode, TextClock, TextTimer, [StepperItem](arkts-arkui-stepperitem-comp.md), [MenuItem](arkts-arkui-menuitem-comp.md), Toggle, Checkbox, and ListItem. Among them, except that ListItem behaves the same as [Alignment](../arkts-apis/arkts-arkui-alignment-e.md), mirroring switching takes effect for all other components; components for which **LocalizedAlignment** has no effect are displayed according to their default behavior. <br>Default value: **Alignment.Center**, **LocalizedAlignment.CENTER** <br>If an invalid value is set, the default value is used, and the component is displayed centered. <br>**NOTE:** <br> The [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) type does not support the mirroring capability; the [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) type supports the mirroring capability. Select an enum value in [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) to implement mirroring switching based on the change of direction or the system language direction. The priority of **direction** is higher than that of the system language direction. When **direction** is set and is not **auto**, the mirroring of [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) performs layout according to **direction**; when **direction** is set to **auto** or is not set, the mirroring of [LocalizedAlignment](../arkts-apis/arkts-arkui-localizedalignment-e.md) performs layout according to the system language direction. |
 
 **Return value:**
 
@@ -731,6 +779,8 @@ Sets the alignment rule for child components within the relative container. This
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-alignRules(value: AlignRuleOption): T--><!--Device-CommonMethod-alignRules(value: AlignRuleOption): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -764,6 +814,8 @@ Sets the alignment rules in the relative container. This API is valid only when 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-alignRules(alignRule: LocalizedAlignRuleOptions): T--><!--Device-CommonMethod-alignRules(alignRule: LocalizedAlignRuleOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -791,6 +843,8 @@ The alignment mode of the child component along the cross axis (the direction pe
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-alignSelf(value: ItemAlign): T--><!--Device-CommonMethod-alignSelf(value: ItemAlign): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -820,6 +874,8 @@ Sets the types of data that can be dropped to the component. If **allowDrop** is
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-allowDrop(value: Array<UniformDataType> | null | Array<string>): T--><!--Device-CommonMethod-allowDrop(value: Array<UniformDataType> | null | Array<string>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -847,6 +903,8 @@ Set whether the component enables the ability to invert colors. This interface n
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-CommonMethod-allowForceDark(value: boolean): T--><!--Device-CommonMethod-allowForceDark(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -883,6 +941,8 @@ Sets a property animation for the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-animation(value: AnimateParam): T--><!--Device-CommonMethod-animation(value: AnimateParam): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -913,6 +973,8 @@ Sets the aspect ratio of the component, which can be obtained using the followin
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-aspectRatio(value: number): T--><!--Device-CommonMethod-aspectRatio(value: number): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -933,13 +995,15 @@ Sets the aspect ratio of the component, which can be obtained using the followin
 attributeModifier(modifier: AttributeModifier<T>): T
 ```
 
-Sets the attribute modifier.
+Creates an attribute modifier.
 
-**Since:** 12
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-attributeModifier(modifier: AttributeModifier<T>): T--><!--Device-CommonMethod-attributeModifier(modifier: AttributeModifier<T>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -947,13 +1011,13 @@ Sets the attribute modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md)&lt;T&gt; | Yes | The if/else syntax is supported. You need a custom class to implement the AttributeModifier API. |
+| modifier | [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md)&lt;T&gt; | Yes | Dynamically sets the attribute method on the current component, supporting the use of if/else syntax.<br>modifier: attribute modifier. Developers need to define a custom class to implement the AttributeModifier interface. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T |  |
+| T | Current component. |
 
 ## backdropBlur
 
@@ -968,6 +1032,8 @@ Applies a background blur effect to the component. You can customize the blur ra
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-backdropBlur(value: number, options?: BlurOptions): T--><!--Device-CommonMethod-backdropBlur(value: number, options?: BlurOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1002,6 +1068,8 @@ Applies a background blur effect to the component. You can customize the blur ra
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-backdropBlur(radius: Optional<number>, options?: BlurOptions): T--><!--Device-CommonMethod-backdropBlur(radius: Optional<number>, options?: BlurOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1035,6 +1103,8 @@ Applies a background blur effect to the component. You can customize the blur ra
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
 
+<!--Device-CommonMethod-backdropBlur(radius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T--><!--Device-CommonMethod-backdropBlur(radius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1067,6 +1137,8 @@ Anonymous Object Rectification.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonMethod-background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions): T--><!--Device-CommonMethod-background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1095,6 +1167,8 @@ Defines the background material blur style. It encapsulates various blur radius,
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T--><!--Device-CommonMethod-backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1129,6 +1203,8 @@ Defines the background material blur style. It encapsulates various blur radius,
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions): T--><!--Device-CommonMethod-backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1162,6 +1238,8 @@ Defines the background material blur style. It encapsulates various blur radius,
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
 
+<!--Device-CommonMethod-backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T--><!--Device-CommonMethod-backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1191,6 +1269,8 @@ Sets the background brightness of the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-backgroundBrightness(params: BackgroundBrightnessOptions): T--><!--Device-CommonMethod-backgroundBrightness(params: BackgroundBrightnessOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1222,6 +1302,8 @@ Sets the background brightness of the component. Compared to [backgroundBrightne
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-backgroundBrightness(options: Optional<BackgroundBrightnessOptions>): T--><!--Device-CommonMethod-backgroundBrightness(options: Optional<BackgroundBrightnessOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1249,6 +1331,8 @@ Background color
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-backgroundColor(value: ResourceColor): T--><!--Device-CommonMethod-backgroundColor(value: ResourceColor): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1282,6 +1366,8 @@ Background color
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-backgroundColor(color: Optional<ResourceColor>): T--><!--Device-CommonMethod-backgroundColor(color: Optional<ResourceColor>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1314,6 +1400,8 @@ Background color
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-CommonMethod-backgroundColor(color: Optional<ResourceColor | ColorMetrics>): T--><!--Device-CommonMethod-backgroundColor(color: Optional<ResourceColor | ColorMetrics>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1341,6 +1429,8 @@ Sets the background effect of the component, including the blur radius, brightne
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-backgroundEffect(options: BackgroundEffectOptions): T--><!--Device-CommonMethod-backgroundEffect(options: BackgroundEffectOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1371,6 +1461,8 @@ Sets the background effect of the component, including the blur radius, brightne
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CommonMethod-backgroundEffect(options: Optional<BackgroundEffectOptions>): T--><!--Device-CommonMethod-backgroundEffect(options: Optional<BackgroundEffectOptions>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1409,6 +1501,8 @@ Sets the background effect of the component, including the blur radius, brightne
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-CommonMethod-backgroundEffect(options: Optional<BackgroundEffectOptions>, sysOptions?: SystemAdaptiveOptions): T--><!--Device-CommonMethod-backgroundEffect(options: Optional<BackgroundEffectOptions>, sysOptions?: SystemAdaptiveOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1442,6 +1536,8 @@ Sets the visual effect of the background filter.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-backgroundFilter(filter: Filter): T--><!--Device-CommonMethod-backgroundFilter(filter: Filter): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1469,6 +1565,8 @@ Background image src: Image address url
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-backgroundImage(src: ResourceStr | PixelMap, repeat?: ImageRepeat): T--><!--Device-CommonMethod-backgroundImage(src: ResourceStr | PixelMap, repeat?: ImageRepeat): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1503,6 +1601,8 @@ Background image
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T--><!--Device-CommonMethod-backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1532,6 +1632,8 @@ Background image position x:Horizontal coordinate;y:Vertical axis coordinate.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-CommonMethod-backgroundImagePosition(value: Position | Alignment): T--><!--Device-CommonMethod-backgroundImagePosition(value: Position | Alignment): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1560,6 +1662,8 @@ Background image resizable. value:resizable options
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-backgroundImageResizable(value: ResizableOptions): T--><!--Device-CommonMethod-backgroundImageResizable(value: ResizableOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1587,6 +1691,8 @@ Background image size
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-backgroundImageSize(value: SizeOptions | ImageSize): T--><!--Device-CommonMethod-backgroundImageSize(value: SizeOptions | ImageSize): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1620,6 +1726,8 @@ Binds a full-screen modal to the component, which can be displayed when the comp
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T--><!--Device-CommonMethod-bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1652,6 +1760,8 @@ Binds a full-screen modal to the component, which can be displayed when the comp
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T--><!--Device-CommonMethod-bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1679,6 +1789,8 @@ Binds a context menu to this component, which is displayed when the user long-pr
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenu(content: CustomBuilder, responseType: ResponseType, options?: ContextMenuOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1712,6 +1824,8 @@ Binds a context menu to the component, whose visibility is subject to the isShow
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1741,6 +1855,8 @@ Binds a context menu to the component, whose visibility is subject to the isShow
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CommonMethod-bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElement>, options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuByIsShow(isShow: boolean, content: CustomBuilder | Array<MenuElement>, options?: ContextMenuOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1773,6 +1889,8 @@ Binds a context menu to this component, which is displayed when the user long-pr
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonMethod-bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, responseType: ResponseType,      options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement>, responseType: ResponseType,      options?: ContextMenuOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1802,6 +1920,8 @@ Binds a context menu to this component, which is displayed when the user long-pr
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | undefined, options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | undefined, options?: ContextMenuOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1835,6 +1955,8 @@ Binds a context menu to this component, which is displayed when the user long-pr
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuElement> | undefined,    options?: ContextMenuOptions): T--><!--Device-CommonMethod-bindContextMenuWithResponse(content: CustomBuilderT<ResponseType> | Array<MenuElement> | undefined,    options?: ContextMenuOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1861,6 +1983,8 @@ Menu control
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T--><!--Device-CommonMethod-bindMenu(content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1893,6 +2017,8 @@ Menu control
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-bindMenu(isShow: boolean, content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T--><!--Device-CommonMethod-bindMenu(isShow: boolean, content: Array<MenuElement> | CustomBuilder, options?: MenuOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1920,6 +2046,8 @@ Popup control <p>&lt;strong&gt;NOTE&lt;/strong&gt;: <br>The popup can be display
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T--><!--Device-CommonMethod-bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1954,6 +2082,8 @@ Binds a sheet to the component, which is displayed when the component is touched
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T--><!--Device-CommonMethod-bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1983,6 +2113,8 @@ Tips control
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-CommonMethod-bindTips(message: TipsMessageType, options?: TipsOptions): T--><!--Device-CommonMethod-bindTips(message: TipsMessageType, options?: TipsOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2014,6 +2146,8 @@ Defines how the component's content (including the content of it child component
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-blendMode(value: BlendMode, type?: BlendApplyType): T--><!--Device-CommonMethod-blendMode(value: BlendMode, type?: BlendApplyType): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2048,6 +2182,8 @@ Defines how the component's content (including the content of it child component
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T--><!--Device-CommonMethod-blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2076,6 +2212,8 @@ Applies a foreground blur effect to the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-blur(value: number, options?: BlurOptions): T--><!--Device-CommonMethod-blur(value: number, options?: BlurOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2110,6 +2248,8 @@ Applies a foreground blur effect to the component. Compared to [blur](#blur), th
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-blur(blurRadius: Optional<number>, options?: BlurOptions): T--><!--Device-CommonMethod-blur(blurRadius: Optional<number>, options?: BlurOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2142,6 +2282,8 @@ Applies a foreground blur effect to the component. Compared to [blur&lt;sup&gt;1
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
+
+<!--Device-CommonMethod-blur(blurRadius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T--><!--Device-CommonMethod-blur(blurRadius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2177,6 +2319,8 @@ Sets the border.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-border(value: BorderOptions): T--><!--Device-CommonMethod-border(value: BorderOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2206,6 +2350,8 @@ Sets the border color.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T--><!--Device-CommonMethod-borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2233,6 +2379,8 @@ Sets the border image of the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-borderImage(value: BorderImageOption): T--><!--Device-CommonMethod-borderImage(value: BorderImageOption): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2262,6 +2410,8 @@ Sets the border radius.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T--><!--Device-CommonMethod-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2296,6 +2446,8 @@ Sets the border corner radius and the rendering strategy for rounded corners.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
+<!--Device-CommonMethod-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T--><!--Device-CommonMethod-borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2325,6 +2477,8 @@ Sets the border style.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-borderStyle(value: BorderStyle | EdgeStyles): T--><!--Device-CommonMethod-borderStyle(value: BorderStyle | EdgeStyles): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2353,6 +2507,8 @@ Sets the border width.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T--><!--Device-CommonMethod-borderWidth(value: Length | EdgeWidths | LocalizedEdgeWidths): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2380,6 +2536,8 @@ Applies a brightness effect to the component. If this API is not used, there wil
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-brightness(value: number): T--><!--Device-CommonMethod-brightness(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2413,6 +2571,8 @@ Applies a brightness effect to the component. If this API is not used, there wil
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-brightness(brightness: Optional<number>): T--><!--Device-CommonMethod-brightness(brightness: Optional<number>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2440,6 +2600,8 @@ Sets the parameters of the chain in which the component is the head. This attrib
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-chainMode(direction: Axis, style: ChainStyle): T--><!--Device-CommonMethod-chainMode(direction: Axis, style: ChainStyle): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2474,6 +2636,8 @@ Since API version 23, dynamic configuration via [attributeModifier](#attributemo
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-CommonMethod-chainWeight(chainWeight: ChainWeightOptions): T--><!--Device-CommonMethod-chainWeight(chainWeight: ChainWeightOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2501,6 +2665,8 @@ Sets the click feedback effect of the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-clickEffect(value: ClickEffect | null): T--><!--Device-CommonMethod-clickEffect(value: ClickEffect | null): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2532,6 +2698,8 @@ Sets the click feedback effect of the component. Compared with [clickEffect](#cl
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-clickEffect(effect: Optional<ClickEffect | null>): T--><!--Device-CommonMethod-clickEffect(effect: Optional<ClickEffect | null>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2561,6 +2729,8 @@ Sets whether to clip the areas of child components that extend beyond this compo
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-clip(value: boolean): T--><!--Device-CommonMethod-clip(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2593,6 +2763,8 @@ Sets whether to clip the areas of child components that extend beyond this compo
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-CommonMethod-clip(clip: Optional<boolean>): T--><!--Device-CommonMethod-clip(clip: Optional<boolean>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2627,6 +2799,8 @@ Sets whether to clip this component based on the given shape.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute): T--><!--Device-CommonMethod-clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2668,6 +2842,8 @@ Clips this component according to the specified shape (which may include positio
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T--><!--Device-CommonMethod-clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2712,6 +2888,8 @@ Clips this component according to the specified shape (which may include positio
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-clipShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T--><!--Device-CommonMethod-clipShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2739,6 +2917,8 @@ Applies a color blend effect to the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-colorBlend(value: Color | string | Resource): T--><!--Device-CommonMethod-colorBlend(value: Color | string | Resource): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2772,6 +2952,8 @@ Applies a color blend effect to the component. Compared with [colorBlend](#color
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-colorBlend(color: Optional<Color | string | Resource>): T--><!--Device-CommonMethod-colorBlend(color: Optional<Color | string | Resource>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2803,6 +2985,8 @@ Sets the visual effect of the compositing filter.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-compositingFilter(filter: Filter): T--><!--Device-CommonMethod-compositingFilter(filter: Filter): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2853,6 +3037,8 @@ Sets the constraint size, which limits the size range during component layout. A
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-constraintSize(value: ConstraintSizeOptions): T--><!--Device-CommonMethod-constraintSize(value: ConstraintSizeOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2882,6 +3068,8 @@ Applies a contrast effect to the component. If this API is not used, there will 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-contrast(value: number): T--><!--Device-CommonMethod-contrast(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2915,6 +3103,8 @@ Applies a contrast effect to the component. If this API is not used, there will 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-contrast(contrast: Optional<number>): T--><!--Device-CommonMethod-contrast(contrast: Optional<number>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2946,6 +3136,8 @@ Since API 26.0.0, custom components support setting and reading custom propertie
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-customProperty(name: string, value: Optional<Object>): T--><!--Device-CommonMethod-customProperty(name: string, value: Optional<Object>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2979,6 +3171,8 @@ Specifies whether to set this component as the default focus of the current [hie
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-defaultFocus(value: boolean): T--><!--Device-CommonMethod-defaultFocus(value: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3008,6 +3202,8 @@ Sets the layout along the main axis within the component's drawing area. This at
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-direction(value: Direction): T--><!--Device-CommonMethod-direction(value: Direction): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3039,6 +3235,8 @@ Sets the display priority of the current component in a Row/Column/Flex (single-
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-displayPriority(value: number): T--><!--Device-CommonMethod-displayPriority(value: number): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3069,6 +3267,8 @@ Sets whether to component is double-sided.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-CommonMethod-doubleSided(value: Optional<boolean>): T--><!--Device-CommonMethod-doubleSided(value: Optional<boolean>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3097,6 +3297,8 @@ Sets whether the component is draggable. By default, the component is not dragga
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-draggable(value: boolean): T--><!--Device-CommonMethod-draggable(value: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3124,6 +3326,8 @@ Sets the preview image displayed during component drag operations.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-dragPreview(value: CustomBuilder | DragItemInfo | string): T--><!--Device-CommonMethod-dragPreview(value: CustomBuilder | DragItemInfo | string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3159,6 +3363,8 @@ Sets the drag preview for the component. This API specifically configures or dis
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CommonMethod-dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConfiguration): T--><!--Device-CommonMethod-dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConfiguration): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3192,6 +3398,8 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions): T--><!--Device-CommonMethod-dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3213,7 +3421,11 @@ Sets the preview image processing mode, badge count, and interaction behavior du
 drawModifier(modifier: DrawModifier | undefined): T
 ```
 
-Sets the drawModifier of the current component.
+Creates a drawing modifier.
+
+> **NOTE:** 
+> 
+> This API cannot be called within [attributeModifier](#attributemodifier).
 
 **Since:** 12
 
@@ -3221,19 +3433,21 @@ Sets the drawModifier of the current component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-drawModifier(modifier: DrawModifier | undefined): T--><!--Device-CommonMethod-drawModifier(modifier: DrawModifier | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md) &#124; undefined | Yes | drawModifier used to draw, or undefined if it is not available. Default value: undefined A custom modifier applies only to the FrameNode of the currently bound component, not to its subnodes. |
+| modifier | [DrawModifier](arkts-arkui-common-comp-drawmodifier-c.md) &#124; undefined | Yes | Custom drawing modifier, which defines the logic of custom drawing. <br>If no custom drawing modifier is set, the component uses the original default drawing behavior and does not perform custom drawing. <br>Default value: **undefined**. <br>**Note:** <br>Each custom drawing modifier takes effect only on the [FrameNode](../arkts-apis/arkts-arkui-framenode-c.md) of the currently bound component, and does not take effect on its child nodes. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T |  |
+| T | Current component, used for chained calls. |
 
 ## enableClickSoundEffect
 
@@ -3248,6 +3462,8 @@ Sets whether to enable the default click sound effect for a component. Whether t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-CommonMethod-enableClickSoundEffect(enabled: boolean | undefined): T--><!--Device-CommonMethod-enableClickSoundEffect(enabled: boolean | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3278,6 +3494,8 @@ If the value is true, the component is available and can respond to operations s
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-enabled(value: boolean): T--><!--Device-CommonMethod-enabled(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3336,6 +3554,8 @@ Controls a component to expand its safe area to achieve an immersive effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T--><!--Device-CommonMethod-expandSafeArea(types?: Array<SafeAreaType>, edges?: Array<SafeAreaEdge>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3364,6 +3584,8 @@ Sets the base size of a component. This attribute can be set only when the compo
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-flexBasis(value: number | string): T--><!--Device-CommonMethod-flexBasis(value: number | string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3394,6 +3616,8 @@ Sets the proportion of the component in the remaining space of the parent contai
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-flexGrow(value: number): T--><!--Device-CommonMethod-flexGrow(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3427,6 +3651,8 @@ When [getInspectorByKey](../../../reference/apis-arkui/arkui-ts/ts-universal-att
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-flexShrink(value: number): T--><!--Device-CommonMethod-flexShrink(value: number): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3452,6 +3678,8 @@ Sets whether the component is focusable.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-focusable(value: boolean): T--><!--Device-CommonMethod-focusable(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3481,6 +3709,8 @@ Sets the system focus box style for the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-focusBox(style: FocusBoxStyle): T--><!--Device-CommonMethod-focusBox(style: FocusBoxStyle): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3506,6 +3736,8 @@ Sets whether the component is focusable on touch. If **focusOnTouch** is not set
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-focusOnTouch(value: boolean): T--><!--Device-CommonMethod-focusOnTouch(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3534,6 +3766,8 @@ Set container as a focus group with a specific identifier.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-focusScopeId(id: string, isGroup?: boolean): T--><!--Device-CommonMethod-focusScopeId(id: string, isGroup?: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3566,6 +3800,8 @@ Set container as a focus group with a specific identifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-CommonMethod-focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T--><!--Device-CommonMethod-focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3595,6 +3831,8 @@ Set the focus priority of component in a specific focus scope.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-focusScopePriority(scopeId: string, priority?: FocusPriority): T--><!--Device-CommonMethod-focusScopePriority(scopeId: string, priority?: FocusPriority): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3629,6 +3867,8 @@ Applies a foreground blur style to the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T--><!--Device-CommonMethod-foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3659,6 +3899,8 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CommonMethod-foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions): T--><!--Device-CommonMethod-foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3691,6 +3933,8 @@ Foreground blur style. blurStyle:Blur style type. sysOptions: system adaptive op
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-CommonMethod-foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T--><!--Device-CommonMethod-foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3720,6 +3964,8 @@ Sets the foreground color of the component. Components without explicit foregrou
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-foregroundColor(value: ResourceColor | ColoringStrategy): T--><!--Device-CommonMethod-foregroundColor(value: ResourceColor | ColoringStrategy): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3751,6 +3997,8 @@ Sets the foreground color of the component. Components without explicit foregrou
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T--><!--Device-CommonMethod-foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3778,6 +4026,8 @@ Sets the foreground effect of the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-foregroundEffect(options: ForegroundEffectOptions): T--><!--Device-CommonMethod-foregroundEffect(options: ForegroundEffectOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3811,6 +4061,8 @@ Sets the visual effect of the foreground (content) filter.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-foregroundFilter(filter: Filter): T--><!--Device-CommonMethod-foregroundFilter(filter: Filter): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3842,6 +4094,8 @@ Sets whether to freeze the component. When frozen, the component and its childre
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-freeze(value: boolean): T--><!--Device-CommonMethod-freeze(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3877,6 +4131,8 @@ Sets whether to freeze the component. When frozen, the component and its childre
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-freeze(freeze: Optional<boolean>): T--><!--Device-CommonMethod-freeze(freeze: Optional<boolean>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3902,6 +4158,8 @@ Implements an implicit shared element transition.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-geometryTransition(id: string): T--><!--Device-CommonMethod-geometryTransition(id: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3933,6 +4191,8 @@ Implements an implicit shared element transition.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-geometryTransition(id: string, options?: GeometryTransitionOptions): T--><!--Device-CommonMethod-geometryTransition(id: string, options?: GeometryTransitionOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3963,6 +4223,8 @@ Gesture to bind.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-gesture(gesture: GestureType, mask?: GestureMask): T--><!--Device-CommonMethod-gesture(gesture: GestureType, mask?: GestureMask): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3999,6 +4261,8 @@ Creates a gesture modifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-gestureModifier(modifier: GestureModifier): T--><!--Device-CommonMethod-gestureModifier(modifier: GestureModifier): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4026,6 +4290,8 @@ Applies a grayscale effect to the component. The grayscale rendering of the uppe
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-grayscale(value: number): T--><!--Device-CommonMethod-grayscale(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4059,6 +4325,8 @@ Applies a grayscale effect to the component. The grayscale rendering of the uppe
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-grayscale(grayscale: Optional<number>): T--><!--Device-CommonMethod-grayscale(grayscale: Optional<number>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4073,78 +4341,6 @@ Applies a grayscale effect to the component. The grayscale rendering of the uppe
 | --- | --- |
 | T | Current component. |
 
-## gridOffset
-
-```TypeScript
-gridOffset(value: number): T
-```
-
-Default offset column count, which refers to the number of columns by which the current component is offset along the Start direction of its parent component when the useSizeType attribute does not set the offset for the corresponding size. That is, the starting position of the component is offset by n columns relative to the Start direction of the parent component. It must be a non-negative integer. When passing a negative number, use the default value 0. When useSizeType sets the offset for the corresponding size, the gridOffset setting does not take effect.
-
-> **NOTE:** 
-> 
-> - When calling this attribute, its parent component or ancestor component must be GridContainer.
-> - After this attribute is configured, the layout of the current component in the horizontal direction of the parent component no longer follows the original layout mode of the parent component. Instead, the component is offset by a certain distance along the Start direction of the parent component.
-> - Offset distance = (column width + spacing)* offset column count.
-> - Sibling components after the component with the offset (gridOffset) set are laid out relative to this component.
-
-**Since:** 7
-
-**Deprecated since:** 14
-
-**Substitutes:** grid_col/GridColInterface and grid_row/GridRowInterface
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | number | Yes | Default offset column count. Default value: **0** |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| T |  |
-
-## gridSpan
-
-```TypeScript
-gridSpan(value: number): T
-```
-
-Default column count, which refers to the grid column count occupied when the useSizeType attribute does not set the column count (span) for the corresponding size. It must be a non-negative integer. When passing a negative number or a value exceeding the total column count of GridContainer, use the default value 1.
-
-> **NOTE:** 
-> 
-> - When calling this attribute, its parent component or ancestor component must be GridContainer.
-> - When the grid span attribute is set, the width of the component is determined by the grid layout.
-
-**Since:** 7
-
-**Deprecated since:** 14
-
-**Substitutes:** grid_col/GridColInterface and grid_row/GridRowInterface
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | number | Yes | Default column count. Default value: **1** |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| T |  |
-
 ## groupDefaultFocus
 
 ```TypeScript
@@ -4156,6 +4352,8 @@ Specifies whether to set the component as the default focus of the container. If
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-groupDefaultFocus(value: boolean): T--><!--Device-CommonMethod-groupDefaultFocus(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4191,6 +4389,8 @@ Sets the height of the component itself. By default, the height required for the
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-height(value: Length): T--><!--Device-CommonMethod-height(value: Length): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4223,6 +4423,8 @@ Sets the height of the component itself or its vertical layout policy. By defaul
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-CommonMethod-height(heightValue: Length | LayoutPolicy): T--><!--Device-CommonMethod-height(heightValue: Length | LayoutPolicy): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4253,6 +4455,8 @@ Sets the hit test mode for a component. If **hitTestBehavior** is not set, the c
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-CommonMethod-hitTestBehavior(value: HitTestMode): T--><!--Device-CommonMethod-hitTestBehavior(value: HitTestMode): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -4281,6 +4485,8 @@ Sets the hover effect for the component. When no hover effect is specified, the 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-hoverEffect(value: HoverEffect): T--><!--Device-CommonMethod-hoverEffect(value: HoverEffect): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4308,6 +4514,8 @@ Rotates the hue of the component. If this API is not used, there will be no chan
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-hueRotate(value: number | string): T--><!--Device-CommonMethod-hueRotate(value: number | string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4341,6 +4549,8 @@ Rotates the hue of the component. If this API is not used, there will be no chan
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-hueRotate(rotation: Optional<number | string>): T--><!--Device-CommonMethod-hueRotate(rotation: Optional<number | string>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4370,6 +4580,8 @@ Id. User can set an id to the component to identify it.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-id(value: string): T--><!--Device-CommonMethod-id(value: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4409,6 +4621,8 @@ Safe area when expanding the component layout. The component layout position and
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonMethod-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): T--><!--Device-CommonMethod-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4438,6 +4652,8 @@ Set the component's inspector label which only display on DevEco Studio.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonMethod-inspectorLabel(label: string | undefined): T--><!--Device-CommonMethod-inspectorLabel(label: string | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4465,6 +4681,8 @@ Inverts an image.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-invert(value: number | InvertOptions): T--><!--Device-CommonMethod-invert(value: number | InvertOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4498,6 +4716,8 @@ Inverts an image. Compared with [invert](#invert), this API supports the **undef
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-invert(options: Optional<number | InvertOptions>): T--><!--Device-CommonMethod-invert(options: Optional<number | InvertOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4525,6 +4745,8 @@ Key. User can set an key to the component to identify it.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CommonMethod-key(value: string): T--><!--Device-CommonMethod-key(value: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4555,6 +4777,8 @@ Sets a keyboard shortcut for the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T--><!--Device-CommonMethod-keyboardShortcut(value: string | FunctionKey, keys: Array<ModifierKey>, action?: () => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4588,6 +4812,8 @@ Sets the alignment rule for child components in the **Stack** container. This AP
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-CommonMethod-layoutGravity(alignment: LocalizedAlignment): T--><!--Device-CommonMethod-layoutGravity(alignment: LocalizedAlignment): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4608,7 +4834,7 @@ Sets the alignment rule for child components in the **Stack** container. This AP
 layoutWeight(value: number | string): T
 ```
 
-Sets the layout weight of a component so that the component is allocated a size in the main-axis direction of the parent container ([Row](arkts-arkui-row-comp.md#row)/[Column](arkts-arkui-column-comp.md#column)/[Flex](arkts-arkui-flex-comp.md#flex)) according to the weight. It applies to scenarios where the parent container size is determined and multiple child components need to allocate the remaining space proportionally.
+Sets the layout weight of a component so that the component is allocated a size in the main-axis direction of the parent container ([Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/[Flex](arkts-arkui-flex-comp.md)) according to the weight. It applies to scenarios where the parent container size is determined and multiple child components need to allocate the remaining space proportionally.
 
 **Since:** 7
 
@@ -4618,13 +4844,15 @@ Sets the layout weight of a component so that the component is allocated a size 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-layoutWeight(value: number | string): T--><!--Device-CommonMethod-layoutWeight(value: number | string): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | When the size of the parent container is determined, child components that do not have the **layoutWeight** attribute set or whose effective **layoutWeight** value is **0** take priority in occupying space. The space left on the main axis after these child components occupy space is called the remaining space on the main axis. Child components that have the **layoutWeight** attribute set and whose effective **layoutWeight** value is greater than 0 are allocated sizes from the remaining space on the main axis according to their respective weight proportions. During allocation, the **width**\/**height** settings of the child components are ignored, but the **minWidth**\/ **minHeight** constraints are retained.<br>Default value: 0<br>Value range: [0, +∞)<br>When the value is out of range: if a value less than 0 is passed in, it is processed as 0.<br>**NOTE:** <br>This attribute takes effect only in the [Row](arkts-arkui-row-comp.md#row)/[Column](arkts-arkui-column-comp.md#column)/[Flex](arkts-arkui-flex-comp.md#flex) layout.<br>The optional value is a number greater than or equal to 0, or a string that can be converted to a number (integer and decimal formats are supported).<br>If a child component in the container has the **layoutWeight** attribute set and the set value is greater than 0, all child components are no longer laid out based on [flexShrink](#flexshrink) and [flexGrow](#flexgrow). |
+| value | number &#124; string | Yes | When the size of the parent container is determined, child components that do not have the **layoutWeight** attribute set or whose effective **layoutWeight** value is **0** take priority in occupying space. The space left on the main axis after these child components occupy space is called the remaining space on the main axis. Child components that have the **layoutWeight** attribute set and whose effective **layoutWeight** value is greater than 0 are allocated sizes from the remaining space on the main axis according to their respective weight proportions. During allocation, the **width**\/**height** settings of the child components are ignored, but the **minWidth**\/ **minHeight** constraints are retained.<br>Default value: 0<br>Value range: [0, +∞)<br>When the value is out of range: if a value less than 0 is passed in, it is processed as 0.<br>**NOTE:** <br>This attribute takes effect only in the [Row](arkts-arkui-row-comp.md)/[Column](arkts-arkui-column-comp.md)/[Flex](arkts-arkui-flex-comp.md) layout.<br>The optional value is a number greater than or equal to 0, or a string that can be converted to a number (integer and decimal formats are supported).<br>If a child component in the container has the **layoutWeight** attribute set and the set value is greater than 0, all child components are no longer laid out based on [flexShrink](#flexshrink) and [flexGrow](#flexgrow). |
 
 **Return value:**
 
@@ -4645,6 +4873,8 @@ Applies a light up effect to the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-lightUpEffect(value: number): T--><!--Device-CommonMethod-lightUpEffect(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4676,6 +4906,8 @@ Applies a light up effect to the component. Compared to [lightUpEffect&lt;sup&gt
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-lightUpEffect(degree: Optional<number>): T--><!--Device-CommonMethod-lightUpEffect(degree: Optional<number>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4703,6 +4935,8 @@ Creates a linear gradient.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-linearGradient(value: LinearGradientOptions): T--><!--Device-CommonMethod-linearGradient(value: LinearGradientOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4736,6 +4970,8 @@ Creates a linear gradient. Compared to [linearGradient](#lineargradient), this A
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-linearGradient(options: Optional<LinearGradientOptions>): T--><!--Device-CommonMethod-linearGradient(options: Optional<LinearGradientOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4763,6 +4999,8 @@ Applies a linear gradient foreground blur effect to the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-linearGradientBlur(value: number, options: LinearGradientBlurOptions): T--><!--Device-CommonMethod-linearGradientBlur(value: number, options: LinearGradientBlurOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4795,6 +5033,8 @@ Applies a linear gradient foreground blur effect to the component. Compared with
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-linearGradientBlur(blurRadius: Optional<number>, options: Optional<LinearGradientBlurOptions>): T--><!--Device-CommonMethod-linearGradientBlur(blurRadius: Optional<number>, options: Optional<LinearGradientBlurOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4824,13 +5064,15 @@ Sets the margin of the component. The margin is considered as a part of the comp
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-margin(value: Margin | Length | LocalizedMargin): T--><!--Device-CommonMethod-margin(value: Margin | Length | LocalizedMargin): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | Yes | Margin of the component.<br>When the parameter is of the **Length** type, the margins in all four directions take effect at the same time.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set as a percentage, the top, bottom, left, and right margins all use the width of the parent container as the base value. When laying out in the cross-axis direction of [Row](arkts-arkui-row-comp.md#row), [Column](arkts-arkui-column-comp.md#column), and [Flex](arkts-arkui-flex-comp.md#flex), the space occupied by a child component in the cross-axis direction includes the size of the child component itself and the **margin** value.<br>For example, if a **Column** container has a width of 100, a child component has a width of 50, and the left and right margins are 10 and 20 respectively, the sum of the child component width and the left and right margins is 50 + 10 + 20 = 80, which is less than the container width of 100. The child component is center-aligned in the cross-axis direction, leaving (100 - 80)/2 = 10 of blank space on each of the left and right sides in the horizontal direction.<br>**Since:** 12 |
+| value | [Margin](../arkts-apis/arkts-arkui-margin-t.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [LocalizedMargin](../arkts-apis/arkts-arkui-localizedmargin-t.md) | Yes | Margin of the component.<br>When the parameter is of the **Length** type, the margins in all four directions take effect at the same time.<br>Default value: **0**<br>Unit: vp<br>When **margin** is set as a percentage, the top, bottom, left, and right margins all use the width of the parent container as the base value. When laying out in the cross-axis direction of [Row](arkts-arkui-row-comp.md), [Column](arkts-arkui-column-comp.md), and [Flex](arkts-arkui-flex-comp.md), the space occupied by a child component in the cross-axis direction includes the size of the child component itself and the **margin** value.<br>For example, if a **Column** container has a width of 100, a child component has a width of 50, and the left and right margins are 10 and 20 respectively, the sum of the child component width and the left and right margins is 50 + 10 + 20 = 80, which is less than the container width of 100. The child component is center-aligned in the cross-axis direction, leaving (100 - 80)/2 = 10 of blank space on each of the left and right sides in the horizontal direction.<br>**Since:** 12 |
 
 **Return value:**
 
@@ -4851,6 +5093,8 @@ Sets the anchor for element positioning. This attribute supports dynamic configu
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-markAnchor(value: Position | LocalizedPosition): T--><!--Device-CommonMethod-markAnchor(value: Position | LocalizedPosition): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4879,6 +5123,8 @@ Adds a mask to the component to indicate the progress.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-mask(value: ProgressMask): T--><!--Device-CommonMethod-mask(value: ProgressMask): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4909,6 +5155,8 @@ Adds a mask to the component to indicate the progress. Compared with [mask&lt;su
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CommonMethod-mask(mask: Optional<ProgressMask>): T--><!--Device-CommonMethod-mask(mask: Optional<ProgressMask>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4944,6 +5192,8 @@ Adds a mask of the specified shape to the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute | ProgressMask): T--><!--Device-CommonMethod-mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute | ProgressMask): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4973,6 +5223,8 @@ Adds a mask of the specified shape to the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T--><!--Device-CommonMethod-maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5006,6 +5258,8 @@ Adds a mask of the specified shape to the component. Compared with [maskShape&lt
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-maskShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T--><!--Device-CommonMethod-maskShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5034,6 +5288,8 @@ Sets the visual effect of the material filter. The effects it contains are rende
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-CommonMethod-materialFilter(filter: Filter | undefined): T--><!--Device-CommonMethod-materialFilter(filter: Filter | undefined): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5061,6 +5317,8 @@ Sets whether the component exclusively handles events.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-monopolizeEvents(monopolize: boolean): T--><!--Device-CommonMethod-monopolizeEvents(monopolize: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5103,6 +5361,8 @@ Applies a motion blur effect to the component being scaled or moved.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-motionBlur(value: MotionBlurOptions):T--><!--Device-CommonMethod-motionBlur(value: MotionBlurOptions):T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5151,6 +5411,8 @@ of the animation scaling anchor point.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-motionBlur(motionBlur: Optional<MotionBlurOptions>): T--><!--Device-CommonMethod-motionBlur(motionBlur: Optional<MotionBlurOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5176,6 +5438,8 @@ Sets a path animation for the component.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-motionPath(value: MotionPathOptions): T--><!--Device-CommonMethod-motionPath(value: MotionPathOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5205,6 +5469,8 @@ Sets one or more mouse response regions.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-mouseResponseRegion(value: Array<Rectangle> | Rectangle): T--><!--Device-CommonMethod-mouseResponseRegion(value: Array<Rectangle> | Rectangle): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5232,6 +5498,8 @@ Set nextFocus.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CommonMethod-nextFocus(nextStep: Optional<FocusMovement>): T--><!--Device-CommonMethod-nextFocus(nextStep: Optional<FocusMovement>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5261,13 +5529,15 @@ Sets how the component content is obscured.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-obscured(reasons: Array<ObscuredReasons>): T--><!--Device-CommonMethod-obscured(reasons: Array<ObscuredReasons>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | Yes | How the component content is obscured.<br>This API is only available for the [Image](arkts-arkui-image-comp.md#image)<!--Del-->, [FormComponent](arkts-arkui-formcomponent-comp-sys.md#form_component)&lt;sup&gt;12+&lt;/sup&gt;,<!--DelEnd--> and [Text](arkts-arkui-text-comp.md#text) components.<br>**NOTE:** <br>To obscure an image when it is being loaded, you must set the width and height of the **Image** component.<br>Obscuring is not available for **Text** components that have child components or have any [styled string](../arkts-apis/arkts-arkui-styled_string.md) configured. <br>Default value: []. |
+| reasons | Array&lt;[ObscuredReasons](../arkts-apis/arkts-arkui-obscuredreasons-e.md)&gt; | Yes | How the component content is obscured.<br>This API is only available for the [Image](arkts-arkui-image-comp.md)<!--Del-->, [FormComponent](arkts-arkui-formcomponent-comp-sys.md)&lt;sup&gt;12+&lt;/sup&gt;,<!--DelEnd--> and [Text](arkts-arkui-text-comp.md) components.<br>**NOTE:** <br>To obscure an image when it is being loaded, you must set the width and height of the **Image** component.<br>Obscuring is not available for **Text** components that have child components or have any [styled string](../arkts-apis/arkts-arkui-styledstring.md#styled_string) configured. <br>Default value: []. |
 
 **Return value:**
 
@@ -5288,6 +5558,8 @@ Sets the offset of the component relative to its original position. When **offse
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-offset(value: Position | Edges | LocalizedEdges): T--><!--Device-CommonMethod-offset(value: Position | Edges | LocalizedEdges): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5319,6 +5591,8 @@ Register accessibility action intercept callback, when accessibility action is t
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-CommonMethod-onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T--><!--Device-CommonMethod-onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5349,6 +5623,8 @@ Register accessibility focus callback,when the component is focused or out of fo
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-onAccessibilityFocus(callback: AccessibilityFocusCallback): T--><!--Device-CommonMethod-onAccessibilityFocus(callback: AccessibilityFocusCallback): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5377,6 +5653,8 @@ Trigger a accessibility hover event.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-onAccessibilityHover(callback: AccessibilityCallback): T--><!--Device-CommonMethod-onAccessibilityHover(callback: AccessibilityCallback): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5404,6 +5682,8 @@ prompt for current component and descendants unable to handle accessibility hove
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonMethod-onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T--><!--Device-CommonMethod-onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5436,6 +5716,8 @@ Triggered when this component appears.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-onAppear(event: () => void): T--><!--Device-CommonMethod-onAppear(event: () => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5472,6 +5754,8 @@ This event is not triggered for render attribute changes caused by re-rendering,
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-onAreaChange(event: (oldValue: Area, newValue: Area) => void): T--><!--Device-CommonMethod-onAreaChange(event: (oldValue: Area, newValue: Area) => void): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5501,6 +5785,8 @@ Triggered when the component area changes. The interval at which the callback is
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CommonMethod-onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T--><!--Device-CommonMethod-onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5537,6 +5823,8 @@ Triggered when this component is mounted to the component tree. Due to the follo
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-onAttach(callback: Callback<void>): T--><!--Device-CommonMethod-onAttach(callback: Callback<void>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5565,6 +5853,8 @@ Triggered by mouse wheel scrolling, a two-finger sliding gesture, or a pinch ges
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
+<!--Device-CommonMethod-onAxisEvent(event: Callback<AxisEvent>): T--><!--Device-CommonMethod-onAxisEvent(event: Callback<AxisEvent>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5590,6 +5880,8 @@ Triggered when the current component loses focus.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onBlur(event: () => void): T--><!--Device-CommonMethod-onBlur(event: () => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5625,6 +5917,8 @@ Allows the current component to customize the hit test and control child compone
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-onChildTouchTest(event: (value: Array<TouchTestInfo>) => TouchResult): T--><!--Device-CommonMethod-onChildTouchTest(event: (value: Array<TouchTestInfo>) => TouchResult): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5665,6 +5959,8 @@ When triggered by keyboard or gamepad input, the event's **SourceTool** is **Unk
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-onClick(event: (event: ClickEvent) => void): T--><!--Device-CommonMethod-onClick(event: (event: ClickEvent) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5714,6 +6010,8 @@ For scenarios where there is no restriction on the finger movement distance duri
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-onClick(event: Callback<ClickEvent>, distanceThreshold: number): T--><!--Device-CommonMethod-onClick(event: Callback<ClickEvent>, distanceThreshold: number): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5742,6 +6040,8 @@ Triggered when this component is unmounted from the component tree. You are advi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-onDetach(callback: Callback<void>): T--><!--Device-CommonMethod-onDetach(callback: Callback<void>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5775,6 +6075,8 @@ Called when the crown is rotated while the component has focus.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-onDigitalCrown(handler: Optional<Callback<CrownEvent>>): T--><!--Device-CommonMethod-onDigitalCrown(handler: Optional<Callback<CrownEvent>>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5802,6 +6104,8 @@ Triggered when this component disappears.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-onDisAppear(event: () => void): T--><!--Device-CommonMethod-onDisAppear(event: () => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5831,6 +6135,8 @@ Triggered when the dragging of the component bound to the event ends.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T--><!--Device-CommonMethod-onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5856,6 +6162,8 @@ Triggered when a dragged item enters a valid drop target. This event takes effec
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T--><!--Device-CommonMethod-onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5883,6 +6191,8 @@ Triggered when a dragged item leaves a valid drop target. This event takes effec
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T--><!--Device-CommonMethod-onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -5908,6 +6218,8 @@ Triggered when a dragged item moves in a valid drop target. This event takes eff
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onDragMove(event: (event: DragEvent, extraParams?: string) => void): T--><!--Device-CommonMethod-onDragMove(event: (event: DragEvent, extraParams?: string) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5938,6 +6250,8 @@ For details about the hover detection triggering mechanism and usage, see [Sprin
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonMethod-onDragSpringLoading(callback: Callback<SpringLoadingContext> | null, configuration?: DragSpringLoadingConfiguration): T--><!--Device-CommonMethod-onDragSpringLoading(callback: Callback<SpringLoadingContext> | null, configuration?: DragSpringLoadingConfiguration): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5977,6 +6291,8 @@ The custom drag preview is not supported for dragging selected text in the follo
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T--><!--Device-CommonMethod-onDragStart(event: (event: DragEvent, extraParams?: string) => CustomBuilder | DragItemInfo): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6002,6 +6318,8 @@ A component bound with this event can serve as a drop target. This callback is t
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onDrop(event: (event: DragEvent, extraParams?: string) => void): T--><!--Device-CommonMethod-onDrop(event: (event: DragEvent, extraParams?: string) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6037,6 +6355,8 @@ result is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CommonMethod-onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T--><!--Device-CommonMethod-onDrop(eventCallback: OnDragEventCallback, dropOptions?: DropOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6063,6 +6383,8 @@ Triggered when the current component obtains focus.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onFocus(event: () => void): T--><!--Device-CommonMethod-onFocus(event: () => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6092,6 +6414,8 @@ Binds a focus axis event callback to the component. Triggered when any operation
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CommonMethod-onFocusAxisEvent(event: Callback<FocusAxisEvent>): T--><!--Device-CommonMethod-onFocusAxisEvent(event: Callback<FocusAxisEvent>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6119,6 +6443,8 @@ Triggered after events and gestures on the current node and higher-priority node
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CommonMethod-onGestureCollectIntercept(callback: GestureCollectInterceptCallback): T--><!--Device-CommonMethod-onGestureCollectIntercept(callback: GestureCollectInterceptCallback): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6150,6 +6476,8 @@ Binds a custom gesture determination callback to the component. When the gesture
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent) => GestureJudgeResult): T--><!--Device-CommonMethod-onGestureJudgeBegin(callback: (gestureInfo: GestureInfo, event: BaseGestureEvent) => GestureJudgeResult): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6177,6 +6505,8 @@ Binds a custom gesture recognizer judgment callback to the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T--><!--Device-CommonMethod-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6212,6 +6542,8 @@ For scenarios where exposure of internal gestures is not required, use the origi
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-CommonMethod-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exposeInnerGesture: boolean): T--><!--Device-CommonMethod-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exposeInnerGesture: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6238,6 +6570,8 @@ Triggered when the mouse pointer or stylus enters or leaves the component.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onHover(event: (isHover: boolean, event: HoverEvent) => void): T--><!--Device-CommonMethod-onHover(event: (isHover: boolean, event: HoverEvent) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6267,6 +6601,8 @@ Triggered when a stylus hovers over the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CommonMethod-onHoverMove(event: Callback<HoverEvent>): T--><!--Device-CommonMethod-onHoverMove(event: Callback<HoverEvent>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6292,6 +6628,8 @@ Triggered when a key event occurs.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onKeyEvent(event: (event: KeyEvent) => void): T--><!--Device-CommonMethod-onKeyEvent(event: (event: KeyEvent) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6323,6 +6661,8 @@ Triggered when a key operation is performed on the bound component after it obta
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-CommonMethod-onKeyEvent(event: Callback<KeyEvent, boolean>): T--><!--Device-CommonMethod-onKeyEvent(event: Callback<KeyEvent, boolean>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6352,6 +6692,8 @@ If the callback returns **true**, the key event is marked as consumed and will n
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-CommonMethod-onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T--><!--Device-CommonMethod-onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6383,6 +6725,8 @@ If the return value of this callback is **true**, the key event is considered co
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-onKeyPreIme(event: Callback<KeyEvent, boolean>): T--><!--Device-CommonMethod-onKeyPreIme(event: Callback<KeyEvent, boolean>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6408,6 +6752,8 @@ Triggered when the component is clicked by a mouse button or the mouse pointer m
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onMouse(event: (event: MouseEvent) => void): T--><!--Device-CommonMethod-onMouse(event: (event: MouseEvent) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6436,6 +6782,8 @@ Called when component is focused, the return value indicates whether keyboard is
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-CommonMethod-onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | undefined): T--><!--Device-CommonMethod-onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6468,6 +6816,8 @@ Triggered when the component enters a state prior to a gesture-based drag operat
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-onPreDrag(callback: Callback<PreDragStatus>): T--><!--Device-CommonMethod-onPreDrag(callback: Callback<PreDragStatus>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6506,6 +6856,8 @@ Triggered when the component size changes due to layout updates.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-onSizeChange(event: SizeChangeCallback): T--><!--Device-CommonMethod-onSizeChange(event: SizeChangeCallback): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6531,6 +6883,8 @@ Invoked when a touch event is triggered. Touch events [bubble](../../../ui/arkts
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-onTouch(event: (event: TouchEvent) => void): T--><!--Device-CommonMethod-onTouch(event: (event: TouchEvent) => void): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6559,6 +6913,8 @@ Binds a custom event interception callback to a component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T--><!--Device-CommonMethod-onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6589,6 +6945,8 @@ Specifies whether gesture recognizers participate in subsequent processing after
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-CommonMethod-onTouchTestDone(callback: TouchTestDoneCallback): T--><!--Device-CommonMethod-onTouchTestDone(callback: TouchTestDoneCallback): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6621,6 +6979,8 @@ Configures a callback for the **onVisibleAreaApproximateChange** event, with opt
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-CommonMethod-onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T--><!--Device-CommonMethod-onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6661,6 +7021,8 @@ Called when the visible area of the component changes. For details about the dev
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T--><!--Device-CommonMethod-onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6692,6 +7054,8 @@ Called when the visible area of the component changes. You can use **measureFrom
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-CommonMethod-onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T--><!--Device-CommonMethod-onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6721,6 +7085,8 @@ Sets the opacity of the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-opacity(value: number | Resource): T--><!--Device-CommonMethod-opacity(value: number | Resource): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6754,6 +7120,8 @@ Sets the opacity of the component. Compared with [opacity](../../../reference/ap
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-opacity(opacity: Optional<number | Resource>): T--><!--Device-CommonMethod-opacity(opacity: Optional<number | Resource>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6783,6 +7151,8 @@ Sets the outline attributes in one declaration.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-outline(value: OutlineOptions): T--><!--Device-CommonMethod-outline(value: OutlineOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6816,6 +7186,8 @@ Sets the outline attributes in one declaration. Compared with [outline](../../..
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-outline(options: Optional<OutlineOptions>): T--><!--Device-CommonMethod-outline(options: Optional<OutlineOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6845,6 +7217,8 @@ Sets the outline color. If this API is not used, the default color black will be
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T--><!--Device-CommonMethod-outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6878,6 +7252,8 @@ Sets the outline color. If this API is not used, the default color black will be
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-outlineColor(color: Optional<ResourceColor | EdgeColors | LocalizedEdgeColors>): T--><!--Device-CommonMethod-outlineColor(color: Optional<ResourceColor | EdgeColors | LocalizedEdgeColors>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6907,6 +7283,8 @@ Sets the radius of the outline corners. If this API is not used, there will be n
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-outlineRadius(value: Dimension | OutlineRadiuses): T--><!--Device-CommonMethod-outlineRadius(value: Dimension | OutlineRadiuses): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -6940,6 +7318,8 @@ Sets the radius of the outline corners. If this API is not used, there will be n
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T--><!--Device-CommonMethod-outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -6969,6 +7349,8 @@ Sets the outline style. If this API is not used, a solid line is displayed by de
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T--><!--Device-CommonMethod-outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7002,6 +7384,8 @@ Sets the outline style. If this API is not used, a solid line is displayed by de
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T--><!--Device-CommonMethod-outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7031,6 +7415,8 @@ Sets the thickness of the outline. If this API is not used, there will be no cha
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-outlineWidth(value: Dimension | EdgeOutlineWidths): T--><!--Device-CommonMethod-outlineWidth(value: Dimension | EdgeOutlineWidths): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7063,6 +7449,8 @@ Sets the thickness of the outline. If this API is not used, there will be no cha
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-CommonMethod-outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T--><!--Device-CommonMethod-outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7101,6 +7489,8 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions): T--><!--Device-CommonMethod-overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7129,6 +7519,8 @@ Sets the padding attribute of the component. After the setting, extra space is c
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-padding(value: Padding | Length | LocalizedPadding): T--><!--Device-CommonMethod-padding(value: Padding | Length | LocalizedPadding): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7159,6 +7551,8 @@ Gesture that can be recognized at once by the component and its child component.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-parallelGesture(gesture: GestureType, mask?: GestureMask): T--><!--Device-CommonMethod-parallelGesture(gesture: GestureType, mask?: GestureMask): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7206,6 +7600,8 @@ coordinates (API version 11 uses half-pixel alignment, and API version 12 uses r
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-CommonMethod-pixelRound(value: PixelRoundPolicy): T--><!--Device-CommonMethod-pixelRound(value: PixelRoundPolicy): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7233,6 +7629,8 @@ Applies a pixel stretch effect to the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-pixelStretchEffect(options: PixelStretchEffectOptions): T--><!--Device-CommonMethod-pixelStretchEffect(options: PixelStretchEffectOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7263,6 +7661,8 @@ Applies a pixel stretch effect to the component. Compared to [pixelStretchEffect
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CommonMethod-pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T--><!--Device-CommonMethod-pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7302,6 +7702,8 @@ Sets the absolute positioning, which determines the position of a child componen
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-position(value: Position | Edges | LocalizedEdges): T--><!--Device-CommonMethod-position(value: Position | Edges | LocalizedEdges): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7337,6 +7739,8 @@ component preferentially recognizes the gesture specified by **priorityGesture**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-priorityGesture(gesture: GestureType, mask?: GestureMask): T--><!--Device-CommonMethod-priorityGesture(gesture: GestureType, mask?: GestureMask): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7367,6 +7771,8 @@ Anonymous Object Rectification.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-radialGradient(value: RadialGradientOptions): T--><!--Device-CommonMethod-radialGradient(value: RadialGradientOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7400,6 +7806,8 @@ Radial Gradient center:Center point of radial gradient radius:Radius of Radial G
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-radialGradient(options: Optional<RadialGradientOptions>): T--><!--Device-CommonMethod-radialGradient(options: Optional<RadialGradientOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7429,6 +7837,8 @@ Sets how the final state of the component's content is rendered during its width
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-CommonMethod-renderFit(fitMode: RenderFit): T--><!--Device-CommonMethod-renderFit(fitMode: RenderFit): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7462,6 +7872,8 @@ Sets how the final state of the component's content is rendered during its width
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-renderFit(fitMode: Optional<RenderFit>): T--><!--Device-CommonMethod-renderFit(fitMode: Optional<RenderFit>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7493,6 +7905,8 @@ If this attribute is not set, no render group is formed by default.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-CommonMethod-renderGroup(value: boolean): T--><!--Device-CommonMethod-renderGroup(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7526,6 +7940,8 @@ Composite the contents of this view and its children into an offscreen cache bef
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-renderGroup(isGroup: Optional<boolean>): T--><!--Device-CommonMethod-renderGroup(isGroup: Optional<boolean>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7553,6 +7969,8 @@ Sets one or more touch targets.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-responseRegion(value: Array<Rectangle> | Rectangle): T--><!--Device-CommonMethod-responseRegion(value: Array<Rectangle> | Rectangle): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7582,6 +8000,8 @@ Sets the touch target list for the component. When this API is called, the [resp
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-CommonMethod-responseRegionList(regions: Array<ResponseRegion>): T--><!--Device-CommonMethod-responseRegionList(regions: Array<ResponseRegion>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7607,6 +8027,8 @@ id for distribute identification.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-restoreId(value: number): T--><!--Device-CommonMethod-restoreId(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7636,6 +8058,8 @@ Reuse id is used for identify the reuse type of each @ComponentV2 custom compone
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-reuse(options: ReuseOptions): T--><!--Device-CommonMethod-reuse(options: ReuseOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7656,13 +8080,21 @@ Reuse id is used for identify the reuse type of each @ComponentV2 custom compone
 reuseId(id: string): T
 ```
 
-Reuse id is used for identify the reuse type for each custom node.
+Reuse identifier, used to divide custom components into reuse groups. This API can be used only in the stage model.
 
-**Since:** 11
+> **NOTE:** 
+> 
+> - Set the corresponding reuseId based on the different layout forms or types of components to improve the precision of reuse matching. For best practices, see Component Reuse -[Using reuseId to Mark Components with Layout Changes](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-component_reuse#using-reuseid-to-mark-components-with-layout-changes).
+> 
+> - This API cannot be called in [attributeModifier](#attributemodifier).
+
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-reuseId(id: string): T--><!--Device-CommonMethod-reuseId(id: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7670,13 +8102,13 @@ Reuse id is used for identify the reuse type for each custom node.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | The id for reusable custom node. |
+| id | string | Yes | Reuse identifier used to divide custom components into reuse groups. It is recommended that different reuseId values be set for components with different layouts or types to prevent components from being incorrectly reused and improve reuse efficiency. This attribute takes effect only on custom components decorated by @Reusable. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| T |  |
+| T | Current component. |
 
 ## rotate
 
@@ -7691,6 +8123,8 @@ Rotates the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-rotate(value: RotateOptions): T--><!--Device-CommonMethod-rotate(value: RotateOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7724,6 +8158,8 @@ Rotates the component. Compared with [rotate](#rotate), this API supports the **
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-rotate(options: Optional<RotateOptions>): T--><!--Device-CommonMethod-rotate(options: Optional<RotateOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7755,6 +8191,8 @@ Sets the component rotation effect. Compared with [rotate](#rotate-1), this API 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-CommonMethod-rotate(options: Optional<RotateOptions | RotateAngleOptions>): T--><!--Device-CommonMethod-rotate(options: Optional<RotateOptions | RotateAngleOptions>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7805,6 +8243,8 @@ Sets the safe area padding attribute. It allows a container to add a component-l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 14.
 
+<!--Device-CommonMethod-safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T--><!--Device-CommonMethod-safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7832,6 +8272,8 @@ Applies a saturation effect to the component. If this API is not used, there wil
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-saturate(value: number): T--><!--Device-CommonMethod-saturate(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7865,6 +8307,8 @@ Applies a saturation effect to the component. If this API is not used, there wil
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-saturate(saturate: Optional<number>): T--><!--Device-CommonMethod-saturate(saturate: Optional<number>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7892,6 +8336,8 @@ Scales the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-scale(value: ScaleOptions): T--><!--Device-CommonMethod-scale(value: ScaleOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7925,6 +8371,8 @@ Scales the component. Compared with [scale](#scale), this API supports the **und
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-scale(options: Optional<ScaleOptions>): T--><!--Device-CommonMethod-scale(options: Optional<ScaleOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -7952,6 +8400,8 @@ Converts the image to a sepia tone, reducing color intensity to create a warm, v
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-sepia(value: number): T--><!--Device-CommonMethod-sepia(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -7985,6 +8435,8 @@ Converts the image to a sepia tone, reducing color intensity to create a warm, v
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-sepia(sepia: Optional<number>): T--><!--Device-CommonMethod-sepia(sepia: Optional<number>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8012,6 +8464,8 @@ Applies a shadow effect to the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-shadow(value: ShadowOptions | ShadowStyle): T--><!--Device-CommonMethod-shadow(value: ShadowOptions | ShadowStyle): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8045,6 +8499,8 @@ Applies a shadow effect to the component. Compared to [shadow](#shadow), the **o
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-shadow(options: Optional<ShadowOptions | ShadowStyle>): T--><!--Device-CommonMethod-shadow(options: Optional<ShadowOptions | ShadowStyle>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8070,6 +8526,8 @@ Sets the shared transition animation.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-sharedTransition(id: string, options?: sharedTransitionOptions): T--><!--Device-CommonMethod-sharedTransition(id: string, options?: sharedTransitionOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8099,6 +8557,8 @@ Provides a callback to set the parallel relationship between built-in gestures a
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T--><!--Device-CommonMethod-shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8130,6 +8590,8 @@ Provides a callback to set the parallel relationship between gestures of the cur
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonMethod-shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T--><!--Device-CommonMethod-shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Test API:** This API is used only in automated test scripts.
@@ -8160,6 +8622,8 @@ Sets the width and height of the component itself. After the setting, the layout
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-size(value: SizeOptions): T--><!--Device-CommonMethod-size(value: SizeOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8188,6 +8652,8 @@ Enable or disable specific smart gesture shortcuts, and set response priorities 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CommonMethod-smartGestureShortcut(options?: SmartGestureShortcutOptions): T--><!--Device-CommonMethod-smartGestureShortcut(options?: SmartGestureShortcutOptions): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8215,6 +8681,8 @@ Applies a spherical effect to the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-sphericalEffect(value: number): T--><!--Device-CommonMethod-sphericalEffect(value: number): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8245,6 +8713,8 @@ Applies a spherical effect to the component. Compared to [sphericalEffect&lt;sup
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CommonMethod-sphericalEffect(effect: Optional<number>): T--><!--Device-CommonMethod-sphericalEffect(effect: Optional<number>): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8278,6 +8748,8 @@ Sets the state-specific styles for the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-stateStyles(value: StateStyles): T--><!--Device-CommonMethod-stateStyles(value: StateStyles): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8307,6 +8779,8 @@ Anonymous Object Rectification.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-sweepGradient(value: SweepGradientOptions): T--><!--Device-CommonMethod-sweepGradient(value: SweepGradientOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8340,6 +8814,8 @@ Angle Gradient center:is the center point of the angle gradient start:Start poin
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-sweepGradient(options: Optional<SweepGradientOptions>): T--><!--Device-CommonMethod-sweepGradient(options: Optional<SweepGradientOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8368,6 +8844,8 @@ Applies a system bar effect to the component, which means to invert colors based
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-systemBarEffect(): T--><!--Device-CommonMethod-systemBarEffect(): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -8391,6 +8869,8 @@ Sets the system material for a component. Different system materials have differ
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-CommonMethod-systemMaterial(material: SystemUiMaterial | undefined): T--><!--Device-CommonMethod-systemMaterial(material: SystemUiMaterial | undefined): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8422,6 +8902,8 @@ Sets the tab navigation order of the component in sequential focus navigation wi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CommonMethod-tabIndex(index: number): T--><!--Device-CommonMethod-tabIndex(index: number): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8450,6 +8932,8 @@ Set TabStop on component focus
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-CommonMethod-tabStop(isTabStop: boolean): T--><!--Device-CommonMethod-tabStop(isTabStop: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8476,6 +8960,8 @@ Config toolbar for current component.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CommonMethod-toolbar(value: CustomBuilder): T--><!--Device-CommonMethod-toolbar(value: CustomBuilder): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8490,34 +8976,6 @@ Config toolbar for current component.
 | --- | --- |
 | T |  |
 
-## touchable
-
-```TypeScript
-touchable(value: boolean): T
-```
-
-Whether the component can respond to finger interactions such as click and touch events.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [hitTestBehavior](#hittestbehavior)
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | boolean | Yes | Whether the component can respond to finger interactions such as click and touch events.<br>**true** (default): The component can respond to finger interactions. **false**: The component cannot respond to finger interactions. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| T | Current component. |
-
 ## transform
 
 ```TypeScript
@@ -8529,6 +8987,8 @@ Displays the matrix transformation when 2D transformation is performed. If 3D tr
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-transform(value: object): T--><!--Device-CommonMethod-transform(value: object): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8560,6 +9020,8 @@ Displays the matrix transformation when 2D transformation is performed. If 3D tr
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-transform(transform: Optional<object>): T--><!--Device-CommonMethod-transform(transform: Optional<object>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8588,6 +9050,8 @@ Sets the 3D transformation matrix of the component. When 3D transformation with 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CommonMethod-transform3D(transform: Optional<Matrix4Transit>): T--><!--Device-CommonMethod-transform3D(transform: Optional<Matrix4Transit>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8615,6 +9079,8 @@ Sets the transition effects used when a component is inserted or removed.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-transition(value: TransitionOptions | TransitionEffect): T--><!--Device-CommonMethod-transition(value: TransitionOptions | TransitionEffect): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8652,6 +9118,8 @@ Sets the transition effects used when a component is inserted or removed. Compar
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CommonMethod-transition(effect: TransitionEffect, onFinish: Optional<TransitionFinishCallback>): T--><!--Device-CommonMethod-transition(effect: TransitionEffect, onFinish: Optional<TransitionFinishCallback>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8680,6 +9148,8 @@ Translates the component.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-translate(value: TranslateOptions): T--><!--Device-CommonMethod-translate(value: TranslateOptions): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8713,6 +9183,8 @@ Translates the component. Compared with [translate](#translate), this API suppor
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-translate(translate: Optional<TranslateOptions>): T--><!--Device-CommonMethod-translate(translate: Optional<TranslateOptions>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8740,6 +9212,8 @@ Sets whether the component should apply the effects template defined by the pare
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-CommonMethod-useEffect(useEffect: boolean, effectType: EffectType): T--><!--Device-CommonMethod-useEffect(useEffect: boolean, effectType: EffectType): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8772,6 +9246,8 @@ Sets whether the component should apply the effects template defined by the pare
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CommonMethod-useEffect(useEffect: Optional<boolean>, effectType?: EffectType): T--><!--Device-CommonMethod-useEffect(useEffect: Optional<boolean>, effectType?: EffectType): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8803,6 +9279,8 @@ Sets whether the component should apply the effects template defined by the pare
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonMethod-useEffect(value: boolean): T--><!--Device-CommonMethod-useEffect(value: boolean): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8832,6 +9310,8 @@ Sets whether to render child node shadows at the same layer, enabling shadow ove
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-CommonMethod-useShadowBatching(value: boolean): T--><!--Device-CommonMethod-useShadowBatching(value: boolean): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8865,6 +9345,8 @@ Sets whether to render child node shadows at the same layer, enabling shadow ove
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-CommonMethod-useShadowBatching(use: Optional<boolean>): T--><!--Device-CommonMethod-useShadowBatching(use: Optional<boolean>): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -8879,39 +9361,6 @@ Sets whether to render child node shadows at the same layer, enabling shadow ove
 | --- | --- |
 | T | Current component. |
 
-## useSizeType
-
-```TypeScript
-useSizeType(value: {
-    xs?: number | { span: number; offset: number };
-    sm?: number | { span: number; offset: number };
-    md?: number | { span: number; offset: number };
-    lg?: number | { span: number; offset: number };
-  }): T
-```
-
-Sets the number of occupied columns and offset columns for a specific device width type.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | {     xs?: number &#124; { span: number; offset: number };     sm?: number &#124; { span: number; offset: number };     md?: number &#124; { span: number; offset: number };     lg?: number &#124; { span: number; offset: number };   } | Yes |  |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| T |  |
-
 ## visibility
 
 ```TypeScript
@@ -8925,6 +9374,8 @@ Sets the visibility of the component. If **visibility** is not set, the componen
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CommonMethod-visibility(value: Visibility): T--><!--Device-CommonMethod-visibility(value: Visibility): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8957,6 +9408,8 @@ Sets a visual effect that is not a filter effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonMethod-visualEffect(effect: VisualEffect): T--><!--Device-CommonMethod-visualEffect(effect: VisualEffect): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -8995,6 +9448,8 @@ Sets the width of the component itself. By default, the width required for the c
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-width(value: Length): T--><!--Device-CommonMethod-width(value: Length): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -9027,6 +9482,8 @@ Sets the width of the component itself or its horizontal layout policy. By defau
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-CommonMethod-width(widthValue: Length | LayoutPolicy): T--><!--Device-CommonMethod-width(widthValue: Length | LayoutPolicy): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -9057,6 +9514,8 @@ Sets the stacking order of the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonMethod-zIndex(value: number): T--><!--Device-CommonMethod-zIndex(value: number): T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -9070,3 +9529,144 @@ Sets the stacking order of the component.
 | Type | Description |
 | --- | --- |
 | T | Current component. |
+
+## gridOffset
+
+```TypeScript
+gridOffset(value: number): T
+```
+
+Default offset column count, which refers to the number of columns by which the current component is offset along the Start direction of its parent component when the useSizeType attribute does not set the offset for the corresponding size. That is, the starting position of the component is offset by n columns relative to the Start direction of the parent component. It must be a non-negative integer. When passing a negative number, use the default value 0. When useSizeType sets the offset for the corresponding size, the gridOffset setting does not take effect.
+
+> **NOTE:** 
+> 
+> - When calling this attribute, its parent component or ancestor component must be GridContainer.
+> - After this attribute is configured, the layout of the current component in the horizontal direction of the parent component no longer follows the original layout mode of the parent component. Instead, the component is offset by a certain distance along the Start direction of the parent component.
+> - Offset distance = (column width + spacing)* offset column count.
+> - Sibling components after the component with the offset (gridOffset) set are laid out relative to this component.
+
+**Since:** 7
+
+**Deprecated since:** 14
+
+**Substitutes:** grid_col/GridColInterface and grid_row/GridRowInterface
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-gridOffset(value: number): T--><!--Device-CommonMethod-gridOffset(value: number): T-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | number | Yes | Default offset column count. Default value: **0** |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| T |  |
+
+## gridSpan
+
+```TypeScript
+gridSpan(value: number): T
+```
+
+Default column count, which refers to the grid column count occupied when the useSizeType attribute does not set the column count (span) for the corresponding size. It must be a non-negative integer. When passing a negative number or a value exceeding the total column count of GridContainer, use the default value 1.
+
+> **NOTE:** 
+> 
+> - When calling this attribute, its parent component or ancestor component must be GridContainer.
+> - When the grid span attribute is set, the width of the component is determined by the grid layout.
+
+**Since:** 7
+
+**Deprecated since:** 14
+
+**Substitutes:** grid_col/GridColInterface and grid_row/GridRowInterface
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CommonMethod-gridSpan(value: number): T--><!--Device-CommonMethod-gridSpan(value: number): T-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | number | Yes | Default column count. Default value: **1** |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| T |  |
+
+## touchable
+
+```TypeScript
+touchable(value: boolean): T
+```
+
+Whether the component can respond to finger interactions such as click and touch events.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [hitTestBehavior](#hittestbehavior)
+
+<!--Device-CommonMethod-touchable(value: boolean): T--><!--Device-CommonMethod-touchable(value: boolean): T-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | boolean | Yes | Whether the component can respond to finger interactions such as click and touch events.<br>**true** (default): The component can respond to finger interactions. **false**: The component cannot respond to finger interactions. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| T | Current component. |
+
+## useSizeType
+
+```TypeScript
+useSizeType(value: {
+    xs?: number | { span: number; offset: number };
+    sm?: number | { span: number; offset: number };
+    md?: number | { span: number; offset: number };
+    lg?: number | { span: number; offset: number };
+  }): T
+```
+
+Sets the number of occupied columns and offset columns for a specific device width type.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
+
+<!--Device-CommonMethod-useSizeType(value: {    xs?: number | { span: number; offset: number };    sm?: number | { span: number; offset: number };    md?: number | { span: number; offset: number };    lg?: number | { span: number; offset: number };  }): T--><!--Device-CommonMethod-useSizeType(value: {    xs?: number | { span: number; offset: number };    sm?: number | { span: number; offset: number };    md?: number | { span: number; offset: number };    lg?: number | { span: number; offset: number };  }): T-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | {     xs?: number &#124; { span: number; offset: number };     sm?: number &#124; { span: number; offset: number };     md?: number &#124; { span: number; offset: number };     lg?: number &#124; { span: number; offset: number };   } | Yes |  |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| T |  |

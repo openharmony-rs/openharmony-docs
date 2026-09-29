@@ -8,7 +8,7 @@ The universal attributes module for security components enables unified configur
 
 This module is mainly used in the following scenarios:  
 - Set layout, size, text, icon, color, border, and interaction-related attributes for security components  
-such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md#paste_button) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md#save_button).  
+such as [PasteButton](../arkts-components/arkts-arkui-pastebutton-comp.md) and [SaveButton](../arkts-components/arkts-arkui-savebutton-comp.md).  
 - Adjust the display effect and interaction experience of security components while ensuring compliance with  
 the security component specifications. For specific constraints, see [Constraints](../../../security/AccessToken/security-component-overview.md#constraints).  
 - Reuse the universal attribute capabilities of security components through chained calls.
@@ -33,6 +33,8 @@ Defines the method of a security component.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -48,6 +50,8 @@ Sets the unique ID for the component. You shall guarantee its uniqueness. Upon s
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SecurityComponentMethod-key(value: string): T--><!--Device-SecurityComponentMethod-key(value: string): T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

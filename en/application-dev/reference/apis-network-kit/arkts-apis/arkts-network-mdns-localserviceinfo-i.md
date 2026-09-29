@@ -8,6 +8,8 @@ MDNS service information.
 
 **Since:** 10
 
+<!--Device-mdns-export interface LocalServiceInfo--><!--Device-mdns-export interface LocalServiceInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## Modules to Import
@@ -30,6 +32,8 @@ IP address of the device that provides the MDNS service. The IP address is not e
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LocalServiceInfo-host?: NetAddress--><!--Device-LocalServiceInfo-host?: NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## port
@@ -45,6 +49,8 @@ Service port number. The value range is [0, 65535].
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LocalServiceInfo-port?: int--><!--Device-LocalServiceInfo-port?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
@@ -62,6 +68,8 @@ MDNS service attribute information.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LocalServiceInfo-serviceAttribute?: Array<ServiceAttribute>--><!--Device-LocalServiceInfo-serviceAttribute?: Array<ServiceAttribute>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## serviceName
@@ -78,6 +86,8 @@ MDNS service name.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LocalServiceInfo-serviceName: string--><!--Device-LocalServiceInfo-serviceName: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
 ## serviceType
@@ -93,5 +103,7 @@ MDNS service type. The value is in the format of **_&lt;name&gt;.&lt;_tcp/_udp&g
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LocalServiceInfo-serviceType: string--><!--Device-LocalServiceInfo-serviceType: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS

@@ -12,6 +12,8 @@ It is recommended that the system automatically handle input device switching, s
 
 **Since:** 13
 
+<!--Device-camera-interface AutoDeviceSwitch extends AutoDeviceSwitchQuery--><!--Device-camera-interface AutoDeviceSwitch extends AutoDeviceSwitchQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -36,7 +38,9 @@ Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupp
 
 **Since:** 13
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-AutoDeviceSwitch-enableAutoDeviceSwitch(enabled: boolean): void--><!--Device-AutoDeviceSwitch-enableAutoDeviceSwitch(enabled: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ Describes XMP Tag parameters.
 
 **Since:** 26.0.0
 
+<!--Device-image-interface XMPTag--><!--Device-image-interface XMPTag-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The name of XMP tag.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XMPTag-name: string--><!--Device-XMPTag-name: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## type
@@ -45,6 +49,8 @@ The type of XMP tag.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPTag-type: XMPTagType--><!--Device-XMPTag-type: XMPTagType-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -62,6 +68,8 @@ The value of XMP tag.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-XMPTag-value?: string--><!--Device-XMPTag-value?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## xmpNamespace
@@ -77,5 +85,7 @@ The namespace of XMP tag.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-XMPTag-xmpNamespace: XMPNamespace--><!--Device-XMPTag-xmpNamespace: XMPNamespace-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

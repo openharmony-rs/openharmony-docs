@@ -17,6 +17,8 @@ all<T>(values: Iterable<T | PromiseLike<T>>): Promise<Awaited<T>[]>
 
 Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
 
+<!--Device-PromiseConstructor-all<T>(values: Iterable<T | PromiseLike<T>>): Promise<Awaited<T>[]>--><!--Device-PromiseConstructor-all<T>(values: Iterable<T | PromiseLike<T>>): Promise<Awaited<T>[]>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -36,6 +38,8 @@ race<T>(values: Iterable<T | PromiseLike<T>>): Promise<Awaited<T>>
 ```
 
 Creates a Promise that is resolved or rejected when any of the provided Promises are resolved or rejected.
+
+<!--Device-PromiseConstructor-race<T>(values: Iterable<T | PromiseLike<T>>): Promise<Awaited<T>>--><!--Device-PromiseConstructor-race<T>(values: Iterable<T | PromiseLike<T>>): Promise<Awaited<T>>-End-->
 
 **Parameters:**
 

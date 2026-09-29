@@ -6,6 +6,8 @@ export declare interface EditableTitleBarOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-export declare interface EditableTitleBarOptions--><!--Device-unnamed-export declare interface EditableTitleBarOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarOptions-backgroundBlurStyle?: BlurStyle--><!--Device-EditableTitleBarOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundColor
@@ -51,6 +55,8 @@ backgroundColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBarOptions-backgroundColor?: ResourceColor--><!--Device-EditableTitleBarOptions-backgroundColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ safeAreaEdges?: Array<SafeAreaEdge>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBarOptions-safeAreaEdges?: Array<SafeAreaEdge>--><!--Device-EditableTitleBarOptions-safeAreaEdges?: Array<SafeAreaEdge>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## safeAreaTypes
@@ -91,5 +99,7 @@ safeAreaTypes?: Array<SafeAreaType>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBarOptions-safeAreaTypes?: Array<SafeAreaType>--><!--Device-EditableTitleBarOptions-safeAreaTypes?: Array<SafeAreaType>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

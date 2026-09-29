@@ -24,6 +24,8 @@ Shuts down the device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceControl-function shutdown(admin: Want): void--><!--Device-deviceControl-function shutdown(admin: Want): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

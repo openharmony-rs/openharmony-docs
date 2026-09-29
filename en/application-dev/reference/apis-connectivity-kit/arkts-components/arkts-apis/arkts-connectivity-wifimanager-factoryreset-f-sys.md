@@ -18,6 +18,8 @@ Reset all saved device configure.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.SET_WIFI_CONFIG
 
+<!--Device-wifiManager-function factoryReset(): void--><!--Device-wifiManager-function factoryReset(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

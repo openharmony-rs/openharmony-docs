@@ -18,6 +18,8 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
 
+<!--Device-cooperate-function deactivateCooperate(isUnchained: boolean, callback: AsyncCallback<void>): void--><!--Device-cooperate-function deactivateCooperate(isUnchained: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Stops screen hopping. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
+
+<!--Device-cooperate-function deactivateCooperate(isUnchained: boolean): Promise<void>--><!--Device-cooperate-function deactivateCooperate(isUnchained: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

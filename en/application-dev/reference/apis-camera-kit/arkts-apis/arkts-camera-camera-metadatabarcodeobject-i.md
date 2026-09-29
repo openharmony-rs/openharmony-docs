@@ -10,7 +10,9 @@ Barcode metadata detected by the camera, which is extended from [MetadataObject]
 
 **Since:** 26.0.0
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-camera-interface MetadataBarcodeObject extends MetadataObject--><!--Device-camera-interface MetadataBarcodeObject extends MetadataObject-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -10,6 +10,8 @@ The missionManager module provides APIs to lock, unlock, and clear missions, and
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-unnamed-declare namespace missionManager--><!--Device-unnamed-declare namespace missionManager-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -41,7 +43,7 @@ The missionManager module provides APIs to lock, unlock, and clear missions, and
 | [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-depr-f-sys.md#movemissiontofront) | Switches a given mission to the foreground. This API uses an asynchronous callback to return the result. |
 | [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-depr-f-sys.md#movemissiontofront-1) | Switches a given mission to the foreground, with the startup parameters for the switching specified. This API uses an asynchronous callback to return the result. |
 | [moveMissionToFront](arkts-ability-missionmanager-movemissiontofront-depr-f-sys.md#movemissiontofront-2) | Switches a given mission to the foreground, with the startup parameters for the switching specified. This API uses a promise to return the result. |
-| [registerMissionListener](arkts-ability-missionmanager-registermissionlistener-depr-f-sys.md#registermissionlistener) | Registers a listener to observe the mission status. |
+| [registerMissionListener](arkts-ability-missionmanager-registermissionlistener-depr-f-sys.md) | Registers a listener to observe the mission status. |
 | [unlockMission](arkts-ability-missionmanager-unlockmission-depr-f-sys.md#unlockmission) | Unlocks a given mission. This API uses an asynchronous callback to return the result. |
 | [unlockMission](arkts-ability-missionmanager-unlockmission-depr-f-sys.md#unlockmission-1) | Unlocks a given mission. This API uses a promise to return the result. |
 | [unregisterMissionListener](arkts-ability-missionmanager-unregistermissionlistener-depr-f-sys.md#unregistermissionlistener) | Unregisters a mission status listener. This API uses an asynchronous callback to return the result. |

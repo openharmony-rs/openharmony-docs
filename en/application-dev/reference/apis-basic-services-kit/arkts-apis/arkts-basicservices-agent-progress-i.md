@@ -8,6 +8,8 @@ Describes the data structure of the task progress.
 
 **Since:** 10
 
+<!--Device-agent-interface Progress--><!--Device-agent-interface Progress-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Extra information of the task, for example, the header and body of the response 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Progress-readonly extras?: object--><!--Device-Progress-readonly extras?: object-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## index
@@ -44,7 +48,9 @@ Index of the file that is being processed in the task.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Progress-readonly index: int--><!--Device-Progress-readonly index: int-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -60,7 +66,9 @@ Size of processed data in the current file in the task, in bytes.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Progress-readonly processed: long--><!--Device-Progress-readonly processed: long-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -76,7 +84,9 @@ Size of a file in a task, in bytes. If the server uses the chunk mode for data t
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Progress-readonly sizes: Array<long>--><!--Device-Progress-readonly sizes: Array<long>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -92,6 +102,8 @@ Current task status.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Progress-readonly state: State--><!--Device-Progress-readonly state: State-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

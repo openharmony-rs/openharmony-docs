@@ -16,7 +16,9 @@ Obtains this screenshot. Currently, only the screenshot of the display whose ID 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-screenshot-function pick(): Promise<PickInfo>--><!--Device-screenshot-function pick(): Promise<PickInfo>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -10,6 +10,8 @@ Enumerates the rendering pipeline types.
 
 **Since:** 21
 
+<!--Device-unnamed-export enum RenderingPipelineType--><!--Device-unnamed-export enum RenderingPipelineType-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## FORWARD_LIGHTWEIGHT
@@ -22,6 +24,8 @@ Lightweight forward rendering pipeline that directly renders to the back buffer.
 
 **Since:** 21
 
+<!--Device-RenderingPipelineType-FORWARD_LIGHTWEIGHT = 0--><!--Device-RenderingPipelineType-FORWARD_LIGHTWEIGHT = 0-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## FORWARD
@@ -33,5 +37,7 @@ FORWARD = 1
 High-quality forward rendering pipeline designed for complex visual effects (for example, bloom).
 
 **Since:** 21
+
+<!--Device-RenderingPipelineType-FORWARD = 1--><!--Device-RenderingPipelineType-FORWARD = 1-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

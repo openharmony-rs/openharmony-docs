@@ -16,6 +16,8 @@ function isFloatingBallEnabled(): boolean
 
 **起始版本：** 20
 
+<!--Device-floatingBall-function isFloatingBallEnabled(): boolean--><!--Device-floatingBall-function isFloatingBallEnabled(): boolean-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**

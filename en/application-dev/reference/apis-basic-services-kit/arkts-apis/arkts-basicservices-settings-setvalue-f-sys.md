@@ -22,6 +22,8 @@ Saves a character string name and its value to the database.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-settings-function setValue(dataAbilityHelper: DataAbilityHelper, name: string, value: object, callback: AsyncCallback<boolean>): void--><!--Device-settings-function setValue(dataAbilityHelper: DataAbilityHelper, name: string, value: object, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **System API:** This is a system API.
@@ -91,6 +93,8 @@ Saves a character string name and its value to the database.
 **Substitutes:** setValue
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-settings-function setValue(dataAbilityHelper: DataAbilityHelper, name: string, value: object): Promise<boolean>--><!--Device-settings-function setValue(dataAbilityHelper: DataAbilityHelper, name: string, value: object): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

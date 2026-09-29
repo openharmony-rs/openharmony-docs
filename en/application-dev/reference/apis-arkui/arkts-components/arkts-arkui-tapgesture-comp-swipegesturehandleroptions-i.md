@@ -10,6 +10,8 @@ Provides the parameters of the swipe gesture handler. Inherits from [BaseHandler
 
 **Since:** 12
 
+<!--Device-unnamed-interface SwipeGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface SwipeGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -29,6 +31,8 @@ Default value: **SwipeDirection.All**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwipeGestureHandlerOptions-direction?: SwipeDirection--><!--Device-SwipeGestureHandlerOptions-direction?: SwipeDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ Value range: [1, 10]
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwipeGestureHandlerOptions-fingers?: number--><!--Device-SwipeGestureHandlerOptions-fingers?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,5 +81,7 @@ If the value is less than or equal to 0, it will be converted to the default val
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwipeGestureHandlerOptions-speed?: number--><!--Device-SwipeGestureHandlerOptions-speed?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

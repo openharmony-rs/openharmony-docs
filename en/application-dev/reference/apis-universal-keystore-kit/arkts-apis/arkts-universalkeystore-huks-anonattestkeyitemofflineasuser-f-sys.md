@@ -27,6 +27,8 @@ Obtains an anonymous key certificate in offline mode for a specified user. This 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-huks-function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,      params: HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,      params: HuksParam[]): Promise<HuksReturnResult>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **System API:** This is a system API.

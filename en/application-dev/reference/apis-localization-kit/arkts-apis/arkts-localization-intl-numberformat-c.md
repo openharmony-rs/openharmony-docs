@@ -8,6 +8,8 @@ Provides the API for formatting number strings.
 
 **Since:** 6
 
+<!--Device-intl-export class NumberFormat--><!--Device-intl-export class NumberFormat-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Creates a **NumberFormat** object for the current system locale.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberFormat-constructor()--><!--Device-NumberFormat-constructor()-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -52,6 +56,8 @@ Creates a **NumberFormat** object based on the specified locale and options.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)--><!--Device-NumberFormat-constructor(locale: string | Array<string>, options?: NumberOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -82,6 +88,8 @@ Formats a number.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberFormat-format(num: double): string--><!--Device-NumberFormat-format(num: double): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -126,6 +134,8 @@ Formats a number range.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string--><!--Device-NumberFormat-formatRange(startRange: double, endRange: double): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**
@@ -161,6 +171,8 @@ Obtains the options for creating a **NumberFormat** object.
 **Since:** 6
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NumberFormat-resolvedOptions(): NumberOptions--><!--Device-NumberFormat-resolvedOptions(): NumberOptions-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

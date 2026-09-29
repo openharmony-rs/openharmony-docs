@@ -10,6 +10,8 @@ Options for setting the screen to be steady on.
 
 **Deprecated since:** 7
 
+<!--Device-unnamed-export interface SetKeepScreenOnOptions--><!--Device-unnamed-export interface SetKeepScreenOnOptions-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Called when an API call is complete.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-SetKeepScreenOnOptions-complete?: () => void--><!--Device-SetKeepScreenOnOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## fail
@@ -47,6 +51,8 @@ Called when an API call has failed. **data** indicates the error information, an
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SetKeepScreenOnOptions-fail?: (data: string, code: number) => void--><!--Device-SetKeepScreenOnOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -71,6 +77,8 @@ Called when an API call is successful.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-SetKeepScreenOnOptions-success?: () => void--><!--Device-SetKeepScreenOnOptions-success?: () => void-End-->
+
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 ## keepScreenOn
@@ -88,5 +96,7 @@ The value **true** means to keep the screen steady on, and the value **false** i
 **Deprecated since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-SetKeepScreenOnOptions-keepScreenOn: boolean--><!--Device-SetKeepScreenOnOptions-keepScreenOn: boolean-End-->
 
 **System capability:** SystemCapability.PowerManager.DisplayPowerManager.Lite

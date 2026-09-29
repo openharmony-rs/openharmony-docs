@@ -20,6 +20,8 @@ After the **CanvasRenderingContext2D** object is bound to the **Canvas** compone
 
 **Since:** 8
 
+<!--Device-unnamed-declare class CanvasRenderer extends CanvasPath--><!--Device-unnamed-declare class CanvasRenderer extends CanvasPath-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## beginPath
@@ -38,6 +40,8 @@ Creates a new drawing path.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-beginPath(): void--><!--Device-CanvasRenderer-beginPath(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## clearRect
@@ -55,6 +59,8 @@ Clears the drawn content in the specified area.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-clearRect(x: number, y: number, w: number, h: number): void--><!--Device-CanvasRenderer-clearRect(x: number, y: number, w: number, h: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,6 +89,8 @@ Sets the current path as the clipping path.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-clip(fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-clip(fillRule?: CanvasFillRule): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -108,6 +116,8 @@ Sets the specified path as the clipping path.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-clip(path: Path2D, fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-clip(path: Path2D, fillRule?: CanvasFillRule): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,6 +145,8 @@ Creates a conic gradient.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CanvasRenderer-createConicGradient(    startAngle: number,    x: number,    y: number  ): CanvasGradient--><!--Device-CanvasRenderer-createConicGradient(    startAngle: number,    x: number,    y: number  ): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,6 +179,8 @@ Creates a new **ImageData** object with the specified width and height based on 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-createImageData(sw: number, sh: number): ImageData--><!--Device-CanvasRenderer-createImageData(sw: number, sh: number): ImageData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,6 +215,8 @@ Creates a new **ImageData** object based on an existing **ImageData** object (wi
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-createImageData(imageData: ImageData): ImageData--><!--Device-CanvasRenderer-createImageData(imageData: ImageData): ImageData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -230,6 +246,8 @@ Creates a linear gradient.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient--><!--Device-CanvasRenderer-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,6 +282,8 @@ Creates a pattern for image filling based on a specified image and repetition mo
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | null--><!--Device-CanvasRenderer-createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | null-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -294,6 +314,8 @@ Creates a radial gradient color.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient--><!--Device-CanvasRenderer-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -330,6 +352,8 @@ Draws an image.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void--><!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -357,6 +381,8 @@ Draws the image by stretching or compressing it.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void--><!--Device-CanvasRenderer-drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,6 +424,8 @@ Draws the image after cropping, stretching, or compressing it.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-drawImage(    image: ImageBitmap | PixelMap,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void--><!--Device-CanvasRenderer-drawImage(    image: ImageBitmap | PixelMap,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -430,6 +458,8 @@ Fills the current path.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-fill(fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-fill(fillRule?: CanvasFillRule): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -456,6 +486,8 @@ Fills the specified path.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-fill(path: Path2D, fillRule?: CanvasFillRule): void--><!--Device-CanvasRenderer-fill(path: Path2D, fillRule?: CanvasFillRule): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -480,6 +512,8 @@ Fills a rectangle.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-fillRect(x: number, y: number, w: number, h: number): void--><!--Device-CanvasRenderer-fillRect(x: number, y: number, w: number, h: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -508,6 +542,8 @@ Draws filled text.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-fillText(text: string, x: number, y: number, maxWidth?: number): void--><!--Device-CanvasRenderer-fillText(text: string, x: number, y: number, maxWidth?: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -534,6 +570,8 @@ Creates an **ImageData** object from the pixels in the specified area of the cur
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData--><!--Device-CanvasRenderer-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -568,6 +606,8 @@ Obtains the dash line style of the current canvas.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-getLineDash(): number[]--><!--Device-CanvasRenderer-getLineDash(): number[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -589,6 +629,8 @@ Creates a **PixelMap** object from the pixels in the specified area of the curre
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CanvasRenderer-getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap--><!--Device-CanvasRenderer-getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,6 +665,8 @@ Obtains the transform matrix currently applied to the context.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-getTransform(): Matrix2D--><!--Device-CanvasRenderer-getTransform(): Matrix2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -646,6 +690,8 @@ Returns a text measurement object, through which the width of the specified text
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-measureText(text: string): TextMetrics--><!--Device-CanvasRenderer-measureText(text: string): TextMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -676,6 +722,8 @@ Fills a new rectangular area with **ImageData** data.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-putImageData(imageData: ImageData, dx: number | string, dy: number | string): void--><!--Device-CanvasRenderer-putImageData(imageData: ImageData, dx: number | string, dy: number | string): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -713,6 +761,8 @@ Uses **ImageData** data to clip and fill a new rectangular area.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-putImageData(    imageData: ImageData,    dx: number | string,    dy: number | string,    dirtyX: number | string,    dirtyY: number | string,    dirtyWidth: number | string,    dirtyHeight: number | string  ): void--><!--Device-CanvasRenderer-putImageData(    imageData: ImageData,    dx: number | string,    dy: number | string,    dirtyX: number | string,    dirtyY: number | string,    dirtyWidth: number | string,    dirtyHeight: number | string  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -741,6 +791,8 @@ Resets the **CanvasRenderingContext2D** to its default state, clearing the back 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CanvasRenderer-reset(): void--><!--Device-CanvasRenderer-reset(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## resetTransform
@@ -758,6 +810,8 @@ Resets the current matrix to the identity matrix.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-resetTransform(): void--><!--Device-CanvasRenderer-resetTransform(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -786,6 +840,8 @@ Restores the saved drawing context.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-restore(): void--><!--Device-CanvasRenderer-restore(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## restoreLayer
@@ -801,6 +857,8 @@ Restores the image transform and clipping state to the state before **saveLayer*
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CanvasRenderer-restoreLayer(): void--><!--Device-CanvasRenderer-restoreLayer(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -819,6 +877,8 @@ Rotates the current coordinate axes clockwise.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-rotate(angle: number): void--><!--Device-CanvasRenderer-rotate(angle: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -844,6 +904,8 @@ Saves the current drawing context.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-save(): void--><!--Device-CanvasRenderer-save(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## saveLayer
@@ -859,6 +921,8 @@ Creates a layer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CanvasRenderer-saveLayer(): void--><!--Device-CanvasRenderer-saveLayer(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -877,6 +941,8 @@ Sets the scaling transformation property of the canvas. Subsequent drawing opera
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-scale(x: number, y: number): void--><!--Device-CanvasRenderer-scale(x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -903,6 +969,8 @@ Sets the dash line style of the canvas.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-setLineDash(segments: number[]): void--><!--Device-CanvasRenderer-setLineDash(segments: number[]): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -924,6 +992,8 @@ Draws the currently passed-in **PixelMap** object on the canvas. For the **setPi
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CanvasRenderer-setPixelMap(value?: PixelMap): void--><!--Device-CanvasRenderer-setPixelMap(value?: PixelMap): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -961,6 +1031,8 @@ The **setTransform** method uses the same parameters as the **transform()** meth
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void--><!--Device-CanvasRenderer-setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -992,6 +1064,8 @@ Resets the existing transform matrix and creates a new one with the **Matrix2D**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-setTransform(transform?: Matrix2D): void--><!--Device-CanvasRenderer-setTransform(transform?: Matrix2D): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1016,6 +1090,8 @@ Performs a stroke operation based on the current path.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-stroke(): void--><!--Device-CanvasRenderer-stroke(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 <a id="stroke-1"></a>
@@ -1035,6 +1111,8 @@ Performs stroke drawing based on the specified path.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-stroke(path: Path2D): void--><!--Device-CanvasRenderer-stroke(path: Path2D): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1059,6 +1137,8 @@ Draws a rectangle with a border, without filling the interior.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-strokeRect(x: number, y: number, w: number, h: number): void--><!--Device-CanvasRenderer-strokeRect(x: number, y: number, w: number, h: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1087,6 +1167,8 @@ Draws stroked text.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-strokeText(text: string, x: number, y: number, maxWidth?: number): void--><!--Device-CanvasRenderer-strokeText(text: string, x: number, y: number, maxWidth?: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1113,6 +1195,8 @@ Displays the given **ImageBitmap** object.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-transferFromImageBitmap(bitmap: ImageBitmap): void--><!--Device-CanvasRenderer-transferFromImageBitmap(bitmap: ImageBitmap): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1150,6 +1234,8 @@ Corresponds to a transformation matrix. When you want to transform a shape, simp
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-transform(a: number, b: number, c: number, d: number, e: number, f: number): void--><!--Device-CanvasRenderer-transform(a: number, b: number, c: number, d: number, e: number, f: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1178,6 +1264,8 @@ Moves the origin of the current coordinate system.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-translate(x: number, y: number): void--><!--Device-CanvasRenderer-translate(x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1212,6 +1300,8 @@ When the value is **undefined**, the anti-aliasing effect is consistent with tha
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-CanvasRenderer-antialias: boolean | undefined--><!--Device-CanvasRenderer-antialias: boolean | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -1237,6 +1327,8 @@ Default value: "inherit"
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-direction: CanvasDirection--><!--Device-CanvasRenderer-direction: CanvasDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1275,6 +1367,8 @@ Invalid values are ignored.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-fillStyle: string | number | CanvasGradient | CanvasPattern--><!--Device-CanvasRenderer-fillStyle: string | number | CanvasGradient | CanvasPattern-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1320,6 +1414,8 @@ percentage parameters. The value range is [0, 1]. Default value: **sepia(0)**.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-filter: string--><!--Device-CanvasRenderer-filter: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## font
@@ -1362,6 +1458,8 @@ The other is to directly call the font engine's fontCollection.[loadFontSync](..
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-font: string--><!--Device-CanvasRenderer-font: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## globalAlpha
@@ -1387,6 +1485,8 @@ Default value: 1.0
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-globalAlpha: number--><!--Device-CanvasRenderer-globalAlpha: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1428,6 +1528,8 @@ Default value: 'source-over'
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-globalCompositeOperation: string--><!--Device-CanvasRenderer-globalCompositeOperation: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageSmoothingEnabled
@@ -1454,6 +1556,8 @@ Default value: **true**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-imageSmoothingEnabled: boolean--><!--Device-CanvasRenderer-imageSmoothingEnabled: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageSmoothingQuality
@@ -1479,6 +1583,8 @@ Default value: "low"
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-imageSmoothingQuality: ImageSmoothingQuality--><!--Device-CanvasRenderer-imageSmoothingQuality: ImageSmoothingQuality-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1528,6 +1634,8 @@ Default value: **0** (when an invalid value is input, the letter spacing is set 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-CanvasRenderer-letterSpacing: LengthMetrics | string--><!--Device-CanvasRenderer-letterSpacing: LengthMetrics | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineCap
@@ -1553,6 +1661,8 @@ Default value: 'butt'
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-lineCap: CanvasLineCap--><!--Device-CanvasRenderer-lineCap: CanvasLineCap-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1582,6 +1692,8 @@ Abnormal values **NaN** and **Infinity** are handled as the default value.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-lineDashOffset: number--><!--Device-CanvasRenderer-lineDashOffset: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lineJoin
@@ -1603,6 +1715,8 @@ Specifies the style of the intersection point where line segments meet. This att
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-lineJoin: CanvasLineJoin--><!--Device-CanvasRenderer-lineJoin: CanvasLineJoin-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1632,6 +1746,8 @@ The value of **lineWidth** does not support 0 or negative numbers. **0**, negati
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-lineWidth: number--><!--Device-CanvasRenderer-lineWidth: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## miterLimit
@@ -1659,6 +1775,8 @@ The value of **miterLimit** does not support 0 or negative numbers. **0**, negat
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-miterLimit: number--><!--Device-CanvasRenderer-miterLimit: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1690,6 +1808,8 @@ Negative values are not supported for **shadowBlur**. Negative values, **NaN**, 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-shadowBlur: number--><!--Device-CanvasRenderer-shadowBlur: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadowColor
@@ -1715,6 +1835,8 @@ Default value: transparent black
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-shadowColor: string--><!--Device-CanvasRenderer-shadowColor: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1744,6 +1866,8 @@ Abnormal values **NaN** and **Infinity** are processed as the default value.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-shadowOffsetX: number--><!--Device-CanvasRenderer-shadowOffsetX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadowOffsetY
@@ -1771,6 +1895,8 @@ The abnormal values **NaN** and **Infinity** are handled as the default value.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-shadowOffsetY: number--><!--Device-CanvasRenderer-shadowOffsetY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1808,6 +1934,8 @@ Invalid values are ignored.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-strokeStyle: string | number | CanvasGradient | CanvasPattern--><!--Device-CanvasRenderer-strokeStyle: string | number | CanvasGradient | CanvasPattern-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -1834,6 +1962,8 @@ Default value: 'left'
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CanvasRenderer-textAlign: CanvasTextAlign--><!--Device-CanvasRenderer-textAlign: CanvasTextAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textBaseline
@@ -1857,5 +1987,7 @@ Default value: 'alphabetic'
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CanvasRenderer-textBaseline: CanvasTextBaseline--><!--Device-CanvasRenderer-textBaseline: CanvasTextBaseline-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

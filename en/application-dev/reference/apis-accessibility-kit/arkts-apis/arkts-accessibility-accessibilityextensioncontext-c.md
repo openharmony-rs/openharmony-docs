@@ -25,6 +25,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 **Since:** 9
 
+<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## getFocusElement
@@ -38,6 +40,8 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityExtensionContext-getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<AccessibilityElement>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -88,6 +92,8 @@ Obtains the focus element. This API uses a promise to return the result.
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -141,6 +147,8 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityExtensionContext-getFocusElement(callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityExtensionContext-getFocusElement(callback: AsyncCallback<AccessibilityElement>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -186,6 +194,8 @@ Obtains the root element of the specified window. This API uses an asynchronous 
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-getWindowRootElement(windowId: int, callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityExtensionContext-getWindowRootElement(windowId: int, callback: AsyncCallback<AccessibilityElement>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -236,6 +246,8 @@ Obtains the root element of the specified window. This API uses a promise to ret
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-getWindowRootElement(windowId?: int): Promise<AccessibilityElement>--><!--Device-AccessibilityExtensionContext-getWindowRootElement(windowId?: int): Promise<AccessibilityElement>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -289,6 +301,8 @@ Obtains the root element of the currently active window. This API uses an asynch
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityExtensionContext-getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void--><!--Device-AccessibilityExtensionContext-getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -334,6 +348,8 @@ Obtains all windows on the specified display. This API uses an asynchronous call
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-getWindows(displayId: long, callback: AsyncCallback<Array<AccessibilityElement>>): void--><!--Device-AccessibilityExtensionContext-getWindows(displayId: long, callback: AsyncCallback<Array<AccessibilityElement>>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -381,6 +397,8 @@ Obtains all windows on the specified display. This API uses a promise to return 
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-getWindows(displayId?: long): Promise<Array<AccessibilityElement>>--><!--Device-AccessibilityExtensionContext-getWindows(displayId?: long): Promise<Array<AccessibilityElement>>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -431,6 +449,8 @@ Obtains all windows on the default main display. This API uses an asynchronous c
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityExtensionContext-getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void--><!--Device-AccessibilityExtensionContext-getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -475,6 +495,8 @@ Injects a gesture, applicable to scenarios where an accessibility app performs t
 **Deprecated since:** 10
 
 **Substitutes:** [injectGestureSync](#injectgesturesync)
+
+<!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void--><!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -529,6 +551,8 @@ Injects a gesture, applicable to scenarios where an accessibility app performs t
 
 **Substitutes:** [injectGestureSync](#injectgesturesync)
 
+<!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath): Promise<void>--><!--Device-AccessibilityExtensionContext-injectGesture(gesturePath: GesturePath): Promise<void>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -582,6 +606,8 @@ Injects a gesture, applicable to scenarios where an accessibility app performs t
 
 **Deprecated since:** 12
 
+<!--Device-AccessibilityExtensionContext-injectGestureSync(gesturePath: GesturePath): void--><!--Device-AccessibilityExtensionContext-injectGestureSync(gesturePath: GesturePath): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters:**
@@ -622,6 +648,8 @@ Sets the bundle name of the concerned app. This API uses an asynchronous callbac
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): void--><!--Device-AccessibilityExtensionContext-setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -671,6 +699,8 @@ Sets the bundle name of the concerned app. This API uses a promise to return the
 **Since:** 9
 
 **Deprecated since:** 12
+
+<!--Device-AccessibilityExtensionContext-setTargetBundleName(targetNames: Array<string>): Promise<void>--><!--Device-AccessibilityExtensionContext-setTargetBundleName(targetNames: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -16,6 +16,8 @@ To reference this object, at least one parameter must be passed.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding--><!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)

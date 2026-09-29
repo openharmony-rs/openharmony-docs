@@ -18,6 +18,8 @@ Clears the HiTrace ID in the current thread's TLS.
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function clearId(): void--><!--Device-hiTraceChain-function clearId(): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Examples**

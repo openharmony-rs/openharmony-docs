@@ -18,6 +18,8 @@ Removes a key from an ArkTS object. This API can be used for related operations 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-json-function remove(obj: object, property: string): void--><!--Device-json-function remove(obj: object, property: string): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

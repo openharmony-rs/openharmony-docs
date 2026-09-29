@@ -22,6 +22,8 @@ Sets extended attributes of the network specified by **netHandle** to indicate i
 
 **Required permissions:** ohos.permission.SET_NET_EXT_ATTRIBUTE
 
+<!--Device-connection-function setNetExtAttribute(netHandle: NetHandle, netExtAttribute: string): Promise<void>--><!--Device-connection-function setNetExtAttribute(netHandle: NetHandle, netExtAttribute: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

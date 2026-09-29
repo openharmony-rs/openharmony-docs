@@ -20,6 +20,8 @@ Controls the actions of Bluetooth peripherals.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promise<void>--><!--Device-connection-function controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

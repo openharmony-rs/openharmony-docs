@@ -14,4 +14,6 @@ declare const Entry: ClassDecorator & ((options?: LocalStorage | EntryOptions) =
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare const Entry: ClassDecorator & ((options?: LocalStorage | EntryOptions) => ClassDecorator)--><!--Device-unnamed-declare const Entry: ClassDecorator & ((options?: LocalStorage | EntryOptions) => ClassDecorator)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

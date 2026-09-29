@@ -12,6 +12,8 @@ Represents the function used by the **MultiNavigation** component to load naviga
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type NavDestinationBuildFunction = (name: string, param?: object) => void--><!--Device-unnamed-declare type NavDestinationBuildFunction = (name: string, param?: object) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -22,6 +22,8 @@ Unsubscribe location changed. You are advised to use the [offLocationChange](#of
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-geoLocationManager-function off(type: 'locationChange', callback?: Callback<Location>): void--><!--Device-geoLocationManager-function off(type: 'locationChange', callback?: Callback<Location>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -79,6 +81,8 @@ Unsubscribe continuous location error changed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-geoLocationManager-function off(type: 'locationError', callback?: Callback<LocationError>): void--><!--Device-geoLocationManager-function off(type: 'locationError', callback?: Callback<LocationError>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -123,6 +127,8 @@ function off(type: 'locationEnabledChange', callback?: Callback<boolean>): void
 Unsubscribe location switch changed.
 
 **Since:** 9
+
+<!--Device-geoLocationManager-function off(type: 'locationEnabledChange', callback?: Callback<boolean>): void--><!--Device-geoLocationManager-function off(type: 'locationEnabledChange', callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -169,6 +175,8 @@ Unsubscribe to cache GNSS locations update messages.
 **Since:** 9
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-geoLocationManager-function off(type: 'cachedGnssLocationsChange', callback?: Callback<Array<Location>>): void--><!--Device-geoLocationManager-function off(type: 'cachedGnssLocationsChange', callback?: Callback<Array<Location>>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -223,6 +231,8 @@ Unsubscribe satellite status changed.
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function off(type: 'satelliteStatusChange', callback?: Callback<SatelliteStatusInfo>): void--><!--Device-geoLocationManager-function off(type: 'satelliteStatusChange', callback?: Callback<SatelliteStatusInfo>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -270,6 +280,8 @@ Unsubscribe nmea message changed.
 **Since:** 9
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-geoLocationManager-function off(type: 'nmeaMessage', callback?: Callback<string>): void--><!--Device-geoLocationManager-function off(type: 'nmeaMessage', callback?: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -321,6 +333,8 @@ Remove a geofence and unsubscribe geofence status changed.
 **Required permissions:** 
 - API version 25 and later: N/A
 - API versions 9 to 24: ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-geoLocationManager-function off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void--><!--Device-geoLocationManager-function off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -388,6 +402,8 @@ Unregistering the callback function for listening to country code changes.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-function off(type: 'countryCodeChange', callback?: Callback<CountryCode>): void--><!--Device-geoLocationManager-function off(type: 'countryCodeChange', callback?: Callback<CountryCode>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -435,6 +451,8 @@ Stop bluetooth scanning and unregister to listen to bluetooth scanning result ch
 **Since:** 16
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-geoLocationManager-function off(type: 'bluetoothScanResultChange', callback?: Callback<BluetoothScanResult>): void--><!--Device-geoLocationManager-function off(type: 'bluetoothScanResultChange', callback?: Callback<BluetoothScanResult>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

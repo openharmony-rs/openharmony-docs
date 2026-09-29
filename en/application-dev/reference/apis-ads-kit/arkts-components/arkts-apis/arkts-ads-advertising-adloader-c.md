@@ -8,6 +8,8 @@ Provides the APIs for loading ads.
 
 **Since:** 11
 
+<!--Device-advertising-export class AdLoader--><!--Device-advertising-export class AdLoader-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Constructor.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdLoader-constructor(context: common.Context)--><!--Device-AdLoader-constructor(context: common.Context)-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -61,6 +65,8 @@ Loads an ad.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdLoader-loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener): void--><!--Device-AdLoader-loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 
@@ -123,6 +129,8 @@ Loads multiple ads.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AdLoader-loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener: MultiSlotsAdLoadListener): void--><!--Device-AdLoader-loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener: MultiSlotsAdLoadListener): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 

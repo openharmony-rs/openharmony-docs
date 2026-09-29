@@ -18,6 +18,8 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.ANSWER_CALL
 
+<!--Device-call-function rejectCall(callId: int, options: RejectMessageOptions, callback: AsyncCallback<void>): void--><!--Device-call-function rejectCall(callId: int, options: RejectMessageOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ Rejects a call. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ANSWER_CALL
+
+<!--Device-call-function rejectCall(callId?: int, options?: RejectMessageOptions): Promise<void>--><!--Device-call-function rejectCall(callId?: int, options?: RejectMessageOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -133,6 +137,8 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.ANSWER_CALL
 
+<!--Device-call-function rejectCall(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function rejectCall(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -184,6 +190,8 @@ Rejects a call. This API uses an asynchronous callback to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ANSWER_CALL
+
+<!--Device-call-function rejectCall(options: RejectMessageOptions, callback: AsyncCallback<void>): void--><!--Device-call-function rejectCall(options: RejectMessageOptions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

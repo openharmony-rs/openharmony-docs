@@ -10,6 +10,8 @@ Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-a
 
 **Since:** 19
 
+<!--Device-unnamed-declare interface UIWaterFlowEvent extends UIScrollableCommonEvent--><!--Device-unnamed-declare interface UIWaterFlowEvent extends UIScrollableCommonEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## setOnDidScroll
@@ -27,6 +29,8 @@ If the input parameter is **undefined**, the event callback is reset.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-UIWaterFlowEvent-setOnDidScroll(callback: OnScrollCallback | undefined): void--><!--Device-UIWaterFlowEvent-setOnDidScroll(callback: OnScrollCallback | undefined): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ If the input parameter is **undefined**, the event callback is reset.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-UIWaterFlowEvent-setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void--><!--Device-UIWaterFlowEvent-setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -75,6 +81,8 @@ If the input parameter is **undefined**, the event callback is reset.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-UIWaterFlowEvent-setOnWillScroll(callback: OnWillScrollCallback | undefined): void--><!--Device-UIWaterFlowEvent-setOnWillScroll(callback: OnWillScrollCallback | undefined): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

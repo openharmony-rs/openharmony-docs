@@ -10,6 +10,8 @@ Defines user face angle data.
 
 **Since:** 26.0.0
 
+<!--Device-userStatus-export interface UserFaceAngleData extends UserStatusData--><!--Device-userStatus-export interface UserFaceAngleData extends UserStatusData-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ Network ID of device that user head is facing. The maximum length is 128.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserFaceAngleData-hpeNetworkId: string--><!--Device-UserFaceAngleData-hpeNetworkId: string-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

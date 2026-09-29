@@ -12,9 +12,11 @@ import { window } from '@kit.ArkUI';
 function getTopNavDestinationName(windowId: number): Promise<string>
 ```
 
-Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination) in the current top-level [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component of the specified foreground window. This API uses a promise to return the result.
+Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) in the current top-level [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) component of the specified foreground window. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-window-function getTopNavDestinationName(windowId: int): Promise<string>--><!--Device-window-function getTopNavDestinationName(windowId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -30,7 +32,7 @@ Obtains the name of [NavDestination](../arkts-components/arkts-arkui-navdestinat
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Promise used to return the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination) name obtained. <br>If there are nested [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) components or multiple [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) components on the current page, the information of the most recently created [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component is queried. <br>If the page does not have the [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component or the [Navigation](../arkts-components/arkts-arkui-navigation-comp.md#navigation) component does not have [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md#navdestination), an empty string is returned. |
+| Promise&lt;string&gt; | Promise used to return the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) name obtained. <br>If there are nested [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) components or multiple [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) components on the current page, the information of the most recently created [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) component is queried. <br>If the page does not have the [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) component or the [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) component does not have [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md), an empty string is returned. |
 
 **Error codes:**
 

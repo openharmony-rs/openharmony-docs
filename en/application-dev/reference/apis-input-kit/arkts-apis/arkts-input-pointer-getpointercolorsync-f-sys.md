@@ -16,6 +16,8 @@ Obtains the pointer color. This API returns the result synchronously.
 
 **Since:** 10
 
+<!--Device-pointer-function getPointerColorSync(): int--><!--Device-pointer-function getPointerColorSync(): int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.

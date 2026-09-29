@@ -20,6 +20,8 @@ Opens the Certificate Management Install Certificate dialog box. After the certi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManagerDialog-function openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise<string>--><!--Device-certificateManagerDialog-function openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise<string>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 **Parameters:**

@@ -6,9 +6,11 @@ export declare class PathShape extends CommonShapeMethod<PathShape>
 
 用于clipShape和maskShape接口的路径形状，继承自[CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md)。
 
-**继承/实现关系：** PathShape extends CommonShapeMethod&lt;PathShape&gt;
+**继承/实现关系：** PathShape extends CommonShapeMethod<PathShape>
 
 **起始版本：** 12
+
+<!--Device-unnamed-export declare class PathShape extends CommonShapeMethod<PathShape>--><!--Device-unnamed-export declare class PathShape extends CommonShapeMethod<PathShape>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +44,8 @@ commands(commands: string): PathShape
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PathShape-commands(commands: string): PathShape--><!--Device-PathShape-commands(commands: string): PathShape-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -71,6 +75,8 @@ constructor(options?: PathShapeOptions)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PathShape-constructor(options?: PathShapeOptions)--><!--Device-PathShape-constructor(options?: PathShapeOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

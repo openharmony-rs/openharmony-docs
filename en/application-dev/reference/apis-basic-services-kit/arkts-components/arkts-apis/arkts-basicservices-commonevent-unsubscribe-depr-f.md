@@ -19,6 +19,8 @@ Unsubscribes from common events. This API uses an asynchronous callback to retur
 
 **Substitutes:** [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md)
 
+<!--Device-commonEvent-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void--><!--Device-commonEvent-function unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **Parameters:**

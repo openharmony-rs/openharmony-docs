@@ -19,6 +19,8 @@ Sets the enabling state of device notification access for the specified applicat
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,    enabledBundles: BundleOption[], enabled: boolean): Promise<void>--><!--Device-notificationExtensionSubscription-function setUserGrantedBundleState(targetBundle: BundleOption,    enabledBundles: BundleOption[], enabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

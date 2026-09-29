@@ -14,6 +14,8 @@ Enumerates the skill types.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-skillManager-export type SkillType = _SkillType--><!--Device-skillManager-export type SkillType = _SkillType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Type:** _SkillType

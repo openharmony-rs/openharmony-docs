@@ -14,6 +14,8 @@ Provides APIs for registering custom fonts.
 
 **Since:** 10
 
+<!--Device-unnamed-export class Font--><!--Device-unnamed-export class Font-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Obtains information about a system font based on the font name.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Font-getFontByName(fontName: string): font.FontInfo--><!--Device-Font-getFontByName(fontName: string): font.FontInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,6 +111,8 @@ You are advised to use the [getSystemFontFullNamesByType](../../apis-arkgraphics
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-Font-getSystemFontList(): Array<string>--><!--Device-Font-getSystemFontList(): Array<string>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -157,6 +163,8 @@ This API is asynchronous and does not support concurrent calls.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Font-registerFont(options: font.FontOptions): void--><!--Device-Font-registerFont(options: font.FontOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -16,6 +16,8 @@ Sets the display mode of the foldable device.
 
 **Since:** 10
 
+<!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode): void--><!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.
@@ -60,6 +62,8 @@ function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 Sets the display mode of the foldable device, with the reason for the change specified.
 
 **Since:** 19
+
+<!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void--><!--Device-display-function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

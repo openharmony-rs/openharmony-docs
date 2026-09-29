@@ -11,6 +11,8 @@ Defines the callback invoked when the framework needs a passcode for a companion
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-type PasscodePromptCallback =      (submit: PasscodeSubmitCallback, params: PasscodePromptParams) => void--><!--Device-companionDeviceAuth-type PasscodePromptCallback =      (submit: PasscodeSubmitCallback, params: PasscodePromptParams) => void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

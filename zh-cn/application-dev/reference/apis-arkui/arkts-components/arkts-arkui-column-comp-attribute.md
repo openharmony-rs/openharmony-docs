@@ -8,9 +8,11 @@ declare class ColumnAttribute extends CommonMethod<ColumnAttribute>
 
 支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
-**继承/实现关系：** ColumnAttribute extends CommonMethod&lt;ColumnAttribute&gt;
+**继承/实现关系：** ColumnAttribute extends CommonMethod<ColumnAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class ColumnAttribute extends CommonMethod<ColumnAttribute>--><!--Device-unnamed-declare class ColumnAttribute extends CommonMethod<ColumnAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ alignItems(value: HorizontalAlign)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnAttribute-alignItems(value: HorizontalAlign): ColumnAttribute--><!--Device-ColumnAttribute-alignItems(value: HorizontalAlign): ColumnAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ justifyContent(value: FlexAlign)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnAttribute-justifyContent(value: FlexAlign): ColumnAttribute--><!--Device-ColumnAttribute-justifyContent(value: FlexAlign): ColumnAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,6 +79,8 @@ reverse(isReversed: Optional<boolean>)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ColumnAttribute-reverse(isReversed: Optional<boolean>): ColumnAttribute--><!--Device-ColumnAttribute-reverse(isReversed: Optional<boolean>): ColumnAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

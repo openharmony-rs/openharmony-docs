@@ -12,6 +12,8 @@ Enumerates the data types.
 
 **Substitutes:** ValueType
 
+<!--Device-distributedData-enum ValueType--><!--Device-distributedData-enum ValueType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## STRING
@@ -27,6 +29,8 @@ String.
 **Deprecated since:** 9
 
 **Substitutes:** STRING
+
+<!--Device-ValueType-STRING = 0--><!--Device-ValueType-STRING = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -44,6 +48,8 @@ Integer.
 
 **Substitutes:** INTEGER
 
+<!--Device-ValueType-INTEGER = 1--><!--Device-ValueType-INTEGER = 1-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## FLOAT
@@ -59,6 +65,8 @@ Float (single-precision floating point).
 **Deprecated since:** 9
 
 **Substitutes:** FLOAT
+
+<!--Device-ValueType-FLOAT = 2--><!--Device-ValueType-FLOAT = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -76,6 +84,8 @@ Byte array.
 
 **Substitutes:** BYTE_ARRAY
 
+<!--Device-ValueType-BYTE_ARRAY = 3--><!--Device-ValueType-BYTE_ARRAY = 3-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## BOOLEAN
@@ -92,6 +102,8 @@ Boolean.
 
 **Substitutes:** BOOLEAN
 
+<!--Device-ValueType-BOOLEAN = 4--><!--Device-ValueType-BOOLEAN = 4-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## DOUBLE
@@ -107,5 +119,7 @@ Double (double-precision floating point).
 **Deprecated since:** 9
 
 **Substitutes:** DOUBLE
+
+<!--Device-ValueType-DOUBLE = 5--><!--Device-ValueType-DOUBLE = 5-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

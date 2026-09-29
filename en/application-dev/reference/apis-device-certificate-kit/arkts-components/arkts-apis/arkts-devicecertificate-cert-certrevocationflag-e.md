@@ -8,6 +8,8 @@ Enumerates the certificate revocation flags.
 
 **Since:** 26.0.0
 
+<!--Device-cert-enum CertRevocationFlag--><!--Device-cert-enum CertRevocationFlag-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## CERT_REVOCATION_PREFER_OCSP
@@ -27,7 +29,9 @@ timeout occurs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-CertRevocationFlag-CERT_REVOCATION_PREFER_OCSP = 0--><!--Device-CertRevocationFlag-CERT_REVOCATION_PREFER_OCSP = 0-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -45,7 +49,9 @@ Enables the CRL check. Checks the certificate status using a certificate revocat
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-CertRevocationFlag-CERT_REVOCATION_CRL_CHECK = 1--><!--Device-CertRevocationFlag-CERT_REVOCATION_CRL_CHECK = 1-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -69,7 +75,9 @@ Enables OCSP check. Checks the certificate status using the Online Certificate S
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-CertRevocationFlag-CERT_REVOCATION_OCSP_CHECK = 2--><!--Device-CertRevocationFlag-CERT_REVOCATION_OCSP_CHECK = 2-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -90,6 +98,8 @@ checked.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-CertRevocationFlag-CERT_REVOCATION_CHECK_ALL_CERT = 3--><!--Device-CertRevocationFlag-CERT_REVOCATION_CHECK_ALL_CERT = 3-End-->
 
 **System capability:** SystemCapability.Security.Cert

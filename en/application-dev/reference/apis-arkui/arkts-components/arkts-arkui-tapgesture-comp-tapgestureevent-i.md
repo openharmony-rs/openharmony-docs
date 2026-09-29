@@ -10,6 +10,8 @@ Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.
 
 **Since:** 11
 
+<!--Device-unnamed-interface TapGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface TapGestureEvent extends BaseGestureEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## tapLocation
@@ -27,5 +29,7 @@ Coordinate information of the current tap gesture. For non-tap gestures, the ret
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TapGestureEvent-tapLocation?: EventLocationInfo--><!--Device-TapGestureEvent-tapLocation?: EventLocationInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

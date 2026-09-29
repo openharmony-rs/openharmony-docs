@@ -24,6 +24,8 @@ declare interface CustomDialogControllerOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface CustomDialogControllerOptions--><!--Device-unnamed-declare interface CustomDialogControllerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancel
@@ -39,6 +41,8 @@ cancel?: () => void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-cancel?: () => void--><!--Device-CustomDialogControllerOptions-cancel?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ alignment?: DialogAlignment
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-alignment?: DialogAlignment--><!--Device-CustomDialogControllerOptions-alignment?: DialogAlignment-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoCancel
@@ -79,6 +85,8 @@ autoCancel?: boolean
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-autoCancel?: boolean--><!--Device-CustomDialogControllerOptions-autoCancel?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +114,8 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-backgroundBlurStyle?: BlurStyle--><!--Device-CustomDialogControllerOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -123,6 +133,8 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-CustomDialogControllerOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,6 +160,8 @@ backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-backgroundColor?: ResourceColor--><!--Device-CustomDialogControllerOptions-backgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -165,6 +179,8 @@ backgroundEffect?: BackgroundEffectOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-CustomDialogControllerOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +204,8 @@ borderColor?: ResourceColor | EdgeColors
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-borderColor?: ResourceColor | EdgeColors--><!--Device-CustomDialogControllerOptions-borderColor?: ResourceColor | EdgeColors-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderStyle
@@ -209,6 +227,8 @@ borderStyle?: BorderStyle | EdgeStyles
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-borderStyle?: BorderStyle | EdgeStyles--><!--Device-CustomDialogControllerOptions-borderStyle?: BorderStyle | EdgeStyles-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -236,6 +256,8 @@ borderWidth?: Dimension | EdgeWidths
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-borderWidth?: Dimension | EdgeWidths--><!--Device-CustomDialogControllerOptions-borderWidth?: Dimension | EdgeWidths-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -259,6 +281,8 @@ builder: any
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-builder: any--><!--Device-CustomDialogControllerOptions-builder: any-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,6 +312,8 @@ playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-closeAnimation?: AnimateParam--><!--Device-CustomDialogControllerOptions-closeAnimation?: AnimateParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## cornerRadius
@@ -311,6 +337,8 @@ cornerRadius?: Dimension | BorderRadiuses
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-cornerRadius?: Dimension | BorderRadiuses--><!--Device-CustomDialogControllerOptions-cornerRadius?: Dimension | BorderRadiuses-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -345,6 +373,8 @@ customStyle?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-customStyle?: boolean--><!--Device-CustomDialogControllerOptions-customStyle?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## displayModeInSubWindow
@@ -370,6 +400,8 @@ displayModeInSubWindow?: DialogDisplayMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-displayModeInSubWindow?: DialogDisplayMode--><!--Device-CustomDialogControllerOptions-displayModeInSubWindow?: DialogDisplayMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -397,6 +429,8 @@ PC/2in1设备弹窗默认显示在上半屏，在enableHoverMode设置为true时
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-enableHoverMode?: boolean--><!--Device-CustomDialogControllerOptions-enableHoverMode?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## focusable
@@ -423,6 +457,8 @@ focusable?: boolean
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-focusable?: boolean--><!--Device-CustomDialogControllerOptions-focusable?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridCount
@@ -444,6 +480,8 @@ gridCount?: number
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-gridCount?: number--><!--Device-CustomDialogControllerOptions-gridCount?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -468,6 +506,8 @@ height?: Dimension
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-height?: Dimension--><!--Device-CustomDialogControllerOptions-height?: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverModeArea
@@ -489,6 +529,8 @@ hoverModeArea?: HoverModeAreaType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-hoverModeArea?: HoverModeAreaType--><!--Device-CustomDialogControllerOptions-hoverModeArea?: HoverModeAreaType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -515,6 +557,8 @@ immersiveMode?: ImmersiveMode
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-immersiveMode?: ImmersiveMode--><!--Device-CustomDialogControllerOptions-immersiveMode?: ImmersiveMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isModal
@@ -536,6 +580,8 @@ isModal?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-isModal?: boolean--><!--Device-CustomDialogControllerOptions-isModal?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -561,6 +607,8 @@ keyboardAvoidDistance?: LengthMetrics
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-keyboardAvoidDistance?: LengthMetrics--><!--Device-CustomDialogControllerOptions-keyboardAvoidDistance?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyboardAvoidMode
@@ -582,6 +630,8 @@ keyboardAvoidMode?: KeyboardAvoidMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-keyboardAvoidMode?: KeyboardAvoidMode--><!--Device-CustomDialogControllerOptions-keyboardAvoidMode?: KeyboardAvoidMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,6 +658,8 @@ levelMode?: LevelMode
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-levelMode?: LevelMode--><!--Device-CustomDialogControllerOptions-levelMode?: LevelMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelOrder
@@ -633,6 +685,8 @@ levelOrder?: LevelOrder
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-levelOrder?: LevelOrder--><!--Device-CustomDialogControllerOptions-levelOrder?: LevelOrder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -657,6 +711,8 @@ levelUniqueId?: number
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-levelUniqueId?: number--><!--Device-CustomDialogControllerOptions-levelUniqueId?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maskColor
@@ -676,6 +732,8 @@ maskColor?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-maskColor?: ResourceColor--><!--Device-CustomDialogControllerOptions-maskColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -701,6 +759,8 @@ showInSubWindow为true时，maskRect不生效。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-maskRect?: Rectangle--><!--Device-CustomDialogControllerOptions-maskRect?: Rectangle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -720,6 +780,8 @@ offset?: Offset
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-offset?: Offset--><!--Device-CustomDialogControllerOptions-offset?: Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -749,6 +811,8 @@ onDidAppear?: Callback<void>
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-onDidAppear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onDidAppear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -770,6 +834,8 @@ onDidDisappear?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-onDidDisappear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onDidDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -795,6 +861,8 @@ onWillAppear?: Callback<void>
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-onWillAppear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onWillAppear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDisappear
@@ -816,6 +884,8 @@ onWillDisappear?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-onWillDisappear?: Callback<void>--><!--Device-CustomDialogControllerOptions-onWillDisappear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -840,6 +910,8 @@ onWillDismiss?: Callback<DismissDialogAction>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-onWillDismiss?: Callback<DismissDialogAction>--><!--Device-CustomDialogControllerOptions-onWillDismiss?: Callback<DismissDialogAction>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -867,6 +939,8 @@ playMode控制动画播放模式，默认值为PlayMode.Normal，设置为其他
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-openAnimation?: AnimateParam--><!--Device-CustomDialogControllerOptions-openAnimation?: AnimateParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -886,6 +960,8 @@ shadow?: ShadowOptions | ShadowStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-CustomDialogControllerOptions-shadow?: ShadowOptions | ShadowStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -912,6 +988,8 @@ showInSubWindow?: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-showInSubWindow?: boolean--><!--Device-CustomDialogControllerOptions-showInSubWindow?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -936,6 +1014,8 @@ ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-arkui-uimaterial-immersiv
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CustomDialogControllerOptions-systemMaterial?: SystemUiMaterial--><!--Device-CustomDialogControllerOptions-systemMaterial?: SystemUiMaterial-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -958,5 +1038,7 @@ width?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CustomDialogControllerOptions-width?: Dimension--><!--Device-CustomDialogControllerOptions-width?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

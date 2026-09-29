@@ -12,6 +12,8 @@ interface TabSegmentButtonConstructionOptions extends CommonSegmentButtonOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface TabSegmentButtonConstructionOptions extends CommonSegmentButtonOptions--><!--Device-unnamed-interface TabSegmentButtonConstructionOptions extends CommonSegmentButtonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,5 +37,7 @@ buttons: ItemRestriction<SegmentButtonTextItem>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabSegmentButtonConstructionOptions-buttons: ItemRestriction<SegmentButtonTextItem>--><!--Device-TabSegmentButtonConstructionOptions-buttons: ItemRestriction<SegmentButtonTextItem>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

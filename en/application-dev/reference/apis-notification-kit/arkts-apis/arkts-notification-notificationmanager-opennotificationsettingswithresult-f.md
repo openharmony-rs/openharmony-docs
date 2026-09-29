@@ -20,6 +20,8 @@ Unlike openNotificationSettings, this API returns a NotificationSetting object w
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function openNotificationSettingsWithResult(context: UIAbilityContext): Promise<NotificationSetting>--><!--Device-notificationManager-function openNotificationSettingsWithResult(context: UIAbilityContext): Promise<NotificationSetting>-End-->
+
 **System capability:** SystemCapability.Notification.NotificationSettings
 
 **See also:**

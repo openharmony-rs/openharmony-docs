@@ -24,6 +24,8 @@ Unsubscribe the event reported when a remote Bluetooth device is discovered. On 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function off(type: 'bluetoothDeviceFind', callback?: Callback<Array<string>>): void--><!--Device-bluetoothManager-function off(type: 'bluetoothDeviceFind', callback?: Callback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -74,6 +76,8 @@ Unsubscribe the event reported when a remote Bluetooth device is bonded. On API 
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
+
+<!--Device-bluetoothManager-function off(type: 'bondStateChange', callback?: Callback<BondStateParam>): void--><!--Device-bluetoothManager-function off(type: 'bondStateChange', callback?: Callback<BondStateParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -127,6 +131,8 @@ Unsubscribe the event of a pairing request from a remote Bluetooth device. On AP
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.DISCOVER_BLUETOOTH
 
+<!--Device-bluetoothManager-function off(type: 'pinRequired', callback?: Callback<PinRequiredParam>): void--><!--Device-bluetoothManager-function off(type: 'pinRequired', callback?: Callback<PinRequiredParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -179,6 +185,8 @@ Unsubscribe the event reported when the Bluetooth state changes. On API 10 and a
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function off(type: 'stateChange', callback?: Callback<BluetoothState>): void--><!--Device-bluetoothManager-function off(type: 'stateChange', callback?: Callback<BluetoothState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -226,6 +234,8 @@ Unsubscribe the event reported when data is read from the socket.
 **Deprecated since:** 10
 
 **Substitutes:** sppRead
+
+<!--Device-bluetoothManager-function off(type: 'sppRead', clientSocket: number, callback?: Callback<ArrayBuffer>): void--><!--Device-bluetoothManager-function off(type: 'sppRead', clientSocket: number, callback?: Callback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

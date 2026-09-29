@@ -26,6 +26,8 @@ Connects this ability to a ServiceAbility.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-particleAbility-function connectAbility(request: Want, options: ConnectOptions): number--><!--Device-particleAbility-function connectAbility(request: Want, options: ConnectOptions): number-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**

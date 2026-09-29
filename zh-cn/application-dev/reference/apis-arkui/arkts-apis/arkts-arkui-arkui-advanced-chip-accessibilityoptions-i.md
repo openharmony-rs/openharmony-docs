@@ -8,6 +8,8 @@ export interface AccessibilityOptions
 
 **起始版本：** 14
 
+<!--Device-unnamed-export interface AccessibilityOptions--><!--Device-unnamed-export interface AccessibilityOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-AccessibilityOptions-accessibilityDescription?: ResourceStr--><!--Device-AccessibilityOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +74,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-AccessibilityOptions-accessibilityLevel?: string--><!--Device-AccessibilityOptions-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -91,5 +97,7 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-AccessibilityOptions-accessibilityText?: ResourceStr--><!--Device-AccessibilityOptions-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

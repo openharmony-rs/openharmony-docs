@@ -12,6 +12,8 @@ Asynchronous callback interface.
 
 **Substitutes:** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)
 
+<!--Device-resourceManager-export interface AsyncCallback<T>--><!--Device-resourceManager-export interface AsyncCallback<T>-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
 **Deprecated since:** 9
 
 **Substitutes:** [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)
+
+<!--Device-AsyncCallback-(err: Error, data: T): void--><!--Device-AsyncCallback-(err: Error, data: T): void-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
 

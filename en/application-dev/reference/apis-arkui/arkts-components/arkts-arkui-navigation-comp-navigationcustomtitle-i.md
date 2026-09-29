@@ -8,6 +8,8 @@ Defines a custom title for the **Navigation** component.
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface NavigationCustomTitle--><!--Device-unnamed-declare interface NavigationCustomTitle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -24,6 +26,8 @@ Content of the title bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavigationCustomTitle-builder: CustomBuilder--><!--Device-NavigationCustomTitle-builder: CustomBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -39,5 +43,7 @@ Height of the title bar.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavigationCustomTitle-height: TitleHeight | Length--><!--Device-NavigationCustomTitle-height: TitleHeight | Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

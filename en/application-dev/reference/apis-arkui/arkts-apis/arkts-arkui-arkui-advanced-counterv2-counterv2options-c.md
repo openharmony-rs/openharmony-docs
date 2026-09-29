@@ -8,14 +8,9 @@ Defines the type and style of the **CounterV2** component.
 
 When you select a **CounterV2** type, you must select the corresponding **CounterV2** style. If the style parameter does not match the type, the default style of that type is used.
 
-| CounterV2 Type | CounterV2 Style |  
-| ----------------------- | ------------------ |  
-| [CounterV2Type.LIST](arkts-arkui-arkui-advanced-counterv2-counterv2type-e.md) | [CounterV2NumberStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2numberstyleoptions-c.md) |
-| [CounterV2Type.COMPACT](arkts-arkui-arkui-advanced-counterv2-counterv2type-e.md) | [CounterV2NumberStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2numberstyleoptions-c.md) |
-| [CounterV2Type.INLINE](arkts-arkui-arkui-advanced-counterv2-counterv2type-e.md) | [CounterV2InlineStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2inlinestyleoptions-c.md) |
-| [CounterV2Type.INLINE_DATE](arkts-arkui-arkui-advanced-counterv2-counterv2type-e.md) | [CounterV2DateStyleOptions](arkts-arkui-arkui-advanced-counterv2-counterv2datestyleoptions-c.md) |
-
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare class CounterV2Options--><!--Device-unnamed-declare class CounterV2Options-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +42,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CounterV2Options-dateOptions?: CounterV2DateStyleOptions--><!--Device-CounterV2Options-dateOptions?: CounterV2DateStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -68,6 +65,8 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2Options-direction?: Direction--><!--Device-CounterV2Options-direction?: Direction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,6 +92,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CounterV2Options-inlineOptions?: CounterV2InlineStyleOptions--><!--Device-CounterV2Options-inlineOptions?: CounterV2InlineStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## numberOptions
@@ -117,6 +118,8 @@ If the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-CounterV2Options-numberOptions?: CounterV2NumberStyleOptions--><!--Device-CounterV2Options-numberOptions?: CounterV2NumberStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -134,5 +137,7 @@ Type of the **CounterV2**. It must be used with the corresponding style paramete
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2Options-type: CounterV2Type--><!--Device-CounterV2Options-type: CounterV2Type-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

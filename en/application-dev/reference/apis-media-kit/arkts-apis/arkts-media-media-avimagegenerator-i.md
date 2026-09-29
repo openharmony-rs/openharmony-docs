@@ -10,6 +10,8 @@ For details about the demo for obtaining video thumbnails, see [Obtaining Video 
 
 **Since:** 12
 
+<!--Device-media-interface AVImageGenerator--><!--Device-media-interface AVImageGenerator-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## Modules to Import
@@ -28,6 +30,8 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 Obtains a video thumbnail. This API uses an asynchronous callback to return the result.
 
 **Since:** 12
+
+<!--Device-AVImageGenerator-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams,      callback: AsyncCallback<image.PixelMap>): void--><!--Device-AVImageGenerator-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams,      callback: AsyncCallback<image.PixelMap>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -96,6 +100,8 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 Obtains a video thumbnail. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AVImageGenerator-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>--><!--Device-AVImageGenerator-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -167,6 +173,8 @@ Fetches a scaled thumbnail from the video at a particular timestamp. This API us
 
 **Since:** 20
 
+<!--Device-AVImageGenerator-fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSize?: OutputSize):      Promise<image.PixelMap>--><!--Device-AVImageGenerator-fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSize?: OutputSize):      Promise<image.PixelMap>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **Parameters:**
@@ -232,6 +240,8 @@ Releases this AVImageGenerator instance. This API uses an asynchronous callback 
 
 **Since:** 12
 
+<!--Device-AVImageGenerator-release(callback: AsyncCallback<void>): void--><!--Device-AVImageGenerator-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **Parameters:**
@@ -283,6 +293,8 @@ release(): Promise<void>
 Releases this AVImageGenerator instance. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AVImageGenerator-release(): Promise<void>--><!--Device-AVImageGenerator-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -339,5 +351,7 @@ After the resource handle (FD) is transferred to an AVImageGenerator instance, d
 **Type:** [AVFileDescriptor](arkts-media-media-avfiledescriptor-i.md)
 
 **Since:** 12
+
+<!--Device-AVImageGenerator-fdSrc ?: AVFileDescriptor--><!--Device-AVImageGenerator-fdSrc ?: AVFileDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator

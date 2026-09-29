@@ -16,6 +16,8 @@ Obtains the mouse pointer speed. This API uses an asynchronous callback to retur
 
 **Since:** 9
 
+<!--Device-pointer-function getPointerSpeed(callback: AsyncCallback<int>): void--><!--Device-pointer-function getPointerSpeed(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getPointerSpeed(): Promise<number>
 Obtains the mouse pointer speed. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-pointer-function getPointerSpeed(): Promise<int>--><!--Device-pointer-function getPointerSpeed(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

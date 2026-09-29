@@ -8,6 +8,8 @@ Describes the summary information of a CLI tool.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ToolSummary--><!--Device-unnamed-export interface ToolSummary-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Functional description of the CLI tool. The description should clearly explain t
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ToolSummary-readonly description: string--><!--Device-ToolSummary-readonly description: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -44,6 +48,8 @@ Name of the CLI tool, used to uniquely identify a CLI tool in the system. The ma
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ToolSummary-readonly name: string--><!--Device-ToolSummary-readonly name: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Version number of the CLI tool. It follows semantic versioning (e.g., "1.0.0"), 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ToolSummary-readonly version: string--><!--Device-ToolSummary-readonly version: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

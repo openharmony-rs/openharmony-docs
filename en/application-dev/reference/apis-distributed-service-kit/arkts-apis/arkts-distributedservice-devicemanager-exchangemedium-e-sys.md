@@ -10,6 +10,8 @@ Enumerates the media used for device discovery.
 
 **Deprecated since:** 11
 
+<!--Device-deviceManager-enum ExchangeMedium--><!--Device-deviceManager-enum ExchangeMedium-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Automatic.
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-ExchangeMedium-AUTO = 0--><!--Device-ExchangeMedium-AUTO = 0-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -42,6 +46,8 @@ Bluetooth.
 
 **Deprecated since:** 11
 
+<!--Device-ExchangeMedium-BLE = 1--><!--Device-ExchangeMedium-BLE = 1-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -58,6 +64,8 @@ Wi-Fi.
 
 **Deprecated since:** 11
 
+<!--Device-ExchangeMedium-COAP = 2--><!--Device-ExchangeMedium-COAP = 2-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -73,6 +81,8 @@ USB.
 **Since:** 7
 
 **Deprecated since:** 11
+
+<!--Device-ExchangeMedium-USB = 3--><!--Device-ExchangeMedium-USB = 3-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

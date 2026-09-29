@@ -18,7 +18,9 @@ Register external log manager
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-hiAppEvent-function registerExternalLogManager(logMngr: ExternalLogManager): void--><!--Device-hiAppEvent-function registerExternalLogManager(logMngr: ExternalLogManager): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

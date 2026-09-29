@@ -19,6 +19,8 @@ Creates a symbolic link based on the file path. This API returns the result sync
 
 **Substitutes:** [symlinkSync](arkts-corefile-file-fs-symlinksync-f.md)
 
+<!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void--><!--Device-unnamed-declare function symlinkSync(target: string, srcPath: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

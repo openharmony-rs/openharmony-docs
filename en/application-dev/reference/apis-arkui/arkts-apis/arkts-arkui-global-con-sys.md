@@ -14,6 +14,8 @@ Conditional compilation for lite equipment
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-export declare const LITE: string--><!--Device-unnamed-export declare const LITE: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Conditional compilation for rich equipment
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-unnamed-export declare const STANDARD: string--><!--Device-unnamed-export declare const STANDARD: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 

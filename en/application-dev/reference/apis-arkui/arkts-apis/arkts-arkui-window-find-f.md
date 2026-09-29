@@ -20,6 +20,8 @@ Finds a window based on the ID. This API uses an asynchronous callback to return
 
 **Substitutes:** [findWindow](arkts-arkui-window-findwindow-f.md)
 
+<!--Device-window-function find(id: string, callback: AsyncCallback<Window>): void--><!--Device-window-function find(id: string, callback: AsyncCallback<Window>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters:**
@@ -62,6 +64,8 @@ Finds a window based on the ID. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [findWindow](arkts-arkui-window-findwindow-f.md)
+
+<!--Device-window-function find(id: string): Promise<Window>--><!--Device-window-function find(id: string): Promise<Window>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

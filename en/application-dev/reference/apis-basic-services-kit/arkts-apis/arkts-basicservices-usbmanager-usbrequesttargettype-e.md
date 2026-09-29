@@ -8,6 +8,8 @@ Enumerates request target types.
 
 **Since:** 9
 
+<!--Device-usbManager-export enum USBRequestTargetType--><!--Device-usbManager-export enum USBRequestTargetType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_TARGET_DEVICE
@@ -19,6 +21,8 @@ USB_REQUEST_TARGET_DEVICE = 0
 The control request target is set to the USB device, which is used to control the entire device, for example, setting the device address or obtaining the device descriptor.
 
 **Since:** 9
+
+<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_DEVICE = 0--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_DEVICE = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -32,6 +36,8 @@ The control request target is set to an interface of the USB device, which is us
 
 **Since:** 9
 
+<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_TARGET_ENDPOINT
@@ -44,6 +50,8 @@ The control request target is set to an endpoint of the USB device, which is use
 
 **Since:** 9
 
+<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_TARGET_OTHER
@@ -55,5 +63,7 @@ USB_REQUEST_TARGET_OTHER = 3
 The control request target is set to another unit, which is used to control the unit of a non-standard device, interface, or endpoint.
 
 **Since:** 9
+
+<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_OTHER = 3--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_OTHER = 3-End-->
 
 **System capability:** SystemCapability.USB.USBManager

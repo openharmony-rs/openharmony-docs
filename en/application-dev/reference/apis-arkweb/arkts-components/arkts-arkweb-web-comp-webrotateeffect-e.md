@@ -8,6 +8,8 @@ Enumerates the modes in which the component's content is rendered to fit the new
 
 **Since:** 22
 
+<!--Device-unnamed-declare enum WebRotateEffect--><!--Device-unnamed-declare enum WebRotateEffect-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## TOPLEFT_EFFECT
@@ -20,6 +22,8 @@ The component's content stays at the final size and always aligned with the uppe
 
 **Since:** 22
 
+<!--Device-WebRotateEffect-TOPLEFT_EFFECT = 0--><!--Device-WebRotateEffect-TOPLEFT_EFFECT = 0-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## RESIZE_COVER_EFFECT
@@ -31,5 +35,7 @@ RESIZE_COVER_EFFECT = 1
 While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. It is always aligned with the center of the component, so that its middle part is displayed.
 
 **Since:** 22
+
+<!--Device-WebRotateEffect-RESIZE_COVER_EFFECT = 1--><!--Device-WebRotateEffect-RESIZE_COVER_EFFECT = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

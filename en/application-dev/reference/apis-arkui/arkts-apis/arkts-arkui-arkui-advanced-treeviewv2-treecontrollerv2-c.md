@@ -8,6 +8,8 @@ Declare TreeControllerV2
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export declare class TreeControllerV2--><!--Device-unnamed-export declare class TreeControllerV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Initialize the interface of the tree view. This interface is used to generate Li
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TreeControllerV2-addNode(nodeParam?: NodeParamV2): TreeControllerV2--><!--Device-TreeControllerV2-addNode(nodeParam?: NodeParamV2): TreeControllerV2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ After the initialization is complete by calling the addNode interface, call this
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TreeControllerV2-buildDone(): void--><!--Device-TreeControllerV2-buildDone(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifyNode
@@ -74,6 +80,8 @@ Modify the node name. Register an ON_ITEM_MODIFY callback to obtain the ID, pare
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TreeControllerV2-modifyNode(): void--><!--Device-TreeControllerV2-modifyNode(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## refreshNode
@@ -89,6 +97,8 @@ This interface is called when a secondaryTitle needs to be updated
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TreeControllerV2-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void--><!--Device-TreeControllerV2-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,5 +123,7 @@ Delete a node. Register an ON_ITEM_DELETE callback through the ListTreeListenerV
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TreeControllerV2-removeNode(): void--><!--Device-TreeControllerV2-removeNode(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

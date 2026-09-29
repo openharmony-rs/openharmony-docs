@@ -16,6 +16,8 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
 
 **Since:** 23
 
+<!--Device-cacheDownload-function offDownloadSuccess(url: string, callback?: Callback<void>): void--><!--Device-cacheDownload-function offDownloadSuccess(url: string, callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

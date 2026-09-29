@@ -8,6 +8,8 @@ Obtains the profile information list.
 
 **Since:** 18
 
+<!--Device-eSIM-export interface GetEuiccProfileInfoListResult--><!--Device-eSIM-export interface GetEuiccProfileInfoListResult-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Whether the eUICC is removable. The value **true** indicates that the eUICC is r
 
 **Since:** 18
 
+<!--Device-GetEuiccProfileInfoListResult-isRemovable: boolean--><!--Device-GetEuiccProfileInfoListResult-isRemovable: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Profile array.
 
 **Since:** 18
 
+<!--Device-GetEuiccProfileInfoListResult-profiles: Array<EuiccProfile>--><!--Device-GetEuiccProfileInfoListResult-profiles: Array<EuiccProfile>-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Promise used to return the operation result.
 **Type:** [ResultCode](arkts-telephony-esim-resultcode-e-sys.md)
 
 **Since:** 18
+
+<!--Device-GetEuiccProfileInfoListResult-responseResult: ResultCode--><!--Device-GetEuiccProfileInfoListResult-responseResult: ResultCode-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

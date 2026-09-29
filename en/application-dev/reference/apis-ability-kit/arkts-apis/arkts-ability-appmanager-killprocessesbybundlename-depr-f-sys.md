@@ -21,6 +21,8 @@ Kill processes by bundle name
 
 **Required permissions:** ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
+<!--Device-appManager-function killProcessesByBundleName(bundleName: string): Promise<void>--><!--Device-appManager-function killProcessesByBundleName(bundleName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Kill processes by bundle name
 **Substitutes:** [killProcessesByBundleName](arkts-ability-appmanager-killprocessesbybundlename-f.md)
 
 **Required permissions:** ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
+<!--Device-appManager-function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<void>)--><!--Device-appManager-function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<void>)-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

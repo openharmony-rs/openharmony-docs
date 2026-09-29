@@ -19,6 +19,8 @@ Obtains the list of devices discovered by perception scanning. Before calling th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-softbusBase-function getPerceptionDeviceList(type: PerceptionType): Promise<PerceptionDeviceInfo[]>--><!--Device-softbusBase-function getPerceptionDeviceList(type: PerceptionType): Promise<PerceptionDeviceInfo[]>-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

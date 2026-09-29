@@ -18,6 +18,8 @@ Obtains some information about the **wantAgent** field in [NotificationRequest](
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function getNotificationParameters(id: number, label?: string): Promise<NotificationParameters>--><!--Device-notificationManager-function getNotificationParameters(id: number, label?: string): Promise<NotificationParameters>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**

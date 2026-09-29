@@ -6,9 +6,11 @@ declare class RichTextAttribute extends CommonMethod<RichTextAttribute>
 
 定义RichText属性函数。
 
-**继承/实现关系：** RichTextAttribute extends CommonMethod&lt;RichTextAttribute&gt;
+**继承/实现关系：** RichTextAttribute extends CommonMethod<RichTextAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class RichTextAttribute extends CommonMethod<RichTextAttribute>--><!--Device-unnamed-declare class RichTextAttribute extends CommonMethod<RichTextAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ onComplete(callback: () => void)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11 - 11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichTextAttribute-onComplete(callback: () => void): RichTextAttribute--><!--Device-RichTextAttribute-onComplete(callback: () => void): RichTextAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +47,8 @@ onStart(callback: () => void)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11 - 11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RichTextAttribute-onStart(callback: () => void): RichTextAttribute--><!--Device-RichTextAttribute-onStart(callback: () => void): RichTextAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Converts a number in units of px to a number in units of lpx.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-unnamed-declare function px2lpx(value: number): number--><!--Device-unnamed-declare function px2lpx(value: number): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

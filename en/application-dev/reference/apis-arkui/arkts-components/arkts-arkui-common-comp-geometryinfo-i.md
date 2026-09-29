@@ -10,6 +10,8 @@ Provides layout information of the parent component (a custom component). Inheri
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface GeometryInfo extends SizeResult--><!--Device-unnamed-declare interface GeometryInfo extends SizeResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderWidth
@@ -27,6 +29,8 @@ Border width of the parent component. Unit: vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeometryInfo-borderWidth: EdgeWidth--><!--Device-GeometryInfo-borderWidth: EdgeWidth-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Margin of the parent component. Unit: vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-GeometryInfo-margin: Margin--><!--Device-GeometryInfo-margin: Margin-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## padding
@@ -63,5 +69,7 @@ Padding of the parent component. Unit: vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-GeometryInfo-padding: Padding--><!--Device-GeometryInfo-padding: Padding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

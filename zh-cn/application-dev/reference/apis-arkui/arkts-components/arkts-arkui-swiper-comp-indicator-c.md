@@ -4,9 +4,11 @@
 declare class Indicator<T>
 ```
 
-设置导航点与Swiper组件的距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用IndicatorComponent组件，更灵活地调整位置。
+设置导航点与Swiper组件的距离。由于导航点有默认交互区域，交互区域高度为32vp，所以无法让显示部分完全贴底。若想实现完全贴底，可以使用[IndicatorComponent](../../../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md#indicatorcomponent)组件，更灵活地调整位置。
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class Indicator<T>--><!--Device-unnamed-declare class Indicator<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +27,8 @@ bottom(value: Length): T
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Indicator-bottom(value: Length): T--><!--Device-Indicator-bottom(value: Length): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 
 **卡片能力：** 从API版本19开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Indicator-bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T--><!--Device-Indicator-bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -65,7 +71,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bottom | LengthMetrics &#124; [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 设置导航点底部相对于Swiper的位置。<br>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br>设置为0时：按照0位置布局计算。<br>优先级：低于top属性。<br>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
-| ignoreSize | boolean | 是 | 设置是否忽略导航点本身大小，默认false。<br>设置为true时，忽略导航点大小，可以将导航点更靠近Swiper底部；设置为false时，不忽略导航点大小，导航点按默认大小布局。使用方法可以参考示例9演示导航点space与bottom。<br> 说明：[数字导航点](arkts-arkui-swiper-comp-digitindicator-c.md)ignoreSize属性，不生效的场景如下：<br> • 当[vertical](arkts-arkui-swiper-comp-attribute.md#vertical) 设置为false，且bottom &gt; 0。<br> • 当[vertical](arkts-arkui-swiper-comp-attribute.md#vertical) 设置为true时：<br>1、bottom &gt; 0 时。<br> 2、bottom设为undefined。 <br> 3、isSidebarMiddle设置为false时。 |
+| ignoreSize | boolean | 是 | 设置是否忽略导航点本身大小，默认false。<br>设置为true时，忽略导航点大小，可以将导航点更靠近Swiper底部；设置为false时，不忽略导航点大小，导航点按默认大小布局。使用方法可以参考[示例9演示导航点space与bottom](../../../reference/apis-arkui/arkui-ts/ts-container-swiper.md#示例9演示导航点space与bottom)。<br> 说明：[数字导航点](arkts-arkui-swiper-comp-digitindicator-c.md)ignoreSize属性，不生效的场景如下：<br> • 当[vertical](arkts-arkui-swiper-comp-attribute.md#vertical) 设置为false，且bottom &gt; 0。<br> • 当[vertical](arkts-arkui-swiper-comp-attribute.md#vertical) 设置为true时：<br>1、bottom &gt; 0 时。<br> 2、bottom设为undefined。 <br> 3、isSidebarMiddle设置为false时。 |
 
 **返回值：**
 
@@ -88,6 +94,8 @@ static digit(): DigitIndicator
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Indicator-static digit(): DigitIndicator--><!--Device-Indicator-static digit(): DigitIndicator-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,6 +121,8 @@ static dot(): DotIndicator
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Indicator-static dot(): DotIndicator--><!--Device-Indicator-static dot(): DotIndicator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -136,6 +146,8 @@ end(value: LengthMetrics): T
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Indicator-end(value: LengthMetrics): T--><!--Device-Indicator-end(value: LengthMetrics): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,6 +179,8 @@ left(value: Length): T
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Indicator-left(value: Length): T--><!--Device-Indicator-left(value: Length): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -196,6 +210,8 @@ right(value: Length): T
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Indicator-right(value: Length): T--><!--Device-Indicator-right(value: Length): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,6 +243,8 @@ start(value: LengthMetrics): T
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Indicator-start(value: LengthMetrics): T--><!--Device-Indicator-start(value: LengthMetrics): T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -256,6 +274,8 @@ top(value: Length): T
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Indicator-top(value: Length): T--><!--Device-Indicator-top(value: Length): T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

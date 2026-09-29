@@ -10,6 +10,8 @@ When the main type of the continuous task is **MODE_SPECIAL_SCENARIO_PROCESSING*
 
 **Since:** 21
 
+<!--Device-backgroundTaskManager-export enum BackgroundTaskMode--><!--Device-backgroundTaskManager-export enum BackgroundTaskMode-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_DATA_TRANSFER
@@ -31,6 +33,8 @@ If the progress is not updated for more than 10 minutes, the continuous task of 
 
 **Since:** 21
 
+<!--Device-BackgroundTaskMode-MODE_DATA_TRANSFER = 1--><!--Device-BackgroundTaskMode-MODE_DATA_TRANSFER = 1-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_AUDIO_PLAYBACK
@@ -47,7 +51,9 @@ Note: If a continuous task of the **MODE_AUDIO_PLAYBACK** type is requested or u
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-BackgroundTaskMode-MODE_AUDIO_PLAYBACK = 2--><!--Device-BackgroundTaskMode-MODE_AUDIO_PLAYBACK = 2-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -65,6 +71,8 @@ Note: No notification is displayed if a system application requests or updates a
 
 **Since:** 21
 
+<!--Device-BackgroundTaskMode-MODE_AUDIO_RECORDING = 3--><!--Device-BackgroundTaskMode-MODE_AUDIO_RECORDING = 3-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_LOCATION
@@ -77,7 +85,9 @@ Positioning and navigation.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-BackgroundTaskMode-MODE_LOCATION = 4--><!--Device-BackgroundTaskMode-MODE_LOCATION = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -93,6 +103,8 @@ Use scenario: An application moves to the background while transferring files vi
 
 **Since:** 21
 
+<!--Device-BackgroundTaskMode-MODE_BLUETOOTH_INTERACTION = 5--><!--Device-BackgroundTaskMode-MODE_BLUETOOTH_INTERACTION = 5-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_MULTI_DEVICE_CONNECTION
@@ -107,7 +119,9 @@ Use scenario: distributed service connection and casting.
 
 **Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-BackgroundTaskMode-MODE_MULTI_DEVICE_CONNECTION = 6--><!--Device-BackgroundTaskMode-MODE_MULTI_DEVICE_CONNECTION = 6-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -125,6 +139,8 @@ Note: No notification is displayed if a system application requests or updates a
 
 **Since:** 21
 
+<!--Device-BackgroundTaskMode-MODE_VOIP = 8--><!--Device-BackgroundTaskMode-MODE_VOIP = 8-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_TASK_KEEPING
@@ -141,6 +157,8 @@ Use scenario: antivirus software.
 
 **Since:** 21
 
+<!--Device-BackgroundTaskMode-MODE_TASK_KEEPING = 9--><!--Device-BackgroundTaskMode-MODE_TASK_KEEPING = 9-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_AV_PLAYBACK_AND_RECORD
@@ -155,7 +173,9 @@ Use scenarios: audio/video playback, recording, and audio/video calls. The scena
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-BackgroundTaskMode-MODE_AV_PLAYBACK_AND_RECORD = 12--><!--Device-BackgroundTaskMode-MODE_AV_PLAYBACK_AND_RECORD = 12-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -180,6 +200,8 @@ Specifically, when you request or update a continuous task, it must be of the **
 
 **Since:** 22
 
+<!--Device-BackgroundTaskMode-MODE_SPECIAL_SCENARIO_PROCESSING = 13--><!--Device-BackgroundTaskMode-MODE_SPECIAL_SCENARIO_PROCESSING = 13-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_NEARLINK
@@ -196,6 +218,8 @@ Use scenario: An application transitions into the background during the process 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BackgroundTaskMode-MODE_NEARLINK = 14--><!--Device-BackgroundTaskMode-MODE_NEARLINK = 14-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_USB_CONNECTION
@@ -211,5 +235,7 @@ Use scenario: An application transitions into the background during the process 
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackgroundTaskMode-MODE_USB_CONNECTION = 16--><!--Device-BackgroundTaskMode-MODE_USB_CONNECTION = 16-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

@@ -10,6 +10,8 @@ Provides configuration options for tab-style segment buttons. Inherits from [Tab
 
 **Since:** 11
 
+<!--Device-unnamed-interface TabSegmentButtonOptions extends TabSegmentButtonConstructionOptions--><!--Device-unnamed-interface TabSegmentButtonOptions extends TabSegmentButtonConstructionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Type of the segment buttons, which is **"tab"** in this case.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TabSegmentButtonOptions-type: "tab"--><!--Device-TabSegmentButtonOptions-type: "tab"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

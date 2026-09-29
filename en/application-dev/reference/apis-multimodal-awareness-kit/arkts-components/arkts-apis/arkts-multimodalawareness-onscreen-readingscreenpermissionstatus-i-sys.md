@@ -8,6 +8,8 @@ Returns the status of the permission for reading screen information.
 
 **Since:** 23
 
+<!--Device-onScreen-export interface ReadingScreenPermissionStatus--><!--Device-onScreen-export interface ReadingScreenPermissionStatus-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ If the screen information cannot be read, the corresponding status code will be 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReadingScreenPermissionStatus-readingCode?: int--><!--Device-ReadingScreenPermissionStatus-readingCode?: int-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Whether screen reading is allowed. **0**: no; **1**: yes.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ReadingScreenPermissionStatus-readingState: int--><!--Device-ReadingScreenPermissionStatus-readingState: int-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 

@@ -17,6 +17,8 @@ Defines options for the paste button, including icon, text and button type.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface PasteButtonOptions--><!--Device-unnamed-declare interface PasteButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonType
@@ -34,6 +36,8 @@ Shape of the **PasteButton** component. Default value: ButtonType.Capsule.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PasteButtonOptions-buttonType?: ButtonType--><!--Device-PasteButtonOptions-buttonType?: ButtonType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +57,8 @@ Icon style of the **PasteButton** component. Default value: No icon is displayed
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PasteButtonOptions-icon?: PasteIconStyle--><!--Device-PasteButtonOptions-icon?: PasteIconStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -61,7 +67,7 @@ Icon style of the **PasteButton** component. Default value: No icon is displayed
 text?: PasteDescription
 ```
 
-Text on the **PasteButton** component. Default value: No text description is displayed. <br>If the icon is not transferred, the control is displayed in the default style.
+Text on the **PasteButton** component. Default value: No text description is displayed. <br>If neither **text** nor **icon** is provided, the component uses the default style.
 
 **Type:** [PasteDescription](arkts-arkui-pastebutton-comp-pastedescription-e.md)
 
@@ -70,5 +76,7 @@ Text on the **PasteButton** component. Default value: No text description is dis
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PasteButtonOptions-text?: PasteDescription--><!--Device-PasteButtonOptions-text?: PasteDescription-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

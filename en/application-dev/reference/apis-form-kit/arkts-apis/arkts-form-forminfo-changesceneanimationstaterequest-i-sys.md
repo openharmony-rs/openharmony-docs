@@ -10,6 +10,8 @@ ChangeSceneAnimationStateRequest
 
 **Since:** 20
 
+<!--Device-formInfo-interface ChangeSceneAnimationStateRequest--><!--Device-formInfo-interface ChangeSceneAnimationStateRequest-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The form id about request change scene animation state
 
 **Since:** 20
 
+<!--Device-ChangeSceneAnimationStateRequest-formId: string--><!--Device-ChangeSceneAnimationStateRequest-formId: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ The state of scene animation. 0 means deactivate, 1 means activate The value mus
 **Type:** number
 
 **Since:** 20
+
+<!--Device-ChangeSceneAnimationStateRequest-state: int--><!--Device-ChangeSceneAnimationStateRequest-state: int-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

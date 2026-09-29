@@ -13,6 +13,8 @@ Calls **registerPlugin** and **unregisterPlugin** to register or unregister call
 
 **Since:** 21
 
+<!--Device-dlpPermission-export class DlpConnManager--><!--Device-dlpPermission-export class DlpConnManager-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Represents a constructor for instantiating [DlpConnManager](arkts-dataprotection
 - API version 26 and later: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
 - API version 25: N/A
 - API versions 21 to 24: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+<!--Device-DlpConnManager-constructor()--><!--Device-DlpConnManager-constructor()-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -71,6 +75,8 @@ Registers a callback with the SA.
 - API version 26 and later: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
 - API version 25: N/A
 - API versions 21 to 24: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+<!--Device-DlpConnManager-static registerPlugin(plugin: DlpConnPlugin): number--><!--Device-DlpConnManager-static registerPlugin(plugin: DlpConnPlugin): number-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 
@@ -142,6 +148,8 @@ This API unregisters a callback and releases resources when an application exits
 - API version 26 and later: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE
 - API version 25: N/A
 - API versions 21 to 24: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+<!--Device-DlpConnManager-static unregisterPlugin(): void--><!--Device-DlpConnManager-static unregisterPlugin(): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

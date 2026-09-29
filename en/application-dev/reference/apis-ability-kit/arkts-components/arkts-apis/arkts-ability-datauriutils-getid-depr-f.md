@@ -19,6 +19,8 @@ Obtains the ID attached to the end of a given URI.
 
 **Substitutes:** [getId](arkts-ability-datauriutils-getid-f.md)
 
+<!--Device-dataUriUtils-function getId(uri: string): number--><!--Device-dataUriUtils-function getId(uri: string): number-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

@@ -8,6 +8,8 @@ Command execution parameter for hook interception.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface ExecCmdParam--><!--Device-unnamed-export interface ExecCmdParam-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Indicates the shell command string.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExecCmdParam-cmd: string--><!--Device-ExecCmdParam-cmd: string-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Indicates the command execution options.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecCmdParam-execCmdOptions?: ExecCmdOptions--><!--Device-ExecCmdParam-execCmdOptions?: ExecCmdOptions-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

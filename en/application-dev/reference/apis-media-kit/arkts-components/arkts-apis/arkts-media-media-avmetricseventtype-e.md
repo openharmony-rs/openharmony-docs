@@ -8,6 +8,8 @@ Enumerates the metric events supported by the media service.
 
 **Since:** 23
 
+<!--Device-media-enum AVMetricsEventType--><!--Device-media-enum AVMetricsEventType-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AV_METRICS_EVENT_STALLING
@@ -19,6 +21,8 @@ AV_METRICS_EVENT_STALLING = 1
 Metric event indicating playback stalling.
 
 **Since:** 23
+
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_STALLING = 1--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_STALLING = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -34,6 +38,8 @@ It is reported when the video sending and rendering time deviation is greater th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_LIP_ASYNC  = 2--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_LIP_ASYNC  = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AV_METRICS_EVENT_LOADINGRATE_CHANGE
@@ -47,6 +53,8 @@ Load rate change event. This event is triggered when the difference between the 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADINGRATE_CHANGE = 3--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADINGRATE_CHANGE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -62,6 +70,8 @@ Data loading failure event, which carries the error information returned during 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADING_ERROR = 4--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADING_ERROR = 4-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AV_METRICS_EVENT_CONTENT_CHANGED
@@ -75,6 +85,8 @@ Reported when the played media content changes, for example, advertisement inser
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_CHANGED = 5--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_CHANGED = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -90,6 +102,8 @@ Content discontinuity event. This event is triggered when audio and video parame
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_DISCONTINUITY = 6--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_DISCONTINUITY = 6-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## AV_METRICS_EVENT_AUDIO_ABNORMAL
@@ -103,5 +117,7 @@ Audio device status change event, including underload or out-of-focus.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVMetricsEventType-AV_METRICS_EVENT_AUDIO_ABNORMAL = 7--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_AUDIO_ABNORMAL = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

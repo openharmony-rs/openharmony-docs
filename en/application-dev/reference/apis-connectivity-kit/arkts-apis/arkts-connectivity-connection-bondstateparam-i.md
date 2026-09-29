@@ -8,6 +8,8 @@ Describes the class of a bluetooth device.
 
 **Since:** 10
 
+<!--Device-connection-interface BondStateParam--><!--Device-connection-interface BondStateParam-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Cause of unbond.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BondStateParam-cause: UnbondCause--><!--Device-BondStateParam-cause: UnbondCause-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## causeMessage
@@ -45,6 +49,8 @@ Cause message of unbond.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BondStateParam-causeMessage?: string--><!--Device-BondStateParam-causeMessage?: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -62,6 +68,8 @@ Address of a Bluetooth device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BondStateParam-deviceId: string--><!--Device-BondStateParam-deviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## state
@@ -77,5 +85,7 @@ Profile connection state of the device.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BondStateParam-state: BondState--><!--Device-BondStateParam-state: BondState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

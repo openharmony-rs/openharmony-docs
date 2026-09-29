@@ -10,6 +10,8 @@ Provides a 2D rendering context for the drawing surface of the &lt; Canvas &gt; 
 
 **Since:** 7
 
+<!--Device-unnamed-export interface OffscreenCanvasRenderingContext2D--><!--Device-unnamed-export interface OffscreenCanvasRenderingContext2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## arc
@@ -23,6 +25,8 @@ Draw an arc.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-arc(radius: number, x: number, y: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void--><!--Device-OffscreenCanvasRenderingContext2D-arc(radius: number, x: number, y: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ Draws an arc from the beginning to the end.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-arcTo(x1: number, x2: number, y1: number, y2: number, radius: number): void--><!--Device-OffscreenCanvasRenderingContext2D-arcTo(x1: number, x2: number, y1: number, y2: number, radius: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -73,6 +79,8 @@ Creates a drawing path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-beginPath(): void--><!--Device-OffscreenCanvasRenderingContext2D-beginPath(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bezierCurveTo
@@ -86,6 +94,8 @@ Draw a third order Bezier curve.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void--><!--Device-OffscreenCanvasRenderingContext2D-bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +122,8 @@ Clears the contents of the specified rectangular area.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-clearRect(x: number, y: number, w: number, h: number): void--><!--Device-OffscreenCanvasRenderingContext2D-clearRect(x: number, y: number, w: number, h: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -135,6 +147,8 @@ Crop the current canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-clip(): void--><!--Device-OffscreenCanvasRenderingContext2D-clip(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## closePath
@@ -149,6 +163,8 @@ Closing the current path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-closePath(): void--><!--Device-OffscreenCanvasRenderingContext2D-closePath(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## createImageData
@@ -162,6 +178,8 @@ Create an ImageData object.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-createImageData(sw: number, sh: number): ImageData--><!--Device-OffscreenCanvasRenderingContext2D-createImageData(sw: number, sh: number): ImageData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,6 +210,8 @@ Create an ImageData object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-createImageData(imageData: ImageData): ImageData--><!--Device-OffscreenCanvasRenderingContext2D-createImageData(imageData: ImageData): ImageData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -217,6 +237,8 @@ Creates a linear gradient color.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient--><!--Device-OffscreenCanvasRenderingContext2D-createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,6 +269,8 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-createPath2D(path?: Path2D): Path2D--><!--Device-OffscreenCanvasRenderingContext2D-createPath2D(path?: Path2D): Path2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -275,6 +299,8 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-createPath2D(cmds?: string): Path2D--><!--Device-OffscreenCanvasRenderingContext2D-createPath2D(cmds?: string): Path2D-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -300,6 +326,8 @@ Create a drawing style template.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-createPattern(image: Image, repetition: string): CanvasPattern--><!--Device-OffscreenCanvasRenderingContext2D-createPattern(image: Image, repetition: string): CanvasPattern-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -327,6 +355,8 @@ Create a radial tween object.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient--><!--Device-OffscreenCanvasRenderingContext2D-createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,6 +388,8 @@ Draw an Image object.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-drawImage(image: Image, dx: number, dy: number, dw: number, dh: number): void--><!--Device-OffscreenCanvasRenderingContext2D-drawImage(image: Image, dx: number, dy: number, dw: number, dh: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -395,6 +427,8 @@ Draw an Image object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-drawImage(    image: Image,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void--><!--Device-OffscreenCanvasRenderingContext2D-drawImage(    image: Image,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -424,6 +458,8 @@ Draw an Image object.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-drawImage(image: image.PixelMap, dx: number, dy: number, dw: number, dh: number): void--><!--Device-OffscreenCanvasRenderingContext2D-drawImage(image: image.PixelMap, dx: number, dy: number, dw: number, dh: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,6 +496,8 @@ Draw an Image object.
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-drawImage(    image: image.PixelMap,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void--><!--Device-OffscreenCanvasRenderingContext2D-drawImage(    image: image.PixelMap,    sx: number,    sy: number,    sw: number,    sh: number,    dx: number,    dy: number,    dw: number,    dh: number,  ): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,6 +536,8 @@ Draw an ellipse.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: boolean,  ): void--><!--Device-OffscreenCanvasRenderingContext2D-ellipse(    x: number,    y: number,    radiusX: number,    radiusY: number,    rotation: number,    startAngle: number,    endAngle: number,    counterclockwise?: boolean,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -525,6 +565,8 @@ Fills the current canvas with color.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-fill(): void--><!--Device-OffscreenCanvasRenderingContext2D-fill(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillRect
@@ -538,6 +580,8 @@ Fills a rectangular area.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-fillRect(x: number, y: number, w: number, h: number): void--><!--Device-OffscreenCanvasRenderingContext2D-fillRect(x: number, y: number, w: number, h: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -562,6 +606,8 @@ Stroke a rectangular area.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-fillText(text: string, y: number, x: number /*, maxWidth?: number*/): void--><!--Device-OffscreenCanvasRenderingContext2D-fillText(text: string, y: number, x: number /*, maxWidth?: number*/): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -583,6 +629,8 @@ Get an ImageData object.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData--><!--Device-OffscreenCanvasRenderingContext2D-getImageData(sx: number, sy: number, sw: number, sh: number): ImageData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -613,6 +661,8 @@ Get an PixelMap object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-getPixelMap(sx: number, sy: number, sw: number, sh: number): image.PixelMap--><!--Device-OffscreenCanvasRenderingContext2D-getPixelMap(sx: number, sy: number, sw: number, sh: number): image.PixelMap-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -641,6 +691,8 @@ Check whether the specified coordinate point is on the Path.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-isPointInPath(x: number, y: number): boolean--><!--Device-OffscreenCanvasRenderingContext2D-isPointInPath(x: number, y: number): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -671,6 +723,8 @@ Check whether the specified coordinate point is on the Path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-isPointInPath(path: Path2D, x: number, y: number): boolean--><!--Device-OffscreenCanvasRenderingContext2D-isPointInPath(path: Path2D, x: number, y: number): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -698,6 +752,8 @@ Checks whether the specified coordinate point is on the stroke edge.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-isPointInStroke(x: number, y: number): boolean--><!--Device-OffscreenCanvasRenderingContext2D-isPointInStroke(x: number, y: number): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -728,6 +784,8 @@ Checks whether the specified coordinate point is on the stroke edge.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-isPointInStroke(path: Path2D, x: number, y: number): boolean--><!--Device-OffscreenCanvasRenderingContext2D-isPointInStroke(path: Path2D, x: number, y: number): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -756,6 +814,8 @@ Draw a straight line.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-lineTo(x: number, y: number): void--><!--Device-OffscreenCanvasRenderingContext2D-lineTo(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -776,6 +836,8 @@ Returns a TextMetrics object used to obtain the width of specified text.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-measureText(text: string): TextMetrics--><!--Device-OffscreenCanvasRenderingContext2D-measureText(text: string): TextMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -803,6 +865,8 @@ Moves the current canvas to the specified coordinate point.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-moveTo(x: number, y: number): void--><!--Device-OffscreenCanvasRenderingContext2D-moveTo(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -823,6 +887,8 @@ Draws the specified ImageData object to the canvas.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-putImageData(imageData: ImageData, dx: number, dy: number): void--><!--Device-OffscreenCanvasRenderingContext2D-putImageData(imageData: ImageData, dx: number, dy: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,6 +922,8 @@ Draws the specified ImageData object to the canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-putImageData(    imageData: ImageData,    dx: number,    dy: number,    dirtyX: number,    dirtyY: number,    dirtyWidth: number,    dirtyHeight: number,  ): void--><!--Device-OffscreenCanvasRenderingContext2D-putImageData(    imageData: ImageData,    dx: number,    dy: number,    dirtyX: number,    dirtyY: number,    dirtyWidth: number,    dirtyHeight: number,  ): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -882,6 +950,8 @@ Draw a second order Bezier curve.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void--><!--Device-OffscreenCanvasRenderingContext2D-quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -904,6 +974,8 @@ Draw a rectangle.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-rect(x: number, y: number, w: number, h: number): void--><!--Device-OffscreenCanvasRenderingContext2D-rect(x: number, y: number, w: number, h: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -928,6 +1000,8 @@ Resets the current matrix transformation effect.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-resetTransform(): void--><!--Device-OffscreenCanvasRenderingContext2D-resetTransform(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## restore
@@ -942,6 +1016,8 @@ Restores the configuration information of the last saved canvas context.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-restore(): void--><!--Device-OffscreenCanvasRenderingContext2D-restore(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rotate
@@ -955,6 +1031,8 @@ Adds a rotation effect to the current canvas.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-rotate(angle: number): void--><!--Device-OffscreenCanvasRenderingContext2D-rotate(angle: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -976,6 +1054,8 @@ Saves configuration information for the current canvas context.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-save(): void--><!--Device-OffscreenCanvasRenderingContext2D-save(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scale
@@ -989,6 +1069,8 @@ Adds a zoom effect to the current canvas.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-scale(x: number, y: number): void--><!--Device-OffscreenCanvasRenderingContext2D-scale(x: number, y: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1011,6 +1093,8 @@ Sets the dotted spacing of a line.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-setLineDash(segments: Array<number>): void--><!--Device-OffscreenCanvasRenderingContext2D-setLineDash(segments: Array<number>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1030,6 +1114,8 @@ Set the rotation, pan, and zoom effects.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void--><!--Device-OffscreenCanvasRenderingContext2D-setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1056,6 +1142,8 @@ Stroke draws the current path.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-stroke(): void--><!--Device-OffscreenCanvasRenderingContext2D-stroke(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 <a id="stroke-1"></a>
@@ -1071,6 +1159,8 @@ Stroke draws the current path.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-stroke(path: Path2D): void--><!--Device-OffscreenCanvasRenderingContext2D-stroke(path: Path2D): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1091,6 +1181,8 @@ Stroke a rectangular area.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-strokeRect(x: number, y: number, w: number, h: number): void--><!--Device-OffscreenCanvasRenderingContext2D-strokeRect(x: number, y: number, w: number, h: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1115,6 +1207,8 @@ Draws the stroke of a text string.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-strokeText(text: string, x: number, y: number /*, maxWidth?: number*/): void--><!--Device-OffscreenCanvasRenderingContext2D-strokeText(text: string, x: number, y: number /*, maxWidth?: number*/): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1136,6 +1230,8 @@ Set the rotation, pan, and zoom effects.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-transform(a: number, b: number, c: number, d: number, e: number, f: number): void--><!--Device-OffscreenCanvasRenderingContext2D-transform(a: number, b: number, c: number, d: number, e: number, f: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1162,6 +1258,8 @@ Adds a pan effect to the current canvas.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-translate(x: number, y: number): void--><!--Device-OffscreenCanvasRenderingContext2D-translate(x: number, y: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1185,6 +1283,8 @@ Fill style attribute. Paint color used to fill the area. Canvas gradient object 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-fillStyle?: string | CanvasGradient | CanvasPattern--><!--Device-OffscreenCanvasRenderingContext2D-fillStyle?: string | CanvasGradient | CanvasPattern-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getLineDash
@@ -1201,6 +1301,8 @@ Gets the dotted spacing of a line. Returns the current line segment style array 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-OffscreenCanvasRenderingContext2D-getLineDash: Array<number>--><!--Device-OffscreenCanvasRenderingContext2D-getLineDash: Array<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeStyle
@@ -1216,5 +1318,7 @@ Sets the stroke paint style. Color of the stroke paint. Canvas gradient object u
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OffscreenCanvasRenderingContext2D-strokeStyle?: string | CanvasGradient | CanvasPattern--><!--Device-OffscreenCanvasRenderingContext2D-strokeStyle?: string | CanvasGradient | CanvasPattern-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ Describes the parameters of the Gatt client's characteristic read request.
 
 **Substitutes:** [CharacteristicReadRequest](arkts-connectivity-bluetoothmanager-characteristicreadrequest-i.md)
 
+<!--Device-bluetooth-interface CharacteristicReadReq--><!--Device-bluetooth-interface CharacteristicReadReq-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ The UUID of a CharacteristicReadReq instance
 
 **Substitutes:** [characteristicUuid](arkts-connectivity-bluetoothmanager-characteristicreadrequest-i.md#characteristicuuid)
 
+<!--Device-CharacteristicReadReq-characteristicUuid: string--><!--Device-CharacteristicReadReq-characteristicUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## deviceId
@@ -53,6 +57,8 @@ Indicates the address of the client that initiates the read request
 **Deprecated since:** 9
 
 **Substitutes:** [deviceId](arkts-connectivity-bluetoothmanager-characteristicreadrequest-i.md#deviceid)
+
+<!--Device-CharacteristicReadReq-deviceId: string--><!--Device-CharacteristicReadReq-deviceId: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -72,6 +78,8 @@ Indicates the byte offset of the start position for reading characteristic value
 
 **Substitutes:** [offset](arkts-connectivity-bluetoothmanager-characteristicreadrequest-i.md#offset)
 
+<!--Device-CharacteristicReadReq-offset: number--><!--Device-CharacteristicReadReq-offset: number-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## serviceUuid
@@ -90,6 +98,8 @@ The UUID of the service to which the characteristic belongs
 
 **Substitutes:** [serviceUuid](arkts-connectivity-bluetoothmanager-characteristicreadrequest-i.md#serviceuuid)
 
+<!--Device-CharacteristicReadReq-serviceUuid: string--><!--Device-CharacteristicReadReq-serviceUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## transId
@@ -107,5 +117,7 @@ The Id of the read request
 **Deprecated since:** 9
 
 **Substitutes:** [transId](arkts-connectivity-bluetoothmanager-characteristicreadrequest-i.md#transid)
+
+<!--Device-CharacteristicReadReq-transId: number--><!--Device-CharacteristicReadReq-transId: number-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

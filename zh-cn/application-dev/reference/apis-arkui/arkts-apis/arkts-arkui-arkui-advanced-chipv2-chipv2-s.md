@@ -16,6 +16,8 @@ ChipV2是提供丰富样式和交互能力的操作块组件，支持前缀图�
 
 **装饰器类型：** @ComponentV2
 
+<!--Device-unnamed-export declare struct ChipV2--><!--Device-unnamed-export declare struct ChipV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ build函数用于构造ChipV2高级组件的UI结构。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2-build(): void--><!--Device-ChipV2-build(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## chipV2Options
@@ -57,5 +61,7 @@ readonly chipV2Options: ChipV2Options
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2-readonly chipV2Options: ChipV2Options--><!--Device-ChipV2-readonly chipV2Options: ChipV2Options-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

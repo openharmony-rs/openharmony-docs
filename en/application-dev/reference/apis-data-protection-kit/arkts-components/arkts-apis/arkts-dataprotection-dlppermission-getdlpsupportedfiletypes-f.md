@@ -18,6 +18,8 @@ This API is used to obtain the types of files that can be used to generate DLP f
 
 **Since:** 10
 
+<!--Device-dlpPermission-function getDLPSupportedFileTypes(): Promise<Array<string>>--><!--Device-dlpPermission-function getDLPSupportedFileTypes(): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**
@@ -60,6 +62,8 @@ Obtains the file name extension types that support DLP. After the API is success
 This API is used to obtain the types of files that can be used to generate DLP files. If the current file type is in the list, it can be encrypted.
 
 **Since:** 10
+
+<!--Device-dlpPermission-function getDLPSupportedFileTypes(callback: AsyncCallback<Array<string>>): void--><!--Device-dlpPermission-function getDLPSupportedFileTypes(callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

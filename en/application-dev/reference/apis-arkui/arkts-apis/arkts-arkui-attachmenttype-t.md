@@ -12,6 +12,8 @@ Defines the image attachment type, which is used to set images of PixelMap or [R
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-unnamed-declare type AttachmentType = ImageAttachmentInterface | ResourceImageAttachmentOptions--><!--Device-unnamed-declare type AttachmentType = ImageAttachmentInterface | ResourceImageAttachmentOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

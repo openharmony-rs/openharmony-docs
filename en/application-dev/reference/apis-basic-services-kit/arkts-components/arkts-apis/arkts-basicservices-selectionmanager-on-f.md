@@ -18,6 +18,8 @@ Subscribes to the word selection completion event. This API is used together wit
 
 **Since:** 24
 
+<!--Device-selectionManager-function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void--><!--Device-selectionManager-function on(type: 'selectionCompleted', callback: Callback<SelectionInfo>): void-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Parameters:**

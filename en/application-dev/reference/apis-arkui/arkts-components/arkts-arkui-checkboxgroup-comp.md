@@ -1,8 +1,8 @@
 # CheckboxGroup
 
-The **CheckboxGroup** component is used to select or deselect all check boxes in a group.
+The **CheckboxGroup** component is used control the select-all or deselect-all state of check boxes. It is suitable for scenarios where the selection states of multiple **Checkbox** components need to be managed in batches, such as batch selection of list items and select-all in forms, simplifying user operations and improving the interaction experience.
 
-> **NOTE**
+> **NOTE:** 
 
 ## Child Components
 
@@ -16,7 +16,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 Creates a check box group for controlling the select-all or deselect-all state of check boxes within the group. Check boxes and check box groups with the same **group** value belong to the same group.
 
-When this API is used with components that come with the caching mechanism, such as the List component, those check boxes that have not been created yet need to be manually selected or unselected. For details, see [Example 4](../../../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#example-4-implementing-the-select-all-functionality).
+When this API is used with components that come with the caching mechanism, such as the [List](arkts-arkui-list-comp.md) component, those check boxes that have not been created yet need to be manually selected or unselected. For details, see [Example 4](../../../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#example-4-implementing-the-select-all-functionality).
 
 **Since:** 8
 
@@ -26,13 +26,15 @@ When this API is used with components that come with the caching mechanism, such
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CheckboxGroupInterface-(options?: CheckboxGroupOptions): CheckboxGroupAttribute--><!--Device-CheckboxGroupInterface-(options?: CheckboxGroupOptions): CheckboxGroupAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CheckboxGroupOptions](arkts-arkui-checkboxgroup-comp-checkboxgroupoptions-i.md) | No | Check box group parameters. |
+| options | [CheckboxGroupOptions](arkts-arkui-checkboxgroup-comp-checkboxgroupoptions-i.md) | No | Check box group parameters.<br>The default values of the parameters in **CheckboxGroupOptions** apply if this parameter is not set. |
 
 ## Summary
 
@@ -48,13 +50,13 @@ When this API is used with components that come with the caching mechanism, such
 
 | Name | Description |
 | --- | --- |
-| [OnCheckboxGroupChangeCallback](arkts-arkui-checkboxgroup-comp-oncheckboxgroupchangecallback-t.md) | Information about the check box group. |
+| [OnCheckboxGroupChangeCallback](arkts-arkui-checkboxgroup-comp-oncheckboxgroupchangecallback-t.md) | Defines a CheckboxGroup callback when onChange. Anonymous Object Rectification. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [SelectStatus](arkts-arkui-checkboxgroup-comp-selectstatus-e.md) | Enumerates the selection states of check boxes in the check box group. |
+| [SelectStatus](arkts-arkui-checkboxgroup-comp-selectstatus-e.md) | Enumerates the selected states of check boxes in the check box group. |
 
 ## Examples
 

@@ -8,6 +8,8 @@ export interface TitleOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface TitleOptions--><!--Device-unnamed-export interface TitleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ backgroundColor?: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TitleOptions-backgroundColor?: ResourceColor--><!--Device-TitleOptions-backgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## barStyle
@@ -47,6 +51,8 @@ barStyle?: BarStyle
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleOptions-barStyle?: BarStyle--><!--Device-TitleOptions-barStyle?: BarStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +72,8 @@ isBlurEnabled?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TitleOptions-isBlurEnabled?: boolean--><!--Device-TitleOptions-isBlurEnabled?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleBarType
@@ -84,6 +92,8 @@ titleBarType?: TitleBarType
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TitleOptions-titleBarType?: TitleBarType--><!--Device-TitleOptions-titleBarType?: TitleBarType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleIcon
@@ -101,5 +111,7 @@ titleIcon?: Resource | SymbolGlyphModifier
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleOptions-titleIcon?: Resource | SymbolGlyphModifier--><!--Device-TitleOptions-titleIcon?: Resource | SymbolGlyphModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Describes the translation parameters.
 
 **Since:** 7
 
+<!--Device-matrix4-interface TranslateOption--><!--Device-matrix4-interface TranslateOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Value range: (-∞, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TranslateOption-x?: number--><!--Device-TranslateOption-x?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -58,6 +62,8 @@ Value range: (-∞, +∞)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TranslateOption-y?: number--><!--Device-TranslateOption-y?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -79,5 +85,7 @@ Value range: (-∞, +∞)
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TranslateOption-z?: number--><!--Device-TranslateOption-z?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

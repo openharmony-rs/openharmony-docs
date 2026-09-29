@@ -10,6 +10,8 @@ declare interface TipsOptions
 
 **起始版本：** 19
 
+<!--Device-unnamed-declare interface TipsOptions--><!--Device-unnamed-declare interface TipsOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## appearingTime
@@ -31,6 +33,8 @@ appearingTime?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TipsOptions-appearingTime?: number--><!--Device-TipsOptions-appearingTime?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ appearingTimeWithContinuousOperation?: number
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-TipsOptions-appearingTimeWithContinuousOperation?: number--><!--Device-TipsOptions-appearingTimeWithContinuousOperation?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrowHeight
@@ -73,6 +79,8 @@ arrowHeight?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TipsOptions-arrowHeight?: Dimension--><!--Device-TipsOptions-arrowHeight?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ arrowPointPosition?: ArrowPointPosition
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-TipsOptions-arrowPointPosition?: ArrowPointPosition--><!--Device-TipsOptions-arrowPointPosition?: ArrowPointPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrowWidth
@@ -113,6 +123,8 @@ arrowWidth?: Dimension
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TipsOptions-arrowWidth?: Dimension--><!--Device-TipsOptions-arrowWidth?: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +148,8 @@ disappearingTime?: number
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-TipsOptions-disappearingTime?: number--><!--Device-TipsOptions-disappearingTime?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## disappearingTimeWithContinuousOperation
@@ -157,6 +171,8 @@ disappearingTimeWithContinuousOperation?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TipsOptions-disappearingTimeWithContinuousOperation?: number--><!--Device-TipsOptions-disappearingTimeWithContinuousOperation?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,6 +202,8 @@ true：显示箭头；false：不显示箭头。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-TipsOptions-enableArrow?: boolean--><!--Device-TipsOptions-enableArrow?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## showAtAnchor
@@ -210,6 +228,8 @@ Tips的跟随类型为TipsAnchorType.CURSOR时，Tips不显示箭头。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TipsOptions-showAtAnchor?: TipsAnchorType--><!--Device-TipsOptions-showAtAnchor?: TipsAnchorType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -233,5 +253,7 @@ systemMaterial?: SystemUiMaterial
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TipsOptions-systemMaterial?: SystemUiMaterial--><!--Device-TipsOptions-systemMaterial?: SystemUiMaterial-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

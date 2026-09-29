@@ -8,6 +8,8 @@ declare interface InputCounterOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface InputCounterOptions--><!--Device-unnamed-declare interface InputCounterOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## counterTextColor
@@ -26,6 +28,8 @@ counterTextColor?: ColorMetrics
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputCounterOptions-counterTextColor?: ColorMetrics--><!--Device-InputCounterOptions-counterTextColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## counterTextOverflowColor
@@ -43,6 +47,8 @@ counterTextOverflowColor?: ColorMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-InputCounterOptions-counterTextOverflowColor?: ColorMetrics--><!--Device-InputCounterOptions-counterTextOverflowColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ highlightBorder?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InputCounterOptions-highlightBorder?: boolean--><!--Device-InputCounterOptions-highlightBorder?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## thresholdPercentage
@@ -81,5 +89,7 @@ thresholdPercentage是可输入字符数占最大字符限制的百分比值。�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InputCounterOptions-thresholdPercentage?: number--><!--Device-InputCounterOptions-thresholdPercentage?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

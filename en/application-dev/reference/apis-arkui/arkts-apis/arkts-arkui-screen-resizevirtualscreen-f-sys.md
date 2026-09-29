@@ -16,6 +16,8 @@ Resizes the virtual screen. This API uses a promise to return the result.
 
 **Since:** 24
 
+<!--Device-screen-function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<void>--><!--Device-screen-function resizeVirtualScreen(screenId:long, width: long, height: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.

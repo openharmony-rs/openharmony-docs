@@ -8,6 +8,8 @@ StyledString
 
 **Since:** 12
 
+<!--Device-unnamed-declare class StyledString--><!--Device-unnamed-declare class StyledString-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## marshalling
@@ -21,6 +23,8 @@ Marshals a styled string by defining a callback to marshal [StyledStringMarshall
 **Since:** 19
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StyledString-static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer--><!--Device-StyledString-static marshalling(styledString: StyledString, callback: StyledStringMarshallCallback): ArrayBuffer-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +57,8 @@ Marshals a styled string.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StyledString-static marshalling(styledString: StyledString): ArrayBuffer--><!--Device-StyledString-static marshalling(styledString: StyledString): ArrayBuffer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -80,6 +86,8 @@ Unmarshals a styled string by defining a callback to [StyledStringMarshallingVal
 **Since:** 19
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise<StyledString>--><!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallback): Promise<StyledString>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +126,8 @@ Unmarshals a buffer to obtain a styled string.
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer): Promise<StyledString>--><!--Device-StyledString-static unmarshalling(buffer: ArrayBuffer): Promise<StyledString>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

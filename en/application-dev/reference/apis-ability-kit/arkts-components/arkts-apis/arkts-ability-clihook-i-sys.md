@@ -10,6 +10,8 @@ The hook object may implement any subset of the optional methods. Only implement
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface CliHook--><!--Device-unnamed-export interface CliHook-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Called after a command is executed. The returned object replaces the original re
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CliHook-onAfterCallCmd?(param: ExecResultWrap): ExecResultWrap--><!--Device-CliHook-onAfterCallCmd?(param: ExecResultWrap): ExecResultWrap-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -54,6 +58,8 @@ Called after a tool is executed. The returned object replaces the original resul
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CliHook-onAfterCallTool?(param: ExecResultWrap): ExecResultWrap--><!--Device-CliHook-onAfterCallTool?(param: ExecResultWrap): ExecResultWrap-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -82,6 +88,8 @@ Called before a command is executed. The returned object replaces the original p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CliHook-onBeforeCallCmd?(param: ExecCmdParam): ExecCmdParam--><!--Device-CliHook-onBeforeCallCmd?(param: ExecCmdParam): ExecCmdParam-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
@@ -109,6 +117,8 @@ Called before a tool is executed. The returned object replaces the original para
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CliHook-onBeforeCallTool?(param: ExecToolParam): ExecToolParam--><!--Device-CliHook-onBeforeCallTool?(param: ExecToolParam): ExecToolParam-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 

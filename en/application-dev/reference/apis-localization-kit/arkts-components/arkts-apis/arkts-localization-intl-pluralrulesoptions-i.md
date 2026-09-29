@@ -12,6 +12,8 @@ Defines the options for creating a **PluralRules** object. Since API version 9, 
 
 **Substitutes:** [Intl.PluralRulesOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options)
 
+<!--Device-intl-export interface PluralRulesOptions--><!--Device-intl-export interface PluralRulesOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -40,6 +42,8 @@ The default value is **best fit**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PluralRulesOptions-localeMatcher?: string--><!--Device-PluralRulesOptions-localeMatcher?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## maximumFractionDigits
@@ -61,6 +65,8 @@ The default value is **3**.
 **Substitutes:** [Intl.PluralRulesOptions.maximumFractionDigits](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#maximumfractiondigits)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRulesOptions-maximumFractionDigits?: int--><!--Device-PluralRulesOptions-maximumFractionDigits?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -84,6 +90,8 @@ The default value is **21**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PluralRulesOptions-maximumSignificantDigits?: int--><!--Device-PluralRulesOptions-maximumSignificantDigits?: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## minimumFractionDigits
@@ -105,6 +113,8 @@ The default value is **0**.
 **Substitutes:** [Intl.PluralRulesOptions.minimumFractionDigits](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#minimumfractiondigits)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRulesOptions-minimumFractionDigits?: int--><!--Device-PluralRulesOptions-minimumFractionDigits?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -128,6 +138,8 @@ The default value is **1**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PluralRulesOptions-minimumIntegerDigits?: int--><!--Device-PluralRulesOptions-minimumIntegerDigits?: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## minimumSignificantDigits
@@ -149,6 +161,8 @@ The default value is **1**.
 **Substitutes:** [Intl.PluralRulesOptions.minimumSignificantDigits](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#minimumsignificantdigits)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRulesOptions-minimumSignificantDigits?: int--><!--Device-PluralRulesOptions-minimumSignificantDigits?: int-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -173,5 +187,7 @@ The value **cardinal** indicates a cardinal number and the value **ordinal** ind
 **Substitutes:** [Intl.PluralRulesOptions.type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#type)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PluralRulesOptions-type?: string--><!--Device-PluralRulesOptions-type?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

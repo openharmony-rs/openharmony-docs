@@ -12,6 +12,8 @@ Describes a **FormBindingData** object.
 
 **Substitutes:** [FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md)
 
+<!--Device-formBindingData-interface FormBindingData--><!--Device-formBindingData-interface FormBindingData-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -34,5 +36,7 @@ Data to be displayed on the JS widget. The value can be an object containing mul
 **Deprecated since:** 9
 
 **Substitutes:** [FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md)
+
+<!--Device-FormBindingData-data: Object--><!--Device-FormBindingData-data: Object-End-->
 
 **System capability:** SystemCapability.Ability.Form

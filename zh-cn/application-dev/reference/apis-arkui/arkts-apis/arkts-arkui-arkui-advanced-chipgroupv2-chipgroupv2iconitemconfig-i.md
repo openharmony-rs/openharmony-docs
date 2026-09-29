@@ -8,6 +8,8 @@ ChipGroupV2IconItemConfig定义了尾部图标项的配置，用于设置尾部�
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipGroupV2IconItemConfig--><!--Device-unnamed-export interface ChipGroupV2IconItemConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2IconItemConfig-accessibilityDescription?: ResourceStr--><!--Device-ChipGroupV2IconItemConfig-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +76,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2IconItemConfig-accessibilityLevel?: string--><!--Device-ChipGroupV2IconItemConfig-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -94,6 +100,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2IconItemConfig-accessibilityText?: ResourceStr--><!--Device-ChipGroupV2IconItemConfig-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -111,6 +119,8 @@ action: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2IconItemConfig-action: Callback<void>--><!--Device-ChipGroupV2IconItemConfig-action: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,5 +141,7 @@ icon: ChipV2ImageIconConfig
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2IconItemConfig-icon: ChipV2ImageIconConfig--><!--Device-ChipGroupV2IconItemConfig-icon: ChipV2ImageIconConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

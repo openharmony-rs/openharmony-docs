@@ -10,6 +10,8 @@ Represents a set of optional parameters for creating an OS account bound to the 
 
 **Since:** 12
 
+<!--Device-osAccount-interface CreateOsAccountForDomainOptions extends CreateOsAccountOptions--><!--Device-osAccount-interface CreateOsAccountForDomainOptions extends CreateOsAccountOptions-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.

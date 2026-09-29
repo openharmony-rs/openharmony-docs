@@ -24,6 +24,8 @@ In non-kiosk mode, this API can be called normally but does not take effect. The
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function setKioskFeatures(admin: Want, features: Array<KioskFeature>): void--><!--Device-applicationManager-function setKioskFeatures(admin: Want, features: Array<KioskFeature>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

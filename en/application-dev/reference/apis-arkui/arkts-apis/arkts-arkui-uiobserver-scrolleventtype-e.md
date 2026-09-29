@@ -4,11 +4,11 @@
 export enum ScrollEventType
 ```
 
-ScrollEvent type.
-
-@enum { number }
+Enumerates the scroll event types.
 
 **Since:** 12
+
+<!--Device-uiObserver-export enum ScrollEventType--><!--Device-uiObserver-export enum ScrollEventType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +18,15 @@ ScrollEvent type.
 SCROLL_START = 0
 ```
 
-When the ScrollEvent starts.
+The scroll event starts.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollEventType-SCROLL_START = 0--><!--Device-ScrollEventType-SCROLL_START = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,12 +36,14 @@ When the ScrollEvent starts.
 SCROLL_STOP = 1
 ```
 
-When the ScrollEvent stops.
+The scroll event ends.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollEventType-SCROLL_STOP = 1--><!--Device-ScrollEventType-SCROLL_STOP = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

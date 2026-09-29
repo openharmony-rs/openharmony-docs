@@ -8,6 +8,8 @@ Validity period in the configuration file.
 
 **Since:** 10
 
+<!--Device-unnamed-export interface Validity--><!--Device-unnamed-export interface Validity-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ End time of the validity period of the configuration file.
 
 **Since:** 10
 
+<!--Device-Validity-readonly notAfter: long--><!--Device-Validity-readonly notAfter: long-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Start time of the validity period of the configuration file.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-Validity-readonly notBefore: long--><!--Device-Validity-readonly notBefore: long-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

@@ -4,11 +4,13 @@
 declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** HyperlinkAttribute extends CommonMethod&lt;HyperlinkAttribute&gt;
+**继承/实现关系：** HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>--><!--Device-unnamed-declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +25,8 @@ color(value: Color | number | string | Resource)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HyperlinkAttribute-color(value: Color | number | string | Resource): HyperlinkAttribute--><!--Device-HyperlinkAttribute-color(value: Color | number | string | Resource): HyperlinkAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

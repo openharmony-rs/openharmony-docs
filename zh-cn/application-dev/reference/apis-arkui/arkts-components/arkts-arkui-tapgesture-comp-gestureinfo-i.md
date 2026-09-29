@@ -8,6 +8,8 @@ declare interface GestureInfo
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface GestureInfo--><!--Device-unnamed-declare interface GestureInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isSystemGesture
@@ -27,6 +29,8 @@ isSystemGesture: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureInfo-isSystemGesture: boolean--><!--Device-GestureInfo-isSystemGesture: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ tag?: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureInfo-tag?: string--><!--Device-GestureInfo-tag?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -64,12 +70,14 @@ type: GestureControl.GestureType
 
 当手势为未暴露类型的系统内置手势事件时，type的值为-1。
 
-**类型：** GestureControl.GestureType
+**类型：** [GestureControl.GestureType](arkts-arkui-tapgesture-comp-gesturetype-e.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureInfo-type: GestureControl.GestureType--><!--Device-GestureInfo-type: GestureControl.GestureType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

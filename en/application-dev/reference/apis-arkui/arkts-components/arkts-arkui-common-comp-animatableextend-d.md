@@ -12,4 +12,6 @@ The @AnimatableExtend decorator is used to customize animatable property methods
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare const AnimatableExtend: MethodDecorator & ((value: Object) => MethodDecorator)--><!--Device-unnamed-declare const AnimatableExtend: MethodDecorator & ((value: Object) => MethodDecorator)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

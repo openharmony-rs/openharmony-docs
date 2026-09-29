@@ -8,6 +8,8 @@ interface RotateOption
 
 **起始版本：** 7
 
+<!--Device-matrix4-interface RotateOption--><!--Device-matrix4-interface RotateOption-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ angle?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RotateOption-angle?: number--><!--Device-RotateOption-angle?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerX
@@ -57,6 +61,8 @@ centerX?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotateOption-centerX?: number--><!--Device-RotateOption-centerX?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ centerY?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RotateOption-centerY?: number--><!--Device-RotateOption-centerY?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -103,6 +111,8 @@ x?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotateOption-x?: number--><!--Device-RotateOption-x?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ y?: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RotateOption-y?: number--><!--Device-RotateOption-y?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -147,5 +159,7 @@ z?: number
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RotateOption-z?: number--><!--Device-RotateOption-z?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ declare interface TimePickerDialogOptions extends TimePickerOptions
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface TimePickerDialogOptions extends TimePickerOptions--><!--Device-unnamed-declare interface TimePickerDialogOptions extends TimePickerOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAccept
@@ -27,6 +29,8 @@ onAccept?: (value: TimePickerResult) => void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-onAccept?: (value: TimePickerResult) => void--><!--Device-TimePickerDialogOptions-onAccept?: (value: TimePickerResult) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ onCancel?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-onCancel?: () => void--><!--Device-TimePickerDialogOptions-onCancel?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onChange
@@ -65,6 +71,8 @@ onChange?: (value: TimePickerResult) => void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-onChange?: (value: TimePickerResult) => void--><!--Device-TimePickerDialogOptions-onChange?: (value: TimePickerResult) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ onDidAppear?: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-onDidAppear?: () => void--><!--Device-TimePickerDialogOptions-onDidAppear?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -117,6 +127,8 @@ onDidDisappear?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-onDidDisappear?: () => void--><!--Device-TimePickerDialogOptions-onDidDisappear?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +152,8 @@ onWillAppear?: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-onWillAppear?: () => void--><!--Device-TimePickerDialogOptions-onWillAppear?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDisappear
@@ -161,6 +175,8 @@ onWillDisappear?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-onWillDisappear?: () => void--><!--Device-TimePickerDialogOptions-onWillDisappear?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +204,8 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-acceptButtonStyle?: PickerDialogButtonStyle--><!--Device-TimePickerDialogOptions-acceptButtonStyle?: PickerDialogButtonStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignment
@@ -207,6 +225,8 @@ alignment?: DialogAlignment
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-alignment?: DialogAlignment--><!--Device-TimePickerDialogOptions-alignment?: DialogAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -235,6 +255,8 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-backgroundBlurStyle?: BlurStyle--><!--Device-TimePickerDialogOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -258,6 +280,8 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-TimePickerDialogOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,6 +310,8 @@ backgroundColor?: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-backgroundColor?: ResourceColor--><!--Device-TimePickerDialogOptions-backgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -310,6 +336,8 @@ backgroundEffect?: BackgroundEffectOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-TimePickerDialogOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,6 +365,8 @@ cancelButtonStyle?: PickerDialogButtonStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-cancelButtonStyle?: PickerDialogButtonStyle--><!--Device-TimePickerDialogOptions-cancelButtonStyle?: PickerDialogButtonStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## dateTimeOptions
@@ -361,6 +391,8 @@ dateTimeOptions?: DateTimeOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-dateTimeOptions?: DateTimeOptions--><!--Device-TimePickerDialogOptions-dateTimeOptions?: DateTimeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## disappearTextStyle
@@ -382,6 +414,8 @@ disappearTextStyle?: PickerTextStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-disappearTextStyle?: PickerTextStyle--><!--Device-TimePickerDialogOptions-disappearTextStyle?: PickerTextStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -409,6 +443,8 @@ enableCascade?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-enableCascade?: boolean--><!--Device-TimePickerDialogOptions-enableCascade?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -442,6 +478,8 @@ enableHapticFeedback?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-enableHapticFeedback?: boolean--><!--Device-TimePickerDialogOptions-enableHapticFeedback?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableHoverMode
@@ -467,6 +505,8 @@ enableHoverMode?: boolean
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-enableHoverMode?: boolean--><!--Device-TimePickerDialogOptions-enableHoverMode?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverModeArea
@@ -489,6 +529,8 @@ hoverModeArea?: HoverModeAreaType
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-hoverModeArea?: HoverModeAreaType--><!--Device-TimePickerDialogOptions-hoverModeArea?: HoverModeAreaType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maskRect
@@ -509,6 +551,8 @@ maskRect?: Rectangle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-maskRect?: Rectangle--><!--Device-TimePickerDialogOptions-maskRect?: Rectangle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -528,6 +572,8 @@ offset?: Offset
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-offset?: Offset--><!--Device-TimePickerDialogOptions-offset?: Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -551,6 +597,8 @@ onEnterSelectedArea?: Callback<TimePickerResult>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-onEnterSelectedArea?: Callback<TimePickerResult>--><!--Device-TimePickerDialogOptions-onEnterSelectedArea?: Callback<TimePickerResult>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -580,6 +628,8 @@ selectedTextStyle?: PickerTextStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-selectedTextStyle?: PickerTextStyle--><!--Device-TimePickerDialogOptions-selectedTextStyle?: PickerTextStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -604,6 +654,8 @@ shadow?: ShadowOptions | ShadowStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-shadow?: ShadowOptions | ShadowStyle--><!--Device-TimePickerDialogOptions-shadow?: ShadowOptions | ShadowStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -626,6 +678,8 @@ systemMaterial?: SystemUiMaterial
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-systemMaterial?: SystemUiMaterial--><!--Device-TimePickerDialogOptions-systemMaterial?: SystemUiMaterial-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -655,6 +709,8 @@ textStyle?: PickerTextStyle
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TimePickerDialogOptions-textStyle?: PickerTextStyle--><!--Device-TimePickerDialogOptions-textStyle?: PickerTextStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## useMilitaryTime
@@ -679,5 +735,7 @@ useMilitaryTime?: boolean
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TimePickerDialogOptions-useMilitaryTime?: boolean--><!--Device-TimePickerDialogOptions-useMilitaryTime?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Imports a key in plaintext. This API uses an asynchronous callback to return the
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void--><!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 9 to 11: SystemCapability.Security.Huks.Extension
@@ -118,6 +120,8 @@ Imports a key in plaintext. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions): Promise<void>--><!--Device-huks-function importKeyItem(keyAlias: string, options: HuksOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

@@ -8,6 +8,8 @@ Defines the information about an auto-fill request.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface FillRequest--><!--Device-unnamed-export interface FillRequest-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 ## customData
@@ -23,6 +25,8 @@ Custom data.
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FillRequest-customData: CustomData--><!--Device-FillRequest-customData: CustomData-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -45,6 +49,8 @@ Whether a dialog box is displayed for the auto-fill request.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FillRequest-isPopup: boolean--><!--Device-FillRequest-isPopup: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

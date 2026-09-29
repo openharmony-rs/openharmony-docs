@@ -16,6 +16,8 @@ function setFoldStatusLocked(locked: boolean): void
 
 **起始版本：** 11
 
+<!--Device-display-function setFoldStatusLocked(locked: boolean): void--><!--Device-display-function setFoldStatusLocked(locked: boolean): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

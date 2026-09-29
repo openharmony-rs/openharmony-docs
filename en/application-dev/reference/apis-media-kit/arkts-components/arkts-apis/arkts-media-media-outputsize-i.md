@@ -8,6 +8,8 @@ This interface is used to define the output image size.
 
 **Since:** 20
 
+<!--Device-media-interface OutputSize--><!--Device-media-interface OutputSize-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The expected output frame image height. If the value is less than 0, the height 
 
 **Since:** 20
 
+<!--Device-OutputSize-height?: int--><!--Device-OutputSize-height?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator
 
 ## width
@@ -41,5 +45,7 @@ The expected output frame image width. If the value is less than 0, the width wi
 **Type:** number
 
 **Since:** 20
+
+<!--Device-OutputSize-width?:int--><!--Device-OutputSize-width?:int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVImageGenerator

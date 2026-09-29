@@ -8,6 +8,8 @@ Double-ended queue (deque) is a sequence container implemented based on the queu
 
 **Since:** 8
 
+<!--Device-unnamed-declare class Deque<T>--><!--Device-unnamed-declare class Deque<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ returns an iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Deque-[Symbol.iterator](): IterableIterator<T>--><!--Device-Deque-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -87,7 +91,9 @@ A constructor used to create a **Deque** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-constructor()--><!--Device-Deque-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -114,6 +120,8 @@ Uses a callback to traverse each element in the **Deque** instance.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Deque-forEach(callbackFn: (value: T, index?: number, deque?: Deque<T>) => void, thisArg?: Object): void--><!--Device-Deque-forEach(callbackFn: (value: T, index?: number, deque?: Deque<T>) => void, thisArg?: Object): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -159,7 +167,9 @@ Obtains the first element of this Deque.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-getFirst(): T--><!--Device-Deque-getFirst(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -198,7 +208,9 @@ Obtains the last element of this Deque.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-getLast(): T--><!--Device-Deque-getLast(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -237,7 +249,9 @@ Checks whether this Deque has the specified element.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-has(element: T): boolean--><!--Device-Deque-has(element: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -278,7 +292,9 @@ Inserts an element at the end of this Deque.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-insertEnd(element: T): void--><!--Device-Deque-insertEnd(element: T): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -323,7 +339,9 @@ Inserts an element at the front of this Deque.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-insertFront(element: T): void--><!--Device-Deque-insertFront(element: T): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -368,7 +386,9 @@ Removes the first element of this Deque.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-popFirst(): T--><!--Device-Deque-popFirst(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -408,7 +428,9 @@ Removes the last element of this Deque.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Deque-popLast(): T--><!--Device-Deque-popLast(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -451,5 +473,7 @@ Number of elements in a Deque.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Deque-length: number--><!--Device-Deque-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

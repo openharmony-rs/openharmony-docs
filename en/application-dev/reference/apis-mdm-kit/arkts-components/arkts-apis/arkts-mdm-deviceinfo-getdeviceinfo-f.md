@@ -20,6 +20,8 @@ Obtains device information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceInfo-function getDeviceInfo(admin: Want, label: string): string--><!--Device-deviceInfo-function getDeviceInfo(admin: Want, label: string): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

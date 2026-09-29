@@ -4,9 +4,11 @@
 declare class FormComponentAttribute extends CommonMethod<FormComponentAttribute>
 ```
 
-**继承/实现关系：** FormComponentAttribute extends CommonMethod&lt;FormComponentAttribute&gt;
+**继承/实现关系：** FormComponentAttribute extends CommonMethod<FormComponentAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class FormComponentAttribute extends CommonMethod<FormComponentAttribute>--><!--Device-unnamed-declare class FormComponentAttribute extends CommonMethod<FormComponentAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

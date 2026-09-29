@@ -8,6 +8,8 @@ Defines static functions of App class
 
 **Since:** 3
 
+<!--Device-unnamed-export default class App--><!--Device-unnamed-export default class App-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## Modules to Import
@@ -31,6 +33,8 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-App-static getInfo(): AppResponse--><!--Device-App-static getInfo(): AppResponse-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -155,63 +159,6 @@ export default {
 }
 ```
 
-## requestFullWindow
-
-```TypeScript
-static requestFullWindow(options?: RequestFullWindowOptions): void
-```
-
-Requests the application to run in full window. In some scenarios, such as semi-modal FA, the FA runs in non-full window. In this case, you can call this API. This API is invalid for an application already in full-window mode.
-
-**Since:** 3
-
-**Deprecated since:** 8
-
-**Substitutes:** startAbility
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | No | Transition time from non-full window to full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window. |
-
-**Examples**
-
-```TypeScript
-import app, { AppResponse } from '@system.app';
-export default class Req {
-  requestFullWindow() {
-    app.requestFullWindow({
-      duration: 200
-    });
-  }
-}
-```
-
-## screenOnVisible
-
-```TypeScript
-static screenOnVisible(options?: ScreenOnVisibleOptions): void
-```
-
-Defines whether to keep the application visible when the screen is woken up.
-
-This API is deprecated since API version 8.
-
-**Since:** 3
-
-**Deprecated since:** 8
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| options | [ScreenOnVisibleOptions](arkts-arkui-system-app-screenonvisibleoptions-i.md) | No | With keep-alive, the system is prevented from returning to the home screen when the screen is locked, so that the application is visible when the screen is woken up. |
-
 ## setImageCacheCount
 
 ```TypeScript
@@ -225,6 +172,8 @@ Set image cache capacity of decoded image count. if not set, the application wil
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-App-static setImageCacheCount(value: number): void--><!--Device-App-static setImageCacheCount(value: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,6 +226,8 @@ Set image file cache size in bytes on disk before decode. if not set, the applic
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-App-static setImageFileCacheSize(value: number): void--><!--Device-App-static setImageFileCacheSize(value: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -316,6 +267,8 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-App-static setImageRawDataCacheSize(value: number): void--><!--Device-App-static setImageRawDataCacheSize(value: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,6 +322,8 @@ This API is deprecated since API version 7. You are advised to use [@ohos.abilit
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-App-static terminate(): void--><!--Device-App-static terminate(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -450,3 +405,64 @@ export default {
     }
 }
 ```
+
+## requestFullWindow
+
+```TypeScript
+static requestFullWindow(options?: RequestFullWindowOptions): void
+```
+
+Requests the application to run in full window. In some scenarios, such as semi-modal FA, the FA runs in non-full window. In this case, you can call this API. This API is invalid for an application already in full-window mode.
+
+**Since:** 3
+
+**Deprecated since:** 8
+
+**Substitutes:** startAbility
+
+<!--Device-App-static requestFullWindow(options?: RequestFullWindowOptions): void--><!--Device-App-static requestFullWindow(options?: RequestFullWindowOptions): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | No | Transition time from non-full window to full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window. |
+
+**Examples**
+
+```TypeScript
+import app, { AppResponse } from '@system.app';
+export default class Req {
+  requestFullWindow() {
+    app.requestFullWindow({
+      duration: 200
+    });
+  }
+}
+```
+
+## screenOnVisible
+
+```TypeScript
+static screenOnVisible(options?: ScreenOnVisibleOptions): void
+```
+
+Defines whether to keep the application visible when the screen is woken up.
+
+This API is deprecated since API version 8.
+
+**Since:** 3
+
+**Deprecated since:** 8
+
+<!--Device-App-static screenOnVisible(options?: ScreenOnVisibleOptions): void--><!--Device-App-static screenOnVisible(options?: ScreenOnVisibleOptions): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| options | [ScreenOnVisibleOptions](arkts-arkui-system-app-screenonvisibleoptions-i.md) | No | With keep-alive, the system is prevented from returning to the home screen when the screen is locked, so that the application is visible when the screen is woken up. |

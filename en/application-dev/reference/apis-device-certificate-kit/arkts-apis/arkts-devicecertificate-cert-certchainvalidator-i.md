@@ -8,6 +8,8 @@ Provides APIs for certificate chain validator operations.
 
 **Since:** 9
 
+<!--Device-cert-interface CertChainValidator--><!--Device-cert-interface CertChainValidator-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Validates an X.509 certificate chain. This API uses an asynchronous callback to 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertChainValidator-validate(certChain: CertChainData, callback: AsyncCallback<void>): void--><!--Device-CertChainValidator-validate(certChain: CertChainData, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -161,7 +165,9 @@ Validates an X.509 certificate chain. This API uses a promise to return the resu
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertChainValidator-validate(certChain: CertChainData): Promise<void>--><!--Device-CertChainValidator-validate(certChain: CertChainData): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -307,7 +313,9 @@ such as certificate signature verification and certificate revocation check.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-CertChainValidator-validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidationResult>--><!--Device-CertChainValidator-validateCert(cert: X509Cert, params: CertValidationParams): Promise<CertValidationResult>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -483,6 +491,8 @@ Algorithm used by the X.509 certificate chain validator.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CertChainValidator-readonly algorithm: string--><!--Device-CertChainValidator-readonly algorithm: string-End-->
 
 **System capability:** SystemCapability.Security.Cert

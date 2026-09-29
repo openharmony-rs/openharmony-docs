@@ -10,6 +10,8 @@ Defines the parameters for obtaining the device information.
 
 **Deprecated since:** 6
 
+<!--Device-unnamed-export interface GetDeviceOptions--><!--Device-unnamed-export interface GetDeviceOptions-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Callback invoked when the API call is complete (regardless of whether the call i
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-GetDeviceOptions-complete?: () => void--><!--Device-GetDeviceOptions-complete?: () => void-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
 ## fail
@@ -47,6 +51,8 @@ Callback invoked when the API call fails. **data** is the error object or error 
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-GetDeviceOptions-fail?: (data: any, code: number) => void--><!--Device-GetDeviceOptions-fail?: (data: any, code: number) => void-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 
@@ -70,6 +76,8 @@ Callback invoked when the API call is successful. **data** is the device informa
 **Deprecated since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-GetDeviceOptions-success?: (data: DeviceResponse) => void--><!--Device-GetDeviceOptions-success?: (data: DeviceResponse) => void-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo.Lite
 

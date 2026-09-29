@@ -8,6 +8,8 @@ Defines the image recommendation options. The image recommendation feature depen
 
 **Since:** 11
 
+<!--Device-photoAccessHelper-class RecommendationOptions--><!--Device-photoAccessHelper-class RecommendationOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ If the tag does not exist, the All tag page is displayed by default.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RecommendationOptions-defaultRecommendationType?: RecommendationType--><!--Device-RecommendationOptions-defaultRecommendationType?: RecommendationType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ List of recommendation types. If images of multiple categories need to be recomm
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RecommendationOptions-recommendationTypeList?: Array<RecommendationType>--><!--Device-RecommendationOptions-recommendationTypeList?: Array<RecommendationType>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -16,6 +16,8 @@ export declare struct FullScreenLaunchComponent
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct FullScreenLaunchComponent--><!--Device-unnamed-export declare struct FullScreenLaunchComponent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ App ID of the atomic service to be launched. It is the unique identifier for the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FullScreenLaunchComponent-appId: string--><!--Device-FullScreenLaunchComponent-appId: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -56,6 +60,8 @@ Custom placeholder icon displayed before the atomic service is launched. This al
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FullScreenLaunchComponent-content: Callback<void>--><!--Device-FullScreenLaunchComponent-content: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onError
@@ -71,6 +77,8 @@ Callback triggered when an exception occurs during the execution of an embedded 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-FullScreenLaunchComponent-onError?: ErrorCallback--><!--Device-FullScreenLaunchComponent-onError?: ErrorCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +96,8 @@ Callback triggered when an embedded atomic service calls [@ohos.window (window)]
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-FullScreenLaunchComponent-onReceive?: Callback<Record<string, Object>>--><!--Device-FullScreenLaunchComponent-onReceive?: Callback<Record<string, Object>>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onTerminated
@@ -104,6 +114,8 @@ Callback triggered when an embedded atomic service exits normally. Exit scenario
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-FullScreenLaunchComponent-onTerminated?: Callback<TerminationInfo>--><!--Device-FullScreenLaunchComponent-onTerminated?: Callback<TerminationInfo>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## options
@@ -119,5 +131,7 @@ Parameters for launching the atomic service.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FullScreenLaunchComponent-options?: AtomicServiceOptions--><!--Device-FullScreenLaunchComponent-options?: AtomicServiceOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

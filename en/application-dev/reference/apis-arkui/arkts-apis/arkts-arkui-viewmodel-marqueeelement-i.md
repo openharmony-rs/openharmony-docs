@@ -12,6 +12,8 @@ The &lt;marquee&gt; component inserts scrolling text, which is displayed in a si
 
 **Since:** 4
 
+<!--Device-unnamed-export interface MarqueeElement extends Element--><!--Device-unnamed-export interface MarqueeElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -26,6 +28,8 @@ Starts scrolling.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-MarqueeElement-start(): void--><!--Device-MarqueeElement-start(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## stop
@@ -39,5 +43,7 @@ Stops scrolling.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-MarqueeElement-stop(): void--><!--Device-MarqueeElement-stop(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

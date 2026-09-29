@@ -17,6 +17,8 @@ fromEntries<T = any>(entries: Iterable<readonly [PropertyKey, T]>): { [k: string
 
 Returns an object created by key-value entries for properties and methods
 
+<!--Device-ObjectConstructor-fromEntries<T = any>(entries: Iterable<readonly [PropertyKey, T]>): { [k: string]: T }--><!--Device-ObjectConstructor-fromEntries<T = any>(entries: Iterable<readonly [PropertyKey, T]>): { [k: string]: T }-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -32,6 +34,8 @@ fromEntries(entries: Iterable<readonly any[]>): any
 ```
 
 Returns an object created by key-value entries for properties and methods
+
+<!--Device-ObjectConstructor-fromEntries(entries: Iterable<readonly any[]>): any--><!--Device-ObjectConstructor-fromEntries(entries: Iterable<readonly any[]>): any-End-->
 
 **Parameters:**
 

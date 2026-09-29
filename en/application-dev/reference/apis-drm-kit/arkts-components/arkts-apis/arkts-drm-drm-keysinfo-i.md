@@ -8,6 +8,8 @@ Defines the status information of a media key.
 
 **Since:** 11
 
+<!--Device-drm-interface KeysInfo--><!--Device-drm-interface KeysInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Media key ID.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-KeysInfo-keyId: Uint8Array--><!--Device-KeysInfo-keyId: Uint8Array-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -44,6 +48,8 @@ Media key status.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-KeysInfo-value: string--><!--Device-KeysInfo-value: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core

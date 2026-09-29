@@ -10,6 +10,8 @@ You can define intent entities by inheriting this class. The child class must be
 
 **Since:** 20
 
+<!--Device-insightIntent-interface IntentEntity--><!--Device-insightIntent-interface IntentEntity-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ ID of the intent entity.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-IntentEntity-entityId: string--><!--Device-IntentEntity-entityId: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

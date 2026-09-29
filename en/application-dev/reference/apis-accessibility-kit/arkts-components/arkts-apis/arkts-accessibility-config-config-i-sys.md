@@ -8,6 +8,8 @@ Implements configuration, acquisition, and listening for properties.
 
 **Since:** 9
 
+<!--Device-config-interface Config<T>--><!--Device-config-interface Config<T>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ get(): Promise<T>
 Obtains the value of a property. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-Config-get(): Promise<T>--><!--Device-Config-get(): Promise<T>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -69,6 +73,8 @@ get(callback: AsyncCallback<T>): void
 Obtains the property value. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-Config-get(callback: AsyncCallback<T>): void--><!--Device-Config-get(callback: AsyncCallback<T>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -113,6 +119,8 @@ Cancels the listener for property changes. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+<!--Device-Config-off(callback?: Callback<T>): void--><!--Device-Config-off(callback?: Callback<T>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -156,6 +164,8 @@ This API must be used together with [off](#off). Call off to unregister the list
 
 **Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+<!--Device-Config-on(callback: Callback<T>): void--><!--Device-Config-on(callback: Callback<T>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -195,6 +205,8 @@ Sets the value of a property. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+<!--Device-Config-set(value: T): Promise<void>--><!--Device-Config-set(value: T): Promise<void>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -248,6 +260,8 @@ Sets the property value. This API uses an asynchronous callback to return the re
 **Since:** 9
 
 **Required permissions:** ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+<!--Device-Config-set(value: T, callback: AsyncCallback<void>): void--><!--Device-Config-set(value: T, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

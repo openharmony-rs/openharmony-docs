@@ -16,6 +16,8 @@ The maintenance of this interface has been stopped since version api 9. Please u
 
 **Since:** 9
 
+<!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void--><!--Device-media-function createVideoRecorder(callback: AsyncCallback<VideoRecorder>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ function createVideoRecorder(): Promise<VideoRecorder>
 The maintenance of this interface has been stopped since version api 9. Please use AVRecorder Creates an VideoRecorder instance.
 
 **Since:** 9
+
+<!--Device-media-function createVideoRecorder(): Promise<VideoRecorder>--><!--Device-media-function createVideoRecorder(): Promise<VideoRecorder>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.VideoRecorder
 

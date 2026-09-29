@@ -8,6 +8,8 @@ Sets the action type of a mouse operation.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum MouseAction--><!--Device-unnamed-declare enum MouseAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Press
@@ -23,6 +25,8 @@ The mouse button is pressed.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseAction-Press--><!--Device-MouseAction-Press-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The mouse button is released.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseAction-Release--><!--Device-MouseAction-Release-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Move
@@ -55,6 +61,8 @@ The mouse cursor moves.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MouseAction-Move--><!--Device-MouseAction-Move-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ Note: This value has no effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MouseAction-Hover--><!--Device-MouseAction-Hover-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ENTER_WINDOW
@@ -90,6 +100,8 @@ The mouse pointer moves into the window.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-MouseAction-ENTER_WINDOW = 4--><!--Device-MouseAction-ENTER_WINDOW = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LEAVE_WINDOW
@@ -105,6 +117,8 @@ The mouse pointer moves out of the window.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-MouseAction-LEAVE_WINDOW = 5--><!--Device-MouseAction-LEAVE_WINDOW = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,5 +142,7 @@ mouse events are marked as canceled.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-MouseAction-CANCEL = 13--><!--Device-MouseAction-CANCEL = 13-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

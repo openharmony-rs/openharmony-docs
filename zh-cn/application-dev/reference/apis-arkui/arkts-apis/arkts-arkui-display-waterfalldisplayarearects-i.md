@@ -8,6 +8,8 @@ interface WaterfallDisplayAreaRects
 
 **起始版本：** 9
 
+<!--Device-display-interface WaterfallDisplayAreaRects--><!--Device-display-interface WaterfallDisplayAreaRects-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,7 +30,9 @@ readonly bottom: Rect
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterfallDisplayAreaRects-readonly bottom: Rect--><!--Device-WaterfallDisplayAreaRects-readonly bottom: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,7 +48,9 @@ readonly left: Rect
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterfallDisplayAreaRects-readonly left: Rect--><!--Device-WaterfallDisplayAreaRects-readonly left: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -60,7 +66,9 @@ readonly right: Rect
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterfallDisplayAreaRects-readonly right: Rect--><!--Device-WaterfallDisplayAreaRects-readonly right: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -76,6 +84,8 @@ readonly top: Rect
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterfallDisplayAreaRects-readonly top: Rect--><!--Device-WaterfallDisplayAreaRects-readonly top: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

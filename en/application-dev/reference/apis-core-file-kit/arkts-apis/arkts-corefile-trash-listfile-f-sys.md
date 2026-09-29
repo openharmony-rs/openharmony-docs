@@ -22,6 +22,8 @@ Lists the files and directories in the **Recently deleted** list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-trash-function listFile(): Array<FileInfo>--><!--Device-trash-function listFile(): Array<FileInfo>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

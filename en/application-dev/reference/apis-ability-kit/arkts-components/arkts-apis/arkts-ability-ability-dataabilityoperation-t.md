@@ -10,6 +10,8 @@ Defines the level-2 module DataAbilityOperation.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ability-export type DataAbilityOperation = _DataAbilityOperation--><!--Device-ability-export type DataAbilityOperation = _DataAbilityOperation-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Type:** _DataAbilityOperation

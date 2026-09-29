@@ -8,6 +8,8 @@ Defines how to apply the specified blend mode to the content of a view.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum BlendApplyType--><!--Device-unnamed-declare enum BlendApplyType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## OFFSCREEN_WITH_BACKGROUND
@@ -23,6 +25,8 @@ When an offscreen canvas is created, an initial background canvas is copied firs
 **Model restriction:** This API can be used only in the stage model.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-BlendApplyType-OFFSCREEN_WITH_BACKGROUND = 2--><!--Device-BlendApplyType-OFFSCREEN_WITH_BACKGROUND = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

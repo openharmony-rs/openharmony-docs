@@ -8,6 +8,8 @@ Represents the measurement result data corresponding to the performance metric.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface PerfMeasureResult--><!--Device-unnamed-declare interface PerfMeasureResult-End-->
+
 **System capability:** SystemCapability.Test.PerfTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -30,7 +32,9 @@ Average value of the measurement data of each round (the value **-1** is exclude
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfMeasureResult-readonly average: double--><!--Device-PerfMeasureResult-readonly average: double-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -48,7 +52,9 @@ Maximum value of the measurement data of each round (the value **-1** is exclude
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfMeasureResult-readonly maximum: double--><!--Device-PerfMeasureResult-readonly maximum: double-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -66,7 +72,9 @@ Performance metric to test.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfMeasureResult-readonly metric: PerfMetric--><!--Device-PerfMeasureResult-readonly metric: PerfMetric-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -84,7 +92,9 @@ Minimum value of the measurement data of each round (the value **-1** is exclude
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfMeasureResult-readonly minimum: double--><!--Device-PerfMeasureResult-readonly minimum: double-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 
@@ -102,7 +112,9 @@ Measurement data value of each round of the tested performance metric. The unit 
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-PerfMeasureResult-readonly roundValues: Array<double>--><!--Device-PerfMeasureResult-readonly roundValues: Array<double>-End-->
 
 **System capability:** SystemCapability.Test.PerfTest
 

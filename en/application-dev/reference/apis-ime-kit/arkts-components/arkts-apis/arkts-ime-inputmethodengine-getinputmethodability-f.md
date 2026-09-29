@@ -16,6 +16,8 @@ Obtains an [InputMethodAbility](arkts-ime-inputmethodengine-inputmethodability-i
 
 **Since:** 9
 
+<!--Device-inputMethodEngine-function getInputMethodAbility(): InputMethodAbility--><!--Device-inputMethodEngine-function getInputMethodAbility(): InputMethodAbility-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**

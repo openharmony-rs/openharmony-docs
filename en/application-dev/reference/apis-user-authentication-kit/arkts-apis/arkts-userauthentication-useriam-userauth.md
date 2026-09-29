@@ -13,6 +13,8 @@ This module applies to the following scenarios:
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace userAuth--><!--Device-unnamed-declare namespace userAuth-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -88,6 +90,26 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | [WidgetParam](arkts-userauthentication-userauth-widgetparam-i-sys.md) | Represents the information presented on the user authentication page. This API is used to configure the display style and interaction mode of the authentication screen, including the title, navigation button text, and window mode. By properly setting these parameters, you can provide clear authentication guidance and good interaction experience for users. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md) | Defines the keyword of the authentication event type. It is used as a parameter of [on](arkts-userauthentication-userauth-authinstance-i.md#on). |
+| [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | Defines the callback to return the intermediate authentication status. This callback is used to obtain various intermediate status information during authentication, including authentication failure, lockout, and loading and release of the authentication screen. By subscribing to these intermediate statuses, the application can provide more refined user interaction and status management during the authentication process. |
+| [AuthType](arkts-userauthentication-userauth-authtype-t.md) | Enumerates the authentication types. |
+| [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md) | Enumerates the authentication event information types. |
+| [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | Enumerates the authentication security levels. |
+| [UserRecognitionResultCallback](arkts-userauthentication-userauth-userrecognitionresultcallback-t.md) | Defines the callback used to receive the user recognition result. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [ResultCallback](arkts-userauthentication-userauth-resultcallback-t-sys.md) | Triggered to return the remote authentication result. This callback type is used in remote authentication scenarios. After remote authentication is complete, the system calls this callback function to return the authentication result. |
+| [WidgetParamCallback](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md) | Triggered to obtain remote authentication page parameters. This callback type is used in remote authentication scenarios. When the system needs to obtain the configuration parameters of the remote authentication page, it calls this callback function. |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
@@ -112,26 +134,6 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e-sys.md) | Enumerates the authentication result codes. They include all success codes and error codes for user authentication operations. The application can determine the authentication result based on the return code and take corresponding measures. |
 | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e-sys.md) | Enumerates the identity authentication types. This enum defines the authentication types supported by the system, including PIN authentication and biometric authentication (face and fingerprint). When initiating authentication, an application needs to specify the authentication type list, and the user can select any of the authentication types to complete the authentication. The security strength and user experience vary depending on authentication types. The application needs to select a proper authentication type based on service scenarios. |
 | [WindowModeType](arkts-userauthentication-userauth-windowmodetype-e-sys.md) | Enumerates the display types of the user authentication screen. This enum defines the display modes that can be used on the authentication screen and is used to control the window style of the system authentication widget. |
-<!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md) | Defines the keyword of the authentication event type. It is used as a parameter of [on](arkts-userauthentication-userauth-authinstance-i.md#on). |
-| [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md) | Defines the callback to return the intermediate authentication status. This callback is used to obtain various intermediate status information during authentication, including authentication failure, lockout, and loading and release of the authentication screen. By subscribing to these intermediate statuses, the application can provide more refined user interaction and status management during the authentication process. |
-| [AuthType](arkts-userauthentication-userauth-authtype-t.md) | Enumerates the authentication types. |
-| [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md) | Enumerates the authentication event information types. |
-| [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | Enumerates the authentication security levels. |
-| [UserRecognitionResultCallback](arkts-userauthentication-userauth-userrecognitionresultcallback-t.md) | Defines the callback used to receive the user recognition result. |
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [ResultCallback](arkts-userauthentication-userauth-resultcallback-t-sys.md) | Triggered to return the remote authentication result. This callback type is used in remote authentication scenarios. After remote authentication is complete, the system calls this callback function to return the authentication result. |
-| [WidgetParamCallback](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md) | Triggered to obtain remote authentication page parameters. This callback type is used in remote authentication scenarios. When the system needs to obtain the configuration parameters of the remote authentication page, it calls this callback function. |
 <!--DelEnd-->
 
 ### Constants

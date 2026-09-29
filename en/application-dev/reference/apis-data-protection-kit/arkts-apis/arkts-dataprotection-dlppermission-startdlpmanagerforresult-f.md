@@ -24,6 +24,8 @@ This API starts the DLP manager application to configure file permissions and re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dlpPermission-function startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise<DLPManagerResult>--><!--Device-dlpPermission-function startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise<DLPManagerResult>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**
@@ -92,6 +94,8 @@ This API starts the DLP manager application to configure file permissions and re
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-dlpPermission-function startDLPManagerForResult(context: common.Context, want: Want, window: window.Window): Promise<DLPManagerResult>--><!--Device-dlpPermission-function startDLPManagerForResult(context: common.Context, want: Want, window: window.Window): Promise<DLPManagerResult>-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
 

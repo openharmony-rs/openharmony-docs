@@ -20,6 +20,8 @@ Queries whether a specified network interface is disabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean--><!--Device-networkManager-function isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -81,6 +83,8 @@ Queries whether a specified network interface is disabled. This API is suitable 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: string): boolean--><!--Device-networkManager-function isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: string): boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

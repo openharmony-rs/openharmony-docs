@@ -8,6 +8,8 @@ When starting a modal page, developers can transfer custom data to the auto-fill
 
 **Since:** 13
 
+<!--Device-unnamed-export default interface CustomData--><!--Device-unnamed-export default interface CustomData-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Custom data transferred for starting the modal page. The data is of the Record t
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CustomData-data: Record<string, Object>--><!--Device-CustomData-data: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

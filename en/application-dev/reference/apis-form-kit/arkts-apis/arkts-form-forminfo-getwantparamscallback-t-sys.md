@@ -12,6 +12,8 @@ Get want parameters callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formInfo-type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Record<string, Object>>--><!--Device-formInfo-type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Record<string, Object>>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

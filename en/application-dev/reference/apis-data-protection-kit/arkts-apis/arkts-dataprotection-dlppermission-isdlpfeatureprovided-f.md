@@ -23,6 +23,8 @@ This API checks whether the current system supports the DLP encryption function,
 
 **Since:** 12
 
+<!--Device-dlpPermission-function isDLPFeatureProvided(): Promise<boolean>--><!--Device-dlpPermission-function isDLPFeatureProvided(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Return value:**

@@ -20,6 +20,8 @@ Adds a preferred language to the specified position on the preferred language li
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-i18n-export function addPreferredLanguage(language: string, index?: int): boolean--><!--Device-i18n-export function addPreferredLanguage(language: string, index?: int): boolean-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**

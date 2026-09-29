@@ -20,6 +20,8 @@ Hibernates a device.
 - API version 19 and later: ohos.permission.POWER_MANAGER
 - API versions 12 to 18: N/A
 
+<!--Device-power-function hibernate(clearMemory: boolean): void--><!--Device-power-function hibernate(clearMemory: boolean): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ Obtain geocoding service status.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-function isGeocoderAvailable(): boolean--><!--Device-geoLocationManager-function isGeocoderAvailable(): boolean-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 **Return value:**

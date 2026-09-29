@@ -12,6 +12,8 @@ Describes the settings for BLE advertising.
 
 **Substitutes:** [AdvertiseSetting](arkts-connectivity-bluetoothmanager-advertisesetting-i.md)
 
+<!--Device-bluetooth-interface AdvertiseSetting--><!--Device-bluetooth-interface AdvertiseSetting-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Indicates whether the BLE is connectable, default is `true`
 
 **Substitutes:** [connectable](arkts-connectivity-bluetoothmanager-advertisesetting-i.md#connectable)
 
+<!--Device-AdvertiseSetting-connectable?: boolean--><!--Device-AdvertiseSetting-connectable?: boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## interval
@@ -54,6 +58,8 @@ Minimum slot value for the advertising interval, which is `32` (20 ms) Maximum s
 
 **Substitutes:** [interval](arkts-connectivity-bluetoothmanager-advertisesetting-i.md#interval)
 
+<!--Device-AdvertiseSetting-interval?: number--><!--Device-AdvertiseSetting-interval?: number-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## txPower
@@ -71,5 +77,7 @@ Minimum transmission power level for advertising, which is `-127` Maximum transm
 **Deprecated since:** 9
 
 **Substitutes:** [txPower](arkts-connectivity-bluetoothmanager-advertisesetting-i.md#txpower)
+
+<!--Device-AdvertiseSetting-txPower?: number--><!--Device-AdvertiseSetting-txPower?: number-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

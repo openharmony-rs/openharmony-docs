@@ -12,6 +12,8 @@ Defines the array class of the **ChipGroupV2** item, which inherits from Array&l
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipGroupV2Items extends Array<ChipGroupV2Item>--><!--Device-unnamed-export declare class ChipGroupV2Items extends Array<ChipGroupV2Item>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,6 +35,8 @@ A constructor used to create a **ChipGroupV2Items** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroupV2Items-constructor(items: ChipGroupV2ItemConfig[])--><!--Device-ChipGroupV2Items-constructor(items: ChipGroupV2ItemConfig[])-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

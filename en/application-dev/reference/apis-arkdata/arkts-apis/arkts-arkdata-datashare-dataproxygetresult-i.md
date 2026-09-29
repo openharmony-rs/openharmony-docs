@@ -8,6 +8,8 @@ Defines a struct for obtaining the batch operation result of shared configuratio
 
 **Since:** 20
 
+<!--Device-dataShare-interface DataProxyGetResult--><!--Device-dataShare-interface DataProxyGetResult-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import
@@ -30,6 +32,8 @@ If the operation is successful, the allowlist is the one set in shared configura
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyGetResult-allowList: string[] | undefined--><!--Device-DataProxyGetResult-allowList: string[] | undefined-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## result
@@ -45,6 +49,8 @@ Operation result code.
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyGetResult-result: DataProxyErrorCode--><!--Device-DataProxyGetResult-result: DataProxyErrorCode-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -62,6 +68,8 @@ URI to be operated, with a maximum of 256 bytes. The value is fixed at the forma
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DataProxyGetResult-uri: string--><!--Device-DataProxyGetResult-uri: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## value
@@ -77,5 +85,7 @@ If the operation is successful, the value is the one set in shared configuration
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataProxyGetResult-value: ValueType | undefined--><!--Device-DataProxyGetResult-value: ValueType | undefined-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer

@@ -18,6 +18,8 @@ Constructs a URI for a specific name-value pair for monitoring data of the abili
 
 **Deprecated since:** 9
 
+<!--Device-settings-function getURI(name: string, callback: AsyncCallback<object>): void--><!--Device-settings-function getURI(name: string, callback: AsyncCallback<object>): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -49,6 +51,8 @@ Constructs a URI for a specific name-value pair for monitoring data of the abili
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-settings-function getURI(name: string): Promise<object>--><!--Device-settings-function getURI(name: string): Promise<object>-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

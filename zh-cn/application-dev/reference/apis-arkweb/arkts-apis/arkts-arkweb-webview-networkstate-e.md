@@ -8,6 +8,8 @@ enum NetworkState
 
 **起始版本：** 12
 
+<!--Device-webview-enum NetworkState--><!--Device-webview-enum NetworkState-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## EMPTY
@@ -21,6 +23,8 @@ EMPTY = 0
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NetworkState-EMPTY = 0--><!--Device-NetworkState-EMPTY = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ IDLE = 1
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NetworkState-IDLE = 1--><!--Device-NetworkState-IDLE = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## LOADING
@@ -50,6 +56,8 @@ LOADING = 2
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NetworkState-LOADING = 2--><!--Device-NetworkState-LOADING = 2-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## NETWORK_ERROR
@@ -63,5 +71,7 @@ NETWORK_ERROR = 3
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NetworkState-NETWORK_ERROR = 3--><!--Device-NetworkState-NETWORK_ERROR = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

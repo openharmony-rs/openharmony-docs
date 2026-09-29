@@ -14,6 +14,8 @@ This module provides device Bluetooth management capabilities, including setting
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace bluetoothManager--><!--Device-unnamed-declare namespace bluetoothManager-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import

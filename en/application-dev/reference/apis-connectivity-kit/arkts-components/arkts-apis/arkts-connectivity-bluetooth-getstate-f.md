@@ -22,6 +22,8 @@ Obtains the Bluetooth status of a device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function getState(): BluetoothState--><!--Device-bluetooth-function getState(): BluetoothState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

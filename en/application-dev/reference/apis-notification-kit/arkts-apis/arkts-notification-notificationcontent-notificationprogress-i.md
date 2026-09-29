@@ -12,6 +12,8 @@ Describes the notification progress, which is used to display progress bar infor
 
 **Since:** 11
 
+<!--Device-unnamed-export interface NotificationProgress--><!--Device-unnamed-export interface NotificationProgress-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## currentValue
@@ -25,6 +27,8 @@ Current value of the progress.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NotificationProgress-currentValue?: int--><!--Device-NotificationProgress-currentValue?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -43,6 +47,8 @@ Whether to display the progress as a percentage. The value defaults to **false**
 
 **Since:** 11
 
+<!--Device-NotificationProgress-isPercentage?: boolean--><!--Device-NotificationProgress-isPercentage?: boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## maxValue
@@ -56,5 +62,7 @@ Maximum value of the progress.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-NotificationProgress-maxValue?: int--><!--Device-NotificationProgress-maxValue?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification

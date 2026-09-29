@@ -21,6 +21,8 @@ Obtains the configuration parameters of a specified serial port. You need to cal
 
 **Since:** 19
 
+<!--Device-serialManager-function getAttribute(portId: int): Readonly<SerialAttribute>--><!--Device-serialManager-function getAttribute(portId: int): Readonly<SerialAttribute>-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

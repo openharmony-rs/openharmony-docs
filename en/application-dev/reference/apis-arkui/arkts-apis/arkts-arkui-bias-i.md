@@ -16,6 +16,8 @@ The same rule applies to the vertical direction. The value is the ratio of D&lt;
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface Bias--><!--Device-unnamed-declare interface Bias-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## horizontal
@@ -42,6 +44,8 @@ Default value: **0.5**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-Bias-horizontal?: number--><!--Device-Bias-horizontal?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## vertical
@@ -67,5 +71,7 @@ Default value: **0.5**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-Bias-vertical?: number--><!--Device-Bias-vertical?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

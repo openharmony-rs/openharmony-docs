@@ -18,6 +18,8 @@ Removes notifications under a notification group of the specified application. T
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Removes notifications under a notification group of the specified application. T
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<void>--><!--Device-notificationManager-function removeGroupByBundle(bundle: BundleOption, groupName: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

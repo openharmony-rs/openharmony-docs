@@ -19,6 +19,8 @@ Checks whether animation reduction mode is enabled. This API uses a promise to r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function isAnimationReduceEnabled(): Promise<boolean>--><!--Device-accessibility-function isAnimationReduceEnabled(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value:**

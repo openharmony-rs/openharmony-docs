@@ -8,6 +8,8 @@ Defines the callback information triggered when the web form data can be resubmi
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnDataResubmittedEvent--><!--Device-unnamed-declare interface OnDataResubmittedEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -23,5 +25,7 @@ Handler for resubmitting web form data.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnDataResubmittedEvent-handler: DataResubmissionHandler--><!--Device-OnDataResubmittedEvent-handler: DataResubmissionHandler-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -16,6 +16,8 @@ Obtains the network handle bound to an application. This API uses an asynchronou
 
 **Since:** 9
 
+<!--Device-connection-function getAppNet(callback: AsyncCallback<NetHandle>): void--><!--Device-connection-function getAppNet(callback: AsyncCallback<NetHandle>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -59,6 +61,8 @@ function getAppNet(): Promise<NetHandle>
 Obtains the network information bound to an application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-connection-function getAppNet(): Promise<NetHandle>--><!--Device-connection-function getAppNet(): Promise<NetHandle>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

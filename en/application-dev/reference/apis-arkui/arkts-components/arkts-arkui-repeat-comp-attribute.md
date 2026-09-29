@@ -10,6 +10,8 @@ In addition to the drag-and-drop sorting attribute, the following attributes are
 
 **Since:** 12
 
+<!--Device-unnamed-declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>--><!--Device-unnamed-declare class RepeatAttribute<T> extends DynamicNode<RepeatAttribute<T>>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## each
@@ -35,6 +37,8 @@ Component generator. When the return value of [.templateId()](#templateid) does 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-RepeatAttribute-each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>--><!--Device-RepeatAttribute-each(itemGenerator: (repeatItem: RepeatItem<T>) => void): RepeatAttribute<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ Key generator.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-RepeatAttribute-key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>--><!--Device-RepeatAttribute-key(keyGenerator: (item: T, index: number) => string): RepeatAttribute<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -89,6 +95,8 @@ Renders the corresponding template child component based on the template type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RepeatAttribute-template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: TemplateOptions): RepeatAttribute<T>--><!--Device-RepeatAttribute-template(type: string, itemBuilder: RepeatItemBuilder<T>, templateOptions?: TemplateOptions): RepeatAttribute<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +126,8 @@ Assigns a template type for this data item.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RepeatAttribute-templateId(typedFunc: TemplateTypedFunc<T>): RepeatAttribute<T>--><!--Device-RepeatAttribute-templateId(typedFunc: TemplateTypedFunc<T>): RepeatAttribute<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -143,6 +153,8 @@ Enables virtual scrolling for **Repeat**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RepeatAttribute-virtualScroll(virtualScrollOptions?: VirtualScrollOptions): RepeatAttribute<T>--><!--Device-RepeatAttribute-virtualScroll(virtualScrollOptions?: VirtualScrollOptions): RepeatAttribute<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

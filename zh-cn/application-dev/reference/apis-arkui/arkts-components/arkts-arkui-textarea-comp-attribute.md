@@ -4,7 +4,7 @@
 declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 ```
 
-除支持通用属性，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)，还支持以下属性：
 
 > **说明：** 
 > 
@@ -23,11 +23,13 @@ declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 }
 
 > 从API version 11开始，多行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
-> 尺寸设置。
+> [尺寸设置](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** TextAreaAttribute extends CommonMethod&lt;TextAreaAttribute&gt;
+**继承/实现关系：** TextAreaAttribute extends CommonMethod<TextAreaAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>--><!--Device-unnamed-declare class TextAreaAttribute extends CommonMethod<TextAreaAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +46,8 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-autoCapitalizationMode(mode: AutoCapitalizationMode): TextAreaAttribute--><!--Device-TextAreaAttribute-autoCapitalizationMode(mode: AutoCapitalizationMode): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +71,8 @@ barState(value: BarState)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-barState(value: BarState): TextAreaAttribute--><!--Device-TextAreaAttribute-barState(value: BarState): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,6 +92,8 @@ caretColor(value: ResourceColor)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-caretColor(value: ResourceColor): TextAreaAttribute--><!--Device-TextAreaAttribute-caretColor(value: ResourceColor): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +116,8 @@ caretStyle(value: CaretStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-caretStyle(value: CaretStyle): TextAreaAttribute--><!--Device-TextAreaAttribute-caretStyle(value: CaretStyle): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,6 +147,8 @@ compressLeadingPunctuation(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -159,6 +171,8 @@ contentType(contentType: ContentType)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-contentType(contentType: ContentType): TextAreaAttribute--><!--Device-TextAreaAttribute-contentType(contentType: ContentType): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -180,6 +194,8 @@ copyOption(value: CopyOptions)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-copyOption(value: CopyOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-copyOption(value: CopyOptions): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,6 +237,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -256,6 +274,8 @@ decoration(value: TextDecorationOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-decoration(value: TextDecorationOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-decoration(value: TextDecorationOptions): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -279,6 +299,8 @@ editMenuOptions(editMenu: EditMenuOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-editMenuOptions(editMenu: EditMenuOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-editMenuOptions(editMenu: EditMenuOptions): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,6 +326,8 @@ EllipsisMode.START和EllipsisMode.CENTER仅在[maxLines](#maxlines)设置为1生
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-ellipsisMode(mode: Optional<EllipsisMode>): TextAreaAttribute--><!--Device-TextAreaAttribute-ellipsisMode(mode: Optional<EllipsisMode>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -328,6 +352,8 @@ enableAutoFill(value: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-enableAutoFill(value: boolean): TextAreaAttribute--><!--Device-TextAreaAttribute-enableAutoFill(value: boolean): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -349,6 +375,8 @@ enableAutoSpacing(enabled: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-enableAutoSpacing(enabled: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-enableAutoSpacing(enabled: Optional<boolean>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,6 +402,8 @@ enableHapticFeedback(isEnabled: boolean)
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-enableHapticFeedback(isEnabled: boolean): TextAreaAttribute--><!--Device-TextAreaAttribute-enableHapticFeedback(isEnabled: boolean): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -398,6 +428,8 @@ enableKeyboardOnFocus(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-enableKeyboardOnFocus(value: boolean): TextAreaAttribute--><!--Device-TextAreaAttribute-enableKeyboardOnFocus(value: boolean): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -421,6 +453,8 @@ enablePreviewText(enable: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-enablePreviewText(enable: boolean): TextAreaAttribute--><!--Device-TextAreaAttribute-enablePreviewText(enable: boolean): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -454,6 +488,8 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-enableSelectedDataDetector(enable: boolean | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-enableSelectedDataDetector(enable: boolean | undefined): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -480,6 +516,8 @@ enterKeyType(value: EnterKeyType)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-enterKeyType(value: EnterKeyType): TextAreaAttribute--><!--Device-TextAreaAttribute-enterKeyType(value: EnterKeyType): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -502,6 +540,8 @@ fallbackLineSpacing(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-fallbackLineSpacing(enabled: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-fallbackLineSpacing(enabled: Optional<boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -521,6 +561,8 @@ fontColor(value: ResourceColor)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-fontColor(value: ResourceColor): TextAreaAttribute--><!--Device-TextAreaAttribute-fontColor(value: ResourceColor): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -545,6 +587,8 @@ fontFamily(value: ResourceStr)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-fontFamily(value: ResourceStr): TextAreaAttribute--><!--Device-TextAreaAttribute-fontFamily(value: ResourceStr): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -576,6 +620,8 @@ fontFeature(value: string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-fontFeature(value: string): TextAreaAttribute--><!--Device-TextAreaAttribute-fontFeature(value: string): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -595,6 +641,8 @@ fontSize(value: Length)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-fontSize(value: Length): TextAreaAttribute--><!--Device-TextAreaAttribute-fontSize(value: Length): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -616,6 +664,8 @@ fontStyle(value: FontStyle)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-fontStyle(value: FontStyle): TextAreaAttribute--><!--Device-TextAreaAttribute-fontStyle(value: FontStyle): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -635,6 +685,8 @@ fontWeight(value: number | FontWeight | ResourceStr)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-fontWeight(value: number | FontWeight | ResourceStr): TextAreaAttribute--><!--Device-TextAreaAttribute-fontWeight(value: number | FontWeight | ResourceStr): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -657,6 +709,8 @@ halfLeading(halfLeading: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-halfLeading(halfLeading: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-halfLeading(halfLeading: Optional<boolean>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -688,6 +742,8 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-heightAdaptivePolicy(value: TextHeightAdaptivePolicy): TextAreaAttribute--><!--Device-TextAreaAttribute-heightAdaptivePolicy(value: TextHeightAdaptivePolicy): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -715,6 +771,8 @@ horizontalScrolling(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-horizontalScrolling(enabled: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-horizontalScrolling(enabled: Optional<boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -736,6 +794,8 @@ includeFontPadding(include: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-includeFontPadding(include: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-includeFontPadding(include: Optional<boolean>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -761,6 +821,8 @@ inputFilter(value: ResourceStr, error?: (value: string) => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-inputFilter(value: ResourceStr, error?: (value: string) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-inputFilter(value: ResourceStr, error?: (value: string) => void): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -783,6 +845,8 @@ keyboardAppearance(appearance: Optional<KeyboardAppearance>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): TextAreaAttribute--><!--Device-TextAreaAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -810,13 +874,15 @@ letterSpacing(value: number | string | Resource)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-letterSpacing(value: number | string | Resource): TextAreaAttribute--><!--Device-TextAreaAttribute-letterSpacing(value: number | string | Resource): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>设置为百分比时按默认值处理；设置为0时使用默认值；负值会导致文字压缩，过小时可能无内容显示。<br>单位：fp |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>设置为百分比时按默认值处理；设置为0时使用默认值；负值会导致文字压缩，过小时可能无内容显示。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## lineBreakStrategy
 
@@ -831,6 +897,8 @@ lineBreakStrategy(strategy: LineBreakStrategy)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-lineBreakStrategy(strategy: LineBreakStrategy): TextAreaAttribute--><!--Device-TextAreaAttribute-lineBreakStrategy(strategy: LineBreakStrategy): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -854,13 +922,15 @@ lineHeight(value: number | string | Resource)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-lineHeight(value: number | string | Resource): TextAreaAttribute--><!--Device-TextAreaAttribute-lineHeight(value: number | string | Resource): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的行高。需要显式指定像素单位，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的行高。需要显式指定[像素单位](arkts-arkui-common-comp.md)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
 
 ## lineSpacing
 
@@ -875,6 +945,8 @@ lineSpacing(value: LengthMetrics)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-lineSpacing(value: LengthMetrics): TextAreaAttribute--><!--Device-TextAreaAttribute-lineSpacing(value: LengthMetrics): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -900,6 +972,8 @@ lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-lineSpacing(value: LengthMetrics, options?: LineSpacingOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-lineSpacing(value: LengthMetrics, options?: LineSpacingOptions): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -923,13 +997,15 @@ maxFontScale(scale: Optional<number|Resource>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-maxFontScale(scale: Optional<number|Resource>): TextAreaAttribute--><!--Device-TextAreaAttribute-maxFontScale(scale: Optional<number|Resource>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见示例17（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例17（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#示例17设置最小字体范围与最大字体范围)。 |
 
 ## maxFontSize
 
@@ -951,13 +1027,15 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-maxFontSize(value: number | string | Resource): TextAreaAttribute--><!--Device-TextAreaAttribute-maxFontSize(value: number | string | Resource): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>需配合minFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, +∞)。超出取值范围时按照fontSize属性值生效。<br>单位：fp |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>需配合minFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, +∞)。超出取值范围时按照fontSize属性值生效。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## maxLength
 
@@ -972,6 +1050,8 @@ maxLength(value: number)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-maxLength(value: number): TextAreaAttribute--><!--Device-TextAreaAttribute-maxLength(value: number): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1008,6 +1088,8 @@ maxLines(value: number)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-maxLines(value: number): TextAreaAttribute--><!--Device-TextAreaAttribute-maxLines(value: number): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1047,6 +1129,8 @@ maxLines(lines: number, options: MaxLinesOptions)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-maxLines(lines: number, options: MaxLinesOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-maxLines(lines: number, options: MaxLinesOptions): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1070,13 +1154,15 @@ minFontScale(scale: Optional<number|Resource>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-minFontScale(scale: Optional<number|Resource>): TextAreaAttribute--><!--Device-TextAreaAttribute-minFontScale(scale: Optional<number|Resource>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见示例17（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例17（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#示例17设置最小字体范围与最大字体范围)。 |
 
 ## minFontSize
 
@@ -1098,13 +1184,15 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-minFontSize(value: number | string | Resource): TextAreaAttribute--><!--Device-TextAreaAttribute-minFontSize(value: number | string | Resource): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>需配合maxFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, maxFontSize]。超出取值范围时按照fontSize属性值生效。<br>单位：fp |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>需配合maxFontSize以及maxLines或布局大小限制使用，单独设置不生效。<br>取值范围：(0, maxFontSize]。超出取值范围时按照fontSize属性值生效。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## minLines
 
@@ -1119,6 +1207,8 @@ minLines(lines: Optional<number>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-minLines(lines: Optional<number>): TextAreaAttribute--><!--Device-TextAreaAttribute-minLines(lines: Optional<number>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1152,6 +1242,8 @@ onChange(callback: EditableTextOnChangeCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onChange(callback: EditableTextOnChangeCallback): TextAreaAttribute--><!--Device-TextAreaAttribute-onChange(callback: EditableTextOnChangeCallback): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1173,6 +1265,8 @@ onContentScroll(callback: (totalOffsetX: number, totalOffsetY: number) => void)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-onContentScroll(callback: (totalOffsetX: number, totalOffsetY: number) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onContentScroll(callback: (totalOffsetX: number, totalOffsetY: number) => void): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1204,6 +1298,8 @@ onCopy(callback: (value: string) => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onCopy(callback: (value: string) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onCopy(callback: (value: string) => void): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1233,6 +1329,8 @@ onCut(callback: (value: string) => void)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-onCut(callback: (value: string) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onCut(callback: (value: string) => void): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1268,6 +1366,8 @@ onDidDelete(callback: Callback<DeleteValue>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onDidDelete(callback: Callback<DeleteValue>): TextAreaAttribute--><!--Device-TextAreaAttribute-onDidDelete(callback: Callback<DeleteValue>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1300,6 +1400,8 @@ onDidInsert(callback: Callback<InsertValue>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onDidInsert(callback: Callback<InsertValue>): TextAreaAttribute--><!--Device-TextAreaAttribute-onDidInsert(callback: Callback<InsertValue>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1322,6 +1424,8 @@ onEditChange(callback: (isEditing: boolean) => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onEditChange(callback: (isEditing: boolean) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onEditChange(callback: (isEditing: boolean) => void): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1341,6 +1445,8 @@ onPaste(callback: (value: string, event: PasteEvent) => void)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-onPaste(callback: (value: string, event: PasteEvent) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onPaste(callback: (value: string, event: PasteEvent) => void): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1363,6 +1469,8 @@ onSubmit(callback: (enterKey: EnterKeyType) => void)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-onSubmit(callback: (enterKey: EnterKeyType) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onSubmit(callback: (enterKey: EnterKeyType) => void): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1388,6 +1496,8 @@ onSubmit(callback: TextAreaSubmitCallback)
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onSubmit(callback: TextAreaSubmitCallback): TextAreaAttribute--><!--Device-TextAreaAttribute-onSubmit(callback: TextAreaSubmitCallback): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1410,6 +1520,8 @@ onTextSelectionChange(callback: (selectionStart: number, selectionEnd: number) =
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onTextSelectionChange(callback: (selectionStart: number, selectionEnd: number) => void): TextAreaAttribute--><!--Device-TextAreaAttribute-onTextSelectionChange(callback: (selectionStart: number, selectionEnd: number) => void): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1428,7 +1540,7 @@ onWillAttachIME(callback: Callback<IMEClient> | undefined)
 
 <!--Del-->
 
-在输入框将要绑定输入法前，可以通过`UIContext`的系统接口setKeyboardAppearanceConfig设置键盘的样式。&lt;!--DelEnd- -&gt;
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c-sys.md#setkeyboardappearanceconfig)设置键盘的样式。&lt;!--DelEnd- -&gt;
 
 从API version 22开始，调用[IMEClient](../arkts-apis/arkts-arkui-imeclient-i.md)的[setExtraConfig](../arkts-apis/arkts-arkui-imeclient-i.md#setextraconfig)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
@@ -1439,6 +1551,8 @@ IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-onWillAttachIME(callback: Callback<IMEClient> | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-onWillAttachIME(callback: Callback<IMEClient> | undefined): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1474,6 +1588,8 @@ onWillChange(callback: Callback<EditableTextChangeValue, boolean>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onWillChange(callback: Callback<EditableTextChangeValue, boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-onWillChange(callback: Callback<EditableTextChangeValue, boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1506,6 +1622,8 @@ onWillCopy(callback: Callback<string, boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onWillCopy(callback: Callback<string, boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-onWillCopy(callback: Callback<string, boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1537,6 +1655,8 @@ onWillCut(callback: Callback<string, boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-onWillCut(callback: Callback<string, boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-onWillCut(callback: Callback<string, boolean>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1574,6 +1694,8 @@ onWillDelete(callback: Callback<DeleteValue, boolean>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onWillDelete(callback: Callback<DeleteValue, boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-onWillDelete(callback: Callback<DeleteValue, boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1606,6 +1728,8 @@ onWillInsert(callback: Callback<InsertValue, boolean>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-onWillInsert(callback: Callback<InsertValue, boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-onWillInsert(callback: Callback<InsertValue, boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1628,6 +1752,8 @@ orphanCharOptimization(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-orphanCharOptimization(enabled: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-orphanCharOptimization(enabled: Optional<boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1647,6 +1773,8 @@ placeholderColor(value: ResourceColor)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-placeholderColor(value: ResourceColor): TextAreaAttribute--><!--Device-TextAreaAttribute-placeholderColor(value: ResourceColor): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1672,6 +1800,8 @@ placeholderFont(value: Font)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-placeholderFont(value: Font): TextAreaAttribute--><!--Device-TextAreaAttribute-placeholderFont(value: Font): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1693,6 +1823,8 @@ punctuationOverflow(enabled: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-punctuationOverflow(enabled: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-punctuationOverflow(enabled: Optional<boolean>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1716,6 +1848,8 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-scrollBarColor(thumbColor: ColorMetrics | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-scrollBarColor(thumbColor: ColorMetrics | undefined): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1737,6 +1871,8 @@ selectedBackgroundColor(value: ResourceColor)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-selectedBackgroundColor(value: ResourceColor): TextAreaAttribute--><!--Device-TextAreaAttribute-selectedBackgroundColor(value: ResourceColor): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1760,6 +1896,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1781,6 +1919,8 @@ selectionMenuHidden(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-selectionMenuHidden(value: boolean): TextAreaAttribute--><!--Device-TextAreaAttribute-selectionMenuHidden(value: boolean): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1810,6 +1950,8 @@ shaderStyle(shader: ShaderStyle | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-shaderStyle(shader: ShaderStyle | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-shaderStyle(shader: ShaderStyle | undefined): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1830,13 +1972,15 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。若用户同时设置参数value为true和InputCounterOptions，当thresholdPercentage数值在有效区间内且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。计数器默认显示红色边框；highlightBorder设置为false时，则不显示红色边框。内联模式下字符计数器不显示。
 
-示例2（设置计数器）展示了设置showCounter的效果。
+[示例2（设置计数器）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#示例2设置计数器)展示了设置showCounter的效果。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-showCounter(value: boolean, options?: InputCounterOptions): TextAreaAttribute--><!--Device-TextAreaAttribute-showCounter(value: boolean, options?: InputCounterOptions): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1861,6 +2005,8 @@ stopBackPress(isStopped: Optional<boolean>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-stopBackPress(isStopped: Optional<boolean>): TextAreaAttribute--><!--Device-TextAreaAttribute-stopBackPress(isStopped: Optional<boolean>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1882,6 +2028,8 @@ strokeColor(color: Optional<ResourceColor>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-strokeColor(color: Optional<ResourceColor>): TextAreaAttribute--><!--Device-TextAreaAttribute-strokeColor(color: Optional<ResourceColor>): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1905,6 +2053,8 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1927,6 +2077,8 @@ strokeWidth(width: Optional<LengthMetrics>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-strokeWidth(width: Optional<LengthMetrics>): TextAreaAttribute--><!--Device-TextAreaAttribute-strokeWidth(width: Optional<LengthMetrics>): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1948,6 +2100,8 @@ style(value: TextContentStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-style(value: TextContentStyle): TextAreaAttribute--><!--Device-TextAreaAttribute-style(value: TextContentStyle): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1979,6 +2133,8 @@ textAlign(value: TextAlign)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-textAlign(value: TextAlign): TextAreaAttribute--><!--Device-TextAreaAttribute-textAlign(value: TextAlign): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2000,6 +2156,8 @@ textDirection(direction: TextDirection | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-textDirection(direction: TextDirection | undefined): TextAreaAttribute--><!--Device-TextAreaAttribute-textDirection(direction: TextDirection | undefined): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2023,13 +2181,15 @@ textIndent(value: Dimension)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-textIndent(value: Dimension): TextAreaAttribute--><!--Device-TextAreaAttribute-textIndent(value: Dimension): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：vp <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textOverflow
 
@@ -2055,6 +2215,8 @@ textOverflow(value: TextOverflow)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-textOverflow(value: TextOverflow): TextAreaAttribute--><!--Device-TextAreaAttribute-textOverflow(value: TextOverflow): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2079,6 +2241,8 @@ type(value: TextAreaType)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextAreaAttribute-type(value: TextAreaType): TextAreaAttribute--><!--Device-TextAreaAttribute-type(value: TextAreaType): TextAreaAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2100,6 +2264,8 @@ wordBreak(value: WordBreak)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextAreaAttribute-wordBreak(value: WordBreak): TextAreaAttribute--><!--Device-TextAreaAttribute-wordBreak(value: WordBreak): TextAreaAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

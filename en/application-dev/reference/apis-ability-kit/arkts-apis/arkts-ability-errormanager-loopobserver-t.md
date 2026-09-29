@@ -10,6 +10,8 @@ Defines the LoopObserver module. It can be used as a parameter of **errormanager
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-errorManager-export type LoopObserver = _LoopObserver--><!--Device-errorManager-export type LoopObserver = _LoopObserver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _LoopObserver

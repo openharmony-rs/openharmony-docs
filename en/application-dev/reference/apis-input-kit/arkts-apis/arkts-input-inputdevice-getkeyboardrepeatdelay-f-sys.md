@@ -16,6 +16,8 @@ Obtains the keyboard repeat delay. This API uses an asynchronous callback to ret
 
 **Since:** 10
 
+<!--Device-inputDevice-function getKeyboardRepeatDelay(callback: AsyncCallback<int>): void--><!--Device-inputDevice-function getKeyboardRepeatDelay(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getKeyboardRepeatDelay(): Promise<number>
 Obtains the keyboard repeat delay. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-inputDevice-function getKeyboardRepeatDelay(): Promise<int>--><!--Device-inputDevice-function getKeyboardRepeatDelay(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 

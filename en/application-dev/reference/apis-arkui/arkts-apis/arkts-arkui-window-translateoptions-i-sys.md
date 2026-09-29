@@ -8,6 +8,8 @@ Describes the translation parameters.
 
 **Since:** 9
 
+<!--Device-window-interface TranslateOptions--><!--Device-window-interface TranslateOptions-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Distance to translate along the x-axis. The value is a floating-point number, th
 
 **Since:** 9
 
+<!--Device-TranslateOptions-x?: double--><!--Device-TranslateOptions-x?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Distance to translate along the y-axis. The value is a floating-point number, th
 
 **Since:** 9
 
+<!--Device-TranslateOptions-y?: double--><!--Device-TranslateOptions-y?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Distance to translate along the z-axis. The value is a floating-point number, th
 **Type:** number
 
 **Since:** 9
+
+<!--Device-TranslateOptions-z?: double--><!--Device-TranslateOptions-z?: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

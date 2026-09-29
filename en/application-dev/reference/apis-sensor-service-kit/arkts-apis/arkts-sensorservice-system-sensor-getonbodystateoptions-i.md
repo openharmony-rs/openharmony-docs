@@ -4,13 +4,15 @@
 export interface GetOnBodyStateOptions
 ```
 
-Defines the callback invoked upon change in the wearing state of the device that houses the sensor.
+Sets the parameters for subscribing to the device wearing status, including the callback function. The wearing status can be worn or not worn.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
 **Substitutes:** [WEAR_DETECTION](arkts-sensorservice-sensor-sensorid-e.md#wear_detection)
+
+<!--Device-unnamed-export interface GetOnBodyStateOptions--><!--Device-unnamed-export interface GetOnBodyStateOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -26,7 +28,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 complete?: () => void
 ```
 
-Callback invoked when the API call is complete.
+Callback invoked when the API call is complete. This callback will be executed regardless of whether the API call succeeds or fails. If this parameter is not specified, no callback notification is sent when the API call is complete.
 
 **Since:** 3
 
@@ -35,6 +37,8 @@ Callback invoked when the API call is complete.
 **Substitutes:** [once](arkts-sensorservice-sensor-once-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetOnBodyStateOptions-complete?: () => void--><!--Device-GetOnBodyStateOptions-complete?: () => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -44,7 +48,7 @@ Callback invoked when the API call is complete.
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 3
 
@@ -53,6 +57,8 @@ Callback invoked when an API call fails.
 **Substitutes:** [once](arkts-sensorservice-sensor-once-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetOnBodyStateOptions-fail?: (data: string, code: number) => void--><!--Device-GetOnBodyStateOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -69,7 +75,7 @@ Callback invoked when an API call fails.
 success: (data: OnBodyStateResponse) => void
 ```
 
-Callback upon a successful API call.
+Callback invoked when the API call succeeds. The callback parameter is an **OnBodyStateResponse** object.
 
 **Since:** 3
 
@@ -78,6 +84,8 @@ Callback upon a successful API call.
 **Substitutes:** [once](arkts-sensorservice-sensor-once-f.md)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-GetOnBodyStateOptions-success: (data: OnBodyStateResponse) => void--><!--Device-GetOnBodyStateOptions-success: (data: OnBodyStateResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 

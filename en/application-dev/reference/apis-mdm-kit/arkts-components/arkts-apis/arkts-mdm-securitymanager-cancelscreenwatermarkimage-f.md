@@ -20,6 +20,8 @@ Cancels a screen watermark policy, which takes effect for all users. After the c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function cancelScreenWatermarkImage(admin: Want): void--><!--Device-securityManager-function cancelScreenWatermarkImage(admin: Want): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

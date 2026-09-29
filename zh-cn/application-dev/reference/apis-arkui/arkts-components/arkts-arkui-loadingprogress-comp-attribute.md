@@ -4,15 +4,17 @@
 declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
 > **说明：** 
 > 
 > 组件应设置合理的宽高，当组件宽高设置过大时加载进度条的动效可能不符合预期效果。
 
-**继承/实现关系：** LoadingProgressAttribute extends CommonMethod&lt;LoadingProgressAttribute&gt;
+**继承/实现关系：** LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>--><!--Device-unnamed-declare class LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ color(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LoadingProgressAttribute-color(value: ResourceColor): LoadingProgressAttribute--><!--Device-LoadingProgressAttribute-color(value: ResourceColor): LoadingProgressAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ contentModifier(modifier: ContentModifier<LoadingProgressConfiguration>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LoadingProgressAttribute-contentModifier(modifier: ContentModifier<LoadingProgressConfiguration>): LoadingProgressAttribute--><!--Device-LoadingProgressAttribute-contentModifier(modifier: ContentModifier<LoadingProgressConfiguration>): LoadingProgressAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -73,6 +79,8 @@ enableLoading(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LoadingProgressAttribute-enableLoading(value: boolean): LoadingProgressAttribute--><!--Device-LoadingProgressAttribute-enableLoading(value: boolean): LoadingProgressAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -20,6 +20,8 @@ Checks whether local installation of enterprise applications is supported for a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean--><!--Device-systemManager-function getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -4,6 +4,8 @@ The **reminderAgentManager** module provides APIs related to agent-powered remin
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace reminderAgentManager--><!--Device-unnamed-declare namespace reminderAgentManager-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import

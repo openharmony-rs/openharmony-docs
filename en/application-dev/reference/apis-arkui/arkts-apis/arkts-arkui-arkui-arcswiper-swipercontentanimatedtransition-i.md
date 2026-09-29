@@ -8,6 +8,8 @@ Provides the information about the custom page transition animation.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface SwiperContentAnimatedTransition--><!--Device-unnamed-declare interface SwiperContentAnimatedTransition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Timeout for the custom page transition animation. The timeout timer starts when 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SwiperContentAnimatedTransition-timeout?: number--><!--Device-SwiperContentAnimatedTransition-timeout?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## transition
@@ -47,5 +51,7 @@ Content of the custom page transition animation.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>--><!--Device-SwiperContentAnimatedTransition-transition: Callback<SwiperContentTransitionProxy>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

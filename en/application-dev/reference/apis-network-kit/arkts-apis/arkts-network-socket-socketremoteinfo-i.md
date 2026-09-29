@@ -8,6 +8,8 @@ Defines information about the socket connection.
 
 **Since:** 7
 
+<!--Device-socket-export interface SocketRemoteInfo--><!--Device-socket-export interface SocketRemoteInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Peer IP address.
 
 **Since:** 7
 
+<!--Device-SocketRemoteInfo-address: string--><!--Device-SocketRemoteInfo-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## family
@@ -47,6 +51,8 @@ The default value is **IPv4**.
 
 **Since:** 7
 
+<!--Device-SocketRemoteInfo-family: 'IPv4' | 'IPv6'--><!--Device-SocketRemoteInfo-family: 'IPv4' | 'IPv6'-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## port
@@ -61,6 +67,8 @@ Port number. The value ranges from **0** to **65535**.
 
 **Since:** 7
 
+<!--Device-SocketRemoteInfo-port: int--><!--Device-SocketRemoteInfo-port: int-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## size
@@ -74,5 +82,7 @@ Length of the server response message, in bytes.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-SocketRemoteInfo-size: int--><!--Device-SocketRemoteInfo-size: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

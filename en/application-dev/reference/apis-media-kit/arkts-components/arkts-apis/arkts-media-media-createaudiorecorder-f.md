@@ -20,6 +20,8 @@ Creates an AudioRecorder instance to control audio recording. Only one AudioReco
 
 **Substitutes:** [createAVRecorder](arkts-media-media-createavrecorder-f.md)(callback: AsyncCallback&lt;AVRecorder&gt;)
 
+<!--Device-media-function createAudioRecorder(): AudioRecorder--><!--Device-media-function createAudioRecorder(): AudioRecorder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AudioRecorder
 
 **Return value:**

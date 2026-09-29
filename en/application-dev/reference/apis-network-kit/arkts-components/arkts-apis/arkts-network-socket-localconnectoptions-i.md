@@ -8,6 +8,8 @@ Defines local socket connection parameters.
 
 **Since:** 11
 
+<!--Device-socket-export interface LocalConnectOptions--><!--Device-socket-export interface LocalConnectOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Address of the local socket file.
 
 **Since:** 11
 
+<!--Device-LocalConnectOptions-address: LocalAddress--><!--Device-LocalConnectOptions-address: LocalAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## timeout
@@ -41,5 +45,7 @@ Timeout duration of the local socket connection, in ms. **Default value**: 0 You
 **Type:** number
 
 **Since:** 11
+
+<!--Device-LocalConnectOptions-timeout?: int--><!--Device-LocalConnectOptions-timeout?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

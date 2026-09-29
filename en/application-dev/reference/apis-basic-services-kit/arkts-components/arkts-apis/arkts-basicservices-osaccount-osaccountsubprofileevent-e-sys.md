@@ -8,6 +8,8 @@ Enumerates OS account sub-profile events.
 
 **Since:** 26.0.0
 
+<!--Device-osAccount-enum OsAccountSubProfileEvent--><!--Device-osAccount-enum OsAccountSubProfileEvent-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ A sub-profile has been created. This event is triggered when an OS account sub-p
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileEvent-CREATED = 0--><!--Device-OsAccountSubProfileEvent-CREATED = 0-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -40,6 +44,8 @@ A sub-profile has been deleted. This event is triggered when an OS account sub-p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileEvent-DELETED = 1--><!--Device-OsAccountSubProfileEvent-DELETED = 1-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ A sub-profile is about to be switched. This event is triggered when the switchin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OsAccountSubProfileEvent-SWITCHING = 2--><!--Device-OsAccountSubProfileEvent-SWITCHING = 2-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ A sub-profile has been switched. This event is triggered when the switching of a
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileEvent-SWITCHED = 3--><!--Device-OsAccountSubProfileEvent-SWITCHED = 3-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

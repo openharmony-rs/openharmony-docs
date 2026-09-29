@@ -17,6 +17,8 @@ Enumerates the color modes of applications and widgets.
 
 **Substitutes:** null
 
+<!--Device-bundle-export enum ColorMode--><!--Device-bundle-export enum ColorMode-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## AUTO_MODE
@@ -32,6 +34,8 @@ Auto mode.
 **Deprecated since:** 9
 
 **Substitutes:** [COLOR_MODE_NOT_SET](arkts-ability-configurationconstant-colormode-e.md#color_mode_not_set)
+
+<!--Device-ColorMode-AUTO_MODE = -1--><!--Device-ColorMode-AUTO_MODE = -1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -49,6 +53,8 @@ Dark mode.
 
 **Substitutes:** [COLOR_MODE_DARK](arkts-ability-configurationconstant-colormode-e.md#color_mode_dark)
 
+<!--Device-ColorMode-DARK_MODE = 0--><!--Device-ColorMode-DARK_MODE = 0-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## LIGHT_MODE
@@ -64,5 +70,7 @@ Light mode.
 **Deprecated since:** 9
 
 **Substitutes:** [COLOR_MODE_LIGHT](arkts-ability-configurationconstant-colormode-e.md#color_mode_light)
+
+<!--Device-ColorMode-LIGHT_MODE = 1--><!--Device-ColorMode-LIGHT_MODE = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

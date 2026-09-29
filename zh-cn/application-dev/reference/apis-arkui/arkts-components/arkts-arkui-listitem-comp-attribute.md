@@ -4,11 +4,13 @@
 declare class ListItemAttribute extends CommonMethod<ListItemAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-**继承/实现关系：** ListItemAttribute extends CommonMethod&lt;ListItemAttribute&gt;
+**继承/实现关系：** ListItemAttribute extends CommonMethod<ListItemAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class ListItemAttribute extends CommonMethod<ListItemAttribute>--><!--Device-unnamed-declare class ListItemAttribute extends CommonMethod<ListItemAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +22,7 @@ onSelect(event: (isSelected: boolean) => void)
 
 ListItem元素被鼠标框选的状态改变时触发回调。
 
-外层List组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选，且当前ListItem的[selectable](#selectable)属性为true时，触发该回调。
+外层[List](arkts-arkui-list-comp.md)组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选，且当前ListItem的[selectable](#selectable)属性为true时，触发该回调。
 
 **起始版本：** 8
 
@@ -29,6 +31,8 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListItemAttribute-onSelect(event: (isSelected: boolean) => void): ListItemAttribute--><!--Device-ListItemAttribute-onSelect(event: (isSelected: boolean) => void): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +48,7 @@ ListItem元素被鼠标框选的状态改变时触发回调。
 selectable(value: boolean)
 ```
 
-设置当前ListItem元素是否可以被鼠标框选。外层List组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选时，ListItem的框选才生效。
+设置当前ListItem元素是否可以被鼠标框选。外层[List](arkts-arkui-list-comp.md)组件设置[multiSelectable](arkts-arkui-list-comp-attribute.md#multiselectable)为true开启鼠标框选时，ListItem的框选才生效。
 
 **起始版本：** 8
 
@@ -53,6 +57,8 @@ selectable(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListItemAttribute-selectable(value: boolean): ListItemAttribute--><!--Device-ListItemAttribute-selectable(value: boolean): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,7 +74,7 @@ selectable(value: boolean)
 selected(value: boolean)
 ```
 
-设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置多态样式前使用才能生效选中态样式。
+设置当前ListItem选中状态。该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。该属性需要在设置[多态样式](arkts-arkui-common-comp.md)前使用才能生效选中态样式。
 
 **起始版本：** 10
 
@@ -77,6 +83,8 @@ selected(value: boolean)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ListItemAttribute-selected(value: boolean): ListItemAttribute--><!--Device-ListItemAttribute-selected(value: boolean): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +108,8 @@ swipeAction(value: SwipeActionOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ListItemAttribute-swipeAction(value: SwipeActionOptions): ListItemAttribute--><!--Device-ListItemAttribute-swipeAction(value: SwipeActionOptions): ListItemAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -121,6 +131,8 @@ editable(value: boolean | EditMode)
 **废弃版本：** 9
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ListItemAttribute-editable(value: boolean | EditMode): ListItemAttribute--><!--Device-ListItemAttribute-editable(value: boolean | EditMode): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,6 +161,8 @@ sticky(value: Sticky)
 **替代接口：** sticky
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-ListItemAttribute-sticky(value: Sticky): ListItemAttribute--><!--Device-ListItemAttribute-sticky(value: Sticky): ListItemAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

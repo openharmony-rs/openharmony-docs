@@ -18,6 +18,8 @@ Query whether Wi-Fi is available
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function isWlanSupported(): boolean--><!--Device-wifiManager-function isWlanSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 **Return value:**

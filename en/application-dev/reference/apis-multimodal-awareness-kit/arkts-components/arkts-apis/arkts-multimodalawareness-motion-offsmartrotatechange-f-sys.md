@@ -18,6 +18,8 @@ Unsubscribe to smart rotate sensor event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-motion-function offSmartRotateChange(callback?: Callback<SmartRotateEvent>): void--><!--Device-motion-function offSmartRotateChange(callback?: Callback<SmartRotateEvent>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **System API:** This is a system API.

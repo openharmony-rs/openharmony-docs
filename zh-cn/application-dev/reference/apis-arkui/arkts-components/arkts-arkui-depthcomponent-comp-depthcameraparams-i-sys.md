@@ -8,6 +8,8 @@ declare interface DepthCameraParams
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface DepthCameraParams--><!--Device-unnamed-declare interface DepthCameraParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,6 +29,8 @@ cameraBufferCrop?: CameraBufferCrop
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthCameraParams-cameraBufferCrop?: CameraBufferCrop--><!--Device-DepthCameraParams-cameraBufferCrop?: CameraBufferCrop-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ position: DepthVector3
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DepthCameraParams-position: DepthVector3--><!--Device-DepthCameraParams-position: DepthVector3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -67,6 +73,8 @@ quaternion: DepthVector4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthCameraParams-quaternion: DepthVector4--><!--Device-DepthCameraParams-quaternion: DepthVector4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +96,8 @@ yFov: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DepthCameraParams-yFov: double--><!--Device-DepthCameraParams-yFov: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -108,6 +118,8 @@ zFar: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DepthCameraParams-zFar: double--><!--Device-DepthCameraParams-zFar: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -127,6 +139,8 @@ zNear: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthCameraParams-zNear: double--><!--Device-DepthCameraParams-zNear: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

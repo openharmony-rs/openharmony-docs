@@ -8,6 +8,8 @@ Enumerates the risk types of images.
 
 **Since:** 23
 
+<!--Device-photoAccessHelper-enum PhotoRiskStatus--><!--Device-photoAccessHelper-enum PhotoRiskStatus-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Default type.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhotoRiskStatus-UNIDENTIFIED = 0--><!--Device-PhotoRiskStatus-UNIDENTIFIED = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,6 +44,8 @@ Approved images.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoRiskStatus-APPROVED = 1--><!--Device-PhotoRiskStatus-APPROVED = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ Suspicious images.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PhotoRiskStatus-SUSPICIOUS = 2--><!--Device-PhotoRiskStatus-SUSPICIOUS = 2-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ Rejected images.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PhotoRiskStatus-REJECTED = 3--><!--Device-PhotoRiskStatus-REJECTED = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

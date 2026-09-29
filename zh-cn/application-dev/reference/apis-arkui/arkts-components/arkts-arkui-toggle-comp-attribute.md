@@ -8,9 +8,11 @@ declare class ToggleAttribute extends CommonMethod<ToggleAttribute>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** ToggleAttribute extends CommonMethod&lt;ToggleAttribute&gt;
+**继承/实现关系：** ToggleAttribute extends CommonMethod<ToggleAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class ToggleAttribute extends CommonMethod<ToggleAttribute>--><!--Device-unnamed-declare class ToggleAttribute extends CommonMethod<ToggleAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ contentModifier(modifier: ContentModifier<ToggleConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToggleAttribute-contentModifier(modifier: ContentModifier<ToggleConfiguration>): ToggleAttribute--><!--Device-ToggleAttribute-contentModifier(modifier: ContentModifier<ToggleConfiguration>): ToggleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ onChange(callback: (isOn: boolean) => void)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ToggleAttribute-onChange(callback: (isOn: boolean) => void): ToggleAttribute--><!--Device-ToggleAttribute-onChange(callback: (isOn: boolean) => void): ToggleAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -75,6 +81,8 @@ selectedColor(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ToggleAttribute-selectedColor(value: ResourceColor): ToggleAttribute--><!--Device-ToggleAttribute-selectedColor(value: ResourceColor): ToggleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +108,8 @@ switchPointColor(color: ResourceColor)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ToggleAttribute-switchPointColor(color: ResourceColor): ToggleAttribute--><!--Device-ToggleAttribute-switchPointColor(color: ResourceColor): ToggleAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -121,6 +131,8 @@ switchStyle(value: SwitchStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToggleAttribute-switchStyle(value: SwitchStyle): ToggleAttribute--><!--Device-ToggleAttribute-switchStyle(value: SwitchStyle): ToggleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

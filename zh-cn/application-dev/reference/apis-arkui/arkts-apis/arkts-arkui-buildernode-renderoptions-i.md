@@ -8,6 +8,8 @@ export interface RenderOptions
 
 **起始版本：** 11
 
+<!--Device-unnamed-export interface RenderOptions--><!--Device-unnamed-export interface RenderOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selfIdealSize
@@ -28,6 +30,8 @@ selfIdealSize?: Size
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderOptions-selfIdealSize?: Size--><!--Device-RenderOptions-selfIdealSize?: Size-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## surfaceId
@@ -36,7 +40,7 @@ selfIdealSize?: Size
 surfaceId?: string
 ```
 
-纹理接收方的surfaceId。纹理接收方一般为OH_NativeImage。
+纹理接收方的surfaceId。纹理接收方一般为[OH_NativeImage](../../../reference/apis-arkgraphics2d/c-apis/capi-oh-nativeimage.md)。
 
 surfaceId仅当type为NodeRenderType.RENDER_TYPE_TEXTURE时生效。
 
@@ -49,6 +53,8 @@ surfaceId仅当type为NodeRenderType.RENDER_TYPE_TEXTURE时生效。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderOptions-surfaceId?: string--><!--Device-RenderOptions-surfaceId?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,5 +75,7 @@ type?: NodeRenderType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderOptions-type?: NodeRenderType--><!--Device-RenderOptions-type?: NodeRenderType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

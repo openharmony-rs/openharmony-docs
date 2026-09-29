@@ -8,6 +8,8 @@ Defines the CustomSpanMetrics interface.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface CustomSpanMetrics--><!--Device-unnamed-declare interface CustomSpanMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -16,9 +18,11 @@ Defines the CustomSpanMetrics interface.
 height?: number
 ```
 
-Height of the custom span.
+Height of the custom drawing span.
 
-Unit: vp
+Default value: if not passed, the **fontSize** value of the **Text** component is used as the height of **CustomSpan**.
+
+Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -28,6 +32,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CustomSpanMetrics-height?: number--><!--Device-CustomSpanMetrics-height?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -36,9 +42,9 @@ Unit: vp
 width: number
 ```
 
-Width of the custom span.
+Width of the custom drawing span.
 
-Unit: vp
+Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -49,5 +55,7 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CustomSpanMetrics-width: number--><!--Device-CustomSpanMetrics-width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

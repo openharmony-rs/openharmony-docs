@@ -18,6 +18,8 @@ Adds the authorization for the app to access the serial port. This function asso
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-serial-function addPortAuthorization(tokenId: string, deviceId: string): Promise<void>--><!--Device-serial-function addPortAuthorization(tokenId: string, deviceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.BusManager.Serial
 
 **System API:** This is a system API.

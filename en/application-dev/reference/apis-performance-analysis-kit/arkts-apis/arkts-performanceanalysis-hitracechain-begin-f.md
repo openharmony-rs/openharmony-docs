@@ -20,6 +20,8 @@ If the current thread's TLS already contains a valid HiTrace ID, this function d
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function begin(name: string, flags?: int): HiTraceId--><!--Device-hiTraceChain-function begin(name: string, flags?: int): HiTraceId-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

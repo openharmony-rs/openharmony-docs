@@ -8,6 +8,8 @@ Provides APIs for tone playing.
 
 **Since:** 9
 
+<!--Device-audio-interface TonePlayer--><!--Device-audio-interface TonePlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ load(type: ToneType, callback: AsyncCallback<void>): void
 Loads tone. This method uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-TonePlayer-load(type: ToneType, callback: AsyncCallback<void>): void--><!--Device-TonePlayer-load(type: ToneType, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -66,6 +70,8 @@ Loads tone. This method uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-TonePlayer-load(type: ToneType): Promise<void>--><!--Device-TonePlayer-load(type: ToneType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -101,6 +107,8 @@ release(callback: AsyncCallback<void>): void
 Releases the player. This method uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-TonePlayer-release(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -139,6 +147,8 @@ Releases the player. This method uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-TonePlayer-release(): Promise<void>--><!--Device-TonePlayer-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -168,6 +178,8 @@ start(callback: AsyncCallback<void>): void
 Starts player. This method uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-TonePlayer-start(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-start(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -206,6 +218,8 @@ Starts player. This method uses a promise to return the result.
 
 **Since:** 9
 
+<!--Device-TonePlayer-start(): Promise<void>--><!--Device-TonePlayer-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
 **System API:** This is a system API.
@@ -235,6 +249,8 @@ stop(callback: AsyncCallback<void>): void
 Stops player. This method uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-TonePlayer-stop(callback: AsyncCallback<void>): void--><!--Device-TonePlayer-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 
@@ -272,6 +288,8 @@ stop(): Promise<void>
 Stops player. This method uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-TonePlayer-stop(): Promise<void>--><!--Device-TonePlayer-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Tone
 

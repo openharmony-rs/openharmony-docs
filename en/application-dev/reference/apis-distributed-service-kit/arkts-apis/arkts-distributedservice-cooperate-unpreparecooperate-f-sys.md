@@ -18,6 +18,8 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
 
+<!--Device-cooperate-function unprepareCooperate(callback: AsyncCallback<void>): void--><!--Device-cooperate-function unprepareCooperate(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 **Since:** 11
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
+
+<!--Device-cooperate-function unprepareCooperate(): Promise<void>--><!--Device-cooperate-function unprepareCooperate(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

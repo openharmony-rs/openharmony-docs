@@ -8,6 +8,8 @@ declare interface Measurable
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface Measurable--><!--Device-unnamed-declare interface Measurable-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getBorderWidth
@@ -23,6 +25,8 @@ getBorderWidth() : DirectionalEdgesT<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Measurable-getBorderWidth() : DirectionalEdgesT<number>--><!--Device-Measurable-getBorderWidth() : DirectionalEdgesT<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ getMargin() : DirectionalEdgesT<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Measurable-getMargin() : DirectionalEdgesT<number>--><!--Device-Measurable-getMargin() : DirectionalEdgesT<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -68,6 +74,8 @@ getPadding() : DirectionalEdgesT<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Measurable-getPadding() : DirectionalEdgesT<number>--><!--Device-Measurable-getPadding() : DirectionalEdgesT<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -89,6 +97,8 @@ measure(constraint: ConstraintSizeOptions) : MeasureResult
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Measurable-measure(constraint: ConstraintSizeOptions) : MeasureResult--><!--Device-Measurable-measure(constraint: ConstraintSizeOptions) : MeasureResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,5 +129,7 @@ uniqueId?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-Measurable-uniqueId?: number--><!--Device-Measurable-uniqueId?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

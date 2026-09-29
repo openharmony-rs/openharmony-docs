@@ -20,6 +20,8 @@ Set a specific interface up.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function setInterfaceUp(ifaceName: string): Promise<void>--><!--Device-connection-function setInterfaceUp(ifaceName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

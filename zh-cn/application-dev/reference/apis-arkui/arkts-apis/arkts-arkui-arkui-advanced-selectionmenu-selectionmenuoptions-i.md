@@ -8,6 +8,8 @@ SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其配置参�
 
 **起始版本：** 11
 
+<!--Device-unnamed-export interface SelectionMenuOptions--><!--Device-unnamed-export interface SelectionMenuOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ event为返回信息。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectionMenuOptions-onCopy?: (event?: EditorEventInfo) => void--><!--Device-SelectionMenuOptions-onCopy?: (event?: EditorEventInfo) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ event为返回信息。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionMenuOptions-onCut?: (event?: EditorEventInfo) => void--><!--Device-SelectionMenuOptions-onCut?: (event?: EditorEventInfo) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -91,6 +97,8 @@ event为返回信息。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectionMenuOptions-onPaste?: (event?: EditorEventInfo) => void--><!--Device-SelectionMenuOptions-onPaste?: (event?: EditorEventInfo) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +128,8 @@ event为返回信息。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionMenuOptions-onSelectAll?: (event?: EditorEventInfo) => void--><!--Device-SelectionMenuOptions-onSelectAll?: (event?: EditorEventInfo) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -144,6 +154,8 @@ backgroundSystemMaterial?: uiMaterial.Material
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionMenuOptions-backgroundSystemMaterial?: uiMaterial.Material--><!--Device-SelectionMenuOptions-backgroundSystemMaterial?: uiMaterial.Material-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## controller
@@ -166,7 +178,7 @@ controller为空时不显示更多按钮，expandedMenuOptions参数不为空则
 
 点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。
 
-当富文本组件RichEditor的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能会被限制。
+当富文本组件[RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能会被限制。
 
 **类型：** [RichEditorController](../arkts-components/arkts-arkui-richeditor-comp-richeditorcontroller-c.md)
 
@@ -175,6 +187,8 @@ controller为空时不显示更多按钮，expandedMenuOptions参数不为空则
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectionMenuOptions-controller?: RichEditorController--><!--Device-SelectionMenuOptions-controller?: RichEditorController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,6 +214,8 @@ editorMenuOptions未配置时，不显示编辑菜单。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SelectionMenuOptions-editorMenuOptions?: Array<EditorMenuOptions>--><!--Device-SelectionMenuOptions-editorMenuOptions?: Array<EditorMenuOptions>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## expandedMenuOptions
@@ -223,5 +239,7 @@ controller为空时不显示更多按钮，expandedMenuOptions参数不为空则
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SelectionMenuOptions-expandedMenuOptions?: Array<ExpandedMenuOptions>--><!--Device-SelectionMenuOptions-expandedMenuOptions?: Array<ExpandedMenuOptions>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

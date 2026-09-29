@@ -4,11 +4,11 @@
 declare enum PageFlipMode
 ```
 
-Page flip mode of Swiper and Tabs on mouse wheel event.
-
-@enum { number } PageFlipMode
+Enumerates the modes for flipping pages using the mouse wheel.
 
 **Since:** 15
+
+<!--Device-unnamed-declare enum PageFlipMode--><!--Device-unnamed-declare enum PageFlipMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,7 @@ Page flip mode of Swiper and Tabs on mouse wheel event.
 CONTINUOUS = 0
 ```
 
-Turn pages continuously according to the number of mouse wheel events.
+Continuous page flipping mode where multiple pages are turned continuously when the user scrolls the mouse wheel without interruption.
 
 **Since:** 15
 
@@ -27,6 +27,8 @@ Turn pages continuously according to the number of mouse wheel events.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-PageFlipMode-CONTINUOUS = 0--><!--Device-PageFlipMode-CONTINUOUS = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,7 @@ Turn pages continuously according to the number of mouse wheel events.
 SINGLE = 1
 ```
 
-The page-turning animation remains unresponsive to other mouse wheel events until it completes.
+Single-page flipping mode where the mouse wheel event is ignored until the current page flipping animation is complete.
 
 **Since:** 15
 
@@ -45,5 +47,7 @@ The page-turning animation remains unresponsive to other mouse wheel events unti
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-PageFlipMode-SINGLE = 1--><!--Device-PageFlipMode-SINGLE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -1,4 +1,4 @@
-# AutoFillTriggerType
+# AutoFillTriggerType(Auto Fill Trigger Type)
 
 ## Summary
 

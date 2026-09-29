@@ -14,6 +14,8 @@ Describes the water flow item sections.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class WaterFlowSections--><!--Device-unnamed-declare class WaterFlowSections-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -30,6 +32,8 @@ A constructor used to create a **WaterFlowSections** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WaterFlowSections-constructor()--><!--Device-WaterFlowSections-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## length
@@ -45,6 +49,8 @@ Obtains the number of sections in the **WaterFlow** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowSections-length(): number--><!--Device-WaterFlowSections-length(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +73,8 @@ Adds the specified sections to the end of the **WaterFlow** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowSections-push(section: SectionOptions): boolean--><!--Device-WaterFlowSections-push(section: SectionOptions): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +103,8 @@ Changes sections by removing or replacing an existing section and/or adding a se
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowSections-splice(start: number, deleteCount?: number, sections?: Array<SectionOptions>): boolean--><!--Device-WaterFlowSections-splice(start: number, deleteCount?: number, sections?: Array<SectionOptions>): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ Updates the configuration of a specified water flow item section.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WaterFlowSections-update(sectionIndex:number, section: SectionOptions): boolean--><!--Device-WaterFlowSections-update(sectionIndex:number, section: SectionOptions): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -154,6 +166,8 @@ Obtains the configuration of all sections in the **WaterFlow** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowSections-values(): Array<SectionOptions>--><!--Device-WaterFlowSections-values(): Array<SectionOptions>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

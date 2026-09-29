@@ -8,6 +8,8 @@ A class for querying depth fusion capabilities.
 
 **Since:** 14
 
+<!--Device-camera-interface DepthFusionQuery--><!--Device-camera-interface DepthFusionQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getDepthFusionThreshold(): Array<number>
 Obtains the depth fusion threshold.
 
 **Since:** 14
+
+<!--Device-DepthFusionQuery-getDepthFusionThreshold(): Array<double>--><!--Device-DepthFusionQuery-getDepthFusionThreshold(): Array<double>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -70,6 +74,8 @@ isDepthFusionSupported(): boolean
 Checks whether depth fusion is supported.
 
 **Since:** 14
+
+<!--Device-DepthFusionQuery-isDepthFusionSupported(): boolean--><!--Device-DepthFusionQuery-isDepthFusionSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

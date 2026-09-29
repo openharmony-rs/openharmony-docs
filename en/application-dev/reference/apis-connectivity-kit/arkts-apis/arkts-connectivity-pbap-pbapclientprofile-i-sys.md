@@ -10,6 +10,8 @@ Manage the PBAP client profile.
 
 **Since:** 26.0.1
 
+<!--Device-pbap-interface PbapClientProfile extends BaseProfile--><!--Device-pbap-interface PbapClientProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Connect the PBAP client connection with the remote device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PbapClientProfile-connect(deviceId: string): void--><!--Device-PbapClientProfile-connect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -67,6 +71,8 @@ Disconnect the PBAP client connection with the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PbapClientProfile-disconnect(deviceId: string): void--><!--Device-PbapClientProfile-disconnect(deviceId: string): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -101,6 +107,8 @@ Get the PBAP phone book sync state, only the synchronization sub-state is report
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PbapClientProfile-getSyncState(deviceId: string): SyncStateType--><!--Device-PbapClientProfile-getSyncState(deviceId: string): SyncStateType-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -143,6 +151,8 @@ Unsubscribe to the event reported when the phone book sync state changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PbapClientProfile-offSyncStateChange(callback?: Callback<SyncStateChangeParam>): void--><!--Device-PbapClientProfile-offSyncStateChange(callback?: Callback<SyncStateChangeParam>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -173,6 +183,8 @@ Subscribe to the event reported when the phone book sync state changes. Only the
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PbapClientProfile-onSyncStateChange(callback: Callback<SyncStateChangeParam>): void--><!--Device-PbapClientProfile-onSyncStateChange(callback: Callback<SyncStateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

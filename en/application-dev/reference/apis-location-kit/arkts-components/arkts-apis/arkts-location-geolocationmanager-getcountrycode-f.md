@@ -16,6 +16,8 @@ Obtain the current country code.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-function getCountryCode(callback: AsyncCallback<CountryCode>): void--><!--Device-geoLocationManager-function getCountryCode(callback: AsyncCallback<CountryCode>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -64,6 +66,8 @@ function getCountryCode(): Promise<CountryCode>
 Obtain the current country code.
 
 **Since:** 9
+
+<!--Device-geoLocationManager-function getCountryCode(): Promise<CountryCode>--><!--Device-geoLocationManager-function getCountryCode(): Promise<CountryCode>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

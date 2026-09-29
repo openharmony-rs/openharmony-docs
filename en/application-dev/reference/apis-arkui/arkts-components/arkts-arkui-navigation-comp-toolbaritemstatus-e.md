@@ -8,6 +8,8 @@ Enumerates the toolbar item states.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum ToolbarItemStatus--><!--Device-unnamed-declare enum ToolbarItemStatus-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -23,6 +25,8 @@ Normal state. In this state, the toolbar item takes on the default style and can
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolbarItemStatus-NORMAL = 0--><!--Device-ToolbarItemStatus-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Disabled state. In this state, the toolbar item is disabled and does not allow f
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ToolbarItemStatus-DISABLED = 1--><!--Device-ToolbarItemStatus-DISABLED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ACTIVE
@@ -55,5 +61,7 @@ Active state. In this state, the toolbar item can update its icon to the one spe
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ToolbarItemStatus-ACTIVE = 2--><!--Device-ToolbarItemStatus-ACTIVE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

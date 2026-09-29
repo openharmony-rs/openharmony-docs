@@ -8,6 +8,8 @@ Manages GATT server. Before calling an Gatt server method, you must use [createG
 
 **Since:** 10
 
+<!--Device-ble-interface GattServer--><!--Device-ble-interface GattServer-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ The added service and its characteristics are provided by the local device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattServer-addService(service: GattService): void--><!--Device-GattServer-addService(service: GattService): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -101,7 +105,9 @@ Closes this `GattServer` object and unregisters its callbacks.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattServer-close(): void--><!--Device-GattServer-close(): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -141,7 +147,9 @@ Connects to a BLE central device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-GattServer-connect(deviceId: string, autoConnect?: boolean): void--><!--Device-GattServer-connect(deviceId: string, autoConnect?: boolean): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -176,7 +184,9 @@ Disconnects from or stops an ongoing connection to a BLE central device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-GattServer-disconnect(deviceId: string): void--><!--Device-GattServer-disconnect(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -209,6 +219,8 @@ Get the connection state of a specific device.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattServer-getConnectedState(deviceId: string): ProfileConnectionState--><!--Device-GattServer-getConnectedState(deviceId: string): ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -260,6 +272,8 @@ Obtain a specific GATT service by using a UUID.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattServer-getService(serviceUuid: string): GattService--><!--Device-GattServer-getService(serviceUuid: string): GattService-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -317,6 +331,8 @@ Obtain the list of GATT services registered by the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GattServer-getServices(): GattService[]--><!--Device-GattServer-getServices(): GattService[]-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**
@@ -371,7 +387,9 @@ This method should be called for every BLE peripheral device that has requested 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattServer-notifyCharacteristicChanged(      deviceId: string,      notifyCharacteristic: NotifyCharacteristic,      callback: AsyncCallback<void>    ): void--><!--Device-GattServer-notifyCharacteristicChanged(      deviceId: string,      notifyCharacteristic: NotifyCharacteristic,      callback: AsyncCallback<void>    ): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -437,7 +455,9 @@ This method should be called for every BLE peripheral device that has requested 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattServer-notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): Promise<void>--><!--Device-GattServer-notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -502,6 +522,8 @@ Unsubscribe characteristic read event.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GattServer-off(type: 'characteristicRead', callback?: Callback<CharacteristicReadRequest>): void--><!--Device-GattServer-off(type: 'characteristicRead', callback?: Callback<CharacteristicReadRequest>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -546,6 +568,8 @@ Unsubscribe characteristic write event.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GattServer-off(type: 'characteristicWrite', callback?: Callback<CharacteristicWriteRequest>): void--><!--Device-GattServer-off(type: 'characteristicWrite', callback?: Callback<CharacteristicWriteRequest>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -592,6 +616,8 @@ Unsubscribe descriptor read event.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GattServer-off(type: 'descriptorRead', callback?: Callback<DescriptorReadRequest>): void--><!--Device-GattServer-off(type: 'descriptorRead', callback?: Callback<DescriptorReadRequest>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -636,6 +662,8 @@ Unsubscribe descriptor write event.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GattServer-off(type: 'descriptorWrite', callback?: Callback<DescriptorWriteRequest>): void--><!--Device-GattServer-off(type: 'descriptorWrite', callback?: Callback<DescriptorWriteRequest>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -682,6 +710,8 @@ Unsubscribe server connection state changed event.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GattServer-off(type: 'connectionStateChange', callback?: Callback<BLEConnectionChangeState>): void--><!--Device-GattServer-off(type: 'connectionStateChange', callback?: Callback<BLEConnectionChangeState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -725,6 +755,8 @@ Unsubscribe mtu changed event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GattServer-off(type: 'BLEMtuChange', callback?: Callback<int>): void--><!--Device-GattServer-off(type: 'BLEMtuChange', callback?: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -767,6 +799,8 @@ Unsubscribe phy updated event.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattServer-offBlePhyUpdate(callback?: Callback<PhyValue>): void--><!--Device-GattServer-offBlePhyUpdate(callback?: Callback<PhyValue>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -815,6 +849,8 @@ Subscribe characteristic read event. On API 26.0.0 and above, if the application
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GattServer-on(type: 'characteristicRead', callback: Callback<CharacteristicReadRequest>): void--><!--Device-GattServer-on(type: 'characteristicRead', callback: Callback<CharacteristicReadRequest>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -876,6 +912,8 @@ Subscribe characteristic write event. On API 26.0.0 and above, if the applicatio
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GattServer-on(type: 'characteristicWrite', callback: Callback<CharacteristicWriteRequest>): void--><!--Device-GattServer-on(type: 'characteristicWrite', callback: Callback<CharacteristicWriteRequest>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -941,6 +979,8 @@ Subscribe descriptor read event. On API 26.0.0 and above, if the application has
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GattServer-on(type: 'descriptorRead', callback: Callback<DescriptorReadRequest>): void--><!--Device-GattServer-on(type: 'descriptorRead', callback: Callback<DescriptorReadRequest>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -1001,6 +1041,8 @@ Subscribe descriptor write event. On API 26.0.0 and above, if the application ha
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GattServer-on(type: 'descriptorWrite', callback: Callback<DescriptorWriteRequest>): void--><!--Device-GattServer-on(type: 'descriptorWrite', callback: Callback<DescriptorWriteRequest>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1066,6 +1108,8 @@ Subscribe server connection state changed event. On API 26.0.0 and above, if the
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GattServer-on(type: 'connectionStateChange', callback: Callback<BLEConnectionChangeState>): void--><!--Device-GattServer-on(type: 'connectionStateChange', callback: Callback<BLEConnectionChangeState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -1114,6 +1158,8 @@ Subscribe mtu changed event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GattServer-on(type: 'BLEMtuChange', callback: Callback<int>): void--><!--Device-GattServer-on(type: 'BLEMtuChange', callback: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -1159,6 +1205,8 @@ Subscribe phy updated event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GattServer-onBlePhyUpdate(callback: Callback<PhyValue>): void--><!--Device-GattServer-onBlePhyUpdate(callback: Callback<PhyValue>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -1201,6 +1249,8 @@ Read the phy associated with the connection.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattServer-readPhy(deviceId: string): Promise<PhyValue>--><!--Device-GattServer-readPhy(deviceId: string): Promise<PhyValue>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1254,7 +1304,9 @@ Removes all services from the list of GATT services offered by this device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-GattServer-removeAllServices(): void--><!--Device-GattServer-removeAllServices(): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1293,7 +1345,9 @@ Removes a specified service from the list of GATT services provided by this devi
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattServer-removeService(serviceUuid: string): void--><!--Device-GattServer-removeService(serviceUuid: string): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1341,7 +1395,9 @@ Sends a response to a specified read or write request to a given BLE peripheral 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattServer-sendResponse(serverResponse: ServerResponse): void--><!--Device-GattServer-sendResponse(serverResponse: ServerResponse): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -1398,6 +1454,8 @@ Set the preferred phy associated with the connection. Whether the phy value will
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattServer-setPhy(deviceId: string, phyValue: PhyValue): Promise<void>--><!--Device-GattServer-setPhy(deviceId: string, phyValue: PhyValue): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

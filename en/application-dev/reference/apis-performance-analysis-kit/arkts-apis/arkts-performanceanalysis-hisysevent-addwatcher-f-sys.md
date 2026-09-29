@@ -18,6 +18,8 @@ Adds a watcher for event subscription.
 
 **Required permissions:** ohos.permission.READ_DFX_SYSEVENT
 
+<!--Device-hiSysEvent-function addWatcher(watcher: Watcher): void--><!--Device-hiSysEvent-function addWatcher(watcher: Watcher): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.

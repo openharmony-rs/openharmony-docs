@@ -29,6 +29,8 @@ The **loadNativeModule** API is used to synchronously and dynamically load a nat
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export declare function loadNativeModule(moduleName: string): Object--><!--Device-unnamed-export declare function loadNativeModule(moduleName: string): Object-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

@@ -18,6 +18,8 @@ Obtains the network access policy for the application specified by a given UID. 
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function getPolicyByUid(uid: int, callback: AsyncCallback<NetUidPolicy>): void--><!--Device-policy-function getPolicyByUid(uid: int, callback: AsyncCallback<NetUidPolicy>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Obtains the network access policy by app UID. This API uses a promise to return 
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function getPolicyByUid(uid: int): Promise<NetUidPolicy>--><!--Device-policy-function getPolicyByUid(uid: int): Promise<NetUidPolicy>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

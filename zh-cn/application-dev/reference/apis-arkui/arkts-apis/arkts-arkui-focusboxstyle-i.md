@@ -8,6 +8,8 @@ declare interface FocusBoxStyle
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface FocusBoxStyle--><!--Device-unnamed-declare interface FocusBoxStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## margin
@@ -28,6 +30,8 @@ margin?: LengthMetrics
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-FocusBoxStyle-margin?: LengthMetrics--><!--Device-FocusBoxStyle-margin?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -45,6 +49,8 @@ strokeColor?: ColorMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusBoxStyle-strokeColor?: ColorMetrics--><!--Device-FocusBoxStyle-strokeColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,5 +71,7 @@ strokeWidth?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FocusBoxStyle-strokeWidth?: LengthMetrics--><!--Device-FocusBoxStyle-strokeWidth?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

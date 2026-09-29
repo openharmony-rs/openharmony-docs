@@ -8,6 +8,8 @@ Describes the connection state parameters.
 
 **Since:** 26.0.0
 
+<!--Device-remoteDevice-interface ConnectionStateParam--><!--Device-remoteDevice-interface ConnectionStateParam-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates the device address. The length must be 17, The value consists of hexad
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionStateParam-address: string--><!--Device-ConnectionStateParam-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## connectionReason
@@ -45,6 +49,8 @@ Connection reason.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionStateParam-connectionReason: ConnectionReason--><!--Device-ConnectionStateParam-connectionReason: ConnectionReason-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Indicates the previous connection state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionStateParam-preState: ConnectionState--><!--Device-ConnectionStateParam-preState: ConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## reasonMsg
@@ -78,6 +86,8 @@ Indicates reason message. This field is intended for log information only and sh
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionStateParam-reasonMsg?: string--><!--Device-ConnectionStateParam-reasonMsg?: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## state
@@ -93,5 +103,7 @@ Indicates the current connection state.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionStateParam-state: ConnectionState--><!--Device-ConnectionStateParam-state: ConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

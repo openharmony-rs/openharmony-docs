@@ -8,6 +8,8 @@ Describes the information about an album.
 
 **Since:** 20
 
+<!--Device-photoAccessHelper-interface AlbumChangeInfo--><!--Device-photoAccessHelper-interface AlbumChangeInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Album name.
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfo-albumName: string--><!--Device-AlbumChangeInfo-albumName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## albumSubtype
@@ -41,6 +45,8 @@ Subtype of the album.
 **Type:** [AlbumSubtype](arkts-medialibrary-photoaccesshelper-albumsubtype-e.md)
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-albumSubtype: AlbumSubtype--><!--Device-AlbumChangeInfo-albumSubtype: AlbumSubtype-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -56,6 +62,8 @@ Type of the album.
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfo-albumType: AlbumType--><!--Device-AlbumChangeInfo-albumType: AlbumType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## albumUri
@@ -69,6 +77,8 @@ URI of the album.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-albumUri: string--><!--Device-AlbumChangeInfo-albumUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -84,6 +94,8 @@ Total number of assets in the album, including images and videos.
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfo-count: int--><!--Device-AlbumChangeInfo-count: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## coverUri
@@ -97,6 +109,8 @@ URI of the album cover asset.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-coverUri: string--><!--Device-AlbumChangeInfo-coverUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -112,6 +126,8 @@ Number of images in the album.
 
 **Since:** 20
 
+<!--Device-AlbumChangeInfo-imageCount: int--><!--Device-AlbumChangeInfo-imageCount: int-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## videoCount
@@ -125,5 +141,7 @@ Number of videos in the album.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AlbumChangeInfo-videoCount: int--><!--Device-AlbumChangeInfo-videoCount: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

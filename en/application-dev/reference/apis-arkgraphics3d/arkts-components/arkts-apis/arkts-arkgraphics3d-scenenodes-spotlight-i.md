@@ -20,6 +20,8 @@ A spotlight emits a conical beam of light in a specific direction, with the inte
 
 **Since:** 12
 
+<!--Device-unnamed-export interface SpotLight extends Light--><!--Device-unnamed-export interface SpotLight extends Light-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## innerAngle
@@ -36,6 +38,8 @@ Angle from the center of the spotlight to the start of the decay, corresponding 
 
 **Since:** 23
 
+<!--Device-SpotLight-innerAngle?: double--><!--Device-SpotLight-innerAngle?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## outerAngle
@@ -51,5 +55,7 @@ Angle from the center of the spotlight to the end of the decay, corresponding to
 **Default:** PI / 4.0
 
 **Since:** 23
+
+<!--Device-SpotLight-outerAngle?: double--><!--Device-SpotLight-outerAngle?: double-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

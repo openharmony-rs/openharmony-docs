@@ -20,6 +20,8 @@ Obtains the list of application bundle names for which watermarks have been set 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getWatermarkImageApps(admin: Want, accountId: number): Array<string>--><!--Device-securityManager-function getWatermarkImageApps(admin: Want, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

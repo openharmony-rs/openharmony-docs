@@ -8,6 +8,8 @@ Enumerates the child process start modes.
 
 **Since:** 11
 
+<!--Device-childProcessManager-export const enum StartMode--><!--Device-childProcessManager-export const enum StartMode-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## SELF_FORK
@@ -22,6 +24,8 @@ The child process is forked from the application process. The child process star
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartMode-SELF_FORK = 0--><!--Device-StartMode-SELF_FORK = 0-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## APP_SPAWN_FORK
@@ -35,5 +39,7 @@ The child process is forked from AppSpawn. The child process started in this mod
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartMode-APP_SPAWN_FORK = 1--><!--Device-StartMode-APP_SPAWN_FORK = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -19,6 +19,8 @@ Queries the current assessment configuration.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-assessment-function getConfiguration(): AssessmentConfig--><!--Device-assessment-function getConfiguration(): AssessmentConfig-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 **Return value:**

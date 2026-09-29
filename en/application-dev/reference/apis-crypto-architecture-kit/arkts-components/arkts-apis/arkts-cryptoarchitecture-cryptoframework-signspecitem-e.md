@@ -10,6 +10,8 @@ Enumerates the signing and signature verification parameters, which can be set b
 
 **Since:** 10
 
+<!--Device-cryptoFramework-enum SignSpecItem--><!--Device-cryptoFramework-enum SignSpecItem-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
 - API versions 10 to 11: SystemCapability.Security.CryptoFramework
@@ -24,7 +26,9 @@ Message digest algorithm used with the PSS padding mode in RSA.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SignSpecItem-PSS_MD_NAME_STR = 100--><!--Device-SignSpecItem-PSS_MD_NAME_STR = 100-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
@@ -40,7 +44,9 @@ Mask generation algorithm used with the PSS padding mode in RSA. Currently, only
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SignSpecItem-PSS_MGF_NAME_STR = 101--><!--Device-SignSpecItem-PSS_MGF_NAME_STR = 101-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
@@ -56,7 +62,9 @@ Message digest algorithm for the MGF1 mask generation used with the PSS padding 
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SignSpecItem-PSS_MGF1_MD_STR = 102--><!--Device-SignSpecItem-PSS_MGF1_MD_STR = 102-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
@@ -84,7 +92,9 @@ calculate the salt length, or -3 to use the maximum salt length. The recommended
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SignSpecItem-PSS_SALT_LEN_NUM = 103--><!--Device-SignSpecItem-PSS_SALT_LEN_NUM = 103-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
@@ -100,7 +110,9 @@ Trailer field used in the encoding operation when PSS padding mode is used in RS
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SignSpecItem-PSS_TRAILER_FIELD_NUM = 104--><!--Device-SignSpecItem-PSS_TRAILER_FIELD_NUM = 104-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
@@ -116,7 +128,9 @@ User ID field in SM2.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SignSpecItem-SM2_USER_ID_UINT8ARR = 105--><!--Device-SignSpecItem-SM2_USER_ID_UINT8ARR = 105-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Signature
@@ -134,7 +148,9 @@ Indicates whether deterministic signing is used for the ML-DSA signing and verif
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-SignSpecItem-ML_DSA_DETERMINISTIC_BOOL = 106--><!--Device-SignSpecItem-ML_DSA_DETERMINISTIC_BOOL = 106-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Signature
 
@@ -150,7 +166,9 @@ Indicates the mu parameter value for the ML-DSA signing and verifying process.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-SignSpecItem-ML_DSA_MU_BOOL = 107--><!--Device-SignSpecItem-ML_DSA_MU_BOOL = 107-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Signature
 
@@ -166,6 +184,8 @@ Indicates the context data for the ML-DSA signing and verifying process.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-SignSpecItem-ML_DSA_CONTEXT_UINT8ARR = 108--><!--Device-SignSpecItem-ML_DSA_CONTEXT_UINT8ARR = 108-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework.Signature

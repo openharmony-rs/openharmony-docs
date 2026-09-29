@@ -12,19 +12,21 @@ Defines the attribute decorator, which is used to decorate attributes of the cus
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDecorator--><!--Device-unnamed-export declare type TypeDecorator = <T>(type: TypeConstructor<T>) => PropertyDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md)&lt;T&gt; | Yes | Type of the class property. |
+| type | [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md)&lt;T&gt; | Yes | Type of the class property. Only custom class types are supported. Passing other types will cause persistence failure. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [PropertyDecorator](../../apis-default/arkts-apis/arkts-propertydecorator-t.md) | Property decorator. |
+| [PropertyDecorator](../../apis-default/arkts-apis/arkts-propertydecorator-t.md) | Property decorator, used to decorate properties that belong to custom classes in nested classes. |
 
 **Examples**
 

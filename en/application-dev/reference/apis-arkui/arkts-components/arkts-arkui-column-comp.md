@@ -2,7 +2,10 @@
 
 A container that lays out child components along the vertical direction. It is suitable for scenarios where multiple child components need to be arranged sequentially in the vertical direction, such as list items, form items, and card content. It supports setting attributes such as child component spacing and alignment, enabling quick implementation of vertical linear layout.
 
-> **NOTE** > > If no height or width is set for the **Column** component, it adapts to the size of child components in the main > axis (vertical direction) or cross axis (horizontal direction).
+> **NOTE:** 
+> 
+> If no height or width is set for the **Column** component, it adapts to the size of child components in the main
+> axis (vertical direction) or cross axis (horizontal direction).
 
 ## Child Components
 
@@ -28,6 +31,8 @@ Creates a vertical linear layout container. You can set the spacing between chil
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ColumnInterface-(options?: ColumnOptions): ColumnAttribute--><!--Device-ColumnInterface-(options?: ColumnOptions): ColumnAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +64,8 @@ Creates a vertical linear layout container. You can set the spacing between chil
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-ColumnInterface-(options?: ColumnOptions | ColumnOptionsV2): ColumnAttribute--><!--Device-ColumnInterface-(options?: ColumnOptions | ColumnOptionsV2): ColumnAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

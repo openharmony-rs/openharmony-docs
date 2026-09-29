@@ -12,6 +12,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class ColumnAttribute extends CommonMethod<ColumnAttribute>--><!--Device-unnamed-declare class ColumnAttribute extends CommonMethod<ColumnAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignItems
@@ -27,6 +29,8 @@ Alignment mode of the child components in the horizontal direction.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ColumnAttribute-alignItems(value: HorizontalAlign): ColumnAttribute--><!--Device-ColumnAttribute-alignItems(value: HorizontalAlign): ColumnAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ Alignment mode of the child components in the vertical direction.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ColumnAttribute-justifyContent(value: FlexAlign): ColumnAttribute--><!--Device-ColumnAttribute-justifyContent(value: FlexAlign): ColumnAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +91,8 @@ Sets whether to reverse the vertical arrangement of child components.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ColumnAttribute-reverse(isReversed: Optional<boolean>): ColumnAttribute--><!--Device-ColumnAttribute-reverse(isReversed: Optional<boolean>): ColumnAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

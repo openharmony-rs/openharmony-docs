@@ -18,6 +18,8 @@ Checks whether the current device supports NearLink.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function isNearLinkSupported(): boolean--><!--Device-manager-function isNearLinkSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**

@@ -12,6 +12,8 @@ Defines the style for a styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan |UserDataSpan | BackgroundColorStyle | LineSpacingStyle--><!--Device-unnamed-declare type StyledStringValue = TextStyle | DecorationStyle | BaselineOffsetStyle | LetterSpacingStyle |TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightStyle | UrlStyle | CustomSpan |UserDataSpan | BackgroundColorStyle | LineSpacingStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |
@@ -29,4 +31,4 @@ Defines the style for a styled string.
 | [CustomSpan](arkts-arkui-customspan-c.md) | Custom span style. |
 | [UserDataSpan](arkts-arkui-userdataspan-c.md) | User data span style. |
 | [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md) | Text background color style. [since 14] |
-| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | Text line spacing style. **Since**: 26.0.0 [since 26.0.0] |
+| [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | Text line spacing style. [since 26.0.0] |

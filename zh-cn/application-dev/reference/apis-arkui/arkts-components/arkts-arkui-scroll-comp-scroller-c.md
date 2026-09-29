@@ -24,6 +24,8 @@ scroller: Scroller = new Scroller();
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class Scroller--><!--Device-unnamed-declare class Scroller-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -39,6 +41,8 @@ Scroller的构造函数。
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-constructor()--><!--Device-Scroller-constructor()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +73,8 @@ contentSize(): SizeResult
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-contentSize(): SizeResult--><!--Device-Scroller-contentSize(): SizeResult-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +110,8 @@ currentOffset() : OffsetResult
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Scroller-currentOffset() : OffsetResult--><!--Device-Scroller-currentOffset() : OffsetResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -126,6 +134,8 @@ fling(velocity: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Scroller-fling(velocity: number): void--><!--Device-Scroller-fling(velocity: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -138,7 +148,7 @@ fling(velocity: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## getFrameNode
@@ -154,6 +164,8 @@ getFrameNode(): FrameNode | undefined
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-getFrameNode(): FrameNode | undefined--><!--Device-Scroller-getFrameNode(): FrameNode | undefined-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,6 +193,8 @@ getItemIndex(x: number, y: number): number
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-Scroller-getItemIndex(x: number, y: number): number--><!--Device-Scroller-getItemIndex(x: number, y: number): number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -200,7 +214,7 @@ getItemIndex(x: number, y: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## getItemRect
@@ -221,6 +235,8 @@ getItemRect(index: number): RectResult
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Scroller-getItemRect(index: number): RectResult--><!--Device-Scroller-getItemRect(index: number): RectResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -239,7 +255,7 @@ getItemRect(index: number): RectResult
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
 ## isAtEnd
@@ -259,6 +275,8 @@ isAtEnd(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-isAtEnd(): boolean--><!--Device-Scroller-isAtEnd(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,6 +300,8 @@ offset() : OffsetResult | undefined
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-Scroller-offset() : OffsetResult | undefined--><!--Device-Scroller-offset() : OffsetResult | undefined-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -304,7 +324,7 @@ scrollBy(dx: Length, dy: Length)
 > 
 > - 各组件行为存在差异：
 > 
-> - ArcList和List组件会对所有经过的item进行加载和布局。
+> - [ArcList](arkts-arkui-arclist-comp.md)和[List](arkts-arkui-list-comp.md)组件会对所有经过的item进行加载和布局。
 > 
 > - Grid组件和[SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)模式的WaterFlow组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
 > 
@@ -315,6 +335,8 @@ scrollBy(dx: Length, dy: Length)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-scrollBy(dx: Length, dy: Length)--><!--Device-Scroller-scrollBy(dx: Length, dy: Length)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,6 +363,8 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-Scroller-scrollEdge(value: Edge, options?: ScrollEdgeOptions)--><!--Device-Scroller-scrollEdge(value: Edge, options?: ScrollEdgeOptions)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -363,6 +387,8 @@ scrollPage(value: ScrollPageOptions)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-scrollPage(value: ScrollPageOptions)--><!--Device-Scroller-scrollPage(value: ScrollPageOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,6 +416,8 @@ scrollPage(value: { next: boolean; direction?: Axis })
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-Scroller-scrollPage(value: { next: boolean; direction?: Axis })--><!--Device-Scroller-scrollPage(value: { next: boolean; direction?: Axis })-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -412,9 +440,9 @@ scrollTo(options: ScrollOptions)
 > 
 > - 各组件行为存在差异：
 > 
-> - ArcList和List组件会对所有经过的item进行加载和布局。
+> - [ArcList](arkts-arkui-arclist-comp.md)和[List](arkts-arkui-list-comp.md)组件会对所有经过的item进行加载和布局。
 > 
-> - Grid组件和[SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)模式的WaterFlow组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
+> - Grid组件和[SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)模式的[WaterFlow](arkts-arkui-waterflow-comp.md)组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
 > 
 > - [ALWAYS_TOP_DOWN](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。跳转指一帧滑动。
 
@@ -423,6 +451,8 @@ scrollTo(options: ScrollOptions)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-scrollTo(options: ScrollOptions)--><!--Device-Scroller-scrollTo(options: ScrollOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -446,7 +476,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 
 > 1. 仅支持ArcList、Grid、List、WaterFlow组件。
 > 
-> 2. 在LazyForEach、[ForEach](arkts-arkui-foreach-comp-attribute.md)、Repeat刷新数据源时，需确保在数据刷新完成之后再调用此接口。
+> 2. 在[LazyForEach](arkts-arkui-lazyforeach-comp.md)、[ForEach](arkts-arkui-foreach-comp-attribute.md)、[Repeat](arkts-arkui-repeat-comp.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 > 
 > 3. 从API version 11开始，在List中支持[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset)和[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset)。从API version 22开始，在Grid和WaterFlow组件中支持设置contentStartOffset和contentEndOffset。
 > 
@@ -461,6 +491,8 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)--><!--Device-Scroller-scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: ScrollToIndexOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

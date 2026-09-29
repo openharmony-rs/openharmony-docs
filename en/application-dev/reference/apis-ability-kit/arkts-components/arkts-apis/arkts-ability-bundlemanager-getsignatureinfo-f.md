@@ -18,6 +18,8 @@ Obtains the [signature information](arkts-ability-bundleinfo-signatureinfo-i.md)
 
 **Required permissions:** ohos.permission.GET_SIGNATURE_INFO
 
+<!--Device-bundleManager-function getSignatureInfo(uid: int): SignatureInfo--><!--Device-bundleManager-function getSignatureInfo(uid: int): SignatureInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Parameters:**

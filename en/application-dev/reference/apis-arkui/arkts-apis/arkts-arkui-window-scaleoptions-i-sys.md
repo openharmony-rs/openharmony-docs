@@ -8,6 +8,8 @@ Describes the scale parameters.
 
 **Since:** 9
 
+<!--Device-window-interface ScaleOptions--><!--Device-window-interface ScaleOptions-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ X coordinate of the scale center. The value is a floating-point number in the ra
 
 **Since:** 9
 
+<!--Device-ScaleOptions-pivotX?: double--><!--Device-ScaleOptions-pivotX?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Y coordinate of the scale center. The value is a floating-point number in the ra
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ScaleOptions-pivotY?: double--><!--Device-ScaleOptions-pivotY?: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ Scale factor along the x-axis. The value is a floating-point number, and the def
 
 **Since:** 9
 
+<!--Device-ScaleOptions-x?: double--><!--Device-ScaleOptions-x?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Scale factor along the y-axis. The value is a floating-point number, and the def
 **Type:** number
 
 **Since:** 9
+
+<!--Device-ScaleOptions-y?: double--><!--Device-ScaleOptions-y?: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -19,6 +19,8 @@ Removes the singleton **Storage** instance of a file from the cache. The removed
 
 **Substitutes:** removePreferencesFromCache
 
+<!--Device-storage-function removeStorageFromCacheSync(path: string): void--><!--Device-storage-function removeStorageFromCacheSync(path: string): void-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

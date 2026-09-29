@@ -16,6 +16,8 @@ Checks whether a widget can be added to the widget host. This API uses an asynch
 
 **Since:** 9
 
+<!--Device-formProvider-function isRequestPublishFormSupported(callback: AsyncCallback<boolean>): void--><!--Device-formProvider-function isRequestPublishFormSupported(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -47,6 +49,8 @@ function isRequestPublishFormSupported(): Promise<boolean>
 Checks whether a widget can be added to the widget host. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-formProvider-function isRequestPublishFormSupported(): Promise<boolean>--><!--Device-formProvider-function isRequestPublishFormSupported(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

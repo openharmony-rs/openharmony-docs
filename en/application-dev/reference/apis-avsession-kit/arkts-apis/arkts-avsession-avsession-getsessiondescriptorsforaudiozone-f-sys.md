@@ -20,6 +20,8 @@ Get session descriptors for a unique audio zone across different session categor
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avSession-function getSessionDescriptorsForAudioZone(userId: int): Promise<Array<Readonly<AVSessionDescriptor>>>--><!--Device-avSession-function getSessionDescriptorsForAudioZone(userId: int): Promise<Array<Readonly<AVSessionDescriptor>>>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Manager
 
 **System API:** This is a system API.

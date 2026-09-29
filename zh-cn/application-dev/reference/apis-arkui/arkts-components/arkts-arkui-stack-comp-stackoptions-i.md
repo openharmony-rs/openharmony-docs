@@ -12,6 +12,8 @@ declare interface StackOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface StackOptions--><!--Device-unnamed-declare interface StackOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignContent
@@ -35,5 +37,7 @@ alignContent?: Alignment
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StackOptions-alignContent?: Alignment--><!--Device-StackOptions-alignContent?: Alignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

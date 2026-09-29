@@ -8,6 +8,8 @@ The **inputDeviceCooperate** module implements screen hopping for two or more ne
 
 **Substitutes:** [cooperate/cooperate](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-cooperate.md)
 
+<!--Device-unnamed-declare namespace inputDeviceCooperate--><!--Device-unnamed-declare namespace inputDeviceCooperate-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Cooperator
 
 ## Modules to Import

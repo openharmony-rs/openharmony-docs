@@ -20,6 +20,8 @@ Obtains the network packet filtering rule. Only IPv4 is supported. This API uses
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function listIptablesFilterRules(admin: Want, callback: AsyncCallback<string>): void--><!--Device-networkManager-function listIptablesFilterRules(admin: Want, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ Obtains the network packet filtering rule. Only IPv4 is supported. This API uses
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function listIptablesFilterRules(admin: Want): Promise<string>--><!--Device-networkManager-function listIptablesFilterRules(admin: Want): Promise<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

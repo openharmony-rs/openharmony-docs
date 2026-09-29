@@ -10,6 +10,8 @@ Indicate the profile connection state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-baseProfile-type ProfileConnectionState = constant.ProfileConnectionState--><!--Device-baseProfile-type ProfileConnectionState = constant.ProfileConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Type:** [constant.ProfileConnectionState](arkts-connectivity-constant-profileconnectionstate-e.md)

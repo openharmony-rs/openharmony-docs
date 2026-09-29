@@ -14,6 +14,8 @@ Specifies the worker thread running environment, which is isolated from the host
 
 **Substitutes:** [GlobalScope](arkts-arkts-worker-globalscope-i.md)
 
+<!--Device-unnamed-declare interface WorkerGlobalScope extends EventTarget--><!--Device-unnamed-declare interface WorkerGlobalScope extends EventTarget-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -35,6 +37,8 @@ The onerror attribute of parentPort specifies the event handler to be called whe
 **Deprecated since:** 9
 
 **Substitutes:** onerror
+
+<!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void--><!--Device-WorkerGlobalScope-onerror?: (ev: ErrorEvent) => void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -60,6 +64,8 @@ Worker name specified when there is a new worker.
 
 **Substitutes:** name
 
+<!--Device-WorkerGlobalScope-readonly name: string--><!--Device-WorkerGlobalScope-readonly name: string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## self
@@ -77,5 +83,7 @@ Specify the type attribute for self.
 **Deprecated since:** 9
 
 **Substitutes:** self
+
+<!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis--><!--Device-WorkerGlobalScope-readonly self: WorkerGlobalScope & typeof globalThis-End-->
 
 **System capability:** SystemCapability.Utils.Lang

@@ -20,6 +20,8 @@ Obtains applications that are not allowed to run by the current user or specifie
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array<string>--><!--Device-applicationManager-function getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -80,6 +82,8 @@ Obtains the application running blocklist of the current user or specified user.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function getDisallowedRunningBundlesSync(admin: Want | null, accountId?: number): Array<string>--><!--Device-applicationManager-function getDisallowedRunningBundlesSync(admin: Want | null, accountId?: number): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -22,6 +22,8 @@ Send extended commands to location subsystem.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-function sendCommand(command: LocationCommand, callback: AsyncCallback<boolean>): void--><!--Device-geolocation-function sendCommand(command: LocationCommand, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **Parameters:**
@@ -64,6 +66,8 @@ Send extended commands to location subsystem.
 **Substitutes:** [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-geolocation-function sendCommand(command: LocationCommand): Promise<boolean>--><!--Device-geolocation-function sendCommand(command: LocationCommand): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

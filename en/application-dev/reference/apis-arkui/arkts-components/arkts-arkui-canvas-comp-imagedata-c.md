@@ -16,6 +16,8 @@ The **ImageData** object stores pixel data rendered on a canvas, supporting read
 
 **Since:** 8
 
+<!--Device-unnamed-declare class ImageData--><!--Device-unnamed-declare class ImageData-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -33,6 +35,8 @@ Creates an **ImageData** object with the specified width, height, and pixel data
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray)--><!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,6 +65,8 @@ Creates an **ImageData** object with the specified width, height, and pixel data
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)--><!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +102,8 @@ One-dimensional array that stores pixel data in RGBA format. Each pixel occupies
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageData-readonly data: Uint8ClampedArray--><!--Device-ImageData-readonly data: Uint8ClampedArray-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -121,6 +129,8 @@ Actual height of the rectangle.<br>The unit is px.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageData-readonly height: number--><!--Device-ImageData-readonly height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -145,5 +155,7 @@ Actual width of the rectangle.<br>The unit is px.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageData-readonly width: number--><!--Device-ImageData-readonly width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

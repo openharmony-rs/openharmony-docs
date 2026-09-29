@@ -19,6 +19,8 @@ Checks whether the senior mode is enabled. This API uses a promise to return the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accessibility-function isSeniorModeEnabled(): Promise<boolean>--><!--Device-accessibility-function isSeniorModeEnabled(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Return value:**

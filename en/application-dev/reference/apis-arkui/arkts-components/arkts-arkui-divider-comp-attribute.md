@@ -12,6 +12,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class DividerAttribute extends CommonMethod<DividerAttribute>--><!--Device-unnamed-declare class DividerAttribute extends CommonMethod<DividerAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -27,6 +29,8 @@ Sets the color of the divider. This attribute can be dynamically set using [attr
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-DividerAttribute-color(value: ResourceColor): DividerAttribute--><!--Device-DividerAttribute-color(value: ResourceColor): DividerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ Sets the line cap style of the divider. This attribute can be dynamically set us
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-DividerAttribute-lineCap(value: LineCapStyle): DividerAttribute--><!--Device-DividerAttribute-lineCap(value: LineCapStyle): DividerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,6 +90,8 @@ Sets the stroke width of the divider. This attribute can be dynamically set usin
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-DividerAttribute-strokeWidth(value: number | string): DividerAttribute--><!--Device-DividerAttribute-strokeWidth(value: number | string): DividerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -105,6 +113,8 @@ Sets the direction of the divider. This attribute can be dynamically set using [
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-DividerAttribute-vertical(value: boolean): DividerAttribute--><!--Device-DividerAttribute-vertical(value: boolean): DividerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

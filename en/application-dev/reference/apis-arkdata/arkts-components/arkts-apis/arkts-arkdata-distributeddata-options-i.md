@@ -12,6 +12,8 @@ Provides KV store configuration.
 
 **Substitutes:** Options
 
+<!--Device-distributedData-interface Options--><!--Device-distributedData-interface Options-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ ohos.permission.DISTRIBUTED_DATASYNC
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-Options-autoSync?: boolean--><!--Device-Options-autoSync?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## backup
@@ -56,6 +60,8 @@ Whether to back up the KV store. The default value is **true**, which means to b
 **Deprecated since:** 9
 
 **Substitutes:** backup
+
+<!--Device-Options-backup?: boolean--><!--Device-Options-backup?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -75,6 +81,8 @@ Whether to create a KV store if the database file does not exist. The default va
 
 **Substitutes:** createIfMissing
 
+<!--Device-Options-createIfMissing?: boolean--><!--Device-Options-createIfMissing?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## encrypt
@@ -92,6 +100,8 @@ Whether to encrypt the KV store. The default value is **false**, which means the
 **Deprecated since:** 9
 
 **Substitutes:** encrypt
+
+<!--Device-Options-encrypt?: boolean--><!--Device-Options-encrypt?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -111,6 +121,8 @@ Type of the KV store to create. The default value is **DEVICE_COLLABORATION**, w
 
 **Substitutes:** kvStoreType
 
+<!--Device-Options-kvStoreType?: KVStoreType--><!--Device-Options-kvStoreType?: KVStoreType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## schema
@@ -129,6 +141,8 @@ Schema that defines the values stored in the KV store. The default value is **un
 
 **Substitutes:** schema
 
+<!--Device-Options-schema?: Schema--><!--Device-Options-schema?: Schema-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
 ## securityLevel
@@ -146,5 +160,7 @@ Security level (S1 to S4) of the KV store.
 **Deprecated since:** 9
 
 **Substitutes:** securityLevel
+
+<!--Device-Options-securityLevel?: SecurityLevel--><!--Device-Options-securityLevel?: SecurityLevel-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

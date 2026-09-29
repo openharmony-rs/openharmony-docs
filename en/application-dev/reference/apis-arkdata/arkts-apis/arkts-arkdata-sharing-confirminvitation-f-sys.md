@@ -16,6 +16,8 @@ Confirms the invitation based on the sharing invitation code and obtains the sha
 
 **Since:** 11
 
+<!--Device-sharing-function confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback<Result<string>>): void--><!--Device-sharing-function confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback<Result<string>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ function confirmInvitation(invitationCode: string, state: State): Promise<Result
 Confirms the invitation based on the sharing invitation code and obtains the shared resource ID. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-sharing-function confirmInvitation(invitationCode: string, state: State): Promise<Result<string>>--><!--Device-sharing-function confirmInvitation(invitationCode: string, state: State): Promise<Result<string>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

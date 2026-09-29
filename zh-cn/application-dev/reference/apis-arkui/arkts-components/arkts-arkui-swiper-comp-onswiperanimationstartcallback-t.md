@@ -14,6 +14,8 @@ declare type OnSwiperAnimationStartCallback = (index: number, targetIndex: numbe
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type OnSwiperAnimationStartCallback = (index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => void--><!--Device-unnamed-declare type OnSwiperAnimationStartCallback = (index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

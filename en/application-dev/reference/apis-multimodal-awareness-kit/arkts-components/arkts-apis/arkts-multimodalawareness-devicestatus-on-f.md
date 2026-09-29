@@ -12,9 +12,11 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 function on(type: 'steadyStandingDetect', callback: Callback<SteadyStandingStatus>): void
 ```
 
-Subscribes to steady standing state events.
+Subscribes to the device steady standing state (stand mode) event. It is recommended to call off() to unsubscribe when it is no longer needed to release resources.
 
 **Since:** 18
+
+<!--Device-deviceStatus-function on(type: 'steadyStandingDetect', callback: Callback<SteadyStandingStatus>): void--><!--Device-deviceStatus-function on(type: 'steadyStandingDetect', callback: Callback<SteadyStandingStatus>): void-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
 

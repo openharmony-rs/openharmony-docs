@@ -8,6 +8,8 @@ Represents the configuration of database encryption parameters. This configurati
 
 **Since:** 14
 
+<!--Device-relationalStore-interface CryptoParam--><!--Device-relationalStore-interface CryptoParam-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ The value must be an integer within the range of 1,024 to 65,536 and must be 2&l
 
 **Since:** 14
 
+<!--Device-CryptoParam-cryptoPageSize?: int--><!--Device-CryptoParam-cryptoPageSize?: int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## encryptionAlgo
@@ -47,6 +51,8 @@ Default value: **AES_256_GCM**.
 **Type:** [EncryptionAlgo](arkts-arkdata-relationalstore-encryptionalgo-e.md)
 
 **Since:** 14
+
+<!--Device-CryptoParam-encryptionAlgo?: EncryptionAlgo--><!--Device-CryptoParam-encryptionAlgo?: EncryptionAlgo-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -66,6 +72,8 @@ If the key is not required, you need to set the key to **0**.
 
 **Since:** 14
 
+<!--Device-CryptoParam-encryptionKey: Uint8Array--><!--Device-CryptoParam-encryptionKey: Uint8Array-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## hmacAlgo
@@ -81,6 +89,8 @@ Default value: **SHA256**.
 **Type:** [HmacAlgo](arkts-arkdata-relationalstore-hmacalgo-e.md)
 
 **Since:** 14
+
+<!--Device-CryptoParam-hmacAlgo?: HmacAlgo--><!--Device-CryptoParam-hmacAlgo?: HmacAlgo-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -102,6 +112,8 @@ If this parameter is not specified or is set to **0**, the default value **10000
 
 **Since:** 14
 
+<!--Device-CryptoParam-iterationCount?: int--><!--Device-CryptoParam-iterationCount?: int-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## kdfAlgo
@@ -117,5 +129,7 @@ Default value: the same as the HMAC algorithm used.
 **Type:** [KdfAlgo](arkts-arkdata-relationalstore-kdfalgo-e.md)
 
 **Since:** 14
+
+<!--Device-CryptoParam-kdfAlgo?: KdfAlgo--><!--Device-CryptoParam-kdfAlgo?: KdfAlgo-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

@@ -26,6 +26,8 @@ Returns to the previous page or a specified page, which deletes all pages betwee
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-router-function back(options?: RouterOptions): void--><!--Device-router-function back(options?: RouterOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -64,6 +66,8 @@ Returns to the specified page, which deletes all pages between the current page 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-router-function back(index: number, params?: Object): void--><!--Device-router-function back(index: number, params?: Object): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

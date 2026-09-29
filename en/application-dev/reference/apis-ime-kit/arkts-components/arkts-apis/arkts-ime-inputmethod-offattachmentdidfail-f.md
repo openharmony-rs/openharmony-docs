@@ -16,6 +16,8 @@ Unsubscribes from attachment failure events. This API uses an asynchronous callb
 
 **Since:** 22
 
+<!--Device-inputMethod-function offAttachmentDidFail(callback?: Callback<AttachFailureReason>): void--><!--Device-inputMethod-function offAttachmentDidFail(callback?: Callback<AttachFailureReason>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Parameters:**

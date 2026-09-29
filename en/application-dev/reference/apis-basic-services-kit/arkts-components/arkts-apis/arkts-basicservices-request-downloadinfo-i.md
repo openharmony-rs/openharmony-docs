@@ -8,6 +8,8 @@ Defines the download task information, which is the callback parameter of the [g
 
 **Since:** 7
 
+<!--Device-request-interface DownloadInfo--><!--Device-request-interface DownloadInfo-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Description of the download task.
 
 **Since:** 7
 
+<!--Device-DownloadInfo-description: string--><!--Device-DownloadInfo-description: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## downloadedBytes
@@ -41,6 +45,8 @@ Real-time download size, in bytes.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-DownloadInfo-downloadedBytes: long--><!--Device-DownloadInfo-downloadedBytes: long-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -56,6 +62,8 @@ Download task ID.
 
 **Since:** 7
 
+<!--Device-DownloadInfo-downloadId: long--><!--Device-DownloadInfo-downloadId: long-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## downloadTitle
@@ -69,6 +77,8 @@ Name of the download task.
 **Type:** string
 
 **Since:** 7
+
+<!--Device-DownloadInfo-downloadTitle: string--><!--Device-DownloadInfo-downloadTitle: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -84,6 +94,8 @@ Total size of the files to download, in bytes.
 
 **Since:** 7
 
+<!--Device-DownloadInfo-downloadTotalBytes: long--><!--Device-DownloadInfo-downloadTotalBytes: long-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## failedReason
@@ -97,6 +109,8 @@ Cause of the download failure. The value can be any constant in [Download Error 
 **Type:** number
 
 **Since:** 7
+
+<!--Device-DownloadInfo-failedReason: int--><!--Device-DownloadInfo-failedReason: int-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -112,6 +126,8 @@ Name of the downloaded file.
 
 **Since:** 7
 
+<!--Device-DownloadInfo-fileName: string--><!--Device-DownloadInfo-fileName: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## filePath
@@ -125,6 +141,8 @@ URI of the saved file.
 **Type:** string
 
 **Since:** 7
+
+<!--Device-DownloadInfo-filePath: string--><!--Device-DownloadInfo-filePath: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -140,6 +158,8 @@ Cause of download pause. The value can be any constant in [Causes of Download Pa
 
 **Since:** 7
 
+<!--Device-DownloadInfo-pausedReason: int--><!--Device-DownloadInfo-pausedReason: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## status
@@ -154,6 +174,8 @@ Download task status code. The value can be any constant in [Download Task Statu
 
 **Since:** 7
 
+<!--Device-DownloadInfo-status: int--><!--Device-DownloadInfo-status: int-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## targetURI
@@ -167,5 +189,7 @@ URI of the downloaded file.
 **Type:** string
 
 **Since:** 7
+
+<!--Device-DownloadInfo-targetURI: string--><!--Device-DownloadInfo-targetURI: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Download

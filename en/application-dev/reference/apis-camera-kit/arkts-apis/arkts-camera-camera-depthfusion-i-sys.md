@@ -10,6 +10,8 @@ Depth fusion class. It inherits from [DepthFusionQuery](arkts-camera-camera-dept
 
 **Since:** 14
 
+<!--Device-camera-interface DepthFusion extends DepthFusionQuery--><!--Device-camera-interface DepthFusion extends DepthFusionQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ enableDepthFusion(enabled: boolean): void
 Enables depth fusion.
 
 **Since:** 14
+
+<!--Device-DepthFusion-enableDepthFusion(enabled: boolean): void--><!--Device-DepthFusion-enableDepthFusion(enabled: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -75,6 +79,8 @@ isDepthFusionEnabled(): boolean
 Checks whether depth fusion is enabled.
 
 **Since:** 14
+
+<!--Device-DepthFusion-isDepthFusionEnabled(): boolean--><!--Device-DepthFusion-isDepthFusionEnabled(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -8,6 +8,8 @@ Provides measurement information of a child component. The **Measurable** object
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface Measurable--><!--Device-unnamed-declare interface Measurable-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getBorderWidth
@@ -23,6 +25,8 @@ Obtains the **borderWidth** information of the child component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Measurable-getBorderWidth() : DirectionalEdgesT<number>--><!--Device-Measurable-getBorderWidth() : DirectionalEdgesT<number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Obtains the margin information of the child component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Measurable-getMargin() : DirectionalEdgesT<number>--><!--Device-Measurable-getMargin() : DirectionalEdgesT<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -68,6 +74,8 @@ Obtains the padding information of the child component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Measurable-getPadding() : DirectionalEdgesT<number>--><!--Device-Measurable-getPadding() : DirectionalEdgesT<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -89,6 +97,8 @@ Imposes size constraints on the child component and returns the measured layout 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-Measurable-measure(constraint: ConstraintSizeOptions) : MeasureResult--><!--Device-Measurable-measure(constraint: ConstraintSizeOptions) : MeasureResult-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,5 +129,7 @@ Unique ID assigned by the system to the child component. It uniquely identifies 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Measurable-uniqueId?: number--><!--Device-Measurable-uniqueId?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

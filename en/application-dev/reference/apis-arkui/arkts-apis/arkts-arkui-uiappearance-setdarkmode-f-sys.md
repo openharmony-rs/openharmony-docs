@@ -20,6 +20,8 @@ Sets the system color mode. This API uses an asynchronous callback to return the
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-uiAppearance-function setDarkMode(mode: DarkMode, callback: AsyncCallback<void>): void--><!--Device-uiAppearance-function setDarkMode(mode: DarkMode, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.UiAppearance
 
 **System API:** This is a system API.
@@ -75,6 +77,8 @@ Sets the system color mode. This API uses a promise to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.UPDATE_CONFIGURATION
+
+<!--Device-uiAppearance-function setDarkMode(mode: DarkMode): Promise<void>--><!--Device-uiAppearance-function setDarkMode(mode: DarkMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.UiAppearance
 

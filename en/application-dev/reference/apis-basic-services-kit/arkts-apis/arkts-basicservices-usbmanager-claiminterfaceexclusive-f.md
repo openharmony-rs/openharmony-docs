@@ -19,6 +19,8 @@ Claims a USB device interface exclusively. When this API is called, the system c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean,    onConflict?: Callback<InterfaceConflictInfo>): void--><!--Device-usbManager-function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean,    onConflict?: Callback<InterfaceConflictInfo>): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

@@ -10,6 +10,8 @@ Defines the requested ad content.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-advertising-export type Advertisement = _Advertisement--><!--Device-advertising-export type Advertisement = _Advertisement-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 **Type:** _Advertisement

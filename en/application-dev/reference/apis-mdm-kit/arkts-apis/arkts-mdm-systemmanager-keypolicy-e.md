@@ -8,6 +8,8 @@ Enumerates key policies. This refers to the system behavior triggered after the 
 
 **Since:** 23
 
+<!--Device-systemManager-enum KeyPolicy--><!--Device-systemManager-enum KeyPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## INTERCEPTION
@@ -22,6 +24,8 @@ Intercepts messages. After this parameter is set, only the current key event is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyPolicy-INTERCEPTION = 0--><!--Device-KeyPolicy-INTERCEPTION = 0-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## CUSTOM
@@ -35,5 +39,7 @@ Intercepts and forwards messages. When this policy is configured, the system int
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyPolicy-CUSTOM = 1--><!--Device-KeyPolicy-CUSTOM = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

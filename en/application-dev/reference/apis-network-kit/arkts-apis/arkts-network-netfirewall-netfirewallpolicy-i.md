@@ -8,6 +8,8 @@ Defines the firewall policy, including the firewall switch status and default in
 
 **Since:** 15
 
+<!--Device-netFirewall-interface NetFirewallPolicy--><!--Device-netFirewall-interface NetFirewallPolicy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Inbound action.
 
 **Since:** 15
 
+<!--Device-NetFirewallPolicy-inAction: FirewallRuleAction--><!--Device-NetFirewallPolicy-inAction: FirewallRuleAction-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## isOpen
@@ -42,6 +46,8 @@ Whether to enable the firewall. The value **true** means to enable the firewall,
 
 **Since:** 15
 
+<!--Device-NetFirewallPolicy-isOpen: boolean--><!--Device-NetFirewallPolicy-isOpen: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## outAction
@@ -55,5 +61,7 @@ Outbound action.
 **Type:** [FirewallRuleAction](arkts-network-netfirewall-firewallruleaction-e.md)
 
 **Since:** 15
+
+<!--Device-NetFirewallPolicy-outAction: FirewallRuleAction--><!--Device-NetFirewallPolicy-outAction: FirewallRuleAction-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

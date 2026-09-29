@@ -10,6 +10,8 @@ Provides methods for setting the sound effect, including the ringtone, dial tone
 
 **Since:** 7
 
+<!--Device-settings-namespace sound--><!--Device-settings-namespace sound-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

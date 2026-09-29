@@ -19,6 +19,8 @@ Creates a stream based on the file path. This API returns the result synchronous
 
 **Substitutes:** [createStreamSync](arkts-corefile-file-fs-createstreamsync-f.md)
 
+<!--Device-unnamed-declare function createStreamSync(path: string, mode: string): Stream--><!--Device-unnamed-declare function createStreamSync(path: string, mode: string): Stream-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

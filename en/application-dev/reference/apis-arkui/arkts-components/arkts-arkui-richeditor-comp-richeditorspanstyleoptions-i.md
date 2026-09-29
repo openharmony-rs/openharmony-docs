@@ -16,4 +16,6 @@ Inherits [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md).
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare interface RichEditorSpanStyleOptions extends RichEditorRange--><!--Device-unnamed-declare interface RichEditorSpanStyleOptions extends RichEditorRange-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

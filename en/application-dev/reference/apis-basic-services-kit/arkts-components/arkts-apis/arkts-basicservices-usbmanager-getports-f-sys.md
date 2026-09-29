@@ -20,6 +20,8 @@ Obtains the list of all physical USB ports. This API can be used to enumerate US
 
 **Substitutes:** [getPortList](arkts-basicservices-usbmanager-getportlist-f-sys.md)()
 
+<!--Device-usbManager-function getPorts(): Array<USBPort>--><!--Device-usbManager-function getPorts(): Array<USBPort>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

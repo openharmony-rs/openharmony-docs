@@ -10,6 +10,8 @@ Param when query insight intent entity.
 
 **Since:** 26.0.0
 
+<!--Device-insightIntentDriver-interface QueryParam--><!--Device-insightIntentDriver-interface QueryParam-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Indicates the bundle name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-QueryParam-bundleName: string--><!--Device-QueryParam-bundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Indicates the entity class name.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-QueryParam-className: string--><!--Device-QueryParam-className: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,6 +76,8 @@ Indicates the intent name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-QueryParam-intentName: string--><!--Device-QueryParam-intentName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -88,6 +96,8 @@ Indicates the module name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-QueryParam-moduleName: string--><!--Device-QueryParam-moduleName: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -105,6 +115,8 @@ Indicates the param for query entity.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-QueryParam-queryEntityParam: insightIntent.QueryEntityParam--><!--Device-QueryParam-queryEntityParam: insightIntent.QueryEntityParam-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -125,6 +137,8 @@ If the user ID of the caller application is different from the target user ID, y
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-QueryParam-userId?: int--><!--Device-QueryParam-userId?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

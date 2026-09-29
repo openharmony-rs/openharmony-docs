@@ -18,6 +18,8 @@ When all tasks in a group are succeeded, failed, or removed and the group is del
 
 **Since:** 15
 
+<!--Device-agent-function deleteGroup(gid: string): Promise<void>--><!--Device-agent-function deleteGroup(gid: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

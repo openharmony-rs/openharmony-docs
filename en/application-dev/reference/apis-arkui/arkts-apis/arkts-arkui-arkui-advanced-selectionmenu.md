@@ -12,7 +12,7 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 
 | Name | Description |
 | --- | --- |
-| [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md) | Defines a **SelectionMenu** component. When the input parameter is empty, both the component and its content area have a zero size, making the component invisible. For example, when a **SelectionMenu** component activated via right -click is bound to a [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md#rich_editor) component using [bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu), it will not be displayed when the **RichEditor** component receives a right-click event. |
+| [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md) | When the input parameter is empty, both the content area and the component size of the **SelectionMenu** component are zero. For example, if the [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) component uses the [bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu) API to bind a right-click menu of **SelectionMenu**, no menu will pop up when right-clicking the rich text component area. |
 
 ### Interfaces
 
@@ -21,7 +21,7 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 | [EditorEventInfo](arkts-arkui-arkui-advanced-selectionmenu-editoreventinfo-i.md) | Provides the information about the selected content. |
 | [EditorMenuOptions](arkts-arkui-arkui-advanced-selectionmenu-editormenuoptions-i.md) | Describes the edit menu options. |
 | [ExpandedMenuOptions](arkts-arkui-arkui-advanced-selectionmenu-expandedmenuoptions-i.md) | Describes the expanded drop-down menu options. |
-| [SelectionMenuOptions](arkts-arkui-arkui-advanced-selectionmenu-selectionmenuoptions-i.md) | Defines the configuration options of the **SelectionMenu** component. |
+| [SelectionMenuOptions](arkts-arkui-arkui-advanced-selectionmenu-selectionmenuoptions-i.md) | Describes the optional menu type items and their configuration parameters for **SelectionMenu**. |
 
 ## Examples
 

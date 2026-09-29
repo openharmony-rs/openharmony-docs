@@ -16,6 +16,8 @@ Obtains the total downlink traffic of the specified NIC from the last startup to
 
 **Since:** 10
 
+<!--Device-statistics-function getIfaceRxBytes(nic: string, callback: AsyncCallback<long>): void--><!--Device-statistics-function getIfaceRxBytes(nic: string, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -63,6 +65,8 @@ function getIfaceRxBytes(nic: string): Promise<number>
 Obtains the total downlink traffic (in bytes) of the specified NIC from the last startup to the time when this API is called. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-statistics-function getIfaceRxBytes(nic: string): Promise<long>--><!--Device-statistics-function getIfaceRxBytes(nic: string): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

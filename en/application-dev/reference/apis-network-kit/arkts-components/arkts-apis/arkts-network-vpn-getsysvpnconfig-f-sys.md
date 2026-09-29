@@ -18,6 +18,8 @@ Get the configuration of system VPN network by the specified vpnId.
 
 **Required permissions:** ohos.permission.MANAGE_VPN
 
+<!--Device-vpn-function getSysVpnConfig(vpnId: string): Promise<SysVpnConfig>--><!--Device-vpn-function getSysVpnConfig(vpnId: string): Promise<SysVpnConfig>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.

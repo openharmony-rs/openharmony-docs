@@ -8,6 +8,8 @@ Describes the rotation parameters.
 
 **Since:** 9
 
+<!--Device-window-interface RotateOptions--><!--Device-window-interface RotateOptions-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ X coordinate of the rotation center. The value is a floating-point number in the
 
 **Since:** 9
 
+<!--Device-RotateOptions-pivotX?: double--><!--Device-RotateOptions-pivotX?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Y coordinate of the rotation center. The value is a floating-point number in the
 **Type:** number
 
 **Since:** 9
+
+<!--Device-RotateOptions-pivotY?: double--><!--Device-RotateOptions-pivotY?: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ Rotation angle around the x-axis. The value is a floating-point number, and the 
 
 **Since:** 9
 
+<!--Device-RotateOptions-x?: double--><!--Device-RotateOptions-x?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Rotation angle around the y-axis. The value is a floating-point number, and the 
 
 **Since:** 9
 
+<!--Device-RotateOptions-y?: double--><!--Device-RotateOptions-y?: double-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Rotation angle around the z-axis. The value is a floating-point number, and the 
 **Type:** number
 
 **Since:** 9
+
+<!--Device-RotateOptions-z?: double--><!--Device-RotateOptions-z?: double-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

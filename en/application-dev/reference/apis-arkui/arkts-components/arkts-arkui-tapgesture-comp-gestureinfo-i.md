@@ -8,6 +8,8 @@ Defines the gesture information type.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface GestureInfo--><!--Device-unnamed-declare interface GestureInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isSystemGesture
@@ -27,6 +29,8 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureInfo-isSystemGesture: boolean--><!--Device-GestureInfo-isSystemGesture: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +54,8 @@ Returns **undefined** if the gesture's **tag** attribute was not set.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureInfo-tag?: string--><!--Device-GestureInfo-tag?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -71,5 +77,7 @@ Returns **-1** for built-in gestures of unexposed types.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureInfo-type: GestureControl.GestureType--><!--Device-GestureInfo-type: GestureControl.GestureType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

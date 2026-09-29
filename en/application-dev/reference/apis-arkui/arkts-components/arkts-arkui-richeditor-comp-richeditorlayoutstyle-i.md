@@ -8,6 +8,8 @@ Defines image layout information.
 
 **Since:** 11
 
+<!--Device-unnamed-interface RichEditorLayoutStyle--><!--Device-unnamed-interface RichEditorLayoutStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderRadius
@@ -30,6 +32,8 @@ When the parameter is of the Dimension type, setting it in Percentage form is no
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorLayoutStyle-borderRadius?: Dimension | BorderRadiuses--><!--Device-RichEditorLayoutStyle-borderRadius?: Dimension | BorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## margin
@@ -51,5 +55,7 @@ When the parameter is of the Dimension type, the margins in all four directions 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorLayoutStyle-margin?: Dimension | Margin--><!--Device-RichEditorLayoutStyle-margin?: Dimension | Margin-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines the network access policy information.
 
 **Since:** 26.0.0
 
+<!--Device-policy-export interface NetAccessPolicy--><!--Device-policy-export interface NetAccessPolicy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Whether to allow Internet access over the cellular network.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NetAccessPolicy-allowCellular: boolean--><!--Device-NetAccessPolicy-allowCellular: boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## allowWiFi
@@ -53,5 +57,7 @@ Whether to allow Internet access over Wi-Fi.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NetAccessPolicy-allowWiFi: boolean--><!--Device-NetAccessPolicy-allowWiFi: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

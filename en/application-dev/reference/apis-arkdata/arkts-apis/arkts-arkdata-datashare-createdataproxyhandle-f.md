@@ -18,6 +18,8 @@ Creates a **DataProxyHandle** instance. This API uses a promise to return the re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-dataShare-function createDataProxyHandle(): Promise<DataProxyHandle>--><!--Device-dataShare-function createDataProxyHandle(): Promise<DataProxyHandle>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **Return value:**

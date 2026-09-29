@@ -8,6 +8,8 @@ You need a custom class to implement the **GestureModifier** API.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface GestureModifier--><!--Device-unnamed-declare interface GestureModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## applyGesture
@@ -25,6 +27,8 @@ You can customize this API as required. Dynamic configuration using the **if/els
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureModifier-applyGesture(event: UIGestureEvent): void--><!--Device-GestureModifier-applyGesture(event: UIGestureEvent): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

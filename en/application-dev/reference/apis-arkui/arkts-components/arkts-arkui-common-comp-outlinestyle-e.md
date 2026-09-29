@@ -8,6 +8,8 @@ Enumerates outline styles.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum OutlineStyle--><!--Device-unnamed-declare enum OutlineStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SOLID
@@ -25,6 +27,8 @@ Solid border.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-OutlineStyle-SOLID = 0--><!--Device-OutlineStyle-SOLID = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Dashed border.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-OutlineStyle-DASHED = 1--><!--Device-OutlineStyle-DASHED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## DOTTED
@@ -61,5 +67,7 @@ Dotted border. The radius of a dot is half of **outlineWidth**.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-OutlineStyle-DOTTED = 2--><!--Device-OutlineStyle-DOTTED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Installs a user certificate. This API uses a promise to return the result. Enter
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>--><!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob): Promise<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -92,6 +94,8 @@ Installs a user certificate based on the system account. Enterprises can install
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_CERTIFICATE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): string--><!--Device-securityManager-function installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

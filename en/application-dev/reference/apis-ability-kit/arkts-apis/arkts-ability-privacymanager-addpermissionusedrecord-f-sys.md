@@ -31,6 +31,8 @@ The permission usage record includes the application identity of the caller, the
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    options?: AddPermissionUsedRecordOptions  ): Promise<void>--><!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    options?: AddPermissionUsedRecordOptions  ): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -116,6 +118,8 @@ The permission usage record is controlled by the toggle status set by [setPermis
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    callback: AsyncCallback<void>  ): void--><!--Device-privacyManager-function addPermissionUsedRecord(    tokenID: int,    permissionName: Permissions,    successCount: int,    failCount: int,    callback: AsyncCallback<void>  ): void-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

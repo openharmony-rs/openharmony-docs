@@ -8,6 +8,8 @@ const enum DragSpringLoadingState
 
 **起始版本：** 20
 
+<!--Device-dragController-const enum DragSpringLoadingState--><!--Device-dragController-const enum DragSpringLoadingState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BEGIN
@@ -23,6 +25,8 @@ BEGIN
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragSpringLoadingState-BEGIN--><!--Device-DragSpringLoadingState-BEGIN-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Already in the spring loading state. The system periodically checks the user's h
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragSpringLoadingState-UPDATE--><!--Device-DragSpringLoadingState-UPDATE-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -56,6 +62,8 @@ The entire spring loading state ends. The application can perform cleanup operat
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-DragSpringLoadingState-END--><!--Device-DragSpringLoadingState-END-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CANCEL
@@ -71,5 +79,7 @@ After entering the BEGIN state, if the user moves out of the component range, ex
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragSpringLoadingState-CANCEL--><!--Device-DragSpringLoadingState-CANCEL-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ Custom ComponentV2
 
 **Since:** 18
 
+<!--Device-unnamed-declare class CustomComponentV2 extends BaseCustomComponent--><!--Device-unnamed-declare class CustomComponentV2 extends BaseCustomComponent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToReuse
@@ -25,5 +27,7 @@ aboutToReuse Method for @ComponentV2, it is executed when fetching instance of c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-CustomComponentV2-aboutToReuse?(): void--><!--Device-CustomComponentV2-aboutToReuse?(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

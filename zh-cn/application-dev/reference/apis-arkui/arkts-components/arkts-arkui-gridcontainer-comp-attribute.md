@@ -16,4 +16,6 @@ declare class GridContainerAttribute extends ColumnAttribute
 
 **替代接口：** grid_col/GridColAttribute and grid_row/GridRowAttribute
 
+<!--Device-unnamed-declare class GridContainerAttribute extends ColumnAttribute--><!--Device-unnamed-declare class GridContainerAttribute extends ColumnAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

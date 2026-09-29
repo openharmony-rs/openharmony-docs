@@ -10,6 +10,8 @@ Describes the **ScriptItem** object registered with the **Web** component throug
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface ScriptItem--><!--Device-unnamed-declare interface ScriptItem-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## script
@@ -25,6 +27,8 @@ JavaScript script to be registered and executed.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScriptItem-script: string--><!--Device-ScriptItem-script: string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -52,6 +56,8 @@ the entire set of scriptRules does not take effect.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScriptItem-scriptRules: Array<string>--><!--Device-ScriptItem-scriptRules: Array<string>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## urlRegexRules
@@ -67,5 +73,7 @@ Regular expression matching rules for allowed sources. **urlRegexRules** is used
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ScriptItem-urlRegexRules? : Array<UrlRegexRule>--><!--Device-ScriptItem-urlRegexRules? : Array<UrlRegexRule>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -16,6 +16,8 @@ declare interface DistortionParam
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface DistortionParam--><!--Device-unnamed-declare interface DistortionParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -52,6 +54,8 @@ barrelDistortion的四个分量共同决定四条边的桶形扭曲强度，可�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-DistortionParam-barrelDistortion: Vector4--><!--Device-DistortionParam-barrelDistortion: Vector4-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -73,6 +77,8 @@ bottomLeft: Vector2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DistortionParam-bottomLeft: Vector2--><!--Device-DistortionParam-bottomLeft: Vector2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +102,8 @@ bottomRight: Vector2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-DistortionParam-bottomRight: Vector2--><!--Device-DistortionParam-bottomRight: Vector2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -118,6 +126,8 @@ topLeft: Vector2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-DistortionParam-topLeft: Vector2--><!--Device-DistortionParam-topLeft: Vector2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -139,6 +149,8 @@ topRight: Vector2
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DistortionParam-topRight: Vector2--><!--Device-DistortionParam-topRight: Vector2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

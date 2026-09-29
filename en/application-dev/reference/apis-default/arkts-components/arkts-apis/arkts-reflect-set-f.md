@@ -18,6 +18,8 @@ function set<T extends object, P extends PropertyKey>(
 
 Sets the property of target, equivalent to `target[propertyKey] = value` when `receiver === target`.
 
+<!--Device-Reflect-function set<T extends object, P extends PropertyKey>(        target: T,        propertyKey: P,        value: P extends keyof T ? T[P] : any,        receiver?: any,    ): boolean--><!--Device-Reflect-function set<T extends object, P extends PropertyKey>(        target: T,        propertyKey: P,        value: P extends keyof T ? T[P] : any,        receiver?: any,    ): boolean-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

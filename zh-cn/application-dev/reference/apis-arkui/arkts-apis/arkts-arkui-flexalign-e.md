@@ -8,6 +8,8 @@ declare enum FlexAlign
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum FlexAlign--><!--Device-unnamed-declare enum FlexAlign-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Start
@@ -23,6 +25,8 @@ Start
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexAlign-Start--><!--Device-FlexAlign-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Center
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FlexAlign-Center--><!--Device-FlexAlign-Center-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## End
@@ -55,6 +61,8 @@ End
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexAlign-End--><!--Device-FlexAlign-End-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FlexAlign-SpaceBetween--><!--Device-FlexAlign-SpaceBetween-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SpaceAround
@@ -88,6 +98,8 @@ Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第�
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FlexAlign-SpaceAround--><!--Device-FlexAlign-SpaceAround-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SpaceEvenly
@@ -103,5 +115,7 @@ Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexAlign-SpaceEvenly--><!--Device-FlexAlign-SpaceEvenly-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

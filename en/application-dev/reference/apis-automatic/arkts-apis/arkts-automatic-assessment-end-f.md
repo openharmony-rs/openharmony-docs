@@ -19,6 +19,8 @@ Ends an assessment session.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-assessment-function end(context: UIAbilityContext): void--><!--Device-assessment-function end(context: UIAbilityContext): void-End-->
+
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
 
 **Parameters:**

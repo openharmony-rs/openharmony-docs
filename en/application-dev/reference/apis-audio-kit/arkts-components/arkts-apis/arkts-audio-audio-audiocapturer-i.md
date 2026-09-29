@@ -14,6 +14,8 @@ Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkt
 
 **Since:** 8
 
+<!--Device-audio-interface AudioCapturer--><!--Device-audio-interface AudioCapturer-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## Modules to Import
@@ -31,6 +33,8 @@ getAudioStreamId(callback: AsyncCallback<number>): void
 Obtains the stream ID of this audio capturer. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-AudioCapturer-getAudioStreamId(callback: AsyncCallback<long>): void--><!--Device-AudioCapturer-getAudioStreamId(callback: AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -62,6 +66,8 @@ Obtains the stream ID of this audio capturer. This API uses a promise to return 
 
 **Since:** 9
 
+<!--Device-AudioCapturer-getAudioStreamId(): Promise<long>--><!--Device-AudioCapturer-getAudioStreamId(): Promise<long>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -91,6 +97,8 @@ getAudioStreamIdSync(): number
 Obtains the stream ID of this audio capturer. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioCapturer-getAudioStreamIdSync(): long--><!--Device-AudioCapturer-getAudioStreamIdSync(): long-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -124,6 +132,8 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 
 **Since:** 8
 
+<!--Device-AudioCapturer-getAudioTime(callback: AsyncCallback<long>): void--><!--Device-AudioCapturer-getAudioTime(callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -153,6 +163,8 @@ getAudioTime(): Promise<number>
 Obtains the timestamp of the current recording position, measured in nanoseconds from the Unix epoch (January 1, 1970). This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-getAudioTime(): Promise<long>--><!--Device-AudioCapturer-getAudioTime(): Promise<long>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -185,6 +197,8 @@ Obtains the timestamp and position information of an input audio stream.
 This API obtains the actual recording position (specified by **framePos**) of the audio channel and the timestamp when recording to that position (specified by **timestamp**, in nanoseconds).
 
 **Since:** 19
+
+<!--Device-AudioCapturer-getAudioTimestampInfo(): Promise<AudioTimestampInfo>--><!--Device-AudioCapturer-getAudioTimestampInfo(): Promise<AudioTimestampInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -221,6 +235,8 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 Obtains the timestamp and position information of an input audio stream. This API returns the result synchronously.
 
 **Since:** 19
+
+<!--Device-AudioCapturer-getAudioTimestampInfoSync(): AudioTimestampInfo--><!--Device-AudioCapturer-getAudioTimestampInfoSync(): AudioTimestampInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -260,6 +276,8 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 
 **Since:** 10
 
+<!--Device-AudioCapturer-getAudioTimeSync(): long--><!--Device-AudioCapturer-getAudioTimeSync(): long-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -291,6 +309,8 @@ getBufferSize(callback: AsyncCallback<number>): void
 Obtains a reasonable minimum buffer size in bytes for capturing. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-getBufferSize(callback: AsyncCallback<long>): void--><!--Device-AudioCapturer-getBufferSize(callback: AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -326,6 +346,8 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 **Since:** 8
 
+<!--Device-AudioCapturer-getBufferSize(): Promise<long>--><!--Device-AudioCapturer-getBufferSize(): Promise<long>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -355,6 +377,8 @@ getBufferSizeSync(): number
 Obtains a reasonable minimum buffer size in bytes for capturing. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioCapturer-getBufferSizeSync(): long--><!--Device-AudioCapturer-getBufferSizeSync(): long-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -387,6 +411,8 @@ getCapturerInfo(callback: AsyncCallback<AudioCapturerInfo>): void
 Obtains the audio capturer information. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-getCapturerInfo(callback: AsyncCallback<AudioCapturerInfo>): void--><!--Device-AudioCapturer-getCapturerInfo(callback: AsyncCallback<AudioCapturerInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -423,6 +449,8 @@ getCapturerInfo(): Promise<AudioCapturerInfo>
 Obtains the audio capturer information. This API uses a promise to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-getCapturerInfo(): Promise<AudioCapturerInfo>--><!--Device-AudioCapturer-getCapturerInfo(): Promise<AudioCapturerInfo>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -461,6 +489,8 @@ Obtains the audio capturer information. This API returns the result synchronousl
 
 **Since:** 10
 
+<!--Device-AudioCapturer-getCapturerInfoSync(): AudioCapturerInfo--><!--Device-AudioCapturer-getCapturerInfoSync(): AudioCapturerInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -493,6 +523,8 @@ getCurrentAudioCapturerChangeInfo(): AudioCapturerChangeInfo
 Obtains the configuration changes of the current audio capturer. This API returns the result synchronously.
 
 **Since:** 11
+
+<!--Device-AudioCapturer-getCurrentAudioCapturerChangeInfo(): AudioCapturerChangeInfo--><!--Device-AudioCapturer-getCurrentAudioCapturerChangeInfo(): AudioCapturerChangeInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -532,6 +564,8 @@ Obtains the information of the current input devices. This API returns the resul
 
 **Since:** 11
 
+<!--Device-AudioCapturer-getCurrentInputDevices(): AudioDeviceDescriptors--><!--Device-AudioCapturer-getCurrentInputDevices(): AudioDeviceDescriptors-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Return value:**
@@ -569,6 +603,8 @@ Gets the noise reduction mode for current audio capturer. The mode will only con
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturer-getNoiseReductionMode(): NoiseReductionMode--><!--Device-AudioCapturer-getNoiseReductionMode(): NoiseReductionMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -593,6 +629,8 @@ getOverflowCount(): Promise<number>
 Obtains the number of overflow audio frames in the audio stream that is being captured. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AudioCapturer-getOverflowCount(): Promise<long>--><!--Device-AudioCapturer-getOverflowCount(): Promise<long>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -623,6 +661,8 @@ getOverflowCountSync(): number
 Obtains the number of overflow audio frames in the audio stream that is being captured. This API returns the result synchronously.
 
 **Since:** 12
+
+<!--Device-AudioCapturer-getOverflowCountSync(): long--><!--Device-AudioCapturer-getOverflowCountSync(): long-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -655,6 +695,8 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo>): void
 Obtains the stream information of this audio capturer. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-getStreamInfo(callback: AsyncCallback<AudioStreamInfo>): void--><!--Device-AudioCapturer-getStreamInfo(callback: AsyncCallback<AudioStreamInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -694,6 +736,8 @@ Obtains the stream information of this audio capturer. This API uses a promise t
 
 **Since:** 8
 
+<!--Device-AudioCapturer-getStreamInfo(): Promise<AudioStreamInfo>--><!--Device-AudioCapturer-getStreamInfo(): Promise<AudioStreamInfo>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -727,6 +771,8 @@ getStreamInfoSync(): AudioStreamInfo
 Obtains the stream information of this audio capturer. This API returns the result synchronously.
 
 **Since:** 10
+
+<!--Device-AudioCapturer-getStreamInfoSync(): AudioStreamInfo--><!--Device-AudioCapturer-getStreamInfoSync(): AudioStreamInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -764,6 +810,8 @@ Gets all the supported noise reduction modes for current device platform. Curren
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-getSupportedNoiseReductionModes(): Array<NoiseReductionMode>--><!--Device-AudioCapturer-getSupportedNoiseReductionModes(): Array<NoiseReductionMode>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -803,6 +851,8 @@ Unsubscribes from the mark reached event. This API uses an asynchronous callback
 
 **Since:** 8
 
+<!--Device-AudioCapturer-off(type: 'markReach', callback?: Callback<long>): void--><!--Device-AudioCapturer-off(type: 'markReach', callback?: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -840,6 +890,8 @@ Unsubscribes from the period reached event. This API uses an asynchronous callba
 
 **Since:** 8
 
+<!--Device-AudioCapturer-off(type: 'periodReach', callback?: Callback<long>): void--><!--Device-AudioCapturer-off(type: 'periodReach', callback?: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -876,6 +928,8 @@ off(type: 'stateChange', callback?: Callback<AudioState>): void
 Unsubscribes from the audio capturer state change event. This API uses an asynchronous callback to return the result.
 
 **Since:** 18
+
+<!--Device-AudioCapturer-off(type: 'stateChange', callback?: Callback<AudioState>): void--><!--Device-AudioCapturer-off(type: 'stateChange', callback?: Callback<AudioState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -923,6 +977,8 @@ Unsubscribes from the audio interruption event.
 
 **Since:** 10
 
+<!--Device-AudioCapturer-off(type: 'audioInterrupt'): void--><!--Device-AudioCapturer-off(type: 'audioInterrupt'): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Interrupt
 
 **Parameters:**
@@ -953,6 +1009,8 @@ off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>): voi
 Unsubscribes from the audio input device change event. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-AudioCapturer-off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioCapturer-off(type: 'inputDeviceChange', callback?: Callback<AudioDeviceDescriptors>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -998,6 +1056,8 @@ Unsubscribes from the audio capturer configuration change event. This API uses a
 
 **Since:** 11
 
+<!--Device-AudioCapturer-off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfo>): void--><!--Device-AudioCapturer-off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1039,6 +1099,8 @@ off(type: 'readData', callback?: Callback<ArrayBuffer>): void
 Unsubscribes from the audio data read event. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-AudioCapturer-off(type: 'readData', callback?: Callback<ArrayBuffer>): void--><!--Device-AudioCapturer-off(type: 'readData', callback?: Callback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1084,6 +1146,8 @@ For example, if **frame** is set to **100**, the callback is invoked when the nu
 
 **Since:** 8
 
+<!--Device-AudioCapturer-on(type: 'markReach', frame: long, callback: Callback<long>): void--><!--Device-AudioCapturer-on(type: 'markReach', frame: long, callback: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1116,6 +1180,8 @@ For example, if **frame** is set to **10**, the callback is invoked each time 10
 
 **Since:** 8
 
+<!--Device-AudioCapturer-on(type: 'periodReach', frame: long, callback: Callback<long>): void--><!--Device-AudioCapturer-on(type: 'periodReach', frame: long, callback: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1145,6 +1211,8 @@ on(type: 'stateChange', callback: Callback<AudioState>): void
 Subscribes to the audio capturer state change event, which is triggered when the state of the audio capturer is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-on(type: 'stateChange', callback: Callback<AudioState>): void--><!--Device-AudioCapturer-on(type: 'stateChange', callback: Callback<AudioState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1181,6 +1249,8 @@ The AudioCapturer instance proactively gains the focus when the **start** event 
 After this API is called, an [InterruptEvent](arkts-audio-audio-interruptevent-i.md) is received when the AudioCapturer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../../media/audio/audio-playback-concurrency.md).
 
 **Since:** 10
+
+<!--Device-AudioCapturer-on(type: 'audioInterrupt', callback: Callback<InterruptEvent>): void--><!--Device-AudioCapturer-on(type: 'audioInterrupt', callback: Callback<InterruptEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -1254,6 +1324,8 @@ Subscribes to the audio input device change event, which is triggered when an au
 
 **Since:** 11
 
+<!--Device-AudioCapturer-on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>): void--><!--Device-AudioCapturer-on(type: 'inputDeviceChange', callback: Callback<AudioDeviceDescriptors>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -1289,6 +1361,8 @@ on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfo>): vo
 Subscribes to the audio capturer configuration change event, which is triggered when the audio recording stream status or device is changed. This API uses an asynchronous callback to return the result. The subscription is implemented asynchronously and the callback, which is triggered when the audio capturer configuration changes, may fail to reflect the actual condition.
 
 **Since:** 11
+
+<!--Device-AudioCapturer-on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfo>): void--><!--Device-AudioCapturer-on(type: 'audioCapturerChange', callback: Callback<AudioCapturerChangeInfo>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1327,6 +1401,8 @@ The callback function is used only to read audio data. Do not call AudioCapturer
 To eliminate power-on noise caused by the microphone hardware design, the first 100 ms of data after recording starts is typically muted.
 
 **Since:** 11
+
+<!--Device-AudioCapturer-on(type: 'readData', callback: Callback<ArrayBuffer>): void--><!--Device-AudioCapturer-on(type: 'readData', callback: Callback<ArrayBuffer>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1382,97 +1458,6 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
-## read
-
-```TypeScript
-read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer>): void
-```
-
-Reads the buffer from the audio capturer. This method uses an asynchronous callback to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 11
-
-**Substitutes:** readData
-
-**System capability:** SystemCapability.Multimedia.Audio.Capturer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| size | number | Yes | Number of bytes to read. |
-| isBlockingRead | boolean | Yes | Whether to block the read operation. **true** to block, **false** otherwise. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the buffer read; otherwise, **err** is an error object. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioCapturer.getBufferSize().then((bufferSize: number) => {
-  console.info('Succeeded in doing getBufferSize.');
-  audioCapturer.read(bufferSize, true, (err: BusinessError, buffer: ArrayBuffer) => {
-    if (err) {
-      console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in doing read.');
-  });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-<a id="read-1"></a>
-
-## read
-
-```TypeScript
-read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer>
-```
-
-Reads the buffer. This API uses a promise to return the result.
-
-**Since:** 8
-
-**Deprecated since:** 11
-
-**Substitutes:** readData
-
-**System capability:** SystemCapability.Multimedia.Audio.Capturer
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| size | number | Yes | Number of bytes to read. |
-| isBlockingRead | boolean | Yes | Whether to block the read operation. **true** to block, **false** otherwise. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;ArrayBuffer&gt; | Promise used to return the data read from the buffer. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioCapturer.getBufferSize().then((bufferSize: number) => {
-  console.info('Succeeded in doing getBufferSize.');
-  audioCapturer.read(bufferSize, true).then((buffer: ArrayBuffer) => {
-    console.info('Succeeded in doing read.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
-  });
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
 ## release
 
 ```TypeScript
@@ -1482,6 +1467,8 @@ release(callback: AsyncCallback<void>): void
 Releases this audio capturer. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-release(callback: AsyncCallback<void>): void--><!--Device-AudioCapturer-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1517,6 +1504,8 @@ Releases this audio capturer. This API uses a promise to return the result.
 
 **Since:** 8
 
+<!--Device-AudioCapturer-release(): Promise<void>--><!--Device-AudioCapturer-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -1550,6 +1539,8 @@ Asynchronously request to start the playback capture stream. This function is no
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-requestPlaybackCaptureStart(callback: Callback<PlaybackCaptureStartState>): void--><!--Device-AudioCapturer-requestPlaybackCaptureStart(callback: Callback<PlaybackCaptureStartState>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
@@ -1589,6 +1580,8 @@ Sets the independent audio session strategy and behavior parameters.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioCapturer-setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: int): void--><!--Device-AudioCapturer-setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: int): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1626,6 +1619,8 @@ Set mute hint for this capturer, this method is used as a hint for power optimiz
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-setMuteHint(mute: boolean): Promise<void>--><!--Device-AudioCapturer-setMuteHint(mute: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1670,6 +1665,8 @@ Sets noise reduction mode for current audio capturer. The supported mode should 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturer-setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void--><!--Device-AudioCapturer-setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1717,6 +1714,8 @@ Sets whether to [mute the current audio recording stream when an audio interrupt
 
 **Since:** 20
 
+<!--Device-AudioCapturer-setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>--><!--Device-AudioCapturer-setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1759,6 +1758,8 @@ Starts this audio capturer to start capturing audio data. This API uses an async
 
 **Since:** 8
 
+<!--Device-AudioCapturer-start(callback: AsyncCallback<void>): void--><!--Device-AudioCapturer-start(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -1793,6 +1794,8 @@ Starts this audio capturer to start capturing audio data. This API uses a promis
 
 **Since:** 8
 
+<!--Device-AudioCapturer-start(): Promise<void>--><!--Device-AudioCapturer-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -1825,6 +1828,8 @@ stop(callback: AsyncCallback<void>): void
 Stops this audio capturer, ceasing the input audio stream. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
+
+<!--Device-AudioCapturer-stop(callback: AsyncCallback<void>): void--><!--Device-AudioCapturer-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1860,6 +1865,8 @@ Stops this audio capturer, ceasing the input audio stream. This API uses a promi
 
 **Since:** 8
 
+<!--Device-AudioCapturer-stop(): Promise<void>--><!--Device-AudioCapturer-stop(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -1883,6 +1890,101 @@ audioCapturer.stop().then(() => {
 });
 ```
 
+## read
+
+```TypeScript
+read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer>): void
+```
+
+Reads the buffer from the audio capturer. This method uses an asynchronous callback to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 11
+
+**Substitutes:** readData
+
+<!--Device-AudioCapturer-read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer>): void--><!--Device-AudioCapturer-read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| size | number | Yes | Number of bytes to read. |
+| isBlockingRead | boolean | Yes | Whether to block the read operation. **true** to block, **false** otherwise. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ArrayBuffer&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the buffer read; otherwise, **err** is an error object. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getBufferSize().then((bufferSize: number) => {
+  console.info('Succeeded in doing getBufferSize.');
+  audioCapturer.read(bufferSize, true, (err: BusinessError, buffer: ArrayBuffer) => {
+    if (err) {
+      console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in doing read.');
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+<a id="read-1"></a>
+
+## read
+
+```TypeScript
+read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer>
+```
+
+Reads the buffer. This API uses a promise to return the result.
+
+**Since:** 8
+
+**Deprecated since:** 11
+
+**Substitutes:** readData
+
+<!--Device-AudioCapturer-read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer>--><!--Device-AudioCapturer-read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer>-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| size | number | Yes | Number of bytes to read. |
+| isBlockingRead | boolean | Yes | Whether to block the read operation. **true** to block, **false** otherwise. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;ArrayBuffer&gt; | Promise used to return the data read from the buffer. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioCapturer.getBufferSize().then((bufferSize: number) => {
+  console.info('Succeeded in doing getBufferSize.');
+  audioCapturer.read(bufferSize, true).then((buffer: ArrayBuffer) => {
+    console.info('Succeeded in doing read.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## state
 
 ```TypeScript
@@ -1894,5 +1996,7 @@ Audio capturer state.
 **Type:** [AudioState](arkts-audio-audio-audiostate-e.md)
 
 **Since:** 8
+
+<!--Device-AudioCapturer-readonly state: AudioState--><!--Device-AudioCapturer-readonly state: AudioState-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer

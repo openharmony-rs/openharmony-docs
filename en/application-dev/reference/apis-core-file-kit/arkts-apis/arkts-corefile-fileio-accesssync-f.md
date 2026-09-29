@@ -19,6 +19,8 @@ Checks whether this process can access a file. This API returns the result synch
 
 **Substitutes:** [accessSync](arkts-corefile-file-fs-accesssync-f.md)
 
+<!--Device-unnamed-declare function accessSync(path: string, mode?: number): void--><!--Device-unnamed-declare function accessSync(path: string, mode?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

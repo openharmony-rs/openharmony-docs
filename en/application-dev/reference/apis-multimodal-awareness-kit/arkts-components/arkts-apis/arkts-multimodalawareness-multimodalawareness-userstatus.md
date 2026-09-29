@@ -1,8 +1,10 @@
-# @ohos.multimodalAwareness.userStatus
+# @ohos.multimodalAwareness.userStatus(User state awareness)
 
 The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group or recognizing environmental sounds, among other functions.
 
 **Since:** 20
+
+<!--Device-unnamed-declare namespace userStatus--><!--Device-unnamed-declare namespace userStatus-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

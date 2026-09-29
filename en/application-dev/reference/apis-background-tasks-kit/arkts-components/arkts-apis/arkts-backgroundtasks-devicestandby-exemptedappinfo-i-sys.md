@@ -10,6 +10,8 @@ Information about an exempted application.
 
 **Since:** 10
 
+<!--Device-deviceStandby-export interface ExemptedAppInfo--><!--Device-deviceStandby-export interface ExemptedAppInfo-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The exemption duration. <br>Unit:s
 
 **Since:** 10
 
+<!--Device-ExemptedAppInfo-duration: int--><!--Device-ExemptedAppInfo-duration: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ The application name.
 
 **Since:** 10
 
+<!--Device-ExemptedAppInfo-name: string--><!--Device-ExemptedAppInfo-name: string-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 
 **System API:** This is a system API.
@@ -63,6 +69,8 @@ The set of resource types that an application requests.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-ExemptedAppInfo-resourceTypes: int--><!--Device-ExemptedAppInfo-resourceTypes: int-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.DeviceStandby
 

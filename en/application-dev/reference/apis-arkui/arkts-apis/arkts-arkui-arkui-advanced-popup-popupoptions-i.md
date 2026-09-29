@@ -8,6 +8,8 @@ Defines the style parameters of the popup.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface PopupOptions--><!--Device-unnamed-export interface PopupOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -22,15 +24,17 @@ import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOpt
 onClose?: () => void
 ```
 
-Callback for the popup close button.
+Popup close button callback.
 
-By default, the callback for the close button is not set.
+No close button callback is set by default.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupOptions-onClose?: () => void--><!--Device-PopupOptions-onClose?: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,9 +44,9 @@ By default, the callback for the close button is not set.
 buttons?: [PopupButtonOptions?, PopupButtonOptions?]
 ```
 
-Buttons of the popup. A maximum of two buttons can be set.
+Popup action buttons. A maximum of two buttons can be set.
 
-By default, no buttons are displayed.
+Hidden by default.
 
 **Type:** [PopupButtonOptions?, PopupButtonOptions?]
 
@@ -52,6 +56,8 @@ By default, no buttons are displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupOptions-buttons?: [PopupButtonOptions?, PopupButtonOptions?]--><!--Device-PopupOptions-buttons?: [PopupButtonOptions?, PopupButtonOptions?]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -60,7 +66,7 @@ By default, no buttons are displayed.
 direction?: Direction
 ```
 
-Layout direction.
+Layout direction of the Popup content. For available enum values, see Direction.
 
 Default value: **Direction.Auto**
 
@@ -72,6 +78,8 @@ Default value: **Direction.Auto**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupOptions-direction?: Direction--><!--Device-PopupOptions-direction?: Direction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -80,13 +88,13 @@ Default value: **Direction.Auto**
 icon?: PopupIconOptions
 ```
 
-Icon of the popup.
+Popup icon.
 
 **NOTE:** 
 
-The icon is not displayed when **width** and **height** are set to an invalid value or **0**.
+The icon is not displayed when width and height are set to abnormal values or 0.
 
-By default, no icon is displayed.
+Hidden by default.
 
 **Type:** [PopupIconOptions](arkts-arkui-arkui-advanced-popup-popupiconoptions-i.md)
 
@@ -96,6 +104,8 @@ By default, no icon is displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupOptions-icon?: PopupIconOptions--><!--Device-PopupOptions-icon?: PopupIconOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxWidth
@@ -104,13 +114,13 @@ By default, no icon is displayed.
 maxWidth?: Dimension
 ```
 
-Maximum width of the popup. This API allows the popup to display with a custom width.
+Maximum width of the Popup. Custom width display is supported.
 
 **NOTE:** 
 
-1. When using resource references, ensure that the parameter type matches the attribute method type.
-2. **maxWidth** accepts numeric values (both floating-point and integer values), such as **$r('app.float.maxWidth')** and **$r('app.integer.maxWidth')**.
-3. When the type is Resource, values default to px units if no unit is explicitly specified.
+1. When a referenced resource type is used, its parameter type must be consistent with the type of the **maxWidth** attribute itself.
+2. **maxWidth** is of the [Dimension](arkts-arkui-dimension-t.md) type, which supports numeric and percentage string types. Numeric types support float and integer, for example, `$r('app.float.maxWidth')` and `$r('app.integer.maxWidth')`; percentage strings, for example, '50%'.
+3. When the type is Resource, if no unit is set, the default unit is px.
 
 Default value: **400vp**
 
@@ -122,6 +132,8 @@ Default value: **400vp**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-PopupOptions-maxWidth?: Dimension--><!--Device-PopupOptions-maxWidth?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -130,13 +142,13 @@ Default value: **400vp**
 message: PopupTextOptions
 ```
 
-Message of the popup.
+Popup content text.
 
 **NOTE:** 
 
-**fontWeight** is not available for messages.
+**fontWeight** setting is not supported for message.
 
-By default, no message is displayed.
+Hidden by default.
 
 **Type:** [PopupTextOptions](arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md)
 
@@ -146,6 +158,8 @@ By default, no message is displayed.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupOptions-message: PopupTextOptions--><!--Device-PopupOptions-message: PopupTextOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showClose
@@ -154,11 +168,11 @@ By default, no message is displayed.
 showClose?: boolean | Resource
 ```
 
-Whether to show the close button.
+Popup close button.
 
-**true**: Show the close button. **false**: Do not show the close button.
+The value **true** indicates to show the close button, and **false** indicates to hide the close button.
 
-**Resource**: Show the corresponding icon.
+**Resource**: displays the corresponding icon.
 
 Default value: **true**
 
@@ -170,6 +184,8 @@ Default value: **true**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PopupOptions-showClose?: boolean | Resource--><!--Device-PopupOptions-showClose?: boolean | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -178,9 +194,9 @@ Default value: **true**
 title?: PopupTextOptions
 ```
 
-Title of the popup.
+Popup title text.
 
-By default, no title is displayed.
+Hidden by default.
 
 **Type:** [PopupTextOptions](arkts-arkui-arkui-advanced-popup-popuptextoptions-i.md)
 
@@ -189,5 +205,7 @@ By default, no title is displayed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PopupOptions-title?: PopupTextOptions--><!--Device-PopupOptions-title?: PopupTextOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

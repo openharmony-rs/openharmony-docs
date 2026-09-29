@@ -20,6 +20,8 @@ Sets the application priority notification strategies in batches. This API uses 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function setPriorityStrategyByBundles(strategies: Map<BundleOption, long>): Promise<void>--><!--Device-notificationManager-function setPriorityStrategyByBundles(strategies: Map<BundleOption, long>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

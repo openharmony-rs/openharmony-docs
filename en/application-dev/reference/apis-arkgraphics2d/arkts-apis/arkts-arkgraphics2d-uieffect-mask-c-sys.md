@@ -8,6 +8,8 @@ Mask effect class, used as input for Filter and VisualEffect. Different types of
 
 **Since:** 20
 
+<!--Device-uiEffect-class Mask--><!--Device-uiEffect-class Mask-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Creates an atlas frame mask for sprite sheet frame animation. The mask carries a
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Mask-static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask--><!--Device-Mask-static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -57,6 +61,8 @@ Creates a binocular mask. Generates a left‑right symmetric dual‑elliptical�
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Mask-static createBinocularMask(radiusX: double, radiusY: double, gap: double, softness: double): Mask--><!--Device-Mask-static createBinocularMask(radiusX: double, radiusY: double, gap: double, softness: double): Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -90,6 +96,8 @@ Creates a fractal glass mask. It performs periodic horizontal displacement sampl
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Mask-static createFractalGlassMask(glassNum: int, glassStrength: double, glassSoftness: double,      isSymmetric: boolean, refractMask?: image.PixelMap): Mask--><!--Device-Mask-static createFractalGlassMask(glassNum: int, glassStrength: double, glassSoftness: double,      isSymmetric: boolean, refractMask?: image.PixelMap): Mask-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -120,6 +128,8 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 Creates a Mask instance with scaling effect by inputting a pixelMap, the area of the pixelMap to be drawn, the drawing area of the mounted node, and the color to fill outside the drawing area.
 
 **Since:** 20
+
+<!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      fillColor?: Color): Mask--><!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect,      fillColor?: Color): Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -198,6 +208,8 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 Creates a Mask instance by inputting a pixelMap. This interface does not perform scaling on the input pixelMap.
 
 **Since:** 22
+
+<!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap): Mask--><!--Device-Mask-static createPixelMapMask(pixelMap: image.PixelMap): Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -323,6 +335,8 @@ Creates an elliptical mask Mask instance by inputting the center position of the
 
 **Since:** 20
 
+<!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,      gradients: Array<[double, double]>): Mask--><!--Device-Mask-static createRadialGradientMask(center: common2D.Point, radiusX: double, radiusY: double,      gradients: Array<[double, double]>): Mask-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -380,6 +394,8 @@ Creates a wave ring mask Mask instance by inputting the center position, radius,
 
 **Since:** 20
 
+<!--Device-Mask-static createRippleMask(center: common2D.Point, radius: double, width: double, offset?: double): Mask--><!--Device-Mask-static createRippleMask(center: common2D.Point, radius: double, width: double, offset?: double): Mask-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -423,6 +439,8 @@ Creates a sweep refraction mask Mask instance that simulates a prism-like chroma
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Mask-static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRefractionMaskOptions): Mask--><!--Device-Mask-static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRefractionMaskOptions): Mask-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -449,6 +467,8 @@ static createUseEffectMask(useEffect: boolean): Mask
 Creates and sets a Mask instance indicating whether to use blur caching. This Mask instance is specifically designed for the useEffectMask parameter of the liquidMaterial method, used to declare whether the material effect uses blur caching to improve performance. When this Mask instance is used with other Filter or VisualEffect methods, the useEffect property may not take effect.
 
 **Since:** 22
+
+<!--Device-Mask-static createUseEffectMask(useEffect: boolean): Mask--><!--Device-Mask-static createUseEffectMask(useEffect: boolean): Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -542,6 +562,8 @@ Creates a Mask instance representing a warped ring.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Mask-static createWarpedRingMask(ringParam: WarpedRingParam): Mask--><!--Device-Mask-static createWarpedRingMask(ringParam: WarpedRingParam): Mask-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -568,6 +590,8 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 Creates a single-wave mask Mask instance by inputting the wave source center position and single-wave parameters.
 
 **Since:** 20
+
+<!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,      blurRadius: double, turbulenceStrength?: double): Mask--><!--Device-Mask-static createWaveGradientMask(center: common2D.Point, width: double, propagationRadius: double,      blurRadius: double, turbulenceStrength?: double): Mask-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

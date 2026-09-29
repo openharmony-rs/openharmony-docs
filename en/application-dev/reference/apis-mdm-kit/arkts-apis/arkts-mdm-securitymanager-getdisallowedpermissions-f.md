@@ -20,6 +20,8 @@ Obtains the list of disabled permissions of a specified user.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getDisallowedPermissions(admin: Want | null, accountId: number): Array<string>--><!--Device-securityManager-function getDisallowedPermissions(admin: Want | null, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

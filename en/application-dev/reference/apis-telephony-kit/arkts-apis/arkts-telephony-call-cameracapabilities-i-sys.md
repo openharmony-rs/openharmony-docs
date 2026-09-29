@@ -8,6 +8,8 @@ Defines the local image resolution in a video call.
 
 **Since:** 11
 
+<!--Device-call-export interface CameraCapabilities--><!--Device-call-export interface CameraCapabilities-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Call ID.
 
 **Since:** 11
 
+<!--Device-CameraCapabilities-callId: int--><!--Device-CameraCapabilities-callId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Height of the local image, in pixels.
 
 **Since:** 11
 
+<!--Device-CameraCapabilities-height: int--><!--Device-CameraCapabilities-height: int-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Width of the local image, in pixels.
 **Type:** number
 
 **Since:** 11
+
+<!--Device-CameraCapabilities-width: int--><!--Device-CameraCapabilities-width: int-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

@@ -19,6 +19,8 @@ Decapsulates a post-quantum cryptography key. This operation can be managed by H
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,      sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>--><!--Device-huks-function decapsulate(keyAlias: string, params: HuksParam[], encapData: Uint8Array,      sharedKeyAlias?: string, sharedKeyParams?:  HuksParam[]): Promise<HuksReturnResult>-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**

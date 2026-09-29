@@ -14,6 +14,8 @@ Defines the allowed data types for specifying the background border color of a d
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-declare type DialogOptionsBorderColor = ResourceColor | EdgeColors--><!--Device-promptAction-declare type DialogOptionsBorderColor = ResourceColor | EdgeColors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

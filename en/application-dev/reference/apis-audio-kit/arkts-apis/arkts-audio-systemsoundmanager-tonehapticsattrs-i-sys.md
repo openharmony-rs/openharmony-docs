@@ -8,6 +8,8 @@ Haptics attributes in tone scenario.
 
 **Since:** 14
 
+<!--Device-systemSoundManager-interface ToneHapticsAttrs--><!--Device-systemSoundManager-interface ToneHapticsAttrs-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getFileName(): string
 Get file name of haptics.
 
 **Since:** 14
+
+<!--Device-ToneHapticsAttrs-getFileName(): string--><!--Device-ToneHapticsAttrs-getFileName(): string-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -60,6 +64,8 @@ Get file name of gentle haptics.
 
 **Since:** 22
 
+<!--Device-ToneHapticsAttrs-getGentleFileName(): string | null--><!--Device-ToneHapticsAttrs-getGentleFileName(): string | null-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -91,6 +97,8 @@ getGentleTitle(): string | null
 Get title of gentle haptics.
 
 **Since:** 22
+
+<!--Device-ToneHapticsAttrs-getGentleTitle(): string | null--><!--Device-ToneHapticsAttrs-getGentleTitle(): string | null-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -124,6 +132,8 @@ Get gentle haptics URI.
 
 **Since:** 22
 
+<!--Device-ToneHapticsAttrs-getGentleUri(): string | null--><!--Device-ToneHapticsAttrs-getGentleUri(): string | null-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -156,6 +166,8 @@ Get title of haptics.
 
 **Since:** 14
 
+<!--Device-ToneHapticsAttrs-getTitle(): string--><!--Device-ToneHapticsAttrs-getTitle(): string-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
@@ -187,6 +199,8 @@ getUri(): string
 Get haptics uri.
 
 **Since:** 14
+
+<!--Device-ToneHapticsAttrs-getUri(): string--><!--Device-ToneHapticsAttrs-getUri(): string-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

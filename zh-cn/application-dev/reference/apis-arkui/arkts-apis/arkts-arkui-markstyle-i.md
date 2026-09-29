@@ -8,6 +8,8 @@ declare interface MarkStyle
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface MarkStyle--><!--Device-unnamed-declare interface MarkStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -28,6 +30,8 @@ size?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MarkStyle-size?: Length--><!--Device-MarkStyle-size?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -46,6 +50,8 @@ strokeColor?: ResourceColor
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-MarkStyle-strokeColor?: ResourceColor--><!--Device-MarkStyle-strokeColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -63,5 +69,7 @@ strokeWidth?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MarkStyle-strokeWidth?: Length--><!--Device-MarkStyle-strokeWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

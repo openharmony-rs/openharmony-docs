@@ -18,6 +18,8 @@ Obtains detailed information about a system error code.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-util-function errnoToString(errno: number): string--><!--Device-util-function errnoToString(errno: number): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

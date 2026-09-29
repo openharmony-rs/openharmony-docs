@@ -8,6 +8,8 @@ Defines an intent filter, which specifies the criteria for selecting target inte
 
 **Since:** 23
 
+<!--Device-insightIntentDriver-interface InsightIntentInfoFilter--><!--Device-insightIntentDriver-interface InsightIntentInfoFilter-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Bundle name of the application to which the intent belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfoFilter-bundleName?: string--><!--Device-InsightIntentInfoFilter-bundleName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Flag of the intent information ([InsightIntentInfo](arkts-ability-insightintentd
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfoFilter-intentFlags: int--><!--Device-InsightIntentInfoFilter-intentFlags: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -68,6 +74,8 @@ Intent name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InsightIntentInfoFilter-intentName?: string--><!--Device-InsightIntentInfoFilter-intentName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Module name of the application to which the intent belongs.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfoFilter-moduleName?: string--><!--Device-InsightIntentInfoFilter-moduleName?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -107,6 +117,8 @@ If the user ID of the calling application is different from the user ID of the i
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfoFilter-userId?: int--><!--Device-InsightIntentInfoFilter-userId?: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -12,6 +12,8 @@ The LruBuffer algorithm replaces the least used data with new data when the buff
 
 **Substitutes:** [LRUCache](arkts-arkts-util-lrucache-c.md)
 
+<!--Device-util-class LruBuffer<K, V>--><!--Device-util-class LruBuffer<K, V>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Specifies the default iterator for an object.
 **Deprecated since:** 9
 
 **Substitutes:** [Symbol.iterator]
+
+<!--Device-LruBuffer-[Symbol.iterator](): IterableIterator<[K, V]>--><!--Device-LruBuffer-[Symbol.iterator](): IterableIterator<[K, V]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -63,6 +67,8 @@ Performs subsequent operations after a value is removed.
 **Deprecated since:** 9
 
 **Substitutes:** [afterRemoval](arkts-arkts-util-lrucache-c.md#afterremoval)
+
+<!--Device-LruBuffer-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void--><!--Device-LruBuffer-afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -114,6 +120,8 @@ Clears key-value pairs from this cache. The **afterRemoval()** API will be calle
 
 **Substitutes:** [clear](arkts-arkts-util-lrucache-c.md#clear)
 
+<!--Device-LruBuffer-clear(): void--><!--Device-LruBuffer-clear(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -138,6 +146,8 @@ A constructor used to create a **LruBuffer** instance. The default capacity of t
 **Deprecated since:** 9
 
 **Substitutes:** constructor
+
+<!--Device-LruBuffer-constructor(capacity?: number)--><!--Device-LruBuffer-constructor(capacity?: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -166,6 +176,8 @@ Checks whether this cache contains the specified key.
 **Deprecated since:** 9
 
 **Substitutes:** [contains](arkts-arkts-util-lrucache-c.md#contains)
+
+<!--Device-LruBuffer-contains(key: K): boolean--><!--Device-LruBuffer-contains(key: K): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -205,6 +217,8 @@ Creates a value if the value of the specified key is not available.
 
 **Substitutes:** [createDefault](arkts-arkts-util-lrucache-c.md#createdefault)
 
+<!--Device-LruBuffer-createDefault(key: K): V--><!--Device-LruBuffer-createDefault(key: K): V-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -240,6 +254,8 @@ Obtains a new iterator object that contains all key-value pairs in this object.
 
 **Substitutes:** [entries](arkts-arkts-util-lrucache-c.md#entries)
 
+<!--Device-LruBuffer-entries(): IterableIterator<[K, V]>--><!--Device-LruBuffer-entries(): IterableIterator<[K, V]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -269,6 +285,8 @@ Obtains the value of the specified key.
 **Deprecated since:** 9
 
 **Substitutes:** [get](arkts-arkts-util-lrucache-c.md#get)
+
+<!--Device-LruBuffer-get(key: K): V | undefined--><!--Device-LruBuffer-get(key: K): V | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -308,6 +326,8 @@ Obtains the capacity of this cache.
 
 **Substitutes:** [getCapacity](arkts-arkts-util-lrucache-c.md#getcapacity)
 
+<!--Device-LruBuffer-getCapacity(): number--><!--Device-LruBuffer-getCapacity(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -338,6 +358,8 @@ Obtains the number of return values for **createDefault()**.
 **Deprecated since:** 9
 
 **Substitutes:** [getCreateCount](arkts-arkts-util-lrucache-c.md#getcreatecount)
+
+<!--Device-LruBuffer-getCreateCount(): number--><!--Device-LruBuffer-getCreateCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -370,6 +392,8 @@ Obtains the number of times that the queried values are matched.
 **Deprecated since:** 9
 
 **Substitutes:** [getMatchCount](arkts-arkts-util-lrucache-c.md#getmatchcount)
+
+<!--Device-LruBuffer-getMatchCount(): number--><!--Device-LruBuffer-getMatchCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -404,6 +428,8 @@ Obtains the number of times that the queried values are mismatched.
 
 **Substitutes:** [getMissCount](arkts-arkts-util-lrucache-c.md#getmisscount)
 
+<!--Device-LruBuffer-getMissCount(): number--><!--Device-LruBuffer-getMissCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -437,6 +463,8 @@ Obtains the number of additions to this cache.
 
 **Substitutes:** [getPutCount](arkts-arkts-util-lrucache-c.md#getputcount)
 
+<!--Device-LruBuffer-getPutCount(): number--><!--Device-LruBuffer-getPutCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -468,6 +496,8 @@ Obtains the number of removals from this cache.
 **Deprecated since:** 9
 
 **Substitutes:** [getRemovalCount](arkts-arkts-util-lrucache-c.md#getremovalcount)
+
+<!--Device-LruBuffer-getRemovalCount(): number--><!--Device-LruBuffer-getRemovalCount(): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -503,6 +533,8 @@ Checks whether this cache is empty.
 
 **Substitutes:** [isEmpty](arkts-arkts-util-lrucache-c.md#isempty)
 
+<!--Device-LruBuffer-isEmpty(): boolean--><!--Device-LruBuffer-isEmpty(): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -535,6 +567,8 @@ Obtains all keys in this cache, listed from the most to the least recently acces
 
 **Substitutes:** [keys](arkts-arkts-util-lrucache-c.md#keys)
 
+<!--Device-LruBuffer-keys(): K[]--><!--Device-LruBuffer-keys(): K[]-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -566,6 +600,8 @@ Adds a key-value pair to this cache.
 **Deprecated since:** 9
 
 **Substitutes:** [put](arkts-arkts-util-lrucache-c.md#put)
+
+<!--Device-LruBuffer-put(key: K, value: V): V--><!--Device-LruBuffer-put(key: K, value: V): V-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -605,6 +641,8 @@ Removes the specified key and its value from this cache.
 
 **Substitutes:** [remove](arkts-arkts-util-lrucache-c.md#remove)
 
+<!--Device-LruBuffer-remove(key: K): V | undefined--><!--Device-LruBuffer-remove(key: K): V | undefined-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -643,6 +681,8 @@ Obtains the string representation of this cache.
 
 **Substitutes:** [toString](arkts-arkts-util-lrucache-c.md#tostring)
 
+<!--Device-LruBuffer-toString(): string--><!--Device-LruBuffer-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -677,6 +717,8 @@ Changes the cache capacity. If the new capacity is less than or equal to **0**, 
 
 **Substitutes:** [updateCapacity](arkts-arkts-util-lrucache-c.md#updatecapacity)
 
+<!--Device-LruBuffer-updateCapacity(newCapacity: number): void--><!--Device-LruBuffer-updateCapacity(newCapacity: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -705,6 +747,8 @@ Obtains all values in this cache, listed from the most to the least recently acc
 **Deprecated since:** 9
 
 **Substitutes:** [values](arkts-arkts-util-lrucache-c.md#values)
+
+<!--Device-LruBuffer-values(): V[]--><!--Device-LruBuffer-values(): V[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -741,5 +785,7 @@ Total number of values in this cache.
 **Deprecated since:** 9
 
 **Substitutes:** length
+
+<!--Device-LruBuffer-length: number--><!--Device-LruBuffer-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

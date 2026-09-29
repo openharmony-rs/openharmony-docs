@@ -28,6 +28,8 @@ Starts an ability. This API uses an asynchronous callback to return the result. 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-function startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback<AbilityResult>): void--><!--Device-featureAbility-function startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback<AbilityResult>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -92,6 +94,8 @@ Starts an ability. This API uses a promise to return the result. The following s
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-featureAbility-function startAbilityForResult(parameter: StartAbilityParameter): Promise<AbilityResult>--><!--Device-featureAbility-function startAbilityForResult(parameter: StartAbilityParameter): Promise<AbilityResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

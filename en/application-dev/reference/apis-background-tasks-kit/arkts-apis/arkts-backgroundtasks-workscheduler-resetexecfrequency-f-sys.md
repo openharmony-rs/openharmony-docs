@@ -20,6 +20,8 @@ Reset the execution frequency.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function resetExecFrequency(uid: int): void--><!--Device-workScheduler-function resetExecFrequency(uid: int): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **System API:** This is a system API.

@@ -1,30 +1,22 @@
 # Rating
 
-The **Rating** component provides a rating bar.
+The **Rating** component is used to select a rating within a given range, which is typically suitable for application scenarios such as product reviews and content rating.
 
-> **NOTE**
-
-> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height > for the **Rating** component, or set its parent node's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) > attribute to **true**.
+> **NOTE:** 
+> 
+> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height for the **Rating** component, or set its parent node's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)attribute to **true**.
 
 ## Child Components
 
 Not supported
-
-## Sequential Keyboard Navigation Specifications
-
-| Key | Description |  
-|------------|-----------------------------|  
-| Tab | Switch the focus between components. |
-| Left and right arrow keys | Increase or decrease the rating on preview at the specified step, without changing the actual rating.|
-| Home | Move the focus to the first star, without changing the actual rating. |
-| End | Move the focus to the last star, without changing the actual rating. |
-| Space/Enter | Submit the rating result based on the current rating. |
 
 ## Rating
 
 ```TypeScript
 Rating(options?: RatingOptions)
 ```
+
+Creates the Rating component.
 
 **Since:** 7
 
@@ -33,6 +25,8 @@ Rating(options?: RatingOptions)
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RatingInterface-(options?: RatingOptions): RatingAttribute--><!--Device-RatingInterface-(options?: RatingOptions): RatingAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +50,7 @@ Rating(options?: RatingOptions)
 
 | Name | Description |
 | --- | --- |
-| [OnRatingChangeCallback](arkts-arkui-rating-comp-onratingchangecallback-t.md) | Defines the callback triggered when the rating value changes. |
+| [OnRatingChangeCallback](arkts-arkui-rating-comp-onratingchangecallback-t.md) | Called when the rating value changes. |
 
 ## Examples
 

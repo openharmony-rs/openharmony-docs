@@ -18,6 +18,8 @@ Sets a surface for a virtual screen. This API uses an asynchronous callback to r
 
 **Required permissions:** ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback<void>): void--><!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -95,6 +97,8 @@ Sets a surface for a virtual screen. This API uses a promise to return the resul
 **Since:** 9
 
 **Required permissions:** ohos.permission.CAPTURE_SCREEN
+
+<!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string): Promise<void>--><!--Device-screen-function setVirtualScreenSurface(screenId:long, surfaceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

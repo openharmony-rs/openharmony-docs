@@ -4,13 +4,15 @@
 declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
 ```
 
-不支持通用属性，仅继承安全控件通用属性。
+不支持通用属性，仅继承[安全控件通用属性](../arkts-apis/arkts-arkui-securitycomponent.md#security_component)。
 
 不支持通用事件，仅支持以下事件。
 
-**继承/实现关系：** PasteButtonAttribute extends SecurityComponentMethod&lt;PasteButtonAttribute&gt;
+**继承/实现关系：** PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>--><!--Device-unnamed-declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ onClick(event: PasteButtonCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PasteButtonAttribute-onClick(event: PasteButtonCallback): PasteButtonAttribute--><!--Device-PasteButtonAttribute-onClick(event: PasteButtonCallback): PasteButtonAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

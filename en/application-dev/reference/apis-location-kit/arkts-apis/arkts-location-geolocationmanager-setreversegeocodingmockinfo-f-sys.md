@@ -20,6 +20,8 @@ Set the configuration parameters for simulating reverse geocoding.
 - API version 20 and later: ohos.permission.MOCK_LOCATION
 - API versions 9 to 19: N/A
 
+<!--Device-geoLocationManager-function setReverseGeocodingMockInfo(mockInfos: Array<ReverseGeocodingMockInfo>): void--><!--Device-geoLocationManager-function setReverseGeocodingMockInfo(mockInfos: Array<ReverseGeocodingMockInfo>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

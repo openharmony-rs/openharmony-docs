@@ -20,6 +20,8 @@ Checks whether the specified rule exists in the collection of added rules. If th
 
 **Substitutes:** [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md)
 
+<!--Device-hichecker-function contains(rule: bigint): boolean--><!--Device-hichecker-function contains(rule: bigint): boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**

@@ -20,6 +20,8 @@ If the called number is in the format of "common phone number + semicolon (;) + 
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function postDialProceed(callId: int, proceed: boolean, callback: AsyncCallback<void>): void--><!--Device-call-function postDialProceed(callId: int, proceed: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ If the called number is in the format of "common phone number + semicolon (;) + 
 **Since:** 11
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function postDialProceed(callId: int, proceed: boolean): Promise<void>--><!--Device-call-function postDialProceed(callId: int, proceed: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

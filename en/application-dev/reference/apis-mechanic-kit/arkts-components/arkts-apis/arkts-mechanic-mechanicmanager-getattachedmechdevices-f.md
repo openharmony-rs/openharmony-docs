@@ -16,6 +16,8 @@ Obtain the list of connected mechanical devices.
 
 **Since:** 20
 
+<!--Device-mechanicManager-function getAttachedMechDevices(): MechInfo[]--><!--Device-mechanicManager-function getAttachedMechDevices(): MechInfo[]-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **Return value:**

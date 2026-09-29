@@ -8,6 +8,8 @@ RecoveryResult
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export declare class RecoveryResult--><!--Device-unnamed-export declare class RecoveryResult-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Name of the restored album.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-RecoveryResult-albumName: string--><!--Device-RecoveryResult-albumName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## albumUri
@@ -49,5 +53,7 @@ URI of the restored album.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-RecoveryResult-albumUri: string--><!--Device-RecoveryResult-albumUri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

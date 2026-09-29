@@ -8,6 +8,8 @@ Provides APIs for domain server configuration and management.
 
 **Since:** 18
 
+<!--Device-osAccount-class DomainServerConfigManager--><!--Device-osAccount-class DomainServerConfigManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Adds domain server configuration. This API uses a promise to return the result.
 **Since:** 18
 
 **Required permissions:** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+<!--Device-DomainServerConfigManager-static addServerConfig(parameters: Record<string, Object>): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static addServerConfig(parameters: Record<string, Object>): Promise<DomainServerConfig>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -83,6 +87,8 @@ Obtains the server configuration of a domain account. This API uses a promise to
 
 **Required permissions:** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise<DomainServerConfig>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Parameters:**
@@ -135,6 +141,8 @@ Obtains the configurations of all domain servers. This API uses a promise to ret
 
 **Required permissions:** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static getAllServerConfigs(): Promise<Array<DomainServerConfig>>--><!--Device-DomainServerConfigManager-static getAllServerConfigs(): Promise<Array<DomainServerConfig>>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Return value:**
@@ -184,6 +192,8 @@ Obtains the domain server configuration. This API uses a promise to return the r
 **Since:** 18
 
 **Required permissions:** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+<!--Device-DomainServerConfigManager-static getServerConfig(configId: string): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static getServerConfig(configId: string): Promise<DomainServerConfig>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -242,6 +252,8 @@ Removes domain server configuration. This API uses a promise to return the resul
 
 **Required permissions:** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+<!--Device-DomainServerConfigManager-static removeServerConfig(configId: string): Promise<void>--><!--Device-DomainServerConfigManager-static removeServerConfig(configId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **Parameters:**
@@ -296,6 +308,8 @@ Updates the domain server configuration. This API uses a promise to return the r
 **Since:** 18
 
 **Required permissions:** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+<!--Device-DomainServerConfigManager-static updateServerConfig(configId: string, parameters: Record<string, Object>): Promise<DomainServerConfig>--><!--Device-DomainServerConfigManager-static updateServerConfig(configId: string, parameters: Record<string, Object>): Promise<DomainServerConfig>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

@@ -18,6 +18,8 @@ Obtains the storage space of an application, in bytes. This API uses an asynchro
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getBundleStats(packageName: string, callback: AsyncCallback<BundleStats>, index?: int): void--><!--Device-storageStatistics-function getBundleStats(packageName: string, callback: AsyncCallback<BundleStats>, index?: int): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -85,6 +87,8 @@ Obtains the storage space of an application, in bytes. This API uses a promise t
 **Since:** 9
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
+
+<!--Device-storageStatistics-function getBundleStats(packageName: string, index?: int): Promise<BundleStats>--><!--Device-storageStatistics-function getBundleStats(packageName: string, index?: int): Promise<BundleStats>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -158,6 +162,8 @@ Obtains the storage space of an application, in bytes. This API uses a promise t
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-storageStatistics-function getBundleStats(packageName: string, option?: BundleStatsOptions): Promise<BundleStats>--><!--Device-storageStatistics-function getBundleStats(packageName: string, option?: BundleStatsOptions): Promise<BundleStats>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

@@ -12,6 +12,8 @@ Enumerates the notification slot types.
 
 **Substitutes:** [SlotType](arkts-notification-notificationmanager-slottype-e.md)
 
+<!--Device-notification-export enum SlotType--><!--Device-notification-export enum SlotType-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## UNKNOWN_TYPE
@@ -27,6 +29,8 @@ Unknown type.
 **Deprecated since:** 9
 
 **Substitutes:** [UNKNOWN_TYPE](arkts-notification-notificationmanager-slottype-e.md#unknown_type)
+
+<!--Device-SlotType-UNKNOWN_TYPE = 0--><!--Device-SlotType-UNKNOWN_TYPE = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -44,6 +48,8 @@ Notification slot for social communication.
 
 **Substitutes:** [SOCIAL_COMMUNICATION](arkts-notification-notificationmanager-slottype-e.md#social_communication)
 
+<!--Device-SlotType-SOCIAL_COMMUNICATION = 1--><!--Device-SlotType-SOCIAL_COMMUNICATION = 1-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## SERVICE_INFORMATION
@@ -59,6 +65,8 @@ Notification slot for service information.
 **Deprecated since:** 9
 
 **Substitutes:** [SERVICE_INFORMATION](arkts-notification-notificationmanager-slottype-e.md#service_information)
+
+<!--Device-SlotType-SERVICE_INFORMATION = 2--><!--Device-SlotType-SERVICE_INFORMATION = 2-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -76,6 +84,8 @@ Notification slot for content consultation.
 
 **Substitutes:** [CONTENT_INFORMATION](arkts-notification-notificationmanager-slottype-e.md#content_information)
 
+<!--Device-SlotType-CONTENT_INFORMATION = 3--><!--Device-SlotType-CONTENT_INFORMATION = 3-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## OTHER_TYPES
@@ -91,5 +101,7 @@ Notification slot for other purposes.
 **Deprecated since:** 9
 
 **Substitutes:** [OTHER_TYPES](arkts-notification-notificationmanager-slottype-e.md#other_types)
+
+<!--Device-SlotType-OTHER_TYPES = 0xFFFF--><!--Device-SlotType-OTHER_TYPES = 0xFFFF-End-->
 
 **System capability:** SystemCapability.Notification.Notification

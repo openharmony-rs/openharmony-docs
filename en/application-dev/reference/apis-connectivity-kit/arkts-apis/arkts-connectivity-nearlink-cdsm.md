@@ -6,6 +6,8 @@ This module provides the coordinated devices set management (CDSM) capability fo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace cdsm--><!--Device-unnamed-declare namespace cdsm-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import

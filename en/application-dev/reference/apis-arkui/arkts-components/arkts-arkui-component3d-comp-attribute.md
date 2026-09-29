@@ -10,6 +10,8 @@ declare class Component3DAttribute extends CommonMethod<Component3DAttribute>
 
 **Since:** 12
 
+<!--Device-unnamed-declare class Component3DAttribute extends CommonMethod<Component3DAttribute>--><!--Device-unnamed-declare class Component3DAttribute extends CommonMethod<Component3DAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## customRender
@@ -23,6 +25,8 @@ Set render pipeline of 3D scene render.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Component3DAttribute-customRender(uri: ResourceStr, selfRenderUpdate: boolean): Component3DAttribute--><!--Device-Component3DAttribute-customRender(uri: ResourceStr, selfRenderUpdate: boolean): Component3DAttribute-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -45,6 +49,8 @@ Load 3D model environment resource.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Component3DAttribute-environment(uri: ResourceStr): Component3DAttribute--><!--Device-Component3DAttribute-environment(uri: ResourceStr): Component3DAttribute-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -64,6 +70,8 @@ Set render height resolution.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Component3DAttribute-renderHeight(value: Dimension): Component3DAttribute--><!--Device-Component3DAttribute-renderHeight(value: Dimension): Component3DAttribute-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -85,6 +93,8 @@ Set render width resolution.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Component3DAttribute-renderWidth(value: Dimension): Component3DAttribute--><!--Device-Component3DAttribute-renderWidth(value: Dimension): Component3DAttribute-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -104,6 +114,8 @@ Load shader uri.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Component3DAttribute-shader(uri: ResourceStr): Component3DAttribute--><!--Device-Component3DAttribute-shader(uri: ResourceStr): Component3DAttribute-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -125,6 +137,8 @@ Load shader texture uri.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Component3DAttribute-shaderImageTexture(uri: ResourceStr): Component3DAttribute--><!--Device-Component3DAttribute-shaderImageTexture(uri: ResourceStr): Component3DAttribute-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -144,6 +158,8 @@ Buffer input for shader animation
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Component3DAttribute-shaderInputBuffer(buffer: Array<number>): Component3DAttribute--><!--Device-Component3DAttribute-shaderInputBuffer(buffer: Array<number>): Component3DAttribute-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

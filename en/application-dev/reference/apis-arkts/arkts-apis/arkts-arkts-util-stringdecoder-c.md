@@ -8,6 +8,8 @@ Provides the capability of decoding binary streams into strings. The following e
 
 **Since:** 12
 
+<!--Device-util-class StringDecoder--><!--Device-util-class StringDecoder-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Constructor used to create a **StringDecoder** instance.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StringDecoder-constructor(encoding?: string)--><!--Device-StringDecoder-constructor(encoding?: string)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -53,6 +57,8 @@ Ends the decoding process and returns any remaining input stored in the internal
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StringDecoder-end(chunk?: string | Uint8Array): string--><!--Device-StringDecoder-end(chunk?: string | Uint8Array): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -92,6 +98,8 @@ Decodes a string. Any incomplete multi-byte characters at the end of Uint8Array 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StringDecoder-write(chunk: string | Uint8Array): string--><!--Device-StringDecoder-write(chunk: string | Uint8Array): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

@@ -10,6 +10,8 @@ Provides methods for setting radio network information, including information ab
 
 **Since:** 7
 
+<!--Device-settings-namespace wireless--><!--Device-settings-namespace wireless-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## Modules to Import

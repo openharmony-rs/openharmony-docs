@@ -8,6 +8,8 @@ Provides information about the check box.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface CheckboxOptions--><!--Device-unnamed-declare interface CheckboxOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## group
@@ -16,11 +18,13 @@ Provides information about the check box.
 group?: string
 ```
 
-Group name of the check box (that is, the name of the check box group to which the check box belongs).
+Name of the group to which the check box belongs (that is, the name of the **CheckboxGroup** to which it belongs).
 
-**NOTE:** 
+Default value: **undefined**, used with nodes whose group information is undefined in [CheckboxGroupOptions](arkts-arkui-checkboxgroup-comp-checkboxgroupoptions-i.md).
 
-For the settings to take effect, this parameter must be used with the CheckboxGroup component.
+**Note:** 
+
+This value is useless when the [CheckboxGroup](arkts-arkui-checkboxgroup-comp.md) component is not used together.
 
 **Type:** string
 
@@ -31,6 +35,8 @@ For the settings to take effect, this parameter must be used with the CheckboxGr
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CheckboxOptions-group?: string--><!--Device-CheckboxOptions-group?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +46,7 @@ For the settings to take effect, this parameter must be used with the CheckboxGr
 indicatorBuilder?: CustomBuilder
 ```
 
-Custom component to indicate that the check box is selected. This custom component is center aligned with the check box. When **indicatorBuilder** is set to **undefined** or **null**, it defaults to the state where it is not set.
+Custom component to indicate that the check box is selected. You can use this parameter when you need to implement the selected style other than the default check icon (such as the text, number, or custom icon). The custom component and the **Checkbox** component are aligned with their center points for display. When **indicatorBuilder** is set to **undefined** or **null**, it defaults to the state where **indicatorBuilder** is not set, and the default check icon style is used.
 
 **Type:** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -50,6 +56,8 @@ Custom component to indicate that the check box is selected. This custom compone
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CheckboxOptions-indicatorBuilder?: CustomBuilder--><!--Device-CheckboxOptions-indicatorBuilder?: CustomBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -58,7 +66,9 @@ Custom component to indicate that the check box is selected. This custom compone
 name?: string
 ```
 
-Name of the check box.
+Name of the check box, used to identify different check box instances.
+
+Default value: **undefined**.
 
 **Type:** string
 
@@ -69,5 +79,7 @@ Name of the check box.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-CheckboxOptions-name?: string--><!--Device-CheckboxOptions-name?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

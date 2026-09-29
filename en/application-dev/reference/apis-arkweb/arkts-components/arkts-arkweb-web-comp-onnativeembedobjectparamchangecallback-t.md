@@ -8,6 +8,8 @@ Defines a callback triggered when the **param** element embedded in the same-lay
 
 **Since:** 21
 
+<!--Device-unnamed-type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void--><!--Device-unnamed-type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

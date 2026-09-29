@@ -8,6 +8,8 @@ interface PiPConfiguration
 
 **起始版本：** 11
 
+<!--Device-PiPWindow-interface PiPConfiguration--><!--Device-PiPWindow-interface PiPConfiguration-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -22,13 +24,15 @@ import { PiPWindow } from '@kit.ArkUI';
 componentController: XComponentController
 ```
 
-表示原始XComponent控制器。
+表示原始[XComponent](../arkts-components/arkts-arkui-xcomponent-comp.md)控制器。
 
 **类型：** XComponentController
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-componentController: XComponentController--><!--Device-PiPConfiguration-componentController: XComponentController-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ contentHeight?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-contentHeight?: int--><!--Device-PiPConfiguration-contentHeight?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -60,7 +66,9 @@ contentWidth?: number
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-contentWidth?: int--><!--Device-PiPConfiguration-contentWidth?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -76,7 +84,9 @@ context: BaseContext
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-context: BaseContext--><!--Device-PiPConfiguration-context: BaseContext-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -92,7 +102,9 @@ controlGroups?: Array<PiPControlGroup>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>--><!--Device-PiPConfiguration-controlGroups?: Array<PiPControlGroup>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -118,7 +130,9 @@ false：表示关闭画中画四角吸附功能。
 
 **起始版本：** 22
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean--><!--Device-PiPConfiguration-cornerAdsorptionEnabled?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -134,7 +148,9 @@ customUIController?: NodeController
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-customUIController?: NodeController--><!--Device-PiPConfiguration-customUIController?: NodeController-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -158,7 +174,9 @@ defaultWindowSizeType?: number
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-defaultWindowSizeType?: int--><!--Device-PiPConfiguration-defaultWindowSizeType?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -168,7 +186,7 @@ defaultWindowSizeType?: number
 handleId?: number
 ```
 
-navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用Navigation管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#getuniqueid)获取页面ID。使用Navigation模块内页面路由时，推荐使用[系统路由表](../../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#getuniqueid)获取页面ID不准确的情况。
+navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复到指定的页面。只适用于UIAbility使用[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)管理页面的场景，可以设置为Navigation下的子页面ID。默认为-1，恢复Navigation栈顶页面。推荐使用方法[getUniqueId()](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#getuniqueid)获取页面ID。使用[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)模块内页面路由时，推荐使用[系统路由表](../../../ui/arkts-navigation-cross-package.md#系统路由表)，否则可能会出现[getUniqueId()](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#getuniqueid)获取页面ID不准确的情况。
 
 **类型：** number
 
@@ -176,7 +194,9 @@ navigation控件下的子页面ID，点击"恢复全屏窗口"按钮后，恢复
 
 **起始版本：** 22
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-handleId?: int--><!--Device-PiPConfiguration-handleId?: int-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -192,7 +212,9 @@ localStorage?: LocalStorage
 
 **起始版本：** 17
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-localStorage?: LocalStorage--><!--Device-PiPConfiguration-localStorage?: LocalStorage-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -204,7 +226,7 @@ navigationId?: string
 
 navigation控件ID，不传值则默认不需要缓存页面。
 
-1、UIAbility使用Navigation管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。
+1、UIAbility使用[Navigation](../arkts-components/arkts-arkui-navigation-comp.md)管理页面时，需要设置Navigation控件的id属性，并将该id设置给画中画控制器，确保还原场景下能够从画中画窗口恢复到原页面。
 
 2、UIAbility使用[Router](arkts-arkui-router.md)管理页面时，无需设置navigationId。
 
@@ -214,7 +236,9 @@ navigation控件ID，不传值则默认不需要缓存页面。
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-navigationId?: string--><!--Device-PiPConfiguration-navigationId?: string-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -230,6 +254,8 @@ templateType?: PiPTemplateType
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPConfiguration-templateType?: PiPTemplateType--><!--Device-PiPConfiguration-templateType?: PiPTemplateType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

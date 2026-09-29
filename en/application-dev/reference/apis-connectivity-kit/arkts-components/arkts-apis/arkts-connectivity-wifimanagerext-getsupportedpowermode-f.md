@@ -18,6 +18,8 @@ Obtains the supported power Mode.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManagerExt-function getSupportedPowerMode(): Promise<Array<PowerMode>>--><!--Device-wifiManagerExt-function getSupportedPowerMode(): Promise<Array<PowerMode>>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 **Return value:**
@@ -62,6 +64,8 @@ Obtains the supported power Mode.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManagerExt-function getSupportedPowerMode(callback: AsyncCallback<Array<PowerMode>>): void--><!--Device-wifiManagerExt-function getSupportedPowerMode(callback: AsyncCallback<Array<PowerMode>>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 

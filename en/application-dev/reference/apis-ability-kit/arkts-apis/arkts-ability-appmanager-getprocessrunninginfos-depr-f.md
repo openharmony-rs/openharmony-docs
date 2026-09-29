@@ -25,6 +25,8 @@ Obtains information about the running processes. This API uses a promise to retu
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
 
+<!--Device-appManager-function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>--><!--Device-appManager-function getProcessRunningInfos(): Promise<Array<ProcessRunningInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**
@@ -68,6 +70,8 @@ Obtains information about the running processes. This API uses an asynchronous c
 **Substitutes:** [getRunningProcessInformation](arkts-ability-appmanager-getrunningprocessinformation-f.md)
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
+
+<!--Device-appManager-function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo>>): void--><!--Device-appManager-function getProcessRunningInfos(callback: AsyncCallback<Array<ProcessRunningInfo>>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

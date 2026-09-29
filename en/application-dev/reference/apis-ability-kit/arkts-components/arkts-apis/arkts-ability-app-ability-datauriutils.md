@@ -4,6 +4,8 @@ The DataUriUtils module provides APIs to process URI objects. You can use the AP
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace dataUriUtils--><!--Device-unnamed-declare namespace dataUriUtils-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

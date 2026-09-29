@@ -16,6 +16,8 @@ The distributedBundle module manages distributed bundles.
 
 **Substitutes:** [distributedBundleManager](arkts-ability-bundle-distributedbundlemanager.md)
 
+<!--Device-unnamed-declare namespace distributedBundle--><!--Device-unnamed-declare namespace distributedBundle-End-->
+
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.

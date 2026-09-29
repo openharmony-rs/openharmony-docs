@@ -18,6 +18,8 @@ Uninitializes the active tag resources.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function uninitialize(): void--><!--Device-connectedTag-function uninitialize(): void-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Error codes:**

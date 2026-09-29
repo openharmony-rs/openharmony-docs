@@ -8,6 +8,8 @@ The MediaAssetManager class is used for manipulating the read and write operatio
 
 **Since:** 11
 
+<!--Device-photoAccessHelper-class MediaAssetManager--><!--Device-photoAccessHelper-class MediaAssetManager-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Cancels a request for the asset, the callback of which has not been triggered ye
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-MediaAssetManager-static cancelRequest(context: Context, requestId: string): Promise<void>--><!--Device-MediaAssetManager-static cancelRequest(context: Context, requestId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**
@@ -47,9 +51,9 @@ Cancels a request for the asset, the callback of which has not been triggered ye
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file service initialization failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please check if the context is valid and retry; <br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **Examples**
 
@@ -81,7 +85,9 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-MediaAssetManager-static loadMovingPhoto(      context: Context,      imageFileUri: string,      videoFileUri: string    ): Promise<MovingPhoto>--><!--Device-MediaAssetManager-static loadMovingPhoto(      context: Context,      imageFileUri: string,      videoFileUri: string    ): Promise<MovingPhoto>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -104,7 +110,7 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file client initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please retry. |
 
 **Examples**
 
@@ -137,6 +143,8 @@ Requests an image quickly. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-MediaAssetManager-static quickRequestImage(      context: Context,      asset: PhotoAsset,      requestOptions: RequestOptions,      dataHandler: QuickImageDataHandler<image.Picture>    ): Promise<string>--><!--Device-MediaAssetManager-static quickRequestImage(      context: Context,      asset: PhotoAsset,      requestOptions: RequestOptions,      dataHandler: QuickImageDataHandler<image.Picture>    ): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**
@@ -158,7 +166,7 @@ Requests an image quickly. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
@@ -200,12 +208,7 @@ async function example(context: Context) {
 ## requestImage
 
 ```TypeScript
-static requestImage(
-      context: Context,
-      asset: PhotoAsset,
-      requestOptions: RequestOptions,
-      dataHandler: MediaAssetDataHandler<image.ImageSource>
-    ): Promise<string>
+static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<image.ImageSource>): Promise<string>
 ```
 
 Requests an image. This API uses a promise to return the result.
@@ -213,6 +216,8 @@ Requests an image. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-MediaAssetManager-static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<image.ImageSource>): Promise<string>--><!--Device-MediaAssetManager-static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<image.ImageSource>): Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -235,9 +240,9 @@ Requests an image. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry. |
 
 **Examples**
 
@@ -285,12 +290,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 ## requestImageData
 
 ```TypeScript
-static requestImageData(
-      context: Context,
-      asset: PhotoAsset,
-      requestOptions: RequestOptions,
-      dataHandler: MediaAssetDataHandler<ArrayBuffer>
-    ): Promise<string>
+static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<ArrayBuffer>): Promise<string>
 ```
 
 Requests image data. This API uses a promise to return the result.
@@ -298,6 +298,8 @@ Requests image data. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
+
+<!--Device-MediaAssetManager-static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<ArrayBuffer>): Promise<string>--><!--Device-MediaAssetManager-static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler<ArrayBuffer>): Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -320,9 +322,9 @@ Requests image data. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | System inner fail. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry. |
 
 **Examples**
 
@@ -383,6 +385,8 @@ Requests a moving photo object, which can be used to request the asset data of t
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-MediaAssetManager-static requestMovingPhoto(      context: Context,      asset: PhotoAsset,      requestOptions: RequestOptions,      dataHandler: MediaAssetDataHandler<MovingPhoto>    ): Promise<string>--><!--Device-MediaAssetManager-static requestMovingPhoto(      context: Context,      asset: PhotoAsset,      requestOptions: RequestOptions,      dataHandler: MediaAssetDataHandler<MovingPhoto>    ): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**
@@ -404,10 +408,10 @@ Requests a moving photo object, which can be used to request the asset data of t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
-| 14000011 | System inner fail |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 18 and later |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: 1. Memory insufficient; 2. IPC timeout. Please retry. |
 
 **Examples**
 
@@ -467,6 +471,8 @@ Requests a video and saves it to the specified sandbox directory. This API uses 
 
 **Required permissions:** ohos.permission.READ_IMAGEVIDEO
 
+<!--Device-MediaAssetManager-static requestVideoFile(      context: Context,      asset: PhotoAsset,      requestOptions: RequestOptions,      fileUri: string,      dataHandler: MediaAssetDataHandler<boolean>    ): Promise<string>--><!--Device-MediaAssetManager-static requestVideoFile(      context: Context,      asset: PhotoAsset,      requestOptions: RequestOptions,      fileUri: string,      dataHandler: MediaAssetDataHandler<boolean>    ): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Test API:** This API is used only in automated test scripts.
@@ -491,10 +497,10 @@ Requests a video and saves it to the specified sandbox directory. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 15 and later |
-| 14000011 | System inner fail. Possible causes:<br>1. The database is corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 15 and later |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.The dataHandler parameter must be a valid object; <br>3.User file service initialization failed, possible causes: 1. Database exception; 2. IPC timeout. Please check if the context is valid and retry; <br>4.System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **Examples**
 

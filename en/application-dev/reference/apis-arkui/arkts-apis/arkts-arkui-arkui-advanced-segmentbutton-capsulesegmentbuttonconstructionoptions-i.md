@@ -12,6 +12,8 @@ Inherits from [CommonSegmentButtonOptions](arkts-arkui-arkui-advanced-segmentbut
 
 **Since:** 11
 
+<!--Device-unnamed-interface CapsuleSegmentButtonConstructionOptions extends CommonSegmentButtonOptions--><!--Device-unnamed-interface CapsuleSegmentButtonConstructionOptions extends CommonSegmentButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Button information.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CapsuleSegmentButtonConstructionOptions-buttons: SegmentButtonItemTuple--><!--Device-CapsuleSegmentButtonConstructionOptions-buttons: SegmentButtonItemTuple-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,5 +67,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CapsuleSegmentButtonConstructionOptions-multiply?: boolean--><!--Device-CapsuleSegmentButtonConstructionOptions-multiply?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

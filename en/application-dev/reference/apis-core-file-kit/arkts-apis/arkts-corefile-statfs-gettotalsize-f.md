@@ -16,6 +16,8 @@ Obtains the total size of the specified file system, in bytes. This API uses a p
 
 **Since:** 9
 
+<!--Device-statfs-function getTotalSize(path: string): Promise<long>--><!--Device-statfs-function getTotalSize(path: string): Promise<long>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -76,6 +78,8 @@ function getTotalSize(path: string, callback: AsyncCallback<number>): void
 Obtains the total size of the specified file system, in bytes. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-statfs-function getTotalSize(path: string, callback: AsyncCallback<long>): void--><!--Device-statfs-function getTotalSize(path: string, callback: AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

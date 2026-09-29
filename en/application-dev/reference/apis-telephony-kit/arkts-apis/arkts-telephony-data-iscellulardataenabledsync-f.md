@@ -20,6 +20,8 @@ Checks whether the cellular data service is enabled. This API returns the result
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-data-function isCellularDataEnabledSync(): boolean--><!--Device-data-function isCellularDataEnabledSync(): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Return value:**

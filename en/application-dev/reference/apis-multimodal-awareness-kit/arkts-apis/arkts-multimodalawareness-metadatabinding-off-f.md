@@ -18,6 +18,8 @@ Unsubscribes from system events that are used to obtain the encoded metadata. Th
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-metadataBinding-function off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback<int>): void--><!--Device-metadataBinding-function off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 
 **Parameters:**

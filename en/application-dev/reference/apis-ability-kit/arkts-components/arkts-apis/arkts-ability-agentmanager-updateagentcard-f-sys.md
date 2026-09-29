@@ -20,6 +20,8 @@ Updates the AgentCard within specified agent id.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function updateAgentCard(agentCard: AgentCard): Promise<void>--><!--Device-agentManager-function updateAgentCard(agentCard: AgentCard): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

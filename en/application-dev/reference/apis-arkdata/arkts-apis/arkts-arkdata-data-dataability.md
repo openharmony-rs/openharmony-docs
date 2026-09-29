@@ -4,6 +4,8 @@ The **DataAbility** module provides APIs to create predicates for querying data 
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace dataAbility--><!--Device-unnamed-declare namespace dataAbility-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 ## Modules to Import

@@ -4,16 +4,18 @@
 declare interface DataChangeListener
 ```
 
-Listener for data changes.
+Defines the data change listener, used to notify the **LazyForEach** component to perform corresponding rendering updates when the data source changes. It supports listening for multiple data change types, including data addition, deletion, change, move, swap, and reload.
 
 > **NOTE:** 
 > 
-> In APIs of **DataChangeListener** other than **onDatasetChange**, if the value of **index** is negative, the value
-> is treated as **0** by default. In **onDatasetChange**, if the specified index in a **DataOperation** is outside
-> the data source index range, the corresponding **DataOperation** does not take effect. (In **DataAddOperation**,
-> the value of **index** can equal the data source length.)
+> In the methods of **DataChangeListener** other than **onDatasetChange**, when a parameter contains index and its
+> value is negative, it is replaced with 0 by default. In **onDatasetChange**, when a single **DataOperation**
+> parameter contains index and its value is outside the index range of the data source (in **DataAddOperation**,
+> **index** can be equal to the data source length), rendering exceptions may occur.
 
 **Since:** 7
+
+<!--Device-unnamed-declare interface DataChangeListener--><!--Device-unnamed-declare interface DataChangeListener-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,40 +27,17 @@ onDataAdd(index: number): void
 
 Invoked when data is added to the position indicated by the specified index.
 
+> **NOTE:** 
+> 
+> This API cannot be used together with the **onDatasetChange** API.
+
 **Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is added. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-
-## onDataAdded
-
-```TypeScript
-onDataAdded(index: number): void
-```
-
-Invoked when data is added to the position indicated by the specified index.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 8. Use
-> [onDataAdd](#ondataadd) instead.
-
-**Since:** 7
-
-**Deprecated since:** 8
-
-**Substitutes:** [onDataAdd](#ondataadd)
-
-**Model restriction:** This API can be used in both the stage model and FA model.
+<!--Device-DataChangeListener-onDataAdd(index: number): void--><!--Device-DataChangeListener-onDataAdd(index: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,13 +53,19 @@ Invoked when data is added to the position indicated by the specified index.
 onDataChange(index: number): void
 ```
 
-Invoked when data in the position indicated by the specified index is changed.
+Notifies components that the data at the **index** position has changed. Called after the data change is complete.
+
+> **NOTE:** 
+> 
+> This API cannot be used together with the **onDatasetChange** API.
 
 **Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DataChangeListener-onDataChange(index: number): void--><!--Device-DataChangeListener-onDataChange(index: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,35 +74,6 @@ Invoked when data in the position indicated by the specified index is changed.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | index | number | Yes | Index of the position where data is changed. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-
-## onDataChanged
-
-```TypeScript
-onDataChanged(index: number): void
-```
-
-Invoked when data in the position indicated by the specified index is changed.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 8. Use
-> [onDataChange](#ondatachange) instead.
-
-**Since:** 7
-
-**Deprecated since:** 8
-
-**Substitutes:** [onDataChange](#ondatachange)
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| index | number | Yes | Listener for data changes. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataDelete
 
@@ -129,8 +85,8 @@ Invoked when data is deleted from the position indicated by the specified index.
 
 > **NOTE:** 
 > 
-> Before **onDataDelete** is called, ensure that the corresponding data in **dataSource** has been deleted.
-> Otherwise, undefined behavior will occur during page rendering.
+> - Ensure that the corresponding data in **dataSource** has been deleted before **onDataDelete** is called.Otherwise, undefined behavior may occur during page rendering.
+> - This API cannot be used together with the **onDatasetChange** API.
 
 **Since:** 8
 
@@ -138,34 +94,7 @@ Invoked when data is deleted from the position indicated by the specified index.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is deleted. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-
-## onDataDeleted
-
-```TypeScript
-onDataDeleted(index: number): void
-```
-
-Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 7 and deprecated since API version 8. Use
-> [onDataDelete](#ondatadelete) instead.
-
-**Since:** 7
-
-**Deprecated since:** 8
-
-**Substitutes:** [onDataDelete](#ondatadelete)
-
-**Model restriction:** This API can be used in both the stage model and FA model.
+<!--Device-DataChangeListener-onDataDelete(index: number): void--><!--Device-DataChangeListener-onDataDelete(index: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,8 +114,8 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 
 > **NOTE:** 
 > 
-> The ID must remain unchanged before and after data movement. If the ID changes, APIs for deleting and adding data
-> must be called.
+> - The key must remain unchanged before and after the data move. If the key changes, use the data deletion and data addition APIs instead.
+> - This API cannot be used together with the **onDatasetChange** API.
 
 **Since:** 8
 
@@ -194,36 +123,7 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| from | number | Yes | Original position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-| to | number | Yes | Target position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-
-## onDataMoved
-
-```TypeScript
-onDataMoved(from: number, to: number): void
-```
-
-Invoked when data is moved, that is, when data is swapped between the **from** and **to** positions.
-
-> **NOTE:** 
-> 
-> - This API is supported since API version 7 and deprecated since API version 8. Use [onDataMove](#ondatamove) instead.
-> 
-> - The ID must remain unchanged before and after data movement. If the ID changes, APIs for deleting and adding data must be called.
-
-**Since:** 7
-
-**Deprecated since:** 8
-
-**Substitutes:** [onDataMove](#ondatamove)
-
-**Model restriction:** This API can be used in both the stage model and FA model.
+<!--Device-DataChangeListener-onDataMove(from: number, to: number): void--><!--Device-DataChangeListener-onDataMove(from: number, to: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,11 +142,17 @@ onDataReloaded(): void
 
 Invoked when all data is reloaded. For data items whose key remains unchanged, the original child component is used. For data items whose key changes, a new child component is created.
 
+> **NOTE:** 
+> 
+> This API cannot be used together with the **onDatasetChange** API.
+
 **Since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DataChangeListener-onDataReloaded(): void--><!--Device-DataChangeListener-onDataReloaded(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -258,7 +164,13 @@ Invoked when all data is reloaded. For data items whose key remains unchanged, t
 onDataReloaded(reuseImmediately: boolean): void
 ```
 
-Invoked when all data is reloaded. When \@Reuseable or \@ReuseableV2 is used and recycle pool is empty, old child components will be recycled and then be reused as new child components. If no old child component can be reused, new child components will be created.
+Notifies components to reload all data and configures whether old child components can be reused during the update. This API must be used together with **@Reusable/@ReusableV2**. It is invoked after the data reload is complete.
+
+When reuse of old child components during the update is allowed and this API is used together with [@Reusable](../../../ui/state-management/arkts-reusable.md)/[@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md), components in the reuse pool are used first. If no component in the reuse pool can be reused but there is a reusable component among the old child components of **LazyForEach**, that component is recycled and reused as a new child component. If no reusable component exists among the old child components of **LazyForEach** either, a new child component is created.
+
+When reuse of old child components during the update is allowed but **@Reusable/@ReusableV2** is not used, data items whose keys do not change use the original child components, while those whose keys change have their child components rebuilt.
+
+When reuse of old child components during the update is not allowed, data items whose keys do not change use the original child components. For data items whose keys change, if **@Reusable/@ReusableV2** is used and a component is available in the reuse pool, the old component is reused; otherwise, a new child component is created.
 
 **Since:** 26.0.1
 
@@ -266,13 +178,15 @@ Invoked when all data is reloaded. When \@Reuseable or \@ReuseableV2 is used and
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DataChangeListener-onDataReloaded(reuseImmediately: boolean): void--><!--Device-DataChangeListener-onDataReloaded(reuseImmediately: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| reuseImmediately | boolean | Yes | Whether to enable the feature that reuse old child components when \@Reuseable or \@ReuseableV2 is used and recycle pool is empty.<br> **true**: Enable the feature. <br>**false**: Disable the feature. |
+| reuseImmediately | boolean | Yes | Whether old child components can be reused during the update.<br>**true**: old child components can be reused during the update. <br>**false**: old child components cannot be reused during the update. |
 
 ## onDatasetChange
 
@@ -297,6 +211,8 @@ Invoked when data is processed in batches to notify the component of refreshing.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DataChangeListener-onDatasetChange(dataOperations: DataOperation[]): void--><!--Device-DataChangeListener-onDatasetChange(dataOperations: DataOperation[]): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -304,3 +220,129 @@ Invoked when data is processed in batches to notify the component of refreshing.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | dataOperations | [DataOperation](arkts-arkui-lazyforeach-comp-dataoperation-t.md)[] | Yes | Array of data operations performed. |
+
+## onDataAdded
+
+```TypeScript
+onDataAdded(index: number): void
+```
+
+Invoked when data is added to the position indicated by the specified index.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 8. Use
+> [onDataAdd](#ondataadd) instead.
+
+**Since:** 7
+
+**Deprecated since:** 8
+
+**Substitutes:** [onDataAdd](#ondataadd)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DataChangeListener-onDataAdded(index: number): void--><!--Device-DataChangeListener-onDataAdded(index: number): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| index | number | Yes | Index of the position where data is added. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+
+## onDataChanged
+
+```TypeScript
+onDataChanged(index: number): void
+```
+
+Invoked when data in the position indicated by the specified index is changed.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 8. Use
+> [onDataChange](#ondatachange) instead.
+
+**Since:** 7
+
+**Deprecated since:** 8
+
+**Substitutes:** [onDataChange](#ondatachange)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DataChangeListener-onDataChanged(index: number): void--><!--Device-DataChangeListener-onDataChanged(index: number): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| index | number | Yes | Listener for data changes. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+
+## onDataDeleted
+
+```TypeScript
+onDataDeleted(index: number): void
+```
+
+Invoked when data is deleted from the position indicated by the specified index. LazyForEach will update the displayed content accordingly.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 7 and deprecated since API version 8. Use
+> [onDataDelete](#ondatadelete) instead.
+
+**Since:** 7
+
+**Deprecated since:** 8
+
+**Substitutes:** [onDataDelete](#ondatadelete)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DataChangeListener-onDataDeleted(index: number): void--><!--Device-DataChangeListener-onDataDeleted(index: number): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| index | number | Yes | Index of the position where data is deleted. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+
+## onDataMoved
+
+```TypeScript
+onDataMoved(from: number, to: number): void
+```
+
+Invoked when data is moved, that is, when data is swapped between the **from** and **to** positions.
+
+> **NOTE:** 
+> 
+> - This API is supported since API version 7 and deprecated since API version 8. Use [onDataMove](#ondatamove) instead.
+> 
+> - The ID must remain unchanged before and after data movement. If the ID changes, APIs for deleting and adding data must be called.
+
+**Since:** 7
+
+**Deprecated since:** 8
+
+**Substitutes:** [onDataMove](#ondatamove)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-DataChangeListener-onDataMoved(from: number, to: number): void--><!--Device-DataChangeListener-onDataMoved(from: number, to: number): void-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| from | number | Yes | Original position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| to | number | Yes | Target position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |

@@ -10,6 +10,8 @@ export interface CallAbilityParam
 
 **Deprecated since:** 8
 
+<!--Device-unnamed-export interface CallAbilityParam--><!--Device-unnamed-export interface CallAbilityParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## abilityName
@@ -25,6 +27,8 @@ Ability name, which is case sensitive and must be the same as that on the AA sid
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-CallAbilityParam-abilityName: string--><!--Device-CallAbilityParam-abilityName: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -42,6 +46,8 @@ Ability type. Different types of abilities have different implementation on the 
 
 **Deprecated since:** 8
 
+<!--Device-CallAbilityParam-abilityType: number--><!--Device-CallAbilityParam-abilityType: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## bundleName
@@ -57,6 +63,8 @@ Name of the bundle where the ability has been located. The name is case sensitiv
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-CallAbilityParam-bundleName: string--><!--Device-CallAbilityParam-bundleName: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -74,6 +82,8 @@ Data sent to the ability. The data to carry differs depending on the service to 
 
 **Deprecated since:** 8
 
+<!--Device-CallAbilityParam-data?: object--><!--Device-CallAbilityParam-data?: object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## messageCode
@@ -90,6 +100,8 @@ Ability operation code, which defines the service function of an AA and must be 
 
 **Deprecated since:** 8
 
+<!--Device-CallAbilityParam-messageCode: number--><!--Device-CallAbilityParam-messageCode: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## syncOption
@@ -105,5 +117,7 @@ Whether the request is synchronous or asynchronous. The synchronous mode is used
 **Since:** 5
 
 **Deprecated since:** 8
+
+<!--Device-CallAbilityParam-syncOption?: number--><!--Device-CallAbilityParam-syncOption?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite

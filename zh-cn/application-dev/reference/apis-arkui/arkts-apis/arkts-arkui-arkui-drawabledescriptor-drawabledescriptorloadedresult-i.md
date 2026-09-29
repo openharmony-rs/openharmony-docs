@@ -8,6 +8,8 @@ export interface DrawableDescriptorLoadedResult
 
 **起始版本：** 21
 
+<!--Device-unnamed-export interface DrawableDescriptorLoadedResult--><!--Device-unnamed-export interface DrawableDescriptorLoadedResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ imageHeight: number
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawableDescriptorLoadedResult-imageHeight: number--><!--Device-DrawableDescriptorLoadedResult-imageHeight: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageWidth
@@ -53,6 +57,8 @@ imageWidth: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
+
+<!--Device-DrawableDescriptorLoadedResult-imageWidth: number--><!--Device-DrawableDescriptorLoadedResult-imageWidth: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

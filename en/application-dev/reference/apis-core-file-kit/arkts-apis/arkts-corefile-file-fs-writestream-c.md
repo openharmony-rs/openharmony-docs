@@ -10,6 +10,8 @@ Defines a writeable stream. You need to use [fileIo.createWriteStream](../../../
 
 **Since:** 12
 
+<!--Device-unnamed-declare class WriteStream extends stream.Writable--><!--Device-unnamed-declare class WriteStream extends stream.Writable-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -27,6 +29,8 @@ close(): void
 Closes this writeable stream.
 
 **Since:** 12
+
+<!--Device-WriteStream-close(): void--><!--Device-WriteStream-close(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -59,6 +63,8 @@ The WriteStream constructor.
 
 **Since:** 12
 
+<!--Device-WriteStream-constructor()--><!--Device-WriteStream-constructor()-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## seek
@@ -70,6 +76,8 @@ seek(offset: number, whence?: WhenceType): number
 Adjusts the position of the writeable stream offset pointer.
 
 **Since:** 12
+
+<!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number--><!--Device-WriteStream-seek(offset: number, whence?: WhenceType): number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -117,6 +125,8 @@ Number of bytes written to the writable stream.
 
 **Since:** 12
 
+<!--Device-WriteStream-readonly bytesWritten: number--><!--Device-WriteStream-readonly bytesWritten: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Error codes:**
@@ -136,6 +146,8 @@ Path of the file corresponding to the writeable stream.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-WriteStream-readonly path: string--><!--Device-WriteStream-readonly path: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

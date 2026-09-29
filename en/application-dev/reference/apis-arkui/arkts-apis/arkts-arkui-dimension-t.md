@@ -14,6 +14,8 @@ Defines a size unit.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type Dimension = PX | VP | FP | LPX | Percentage | Resource--><!--Device-unnamed-declare type Dimension = PX | VP | FP | LPX | Percentage | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

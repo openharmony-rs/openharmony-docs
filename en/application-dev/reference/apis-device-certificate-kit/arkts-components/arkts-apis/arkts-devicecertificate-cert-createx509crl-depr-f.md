@@ -25,6 +25,8 @@ Creates an **X509Crl** instance. This API uses an asynchronous callback to retur
 
 **Substitutes:** [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md)
 
+<!--Device-cert-function createX509Crl(inStream: EncodingBlob, callback: AsyncCallback<X509Crl>): void--><!--Device-cert-function createX509Crl(inStream: EncodingBlob, callback: AsyncCallback<X509Crl>): void-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 **Parameters:**
@@ -102,6 +104,8 @@ Creates an **X509Crl** instance. This API uses a promise to return the result.
 **Deprecated since:** 11
 
 **Substitutes:** [createX509CRL](arkts-devicecertificate-cert-createx509crl-f.md)
+
+<!--Device-cert-function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>--><!--Device-cert-function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 

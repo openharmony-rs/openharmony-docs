@@ -8,6 +8,8 @@ Enumerates the data types of the results returned after the [runJavaScriptExt](a
 
 **Since:** 10
 
+<!--Device-webview-enum JsMessageType--><!--Device-webview-enum JsMessageType-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NOT_SUPPORT
@@ -21,6 +23,8 @@ Unsupported data type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsMessageType-NOT_SUPPORT = 0--><!--Device-JsMessageType-NOT_SUPPORT = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ String type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsMessageType-STRING = 1--><!--Device-JsMessageType-STRING = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NUMBER
@@ -49,6 +55,8 @@ Number type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsMessageType-NUMBER = 2--><!--Device-JsMessageType-NUMBER = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ Boolean type.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsMessageType-BOOLEAN = 3--><!--Device-JsMessageType-BOOLEAN = 3-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ARRAY_BUFFER
@@ -78,6 +88,8 @@ Raw binary data buffer.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-JsMessageType-ARRAY_BUFFER = 4--><!--Device-JsMessageType-ARRAY_BUFFER = 4-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## ARRAY
@@ -91,5 +103,7 @@ Array type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-JsMessageType-ARRAY = 5--><!--Device-JsMessageType-ARRAY = 5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

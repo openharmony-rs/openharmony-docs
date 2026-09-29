@@ -10,6 +10,8 @@ Callback invoked when an error occurs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare type PluginErrorCallback = (info: PluginErrorData) => void--><!--Device-unnamed-declare type PluginErrorCallback = (info: PluginErrorData) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

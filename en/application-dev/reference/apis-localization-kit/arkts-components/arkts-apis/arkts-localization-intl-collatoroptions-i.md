@@ -8,6 +8,8 @@ Defines the options for creating a **Collator** object. Since API version 9, the
 
 **Since:** 8
 
+<!--Device-intl-export interface CollatorOptions--><!--Device-intl-export interface CollatorOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -37,6 +39,8 @@ The default value is **false**.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CollatorOptions-caseFirst?: string--><!--Device-CollatorOptions-caseFirst?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -88,6 +92,8 @@ The default value is **default**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CollatorOptions-collation?: string--><!--Device-CollatorOptions-collation?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## ignorePunctuation
@@ -105,6 +111,8 @@ The default value is **false**.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CollatorOptions-ignorePunctuation?: boolean--><!--Device-CollatorOptions-ignorePunctuation?: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -128,6 +136,8 @@ The default value is **best fit**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CollatorOptions-localeMatcher?: string--><!--Device-CollatorOptions-localeMatcher?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## numeric
@@ -148,6 +158,8 @@ The default value is **false**.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CollatorOptions-numeric?: boolean--><!--Device-CollatorOptions-numeric?: boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -175,6 +187,8 @@ The default value is **variant**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CollatorOptions-sensitivity?: string--><!--Device-CollatorOptions-sensitivity?: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## usage
@@ -195,5 +209,7 @@ The default value is **sort**.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CollatorOptions-usage?: string--><!--Device-CollatorOptions-usage?: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

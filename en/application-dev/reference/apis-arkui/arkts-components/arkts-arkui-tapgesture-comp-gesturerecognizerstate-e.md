@@ -8,6 +8,8 @@ Enumerates the gesture recognizer states.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum GestureRecognizerState--><!--Device-unnamed-declare enum GestureRecognizerState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## READY
@@ -23,6 +25,8 @@ Ready.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureRecognizerState-READY = 0--><!--Device-GestureRecognizerState-READY = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Detecting.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureRecognizerState-DETECTING = 1--><!--Device-GestureRecognizerState-DETECTING = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PENDING
@@ -55,6 +61,8 @@ Pending.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureRecognizerState-PENDING = 2--><!--Device-GestureRecognizerState-PENDING = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Blocked.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureRecognizerState-BLOCKED = 3--><!--Device-GestureRecognizerState-BLOCKED = 3-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SUCCESSFUL
@@ -88,6 +98,8 @@ Successful.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureRecognizerState-SUCCESSFUL = 4--><!--Device-GestureRecognizerState-SUCCESSFUL = 4-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FAILED
@@ -103,5 +115,7 @@ Failed.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GestureRecognizerState-FAILED = 5--><!--Device-GestureRecognizerState-FAILED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

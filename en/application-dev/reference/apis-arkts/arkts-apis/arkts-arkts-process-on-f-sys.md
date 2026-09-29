@@ -16,6 +16,8 @@ Register for an event
 
 **Since:** 7
 
+<!--Device-process-function on(type: string, listener: EventListener): void--><!--Device-process-function on(type: string, listener: EventListener): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.

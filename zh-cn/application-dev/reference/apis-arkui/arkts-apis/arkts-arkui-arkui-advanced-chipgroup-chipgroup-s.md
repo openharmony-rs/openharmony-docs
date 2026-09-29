@@ -14,6 +14,8 @@ ChipGroup组件提供操作块群组能力，支持单选或多选模式，可�
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-export declare struct ChipGroup--><!--Device-unnamed-export declare struct ChipGroup-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -44,6 +46,8 @@ backgroundSystemMaterial?: uiMaterial.Material
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroup-backgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroup-backgroundSystemMaterial?: uiMaterial.Material-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## chipGroupPadding
@@ -69,6 +73,8 @@ chipGroupPadding?: ChipGroupPaddingOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroup-chipGroupPadding?: ChipGroupPaddingOptions--><!--Device-ChipGroup-chipGroupPadding?: ChipGroupPaddingOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,6 +102,8 @@ chipGroupSpace?: ChipGroupSpaceOptions
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroup-chipGroupSpace?: ChipGroupSpaceOptions--><!--Device-ChipGroup-chipGroupSpace?: ChipGroupSpaceOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## items
@@ -117,6 +125,8 @@ items: ChipGroupItemOptions[]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroup-items: ChipGroupItemOptions[]--><!--Device-ChipGroup-items: ChipGroupItemOptions[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +154,8 @@ itemStyle?: ChipItemStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroup-itemStyle?: ChipItemStyle--><!--Device-ChipGroup-itemStyle?: ChipItemStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## multiple
@@ -170,6 +182,8 @@ multiple?: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroup-multiple?: boolean--><!--Device-ChipGroup-multiple?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onChange
@@ -189,6 +203,8 @@ Chip状态改变时的回调方法，用于监听Chip选中状态的变更。该
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroup-onChange?: Callback<Array<number>>--><!--Device-ChipGroup-onChange?: Callback<Array<number>>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -213,6 +229,8 @@ selectedBackgroundSystemMaterial?: uiMaterial.Material
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroup-selectedBackgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroup-selectedBackgroundSystemMaterial?: uiMaterial.Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -244,6 +262,8 @@ selectedIndexes?: Array<number>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroup-selectedIndexes?: Array<number>--><!--Device-ChipGroup-selectedIndexes?: Array<number>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## suffix
@@ -267,5 +287,7 @@ suffix?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroup-suffix?: Callback<void>--><!--Device-ChipGroup-suffix?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines HTTP interceptor chain.
 
 **Since:** 22
 
+<!--Device-http-export class HttpInterceptorChain--><!--Device-http-export class HttpInterceptorChain-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Adds an interceptor to the HTTP client.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HttpInterceptorChain-public addChain(chain: HttpInterceptor[]): boolean--><!--Device-HttpInterceptorChain-public addChain(chain: HttpInterceptor[]): boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -146,6 +150,8 @@ Adds an interceptor chain to the target HTTP request. Each HTTP request instance
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HttpInterceptorChain-public apply(httpRequest: HttpRequest): boolean--><!--Device-HttpInterceptorChain-public apply(httpRequest: HttpRequest): boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -266,6 +272,8 @@ Obtains all interceptor instances in the current interceptor chain.
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-HttpInterceptorChain-public getChain(): HttpInterceptor[]--><!--Device-HttpInterceptorChain-public getChain(): HttpInterceptor[]-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 

@@ -16,7 +16,9 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPWindow-function create(config: PiPConfiguration): Promise<PiPController>--><!--Device-PiPWindow-function create(config: PiPConfiguration): Promise<PiPController>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,7 +38,7 @@ function create(config: PiPConfiguration): Promise<PiPController>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 
@@ -154,7 +156,9 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>--><!--Device-PiPWindow-function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise<PiPController>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -175,7 +179,7 @@ function create(config: PiPConfiguration, contentNode: typeNode.XComponent): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例**
 

@@ -24,6 +24,8 @@ Queries whether fingerprint authentication is disabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function isFingerprintAuthDisabled(admin: Want): boolean--><!--Device-restrictions-function isFingerprintAuthDisabled(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

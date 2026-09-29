@@ -10,6 +10,8 @@ Describes the tone mapping settings.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ToneMappingSettings--><!--Device-unnamed-export interface ToneMappingSettings-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## exposure
@@ -24,6 +26,8 @@ Exposure. The value must be greater than 0. The default value is undefined.
 
 **Since:** 12
 
+<!--Device-ToneMappingSettings-exposure?: double--><!--Device-ToneMappingSettings-exposure?: double-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## type
@@ -37,5 +41,7 @@ Tone mapping type. The default value is undefined.
 **Type:** [ToneMappingType](arkts-arkgraphics3d-scenepostprocesssettings-tonemappingtype-e.md)
 
 **Since:** 12
+
+<!--Device-ToneMappingSettings-type?: ToneMappingType--><!--Device-ToneMappingSettings-type?: ToneMappingType-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

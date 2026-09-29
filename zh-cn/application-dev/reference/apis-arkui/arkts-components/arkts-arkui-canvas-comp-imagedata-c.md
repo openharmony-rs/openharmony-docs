@@ -13,6 +13,8 @@ ImageData对象用于存储Canvas渲染的像素数据，支持对像素进行�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class ImageData--><!--Device-unnamed-declare class ImageData-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -30,6 +32,8 @@ constructor(width: number, height: number, data?: Uint8ClampedArray)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray)--><!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: Leng
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)--><!--Device-ImageData-constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ readonly data: Uint8ClampedArray
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ImageData-readonly data: Uint8ClampedArray--><!--Device-ImageData-readonly data: Uint8ClampedArray-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -115,6 +123,8 @@ readonly height: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageData-readonly height: number--><!--Device-ImageData-readonly height: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,5 +150,7 @@ readonly width: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ImageData-readonly width: number--><!--Device-ImageData-readonly width: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

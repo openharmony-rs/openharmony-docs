@@ -8,6 +8,8 @@ Represents a USB port.
 
 **Since:** 9
 
+<!--Device-usbManager-interface USBPort--><!--Device-usbManager-interface USBPort-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Unique identifier of a USB port.
 
 **Since:** 9
 
+<!--Device-USBPort-id: int--><!--Device-USBPort-id: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ USB port role information. **currentMode** must be within the range of **support
 
 **Since:** 9
 
+<!--Device-USBPort-status: USBPortStatus--><!--Device-USBPort-status: USBPortStatus-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Numeric mask combination for the supported mode list. **status.currentMode** mus
 **Type:** [PortModeType](arkts-basicservices-usbmanager-portmodetype-e-sys.md)
 
 **Since:** 9
+
+<!--Device-USBPort-supportedModes: PortModeType--><!--Device-USBPort-supportedModes: PortModeType-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

@@ -16,7 +16,9 @@ Checks whether logs are printable based on the specified service domain, log tag
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-hilog-function isLoggable(domain: int, tag: string, level: LogLevel): boolean--><!--Device-hilog-function isLoggable(domain: int, tag: string, level: LogLevel): boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiLog
 

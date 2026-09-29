@@ -16,6 +16,8 @@ Checks whether the current device supports NR.
 
 **Since:** 9
 
+<!--Device-radio-function isNRSupported(): boolean--><!--Device-radio-function isNRSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Return value:**
@@ -43,6 +45,8 @@ function isNRSupported(slotId: number): boolean
 Checks whether the SIM card in the specified slot supports NR.
 
 **Since:** 9
+
+<!--Device-radio-function isNRSupported(slotId: int): boolean--><!--Device-radio-function isNRSupported(slotId: int): boolean-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

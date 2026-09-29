@@ -8,6 +8,8 @@ Provides APIs for observing events. listening for the distributed file system st
 
 **Since:** 12
 
+<!--Device-unnamed-export interface DfsListeners--><!--Device-unnamed-export interface DfsListeners-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -25,6 +27,8 @@ onStatus(networkId: string, status: number): void
 Called to return the specified status. Its parameters are passed in by [connectDfs](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioconnectdfs12).
 
 **Since:** 12
+
+<!--Device-DfsListeners-onStatus(networkId: string, status: number): void--><!--Device-DfsListeners-onStatus(networkId: string, status: number): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

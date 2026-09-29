@@ -18,6 +18,8 @@ Remove all the saved Wi-Fi configurations.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function removeAllNetwork(): void--><!--Device-wifiManager-function removeAllNetwork(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

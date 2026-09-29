@@ -18,6 +18,8 @@ Obtains the voice mailbox number of the SIM card in a specified slot.
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
 
+<!--Device-sim-function getVoiceMailNumber(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sim-function getVoiceMailNumber(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Obtains the voice mailbox number of the SIM card in a specified slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.GET_TELEPHONY_STATE
+
+<!--Device-sim-function getVoiceMailNumber(slotId: int): Promise<string>--><!--Device-sim-function getVoiceMailNumber(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

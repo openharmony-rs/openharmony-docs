@@ -8,6 +8,8 @@ JS cross-thread communication tool
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace worker--><!--Device-unnamed-declare namespace worker-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

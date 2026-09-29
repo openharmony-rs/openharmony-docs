@@ -19,6 +19,8 @@ Removes a directory. This API returns the result synchronously.
 
 **Substitutes:** [rmdirSync](arkts-corefile-file-fs-rmdirsync-f.md)
 
+<!--Device-unnamed-declare function rmdirSync(path: string): void--><!--Device-unnamed-declare function rmdirSync(path: string): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

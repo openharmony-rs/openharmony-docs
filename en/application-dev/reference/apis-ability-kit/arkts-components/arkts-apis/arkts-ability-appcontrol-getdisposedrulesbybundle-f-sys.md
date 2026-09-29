@@ -20,6 +20,8 @@ Query all disposed rules under the current user for the specified bundle name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-appControl-function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>--><!--Device-appControl-function getDisposedRulesByBundle(bundleName: string): Array<DisposedRuleConfiguration>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.

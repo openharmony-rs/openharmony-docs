@@ -18,6 +18,8 @@ Cancels the listener for changes in the list of enabled accessibility extensions
 
 **Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
 
+<!--Device-config-function off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback<void>): void--><!--Device-config-function off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ Cancels the listener for changes in the list of installed accessibility extensio
 **Since:** 12
 
 **Required permissions:** ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+<!--Device-config-function off(type: 'installedAccessibilityListChange', callback?: Callback<void>): void--><!--Device-config-function off(type: 'installedAccessibilityListChange', callback?: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

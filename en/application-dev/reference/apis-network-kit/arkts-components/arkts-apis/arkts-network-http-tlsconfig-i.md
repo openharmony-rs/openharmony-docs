@@ -8,6 +8,8 @@ Defines the TLS configuration, including the version and cipher suite.
 
 **Since:** 18
 
+<!--Device-http-export interface TlsConfig--><!--Device-http-export interface TlsConfig-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Array of cipher suite types. If no cipher suite type is set, all supported ciphe
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-TlsConfig-cipherSuites?: CipherSuite[]--><!--Device-TlsConfig-cipherSuites?: CipherSuite[]-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -44,7 +48,9 @@ Latest TLS version.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-TlsConfig-tlsVersionMax: TlsVersion--><!--Device-TlsConfig-tlsVersionMax: TlsVersion-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -60,6 +66,8 @@ Earliest TLS version.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-TlsConfig-tlsVersionMin: TlsVersion--><!--Device-TlsConfig-tlsVersionMin: TlsVersion-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

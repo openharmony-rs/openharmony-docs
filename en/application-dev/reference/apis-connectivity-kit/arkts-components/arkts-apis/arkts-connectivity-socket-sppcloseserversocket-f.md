@@ -16,6 +16,8 @@ Disables an spp server socket and releases related resources.
 
 **Since:** 10
 
+<!--Device-socket-function sppCloseServerSocket(socket: int): void--><!--Device-socket-function sppCloseServerSocket(socket: int): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

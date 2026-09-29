@@ -20,6 +20,8 @@ Unsubscribe from the rtt modify indication.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-call-function offRttModifyInd(callback?: Callback<RttEventInfo>): void--><!--Device-call-function offRttModifyInd(callback?: Callback<RttEventInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

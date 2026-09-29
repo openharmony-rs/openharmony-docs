@@ -8,6 +8,8 @@ enum PressureLevel
 
 **起始版本：** 14
 
+<!--Device-webview-enum PressureLevel--><!--Device-webview-enum PressureLevel-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## MEMORY_PRESSURE_LEVEL_MODERATE
@@ -22,6 +24,8 @@ MEMORY_PRESSURE_LEVEL_MODERATE = 1
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## MEMORY_PRESSURE_LEVEL_CRITICAL
@@ -35,5 +39,7 @@ MEMORY_PRESSURE_LEVEL_CRITICAL = 2
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_CRITICAL = 2--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_CRITICAL = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

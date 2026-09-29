@@ -8,6 +8,8 @@ Describes gzip-related APIs.
 
 **Since:** 12
 
+<!--Device-zlib-interface GZip--><!--Device-zlib-interface GZip-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Sets the internal buffer size for the current library function. This API uses a 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzbuffer(size: long): Promise<int>--><!--Device-GZip-gzbuffer(size: long): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -100,7 +104,9 @@ Clears the errors and end-of-file flags of a file. This API uses a promise to re
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzclearerr(): Promise<void>--><!--Device-GZip-gzclearerr(): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -171,7 +177,9 @@ Clears all pending output of the file. Closes the file and releases the decompre
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzclose(): Promise<ReturnStatus>--><!--Device-GZip-gzclose(): Promise<ReturnStatus>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -236,7 +244,9 @@ Implements the same functions as that of **gzclose()** for reading only. This AP
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzcloser(): Promise<ReturnStatus>--><!--Device-GZip-gzcloser(): Promise<ReturnStatus>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -302,7 +312,9 @@ Implements the same functions as that of **gzclose()** for writing or appending.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzclosew(): Promise<ReturnStatus>--><!--Device-GZip-gzclosew(): Promise<ReturnStatus>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -367,7 +379,9 @@ Checks whether the specified gzip file handle directly accesses the original unc
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzdirect(): Promise<int>--><!--Device-GZip-gzdirect(): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -426,7 +440,9 @@ Associates gzip file with the file descriptor (fd) and opens the file for readin
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzdopen(fd: int, mode: string): Promise<void>--><!--Device-GZip-gzdopen(fd: int, mode: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -499,7 +515,9 @@ Checks whether the position from which data is read has reached the end of the g
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzeof(): Promise<int>--><!--Device-GZip-gzeof(): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -568,7 +586,9 @@ Describes the last error message that reported for the file. This API uses a pro
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzerror(): Promise<GzErrorOutputInfo>--><!--Device-GZip-gzerror(): Promise<GzErrorOutputInfo>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -645,7 +665,9 @@ Flushes all pending output into a compressed file. This API uses a promise to re
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzflush(flush: CompressFlushMode): Promise<ReturnStatus>--><!--Device-GZip-gzflush(flush: CompressFlushMode): Promise<ReturnStatus>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -717,7 +739,9 @@ Decompresses and reads data from a gzip file. This API uses a promise to return 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzfread(buf: ArrayBuffer, size: long, nitems: long): Promise<long>--><!--Device-GZip-gzfread(buf: ArrayBuffer, size: long, nitems: long): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -800,7 +824,9 @@ Compresses data blocks that are declared with size and nitems from the buffer an
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzfwrite(buf: ArrayBuffer, size: long, nitems: long): Promise<long>--><!--Device-GZip-gzfwrite(buf: ArrayBuffer, size: long, nitems: long): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -879,7 +905,9 @@ Reads and decompresses a byte from a file. This API uses a promise to return the
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzgetc(): Promise<int>--><!--Device-GZip-gzgetc(): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -947,7 +975,9 @@ Reads bytes from a compressed file until len-1 characters are read, a newline ch
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzgets(buf: ArrayBuffer): Promise<string>--><!--Device-GZip-gzgets(buf: ArrayBuffer): Promise<string>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1023,7 +1053,9 @@ Returns the current compressed read or write offset of the file. This API uses a
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzoffset(): Promise<long>--><!--Device-GZip-gzoffset(): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1088,7 +1120,9 @@ Opens the .gz file in the specified path for reading and decompressing, or compr
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzopen(path: string, mode: string): Promise<void>--><!--Device-GZip-gzopen(path: string, mode: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1160,7 +1194,9 @@ Converts and formats the parameters under the control of the string format and t
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzprintf(format: string, ...args: Array<string | double>): Promise<int>--><!--Device-GZip-gzprintf(format: string, ...args: Array<string | double>): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1234,7 +1270,9 @@ Compresses **char** converted to an unsigned character and writes it to a file. 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzputc(ch: int): Promise<int>--><!--Device-GZip-gzputc(ch: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1306,7 +1344,9 @@ Compresses the given null-terminated strings and writes them to the file, exclud
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzputs(str: string): Promise<int>--><!--Device-GZip-gzputs(str: string): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1378,7 +1418,9 @@ Reads a maximum of **len** uncompressed bytes from a file and decompresses them 
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzread(buf: ArrayBuffer): Promise<long>--><!--Device-GZip-gzread(buf: ArrayBuffer): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1459,7 +1501,9 @@ Repositions the file pointer to the beginning of the file. This feature is appli
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzrewind(): Promise<ReturnStatus>--><!--Device-GZip-gzrewind(): Promise<ReturnStatus>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1526,7 +1570,9 @@ Sets the start position to the offset position relative to the next **gzread** o
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzseek(offset: long, whence: OffsetReferencePoint): Promise<long>--><!--Device-GZip-gzseek(offset: long, whence: OffsetReferencePoint): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1599,7 +1645,9 @@ Dynamically updates the compression level and compression strategy of a file. Th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise<ReturnStatus>--><!--Device-GZip-gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise<ReturnStatus>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1673,7 +1721,9 @@ Returns the start position of the next **gzread** or **gzwrite** in the file. Th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gztell(): Promise<long>--><!--Device-GZip-gztell(): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1738,7 +1788,9 @@ Pushes **c** back into the input stream so that it will be read as the first cha
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzungetc(c: int): Promise<int>--><!--Device-GZip-gzungetc(c: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -1813,7 +1865,9 @@ Compresses the uncompressed bytes of the declared length in the buffer and write
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GZip-gzwrite(buf: ArrayBuffer, len: long): Promise<long>--><!--Device-GZip-gzwrite(buf: ArrayBuffer, len: long): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 

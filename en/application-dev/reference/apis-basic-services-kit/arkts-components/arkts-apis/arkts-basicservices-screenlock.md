@@ -6,6 +6,8 @@ systemScreenLock
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace screenLock--><!--Device-unnamed-declare namespace screenLock-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 ## Modules to Import
@@ -59,6 +61,14 @@ import { screenLock } from '@kit.BasicServicesKit';
 <!--DelEnd-->
 
 <!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [EventType](arkts-basicservices-screenlock-eventtype-t-sys.md) | Indicates the system event type related to the screen lock management service. Added unlockPolicyChanged. |
+<!--DelEnd-->
+
+<!--Del-->
 ### Enums(System API)
 
 | Name | Description |
@@ -66,12 +76,4 @@ import { screenLock } from '@kit.BasicServicesKit';
 | [AuthState](arkts-basicservices-screenlock-authstate-e-sys.md) | Indicates the screen lock authentication state. |
 | [StrongAuthReasonFlags](arkts-basicservices-screenlock-strongauthreasonflags-e-sys.md) | Indicates the strong authentication reason flags used to request. |
 | [UnlockPolicy](arkts-basicservices-screenlock-unlockpolicy-e-sys.md) | Indicates the screen lock authentication policy used to unlock the screen. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [EventType](arkts-basicservices-screenlock-eventtype-t-sys.md) | Indicates the system event type related to the screen lock management service. Added unlockPolicyChanged. |
 <!--DelEnd-->

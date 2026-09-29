@@ -20,6 +20,8 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Substitutes:** [prepareCooperate](arkts-distributedservice-cooperate-preparecooperate-f-sys.md)(callback: AsyncCallback&lt;void&gt;)
 
+<!--Device-cooperate-function prepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function prepare(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Prepares for screen hopping. This API uses a promise to return the result.
 **Deprecated since:** 11
 
 **Substitutes:** [prepareCooperate](arkts-distributedservice-cooperate-preparecooperate-f-sys.md)()
+
+<!--Device-cooperate-function prepare(): Promise<void>--><!--Device-cooperate-function prepare(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

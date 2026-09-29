@@ -15,6 +15,8 @@ A linear data structure that is implemented on arrays. A bit vector stores bit v
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class BitVector--><!--Device-collections-class BitVector-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Returns an iterator that iterates over bit vector.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-[Symbol.iterator](): IterableIterator<number>--><!--Device-BitVector-[Symbol.iterator](): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -61,6 +65,8 @@ Constructor used to create a bit vector.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-constructor(length: number)--><!--Device-BitVector-constructor(length: number)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -80,6 +86,8 @@ Flips the bit value (from 0 to 1 or from 1 to 0) at a given index in this bit ve
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-flipBitByIndex(index: number): void--><!--Device-BitVector-flipBitByIndex(index: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -109,6 +117,8 @@ Flips the bit values (from 0 to 1 or from 1 to 0) in a given range in this bit v
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-flipBitsByRange(fromIndex: number, toIndex: number): void--><!--Device-BitVector-flipBitsByRange(fromIndex: number, toIndex: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -137,6 +147,8 @@ Counts the number of bit values in a given range of this bit vector.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-getBitCountByRange(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getBitCountByRange(element: number, fromIndex: number, toIndex: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -174,6 +186,8 @@ Obtains bit values within a given range of this bit vector.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-getBitsByRange(fromIndex: number, toIndex: number): BitVector--><!--Device-BitVector-getBitsByRange(fromIndex: number, toIndex: number): BitVector-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -208,6 +222,8 @@ Returns the index of the first occurrence of a bit value in this bit vector. If 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-getIndexOf(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getIndexOf(element: number, fromIndex: number, toIndex: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -245,6 +261,8 @@ Returns the index of the last occurrence of a bit value in this bit vector. If t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number--><!--Device-BitVector-getLastIndexOf(element: number, fromIndex: number, toIndex: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -280,6 +298,8 @@ Checks whether a bit value is included in a given range of this bit vector.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-has(element: number, fromIndex: number, toIndex: number): boolean--><!--Device-BitVector-has(element: number, fromIndex: number, toIndex: number): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -317,6 +337,8 @@ Removes the last element from this bit vector.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-pop(): number--><!--Device-BitVector-pop(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -343,6 +365,8 @@ Adds an element at the end of this bit vector.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-push(element: number): boolean--><!--Device-BitVector-push(element: number): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -377,6 +401,8 @@ Resizes this bit vector. If **size** is greater than the length of the existing 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-resize(size: number): void--><!--Device-BitVector-resize(size: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -404,6 +430,8 @@ Sets all elements in this bit vector to a bit value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-setAllBits(element: number): void--><!--Device-BitVector-setAllBits(element: number): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -430,6 +458,8 @@ Sets elements in a given range in this bit vector to a bit value.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-setBitsByRange(element: number, fromIndex: number, toIndex: number): void--><!--Device-BitVector-setBitsByRange(element: number, fromIndex: number, toIndex: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -461,6 +491,8 @@ Returns an iterator object that contains the value of each element in this bit v
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-values(): IterableIterator<number>--><!--Device-BitVector-values(): IterableIterator<number>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -490,6 +522,8 @@ Returns the item at that index.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BitVector-[index: number]: number--><!--Device-BitVector-[index: number]: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## length
@@ -505,5 +539,7 @@ Number of elements in a bit vector.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BitVector-readonly length: number--><!--Device-BitVector-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

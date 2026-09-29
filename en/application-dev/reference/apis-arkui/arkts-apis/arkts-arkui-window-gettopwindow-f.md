@@ -22,6 +22,8 @@ Obtains the top window of the current application. This API uses an asynchronous
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-window-function getTopWindow(callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(callback: AsyncCallback<Window>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters:**
@@ -66,6 +68,8 @@ Obtains the top window of the current application. This API uses a promise to re
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-window-function getTopWindow(): Promise<Window>--><!--Device-window-function getTopWindow(): Promise<Window>-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Return value:**
@@ -105,6 +109,8 @@ Obtains the top window of the current application. This API uses a promise to re
 **Deprecated since:** 9
 
 **Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext)
+
+<!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -158,6 +164,8 @@ Obtains the top window of the current application. This API uses an asynchronous
 **Deprecated since:** 9
 
 **Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+
+<!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

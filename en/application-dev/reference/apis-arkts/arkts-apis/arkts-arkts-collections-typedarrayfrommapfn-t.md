@@ -10,6 +10,8 @@ Describes the mapping function of the ArkTS typed array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-collections-type TypedArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType--><!--Device-collections-type TypedArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

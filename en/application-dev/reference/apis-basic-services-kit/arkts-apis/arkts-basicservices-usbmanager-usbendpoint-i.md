@@ -21,6 +21,8 @@ Defines a USB endpoint, which is used for data transfer between the host and the
 
 **Since:** 9
 
+<!--Device-usbManager-interface USBEndpoint--><!--Device-usbManager-interface USBEndpoint-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Endpoint address.
 
 **Since:** 9
 
+<!--Device-USBEndpoint-address: int--><!--Device-USBEndpoint-address: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## attributes
@@ -54,6 +58,8 @@ Endpoint attributes, indicating the transfer characteristics of the endpoint, in
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBEndpoint-attributes: int--><!--Device-USBEndpoint-attributes: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -69,6 +75,8 @@ Endpoint direction.
 
 **Since:** 9
 
+<!--Device-USBEndpoint-direction: USBRequestDirection--><!--Device-USBEndpoint-direction: USBRequestDirection-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## interfaceId
@@ -82,6 +90,8 @@ Unique ID of the interface to which the endpoint belongs.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBEndpoint-interfaceId: int--><!--Device-USBEndpoint-interfaceId: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -97,6 +107,8 @@ Endpoint interval, in milliseconds. This parameter indicates the interval for in
 
 **Since:** 9
 
+<!--Device-USBEndpoint-interval: int--><!--Device-USBEndpoint-interval: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## maxPacketSize
@@ -110,6 +122,8 @@ Maximum size of data packets on the endpoint, in bytes.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBEndpoint-maxPacketSize: int--><!--Device-USBEndpoint-maxPacketSize: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -125,6 +139,8 @@ Endpoint number.
 
 **Since:** 9
 
+<!--Device-USBEndpoint-number: number--><!--Device-USBEndpoint-number: number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## type
@@ -138,5 +154,7 @@ Endpoint type. For details, see [UsbEndpointTransferType](arkts-basicservices-us
 **Type:** number
 
 **Since:** 9
+
+<!--Device-USBEndpoint-type: int--><!--Device-USBEndpoint-type: int-End-->
 
 **System capability:** SystemCapability.USB.USBManager

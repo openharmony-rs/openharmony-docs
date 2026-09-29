@@ -20,6 +20,8 @@ Queries the NearLink name on the local device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function getLocalName(): string--><!--Device-manager-function getLocalName(): string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**

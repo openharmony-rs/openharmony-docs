@@ -8,6 +8,8 @@ Describes the transferred file information.
 
 **Since:** 16
 
+<!--Device-opp-interface OppTransferInformation--><!--Device-opp-interface OppTransferInformation-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Number of bytes of the file that have been transferred currently
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppTransferInformation-currentBytes: long--><!--Device-OppTransferInformation-currentBytes: long-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Number of files currently transferred
 **Since:** 16
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppTransferInformation-currentCount: int--><!--Device-OppTransferInformation-currentCount: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -68,6 +74,8 @@ File Transfer Direction
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppTransferInformation-direction: DirectionType--><!--Device-OppTransferInformation-direction: DirectionType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Path of the file to be transferred.
 **Since:** 16
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppTransferInformation-filePath: string--><!--Device-OppTransferInformation-filePath: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -104,6 +114,8 @@ Device Address of the peer transmission object
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppTransferInformation-remoteDeviceId: string--><!--Device-OppTransferInformation-remoteDeviceId: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -121,6 +133,8 @@ Device name of the peer transmission object
 **Since:** 16
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppTransferInformation-remoteDeviceName: string--><!--Device-OppTransferInformation-remoteDeviceName: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -140,6 +154,8 @@ File transfer result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppTransferInformation-result: TransferResult--><!--Device-OppTransferInformation-result: TransferResult-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -157,6 +173,8 @@ File transfer status
 **Since:** 16
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppTransferInformation-status: TransferStatus--><!--Device-OppTransferInformation-status: TransferStatus-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -176,6 +194,8 @@ Total number of file bytes to transfer
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-OppTransferInformation-totalBytes: long--><!--Device-OppTransferInformation-totalBytes: long-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -193,6 +213,8 @@ Total number of transferred files
 **Since:** 16
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OppTransferInformation-totalCount: int--><!--Device-OppTransferInformation-totalCount: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

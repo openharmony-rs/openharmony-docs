@@ -14,4 +14,6 @@ The @Extend decorator is used to extend the styles of specified components. It s
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare const Extend: MethodDecorator & ((value: any) => MethodDecorator)--><!--Device-unnamed-declare const Extend: MethodDecorator & ((value: any) => MethodDecorator)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

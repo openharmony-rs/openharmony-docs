@@ -23,6 +23,8 @@ Disables proactive awareness on screen content and unsubscribes from a screen aw
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-onScreen-function unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback<OnscreenAwarenessInfo[]>): void--><!--Device-onScreen-function unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback<OnscreenAwarenessInfo[]>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **System API:** This is a system API.

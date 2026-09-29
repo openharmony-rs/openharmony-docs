@@ -8,6 +8,8 @@ Disk type.
 
 **Since:** 26.0.0
 
+<!--Device-volumeManager-export enum DiskType--><!--Device-volumeManager-export enum DiskType-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ The type of sd card.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-SD_CARD = 1--><!--Device-DiskType-SD_CARD = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -40,6 +44,8 @@ The type of usb flash.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DiskType-USB_FLASH = 2--><!--Device-DiskType-USB_FLASH = 2-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ The type of CD_DVD_BD.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-CD_DVD_BD = 3--><!--Device-DiskType-CD_DVD_BD = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -72,6 +80,8 @@ The type of ssd data disk.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DiskType-DATA_DISK_SSD = 4--><!--Device-DiskType-DATA_DISK_SSD = 4-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -87,6 +97,8 @@ The type of hdd data disk.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-DATA_DISK_HDD = 5--><!--Device-DiskType-DATA_DISK_HDD = 5-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
@@ -104,6 +116,8 @@ The type of DVR USB.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DiskType-DVR_USB =  6--><!--Device-DiskType-DVR_USB =  6-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.
@@ -119,6 +133,8 @@ Unknown disk type.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiskType-UNKNOWN_DISK_TYPE = 255--><!--Device-DiskType-UNKNOWN_DISK_TYPE = 255-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 

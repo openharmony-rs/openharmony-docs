@@ -10,6 +10,8 @@ declare enum WidthBreakpoint
 
 **起始版本：** 13
 
+<!--Device-unnamed-declare enum WidthBreakpoint--><!--Device-unnamed-declare enum WidthBreakpoint-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_XS
@@ -25,6 +27,8 @@ WIDTH_XS = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,6 +46,8 @@ WIDTH_SM = 1
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_MD
@@ -57,6 +63,8 @@ WIDTH_MD = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-WidthBreakpoint-WIDTH_MD = 2--><!--Device-WidthBreakpoint-WIDTH_MD = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +82,8 @@ WIDTH_LG = 3
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WIDTH_XL
@@ -89,5 +99,7 @@ WIDTH_XL = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-WidthBreakpoint-WIDTH_XL = 4--><!--Device-WidthBreakpoint-WIDTH_XL = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

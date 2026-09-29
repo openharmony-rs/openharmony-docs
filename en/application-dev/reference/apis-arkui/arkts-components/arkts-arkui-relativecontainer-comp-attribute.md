@@ -17,6 +17,8 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Since:** 9
 
+<!--Device-unnamed-declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>--><!--Device-unnamed-declare class RelativeContainerAttribute extends CommonMethod<RelativeContainerAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## barrier
@@ -32,6 +34,8 @@ Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#sett
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeContainerAttribute-barrier(value: Array<BarrierStyle>): RelativeContainerAttribute--><!--Device-RelativeContainerAttribute-barrier(value: Array<BarrierStyle>): RelativeContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ Sets barriers in the **RelativeContainer**. Child components can use a barrier a
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RelativeContainerAttribute-barrier(barrierStyle: Array<LocalizedBarrierStyle>): RelativeContainerAttribute--><!--Device-RelativeContainerAttribute-barrier(barrierStyle: Array<LocalizedBarrierStyle>): RelativeContainerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -78,6 +84,8 @@ Sets the [guidelines](../../../ui/arkts-layout-development-relative-layout.md#po
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeContainerAttribute-guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute--><!--Device-RelativeContainerAttribute-guideLine(value: Array<GuideLineStyle>): RelativeContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

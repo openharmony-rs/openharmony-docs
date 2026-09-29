@@ -4,6 +4,8 @@ The **hiTraceChain** module implements call chain trace throughout a service pro
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace hiTraceChain--><!--Device-unnamed-declare namespace hiTraceChain-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 ## Modules to Import

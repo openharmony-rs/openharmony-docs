@@ -20,6 +20,8 @@ Subscribes to notifications. After the subscription, the new message is received
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber): Promise<void>--><!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -80,6 +82,8 @@ Subscribes to notifications. After the subscription, the new message is received
 **Required permissions:** ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo): Promise<void>--><!--Device-notificationSubscribe-function subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

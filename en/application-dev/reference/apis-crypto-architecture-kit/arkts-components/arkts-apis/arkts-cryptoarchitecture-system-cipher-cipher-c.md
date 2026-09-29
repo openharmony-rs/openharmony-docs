@@ -12,6 +12,8 @@ Defines the cipher functions.
 
 **Substitutes:** Cipher
 
+<!--Device-unnamed-export default class Cipher--><!--Device-unnamed-export default class Cipher-End-->
+
 **System capability:** SystemCapability.Security.Cipher
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Encrypts or decrypts data using AES.
 
 **Substitutes:** Cipher
 
+<!--Device-Cipher-static aes(options: CipherAesOptions): void--><!--Device-Cipher-static aes(options: CipherAesOptions): void-End-->
+
 **System capability:** SystemCapability.Security.Cipher
 
 **Parameters:**
@@ -55,6 +59,8 @@ Encrypts or decrypts data using RSA.
 **Deprecated since:** 9
 
 **Substitutes:** Cipher
+
+<!--Device-Cipher-static rsa(options: CipherRsaOptions): void--><!--Device-Cipher-static rsa(options: CipherRsaOptions): void-End-->
 
 **System capability:** SystemCapability.Security.Cipher
 

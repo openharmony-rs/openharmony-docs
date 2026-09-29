@@ -12,6 +12,8 @@ Lightweight storage provides applications with data processing capability and al
 
 **Substitutes:** preferences
 
+<!--Device-unnamed-declare namespace storage--><!--Device-unnamed-declare namespace storage-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 ## Modules to Import

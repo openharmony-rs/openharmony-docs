@@ -6,6 +6,8 @@ xts_device_attest authResult information
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace deviceAttest--><!--Device-unnamed-declare namespace deviceAttest-End-->
+
 **System capability:** SystemCapability.XTS.DeviceAttest
 
 ## Modules to Import

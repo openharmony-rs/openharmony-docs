@@ -18,6 +18,8 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
 
+<!--Device-cooperate-function getCooperateSwitchState(networkId: string, callback: AsyncCallback<boolean>): void--><!--Device-cooperate-function getCooperateSwitchState(networkId: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 **Since:** 11
 
 **Required permissions:** ohos.permission.COOPERATE_MANAGER
+
+<!--Device-cooperate-function getCooperateSwitchState(networkId: string): Promise<boolean>--><!--Device-cooperate-function getCooperateSwitchState(networkId: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Msdp.DeviceStatus.Cooperate
 

@@ -8,6 +8,8 @@ Implements audio effect management. @typedef AudioEffectManager
 
 **Since:** 18
 
+<!--Device-audio-interface AudioEffectManager--><!--Device-audio-interface AudioEffectManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Gets current audio effect properties.
 **Since:** 18
 
 **Required permissions:** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
+
+<!--Device-AudioEffectManager-getAudioEffectProperty(): Array<AudioEffectProperty>--><!--Device-AudioEffectManager-getAudioEffectProperty(): Array<AudioEffectProperty>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -74,6 +78,8 @@ Gets supported audio effect properties based on current devices.
 
 **Required permissions:** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
+<!--Device-AudioEffectManager-getSupportedAudioEffectProperty(): Array<AudioEffectProperty>--><!--Device-AudioEffectManager-getSupportedAudioEffectProperty(): Array<AudioEffectProperty>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -118,6 +124,8 @@ Checks whether the current device supports audio separation effect in system.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioEffectManager-isAudioSeparationEffectSupported(): boolean--><!--Device-AudioEffectManager-isAudioSeparationEffectSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **System API:** This is a system API.
@@ -154,6 +162,8 @@ Unsubscribes from the system audio separation effect enabled state change event.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-offAudioSeparationEffectEnabledChange(callback?: Callback<boolean>): void--><!--Device-AudioEffectManager-offAudioSeparationEffectEnabledChange(callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -192,6 +202,8 @@ Subscribes to system audio separation effect enabled state change event. The aud
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioEffectManager-onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void--><!--Device-AudioEffectManager-onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
 **System API:** This is a system API.
@@ -229,6 +241,8 @@ Sets current audio effect properties.
 **Since:** 18
 
 **Required permissions:** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
+
+<!--Device-AudioEffectManager-setAudioEffectProperty(propertyArray: Array<AudioEffectProperty>): void--><!--Device-AudioEffectManager-setAudioEffectProperty(propertyArray: Array<AudioEffectProperty>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -277,6 +291,8 @@ Sets audio separation effect enable or disable for specific application process,
 **Required permissions:** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-setAudioSeparationEffectEnabled(enabled: boolean, uid: int, streamId?: long): Promise<void>--><!--Device-AudioEffectManager-setAudioSeparationEffectEnabled(enabled: boolean, uid: int, streamId?: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 
@@ -332,6 +348,8 @@ Sets audio separation effect volume for specific volume type. This API uses a pr
 **Required permissions:** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: double): Promise<void>--><!--Device-AudioEffectManager-setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Renderer
 

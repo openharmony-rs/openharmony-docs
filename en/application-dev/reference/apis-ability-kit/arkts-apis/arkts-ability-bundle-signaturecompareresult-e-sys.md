@@ -10,6 +10,8 @@ Signature verification result.
 
 **Deprecated since:** 10
 
+<!--Device-bundle-export enum SignatureCompareResult--><!--Device-bundle-export enum SignatureCompareResult-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Signatures match.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-SignatureCompareResult-SIGNATURE_MATCHED = 0--><!--Device-SignatureCompareResult-SIGNATURE_MATCHED = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -42,6 +46,8 @@ Signatures do not match.
 
 **Deprecated since:** 10
 
+<!--Device-SignatureCompareResult-SIGNATURE_NOT_MATCHED = 1--><!--Device-SignatureCompareResult-SIGNATURE_NOT_MATCHED = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -57,6 +63,8 @@ The bundle corresponding to the signature is unknown.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-SignatureCompareResult-SIGNATURE_UNKNOWN_BUNDLE = 2--><!--Device-SignatureCompareResult-SIGNATURE_UNKNOWN_BUNDLE = 2-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

@@ -18,6 +18,8 @@ Disconnects this ability from a specific ServiceAbility. This API uses an asynch
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-particleAbility-function disconnectAbility(connection: number, callback: AsyncCallback<void>): void--><!--Device-particleAbility-function disconnectAbility(connection: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -70,6 +72,8 @@ Disconnects this ability from a specific ServiceAbility. This API uses a promise
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-particleAbility-function disconnectAbility(connection: number): Promise<void>--><!--Device-particleAbility-function disconnectAbility(connection: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

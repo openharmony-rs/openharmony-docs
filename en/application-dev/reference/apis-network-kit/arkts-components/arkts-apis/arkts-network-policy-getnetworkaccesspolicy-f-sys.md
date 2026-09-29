@@ -18,6 +18,8 @@ Obtains whether the application with the specified UID can access the network. T
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>--><!--Device-policy-function getNetworkAccessPolicy(uid: int): Promise<NetworkAccessPolicy>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Obtains the network access policy of all applications under the current user. Th
 **Since:** 12
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>--><!--Device-policy-function getNetworkAccessPolicy(): Promise<UidNetworkAccessPolicy>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

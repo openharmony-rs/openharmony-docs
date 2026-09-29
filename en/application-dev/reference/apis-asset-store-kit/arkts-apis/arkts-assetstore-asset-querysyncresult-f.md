@@ -16,6 +16,8 @@ Queries the result of the sync operation. This API uses a promise to return the 
 
 **Since:** 20
 
+<!--Device-asset-function querySyncResult(query: AssetMap): Promise<SyncResult>--><!--Device-asset-function querySyncResult(query: AssetMap): Promise<SyncResult>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **Parameters:**

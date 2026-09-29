@@ -27,6 +27,8 @@ The ImageSource instance created in incremental mode supports the following capa
 
 **Since:** 9
 
+<!--Device-image-function CreateIncrementalSource(buf: ArrayBuffer): ImageSource--><!--Device-image-function CreateIncrementalSource(buf: ArrayBuffer): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -79,6 +81,8 @@ Creates an ImageSource instance in incremental mode based on buffers. Such an in
 The capabilities supported by the ImageSource instance created by this API are the same as those supported by the instance created by [CreateIncrementalSource(buf: ArrayBuffer): ImageSource](arkts-image-image-createincrementalsource-f.md). Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](arkts-image-image-imagesource-i.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 9
+
+<!--Device-image-function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource--><!--Device-image-function CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 

@@ -8,6 +8,8 @@ Defines the extra options for snapshot taking.
 
 **Since:** 12
 
+<!--Device-componentSnapshot-interface SnapshotOptions--><!--Device-componentSnapshot-interface SnapshotOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **{colorSpace: SRGB, isAuto: false}**
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SnapshotOptions-colorMode?: ColorModeOptions--><!--Device-SnapshotOptions-colorMode?: ColorModeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## dynamicRangeMode
@@ -54,6 +58,8 @@ Default value: **{dynamicRangeMode: STANDARD, isAuto: false}**
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-SnapshotOptions-dynamicRangeMode?: DynamicRangeModeOptions--><!--Device-SnapshotOptions-dynamicRangeMode?: DynamicRangeModeOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## region
@@ -71,6 +77,8 @@ Rectangular region for the snapshot. The default region is the entire component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-SnapshotOptions-region?: SnapshotRegionType--><!--Device-SnapshotOptions-region?: SnapshotRegionType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ Avoid capturing images that are excessively large, ideally not larger than the s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SnapshotOptions-scale?: number--><!--Device-SnapshotOptions-scale?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## waitUntilRenderFinished
@@ -117,5 +127,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SnapshotOptions-waitUntilRenderFinished?: boolean--><!--Device-SnapshotOptions-waitUntilRenderFinished?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

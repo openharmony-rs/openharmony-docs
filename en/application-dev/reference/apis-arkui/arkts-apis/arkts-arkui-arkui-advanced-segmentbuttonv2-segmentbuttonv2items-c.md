@@ -14,6 +14,8 @@ This parameter is inherited from Array\&lt;[SegmentButtonV2Item](arkts-arkui-ark
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>--><!--Device-unnamed-export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Constructs a **SegmentButtonV2ItemOptions** instance.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SegmentButtonV2Items-constructor(items: SegmentButtonV2ItemOptions[])--><!--Device-SegmentButtonV2Items-constructor(items: SegmentButtonV2ItemOptions[])-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,5 +63,7 @@ Checks whether the component contains mixed icon and text items.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SegmentButtonV2Items-get hasHybrid(): boolean--><!--Device-SegmentButtonV2Items-get hasHybrid(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

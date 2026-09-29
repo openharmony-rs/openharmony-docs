@@ -4,13 +4,15 @@
 declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
 ```
 
-The [universal attributes](arkts-arkui-common-comp.md#common) are supported.
+The [universal attributes](arkts-arkui-common-comp.md) are supported.
 
 The following events are supported:
 
 **Inheritance/Implementation:** DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>--><!--Device-unnamed-declare class DynamicComponentAttribute extends CommonMethod<DynamicComponentAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

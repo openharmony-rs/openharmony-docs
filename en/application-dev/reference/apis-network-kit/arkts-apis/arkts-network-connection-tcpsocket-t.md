@@ -8,6 +8,8 @@ Defines a TCPSocket object, which can be created using [socket.constructTCPSocke
 
 **Since:** 8
 
+<!--Device-connection-type TCPSocket = socket.TCPSocket--><!--Device-connection-type TCPSocket = socket.TCPSocket-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Type:** [socket.TCPSocket](arkts-network-socket-tcpsocket-i.md)

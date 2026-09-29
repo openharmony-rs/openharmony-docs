@@ -20,6 +20,8 @@ Obtains the list of applications in the permission exception list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getAllowedPermissionBundles(admin: Want | null, permission: string, accountId: number): Array<common.ApplicationInstance>--><!--Device-securityManager-function getAllowedPermissionBundles(admin: Want | null, permission: string, accountId: number): Array<common.ApplicationInstance>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

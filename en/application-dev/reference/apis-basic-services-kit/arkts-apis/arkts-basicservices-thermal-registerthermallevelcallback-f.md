@@ -16,6 +16,8 @@ Registers a callback to be invoked when the thermal level changes. This API uses
 
 **Since:** 9
 
+<!--Device-thermal-function registerThermalLevelCallback(callback: Callback<ThermalLevel>): void--><!--Device-thermal-function registerThermalLevelCallback(callback: Callback<ThermalLevel>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.ThermalManager
 
 **Parameters:**

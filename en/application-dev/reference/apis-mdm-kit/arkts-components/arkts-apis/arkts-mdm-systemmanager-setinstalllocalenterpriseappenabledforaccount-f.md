@@ -31,6 +31,8 @@ Only enterprise applications signed with the **enterprise_normal** or **enterpri
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void--><!--Device-systemManager-function setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

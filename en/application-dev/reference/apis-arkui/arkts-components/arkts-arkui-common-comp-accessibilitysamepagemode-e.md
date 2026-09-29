@@ -8,6 +8,8 @@ Enumerates the same-page modes for cross-process embedded components and their h
 
 **Since:** 18
 
+<!--Device-unnamed-declare enum AccessibilitySamePageMode--><!--Device-unnamed-declare enum AccessibilitySamePageMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SEMI_SILENT
@@ -26,6 +28,8 @@ Ignores initial page loading events and root node page events from the cross-pro
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0--><!--Device-AccessibilitySamePageMode-SEMI_SILENT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## FULL_SILENT
@@ -43,5 +47,7 @@ Ignores all page events from the cross-process embedded component.
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-AccessibilitySamePageMode-FULL_SILENT = 1--><!--Device-AccessibilitySamePageMode-FULL_SILENT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

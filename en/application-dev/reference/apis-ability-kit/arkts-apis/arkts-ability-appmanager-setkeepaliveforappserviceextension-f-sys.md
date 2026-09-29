@@ -23,6 +23,8 @@ Sets or cancels the keep-alive status for an AppServiceExtensionAbility. This AP
 
 **Required permissions:** ohos.permission.MANAGE_APP_KEEP_ALIVE
 
+<!--Device-appManager-function setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promise<void>--><!--Device-appManager-function setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

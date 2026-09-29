@@ -8,6 +8,8 @@ enum Orientation
 
 **起始版本：** 9
 
+<!--Device-screen-enum Orientation--><!--Device-screen-enum Orientation-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -21,6 +23,8 @@ UNSPECIFIED = 0
 表示未指定屏幕方向，由系统指定。
 
 **起始版本：** 9
+
+<!--Device-Orientation-UNSPECIFIED = 0--><!--Device-Orientation-UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,6 +40,8 @@ VERTICAL = 1
 
 **起始版本：** 9
 
+<!--Device-Orientation-VERTICAL = 1--><!--Device-Orientation-VERTICAL = 1-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -49,6 +55,8 @@ HORIZONTAL = 2
 表示指定屏幕为水平方向。
 
 **起始版本：** 9
+
+<!--Device-Orientation-HORIZONTAL = 2--><!--Device-Orientation-HORIZONTAL = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -64,6 +72,8 @@ REVERSE_VERTICAL = 3
 
 **起始版本：** 9
 
+<!--Device-Orientation-REVERSE_VERTICAL = 3--><!--Device-Orientation-REVERSE_VERTICAL = 3-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +87,8 @@ REVERSE_HORIZONTAL = 4
 表示指定屏幕为反向水平方向。
 
 **起始版本：** 9
+
+<!--Device-Orientation-REVERSE_HORIZONTAL = 4--><!--Device-Orientation-REVERSE_HORIZONTAL = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

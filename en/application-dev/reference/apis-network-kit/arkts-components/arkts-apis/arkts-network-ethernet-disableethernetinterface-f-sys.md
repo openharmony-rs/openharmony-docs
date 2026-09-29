@@ -20,6 +20,8 @@ Disable the ethernet interface.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ethernet-function disableEthernetInterface(): Promise<void>--><!--Device-ethernet-function disableEthernetInterface(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **System API:** This is a system API.

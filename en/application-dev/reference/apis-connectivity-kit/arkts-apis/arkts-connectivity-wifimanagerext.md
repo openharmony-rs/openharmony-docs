@@ -8,6 +8,8 @@ Provides extended methods to operate or manage Wi-Fi.
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace wifiManagerExt--><!--Device-unnamed-declare namespace wifiManagerExt-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 ## Modules to Import

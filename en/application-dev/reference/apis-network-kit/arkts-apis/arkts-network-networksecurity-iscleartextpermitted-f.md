@@ -18,6 +18,8 @@ Checks whether plaintext HTTP access is allowed from the preset **network_config
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-networkSecurity-export function isCleartextPermitted(): boolean--><!--Device-networkSecurity-export function isCleartextPermitted(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Return value:**

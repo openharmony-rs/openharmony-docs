@@ -8,6 +8,8 @@ Defines the SIM card authentication response.
 
 **Since:** 14
 
+<!--Device-sim-export interface SimAuthenticationResponse--><!--Device-sim-export interface SimAuthenticationResponse-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the response of authentication.
 
 **Since:** 14
 
+<!--Device-SimAuthenticationResponse-response: string--><!--Device-SimAuthenticationResponse-response: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Status word 1 of the SIM card, which is returned by the SIM card after command e
 
 **Since:** 14
 
+<!--Device-SimAuthenticationResponse-simStatusWord1: int--><!--Device-SimAuthenticationResponse-simStatusWord1: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Status word 2 of the SIM card, which is returned by the SIM card after command e
 **Type:** number
 
 **Since:** 14
+
+<!--Device-SimAuthenticationResponse-simStatusWord2: int--><!--Device-SimAuthenticationResponse-simStatusWord2: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

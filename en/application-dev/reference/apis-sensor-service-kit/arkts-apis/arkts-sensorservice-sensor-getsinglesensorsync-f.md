@@ -16,6 +16,8 @@ Obtains information about the sensor of a specific type. This API returns the re
 
 **Since:** 12
 
+<!--Device-sensor-function getSingleSensorSync(type: SensorId): Sensor--><!--Device-sensor-function getSingleSensorSync(type: SensorId): Sensor-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**

@@ -10,6 +10,8 @@ ChipGroupV2Padding定义了ChipGroupV2的上下内边距，用于控制其整体
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipGroupV2Padding--><!--Device-unnamed-export declare class ChipGroupV2Padding-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ ChipGroupV2Padding的构造函数。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2Padding-constructor(config: ChipGroupV2PaddingConfig)--><!--Device-ChipGroupV2Padding-constructor(config: ChipGroupV2PaddingConfig)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ ChipGroupV2的下方内边距（不支持百分比）。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipGroupV2Padding-public bottom: Length--><!--Device-ChipGroupV2Padding-public bottom: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -89,5 +95,7 @@ ChipGroupV2的上方内边距（不支持百分比）。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipGroupV2Padding-public top: Length--><!--Device-ChipGroupV2Padding-public top: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

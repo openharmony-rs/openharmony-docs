@@ -18,6 +18,8 @@ Open the NFC settings page.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function openNfcSettingsPage(context: Context): void--><!--Device-settings-function openNfcSettingsPage(context: Context): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**

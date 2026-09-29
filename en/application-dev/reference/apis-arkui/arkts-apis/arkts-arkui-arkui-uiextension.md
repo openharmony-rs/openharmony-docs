@@ -1,10 +1,12 @@
 # @ohos.arkui.uiExtension
 
-The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md) (or [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)) to obtain the host application window information or the information about the corresponding [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component)<!--Del--> (or [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api))<!--DelEnd--> component.
+The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](../../../application-models/embeddeduiextensionability.md) (or [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)) to obtain the host application window information or the information about the corresponding [EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md)<!--Del--> (or [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md))<!--DelEnd--> component.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare namespace uiExtension--><!--Device-unnamed-declare namespace uiExtension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

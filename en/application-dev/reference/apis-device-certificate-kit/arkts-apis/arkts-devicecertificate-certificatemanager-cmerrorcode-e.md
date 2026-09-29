@@ -8,6 +8,8 @@ Enumerates the error codes used in the certificate management APIs.
 
 **Since:** 11
 
+<!--Device-certificateManager-export enum CMErrorCode--><!--Device-certificateManager-export enum CMErrorCode-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_NO_PERMISSION
@@ -19,6 +21,8 @@ CM_ERROR_NO_PERMISSION = 201
 The application does not have the permission to call the API.
 
 **Since:** 11
+
+<!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201--><!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -32,6 +36,8 @@ Invalid input parameter is found.
 
 **Since:** 11
 
+<!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401--><!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_GENERIC
@@ -43,6 +49,8 @@ CM_ERROR_GENERIC = 17500001
 An internal error occurs when the interface is called.
 
 **Since:** 11
+
+<!--Device-CMErrorCode-CM_ERROR_GENERIC = 17500001--><!--Device-CMErrorCode-CM_ERROR_GENERIC = 17500001-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -56,6 +64,8 @@ The certificate or credential does not exist.
 
 **Since:** 11
 
+<!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002--><!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_INCORRECT_FORMAT
@@ -67,6 +77,8 @@ CM_ERROR_INCORRECT_FORMAT = 17500003
 The certificate or credential is in invalid format.
 
 **Since:** 11
+
+<!--Device-CMErrorCode-CM_ERROR_INCORRECT_FORMAT = 17500003--><!--Device-CMErrorCode-CM_ERROR_INCORRECT_FORMAT = 17500003-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -80,6 +92,8 @@ The number of certificates or credentials has reached the limit.
 
 **Since:** 12
 
+<!--Device-CMErrorCode-CM_ERROR_MAX_CERT_COUNT_REACHED = 17500004--><!--Device-CMErrorCode-CM_ERROR_MAX_CERT_COUNT_REACHED = 17500004-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_NO_AUTHORIZATION
@@ -91,6 +105,8 @@ CM_ERROR_NO_AUTHORIZATION = 17500005
 The application has not obtained user authorization.
 
 **Since:** 12
+
+<!--Device-CMErrorCode-CM_ERROR_NO_AUTHORIZATION = 17500005--><!--Device-CMErrorCode-CM_ERROR_NO_AUTHORIZATION = 17500005-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -104,6 +120,8 @@ The device enters the advanced security mode. In this mode, CA certificate insta
 
 **Since:** 18
 
+<!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007--><!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_STORE_PATH_NOT_SUPPORTED
@@ -116,6 +134,8 @@ The device does not support the specified certificate storage path.
 
 **Since:** 20
 
+<!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009--><!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 ## CM_ERROR_ACCESS_UKEY_SERVICE_FAILED
@@ -127,6 +147,8 @@ CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010
 The USB Key service fails to be accessed.
 
 **Since:** 22
+
+<!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010--><!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -141,5 +163,7 @@ The input parameter validation fails.
 For example, the parameter format is incorrect or the parameter range is invalid.
 
 **Since:** 22
+
+<!--Device-CMErrorCode-CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011--><!--Device-CMErrorCode-CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

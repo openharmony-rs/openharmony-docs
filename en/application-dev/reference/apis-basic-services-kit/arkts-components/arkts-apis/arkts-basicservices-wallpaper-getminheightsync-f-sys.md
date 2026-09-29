@@ -16,6 +16,8 @@ Obtains the minimum height of the wallpaper. in pixels. returns 0 if no wallpape
 
 **Since:** 9
 
+<!--Device-wallpaper-function getMinHeightSync(): int--><!--Device-wallpaper-function getMinHeightSync(): int-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.

@@ -19,6 +19,8 @@ Obtains the number of active notifications of this application. This API uses an
 
 **Substitutes:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md)
 
+<!--Device-notification-function getActiveNotificationCount(callback: AsyncCallback<number>): void--><!--Device-notification-function getActiveNotificationCount(callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -43,6 +45,8 @@ Obtains the number of active notifications of this application. This API uses a 
 **Deprecated since:** 9
 
 **Substitutes:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md)
+
+<!--Device-notification-function getActiveNotificationCount(): Promise<number>--><!--Device-notification-function getActiveNotificationCount(): Promise<number>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

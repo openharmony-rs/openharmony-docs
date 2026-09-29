@@ -20,6 +20,8 @@ Obtains information about all local plugins installed on the current application
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-pluginBundleManager-function getAllLocalPluginInfoForSelf(): Promise<Array<PluginBundleInfo>>--><!--Device-pluginBundleManager-function getAllLocalPluginInfoForSelf(): Promise<Array<PluginBundleInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Return value:**

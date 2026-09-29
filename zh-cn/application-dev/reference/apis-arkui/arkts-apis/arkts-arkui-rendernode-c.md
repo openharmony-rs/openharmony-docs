@@ -14,6 +14,8 @@ export class RenderNode
 
 **起始版本：** 11
 
+<!--Device-unnamed-export class RenderNode--><!--Device-unnamed-export class RenderNode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## appendChild
@@ -29,6 +31,8 @@ appendChild(node: RenderNode): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-appendChild(node: RenderNode): void--><!--Device-RenderNode-appendChild(node: RenderNode): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +115,8 @@ clearChildren(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-clearChildren(): void--><!--Device-RenderNode-clearChildren(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -178,6 +184,8 @@ RenderNode的构造函数。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-constructor()--><!--Device-RenderNode-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -236,6 +244,8 @@ dispose(): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-dispose(): void--><!--Device-RenderNode-dispose(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -312,6 +322,8 @@ draw(context: DrawContext): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-draw(context: DrawContext): void--><!--Device-RenderNode-draw(context: DrawContext): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,6 +509,8 @@ getChild(index: number): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-getChild(index: number): RenderNode | null--><!--Device-RenderNode-getChild(index: number): RenderNode | null-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -586,6 +600,8 @@ getFirstChild(): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-getFirstChild(): RenderNode | null--><!--Device-RenderNode-getFirstChild(): RenderNode | null-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -673,6 +689,8 @@ getNextSibling(): RenderNode | null
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-getNextSibling(): RenderNode | null--><!--Device-RenderNode-getNextSibling(): RenderNode | null-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -767,6 +785,8 @@ getPreviousSibling(): RenderNode | null
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-getPreviousSibling(): RenderNode | null--><!--Device-RenderNode-getPreviousSibling(): RenderNode | null-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -859,6 +879,8 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-insertChildAfter(child: RenderNode, sibling: RenderNode | null): void--><!--Device-RenderNode-insertChildAfter(child: RenderNode, sibling: RenderNode | null): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -955,6 +977,8 @@ invalidate(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-invalidate(): void--><!--Device-RenderNode-invalidate(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **示例**
@@ -1033,6 +1057,8 @@ isDisposed(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-isDisposed(): boolean--><!--Device-RenderNode-isDisposed(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1134,6 +1160,8 @@ removeChild(node: RenderNode): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-removeChild(node: RenderNode): void--><!--Device-RenderNode-removeChild(node: RenderNode): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1216,6 +1244,8 @@ set backgroundBlur(blurValue: BackgroundBlur | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set backgroundBlur(blurValue: BackgroundBlur | undefined)--><!--Device-RenderNode-set backgroundBlur(blurValue: BackgroundBlur | undefined)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1231,6 +1261,8 @@ get backgroundBlur(): BackgroundBlur
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get backgroundBlur(): BackgroundBlur--><!--Device-RenderNode-get backgroundBlur(): BackgroundBlur-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1334,6 +1366,8 @@ set backgroundColor(color: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set backgroundColor(color: number)--><!--Device-RenderNode-set backgroundColor(color: number)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1352,6 +1386,8 @@ get backgroundColor(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get backgroundColor(): number--><!--Device-RenderNode-get backgroundColor(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1411,6 +1447,8 @@ set borderColor(color: Edges<number>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set borderColor(color: Edges<number>)--><!--Device-RenderNode-set borderColor(color: Edges<number>)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1428,6 +1466,8 @@ get borderColor(): Edges<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get borderColor(): Edges<number>--><!--Device-RenderNode-get borderColor(): Edges<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1491,6 +1531,8 @@ set borderRadius(radius: BorderRadiuses)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set borderRadius(radius: BorderRadiuses)--><!--Device-RenderNode-set borderRadius(radius: BorderRadiuses)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1508,6 +1550,8 @@ get borderRadius(): BorderRadiuses
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get borderRadius(): BorderRadiuses--><!--Device-RenderNode-get borderRadius(): BorderRadiuses-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1570,6 +1614,8 @@ set borderStyle(style: Edges<BorderStyle>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set borderStyle(style: Edges<BorderStyle>)--><!--Device-RenderNode-set borderStyle(style: Edges<BorderStyle>)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1585,6 +1631,8 @@ get borderStyle(): Edges<BorderStyle>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get borderStyle(): Edges<BorderStyle>--><!--Device-RenderNode-get borderStyle(): Edges<BorderStyle>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1653,6 +1701,8 @@ set borderWidth(width: Edges<number>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set borderWidth(width: Edges<number>)--><!--Device-RenderNode-set borderWidth(width: Edges<number>)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1670,6 +1720,8 @@ get borderWidth(): Edges<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get borderWidth(): Edges<number>--><!--Device-RenderNode-get borderWidth(): Edges<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1732,6 +1784,8 @@ set clipToFrame(useClip: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set clipToFrame(useClip: boolean)--><!--Device-RenderNode-set clipToFrame(useClip: boolean)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1750,6 +1804,8 @@ get clipToFrame(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get clipToFrame(): boolean--><!--Device-RenderNode-get clipToFrame(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1816,6 +1872,8 @@ set contentBlur(blurValue: ContentBlur | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set contentBlur(blurValue: ContentBlur | undefined)--><!--Device-RenderNode-set contentBlur(blurValue: ContentBlur | undefined)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1831,6 +1889,8 @@ get contentBlur(): ContentBlur
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get contentBlur(): ContentBlur--><!--Device-RenderNode-get contentBlur(): ContentBlur-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1934,6 +1994,8 @@ set foregroundBlur(blurValue: ForegroundBlur | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set foregroundBlur(blurValue: ForegroundBlur | undefined)--><!--Device-RenderNode-set foregroundBlur(blurValue: ForegroundBlur | undefined)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -1949,6 +2011,8 @@ get foregroundBlur(): ForegroundBlur
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get foregroundBlur(): ForegroundBlur--><!--Device-RenderNode-get foregroundBlur(): ForegroundBlur-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2051,6 +2115,8 @@ set frame(frame: Frame)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set frame(frame: Frame)--><!--Device-RenderNode-set frame(frame: Frame)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2069,6 +2135,8 @@ get frame(): Frame
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get frame(): Frame--><!--Device-RenderNode-get frame(): Frame-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2129,6 +2197,8 @@ set label(label: string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set label(label: string)--><!--Device-RenderNode-set label(label: string)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2144,6 +2214,8 @@ get label(): string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get label(): string--><!--Device-RenderNode-get label(): string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2206,6 +2278,8 @@ set lengthMetricsUnit(unit: LengthMetricsUnit)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set lengthMetricsUnit(unit: LengthMetricsUnit)--><!--Device-RenderNode-set lengthMetricsUnit(unit: LengthMetricsUnit)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2223,6 +2297,8 @@ get lengthMetricsUnit(): LengthMetricsUnit
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get lengthMetricsUnit(): LengthMetricsUnit--><!--Device-RenderNode-get lengthMetricsUnit(): LengthMetricsUnit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2303,6 +2379,8 @@ set markNodeGroup(isNodeGroup: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set markNodeGroup(isNodeGroup: boolean)--><!--Device-RenderNode-set markNodeGroup(isNodeGroup: boolean)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2320,6 +2398,8 @@ get markNodeGroup(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get markNodeGroup(): boolean--><!--Device-RenderNode-get markNodeGroup(): boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2400,6 +2480,8 @@ set opacity(value: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set opacity(value: number)--><!--Device-RenderNode-set opacity(value: number)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2418,6 +2500,8 @@ get opacity(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get opacity(): number--><!--Device-RenderNode-get opacity(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2479,6 +2563,8 @@ set pivot(pivot: Pivot)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set pivot(pivot: Pivot)--><!--Device-RenderNode-set pivot(pivot: Pivot)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2497,6 +2583,8 @@ get pivot(): Pivot
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get pivot(): Pivot--><!--Device-RenderNode-get pivot(): Pivot-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2560,6 +2648,8 @@ set position(position: Position)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set position(position: Position)--><!--Device-RenderNode-set position(position: Position)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2578,6 +2668,8 @@ get position(): Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get position(): Position--><!--Device-RenderNode-get position(): Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2639,6 +2731,8 @@ set rotation(rotation: Rotation)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set rotation(rotation: Rotation)--><!--Device-RenderNode-set rotation(rotation: Rotation)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2657,6 +2751,8 @@ get rotation(): Rotation
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get rotation(): Rotation--><!--Device-RenderNode-get rotation(): Rotation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2718,6 +2814,8 @@ set scale(scale: Scale)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set scale(scale: Scale)--><!--Device-RenderNode-set scale(scale: Scale)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2736,6 +2834,8 @@ get scale(): Scale
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get scale(): Scale--><!--Device-RenderNode-get scale(): Scale-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2797,6 +2897,8 @@ set shadowAlpha(alpha: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shadowAlpha(alpha: number)--><!--Device-RenderNode-set shadowAlpha(alpha: number)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2815,6 +2917,8 @@ get shadowAlpha(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shadowAlpha(): number--><!--Device-RenderNode-get shadowAlpha(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2879,6 +2983,8 @@ set shadowColor(color: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shadowColor(color: number)--><!--Device-RenderNode-set shadowColor(color: number)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2897,6 +3003,8 @@ get shadowColor(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shadowColor(): number--><!--Device-RenderNode-get shadowColor(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2959,6 +3067,8 @@ set shadowElevation(elevation: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shadowElevation(elevation: number)--><!--Device-RenderNode-set shadowElevation(elevation: number)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -2977,6 +3087,8 @@ get shadowElevation(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shadowElevation(): number--><!--Device-RenderNode-get shadowElevation(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3040,6 +3152,8 @@ set shadowOffset(offset: Offset)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shadowOffset(offset: Offset)--><!--Device-RenderNode-set shadowOffset(offset: Offset)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3058,6 +3172,8 @@ get shadowOffset(): Offset
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shadowOffset(): Offset--><!--Device-RenderNode-get shadowOffset(): Offset-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3121,6 +3237,8 @@ set shadowRadius(radius: number)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shadowRadius(radius: number)--><!--Device-RenderNode-set shadowRadius(radius: number)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3139,6 +3257,8 @@ get shadowRadius(): number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shadowRadius(): number--><!--Device-RenderNode-get shadowRadius(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3208,6 +3328,8 @@ set shapeClip(shapeClip: ShapeClip)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shapeClip(shapeClip: ShapeClip)--><!--Device-RenderNode-set shapeClip(shapeClip: ShapeClip)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3223,6 +3345,8 @@ get shapeClip(): ShapeClip
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shapeClip(): ShapeClip--><!--Device-RenderNode-get shapeClip(): ShapeClip-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3342,6 +3466,8 @@ set shapeMask(shapeMask: ShapeMask)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set shapeMask(shapeMask: ShapeMask)--><!--Device-RenderNode-set shapeMask(shapeMask: ShapeMask)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3357,6 +3483,8 @@ get shapeMask(): ShapeMask
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get shapeMask(): ShapeMask--><!--Device-RenderNode-get shapeMask(): ShapeMask-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3426,6 +3554,8 @@ set size(size: Size)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set size(size: Size)--><!--Device-RenderNode-set size(size: Size)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3444,6 +3574,8 @@ get size(): Size
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get size(): Size--><!--Device-RenderNode-get size(): Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3504,6 +3636,8 @@ set transform(transform: Matrix4)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set transform(transform: Matrix4)--><!--Device-RenderNode-set transform(transform: Matrix4)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3530,6 +3664,8 @@ get transform(): Matrix4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get transform(): Matrix4--><!--Device-RenderNode-get transform(): Matrix4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3596,6 +3732,8 @@ set translation(translation: Translation)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RenderNode-set translation(translation: Translation)--><!--Device-RenderNode-set translation(translation: Translation)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ```TypeScript
@@ -3614,6 +3752,8 @@ get translation(): Translation
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderNode-get translation(): Translation--><!--Device-RenderNode-get translation(): Translation-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

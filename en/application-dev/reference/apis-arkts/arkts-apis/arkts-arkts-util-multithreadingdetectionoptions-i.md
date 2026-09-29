@@ -8,6 +8,8 @@ Multi-thread detection functional parameter configuration
 
 **Since:** 26.0.0
 
+<!--Device-util-interface MultithreadingDetectionOptions--><!--Device-util-interface MultithreadingDetectionOptions-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ If abort is **true**, the application will crash, if abort is **false**, the app
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MultithreadingDetectionOptions-abort?: boolean--><!--Device-MultithreadingDetectionOptions-abort?: boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## frequency
@@ -46,6 +50,8 @@ The sampling frequency of multi-thread detection The value must be an integer, m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MultithreadingDetectionOptions-frequency?: number--><!--Device-MultithreadingDetectionOptions-frequency?: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## interval
@@ -61,5 +67,7 @@ The interval of multi-thread detection(min) Errors will be reported again only i
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MultithreadingDetectionOptions-interval?: number--><!--Device-MultithreadingDetectionOptions-interval?: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

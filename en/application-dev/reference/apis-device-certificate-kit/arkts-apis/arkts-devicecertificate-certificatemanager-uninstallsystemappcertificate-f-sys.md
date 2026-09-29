@@ -20,6 +20,8 @@ Uninstalls the credential of the system application. This API is called only by 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function uninstallSystemAppCertificate(keyUri: string) : Promise<void>--><!--Device-certificateManager-function uninstallSystemAppCertificate(keyUri: string) : Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

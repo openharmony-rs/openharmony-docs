@@ -22,6 +22,8 @@ Subscribe the event reported when the Bluetooth state changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-access-function on(type: 'stateChange', callback: Callback<BluetoothState>): void--><!--Device-access-function on(type: 'stateChange', callback: Callback<BluetoothState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**

@@ -267,6 +267,8 @@
   - [BatteryStatsInfo(system api)](arkts-basicservices-batterystats-batterystatsinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ConsumptionType(system api)](arkts-basicservices-batterystats-consumptiontype-e-sys.md)<!--DelEnd-->
+- [@ohos.boardInfo](arkts-basicservices-boardinfo.md)
+  - [Constants](arkts-basicservices-boardinfo-con.md)
 <!--Del-->
 - [@ohos.brightness(Screen Brightness)](arkts-basicservices-brightness.md)<!--DelEnd-->
   <!--Del-->
@@ -331,7 +333,8 @@
   - [FollowXMode(system api)](arkts-basicservices-configpolicy-followxmode-e-sys.md)<!--DelEnd-->
 - [@ohos.customization.customConfig(Custom Configurations)](arkts-basicservices-customization-customconfig.md)
   - [getChannelId](arkts-basicservices-customconfig-getchannelid-f.md)
-- [@ohos.deviceAttest](arkts-basicservices-deviceattest.md)
+<!--Del-->
+- [@ohos.deviceAttest](arkts-basicservices-deviceattest.md)<!--DelEnd-->
   <!--Del-->
   - [getAttestStatus(system api)](arkts-basicservices-deviceattest-getatteststatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1238,7 +1241,7 @@
   - [SetBrightnessModeOptions](arkts-basicservices-system-brightness-setbrightnessmodeoptions-i.md)
   - [SetBrightnessOptions](arkts-basicservices-system-brightness-setbrightnessoptions-i.md)
   - [SetKeepScreenOnOptions](arkts-basicservices-system-brightness-setkeepscreenonoptions-i.md)
-- [@system.device](arkts-basicservices-system-device.md)
+- [@system.device(Device Information)](arkts-basicservices-system-device.md)
   - [Device](arkts-basicservices-system-device-device-c.md)
   - [DeviceResponse](arkts-basicservices-system-device-deviceresponse-i.md)
   - [GetDeviceOptions](arkts-basicservices-system-device-getdeviceoptions-i.md)

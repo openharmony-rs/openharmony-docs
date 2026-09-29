@@ -22,6 +22,8 @@ Get the local device connection state to any profile of any remote device.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetooth-function getBtConnectionState(): ProfileConnectionState--><!--Device-bluetooth-function getBtConnectionState(): ProfileConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

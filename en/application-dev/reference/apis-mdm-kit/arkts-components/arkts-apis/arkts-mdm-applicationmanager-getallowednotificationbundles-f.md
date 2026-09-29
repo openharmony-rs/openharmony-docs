@@ -20,6 +20,8 @@ Obtains the list of applications that are allowed to send notifications.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getAllowedNotificationBundles(admin: Want | null, accountId: number): Array<string>--><!--Device-applicationManager-function getAllowedNotificationBundles(admin: Want | null, accountId: number): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

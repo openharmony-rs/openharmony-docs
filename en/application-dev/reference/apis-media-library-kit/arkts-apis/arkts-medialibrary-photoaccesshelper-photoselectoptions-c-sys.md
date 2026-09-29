@@ -10,6 +10,8 @@ Defines additional options for selecting media assets from Gallery. It inherits 
 
 **Since:** 10
 
+<!--Device-photoAccessHelper-class PhotoSelectOptions extends BaseSelectOptions--><!--Device-photoAccessHelper-class PhotoSelectOptions extends BaseSelectOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Theme color
 
 **Since:** 12
 
+<!--Device-PhotoSelectOptions-themeColor?: CustomColors--><!--Device-PhotoSelectOptions-themeColor?: CustomColors-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ To use it as a parameter of [PhotoViewPicker.select](arkts-medialibrary-photoacc
 **Type:** number
 
 **Since:** 18
+
+<!--Device-PhotoSelectOptions-userId?: int--><!--Device-PhotoSelectOptions-userId?: int-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

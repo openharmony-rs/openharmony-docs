@@ -8,6 +8,8 @@ Enumerated type of the file memory mapping mode, which can be used by the mmap A
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare enum MappingMode--><!--Device-unnamed-declare enum MappingMode-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## READ_ONLY
@@ -21,6 +23,8 @@ Read-only mode. The file mapping area is not writable. An exception is thrown wh
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MappingMode-READ_ONLY = 0--><!--Device-MappingMode-READ_ONLY = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -36,6 +40,8 @@ Read/Write mode. The modification is written to the file mapping area and then s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-MappingMode-READ_WRITE = 1--><!--Device-MappingMode-READ_WRITE = 1-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## PRIVATE
@@ -49,5 +55,7 @@ Private mode. It is a copy-on-write mapping mechanism. Modifications to the mapp
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MappingMode-PRIVATE = 2--><!--Device-MappingMode-PRIVATE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

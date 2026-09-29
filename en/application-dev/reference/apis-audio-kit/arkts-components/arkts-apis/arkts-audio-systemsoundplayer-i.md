@@ -8,6 +8,8 @@ Implements a system sound player that provides functions for loading, unloading,
 
 **Since:** 23
 
+<!--Device-unnamed-export interface SystemSoundPlayer--><!--Device-unnamed-export interface SystemSoundPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 ## load
@@ -21,6 +23,8 @@ Loads a system sound.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SystemSoundPlayer-load(soundType: systemSoundManager.SystemSoundType): Promise<void>--><!--Device-SystemSoundPlayer-load(soundType: systemSoundManager.SystemSoundType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
@@ -68,6 +72,8 @@ Plays a system sound.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SystemSoundPlayer-play(soundType: systemSoundManager.SystemSoundType): Promise<void>--><!--Device-SystemSoundPlayer-play(soundType: systemSoundManager.SystemSoundType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **Parameters:**
@@ -114,6 +120,8 @@ Releases this system sound player instance.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SystemSoundPlayer-release(): Promise<void>--><!--Device-SystemSoundPlayer-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **Return value:**
@@ -151,6 +159,8 @@ Unloads a system sound that has been loaded before.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SystemSoundPlayer-unload(soundType: systemSoundManager.SystemSoundType): Promise<void>--><!--Device-SystemSoundPlayer-unload(soundType: systemSoundManager.SystemSoundType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

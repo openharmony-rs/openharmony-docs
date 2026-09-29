@@ -8,10 +8,12 @@ declare interface ConstraintSizeOptions
 
 > **说明：** 
 > 
-> 在Row、Column、RelativeContainer组件中，width、height设置auto表
-> 示自适应子组件。在TextInput组件中，width设置auto表示自适应文本宽度。
+> 在[Row](../arkts-components/arkts-arkui-row-comp.md)、[Column](../arkts-components/arkts-arkui-column-comp.md)、[RelativeContainer](../arkts-components/arkts-arkui-relativecontainer-comp.md)组件中，width、height设置auto表
+> 示自适应子组件。在[TextInput](../arkts-components/arkts-arkui-textinput-comp.md)组件中，width设置auto表示自适应文本宽度。
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare interface ConstraintSizeOptions--><!--Device-unnamed-declare interface ConstraintSizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ maxHeight?: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ConstraintSizeOptions-maxHeight?: Length--><!--Device-ConstraintSizeOptions-maxHeight?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxWidth
@@ -48,6 +52,8 @@ maxWidth?: Length
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ConstraintSizeOptions-maxWidth?: Length--><!--Device-ConstraintSizeOptions-maxWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +73,8 @@ minHeight?: Length
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ConstraintSizeOptions-minHeight?: Length--><!--Device-ConstraintSizeOptions-minHeight?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## minWidth
@@ -84,5 +92,7 @@ minWidth?: Length
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ConstraintSizeOptions-minWidth?: Length--><!--Device-ConstraintSizeOptions-minWidth?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -14,6 +14,8 @@ Capture mode: night view with front lens.The value is 7.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int--><!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_LIGHT_GRAFFITI
@@ -29,6 +31,8 @@ Capture mode: light graffiti.The value is 10.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI : int--><!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,6 +50,8 @@ Capture mode: moving photos.The value is 20.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_MOVING_PHOTO : int--><!--Device-image-const CAPTURE_MODE_MOVING_PHOTO : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PANORAMA
@@ -61,6 +67,8 @@ Capture mode: panorama.The value is 8.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const CAPTURE_MODE_PANORAMA : int--><!--Device-image-const CAPTURE_MODE_PANORAMA : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -78,6 +86,8 @@ Capture mode: portrait.The value is 23.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_PORTRAIT : int--><!--Device-image-const CAPTURE_MODE_PORTRAIT : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PROFESSIONAL
@@ -93,6 +103,8 @@ Capture mode: professional.The value is 2.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const CAPTURE_MODE_PROFESSIONAL : int--><!--Device-image-const CAPTURE_MODE_PROFESSIONAL : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -110,6 +122,8 @@ Capture mode: night view with rear lens.The value is 42.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int--><!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SILKY_WATER
@@ -125,6 +139,8 @@ Capture mode: silky water.The value is 11.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const CAPTURE_MODE_SILKY_WATER : int--><!--Device-image-const CAPTURE_MODE_SILKY_WATER : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -142,6 +158,8 @@ Capture mode: snap shot.The value is 62.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_SNAP_SHOT : int--><!--Device-image-const CAPTURE_MODE_SNAP_SHOT : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_STAR_TRACK
@@ -157,6 +175,8 @@ Capture mode: star track.The value is 12.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const CAPTURE_MODE_STAR_TRACK : int--><!--Device-image-const CAPTURE_MODE_STAR_TRACK : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -174,6 +194,8 @@ Capture mode: super macro.The value is 47.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_SUPER_MACRO : int--><!--Device-image-const CAPTURE_MODE_SUPER_MACRO : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_TAIL_LIGHT
@@ -189,6 +211,8 @@ Capture mode: tail light.The value is 9.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const CAPTURE_MODE_TAIL_LIGHT : int--><!--Device-image-const CAPTURE_MODE_TAIL_LIGHT : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -206,6 +230,8 @@ Capture mode: wide aperture.The value is 19.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const CAPTURE_MODE_WIDEAPERTURE : int--><!--Device-image-const CAPTURE_MODE_WIDEAPERTURE : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## DUBLIN_CORE
@@ -221,6 +247,8 @@ XMP namespace: dublin core. Namespace uri: 'http://purl.org/dc/elements/1.1/', p
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const DUBLIN_CORE: XMPNamespace--><!--Device-image-const DUBLIN_CORE: XMPNamespace-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -238,6 +266,8 @@ XMP namespace: exif. Namespace uri: 'http://ns.adobe.com/exif/1.0/', prefix: 'ex
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const EXIF: XMPNamespace--><!--Device-image-const EXIF: XMPNamespace-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## TIFF
@@ -253,6 +283,8 @@ XMP namespace: tiff. Namespace uri: 'http://ns.adobe.com/tiff/1.0/', prefix: 'ti
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const TIFF: XMPNamespace--><!--Device-image-const TIFF: XMPNamespace-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -270,6 +302,8 @@ The XMAGE watermark is at the bottom of the photo.The value is 9.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int--><!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## XMAGE_WATERMARK_MODE_BORDER
@@ -285,6 +319,8 @@ The XMAGE watermark is around the edges of the photo.The value is 10.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const XMAGE_WATERMARK_MODE_BORDER : int--><!--Device-image-const XMAGE_WATERMARK_MODE_BORDER : int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -302,6 +338,8 @@ XMP namespace: XMP basic. Namespace uri: 'http://ns.adobe.com/xap/1.0/', prefix:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-image-const XMP_BASIC: XMPNamespace--><!--Device-image-const XMP_BASIC: XMPNamespace-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## XMP_RIGHTS
@@ -317,5 +355,7 @@ XMP namespace: XMP rights. Namespace uri: 'http://ns.adobe.com/xap/1.0/rights/',
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-image-const XMP_RIGHTS: XMPNamespace--><!--Device-image-const XMP_RIGHTS: XMPNamespace-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

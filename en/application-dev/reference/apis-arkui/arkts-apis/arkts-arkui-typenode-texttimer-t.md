@@ -12,6 +12,8 @@ Represents a FrameNode of the **TextTimer** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>--><!--Device-typeNode-type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextTimerInterface, [TextTimerAttribute](../arkts-components/arkts-arkui-texttimer-comp-attribute.md)&gt;

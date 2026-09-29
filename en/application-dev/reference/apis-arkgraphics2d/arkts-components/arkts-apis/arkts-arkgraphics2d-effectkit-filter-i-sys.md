@@ -8,6 +8,8 @@ An image effect class used to add a specified effect to the effect chain through
 
 **Since:** 9
 
+<!--Device-effectKit-interface Filter--><!--Device-effectKit-interface Filter-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Adds the elliptical gradient blur effect to the filter linked list, and returns 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Filter-ellipticalGradientBlur(blurRadius: double, center: EllipticalMaskCenter,      maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter--><!--Device-Filter-ellipticalGradientBlur(blurRadius: double, center: EllipticalMaskCenter,      maskRadius: EllipticalMaskRadius, fractionStops: FractionStop[]): Filter-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

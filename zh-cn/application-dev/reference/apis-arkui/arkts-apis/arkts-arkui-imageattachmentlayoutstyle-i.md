@@ -8,6 +8,8 @@ declare interface ImageAttachmentLayoutStyle
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface ImageAttachmentLayoutStyle--><!--Device-unnamed-declare interface ImageAttachmentLayoutStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderRadius
@@ -20,7 +22,7 @@ borderRadius?: LengthMetrics | BorderRadiuses
 
 默认值：0
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
@@ -29,6 +31,8 @@ borderRadius?: LengthMetrics | BorderRadiuses
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageAttachmentLayoutStyle-borderRadius?: LengthMetrics | BorderRadiuses--><!--Device-ImageAttachmentLayoutStyle-borderRadius?: LengthMetrics | BorderRadiuses-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +46,7 @@ margin?: LengthMetrics | Margin
 
 默认值：0
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; [Margin](arkts-arkui-margin-t.md)
 
@@ -51,6 +55,8 @@ margin?: LengthMetrics | Margin
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageAttachmentLayoutStyle-margin?: LengthMetrics | Margin--><!--Device-ImageAttachmentLayoutStyle-margin?: LengthMetrics | Margin-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +70,7 @@ padding?: LengthMetrics | Padding
 
 默认值：0
 
-单位：vp
+单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; Padding
 
@@ -73,5 +79,7 @@ padding?: LengthMetrics | Padding
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ImageAttachmentLayoutStyle-padding?: LengthMetrics | Padding--><!--Device-ImageAttachmentLayoutStyle-padding?: LengthMetrics | Padding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -21,6 +21,8 @@ Obtains the bundle name of a WantAgent.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wantAgent-function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void--><!--Device-wantAgent-function getBundleName(agent: WantAgent, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -103,6 +105,8 @@ Obtains the bundle name of a WantAgent.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wantAgent-function getBundleName(agent: WantAgent): Promise<string>--><!--Device-wantAgent-function getBundleName(agent: WantAgent): Promise<string>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -115,7 +119,7 @@ Obtains the bundle name of a WantAgent.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Returns the bundle name of the [WantAgent](arkts-ability-wantagent-depr-t.md#wantagent) if any. |
+| Promise&lt;string&gt; | Returns the bundle name of the [WantAgent](arkts-ability-wantagent-depr-t.md) if any. |
 
 **Examples**
 

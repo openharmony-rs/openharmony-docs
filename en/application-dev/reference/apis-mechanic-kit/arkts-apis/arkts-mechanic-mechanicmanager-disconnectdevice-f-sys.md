@@ -20,6 +20,8 @@ Disconnect a device with mechanic id.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-mechanicManager-function disconnectDevice(mechId: int): Promise<Result>--><!--Device-mechanicManager-function disconnectDevice(mechId: int): Promise<Result>-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

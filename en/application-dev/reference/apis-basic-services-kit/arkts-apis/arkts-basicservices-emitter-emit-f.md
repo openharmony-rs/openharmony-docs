@@ -20,7 +20,9 @@ After an event is published using this API, the event may not be executed immedi
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-emitter-function emit(event: InnerEvent, data?: EventData): void--><!--Device-emitter-function emit(event: InnerEvent, data?: EventData): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -68,6 +70,8 @@ After an event is published using this API, the event may not be executed immedi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-emitter-function emit(eventId: string, data?: EventData): void--><!--Device-emitter-function emit(eventId: string, data?: EventData): void-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 **Parameters:**
@@ -108,6 +112,8 @@ After an event is published using this API, the event may not be executed immedi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-emitter-function emit<T>(eventId: string, data?: GenericEventData<T>): void--><!--Device-emitter-function emit<T>(eventId: string, data?: GenericEventData<T>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -157,6 +163,8 @@ After an event is published using this API, the event may not be executed immedi
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-emitter-function emit(eventId: string, options: Options, data?: EventData): void--><!--Device-emitter-function emit(eventId: string, options: Options, data?: EventData): void-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 **Parameters:**
@@ -202,6 +210,8 @@ After an event is published using this API, the event may not be executed immedi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-emitter-function emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void--><!--Device-emitter-function emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 

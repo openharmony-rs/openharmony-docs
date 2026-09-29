@@ -10,6 +10,8 @@ Creates rendering resources that can be shared in multiple scenes ([Scene](arkts
 
 **Since:** 20
 
+<!--Device-unnamed-export interface RenderResourceFactory--><!--Device-unnamed-export interface RenderResourceFactory-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## createImage
@@ -21,6 +23,8 @@ createImage(params: SceneResourceParameters): Promise<Image>
 Creates an image based on the scene resource parameters. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-RenderResourceFactory-createImage(params: SceneResourceParameters): Promise<Image>--><!--Device-RenderResourceFactory-createImage(params: SceneResourceParameters): Promise<Image>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -68,6 +72,8 @@ Create an image stream.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RenderResourceFactory-createImageStream(params: SceneResourceParameters): Promise<ImageStream>--><!--Device-RenderResourceFactory-createImageStream(params: SceneResourceParameters): Promise<ImageStream>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -109,6 +115,8 @@ createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promi
 Creates a mesh based on the scene resource parameters and geometry definition. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-RenderResourceFactory-createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise<MeshResource>--><!--Device-RenderResourceFactory-createMesh(params: SceneResourceParameters, geometry: GeometryDefinition): Promise<MeshResource>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -206,6 +214,8 @@ Creates a sampler based on the scene resource parameters. This API uses a promis
 
 **Since:** 20
 
+<!--Device-RenderResourceFactory-createSampler(params:SceneResourceParameters): Promise<Sampler>--><!--Device-RenderResourceFactory-createSampler(params:SceneResourceParameters): Promise<Sampler>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 **Parameters:**
@@ -249,6 +259,8 @@ createScene(uri?: ResourceStr): Promise<Scene>
 Creates a scene from the specified resource URI. If no URI is specified, an empty scene is created. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-RenderResourceFactory-createScene(uri?: ResourceStr): Promise<Scene>--><!--Device-RenderResourceFactory-createScene(uri?: ResourceStr): Promise<Scene>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -296,6 +308,8 @@ createShader(params: SceneResourceParameters): Promise<Shader>
 Creates a shader based on the scene resource parameters. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-RenderResourceFactory-createShader(params: SceneResourceParameters): Promise<Shader>--><!--Device-RenderResourceFactory-createShader(params: SceneResourceParameters): Promise<Shader>-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

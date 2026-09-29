@@ -1,8 +1,12 @@
 # Slider
 
-The **Slider** component is used to quickly adjust settings, such as the volume and brightness.
+The **Slider** component is used to quickly adjust settings, such as the volume and brightness. It supports style customization, direction configuration, interaction modes, and accessibility, which helps resolve UI consistency issues and improve development efficiency, thereby enhancing user experience and reducing development costs.
 
-> **NOTE**
+> **NOTE:** 
+> 
+> - Since API version 26.0.0, when material parameters are passed to the **Slider** component, the preset visual parameters inside the component are used. The passed material parameters serve only as a switch flag for enabling the system material and do not affect the actual visual effect. They mainly affect the visual attributes of the
+> **Slider** component, such as the slider size, slider style, and shadow. When **undefined** is passed, the system
+> material does not take effect, and the original slider style is displayed.
 
 ## Child Components
 
@@ -14,6 +18,8 @@ Not supported
 Slider(options?: SliderOptions)
 ```
 
+Creates the Slider component.
+
 **Since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
@@ -22,13 +28,15 @@ Slider(options?: SliderOptions)
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderInterface-(options?: SliderOptions): SliderAttribute--><!--Device-SliderInterface-(options?: SliderOptions): SliderAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md) | No | Parameters of the slider. |
+| options | [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md) | No | Parameters of the slider. If not passed in, the default value of each attribute in **SliderOptions** is used. |
 
 ## Summary
 
@@ -36,10 +44,10 @@ Slider(options?: SliderOptions)
 
 | Name | Description |
 | --- | --- |
-| [ColorMetricsStop](arkts-arkui-slider-comp-colormetricsstop-i.md) | Describes the breakpoint of the gradient color. |
-| [SlideRange](arkts-arkui-slider-comp-sliderange-i.md) | Defines the callback type used in **SlideRange**. |
+| [ColorMetricsStop](arkts-arkui-slider-comp-colormetricsstop-i.md) | Describes the linear gradient color stop type. |
+| [SlideRange](arkts-arkui-slider-comp-sliderange-i.md) | Defines the valid sliding range. |
 | [SliderBlockStyle](arkts-arkui-slider-comp-sliderblockstyle-i.md) | Describes the style of the slider in the block direction. |
-| [SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md). |
+| [SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md). |
 | [SliderCustomContentOptions](arkts-arkui-slider-comp-slidercustomcontentoptions-i.md) | Provides accessibility configuration of the slider prefix and suffix. |
 | [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md) | Provides information about the slider. |
 | [SliderPrefixOptions](arkts-arkui-slider-comp-sliderprefixoptions-i.md) | Provides accessibility configuration of the slider prefix. |
@@ -58,7 +66,7 @@ Slider(options?: SliderOptions)
 | Name | Description |
 | --- | --- |
 | [SliderBlockType](arkts-arkui-slider-comp-sliderblocktype-e.md) | Enumerates the types of the slider in the block direction. |
-| [SliderChangeMode](arkts-arkui-slider-comp-sliderchangemode-e.md) | Enumerates the slider states. |
+| [SliderChangeMode](arkts-arkui-slider-comp-sliderchangemode-e.md) | Enumerates the slider states, including pressed, dragged, released, and moved when the slider is tapped. |
 | [SliderInteraction](arkts-arkui-slider-comp-sliderinteraction-e.md) | Interaction mode between the user and the slider. |
 | [SliderStyle](arkts-arkui-slider-comp-sliderstyle-e.md) | Enumerates the display styles of the slider thumb relative to the track. For details, see [How Are the Slider Thumb and Track of the Slider Component Aligned?](../../../ui/arkts-select-component-faq.md#how-are-the-slider-thumb-and-track-of-the-slider-component-aligned). |
 

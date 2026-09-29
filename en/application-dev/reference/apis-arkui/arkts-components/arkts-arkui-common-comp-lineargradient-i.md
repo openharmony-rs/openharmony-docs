@@ -10,6 +10,8 @@ Linear Gradient Interface
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface LinearGradient--><!--Device-unnamed-declare interface LinearGradient-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -27,6 +29,8 @@ Linear Gradient Angle
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LinearGradient-angle?: number | string--><!--Device-LinearGradient-angle?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Linear Gradient Colors
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LinearGradient-colors: Array<[ResourceColor, number]>--><!--Device-LinearGradient-colors: Array<[ResourceColor, number]>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -64,6 +70,8 @@ Linear Gradient Direction
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LinearGradient-direction?: GradientDirection--><!--Device-LinearGradient-direction?: GradientDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## repeating
@@ -81,5 +89,7 @@ Linear Gradient Repeating
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LinearGradient-repeating?: boolean--><!--Device-LinearGradient-repeating?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

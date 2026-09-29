@@ -8,6 +8,8 @@ export interface ObservedResult
 
 **起始版本：** 23
 
+<!--Device-unnamed-export interface ObservedResult--><!--Device-unnamed-export interface ObservedResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ decoratorInfo: Array<DecoratorInfo>
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-ObservedResult-decoratorInfo: Array<DecoratorInfo>--><!--Device-ObservedResult-decoratorInfo: Array<DecoratorInfo>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isObserved
@@ -53,6 +57,8 @@ false：表示不是可被观察对象。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ObservedResult-isObserved: boolean--><!--Device-ObservedResult-isObserved: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,5 +92,7 @@ reason: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ObservedResult-reason: string--><!--Device-ObservedResult-reason: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

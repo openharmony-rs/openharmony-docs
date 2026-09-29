@@ -8,6 +8,8 @@ Interface for distance measurement result @interface DistanceMeasurementResponse
 
 **Since:** 23
 
+<!--Device-spatialAwareness-export interface DistanceMeasurementResponse--><!--Device-spatialAwareness-export interface DistanceMeasurementResponse-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ indicates confidence of distance measurement
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistanceMeasurementResponse-confidence: float--><!--Device-DistanceMeasurementResponse-confidence: float-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ indicates the ID of the remote ranging device
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistanceMeasurementResponse-deviceId: string--><!--Device-DistanceMeasurementResponse-deviceId: string-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -68,6 +74,8 @@ indicates distance result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DistanceMeasurementResponse-distance: float--><!--Device-DistanceMeasurementResponse-distance: float-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ indicates distance rank
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DistanceMeasurementResponse-rank: DistanceRank--><!--Device-DistanceMeasurementResponse-rank: DistanceRank-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 

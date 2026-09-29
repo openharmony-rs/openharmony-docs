@@ -22,6 +22,8 @@ When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacy
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-privacyManager-function setPermissionUsedRecordToggleStatus(status: boolean): Promise<void>--><!--Device-privacyManager-function setPermissionUsedRecordToggleStatus(status: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -81,6 +83,8 @@ When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacy
 **Required permissions:** ohos.permission.PERMISSION_RECORD_TOGGLE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-privacyManager-function setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: int): Promise<void>--><!--Device-privacyManager-function setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

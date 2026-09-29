@@ -14,6 +14,8 @@ properties, characteristics, or relationships between data entities in an RDB st
 
 **Substitutes:** [relationalStore](arkts-arkdata-data-relationalstore.md)
 
+<!--Device-unnamed-declare namespace rdb--><!--Device-unnamed-declare namespace rdb-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -45,13 +47,6 @@ properties, characteristics, or relationships between data entities in an RDB st
 | [RdbStore](arkts-arkdata-rdb-rdbstore-i.md) | Provides APIs for managing data in an RDB store. |
 | [StoreConfig](arkts-arkdata-rdb-storeconfig-i.md) | Defines the RDB store configuration. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [SubscribeType](arkts-arkdata-rdb-subscribetype-e.md) | Defines the subscription type. |
-| [SyncMode](arkts-arkdata-rdb-syncmode-e.md) | Defines the database sync mode. |
-
 ### Types
 
 | Name | Description |
@@ -59,3 +54,10 @@ properties, characteristics, or relationships between data entities in an RDB st
 | [ResultSet](arkts-arkdata-rdb-resultset-t.md) | Configure RdbPredicates to match the specified field whose data type is ValueType array and values are out of a given range. |
 | [ValuesBucket](arkts-arkdata-rdb-valuesbucket-t.md) | Defines the types of the key and value in a KV pair. |
 | [ValueType](arkts-arkdata-rdb-valuetype-t.md) | Defines the data types allowed. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [SubscribeType](arkts-arkdata-rdb-subscribetype-e.md) | Defines the subscription type. |
+| [SyncMode](arkts-arkdata-rdb-syncmode-e.md) | Defines the database sync mode. |

@@ -8,6 +8,8 @@ Represents the connection state information of the proxy channel.
 
 **Since:** 20
 
+<!--Device-proxyChannelManager-interface ChannelStateInfo--><!--Device-proxyChannelManager-interface ChannelStateInfo-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Channel ID of the proxy channel. The value range is 1 to 2147483647.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ChannelStateInfo-channelId: int--><!--Device-ChannelStateInfo-channelId: int-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## state
@@ -45,5 +49,7 @@ Connection state of the channel. For the value range, see [ChannelState](arkts-d
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChannelStateInfo-state: ChannelState--><!--Device-ChannelStateInfo-state: ChannelState-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

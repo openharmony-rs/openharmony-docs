@@ -17,6 +17,8 @@ find<S extends T>(predicate: (this: void, value: T, index: number, obj: readonly
 
 Returns the value of the first element in the array where predicate is true, and undefined otherwise.
 
+<!--Device-ReadonlyArray-find<S extends T>(predicate: (this: void, value: T, index: number, obj: readonly T[]) => value is S, thisArg?: any): S | undefined--><!--Device-ReadonlyArray-find<S extends T>(predicate: (this: void, value: T, index: number, obj: readonly T[]) => value is S, thisArg?: any): S | undefined-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -46,6 +48,8 @@ findIndex(predicate: (value: T, index: number, obj: readonly T[]) => unknown, th
 ```
 
 Returns the index of the first element in the array where predicate is true, and -1 otherwise.
+
+<!--Device-ReadonlyArray-findIndex(predicate: (value: T, index: number, obj: readonly T[]) => unknown, thisArg?: any): number--><!--Device-ReadonlyArray-findIndex(predicate: (value: T, index: number, obj: readonly T[]) => unknown, thisArg?: any): number-End-->
 
 **Parameters:**
 

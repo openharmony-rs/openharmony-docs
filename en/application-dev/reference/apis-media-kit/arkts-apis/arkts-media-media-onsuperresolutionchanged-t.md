@@ -13,7 +13,9 @@ Super resolution is automatically disabled in either of the following cases:
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-media-type OnSuperResolutionChanged = (enabled: boolean) => void--><!--Device-media-type OnSuperResolutionChanged = (enabled: boolean) => void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 

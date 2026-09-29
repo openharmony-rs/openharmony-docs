@@ -14,6 +14,8 @@ Defines the allowed data types for specifying the background corner radius of a 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-declare type DialogOptionsCornerRadius = Dimension | BorderRadiuses--><!--Device-promptAction-declare type DialogOptionsCornerRadius = Dimension | BorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

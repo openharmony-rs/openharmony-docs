@@ -4,7 +4,7 @@
 export interface AccelerometerResponse
 ```
 
-Defines the callback invoked when the acceleration sensor data changes.
+Callback invoked when the acceleration sensor data changes. The callback returns the acceleration data of the device on the x, y, and z axes.
 
 **Since:** 3
 
@@ -13,6 +13,8 @@ Defines the callback invoked when the acceleration sensor data changes.
 **Substitutes:** [AccelerometerResponse](arkts-sensorservice-sensor-accelerometerresponse-i.md)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
+
+<!--Device-unnamed-export interface AccelerometerResponse--><!--Device-unnamed-export interface AccelerometerResponse-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -28,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 x: number
 ```
 
-Acceleration on the x-axis.
+Acceleration along the x-axis of the device, in m/s². Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.
 
 **Type:** number
 
@@ -42,6 +44,8 @@ Acceleration on the x-axis.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AccelerometerResponse-x: number--><!--Device-AccelerometerResponse-x: number-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
 ## y
@@ -50,7 +54,7 @@ Acceleration on the x-axis.
 y: number
 ```
 
-Acceleration on the y-axis.
+Acceleration along the y-axis of the device, in m/s². Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor.
 
 **Type:** number
 
@@ -64,6 +68,8 @@ Acceleration on the y-axis.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AccelerometerResponse-y: number--><!--Device-AccelerometerResponse-y: number-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
 ## z
@@ -72,7 +78,7 @@ Acceleration on the y-axis.
 z: number
 ```
 
-Acceleration on the z-axis.
+Acceleration along the z-axis of the device, in m/s². Value range: The value is the actually reported physical quantity, which is determined by the hardware sensor. The acceleration along the z-axis is about 9.8 m/s² (gravity acceleration) when the device is still.
 
 **Type:** number
 
@@ -85,5 +91,7 @@ Acceleration on the z-axis.
 **Required permissions:** ohos.permission.ACCELEROMETER
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AccelerometerResponse-z: number--><!--Device-AccelerometerResponse-z: number-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

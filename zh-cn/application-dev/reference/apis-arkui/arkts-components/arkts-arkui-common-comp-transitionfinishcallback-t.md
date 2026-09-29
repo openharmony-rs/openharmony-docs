@@ -14,6 +14,8 @@ declare type TransitionFinishCallback = (transitionIn: boolean) => void
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type TransitionFinishCallback = (transitionIn: boolean) => void--><!--Device-unnamed-declare type TransitionFinishCallback = (transitionIn: boolean) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

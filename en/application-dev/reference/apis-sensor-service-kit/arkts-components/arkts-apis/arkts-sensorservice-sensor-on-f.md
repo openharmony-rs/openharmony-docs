@@ -15,13 +15,17 @@ function on(type: SensorId.ACCELEROMETER, callback: Callback<AccelerometerRespon
     options?: Options): void
 ```
 
-Subscribes to data of the acceleration sensor.
+Subscribes to data of the acceleration sensor. This API uses an asynchronous callback to return the result. The acceleration sensor measures the acceleration of the device along the x, y, and z axes, including the gravity acceleration component. This sensor is applicable to scenarios where the device motion status needs to be detected, such as screen rotation, game control, and step counting. After this method is called, the system continuously reports acceleration data at the specified frequency through the callback.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-sensor-function on(type: SensorId.ACCELEROMETER, callback: Callback<AccelerometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.ACCELEROMETER, callback: Callback<AccelerometerResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -31,13 +35,13 @@ Subscribes to data of the acceleration sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.ACCELEROMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AccelerometerResponse](arkts-sensorservice-sensor-accelerometerresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is an **AccelerometerResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -75,11 +79,13 @@ function on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback<Accele
     options?: Options): void
 ```
 
-Subscribes to data of the uncalibrated acceleration sensor.
+Subscribes to data of the uncalibrated acceleration sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated acceleration sensor and the acceleration sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated acceleration sensor are not calibrated by the system. This sensor is suitable for scenarios where raw acceleration data is required or a custom calibration algorithm is implemented. Compared with **sensor.on('SensorId.ACCELEROMETER')**, this API provides additional bias information, which is suitable for scenarios where device calibration bias needs to be analyzed.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCELEROMETER
+
+<!--Device-sensor-function on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback<AccelerometerUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback<AccelerometerUncalibratedResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -89,13 +95,13 @@ Subscribes to data of the uncalibrated acceleration sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.ACCELEROMETER_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.ACCELEROMETER_UNCALIBRATED**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AccelerometerUncalibratedResponse](arkts-sensorservice-sensor-accelerometeruncalibratedresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is an **AccelerometerUncalibratedResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -135,9 +141,11 @@ try {
 function on(type: SensorId.AMBIENT_LIGHT, callback: Callback<LightResponse>, options?: Options): void
 ```
 
-Subscribes to data of the ambient light sensor.
+Subscribes to data of the ambient light sensor. This API uses an asynchronous callback to return the result. The ambient light sensor is used to measure the light intensity of the surrounding environment. It is applicable to scenarios such as automatic screen brightness adjustment and determining the brightness of the environment. After this method is called, the system continuously reports ambient light intensity data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.AMBIENT_LIGHT, callback: Callback<LightResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.AMBIENT_LIGHT, callback: Callback<LightResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -147,7 +155,7 @@ Subscribes to data of the ambient light sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.AMBIENT_LIGHT](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.AMBIENT_LIGHT**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LightResponse](arkts-sensorservice-sensor-lightresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **LightResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -188,9 +196,11 @@ function on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback<AmbientTemper
     options?: Options): void
 ```
 
-Subscribes to data of the ambient temperature sensor.
+Subscribes to data of the ambient temperature sensor. This API uses an asynchronous callback to return the result. The temperature sensor is used to measure the ambient temperature around the device. It is applicable to scenarios such as ambient temperature monitoring and temperature compensation. After this method is called, the system continuously reports temperature data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -200,7 +210,7 @@ Subscribes to data of the ambient temperature sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.AMBIENT_TEMPERATURE](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.AMBIENT_TEMPERATURE**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AmbientTemperatureResponse](arkts-sensorservice-sensor-ambienttemperatureresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is an **AmbientTemperatureResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -240,9 +250,11 @@ try {
 function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, options?: Options): void
 ```
 
-Subscribes to data of the barometer sensor.
+Subscribes to data of the barometer sensor. This API uses an asynchronous callback to return the result. The barometric pressure sensor is used to measure atmospheric pressure. It is applicable to scenarios such as altitude estimation and weather forecast assistance. After this method is called, the system continuously reports barometric pressure data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -252,7 +264,7 @@ Subscribes to data of the barometer sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.BAROMETER](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.BAROMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BarometerResponse](arkts-sensorservice-sensor-barometerresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **BarometerResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -293,9 +305,11 @@ function on(type: SensorId.GRAVITY, callback: Callback<GravityResponse>,
     options?: Options): void
 ```
 
-Subscribes to data of the gravity sensor.
+Subscribes to data of the gravity sensor. This API uses an asynchronous callback to return the result. The gravity sensor measures the gravity acceleration components of the device along the x, y, and z axes. It is applicable to scenarios where the gravity component needs to be separated for motion analysis, such as game control and motion detection. After this method is called, the system continuously reports gravity component data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -305,7 +319,7 @@ Subscribes to data of the gravity sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.GRAVITY](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.GRAVITY**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GravityResponse](arkts-sensorservice-sensor-gravityresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **GravityResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -348,13 +362,17 @@ function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,
     options?: Options): void
 ```
 
-Subscribes to data of the gyroscope sensor.
+Subscribes to data of the gyroscope sensor. This API uses an asynchronous callback to return the result. The gyroscope sensor is used to measure the angular velocity of a device around the x, y, and z axes. It is applicable to scenarios such as device rotation detection, posture tracking, and game control. After this method is called, the system continuously reports angular velocity data at the specified frequency through the callback.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-sensor-function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -364,13 +382,13 @@ Subscribes to data of the gyroscope sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.GYROSCOPE](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.GYROSCOPE**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **GyroscopeResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -408,11 +426,13 @@ function on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeU
     options?: Options): void
 ```
 
-Subscribes to data of the uncalibrated gyroscope sensor.
+Subscribes to data of the uncalibrated gyroscope sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated gyroscope sensor and the gyroscope sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated gyroscope sensor are not calibrated by the system. This sensor is suitable for scenarios where raw gyroscope data is required or where the calibration algorithm needs to be implemented by the app. Compared with **sensor.on('SensorId.GYROSCOPE')**, this API additionally provides bias information, which is suitable for scenarios where the gyroscope calibration bias needs to be analyzed.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.GYROSCOPE
+
+<!--Device-sensor-function on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeUncalibratedResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -422,13 +442,13 @@ Subscribes to data of the uncalibrated gyroscope sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.GYROSCOPE_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.GYROSCOPE_UNCALIBRATED**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GyroscopeUncalibratedResponse](arkts-sensorservice-sensor-gyroscopeuncalibratedresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **GyroscopeUncalibratedResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -468,9 +488,11 @@ try {
 function on(type: SensorId.HALL, callback: Callback<HallResponse>, options?: Options): void
 ```
 
-Subscribes to data of the Hall effect sensor.
+Subscribes to data of the Hall effect sensor. This API uses an asynchronous callback to return the result. The Hall effect sensor is used to detect magnetic field changes, and is often used to detect the opening and closing status of a flip phone or leather case. When Hall effect events are frequently triggered, you can use the **options** parameter to set the data reporting frequency. After this method is called, the system continuously reports Hall effect sensor data through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.HALL, callback: Callback<HallResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.HALL, callback: Callback<HallResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -480,7 +502,7 @@ Subscribes to data of the Hall effect sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.HALL](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.HALL**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HallResponse](arkts-sensorservice-sensor-hallresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **HallResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. The default value is 200,000,000 ns. This parameter is used to set the data reporting frequency when Hall effect events are frequently triggered. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | Optional parameters used to set the reporting frequency of the sensor when the Hall effect sensor is frequently triggered. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -521,11 +543,13 @@ function on(type: SensorId.HEART_RATE, callback: Callback<HeartRateResponse>,
     options?: Options): void
 ```
 
-Subscribes to data of the heart rate sensor.
+Subscribes to data of the heart rate sensor. This API uses an asynchronous callback to return the result. The heart rate sensor is used to measure the heart rate of a user. It is applicable to scenarios such as health monitoring and exercise assistance. After this method is called, the system continuously reports heart rate data at the specified frequency through the callback.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
+
+<!--Device-sensor-function on(type: SensorId.HEART_RATE, callback: Callback<HeartRateResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.HEART_RATE, callback: Callback<HeartRateResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -535,13 +559,13 @@ Subscribes to data of the heart rate sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.HEART_RATE](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.HEART_RATE**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HeartRateResponse](arkts-sensorservice-sensor-heartrateresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **HeartRateResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -577,9 +601,11 @@ function on(type: SensorId.HUMIDITY, callback: Callback<HumidityResponse>,
     options?: Options): void
 ```
 
-Subscribes to data of the humidity sensor.
+Subscribes to data of the humidity sensor. This API uses an asynchronous callback to return the result. The humidity sensor is used to measure the relative humidity of the surrounding environment. It is applicable to scenarios such as ambient humidity monitoring and collaboration with other smart home devices. After this method is called, the system continuously reports humidity data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -589,7 +615,7 @@ Subscribes to data of the humidity sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.HUMIDITY](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.HUMIDITY**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HumidityResponse](arkts-sensorservice-sensor-humidityresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **HumidityResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -630,11 +656,13 @@ function on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback<LinearAccele
     options?: Options): void
 ```
 
-Subscribes to data of the linear acceleration sensor.
+Subscribes to data of the linear acceleration sensor. This API uses an asynchronous callback to return the result. The linear acceleration sensor measures the acceleration (excluding the gravity component) of the device along the x, y, and z axes. It is applicable to scenarios where the pure motion acceleration of the device needs to be sensed, such as motion tracking and collision detection. Compared with **sensor.on('SensorId.ACCELEROMETER')**, this API does not contain the gravity component and is applicable to scenarios where only the device's motion acceleration is required.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCELEROMETER
+
+<!--Device-sensor-function on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback<LinearAccelerometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback<LinearAccelerometerResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -644,13 +672,13 @@ Subscribes to data of the linear acceleration sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.LINEAR_ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.LINEAR_ACCELEROMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LinearAccelerometerResponse](arkts-sensorservice-sensor-linearaccelerometerresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **LinearAccelerometerResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -688,9 +716,11 @@ function on(type: SensorId.MAGNETIC_FIELD, callback: Callback<MagneticFieldRespo
     options?: Options): void
 ```
 
-Subscribes to data of the magnetic field sensor.
+Subscribes to data of the magnetic field sensor. This API uses an asynchronous callback to return the result. The magnetic field sensor is used to measure the magnetic field strength around the device in the x, y, and z axes. It is applicable to scenarios such as compass, direction detection, and metal detection. After this method is called, the system continuously reports magnetic field component data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -700,7 +730,7 @@ Subscribes to data of the magnetic field sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.MAGNETIC_FIELD](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.MAGNETIC_FIELD**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MagneticFieldResponse](arkts-sensorservice-sensor-magneticfieldresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **MagneticFieldResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -743,9 +773,11 @@ function on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<Magne
     options?: Options): void
 ```
 
-Subscribes to data of the uncalibrated magnetic field sensor.
+Subscribes to data of the uncalibrated magnetic field sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated magnetic field sensor and the magnetic field sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated magnetic field sensor are not calibrated by the system. This sensor is suitable for scenarios where raw magnetic field data is required or a custom calibration algorithm is implemented. Compared with **sensor.on('SensorId.MAGNETIC_FIELD')**, this API provides the bias information, which is suitable for scenarios where the geomagnetic calibration deviation of the device needs to be analyzed.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -755,7 +787,7 @@ Subscribes to data of the uncalibrated magnetic field sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.MAGNETIC_FIELD_UNCALIBRATED](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.MAGNETIC_FIELD_UNCALIBRATED**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MagneticFieldUncalibratedResponse](arkts-sensorservice-sensor-magneticfielduncalibratedresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **MagneticFieldUncalibratedResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -801,7 +833,7 @@ function on(type: SensorId.ORIENTATION, callback: Callback<OrientationResponse>,
     options?: Options): void
 ```
 
-Subscribes to data of the orientation sensor.
+Subscribes to data of the orientation sensor. This API uses an asynchronous callback to return the result. The orientation sensor measures the angles of rotation around the Z-axis (alpha), X-axis (beta), and Y-axis (gamma). It is applicable to scenarios such as screen rotation, compass, and posture sensing. After this method is called, the system continuously reports orientation data at the specified frequency through the callback. Applications or services invoking this API can prompt users to use figure-8 calibration to improve the accuracy of the direction sensor. The sensor has a theoretical error of ±5 degrees, but the specific precision may vary depending on different driver implementations and algorithmic designs.
 
 > **NOTE:** 
 > 
@@ -809,9 +841,13 @@ Subscribes to data of the orientation sensor.
 > of the direction sensor. The sensor has a theoretical error of ±5 degrees, but the specific precision may vary
 > depending on different driver implementations and algorithmic designs.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-sensor-function on(type: SensorId.ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -821,7 +857,7 @@ Subscribes to data of the orientation sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.ORIENTATION](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.ORIENTATION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[OrientationResponse](arkts-sensorservice-sensor-orientationresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **OrientationResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -863,11 +899,18 @@ try {
 function on(type: SensorId.PEDOMETER, callback: Callback<PedometerResponse>, options?: Options): void
 ```
 
-Subscribes to data of the pedometer sensor. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations.
+Subscribes to data of the pedometer sensor. This API uses an asynchronous callback to return the result. The pedometer sensor is used to count the number of steps taken by a user. It is applicable to scenarios such as fitness tracking and health management. The step counter sensor's data reporting is subject to some delay, and the delay is determined by specific product implementations. After this method is called, the system continuously reports step count data at the specified frequency through the callback.
+
+> **NOTE:** 
+> 
+> The pedometer sensor data is reset only when the device is rebooted, not on a daily basis.
+> The step count reported before the reboot is the accumulated value.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
+
+<!--Device-sensor-function on(type: SensorId.PEDOMETER, callback: Callback<PedometerResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.PEDOMETER, callback: Callback<PedometerResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -877,13 +920,13 @@ Subscribes to data of the pedometer sensor. The step counter sensor's data repor
 | --- | --- | --- | --- |
 | type | [SensorId.PEDOMETER](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.PEDOMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PedometerResponse](arkts-sensorservice-sensor-pedometerresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **PedometerResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -919,11 +962,13 @@ function on(type: SensorId.PEDOMETER_DETECTION, callback: Callback<PedometerDete
     options?: Options): void
 ```
 
-Subscribes to data of the pedometer detection sensor.
+Subscribes to data of the pedometer detection sensor. This API uses an asynchronous callback to return the result. The pedometer detection sensor is used to detect whether a step event (such as a step) occurs. It is applicable to scenarios where the walking status needs to be detected in real time. Compared with **sensor.on('SensorId.PEDOMETER')**, this API reports the scalar value of a step event instead of the accumulated step count. It is applicable to scenarios where single-step events need to be detected.
 
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
+
+<!--Device-sensor-function on(type: SensorId.PEDOMETER_DETECTION, callback: Callback<PedometerDetectionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.PEDOMETER_DETECTION, callback: Callback<PedometerDetectionResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -933,13 +978,13 @@ Subscribes to data of the pedometer detection sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.PEDOMETER_DETECTION](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.PEDOMETER_DETECTION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PedometerDetectionResponse](arkts-sensorservice-sensor-pedometerdetectionresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **PedometerDetectionResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
@@ -974,9 +1019,11 @@ try {
 function on(type: SensorId.PROXIMITY, callback: Callback<ProximityResponse>, options?: Options): void
 ```
 
-Subscribes to data of the proximity sensor.
+Subscribes to data of the proximity sensor. This API uses an asynchronous callback to return the result. The proximity sensor is used to detect the distance between an object and the device. It is often used to automatically turn off the screen during a call to prevent accidental touches. When proximity sensor events are frequently triggered, you can use the **options** parameter to set the event reporting frequency. After this method is called, the system continuously reports proximity sensor data through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.PROXIMITY, callback: Callback<ProximityResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.PROXIMITY, callback: Callback<ProximityResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -986,7 +1033,7 @@ Subscribes to data of the proximity sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.PROXIMITY](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.PROXIMITY**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ProximityResponse](arkts-sensorservice-sensor-proximityresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **ProximityResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. The default value is 200,000,000 ns. This parameter is used to set the data reporting frequency when proximity sensor events are frequently triggered. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). This parameter is used to set the data reporting frequency when proximity events are frequently triggered. |
 
 **Error codes:**
 
@@ -1027,9 +1074,11 @@ function on(type: SensorId.ROTATION_VECTOR, callback: Callback<RotationVectorRes
     options?: Options): void
 ```
 
-Subscribes to data of the rotation vector sensor.
+Subscribes to data of the rotation vector sensor. This API uses an asynchronous callback to return the result. The rotation vector sensor is used to indicate the orientation of a device. The data consists of the X, Y, and Z components and the scalar W, and can be used for device orientation estimation and AR/VR scenarios. After this method is called, the system continuously reports rotation vector data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1039,7 +1088,7 @@ Subscribes to data of the rotation vector sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.ROTATION_VECTOR](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.ROTATION_VECTOR**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RotationVectorResponse](arkts-sensorservice-sensor-rotationvectorresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **RotationVectorResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -1081,9 +1130,11 @@ function on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback<SignificantMot
     options?: Options): void
 ```
 
-Subscribes to the significant motion sensor data.
+Subscribes to significant motion sensor data to detect significant motion events such as picking up the device, obvious movement, or violent shaking. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where the device needs to be woken up, an app needs to be started, or the mode needs to be switched based on the user's activity state. After this method is called, the system continuously reports significant motion event data through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1093,7 +1144,7 @@ Subscribes to the significant motion sensor data.
 | --- | --- | --- | --- |
 | type | [SensorId.SIGNIFICANT_MOTION](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.SIGNIFICANT_MOTION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SignificantMotionResponse](arkts-sensorservice-sensor-significantmotionresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **SignificantMotionResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -1132,9 +1183,11 @@ function on(type: SensorId.WEAR_DETECTION, callback: Callback<WearDetectionRespo
     options?: Options): void
 ```
 
-Subscribes to data of the wear detection sensor.
+Subscribes to data of the wear detection sensor. This API uses an asynchronous callback to return the result. The wear detection sensor is used to detect whether a wearable device, such as a smart watch, is being worn by a user, so that the device can automatically switch its working mode. After this method is called, the system continuously reports wear detection data at the specified frequency through the callback.
 
 **Since:** 9
+
+<!--Device-sensor-function on(type: SensorId.WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1144,7 +1197,7 @@ Subscribes to data of the wear detection sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.WEAR_DETECTION](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at **SensorId.WEAR_DETECTION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **WearDetectionResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -1183,9 +1236,11 @@ function on(type: SensorId.FUSION_PRESSURE, callback: Callback<FusionPressureRes
     options?: Options): void
 ```
 
-Subscribes to the fused pressure sensor data.
+Subscribes to the fused pressure sensor data. This API uses an asynchronous callback to return the result. The fused pressure sensor is used to obtain pressure data processed by the fusion algorithm. It applies only to smart watches. This is applicable to health monitoring scenarios where wrist pressure data needs to be obtained. After this method is called, the system continuously reports acceleration data at the specified frequency through the callback.
 
 **Since:** 22
+
+<!--Device-sensor-function on(type: SensorId.FUSION_PRESSURE, callback: Callback<FusionPressureResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorId.FUSION_PRESSURE, callback: Callback<FusionPressureResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1195,7 +1250,7 @@ Subscribes to the fused pressure sensor data.
 | --- | --- | --- | --- |
 | type | [SensorId.FUSION_PRESSURE](arkts-sensorservice-sensor-sensorid-e.md) | Yes | Sensor type. The value is fixed at SensorId.FUSION_PRESSURE. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[FusionPressureResponse](arkts-sensorservice-sensor-fusionpressureresponse-i.md)&gt; | Yes | Callback used to report the sensor data, which is a **FusionPressureResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Error codes:**
 
@@ -1236,7 +1291,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<Ac
     options?: Options): void
 ```
 
-Subscribes to data changes of the acceleration sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the acceleration sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the device motion status needs to be detected, such as screen rotation and game control. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.ACCELEROMETER](#on-2)
+> instead.
 
 **Since:** 8
 
@@ -1246,6 +1307,8 @@ Subscribes to data changes of the acceleration sensor. If this API is called mul
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<AccelerometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<AccelerometerResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1254,7 +1317,7 @@ Subscribes to data changes of the acceleration sensor. If this API is called mul
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_ACCELEROMETER](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_ACCELEROMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AccelerometerResponse](arkts-sensorservice-sensor-accelerometerresponse-i.md)&gt; | Yes | Callback used to return the acceleration sensor data. The reported data type in the callback is **AccelerometerResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1280,7 +1343,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback
     options?: Options): void
 ```
 
-Subscribes to data changes of the uncalibrated acceleration sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the uncalibrated acceleration sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where you need to obtain the raw acceleration data that contains deviation calibration data. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.ACCELEROMETER](#on-3)
+> instead.
 
 **Since:** 8
 
@@ -1290,6 +1359,8 @@ Subscribes to data changes of the uncalibrated acceleration sensor. If this API 
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback: Callback<AccelerometerUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback: Callback<AccelerometerUncalibratedResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1298,7 +1369,7 @@ Subscribes to data changes of the uncalibrated acceleration sensor. If this API 
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AccelerometerUncalibratedResponse](arkts-sensorservice-sensor-accelerometeruncalibratedresponse-i.md)&gt; | Yes | Callback used to return the uncalibrated acceleration sensor data. The reported data type in the callback is **AccelerometerUncalibratedResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1327,13 +1398,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<Li
     options?: Options): void
 ```
 
-Subscribes to data changes of the ambient light sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the ambient light sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where the ambient light intensity needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.AMBIENT_LIGHT](#on-4)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-4)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1343,7 +1422,7 @@ Subscribes to data changes of the ambient light sensor. If this API is called mu
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_AMBIENT_LIGHT**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LightResponse](arkts-sensorservice-sensor-lightresponse-i.md)&gt; | Yes | Callback used to return the ambient light sensor data. The reported data type in the callback is **LightResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1367,13 +1446,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callb
     options?: Options): void
 ```
 
-Subscribes to data changes of the ambient temperature sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the ambient temperature sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the ambient temperature needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.AMBIENT_TEMPERATURE](#on-5)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-5)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1383,7 +1470,7 @@ Subscribes to data changes of the ambient temperature sensor. If this API is cal
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_AMBIENT_TEMPERATURE**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AmbientTemperatureResponse](arkts-sensorservice-sensor-ambienttemperatureresponse-i.md)&gt; | Yes | Callback used to return the ambient temperature sensor data. The reported data type in the callback is **AmbientTemperatureResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1407,13 +1494,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<Barome
     options?: Options): void
 ```
 
-Subscribes to data changes of the barometer sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the barometer sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the ambient barometric pressure needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.BAROMETER](#on-6)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-6)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1423,7 +1518,7 @@ Subscribes to data changes of the barometer sensor. If this API is called multip
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_BAROMETER](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_BAROMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BarometerResponse](arkts-sensorservice-sensor-barometerresponse-i.md)&gt; | Yes | Callback used to return the barometer sensor data. The reported data type in the callback is **BarometerResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1447,13 +1542,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityR
     options?: Options): void
 ```
 
-Subscribes to data changes of the gravity sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the gravity sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the device gravity direction needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.GRAVITY](#on-7)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-7)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1463,7 +1566,7 @@ Subscribes to data changes of the gravity sensor. If this API is called multiple
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_GRAVITY](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_GRAVITY**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GravityResponse](arkts-sensorservice-sensor-gravityresponse-i.md)&gt; | Yes | Callback used to return the gravity sensor data. The reported data type in the callback is **GravityResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1489,7 +1592,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<Gyrosc
     options?: Options): void
 ```
 
-Subscribes to data changes of the gyroscope sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the gyroscope sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the device's angular velocity needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.GYROSCOPE](#on-8)
+> instead.
 
 **Since:** 8
 
@@ -1499,6 +1608,8 @@ Subscribes to data changes of the gyroscope sensor. If this API is called multip
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<GyroscopeResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<GyroscopeResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1507,7 +1618,7 @@ Subscribes to data changes of the gyroscope sensor. If this API is called multip
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_GYROSCOPE](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_GYROSCOPE**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GyroscopeResponse](arkts-sensorservice-sensor-gyroscoperesponse-i.md)&gt; | Yes | Callback used to return the gyroscope sensor data. The reported data type in the callback is **GyroscopeResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1533,7 +1644,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: Ca
     options?: Options): void
 ```
 
-Subscribes to data changes of the uncalibrated gyroscope sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the uncalibrated gyroscope sensor. This API uses an asynchronous callback to return the result. This method is applicable to scenarios where you need to obtain the raw gyroscope data that contains bias calibration data. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.GYROSCOPE_UNCALIBRATED](#on-9)
+> instead.
 
 **Since:** 8
 
@@ -1543,6 +1660,8 @@ Subscribes to data changes of the uncalibrated gyroscope sensor. If this API is 
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeUncalibratedResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1551,7 +1670,7 @@ Subscribes to data changes of the uncalibrated gyroscope sensor. If this API is 
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[GyroscopeUncalibratedResponse](arkts-sensorservice-sensor-gyroscopeuncalibratedresponse-i.md)&gt; | Yes | Callback used to return the uncalibrated gyroscope sensor data. The reported data type in the callback is **GyroscopeUncalibratedResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1580,13 +1699,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallRespons
     options?: Options): void
 ```
 
-Subscribes to data changes of the Hall effect sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the Hall effect sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where the device cover or magnet status needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.HALL](#on-10)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-10)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1596,7 +1723,7 @@ Subscribes to data changes of the Hall effect sensor. If this API is called mult
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_HALL](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_HALL**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HallResponse](arkts-sensorservice-sensor-hallresponse-i.md)&gt; | Yes | Callback used to return the Hall effect sensor data. The reported data type in the callback is **HallResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. The default value is 200,000,000 ns. This parameter is used to set the data reporting frequency when Hall effect events are frequently triggered. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | Optional parameters used to set the reporting frequency of the sensor when the Hall effect sensor is frequently triggered. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1620,7 +1747,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<Heart
     options?: Options): void
 ```
 
-Subscribes to data changes of the heart rate sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the heart rate sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the user's heart rate data needs to be obtained. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.HALL](#on-10)
+> instead.
 
 **Since:** 8
 
@@ -1630,6 +1763,8 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 
 **Required permissions:** ohos.permission.HEALTH_DATA
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<HeartRateResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<HeartRateResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1638,7 +1773,7 @@ Subscribes to data changes of the heart rate sensor. If this API is called multi
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_HEART_RATE](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_HEART_RATE**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HeartRateResponse](arkts-sensorservice-sensor-heartrateresponse-i.md)&gt; | Yes | Callback used to return the heart rate sensor data. The reported data type in the callback is **HeartRateResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 
 <a id="on-34"></a>
@@ -1650,13 +1785,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<Humidit
     options?: Options): void
 ```
 
-Subscribes to data changes of the humidity sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the humidity sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the ambient humidity needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.SENSOR_TYPE_ID_HUMIDITY](#on-12)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-12)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1666,7 +1809,7 @@ Subscribes to data changes of the humidity sensor. If this API is called multipl
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_HUMIDITY](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_HUMIDITY**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[HumidityResponse](arkts-sensorservice-sensor-humidityresponse-i.md)&gt; | Yes | Callback used to return the humidity sensor data. The reported data type in the callback is **HumidityResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1690,7 +1833,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Callb
     options?: Options): void
 ```
 
-Subscribes to data changes of the linear acceleration sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the linear acceleration sensor. This API uses an asynchronous callback to return the result. This API applies to scenarios where you need to obtain the linear acceleration data excluding the effect of gravity. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.LINEAR_ACCELEROMETER](#on-13)
+> instead.
 
 **Since:** 8
 
@@ -1700,6 +1849,8 @@ Subscribes to data changes of the linear acceleration sensor. If this API is cal
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Callback<LinearAccelerometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Callback<LinearAccelerometerResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1708,7 +1859,7 @@ Subscribes to data changes of the linear acceleration sensor. If this API is cal
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_LINEAR_ACCELERATION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[LinearAccelerometerResponse](arkts-sensorservice-sensor-linearaccelerometerresponse-i.md)&gt; | Yes | Callback used to return the linear acceleration sensor data. The reported data type in the callback is **LinearAccelerometerResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 
 <a id="on-36"></a>
@@ -1720,13 +1871,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<M
     options?: Options): void
 ```
 
-Subscribes to data changes of the magnetic field sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the magnetic field sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the strength and direction of the magnetic field around the device need to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.MAGNETIC_FIELD](#on-14)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-14)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1736,7 +1895,7 @@ Subscribes to data changes of the magnetic field sensor. If this API is called m
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_MAGNETIC_FIELD**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MagneticFieldResponse](arkts-sensorservice-sensor-magneticfieldresponse-i.md)&gt; | Yes | Callback used to return the magnetic field sensor data. The reported data type in the callback is **MagneticFieldResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1762,13 +1921,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
     options?: Options): void
 ```
 
-Subscribes to data changes of the uncalibrated magnetic field sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the uncalibrated magnetic field sensor. This API uses an asynchronous callback to return the result. This method applies to scenarios where you need to obtain the raw magnetic field data that contains the deviation calibration data. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#on-15)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-15)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1778,7 +1945,7 @@ Subscribes to data changes of the uncalibrated magnetic field sensor. If this AP
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MagneticFieldUncalibratedResponse](arkts-sensorservice-sensor-magneticfielduncalibratedresponse-i.md)&gt; | Yes | Callback used to return the uncalibrated magnetic field sensor data. The reported data type in the callback is **MagneticFieldUncalibratedResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1807,13 +1974,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<Orie
     options?: Options): void
 ```
 
-Subscribes to data changes of the orientation sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the orientation sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the device orientation needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.ORIENTATION](#on-16)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-16)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1823,7 +1998,7 @@ Subscribes to data changes of the orientation sensor. If this API is called mult
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_ORIENTATION](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_ORIENTATION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[OrientationResponse](arkts-sensorservice-sensor-orientationresponse-i.md)&gt; | Yes | Callback used to return the orientation sensor data. The reported data type in the callback is **OrientationResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1849,7 +2024,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<Pedome
     options?: Options): void
 ```
 
-Subscribes to data changes of the pedometer sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the pedometer sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where the user's step count needs to be obtained. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.PEDOMETER](#on-17)
+> instead.
 
 **Since:** 8
 
@@ -1859,6 +2040,8 @@ Subscribes to data changes of the pedometer sensor. If this API is called multip
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<PedometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<PedometerResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1867,7 +2050,7 @@ Subscribes to data changes of the pedometer sensor. If this API is called multip
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_PEDOMETER](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_PEDOMETER**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PedometerResponse](arkts-sensorservice-sensor-pedometerresponse-i.md)&gt; | Yes | Callback used to return the pedometer sensor data. The reported data type in the callback is **PedometerResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1891,7 +2074,13 @@ function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callb
     options?: Options): void
 ```
 
-Subscribes to data changes of the pedometer detection sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the pedometer detection sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where you need to detect whether a user is walking. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.PEDOMETER_DETECTION](#on-18)
+> instead.
 
 **Since:** 8
 
@@ -1901,6 +2090,8 @@ Subscribes to data changes of the pedometer detection sensor. If this API is cal
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback<PedometerDetectionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback<PedometerDetectionResponse>,    options?: Options): void-End-->
+
 **System capability:** SystemCapability.Sensors.Sensor
 
 **Parameters:**
@@ -1909,7 +2100,7 @@ Subscribes to data changes of the pedometer detection sensor. If this API is cal
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_PEDOMETER_DETECTION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PedometerDetectionResponse](arkts-sensorservice-sensor-pedometerdetectionresponse-i.md)&gt; | Yes | Callback used to return the pedometer detection sensor data. The reported data type in the callback is **PedometerDetectionResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1933,13 +2124,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<Proxim
     options?: Options): void
 ```
 
-Subscribes to data changes of the proximity sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the proximity sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the proximity of an object to the device needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.PROXIMITY](#on-19)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-19)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1949,7 +2148,7 @@ Subscribes to data changes of the proximity sensor. If this API is called multip
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_PROXIMITY](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_PROXIMITY**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ProximityResponse](arkts-sensorservice-sensor-proximityresponse-i.md)&gt; | Yes | Callback used to return the proximity sensor data. The reported data type in the callback is **ProximityResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. The default value is 200,000,000 ns. This parameter is used to set the data reporting frequency when proximity sensor events are frequently triggered. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | Optional parameters used to set the reporting frequency of the sensor when the proximity sensor is frequently triggered. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -1973,13 +2172,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<
     options?: Options): void
 ```
 
-Subscribes to data changes of the rotation vector sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the rotation vector sensor. This API uses an asynchronous callback to return the result. This sensor is applicable to scenarios where the device rotation status in three-dimensional space needs to be detected. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.ROTATION_VECTOR](#on-20)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-20)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -1989,7 +2196,7 @@ Subscribes to data changes of the rotation vector sensor. If this API is called 
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_ROTATION_VECTOR**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[RotationVectorResponse](arkts-sensorservice-sensor-rotationvectorresponse-i.md)&gt; | Yes | Callback used to return the rotation vector sensor data. The reported data type in the callback is **RotationVectorResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -2016,13 +2223,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callba
     options?: Options): void
 ```
 
-Subscribes to data changes of the significant motion sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the significant motion sensor. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where you need to detect whether the device has significant motion. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.SIGNIFICANT_MOTION](#on-21)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-21)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -2032,7 +2247,7 @@ Subscribes to data changes of the significant motion sensor. If this API is call
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_SIGNIFICANT_MOTION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SignificantMotionResponse](arkts-sensorservice-sensor-significantmotionresponse-i.md)&gt; | Yes | Callback used to return the significant motion sensor data. The reported data type in the callback is **SignificantMotionResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -2056,13 +2271,21 @@ function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<W
     options?: Options): void
 ```
 
-Subscribes to data changes of the wear detection sensor. If this API is called multiple times for the same application, the last call takes effect.
+Subscribes to data changes of the wear detection sensor. This API uses an asynchronous callback to return the result. This method is suitable for scenarios where you need to check whether a device is being worn. If this API is called multiple times for the same application, the last call takes effect.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.on.WEAR_DETECTION](#on-22)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [on](#on-22)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
+
+<!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -2072,7 +2295,7 @@ Subscribes to data changes of the wear detection sensor. If this API is called m
 | --- | --- | --- | --- |
 | type | [SensorType.SENSOR_TYPE_ID_WEAR_DETECTION](arkts-sensorservice-sensor-sensortype-e.md) | Yes | Type of the sensor to subscribe to, which is **SENSOR_TYPE_ID_WEAR_DETECTION**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md)&gt; | Yes | Callback used to return the wear detection sensor data. The reported data type in the callback is **WearDetectionResponse**. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 **Examples**
 
@@ -2093,9 +2316,11 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, (data: sensor.WearDet
 function on(type: 'sensorStatusChange', callback: Callback<SensorStatusEvent>): void
 ```
 
-Enables listening for sensor status changes. This API asynchronously returns the result through a callback.
+Listens for sensor status changes. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where sensor status changes need to be detected, for example, when a remote sensor is connected or disconnected, the sensor list or subscription status needs to be automatically updated.
 
 **Since:** 19
+
+<!--Device-sensor-function on(type: 'sensorStatusChange', callback: Callback<SensorStatusEvent>): void--><!--Device-sensor-function on(type: 'sensorStatusChange', callback: Callback<SensorStatusEvent>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

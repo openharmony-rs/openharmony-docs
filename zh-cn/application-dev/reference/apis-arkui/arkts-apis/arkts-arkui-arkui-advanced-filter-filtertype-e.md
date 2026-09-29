@@ -8,6 +8,8 @@ export declare enum FilterType
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare enum FilterType--><!--Device-unnamed-export declare enum FilterType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MULTI_LINE_FILTER
@@ -24,6 +26,8 @@ MULTI_LINE_FILTER = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FilterType-MULTI_LINE_FILTER = 0--><!--Device-FilterType-MULTI_LINE_FILTER = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LIST_FILTER
@@ -39,5 +43,7 @@ LIST_FILTER = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FilterType-LIST_FILTER = 1--><!--Device-FilterType-LIST_FILTER = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

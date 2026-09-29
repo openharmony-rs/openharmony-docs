@@ -8,6 +8,8 @@ Obtains the network selection mode option.
 
 **Since:** 6
 
+<!--Device-radio-export interface NetworkSelectionModeOptions--><!--Device-radio-export interface NetworkSelectionModeOptions-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the network information.
 
 **Since:** 6
 
+<!--Device-NetworkSelectionModeOptions-networkInformation: NetworkInformation--><!--Device-NetworkSelectionModeOptions-networkInformation: NetworkInformation-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates whether to continue selecting the network selection mode.
 **Type:** boolean
 
 **Since:** 6
+
+<!--Device-NetworkSelectionModeOptions-resumeSelection: boolean--><!--Device-NetworkSelectionModeOptions-resumeSelection: boolean-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,6 +68,8 @@ Indicates the network search mode of the SIM card.
 
 **Since:** 6
 
+<!--Device-NetworkSelectionModeOptions-selectMode: NetworkSelectionMode--><!--Device-NetworkSelectionModeOptions-selectMode: NetworkSelectionMode-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Indicates the card slot index number, ranging from 0 to the maximum card slot in
 **Type:** number
 
 **Since:** 6
+
+<!--Device-NetworkSelectionModeOptions-slotId: int--><!--Device-NetworkSelectionModeOptions-slotId: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

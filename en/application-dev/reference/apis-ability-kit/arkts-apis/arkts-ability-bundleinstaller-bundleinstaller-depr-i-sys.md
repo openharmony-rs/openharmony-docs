@@ -12,6 +12,8 @@ The module provides APIs for you to install, uninstall, and recover bundles on d
 
 **Substitutes:** [BundleInstaller](arkts-ability-installer-bundleinstaller-i-sys.md)
 
+<!--Device-unnamed-export interface BundleInstaller--><!--Device-unnamed-export interface BundleInstaller-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Install an application in a HAP.
 **Substitutes:** [install](arkts-ability-installer-bundleinstaller-i-sys.md#install)
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-install(bundleFilePaths: Array<string>, param: InstallParam, callback: AsyncCallback<InstallStatus>): void--><!--Device-BundleInstaller-install(bundleFilePaths: Array<string>, param: InstallParam, callback: AsyncCallback<InstallStatus>): void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -87,6 +91,8 @@ recover an application.
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
 
+<!--Device-BundleInstaller-recover(bundleName: string, param: InstallParam, callback: AsyncCallback<InstallStatus>): void--><!--Device-BundleInstaller-recover(bundleName: string, param: InstallParam, callback: AsyncCallback<InstallStatus>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -141,6 +147,8 @@ Uninstall an application.
 **Substitutes:** [uninstall](arkts-ability-installer-bundleinstaller-i-sys.md#uninstall)
 
 **Required permissions:** ohos.permission.INSTALL_BUNDLE
+
+<!--Device-BundleInstaller-uninstall(bundleName: string, param: InstallParam, callback: AsyncCallback<InstallStatus>): void--><!--Device-BundleInstaller-uninstall(bundleName: string, param: InstallParam, callback: AsyncCallback<InstallStatus>): void-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

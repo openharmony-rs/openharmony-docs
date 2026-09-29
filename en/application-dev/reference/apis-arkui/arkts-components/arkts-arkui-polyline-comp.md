@@ -2,7 +2,14 @@
 
 The **Polyline** component is used to draw a polyline.
 
-> **NOTE** > > This component is supported since API version 7. Updates to new APIs in later versions are marked with a > superscript to indicate their earliest API version. > > This component supports updating constructor parameters through the > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the > [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class since API version 20.
+> **NOTE:** 
+> 
+> This component is supported since API version 7. Updates to new APIs in later versions are marked with a
+> superscript to indicate their earliest API version.
+> 
+> This component supports updating constructor parameters through the
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
+> [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class since API version 20.
 
 ## Child Components
 
@@ -23,6 +30,8 @@ Creates a polyline.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PolylineInterface-new (options?: PolylineOptions): PolylineAttribute--><!--Device-PolylineInterface-new (options?: PolylineOptions): PolylineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +56,8 @@ Creates a polyline.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PolylineInterface-(options?: PolylineOptions): PolylineAttribute--><!--Device-PolylineInterface-(options?: PolylineOptions): PolylineAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

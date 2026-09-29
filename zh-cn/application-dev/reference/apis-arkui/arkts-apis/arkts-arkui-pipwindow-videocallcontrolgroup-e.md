@@ -8,6 +8,8 @@ enum VideoCallControlGroup
 
 **起始版本：** 12
 
+<!--Device-PiPWindow-enum VideoCallControlGroup--><!--Device-PiPWindow-enum VideoCallControlGroup-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## MICROPHONE_SWITCH
@@ -20,7 +22,9 @@ MICROPHONE_SWITCH = 201
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,7 +38,9 @@ HANG_UP_BUTTON = 202
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202--><!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -48,7 +54,9 @@ CAMERA_SWITCH = 203
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -62,6 +70,8 @@ MUTE_SWITCH = 204
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoCallControlGroup-MUTE_SWITCH = 204--><!--Device-VideoCallControlGroup-MUTE_SWITCH = 204-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

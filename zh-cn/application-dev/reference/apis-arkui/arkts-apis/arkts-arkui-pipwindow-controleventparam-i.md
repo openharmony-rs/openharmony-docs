@@ -8,6 +8,8 @@ interface ControlEventParam
 
 **起始版本：** 12
 
+<!--Device-PiPWindow-interface ControlEventParam--><!--Device-PiPWindow-interface ControlEventParam-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,7 +30,9 @@ controlType: PiPControlType
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ControlEventParam-controlType: PiPControlType--><!--Device-ControlEventParam-controlType: PiPControlType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,6 +48,8 @@ status?: PiPControlStatus
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ControlEventParam-status?: PiPControlStatus--><!--Device-ControlEventParam-status?: PiPControlStatus-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

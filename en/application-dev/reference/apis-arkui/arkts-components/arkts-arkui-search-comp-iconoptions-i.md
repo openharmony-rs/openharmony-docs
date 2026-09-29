@@ -8,6 +8,8 @@ Defines the icon options.
 
 **Since:** 10
 
+<!--Device-unnamed-interface IconOptions--><!--Device-unnamed-interface IconOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -16,7 +18,7 @@ Defines the icon options.
 color?: ResourceColor
 ```
 
-Icon color.
+Icon color. If not set, the default color is used (in light mode, '#99182431', which is dark gray with 60% opacity; in dark mode, '#99ffffff', which is white with 60% opacity).
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -26,6 +28,8 @@ Icon color.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IconOptions-color?: ResourceColor--><!--Device-IconOptions-color?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -34,7 +38,7 @@ Icon color.
 size?: Length
 ```
 
-Icon size. It cannot be set in percentage.
+Icon size. The default unit is vp when no unit is specified. Percentage is not supported; if a percentage is passed, it does not take effect.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -44,6 +48,8 @@ Icon size. It cannot be set in percentage.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-IconOptions-size?: Length--><!--Device-IconOptions-size?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## src
@@ -52,7 +58,7 @@ Icon size. It cannot be set in percentage.
 src?: ResourceStr
 ```
 
-Image source of the icon.
+Icon/image source. If not set, the system default icon is used.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -61,5 +67,7 @@ Image source of the icon.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-IconOptions-src?: ResourceStr--><!--Device-IconOptions-src?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

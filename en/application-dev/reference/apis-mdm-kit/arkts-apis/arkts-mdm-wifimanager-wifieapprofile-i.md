@@ -8,6 +8,8 @@ Represents EAP profile (configuration) information.
 
 **Since:** 12
 
+<!--Device-wifiManager-interface WifiEapProfile--><!--Device-wifiManager-interface WifiEapProfile-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ A string to match the alternate subject. In addition to checking the primary dom
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-altSubjectMatch: string--><!--Device-WifiEapProfile-altSubjectMatch: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## anonymousIdentity
@@ -45,6 +49,8 @@ Anonymous identity.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-anonymousIdentity: string--><!--Device-WifiEapProfile-anonymousIdentity: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -62,6 +68,8 @@ CA certificate alias.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-caCertAliases: string--><!--Device-WifiEapProfile-caCertAliases: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## caPath
@@ -77,6 +85,8 @@ CA certificate path.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-caPath: string--><!--Device-WifiEapProfile-caPath: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -94,6 +104,8 @@ Client certificate content. When **eapMethod** is set to **EAP_TLS**, if this fi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-certEntry: Uint8Array--><!--Device-WifiEapProfile-certEntry: Uint8Array-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## certPassword
@@ -109,6 +121,8 @@ CA certificate password.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-certPassword: string--><!--Device-WifiEapProfile-certPassword: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -126,6 +140,8 @@ Client certificate alias. When the client certificate content is empty, the clie
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-clientCertAliases: string--><!--Device-WifiEapProfile-clientCertAliases: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## domainSuffixMatch
@@ -141,6 +157,8 @@ A string to match the domain suffix.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-domainSuffixMatch: string--><!--Device-WifiEapProfile-domainSuffixMatch: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -158,6 +176,8 @@ EAP authentication method.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-eapMethod: EapMethod--><!--Device-WifiEapProfile-eapMethod: EapMethod-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## eapSubId
@@ -173,6 +193,8 @@ Sub-ID of the SIM card.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-eapSubId: number--><!--Device-WifiEapProfile-eapSubId: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -190,6 +212,8 @@ Identity Information. This parameter cannot be empty when **eapMethod** is **TLS
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-identity: string--><!--Device-WifiEapProfile-identity: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## password
@@ -205,6 +229,8 @@ Password Authentication (PWD). It enables password-based authentication and does
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-password: string--><!--Device-WifiEapProfile-password: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -222,6 +248,8 @@ Phase 2 authentication method. This parameter is mandatory only when **eapMethod
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-phase2Method: Phase2Method--><!--Device-WifiEapProfile-phase2Method: Phase2Method-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## plmn
@@ -238,6 +266,8 @@ Credential provider.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WifiEapProfile-plmn: string--><!--Device-WifiEapProfile-plmn: string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## realm
@@ -253,5 +283,7 @@ Realm for the passpoint credential.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiEapProfile-realm: string--><!--Device-WifiEapProfile-realm: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

@@ -8,6 +8,8 @@ Callback invoked when the WebSocketServer connection is closed.
 
 **Since:** 19
 
+<!--Device-webSocket-export type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, closeReason :CloseResult) => void--><!--Device-webSocket-export type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, closeReason :CloseResult) => void-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**

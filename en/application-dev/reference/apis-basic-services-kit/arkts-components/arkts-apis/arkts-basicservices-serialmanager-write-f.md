@@ -21,6 +21,8 @@ Writes data to the serial port device asynchronously. Before calling this API, c
 
 **Since:** 19
 
+<!--Device-serialManager-function write(portId: int, buffer: Uint8Array, timeout?: int): Promise<int>--><!--Device-serialManager-function write(portId: int, buffer: Uint8Array, timeout?: int): Promise<int>-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

@@ -8,6 +8,8 @@ Enumerates the policies for resolving conflicts (for example, a duplicate alias)
 
 **Since:** 11
 
+<!--Device-asset-enum ConflictResolution--><!--Device-asset-enum ConflictResolution-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## OVERWRITE
@@ -22,6 +24,8 @@ Overwrites the original asset.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-ConflictResolution-OVERWRITE = 0--><!--Device-ConflictResolution-OVERWRITE = 0-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## THROW_ERROR
@@ -35,5 +39,7 @@ Throws an exception for the service to perform subsequent processing.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ConflictResolution-THROW_ERROR = 1--><!--Device-ConflictResolution-THROW_ERROR = 1-End-->
 
 **System capability:** SystemCapability.Security.Asset

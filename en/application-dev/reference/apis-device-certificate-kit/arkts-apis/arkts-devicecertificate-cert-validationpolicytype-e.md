@@ -8,6 +8,8 @@ Enumerates the types of the online certificate chain validation policy.
 
 **Since:** 12
 
+<!--Device-cert-enum ValidationPolicyType--><!--Device-cert-enum ValidationPolicyType-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## VALIDATION_POLICY_TYPE_X509
@@ -20,7 +22,9 @@ Do not verify **sslHostname** or **dNSName** in the certificate. It is the defau
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ValidationPolicyType-VALIDATION_POLICY_TYPE_X509 = 0--><!--Device-ValidationPolicyType-VALIDATION_POLICY_TYPE_X509 = 0-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -34,6 +38,8 @@ Verify **sslHostname** or **dNSName** in the certificate.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ValidationPolicyType-VALIDATION_POLICY_TYPE_SSL = 1--><!--Device-ValidationPolicyType-VALIDATION_POLICY_TYPE_SSL = 1-End-->
 
 **System capability:** SystemCapability.Security.Cert

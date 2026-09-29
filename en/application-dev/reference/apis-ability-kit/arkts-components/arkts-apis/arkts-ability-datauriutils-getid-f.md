@@ -16,6 +16,8 @@ Obtains the ID attached to the end of a given URI.
 
 **Since:** 9
 
+<!--Device-dataUriUtils-function getId(uri: string): double--><!--Device-dataUriUtils-function getId(uri: string): double-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

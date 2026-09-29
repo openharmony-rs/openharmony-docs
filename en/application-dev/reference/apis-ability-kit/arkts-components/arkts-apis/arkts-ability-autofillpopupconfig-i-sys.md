@@ -8,6 +8,8 @@ The module describes the size and position information of an auto-fill pop-up.
 
 **Since:** 12
 
+<!--Device-unnamed-export default interface AutoFillPopupConfig--><!--Device-unnamed-export default interface AutoFillPopupConfig-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Position of the auto-fill pop-up. If this parameter is not set, the position is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AutoFillPopupConfig-placement?: PopupPlacement--><!--Device-AutoFillPopupConfig-placement?: PopupPlacement-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Width and height of the auto-fill pop-up. If this parameter is not set, the widt
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoFillPopupConfig-popupSize?: PopupSize--><!--Device-AutoFillPopupConfig-popupSize?: PopupSize-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

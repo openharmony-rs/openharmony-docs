@@ -8,6 +8,8 @@ declare enum DialogAlignment
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum DialogAlignment--><!--Device-unnamed-declare enum DialogAlignment-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Top
@@ -23,6 +25,8 @@ Top
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogAlignment-Top--><!--Device-DialogAlignment-Top-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Center
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogAlignment-Center--><!--Device-DialogAlignment-Center-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bottom
@@ -55,6 +61,8 @@ Bottom
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogAlignment-Bottom--><!--Device-DialogAlignment-Bottom-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ Default
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogAlignment-Default--><!--Device-DialogAlignment-Default-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TopStart
@@ -87,6 +97,8 @@ TopStart
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogAlignment-TopStart--><!--Device-DialogAlignment-TopStart-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ TopEnd
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogAlignment-TopEnd--><!--Device-DialogAlignment-TopEnd-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CenterStart
@@ -119,6 +133,8 @@ CenterStart
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogAlignment-CenterStart--><!--Device-DialogAlignment-CenterStart-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ CenterEnd
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogAlignment-CenterEnd--><!--Device-DialogAlignment-CenterEnd-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BottomStart
@@ -152,6 +170,8 @@ BottomStart
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogAlignment-BottomStart--><!--Device-DialogAlignment-BottomStart-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BottomEnd
@@ -167,5 +187,7 @@ BottomEnd
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogAlignment-BottomEnd--><!--Device-DialogAlignment-BottomEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

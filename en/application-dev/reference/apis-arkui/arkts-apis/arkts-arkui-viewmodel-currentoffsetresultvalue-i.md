@@ -10,6 +10,8 @@ CurrentOffsetResultValue
 
 **Since:** 4
 
+<!--Device-unnamed-export interface CurrentOffsetResultValue--><!--Device-unnamed-export interface CurrentOffsetResultValue-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -26,6 +28,8 @@ Scrolling offset in the x-axis, in px.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CurrentOffsetResultValue-x: number--><!--Device-CurrentOffsetResultValue-x: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -41,5 +45,7 @@ Scrolling offset in the y-axis, in px.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CurrentOffsetResultValue-y: number--><!--Device-CurrentOffsetResultValue-y: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

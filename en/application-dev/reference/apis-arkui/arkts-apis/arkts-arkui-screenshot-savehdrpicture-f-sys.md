@@ -24,6 +24,8 @@ SDR and HDR PixelMaps, regardless of whether HDR is enabled.
 - API version 22 and later: ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
 - API versions 20 to 21: ohos.permission.CAPTURE_SCREEN
 
+<!--Device-screenshot-function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.PixelMap>>--><!--Device-screenshot-function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.PixelMap>>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **System API:** This is a system API.

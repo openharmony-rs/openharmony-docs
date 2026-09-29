@@ -10,6 +10,8 @@ Defines the callback type used in registering to listen for watermark handling. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-type WatermarkCallback = (jobId: string, fd: int) => void--><!--Device-print-type WatermarkCallback = (jobId: string, fd: int) => void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

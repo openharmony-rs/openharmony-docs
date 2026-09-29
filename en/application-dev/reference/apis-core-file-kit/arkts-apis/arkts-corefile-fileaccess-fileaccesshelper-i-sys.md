@@ -10,6 +10,8 @@ Provides a **FileAccessHelper** object.
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-interface FileAccessHelper--><!--Device-fileAccess-interface FileAccessHelper-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -35,6 +37,8 @@ Checks whether a file or directory exists. This API uses a promise to return the
 **Substitutes:** access(path: string, mode?: AccessModeType)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-access(sourceFileUri: string) : Promise<boolean>--><!--Device-FileAccessHelper-access(sourceFileUri: string) : Promise<boolean>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -136,6 +140,8 @@ Checks whether a file or directory exists. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-access(sourceFileUri: string, callback: AsyncCallback<boolean>): void--><!--Device-FileAccessHelper-access(sourceFileUri: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -230,6 +236,8 @@ Copies a file or directory. This API uses a promise to return the result.
 **Substitutes:** copy(srcUri: string, destUri: string, options?: CopyOptions)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyResult>>--><!--Device-FileAccessHelper-copy(sourceUri: string, destUri: string, force?: boolean): Promise<Array<CopyResult>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -337,6 +345,8 @@ Copies a file or directory. This API uses an asynchronous callback to return the
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResult>>): void--><!--Device-FileAccessHelper-copy(sourceUri: string, destUri: string, callback: AsyncCallback<Array<CopyResult>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -403,6 +413,8 @@ Copies a file or directory. If a file with the same name already exists, you can
 **Substitutes:** copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback<Array<CopyResult>>): void--><!--Device-FileAccessHelper-copy(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback<Array<CopyResult>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -471,6 +483,8 @@ Copies a file with an alternative file name. This API uses a promise to return t
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileAccessHelper-copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>--><!--Device-FileAccessHelper-copyFile(sourceUri: string, destUri: string, fileName: string): Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -566,6 +580,8 @@ Copies a file with an alternative file name. This API uses an asynchronous callb
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileAccessHelper-copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCallback<string>): void--><!--Device-FileAccessHelper-copyFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -649,6 +665,8 @@ Creates a file in a directory. This API uses a promise to return the result.
 **Substitutes:** createRandomAccessFile(file: string | File, mode?: number, options?: RandomAccessFileOptions)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-createFile(uri: string, displayName: string) : Promise<string>--><!--Device-FileAccessHelper-createFile(uri: string, displayName: string) : Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -753,6 +771,8 @@ Creates a file in a directory. This API uses an asynchronous callback to return 
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-createFile(uri: string, displayName: string, callback: AsyncCallback<string>): void--><!--Device-FileAccessHelper-createFile(uri: string, displayName: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -845,6 +865,8 @@ Deletes a file or directory. This API uses a promise to return the result.
 **Substitutes:** [delete](arkts-corefile-file-fs-atomicfile-c.md#delete)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-delete(uri: string) : Promise<number>--><!--Device-FileAccessHelper-delete(uri: string) : Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -943,6 +965,8 @@ Deletes a file or directory. This API uses an asynchronous callback to return th
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-delete(uri: string, callback: AsyncCallback<number>): void--><!--Device-FileAccessHelper-delete(uri: string, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1034,6 +1058,8 @@ Obtains a **FileInfo** object based on a relative path. This API uses a promise 
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>--><!--Device-FileAccessHelper-getFileInfoFromRelativePath(relativePath: string) : Promise<FileInfo>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1089,6 +1115,8 @@ Obtains a **FileInfo** object based on a relative path. This API uses an asynchr
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback<FileInfo>) : void--><!--Device-FileAccessHelper-getFileInfoFromRelativePath(relativePath: string, callback: AsyncCallback<FileInfo>) : void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1140,6 +1168,8 @@ Obtains a **FileInfo** object based on a URI. This API uses a promise to return 
 **Substitutes:** stat(file: string | number)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-getFileInfoFromUri(uri: string) : Promise<FileInfo>--><!--Device-FileAccessHelper-getFileInfoFromUri(uri: string) : Promise<FileInfo>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -1197,6 +1227,8 @@ Obtains a **FileInfo** object based on a URI. This API uses an asynchronous call
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-getFileInfoFromUri(uri: string, callback: AsyncCallback<FileInfo>) : void--><!--Device-FileAccessHelper-getFileInfoFromUri(uri: string, callback: AsyncCallback<FileInfo>) : void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1247,6 +1279,8 @@ Obtains information about the device root nodes of the file management services 
 **Deprecated since:** 23
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-getRoots(): Promise<RootIterator>--><!--Device-FileAccessHelper-getRoots(): Promise<RootIterator>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -1344,6 +1378,8 @@ Obtains information about the device root nodes of the file management services 
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-getRoots(callback: AsyncCallback<RootIterator>): void--><!--Device-FileAccessHelper-getRoots(callback: AsyncCallback<RootIterator>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1440,6 +1476,8 @@ Creates a directory in a specified directory. This API uses a promise to return 
 **Substitutes:** mkdir(path: string)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-mkDir(parentUri: string, displayName: string) : Promise<string>--><!--Device-FileAccessHelper-mkDir(parentUri: string, displayName: string) : Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -1544,6 +1582,8 @@ Creates a directory in a specified directory. This API uses an asynchronous call
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): void--><!--Device-FileAccessHelper-mkDir(parentUri: string, displayName: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1636,6 +1676,8 @@ Moves a file or directory. This API uses a promise to return the result. Current
 **Substitutes:** moveFile(src: string, dest: string, mode?: number)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-move(sourceFile: string, destFile: string) : Promise<string>--><!--Device-FileAccessHelper-move(sourceFile: string, destFile: string) : Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -1735,6 +1777,8 @@ Moves a file or directory. This API uses an asynchronous callback to return the 
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): void--><!--Device-FileAccessHelper-move(sourceFile: string, destFile: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1830,6 +1874,8 @@ Moves a file, and renames it if a file with the same name already exists in the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileAccessHelper-moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>--><!--Device-FileAccessHelper-moveFile(sourceUri: string, destUri: string, fileName: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -1922,6 +1968,8 @@ Moves a file, and renames it if a file with the same name already exists in the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileAccessHelper-moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCallback<string>): void--><!--Device-FileAccessHelper-moveFile(sourceUri: string, destUri: string, fileName: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2008,6 +2056,8 @@ Moves a file or directory. This API uses a promise to return the result. You can
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FileAccessHelper-moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<MoveResult>>--><!--Device-FileAccessHelper-moveItem(sourceUri: string, destUri: string, force?: boolean): Promise<Array<MoveResult>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -2144,6 +2194,8 @@ Moves a file or directory. This API uses an asynchronous callback to return the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileAccessHelper-moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveResult>>): void--><!--Device-FileAccessHelper-moveItem(sourceUri: string, destUri: string, callback: AsyncCallback<Array<MoveResult>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2240,6 +2292,8 @@ Moves a file or directory. This API uses an asynchronous callback to return the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FileAccessHelper-moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback<Array<MoveResult>>): void--><!--Device-FileAccessHelper-moveItem(sourceUri: string, destUri: string, force: boolean, callback: AsyncCallback<Array<MoveResult>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2332,6 +2386,8 @@ Opens a file. This API uses a promise to return the result.
 **Substitutes:** open(path: string, mode?: number)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-openFile(uri: string, flags: OPENFLAGS) : Promise<number>--><!--Device-FileAccessHelper-openFile(uri: string, flags: OPENFLAGS) : Promise<number>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -2429,6 +2485,8 @@ Opens a file. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void--><!--Device-FileAccessHelper-openFile(uri: string, flags: OPENFLAGS, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2521,6 +2579,8 @@ Queries the attribute information about a file or directory based on a URI. This
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-query(uri: string, metaJson: string) : Promise<string>--><!--Device-FileAccessHelper-query(uri: string, metaJson: string) : Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2578,6 +2638,8 @@ Queries the attribute information about a file or directory based on a URI. This
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void--><!--Device-FileAccessHelper-query(uri: string, metaJson: string, callback: AsyncCallback<string>) : void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2633,6 +2695,8 @@ Registers a callback to listen for a URI. URIs and callbacks can be in many-to-m
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<NotifyMessage>): void--><!--Device-FileAccessHelper-registerObserver(uri: string, notifyForDescendants: boolean, callback: Callback<NotifyMessage>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2666,6 +2730,8 @@ Renames a file or directory. This API uses a promise to return the result.
 **Substitutes:** rename(oldPath: string, newPath: string)
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-rename(uri: string, displayName: string) : Promise<string>--><!--Device-FileAccessHelper-rename(uri: string, displayName: string) : Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -2764,6 +2830,8 @@ Renames a file or directory. This API uses an asynchronous callback to return th
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-FileAccessHelper-rename(uri: string, displayName: string, callback: AsyncCallback<string>): void--><!--Device-FileAccessHelper-rename(uri: string, displayName: string, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -2853,6 +2921,8 @@ Unregisters a callback that is used to listen for the specified URI.
 **Deprecated since:** 23
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
+
+<!--Device-FileAccessHelper-unregisterObserver(uri: string, callback?: Callback<NotifyMessage>): void--><!--Device-FileAccessHelper-unregisterObserver(uri: string, callback?: Callback<NotifyMessage>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

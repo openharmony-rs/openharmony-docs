@@ -8,6 +8,8 @@ FileSelectorResult是ArkWeb组件中用于通知Web组件文件选择结果的�
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class FileSelectorResult--><!--Device-unnamed-declare class FileSelectorResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -22,6 +24,8 @@ FileSelectorResult的构造函数。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FileSelectorResult-constructor()--><!--Device-FileSelectorResult-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## handleFileList
@@ -35,6 +39,8 @@ handleFileList(fileList: Array<string>): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FileSelectorResult-handleFileList(fileList: Array<string>): void--><!--Device-FileSelectorResult-handleFileList(fileList: Array<string>): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

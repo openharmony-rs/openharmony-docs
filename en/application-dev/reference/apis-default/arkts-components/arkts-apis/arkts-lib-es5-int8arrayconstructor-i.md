@@ -59,6 +59,8 @@ from(arrayLike: ArrayLike<number>): Int8Array
 
 Creates an array from an array-like or iterable object.
 
+<!--Device-Int8ArrayConstructor-from(arrayLike: ArrayLike<number>): Int8Array--><!--Device-Int8ArrayConstructor-from(arrayLike: ArrayLike<number>): Int8Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -74,6 +76,8 @@ from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: a
 ```
 
 Creates an array from an array-like or iterable object.
+
+<!--Device-Int8ArrayConstructor-from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Int8Array--><!--Device-Int8ArrayConstructor-from<T>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => number, thisArg?: any): Int8Array-End-->
 
 **Parameters:**
 
@@ -91,6 +95,8 @@ of(...items: number[]): Int8Array
 
 Returns a new array from a set of elements.
 
+<!--Device-Int8ArrayConstructor-of(...items: number[]): Int8Array--><!--Device-Int8ArrayConstructor-of(...items: number[]): Int8Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -106,6 +112,8 @@ readonly BYTES_PER_ELEMENT: number
 The size in bytes of each element in the array.
 
 **Type:** number
+
+<!--Device-Int8ArrayConstructor-readonly BYTES_PER_ELEMENT: number--><!--Device-Int8ArrayConstructor-readonly BYTES_PER_ELEMENT: number-End-->
 
 ## prototype
 

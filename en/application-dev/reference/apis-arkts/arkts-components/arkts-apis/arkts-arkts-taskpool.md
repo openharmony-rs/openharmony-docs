@@ -9,6 +9,8 @@ TaskPool provides a multi-thread running environment for applications. It helps 
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace taskpool--><!--Device-unnamed-declare namespace taskpool-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -64,16 +66,16 @@ import { taskpool } from '@kit.ArkTS';
 | [Configs](arkts-arkts-taskpool-configs-i.md) | Defines the task configs interface |
 | [TaskResult](arkts-arkts-taskpool-taskresult-i.md) | Describes the supplementary information captured in **BusinessError** in the catch branch after a task in the waiting or execution phase is canceled. In other scenarios, the task result is **undefined**. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [Priority](arkts-arkts-taskpool-priority-e.md) | Enumerates the priorities available for created tasks. The task priority applies during task execution. The worker thread priority is updated with the task priority. For details about the mappings, see [QoS Level](../../../napi/qos-guidelines.md#qos-level). |
-| [State](arkts-arkts-taskpool-state-e.md) | Enumerates the task states. After a task is created and **execute()** is called, the task is placed in the internal queue of the task pool and the state is **WAITING**. When the task is being executed by the worker thread of the task pool, the state changes to **RUNNING**. After the task is executed and the result is returned, the state is reset to **WAITING**. When the task is proactively canceled, the state changes to **CANCELED**. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [CallbackFunction](arkts-arkts-taskpool-callbackfunction-t.md) | Describes a callback function. |
 | [CallbackFunctionWithError](arkts-arkts-taskpool-callbackfunctionwitherror-t.md) | Describes a callback function with an error message. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [Priority](arkts-arkts-taskpool-priority-e.md) | Enumerates the priorities available for created tasks. The task priority applies during task execution. The worker thread priority is updated with the task priority. For details about the mappings, see [QoS Level](../../../napi/qos-guidelines.md#qos-level). |
+| [State](arkts-arkts-taskpool-state-e.md) | Enumerates the task states. After a task is created and **execute()** is called, the task is placed in the internal queue of the task pool and the state is **WAITING**. When the task is being executed by the worker thread of the task pool, the state changes to **RUNNING**. After the task is executed and the result is returned, the state is reset to **WAITING**. When the task is proactively canceled, the state changes to **CANCELED**. |

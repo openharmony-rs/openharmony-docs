@@ -24,6 +24,8 @@ Opens a serial port device. Before calling this API, you need to call [requestSe
 
 **Since:** 19
 
+<!--Device-serialManager-function open(portId: int): void--><!--Device-serialManager-function open(portId: int): void-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

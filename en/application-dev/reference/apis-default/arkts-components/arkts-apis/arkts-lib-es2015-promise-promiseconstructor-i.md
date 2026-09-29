@@ -17,6 +17,8 @@ new <T>(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason
 
 Creates a new Promise.
 
+<!--Device-PromiseConstructor-new <T>(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): Promise<T>--><!--Device-PromiseConstructor-new <T>(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): Promise<T>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -30,6 +32,8 @@ all<T extends readonly unknown[] | []>(values: T): Promise<{ -readonly [P in key
 ```
 
 Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
+
+<!--Device-PromiseConstructor-all<T extends readonly unknown[] | []>(values: T): Promise<{ -readonly [P in keyof T]: Awaited<T[P]> }>--><!--Device-PromiseConstructor-all<T extends readonly unknown[] | []>(values: T): Promise<{ -readonly [P in keyof T]: Awaited<T[P]> }>-End-->
 
 **Parameters:**
 
@@ -51,6 +55,8 @@ race<T extends readonly unknown[] | []>(values: T): Promise<Awaited<T[number]>>
 
 Creates a Promise that is resolved or rejected when any of the provided Promises are resolved or rejected.
 
+<!--Device-PromiseConstructor-race<T extends readonly unknown[] | []>(values: T): Promise<Awaited<T[number]>>--><!--Device-PromiseConstructor-race<T extends readonly unknown[] | []>(values: T): Promise<Awaited<T[number]>>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -70,6 +76,8 @@ reject<T = never>(reason?: any): Promise<T>
 ```
 
 Creates a new rejected promise for the provided reason.
+
+<!--Device-PromiseConstructor-reject<T = never>(reason?: any): Promise<T>--><!--Device-PromiseConstructor-reject<T = never>(reason?: any): Promise<T>-End-->
 
 **Parameters:**
 
@@ -91,6 +99,8 @@ resolve(): Promise<void>
 
 Creates a new resolved promise.
 
+<!--Device-PromiseConstructor-resolve(): Promise<void>--><!--Device-PromiseConstructor-resolve(): Promise<void>-End-->
+
 **Return value:**
 
 | Type | Description |
@@ -106,6 +116,8 @@ resolve<T>(value: T): Promise<Awaited<T>>
 ```
 
 Creates a new resolved promise for the provided value.
+
+<!--Device-PromiseConstructor-resolve<T>(value: T): Promise<Awaited<T>>--><!--Device-PromiseConstructor-resolve<T>(value: T): Promise<Awaited<T>>-End-->
 
 **Parameters:**
 
@@ -129,6 +141,8 @@ resolve<T>(value: T | PromiseLike<T>): Promise<Awaited<T>>
 
 Creates a new resolved promise for the provided value.
 
+<!--Device-PromiseConstructor-resolve<T>(value: T | PromiseLike<T>): Promise<Awaited<T>>--><!--Device-PromiseConstructor-resolve<T>(value: T | PromiseLike<T>): Promise<Awaited<T>>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -150,3 +164,5 @@ readonly prototype: Promise<any>
 A reference to the prototype.
 
 **Type:** Promise&lt;any&gt;
+
+<!--Device-PromiseConstructor-readonly prototype: Promise<any>--><!--Device-PromiseConstructor-readonly prototype: Promise<any>-End-->

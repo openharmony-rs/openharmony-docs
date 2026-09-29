@@ -18,6 +18,8 @@ Sets timeout configuration for all tasks. Used when task-specific timeout config
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cacheDownload-function setGlobalTimeoutOptions(options?: TimeoutOptions): void--><!--Device-cacheDownload-function setGlobalTimeoutOptions(options?: TimeoutOptions): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

@@ -16,6 +16,8 @@ Obtains the ISO country code of the SIM card in the specified slot. This API use
 
 **Since:** 6
 
+<!--Device-sim-function getISOCountryCodeForSim(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sim-function getISOCountryCodeForSim(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -59,6 +61,8 @@ function getISOCountryCodeForSim(slotId: number): Promise<string>
 Obtains the ISO country code of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-sim-function getISOCountryCodeForSim(slotId: int): Promise<string>--><!--Device-sim-function getISOCountryCodeForSim(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

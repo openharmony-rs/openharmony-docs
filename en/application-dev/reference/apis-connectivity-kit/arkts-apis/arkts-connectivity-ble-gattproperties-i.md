@@ -8,6 +8,8 @@ Describes the properties of a gatt characteristic.
 
 **Since:** 10
 
+<!--Device-ble-interface GattProperties--><!--Device-ble-interface GattProperties-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Support authenticated signed write property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattProperties-authenticatedSignedWrite?: boolean--><!--Device-GattProperties-authenticatedSignedWrite?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -48,7 +52,9 @@ Support broadcast property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattProperties-broadcast?: boolean--><!--Device-GattProperties-broadcast?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -66,7 +72,9 @@ Support extended properties property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-GattProperties-extendedProperties?: boolean--><!--Device-GattProperties-extendedProperties?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -84,7 +92,9 @@ Support indicate property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattProperties-indicate?: boolean--><!--Device-GattProperties-indicate?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -102,7 +112,9 @@ Support notify property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattProperties-notify?: boolean--><!--Device-GattProperties-notify?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -120,7 +132,9 @@ Support read property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattProperties-read?: boolean--><!--Device-GattProperties-read?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -138,7 +152,9 @@ Support write property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattProperties-write?: boolean--><!--Device-GattProperties-write?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -156,6 +172,8 @@ Support write no response property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-GattProperties-writeNoResponse?: boolean--><!--Device-GattProperties-writeNoResponse?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

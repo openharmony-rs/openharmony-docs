@@ -8,6 +8,8 @@ Defines the preset effect.
 
 **Since:** 19
 
+<!--Device-vibrator-interface EffectInfo--><!--Device-vibrator-interface EffectInfo-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## Modules to Import
@@ -27,5 +29,7 @@ Whether the preset effect is supported. The value **true** indicates that the pr
 **Type:** boolean
 
 **Since:** 19
+
+<!--Device-EffectInfo-isEffectSupported: boolean--><!--Device-EffectInfo-isEffectSupported: boolean-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice

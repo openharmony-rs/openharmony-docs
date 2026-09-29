@@ -8,6 +8,8 @@ Defines image source initialization options.
 
 **Since:** 9
 
+<!--Device-image-interface SourceOptions--><!--Device-image-interface SourceOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ SVG resource limit level used when parsing and rendering an SVG image. The limit
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SourceOptions-svgResourceLimitLevel?: SVGResourceLimitLevel--><!--Device-SourceOptions-svgResourceLimitLevel?: SVGResourceLimitLevel-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

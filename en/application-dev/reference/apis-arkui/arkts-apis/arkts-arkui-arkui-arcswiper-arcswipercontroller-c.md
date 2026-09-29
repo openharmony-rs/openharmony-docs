@@ -8,6 +8,8 @@ Implements the controller of the **ArcSwiper** component. You can bind this obje
 
 **Since:** 18
 
+<!--Device-unnamed-export class ArcSwiperController--><!--Device-unnamed-export class ArcSwiperController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -28,6 +30,8 @@ A constructor used to create an **ArcSwiperController** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperController-constructor()--><!--Device-ArcSwiperController-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## finishAnimation
@@ -41,6 +45,8 @@ Stops an animation.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperController-finishAnimation(handler?: FinishAnimationHandler)--><!--Device-ArcSwiperController-finishAnimation(handler?: FinishAnimationHandler)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -62,6 +68,8 @@ Turns to the next page. Page turning occurs with the animation, whose duration i
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSwiperController-showNext()--><!--Device-ArcSwiperController-showNext()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## showPrevious
@@ -75,5 +83,7 @@ Turns to the previous page. Page turning occurs with the animation, whose durati
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSwiperController-showPrevious()--><!--Device-ArcSwiperController-showPrevious()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

@@ -8,6 +8,8 @@ Defines the options used in **createReadStream()**.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface ReadStreamOptions--><!--Device-unnamed-export interface ReadStreamOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## Modules to Import
@@ -28,6 +30,8 @@ End position to read the data, in bytes. This parameter is optional. The default
 
 **Since:** 12
 
+<!--Device-ReadStreamOptions-end?: number--><!--Device-ReadStreamOptions-end?: number-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 ## start
@@ -41,5 +45,7 @@ Start position to read the data, in bytes. This parameter is optional. By defaul
 **Type:** number
 
 **Since:** 12
+
+<!--Device-ReadStreamOptions-start?: number--><!--Device-ReadStreamOptions-start?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

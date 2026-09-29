@@ -8,6 +8,8 @@ Enumerates the error types of the player.
 
 **Since:** 12
 
+<!--Device-webview-enum MediaError--><!--Device-webview-enum MediaError-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## NETWORK_ERROR
@@ -21,6 +23,8 @@ Network error.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaError-NETWORK_ERROR = 1--><!--Device-MediaError-NETWORK_ERROR = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ Media format error.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MediaError-FORMAT_ERROR = 2--><!--Device-MediaError-FORMAT_ERROR = 2-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## DECODE_ERROR
@@ -49,5 +55,7 @@ Decoding error.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MediaError-DECODE_ERROR = 3--><!--Device-MediaError-DECODE_ERROR = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

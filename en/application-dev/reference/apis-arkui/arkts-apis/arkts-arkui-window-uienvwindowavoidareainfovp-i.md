@@ -8,6 +8,8 @@ Describes [environment variable](../../../ui/arkts-env-system-property.md) data 
 
 **Since:** 23
 
+<!--Device-window-interface UIEnvWindowAvoidAreaInfoVP--><!--Device-window-interface UIEnvWindowAvoidAreaInfoVP-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Avoidance area whose [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md) is *
 
 **Since:** 23
 
+<!--Device-UIEnvWindowAvoidAreaInfoVP-cutout: UIEnvAvoidAreaVP--><!--Device-UIEnvWindowAvoidAreaInfoVP-cutout: UIEnvAvoidAreaVP-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## keyboard
@@ -41,6 +45,8 @@ Avoidance area whose [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md) is *
 **Type:** [UIEnvAvoidAreaVP](arkts-arkui-window-uienvavoidareavp-i.md)
 
 **Since:** 23
+
+<!--Device-UIEnvWindowAvoidAreaInfoVP-keyboard: UIEnvAvoidAreaVP--><!--Device-UIEnvWindowAvoidAreaInfoVP-keyboard: UIEnvAvoidAreaVP-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -56,6 +62,8 @@ Avoidance area whose [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md) is *
 
 **Since:** 23
 
+<!--Device-UIEnvWindowAvoidAreaInfoVP-navigationIndicator: UIEnvAvoidAreaVP--><!--Device-UIEnvWindowAvoidAreaInfoVP-navigationIndicator: UIEnvAvoidAreaVP-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## statusBar
@@ -69,5 +77,7 @@ Avoidance area whose [AvoidAreaType](arkts-arkui-window-avoidareatype-e.md) is *
 **Type:** [UIEnvAvoidAreaVP](arkts-arkui-window-uienvavoidareavp-i.md)
 
 **Since:** 23
+
+<!--Device-UIEnvWindowAvoidAreaInfoVP-statusBar: UIEnvAvoidAreaVP--><!--Device-UIEnvWindowAvoidAreaInfoVP-statusBar: UIEnvAvoidAreaVP-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

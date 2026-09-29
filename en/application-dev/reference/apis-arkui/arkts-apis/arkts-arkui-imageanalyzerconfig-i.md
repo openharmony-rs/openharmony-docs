@@ -4,9 +4,11 @@
 declare interface ImageAnalyzerConfig
 ```
 
-Provides AI image analyzer configuration.
+Provides image AI analyzer configuration.
 
 **Since:** 12
+
+<!--Device-unnamed-declare interface ImageAnalyzerConfig--><!--Device-unnamed-declare interface ImageAnalyzerConfig-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ Provides AI image analyzer configuration.
 types: ImageAnalyzerType[]
 ```
 
-AI image analysis types.
+Image AI analysis type.
 
 **Type:** [ImageAnalyzerType](arkts-arkui-imageanalyzertype-e.md)[]
 
@@ -25,5 +27,7 @@ AI image analysis types.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAnalyzerConfig-types: ImageAnalyzerType[]--><!--Device-ImageAnalyzerConfig-types: ImageAnalyzerType[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

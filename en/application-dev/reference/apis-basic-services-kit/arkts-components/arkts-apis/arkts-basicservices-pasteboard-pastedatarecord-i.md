@@ -8,6 +8,8 @@ Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definiti
 
 **Since:** 7
 
+<!--Device-pasteboard-interface PasteDataRecord--><!--Device-pasteboard-interface PasteDataRecord-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 ## Modules to Import
@@ -25,6 +27,8 @@ addEntry(type: string, value: ValueType): void
 Adds PasteData of an extra type to **PasteDataRecord**. The type added using this method is not the default type of **Record**. You can only use the [getData](#getdata) API to read the corresponding data.
 
 **Since:** 14
+
+<!--Device-PasteDataRecord-addEntry(type: string, value: ValueType): void--><!--Device-PasteDataRecord-addEntry(type: string, value: ValueType): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -54,86 +58,6 @@ record.addEntry(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 record.addEntry(pasteboard.MIMETYPE_TEXT_HTML, html);
 ```
 
-## convertToText
-
-```TypeScript
-convertToText(callback: AsyncCallback<string>): void
-```
-
-Forcibly converts the content in a **PasteData** object to text. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [toPlainText](#toplaintext)()
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: Incorrect parameters types. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
-record.convertToText((err: BusinessError, data: string) => {
-    if (err) {
-        console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
-        return;
-    }
-    console.info(`Succeeded in converting to text. Data: ${data}`);
-});
-```
-
-<a id="converttotext-1"></a>
-
-## convertToText
-
-```TypeScript
-convertToText(): Promise<string>
-```
-
-Forcibly converts the content in a **PasteData** object to text. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [toPlainText](#toplaintext)()
-
-**System capability:** SystemCapability.MiscServices.Pasteboard
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the text obtained from the conversion. |
-
-**Examples**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
-record.convertToText().then((data: string) => {
-    console.info(`Succeeded in converting to text. Data: ${data}`);
-}).catch((err: BusinessError) => {
-    console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
-});
-```
-
 ## getData
 
 ```TypeScript
@@ -143,6 +67,8 @@ getData(type: string): Promise<ValueType>
 Obtains data of the specified type from **PasteDataRecord**.
 
 **Since:** 14
+
+<!--Device-PasteDataRecord-getData(type: string): Promise<ValueType>--><!--Device-PasteDataRecord-getData(type: string): Promise<ValueType>-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -197,6 +123,8 @@ Obtains the intersection of the input types and the types of the PasteData.
 
 **Since:** 14
 
+<!--Device-PasteDataRecord-getValidTypes(types: Array<string>): Array<string>--><!--Device-PasteDataRecord-getValidTypes(types: Array<string>): Array<string>-End-->
+
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
 **Parameters:**
@@ -243,7 +171,9 @@ Forcibly converts HTML, plain, and URI content in a **PasteDataRecord** to the p
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-toPlainText(): string--><!--Device-PasteDataRecord-toPlainText(): string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -261,6 +191,90 @@ let text: string = record.toPlainText();
 console.info(`Succeeded in converting to text. Text: ${text}`);
 ```
 
+## convertToText
+
+```TypeScript
+convertToText(callback: AsyncCallback<string>): void
+```
+
+Forcibly converts the content in a **PasteData** object to text. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [toPlainText](#toplaintext)()
+
+<!--Device-PasteDataRecord-convertToText(callback: AsyncCallback<string>): void--><!--Device-PasteDataRecord-convertToText(callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: Incorrect parameters types. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
+record.convertToText((err: BusinessError, data: string) => {
+    if (err) {
+        console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
+        return;
+    }
+    console.info(`Succeeded in converting to text. Data: ${data}`);
+});
+```
+
+<a id="converttotext-1"></a>
+
+## convertToText
+
+```TypeScript
+convertToText(): Promise<string>
+```
+
+Forcibly converts the content in a **PasteData** object to text. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [toPlainText](#toplaintext)()
+
+<!--Device-PasteDataRecord-convertToText(): Promise<string>--><!--Device-PasteDataRecord-convertToText(): Promise<string>-End-->
+
+**System capability:** SystemCapability.MiscServices.Pasteboard
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the text obtained from the conversion. |
+
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
+record.convertToText().then((data: string) => {
+    console.info(`Succeeded in converting to text. Data: ${data}`);
+}).catch((err: BusinessError) => {
+    console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
+});
+```
+
 ## data
 
 ```TypeScript
@@ -273,7 +287,9 @@ Content of custom data. Modifications to this attribute are ineffective.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-data: Record<string, ArrayBuffer>--><!--Device-PasteDataRecord-data: Record<string, ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -289,7 +305,9 @@ HTML content, must conform to standard HTML format. Modifications to this attrib
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-htmlText: string--><!--Device-PasteDataRecord-htmlText: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -305,7 +323,9 @@ Default type of PasteDataRecord. Modifications to this attribute are ineffective
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-mimeType: string--><!--Device-PasteDataRecord-mimeType: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -321,7 +341,9 @@ PixelMap content. Modifications to this attribute are ineffective. To refresh th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-pixelMap: image.PixelMap--><!--Device-PasteDataRecord-pixelMap: image.PixelMap-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -337,7 +359,9 @@ Plain text. Modifications to this attribute are ineffective. To refresh the attr
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-plainText: string--><!--Device-PasteDataRecord-plainText: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -353,7 +377,9 @@ URI content, must conform to standard URI format. Modifications to this attribut
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-uri: string--><!--Device-PasteDataRecord-uri: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 
@@ -369,6 +395,8 @@ Want content. Modifications to this attribute are ineffective. To refresh the at
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PasteDataRecord-want: Want--><!--Device-PasteDataRecord-want: Want-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard

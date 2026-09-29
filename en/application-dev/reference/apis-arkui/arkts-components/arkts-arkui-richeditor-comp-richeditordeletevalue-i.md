@@ -8,6 +8,8 @@ Defines information about the deletion operation and the content to be deleted.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorDeleteValue--><!--Device-unnamed-declare interface RichEditorDeleteValue-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -25,6 +27,8 @@ Direction of the delete operation.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorDeleteValue-direction: RichEditorDeleteDirection--><!--Device-RichEditorDeleteValue-direction: RichEditorDeleteDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Length of the content to be deleted.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorDeleteValue-length: number--><!--Device-RichEditorDeleteValue-length: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -62,6 +68,8 @@ Offset of the content to be deleted.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorDeleteValue-offset: number--><!--Device-RichEditorDeleteValue-offset: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## richEditorDeleteSpans
@@ -79,5 +87,7 @@ Information about the text or image spans to be deleted.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorDeleteValue-richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>--><!--Device-RichEditorDeleteValue-richEditorDeleteSpans: Array<RichEditorTextSpanResult | RichEditorImageSpanResult>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

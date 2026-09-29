@@ -22,6 +22,8 @@ Obtains the hotspot information that scanned.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or ohos.permission.LOCATION)
 
+<!--Device-wifi-function getScanInfos(): Promise<Array<WifiScanInfo>>--><!--Device-wifi-function getScanInfos(): Promise<Array<WifiScanInfo>>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**
@@ -70,6 +72,8 @@ Obtains the hotspot information that scanned.
 **Substitutes:** [getScanInfoList](arkts-connectivity-wifimanager-getscaninfolist-f.md)
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or ohos.permission.LOCATION)
+
+<!--Device-wifi-function getScanInfos(callback: AsyncCallback<Array<WifiScanInfo>>): void--><!--Device-wifi-function getScanInfos(callback: AsyncCallback<Array<WifiScanInfo>>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

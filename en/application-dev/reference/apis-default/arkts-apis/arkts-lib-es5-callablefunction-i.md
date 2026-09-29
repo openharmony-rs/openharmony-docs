@@ -17,6 +17,8 @@ apply<T, R>(this: (this: T) => R, thisArg: T): R
 
 Calls the function with the specified object as the this value and the elements of specified array as the arguments.
 
+<!--Device-CallableFunction-apply<T, R>(this: (this: T) => R, thisArg: T): R--><!--Device-CallableFunction-apply<T, R>(this: (this: T) => R, thisArg: T): R-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -47,6 +49,8 @@ bind<T>(this: T, thisArg: ThisParameterType<T>): OmitThisParameter<T>
 ```
 
 For a given function, creates a bound function that has the same body as the original function. The this object of the bound function is associated with the specified object, and has the specified initial parameters.
+
+<!--Device-CallableFunction-bind<T>(this: T, thisArg: ThisParameterType<T>): OmitThisParameter<T>--><!--Device-CallableFunction-bind<T>(this: T, thisArg: ThisParameterType<T>): OmitThisParameter<T>-End-->
 
 **Parameters:**
 
@@ -148,6 +152,8 @@ call<T, A extends any[], R>(this: (this: T, ...args: A) => R, thisArg: T, ...arg
 ```
 
 Calls the function with the specified object as the this value and the specified rest arguments as the arguments.
+
+<!--Device-CallableFunction-call<T, A extends any[], R>(this: (this: T, ...args: A) => R, thisArg: T, ...args: A): R--><!--Device-CallableFunction-call<T, A extends any[], R>(this: (this: T, ...args: A) => R, thisArg: T, ...args: A): R-End-->
 
 **Parameters:**
 

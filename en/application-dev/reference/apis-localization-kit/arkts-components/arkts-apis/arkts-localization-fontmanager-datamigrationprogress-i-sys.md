@@ -8,6 +8,8 @@ Describes the progress information of data migration, including the progress per
 
 **Since:** 23
 
+<!--Device-fontManager-interface DataMigrationProgress--><!--Device-fontManager-interface DataMigrationProgress-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Data migration progress percentage, which is calculated based on the number or s
 
 **Since:** 23
 
+<!--Device-DataMigrationProgress-progressPercentage: int--><!--Device-DataMigrationProgress-progressPercentage: int-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Estimated remaining time, which may vary depending on factors such as device per
 **Type:** number
 
 **Since:** 23
+
+<!--Device-DataMigrationProgress-timeRemaining: int--><!--Device-DataMigrationProgress-timeRemaining: int-End-->
 
 **System capability:** SystemCapability.Global.FontManager
 

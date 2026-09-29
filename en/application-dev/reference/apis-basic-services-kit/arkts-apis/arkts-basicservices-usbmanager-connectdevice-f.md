@@ -21,6 +21,8 @@ access permission.
 
 **Since:** 9
 
+<!--Device-usbManager-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>--><!--Device-usbManager-function connectDevice(device: USBDevice): Readonly<USBDevicePipe>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

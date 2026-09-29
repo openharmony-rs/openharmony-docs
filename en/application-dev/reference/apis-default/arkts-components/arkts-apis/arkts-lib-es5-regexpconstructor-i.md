@@ -63,6 +63,14 @@ new(pattern: string, flags?: string): RegExp
 | pattern | string | Yes |  |
 | flags | string | No |  |
 
+## prototype
+
+```TypeScript
+readonly prototype: RegExp
+```
+
+**Type:** RegExp
+
 ## "$&"
 
 ```TypeScript
@@ -72,6 +80,8 @@ new(pattern: string, flags?: string): RegExp
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-"$&": string--><!--Device-RegExpConstructor-"$&": string-End-->
 
 ## "$'"
 
@@ -83,6 +93,8 @@ new(pattern: string, flags?: string): RegExp
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-"$'": string--><!--Device-RegExpConstructor-"$'": string-End-->
+
 ## "$+"
 
 ```TypeScript
@@ -92,6 +104,8 @@ new(pattern: string, flags?: string): RegExp
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-"$+": string--><!--Device-RegExpConstructor-"$+": string-End-->
 
 ## "$`"
 
@@ -103,6 +117,8 @@ new(pattern: string, flags?: string): RegExp
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-"$`": string--><!--Device-RegExpConstructor-"$`": string-End-->
+
 ## $1
 
 ```TypeScript
@@ -112,6 +128,8 @@ $1: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-$1: string--><!--Device-RegExpConstructor-$1: string-End-->
 
 ## $2
 
@@ -123,6 +141,8 @@ $2: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-$2: string--><!--Device-RegExpConstructor-$2: string-End-->
+
 ## $3
 
 ```TypeScript
@@ -132,6 +152,8 @@ $3: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-$3: string--><!--Device-RegExpConstructor-$3: string-End-->
 
 ## $4
 
@@ -143,6 +165,8 @@ $4: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-$4: string--><!--Device-RegExpConstructor-$4: string-End-->
+
 ## $5
 
 ```TypeScript
@@ -152,6 +176,8 @@ $5: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-$5: string--><!--Device-RegExpConstructor-$5: string-End-->
 
 ## $6
 
@@ -163,6 +189,8 @@ $6: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-$6: string--><!--Device-RegExpConstructor-$6: string-End-->
+
 ## $7
 
 ```TypeScript
@@ -172,6 +200,8 @@ $7: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-$7: string--><!--Device-RegExpConstructor-$7: string-End-->
 
 ## $8
 
@@ -183,6 +213,8 @@ $8: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-$8: string--><!--Device-RegExpConstructor-$8: string-End-->
+
 ## $9
 
 ```TypeScript
@@ -192,6 +224,8 @@ $9: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-$9: string--><!--Device-RegExpConstructor-$9: string-End-->
 
 ## $_
 
@@ -203,6 +237,8 @@ $_: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-$_: string--><!--Device-RegExpConstructor-$_: string-End-->
+
 ## input
 
 ```TypeScript
@@ -212,6 +248,8 @@ input: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-input: string--><!--Device-RegExpConstructor-input: string-End-->
 
 ## lastMatch
 
@@ -223,6 +261,8 @@ lastMatch: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
+<!--Device-RegExpConstructor-lastMatch: string--><!--Device-RegExpConstructor-lastMatch: string-End-->
+
 ## lastParen
 
 ```TypeScript
@@ -232,6 +272,8 @@ lastParen: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-lastParen: string--><!--Device-RegExpConstructor-lastParen: string-End-->
 
 ## leftContext
 
@@ -243,13 +285,7 @@ leftContext: string
 
 **Deprecated since:** legacy feature for browser compatibility
 
-## prototype
-
-```TypeScript
-readonly prototype: RegExp
-```
-
-**Type:** RegExp
+<!--Device-RegExpConstructor-leftContext: string--><!--Device-RegExpConstructor-leftContext: string-End-->
 
 ## rightContext
 
@@ -260,3 +296,5 @@ rightContext: string
 **Type:** string
 
 **Deprecated since:** legacy feature for browser compatibility
+
+<!--Device-RegExpConstructor-rightContext: string--><!--Device-RegExpConstructor-rightContext: string-End-->

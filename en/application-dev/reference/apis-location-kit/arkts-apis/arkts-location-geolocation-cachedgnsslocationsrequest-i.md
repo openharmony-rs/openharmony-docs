@@ -16,6 +16,8 @@ Parameters for requesting to report cache location information
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-export interface CachedGnssLocationsRequest--><!--Device-geolocation-export interface CachedGnssLocationsRequest-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## Modules to Import
@@ -38,6 +40,8 @@ reportingPeriodSec: number
 
 **Substitutes:** [reportingPeriodSec](arkts-location-geolocationmanager-cachedgnsslocationsrequest-i.md#reportingperiodsec)
 
+<!--Device-CachedGnssLocationsRequest-reportingPeriodSec: number--><!--Device-CachedGnssLocationsRequest-reportingPeriodSec: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 ## wakeUpCacheQueueFull
@@ -53,5 +57,7 @@ wakeUpCacheQueueFull: boolean
 **Deprecated since:** 9
 
 **Substitutes:** [wakeUpCacheQueueFull](arkts-location-geolocationmanager-cachedgnsslocationsrequest-i.md#wakeupcachequeuefull)
+
+<!--Device-CachedGnssLocationsRequest-wakeUpCacheQueueFull: boolean--><!--Device-CachedGnssLocationsRequest-wakeUpCacheQueueFull: boolean-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss

@@ -18,6 +18,8 @@ Disables the cellular data roaming service. This API uses an asynchronous callba
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-data-function disableCellularDataRoaming(slotId: int, callback: AsyncCallback<void>): void--><!--Device-data-function disableCellularDataRoaming(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Disables the cellular data roaming service. This API uses a promise to return th
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-data-function disableCellularDataRoaming(slotId: int): Promise<void>--><!--Device-data-function disableCellularDataRoaming(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

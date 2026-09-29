@@ -8,6 +8,8 @@ Defines display options for the first frame of the video.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface PosterOptions--><!--Device-unnamed-declare interface PosterOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentTransitionEffect
@@ -32,6 +34,8 @@ When set to **undefined** or **null**, the value is **ContentTransitionEffect.ID
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
+<!--Device-PosterOptions-contentTransitionEffect?: ContentTransitionEffect--><!--Device-PosterOptions-contentTransitionEffect?: ContentTransitionEffect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## showFirstFrame
@@ -55,5 +59,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-PosterOptions-showFirstFrame?: boolean--><!--Device-PosterOptions-showFirstFrame?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

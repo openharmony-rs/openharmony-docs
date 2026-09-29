@@ -10,6 +10,8 @@ Defines the Web attribute functions.
 
 **Since:** 8
 
+<!--Device-unnamed-declare class WebAttribute extends CommonMethod<WebAttribute>--><!--Device-unnamed-declare class WebAttribute extends CommonMethod<WebAttribute>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## aiSessionOptions
@@ -23,6 +25,8 @@ Configures custom frontend AI sessions for the **Web** component, used to regist
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-aiSessionOptions(aiSessions: Array<AISessionEvent>): WebAttribute--><!--Device-WebAttribute-aiSessionOptions(aiSessions: Array<AISessionEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -54,6 +58,8 @@ Sets whether to allow a new window to automatically open through JavaScript.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-allowWindowOpenMethod(flag : boolean): WebAttribute--><!--Device-WebAttribute-allowWindowOpenMethod(flag : boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -71,6 +77,8 @@ backToTop(backToTop: boolean)
 Sets whether to enable the back-to-top feature for the **Web** component when the status bar is touched. When this attribute is not explicitly called, the back-to-top feature for the status bar is enabled by default.
 
 **Since:** 22
+
+<!--Device-WebAttribute-backToTop(backToTop: boolean): WebAttribute--><!--Device-WebAttribute-backToTop(backToTop: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -90,6 +98,8 @@ bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseT
 Sets the custom selection menu.
 
 **Since:** 13
+
+<!--Device-WebAttribute-bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType,      options?: SelectionMenuOptionsExt): WebAttribute--><!--Device-WebAttribute-bindSelectionMenu(elementType: WebElementType, content: CustomBuilder, responseType: WebResponseType,      options?: SelectionMenuOptionsExt): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -122,6 +132,8 @@ Sets the blank screen detection configuration, such as whether to enable the det
 
 **Since:** 22
 
+<!--Device-WebAttribute-blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig): WebAttribute--><!--Device-WebAttribute-blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -141,6 +153,8 @@ Sets whether to block online downloads. When this attribute is not explicitly ca
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-blockNetwork(block: boolean): WebAttribute--><!--Device-WebAttribute-blockNetwork(block: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -162,6 +176,8 @@ Sets the blur mode for **Web** elements when the soft keyboard is dismissed. If 
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-WebAttribute-blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode): WebAttribute--><!--Device-WebAttribute-blurOnKeyboardHideMode(mode: BlurOnKeyboardHideMode): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -179,6 +195,8 @@ bypassVsyncCondition(condition: WebBypassVsyncCondition)
 Sets the rendering process to bypass vsync (vertical synchronization) scheduling and directly trigger drawing when the **scrollBy** API is called to scroll the page. When this attribute is not explicitly called, vsync scheduling is not skipped by default.
 
 **Since:** 20
+
+<!--Device-WebAttribute-bypassVsyncCondition(condition: WebBypassVsyncCondition): WebAttribute--><!--Device-WebAttribute-bypassVsyncCondition(condition: WebBypassVsyncCondition): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -199,6 +217,8 @@ Sets the cache mode. When this attribute is not explicitly called, the default v
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-cacheMode(cacheMode: CacheMode): WebAttribute--><!--Device-WebAttribute-cacheMode(cacheMode: CacheMode): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -227,6 +247,8 @@ Sets the clipboard copy scope option. If this attribute is not explicitly called
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-copyOptions(value: CopyOptions): WebAttribute--><!--Device-WebAttribute-copyOptions(value: CopyOptions): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -248,6 +270,8 @@ When dark mode is enabled, the **Web** component enables the dark style defined 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-darkMode(mode: WebDarkMode): WebAttribute--><!--Device-WebAttribute-darkMode(mode: WebDarkMode): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -272,6 +296,8 @@ Sets whether to enable the Web SQL Database storage API permission. If this perm
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-databaseAccess(databaseAccess: boolean): WebAttribute--><!--Device-WebAttribute-databaseAccess(databaseAccess: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -299,6 +325,8 @@ than that of B (A.start &lt; B.start), then A is retained; otherwise, B is retai
 
 **Since:** 20
 
+<!--Device-WebAttribute-dataDetectorConfig(config: TextDataDetectorConfig): WebAttribute--><!--Device-WebAttribute-dataDetectorConfig(config: TextDataDetectorConfig): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -320,6 +348,8 @@ When this attribute is not explicitly called, the default fixed font size is **1
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-defaultFixedFontSize(size: number): WebAttribute--><!--Device-WebAttribute-defaultFixedFontSize(size: number): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -343,6 +373,8 @@ When this attribute is not explicitly called, the default font size of the web p
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-defaultFontSize(size: number): WebAttribute--><!--Device-WebAttribute-defaultFontSize(size: number): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -363,6 +395,8 @@ Sets the default text encoding format for the web page. When this attribute is n
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-defaultTextEncodingFormat(textEncodingFormat: string): WebAttribute--><!--Device-WebAttribute-defaultTextEncodingFormat(textEncodingFormat: string): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -382,6 +416,8 @@ Sets whether to enable the DOM Storage API permission. If this attribute is not 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-domStorageAccess(domStorageAccess: boolean): WebAttribute--><!--Device-WebAttribute-domStorageAccess(domStorageAccess: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -420,13 +456,15 @@ If this method is used together with [selectionMenuOptions&lt;sup&gt;(deprecated
 
 **Since:** 12
 
+<!--Device-WebAttribute-editMenuOptions(editMenu: EditMenuOptions): WebAttribute--><!--Device-WebAttribute-editMenuOptions(editMenu: EditMenuOptions): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| editMenu | [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md) | Yes | Custom text menu options for the Web component. <br>The number of menu items, the content size, and the icon size are consistent with those of the ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md#menu) component. <br>Among the system-provided ID enum values ([TextMenuItemId](../../apis-arkui/arkts-apis/arkts-arkui-textmenuitemid-c.md)) in the menu, only CUT, COPY, PASTE, SELECT_ALL, TRANSLATE, SEARCH, and AI_WRITER are supported in the Web component. <br>In the onMenuItemClick function, the textRange parameter is meaningless in the Web component, and the value passed in is -1. |
+| editMenu | [EditMenuOptions](../../apis-arkui/arkts-apis/arkts-arkui-editmenuoptions-i.md) | Yes | Custom text menu options for the Web component. <br>The number of menu items, the content size, and the icon size are consistent with those of the ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md) component. <br>Among the system-provided ID enum values ([TextMenuItemId](../../apis-arkui/arkts-apis/arkts-arkui-textmenuitemid-c.md)) in the menu, only CUT, COPY, PASTE, SELECT_ALL, TRANSLATE, SEARCH, and AI_WRITER are supported in the Web component. <br>In the onMenuItemClick function, the textRange parameter is meaningless in the Web component, and the value passed in is -1. |
 
 ## enableAutoFill
 
@@ -436,15 +474,17 @@ enableAutoFill(value: boolean)
 
 Sets whether to enable web page autofill. By default, this feature is enabled.
 
-&lt;!--RP1--&gt;
+<!--RP1-->
 
 > **NOTE:** 
 > 
 > The autofill feature of this API depends on SmartFill service and Password Autofill Service.
 
-&lt;!--RP1End--&gt;
+<!--RP1End-->
 
 **Since:** 23
+
+<!--Device-WebAttribute-enableAutoFill(value: boolean): WebAttribute--><!--Device-WebAttribute-enableAutoFill(value: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -481,6 +521,8 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 **Since:** 20
 
+<!--Device-WebAttribute-enableDataDetector(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableDataDetector(enable: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -507,6 +549,8 @@ Sets whether to enable the default right-click context menu. If this method is n
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebAttribute-enableDefaultContextMenu(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableDefaultContextMenu(enable: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -526,6 +570,8 @@ Sets whether to enable the drag function. If this attribute is not explicitly ca
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-enableDrag(value: boolean): WebAttribute--><!--Device-WebAttribute-enableDrag(value: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -549,6 +595,8 @@ Sets whether the **Web** component can change the font weight according to the s
 > .pdf texts do not support this capability.
 
 **Since:** 18
+
+<!--Device-WebAttribute-enableFollowSystemFontWeight(follow: boolean): WebAttribute--><!--Device-WebAttribute-enableFollowSystemFontWeight(follow: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -576,6 +624,8 @@ Sets whether to enable the overlay fullscreen playback feature for the **Web** c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebAttribute-enableFullscreenVideoOverlay(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableFullscreenVideoOverlay(enabled: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -593,6 +643,8 @@ enableHapticFeedback(enabled: boolean)
 Sets whether to enable haptic feedback for long-pressed text in the **Web** component. The **ohos.permission.VIBRATE** permission must be declared. When this attribute is not explicitly called, haptic feedback is enabled by default.
 
 **Since:** 13
+
+<!--Device-WebAttribute-enableHapticFeedback(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableHapticFeedback(enabled: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -621,6 +673,8 @@ Sets whether to enable AI analysis of web page images. Currently, the image text
 
 **Since:** 23
 
+<!--Device-WebAttribute-enableImageAnalyzer(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableImageAnalyzer(enable: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -644,6 +698,8 @@ Sets whether to enable the media resource network request proxy feature for the 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-enableMediaNetworkProxy(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableMediaNetworkProxy(enabled: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -670,6 +726,8 @@ Sets whether to enable the same-layer rendering feature. When this method is not
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-enableNativeEmbedMode(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableNativeEmbedMode(enabled: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -690,6 +748,8 @@ Sets whether to enable the [application to take over web page media playback](..
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-enableNativeMediaPlayer(config: NativeMediaPlayerConfig): WebAttribute--><!--Device-WebAttribute-enableNativeMediaPlayer(config: NativeMediaPlayerConfig): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -709,6 +769,8 @@ Sets the scroll direction lock for the **Web** component to prevent simultaneous
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType): WebAttribute--><!--Device-WebAttribute-enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -735,6 +797,8 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 **Since:** 22
 
+<!--Device-WebAttribute-enableSelectedDataDetector(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableSelectedDataDetector(enable: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -752,6 +816,8 @@ enableWebAVSession(enabled: boolean)
 Sets whether to support an application to connect to media controller. If this attribute is not explicitly set, the application can connect to media controller by default.
 
 **Since:** 18
+
+<!--Device-WebAttribute-enableWebAVSession(enabled: boolean): WebAttribute--><!--Device-WebAttribute-enableWebAVSession(enabled: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -773,6 +839,8 @@ Sets whether to enable access to the file system in the application. This settin
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-fileAccess(fileAccess: boolean): WebAttribute--><!--Device-WebAttribute-fileAccess(fileAccess: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -792,6 +860,8 @@ Sets whether to enable forcible dark mode for the web page. This API is applicab
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-forceDarkAccess(access: boolean): WebAttribute--><!--Device-WebAttribute-forceDarkAccess(access: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -821,6 +891,8 @@ When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** par
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-WebAttribute-forceDisplayScrollBar(enabled: boolean): WebAttribute--><!--Device-WebAttribute-forceDisplayScrollBar(enabled: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -838,6 +910,8 @@ forceEnableZoom(enable: boolean)
 Sets whether to enable the forcible zoom functionality for the **Web** component.
 
 **Since:** 21
+
+<!--Device-WebAttribute-forceEnableZoom(enable: boolean): WebAttribute--><!--Device-WebAttribute-forceEnableZoom(enable: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -859,6 +933,8 @@ Sets whether to enable the geolocation permission. If this attribute is not expl
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-geolocationAccess(geolocationAccess: boolean): WebAttribute--><!--Device-WebAttribute-geolocationAccess(geolocationAccess: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -876,6 +952,8 @@ gestureFocusMode(mode: GestureFocusMode)
 Sets the gesture focus mode of the **Web** component, which controls the focus response behavior of the **Web** component. If this attribute is not explicitly called, the default behavior is that any gesture causes the **Web** component to gain focus when the gesture is pressed.
 
 **Since:** 20
+
+<!--Device-WebAttribute-gestureFocusMode(mode: GestureFocusMode): WebAttribute--><!--Device-WebAttribute-gestureFocusMode(mode: GestureFocusMode): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -904,6 +982,8 @@ Sets whether to display the horizontal scrollbar, including the system default s
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-horizontalScrollBarAccess(horizontalScrollBar: boolean): WebAttribute--><!--Device-WebAttribute-horizontalScrollBarAccess(horizontalScrollBar: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -923,6 +1003,8 @@ Sets whether to allow automatic loading of image resources. If this attribute is
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-imageAccess(imageAccess: boolean): WebAttribute--><!--Device-WebAttribute-imageAccess(imageAccess: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -944,6 +1026,8 @@ Sets the zoom percentage of the entire page. If this attribute is not explicitly
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-initialScale(percent: number): WebAttribute--><!--Device-WebAttribute-initialScale(percent: number): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -963,6 +1047,8 @@ Sets whether to allow execution of JavaScript scripts. If this attribute is not 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-javaScriptAccess(javaScriptAccess: boolean): WebAttribute--><!--Device-WebAttribute-javaScriptAccess(javaScriptAccess: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -996,6 +1082,8 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-javaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-javaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1027,6 +1115,8 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-javaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-javaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1062,6 +1152,8 @@ Registers the ArkTS object in **javaScriptProxy** with the **Web** component. Th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute--><!--Device-WebAttribute-javaScriptProxy(javaScriptProxy: JavaScriptProxy): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1081,6 +1173,8 @@ Sets the keyboard appearance mode, which controls the appearance style of the ke
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-keyboardAppearance(mode: WebKeyboardAppearanceMode): WebAttribute--><!--Device-WebAttribute-keyboardAppearance(mode: WebKeyboardAppearanceMode): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1103,6 +1197,8 @@ If the keyboard avoidance mode set in **UIContext** is [KeyboardAvoidMode.RESIZE
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebAttribute-keyboardAvoidMode(mode: WebKeyboardAvoidMode): WebAttribute--><!--Device-WebAttribute-keyboardAvoidMode(mode: WebKeyboardAvoidMode): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1154,6 +1250,8 @@ Sets the layout mode of the **Web** component. If this attribute is not explicit
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-layoutMode(mode: WebLayoutMode): WebAttribute--><!--Device-WebAttribute-layoutMode(mode: WebLayoutMode): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1184,6 +1282,8 @@ Sets the web-based media playback policy, including the validity period for auto
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-mediaOptions(options: WebMediaOptions): WebAttribute--><!--Device-WebAttribute-mediaOptions(options: WebMediaOptions): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1203,6 +1303,8 @@ Sets whether autoplay of audible videos requires a user tap. Muted video playbac
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-mediaPlayGestureAccess(access: boolean): WebAttribute--><!--Device-WebAttribute-mediaPlayGestureAccess(access: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1228,6 +1330,8 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When thi
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-metaViewport(enabled: boolean): WebAttribute--><!--Device-WebAttribute-metaViewport(enabled: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1249,6 +1353,8 @@ When no attribute is explicitly called, the default minimum font size of the web
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-minFontSize(size: number): WebAttribute--><!--Device-WebAttribute-minFontSize(size: number): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1277,6 +1383,8 @@ When this attribute is not explicitly called, the default minimum logical font s
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-minLogicalFontSize(size: number): WebAttribute--><!--Device-WebAttribute-minLogicalFontSize(size: number): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1296,6 +1404,8 @@ Sets the behavior when a secure source attempts to load resources from an insecu
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-mixedMode(mixedMode: MixedMode): WebAttribute--><!--Device-WebAttribute-mixedMode(mixedMode: MixedMode): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1319,6 +1429,8 @@ Enabling the multi-window permission requires implementation of the **onWindowNe
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-multiWindowAccess(multiWindow: boolean): WebAttribute--><!--Device-WebAttribute-multiWindowAccess(multiWindow: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1336,6 +1448,8 @@ nativeEmbedOptions(options?: EmbedOptions)
 Sets the same-layer rendering configuration. This attribute takes effect only when [enableNativeEmbedMode](#enablenativeembedmode) is enabled and cannot be dynamically modified. If this attribute is not explicitly called, the default value **{supportDefaultIntrinsicSize: false}** is used.
 
 **Since:** 16
+
+<!--Device-WebAttribute-nativeEmbedOptions(options?: EmbedOptions): WebAttribute--><!--Device-WebAttribute-nativeEmbedOptions(options?: EmbedOptions): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1357,7 +1471,7 @@ Sets nested scrolling options.
 > 
 > - You can set the up, down, left, and right directions, or set the forward and backward nested scrolling modes to implement scrolling linkage with the parent component.
 > 
-> - Containers that support nested scrolling: [Grid](../../apis-arkui/arkts-components/arkts-arkui-grid-comp.md#grid), [List](../../apis-arkui/arkts-components/arkts-arkui-list-comp.md#list), [Scroll](../../apis-arkui/arkts-components/arkts-arkui-scroll-comp.md#scroll),[Swiper](../../apis-arkui/arkts-components/arkts-arkui-swiper-comp.md#swiper), [Tabs](../../apis-arkui/arkts-components/arkts-arkui-tabs-comp.md#tabs), [WaterFlow](../../apis-arkui/arkts-components/arkts-arkui-waterflow-comp.md#water_flow), [Refresh](../../apis-arkui/arkts-components/arkts-arkui-refresh-comp.md#refresh) and [bindSheet](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet).
+> - Containers that support nested scrolling: [Grid](../../apis-arkui/arkts-components/arkts-arkui-grid-comp.md), [List](../../apis-arkui/arkts-components/arkts-arkui-list-comp.md), [Scroll](../../apis-arkui/arkts-components/arkts-arkui-scroll-comp.md),[Swiper](../../apis-arkui/arkts-components/arkts-arkui-swiper-comp.md), [Tabs](../../apis-arkui/arkts-components/arkts-arkui-tabs-comp.md), [WaterFlow](../../apis-arkui/arkts-components/arkts-arkui-waterflow-comp.md), [Refresh](../../apis-arkui/arkts-components/arkts-arkui-refresh-comp.md) and [bindSheet](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindsheet).
 > 
 > - Input sources that support nested scrolling: gestures, mouse device, and touchpad.
 > 
@@ -1367,6 +1481,8 @@ Sets nested scrolling options.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt): WebAttribute--><!--Device-WebAttribute-nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1393,6 +1509,8 @@ Triggered to check whether a bound **Web** instance exists based on the name whe
 
 **Since:** 20
 
+<!--Device-WebAttribute-onActivateContent(callback: Callback<void>): WebAttribute--><!--Device-WebAttribute-onActivateContent(callback: Callback<void>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1412,6 +1530,8 @@ Called after an ad is blocked on the web page to notify the user of detailed inf
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebAttribute-onAdsBlocked(callback: OnAdsBlockedCallback): WebAttribute--><!--Device-WebAttribute-onAdsBlocked(callback: OnAdsBlockedCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1433,6 +1553,8 @@ Triggered when **alert()** is invoked to display an alert dialog box on the web 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onAlert(callback: Callback<OnAlertEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onAlert(callback: Callback<OnAlertEvent, boolean>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1452,6 +1574,8 @@ Triggered when the audio playback status on the web page changes.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onAudioStateChanged(callback: Callback<OnAudioStateChangedEvent>): WebAttribute--><!--Device-WebAttribute-onAudioStateChanged(callback: Callback<OnAudioStateChangedEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1476,6 +1600,8 @@ Called when the page refresh is about to complete or the current page is closed.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onBeforeUnload(callback: Callback<OnBeforeUnloadEvent, boolean>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1505,6 +1631,8 @@ You can use the **startCamera**, **stopCamera**, and **closeCamera** APIs to ena
 
 **Since:** 23
 
+<!--Device-WebAttribute-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback): WebAttribute--><!--Device-WebAttribute-onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1533,6 +1661,8 @@ Triggered when an SSL client certificate request is received.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>): WebAttribute--><!--Device-WebAttribute-onClientAuthenticationRequest(callback: Callback<OnClientAuthenticationEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1552,6 +1682,8 @@ Triggered when **confirm()** is invoked by the web page. Call the [handleCancel]
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onConfirm(callback: Callback<OnConfirmEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onConfirm(callback: Callback<OnConfirmEvent, boolean>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1573,6 +1705,8 @@ Triggered to notify the host application of a JavaScript console message.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onConsole(callback: Callback<OnConsoleEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onConsole(callback: Callback<OnConsoleEvent, boolean>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1593,6 +1727,8 @@ Triggered when a context menu is hidden after the user clicks the right mouse bu
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onContextMenuHide(callback: OnContextMenuHideCallback): WebAttribute--><!--Device-WebAttribute-onContextMenuHide(callback: OnContextMenuHideCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1612,6 +1748,8 @@ Triggered when a context menu is displayed after the user clicks the right mouse
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onContextMenuShow(callback: Callback<OnContextMenuShowEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onContextMenuShow(callback: Callback<OnContextMenuShowEvent, boolean>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1637,6 +1775,8 @@ For details about the component lifecycle, see [Lifecycle of the Web Component](
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onControllerAttached(callback: () => void): WebAttribute--><!--Device-WebAttribute-onControllerAttached(callback: () => void): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1656,6 +1796,8 @@ Triggered when the web form data can be resubmitted.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onDataResubmitted(callback: Callback<OnDataResubmittedEvent>): WebAttribute--><!--Device-WebAttribute-onDataResubmitted(callback: Callback<OnDataResubmittedEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1679,6 +1821,8 @@ Called when the **Web** component detects a blank screen.
 
 **Since:** 22
 
+<!--Device-WebAttribute-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback): WebAttribute--><!--Device-WebAttribute-onDetectedBlankScreen(callback: OnDetectBlankScreenCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1698,6 +1842,8 @@ Triggered to instruct the main application to start downloading a file.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onDownloadStart(callback: Callback<OnDownloadStartEvent>): WebAttribute--><!--Device-WebAttribute-onDownloadStart(callback: Callback<OnDownloadStartEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1719,6 +1865,8 @@ Triggered when an error occurs during web page loading. The error may occur on t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onErrorReceive(callback: Callback<OnErrorReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onErrorReceive(callback: Callback<OnErrorReceiveEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1739,6 +1887,8 @@ Triggered when this web page receives a new favicon.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>): WebAttribute--><!--Device-WebAttribute-onFaviconReceived(callback: Callback<OnFaviconReceivedEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1746,28 +1896,6 @@ Triggered when this web page receives a new favicon.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnFaviconReceivedEvent](arkts-arkweb-web-comp-onfaviconreceivedevent-i.md)&gt; | Yes | Callback invoked when the current web page receives a new favicon.<br>**Since:** 12 |
-
-## onFileSelectorShow
-
-```TypeScript
-onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void)
-```
-
-Triggered to process an HTML form whose input type is **file**, in response to the tapping of the **Select File** button.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [onShowFileSelector](#onshowfileselector)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | (event?: { callback: Function, fileSelector: object }) =&gt; void | Yes | Callback to be executed when the file selector is triggered. |
 
 ## onFirstContentfulPaint
 
@@ -1780,6 +1908,8 @@ Triggered when the first content paint occurs on the web page.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>): WebAttribute--><!--Device-WebAttribute-onFirstContentfulPaint(callback: Callback<OnFirstContentfulPaintEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1800,6 +1930,8 @@ Triggered when the first meaningful paint occurs on the web page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebAttribute-onFirstMeaningfulPaint(callback: OnFirstMeaningfulPaintCallback): WebAttribute--><!--Device-WebAttribute-onFirstMeaningfulPaint(callback: OnFirstMeaningfulPaintCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1829,6 +1961,8 @@ Triggered when the first screen paint of a web page is complete.
 
 **Since:** 23
 
+<!--Device-WebAttribute-onFirstScreenPaint(callback: OnFirstScreenPaintCallback): WebAttribute--><!--Device-WebAttribute-onFirstScreenPaint(callback: OnFirstScreenPaintCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1848,6 +1982,8 @@ Triggered when the **Web** component enters full screen mode.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onFullScreenEnter(callback: OnFullScreenEnterCallback): WebAttribute--><!--Device-WebAttribute-onFullScreenEnter(callback: OnFullScreenEnterCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1869,6 +2005,8 @@ Triggered when the **Web** component exits full screen mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onFullScreenExit(callback: () => void): WebAttribute--><!--Device-WebAttribute-onFullScreenExit(callback: () => void): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1888,6 +2026,8 @@ Triggered to notify the user that the request for obtaining the geolocation info
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onGeolocationHide(callback: () => void): WebAttribute--><!--Device-WebAttribute-onGeolocationHide(callback: () => void): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1909,6 +2049,8 @@ Called to notify the user that the geolocation information obtaining request is 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onGeolocationShow(callback: Callback<OnGeolocationShowEvent>): WebAttribute--><!--Device-WebAttribute-onGeolocationShow(callback: Callback<OnGeolocationShowEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1928,6 +2070,8 @@ Triggered when an HTTP authentication request is received.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onHttpAuthRequest(callback: Callback<OnHttpAuthRequestEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onHttpAuthRequest(callback: Callback<OnHttpAuthRequestEvent, boolean>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1949,6 +2093,8 @@ Called when an HTTP error (the response code is greater than or equal to 400) oc
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onHttpErrorReceive(callback: Callback<OnHttpErrorReceiveEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -1968,6 +2114,8 @@ The callback is triggered when the inputmethod is attached to the IMF.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-onInputmethodAttached(callback: OnInputmethodAttachedCallback): WebAttribute--><!--Device-WebAttribute-onInputmethodAttached(callback: OnInputmethodAttachedCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -1989,6 +2137,8 @@ Triggered when the intelligent tracking prevention feature is enabled and the tr
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback): WebAttribute--><!--Device-WebAttribute-onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2008,6 +2158,8 @@ Triggered before any editable element (such as the **input** tag) on the web pag
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebAttribute-onInterceptKeyboardAttach(callback: WebKeyboardCallback): WebAttribute--><!--Device-WebAttribute-onInterceptKeyboardAttach(callback: WebKeyboardCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2029,6 +2181,8 @@ Triggered when the key event is intercepted and before it is consumed by the web
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onInterceptKeyEvent(callback: (event: KeyEvent) => boolean): WebAttribute--><!--Device-WebAttribute-onInterceptKeyEvent(callback: (event: KeyEvent) => boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2049,13 +2203,15 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>): WebAttribute--><!--Device-WebAttribute-onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), [WebResourceResponse](arkts-arkweb-web-comp-webresourceresponse-c.md)&gt; | Yes | Callback invoked when the **Web** component is about to load a URL. <br>The return value is [WebResourceResponse](arkts-arkweb-web-comp.md#web). If response data is returned, the data is loaded based on the response data. If no response data is returned, null is returned, indicating that the data is loaded in the original mode.<br>**Since:** 12 |
+| callback | Callback&lt;[OnInterceptRequestEvent](arkts-arkweb-web-comp-oninterceptrequestevent-i.md), [WebResourceResponse](arkts-arkweb-web-comp-webresourceresponse-c.md)&gt; | Yes | Callback invoked when the **Web** component is about to load a URL. <br>The return value is [WebResourceResponse](arkts-arkweb-web-comp.md). If response data is returned, the data is loaded based on the response data. If no response data is returned, null is returned, indicating that the data is loaded in the original mode.<br>**Since:** 12 |
 
 ## onLargestContentfulPaint
 
@@ -2068,6 +2224,8 @@ Triggered when the largest content paint occurs on the web page.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebAttribute-onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback): WebAttribute--><!--Device-WebAttribute-onLargestContentfulPaint(callback: OnLargestContentfulPaintCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2088,6 +2246,8 @@ Sets whether to allow loading of image resources from the network (resources acc
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onlineImageAccess(onlineImageAccess: boolean): WebAttribute--><!--Device-WebAttribute-onlineImageAccess(onlineImageAccess: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2115,6 +2275,8 @@ Triggered to notify the host application that the page has been loaded. This met
 
 **Since:** 20
 
+<!--Device-WebAttribute-onLoadFinished(callback: Callback<OnLoadFinishedEvent>): WebAttribute--><!--Device-WebAttribute-onLoadFinished(callback: Callback<OnLoadFinishedEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2134,6 +2296,8 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onLoadIntercept(callback: Callback<OnLoadInterceptEvent, boolean>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2157,6 +2321,8 @@ Triggered to notify the host application that the page loading starts. This meth
 > **onPageBegin** will not be simulated.
 
 **Since:** 20
+
+<!--Device-WebAttribute-onLoadStarted(callback: Callback<OnLoadStartedEvent>): WebAttribute--><!--Device-WebAttribute-onLoadStarted(callback: Callback<OnLoadStartedEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2199,6 +2365,8 @@ You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone*
 
 **Since:** 23
 
+<!--Device-WebAttribute-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback): WebAttribute--><!--Device-WebAttribute-onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2219,6 +2387,8 @@ Triggered when a finger touches a same-layer tag.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void): WebAttribute--><!--Device-WebAttribute-onNativeEmbedGestureEvent(callback: (event: NativeEmbedTouchInfo) => void): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2238,6 +2408,8 @@ Triggered when the lifecycle of the same-layer tag changes.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void): WebAttribute--><!--Device-WebAttribute-onNativeEmbedLifecycleChange(callback: (event: NativeEmbedDataInfo) => void): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2260,6 +2432,8 @@ Triggered when the following operations are performed on the same-layer tag:
 
 **Since:** 20
 
+<!--Device-WebAttribute-onNativeEmbedMouseEvent(callback: MouseInfoCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedMouseEvent(callback: MouseInfoCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2278,6 +2452,8 @@ Called when the **param** element embedded in the same-layer rendering tag **obj
 
 **Since:** 21
 
+<!--Device-WebAttribute-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedObjectParamChange(callback: OnNativeEmbedObjectParamChangeCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2295,6 +2471,8 @@ onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback)
 Triggered when the visibility of a same-layer tag (such as an **\&lt;embed&gt;** tag or an **\&lt;object&gt;** tag) on a web page changes in the viewport. Same-layer tags are invisible by default. If a tag is visible when the page is loaded for the first time, it is reported. If a tag is invisible, it is not reported. Same-layer tags are considered invisible only when they are all invisible. Partially visible or all visible tags are considered visible. To obtain the visible status change caused by the CSS attributes (including visibility, display, and size change) of the same -layer tag, configure [nativeEmbedOptions](#nativeembedoptions) and set **supportCssDisplayChange** in [EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md) to **true**.
 
 **Since:** 12
+
+<!--Device-WebAttribute-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback): WebAttribute--><!--Device-WebAttribute-onNativeEmbedVisibilityChange(callback: OnNativeEmbedVisibilityChangeCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2315,6 +2493,8 @@ Triggered when a web page redirection request is submitted.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onNavigationEntryCommitted(callback: OnNavigationEntryCommittedCallback): WebAttribute--><!--Device-WebAttribute-onNavigationEntryCommitted(callback: OnNavigationEntryCommittedCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2342,6 +2522,8 @@ Triggered when an error occurs during web page loading of main resources. You ca
 > greater than 0, it indicates an HTTP error. If the error code is less than 0, it indicates a network error.
 
 **Since:** 20
+
+<!--Device-WebAttribute-onOverrideErrorPage(callback: OnOverrideErrorPageCallback): WebAttribute--><!--Device-WebAttribute-onOverrideErrorPage(callback: OnOverrideErrorPageCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2371,6 +2553,8 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback): WebAttribute--><!--Device-WebAttribute-onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2390,6 +2574,8 @@ Triggered when the web page is overscrolled. It is used to notify the applicatio
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onOverScroll(callback: Callback<OnOverScrollEvent>): WebAttribute--><!--Device-WebAttribute-onOverScroll(callback: Callback<OnOverScrollEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2411,6 +2597,8 @@ Triggered when the web page starts to be loaded. This callback is called only fo
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute--><!--Device-WebAttribute-onPageBegin(callback: Callback<OnPageBeginEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2430,6 +2618,8 @@ Triggered when the web page loading is finished. This callback is called only fo
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onPageEnd(callback: Callback<OnPageEndEvent>): WebAttribute--><!--Device-WebAttribute-onPageEnd(callback: Callback<OnPageEndEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2451,6 +2641,8 @@ Triggered when the old page is not displayed and the new page is about to be vis
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onPageVisible(callback: Callback<OnPageVisibleEvent>): WebAttribute--><!--Device-WebAttribute-onPageVisible(callback: Callback<OnPageVisibleEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2469,6 +2661,8 @@ Called to notify the user of whether the PDF page is successfully loaded.
 
 **Since:** 20
 
+<!--Device-WebAttribute-onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>): WebAttribute--><!--Device-WebAttribute-onPdfLoadEvent(callback: Callback<OnPdfLoadEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2486,6 +2680,8 @@ onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>)
 Called to notify the user that the PDF page has been scrolled to the bottom.
 
 **Since:** 20
+
+<!--Device-WebAttribute-onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>): WebAttribute--><!--Device-WebAttribute-onPdfScrollAtBottom(callback: Callback<OnPdfScrollEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2507,6 +2703,8 @@ Triggered when a permission request is received. To call this API, you need to d
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-onPermissionRequest(callback: Callback<OnPermissionRequestEvent>): WebAttribute--><!--Device-WebAttribute-onPermissionRequest(callback: Callback<OnPermissionRequestEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2526,6 +2724,8 @@ Triggered when the web page loading progress changes.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onProgressChange(callback: Callback<OnProgressChangeEvent>): WebAttribute--><!--Device-WebAttribute-onProgressChange(callback: Callback<OnProgressChangeEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2547,6 +2747,8 @@ Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onPrompt(callback: Callback<OnPromptEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onPrompt(callback: Callback<OnPromptEvent, boolean>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2566,6 +2768,8 @@ Triggered for the application to update its access history when the navigation i
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>): WebAttribute--><!--Device-WebAttribute-onRefreshAccessedHistory(callback: Callback<OnRefreshAccessedHistoryEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2592,6 +2796,8 @@ For details about the component lifecycle, see [Lifecycle of the Web Components]
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onRenderExited(callback: Callback<OnRenderExitedEvent>): WebAttribute--><!--Device-WebAttribute-onRenderExited(callback: Callback<OnRenderExitedEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2623,6 +2829,8 @@ For details, see [Lifecycle of the Web Component](../../../web/web-event-sequenc
 
 **Substitutes:** [onRenderExited](#onrenderexited)
 
+<!--Device-WebAttribute-onRenderExited(callback: (event?: { detail: object }) => boolean): WebAttribute--><!--Device-WebAttribute-onRenderExited(callback: (event?: { detail: object }) => boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2645,6 +2853,8 @@ You can terminate the associated rendering process through [terminateRenderProce
 
 **Since:** 12
 
+<!--Device-WebAttribute-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback): WebAttribute--><!--Device-WebAttribute-onRenderProcessNotResponding(callback: OnRenderProcessNotRespondingCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2662,6 +2872,8 @@ onRenderProcessResponding(callback: OnRenderProcessRespondingCallback)
 Triggered when the rendering process transitions back to a normal operating state from an unresponsive state. This callback indicates that the web page was not actually frozen.
 
 **Since:** 12
+
+<!--Device-WebAttribute-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback): WebAttribute--><!--Device-WebAttribute-onRenderProcessResponding(callback: OnRenderProcessRespondingCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2683,6 +2895,8 @@ Triggered when the **Web** component obtains the focus. If the **Web** component
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onRequestSelected(callback: () => void): WebAttribute--><!--Device-WebAttribute-onRequestSelected(callback: () => void): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2703,6 +2917,8 @@ Triggered to notify the **Web** component of the URL of the resource file to loa
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onResourceLoad(callback: Callback<OnResourceLoadEvent>): WebAttribute--><!--Device-WebAttribute-onResourceLoad(callback: Callback<OnResourceLoadEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2720,6 +2936,8 @@ onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 Called when the safe browsing check is complete.
 
 **Since:** 21
+
+<!--Device-WebAttribute-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback): WebAttribute--><!--Device-WebAttribute-onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2741,6 +2959,8 @@ Called when the safe browsing check result is received.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback): WebAttribute--><!--Device-WebAttribute-onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2761,6 +2981,8 @@ Called when the page display scale changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onScaleChange(callback: Callback<OnScaleChangeEvent>): WebAttribute--><!--Device-WebAttribute-onScaleChange(callback: Callback<OnScaleChangeEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2780,6 +3002,8 @@ Triggered when a screen capture request is received.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onScreenCaptureRequest(callback: Callback<OnScreenCaptureRequestEvent>): WebAttribute--><!--Device-WebAttribute-onScreenCaptureRequest(callback: Callback<OnScreenCaptureRequestEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2811,6 +3035,8 @@ Triggered to notify the global scrolling position of the web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onScroll(callback: Callback<OnScrollEvent>): WebAttribute--><!--Device-WebAttribute-onScroll(callback: Callback<OnScrollEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2831,6 +3057,8 @@ Triggered to notify the caller of the search result on the web page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onSearchResultReceive(callback: Callback<OnSearchResultReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onSearchResultReceive(callback: Callback<OnSearchResultReceiveEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2850,6 +3078,8 @@ Triggered to process an HTML form whose input type is **file**. If this function
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>): WebAttribute--><!--Device-WebAttribute-onShowFileSelector(callback: Callback<OnShowFileSelectorEvent, boolean>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2876,6 +3106,8 @@ Triggered to notify users when an SSL error occurs during the loading of main-fr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WebAttribute-onSslErrorEvent(callback: OnSslErrorEventCallback): WebAttribute--><!--Device-WebAttribute-onSslErrorEvent(callback: OnSslErrorEventCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2909,6 +3141,8 @@ To support errors for loading subframe resources, use the [OnSslErrorEvent](#ons
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onSslErrorEventReceive(callback: Callback<OnSslErrorEventReceiveEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2916,28 +3150,6 @@ To support errors for loading subframe resources, use the [OnSslErrorEvent](#ons
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnSslErrorEventReceiveEvent](arkts-arkweb-web-comp-onsslerroreventreceiveevent-i.md)&gt; | Yes | Callback invoked when the web page receives an SSL error.<br>**Since:** 12 |
-
-## onSslErrorReceive
-
-```TypeScript
-onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
-```
-
-Triggered when an SSL error occurs during resource loading.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [onSslErrorEventReceive](#onsslerroreventreceive)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | (event?: { handler: Function, error: object }) =&gt; void | Yes | Callback triggered when a web page detects an SSL error. |
 
 ## onTextSelectionChange
 
@@ -2956,6 +3168,8 @@ Triggered when the text selection of the **Web** component changes. This API use
 > - If the same selection is made using the same method as the previous one, this callback is not triggered. If the same selection is made using a different method from the previous one, this callback is triggered.
 
 **Since:** 23
+
+<!--Device-WebAttribute-onTextSelectionChange(callback: TextSelectionChangeCallback): WebAttribute--><!--Device-WebAttribute-onTextSelectionChange(callback: TextSelectionChangeCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -2977,6 +3191,8 @@ Called when the **\&lt;title&gt;** element of the page document changes. If no t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onTitleReceive(callback: Callback<OnTitleReceiveEvent>): WebAttribute--><!--Device-WebAttribute-onTitleReceive(callback: Callback<OnTitleReceiveEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -2997,6 +3213,8 @@ Triggered when an apple-touch-icon URL is received.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>): WebAttribute--><!--Device-WebAttribute-onTouchIconUrlReceived(callback: Callback<OnTouchIconUrlReceivedEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3004,28 +3222,6 @@ Triggered when an apple-touch-icon URL is received.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnTouchIconUrlReceivedEvent](arkts-arkweb-web-comp-ontouchiconurlreceivedevent-i.md)&gt; | Yes | Callback invoked when an apple-touch-icon URL is received.<br>**Since:** 12 |
-
-## onUrlLoadIntercept
-
-```TypeScript
-onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest}) => boolean)
-```
-
-Triggered when the **Web** component is about to access a URL. This API is used to determine whether to block the access.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Substitutes:** onLoadIntercept
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | (event?: { data: string &#124; WebResourceRequest}) =&gt; boolean | Yes | URL information.<br>The return value is of the Boolean type. If **true** is returned, the access is blocked. Otherwise, the access is allowed. |
 
 ## onVerifyPin
 
@@ -3036,6 +3232,8 @@ onVerifyPin(callback: OnVerifyPinCallback)
 Triggered to notify the user of PIN verification. This API uses an asynchronous callback to return the result.
 
 **Since:** 22
+
+<!--Device-WebAttribute-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute--><!--Device-WebAttribute-onVerifyPin(callback: OnVerifyPinCallback): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3057,6 +3255,8 @@ Triggered when the **viewport-fit** configuration in the web page's **meta** tag
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-onViewportFitChanged(callback: OnViewportFitChangedCallback): WebAttribute--><!--Device-WebAttribute-onViewportFitChanged(callback: OnViewportFitChangedCallback): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3076,6 +3276,8 @@ Triggered when this window is closed. This API works in the same way as [onWindo
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onWindowExit(callback: () => void): WebAttribute--><!--Device-WebAttribute-onWindowExit(callback: () => void): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3104,6 +3306,8 @@ Note that the source of a new window request cannot be reliably traced. The requ
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-onWindowNew(callback: Callback<OnWindowNewEvent>): WebAttribute--><!--Device-WebAttribute-onWindowNew(callback: Callback<OnWindowNewEvent>): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3135,6 +3339,8 @@ Triggered to notify the user of a new window creation request when [multiWindowA
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-WebAttribute-onWindowNewExt(callback: Callback<OnWindowNewExtEvent>): WebAttribute--><!--Device-WebAttribute-onWindowNewExt(callback: Callback<OnWindowNewExtEvent>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3142,6 +3348,28 @@ Triggered to notify the user of a new window creation request when [multiWindowA
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnWindowNewExtEvent](arkts-arkweb-web-comp-onwindownewextevent-i.md)&gt; | Yes | Callback invoked when the web page requests the user to create a window. |
+
+## onZoomChange
+
+```TypeScript
+onZoomChange(callback: OnZoomChangeCallback)
+```
+
+The callback is triggered when the browser zoom factor of the page changes.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-onZoomChange(callback: OnZoomChangeCallback): WebAttribute--><!--Device-WebAttribute-onZoomChange(callback: OnZoomChangeCallback): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [OnZoomChangeCallback](arkts-arkweb-web-comp-onzoomchangecallback-t.md) | Yes | The triggered callback when the browser zoom factor of the page changes. The callback is triggered only by browser zoom changes (for example, [setZoomFactor](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#setzoomfactor)); page display scale changes (pinch zoom) are notified by [onScaleChange](#onscalechange) instead. |
 
 ## optimizeParserBudget
 
@@ -3158,6 +3386,8 @@ After optimization is enabled, the ArkWeb kernel not only checks whether the par
 When the FCP of a page is triggered, the default segment parsing logic is restored. Therefore, the segment-based HTML parsing optimization takes effect only for the first page loaded by each **Web** component.
 
 **Since:** 15
+
+<!--Device-WebAttribute-optimizeParserBudget(optimizeParserBudget: boolean): WebAttribute--><!--Device-WebAttribute-optimizeParserBudget(optimizeParserBudget: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3179,6 +3409,8 @@ Sets the over-scroll mode of the **Web** component. When enabled, if the user sc
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-overScrollMode(mode: OverScrollMode): WebAttribute--><!--Device-WebAttribute-overScrollMode(mode: OverScrollMode): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3199,6 +3431,8 @@ Sets whether to load web pages by using the overview mode. That is, zoom out the
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-overviewModeAccess(overviewModeAccess: boolean): WebAttribute--><!--Device-WebAttribute-overviewModeAccess(overviewModeAccess: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3206,28 +3440,6 @@ Sets whether to load web pages by using the overview mode. That is, zoom out the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | overviewModeAccess | boolean | Yes | Whether to load web pages in overview mode.<br>The value **true** means to use overview mode, and **false** means not to use it. <br>The default value is **false** when undefined or null is passed in. |
-
-## password
-
-```TypeScript
-password(password: boolean)
-```
-
-Sets whether to save the password. This API is an empty API.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Substitutes:** enableAutofill
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| password | boolean | Yes | Whether to allow the web component to save passwords. The value **true** means the web component is allowed to save passwords, and **false** means the opposite. If **undefined** or **null** is passed, the default value **false** is used. |
 
 ## pinchSmooth
 
@@ -3240,6 +3452,8 @@ Sets whether to enable pinch smooth mode for the web page. When this attribute i
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-pinchSmooth(isEnabled: boolean): WebAttribute--><!--Device-WebAttribute-pinchSmooth(isEnabled: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3267,6 +3481,8 @@ For details, see [Using Same-Layer Rendering](../../../web/web-same-layer.md#ren
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-registerNativeEmbedRule(tag: string, type:string): WebAttribute--><!--Device-WebAttribute-registerNativeEmbedRule(tag: string, type:string): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3285,6 +3501,8 @@ rotateRenderEffect(effect: WebRotateEffect)
 Sets how the final state of the **Web** component's content is rendered during its width and height animation process when the component rotates. If this attribute is not explicitly called, by default, the component's content stays at the final size and always aligned with the upper left corner of the component.
 
 **Since:** 22
+
+<!--Device-WebAttribute-rotateRenderEffect(effect: WebRotateEffect): WebAttribute--><!--Device-WebAttribute-rotateRenderEffect(effect: WebRotateEffect): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3312,6 +3530,8 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 **Since:** 15
 
+<!--Device-WebAttribute-runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnDocumentEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3338,6 +3558,8 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 **Since:** 15
 
+<!--Device-WebAttribute-runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnDocumentStart(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3362,6 +3584,8 @@ Injects a JavaScript script into the **Web** component. When the **head** tag of
 
 **Since:** 15
 
+<!--Device-WebAttribute-runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>): WebAttribute--><!--Device-WebAttribute-runJavaScriptOnHeadEnd(scripts: Array<ScriptItem>): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3382,6 +3606,8 @@ Selects the layout mode of the vertical scrollbar within the **Web** component, 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebAttribute-scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy): WebAttribute--><!--Device-WebAttribute-scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3389,56 +3615,6 @@ Selects the layout mode of the vertical scrollbar within the **Web** component, 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | policy | [ScrollbarLayoutPolicy](arkts-arkweb-web-comp-scrollbarlayoutpolicy-e.md) | Yes | Sets the layout mode of the vertical scrollbar within the **Web** component. Options: **CONTENT** (follows the web page CSS **direction** attribute), **SYSTEM** (lays out according to the left-to-right or right-to-left writing direction of the system language. For right-to-left languages, the scrollbar is laid out on the left side. This applies to all nested scrollbars within the web page). |
-
-## selectionMenuOptions
-
-```TypeScript
-selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>)
-```
-
-Sets the extended options of the custom context menu on selection, including the text content, icon, and callback.
-
-The API only supports the selection of plain text; if the selected content contains images or other non-text elements, the **action** information may display garbled content.
-
-> **NOTE:** 
-> 
-> When used together with [editMenuOptions](#editmenuoptions), this API does not take effect.
-
-**Since:** 12
-
-**Deprecated since:** 20
-
-**Substitutes:** editMenuOptions
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| expandedMenuOptions | Array&lt;[ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md)&gt; | Yes | Extended options of the custom context menu on selection. <br>The number of menu options, menu content size, and start icon size must be the same as those of the ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md#menu) component. |
-
-## tableData
-
-```TypeScript
-tableData(tableData: boolean)
-```
-
-Sets whether to save form data. When this attribute is not explicitly called, the **Web** component is allowed to save form data by default. This API is an empty API.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Substitutes:** enableAutofill
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| tableData | boolean | Yes | Whether to allow the Web component to save form data. The value **true** means the Web component is allowed to save form data, and **false** means the opposite. If **undefined** or **null** is passed, the value is **true**. |
 
 ## textAutosizing
 
@@ -3467,6 +3643,8 @@ After automatic font sizing takes effect, any text smaller than 16 px is enlarge
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-WebAttribute-textAutosizing(textAutosizing: boolean): WebAttribute--><!--Device-WebAttribute-textAutosizing(textAutosizing: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3474,28 +3652,6 @@ After automatic font sizing takes effect, any text smaller than 16 px is enlarge
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | textAutosizing | boolean | Yes | Whether to enable automatic text resizing.<br>The value **true** means to enable automatic text resizing, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
-
-## textZoomAtio
-
-```TypeScript
-textZoomAtio(textZoomAtio: number)
-```
-
-Sets the text zoom ratio of the page.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [textZoomRatio](#textzoomratio)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| textZoomAtio | number | Yes | Text zoom percentage of the page to set. The value 100 indicates the original size, a value greater than 100 indicates zoom-in, and a value less than 100 indicates zoom-out.<br>The value range is (0, 2147483647]. |
 
 ## textZoomRatio
 
@@ -3509,6 +3665,8 @@ Sets the text zoom ratio of the page. When this attribute is not explicitly call
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-textZoomRatio(textZoomRatio: number): WebAttribute--><!--Device-WebAttribute-textZoomRatio(textZoomRatio: number): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3516,28 +3674,6 @@ Sets the text zoom ratio of the page. When this attribute is not explicitly call
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | textZoomRatio | number | Yes | Text zoom percentage for the page. The value **100** indicates the original size, a value greater than **100** indicates zoom in, and a value less than **100** indicates zoom out.<br>The value is an integer in the range (0, 2147483647]. |
-
-## userAgent
-
-```TypeScript
-userAgent(userAgent: string)
-```
-
-Sets the user agent.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Substitutes:** setCustomUserAgent
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| userAgent | string | Yes | User agent to set. |
 
 ## verticalScrollBarAccess
 
@@ -3556,6 +3692,8 @@ Sets whether to display the vertical scrollbar, including the system default scr
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute--><!--Device-WebAttribute-verticalScrollBarAccess(verticalScrollBar: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3579,6 +3717,8 @@ When this attribute is not explicitly called, the default cursive font family of
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-webCursiveFont(family: string): WebAttribute--><!--Device-WebAttribute-webCursiveFont(family: string): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3600,6 +3740,8 @@ When this attribute is not explicitly called, the default fantasy font family of
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-webFantasyFont(family: string): WebAttribute--><!--Device-WebAttribute-webFantasyFont(family: string): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3623,6 +3765,8 @@ When this attribute is not explicitly called, the default fixed font family of t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-webFixedFont(family: string): WebAttribute--><!--Device-WebAttribute-webFixedFont(family: string): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3644,6 +3788,8 @@ When this attribute is not explicitly called, the sans-serif font family of the 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-webSansSerifFont(family: string): WebAttribute--><!--Device-WebAttribute-webSansSerifFont(family: string): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3667,6 +3813,8 @@ When this attribute is not explicitly called, the default serif font family of t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-webSerifFont(family: string): WebAttribute--><!--Device-WebAttribute-webSerifFont(family: string): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3689,6 +3837,8 @@ When this attribute is not explicitly called, the default standard font family o
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebAttribute-webStandardFont(family: string): WebAttribute--><!--Device-WebAttribute-webStandardFont(family: string): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3696,28 +3846,6 @@ When this attribute is not explicitly called, the default standard font family o
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | family | string | Yes | Standard font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**. |
-
-## wideViewModeAccess
-
-```TypeScript
-wideViewModeAccess(wideViewModeAccess: boolean)
-```
-
-Sets whether to support the **viewport** attribute of the HTML **\&lt;meta&gt;** tag. This API is an empty API.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Substitutes:** [metaViewport](#metaviewport)
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| wideViewModeAccess | boolean | Yes | Whether to support the **viewport** attribute of the HTML **&lt;meta&gt;** tag.<br>The value **true** means to support the **viewport** attribute of the HTML **&lt;meta&gt;** tag, and **false** means the opposite. |
 
 ## zoomAccess
 
@@ -3730,6 +3858,8 @@ Sets whether to support zoom gestures. If this attribute is not explicitly calle
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebAttribute-zoomAccess(zoomAccess: boolean): WebAttribute--><!--Device-WebAttribute-zoomAccess(zoomAccess: boolean): WebAttribute-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -3751,6 +3881,8 @@ If this attribute is not explicitly called, zooming by pressing **Ctrl + '-/+'**
 
 **Since:** 22
 
+<!--Device-WebAttribute-zoomControlAccess(zoomControlAccess: boolean): WebAttribute--><!--Device-WebAttribute-zoomControlAccess(zoomControlAccess: boolean): WebAttribute-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -3758,3 +3890,225 @@ If this attribute is not explicitly called, zooming by pressing **Ctrl + '-/+'**
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | zoomControlAccess | boolean | Yes | Whether to allow zooming through key combinations. The value **true** means the zooming is supported, and **false** means the opposite. If null or undefined is passed, the default value **false** is used. |
+
+## onFileSelectorShow
+
+```TypeScript
+onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void)
+```
+
+Triggered to process an HTML form whose input type is **file**, in response to the tapping of the **Select File** button.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [onShowFileSelector](#onshowfileselector)
+
+<!--Device-WebAttribute-onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void): WebAttribute--><!--Device-WebAttribute-onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object }) => void): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | (event?: { callback: Function, fileSelector: object }) =&gt; void | Yes | Callback to be executed when the file selector is triggered. |
+
+## onSslErrorReceive
+
+```TypeScript
+onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void)
+```
+
+Triggered when an SSL error occurs during resource loading.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [onSslErrorEventReceive](#onsslerroreventreceive)
+
+<!--Device-WebAttribute-onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void): WebAttribute--><!--Device-WebAttribute-onSslErrorReceive(callback: (event?: { handler: Function, error: object }) => void): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | (event?: { handler: Function, error: object }) =&gt; void | Yes | Callback triggered when a web page detects an SSL error. |
+
+## onUrlLoadIntercept
+
+```TypeScript
+onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest}) => boolean)
+```
+
+Triggered when the **Web** component is about to access a URL. This API is used to determine whether to block the access.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Substitutes:** onLoadIntercept
+
+<!--Device-WebAttribute-onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest }) => boolean): WebAttribute--><!--Device-WebAttribute-onUrlLoadIntercept(callback: (event?: { data: string | WebResourceRequest }) => boolean): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | (event?: { data: string &#124; WebResourceRequest}) =&gt; boolean | Yes | URL information.<br>The return value is of the Boolean type. If **true** is returned, the access is blocked. Otherwise, the access is allowed. |
+
+## password
+
+```TypeScript
+password(password: boolean)
+```
+
+Sets whether to save the password. This API is an empty API.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Substitutes:** enableAutofill
+
+<!--Device-WebAttribute-password(password: boolean): WebAttribute--><!--Device-WebAttribute-password(password: boolean): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| password | boolean | Yes | Whether to allow the web component to save passwords. The value **true** means the web component is allowed to save passwords, and **false** means the opposite. If **undefined** or **null** is passed, the default value **false** is used. |
+
+## selectionMenuOptions
+
+```TypeScript
+selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>)
+```
+
+Sets the extended options of the custom context menu on selection, including the text content, icon, and callback.
+
+The API only supports the selection of plain text; if the selected content contains images or other non-text elements, the **action** information may display garbled content.
+
+> **NOTE:** 
+> 
+> When used together with [editMenuOptions](#editmenuoptions), this API does not take effect.
+
+**Since:** 12
+
+**Deprecated since:** 20
+
+**Substitutes:** editMenuOptions
+
+<!--Device-WebAttribute-selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>): WebAttribute--><!--Device-WebAttribute-selectionMenuOptions(expandedMenuOptions: Array<ExpandedMenuItemOptions>): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| expandedMenuOptions | Array&lt;[ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md)&gt; | Yes | Extended options of the custom context menu on selection. <br>The number of menu options, menu content size, and start icon size must be the same as those of the ArkUI [Menu](../../apis-arkui/arkts-components/arkts-arkui-menu-comp.md) component. |
+
+## tableData
+
+```TypeScript
+tableData(tableData: boolean)
+```
+
+Sets whether to save form data. When this attribute is not explicitly called, the **Web** component is allowed to save form data by default. This API is an empty API.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Substitutes:** enableAutofill
+
+<!--Device-WebAttribute-tableData(tableData: boolean): WebAttribute--><!--Device-WebAttribute-tableData(tableData: boolean): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| tableData | boolean | Yes | Whether to allow the Web component to save form data. The value **true** means the Web component is allowed to save form data, and **false** means the opposite. If **undefined** or **null** is passed, the value is **true**. |
+
+## textZoomAtio
+
+```TypeScript
+textZoomAtio(textZoomAtio: number)
+```
+
+Sets the text zoom ratio of the page.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [textZoomRatio](#textzoomratio)
+
+<!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute--><!--Device-WebAttribute-textZoomAtio(textZoomAtio: number): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| textZoomAtio | number | Yes | Text zoom percentage of the page to set. The value 100 indicates the original size, a value greater than 100 indicates zoom-in, and a value less than 100 indicates zoom-out.<br>The value range is (0, 2147483647]. |
+
+## userAgent
+
+```TypeScript
+userAgent(userAgent: string)
+```
+
+Sets the user agent.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Substitutes:** setCustomUserAgent
+
+<!--Device-WebAttribute-userAgent(userAgent: string): WebAttribute--><!--Device-WebAttribute-userAgent(userAgent: string): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| userAgent | string | Yes | User agent to set. |
+
+## wideViewModeAccess
+
+```TypeScript
+wideViewModeAccess(wideViewModeAccess: boolean)
+```
+
+Sets whether to support the **viewport** attribute of the HTML **\&lt;meta&gt;** tag. This API is an empty API.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Substitutes:** [metaViewport](#metaviewport)
+
+<!--Device-WebAttribute-wideViewModeAccess(wideViewModeAccess: boolean): WebAttribute--><!--Device-WebAttribute-wideViewModeAccess(wideViewModeAccess: boolean): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| wideViewModeAccess | boolean | Yes | Whether to support the **viewport** attribute of the HTML **&lt;meta&gt;** tag.<br>The value **true** means to support the **viewport** attribute of the HTML **&lt;meta&gt;** tag, and **false** means the opposite. |

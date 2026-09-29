@@ -10,6 +10,8 @@ To reference this object, at least one parameter must be passed.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface LocalizedEdgeColors--><!--Device-unnamed-declare interface LocalizedEdgeColors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -29,6 +31,8 @@ Color of the bottom edge of the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedEdgeColors-bottom?: ResourceColor--><!--Device-LocalizedEdgeColors-bottom?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Color of the left edge of the component in RTL mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedEdgeColors-end?: ResourceColor--><!--Device-LocalizedEdgeColors-end?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -74,6 +80,8 @@ Color of the right edge of the component in RTL mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-LocalizedEdgeColors-start?: ResourceColor--><!--Device-LocalizedEdgeColors-start?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -93,5 +101,7 @@ Color of the top edge of the component.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-LocalizedEdgeColors-top?: ResourceColor--><!--Device-LocalizedEdgeColors-top?: ResourceColor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,9 +12,13 @@ import { sensor } from '@kit.SensorServiceKit';
 function on(type: SensorId.COLOR, callback: Callback<ColorResponse>, options?: Options): void
 ```
 
-Subscribes to data of the color sensor.
+Subscribes to data changes of the color sensor. This API uses an asynchronous callback to return the result. The color sensor data is reported asynchronously through a callback. The data is reported through a **ColorResponse** object, which contains two number fields: **lightIntensity** and **colorTemperature**.
+
+This API is used when you need to obtain the ambient light intensity and color temperature to implement functions such as automatic screen brightness adjustment, color temperature compensation for photographing, and ambient light line monitoring.
 
 **Since:** 10
+
+<!--Device-sensor-function on(type: SensorId.COLOR, callback: Callback<ColorResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.COLOR, callback: Callback<ColorResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -26,7 +30,7 @@ Subscribes to data of the color sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.COLOR](arkts-sensorservice-sensor-sensorid-e-sys.md) | Yes | Sensor type. The value is fixed at **SensorId.COLOR**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ColorResponse](arkts-sensorservice-sensor-colorresponse-i-sys.md)&gt; | Yes | Callback used to report the sensor data, which is a **ColorResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | Optional parameters used to set the reporting frequency of the sensor, in nanoseconds. The default value is **200000000**. If this parameter is not passed, the default frequency is used. |
 
 **Error codes:**
 
@@ -34,7 +38,7 @@ Subscribes to data of the color sensor.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API.<br>**Applicable version:** 11 and later |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br> Applicable versions: 11+ |
 
 **Examples**
 
@@ -65,9 +69,13 @@ try{
 function on(type: SensorId.SAR, callback: Callback<SarResponse>, options?: Options): void
 ```
 
-Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor.
+Subscribes to data changes of the Sodium Adsorption Ratio (SAR) sensor. This API uses an asynchronous callback to return the result. The SAR sensor data is reported asynchronously through a callback. The data is reported through a **SarResponse** object, which contains one number field: **absorptionRatio**.
+
+This API can be used to monitor the SAR of a device to implement functions such as communication security detection and radiation detection.
 
 **Since:** 10
+
+<!--Device-sensor-function on(type: SensorId.SAR, callback: Callback<SarResponse>, options?: Options): void--><!--Device-sensor-function on(type: SensorId.SAR, callback: Callback<SarResponse>, options?: Options): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -79,7 +87,7 @@ Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor.
 | --- | --- | --- | --- |
 | type | [SensorId.SAR](arkts-sensorservice-sensor-sensorid-e-sys.md) | Yes | Sensor type. The value is fixed at **SensorId.SAR**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SarResponse](arkts-sensorservice-sensor-sarresponse-i-sys.md)&gt; | Yes | Callback used to report the sensor data, which is a **SarResponse** object. |
-| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | List of optional parameters. This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns. |
+| options | [Options](arkts-sensorservice-sensor-options-i.md) | No | Optional parameters used to set the reporting frequency of the sensor, in nanoseconds. The default value is **200000000**. If this parameter is not passed, the default frequency is used. |
 
 **Error codes:**
 
@@ -87,7 +95,7 @@ Subscribes to data of the Sodium Adsorption Ratio (SAR) sensor.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API.<br>**Applicable version:** 11 and later |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br> Applicable versions: 11+ |
 
 **Examples**
 

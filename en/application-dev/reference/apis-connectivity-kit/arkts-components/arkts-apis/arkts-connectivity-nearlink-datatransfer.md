@@ -6,6 +6,8 @@ This module provides the NearLink data transfer capability, including port chann
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace dataTransfer--><!--Device-unnamed-declare namespace dataTransfer-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -40,14 +42,14 @@ import { dataTransfer } from '@kit.ConnectivityKit';
 | [ConnectionStateParams](arkts-connectivity-datatransfer-connectionstateparams-i.md) | Defines the parameters for obtaining the port channel connection state. |
 | [DataParams](arkts-connectivity-datatransfer-dataparams-i.md) | Defines the parameters for port data sending and receiving. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [TransferMode](arkts-connectivity-datatransfer-transfermode-e.md) | Enumerates the data transfer modes with a remote device. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [ConnectionState](arkts-connectivity-datatransfer-connectionstate-t.md) | Enumerates the connection states with a remote device. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [TransferMode](arkts-connectivity-datatransfer-transfermode-e.md) | Enumerates the data transfer modes with a remote device. |

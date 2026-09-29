@@ -13,6 +13,8 @@ Defines the radius of the elliptical mask.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-effectKit-type EllipticalMaskRadius = [  double,  double]--><!--Device-effectKit-type EllipticalMaskRadius = [  double,  double]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ This module defines a struct for setting typeface arguments.
 
 **Since:** 20
 
+<!--Device-drawing-class TypefaceArguments--><!--Device-drawing-class TypefaceArguments-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Defines the typeface weight.
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-TypefaceArguments-addVariation(axis: string, value: number)--><!--Device-TypefaceArguments-addVariation(axis: string, value: number)-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -63,7 +67,9 @@ Constructor for typeface arguments.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TypefaceArguments-constructor()--><!--Device-TypefaceArguments-constructor()-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

@@ -12,6 +12,8 @@ declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void--><!--Device-unnamed-declare type OnAlphabetIndexerPopupSelectCallback = (index: number) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

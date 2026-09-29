@@ -19,6 +19,8 @@ Calculates the hash value of a file. This API uses a promise to return the resul
 
 **Substitutes:** [hash](arkts-corefile-file-hash.md)
 
+<!--Device-unnamed-declare function hash(path: string, algorithm: string): Promise<string>--><!--Device-unnamed-declare function hash(path: string, algorithm: string): Promise<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -50,6 +52,8 @@ Calculates the hash value of a file. This API uses an asynchronous callback to r
 **Deprecated since:** 9
 
 **Substitutes:** [hash](arkts-corefile-file-hash.md)
+
+<!--Device-unnamed-declare function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void--><!--Device-unnamed-declare function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

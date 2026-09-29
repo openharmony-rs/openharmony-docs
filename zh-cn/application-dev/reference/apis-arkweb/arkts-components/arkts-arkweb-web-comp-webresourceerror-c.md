@@ -8,6 +8,8 @@ WebResourceError是Web组件中提供资源加载失败错误信息的类。该�
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class WebResourceError--><!--Device-unnamed-declare class WebResourceError-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -22,6 +24,8 @@ WebResourceError的构造函数，创建WebResourceError对象，用于封装Web
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebResourceError-constructor()--><!--Device-WebResourceError-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## getCustomErrorCode
@@ -33,6 +37,8 @@ getCustomErrorCode(): number
 获取加载资源的自定义错误码。自定义错误码通过[WebSchemeHandlerResponse](../arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md)的[setCustomErrorCode](../arkts-apis/arkts-arkweb-webview-webschemehandlerresponse-c.md#setcustomerrorcode)设置，并通过[onErrorReceive](arkts-arkweb-web-comp-attribute.md#onerrorreceive)事件直接传递给应用。
 
 **起始版本：** 26.0.1
+
+<!--Device-WebResourceError-getCustomErrorCode(): number--><!--Device-WebResourceError-getCustomErrorCode(): number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -56,6 +62,8 @@ getErrorCode(): number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebResourceError-getErrorCode(): number--><!--Device-WebResourceError-getErrorCode(): number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -75,6 +83,8 @@ getErrorInfo(): string
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebResourceError-getErrorInfo(): string--><!--Device-WebResourceError-getErrorInfo(): string-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

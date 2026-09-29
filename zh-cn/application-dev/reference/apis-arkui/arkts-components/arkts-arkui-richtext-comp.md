@@ -14,6 +14,8 @@ RichText(content: string | Resource)
 
 **原子化服务API：** 从API版本11 - 11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RichTextInterface-(content: string | Resource): RichTextAttribute--><!--Device-RichTextInterface-(content: string | Resource): RichTextAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**

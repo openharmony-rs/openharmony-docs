@@ -14,6 +14,8 @@ declare interface ScaleOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface ScaleOptions--><!--Device-unnamed-declare interface ScaleOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerX
@@ -33,6 +35,8 @@ centerX?: number | string
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ScaleOptions-centerX?: number | string--><!--Device-ScaleOptions-centerX?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ centerY?: number | string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ScaleOptions-centerY?: number | string--><!--Device-ScaleOptions-centerY?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -71,6 +77,8 @@ x轴的缩放倍数。取值范围：(-∞, +∞)。默认值：1。x=1时表示
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ScaleOptions-x?: number--><!--Device-ScaleOptions-x?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +98,8 @@ y轴的缩放倍数。取值范围：(-∞, +∞)。默认值：1。y=1时表示
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ScaleOptions-y?: number--><!--Device-ScaleOptions-y?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -107,5 +117,7 @@ z轴的缩放倍数。取值范围：(-∞, +∞)。默认值：1。z=1时表示
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ScaleOptions-z?: number--><!--Device-ScaleOptions-z?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

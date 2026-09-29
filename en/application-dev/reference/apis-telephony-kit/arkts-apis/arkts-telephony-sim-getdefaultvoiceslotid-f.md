@@ -16,6 +16,8 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 **Since:** 7
 
+<!--Device-sim-function getDefaultVoiceSlotId(callback: AsyncCallback<int>): void--><!--Device-sim-function getDefaultVoiceSlotId(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -47,6 +49,8 @@ function getDefaultVoiceSlotId(): Promise<number>
 Obtains the default slot ID of the SIM card that provides voice services. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-sim-function getDefaultVoiceSlotId(): Promise<int>--><!--Device-sim-function getDefaultVoiceSlotId(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

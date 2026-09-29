@@ -8,6 +8,8 @@ DrawingRenderingContext对象与Canvas组件绑定后，可在Canvas组件上进
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class DrawingRenderingContext--><!--Device-unnamed-declare class DrawingRenderingContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -23,6 +25,8 @@ constructor(unit?: LengthMetricsUnit)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DrawingRenderingContext-constructor(unit?: LengthMetricsUnit)--><!--Device-DrawingRenderingContext-constructor(unit?: LengthMetricsUnit)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ invalidate(): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawingRenderingContext-invalidate(): void--><!--Device-DrawingRenderingContext-invalidate(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## canvas
@@ -64,6 +70,8 @@ get canvas(): DrawingCanvas
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawingRenderingContext-get canvas(): DrawingCanvas--><!--Device-DrawingRenderingContext-get canvas(): DrawingCanvas-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -81,5 +89,7 @@ get size(): Size
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DrawingRenderingContext-get size(): Size--><!--Device-DrawingRenderingContext-get size(): Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

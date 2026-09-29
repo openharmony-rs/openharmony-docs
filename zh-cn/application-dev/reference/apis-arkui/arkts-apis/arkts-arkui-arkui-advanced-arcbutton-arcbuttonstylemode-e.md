@@ -8,6 +8,8 @@ export declare enum ArcButtonStyleMode
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare enum ArcButtonStyleMode--><!--Device-unnamed-export declare enum ArcButtonStyleMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## EMPHASIZED_LIGHT
@@ -21,6 +23,8 @@ EMPHASIZED_LIGHT = 0
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0--><!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -36,6 +40,8 @@ EMPHASIZED_DARK = 1
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonStyleMode-EMPHASIZED_DARK = 1--><!--Device-ArcButtonStyleMode-EMPHASIZED_DARK = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## NORMAL_LIGHT
@@ -49,6 +55,8 @@ NORMAL_LIGHT = 2
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2--><!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -64,6 +72,8 @@ NORMAL_DARK = 3
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcButtonStyleMode-NORMAL_DARK = 3--><!--Device-ArcButtonStyleMode-NORMAL_DARK = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## CUSTOM
@@ -77,5 +87,7 @@ CUSTOM = 4
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonStyleMode-CUSTOM = 4--><!--Device-ArcButtonStyleMode-CUSTOM = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

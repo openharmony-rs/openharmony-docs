@@ -8,6 +8,8 @@ LinkIntentParamMapping defines the mapping between intent parameters and URI inf
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface LinkIntentParamMapping--><!--Device-unnamed-declare interface LinkIntentParamMapping-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ If an intent parameter is of the [WANT](arkts-ability-app-ability-insightintentd
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-LinkIntentParamMapping-paramCategory?: LinkParamCategory--><!--Device-LinkIntentParamMapping-paramCategory?: LinkParamCategory-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## paramMappingName
@@ -54,6 +58,8 @@ Mapping name of the intent parameter.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-LinkIntentParamMapping-paramMappingName?: string--><!--Device-LinkIntentParamMapping-paramMappingName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## paramName
@@ -71,5 +77,7 @@ Name of the intent parameter.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-LinkIntentParamMapping-paramName: string--><!--Device-LinkIntentParamMapping-paramName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

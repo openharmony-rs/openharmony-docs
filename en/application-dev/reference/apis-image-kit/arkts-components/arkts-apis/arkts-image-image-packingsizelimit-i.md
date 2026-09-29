@@ -8,6 +8,8 @@ Packing image size limit.
 
 **Since:** 26.0.0
 
+<!--Device-image-interface PackingSizeLimit--><!--Device-image-interface PackingSizeLimit-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Specify the scaling algorithm during zooming.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PackingSizeLimit-level: AntiAliasingLevel--><!--Device-PackingSizeLimit-level: AntiAliasingLevel-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## maxSize
@@ -45,5 +49,7 @@ Maximum packing size
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PackingSizeLimit-maxSize: Size--><!--Device-PackingSizeLimit-maxSize: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker

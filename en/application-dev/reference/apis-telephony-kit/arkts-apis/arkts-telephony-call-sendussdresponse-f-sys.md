@@ -20,6 +20,8 @@ Sends a response to the Unstructured Supplementary Service Data (USSD) service t
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-call-function sendUssdResponse(slotId: int, content: string): void--><!--Device-call-function sendUssdResponse(slotId: int, content: string): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

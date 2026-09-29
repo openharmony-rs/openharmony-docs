@@ -8,6 +8,8 @@ Defines the package summary information in the **pack.info** file.
 
 **Since:** 9
 
+<!--Device-freeInstall-export type PackageSummary = _PackInfo.PackageSummary--><!--Device-freeInstall-export type PackageSummary = _PackInfo.PackageSummary-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.

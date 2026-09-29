@@ -8,6 +8,8 @@ Describes the calendar account information.
 
 **Since:** 10
 
+<!--Device-calendarManager-interface CalendarAccount--><!--Device-calendarManager-interface CalendarAccount-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Account name displayed on the calendar application (defined by users). If this p
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CalendarAccount-displayName?: string--><!--Device-CalendarAccount-displayName?: string-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## name
@@ -46,6 +50,8 @@ Account name (defined by developers), with a maximum of 5,000 characters.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-CalendarAccount-readonly name: string--><!--Device-CalendarAccount-readonly name: string-End-->
+
 **System capability:** SystemCapability.Applications.CalendarData
 
 ## type
@@ -61,5 +67,7 @@ Account type.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CalendarAccount-type: CalendarType--><!--Device-CalendarAccount-type: CalendarType-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

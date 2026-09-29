@@ -4,9 +4,11 @@
 declare class ReadonlyEnvKey
 ```
 
-Defines the readonly system environment key.
+Defines the set of read-only system environment variable keys, which are used to obtain the corresponding system environment variables through the **\@Env** decorator.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare class ReadonlyEnvKey--><!--Device-unnamed-declare class ReadonlyEnvKey-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ System environment avoidarea key that is used to obtain the avoid area of the wi
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoVP>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoVP>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_AVOID_AREA_PX
@@ -43,6 +47,8 @@ System environment avoidarea key that is used to obtain the avoid area of the wi
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoPX>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvoidAreaInfoPX>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +68,8 @@ System environmental displayid key that is used to obtain the display id of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<long>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<long>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_IS_FOCUSED
@@ -78,6 +86,8 @@ System environment windowisfocused key that is used to obtain whether the window
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_FOCUSED: ReadonlySystemEnvKey<boolean>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_IS_HIGHLIGHTED
@@ -93,6 +103,8 @@ System environment windowishighlighted key that is used to obtain whether the wi
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_IS_HIGHLIGHTED: ReadonlySystemEnvKey<boolean>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +124,8 @@ System environment windowsize key that is used to obtain the size of the window,
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_SIZE_PX
@@ -130,6 +144,8 @@ System environment windowsize key that is used to obtain the size of the window,
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WINDOW_SYSTEM_DENSITY
@@ -147,5 +163,7 @@ System environmental system density key that is used to obtain the system densit
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ReadonlyEnvKey-static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<double>--><!--Device-ReadonlyEnvKey-static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<double>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

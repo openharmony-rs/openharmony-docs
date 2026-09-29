@@ -10,6 +10,8 @@ AI session operation result callback function type. Used to report the result of
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type OnAISessionCallback = (state: AISessionResultType, content: string) => void--><!--Device-unnamed-type OnAISessionCallback = (state: AISessionResultType, content: string) => void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

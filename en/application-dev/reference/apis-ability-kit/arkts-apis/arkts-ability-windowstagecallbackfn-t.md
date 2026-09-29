@@ -12,6 +12,8 @@ The callback was called when both ability and window stage are registered for li
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-type WindowStageCallbackFn = (ability: any, windowStage: window.WindowStage) => void--><!--Device-unnamed-type WindowStageCallbackFn = (ability: any, windowStage: window.WindowStage) => void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **Parameters:**

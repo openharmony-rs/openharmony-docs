@@ -16,6 +16,8 @@ Obtains the visible status of the mouse pointer. This API uses an asynchronous c
 
 **Since:** 9
 
+<!--Device-pointer-function isPointerVisible(callback: AsyncCallback<boolean>): void--><!--Device-pointer-function isPointerVisible(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters:**
@@ -73,6 +75,8 @@ function isPointerVisible(): Promise<boolean>
 Obtains the visible status of the mouse pointer. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-pointer-function isPointerVisible(): Promise<boolean>--><!--Device-pointer-function isPointerVisible(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

@@ -12,6 +12,8 @@ In addition to universal events and [scrollable component common events](../../.
 
 **Since:** 9
 
+<!--Device-unnamed-declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>--><!--Device-unnamed-declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cachedCount
@@ -29,6 +31,8 @@ This attribute takes effect only in [LazyForEach](../../../ui/rendering-control/
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-WaterFlowAttribute-cachedCount(value: number): WaterFlowAttribute--><!--Device-WaterFlowAttribute-cachedCount(value: number): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ This parameter takes effect only when used with [LazyForEach](../../../ui/render
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-WaterFlowAttribute-cachedCount(count: number, show: boolean): WaterFlowAttribute--><!--Device-WaterFlowAttribute-cachedCount(count: number, show: boolean): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -80,6 +86,8 @@ Sets the gap between columns.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-columnsGap(value: Length): WaterFlowAttribute--><!--Device-WaterFlowAttribute-columnsGap(value: Length): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,6 +114,8 @@ You can use **columnsTemplate('repeat(auto-fill,track-size)')** to automatically
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-columnsTemplate(value: string): WaterFlowAttribute--><!--Device-WaterFlowAttribute-columnsTemplate(value: string): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,6 +147,8 @@ For example, the **ItemFillPolicy.BREAKPOINT_DEFAULT** component displays two co
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-WaterFlowAttribute-columnsTemplate(value: string | ItemFillPolicy): WaterFlowAttribute--><!--Device-WaterFlowAttribute-columnsTemplate(value: string | ItemFillPolicy): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -163,6 +175,8 @@ Sets whether to support the scrolling gesture.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowAttribute-enableScrollInteraction(value: boolean): WaterFlowAttribute--><!--Device-WaterFlowAttribute-enableScrollInteraction(value: boolean): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -184,6 +198,8 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-friction(value: number | Resource): WaterFlowAttribute--><!--Device-WaterFlowAttribute-friction(value: number | Resource): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,6 +223,8 @@ Sets the size constraints of the child components during layout. For details abo
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowAttribute-itemConstraintSize(value: ConstraintSizeOptions): WaterFlowAttribute--><!--Device-WaterFlowAttribute-itemConstraintSize(value: ConstraintSizeOptions): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -228,6 +246,8 @@ Sets the main axis direction of the layout.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-layoutDirection(value: FlexDirection): WaterFlowAttribute--><!--Device-WaterFlowAttribute-layoutDirection(value: FlexDirection): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,6 +271,8 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowAttribute-nestedScroll(value: NestedScrollOptions): WaterFlowAttribute--><!--Device-WaterFlowAttribute-nestedScroll(value: NestedScrollOptions): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -273,6 +295,8 @@ Triggered when the **WaterFlow** content reaches the end position.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowAttribute-onReachEnd(event: () => void): WaterFlowAttribute--><!--Device-WaterFlowAttribute-onReachEnd(event: () => void): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -294,6 +318,8 @@ Triggered when the **WaterFlow** content reaches the start position.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-onReachStart(event: () => void): WaterFlowAttribute--><!--Device-WaterFlowAttribute-onReachStart(event: () => void): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -329,6 +355,8 @@ This event is not triggered in the following scenarios:
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowAttribute-onScrollFrameBegin(event: OnScrollFrameBeginCallback): WaterFlowAttribute--><!--Device-WaterFlowAttribute-onScrollFrameBegin(event: OnScrollFrameBeginCallback): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -351,6 +379,8 @@ Triggered when the first or last item displayed in the component changes. It is 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WaterFlowAttribute-onScrollIndex(event: (first: number, last: number) => void): WaterFlowAttribute--><!--Device-WaterFlowAttribute-onScrollIndex(event: (first: number, last: number) => void): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -372,6 +402,8 @@ Sets the gap between rows.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-rowsGap(value: Length): WaterFlowAttribute--><!--Device-WaterFlowAttribute-rowsGap(value: Length): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,6 +430,8 @@ You can use **rowsTemplate('repeat(auto-fill,track-size)')** to automatically ca
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WaterFlowAttribute-rowsTemplate(value: string): WaterFlowAttribute--><!--Device-WaterFlowAttribute-rowsTemplate(value: string): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,6 +462,8 @@ Defines whether the **WaterFlow** component supports the generation of empty bra
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-WaterFlowAttribute-supportEmptyBranchInLazyLoading(supported: boolean | undefined): WaterFlowAttribute--><!--Device-WaterFlowAttribute-supportEmptyBranchInLazyLoading(supported: boolean | undefined): WaterFlowAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -449,6 +485,8 @@ Sets whether to synchronously load all child components in the **WaterFlow** com
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-WaterFlowAttribute-syncLoad(enable: boolean): WaterFlowAttribute--><!--Device-WaterFlowAttribute-syncLoad(enable: boolean): WaterFlowAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

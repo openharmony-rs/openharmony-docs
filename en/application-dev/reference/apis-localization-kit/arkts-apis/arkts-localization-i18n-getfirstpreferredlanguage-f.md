@@ -20,6 +20,8 @@ Obtains the first language in the preferred language list.
 
 **Substitutes:** [getFirstPreferredLanguage](arkts-localization-i18n-system-c.md#getfirstpreferredlanguage)
 
+<!--Device-i18n-export function getFirstPreferredLanguage(): string--><!--Device-i18n-export function getFirstPreferredLanguage(): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Return value:**

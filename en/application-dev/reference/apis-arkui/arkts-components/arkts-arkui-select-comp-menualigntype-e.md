@@ -8,6 +8,8 @@ Enumerates drop-down menu alignment modes.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum MenuAlignType--><!--Device-unnamed-declare enum MenuAlignType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## START
@@ -23,6 +25,8 @@ Aligned with the start edge in the same direction as the language in use.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuAlignType-START--><!--Device-MenuAlignType-START-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Aligned with the center.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-MenuAlignType-CENTER--><!--Device-MenuAlignType-CENTER-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## END
@@ -55,5 +61,7 @@ Aligned with the end edge in the same direction as the language in use.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuAlignType-END--><!--Device-MenuAlignType-END-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

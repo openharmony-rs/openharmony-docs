@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-multimodalawarenesskit-->
 
-- [@ohos.multimodalAwareness.carAwareness](arkts-multimodalawareness-multimodalawareness-carawareness.md)
+- [@ohos.multimodalAwareness.carAwareness(Car awareness)](arkts-multimodalawareness-multimodalawareness-carawareness.md)
   - [getAllCapabilityList](arkts-multimodalawareness-carawareness-getallcapabilitylist-f.md)
   <!--Del-->
   - [getCarAwareness(system api)](arkts-multimodalawareness-carawareness-getcarawareness-f-sys.md)<!--DelEnd-->
@@ -28,7 +28,7 @@
   - [Capability](arkts-multimodalawareness-carawareness-capability-e.md)
   <!--Del-->
   - [Capability(system api)](arkts-multimodalawareness-carawareness-capability-e-sys.md)<!--DelEnd-->
-- [@ohos.multimodalAwareness.deviceStatus](arkts-multimodalawareness-multimodalawareness-devicestatus.md)
+- [@ohos.multimodalAwareness.deviceStatus(Device status awareness)](arkts-multimodalawareness-multimodalawareness-devicestatus.md)
   <!--Del-->
   - [getDeviceRotationRadian(system api)](arkts-multimodalawareness-devicestatus-getdevicerotationradian-f-sys.md)<!--DelEnd-->
   - [off](arkts-multimodalawareness-devicestatus-off-f.md)
@@ -36,7 +36,7 @@
   <!--Del-->
   - [DeviceRotationRadian(system api)](arkts-multimodalawareness-devicestatus-devicerotationradian-i-sys.md)<!--DelEnd-->
   - [SteadyStandingStatus](arkts-multimodalawareness-devicestatus-steadystandingstatus-e.md)
-- [@ohos.multimodalAwareness.metadataBinding](arkts-multimodalawareness-multimodalawareness-metadatabinding.md)
+- [@ohos.multimodalAwareness.metadataBinding(Metadata binding–specific)](arkts-multimodalawareness-multimodalawareness-metadatabinding.md)
   <!--Del-->
   - [decodeImage(system api)](arkts-multimodalawareness-metadatabinding-decodeimage-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -46,7 +46,7 @@
   - [off](arkts-multimodalawareness-metadatabinding-off-f.md)
   - [on](arkts-multimodalawareness-metadatabinding-on-f.md)
   - [submitMetadata](arkts-multimodalawareness-metadatabinding-submitmetadata-f.md)
-- [@ohos.multimodalAwareness.motion](arkts-multimodalawareness-multimodalawareness-motion.md)
+- [@ohos.multimodalAwareness.motion(Motion awareness)](arkts-multimodalawareness-multimodalawareness-motion.md)
   - [getRecentOperatingHandStatus](arkts-multimodalawareness-motion-getrecentoperatinghandstatus-f.md)
   - [off](arkts-multimodalawareness-motion-off-f.md)
   <!--Del-->
@@ -82,7 +82,7 @@
   - [PickupEvent(system api)](arkts-multimodalawareness-motion-pickupevent-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [RotateEvent(system api)](arkts-multimodalawareness-motion-rotateevent-e-sys.md)<!--DelEnd-->
-- [@ohos.multimodalAwareness.onScreen](arkts-multimodalawareness-multimodalawareness-onscreen.md)
+- [@ohos.multimodalAwareness.onScreen(Onscreen awareness)](arkts-multimodalawareness-multimodalawareness-onscreen.md)
   <!--Del-->
   - [apperceive(system api)](arkts-multimodalawareness-onscreen-apperceive-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -130,7 +130,7 @@
   <!--Del-->
   - [Scenario(system api)](arkts-multimodalawareness-onscreen-scenario-e-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.multimodalAwareness.spatialAwareness](arkts-multimodalawareness-multimodalawareness-spatialawareness.md)<!--DelEnd-->
+- [@ohos.multimodalAwareness.spatialAwareness(Spatial awareness)](arkts-multimodalawareness-multimodalawareness-spatialawareness.md)<!--DelEnd-->
   <!--Del-->
   - [offDistanceMeasure(system api)](arkts-multimodalawareness-spatialawareness-offdistancemeasure-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -153,7 +153,7 @@
   - [ReportingMode(system api)](arkts-multimodalawareness-spatialawareness-reportingmode-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TechnologyType(system api)](arkts-multimodalawareness-spatialawareness-technologytype-e-sys.md)<!--DelEnd-->
-- [@ohos.multimodalAwareness.userStatus](arkts-multimodalawareness-multimodalawareness-userstatus.md)
+- [@ohos.multimodalAwareness.userStatus(User state awareness)](arkts-multimodalawareness-multimodalawareness-userstatus.md)
   <!--Del-->
   - [configure(system api)](arkts-multimodalawareness-userstatus-configure-f-sys.md)<!--DelEnd-->
   - [off](arkts-multimodalawareness-userstatus-off-f.md)
@@ -190,7 +190,7 @@
   - [UserStatusAtomicCap(system api)](arkts-multimodalawareness-userstatus-userstatusatomiccap-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UserStatusFeature(system api)](arkts-multimodalawareness-userstatus-userstatusfeature-e-sys.md)<!--DelEnd-->
-- [@ohos.stationary](arkts-multimodalawareness-stationary.md)
+- [@ohos.stationary(Stationary)](arkts-multimodalawareness-stationary.md)
   - [off](arkts-multimodalawareness-stationary-off-f.md)
   - [on](arkts-multimodalawareness-stationary-on-f.md)
   - [once](arkts-multimodalawareness-stationary-once-f.md)

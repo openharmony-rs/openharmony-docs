@@ -14,6 +14,8 @@ Describes whether the video is in full-screen playback mode.
 
 **Since:** 18
 
+<!--Device-unnamed-interface FullscreenInfo--><!--Device-unnamed-interface FullscreenInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fullscreen
@@ -35,5 +37,7 @@ Default value: **false**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FullscreenInfo-fullscreen: boolean--><!--Device-FullscreenInfo-fullscreen: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

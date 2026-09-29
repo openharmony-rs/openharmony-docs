@@ -8,6 +8,8 @@ declare interface DataPanelOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface DataPanelOptions--><!--Device-unnamed-declare interface DataPanelOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## max
@@ -29,6 +31,8 @@ max?: number
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DataPanelOptions-max?: number--><!--Device-DataPanelOptions-max?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ type?: DataPanelType
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-DataPanelOptions-type?: DataPanelType--><!--Device-DataPanelOptions-type?: DataPanelType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## values
@@ -69,5 +75,7 @@ values: number[]
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DataPanelOptions-values: number[]--><!--Device-DataPanelOptions-values: number[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

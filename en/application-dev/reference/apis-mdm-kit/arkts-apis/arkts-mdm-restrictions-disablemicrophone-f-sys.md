@@ -24,6 +24,8 @@ Enables or disables the microphone.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function disableMicrophone(admin: Want, disable: boolean): void--><!--Device-restrictions-function disableMicrophone(admin: Want, disable: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

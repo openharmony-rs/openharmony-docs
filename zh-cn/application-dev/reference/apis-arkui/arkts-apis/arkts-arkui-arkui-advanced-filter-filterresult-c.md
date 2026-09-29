@@ -8,6 +8,8 @@ This parameter specifies the selection result of a filtering dimension. The inde
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class FilterResult--><!--Device-unnamed-export declare class FilterResult-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ index: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FilterResult-index: number--><!--Device-FilterResult-index: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -58,6 +62,8 @@ name: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FilterResult-name: ResourceStr--><!--Device-FilterResult-name: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -79,5 +85,7 @@ value: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FilterResult-value: ResourceStr--><!--Device-FilterResult-value: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

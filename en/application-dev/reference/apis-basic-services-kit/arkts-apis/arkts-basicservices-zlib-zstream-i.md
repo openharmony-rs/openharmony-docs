@@ -8,6 +8,8 @@ Process all the information required for compression and decompression.
 
 **Since:** 12
 
+<!--Device-zlib-interface ZStream--><!--Device-zlib-interface ZStream-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Adler-32 or CRC-32 value of uncompressed data.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-adler?: long--><!--Device-ZStream-adler?: long-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -44,7 +48,9 @@ Number of bytes available for **nextIn**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-availableIn?: int--><!--Device-ZStream-availableIn?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -60,7 +66,9 @@ Number of remaining bytes available for **nextOut**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-availableOut?: int--><!--Device-ZStream-availableOut?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -76,7 +84,9 @@ Binary or text of **deflate**, or decoding state of **inflate**.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-dataType?: int--><!--Device-ZStream-dataType?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -92,7 +102,9 @@ Input bytes to be compressed.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-nextIn?: ArrayBuffer--><!--Device-ZStream-nextIn?: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -108,7 +120,9 @@ Output bytes after compression.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-nextOut?: ArrayBuffer--><!--Device-ZStream-nextOut?: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -124,7 +138,9 @@ Total number of input bytes read so far.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-totalIn?: long--><!--Device-ZStream-totalIn?: long-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -140,6 +156,8 @@ Total number of output bytes.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ZStream-totalOut?: long--><!--Device-ZStream-totalOut?: long-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib

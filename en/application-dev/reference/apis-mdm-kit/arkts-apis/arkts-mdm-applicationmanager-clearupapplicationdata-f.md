@@ -20,6 +20,8 @@ Clears all application data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function clearUpApplicationData(admin: Want, bundleName: string, appIndex: number, accountId: number): void--><!--Device-applicationManager-function clearUpApplicationData(admin: Want, bundleName: string, appIndex: number, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

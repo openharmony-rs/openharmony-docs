@@ -29,6 +29,8 @@ Registers a callback to receive bundle status changes. This API uses an asynchro
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-innerBundleManager-function on(type: 'BundleStatusChange',    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void--><!--Device-innerBundleManager-function on(type: 'BundleStatusChange',    bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ Registers a callback to receive bundle status changes. This API uses an asynchro
 **Substitutes:** on
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+<!--Device-innerBundleManager-function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise<string>--><!--Device-innerBundleManager-function on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise<string>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

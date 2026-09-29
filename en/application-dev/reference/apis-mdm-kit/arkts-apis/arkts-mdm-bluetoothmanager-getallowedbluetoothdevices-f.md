@@ -20,6 +20,8 @@ Obtains allowed Bluetooth devices.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function getAllowedBluetoothDevices(admin: Want): Array<string>--><!--Device-bluetoothManager-function getAllowedBluetoothDevices(admin: Want): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -80,6 +82,8 @@ Obtains allowed Bluetooth devices.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bluetoothManager-function getAllowedBluetoothDevices(admin: Want | null): Array<string>--><!--Device-bluetoothManager-function getAllowedBluetoothDevices(admin: Want | null): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

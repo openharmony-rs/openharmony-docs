@@ -20,6 +20,8 @@ FREE（自由滚动）模式下支持的能力：
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum ScrollDirection--><!--Device-unnamed-declare enum ScrollDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
@@ -36,6 +38,8 @@ Vertical
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScrollDirection-Vertical--><!--Device-ScrollDirection-Vertical-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Horizontal
@@ -51,6 +55,8 @@ Horizontal
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollDirection-Horizontal--><!--Device-ScrollDirection-Horizontal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,6 +76,8 @@ Free
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-ScrollDirection-Free--><!--Device-ScrollDirection-Free-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -86,6 +94,8 @@ None
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ScrollDirection-None--><!--Device-ScrollDirection-None-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FREE
@@ -101,5 +111,7 @@ FREE = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollDirection-FREE = 4--><!--Device-ScrollDirection-FREE = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

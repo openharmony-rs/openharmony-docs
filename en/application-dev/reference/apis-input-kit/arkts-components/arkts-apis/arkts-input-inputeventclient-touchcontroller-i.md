@@ -12,6 +12,8 @@ with an **touchUp()** call.
 
 **Since:** 26.0.0
 
+<!--Device-inputEventClient-interface TouchController--><!--Device-inputEventClient-interface TouchController-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Presses down a touch point. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TouchController-touchDown(touch: TouchPoint): Promise<void>--><!--Device-TouchController-touchDown(touch: TouchPoint): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -124,6 +128,8 @@ Moves a touch point. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TouchController-touchMove(touch: TouchPoint): Promise<void>--><!--Device-TouchController-touchMove(touch: TouchPoint): Promise<void>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **Parameters:**
@@ -163,6 +169,8 @@ Releases a touch point. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TouchController-touchUp(touch: TouchPoint): Promise<void>--><!--Device-TouchController-touchUp(touch: TouchPoint): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 

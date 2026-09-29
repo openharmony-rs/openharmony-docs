@@ -10,6 +10,8 @@ interface SwipeGestureInterface extends GestureInterface<SwipeGestureInterface>
 
 **Since:** 8
 
+<!--Device-unnamed-interface SwipeGestureInterface extends GestureInterface<SwipeGestureInterface>--><!--Device-unnamed-interface SwipeGestureInterface extends GestureInterface<SwipeGestureInterface>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## [[Call]]
@@ -23,6 +25,8 @@ Sets the parameters for the swipe gesture. Inherits from [GestureInterface&lt;T&
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwipeGestureInterface-(value?: { fingers?: number; direction?: SwipeDirection; speed?: number }): SwipeGestureInterface--><!--Device-SwipeGestureInterface-(value?: { fingers?: number; direction?: SwipeDirection; speed?: number }): SwipeGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Sets the parameters for the swipe gesture. Compared with SwipeGesture)}, this AP
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SwipeGestureInterface-(options?: SwipeGestureHandlerOptions): SwipeGestureInterface--><!--Device-SwipeGestureInterface-(options?: SwipeGestureHandlerOptions): SwipeGestureInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -79,6 +85,8 @@ Triggered when the swipe gesture is recognized.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwipeGestureInterface-onAction(event: (event: GestureEvent) => void): SwipeGestureInterface--><!--Device-SwipeGestureInterface-onAction(event: (event: GestureEvent) => void): SwipeGestureInterface-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

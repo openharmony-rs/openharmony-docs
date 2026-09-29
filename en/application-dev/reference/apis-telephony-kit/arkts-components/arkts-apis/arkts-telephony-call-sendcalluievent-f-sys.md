@@ -18,6 +18,8 @@ Sends a call UI event. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function sendCallUiEvent(callId: int, eventName: string): Promise<void>--><!--Device-call-function sendCallUiEvent(callId: int, eventName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

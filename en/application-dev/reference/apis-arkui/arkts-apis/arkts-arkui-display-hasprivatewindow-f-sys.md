@@ -16,6 +16,8 @@ Checks whether there is a visible privacy window on a display. The window privac
 
 **Since:** 9
 
+<!--Device-display-function hasPrivateWindow(displayId: long): boolean--><!--Device-display-function hasPrivateWindow(displayId: long): boolean-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.

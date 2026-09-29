@@ -8,6 +8,8 @@ BaseContext is an abstract class that specifies whether a child class Context is
 
 **Since:** 8
 
+<!--Device-unnamed-export default abstract class BaseContext--><!--Device-unnamed-export default abstract class BaseContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## stageMode
@@ -22,6 +24,8 @@ Indicates the context is FA Mode or Stage Mode.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-BaseContext-stageMode: boolean--><!--Device-BaseContext-stageMode: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

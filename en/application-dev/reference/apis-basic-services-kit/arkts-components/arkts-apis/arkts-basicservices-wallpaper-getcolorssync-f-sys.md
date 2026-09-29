@@ -18,6 +18,8 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 
 **Deprecated since:** 23
 
+<!--Device-wallpaper-function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>--><!--Device-wallpaper-function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.

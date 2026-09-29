@@ -22,6 +22,8 @@ Obtains information about all Wants with **extension** set to **fileAccess** in 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileAccess-function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void--><!--Device-fileAccess-function getFileAccessAbilityInfo(callback: AsyncCallback<Array<Want>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -106,6 +108,8 @@ Obtains information about all Wants with **extension** set to **fileAccess** in 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER and ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-fileAccess-function getFileAccessAbilityInfo(): Promise<Array<Want>>--><!--Device-fileAccess-function getFileAccessAbilityInfo(): Promise<Array<Want>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

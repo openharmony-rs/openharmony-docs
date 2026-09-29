@@ -10,6 +10,8 @@ export declare struct CapsuleSegmentButtonV2
 
 **装饰器类型：** @ComponentV2
 
+<!--Device-unnamed-export declare struct CapsuleSegmentButtonV2--><!--Device-unnamed-export declare struct CapsuleSegmentButtonV2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ $selectedIndex?: OnSelectedIndexChange
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-$selectedIndex?: OnSelectedIndexChange--><!--Device-CapsuleSegmentButtonV2-$selectedIndex?: OnSelectedIndexChange-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## build
@@ -51,6 +55,8 @@ Sets the build function of the segmented button.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-build(): void--><!--Device-CapsuleSegmentButtonV2-build(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ readonly backgroundSystemMaterial?: uiMaterial.Material
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly backgroundSystemMaterial?: uiMaterial.Material--><!--Device-CapsuleSegmentButtonV2-readonly backgroundSystemMaterial?: uiMaterial.Material-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonBackgroundBlurStyle
@@ -96,6 +104,8 @@ readonly buttonBackgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundBlurStyle?: BlurStyle--><!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonBackgroundBlurStyleOptions
@@ -117,6 +127,8 @@ readonly buttonBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +154,8 @@ readonly buttonBackgroundColor?: ColorMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonBackgroundEffect
@@ -163,6 +177,8 @@ readonly buttonBackgroundEffect?: BackgroundEffectOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundEffect?: BackgroundEffectOptions--><!--Device-CapsuleSegmentButtonV2-readonly buttonBackgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +206,8 @@ readonly buttonBorderRadius?: LengthMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly buttonBorderRadius?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly buttonBorderRadius?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonMinHeight
@@ -215,6 +233,8 @@ readonly buttonMinHeight?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly buttonMinHeight?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly buttonMinHeight?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,6 +262,8 @@ readonly buttonPadding?: LengthMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly buttonPadding?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly buttonPadding?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableStateAnimation
@@ -265,6 +287,8 @@ true表示开启分段按钮的属性动画；未配置该属性或值为false�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly enableStateAnimation?: boolean--><!--Device-CapsuleSegmentButtonV2-readonly enableStateAnimation?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -291,6 +315,8 @@ readonly itemBorderRadius?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemBorderRadius?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemBorderRadius?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,6 +348,8 @@ backgroundSystemMaterial设置自动反色的系统材质时，该属性使用�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemFontColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemFontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemFontSize
@@ -352,6 +380,8 @@ items设置textModifier/fontSize属性值时，itemFontSize不生效。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemFontSize?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemFontSize?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemFontWeight
@@ -379,6 +409,8 @@ items设置textModifier/fontWeight属性值时，itemFontWeight不生效。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemFontWeight?: FontWeight--><!--Device-CapsuleSegmentButtonV2-readonly itemFontWeight?: FontWeight-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,6 +442,8 @@ backgroundSystemMaterial设置自动反色的系统材质时，该属性使用�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemIconFillColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemIconFillColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemIconSize
@@ -440,6 +474,8 @@ items设置iconModifier/width、height属性值时，itemIconSize不生效。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemIconSize?: SizeT<LengthMetrics>--><!--Device-CapsuleSegmentButtonV2-readonly itemIconSize?: SizeT<LengthMetrics>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemMaxFontScale
@@ -467,6 +503,8 @@ readonly itemMaxFontScale?: number | Resource
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemMaxFontScale?: number | Resource--><!--Device-CapsuleSegmentButtonV2-readonly itemMaxFontScale?: number | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -496,6 +534,8 @@ readonly itemMinFontScale?: number | Resource
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemMinFontScale?: number | Resource--><!--Device-CapsuleSegmentButtonV2-readonly itemMinFontScale?: number | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemMinHeight
@@ -524,6 +564,8 @@ readonly itemMinHeight?: LengthMetrics
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemMinHeight?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemMinHeight?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemPadding
@@ -547,6 +589,8 @@ readonly itemPadding?: LocalizedPadding
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemPadding?: LocalizedPadding--><!--Device-CapsuleSegmentButtonV2-readonly itemPadding?: LocalizedPadding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -572,6 +616,8 @@ readonly items: SegmentButtonV2Items
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly items: SegmentButtonV2Items--><!--Device-CapsuleSegmentButtonV2-readonly items: SegmentButtonV2Items-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedBackgroundColor
@@ -595,6 +641,8 @@ readonly itemSelectedBackgroundColor?: ColorMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemSelectedBackgroundColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSelectedBackgroundColor?: ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -626,6 +674,8 @@ backgroundSystemMaterial设置自动反色的系统材质时，该属性使用�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemSelectedFontColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSelectedFontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedFontSize
@@ -656,6 +706,8 @@ items设置textModifier/fontSize属性值时，itemSelectedFontSize不生效。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemSelectedFontSize?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSelectedFontSize?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedFontWeight
@@ -683,6 +735,8 @@ items设置textModifier/fontWeight属性值时，itemSelectedFontWeight不生效
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemSelectedFontWeight?: FontWeight--><!--Device-CapsuleSegmentButtonV2-readonly itemSelectedFontWeight?: FontWeight-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -714,6 +768,8 @@ backgroundSystemMaterial设置自动反色的系统材质时，该属性使用�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemSelectedIconFillColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSelectedIconFillColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSelectedSymbolFontColor
@@ -744,6 +800,8 @@ backgroundSystemMaterial设置自动反色的系统材质时，该属性使用�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemSelectedSymbolFontColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSelectedSymbolFontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemShadow
@@ -767,6 +825,8 @@ readonly itemShadow?: ShadowOptions | ShadowStyle
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemShadow?: ShadowOptions | ShadowStyle--><!--Device-CapsuleSegmentButtonV2-readonly itemShadow?: ShadowOptions | ShadowStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -795,6 +855,8 @@ readonly itemSpace?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly itemSpace?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSpace?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -826,6 +888,8 @@ backgroundSystemMaterial设置自动反色的系统材质时，该属性使用�
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemSymbolFontColor?: ColorMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSymbolFontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemSymbolFontSize
@@ -856,6 +920,8 @@ items设置symbolModifier/fontSize属性值时，itemSymbolFontSize不生效。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly itemSymbolFontSize?: LengthMetrics--><!--Device-CapsuleSegmentButtonV2-readonly itemSymbolFontSize?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## languageDirection
@@ -880,6 +946,8 @@ readonly languageDirection?: Direction
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CapsuleSegmentButtonV2-readonly languageDirection?: Direction--><!--Device-CapsuleSegmentButtonV2-readonly languageDirection?: Direction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onItemClicked
@@ -901,6 +969,8 @@ onItemClicked?: Callback<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-onItemClicked?: Callback<number>--><!--Device-CapsuleSegmentButtonV2-onItemClicked?: Callback<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -927,5 +997,7 @@ readonly selectedIndex: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonV2-readonly selectedIndex: number--><!--Device-CapsuleSegmentButtonV2-readonly selectedIndex: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

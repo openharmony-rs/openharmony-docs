@@ -18,6 +18,8 @@ Splits an SMS message into multiple segments. This API uses an asynchronous call
 
 **Required permissions:** ohos.permission.SEND_MESSAGES
 
+<!--Device-sms-function splitMessage(content: string, callback: AsyncCallback<Array<string>>): void--><!--Device-sms-function splitMessage(content: string, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Splits an SMS message into multiple segments. This API uses a promise to return 
 **Since:** 8
 
 **Required permissions:** ohos.permission.SEND_MESSAGES
+
+<!--Device-sms-function splitMessage(content: string): Promise<Array<string>>--><!--Device-sms-function splitMessage(content: string): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

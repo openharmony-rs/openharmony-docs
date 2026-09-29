@@ -16,6 +16,8 @@ export class ResolvedUIContext extends UIContext
 
 **Since:** 22
 
+<!--Device-unnamed-export class ResolvedUIContext extends UIContext--><!--Device-unnamed-export class ResolvedUIContext extends UIContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -42,5 +44,7 @@ Resolving strategy of the UIContext.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResolvedUIContext-strategy: ResolveStrategy--><!--Device-ResolvedUIContext-strategy: ResolveStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

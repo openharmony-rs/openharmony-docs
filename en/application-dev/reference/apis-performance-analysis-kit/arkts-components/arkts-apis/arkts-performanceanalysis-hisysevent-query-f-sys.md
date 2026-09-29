@@ -18,6 +18,8 @@ Queries system events.
 
 **Required permissions:** ohos.permission.READ_DFX_SYSEVENT
 
+<!--Device-hiSysEvent-function query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void--><!--Device-hiSysEvent-function query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
 **System API:** This is a system API.

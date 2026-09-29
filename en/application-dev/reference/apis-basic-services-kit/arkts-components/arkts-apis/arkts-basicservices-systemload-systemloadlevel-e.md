@@ -8,6 +8,8 @@ Enumerates system load levels.
 
 **Since:** 12
 
+<!--Device-systemLoad-export enum SystemLoadLevel--><!--Device-systemLoad-export enum SystemLoadLevel-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 ## LOW
@@ -19,6 +21,8 @@ LOW = 0
 The device temperature and load are low.
 
 **Since:** 12
+
+<!--Device-SystemLoadLevel-LOW = 0--><!--Device-SystemLoadLevel-LOW = 0-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
@@ -32,6 +36,8 @@ The device temperature and load are normal but are approaching the medium range.
 
 **Since:** 12
 
+<!--Device-SystemLoadLevel-NORMAL = 1--><!--Device-SystemLoadLevel-NORMAL = 1-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 ## MEDIUM
@@ -43,6 +49,8 @@ MEDIUM = 2
 One or more device temperature or load items are slightly high, or the device temperature is in the medium range but the load is high. You need to stop or delay some imperceptible services.
 
 **Since:** 12
+
+<!--Device-SystemLoadLevel-MEDIUM = 2--><!--Device-SystemLoadLevel-MEDIUM = 2-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
@@ -56,6 +64,8 @@ The device temperature and load are relatively high. You need to stop all imperc
 
 **Since:** 12
 
+<!--Device-SystemLoadLevel-HIGH = 3--><!--Device-SystemLoadLevel-HIGH = 3-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 ## OVERHEATED
@@ -67,6 +77,8 @@ OVERHEATED = 4
 The device temperature and load are high, and the device is overheated. You need to stop all imperceptible services and downgrade or reduce the load of major foreground services.
 
 **Since:** 12
+
+<!--Device-SystemLoadLevel-OVERHEATED = 4--><!--Device-SystemLoadLevel-OVERHEATED = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
@@ -80,6 +92,8 @@ The device is overheated or heavily loaded and is about to enter the Warning sta
 
 **Since:** 12
 
+<!--Device-SystemLoadLevel-WARNING = 5--><!--Device-SystemLoadLevel-WARNING = 5-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 ## EMERGENCY
@@ -92,6 +106,8 @@ The device is overheated or significantly heavy loaded and is about to enter the
 
 **Since:** 12
 
+<!--Device-SystemLoadLevel-EMERGENCY = 6--><!--Device-SystemLoadLevel-EMERGENCY = 6-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
 ## ESCAPE
@@ -103,5 +119,7 @@ ESCAPE = 7
 The device is overheated or extremely heavy loaded and is about to enter the Escape state. You need to stop all services and take necessary emergency measures such as data backup.
 
 **Since:** 12
+
+<!--Device-SystemLoadLevel-ESCAPE = 7--><!--Device-SystemLoadLevel-ESCAPE = 7-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad

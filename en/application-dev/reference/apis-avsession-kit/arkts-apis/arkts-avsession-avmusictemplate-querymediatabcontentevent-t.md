@@ -12,6 +12,8 @@ The query media tab content event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type QueryMediaTabContentEvent = (tabId: string) => Promise<MediaTabContent>--><!--Device-avMusicTemplate-type QueryMediaTabContentEvent = (tabId: string) => Promise<MediaTabContent>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **Parameters:**

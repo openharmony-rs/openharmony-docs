@@ -8,6 +8,8 @@ Web组件预编译JavaScript生成字节码缓存的配置对象，用于控制�
 
 **起始版本：** 12
 
+<!--Device-webview-interface CacheOptions--><!--Device-webview-interface CacheOptions-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -27,5 +29,7 @@ responseHeaders: Array<WebHeader>
 **类型：** Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt;
 
 **起始版本：** 12
+
+<!--Device-CacheOptions-responseHeaders: Array<WebHeader>--><!--Device-CacheOptions-responseHeaders: Array<WebHeader>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

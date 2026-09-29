@@ -4,6 +4,8 @@ This module provides the mutual conversion between [Resource](arkts-localization
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace sendableResourceManager--><!--Device-unnamed-declare namespace sendableResourceManager-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 ## Modules to Import

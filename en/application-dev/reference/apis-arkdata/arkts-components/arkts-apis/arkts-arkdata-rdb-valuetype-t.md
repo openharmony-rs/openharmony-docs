@@ -12,6 +12,8 @@ Defines the data types allowed.
 
 **Substitutes:** [ValueType](arkts-arkdata-relationalstore-valuetype-t.md)
 
+<!--Device-rdb-type ValueType = number | string | boolean--><!--Device-rdb-type ValueType = number | string | boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | Type | Description |

@@ -15,6 +15,8 @@ Enumerates the ability subtypes.
 
 **Deprecated since:** 9
 
+<!--Device-bundle-export enum AbilitySubType--><!--Device-bundle-export enum AbilitySubType-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## UNSPECIFIED
@@ -29,6 +31,8 @@ Installation conflict. (The basic information of the application to update is in
 
 **Deprecated since:** 9
 
+<!--Device-AbilitySubType-UNSPECIFIED = 0--><!--Device-AbilitySubType-UNSPECIFIED = 0-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## CA
@@ -42,5 +46,7 @@ Installation conflict. (The basic information of the application to update is in
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-AbilitySubType-CA = 1--><!--Device-AbilitySubType-CA = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

@@ -18,6 +18,8 @@ Separates calls from a conference call. This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function separateConference(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function separateConference(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Separates calls from a conference call. This API uses a promise to return the re
 **Since:** 11
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function separateConference(callId: int): Promise<void>--><!--Device-call-function separateConference(callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

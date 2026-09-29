@@ -8,6 +8,8 @@ Defines VersionCondition interface
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare interface VersionCondition--><!--Device-unnamed-declare interface VersionCondition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxApiVersion
@@ -28,6 +30,8 @@ Maximum API version for the style or extend to take effect. Represets the runtim
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
 
+<!--Device-VersionCondition-maxApiVersion?: number | string--><!--Device-VersionCondition-maxApiVersion?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## minApiVersion
@@ -47,5 +51,7 @@ Minimum API version for the style or extend to take effect. Represets the runtim
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.2.0.
+
+<!--Device-VersionCondition-minApiVersion?: number | string--><!--Device-VersionCondition-minApiVersion?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

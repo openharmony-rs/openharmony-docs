@@ -18,6 +18,8 @@ Scan Wi-Fi hotspot.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
+<!--Device-wifiManager-function startScan(): void--><!--Device-wifiManager-function startScan(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Error codes:**

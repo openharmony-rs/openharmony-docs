@@ -14,6 +14,8 @@ declare interface LayoutChild
 
 **替代接口：** Measurable/Layoutable
 
+<!--Device-unnamed-declare interface LayoutChild--><!--Device-unnamed-declare interface LayoutChild-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## layout
@@ -31,6 +33,8 @@ layout(childLayoutInfo: LayoutInfo)
 **替代接口：** Measurable/Layoutable
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LayoutChild-layout(childLayoutInfo: LayoutInfo)--><!--Device-LayoutChild-layout(childLayoutInfo: LayoutInfo)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,6 +59,8 @@ measure(childConstraint: ConstraintSizeOptions)
 **替代接口：** Measurable/Layoutable
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LayoutChild-measure(childConstraint: ConstraintSizeOptions)--><!--Device-LayoutChild-measure(childConstraint: ConstraintSizeOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ borderInfo: LayoutBorderInfo
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LayoutChild-borderInfo: LayoutBorderInfo--><!--Device-LayoutChild-borderInfo: LayoutBorderInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constraint
@@ -101,6 +109,8 @@ constraint: ConstraintSizeOptions
 **替代接口：** Measurable/Layoutable
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LayoutChild-constraint: ConstraintSizeOptions--><!--Device-LayoutChild-constraint: ConstraintSizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +132,8 @@ id: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LayoutChild-id: string--><!--Device-LayoutChild-id: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## name
@@ -142,6 +154,8 @@ name: string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LayoutChild-name: string--><!--Device-LayoutChild-name: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## position
@@ -161,5 +175,7 @@ position: Position
 **替代接口：** Measurable/Layoutable
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LayoutChild-position: Position--><!--Device-LayoutChild-position: Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

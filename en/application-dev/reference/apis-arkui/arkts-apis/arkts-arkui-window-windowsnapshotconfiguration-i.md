@@ -8,6 +8,8 @@ Describes the configuration of the main window screenshot.
 
 **Since:** 21
 
+<!--Device-window-interface WindowSnapshotConfiguration--><!--Device-window-interface WindowSnapshotConfiguration-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -27,5 +29,7 @@ Whether the existing screenshot of the main window should be used. The default v
 **Type:** boolean
 
 **Since:** 21
+
+<!--Device-WindowSnapshotConfiguration-useCache?: boolean--><!--Device-WindowSnapshotConfiguration-useCache?: boolean-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

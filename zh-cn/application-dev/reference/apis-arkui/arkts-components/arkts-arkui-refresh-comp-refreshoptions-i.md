@@ -16,6 +16,8 @@ interface RefreshOptions
 
 **起始版本：** 8
 
+<!--Device-unnamed-interface RefreshOptions--><!--Device-unnamed-interface RefreshOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -24,7 +26,7 @@ interface RefreshOptions
 builder?: CustomBuilder
 ```
 
-自定义刷新区域显示内容。<br>**说明：** <br>API version 10及之前版本，自定义组件的高度限制在64vp之内。API version 11及以后版本没有此限制。<br>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，会发生自定义组件高度跟随刷新区域变化至0的现象。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照示例3。<br>从API version 12开始，建议使用refreshingContent参数替代builder参数自定义刷新区域显示内容，以避免刷新过程中因自定义组件销毁重建造成的动画中断问题。
+自定义刷新区域显示内容。<br>**说明：** <br>API version 10及之前版本，自定义组件的高度限制在64vp之内。API version 11及以后版本没有此限制。<br>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，会发生自定义组件高度跟随刷新区域变化至0的现象。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照[示例3](arkts-arkui-refresh-comp.md)。<br>从API version 12开始，建议使用refreshingContent参数替代builder参数自定义刷新区域显示内容，以避免刷新过程中因自定义组件销毁重建造成的动画中断问题。
 
 **类型：** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -33,6 +35,8 @@ builder?: CustomBuilder
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshOptions-builder?: CustomBuilder--><!--Device-RefreshOptions-builder?: CustomBuilder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ promptText?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshOptions-promptText?: ResourceStr--><!--Device-RefreshOptions-promptText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## refreshing
@@ -70,6 +76,8 @@ refreshing: boolean
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshOptions-refreshing: boolean--><!--Device-RefreshOptions-refreshing: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## refreshingContent
@@ -78,7 +86,7 @@ refreshing: boolean
 refreshingContent?: ComponentContent
 ```
 
-自定义刷新区域显示内容。<br>**说明：** <br>与builder参数同时设置时builder参数不生效。<br>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，会发生自定义组件高度跟随刷新区域变化至0的现象。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照示例4。
+自定义刷新区域显示内容。<br>**说明：** <br>与builder参数同时设置时builder参数不生效。<br>自定义组件设置了固定高度时，自定义组件会以固定高度显示在刷新区域下方；自定义组件未设置高度时，自定义组件高度会自适应刷新区域高度，会发生自定义组件高度跟随刷新区域变化至0的现象。建议对自定义组件设置最小高度约束来避免自定义组件高度小于预期的情况发生，具体可参照[示例4](arkts-arkui-refresh-comp.md)。
 
 **类型：** ComponentContent
 
@@ -87,6 +95,8 @@ refreshingContent?: ComponentContent
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshOptions-refreshingContent?: ComponentContent--><!--Device-RefreshOptions-refreshingContent?: ComponentContent-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +118,8 @@ friction?: number | string
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-RefreshOptions-friction?: number | string--><!--Device-RefreshOptions-friction?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -125,5 +137,7 @@ offset?: number | string
 **废弃版本：** 11
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-RefreshOptions-offset?: number | string--><!--Device-RefreshOptions-offset?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

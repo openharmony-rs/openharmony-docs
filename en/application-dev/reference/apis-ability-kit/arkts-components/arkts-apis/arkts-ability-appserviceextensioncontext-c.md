@@ -16,6 +16,8 @@ AppServiceExtensionContext provides APIs to connect to and disconnect from a Ser
 
 **Since:** 20
 
+<!--Device-unnamed-declare class AppServiceExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AppServiceExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## connectServiceExtensionAbility
@@ -29,6 +31,8 @@ Connects this AppServiceExtensionAbility to a ServiceExtensionAbility. It enable
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionContext-connectServiceExtensionAbility(want: Want, callback: ConnectOptions): long--><!--Device-AppServiceExtensionContext-connectServiceExtensionAbility(want: Want, callback: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -127,6 +131,8 @@ Disconnects this AppServiceExtensionAbility from a ServiceExtensionAbility. This
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AppServiceExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>--><!--Device-AppServiceExtensionContext-disconnectServiceExtensionAbility(connection: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -163,6 +169,8 @@ Starts the UIAbility. This API can be called only by the main thread. It uses a 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-AppServiceExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -253,6 +261,8 @@ Terminates this AppServiceExtensionAbility. This API can be called only by the m
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppServiceExtensionContext-terminateSelf(): Promise<void>--><!--Device-AppServiceExtensionContext-terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

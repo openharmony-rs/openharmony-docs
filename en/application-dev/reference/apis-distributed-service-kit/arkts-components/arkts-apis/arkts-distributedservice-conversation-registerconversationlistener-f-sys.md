@@ -26,6 +26,8 @@ Registers a listener to receive data from trusted devices under the same account
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-conversation-function registerConversationListener(    bundleName: string,    abilityName: string,    dataCallback: DataCallback  ): void--><!--Device-conversation-function registerConversationListener(    bundleName: string,    abilityName: string,    dataCallback: DataCallback  ): void-End-->
+
 **System capability:** SystemCapability.Communication.SoftBus.Core
 
 **System API:** This is a system API.

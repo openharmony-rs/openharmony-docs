@@ -17,6 +17,8 @@ A custom layout algorithm class, which allows you to implement custom measuremen
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export class CustomLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class CustomLayoutAlgorithm implements LayoutAlgorithm-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onLayout
@@ -40,6 +42,8 @@ Customizes the position of the child component to be arranged. When the position
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-CustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void--><!--Device-CustomLayoutAlgorithm-onLayout(self: FrameNode, position: Position): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,6 +79,8 @@ Customizes the size of the child component to be measured. When the size of the 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-CustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint): void--><!--Device-CustomLayoutAlgorithm-onMeasure(self: FrameNode, constraint: LayoutConstraint): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

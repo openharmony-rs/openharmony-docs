@@ -12,6 +12,8 @@ P2P config. @interface WifiP2PConfig
 
 **Substitutes:** [WifiP2PConfig](arkts-connectivity-wifimanager-wifip2pconfig-i.md)
 
+<!--Device-wifi-interface WifiP2PConfig--><!--Device-wifi-interface WifiP2PConfig-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Device mac address s
 
 **Substitutes:** [deviceAddress](arkts-connectivity-wifimanager-wifip2pconfig-i.md#deviceaddress)
 
+<!--Device-WifiP2PConfig-deviceAddress: string--><!--Device-WifiP2PConfig-deviceAddress: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## goBand
@@ -53,6 +57,8 @@ Group owner band
 **Deprecated since:** 9
 
 **Substitutes:** [goBand](arkts-connectivity-wifimanager-wifip2pconfig-i.md#goband)
+
+<!--Device-WifiP2PConfig-goBand: GroupOwnerBand--><!--Device-WifiP2PConfig-goBand: GroupOwnerBand-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -72,6 +78,8 @@ Group name
 
 **Substitutes:** [groupName](arkts-connectivity-wifimanager-wifip2pconfig-i.md#groupname)
 
+<!--Device-WifiP2PConfig-groupName: string--><!--Device-WifiP2PConfig-groupName: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## netId
@@ -90,6 +98,8 @@ Group network ID. When creating a group, -1 indicates creates a temporary group,
 
 **Substitutes:** [netId](arkts-connectivity-wifimanager-wifip2pconfig-i.md#netid)
 
+<!--Device-WifiP2PConfig-netId: number--><!--Device-WifiP2PConfig-netId: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## passphrase
@@ -107,5 +117,7 @@ The passphrase of this `WifiP2pConfig` instance
 **Deprecated since:** 9
 
 **Substitutes:** [passphrase](arkts-connectivity-wifimanager-wifip2pconfig-i.md#passphrase)
+
+<!--Device-WifiP2PConfig-passphrase: string--><!--Device-WifiP2PConfig-passphrase: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P

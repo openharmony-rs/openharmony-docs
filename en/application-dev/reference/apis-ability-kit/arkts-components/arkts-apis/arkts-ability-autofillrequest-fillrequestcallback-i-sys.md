@@ -8,6 +8,8 @@ Implements callbacks for an auto-fill request, which is used to automatically fi
 
 **Since:** 11
 
+<!--Device-unnamed-export interface FillRequestCallback--><!--Device-unnamed-export interface FillRequestCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Called when an auto-fill request is canceled.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FillRequestCallback-onCancel(fillContent?: string): void--><!--Device-FillRequestCallback-onCancel(fillContent?: string): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -124,6 +128,8 @@ Called when an auto-fill request fails to be processed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FillRequestCallback-onFailure(): void--><!--Device-FillRequestCallback-onFailure(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
@@ -216,6 +222,8 @@ Called when an auto-fill request is successfully processed.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FillRequestCallback-onSuccess(response: FillResponse): void--><!--Device-FillRequestCallback-onSuccess(response: FillResponse): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -323,6 +331,8 @@ Sets the size and position of an auto-fill pop-up.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FillRequestCallback-setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig): void--><!--Device-FillRequestCallback-setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

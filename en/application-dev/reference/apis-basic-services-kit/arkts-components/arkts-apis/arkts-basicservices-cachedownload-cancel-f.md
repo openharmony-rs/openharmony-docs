@@ -19,6 +19,8 @@ Cancels an ongoing download task based on the URL. The saved memory cache and fi
 
 **Since:** 18
 
+<!--Device-cacheDownload-function cancel(url: string): void--><!--Device-cacheDownload-function cancel(url: string): void-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

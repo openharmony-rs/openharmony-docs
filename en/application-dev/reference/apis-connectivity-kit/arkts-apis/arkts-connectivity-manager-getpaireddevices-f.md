@@ -20,6 +20,8 @@ Obtains the devices paired with the current device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function getPairedDevices(): string[]--><!--Device-manager-function getPairedDevices(): string[]-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Return value:**

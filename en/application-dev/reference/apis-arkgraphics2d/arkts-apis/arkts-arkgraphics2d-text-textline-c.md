@@ -10,6 +10,8 @@ Before calling any of the following APIs, you must use [getTextLines()](arkts-ar
 
 **Since:** 12
 
+<!--Device-text-class TextLine--><!--Device-text-class TextLine-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Creates a truncated text line object.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine--><!--Device-TextLine-createTruncatedLine(width: double, ellipsisMode: EllipsisMode, ellipsis: string): TextLine-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -89,7 +93,9 @@ Enumerates the offset and index of each character in a text line.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-enumerateCaretOffsets(callback: CaretOffsetsCallback): void--><!--Device-TextLine-enumerateCaretOffsets(callback: CaretOffsetsCallback): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -118,7 +124,9 @@ Obtains the offset of this text line after alignment based on the alignment fact
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double--><!--Device-TextLine-getAlignmentOffset(alignmentFactor: double, alignmentWidth: double): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -151,7 +159,9 @@ Obtains the number of glyphs in this text line.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getGlyphCount(): int--><!--Device-TextLine-getGlyphCount(): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -177,7 +187,9 @@ Obtains the array of glyph runs in the text line.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getGlyphRuns(): Array<Run>--><!--Device-TextLine-getGlyphRuns(): Array<Run>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -213,7 +225,9 @@ Obtains the image boundaries of this text line. The image boundaries, equivalent
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getImageBounds(): common2D.Rect--><!--Device-TextLine-getImageBounds(): common2D.Rect-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -239,7 +253,9 @@ Obtains the offset of a character with the specified index in this text line.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getOffsetForStringIndex(index: int): double--><!--Device-TextLine-getOffsetForStringIndex(index: int): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -271,7 +287,9 @@ Obtains the index of a character at the specified position in the original strin
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getStringIndexForPosition(point: common2D.Point): int--><!--Device-TextLine-getStringIndexForPosition(point: common2D.Point): int-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -304,7 +322,9 @@ Obtains the range of the text in this text line in the entire paragraph.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getTextRange(): Range--><!--Device-TextLine-getTextRange(): Range-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -330,7 +350,9 @@ Obtains the width of the spaces at the end of this text line.
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getTrailingSpaceWidth(): double--><!--Device-TextLine-getTrailingSpaceWidth(): double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -367,7 +389,9 @@ Obtains the typographic boundaries of the text line. These boundaries depend on 
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-getTypographicBounds(): TypographicBounds--><!--Device-TextLine-getTypographicBounds(): TypographicBounds-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -394,7 +418,9 @@ Paints this text line on the canvas with the coordinate point (x, y) as the uppe
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextLine-paint(canvas: drawing.Canvas, x: double, y: double): void--><!--Device-TextLine-paint(canvas: drawing.Canvas, x: double, y: double): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

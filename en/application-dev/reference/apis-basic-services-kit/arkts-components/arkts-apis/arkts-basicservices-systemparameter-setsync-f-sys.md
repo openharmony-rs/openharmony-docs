@@ -28,6 +28,8 @@ Sets a value for the specified key.
 
 **Substitutes:** setSync
 
+<!--Device-systemParameter-function setSync(key: string, value: string): void--><!--Device-systemParameter-function setSync(key: string, value: string): void-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.

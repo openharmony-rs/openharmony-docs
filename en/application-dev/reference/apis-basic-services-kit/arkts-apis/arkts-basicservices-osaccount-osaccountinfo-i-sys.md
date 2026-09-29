@@ -8,6 +8,8 @@ Represents the OS account information.
 
 **Since:** 7
 
+<!--Device-osAccount-interface OsAccountInfo--><!--Device-osAccount-interface OsAccountInfo-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -30,6 +32,8 @@ This is a system API. The default value is **false**.
 
 **Since:** 12
 
+<!--Device-OsAccountInfo-isLoggedIn?: boolean--><!--Device-OsAccountInfo-isLoggedIn?: boolean-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ This is a system API and is left blank by default.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-OsAccountInfo-shortName?: string--><!--Device-OsAccountInfo-shortName?: string-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

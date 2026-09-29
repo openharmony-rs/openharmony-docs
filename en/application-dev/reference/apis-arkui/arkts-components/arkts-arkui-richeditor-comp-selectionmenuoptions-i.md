@@ -8,6 +8,8 @@ Sets menu options.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface SelectionMenuOptions--><!--Device-unnamed-declare interface SelectionMenuOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAppear
@@ -23,6 +25,8 @@ Callback invoked when the custom selection menu is displayed. If custom logic ne
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectionMenuOptions-onAppear?: MenuOnAppearCallback--><!--Device-SelectionMenuOptions-onAppear?: MenuOnAppearCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Callback invoked when the custom selection menu is hidden. If custom logic needs
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-SelectionMenuOptions-onMenuHide?: MenuCallback--><!--Device-SelectionMenuOptions-onMenuHide?: MenuCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onMenuShow
@@ -55,6 +61,8 @@ Callback invoked when the custom selection menu is shown. If custom logic needs 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-SelectionMenuOptions-onMenuShow?: MenuCallback--><!--Device-SelectionMenuOptions-onMenuShow?: MenuCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +84,8 @@ Default value: **MenuType.SELECTION_MENU**
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-SelectionMenuOptions-menuType?: MenuType--><!--Device-SelectionMenuOptions-menuType?: MenuType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDisappear
@@ -93,6 +103,8 @@ Callback invoked when the custom selection menu is closed. If custom logic needs
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SelectionMenuOptions-onDisappear?: Callback<void>--><!--Device-SelectionMenuOptions-onDisappear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,5 +127,7 @@ If this parameter is not passed, the preview menu uses the default configuration
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SelectionMenuOptions-previewMenuOptions?: PreviewMenuOptions--><!--Device-SelectionMenuOptions-previewMenuOptions?: PreviewMenuOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Class to be override for backup extension ability.
 
 **Since:** 10
 
+<!--Device-unnamed-declare class BackupExtensionAbility--><!--Device-unnamed-declare class BackupExtensionAbility-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Callback to be called when the backup procedure is started. Developer could over
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-onBackup(): void--><!--Device-BackupExtensionAbility-onBackup(): void-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -51,6 +55,8 @@ Callback to be called when the backup procedure is started. Developer could over
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-onBackupEx(backupInfo: string): string | Promise<string>--><!--Device-BackupExtensionAbility-onBackupEx(backupInfo: string): string | Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -144,6 +150,8 @@ Callback to be called when getting backup/restore process info. Developer could 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-onProcess(): string--><!--Device-BackupExtensionAbility-onProcess(): string-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -241,6 +249,8 @@ Callback to be called before extension ability exits. Developer could override t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BackupExtensionAbility-onRelease(scenario: int): Promise<void>--><!--Device-BackupExtensionAbility-onRelease(scenario: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **Parameters:**
@@ -300,6 +310,8 @@ Callback to be called when the restore procedure is started. Developer could ove
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BackupExtensionAbility-onRestore(bundleVersion: BundleVersion): void--><!--Device-BackupExtensionAbility-onRestore(bundleVersion: BundleVersion): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **Parameters:**
@@ -331,6 +343,8 @@ Callback to be called when the restore procedure is started. Developer could ove
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise<string>--><!--Device-BackupExtensionAbility-onRestoreEx(bundleVersion: BundleVersion, restoreInfo: string): string | Promise<string>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -427,5 +441,7 @@ Indicates backup extension ability context.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BackupExtensionAbility-context: BackupExtensionContext--><!--Device-BackupExtensionAbility-context: BackupExtensionContext-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup

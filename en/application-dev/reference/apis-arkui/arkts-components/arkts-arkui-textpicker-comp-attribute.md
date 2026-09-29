@@ -4,13 +4,15 @@
 declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md#common), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp.md#common), the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
 **Inheritance/Implementation:** TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 
 **Since:** 8
+
+<!--Device-unnamed-declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>--><!--Device-unnamed-declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +30,15 @@ Sets whether to enable loop scrolling.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerAttribute-canLoop(value: boolean): TextPickerAttribute--><!--Device-TextPickerAttribute-canLoop(value: boolean): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true** |
+| value | boolean | Yes | Whether circular scrolling is supported.<br>- true: Circular scrolling is supported. <br>- false: Circular scrolling is not supported. <br>Default value: true |
 
 <a id="canloop-1"></a>
 
@@ -52,13 +56,15 @@ Sets whether to enable loop scrolling. Compared with [canLoop&lt;sup&gt;10+&lt;/
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-canLoop(isLoop: Optional<boolean>): TextPickerAttribute--><!--Device-TextPickerAttribute-canLoop(isLoop: Optional<boolean>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used. |
+| isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether cyclic scrolling is supported.<br>- true: Cyclic scrolling is supported. <br>- false: Cyclic scrolling is not supported. <br>Default value: true <br>When the value of isLoop is undefined, the default value is used. |
 
 ## defaultPickerItemHeight
 
@@ -74,13 +80,15 @@ Sets the height of the picker items.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerAttribute-defaultPickerItemHeight(value: number | string): TextPickerAttribute--><!--Device-TextPickerAttribute-defaultPickerItemHeight(value: number | string): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | Height of the picker items.<br>Value range:<br>Number type: [0, +∞), in vp.<br>String type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE:** <br>The set value applies to both selected and unselected items. |
+| value | number &#124; string | Yes | Height of the selected item.<br>Value range: <br>number type: [0, +∞), in vp. <br>string type: only the string form of a number type value is supported, for example, "56". <br>Default value: 56 vp for the selected item and 36 vp for the unselected item. <br>**Note:** <br>After this parameter is set, the height of both the selected item and the unselected item is the set value. <br>When the value of value is negative, the default value is used. |
 
 <a id="defaultpickeritemheight-1"></a>
 
@@ -98,13 +106,15 @@ Sets the height of the picker items. Compared with [defaultPickerItemHeight](#de
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-defaultPickerItemHeight(height: Optional<number | string>): TextPickerAttribute--><!--Device-TextPickerAttribute-defaultPickerItemHeight(height: Optional<number | string>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; string&gt; | Yes | Height of the picker items.<br>Value range:<br>Number type: [0, +∞), in vp.<br>String type: numeric string only, for example, **"56"**.<br>Default value: selected item 56 vp, unselected item 36 vp.<br>**NOTE:** <br>1. The set value applies to both selected and unselected items. <br>2. If **height** is set to **undefined**, the previous value is retained. |
+| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; string&gt; | Yes | Height of the selection item.<br>Value range: <br>number type: [0, +∞), in vp. <br>string type: only the string form of a number type value is supported, for example, "56". <br>Default value: 56 vp for the selected item and 36 vp for unselected items. <br>**Note:** <br>1. After this parameter is set, the height of both the selected item and unselected items is the set value. <br>2. When the value of height is undefined, the previous value is retained. |
 
 ## defaultTextStyle
 
@@ -120,13 +130,15 @@ Sets the text style of the items when the text style change animation during the
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-TextPickerAttribute-defaultTextStyle(style: TextPickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-defaultTextStyle(style: TextPickerTextStyle): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | Yes | Text style of the items when the text style change animation during the scrolling process is disabled.<br>Default value: same as the default value of the [Text](arkts-arkui-text-comp.md#text) component |
+| style | [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) | Yes | Text style of each item when the text style change animation during the sliding process is disabled. <br>Default value: same as the default value of the [Text](arkts-arkui-text-comp.md) component. |
 
 ## digitalCrownSensitivity
 
@@ -142,13 +154,15 @@ Sets the sensitivity to the digital crown rotation.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): TextPickerAttribute--><!--Device-TextPickerAttribute-digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM** |
+| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Crown response sensitivity. <br>Default value: **CrownSensitivity.MEDIUM**, which indicates a moderate response speed. Different sensitivity values affect the correspondence between the crown scrolling speed and the selected item switching speed. For the effect of each enum value, see [CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md). |
 
 ## disableTextStyleAnimation
 
@@ -164,13 +178,15 @@ Sets whether to disable the animation effect of text style changes during scroll
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-TextPickerAttribute-disableTextStyleAnimation(disabled: boolean): TextPickerAttribute--><!--Device-TextPickerAttribute-disableTextStyleAnimation(disabled: boolean): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| disabled | boolean | Yes | Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**<br>**NOTE:** <br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by [defaultTextStyle](#defaulttextstyle). If [defaultTextStyle](#defaulttextstyle) is not set, the default style of the [Text](arkts-arkui-text-comp.md#text) component is used. |
+| disabled | boolean | Yes | Whether to disable the animation of text style changes during scrolling. <br>- true: Disables the animation of text style changes. <br>- false: Does not disable the animation of text style changes. <br>Default value: false <br>**Note:** <br>When set to true, there is no animation of font size, font weight, or font color changes during scrolling, and the text is displayed in the style set by [defaultTextStyle](#defaulttextstyle). If [defaultTextStyle](#defaulttextstyle) is not set, the default style of the [Text](arkts-arkui-text-comp.md) component is used. When set to false, the system default animation of text style changes during scrolling is used. |
 
 ## disappearTextStyle
 
@@ -186,13 +202,15 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerAttribute-disappearTextStyle(value: PickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-disappearTextStyle(value: PickerTextStyle): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>**Note:** If this method is not called to set the style, the default value is used. |
 
 <a id="disappeartextstyle-1"></a>
 
@@ -210,13 +228,15 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
 <a id="disappeartextstyle-2"></a>
 
@@ -226,7 +246,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-Sets the text style of edge items (the second item above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [disappearTextStyle](#disappeartextstyle-1)&lt;sup&gt;18+&lt;/sup&gt;, this API supports the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type for the **style** parameter.
+Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of edge items (the second item above or below the selected item). Compared with [disappearTextStyle&lt;sup&gt;18+&lt;/sup&gt;](#disappeartextstyle-1), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
 
 **Since:** 20
 
@@ -234,13 +254,15 @@ Sets the text style of edge items (the second item above or below the selected i
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text style of edge items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br> Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br> minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text color, font size, font weight, maximum font size, minimum font size, and overflow handling of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>When the value of style is undefined, the default value is used. |
 
 ## divider
 
@@ -257,6 +279,8 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](arkts-arkui-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextPickerAttribute-divider(value: DividerOptions | null): TextPickerAttribute--><!--Device-TextPickerAttribute-divider(value: DividerOptions | null): TextPickerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,13 +308,15 @@ If the sum of **startMargin** and **endMargin** in [DividerOptions](arkts-arkui-
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-divider(textDivider: Optional<DividerOptions | null>): TextPickerAttribute--><!--Device-TextPickerAttribute-divider(textDivider: Optional<DividerOptions | null>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textDivider | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) &#124; null&gt; | Yes | Default value:<br>{<br>strokeWidth: '2px', <br> startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>}<br>1. If the value of **textDivider** is **undefined**, the default value is used.<br>2. If **textDivider** is a valid [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) object, the divider is rendered using the specified style.<br>3. If **textDivider** is **null**, the divider is hidden. |
+| textDivider | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) &#124; null&gt; | Yes | Default value: <br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>} <br>1. When the value of textDivider is undefined, the default value is used. <br>2. When textDivider is set to a valid [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md), the divider is displayed in the specified style. <br>3. When textDivider is set to null, the divider is not displayed. |
 
 ## enableHapticFeedback
 
@@ -306,13 +332,15 @@ Sets whether to enable haptic feedback.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-enableHapticFeedback(enable: Optional<boolean>): TextPickerAttribute--><!--Device-TextPickerAttribute-enableHapticFeedback(enable: Optional<boolean>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>   - **false**: Disable haptic feedback.<br>Default value: **true**<br>Whether this parameter takes effect after   being set to **true** depends on hardware support. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback.<br>- true: Enables haptic feedback. <br>- false: Disables haptic feedback. <br>Default value: true <br>After it is set to true, whether it takes effect depends on whether the system hardware supports it. If the hardware does not support haptic feedback, enabling this feature does not produce a haptic feedback effect, nor does it throw an exception. |
 
 ## gradientHeight
 
@@ -328,13 +356,15 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextPickerAttribute-gradientHeight(value: Dimension): TextPickerAttribute--><!--Device-TextPickerAttribute-gradientHeight(value: Dimension): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Height of the fade effect.<br>Default value: **36vp**<br>Value range: [0, +∞). Percentages are supported.<br>**NOTE:** <br>1. If the value is set to a percentage, **100%** equals half the height of the text picker.<br>2. A value of **0** disables the fade effect.<br>3. Values exceeding half the height of the text picker revert to the default value.<br>4. If the value is **undefined** or negative, the default value is used. |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Fade height of the upper and lower edges of the content area.<br>Default value: 36vp <br>Value range: [0, +∞), percentage supported. <br>**NOTE:** <br>1. When value is set to a percentage, 100% indicates half the height of TextPicker. <br>2. When value is set to 0, the fade effect is not displayed. <br>3. When value is set to a number that exceeds half the height of TextPicker, the default value is used. <br>4. When the value is negative, the default value is used. |
 
 <a id="gradientheight-1"></a>
 
@@ -352,29 +382,7 @@ Sets the height of the fade effect applied to the top and bottom edges of the co
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | Yes | Height of the fade effect.<br>Default value: **36vp**<br>Value range: [0, +∞). Percentages are supported.<br>**NOTE:** <br>1. If the value is set to a percentage, **100%** equals half the height of the text picker.<br>2. A value of **0** disables the fade effect.<br>3. Values exceeding half the height of the text picker revert to the default value.<br>4. If the value is **undefined** or negative, the default value is used. |
-
-## onAccept
-
-```TypeScript
-onAccept(callback: (value: string, index: number) => void)
-```
-
-Triggered when the OK button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](arkts-arkui-textpicker-comp.md#text_picker).
-
-This API is supported since API version 8 and deprecated since API version 10. No substitute is provided.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Model restriction:** This API can be used in both the stage model and FA model.
+<!--Device-TextPickerAttribute-gradientHeight(height: Optional<Dimension>): TextPickerAttribute--><!--Device-TextPickerAttribute-gradientHeight(height: Optional<Dimension>): TextPickerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -382,31 +390,7 @@ This API is supported since API version 8 and deprecated since API version 10. N
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (value: string, index: number) =&gt; void | Yes |  |
-
-## onCancel
-
-```TypeScript
-onCancel(callback: () => void)
-```
-
-Triggered when the cancel button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](arkts-arkui-textpicker-comp.md#text_picker).
-
-This API is supported since API version 8 and deprecated since API version 10. No substitute is provided.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | () =&gt; void | Yes |  |
+| height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | Yes | Fade height of the upper and lower edges of the content area.<br>Default value: 36vp <br>Value range: [0, +∞), percentage supported. <br>**Note:** <br>1. When height is set to a percentage, 100% means half the height of the TextPicker. <br>2. When height is set to 0, the fade effect is not displayed. <br>3. When height is set to a number that exceeds half the height of the TextPicker, the default value is used. <br>4. When the value of height is undefined or negative, the default value is used. |
 
 ## onChange
 
@@ -414,7 +398,7 @@ This API is supported since API version 8 and deprecated since API version 10. N
 onChange(callback: (value: string[], index: number[]) => void)
 ```
 
-Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty.
+Triggered when the options settle at the selected item position after the text content of TextPicker is scrolled. It is triggered when the user scrolls the picker and the selected item changes. It cannot be triggered by modifying the two-way bound state variable (such as selected). When a text list or an image-plus-text list is displayed, the value is the text value of the selected item. When an image list is displayed, the value is empty.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea) instead.
 
@@ -423,6 +407,8 @@ This callback is triggered only after the scroll animation completes. To obtain 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextPickerAttribute-onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute--><!--Device-TextPickerAttribute-onChange(callback: (value: string | string[], index: number | number[]) => void): TextPickerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -440,7 +426,7 @@ This callback is triggered only after the scroll animation completes. To obtain 
 onChange(callback: Optional<OnTextPickerChangeCallback>)
 ```
 
-Triggered when the text picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. When the picker contains text only or a combination of images and text, **value** indicates the text of the selected item. When the picker contains images only, **value** is empty. Compared with [onChange] [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the options settle at the selected item position after the text content of TextPicker is scrolled. It is triggered when the user scrolls the picker and the selected item changes. It cannot be triggered by modifying the two-way bound state variable (such as selected). When a text list or an image-plus-text list is displayed, the value is the text value of the selected item. When an image list is displayed, the value is empty. Compared with [onChange](#onchange), the callback parameter adds support for the undefined type.
 
 This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea) instead.
 
@@ -450,13 +436,15 @@ This callback is triggered only after the scroll animation completes. To obtain 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-onChange(callback: Optional<OnTextPickerChangeCallback>): TextPickerAttribute--><!--Device-TextPickerAttribute-onChange(callback: Optional<OnTextPickerChangeCallback>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnTextPickerChangeCallback](arkts-arkui-textpicker-comp-ontextpickerchangecallback-t.md)&gt; | Yes | Callback invoked when an item in the picker is selected.<br>If **callback** is set to **undefined**, the callback function is not used. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnTextPickerChangeCallback](arkts-arkui-textpicker-comp-ontextpickerchangecallback-t.md)&gt; | Yes | Callback invoked when the text content of the TextPicker is selected by swiping.<br>If the value of callback is undefined, the callback is not used. |
 
 ## onEnterSelectedArea
 
@@ -468,11 +456,13 @@ Triggered when an option enters the selection zone during text picker scrolling 
 
 > **NOTE:** 
 > 
-> - This event is triggered earlier than the [onChange](#onchange)event.
+> - The difference from the [onChange](#onchange)event is that this event is triggered earlier than the [onChange](#onchange)event. onEnterSelectedArea is triggered when an option enters the selected area during sliding, and is suitable for obtaining index value changes in real time, applicable to scenarios that require a quick response to user sliding. onChange is triggered after sliding ends and the selected item is settled, and is suitable for obtaining the finally confirmed selected value, applicable to scenarios that require obtaining the user's final selection.
 > 
-> - In scenarios where the picker contains linked columns, the use of this callback is not recommended. The reason is that it identifies nodes where items enter the divider area during scrolling. However, items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.
+> - The difference from the [onScrollStop](#onscrollstop) event is that onEnterSelectedArea focuses on the logical state of an option entering the selected area, while onScrollStop focuses on the complete stop of the scrolling behavior. Use onEnterSelectedArea when an earlier response to index changes is required, and use [onScrollStop](#onscrollstop) when confirmation that scrolling has completely stopped is required.
 > 
-> - This API cannot be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
+> - In multi-column linkage scenarios, using this callback is not recommended. This callback identifies the node at which an option enters the divider area during sliding. The options that change accordingly do not involve sliding, so in the callback return value, only the value of the currently sliding column changes normally, while the values of the other non-sliding columns remain unchanged.
+> 
+> - This API does not support being called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 18
 
@@ -480,13 +470,15 @@ Triggered when an option enters the selection zone during text picker scrolling 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback): TextPickerAttribute--><!--Device-TextPickerAttribute-onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpicker-comp-textpickerenterselectedareacallback-t.md) | Yes | Callback invoked when an option enters the selection zone during text picker scrolling. |
+| callback | [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpicker-comp-textpickerenterselectedareacallback-t.md) | Yes | Callback invoked when an option enters the divider area during sliding of the TextPicker. Callback signature: (value: string &#124; string[], index: number &#124; number[]) =&gt; void, where value is the text of the currently selected item, and index is the index of the currently selected item (starting from 0). |
 
 ## onScrollStop
 
@@ -500,7 +492,9 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 > **NOTE:** 
 > 
-> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
+> - The difference from the [onEnterSelectedArea](#onenterselectedarea) event is that onScrollStop focuses on the complete stop of the scrolling behavior, while onEnterSelectedArea focuses on the logical state of an option entering the selected area. onEnterSelectedArea responds to index changes earlier and is suitable for real-time feedback scenarios. It is recommended to use [onEnterSelectedArea](#onenterselectedarea). If you need to confirm that the scrolling behavior has completely stopped, use onScrollStop.
+> 
+> - Since API version 20, this API supports being called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 14
 
@@ -508,13 +502,15 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-TextPickerAttribute-onScrollStop(callback: TextPickerScrollStopCallback): TextPickerAttribute--><!--Device-TextPickerAttribute-onScrollStop(callback: TextPickerScrollStopCallback): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md) | Yes | Event triggered when the scrolling in the text picker stops. |
+| callback | [TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md) | Yes | Triggered when the option column of the text picker stops scrolling. Callback signature: (value: string &#124; string[], index: number &#124; number[]) =&gt; void, where value is the text of the currently selected item, and index is the index of the currently selected item (starting from 0). |
 
 <a id="onscrollstop-1"></a>
 
@@ -530,7 +526,9 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 > **NOTE:** 
 > 
-> This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 20.
+> - The difference from the [onEnterSelectedArea](#onenterselectedarea) event is that onScrollStop focuses on the complete stop of the scrolling behavior, while onEnterSelectedArea focuses on the logical state of an option entering the selected area. onEnterSelectedArea responds to index changes earlier and is suitable for real-time feedback scenarios. It is recommended to use [onEnterSelectedArea](#onenterselectedarea). If you need to confirm that the scrolling behavior has completely stopped, use onScrollStop.
+> 
+> - Since API version 20, this API supports being called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier).
 
 **Since:** 18
 
@@ -538,13 +536,15 @@ If the scrolling is initiated by a gesture, this event is triggered when the fin
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-onScrollStop(callback: Optional<TextPickerScrollStopCallback>): TextPickerAttribute--><!--Device-TextPickerAttribute-onScrollStop(callback: Optional<TextPickerScrollStopCallback>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md)&gt; | Yes | Event triggered when the scrolling in the text picker stops.<br>If **callback** is set to **undefined**, the callback function is not used. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md)&gt; | Yes | Callback invoked when the option column of the text picker stops scrolling.<br>When the value of callback is undefined, the callback is not used. |
 
 ## selectedBackgroundStyle
 
@@ -560,13 +560,15 @@ Sets the background style of selected items.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextPickerAttribute-selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerBackgroundStyle](arkts-arkui-textpicker-comp-pickerbackgroundstyle-i.md)&gt; | Yes | Background color and corner radius for selected items. Applies to all columns in multi-column mode.<br>Default value:<br>{ <br>color: $r('sys.color.comp_background_tertiary'),<br>borderRadius: $r('sys.float.corner_radius_level12')<br>} |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerBackgroundStyle](arkts-arkui-textpicker-comp-pickerbackgroundstyle-i.md)&gt; | Yes | Color and border radius of the background of the selected item. In multi-column mode, the color and border radius of the background of the selected item are set for all columns at the same time.<br>Default value: <br>{<br>color: $r('sys.color.comp_background_tertiary'), <br>borderRadius: $r('sys.float.corner_radius_level12') <br>} |
 
 ## selectedIndex
 
@@ -582,13 +584,15 @@ Sets the index of the selected item or items in the data list. This setting take
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerAttribute-selectedIndex(value: number | number[]): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedIndex(value: number | number[]): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number[] | Yes | Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**<br>If the value is negative or exceeds the maximum index, the default value is used.<br> |
+| value | number[] | Yes | Index of the selected item in the data selection list. The index starts from 0.<br>Default value: **0** <br>If the value is negative or exceeds the maximum index of the data selection list, the default value is used. <br> |
 
 <a id="selectedindex-1"></a>
 
@@ -606,13 +610,15 @@ Sets the index of the selected item or items in the data list. This setting take
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-selectedIndex(index: Optional<number | number[]>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedIndex(index: Optional<number | number[]>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | Yes | Index of the selected item or items in the data list. The index is zero-based.<br>Default value: **0**<br>If **index** is **undefined**, the **selected** value of [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) is used.<br>If it is negative or exceeds the maximum index, the default value is used.<br> |
+| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | Yes | Index of the selected item in the data selection list. The index starts from 0. <br>Default value: **0** <br>If the value of **index** is **undefined**, the value of **selected** in [TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md) is used. <br>If the value of **index** is a negative number or exceeds the maximum index value of the data selection list, the default value is used. <br> |
 
 ## selectedTextStyle
 
@@ -628,13 +634,15 @@ Sets the text color, font size, and font weight of the selected item.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerAttribute-selectedTextStyle(value: PickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedTextStyle(value: PickerTextStyle): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>} |
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the selected item.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>**Note:** If this method is not called to set the style, the default value is used. |
 
 <a id="selectedtextstyle-1"></a>
 
@@ -652,13 +660,15 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the selected item.<br> Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the selected item.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
 <a id="selectedtextstyle-2"></a>
 
@@ -668,7 +678,7 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-Sets the text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [selectedTextStyle](#selectedtextstyle-1)&lt;sup&gt;18+&lt;/sup&gt;, this API supports the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type for the **style** parameter.
+Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of the selected item. Compared with [selectedTextStyle&lt;sup&gt;18+&lt;/sup&gt;](#selectedtextstyle-1), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
 
 **Since:** 20
 
@@ -676,13 +686,15 @@ Sets the text style of the selected item, covering the following: text color, fo
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text style of the selected item, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br> Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>},<br> minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text color, font size, font weight, maximum font size, minimum font size, and truncation mode of the selected item's overlong text.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>When the value of style is undefined, the default value is used. |
 
 ## textStyle
 
@@ -698,13 +710,15 @@ Sets the text color, font size, and font weight of candidate items (the first it
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextPickerAttribute-textStyle(value: PickerTextStyle): TextPickerAttribute--><!--Device-TextPickerAttribute-textStyle(value: PickerTextStyle): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the options.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>**Note:** When this method is not called to set the style, the default value is used. |
 
 <a id="textstyle-1"></a>
 
@@ -722,13 +736,15 @@ Sets the text color, font size, and font weight of candidate items (the first it
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the options to be selected.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
 <a id="textstyle-2"></a>
 
@@ -738,7 +754,7 @@ Sets the text color, font size, and font weight of candidate items (the first it
 textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-Sets the text style of candidate items (the first item immediately above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode. Compared with [textStyle](#textstyle-1)&lt;sup&gt;18+&lt;/sup&gt;, this API supports the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type for the **style** parameter.
+Sets the text color, font size, font weight, maximum font size, minimum font size, and truncation mode of candidate items (the first item immediately above or below the selected item). Compared with [textStyle&lt;sup&gt;18+&lt;/sup&gt;](#textstyle-1), the style parameter adds support for the [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md) type.
 
 **Since:** 20
 
@@ -746,10 +762,70 @@ Sets the text style of candidate items (the first item immediately above or belo
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute--><!--Device-TextPickerAttribute-textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>): TextPickerAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Style of candidate items, covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br> Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>},<br> minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.Clip<br>}<br>If the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | Yes | Text color, font size, font weight, maximum font size, minimum font size, and truncation mode of the text to be selected.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>When the value of style is undefined, the default value is used. |
+
+## onAccept
+
+```TypeScript
+onAccept(callback: (value: string, index: number) => void)
+```
+
+Triggered when the OK button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](arkts-arkui-textpicker-comp.md).
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 10. This API has been completely
+> removed, and there is no substitute API.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-TextPickerAttribute-onAccept(callback: (value: string, index: number) => void): TextPickerAttribute--><!--Device-TextPickerAttribute-onAccept(callback: (value: string, index: number) => void): TextPickerAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | (value: string, index: number) =&gt; void | Yes |  |
+
+## onCancel
+
+```TypeScript
+onCancel(callback: () => void)
+```
+
+Triggered when the cancel button in the dialog box is clicked. This event can be triggered only in the [text picker dialog box](arkts-arkui-textpicker-comp.md).
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 10. This API has been completely
+> removed. There is no substitute API.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-TextPickerAttribute-onCancel(callback: () => void): TextPickerAttribute--><!--Device-TextPickerAttribute-onCancel(callback: () => void): TextPickerAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | () =&gt; void | Yes | Callback invoked when the cancel button in the dialog box is clicked. |

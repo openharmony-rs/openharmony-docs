@@ -18,6 +18,8 @@ Requests a deferred task. Upon successful request, the deferred task is added to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-function startWork(work: WorkInfo): void--><!--Device-workScheduler-function startWork(work: WorkInfo): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **Parameters:**

@@ -21,6 +21,8 @@ Implements a **UIContext** instance.
 
 **Since:** 10
 
+<!--Device-unnamed-export class UIContext--><!--Device-unnamed-export class UIContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -88,6 +90,8 @@ uiContext.removeLocalInputEventMonitor(monitor2);
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-UIContext-addLocalInputEventMonitor(eventMask: int, listener: InputEventListener): InputEventMonitor--><!--Device-UIContext-addLocalInputEventMonitor(eventMask: int, listener: InputEventListener): InputEventMonitor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +182,8 @@ Adds transition animations for state changes in closure code.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIContext-animateTo(value: AnimateParam, event: () => void): void--><!--Device-UIContext-animateTo(value: AnimateParam, event: () => void): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,6 +288,8 @@ Specifies a clear animation host instance context via the UIContext object and t
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-UIContext-animateToImmediately(param: AnimateParam, processor: Callback<void>): void--><!--Device-UIContext-animateToImmediately(param: AnimateParam, processor: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -370,6 +378,8 @@ Applies the default safe area immersive strategy on the current page. This API a
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-UIContext-applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void--><!--Device-UIContext-applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -391,6 +401,8 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-UIContext-bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scroller, childScroller: Scroller): void--><!--Device-UIContext-bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scroller, childScroller: Scroller): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -419,6 +431,8 @@ Bind tabs to scrollable container component to automatically hide tab bar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-UIContext-bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void--><!--Device-UIContext-bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -543,6 +557,8 @@ Closes the sheet corresponding to **bindSheetContent**. This API uses a promise 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise<void>--><!--Device-UIContext-closeBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -674,6 +690,8 @@ Construct a **UIContext** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-constructor()--><!--Device-UIContext-constructor()-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -760,6 +778,8 @@ Creates an **Animator** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-createAnimator(options: AnimatorOptions): AnimatorResult--><!--Device-UIContext-createAnimator(options: AnimatorOptions): AnimatorResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -831,6 +851,8 @@ Creates an **AnimatorResult** object for animations. Compared to the previous [c
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-UIContext-createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult--><!--Device-UIContext-createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -896,6 +918,8 @@ Creates a UI instance that does not depend on a window and returns its UI contex
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
+<!--Device-UIContext-static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext) : UIContext | undefined--><!--Device-UIContext-static createUIContextWithoutWindow(context: common.UIAbilityContext | common.ExtensionContext) : UIContext | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -949,6 +973,8 @@ Destroys the UI instance created using [createUIContextWithoutWindow](#createuic
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
+<!--Device-UIContext-static destroyUIContextWithoutWindow(): void--><!--Device-UIContext-static destroyUIContextWithoutWindow(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Examples**
@@ -983,6 +1009,8 @@ Dispach keyboard event to the frameNode with inspector key.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-UIContext-dispatchKeyEvent(node: number | string, event: KeyEvent): boolean--><!--Device-UIContext-dispatchKeyEvent(node: number | string, event: KeyEvent): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1055,6 +1083,8 @@ Whether to enable or disable event passthrough.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-UIContext-enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void--><!--Device-UIContext-enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1094,6 +1124,8 @@ whether to enable or disable swipe to back event.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-UIContext-enableSwipeBack(enabled: Optional<boolean>): void--><!--Device-UIContext-enableSwipeBack(enabled: Optional<boolean>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -1137,6 +1169,8 @@ Converts a value in fp units to a value in px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-fp2px(value: number): number--><!--Device-UIContext-fp2px(value: number): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1192,6 +1226,8 @@ Obtains all currently valid UIContext instances.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-static getAllUIContexts(): UIContext[]--><!--Device-UIContext-static getAllUIContexts(): UIContext[]-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1245,6 +1281,8 @@ Get AtomicServiceBar.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getAtomicServiceBar(): Nullable<AtomicServiceBar>--><!--Device-UIContext-getAtomicServiceBar(): Nullable<AtomicServiceBar>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1290,6 +1328,8 @@ Get the FrameNode attached to current window by id.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getAttachedFrameNodeById(id: string): FrameNode | null--><!--Device-UIContext-getAttachedFrameNodeById(id: string): FrameNode | null-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1354,6 +1394,8 @@ Obtains the UIContext of this [calling scope](../../../ui/arkts-global-interface
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-static getCallingScopeUIContext(): UIContext | undefined--><!--Device-UIContext-static getCallingScopeUIContext(): UIContext | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1407,6 +1449,8 @@ Get ComponentSnapshot.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getComponentSnapshot(): ComponentSnapshot--><!--Device-UIContext-getComponentSnapshot(): ComponentSnapshot-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1432,6 +1476,8 @@ get object ComponentUtils.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIContext-getComponentUtils(): ComponentUtils--><!--Device-UIContext-getComponentUtils(): ComponentUtils-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1459,6 +1505,8 @@ Get object context menu controller.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getContextMenuController(): ContextMenuController--><!--Device-UIContext-getContextMenuController(): ContextMenuController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1480,6 +1528,8 @@ Get object cursor controller.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getCursorController(): CursorController--><!--Device-UIContext-getCursorController(): CursorController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1507,6 +1557,8 @@ Get the Dialog object.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-UIContext-getDialogPresenter(): DialogPresenter--><!--Device-UIContext-getDialogPresenter(): DialogPresenter-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1533,6 +1585,8 @@ Get DragController.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getDragController(): DragController--><!--Device-UIContext-getDragController(): DragController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1558,6 +1612,8 @@ Obtains the component tree and component attributes. This API has a long process
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getFilteredInspectorTree(filters?: Array<string>): string--><!--Device-UIContext-getFilteredInspectorTree(filters?: Array<string>): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1659,6 +1715,8 @@ Obtains the attributes of the specified component and its child components. This
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getFilteredInspectorTreeById(id: string, depth: number, filters?: Array<string>): string--><!--Device-UIContext-getFilteredInspectorTreeById(id: string, depth: number, filters?: Array<string>): string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1740,6 +1798,8 @@ Get FocusController.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getFocusController(): FocusController--><!--Device-UIContext-getFocusController(): FocusController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1766,6 +1826,8 @@ Obtains a **Font** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getFont(): Font--><!--Device-UIContext-getFont(): Font-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1791,6 +1853,8 @@ Get FrameNode by id.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getFrameNodeById(id: string): FrameNode | null--><!--Device-UIContext-getFrameNodeById(id: string): FrameNode | null-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1828,6 +1892,8 @@ returned, with the type __Common__; if the component has no rendered content, th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getFrameNodeByUniqueId(id: number): FrameNode | null--><!--Device-UIContext-getFrameNodeByUniqueId(id: number): FrameNode | null-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1879,6 +1945,8 @@ Obtains the context of this ability.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getHostContext(): Context | undefined--><!--Device-UIContext-getHostContext(): Context | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1928,6 +1996,8 @@ Obtains the unique ID of a UI instance object. In multi-instance scenarios, you 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-getId(): number--><!--Device-UIContext-getId(): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -1972,6 +2042,8 @@ Obtains the avoidance mode of the virtual keyboard.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getKeyboardAvoidMode(): KeyboardAvoidMode--><!--Device-UIContext-getKeyboardAvoidMode(): KeyboardAvoidMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2013,6 +2085,8 @@ Obtains the UIContext of the UI instance that most recently switched to the focu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-UIContext-static getLastFocusedUIContext(): UIContext | undefined--><!--Device-UIContext-static getLastFocusedUIContext(): UIContext | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2067,6 +2141,8 @@ Obtains the UIContext of the UI instance that most recently switched to the fore
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-static getLastForegroundUIContext(): UIContext | undefined--><!--Device-UIContext-static getLastForegroundUIContext(): UIContext | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2120,6 +2196,8 @@ Obtains a [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) object, which 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-getMagnifier(): Magnifier--><!--Device-UIContext-getMagnifier(): Magnifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2145,6 +2223,8 @@ Get the max font scale.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-UIContext-getMaxFontScale(): number--><!--Device-UIContext-getMaxFontScale(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2186,6 +2266,8 @@ Obtains a **MeasureUtils** object for text calculation.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getMeasureUtils(): MeasureUtils--><!--Device-UIContext-getMeasureUtils(): MeasureUtils-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2212,6 +2294,8 @@ get object mediaQuery.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getMediaQuery(): MediaQuery--><!--Device-UIContext-getMediaQuery(): MediaQuery-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2237,6 +2321,8 @@ Get navigation information of the frameNode with uniqueId.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined--><!--Device-UIContext-getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2270,6 +2356,8 @@ Obtains the OverlayManager object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-getOverlayManager(): OverlayManager--><!--Device-UIContext-getOverlayManager(): OverlayManager-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2296,6 +2384,8 @@ Get object OverlayManagerOptions.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-UIContext-getOverlayManagerOptions(): OverlayManagerOptions--><!--Device-UIContext-getOverlayManagerOptions(): OverlayManagerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2321,6 +2411,8 @@ Get page information of the frameNode with uniqueId.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getPageInfoByUniqueId(id: number): PageInfo--><!--Device-UIContext-getPageInfoByUniqueId(id: number): PageInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2396,6 +2488,8 @@ Obtains the root node of the page corresponding to the UIContext.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-UIContext-getPageRootNode(): FrameNode | null--><!--Device-UIContext-getPageRootNode(): FrameNode | null-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2552,6 +2646,8 @@ Obtains the pixel rounding mode for this page.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-UIContext-getPixelRoundMode(): PixelRoundMode--><!--Device-UIContext-getPixelRoundMode(): PixelRoundMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2591,6 +2687,8 @@ Obtains a PromptAction object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getPromptAction(): PromptAction--><!--Device-UIContext-getPromptAction(): PromptAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2617,6 +2715,8 @@ Obtains a Router object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getRouter(): Router--><!--Device-UIContext-getRouter(): Router-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2642,6 +2742,8 @@ Obtains the **LocalStorage** instance shared by this stage.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getSharedLocalStorage(): LocalStorage | undefined--><!--Device-UIContext-getSharedLocalStorage(): LocalStorage | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2708,6 +2810,8 @@ Get object smart gesture controller.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-UIContext-getSmartGestureController(): SmartGestureController--><!--Device-UIContext-getSmartGestureController(): SmartGestureController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2733,6 +2837,8 @@ Obtains a [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 16.
+
+<!--Device-UIContext-getTextMenuController(): TextMenuController--><!--Device-UIContext-getTextMenuController(): TextMenuController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2760,6 +2866,8 @@ Obtains the **UIInspector** object.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-getUIInspector(): UIInspector--><!--Device-UIContext-getUIInspector(): UIInspector-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2785,6 +2893,8 @@ Obtains the **UIObserver** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getUIObserver(): UIObserver--><!--Device-UIContext-getUIObserver(): UIObserver-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2856,6 +2966,8 @@ Obtains the height breakpoint value of the window where this instance is located
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-UIContext-getWindowHeightBreakpoint(): HeightBreakpoint--><!--Device-UIContext-getWindowHeightBreakpoint(): HeightBreakpoint-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2918,6 +3030,8 @@ Obtains the ID of the window to which the current application instance belongs.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-UIContext-getWindowId(): number | undefined--><!--Device-UIContext-getWindowId(): number | undefined-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -2968,6 +3082,8 @@ Obtains the name of the window where this instance is located.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-getWindowName(): string | undefined--><!--Device-UIContext-getWindowName(): string | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3025,6 +3141,8 @@ Obtains the width breakpoint value of the window where this instance is located.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-UIContext-getWindowWidthBreakpoint(): WidthBreakpoint--><!--Device-UIContext-getWindowWidthBreakpoint(): WidthBreakpoint-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -3079,6 +3197,8 @@ Checks whether the UI instance corresponding to this **UIContext** object is val
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-UIContext-isAvailable(): boolean--><!--Device-UIContext-isAvailable(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3162,6 +3282,8 @@ Checks whether the current UI instance is in easy split mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-UIContext-isEasySplit(): boolean--><!--Device-UIContext-isEasySplit(): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -3208,6 +3330,8 @@ Checks whether current font scale follows the system.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-UIContext-isFollowingSystemFontScale(): boolean--><!--Device-UIContext-isFollowingSystemFontScale(): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -3247,6 +3371,8 @@ Generates a key frame animation. For details about how to use this API, see [key
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>): void--><!--Device-UIContext-keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3331,6 +3457,8 @@ Converts a value in lpx units to a value in px.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-lpx2px(value: number): number--><!--Device-UIContext-lpx2px(value: number): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3393,6 +3521,8 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOptions?: SheetOptions, targetId?: number): Promise<void>--><!--Device-UIContext-openBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOptions?: SheetOptions, targetId?: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3524,6 +3654,8 @@ Post a frame callback to run on the next frame after the specified delay.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void--><!--Device-UIContext-postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3579,6 +3711,8 @@ Post a frame callback to run on the next frame.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-postFrameCallback(frameCallback: FrameCallback): void--><!--Device-UIContext-postFrameCallback(frameCallback: FrameCallback): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3632,6 +3766,8 @@ Converts a value in px units to a value in fp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-px2fp(value: number): number--><!--Device-UIContext-px2fp(value: number): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3687,6 +3823,8 @@ Converts a value in px units to a value in lpx.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-UIContext-px2lpx(value: number): number--><!--Device-UIContext-px2lpx(value: number): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3740,6 +3878,8 @@ Converts a value in px units to a value in vp.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-px2vp(value: number): number--><!--Device-UIContext-px2vp(value: number): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3801,6 +3941,8 @@ Removes a local input event monitor.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-UIContext-removeLocalInputEventMonitor(monitor: InputEventMonitor): void--><!--Device-UIContext-removeLocalInputEventMonitor(monitor: InputEventMonitor): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -3861,6 +4003,8 @@ Require DynamicSyncScene by id.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-requireDynamicSyncScene(id: string): Array<DynamicSyncScene>--><!--Device-UIContext-requireDynamicSyncScene(id: string): Array<DynamicSyncScene>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3958,6 +4102,8 @@ Obtains a UIContext instance along with its resolution strategy using a predefin
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIContext-static resolveUIContext(): ResolvedUIContext--><!--Device-UIContext-static resolveUIContext(): ResolvedUIContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -4002,6 +4148,8 @@ Run custom functions inside the UIContext scope.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-runScopedTask(callback: () => void): void--><!--Device-UIContext-runScopedTask(callback: () => void): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4045,6 +4193,8 @@ Set custom keyboard continue feature.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-UIContext-setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void--><!--Device-UIContext-setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4175,6 +4325,8 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-UIContext-setImageCacheCount(value: number): void--><!--Device-UIContext-setImageCacheCount(value: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4222,6 +4374,8 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-UIContext-setImageRawDataCacheSize(value: number): void--><!--Device-UIContext-setImageRawDataCacheSize(value: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4287,6 +4441,8 @@ Sets the avoidance mode for the virtual keyboard.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-setKeyboardAvoidMode(value: KeyboardAvoidMode): void--><!--Device-UIContext-setKeyboardAvoidMode(value: KeyboardAvoidMode): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4328,6 +4484,8 @@ Init OverlayManager.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-UIContext-setOverlayManagerOptions(options: OverlayManagerOptions): boolean--><!--Device-UIContext-setOverlayManagerOptions(options: OverlayManagerOptions): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4359,6 +4517,8 @@ Sets the pixel rounding mode of the current page.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-UIContext-setPixelRoundMode(mode: PixelRoundMode): void--><!--Device-UIContext-setPixelRoundMode(mode: PixelRoundMode): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4400,6 +4560,8 @@ If the upper limit of the cache is set too high, there is a risk of excessive me
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-UIContext-static setResourceManagerCacheMaxCountForHSP(count: number): void--><!--Device-UIContext-static setResourceManagerCacheMaxCountForHSP(count: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4456,6 +4618,8 @@ Sets the text selection clear policy for text component. Default policy: **TextS
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-UIContext-setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void--><!--Device-UIContext-setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4479,6 +4643,8 @@ Shows an action sheet in the given settings.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIContext-showActionSheet(value: ActionSheetOptions): void--><!--Device-UIContext-showActionSheet(value: ActionSheetOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4556,6 +4722,8 @@ Shows an alert dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-UIContext-showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void--><!--Device-UIContext-showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | AlertDialogParamWithOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4614,6 +4782,8 @@ datePickerDialog display.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIContext-showDatePickerDialog(options: DatePickerDialogOptions): void--><!--Device-UIContext-showDatePickerDialog(options: DatePickerDialogOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4689,6 +4859,8 @@ textPickerDialog display.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIContext-showTextPickerDialog(options: TextPickerDialogOptions): void--><!--Device-UIContext-showTextPickerDialog(options: TextPickerDialogOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4769,6 +4941,8 @@ textPickerDialog display.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-UIContext-showTextPickerDialog(style: TextPickerDialogOptions | TextPickerDialogOptionsExt): void--><!--Device-UIContext-showTextPickerDialog(style: TextPickerDialogOptions | TextPickerDialogOptionsExt): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4794,6 +4968,8 @@ timePickerDialog display.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-UIContext-showTimePickerDialog(options: TimePickerDialogOptions): void--><!--Device-UIContext-showTimePickerDialog(options: TimePickerDialogOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4862,6 +5038,8 @@ Unbind tabs from nested scrollable container components.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-UIContext-unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: Scroller, childScroller: Scroller): void--><!--Device-UIContext-unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: Scroller, childScroller: Scroller): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -4889,6 +5067,8 @@ Unbind tabs from scrollable container component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-UIContext-unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): void--><!--Device-UIContext-unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4920,6 +5100,8 @@ Updates the style of the sheet corresponding to the provided **bindSheetContent*
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOptions: SheetOptions, partialUpdate?: boolean): Promise<void>--><!--Device-UIContext-updateBindSheet<T extends Object>(bindSheetContent: ComponentContent<T>, sheetOptions: SheetOptions, partialUpdate?: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -5047,6 +5229,8 @@ Converts a value in vp units to a value in px.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UIContext-vp2px(value: number): number--><!--Device-UIContext-vp2px(value: number): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

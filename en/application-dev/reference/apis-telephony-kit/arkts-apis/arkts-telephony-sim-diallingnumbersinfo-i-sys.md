@@ -8,6 +8,8 @@ Defines the contact number information.
 
 **Since:** 8
 
+<!--Device-sim-export interface DiallingNumbersInfo--><!--Device-sim-export interface DiallingNumbersInfo-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Indicates the tag.
 
 **Since:** 8
 
+<!--Device-DiallingNumbersInfo-alphaTag: string--><!--Device-DiallingNumbersInfo-alphaTag: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Indicates the call transfer number.
 **Type:** string
 
 **Since:** 8
+
+<!--Device-DiallingNumbersInfo-number: string--><!--Device-DiallingNumbersInfo-number: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,6 +68,8 @@ Indicates the PIN 2.
 
 **Since:** 8
 
+<!--Device-DiallingNumbersInfo-pin2?: string--><!--Device-DiallingNumbersInfo-pin2?: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Indicates the record number.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-DiallingNumbersInfo-recordNumber?: int--><!--Device-DiallingNumbersInfo-recordNumber?: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

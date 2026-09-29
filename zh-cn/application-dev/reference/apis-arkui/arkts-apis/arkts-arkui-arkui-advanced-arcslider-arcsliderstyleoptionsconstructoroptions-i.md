@@ -8,6 +8,8 @@ ArcSliderStyleOptions的构造信息。
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface ArcSliderStyleOptionsConstructorOptions--><!--Device-unnamed-interface ArcSliderStyleOptionsConstructorOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -38,6 +40,8 @@ activeTrackThickness?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSliderStyleOptionsConstructorOptions-activeTrackThickness?: number--><!--Device-ArcSliderStyleOptionsConstructorOptions-activeTrackThickness?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## selectedColor
@@ -59,6 +63,8 @@ selectedColor?: string
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-selectedColor?: string--><!--Device-ArcSliderStyleOptionsConstructorOptions-selectedColor?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -84,6 +90,8 @@ trackBlur?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSliderStyleOptionsConstructorOptions-trackBlur?: number--><!--Device-ArcSliderStyleOptionsConstructorOptions-trackBlur?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## trackColor
@@ -105,6 +113,8 @@ trackColor?: string
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-trackColor?: string--><!--Device-ArcSliderStyleOptionsConstructorOptions-trackColor?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -129,5 +139,7 @@ trackThickness?: number
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSliderStyleOptionsConstructorOptions-trackThickness?: number--><!--Device-ArcSliderStyleOptionsConstructorOptions-trackThickness?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

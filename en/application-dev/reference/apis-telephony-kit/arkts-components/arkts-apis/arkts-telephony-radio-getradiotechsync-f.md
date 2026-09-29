@@ -20,6 +20,8 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-radio-function getRadioTechSync(slotId: int): NetworkRadioTech--><!--Device-radio-function getRadioTechSync(slotId: int): NetworkRadioTech-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

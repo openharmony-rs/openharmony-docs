@@ -16,7 +16,9 @@ Cancels an animation. This API takes effect only for [scene-based widgets](../..
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-formProvider-function cancelOverflow(formId: string): Promise<void>--><!--Device-formProvider-function cancelOverflow(formId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

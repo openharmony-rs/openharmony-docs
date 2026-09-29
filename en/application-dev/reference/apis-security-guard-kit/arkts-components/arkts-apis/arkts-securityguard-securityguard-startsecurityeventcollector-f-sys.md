@@ -18,6 +18,8 @@ start the collector to collect data
 
 **Required permissions:** ohos.permission.QUERY_SECURITY_EVENT
 
+<!--Device-securityGuard-function startSecurityEventCollector(rule: CollectorRule): void--><!--Device-securityGuard-function startSecurityEventCollector(rule: CollectorRule): void-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.

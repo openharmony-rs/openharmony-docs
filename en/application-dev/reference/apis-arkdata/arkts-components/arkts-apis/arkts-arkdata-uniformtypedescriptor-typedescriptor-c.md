@@ -8,6 +8,8 @@ Represents a class for defining a uniform data type. It provides properties and 
 
 **Since:** 11
 
+<!--Device-uniformTypeDescriptor-class TypeDescriptor--><!--Device-uniformTypeDescriptor-class TypeDescriptor-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Checks whether this data type belongs to the specified uniform data type.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-belongsTo(type: string): boolean--><!--Device-TypeDescriptor-belongsTo(type: string): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -80,6 +84,8 @@ Checks whether this data type is the same as the specified uniform data type. Th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-equals(typeDescriptor: TypeDescriptor): boolean--><!--Device-TypeDescriptor-equals(typeDescriptor: TypeDescriptor): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters:**
@@ -131,6 +137,8 @@ Checks whether this data type is a higher-level type of the specified uniform da
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-isHigherLevelType(type: string): boolean--><!--Device-TypeDescriptor-isHigherLevelType(type: string): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters:**
@@ -181,6 +189,8 @@ Checks whether this data type is a lower-level type of the specified uniform dat
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-isLowerLevelType(type: string): boolean--><!--Device-TypeDescriptor-isLowerLevelType(type: string): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -235,6 +245,8 @@ Uniform data type IDs that the uniform data type belongs to.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get belongingToTypes(): Array<string>--><!--Device-TypeDescriptor-get belongingToTypes(): Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -248,6 +260,8 @@ Uniform data type IDs that the uniform data type belongs to.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set belongingToTypes(value: Array<string>)--><!--Device-TypeDescriptor-set belongingToTypes(value: Array<string>)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -265,6 +279,8 @@ A textual description for the uniform data type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get description(): string--><!--Device-TypeDescriptor-get description(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -278,6 +294,8 @@ A textual description for the uniform data type.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set description(value: string)--><!--Device-TypeDescriptor-set description(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -295,6 +313,8 @@ File name extensions for the uniform data type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get filenameExtensions(): Array<string>--><!--Device-TypeDescriptor-get filenameExtensions(): Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -308,6 +328,8 @@ File name extensions for the uniform data type.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set filenameExtensions(value: Array<string>)--><!--Device-TypeDescriptor-set filenameExtensions(value: Array<string>)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -325,6 +347,8 @@ Default icon file path for the uniform data type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get iconFile(): string--><!--Device-TypeDescriptor-get iconFile(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -338,6 +362,8 @@ Default icon file path for the uniform data type.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set iconFile(value: string)--><!--Device-TypeDescriptor-set iconFile(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -355,6 +381,8 @@ MIMETypes of the uniform data type.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get mimeTypes(): Array<string>--><!--Device-TypeDescriptor-get mimeTypes(): Array<string>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -368,6 +396,8 @@ MIMETypes of the uniform data type.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set mimeTypes(value: Array<string>)--><!--Device-TypeDescriptor-set mimeTypes(value: Array<string>)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -385,6 +415,8 @@ Reference URL for the uniform data type, which describes the detail information 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get referenceURL(): string--><!--Device-TypeDescriptor-get referenceURL(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -398,6 +430,8 @@ Reference URL for the uniform data type, which describes the detail information 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set referenceURL(value: string)--><!--Device-TypeDescriptor-set referenceURL(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -415,6 +449,8 @@ Type ID of the uniform data type, which corresponds to the enum string in the `U
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TypeDescriptor-get typeId(): string--><!--Device-TypeDescriptor-get typeId(): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ```TypeScript
@@ -428,5 +464,7 @@ Type ID of the uniform data type, which corresponds to the enum string in the `U
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TypeDescriptor-set typeId(value: string)--><!--Device-TypeDescriptor-set typeId(value: string)-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

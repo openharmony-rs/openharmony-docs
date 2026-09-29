@@ -27,6 +27,8 @@ Reads the content of this active tag. This API uses a promise to return the resu
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function readNdefTag(): Promise<string>--><!--Device-connectedTag-function readNdefTag(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Return value:**
@@ -71,6 +73,8 @@ Reads the content of this active tag. This API uses an asynchronous callback to 
 **Substitutes:** [read](arkts-connectivity-connectedtag-read-f.md)
 
 **Required permissions:** ohos.permission.NFC_TAG
+
+<!--Device-connectedTag-function readNdefTag(callback: AsyncCallback<string>): void--><!--Device-connectedTag-function readNdefTag(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Communication.ConnectedTag
 

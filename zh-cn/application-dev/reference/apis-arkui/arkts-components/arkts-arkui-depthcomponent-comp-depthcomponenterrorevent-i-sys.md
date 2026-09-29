@@ -8,6 +8,8 @@ declare interface DepthComponentErrorEvent
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare interface DepthComponentErrorEvent--><!--Device-unnamed-declare interface DepthComponentErrorEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -27,6 +29,8 @@ componentHeight: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthComponentErrorEvent-componentHeight: double--><!--Device-DepthComponentErrorEvent-componentHeight: double-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ componentWidth: number
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-DepthComponentErrorEvent-componentWidth: double--><!--Device-DepthComponentErrorEvent-componentWidth: double-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -67,6 +73,8 @@ error?: BusinessError<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DepthComponentErrorEvent-error?: BusinessError<void>--><!--Device-DepthComponentErrorEvent-error?: BusinessError<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

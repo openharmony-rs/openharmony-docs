@@ -8,6 +8,8 @@ This module provides the capabilities of sending and processing inter- or intra-
 
 **Since:** 22
 
+<!--Device-emitter-export class Emitter--><!--Device-emitter-export class Emitter-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Defines a constructor.
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-constructor()--><!--Device-Emitter-constructor()-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -50,7 +54,9 @@ After an event is published using this API, the event may not be executed immedi
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-emit(eventId: string, data?: EventData): void--><!--Device-Emitter-emit(eventId: string, data?: EventData): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -91,7 +97,9 @@ After an event is published using this API, the event may not be executed immedi
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-emit<T>(eventId: string, data?: GenericEventData<T>): void--><!--Device-Emitter-emit<T>(eventId: string, data?: GenericEventData<T>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -141,7 +149,9 @@ After an event is published using this API, the event may not be executed immedi
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-emit(eventId: string, options: Options, data?: EventData): void--><!--Device-Emitter-emit(eventId: string, options: Options, data?: EventData): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -187,7 +197,9 @@ After an event is published using this API, the event may not be executed immedi
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void--><!--Device-Emitter-emit<T>(eventId: string, options: Options, data?: GenericEventData<T>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -235,7 +247,9 @@ Obtains the number of subscriptions to a specified event of the Emitter instance
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-getListenerCount(eventId: string): long--><!--Device-Emitter-getListenerCount(eventId: string): long-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -270,7 +284,9 @@ After this API is used to unsubscribe from an event, the event that has been pub
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-Emitter-off(eventId: string): void--><!--Device-Emitter-off(eventId: string): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -303,6 +319,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Emitter-off(eventId: string, callback: Callback<EventData>): void--><!--Device-Emitter-off(eventId: string, callback: Callback<EventData>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -342,6 +360,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Emitter-off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-Emitter-off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -392,6 +412,8 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Emitter-on(eventId: string, callback: Callback<EventData>): void--><!--Device-Emitter-on(eventId: string, callback: Callback<EventData>): void-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 **Parameters:**
@@ -428,6 +450,8 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Emitter-on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-Emitter-on<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 
@@ -478,6 +502,8 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-Emitter-once(eventId: string, callback: Callback<EventData>): void--><!--Device-Emitter-once(eventId: string, callback: Callback<EventData>): void-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 **Parameters:**
@@ -514,6 +540,8 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-Emitter-once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void--><!--Device-Emitter-once<T>(eventId: string, callback: Callback<GenericEventData<T>>): void-End-->
 
 **System capability:** SystemCapability.Notification.Emitter
 

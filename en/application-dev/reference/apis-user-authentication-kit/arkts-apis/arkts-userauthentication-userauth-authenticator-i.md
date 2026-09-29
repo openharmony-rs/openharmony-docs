@@ -12,6 +12,8 @@ Provides APIs for managing the **Authenticator** object.
 
 **Substitutes:** [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
 
+<!--Device-userAuth-interface Authenticator--><!--Device-userAuth-interface Authenticator-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Starts user authentication. This API uses an asynchronous callback to return the
 **Substitutes:** [start](arkts-userauthentication-userauth-authinstance-i.md#start)
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-Authenticator-execute(type: AuthType, level: SecureLevel, callback: AsyncCallback<number>): void--><!--Device-Authenticator-execute(type: AuthType, level: SecureLevel, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -78,6 +82,8 @@ Starts user authentication. This API uses a promise to return the result.
 **Substitutes:** [start](arkts-userauthentication-userauth-authinstance-i.md#start)
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
+
+<!--Device-Authenticator-execute(type: AuthType, level: SecureLevel): Promise<number>--><!--Device-Authenticator-execute(type: AuthType, level: SecureLevel): Promise<number>-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

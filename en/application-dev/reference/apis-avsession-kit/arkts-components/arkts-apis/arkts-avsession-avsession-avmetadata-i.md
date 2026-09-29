@@ -8,6 +8,8 @@ The metadata of the current media.Used to set the properties of the current medi
 
 **Since:** 10
 
+<!--Device-avSession-interface AVMetadata--><!--Device-avSession-interface AVMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ The album of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-album?: string--><!--Device-AVMetadata-album?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -44,7 +48,9 @@ The artist of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-artist?: string--><!--Device-AVMetadata-artist?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -60,7 +66,9 @@ Unique ID used to represent this media.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-assetId: string--><!--Device-AVMetadata-assetId: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -76,7 +84,9 @@ The author of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-author?: string--><!--Device-AVMetadata-author?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -92,6 +102,8 @@ The id of play list which current media belongs to, it should be an unique ident
 
 **Since:** 11
 
+<!--Device-AVMetadata-avQueueId?: string--><!--Device-AVMetadata-avQueueId?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## avQueueImage
@@ -105,6 +117,8 @@ The artwork of play list as a PixelMap or an uri formatted String,
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) &#124; string
 
 **Since:** 11
+
+<!--Device-AVMetadata-avQueueImage?: image.PixelMap | string--><!--Device-AVMetadata-avQueueImage?: image.PixelMap | string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -120,6 +134,8 @@ The name of play list which current media belongs to
 
 **Since:** 12
 
+<!--Device-AVMetadata-avQueueName?: string--><!--Device-AVMetadata-avQueueName?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## bundleIcon
@@ -133,6 +149,8 @@ The image of the bundle icon as a PixelMap, no need to be set by application.
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
 **Since:** 18
+
+<!--Device-AVMetadata-readonly bundleIcon?: image.PixelMap--><!--Device-AVMetadata-readonly bundleIcon?: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -148,6 +166,8 @@ The composer of this media
 
 **Since:** 10
 
+<!--Device-AVMetadata-composer?: string--><!--Device-AVMetadata-composer?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## description
@@ -162,7 +182,9 @@ The description of the media, used for display
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-description?: string--><!--Device-AVMetadata-description?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -178,6 +200,8 @@ The display tags supported by application to be displayed on media center
 
 **Since:** 11
 
+<!--Device-AVMetadata-displayTags?: int--><!--Device-AVMetadata-displayTags?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## drmSchemes
@@ -191,6 +215,8 @@ The drm schemes supported by this session which are represented by uuid.
 **Type:** Array&lt;string&gt;
 
 **Since:** 12
+
+<!--Device-AVMetadata-drmSchemes?: Array<string>--><!--Device-AVMetadata-drmSchemes?: Array<string>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -206,7 +232,9 @@ The duration of this media, used to automatically calculate playback position, d
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-duration?: long--><!--Device-AVMetadata-duration?: long-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -224,6 +252,8 @@ The supported skipIntervals when doing fast forward operation, the default is [S
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMetadata-fastForwardSkipIntervals?: SkipIntervals--><!--Device-AVMetadata-fastForwardSkipIntervals?: SkipIntervals-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## filter
@@ -238,7 +268,9 @@ The protocols supported by this session, if not set, the default is [TYPE_CAST_P
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-filter?: int--><!--Device-AVMetadata-filter?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -254,6 +286,8 @@ The lyric of the media, it should be in standard lyric format
 
 **Since:** 10
 
+<!--Device-AVMetadata-lyric?: string--><!--Device-AVMetadata-lyric?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## mediaImage
@@ -268,7 +302,9 @@ The image of the media as a PixelMap or an uri formatted String, used to display
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-mediaImage?: image.PixelMap | string--><!--Device-AVMetadata-mediaImage?: image.PixelMap | string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -284,7 +320,9 @@ The next playable media id. Used to tell the controller if there is a next playa
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-nextAssetId?: string--><!--Device-AVMetadata-nextAssetId?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -300,7 +338,9 @@ The previous playable media id. Used to tell the controller if there is a previo
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-previousAssetId?: string--><!--Device-AVMetadata-previousAssetId?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -315,6 +355,8 @@ The publishDate of the media
 **Type:** Date
 
 **Since:** 10
+
+<!--Device-AVMetadata-publishDate?: Date--><!--Device-AVMetadata-publishDate?: Date-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -332,6 +374,8 @@ The supported skipIntervals when doing rewind operation, the default is [SECONDS
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVMetadata-rewindSkipIntervals?: SkipIntervals--><!--Device-AVMetadata-rewindSkipIntervals?: SkipIntervals-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## singleLyricText
@@ -346,7 +390,9 @@ The single lyric text of the media, not including time prefix
 
 **Since:** 17
 
-**Atomic service API:** This API can be used in atomic services since API version 17.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 17.
+
+<!--Device-AVMetadata-singleLyricText?: string--><!--Device-AVMetadata-singleLyricText?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -362,6 +408,8 @@ The supported skipIntervals when doing fast forward and rewind operation, the de
 
 **Since:** 11
 
+<!--Device-AVMetadata-skipIntervals?: SkipIntervals--><!--Device-AVMetadata-skipIntervals?: SkipIntervals-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## subtitle
@@ -376,7 +424,9 @@ The subtitle of the media, used for display
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-subtitle?: string--><!--Device-AVMetadata-subtitle?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -392,7 +442,9 @@ The title of this media, for display in media center.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-title?: string--><!--Device-AVMetadata-title?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -408,6 +460,8 @@ The writer of this media
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AVMetadata-writer?: string--><!--Device-AVMetadata-writer?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core

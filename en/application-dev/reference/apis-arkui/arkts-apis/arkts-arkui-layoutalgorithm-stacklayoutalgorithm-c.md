@@ -17,6 +17,8 @@ A stack layout algorithm class, which is used to implement stacked arrangement o
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export class StackLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class StackLayoutAlgorithm implements LayoutAlgorithm-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -34,6 +36,8 @@ Constructs the stack layout algorithm class.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-StackLayoutAlgorithm-constructor(option?: StackLayoutAlgorithmOptions)--><!--Device-StackLayoutAlgorithm-constructor(option?: StackLayoutAlgorithmOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,5 +74,7 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-StackLayoutAlgorithm-public alignContent?: LocalizedAlignment--><!--Device-StackLayoutAlgorithm-public alignContent?: LocalizedAlignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

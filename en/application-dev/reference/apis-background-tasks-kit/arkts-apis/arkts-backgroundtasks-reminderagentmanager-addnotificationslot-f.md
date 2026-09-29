@@ -16,6 +16,8 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -63,6 +65,8 @@ function addNotificationSlot(slot: NotificationSlot): Promise<void>
 Adds a notification slot. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot): Promise<void>--><!--Device-reminderAgentManager-function addNotificationSlot(slot: NotificationSlot): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

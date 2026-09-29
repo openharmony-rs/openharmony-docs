@@ -8,6 +8,8 @@ Defines the authentication token data. It indicates the parsed **AuthToken** dat
 
 **Since:** 18
 
+<!--Device-userAccessCtrl-interface AuthToken--><!--Device-userAccessCtrl-interface AuthToken-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Authentication trust level. It indicates the security strength level of the curr
 
 **Since:** 18
 
+<!--Device-AuthToken-authTrustLevel: userAuth.AuthTrustLevel--><!--Device-AuthToken-authTrustLevel: userAuth.AuthTrustLevel-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Credential type for the identity authentication. It indicates the authentication
 **Type:** [userAuth.UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md)
 
 **Since:** 18
+
+<!--Device-AuthToken-authType: userAuth.UserAuthType--><!--Device-AuthToken-authType: userAuth.UserAuthType-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -62,6 +68,8 @@ Random challenge value for the authentication. It is used to prevent replay atta
 
 **Since:** 18
 
+<!--Device-AuthToken-challenge: Uint8Array--><!--Device-AuthToken-challenge: Uint8Array-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Credential ID. It indicates the ID of the credential that is successfully matche
 **Type:** bigint
 
 **Since:** 18
+
+<!--Device-AuthToken-credentialId?: bigint--><!--Device-AuthToken-credentialId?: bigint-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -94,6 +104,8 @@ Credential enrollment ID. It indicates the original value of **credentialDigest*
 
 **Since:** 18
 
+<!--Device-AuthToken-enrolledId?: bigint--><!--Device-AuthToken-enrolledId?: bigint-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Secure user ID. It indicates the security ID of a user, which is used internally
 **Type:** bigint
 
 **Since:** 18
+
+<!--Device-AuthToken-secureUid?: bigint--><!--Device-AuthToken-secureUid?: bigint-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -126,6 +140,8 @@ Time elapsed since the **AuthToken** was issued, in milliseconds.
 
 **Since:** 18
 
+<!--Device-AuthToken-timeInterval: bigint--><!--Device-AuthToken-timeInterval: bigint-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -142,6 +158,8 @@ Authentication token type. It identifies the source of the token, such as local 
 
 **Since:** 18
 
+<!--Device-AuthToken-tokenType: AuthTokenType--><!--Device-AuthToken-tokenType: AuthTokenType-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -157,6 +175,8 @@ User ID. It indicates the ID of the user who has completed authentication. The v
 **Type:** number
 
 **Since:** 18
+
+<!--Device-AuthToken-userId: int--><!--Device-AuthToken-userId: int-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

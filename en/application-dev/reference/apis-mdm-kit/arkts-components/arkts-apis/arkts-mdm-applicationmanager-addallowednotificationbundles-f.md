@@ -30,6 +30,8 @@ Adds applications to the notification trustlist. After the notification trustlis
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, accountId: number): void--><!--Device-applicationManager-function addAllowedNotificationBundles(admin: Want, bundleNames: Array<string>, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

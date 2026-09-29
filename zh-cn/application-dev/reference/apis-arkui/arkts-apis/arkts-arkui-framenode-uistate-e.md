@@ -8,6 +8,8 @@ export enum UIState
 
 **起始版本：** 20
 
+<!--Device-unnamed-export enum UIState--><!--Device-unnamed-export enum UIState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## NORMAL
@@ -23,6 +25,8 @@ NORMAL = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIState-NORMAL = 0--><!--Device-UIState-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ PRESSED = 1 << 0
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIState-PRESSED = 1 << 0--><!--Device-UIState-PRESSED = 1 << 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOCUSED
@@ -56,6 +62,8 @@ FOCUSED = 1 << 1
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIState-FOCUSED = 1 << 1--><!--Device-UIState-FOCUSED = 1 << 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DISABLED
@@ -71,6 +79,8 @@ DISABLED = 1 << 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIState-DISABLED = 1 << 2--><!--Device-UIState-DISABLED = 1 << 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +100,8 @@ SELECTED = 1 << 3
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-UIState-SELECTED = 1 << 3--><!--Device-UIState-SELECTED = 1 << 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## HOVERED
@@ -105,5 +117,7 @@ HOVERED = 1 << 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIState-HOVERED = 1 << 4--><!--Device-UIState-HOVERED = 1 << 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

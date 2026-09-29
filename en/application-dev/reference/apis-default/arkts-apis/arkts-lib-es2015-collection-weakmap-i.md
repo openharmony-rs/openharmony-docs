@@ -17,6 +17,8 @@ delete(key: K): boolean
 
 Removes the specified element from the WeakMap.
 
+<!--Device-WeakMap-delete(key: K): boolean--><!--Device-WeakMap-delete(key: K): boolean-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -35,6 +37,8 @@ Removes the specified element from the WeakMap.
 get(key: K): V | undefined
 ```
 
+<!--Device-WeakMap-get(key: K): V | undefined--><!--Device-WeakMap-get(key: K): V | undefined-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -52,6 +56,8 @@ get(key: K): V | undefined
 ```TypeScript
 has(key: K): boolean
 ```
+
+<!--Device-WeakMap-has(key: K): boolean--><!--Device-WeakMap-has(key: K): boolean-End-->
 
 **Parameters:**
 
@@ -72,6 +78,8 @@ set(key: K, value: V): this
 ```
 
 Adds a new element with a specified key and value.
+
+<!--Device-WeakMap-set(key: K, value: V): this--><!--Device-WeakMap-set(key: K, value: V): this-End-->
 
 **Parameters:**
 

@@ -28,6 +28,8 @@ to standard cold start processes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-hyperSnapManager-function setHyperSnapEnabled(enableFlag: boolean): void--><!--Device-hyperSnapManager-function setHyperSnapEnabled(enableFlag: boolean): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

@@ -8,6 +8,8 @@ Describes the settings for Wi-Fi connection.
 
 **Since:** 26.0.0
 
+<!--Device-wifiManager-interface ConnectSettings--><!--Device-wifiManager-interface ConnectSettings-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Whether to add the network to the system for connection. Default is false, if se
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ConnectSettings-addNetworkToSystem?: boolean--><!--Device-ConnectSettings-addNetworkToSystem?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -48,7 +52,9 @@ The ID (uniquely identifies) of a Wi-Fi connection.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ConnectSettings-networkId: int--><!--Device-ConnectSettings-networkId: int-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -66,7 +72,9 @@ User action timeout threshold(unit is seconds). The maximum value cannot exceed 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ConnectSettings-userActionTimeout?: int--><!--Device-ConnectSettings-userActionTimeout?: int-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -84,6 +92,8 @@ Returned with user action, default value is false.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ConnectSettings-withUserAction?: boolean--><!--Device-ConnectSettings-withUserAction?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA

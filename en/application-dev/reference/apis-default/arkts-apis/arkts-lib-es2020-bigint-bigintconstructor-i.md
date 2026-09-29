@@ -29,6 +29,8 @@ asIntN(bits: number, number: bigint): bigint
 
 Interprets the low bits of a BigInt as a 2's-complement signed integer. All higher bits are discarded.
 
+<!--Device-BigIntConstructor-asIntN(bits: number, int: bigint): bigint--><!--Device-BigIntConstructor-asIntN(bits: number, int: bigint): bigint-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -43,6 +45,8 @@ asUintN(bits: number, number: bigint): bigint
 ```
 
 Interprets the low bits of a BigInt as an unsigned integer. All higher bits are discarded.
+
+<!--Device-BigIntConstructor-asUintN(bits: number, int: bigint): bigint--><!--Device-BigIntConstructor-asUintN(bits: number, int: bigint): bigint-End-->
 
 **Parameters:**
 

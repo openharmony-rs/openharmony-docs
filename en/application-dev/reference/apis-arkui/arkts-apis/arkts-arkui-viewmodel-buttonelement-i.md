@@ -12,6 +12,8 @@ The &lt;button&gt; component includes capsule, circle, text, arc, and download b
 
 **Since:** 4
 
+<!--Device-unnamed-export interface ButtonElement extends Element--><!--Device-unnamed-export interface ButtonElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## setProgress
@@ -25,6 +27,8 @@ Progress bar of the download button. The value ranges from 0 to 100. The progres
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ButtonElement-setProgress(param: { progress: number }): void--><!--Device-ButtonElement-setProgress(param: { progress: number }): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

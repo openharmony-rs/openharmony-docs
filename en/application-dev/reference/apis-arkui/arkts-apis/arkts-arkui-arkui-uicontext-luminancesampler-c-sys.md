@@ -13,6 +13,8 @@ Sets the background luminance color picking parameters, registers the luminance 
 
 **Since:** 23
 
+<!--Device-unnamed-export class LuminanceSampler--><!--Device-unnamed-export class LuminanceSampler-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -37,6 +39,8 @@ Unregisters the callback for listening to color picking. If no callback is speci
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LuminanceSampler-offBackgroundLuminanceChange(samplingCallback?: Callback<number>): void--><!--Device-LuminanceSampler-offBackgroundLuminanceChange(samplingCallback?: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,6 +157,8 @@ The background luminance is divided into three ranges based on the luminance thr
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-LuminanceSampler-onBackgroundLuminanceChange(samplingCallback: Callback<number>): void--><!--Device-LuminanceSampler-onBackgroundLuminanceChange(samplingCallback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -178,6 +184,8 @@ Sets the color picking parameters. If the luminance threshold is not within the 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LuminanceSampler-setBackgroundLuminanceSamplingConfigs(configs: BackgroundLuminanceSamplingConfigs): void--><!--Device-LuminanceSampler-setBackgroundLuminanceSamplingConfigs(configs: BackgroundLuminanceSamplingConfigs): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

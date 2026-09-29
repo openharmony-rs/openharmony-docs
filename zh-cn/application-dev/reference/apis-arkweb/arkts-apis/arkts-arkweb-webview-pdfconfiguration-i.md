@@ -12,6 +12,8 @@ interface PdfConfiguration
 
 **起始版本：** 14
 
+<!--Device-webview-interface PdfConfiguration--><!--Device-webview-interface PdfConfiguration-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -40,6 +42,8 @@ height: number
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-PdfConfiguration-height: number--><!--Device-PdfConfiguration-height: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## marginBottom
@@ -59,6 +63,8 @@ marginBottom: number
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-PdfConfiguration-marginBottom: number--><!--Device-PdfConfiguration-marginBottom: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -80,6 +86,8 @@ marginLeft: number
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-PdfConfiguration-marginLeft: number--><!--Device-PdfConfiguration-marginLeft: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## marginRight
@@ -99,6 +107,8 @@ marginRight: number
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-PdfConfiguration-marginRight: number--><!--Device-PdfConfiguration-marginRight: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -120,6 +130,8 @@ marginTop: number
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-PdfConfiguration-marginTop: number--><!--Device-PdfConfiguration-marginTop: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## scale
@@ -140,6 +152,8 @@ scale?: number
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-PdfConfiguration-scale?: number--><!--Device-PdfConfiguration-scale?: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## shouldPrintBackground
@@ -157,6 +171,8 @@ true表示打印背景颜色，false表示不打印背景颜色。
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-PdfConfiguration-shouldPrintBackground?: boolean--><!--Device-PdfConfiguration-shouldPrintBackground?: boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -179,5 +195,7 @@ width: number
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-PdfConfiguration-width: number--><!--Device-PdfConfiguration-width: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

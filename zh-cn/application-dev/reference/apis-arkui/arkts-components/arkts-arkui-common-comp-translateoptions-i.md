@@ -8,6 +8,8 @@ declare interface TranslateOptions
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface TranslateOptions--><!--Device-unnamed-declare interface TranslateOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -31,6 +33,8 @@ x轴的平移距离。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TranslateOptions-x?: number | string--><!--Device-TranslateOptions-x?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ y轴的平移距离。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TranslateOptions-y?: number | string--><!--Device-TranslateOptions-y?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -79,5 +85,7 @@ z轴的平移距离。z轴方向移动时由于观察点位置不变，z的值�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TranslateOptions-z?: number | string--><!--Device-TranslateOptions-z?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

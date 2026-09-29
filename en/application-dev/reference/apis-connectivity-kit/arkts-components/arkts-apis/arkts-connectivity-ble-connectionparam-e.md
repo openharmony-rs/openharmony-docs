@@ -8,6 +8,8 @@ GATT connection parameters.
 
 **Since:** 22
 
+<!--Device-ble-enum ConnectionParam--><!--Device-ble-enum ConnectionParam-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## LOW_POWER
@@ -21,6 +23,8 @@ low power mode.
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionParam-LOW_POWER = 1--><!--Device-ConnectionParam-LOW_POWER = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -36,6 +40,8 @@ balanced power mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionParam-BALANCED = 2--><!--Device-ConnectionParam-BALANCED = 2-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## HIGH
@@ -49,5 +55,7 @@ Use the highest connection parameters.
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionParam-HIGH = 3--><!--Device-ConnectionParam-HIGH = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

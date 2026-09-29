@@ -8,6 +8,8 @@ Defines the add form options.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface AddFormOptions--><!--Device-unnamed-export interface AddFormOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -28,7 +30,9 @@ The callback is used to return the form id.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AddFormOptions-callback?: AsyncCallback<string>--><!--Device-AddFormOptions-callback?: AsyncCallback<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +48,9 @@ Indicates the form data.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AddFormOptions-formBindingData?: formBindingData.FormBindingData--><!--Device-AddFormOptions-formBindingData?: formBindingData.FormBindingData-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +66,8 @@ The style of the menu item.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AddFormOptions-style?: FormMenuItemStyle--><!--Device-AddFormOptions-style?: FormMenuItemStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

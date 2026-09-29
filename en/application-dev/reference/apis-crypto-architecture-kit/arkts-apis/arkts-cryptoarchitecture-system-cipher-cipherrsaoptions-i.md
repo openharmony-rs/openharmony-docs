@@ -12,6 +12,8 @@ Defines the input parameters of **cipher.rsa()**.
 
 **Substitutes:** Cipher
 
+<!--Device-unnamed-export interface CipherRsaOptions--><!--Device-unnamed-export interface CipherRsaOptions-End-->
+
 **System capability:** SystemCapability.Security.Cipher
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Called when the execution is complete.
 
 **Substitutes:** Cipher
 
+<!--Device-CipherRsaOptions-complete: () => void--><!--Device-CipherRsaOptions-complete: () => void-End-->
+
 **System capability:** SystemCapability.Security.Cipher
 
 ## fail
@@ -49,6 +53,8 @@ Called when data fails to be encrypted or decrypted.
 **Deprecated since:** 11
 
 **Substitutes:** Cipher
+
+<!--Device-CipherRsaOptions-fail: (data: string, code: number) => void--><!--Device-CipherRsaOptions-fail: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Security.Cipher
 
@@ -72,6 +78,8 @@ Called when data is encrypted or decrypted successfully.
 **Deprecated since:** 11
 
 **Substitutes:** Cipher
+
+<!--Device-CipherRsaOptions-success: (data: CipherResponse) => void--><!--Device-CipherRsaOptions-success: (data: CipherResponse) => void-End-->
 
 **System capability:** SystemCapability.Security.Cipher
 
@@ -100,6 +108,8 @@ Action to perform. The options are as follows:
 
 **Substitutes:** Cipher
 
+<!--Device-CipherRsaOptions-action: string--><!--Device-CipherRsaOptions-action: string-End-->
+
 **System capability:** SystemCapability.Security.Cipher
 
 ## key
@@ -117,6 +127,8 @@ RSA key. It is a public key in encryption and a private key in decryption.
 **Deprecated since:** 11
 
 **Substitutes:** Cipher
+
+<!--Device-CipherRsaOptions-key: string--><!--Device-CipherRsaOptions-key: string-End-->
 
 **System capability:** SystemCapability.Security.Cipher
 
@@ -138,6 +150,8 @@ The text to be encrypted must be a common text and cannot exceed the length calc
 
 **Substitutes:** Cipher
 
+<!--Device-CipherRsaOptions-text: string--><!--Device-CipherRsaOptions-text: string-End-->
+
 **System capability:** SystemCapability.Security.Cipher
 
 ## transformation
@@ -155,5 +169,7 @@ RSA padding. The default value is **RSA/None/OAEPWithSHA256AndMGF1Padding**.
 **Deprecated since:** 11
 
 **Substitutes:** Cipher
+
+<!--Device-CipherRsaOptions-transformation?: string--><!--Device-CipherRsaOptions-transformation?: string-End-->
 
 **System capability:** SystemCapability.Security.Cipher

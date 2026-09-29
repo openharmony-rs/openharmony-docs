@@ -10,7 +10,121 @@ Context is the context base class of the stage model. It is used to access appli
 
 **Since:** 9
 
+<!--Device-unnamed-declare class Context extends BaseContext--><!--Device-unnamed-declare class Context extends BaseContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## createModuleResourceManager
+
+```TypeScript
+createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
+```
+
+Creates a resource management object for a module.
+
+**Since:** 11
+
+**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Context-createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager--><!--Device-Context-createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| bundleName | string | Yes | Bundle name. |
+| moduleName | string | Yes | Module name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md) | Object for resource management. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let ModuleResourceManager: resourceManager.ResourceManager;
+    try {
+      ModuleResourceManager = this.context.createModuleResourceManager('com.example.test', 'entry');
+    } catch (error) {
+      console.error(`createModuleResourceManager failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+    }
+  }
+}
+```
+
+## createSystemHspModuleResourceManager
+
+```TypeScript
+createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
+```
+
+Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-getresourcemanager-f.md) for an OEM-preset [system-level HSP](../../../quick-start/application-package-glossary.md#system-level-hsp).
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Context-createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager--><!--Device-Context-createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| bundleName | string | Yes | Bundle name. |
+| moduleName | string | Yes | Module name. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md) | Returns the system HSP module resource manager. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16400001](../errorcode-ability.md#16400001-target-application-type-is-not-a-system-hsp) | The input bundleName is not a system HSP. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    this.context.createSystemHspModuleResourceManager("com.example.myapplication", "library");
+  }
+}
+```
 
 ## createBundleContext
 
@@ -39,6 +153,8 @@ Creates the context based on the bundle name.
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Context-createBundleContext(bundleName: string): Context--><!--Device-Context-createBundleContext(bundleName: string): Context-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -107,6 +223,8 @@ Creates the context based on the bundle name and module name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Context-createModuleContext(bundleName: string, moduleName: string): Context--><!--Device-Context-createModuleContext(bundleName: string, moduleName: string): Context-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -145,114 +263,6 @@ export default class EntryAbility extends UIAbility {
     } catch (error) {
       console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
     }
-  }
-}
-```
-
-## createModuleResourceManager
-
-```TypeScript
-createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
-```
-
-Creates a resource management object for a module.
-
-**Since:** 11
-
-**Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name. |
-| moduleName | string | Yes | Module name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md) | Object for resource management. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-
-**Examples**
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { resourceManager } from '@kit.LocalizationKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    console.info('MyAbility onCreate');
-    let ModuleResourceManager: resourceManager.ResourceManager;
-    try {
-      ModuleResourceManager = this.context.createModuleResourceManager('com.example.test', 'entry');
-    } catch (error) {
-      console.error(`createModuleResourceManager failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
-    }
-  }
-}
-```
-
-## createSystemHspModuleResourceManager
-
-```TypeScript
-createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
-```
-
-Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-getresourcemanager-f.md) for an OEM-preset [system-level HSP](../../../quick-start/application-package-glossary.md#system-level-hsp).
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name. |
-| moduleName | string | Yes | Module name. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md) | Returns the system HSP module resource manager. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16400001](../errorcode-ability.md#16400001-target-application-type-is-not-a-system-hsp) | The input bundleName is not a system HSP. |
-
-**Examples**
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    console.info('MyAbility onCreate');
-    this.context.createSystemHspModuleResourceManager("com.example.myapplication", "library");
   }
 }
 ```

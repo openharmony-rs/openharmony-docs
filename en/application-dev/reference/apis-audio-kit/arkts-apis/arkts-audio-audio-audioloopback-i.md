@@ -18,6 +18,8 @@ The system automatically chooses the input and output devices. If these devices 
 
 **Since:** 20
 
+<!--Device-audio-interface AudioLoopback--><!--Device-audio-interface AudioLoopback-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Enable or disable audio loopback. When audio loopback is enabled, the system aut
 **Since:** 20
 
 **Required permissions:** ohos.permission.MICROPHONE
+
+<!--Device-AudioLoopback-enable(enable: boolean): Promise<boolean>--><!--Device-AudioLoopback-enable(enable: boolean): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -69,6 +73,8 @@ Gets the current equalizer preset. The default equalizer preset of audio loopbac
 
 **Since:** 21
 
+<!--Device-AudioLoopback-getEqualizerPreset(): AudioLoopbackEqualizerPreset--><!--Device-AudioLoopback-getEqualizerPreset(): AudioLoopbackEqualizerPreset-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -89,6 +95,8 @@ Gets the preferred audio device pair in current device connection situation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioLoopback-getPreferredDevicePair(): AudioDevicePair | null--><!--Device-AudioLoopback-getPreferredDevicePair(): AudioDevicePair | null-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -107,6 +115,8 @@ Get the current reverberation. The default reverberation preset of audio loopbac
 
 **Since:** 21
 
+<!--Device-AudioLoopback-getReverbPreset(): AudioLoopbackReverbPreset--><!--Device-AudioLoopback-getReverbPreset(): AudioLoopbackReverbPreset-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -124,6 +134,8 @@ getStatus(): Promise<AudioLoopbackStatus>
 Obtains the audio loopback status. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-AudioLoopback-getStatus(): Promise<AudioLoopbackStatus>--><!--Device-AudioLoopback-getStatus(): Promise<AudioLoopbackStatus>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -145,6 +157,8 @@ Gets supported audio device pairs in current device connection situation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioLoopback-getSupportedDevicePairs(): Array<AudioDevicePair>--><!--Device-AudioLoopback-getSupportedDevicePairs(): Array<AudioDevicePair>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -165,6 +179,8 @@ Gets the output volume for audio loopback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioLoopback-getVolume(): double--><!--Device-AudioLoopback-getVolume(): double-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Return value:**
@@ -182,6 +198,8 @@ off(type: 'statusChange', callback?: Callback<AudioLoopbackStatus>): void
 Unsubscribes from the audio loopback status event. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-AudioLoopback-off(type: 'statusChange', callback?: Callback<AudioLoopbackStatus>): void--><!--Device-AudioLoopback-off(type: 'statusChange', callback?: Callback<AudioLoopbackStatus>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -208,6 +226,8 @@ Subscribes to the audio loopback status change event, which is triggered when th
 
 **Since:** 20
 
+<!--Device-AudioLoopback-on(type: 'statusChange', callback: Callback<AudioLoopbackStatus>): void--><!--Device-AudioLoopback-on(type: 'statusChange', callback: Callback<AudioLoopbackStatus>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -232,6 +252,8 @@ setEqualizerPreset(preset: AudioLoopbackEqualizerPreset): boolean
 Sets the equalizer preset of the audio loopback.
 
 **Since:** 21
+
+<!--Device-AudioLoopback-setEqualizerPreset(preset: AudioLoopbackEqualizerPreset): boolean--><!--Device-AudioLoopback-setEqualizerPreset(preset: AudioLoopbackEqualizerPreset): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -263,6 +285,8 @@ Sets the reverberation of the audio loopback.
 
 **Since:** 21
 
+<!--Device-AudioLoopback-setReverbPreset(preset: AudioLoopbackReverbPreset): boolean--><!--Device-AudioLoopback-setReverbPreset(preset: AudioLoopbackReverbPreset): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **Parameters:**
@@ -292,6 +316,8 @@ setVolume(volume: number): Promise<void>
 Sets the volume for audio loopback. This volume does not affect other audio streams or the system volume.
 
 **Since:** 20
+
+<!--Device-AudioLoopback-setVolume(volume: double): Promise<void>--><!--Device-AudioLoopback-setVolume(volume: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

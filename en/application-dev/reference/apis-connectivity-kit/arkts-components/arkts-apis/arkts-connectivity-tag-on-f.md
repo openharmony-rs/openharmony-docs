@@ -20,6 +20,8 @@ Subscribes to the NFC tag read event to implement dispatch of the tag to a foreg
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-tag-function on(type: 'readerMode', elementName: ElementName, discTech: int[], callback: AsyncCallback<TagInfo>): void--><!--Device-tag-function on(type: 'readerMode', elementName: ElementName, discTech: int[], callback: AsyncCallback<TagInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 **Parameters:**
@@ -67,6 +69,8 @@ is present. The callback returns [TagInfo](arkts-connectivity-tag-taginfo-i.md) 
 **Required permissions:** ohos.permission.NFC_TAG
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-tag-function on(    type: 'readerModeWithInterval',    elementName: ElementName,    discTech: int[],    callback: Callback<TagInfo>,    interval: int  ): void--><!--Device-tag-function on(    type: 'readerModeWithInterval',    elementName: ElementName,    discTech: int[],    callback: Callback<TagInfo>,    interval: int  ): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

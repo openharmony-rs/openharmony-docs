@@ -12,6 +12,8 @@ Represents the formatting options for the **RelativeTimeFormat** object.
 
 **Substitutes:** [Intl.ResolvedRelativeTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#return_value)
 
+<!--Device-intl-export interface RelativeTimeFormatResolvedOptions--><!--Device-intl-export interface RelativeTimeFormatResolvedOptions-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Locale ID, including the language, script, and region.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RelativeTimeFormatResolvedOptions-locale: string--><!--Device-RelativeTimeFormatResolvedOptions-locale: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## numberingSystem
@@ -59,6 +63,8 @@ Numbering system. The value can be:
 **Substitutes:** [Intl.ResolvedRelativeTimeFormatOptions.numberingSystem](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#numberingsystem)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormatResolvedOptions-numberingSystem: string--><!--Device-RelativeTimeFormatResolvedOptions-numberingSystem: string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -82,6 +88,8 @@ For details about their display effects, see [Table 23](../../../reference/apis-
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RelativeTimeFormatResolvedOptions-numeric: string--><!--Device-RelativeTimeFormatResolvedOptions-numeric: string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## style
@@ -103,5 +111,7 @@ For details about their display effects, see [Table 24](../../../reference/apis-
 **Substitutes:** [Intl.ResolvedRelativeTimeFormatOptions.style](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions#style)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RelativeTimeFormatResolvedOptions-style: string--><!--Device-RelativeTimeFormatResolvedOptions-style: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

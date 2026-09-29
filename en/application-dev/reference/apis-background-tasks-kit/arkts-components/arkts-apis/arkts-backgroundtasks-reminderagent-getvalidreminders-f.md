@@ -20,6 +20,8 @@ Obtains all valid (not yet expired) reminders set by the current application. Th
 
 **Substitutes:** [getValidReminders](arkts-backgroundtasks-reminderagentmanager-getvalidreminders-f.md)
 
+<!--Device-reminderAgent-function getValidReminders(callback: AsyncCallback<Array<ReminderRequest>>): void--><!--Device-reminderAgent-function getValidReminders(callback: AsyncCallback<Array<ReminderRequest>>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -75,6 +77,8 @@ Obtains all valid (not yet expired) reminders set by the current application. Th
 **Deprecated since:** 9
 
 **Substitutes:** [getValidReminders](arkts-backgroundtasks-reminderagentmanager-getvalidreminders-f.md)
+
+<!--Device-reminderAgent-function getValidReminders(): Promise<Array<ReminderRequest>>--><!--Device-reminderAgent-function getValidReminders(): Promise<Array<ReminderRequest>>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

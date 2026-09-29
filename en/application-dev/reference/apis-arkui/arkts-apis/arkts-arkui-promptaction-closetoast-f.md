@@ -27,6 +27,8 @@ Closes the specified toast.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-function closeToast(toastId: number): void--><!--Device-promptAction-function closeToast(toastId: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -20,6 +20,8 @@ Obtains the list of all connected networks. This API returns the result synchron
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-connection-function getAllNetsSync(): Array<NetHandle>--><!--Device-connection-function getAllNetsSync(): Array<NetHandle>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Return value:**

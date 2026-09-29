@@ -10,6 +10,8 @@ HierarchicalSymbolEffect继承自父类SymbolEffect。
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare class HierarchicalSymbolEffect extends SymbolEffect--><!--Device-unnamed-declare class HierarchicalSymbolEffect extends SymbolEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -27,6 +29,8 @@ HierarchicalSymbolEffect的构造函数，层级动效。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HierarchicalSymbolEffect-constructor(fillStyle?: EffectFillStyle)--><!--Device-HierarchicalSymbolEffect-constructor(fillStyle?: EffectFillStyle)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,5 +59,7 @@ fillStyle?: EffectFillStyle
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-HierarchicalSymbolEffect-fillStyle?: EffectFillStyle--><!--Device-HierarchicalSymbolEffect-fillStyle?: EffectFillStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

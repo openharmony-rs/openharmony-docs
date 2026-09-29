@@ -8,6 +8,8 @@ export interface LocaleResponse
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface LocaleResponse--><!--Device-unnamed-export interface LocaleResponse-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## 导入模块
@@ -30,6 +32,8 @@ countryOrRegion: string
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocaleResponse-countryOrRegion: string--><!--Device-LocaleResponse-countryOrRegion: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## dir
@@ -50,6 +54,8 @@ dir: "ltr" | "rtl"
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-LocaleResponse-dir: "ltr" | "rtl"--><!--Device-LocaleResponse-dir: "ltr" | "rtl"-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## language
@@ -65,5 +71,7 @@ language: string
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-LocaleResponse-language: string--><!--Device-LocaleResponse-language: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite

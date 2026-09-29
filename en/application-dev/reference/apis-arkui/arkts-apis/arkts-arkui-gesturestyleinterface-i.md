@@ -8,6 +8,8 @@ Defines the Gesture Events.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface GestureStyleInterface--><!--Device-unnamed-declare interface GestureStyleInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onClick
@@ -16,7 +18,7 @@ Defines the Gesture Events.
 onClick?: Callback<ClickEvent>
 ```
 
-Callback for click events.
+Click event.
 
 **Type:** Callback&lt;[ClickEvent](../arkts-components/arkts-arkui-common-comp-clickevent-i.md)&gt;
 
@@ -26,6 +28,8 @@ Callback for click events.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureStyleInterface-onClick?: Callback<ClickEvent>--><!--Device-GestureStyleInterface-onClick?: Callback<ClickEvent>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onLongPress
@@ -34,7 +38,7 @@ Callback for click events.
 onLongPress?: Callback<GestureEvent>
 ```
 
-Callback for long press events.
+Long press event.
 
 **Type:** Callback&lt;[GestureEvent](../arkts-components/arkts-arkui-tapgesture-comp-gestureevent-i.md)&gt;
 
@@ -44,6 +48,8 @@ Callback for long press events.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GestureStyleInterface-onLongPress?: Callback<GestureEvent>--><!--Device-GestureStyleInterface-onLongPress?: Callback<GestureEvent>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onTouch
@@ -52,7 +58,7 @@ Callback for long press events.
 onTouch?: Callback<TouchEvent>
 ```
 
-Callback for touch events.
+Touch event.
 
 **Type:** Callback&lt;[TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md)&gt;
 
@@ -61,5 +67,7 @@ Callback for touch events.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureStyleInterface-onTouch?: Callback<TouchEvent>--><!--Device-GestureStyleInterface-onTouch?: Callback<TouchEvent>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

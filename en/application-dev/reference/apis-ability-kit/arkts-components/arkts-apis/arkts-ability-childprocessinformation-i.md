@@ -8,6 +8,8 @@ The module defines the child process information. The information can be obtaine
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export interface ChildProcessInformation--><!--Device-unnamed-export interface ChildProcessInformation-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## parentPid
@@ -23,6 +25,8 @@ PID of the parent process of the child process.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChildProcessInformation-parentPid: int--><!--Device-ChildProcessInformation-parentPid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ PID of the child process.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ChildProcessInformation-pid: int--><!--Device-ChildProcessInformation-pid: int-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## processName
@@ -55,5 +61,7 @@ Process name of the child process.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ChildProcessInformation-processName: string--><!--Device-ChildProcessInformation-processName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -4,11 +4,11 @@
 declare enum FocusDrawLevel
 ```
 
-Type of focus draw level.
-
-@enum {number}
+Enumerates the drawing levels of the focus box for a node.
 
 **Since:** 19
+
+<!--Device-unnamed-declare enum FocusDrawLevel--><!--Device-unnamed-declare enum FocusDrawLevel-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,7 @@ Type of focus draw level.
 SELF = 0
 ```
 
-Draw focus on node self level.
+The focus box is drawn on the node's own layer.
 
 **Since:** 19
 
@@ -27,6 +27,8 @@ Draw focus on node self level.
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
+
+<!--Device-FocusDrawLevel-SELF = 0--><!--Device-FocusDrawLevel-SELF = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,7 @@ Draw focus on node self level.
 TOP = 1
 ```
 
-Draw focus on top level.
+The focus box is drawn on the topmost layer of the current instance's z-order.
 
 **Since:** 19
 
@@ -45,5 +47,7 @@ Draw focus on top level.
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 19.
+
+<!--Device-FocusDrawLevel-TOP = 1--><!--Device-FocusDrawLevel-TOP = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

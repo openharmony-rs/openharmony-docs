@@ -12,6 +12,8 @@ Defines the grid layout container configuration parameter object, used to set th
 
 **Substitutes:** grid_col/GridColOptions and grid_row/GridRowOptions
 
+<!--Device-unnamed-declare interface GridContainerOptions--><!--Device-unnamed-declare interface GridContainerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## columns
@@ -32,6 +34,8 @@ Default value: **'auto'**
 
 **Substitutes:** grid_col/GridColOptions and grid_row/GridRowOptions
 
+<!--Device-GridContainerOptions-columns?: number | "auto"--><!--Device-GridContainerOptions-columns?: number | "auto"-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gutter
@@ -50,6 +54,8 @@ Gutter of the grid layout. Percentage values are not supported. When the type is
 
 **Substitutes:** grid_col/GridColOptions and grid_row/GridRowOptions
 
+<!--Device-GridContainerOptions-gutter?: number | string--><!--Device-GridContainerOptions-gutter?: number | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## margin
@@ -67,6 +73,8 @@ Margin on both sides of the grid layout. Percentage values are not supported. Wh
 **Deprecated since:** 9
 
 **Substitutes:** grid_col/GridColOptions and grid_row/GridRowOptions
+
+<!--Device-GridContainerOptions-margin?: number | string--><!--Device-GridContainerOptions-margin?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,5 +95,7 @@ Default value: **SizeType.Auto**
 **Deprecated since:** 9
 
 **Substitutes:** grid_col/GridColOptions and grid_row/GridRowOptions
+
+<!--Device-GridContainerOptions-sizeType?: SizeType--><!--Device-GridContainerOptions-sizeType?: SizeType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

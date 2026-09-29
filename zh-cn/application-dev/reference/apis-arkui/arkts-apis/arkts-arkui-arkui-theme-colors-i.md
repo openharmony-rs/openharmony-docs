@@ -8,6 +8,8 @@ export declare interface Colors
 
 **起始版本：** 12
 
+<!--Device-unnamed-export declare interface Colors--><!--Device-unnamed-export declare interface Colors-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ alert: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-alert: ResourceColor--><!--Device-Colors-alert: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEmphasize
@@ -49,6 +53,8 @@ backgroundEmphasize: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-backgroundEmphasize: ResourceColor--><!--Device-Colors-backgroundEmphasize: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ backgroundFourth: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-backgroundFourth: ResourceColor--><!--Device-Colors-backgroundFourth: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundPrimary
@@ -85,6 +93,8 @@ backgroundPrimary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-backgroundPrimary: ResourceColor--><!--Device-Colors-backgroundPrimary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +114,8 @@ backgroundSecondary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-backgroundSecondary: ResourceColor--><!--Device-Colors-backgroundSecondary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundTertiary
@@ -121,6 +133,8 @@ backgroundTertiary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-backgroundTertiary: ResourceColor--><!--Device-Colors-backgroundTertiary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +154,8 @@ brand: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-brand: ResourceColor--><!--Device-Colors-brand: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundEmphasize
@@ -157,6 +173,8 @@ compBackgroundEmphasize: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compBackgroundEmphasize: ResourceColor--><!--Device-Colors-compBackgroundEmphasize: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,6 +194,8 @@ compBackgroundFocus: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compBackgroundFocus: ResourceColor--><!--Device-Colors-compBackgroundFocus: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundGray
@@ -193,6 +213,8 @@ compBackgroundGray: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compBackgroundGray: ResourceColor--><!--Device-Colors-compBackgroundGray: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +234,8 @@ compBackgroundNeutral: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compBackgroundNeutral: ResourceColor--><!--Device-Colors-compBackgroundNeutral: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundPrimary
@@ -229,6 +253,8 @@ compBackgroundPrimary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compBackgroundPrimary: ResourceColor--><!--Device-Colors-compBackgroundPrimary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,6 +274,8 @@ compBackgroundPrimaryContrary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compBackgroundPrimaryContrary: ResourceColor--><!--Device-Colors-compBackgroundPrimaryContrary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundPrimaryTran
@@ -265,6 +293,8 @@ compBackgroundPrimaryTran: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compBackgroundPrimaryTran: ResourceColor--><!--Device-Colors-compBackgroundPrimaryTran: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,6 +314,8 @@ compBackgroundSecondary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compBackgroundSecondary: ResourceColor--><!--Device-Colors-compBackgroundSecondary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compBackgroundTertiary
@@ -301,6 +333,8 @@ compBackgroundTertiary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compBackgroundTertiary: ResourceColor--><!--Device-Colors-compBackgroundTertiary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,6 +354,8 @@ compCommonContrary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compCommonContrary: ResourceColor--><!--Device-Colors-compCommonContrary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compDivider
@@ -337,6 +373,8 @@ compDivider: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compDivider: ResourceColor--><!--Device-Colors-compDivider: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -356,6 +394,8 @@ compEmphasizeSecondary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compEmphasizeSecondary: ResourceColor--><!--Device-Colors-compEmphasizeSecondary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compEmphasizeTertiary
@@ -373,6 +413,8 @@ compEmphasizeTertiary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compEmphasizeTertiary: ResourceColor--><!--Device-Colors-compEmphasizeTertiary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +434,8 @@ compFocusedPrimary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compFocusedPrimary: ResourceColor--><!--Device-Colors-compFocusedPrimary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compFocusedSecondary
@@ -409,6 +453,8 @@ compFocusedSecondary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compFocusedSecondary: ResourceColor--><!--Device-Colors-compFocusedSecondary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -428,6 +474,8 @@ compFocusedTertiary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-compFocusedTertiary: ResourceColor--><!--Device-Colors-compFocusedTertiary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## compForegroundPrimary
@@ -445,6 +493,8 @@ compForegroundPrimary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-compForegroundPrimary: ResourceColor--><!--Device-Colors-compForegroundPrimary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,6 +514,8 @@ confirm: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-confirm: ResourceColor--><!--Device-Colors-confirm: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## container
@@ -481,6 +533,8 @@ container?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-container?: ResourceColor--><!--Device-Colors-container?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -500,6 +554,8 @@ fontEmphasize: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-fontEmphasize: ResourceColor--><!--Device-Colors-fontEmphasize: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFourth
@@ -517,6 +573,8 @@ fontFourth: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-fontFourth: ResourceColor--><!--Device-Colors-fontFourth: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -536,6 +594,8 @@ fontOnFourth: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-fontOnFourth: ResourceColor--><!--Device-Colors-fontOnFourth: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontOnPrimary
@@ -553,6 +613,8 @@ fontOnPrimary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-fontOnPrimary: ResourceColor--><!--Device-Colors-fontOnPrimary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -572,6 +634,8 @@ fontOnSecondary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-fontOnSecondary: ResourceColor--><!--Device-Colors-fontOnSecondary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontOnTertiary
@@ -589,6 +653,8 @@ fontOnTertiary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-fontOnTertiary: ResourceColor--><!--Device-Colors-fontOnTertiary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -608,6 +674,8 @@ fontPrimary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-fontPrimary: ResourceColor--><!--Device-Colors-fontPrimary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSecondary
@@ -625,6 +693,8 @@ fontSecondary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-fontSecondary: ResourceColor--><!--Device-Colors-fontSecondary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,6 +714,8 @@ fontTertiary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-fontTertiary: ResourceColor--><!--Device-Colors-fontTertiary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconEmphasize
@@ -661,6 +733,8 @@ iconEmphasize: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-iconEmphasize: ResourceColor--><!--Device-Colors-iconEmphasize: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -680,6 +754,8 @@ iconFourth: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-iconFourth: ResourceColor--><!--Device-Colors-iconFourth: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconOnFourth
@@ -697,6 +773,8 @@ iconOnFourth: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-iconOnFourth: ResourceColor--><!--Device-Colors-iconOnFourth: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,6 +794,8 @@ iconOnPrimary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-iconOnPrimary: ResourceColor--><!--Device-Colors-iconOnPrimary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconOnSecondary
@@ -733,6 +813,8 @@ iconOnSecondary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-iconOnSecondary: ResourceColor--><!--Device-Colors-iconOnSecondary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -752,6 +834,8 @@ iconOnTertiary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-iconOnTertiary: ResourceColor--><!--Device-Colors-iconOnTertiary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconPrimary
@@ -769,6 +853,8 @@ iconPrimary: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-iconPrimary: ResourceColor--><!--Device-Colors-iconPrimary: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -788,6 +874,8 @@ iconSecondary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-iconSecondary: ResourceColor--><!--Device-Colors-iconSecondary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconSubEmphasize
@@ -805,6 +893,8 @@ iconSubEmphasize: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-iconSubEmphasize: ResourceColor--><!--Device-Colors-iconSubEmphasize: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -824,6 +914,8 @@ iconTertiary: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-iconTertiary: ResourceColor--><!--Device-Colors-iconTertiary: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## interactiveActive
@@ -841,6 +933,8 @@ interactiveActive: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-interactiveActive: ResourceColor--><!--Device-Colors-interactiveActive: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -860,6 +954,8 @@ interactiveClick: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-interactiveClick: ResourceColor--><!--Device-Colors-interactiveClick: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## interactiveFocus
@@ -877,6 +973,8 @@ interactiveFocus: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-interactiveFocus: ResourceColor--><!--Device-Colors-interactiveFocus: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -896,6 +994,8 @@ interactiveHover: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-interactiveHover: ResourceColor--><!--Device-Colors-interactiveHover: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## interactivePressed
@@ -913,6 +1013,8 @@ interactivePressed: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-interactivePressed: ResourceColor--><!--Device-Colors-interactivePressed: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -932,6 +1034,8 @@ interactiveSelect: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-interactiveSelect: ResourceColor--><!--Device-Colors-interactiveSelect: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onPrimary
@@ -949,6 +1053,8 @@ onPrimary?: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-onPrimary?: ResourceColor--><!--Device-Colors-onPrimary?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -968,6 +1074,8 @@ primary?: ResourceColor
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-Colors-primary?: ResourceColor--><!--Device-Colors-primary?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## warning
@@ -985,5 +1093,7 @@ warning: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Colors-warning: ResourceColor--><!--Device-Colors-warning: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

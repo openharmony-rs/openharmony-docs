@@ -12,6 +12,8 @@ Describes the **BundleOption** information, that is, the bundle information of a
 
 **Substitutes:** BundleOption
 
+<!--Device-notification-export interface BundleOption--><!--Device-notification-export interface BundleOption-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Bundle information of the application.
 
 **Substitutes:** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)
 
+<!--Device-BundleOption-bundle: string--><!--Device-BundleOption-bundle: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## uid
@@ -52,5 +56,7 @@ User ID. The default value is 0.
 **Deprecated since:** 9
 
 **Substitutes:** [BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)
+
+<!--Device-BundleOption-uid?: number--><!--Device-BundleOption-uid?: number-End-->
 
 **System capability:** SystemCapability.Notification.Notification

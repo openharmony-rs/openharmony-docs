@@ -20,6 +20,8 @@ Disable Wi-Fi hotspot function. If Wi-Fi is enabled after the Wi-Fi hotspot is d
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
 
+<!--Device-wifiManagerExt-function disableHotspot(): void--><!--Device-wifiManagerExt-function disableHotspot(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 **Error codes:**

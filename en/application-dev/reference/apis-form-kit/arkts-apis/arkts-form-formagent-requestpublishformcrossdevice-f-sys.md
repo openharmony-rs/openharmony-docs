@@ -21,6 +21,8 @@ Requests to publish a form to the form host service of the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formAgent-function requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want,    formBindingData?: formBindingData.FormBindingData): Promise<formInfo.PublishFormCrossDeviceResult>--><!--Device-formAgent-function requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want,    formBindingData?: formBindingData.FormBindingData): Promise<formInfo.PublishFormCrossDeviceResult>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Startup wizard completion scenario. When the initial switch to a sub-user (only 
 
 **Since:** 24
 
+<!--Device-common-export enum StartupScene--><!--Device-common-export enum StartupScene-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## USER_SETUP
@@ -21,6 +23,8 @@ A sub-user is switched to for the first time and the startup wizard for the sub-
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupScene-USER_SETUP = 0--><!--Device-StartupScene-USER_SETUP = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ The OTA upgrade is complete.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StartupScene-OTA = 1--><!--Device-StartupScene-OTA = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DEVICE_PROVISION
@@ -49,5 +55,7 @@ The initial startup wizard is complete.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StartupScene-DEVICE_PROVISION = 2--><!--Device-StartupScene-DEVICE_PROVISION = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

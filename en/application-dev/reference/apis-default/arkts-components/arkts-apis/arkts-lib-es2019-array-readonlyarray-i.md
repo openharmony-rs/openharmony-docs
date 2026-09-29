@@ -20,6 +20,8 @@ flat<A, D extends number = 1>(
 
 Returns a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 
+<!--Device-ReadonlyArray-flat<A, D extends number = 1>(        this: A,        depth?: D    ): FlatArray<A, D>[]--><!--Device-ReadonlyArray-flat<A, D extends number = 1>(        this: A,        depth?: D    ): FlatArray<A, D>[]-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -37,6 +39,8 @@ flatMap<U, This = undefined> (
 ```
 
 Calls a defined callback function on each element of an array. Then, flattens the result into a new array. This is identical to a map followed by flat with depth 1.
+
+<!--Device-ReadonlyArray-flatMap<U, This = undefined> (        callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,        thisArg?: This    ): U[]--><!--Device-ReadonlyArray-flatMap<U, This = undefined> (        callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,        thisArg?: This    ): U[]-End-->
 
 **Parameters:**
 

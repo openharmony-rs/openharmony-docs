@@ -18,6 +18,8 @@ Aborts the signing or signature verification operation. This method is mutually 
 
 **Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
 
+<!--Device-certificateManager-function abort(handle: Uint8Array, callback: AsyncCallback<void>): void--><!--Device-certificateManager-function abort(handle: Uint8Array, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**
@@ -71,6 +73,8 @@ Aborts the signing or signature verification operation. This method is mutually 
 **Since:** 11
 
 **Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
+
+<!--Device-certificateManager-function abort(handle: Uint8Array): Promise<void>--><!--Device-certificateManager-function abort(handle: Uint8Array): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 

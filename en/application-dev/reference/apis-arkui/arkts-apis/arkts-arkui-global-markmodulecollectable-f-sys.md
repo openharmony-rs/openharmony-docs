@@ -17,6 +17,8 @@ Mark moduleNamespace which loaded by dynamic-import is collectable.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export declare function markModuleCollectable(namespace: Object): void--><!--Device-unnamed-export declare function markModuleCollectable(namespace: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface PageInfo--><!--Device-unnamed-export interface PageInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ NavDestination页面信息，包含当前NavDestination页面的导航状态和�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-PageInfo-navDestinationInfo?: observer.NavDestinationInfo--><!--Device-PageInfo-navDestinationInfo?: observer.NavDestinationInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## routerPageInfo
@@ -52,5 +56,7 @@ Router页面信息，包含当前Router页面的路由状态和页面信息。�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-PageInfo-routerPageInfo?: observer.RouterPageInfo--><!--Device-PageInfo-routerPageInfo?: observer.RouterPageInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

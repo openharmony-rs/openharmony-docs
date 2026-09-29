@@ -18,6 +18,8 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
 
+<!--Device-vcard-function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback<string>): void--><!--Device-vcard-function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -78,6 +80,8 @@ Exports contacts as a vcard file (VCF). This API uses a promise to return the re
 **Since:** 23
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
+
+<!--Device-vcard-function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions): Promise<string>--><!--Device-vcard-function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, options?: VCardBuilderOptions): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -146,6 +150,8 @@ Exports contacts as a vcard file (VCF). This API uses an asynchronous callback t
 **Since:** 23
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS and ohos.permission.READ_CONTACTS
+
+<!--Device-vcard-function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<string>): void--><!--Device-vcard-function exportVCard(context: Context, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

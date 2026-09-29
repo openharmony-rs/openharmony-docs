@@ -16,6 +16,8 @@ Creates a Filter instance for adding multiple filter effects to a component.
 
 **Since:** 12
 
+<!--Device-uiEffect-function createFilter(): Filter--><!--Device-uiEffect-function createFilter(): Filter-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **Return value:**

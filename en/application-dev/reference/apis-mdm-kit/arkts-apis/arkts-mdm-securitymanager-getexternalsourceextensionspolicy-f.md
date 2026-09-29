@@ -20,6 +20,8 @@ Obtains the management policy for extensions from external sources.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy--><!--Device-securityManager-function getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -79,6 +81,8 @@ Obtains the management policy for extensions from external sources.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-securityManager-function getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy--><!--Device-securityManager-function getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

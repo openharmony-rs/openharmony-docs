@@ -4,9 +4,11 @@
 export declare class DatePickerComponentResult
 ```
 
-DatePickerComponentResult defines the selection result of the date time picker.
+Defines the selection result of the date and time picker, including the year, month, day, hour, minute, and second selected by the user. It is used to pass the specific date and time values in the **onChange** and **onScrollStop** callbacks.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export declare class DatePickerComponentResult--><!--Device-unnamed-export declare class DatePickerComponentResult-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +24,7 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 day?: number
 ```
 
-Day of the selected date. The value should be an integer.
+Day of the selected date.
 
 **Type:** number
 
@@ -31,6 +33,8 @@ Day of the selected date. The value should be an integer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DatePickerComponentResult-day?: int--><!--Device-DatePickerComponentResult-day?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +44,7 @@ Day of the selected date. The value should be an integer.
 hour?: number
 ```
 
-Hour part of the selected time. The value should be an integer.
+Hour of the selected time.
 
 **Type:** number
 
@@ -49,6 +53,8 @@ Hour part of the selected time. The value should be an integer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DatePickerComponentResult-hour?: int--><!--Device-DatePickerComponentResult-hour?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +64,7 @@ Hour part of the selected time. The value should be an integer.
 minute?: number
 ```
 
-Minute part of the selected time. The value should be an integer.
+Minute of the selected time.
 
 **Type:** number
 
@@ -67,6 +73,8 @@ Minute part of the selected time. The value should be an integer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DatePickerComponentResult-minute?: int--><!--Device-DatePickerComponentResult-minute?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +84,7 @@ Minute part of the selected time. The value should be an integer.
 month?: number
 ```
 
-Month index of the selected date, starting from 0, where 0 indicates January and 11 indicates December. The value should be an integer.
+Month index of the selected date, starting from 0. The value **0** indicates January, and **11** indicates December.
 
 **Type:** number
 
@@ -85,6 +93,8 @@ Month index of the selected date, starting from 0, where 0 indicates January and
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DatePickerComponentResult-month?: int--><!--Device-DatePickerComponentResult-month?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +104,7 @@ Month index of the selected date, starting from 0, where 0 indicates January and
 second?: number
 ```
 
-Second part of the selected time. The value should be an integer.
+Second of the selected time.
 
 **Type:** number
 
@@ -103,6 +113,8 @@ Second part of the selected time. The value should be an integer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DatePickerComponentResult-second?: int--><!--Device-DatePickerComponentResult-second?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +124,7 @@ Second part of the selected time. The value should be an integer.
 year?: number
 ```
 
-Year of the selected date. The value should be an integer.
+Year of the selected date.
 
 **Type:** number
 
@@ -121,5 +133,7 @@ Year of the selected date. The value should be an integer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-DatePickerComponentResult-year?: int--><!--Device-DatePickerComponentResult-year?: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

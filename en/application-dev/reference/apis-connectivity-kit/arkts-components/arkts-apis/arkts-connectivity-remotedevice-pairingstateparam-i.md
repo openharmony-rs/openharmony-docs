@@ -8,6 +8,8 @@ Describes the pairing state parameters.
 
 **Since:** 26.0.0
 
+<!--Device-remoteDevice-interface PairingStateParam--><!--Device-remoteDevice-interface PairingStateParam-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates the device address. The length must be 17, The value consists of hexad
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PairingStateParam-address: string--><!--Device-PairingStateParam-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## preState
@@ -45,6 +49,8 @@ Indicates the previous pairing state.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PairingStateParam-preState: PairingState--><!--Device-PairingStateParam-preState: PairingState-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Indicates the pairing state reason.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PairingStateParam-reason: PairingReason--><!--Device-PairingStateParam-reason: PairingReason-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## reasonMsg
@@ -78,6 +86,8 @@ Indicates reason message. This field is intended for log information only and sh
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PairingStateParam-reasonMsg?: string--><!--Device-PairingStateParam-reasonMsg?: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## state
@@ -93,5 +103,7 @@ Indicates the current pairing state.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PairingStateParam-state: PairingState--><!--Device-PairingStateParam-state: PairingState-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

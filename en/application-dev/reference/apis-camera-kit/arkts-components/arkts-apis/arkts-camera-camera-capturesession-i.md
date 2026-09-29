@@ -12,6 +12,8 @@ interface CaptureSession
 
 **Substitutes:** [VideoSession](arkts-camera-camera-videosession-i.md)
 
+<!--Device-camera-interface CaptureSession--><!--Device-camera-interface CaptureSession-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Adds a [CameraInput](arkts-camera-camera-camerainput-i.md) instance to this sess
 **Deprecated since:** 11
 
 **Substitutes:** [addInput](arkts-camera-camera-session-i.md#addinput)
+
+<!--Device-CaptureSession-addInput(cameraInput: CameraInput): void--><!--Device-CaptureSession-addInput(cameraInput: CameraInput): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -63,6 +67,8 @@ Adds a [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instance to this se
 
 **Substitutes:** [addOutput](arkts-camera-camera-session-i.md#addoutput)
 
+<!--Device-CaptureSession-addOutput(cameraOutput: CameraOutput): void--><!--Device-CaptureSession-addOutput(cameraOutput: CameraOutput): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -92,6 +98,8 @@ Starts configuration for the session.
 
 **Substitutes:** [beginConfig](arkts-camera-camera-session-i.md#beginconfig)
 
+<!--Device-CaptureSession-beginConfig(): void--><!--Device-CaptureSession-beginConfig(): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Error codes:**
@@ -113,6 +121,8 @@ Commits the configuration for this session. This API uses an asynchronous callba
 **Deprecated since:** 11
 
 **Substitutes:** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -145,6 +155,8 @@ Commits the configuration for this session. This API uses a promise to return th
 
 **Substitutes:** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)()
 
+<!--Device-CaptureSession-commitConfig(): Promise<void>--><!--Device-CaptureSession-commitConfig(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -174,6 +186,8 @@ Obtains the video stabilization mode in use.
 
 **Substitutes:** [getActiveVideoStabilizationMode](arkts-camera-camera-stabilization-i.md#getactivevideostabilizationmode)
 
+<!--Device-CaptureSession-getActiveVideoStabilizationMode(): VideoStabilizationMode--><!--Device-CaptureSession-getActiveVideoStabilizationMode(): VideoStabilizationMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -201,6 +215,8 @@ Obtains the exposure compensation values of the camera device.
 **Deprecated since:** 11
 
 **Substitutes:** [getExposureBiasRange](arkts-camera-camera-autoexposurequery-i.md#getexposurebiasrange)
+
+<!--Device-CaptureSession-getExposureBiasRange(): Array<number>--><!--Device-CaptureSession-getExposureBiasRange(): Array<number>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -230,6 +246,8 @@ Obtains the exposure mode in use.
 
 **Substitutes:** [getExposureMode](arkts-camera-camera-autoexposure-i.md#getexposuremode)
 
+<!--Device-CaptureSession-getExposureMode(): ExposureMode--><!--Device-CaptureSession-getExposureMode(): ExposureMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -257,6 +275,8 @@ Obtains the exposure value in use.
 **Deprecated since:** 11
 
 **Substitutes:** [getExposureValue](arkts-camera-camera-autoexposure-i.md#getexposurevalue)
+
+<!--Device-CaptureSession-getExposureValue(): number--><!--Device-CaptureSession-getExposureValue(): number-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -286,6 +306,8 @@ Obtains the flash mode in use.
 
 **Substitutes:** [getFlashMode](arkts-camera-camera-flash-i.md#getflashmode)
 
+<!--Device-CaptureSession-getFlashMode(): FlashMode--><!--Device-CaptureSession-getFlashMode(): FlashMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -313,6 +335,8 @@ Obtains the focal length of the camera device.
 **Deprecated since:** 11
 
 **Substitutes:** [getFocalLength](arkts-camera-camera-focus-i.md#getfocallength)
+
+<!--Device-CaptureSession-getFocalLength(): number--><!--Device-CaptureSession-getFocalLength(): number-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -342,6 +366,8 @@ Obtains the focus mode in use.
 
 **Substitutes:** [getFocusMode](arkts-camera-camera-focus-i.md#getfocusmode)
 
+<!--Device-CaptureSession-getFocusMode(): FocusMode--><!--Device-CaptureSession-getFocusMode(): FocusMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -369,6 +395,8 @@ Obtains the focal point of the camera device.
 **Deprecated since:** 11
 
 **Substitutes:** [getFocusPoint](arkts-camera-camera-focus-i.md#getfocuspoint)
+
+<!--Device-CaptureSession-getFocusPoint(): Point--><!--Device-CaptureSession-getFocusPoint(): Point-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -398,6 +426,8 @@ Obtains the metering point of the camera device.
 
 **Substitutes:** [getMeteringPoint](arkts-camera-camera-autoexposure-i.md#getmeteringpoint)
 
+<!--Device-CaptureSession-getMeteringPoint(): Point--><!--Device-CaptureSession-getMeteringPoint(): Point-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -425,6 +455,8 @@ Obtains the zoom ratio in use.
 **Deprecated since:** 11
 
 **Substitutes:** [getZoomRatio](arkts-camera-camera-zoom-i.md#getzoomratio)
+
+<!--Device-CaptureSession-getZoomRatio(): number--><!--Device-CaptureSession-getZoomRatio(): number-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -454,6 +486,8 @@ Obtains the supported zoom ratio range.
 
 **Substitutes:** [getZoomRatioRange](arkts-camera-camera-zoomquery-i.md#getzoomratiorange)
 
+<!--Device-CaptureSession-getZoomRatioRange(): Array<number>--><!--Device-CaptureSession-getZoomRatioRange(): Array<number>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -482,6 +516,8 @@ Checks whether the camera device has flash.
 
 **Substitutes:** [hasFlash](arkts-camera-camera-flashquery-i.md#hasflash)
 
+<!--Device-CaptureSession-hasFlash(): boolean--><!--Device-CaptureSession-hasFlash(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -509,6 +545,8 @@ Checks whether an exposure mode is supported.
 **Deprecated since:** 11
 
 **Substitutes:** [isExposureModeSupported](arkts-camera-camera-autoexposurequery-i.md#isexposuremodesupported)
+
+<!--Device-CaptureSession-isExposureModeSupported(aeMode: ExposureMode): boolean--><!--Device-CaptureSession-isExposureModeSupported(aeMode: ExposureMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -544,6 +582,8 @@ Checks whether the flash mode is supported.
 
 **Substitutes:** [isFlashModeSupported](arkts-camera-camera-flashquery-i.md#isflashmodesupported)
 
+<!--Device-CaptureSession-isFlashModeSupported(flashMode: FlashMode): boolean--><!--Device-CaptureSession-isFlashModeSupported(flashMode: FlashMode): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -577,6 +617,8 @@ Checks whether a focus mode is supported.
 **Deprecated since:** 11
 
 **Substitutes:** [isFocusModeSupported](arkts-camera-camera-focusquery-i.md#isfocusmodesupported)
+
+<!--Device-CaptureSession-isFocusModeSupported(afMode: FocusMode): boolean--><!--Device-CaptureSession-isFocusModeSupported(afMode: FocusMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -612,6 +654,8 @@ Checks whether a video stabilization mode is supported.
 
 **Substitutes:** [isVideoStabilizationModeSupported](arkts-camera-camera-stabilizationquery-i.md#isvideostabilizationmodesupported)
 
+<!--Device-CaptureSession-isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean--><!--Device-CaptureSession-isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -646,6 +690,8 @@ Unsubscribes from focus state change events.
 
 **Substitutes:** [off](arkts-camera-camera-videosession-i.md#offfocusstatechange)(type: 'focusStateChange', callback?: AsyncCallback&lt;FocusState&gt;)
 
+<!--Device-CaptureSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void--><!--Device-CaptureSession-off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -668,6 +714,8 @@ Unsubscribes from CaptureSession error events. This API uses a callback to retur
 **Deprecated since:** 11
 
 **Substitutes:** [off](arkts-camera-camera-videosession-i.md#offerror)(type: 'error', callback?: ErrorCallback)
+
+<!--Device-CaptureSession-off(type: 'error', callback?: ErrorCallback): void--><!--Device-CaptureSession-off(type: 'error', callback?: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -696,6 +744,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Substitutes:** [on](arkts-camera-camera-videosession-i.md#onfocusstatechange)(type: 'focusStateChange', callback: AsyncCallback&lt;FocusState&gt;)
 
+<!--Device-CaptureSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void--><!--Device-CaptureSession-on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -723,6 +773,8 @@ Subscribes to CaptureSession error events. This API uses an asynchronous callbac
 
 **Substitutes:** [on](arkts-camera-camera-videosession-i.md#onerror)(type: 'error', callback: ErrorCallback)
 
+<!--Device-CaptureSession-on(type: 'error', callback: ErrorCallback): void--><!--Device-CaptureSession-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -745,6 +797,8 @@ Releases this session. This API uses an asynchronous callback to return the resu
 **Deprecated since:** 11
 
 **Substitutes:** [release](arkts-camera-camera-session-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-CaptureSession-release(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-release(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -776,6 +830,8 @@ Releases this session. This API uses a promise to return the result.
 
 **Substitutes:** [release](arkts-camera-camera-session-i.md#release)()
 
+<!--Device-CaptureSession-release(): Promise<void>--><!--Device-CaptureSession-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -803,6 +859,8 @@ Removes a [CameraInput](arkts-camera-camera-camerainput-i.md) instance from this
 **Deprecated since:** 11
 
 **Substitutes:** [removeInput](arkts-camera-camera-session-i.md#removeinput)
+
+<!--Device-CaptureSession-removeInput(cameraInput: CameraInput): void--><!--Device-CaptureSession-removeInput(cameraInput: CameraInput): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -832,6 +890,8 @@ Removes a [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instance from th
 **Deprecated since:** 11
 
 **Substitutes:** [removeOutput](arkts-camera-camera-session-i.md#removeoutput)
+
+<!--Device-CaptureSession-removeOutput(cameraOutput: CameraOutput): void--><!--Device-CaptureSession-removeOutput(cameraOutput: CameraOutput): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -864,6 +924,8 @@ Before the setting, you are advised to use [getExposureBiasRange](#getexposurebi
 
 **Substitutes:** [setExposureBias](arkts-camera-camera-autoexposure-i.md#setexposurebias)
 
+<!--Device-CaptureSession-setExposureBias(exposureBias: number): void--><!--Device-CaptureSession-setExposureBias(exposureBias: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -891,6 +953,8 @@ Sets an exposure mode. Before the setting, call [isExposureModeSupported](#isexp
 **Deprecated since:** 11
 
 **Substitutes:** [setExposureMode](arkts-camera-camera-autoexposure-i.md#setexposuremode)
+
+<!--Device-CaptureSession-setExposureMode(aeMode: ExposureMode): void--><!--Device-CaptureSession-setExposureMode(aeMode: ExposureMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -925,6 +989,8 @@ Before the setting, do the following checks:
 
 **Substitutes:** [setFlashMode](arkts-camera-camera-flash-i.md#setflashmode)
 
+<!--Device-CaptureSession-setFlashMode(flashMode: FlashMode): void--><!--Device-CaptureSession-setFlashMode(flashMode: FlashMode): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -954,6 +1020,8 @@ Before the setting, call [isFocusModeSupported](#isfocusmodesupported) to check 
 **Deprecated since:** 11
 
 **Substitutes:** [setFocusMode](arkts-camera-camera-focus-i.md#setfocusmode)
+
+<!--Device-CaptureSession-setFocusMode(afMode: FocusMode): void--><!--Device-CaptureSession-setFocusMode(afMode: FocusMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -985,6 +1053,8 @@ The coordinate system is based on the horizontal device direction with the devic
 
 **Substitutes:** [setFocusPoint](arkts-camera-camera-focus-i.md#setfocuspoint)
 
+<!--Device-CaptureSession-setFocusPoint(point: Point): void--><!--Device-CaptureSession-setFocusPoint(point: Point): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -1015,6 +1085,8 @@ The coordinate system is based on the horizontal device direction with the devic
 
 **Substitutes:** [setMeteringPoint](arkts-camera-camera-autoexposure-i.md#setmeteringpoint)
 
+<!--Device-CaptureSession-setMeteringPoint(point: Point): void--><!--Device-CaptureSession-setMeteringPoint(point: Point): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -1042,6 +1114,8 @@ Sets a video stabilization mode. Before the setting, call [isVideoStabilizationM
 **Deprecated since:** 11
 
 **Substitutes:** [setVideoStabilizationMode](arkts-camera-camera-stabilization-i.md#setvideostabilizationmode)
+
+<!--Device-CaptureSession-setVideoStabilizationMode(mode: VideoStabilizationMode): void--><!--Device-CaptureSession-setVideoStabilizationMode(mode: VideoStabilizationMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -1071,6 +1145,8 @@ Sets a zoom ratio, with a maximum precision of two decimal places.
 
 **Substitutes:** [setZoomRatio](arkts-camera-camera-zoom-i.md#setzoomratio)
 
+<!--Device-CaptureSession-setZoomRatio(zoomRatio: number): void--><!--Device-CaptureSession-setZoomRatio(zoomRatio: number): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Parameters:**
@@ -1098,6 +1174,8 @@ Starts this session. This API uses an asynchronous callback to return the result
 **Deprecated since:** 11
 
 **Substitutes:** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-CaptureSession-start(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-start(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -1130,6 +1208,8 @@ Starts this session. This API uses a promise to return the result.
 
 **Substitutes:** [start](arkts-camera-camera-session-i.md#start)()
 
+<!--Device-CaptureSession-start(): Promise<void>--><!--Device-CaptureSession-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **Return value:**
@@ -1158,6 +1238,8 @@ Stops this session. This API uses an asynchronous callback to return the result.
 **Deprecated since:** 11
 
 **Substitutes:** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+
+<!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -1188,6 +1270,8 @@ Stops this session. This API uses a promise to return the result.
 **Deprecated since:** 11
 
 **Substitutes:** [stop](arkts-camera-camera-session-i.md#stop)()
+
+<!--Device-CaptureSession-stop(): Promise<void>--><!--Device-CaptureSession-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

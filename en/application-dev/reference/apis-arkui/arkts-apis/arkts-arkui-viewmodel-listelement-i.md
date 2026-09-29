@@ -8,6 +8,8 @@ List element @interface ListElement
 
 **Since:** 4
 
+<!--Device-unnamed-export interface ListElement--><!--Device-unnamed-export interface ListElement-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 ## rotation
@@ -21,6 +23,8 @@ Requests or cancels the crown rotation focus for a component. If focus is set to
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ListElement-rotation(obj?: FocusParamObj): void--><!--Device-ListElement-rotation(obj?: FocusParamObj): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -41,6 +45,8 @@ Scrolls the list to the position of the item at the specified index.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-ListElement-scrollTo(position: ListScrollToOptions): void--><!--Device-ListElement-scrollTo(position: ListScrollToOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 

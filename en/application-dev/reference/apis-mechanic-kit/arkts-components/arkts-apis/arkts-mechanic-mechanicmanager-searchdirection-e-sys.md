@@ -10,6 +10,8 @@ Search direction.
 
 **Since:** 21
 
+<!--Device-mechanicManager-export enum SearchDirection--><!--Device-mechanicManager-export enum SearchDirection-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ DEFAULT = 0
 System Default Direction.
 
 **Since:** 21
+
+<!--Device-SearchDirection-DEFAULT = 0--><!--Device-SearchDirection-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 
@@ -38,6 +42,8 @@ Leftward direction. Also indicates clockwise direction.
 
 **Since:** 21
 
+<!--Device-SearchDirection-LEFTWARD = 1--><!--Device-SearchDirection-LEFTWARD = 1-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -51,6 +57,8 @@ RIGHTWARD = 2
 Rightward direction. Also indicates the counterclockwise direction.
 
 **Since:** 21
+
+<!--Device-SearchDirection-RIGHTWARD = 2--><!--Device-SearchDirection-RIGHTWARD = 2-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

@@ -8,6 +8,8 @@ Defines the touch event data.
 
 **Since:** 11
 
+<!--Device-inputEventClient-interface TouchEventData--><!--Device-inputEventClient-interface TouchEventData-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Touch event.
 
 **Since:** 11
 
+<!--Device-TouchEventData-touchEvent: TouchEvent--><!--Device-TouchEventData-touchEvent: TouchEvent-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Whether to use global coordinates to calculate the injected touch event. The def
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-TouchEventData-useGlobalCoordinate?: boolean--><!--Device-TouchEventData-useGlobalCoordinate?: boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 

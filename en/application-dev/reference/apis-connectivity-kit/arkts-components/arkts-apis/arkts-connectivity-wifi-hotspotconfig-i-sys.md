@@ -14,6 +14,8 @@ Wi-Fi hotspot configuration information.
 
 **Substitutes:** [HotspotConfig](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md)
 
+<!--Device-wifi-interface HotspotConfig--><!--Device-wifi-interface HotspotConfig-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.
@@ -40,6 +42,8 @@ The frequency band of the Wi-Fi hotspot
 
 **Substitutes:** [band](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#band)
 
+<!--Device-HotspotConfig-band: number--><!--Device-HotspotConfig-band: number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.
@@ -59,6 +63,8 @@ The maximum number of connections allowed by the Wi-Fi hotspot
 **Deprecated since:** 9
 
 **Substitutes:** [maxConn](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#maxconn)
+
+<!--Device-HotspotConfig-maxConn: number--><!--Device-HotspotConfig-maxConn: number-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
@@ -80,6 +86,8 @@ The password of the Wi-Fi hotspot
 
 **Substitutes:** [preSharedKey](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#presharedkey)
 
+<!--Device-HotspotConfig-preSharedKey: string--><!--Device-HotspotConfig-preSharedKey: string-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.
@@ -100,6 +108,8 @@ The encryption mode of the Wi-Fi hotspot
 
 **Substitutes:** [securityType](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#securitytype)
 
+<!--Device-HotspotConfig-securityType: WifiSecurityType--><!--Device-HotspotConfig-securityType: WifiSecurityType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.
@@ -119,6 +129,8 @@ The SSID of the Wi-Fi hotspot
 **Deprecated since:** 9
 
 **Substitutes:** [ssid](arkts-connectivity-wifimanager-hotspotconfig-i-sys.md#ssid)
+
+<!--Device-HotspotConfig-ssid: string--><!--Device-HotspotConfig-ssid: string-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 

@@ -10,6 +10,8 @@ Surface configuration parameters.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-interface SurfaceParam--><!--Device-abilityConnectionManager-interface SurfaceParam-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ This value indicates whether the video is reversed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SurfaceParam-flip?: FlipOptions--><!--Device-SurfaceParam-flip?: FlipOptions-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Video PixelFormat, this option must be configured on the sender. Must be set bef
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SurfaceParam-format?: VideoPixelFormat--><!--Device-SurfaceParam-format?: VideoPixelFormat-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -70,6 +76,8 @@ Encoding length. Must be set before stream starts and cannot update once set.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SurfaceParam-height: int--><!--Device-SurfaceParam-height: int-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -88,6 +96,8 @@ This value identifies the rotation angle of the video. the range of rotation ang
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SurfaceParam-rotation?: int--><!--Device-SurfaceParam-rotation?: int-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **System API:** This is a system API.
@@ -105,6 +115,8 @@ Encoding width. Must be set before stream starts and cannot update once set.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SurfaceParam-width: int--><!--Device-SurfaceParam-width: int-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

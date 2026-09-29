@@ -12,6 +12,8 @@ Control transfer parameters.
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
+<!--Device-usbManager-interface USBControlParams--><!--Device-usbManager-interface USBControlParams-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Buffer for writing or reading data.
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
+<!--Device-USBControlParams-data: Uint8Array--><!--Device-USBControlParams-data: Uint8Array-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## index
@@ -53,6 +57,8 @@ Index value corresponding to the request parameter **value**, which is used to s
 **Deprecated since:** 18
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-index: number--><!--Device-USBControlParams-index: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -72,6 +78,8 @@ Request control type.
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
+<!--Device-USBControlParams-reqType: USBControlRequestType--><!--Device-USBControlParams-reqType: USBControlRequestType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## request
@@ -89,6 +97,8 @@ Request type, which indicates a specific USB control request command.
 **Deprecated since:** 18
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-request: number--><!--Device-USBControlParams-request: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -108,6 +118,8 @@ Request target type.
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
 
+<!--Device-USBControlParams-target: USBRequestTargetType--><!--Device-USBControlParams-target: USBRequestTargetType-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## value
@@ -125,5 +137,7 @@ Request parameter, which is used to transfer the parameters required by the cont
 **Deprecated since:** 18
 
 **Substitutes:** [USBDeviceRequestParams](arkts-basicservices-usbmanager-usbdevicerequestparams-i.md)
+
+<!--Device-USBControlParams-value: number--><!--Device-USBControlParams-value: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager

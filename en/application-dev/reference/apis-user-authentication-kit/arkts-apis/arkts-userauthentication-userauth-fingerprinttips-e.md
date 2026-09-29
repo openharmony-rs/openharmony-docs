@@ -10,6 +10,8 @@ Enumerates the tip codes used during the fingerprint authentication process.
 
 **Deprecated since:** 11
 
+<!--Device-userAuth-enum FingerprintTips--><!--Device-userAuth-enum FingerprintTips-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## FINGERPRINT_AUTH_TIP_GOOD
@@ -23,6 +25,8 @@ The obtained fingerprint image is in good condition.
 **Since:** 8
 
 **Deprecated since:** 11
+
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -38,6 +42,8 @@ Large fingerprint image noise is detected due to suspicious or detected dirt on 
 
 **Deprecated since:** 11
 
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## FINGERPRINT_AUTH_TIP_INSUFFICIENT
@@ -51,6 +57,8 @@ The noise of the fingerprint image is too large to be processed.
 **Since:** 8
 
 **Deprecated since:** 11
+
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_INSUFFICIENT = 2--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_INSUFFICIENT = 2-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -66,6 +74,8 @@ Incomplete fingerprint image is detected.
 
 **Deprecated since:** 11
 
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_PARTIAL = 3--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_PARTIAL = 3-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## FINGERPRINT_AUTH_TIP_TOO_FAST
@@ -80,6 +90,8 @@ The fingerprint image is incomplete due to fast movement.
 
 **Deprecated since:** 11
 
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_TOO_FAST = 4--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_TOO_FAST = 4-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 ## FINGERPRINT_AUTH_TIP_TOO_SLOW
@@ -93,5 +105,7 @@ Failed to obtain the fingerprint image because the finger seldom moves.
 **Since:** 8
 
 **Deprecated since:** 11
+
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_TOO_SLOW = 5--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_TOO_SLOW = 5-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

@@ -14,6 +14,8 @@ This API inherits from [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-c
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2CloseIcon extends ChipV2Accessibility--><!--Device-unnamed-export declare class ChipV2CloseIcon extends ChipV2Accessibility-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ A constructor used to create a **ChipV2CloseIcon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2CloseIcon-constructor(config: ChipV2CloseConfig)--><!--Device-ChipV2CloseIcon-constructor(config: ChipV2CloseConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,5 +77,7 @@ If the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2CloseIcon-public fontSize?: LengthMetrics--><!--Device-ChipV2CloseIcon-public fontSize?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

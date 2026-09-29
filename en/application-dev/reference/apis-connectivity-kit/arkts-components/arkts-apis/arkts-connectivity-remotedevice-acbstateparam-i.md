@@ -8,6 +8,8 @@ Represents the result of the logical link connection status change event.
 
 **Since:** 26.0.0
 
+<!--Device-remoteDevice-interface AcbStateParam--><!--Device-remoteDevice-interface AcbStateParam-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Device address, indicating that the logical link connection status with the devi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AcbStateParam-address: string--><!--Device-AcbStateParam-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## state
@@ -45,5 +49,7 @@ Current logical link connection status.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AcbStateParam-state: AcbState--><!--Device-AcbStateParam-state: AcbState-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

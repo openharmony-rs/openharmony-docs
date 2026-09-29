@@ -8,6 +8,8 @@ arkTS script info.
 
 **Since:** 26.0.0
 
+<!--Device-scriptManager-interface ArkTSScriptInfo--><!--Device-scriptManager-interface ArkTSScriptInfo-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ The context of the bound ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ArkTSScriptInfo-readonly context: Context--><!--Device-ArkTSScriptInfo-readonly context: Context-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
@@ -48,6 +52,8 @@ Request code for identifying the current operation
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ArkTSScriptInfo-readonly requestCode: string--><!--Device-ArkTSScriptInfo-readonly requestCode: string-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

@@ -10,6 +10,8 @@ Defines a response that returns the charging status and remaining power of the d
 
 **Deprecated since:** 6
 
+<!--Device-unnamed-export interface BatteryResponse--><!--Device-unnamed-export interface BatteryResponse-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## Modules to Import
@@ -38,6 +40,8 @@ Note: This API is no longer maintained since API version 6 except for lite weara
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-BatteryResponse-charging: boolean--><!--Device-BatteryResponse-charging: boolean-End-->
+
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite
 
 ## level
@@ -59,5 +63,7 @@ Note: This API is no longer maintained since API version 6 except for lite weara
 **Substitutes:** [batterySOC](arkts-basicservices-batteryinfo-con.md#batterysoc)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-BatteryResponse-level: number--><!--Device-BatteryResponse-level: number-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Lite

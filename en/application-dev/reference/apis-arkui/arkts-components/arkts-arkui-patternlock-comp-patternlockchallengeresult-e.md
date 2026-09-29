@@ -8,6 +8,8 @@ Authentication challenge result of the pattern password.
 
 **Since:** 11
 
+<!--Device-unnamed-declare enum PatternLockChallengeResult--><!--Device-unnamed-declare enum PatternLockChallengeResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CORRECT
@@ -24,6 +26,8 @@ The pattern password is correct.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PatternLockChallengeResult-CORRECT = 1--><!--Device-PatternLockChallengeResult-CORRECT = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## WRONG
@@ -39,5 +43,7 @@ The pattern password is incorrect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PatternLockChallengeResult-WRONG = 2--><!--Device-PatternLockChallengeResult-WRONG = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

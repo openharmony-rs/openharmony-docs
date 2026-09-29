@@ -6,6 +6,8 @@ interface Float64Array
 
 A typed array of 64-bit float values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.
 
+<!--Device-unnamed-interface Float64Array--><!--Device-unnamed-interface Float64Array-End-->
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,6 +20,8 @@ copyWithin(target: number, start: number, end?: number): this
 ```
 
 Returns the this object after copying a section of the array identified by start and end to the same array starting at position target
+
+<!--Device-Float64Array-copyWithin(target: number, start: number, end?: number): this--><!--Device-Float64Array-copyWithin(target: number, start: number, end?: number): this-End-->
 
 **Parameters:**
 
@@ -34,6 +38,8 @@ every(predicate: (value: number, index: number, array: Float64Array) => unknown,
 ```
 
 Determines whether all the members of an array satisfy the specified test.
+
+<!--Device-Float64Array-every(predicate: (value: number, index: number, array: Float64Array) => unknown, thisArg?: any): boolean--><!--Device-Float64Array-every(predicate: (value: number, index: number, array: Float64Array) => unknown, thisArg?: any): boolean-End-->
 
 **Test API:** This API is used only in automated test scripts.
 
@@ -52,6 +58,8 @@ fill(value: number, start?: number, end?: number): this
 
 Changes all array elements from `start` to `end` index to a static `value` and returns the modified array
 
+<!--Device-Float64Array-fill(value: number, start?: number, end?: number): this--><!--Device-Float64Array-fill(value: number, start?: number, end?: number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -68,6 +76,8 @@ filter(predicate: (value: number, index: number, array: Float64Array) => any, th
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
+<!--Device-Float64Array-filter(predicate: (value: number, index: number, array: Float64Array) => any, thisArg?: any): Float64Array--><!--Device-Float64Array-filter(predicate: (value: number, index: number, array: Float64Array) => any, thisArg?: any): Float64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -82,6 +92,8 @@ find(predicate: (value: number, index: number, obj: Float64Array) => boolean, th
 ```
 
 Returns the value of the first element in the array where predicate is true, and undefined otherwise.
+
+<!--Device-Float64Array-find(predicate: (value: number, index: number, obj: Float64Array) => boolean, thisArg?: any): number | undefined--><!--Device-Float64Array-find(predicate: (value: number, index: number, obj: Float64Array) => boolean, thisArg?: any): number | undefined-End-->
 
 **Parameters:**
 
@@ -98,6 +110,8 @@ findIndex(predicate: (value: number, index: number, obj: Float64Array) => boolea
 
 Returns the index of the first element in the array where predicate is true, and -1 otherwise.
 
+<!--Device-Float64Array-findIndex(predicate: (value: number, index: number, obj: Float64Array) => boolean, thisArg?: any): number--><!--Device-Float64Array-findIndex(predicate: (value: number, index: number, obj: Float64Array) => boolean, thisArg?: any): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -112,6 +126,8 @@ forEach(callbackfn: (value: number, index: number, array: Float64Array) => void,
 ```
 
 Performs the specified action for each element in an array.
+
+<!--Device-Float64Array-forEach(callbackfn: (value: number, index: number, array: Float64Array) => void, thisArg?: any): void--><!--Device-Float64Array-forEach(callbackfn: (value: number, index: number, array: Float64Array) => void, thisArg?: any): void-End-->
 
 **Parameters:**
 
@@ -128,6 +144,8 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 Returns the index of the first occurrence of a value in an array.
 
+<!--Device-Float64Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Float64Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -143,6 +161,8 @@ join(separator?: string): string
 
 Adds all the elements of an array separated by the specified separator string.
 
+<!--Device-Float64Array-join(separator?: string): string--><!--Device-Float64Array-join(separator?: string): string-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -156,6 +176,8 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 ```
 
 Returns the index of the last occurrence of a value in an array.
+
+<!--Device-Float64Array-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Float64Array-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **Parameters:**
 
@@ -172,6 +194,8 @@ map(callbackfn: (value: number, index: number, array: Float64Array) => number, t
 
 Calls a defined callback function on each element of an array, and returns an array that contains the results.
 
+<!--Device-Float64Array-map(callbackfn: (value: number, index: number, array: Float64Array) => number, thisArg?: any): Float64Array--><!--Device-Float64Array-map(callbackfn: (value: number, index: number, array: Float64Array) => number, thisArg?: any): Float64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -186,6 +210,8 @@ reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: n
 ```
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-Float64Array-reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Float64Array) => number): number--><!--Device-Float64Array-reduce(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Float64Array) => number): number-End-->
 
 **Parameters:**
 
@@ -218,6 +244,8 @@ reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: num
 
 Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-Float64Array-reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Float64Array) => U, initialValue: U): U--><!--Device-Float64Array-reduce<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Float64Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -232,6 +260,8 @@ reduceRight(callbackfn: (previousValue: number, currentValue: number, currentInd
 ```
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+
+<!--Device-Float64Array-reduceRight(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Float64Array) => number): number--><!--Device-Float64Array-reduceRight(callbackfn: (previousValue: number, currentValue: number, currentIndex: number, array: Float64Array) => number): number-End-->
 
 **Parameters:**
 
@@ -264,6 +294,8 @@ reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex
 
 Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
 
+<!--Device-Float64Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Float64Array) => U, initialValue: U): U--><!--Device-Float64Array-reduceRight<U>(callbackfn: (previousValue: U, currentValue: number, currentIndex: number, array: Float64Array) => U, initialValue: U): U-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -279,6 +311,8 @@ reverse(): Float64Array
 
 Reverses the elements in an Array.
 
+<!--Device-Float64Array-reverse(): Float64Array--><!--Device-Float64Array-reverse(): Float64Array-End-->
+
 ## set
 
 ```TypeScript
@@ -286,6 +320,8 @@ set(array: ArrayLike<number>, offset?: number): void
 ```
 
 Sets a value or an array of values.
+
+<!--Device-Float64Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Float64Array-set(array: ArrayLike<number>, offset?: number): void-End-->
 
 **Parameters:**
 
@@ -302,6 +338,8 @@ slice(start?: number, end?: number): Float64Array
 
 Returns a section of an array.
 
+<!--Device-Float64Array-slice(start?: number, end?: number): Float64Array--><!--Device-Float64Array-slice(start?: number, end?: number): Float64Array-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -316,6 +354,8 @@ some(predicate: (value: number, index: number, array: Float64Array) => unknown, 
 ```
 
 Determines whether the specified callback function returns true for any element of an array.
+
+<!--Device-Float64Array-some(predicate: (value: number, index: number, array: Float64Array) => unknown, thisArg?: any): boolean--><!--Device-Float64Array-some(predicate: (value: number, index: number, array: Float64Array) => unknown, thisArg?: any): boolean-End-->
 
 **Parameters:**
 
@@ -332,6 +372,8 @@ sort(compareFn?: (a: number, b: number) => number): this
 
 Sorts an array.
 
+<!--Device-Float64Array-sort(compareFn?: (a: number, b: number) => number): this--><!--Device-Float64Array-sort(compareFn?: (a: number, b: number) => number): this-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -345,6 +387,8 @@ subarray(begin?: number, end?: number): Float64Array
 ```
 
 at begin, inclusive, up to end, exclusive.
+
+<!--Device-Float64Array-subarray(begin?: number, end?: number): Float64Array--><!--Device-Float64Array-subarray(begin?: number, end?: number): Float64Array-End-->
 
 **Parameters:**
 
@@ -367,6 +411,8 @@ valueOf(): Float64Array
 
 Returns the primitive value of the specified object.
 
+<!--Device-Float64Array-valueOf(): Float64Array--><!--Device-Float64Array-valueOf(): Float64Array-End-->
+
 ## [index: number]
 
 ```TypeScript
@@ -385,6 +431,8 @@ The ArrayBuffer instance referenced by the array.
 
 **Type:** [ArrayBufferLike](arkts-arraybufferlike-t.md)
 
+<!--Device-Float64Array-readonly buffer: ArrayBufferLike--><!--Device-Float64Array-readonly buffer: ArrayBufferLike-End-->
+
 ## byteLength
 
 ```TypeScript
@@ -394,6 +442,8 @@ readonly byteLength: number
 The length in bytes of the array.
 
 **Type:** number
+
+<!--Device-Float64Array-readonly byteLength: number--><!--Device-Float64Array-readonly byteLength: number-End-->
 
 ## byteOffset
 
@@ -405,6 +455,8 @@ The offset in bytes of the array.
 
 **Type:** number
 
+<!--Device-Float64Array-readonly byteOffset: number--><!--Device-Float64Array-readonly byteOffset: number-End-->
+
 ## BYTES_PER_ELEMENT
 
 ```TypeScript
@@ -415,6 +467,8 @@ The size in bytes of each element in the array.
 
 **Type:** number
 
+<!--Device-Float64Array-readonly BYTES_PER_ELEMENT: number--><!--Device-Float64Array-readonly BYTES_PER_ELEMENT: number-End-->
+
 ## length
 
 ```TypeScript
@@ -424,3 +478,5 @@ readonly length: number
 The length of the array.
 
 **Type:** number
+
+<!--Device-Float64Array-readonly length: number--><!--Device-Float64Array-readonly length: number-End-->

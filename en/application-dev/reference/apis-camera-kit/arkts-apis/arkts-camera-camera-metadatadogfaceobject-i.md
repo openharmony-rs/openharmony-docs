@@ -10,6 +10,8 @@ Dog face metadata detected by the camera, which is extended from [MetadataObject
 
 **Since:** 26.0.0
 
+<!--Device-camera-interface MetadataDogFaceObject extends MetadataObject--><!--Device-camera-interface MetadataDogFaceObject extends MetadataObject-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Left eye area.
 
 **Since:** 26.0.0
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-MetadataDogFaceObject-readonly leftEyeBoundingBox: Rect--><!--Device-MetadataDogFaceObject-readonly leftEyeBoundingBox: Rect-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -46,6 +50,8 @@ Right eye area.
 
 **Since:** 26.0.0
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-MetadataDogFaceObject-readonly rightEyeBoundingBox: Rect--><!--Device-MetadataDogFaceObject-readonly rightEyeBoundingBox: Rect-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

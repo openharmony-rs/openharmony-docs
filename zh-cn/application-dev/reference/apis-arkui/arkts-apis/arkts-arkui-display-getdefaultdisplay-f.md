@@ -20,6 +20,8 @@ function getDefaultDisplay(callback: AsyncCallback<Display>): void
 
 **替代接口：** [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md)
 
+<!--Device-display-function getDefaultDisplay(callback: AsyncCallback<Display>): void--><!--Device-display-function getDefaultDisplay(callback: AsyncCallback<Display>): void-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -61,6 +63,8 @@ function getDefaultDisplay(): Promise<Display>
 **废弃版本：** 9
 
 **替代接口：** [getDefaultDisplaySync](arkts-arkui-display-getdefaultdisplaysync-f.md)
+
+<!--Device-display-function getDefaultDisplay(): Promise<Display>--><!--Device-display-function getDefaultDisplay(): Promise<Display>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -20,6 +20,8 @@ Executes a call to an intent. This API uses an asynchronous callback to return t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-insightIntentDriver-function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult>): void--><!--Device-insightIntentDriver-function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -105,6 +107,8 @@ Executes a call to an intent. This API uses a promise to return the result. When
 **Required permissions:** ohos.permission.EXECUTE_INSIGHT_INTENT
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-insightIntentDriver-function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>--><!--Device-insightIntentDriver-function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

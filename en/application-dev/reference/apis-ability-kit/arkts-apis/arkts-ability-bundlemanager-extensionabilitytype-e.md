@@ -6,9 +6,11 @@ export enum ExtensionAbilityType
 
 Enumerates the types of ExtensionAbility components.
 
-&lt;!--RP2--&gt;&lt;!--RP2End--&gt;
+<!--RP2--><!--RP2End-->
 
 **Since:** 9
+
+<!--Device-bundleManager-export enum ExtensionAbilityType--><!--Device-bundleManager-export enum ExtensionAbilityType-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -22,7 +24,9 @@ FORM = 0
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ExtensionAbilityType-FORM = 0--><!--Device-ExtensionAbilityType-FORM = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -36,6 +40,8 @@ WORK_SCHEDULER = 1
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-WORK_SCHEDULER = 1--><!--Device-ExtensionAbilityType-WORK_SCHEDULER = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## INPUT_METHOD
@@ -47,6 +53,8 @@ INPUT_METHOD = 2
 [InputMethodExtensionAbility](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodextensionability-c.md): provides extended capabilities related to input method applications.
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-INPUT_METHOD = 2--><!--Device-ExtensionAbilityType-INPUT_METHOD = 2-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -60,6 +68,8 @@ ServiceExtensionAbility: provides extended capabilities related to background se
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-SERVICE = 3--><!--Device-ExtensionAbilityType-SERVICE = 3-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## ACCESSIBILITY
@@ -71,6 +81,8 @@ ACCESSIBILITY = 4
 AccessibilityExtensionAbility: provides extended capabilities related to accessibility services, supporting access and operation of the foreground UI.
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-ACCESSIBILITY = 4--><!--Device-ExtensionAbilityType-ACCESSIBILITY = 4-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -84,6 +96,8 @@ DataShareExtensionAbility: provides extended capabilities related to data sharin
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-DATA_SHARE = 5--><!--Device-ExtensionAbilityType-DATA_SHARE = 5-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## FILE_SHARE
@@ -95,6 +109,8 @@ FILE_SHARE = 6
 FileShareExtensionAbility: provides extended capabilities related to file sharing between applications. This ability is reserved and supported only by system applications.
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-FILE_SHARE = 6--><!--Device-ExtensionAbilityType-FILE_SHARE = 6-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -108,6 +124,8 @@ StaticSubscriberExtensionAbility: provides extended capabilities related to stat
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-STATIC_SUBSCRIBER = 7--><!--Device-ExtensionAbilityType-STATIC_SUBSCRIBER = 7-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## WALLPAPER
@@ -119,6 +137,8 @@ WALLPAPER = 8
 WallpaperExtensionAbility: provides extended capabilities to implement wallpapers displayed on home screen. This ability is reserved and supported only by system applications.
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-WALLPAPER = 8--><!--Device-ExtensionAbilityType-WALLPAPER = 8-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -132,6 +152,8 @@ BACKUP = 9
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-BACKUP = 9--><!--Device-ExtensionAbilityType-BACKUP = 9-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## WINDOW
@@ -143,6 +165,8 @@ WINDOW = 10
 WindowExtensionAbility: provides extended capabilities that allow system applications to pull up and embed UIs of other applications.
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-WINDOW = 10--><!--Device-ExtensionAbilityType-WINDOW = 10-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -156,6 +180,8 @@ ENTERPRISE_ADMIN = 11
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-ENTERPRISE_ADMIN = 11--><!--Device-ExtensionAbilityType-ENTERPRISE_ADMIN = 11-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## THUMBNAIL
@@ -167,6 +193,8 @@ THUMBNAIL = 13
 ThumbnailExtensionAbility: provides extended capabilities for offering thumbnails for files. This ability is reserved and supported only by system applications.
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-THUMBNAIL = 13--><!--Device-ExtensionAbilityType-THUMBNAIL = 13-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -180,6 +208,8 @@ PreviewExtensionAbility: provides extended capabilities for file preview so that
 
 **Since:** 9
 
+<!--Device-ExtensionAbilityType-PREVIEW = 14--><!--Device-ExtensionAbilityType-PREVIEW = 14-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## PRINT
@@ -191,6 +221,8 @@ PRINT = 15
 PrintExtensionAbility: provides extended capabilities for printing photos and documents in office scenarios. This ability is supported only by system applications.
 
 **Since:** 10
+
+<!--Device-ExtensionAbilityType-PRINT = 15--><!--Device-ExtensionAbilityType-PRINT = 15-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -204,6 +236,8 @@ SHARE = 16
 
 **Since:** 10
 
+<!--Device-ExtensionAbilityType-SHARE = 16--><!--Device-ExtensionAbilityType-SHARE = 16-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## PUSH
@@ -215,6 +249,8 @@ PUSH = 17
 PushExtensionAbility: provides extended capabilities for pushing scenario-specific messages. This ability is reserved and supported only by system applications.
 
 **Since:** 10
+
+<!--Device-ExtensionAbilityType-PUSH = 17--><!--Device-ExtensionAbilityType-PUSH = 17-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -228,6 +264,8 @@ DRIVER = 18
 
 **Since:** 10
 
+<!--Device-ExtensionAbilityType-DRIVER = 18--><!--Device-ExtensionAbilityType-DRIVER = 18-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## ACTION
@@ -239,6 +277,8 @@ ACTION = 19
 [ActionExtensionAbility](arkts-ability-app-ability-actionextensionability-actionextensionability-c.md): provides custom action service templates based on the UIExtensionAbility.
 
 **Since:** 10
+
+<!--Device-ExtensionAbilityType-ACTION = 19--><!--Device-ExtensionAbilityType-ACTION = 19-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -252,6 +292,8 @@ AdsServiceExtensionAbility: provides background customized ad services for exter
 
 **Since:** 11
 
+<!--Device-ExtensionAbilityType-ADS_SERVICE = 20--><!--Device-ExtensionAbilityType-ADS_SERVICE = 20-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## EMBEDDED_UI
@@ -263,6 +305,8 @@ EMBEDDED_UI = 21
 [EmbeddedUIExtensionAbility](arkts-ability-app-ability-embeddeduiextensionability-embeddeduiextensionability-c.md): provides extended capabilities for the embeddable UI across process.
 
 **Since:** 12
+
+<!--Device-ExtensionAbilityType-EMBEDDED_UI = 21--><!--Device-ExtensionAbilityType-EMBEDDED_UI = 21-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -276,6 +320,8 @@ InsightIntentUIExtensionAbility: provides extended capabilities that enable appl
 
 **Since:** 12
 
+<!--Device-ExtensionAbilityType-INSIGHT_INTENT_UI = 22--><!--Device-ExtensionAbilityType-INSIGHT_INTENT_UI = 22-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## FENCE
@@ -287,6 +333,8 @@ FENCE = 24
 [FenceExtensionAbility](../../apis-location-kit/arkts-apis/arkts-location-app-ability-fenceextensionability-fenceextensionability-c.md): provides geofence- related capabilities. It inherits from ExtensionAbility.
 
 **Since:** 18
+
+<!--Device-ExtensionAbilityType-FENCE = 24--><!--Device-ExtensionAbilityType-FENCE = 24-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -300,6 +348,8 @@ CallerInfoQueryExtensionAbility: provides the capability of querying incoming an
 
 **Since:** 19
 
+<!--Device-ExtensionAbilityType-CALLER_INFO_QUERY = 25--><!--Device-ExtensionAbilityType-CALLER_INFO_QUERY = 25-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## ASSET_ACCELERATION
@@ -311,6 +361,8 @@ ASSET_ACCELERATION = 26
 AssetAccelerationExtensionAbility: provides extended capabilities of pre-downloading background resources when the device is idle.
 
 **Since:** 18
+
+<!--Device-ExtensionAbilityType-ASSET_ACCELERATION = 26--><!--Device-ExtensionAbilityType-ASSET_ACCELERATION = 26-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -324,6 +376,8 @@ FORM_EDIT = 27
 
 **Since:** 18
 
+<!--Device-ExtensionAbilityType-FORM_EDIT = 27--><!--Device-ExtensionAbilityType-FORM_EDIT = 27-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## DISTRIBUTED
@@ -335,6 +389,8 @@ DISTRIBUTED = 28
 [DistributedExtensionAbility](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-application-distributedextensionability-distributedextensionability-c.md): provides extended capabilities for distributed services and lifecycle callbacks for creation, destruction, and connection of the DistributedExtensionAbility.
 
 **Since:** 20
+
+<!--Device-ExtensionAbilityType-DISTRIBUTED = 28--><!--Device-ExtensionAbilityType-DISTRIBUTED = 28-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -348,6 +404,8 @@ APP_SERVICE = 29
 
 **Since:** 20
 
+<!--Device-ExtensionAbilityType-APP_SERVICE = 29--><!--Device-ExtensionAbilityType-APP_SERVICE = 29-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## LIVE_FORM
@@ -360,7 +418,9 @@ LIVE_FORM = 30
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-ExtensionAbilityType-LIVE_FORM = 30--><!--Device-ExtensionAbilityType-LIVE_FORM = 30-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -376,6 +436,8 @@ SelectionExtensionAbility: provides extended capabilities for text selection pop
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExtensionAbilityType-SELECTION = 31--><!--Device-ExtensionAbilityType-SELECTION = 31-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## WEB_NATIVE_MESSAGING
@@ -387,6 +449,8 @@ WEB_NATIVE_MESSAGING = 32
 [WebNativeMessagingExtensionAbility](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md): provides extended capabilities for web native message communication.
 
 **Since:** 21
+
+<!--Device-ExtensionAbilityType-WEB_NATIVE_MESSAGING = 32--><!--Device-ExtensionAbilityType-WEB_NATIVE_MESSAGING = 32-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -400,6 +464,8 @@ FAULT_LOG = 33
 
 **Since:** 21
 
+<!--Device-ExtensionAbilityType-FAULT_LOG = 33--><!--Device-ExtensionAbilityType-FAULT_LOG = 33-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## NOTIFICATION_SUBSCRIBER
@@ -412,6 +478,8 @@ NOTIFICATION_SUBSCRIBER = 34
 
 **Since:** 22
 
+<!--Device-ExtensionAbilityType-NOTIFICATION_SUBSCRIBER = 34--><!--Device-ExtensionAbilityType-NOTIFICATION_SUBSCRIBER = 34-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## CRYPTO
@@ -423,6 +491,8 @@ CRYPTO = 35
 [CryptoExtensionAbility](../../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md): provides extended capabilities for external key management.
 
 **Since:** 22
+
+<!--Device-ExtensionAbilityType-CRYPTO = 35--><!--Device-ExtensionAbilityType-CRYPTO = 35-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -438,6 +508,8 @@ PARTNER_AGENT = 36
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExtensionAbilityType-PARTNER_AGENT = 36--><!--Device-ExtensionAbilityType-PARTNER_AGENT = 36-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## AGENT
@@ -451,6 +523,8 @@ AgentExtensionAbility: provides extended capabilities for agents, including life
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExtensionAbilityType-AGENT = 37--><!--Device-ExtensionAbilityType-AGENT = 37-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -466,6 +540,8 @@ AgentUIExtensionAbility: provides the Agent UI display capability on the access 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExtensionAbilityType-AGENT_UI = 38--><!--Device-ExtensionAbilityType-AGENT_UI = 38-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## MODULAR_OBJECT
@@ -480,6 +556,8 @@ Indicates extension info with type of the modular object extension.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ExtensionAbilityType-MODULAR_OBJECT = 39--><!--Device-ExtensionAbilityType-MODULAR_OBJECT = 39-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## UNSPECIFIED
@@ -491,5 +569,7 @@ UNSPECIFIED = 255
 The ability type is not specified. <!--Del-->It can be used in [queryExtensionAbilityInfo](arkts-ability-bundlemanager-queryextensionabilityinfo-f-sys.md) to obtain ExtensionAbility components of all types.<!--DelEnd-->
 
 **Since:** 9
+
+<!--Device-ExtensionAbilityType-UNSPECIFIED = 255--><!--Device-ExtensionAbilityType-UNSPECIFIED = 255-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

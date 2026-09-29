@@ -8,6 +8,8 @@ Defines cross-device collaborative operation information.
 
 **Since:** 18
 
+<!--Device-notificationSubscribe-export interface OperationInfo--><!--Device-notificationSubscribe-export interface OperationInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Operation button displayed in the notification. The value must be the same as th
 
 **Since:** 18
 
+<!--Device-OperationInfo-actionName?: string--><!--Device-OperationInfo-actionName?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Index of the non-live view button or live view auxiliary area that the user taps
 **Type:** number
 
 **Since:** 20
+
+<!--Device-OperationInfo-buttonIndex?: int--><!--Device-OperationInfo-buttonIndex?: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -67,6 +73,8 @@ Operation type.
 
 **Since:** 20
 
+<!--Device-OperationInfo-operationType?: int--><!--Device-OperationInfo-operationType?: int-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -82,6 +90,8 @@ User input, used to apply quick reply across devices. The value must be the same
 **Type:** string
 
 **Since:** 18
+
+<!--Device-OperationInfo-userInput?: string--><!--Device-OperationInfo-userInput?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

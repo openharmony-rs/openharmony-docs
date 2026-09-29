@@ -20,6 +20,8 @@ Copies this matrix object.
 
 **Substitutes:** [copy](arkts-arkui-matrix4-matrix4transit-i.md#copy)
 
+<!--Device-matrix4-function copy(): Matrix4Transit--><!--Device-matrix4-function copy(): Matrix4Transit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**

@@ -20,4 +20,6 @@ When an EmbeddableUIAbility component is instantiated, the system automatically 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export default class EmbeddableUIAbilityContext extends UIAbilityContext--><!--Device-unnamed-export default class EmbeddableUIAbilityContext extends UIAbilityContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

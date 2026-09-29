@@ -12,4 +12,6 @@ Define ContentSlot attribute, to prevent improper recursive usage of ContentSlot
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare class ContentSlotAttribute--><!--Device-unnamed-declare class ContentSlotAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

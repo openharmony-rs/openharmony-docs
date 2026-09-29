@@ -12,6 +12,8 @@ Represents a FrameNode of the **Rating** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>--><!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RatingInterface, [RatingAttribute](../arkts-components/arkts-arkui-rating-comp-attribute.md)&gt;

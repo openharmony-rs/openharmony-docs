@@ -21,6 +21,8 @@ Clear up application data by bundle name
 
 **Required permissions:** ohos.permission.CLEAN_APPLICATION_DATA
 
+<!--Device-appManager-function clearUpApplicationData(bundleName: string): Promise<void>--><!--Device-appManager-function clearUpApplicationData(bundleName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Clear up application data by bundle name
 **Substitutes:** [clearUpApplicationData](arkts-ability-appmanager-clearupapplicationdata-f-sys.md)
 
 **Required permissions:** ohos.permission.CLEAN_APPLICATION_DATA
+
+<!--Device-appManager-function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void>)--><!--Device-appManager-function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void>)-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

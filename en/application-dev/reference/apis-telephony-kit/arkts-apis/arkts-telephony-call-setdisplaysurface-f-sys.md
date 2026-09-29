@@ -18,6 +18,8 @@ Sets the remote display window. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function setDisplaySurface(callId: int, surfaceId: string): Promise<void>--><!--Device-call-function setDisplaySurface(callId: int, surfaceId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

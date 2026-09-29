@@ -20,6 +20,8 @@ Sends data to the peer end. This API uses a promise to return the result. This i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-proxyChannelManager-function sendData(channelId: int, data: ArrayBuffer): Promise<void>--><!--Device-proxyChannelManager-function sendData(channelId: int, data: ArrayBuffer): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**

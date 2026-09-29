@@ -8,6 +8,8 @@ Provides the prefetching capability. It works with **LazyForEach** to prefetch d
 
 **Since:** 12
 
+<!--Device-unnamed-export interface IPrefetcher--><!--Device-unnamed-export interface IPrefetcher-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Sets the prefetching-capable data source to bind to the **Prefetcher**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-IPrefetcher-setDataSource(dataSource: IDataSourcePrefetching): void--><!--Device-IPrefetcher-setDataSource(dataSource: IDataSourcePrefetching): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,11 +56,13 @@ Called when the boundary of the visible area changes. It notifies **Prefetcher**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-IPrefetcher-visibleAreaChanged(minVisible: number, maxVisible: number): void--><!--Device-IPrefetcher-visibleAreaChanged(minVisible: number, maxVisible: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| minVisible | number | Yes | Index of the first data item in the current visible area. |
-| maxVisible | number | Yes | Index of the last data item in the current visible area. |
+| minVisible | number | Yes | Index of the first data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |
+| maxVisible | number | Yes | Index of the last data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |

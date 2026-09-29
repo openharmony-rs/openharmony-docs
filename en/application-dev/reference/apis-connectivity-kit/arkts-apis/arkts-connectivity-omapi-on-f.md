@@ -14,9 +14,11 @@ function on(type: 'stateChanged', callback: Callback<ServiceState>): void
 
 Enables listening for service status change events.
 
-Call this API to register a callback after you use [omapi.newSEService](arkts-connectivity-omapi-newseservice-f.md#newseserviceservicestate) or [omapi.createService](arkts-connectivity-omapi-createservice-f.md) to create a service.
+Call this API to register a callback after you use [omapi.newSEService](arkts-connectivity-omapi-newseservice-f.md) or [omapi.createService](arkts-connectivity-omapi-createservice-f.md) to create a service.
 
 **Since:** 18
+
+<!--Device-omapi-function on(type: 'stateChanged', callback: Callback<ServiceState>): void--><!--Device-omapi-function on(type: 'stateChanged', callback: Callback<ServiceState>): void-End-->
 
 **System capability:** SystemCapability.Communication.SecureElement
 

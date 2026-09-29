@@ -14,6 +14,8 @@ Manager pan profile.
 
 **Substitutes:** [PanProfile](arkts-connectivity-pan-panprofile-i.md)
 
+<!--Device-bluetoothManager-interface PanProfile extends BaseProfile--><!--Device-bluetoothManager-interface PanProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Unsubscribe the event reported when the profile connection state changes. On API
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
+
+<!--Device-PanProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void--><!--Device-PanProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -73,6 +77,8 @@ Subscribe the event reported when the profile connection state changes. On API 1
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
+
+<!--Device-PanProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void--><!--Device-PanProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

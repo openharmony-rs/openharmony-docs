@@ -6,6 +6,8 @@ The **DataShare** module allows an application to manage its own data and share 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace dataShare--><!--Device-unnamed-declare namespace dataShare-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 ## Modules to Import

@@ -8,6 +8,8 @@ The event types represented by XML elements.
 
 **Since:** 8
 
+<!--Device-xml-enum EventType--><!--Device-xml-enum EventType-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## START_DOCUMENT
@@ -20,7 +22,9 @@ Start a document.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-START_DOCUMENT--><!--Device-EventType-START_DOCUMENT-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -34,7 +38,9 @@ End a document.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-END_DOCUMENT--><!--Device-EventType-END_DOCUMENT-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -48,7 +54,9 @@ Start a tag.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-START_TAG--><!--Device-EventType-START_TAG-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -62,7 +70,9 @@ End a tag.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-END_TAG--><!--Device-EventType-END_TAG-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -76,7 +86,9 @@ Character data.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-TEXT--><!--Device-EventType-TEXT-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -90,7 +102,9 @@ A CDATA sections.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-CDSECT--><!--Device-EventType-CDSECT-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -104,7 +118,9 @@ An XML comment.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-COMMENT--><!--Device-EventType-COMMENT-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -118,7 +134,9 @@ An XML document type declaration.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-DOCDECL--><!--Device-EventType-DOCDECL-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -132,7 +150,9 @@ An XML processing instruction declaration.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-INSTRUCTION--><!--Device-EventType-INSTRUCTION-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -146,7 +166,9 @@ An entity reference.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-ENTITY_REFERENCE--><!--Device-EventType-ENTITY_REFERENCE-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -160,6 +182,8 @@ A whitespace.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventType-WHITESPACE--><!--Device-EventType-WHITESPACE-End-->
 
 **System capability:** SystemCapability.Utils.Lang

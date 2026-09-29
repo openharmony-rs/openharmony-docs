@@ -8,6 +8,8 @@ Custom accessibility action API.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface AccessibilityCustomAction--><!--Device-unnamed-declare interface AccessibilityCustomAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAction
@@ -25,6 +27,8 @@ Callback for handling the custom action.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-AccessibilityCustomAction-onAction: VoidCallback--><!--Device-AccessibilityCustomAction-onAction: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,5 +51,7 @@ Name of the custom action, used to identify and bind the action callback.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-AccessibilityCustomAction-name: ResourceStr--><!--Device-AccessibilityCustomAction-name: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

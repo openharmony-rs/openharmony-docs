@@ -10,6 +10,8 @@ export declare class SubHeaderV2Title
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export declare class SubHeaderV2Title--><!--Device-unnamed-export declare class SubHeaderV2Title-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -31,6 +33,8 @@ constructor(options: SubHeaderV2TitleOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2Title-constructor(options: SubHeaderV2TitleOptions)--><!--Device-SubHeaderV2Title-constructor(options: SubHeaderV2TitleOptions)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ id?: string
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2Title-id?: string--><!--Device-SubHeaderV2Title-id?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitle
@@ -80,6 +86,8 @@ The first line text of content area.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2Title-primaryTitle?: ResourceStr--><!--Device-SubHeaderV2Title-primaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitleModifier
@@ -90,7 +98,7 @@ primaryTitleModifier?: TextModifier
 
 Text modifier for primary title.
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -99,6 +107,8 @@ Text modifier for primary title.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2Title-primaryTitleModifier?: TextModifier--><!--Device-SubHeaderV2Title-primaryTitleModifier?: TextModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,6 +130,8 @@ The secondary line text of content area.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2Title-secondaryTitle?: ResourceStr--><!--Device-SubHeaderV2Title-secondaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitleModifier
@@ -130,7 +142,7 @@ secondaryTitleModifier?: TextModifier
 
 Text modifier for secondary title.
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
@@ -139,6 +151,8 @@ Text modifier for secondary title.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2Title-secondaryTitleModifier?: TextModifier--><!--Device-SubHeaderV2Title-secondaryTitleModifier?: TextModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,5 +177,7 @@ titleAccessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2Title-titleAccessibilityText?: ResourceStr--><!--Device-SubHeaderV2Title-titleAccessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

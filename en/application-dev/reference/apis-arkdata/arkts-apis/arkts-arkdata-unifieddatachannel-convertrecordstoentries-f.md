@@ -23,7 +23,9 @@ This API is used only when the following rules are met:
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 17.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 17.
+
+<!--Device-unifiedDataChannel-function convertRecordsToEntries(data: UnifiedData): void--><!--Device-unifiedDataChannel-function convertRecordsToEntries(data: UnifiedData): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 

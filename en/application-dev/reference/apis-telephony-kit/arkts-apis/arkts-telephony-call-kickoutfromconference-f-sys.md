@@ -18,6 +18,8 @@ Removes a specified call from a conference call. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.PLACE_CALL
 
+<!--Device-call-function kickOutFromConference(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function kickOutFromConference(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Removes a specified call from a conference call. This API uses a promise to retu
 **Since:** 10
 
 **Required permissions:** ohos.permission.PLACE_CALL
+
+<!--Device-call-function kickOutFromConference(callId: int): Promise<void>--><!--Device-call-function kickOutFromConference(callId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

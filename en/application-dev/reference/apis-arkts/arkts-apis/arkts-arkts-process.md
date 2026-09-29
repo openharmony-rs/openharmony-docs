@@ -4,6 +4,8 @@ The **process** module provides process management APIs, for example, APIs for o
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace process--><!--Device-unnamed-declare namespace process-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

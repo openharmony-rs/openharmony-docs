@@ -10,6 +10,8 @@ declare interface PixelRoundPolicy
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface PixelRoundPolicy--><!--Device-unnamed-declare interface PixelRoundPolicy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -31,6 +33,8 @@ bottom?: PixelRoundCalcPolicy
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PixelRoundPolicy-bottom?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-bottom?: PixelRoundCalcPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ end?: PixelRoundCalcPolicy
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PixelRoundPolicy-end?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-end?: PixelRoundCalcPolicy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -76,6 +82,8 @@ start?: PixelRoundCalcPolicy
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PixelRoundPolicy-start?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-start?: PixelRoundCalcPolicy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -97,5 +105,7 @@ top?: PixelRoundCalcPolicy
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PixelRoundPolicy-top?: PixelRoundCalcPolicy--><!--Device-PixelRoundPolicy-top?: PixelRoundCalcPolicy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

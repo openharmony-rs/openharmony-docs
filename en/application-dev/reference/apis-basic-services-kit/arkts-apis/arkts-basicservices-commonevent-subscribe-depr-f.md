@@ -19,6 +19,8 @@ Subscribes to common events. This API uses an asynchronous callback to return th
 
 **Substitutes:** [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md)
 
+<!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void--><!--Device-commonEvent-function subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback<CommonEventData>): void-End-->
+
 **System capability:** SystemCapability.Notification.CommonEvent
 
 **Parameters:**

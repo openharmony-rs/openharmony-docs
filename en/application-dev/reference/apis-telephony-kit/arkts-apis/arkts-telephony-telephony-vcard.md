@@ -4,6 +4,8 @@ VCard is a file format standard for electronic business cards. It contains infor
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace vcard--><!--Device-unnamed-declare namespace vcard-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import

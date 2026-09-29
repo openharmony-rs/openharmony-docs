@@ -8,6 +8,8 @@ Describes the basic text notification, which is used to display the title and bo
 
 **Since:** 7
 
+<!--Device-unnamed-export interface NotificationBasicContent--><!--Device-unnamed-export interface NotificationBasicContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## additionalText
@@ -21,6 +23,8 @@ Additional notification content, which supplements the notification content and 
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationBasicContent-additionalText?: string--><!--Device-NotificationBasicContent-additionalText?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -36,6 +40,8 @@ Picture displayed on the lock screen. This parameter is left empty by default. C
 
 **Since:** 12
 
+<!--Device-NotificationBasicContent-lockscreenPicture?: image.PixelMap--><!--Device-NotificationBasicContent-lockscreenPicture?: image.PixelMap-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## text
@@ -50,6 +56,8 @@ Notification body content, displayed below the title. It cannot be an empty stri
 
 **Since:** 7
 
+<!--Device-NotificationBasicContent-text: string--><!--Device-NotificationBasicContent-text: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## title
@@ -63,5 +71,7 @@ Notification title, displayed at the top of the notification. It cannot be an em
 **Type:** string
 
 **Since:** 7
+
+<!--Device-NotificationBasicContent-title: string--><!--Device-NotificationBasicContent-title: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

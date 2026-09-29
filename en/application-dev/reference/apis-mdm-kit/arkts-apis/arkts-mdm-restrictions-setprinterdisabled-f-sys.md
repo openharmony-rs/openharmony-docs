@@ -24,6 +24,8 @@ Enables or disables the printing capability of the device. This API uses an asyn
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<void>): void--><!--Device-restrictions-function setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -87,6 +89,8 @@ Enables or disables the printing capability of the device. This API uses a promi
 **Required permissions:** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>--><!--Device-restrictions-function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

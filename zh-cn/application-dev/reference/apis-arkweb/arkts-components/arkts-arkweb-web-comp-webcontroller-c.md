@@ -14,6 +14,8 @@ WebController适用于需要在应用侧对嵌入式Web组件进行主动控制�
 
 **替代接口：** WebviewController
 
+<!--Device-unnamed-declare class WebController--><!--Device-unnamed-declare class WebController-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## accessBackward
@@ -29,6 +31,8 @@ accessBackward(): boolean
 **废弃版本：** 9
 
 **替代接口：** accessBackward
+
+<!--Device-WebController-accessBackward(): boolean--><!--Device-WebController-accessBackward(): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -74,6 +78,8 @@ accessForward(): boolean
 
 **替代接口：** accessForward
 
+<!--Device-WebController-accessForward(): boolean--><!--Device-WebController-accessForward(): boolean-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
@@ -117,6 +123,8 @@ accessStep(step: number): boolean
 **废弃版本：** 9
 
 **替代接口：** accessStep
+
+<!--Device-WebController-accessStep(step: number): boolean--><!--Device-WebController-accessStep(step: number): boolean-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -169,6 +177,8 @@ backward()
 
 **替代接口：** backward
 
+<!--Device-WebController-backward()--><!--Device-WebController-backward()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -206,6 +216,8 @@ clearHistory(): void
 
 **替代接口：** clearHistory
 
+<!--Device-WebController-clearHistory(): void--><!--Device-WebController-clearHistory(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -224,6 +236,8 @@ WebController的构造函数。
 
 **替代接口：** constructor
 
+<!--Device-WebController-constructor()--><!--Device-WebController-constructor()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## deleteJavaScriptRegister
@@ -239,6 +253,8 @@ deleteJavaScriptRegister(name: string)
 **废弃版本：** 9
 
 **替代接口：** deleteJavaScriptRegister
+
+<!--Device-WebController-deleteJavaScriptRegister(name: string)--><!--Device-WebController-deleteJavaScriptRegister(name: string)-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -284,6 +300,8 @@ forward()
 
 **替代接口：** forward
 
+<!--Device-WebController-forward()--><!--Device-WebController-forward()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -321,13 +339,15 @@ getCookieManager(): WebCookie
 
 **替代接口：** [WebCookieManager](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md)
 
+<!--Device-WebController-getCookieManager(): WebCookie--><!--Device-WebController-getCookieManager(): WebCookie-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Web组件cookie管理对象，参考[WebCookie](arkts-arkweb-web-comp.md#webweb控制器)定义。 |
+| [WebCookie](arkts-arkweb-web-comp-webcookie-c.md) | Web组件cookie管理对象，参考[WebCookie](arkts-arkweb-web-comp.md)定义。 |
 
 **示例**
 
@@ -363,6 +383,8 @@ getHitTest(): HitTestType
 **废弃版本：** 9
 
 **替代接口：** [getHitTest](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#gethittest)
+
+<!--Device-WebController-getHitTest(): HitTestType--><!--Device-WebController-getHitTest(): HitTestType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -411,6 +433,8 @@ baseUrl为空时，通过“data”协议加载指定的一段字符串。
 **废弃版本：** 9
 
 **替代接口：** loadData
+
+<!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })--><!--Device-WebController-loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -463,6 +487,8 @@ loadUrl(options: { url: string | Resource, headers?: Array<Header> })
 
 **替代接口：** loadUrl
 
+<!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })--><!--Device-WebController-loadUrl(options: { url: string | Resource, headers?: Array<Header> })-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -506,6 +532,8 @@ onActive(): void
 
 **替代接口：** onActive
 
+<!--Device-WebController-onActive(): void--><!--Device-WebController-onActive(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -542,6 +570,8 @@ onInactive(): void
 **废弃版本：** 9
 
 **替代接口：** onInactive
+
+<!--Device-WebController-onInactive(): void--><!--Device-WebController-onInactive(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -580,6 +610,8 @@ refresh()
 
 **替代接口：** refresh
 
+<!--Device-WebController-refresh()--><!--Device-WebController-refresh()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -616,6 +648,8 @@ registerJavaScriptProxy(options: { object: object, name: string, methodList: Arr
 **废弃版本：** 9
 
 **替代接口：** registerJavaScriptProxy
+
+<!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })--><!--Device-WebController-registerJavaScriptProxy(options: { object: object, name: string, methodList: Array<string> })-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -700,6 +734,8 @@ requestFocus()
 
 **替代接口：** requestFocus
 
+<!--Device-WebController-requestFocus()--><!--Device-WebController-requestFocus()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -736,6 +772,8 @@ runJavaScript(options: { script: string, callback?: (result: string) => void })
 **废弃版本：** 9
 
 **替代接口：** runJavaScript
+
+<!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })--><!--Device-WebController-runJavaScript(options: { script: string, callback?: (result: string) => void })-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -810,6 +848,8 @@ stop()
 
 **替代接口：** stop
 
+<!--Device-WebController-stop()--><!--Device-WebController-stop()-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
@@ -846,6 +886,8 @@ zoom(factor: number): void
 **废弃版本：** 9
 
 **替代接口：** [zoom](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#zoom)
+
+<!--Device-WebController-zoom(factor: number): void--><!--Device-WebController-zoom(factor: number): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

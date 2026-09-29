@@ -18,6 +18,8 @@ function setDarkMode(mode: DarkMode, callback: AsyncCallback<void>): void
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-uiAppearance-function setDarkMode(mode: DarkMode, callback: AsyncCallback<void>): void--><!--Device-uiAppearance-function setDarkMode(mode: DarkMode, callback: AsyncCallback<void>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
 **系统接口：** 此接口为系统接口。
@@ -71,6 +73,8 @@ function setDarkMode(mode: DarkMode): Promise<void>
 **起始版本：** 10
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
+
+<!--Device-uiAppearance-function setDarkMode(mode: DarkMode): Promise<void>--><!--Device-uiAppearance-function setDarkMode(mode: DarkMode): Promise<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 

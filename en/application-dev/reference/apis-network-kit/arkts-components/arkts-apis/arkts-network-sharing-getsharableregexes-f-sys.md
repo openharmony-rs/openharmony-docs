@@ -18,6 +18,8 @@ Obtains regular expressions of NICs of a specified type. This API uses an asynch
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
 
+<!--Device-sharing-function getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback<Array<string>>): void--><!--Device-sharing-function getSharableRegexes(type: SharingIfaceType, callback: AsyncCallback<Array<string>>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Obtains regular expressions of NICs of a specified type. This API uses a promise
 **Since:** 9
 
 **Required permissions:** ohos.permission.CONNECTIVITY_INTERNAL
+
+<!--Device-sharing-function getSharableRegexes(type: SharingIfaceType): Promise<Array<string>>--><!--Device-sharing-function getSharableRegexes(type: SharingIfaceType): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

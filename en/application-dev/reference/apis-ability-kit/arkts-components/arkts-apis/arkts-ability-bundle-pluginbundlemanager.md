@@ -6,6 +6,8 @@ This module is used to manage plugins for applications.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace pluginBundleManager--><!--Device-unnamed-declare namespace pluginBundleManager-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Enumerates the alert dialog box styles.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancel
@@ -23,6 +25,8 @@ Callback invoked when the dialog box is closed after the overlay is clicked.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParam-cancel?: VoidCallback--><!--Device-AlertDialogParam-cancel?: VoidCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ If **showInSubWindow** is set to **true** in **UIExtension**, the dialog box is 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogParam-alignment?: DialogAlignment--><!--Device-AlertDialogParam-alignment?: DialogAlignment-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoCancel
@@ -67,6 +73,8 @@ Default value: **true**.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParam-autoCancel?: boolean--><!--Device-AlertDialogParam-autoCancel?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +102,8 @@ Setting this parameter to **BlurStyle.NONE** disables the background blur. When 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-backgroundBlurStyle?: BlurStyle--><!--Device-AlertDialogParam-backgroundBlurStyle?: BlurStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -111,6 +121,8 @@ Options for customizing the background blur style. For details about the default
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-AlertDialogParam-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-AlertDialogParam-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +150,8 @@ The background color will be visually combined with the blur effect when both pr
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-backgroundColor?: ResourceColor--><!--Device-AlertDialogParam-backgroundColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -155,6 +169,8 @@ Options for customizing the background effect. For details about the default val
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-AlertDialogParam-backgroundEffect?: BackgroundEffectOptions--><!--Device-AlertDialogParam-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,6 +198,8 @@ When **borderColor** is of type LocalizedEdgeColors, the layout order can be dyn
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors--><!--Device-AlertDialogParam-borderColor?: ResourceColor | EdgeColors | LocalizedEdgeColors-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## borderStyle
@@ -203,6 +221,8 @@ Default value: **BorderStyle.Solid**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlertDialogParam-borderStyle?: BorderStyle | EdgeStyles--><!--Device-AlertDialogParam-borderStyle?: BorderStyle | EdgeStyles-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,6 +251,8 @@ When **borderWidth** is of type LocalizedEdgeWidths, the layout order can be dyn
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlertDialogParam-borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths--><!--Device-AlertDialogParam-borderWidth?: Dimension | EdgeWidths | LocalizedEdgeWidths-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,6 +286,8 @@ When **cornerRadius** is of type LocalizedBorderRadiuses, the layout order can b
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-cornerRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses--><!--Device-AlertDialogParam-cornerRadius?: Dimension | BorderRadiuses | LocalizedBorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enableHoverMode
@@ -290,6 +314,8 @@ For a PC or 2-in-1 device, the dialog box is displayed on the upper half of the 
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-AlertDialogParam-enableHoverMode?: boolean--><!--Device-AlertDialogParam-enableHoverMode?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridCount
@@ -311,6 +337,8 @@ Value range: an integer no less than 0
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParam-gridCount?: number--><!--Device-AlertDialogParam-gridCount?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,6 +364,8 @@ where the dialog box is located minus the safe area. You can decrease or increas
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-height?: Dimension--><!--Device-AlertDialogParam-height?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hoverModeArea
@@ -357,6 +387,8 @@ Default value: **HoverModeAreaType.BOTTOM_SCREEN**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-AlertDialogParam-hoverModeArea?: HoverModeAreaType--><!--Device-AlertDialogParam-hoverModeArea?: HoverModeAreaType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -383,6 +415,8 @@ Overlay effect for the page-level dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-AlertDialogParam-immersiveMode?: ImmersiveMode--><!--Device-AlertDialogParam-immersiveMode?: ImmersiveMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isModal
@@ -404,6 +438,8 @@ Default value: **true**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlertDialogParam-isModal?: boolean--><!--Device-AlertDialogParam-isModal?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -430,6 +466,8 @@ Display level of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-AlertDialogParam-levelMode?: LevelMode--><!--Device-AlertDialogParam-levelMode?: LevelMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelOrder
@@ -455,6 +493,8 @@ Display order of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AlertDialogParam-levelOrder?: LevelOrder--><!--Device-AlertDialogParam-levelOrder?: LevelOrder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## levelUniqueId
@@ -474,6 +514,8 @@ Value range: a number no less than 0
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-AlertDialogParam-levelUniqueId?: number--><!--Device-AlertDialogParam-levelUniqueId?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -499,6 +541,8 @@ Default value: **{ x: 0, y: 0, width: '100%', height: '100%' }**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogParam-maskRect?: Rectangle--><!--Device-AlertDialogParam-maskRect?: Rectangle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -521,6 +565,8 @@ API version 20 and later: The content of the dialog box is center-aligned.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogParam-message: ResourceStr--><!--Device-AlertDialogParam-message: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offset
@@ -531,7 +577,7 @@ offset?: Offset
 
 Offset of the dialog box based on the **alignment** settings.
 
-Default value: **{ dx: 0 , dy: 0 }**
+Default value: **{ dx: 0 , dy: 0 }**
 
 **Type:** [Offset](arkts-arkui-offset-t.md)
 
@@ -540,6 +586,8 @@ Default value: **{ dx: 0 , dy: 0 }**
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParam-offset?: Offset--><!--Device-AlertDialogParam-offset?: Offset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -566,6 +614,8 @@ Event callback after the dialog box appears.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AlertDialogParam-onDidAppear?: Callback<void>--><!--Device-AlertDialogParam-onDidAppear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -587,6 +637,8 @@ The normal timing sequence is as follows: onWillAppear &gt; onDidAppear &gt; onW
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-AlertDialogParam-onDidDisappear?: Callback<void>--><!--Device-AlertDialogParam-onDidDisappear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -611,6 +663,8 @@ Event callback when the dialog box is about to appear.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-AlertDialogParam-onWillAppear?: Callback<void>--><!--Device-AlertDialogParam-onWillAppear?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillDisappear
@@ -632,6 +686,8 @@ The normal timing sequence is as follows: onWillAppear &gt; onDidAppear &gt; onW
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-AlertDialogParam-onWillDisappear?: Callback<void>--><!--Device-AlertDialogParam-onWillDisappear?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -656,6 +712,8 @@ Callback for interactive dismissal of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-onWillDismiss?: Callback<DismissDialogAction>--><!--Device-AlertDialogParam-onWillDismiss?: Callback<DismissDialogAction>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shadow
@@ -675,6 +733,8 @@ Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dial
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlertDialogParam-shadow?: ShadowOptions | ShadowStyle--><!--Device-AlertDialogParam-shadow?: ShadowOptions | ShadowStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -704,6 +764,8 @@ A dialog box whose **showInSubWindow** attribute is **true** cannot trigger the 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-showInSubWindow?: boolean--><!--Device-AlertDialogParam-showInSubWindow?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -726,6 +788,8 @@ API version 20 and later: The subtitle of the dialog box is center-aligned.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-AlertDialogParam-subtitle?: ResourceStr--><!--Device-AlertDialogParam-subtitle?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -734,9 +798,7 @@ API version 20 and later: The subtitle of the dialog box is center-aligned.
 systemMaterial?: SystemUiMaterial
 ```
 
-Set system-styled materials for dialog. Different materials have different effects, which can influence backgroundColor, border, shadow, and other visual attributes of dialog.
-
-Device Behavior Differences:The effect of same material may vary across different devices depending on their computing power.
+System material of the dialog box. Different materials have different effects and can affect visual attributes such as the background color, border, and shadow of the dialog box.
 
 **Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 
@@ -745,6 +807,8 @@ Device Behavior Differences:The effect of same material may vary across differen
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-AlertDialogParam-systemMaterial?: SystemUiMaterial--><!--Device-AlertDialogParam-systemMaterial?: SystemUiMaterial-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -763,6 +827,8 @@ Text style of the message in the dialog box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlertDialogParam-textStyle?: TextStyle--><!--Device-AlertDialogParam-textStyle?: TextStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -785,6 +851,8 @@ API version 20 and later: The title of the dialog box is center-aligned.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlertDialogParam-title?: ResourceStr--><!--Device-AlertDialogParam-title?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -810,6 +878,8 @@ Transition effect for the appearance and disappearance of the dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AlertDialogParam-transition?: TransitionEffect--><!--Device-AlertDialogParam-transition?: TransitionEffect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -833,5 +903,7 @@ where the dialog box is located. You can decrease or increase the width as neede
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AlertDialogParam-width?: Dimension--><!--Device-AlertDialogParam-width?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

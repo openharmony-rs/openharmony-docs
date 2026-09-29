@@ -14,6 +14,8 @@ The power model enumeration.
 
 **Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
+<!--Device-wifiext-export enum PowerModel--><!--Device-wifiext-export enum PowerModel-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 ## SLEEPING
@@ -29,6 +31,8 @@ Sleeping model.
 **Deprecated since:** 9
 
 **Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
+
+<!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
@@ -46,6 +50,8 @@ General model.
 
 **Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
+<!--Device-PowerModel-GENERAL = 1--><!--Device-PowerModel-GENERAL = 1-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension
 
 ## THROUGH_WALL
@@ -61,5 +67,7 @@ Through wall model.
 **Deprecated since:** 9
 
 **Substitutes:** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
+
+<!--Device-PowerModel-THROUGH_WALL = 2--><!--Device-PowerModel-THROUGH_WALL = 2-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Extension

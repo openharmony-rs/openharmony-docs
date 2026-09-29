@@ -20,6 +20,8 @@ Obtains the applications allowed to run in kiosk mode.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function getAllowedKioskApps(admin: Want): Array<string>--><!--Device-applicationManager-function getAllowedKioskApps(admin: Want): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -78,6 +80,8 @@ Obtains the applications allowed to run in kiosk mode.
 **Required permissions:** ohos.permission.ENTERPRISE_SET_KIOSK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function getAllowedKioskApps(admin: Want | null): Array<string>--><!--Device-applicationManager-function getAllowedKioskApps(admin: Want | null): Array<string>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

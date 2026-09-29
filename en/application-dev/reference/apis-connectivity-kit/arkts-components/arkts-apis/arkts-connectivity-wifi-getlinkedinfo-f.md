@@ -22,6 +22,8 @@ Obtains information about a Wi-Fi connection.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function getLinkedInfo(): Promise<WifiLinkedInfo>--><!--Device-wifi-function getLinkedInfo(): Promise<WifiLinkedInfo>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**
@@ -68,6 +70,8 @@ Obtains information about a Wi-Fi connection.
 **Substitutes:** [getLinkedInfo](arkts-connectivity-wifimanager-getlinkedinfo-f.md)
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifi-function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void--><!--Device-wifi-function getLinkedInfo(callback: AsyncCallback<WifiLinkedInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

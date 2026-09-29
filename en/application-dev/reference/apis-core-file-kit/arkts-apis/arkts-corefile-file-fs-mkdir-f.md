@@ -18,6 +18,8 @@ Creates a directory. This API uses a promise to return the result.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function mkdir(path: string): Promise<void>--><!--Device-unnamed-declare function mkdir(path: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -66,6 +68,8 @@ Creates a directory. This API uses a promise to return the result. The value **t
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare function mkdir(path: string, recursion: boolean): Promise<void>--><!--Device-unnamed-declare function mkdir(path: string, recursion: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -117,6 +121,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function mkdir(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function mkdir(path: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -160,6 +166,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-unnamed-declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

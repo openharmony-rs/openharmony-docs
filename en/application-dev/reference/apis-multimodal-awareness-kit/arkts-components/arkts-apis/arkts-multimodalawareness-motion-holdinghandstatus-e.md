@@ -4,9 +4,11 @@
 export enum HoldingHandStatus
 ```
 
-Represents the holding hand status. The holding hand status is returned if listening for holding hand status changes is enabled.
+Defines the holding hand state information, which represents the result of a holding hand state change awareness event. After subscribing to the event, the current holding hand state information is returned.
 
 **Since:** 20
+
+<!--Device-motion-export enum HoldingHandStatus--><!--Device-motion-export enum HoldingHandStatus-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
@@ -20,6 +22,8 @@ No holding.
 
 **Since:** 20
 
+<!--Device-HoldingHandStatus-NOT_HELD = 0--><!--Device-HoldingHandStatus-NOT_HELD = 0-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 ## LEFT_HAND_HELD
@@ -31,6 +35,8 @@ LEFT_HAND_HELD = 1
 Holding with the left hand.
 
 **Since:** 20
+
+<!--Device-HoldingHandStatus-LEFT_HAND_HELD = 1--><!--Device-HoldingHandStatus-LEFT_HAND_HELD = 1-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
@@ -44,6 +50,8 @@ Holding with the right hand.
 
 **Since:** 20
 
+<!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2--><!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 ## BOTH_HANDS_HELD
@@ -56,6 +64,8 @@ Holding with both hands.
 
 **Since:** 20
 
+<!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3--><!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 ## UNKNOWN_STATUS
@@ -67,5 +77,7 @@ UNKNOWN_STATUS = 16
 Unknown status.
 
 **Since:** 20
+
+<!--Device-HoldingHandStatus-UNKNOWN_STATUS = 16--><!--Device-HoldingHandStatus-UNKNOWN_STATUS = 16-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion

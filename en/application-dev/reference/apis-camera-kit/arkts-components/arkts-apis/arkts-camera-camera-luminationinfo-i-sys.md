@@ -8,6 +8,8 @@ Describes the illumination information.
 
 **Since:** 12
 
+<!--Device-camera-interface LuminationInfo--><!--Device-camera-interface LuminationInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Illumination. The value range is [0, 1].
 **Type:** number
 
 **Since:** 12
+
+<!--Device-LuminationInfo-readonly lumination?: double--><!--Device-LuminationInfo-readonly lumination?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

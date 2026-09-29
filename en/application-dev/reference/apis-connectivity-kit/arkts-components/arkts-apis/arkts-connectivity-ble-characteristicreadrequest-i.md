@@ -8,6 +8,8 @@ Describes the parameters of the Gatt client's characteristic read request.
 
 **Since:** 10
 
+<!--Device-ble-interface CharacteristicReadRequest--><!--Device-ble-interface CharacteristicReadRequest-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -30,7 +32,9 @@ The UUID of a CharacteristicReadRequest instance
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CharacteristicReadRequest-characteristicUuid: string--><!--Device-CharacteristicReadRequest-characteristicUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -48,7 +52,9 @@ Indicates the address of the client that initiates the read request
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CharacteristicReadRequest-deviceId: string--><!--Device-CharacteristicReadRequest-deviceId: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -66,7 +72,9 @@ Indicates the byte offset of the start position for reading characteristic value
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CharacteristicReadRequest-offset: int--><!--Device-CharacteristicReadRequest-offset: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -84,7 +92,9 @@ The UUID of the service to which the characteristic belongs
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CharacteristicReadRequest-serviceUuid: string--><!--Device-CharacteristicReadRequest-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -102,6 +112,8 @@ The Id of the read request
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-CharacteristicReadRequest-transId: int--><!--Device-CharacteristicReadRequest-transId: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

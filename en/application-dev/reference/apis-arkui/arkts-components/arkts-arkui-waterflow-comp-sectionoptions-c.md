@@ -8,6 +8,8 @@ Describes the configuration of the water flow item section.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class SectionOptions--><!--Device-unnamed-declare class SectionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onGetItemMainSizeByIndex
@@ -32,6 +34,8 @@ or index in the **WaterFlow** component. Avoid mixing the use of **onGetItemMain
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SectionOptions-onGetItemMainSizeByIndex?: GetItemMainSizeByIndex--><!--Device-SectionOptions-onGetItemMainSizeByIndex?: GetItemMainSizeByIndex-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## columnsGap
@@ -49,6 +53,8 @@ Column gap of the section. If this parameter is not set, the [columnsGap](arkts-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SectionOptions-columnsGap?: Dimension--><!--Device-SectionOptions-columnsGap?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,6 +80,8 @@ If the value is less than 1, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SectionOptions-crossCount?: number--><!--Device-SectionOptions-crossCount?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## itemsCount
@@ -91,6 +99,8 @@ Number of **FlowItem** components in a section. The value must be a non-negative
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SectionOptions-itemsCount: number--><!--Device-SectionOptions-itemsCount: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,6 +128,8 @@ When **margin** is set to a percentage, the width of the **WaterFlow** component
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SectionOptions-margin?: Margin | Dimension--><!--Device-SectionOptions-margin?: Margin | Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rowsGap
@@ -135,5 +147,7 @@ Row gap of the section. If this parameter is not set, the [rowsGap](arkts-arkui-
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SectionOptions-rowsGap?: Dimension--><!--Device-SectionOptions-rowsGap?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

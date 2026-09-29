@@ -4,6 +4,8 @@ The definition of constant.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace constant--><!--Device-unnamed-declare namespace constant-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

@@ -8,6 +8,8 @@ Enumerates the data set sizes supported by the privacy protocol. The data set si
 
 **Since:** 26.0.1
 
+<!--Device-privacyComputation-enum DataSetSize--><!--Device-privacyComputation-enum DataSetSize-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## SIZE_128
@@ -23,6 +25,8 @@ A single result ciphertext can contain 128 comparisons.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DataSetSize-SIZE_128 = 0--><!--Device-DataSetSize-SIZE_128 = 0-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -40,6 +44,8 @@ A single result ciphertext can contain 256 comparisons.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-DataSetSize-SIZE_256 = 1--><!--Device-DataSetSize-SIZE_256 = 1-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## SIZE_512
@@ -55,5 +61,7 @@ A single result ciphertext can contain 512 comparisons.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DataSetSize-SIZE_512 = 2--><!--Device-DataSetSize-SIZE_512 = 2-End-->
 
 **System capability:** SystemCapability.Security.Asset

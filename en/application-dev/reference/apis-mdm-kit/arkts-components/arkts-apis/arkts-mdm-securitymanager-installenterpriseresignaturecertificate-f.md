@@ -42,6 +42,8 @@ designated internal software and tools are installed and run on employees' mobil
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: int, accountId: int): void--><!--Device-securityManager-function installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: int, accountId: int): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

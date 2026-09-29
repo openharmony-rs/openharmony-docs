@@ -4,23 +4,23 @@
 export class BuilderNode<Args extends Object[]>
 ```
 
-The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. For details, see [BuilderNode Development](../../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
+The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. It supports generating a component tree through **@Builder**, implementing component reuse and recycling, cross-node event posting, and state synchronization. It is suitable for scenarios where custom component nodes are dynamically created and managed within applications. For details, see [BuilderNode Development](../../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#dynamically-adding-updating-and-deleting-components).
 
-Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component tree through the stateless UI method @Builder with multiple parameters.
+Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component tree through the stateless UI method **@Builder** with multiple parameters. It is suitable for scenarios that require multi-parameter data binding and reactive UI dynamic updates.
 
 > **NOTE:** 
 > 
-> - If the root node of the provided Builder is a syntax node ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)...),[Span](../arkts-components/arkts-arkui-span-comp.md#span), [ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md#containerspanattribute),[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md#symbolspanattribute), or a custom component, an additional [FrameNode](arkts-arkui-typenode-n.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
+> - If the root node of the provided Builder is a syntax node ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)...),[Span](../arkts-components/arkts-arkui-span-comp.md), [ContainerSpan](../arkts-components/arkts-arkui-containerspan-comp-attribute.md#containerspanattribute),[SymbolSpan](../arkts-components/arkts-arkui-symbolspan-comp-attribute.md#symbolspanattribute), or a custom component, an additional [FrameNode](arkts-arkui-typenode-n.md) will be generated and displayed as "BuilderProxyNode" in the node tree. This causes tree structure changes and affects testing processes such as event propagation. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 > 
-> - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations)for guidance.
+> - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations).
 > 
 > - **BuilderNode** is not available in DevEco Studio Previewer.
 > 
-> - Custom components under **BuilderNode** can use the [@Prop](../../../ui/state-management/arkts-prop.md)decorator. The [@Link](../../../ui/state-management/arkts-link.md) decorator cannot be used to synchronize external data and status across **BuilderNode** boundaries.
+> - Custom components under **BuilderNode** support the [@Prop](../../../ui/state-management/arkts-prop.md)decorator. The [@Link](../../../ui/state-management/arkts-link.md) decorator cannot be used to synchronize external data and status across **BuilderNode** boundaries.
 > 
 > - If a BuilderNode contains custom components as child nodes, these custom components cannot use the [@Reusable](../../../ui/state-management/arkts-reusable.md) decorator. For details, see [Using the @Reusable Decorator with BuilderNode Child Components](../../../ui/arkts-user-defined-arktsNode-builderNode.md#using-the-reusable-decorator-with-buildernode-child-components).
 > 
-> - Since API version 12, custom components can receive [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instances. You can use LocalStorage related decorators such as [@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../../../ui/state-management/arkts-localstorage.md#providing-a-custom-component-with-access-to-a-localstorage-instance).
+> - Since API version 12, custom components can receive [LocalStorage](../../../ui/state-management/arkts-localstorage.md) instances. You can use **LocalStorage**-related decorators such as [@LocalStorageProp](../../../ui/state-management/arkts-localstorage.md#localstorageprop) and [@LocalStorageLink](../../../ui/state-management/arkts-localstorage.md#localstoragelink) by [passing LocalStorage instances](../../../ui/state-management/arkts-localstorage.md#providing-a-custom-component-with-access-to-a-localstorage-instance).
 > 
 > - Since API version 20, when configured with [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md), custom components within a BuilderNode can access the host page's [@Provide](../../../ui/state-management/arkts-provide-and-consume.md) data through their [@Consume](../../../ui/state-management/arkts-provide-and-consume.md) decorated attributes.
 > 
@@ -28,9 +28,11 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 > 
 > - [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) can be used only in custom components.
 > 
-> - BuilderNode objects do not support JSON serialization.
+> - **BuilderNode** objects do not support JSON serialization.
 
 **Since:** 11
+
+<!--Device-unnamed-export class BuilderNode<Args extends Object[]>--><!--Device-unnamed-export class BuilderNode<Args extends Object[]>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,22 +47,24 @@ Creates a component tree based on the passed object and holds the root node of t
 Custom components are allowed.
 
 > **NOTE:** 
-
-> - When nesting @Builder, ensure that the input objects for the inner and outer @Builder methods are consistent.
 > 
-> - The outermost @Builder supports only one input parameter.
+> - When nesting **@Builder**, ensure that the input parameter objects for the inner and outer **@Builder** methods are consistent.
 > 
-> - The build parameter uses the pass-by-value semantics. To implement state updates, you must explicitly use the [update](#update) API.
+> - The outermost **@Builder** supports only one input parameter.
+> 
+> - The build parameter uses the pass-by-value semantics. To implement state updates, you must use the [update](#update) API.
 > 
 > - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](arkts-arkui-typenode-n.md) and [RenderNode](arkts-arkui-rendernode-c.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 > 
-> - The BuilderNode object maintains references to its underlying entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose) API to release node references and unbind frontend and backend nodes.
+> - The BuilderNode object maintains references to its entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose) API to unbind the frontend and backend objects.
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg?: Object): void--><!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg?: Object): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +73,7 @@ Custom components are allowed.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;Args&gt; | Yes | Stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) required for creating a component tree. |
-| arg | Object | No | Argument of the builder. Only one input parameter is supported, and the type of the input parameter must be consistent with the type defined by @Builder.<br>Default value: **undefined**. |
+| arg | Object | No | Argument of the builder. Only one input parameter is supported, and the type of the input parameter must be consistent with the type defined by **@Builder**.<br>Default value: **undefined**. |
 
 **Examples**
 
@@ -144,19 +148,29 @@ build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void
 
 Creates a component tree based on the passed object and holds the root node of the component tree. The stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) has at most one root node.
 
-Custom components are allowed. Compared with the [build(builder: WrappedBuilder\&lt;Args&gt;, arg?: Object)](#build) API, this API can use the builder configuration parameters to determine whether @Builder can be nested with @ Builder.
+Custom components are allowed. Compared with the [build(builder: WrappedBuilder\&lt;Args&gt;, arg?: Object)](#build) API, this API supports builder configuration parameters to configure the build behavior of **@Builder**. For details about the attributes, see [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md).
 
 > **NOTE:** 
-
-> - For details about the creation and update using @Builder, see [@Builder](../../../ui/state-management/arkts-builder.md).
 > 
-> - The outermost @Builder supports only one input parameter.
+> - For details about the creation and update using **@Builder**, see [@Builder](../../../ui/state-management/arkts-builder.md).
+> 
+> - When nesting **@Builder**, ensure that the input parameter objects for the inner and outer **@Builder** methods are consistent.
+> 
+> - The outermost **@Builder** supports only one input parameter.
+> 
+> - The build parameter uses the pass-by-value semantics. To implement state updates, you must use the [update](#update) API.
+> 
+> - To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected.When a BuilderNode object is garbage collected by the virtual machine, the associated [FrameNode](arkts-arkui-typenode-n.md) and [RenderNode](arkts-arkui-rendernode-c.md) objects are also dereferenced from the backend node tree. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
+> 
+> - The BuilderNode object maintains references to its entity nodes. When the BuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose) API to unbind the frontend and backend objects.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void--><!--Device-BuilderNode-build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,7 +180,7 @@ Custom components are allowed. Compared with the [build(builder: WrappedBuilder\
 | --- | --- | --- | --- |
 | builder | [WrappedBuilder](../arkts-components/arkts-arkui-common-comp-wrappedbuilder-c.md)&lt;Args&gt; | Yes | Stateless UI method [@Builder](../../../ui/state-management/arkts-builder.md) required for creating a component tree. |
 | arg | Object | Yes | Argument of the builder. Only one input parameter is supported, and the type of the input parameter must be consistent with the type defined by @Builder. |
-| options | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | Yes | Build options, which determine whether to support nesting @Builder within @ Builder. |
+| options | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | Yes | Build options, used to configure the build behavior of **@Builder**. For details about the attributes, see [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md). |
 
 **Examples**
 
@@ -245,14 +259,16 @@ When content generated by BuilderNode is embedded within another RenderNode for 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BuilderNode-constructor(uiContext: UIContext, options?: RenderOptions)--><!--Device-BuilderNode-constructor(uiContext: UIContext, options?: RenderOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UI context. For details about how to obtain it, see [Obtaining UI Context](../../../reference/apis-arkui/js-apis-arkui-node.md#obtaining-ui-context). |
-| options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | No | Parameters for creating a BuilderNode.<br>Default value: **undefined**. |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UI context. For details about how to obtain it, see [Obtaining UI Context](../../../reference/apis-arkui/js-apis-arkui-node.md#obtaining-ui-context). **uiContext** must be a valid value, that is, the UI context must be correct. If an invalid value is passed in or if no value is specified, creation will fail. |
+| options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | No | Optional parameters for creating a BuilderNode, used to specify the ideal size and rendering type of the node.<br>Default value: **undefined** |
 
 ## dispose
 
@@ -276,6 +292,8 @@ Immediately releases the reference relationship between this BuilderNode object 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BuilderNode-dispose(): void--><!--Device-BuilderNode-dispose(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getFrameNode
@@ -292,13 +310,15 @@ Obtains the [FrameNode](arkts-arkui-typenode-n.md) from the BuilderNode. The Fra
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BuilderNode-getFrameNode(): FrameNode | null--><!--Device-BuilderNode-getFrameNode(): FrameNode | null-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [FrameNode](arkts-arkui-framenode-c.md) &#124; null | **FrameNode** object. If no such object is held by the **BuilderNode** instance, null is returned. |
+| [FrameNode](arkts-arkui-framenode-c.md) &#124; null | **FrameNode** object held by the BuilderNode, used to mount the BuilderNode as a child node to another FrameNode. If no such object is held by the BuilderNode, null is returned. |
 
 ## inheritFreezeOptions
 
@@ -310,10 +330,10 @@ Sets whether the current **BuilderNode** object inherits the freeze policy from 
 
 > **NOTE:** 
 > 
-> When **inheritFreezeOptions** is set to **true** for **BuilderNode** and the parent component is a custom
-> component, BuilderNode, ComponentContent, ReactiveBuilderNode, or ReactiveComponentContent, the freeze policy of
-> the parent component is inherited. If the child component is a custom component, its freeze policy is not
-> transferred to the child component.
+> When **inheritFreezeOptions** is set to **true** for the BuilderNode and the parent component is a custom
+> component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**, the
+> freeze policy of the parent component is inherited. If the child component is a custom component, the freeze
+> policy of the BuilderNode is not transferred to the child component.
 
 **Since:** 20
 
@@ -321,13 +341,15 @@ Sets whether the current **BuilderNode** object inherits the freeze policy from 
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-BuilderNode-inheritFreezeOptions(enabled: boolean): void--><!--Device-BuilderNode-inheritFreezeOptions(enabled: boolean): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the current **BuilderNode** object inherits the freeze policy from its parent component's custom components. The value **true** means to inherit the freeze policy from parent component's custom components, and **false** means the opposite. |
+| enabled | boolean | Yes | Whether the **BuilderNode** object inherits the freeze policy from its parent component's custom components. The value **true** means to inherit the freeze policy from parent component's custom components, and **false** means the opposite.<br>**Note:** The **true** value takes effect only when the parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**. |
 
 **Examples**
 
@@ -538,13 +560,15 @@ struct TextBuilder {
 isDisposed(): boolean
 ```
 
-Checks whether this BuilderNode object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Checks whether this BuilderNode object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. Due to service requirements, a node may still be called after being disposed. Therefore, this API is provided for you to check the validity of a node before operating on it, thereby avoiding potential risks.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-BuilderNode-isDisposed(): boolean--><!--Device-BuilderNode-isDisposed(): boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -674,7 +698,7 @@ struct Index {
 postInputEvent(event: InputEventType): boolean
 ```
 
-Dispatches the specified input event to the target node.
+Posts the specified input event to the target node managed by the BuilderNode. This is suitable for scenarios where a parent component's received touch, mouse, or axis events need to be forwarded to the internal components of a BuilderNode in a custom NodeContainer, enabling the internal components to respond to corresponding interactions.
 
 **offsetA** indicates the BuilderNode's offset relative to its parent component, **offsetB** the hit position's offset relative to the BuilderNode, **offsetC** the composite offset (offsetA + offsetB) passed to the window in **postInputEvent**.
 
@@ -684,21 +708,19 @@ Dispatches the specified input event to the target node.
 > 
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 > 
-> - Mouse left-click events are automatically converted to touch events. Avoid binding both touch and mouse events at the outer layer, as this may cause coordinate offsets. This is because the **SourceType** remains unchanged during event conversion. For details, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
+> - Mouse left-click events are automatically converted to touch events. When forwarding, avoid binding both touch events and mouse events at the outer layer, as this may cause coordinate offsets. This is because **SourceType**does not change during event conversion. For details, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
 > 
-> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) event is injected, it cannot trigger [rotation gestures](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
+> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) is injected, it cannot trigger [RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
 > 
 > - A forwarded event undergoes touch testing in the target component's subtree and triggers corresponding gestures. The original event also triggers gestures in the source component tree. There is no guaranteed outcome for gesture competition between these two types of gestures.
 > 
-> - For developer-constructed events, mandatory fields must be assigned values, such as the **touches** field for touch events and the **scrollStep** field for axis events Ensure the completeness of the event, for example, both
-> **DOWN** and **UP** [TouchType](arkts-arkui-touchtype-e.md) states must be included for a touch event to prevent undefined
-> behavior.
+> - For developer-constructed events, mandatory fields must be assigned values, such as the **touches** field for touch events and the **scrollStep** field for axis events. Ensure the completeness of the event, for example,both **DOWN** and **UP** in [TouchType](arkts-arkui-touchtype-e.md) must be present to prevent undefined behavior.
 > 
-> - [webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) has already handled coordinate system transformation, so events can be dispatched.
+> - [webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) has already handled coordinate system transformation, so events can be posted.
 > 
 > - The **postTouchEvent** API needs to provide the gesture coordinates relative to the local coordinates of the target component, and the **postInputEvent** API needs to provide the gesture coordinates relative to the window coordinates of the target component.
 > 
-> - Avoid forwarding a single event multiple times.
+> - Avoid forwarding a single event multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md).<!--DelEnd-->
 
 **Since:** 20
 
@@ -706,19 +728,21 @@ Dispatches the specified input event to the target node.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-BuilderNode-postInputEvent(event: InputEventType): boolean--><!--Device-BuilderNode-postInputEvent(event: InputEventType): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [InputEventType](arkts-arkui-inputeventtype-t.md) | Yes | Input event to dispatch. |
+| event | [InputEventType](arkts-arkui-inputeventtype-t.md) | Yes | Input event to post. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the event is successfully dispatched. Returns **true** if the event is successfully dispatched; returns **false** otherwise. |
+| boolean | Whether the event is successfully posted. Returns **true** if the event is successfully posted; returns **false** otherwise. |
 
 **Examples**
 
@@ -740,16 +764,20 @@ Before calling this API, you need to convert the value of **event** to the corre
 > 
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 > 
-> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkts-arkui-touchtype-e.md) does not change during the event conversion. For details about the specifications, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because SourceType does not change during the event conversion.For details about the specifications, see [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch).
 > 
-> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) event is injected, it cannot trigger [rotation gestures](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
+> - When an [axis event](../arkts-components/arkts-arkui-common-comp-axisevent-i.md) is injected, it cannot trigger [RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md), because the axis event does not include rotation axis information.
 > 
 > - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
 > 
 > - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkts-arkui-touchtype-e.md) of a touch event must contain both the
 > **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
 > 
-> - The same event can be forwarded multiple times.
+> - [webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md) has already handled coordinate system transformation, so events can be posted.
+> 
+> - The **postTouchEvent** API needs to provide the gesture coordinates relative to the local coordinates of the target component, and the **postInputEventWithStrategy** API needs to provide the gesture coordinates relative to the window coordinates of the target component.
+> 
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md).<!--DelEnd-->
 
 **Since:** 24
 
@@ -757,20 +785,22 @@ Before calling this API, you need to convert the value of **event** to the corre
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-BuilderNode-postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean--><!--Device-BuilderNode-postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [InputEventType](arkts-arkui-inputeventtype-t.md) | Yes | Input event used for event posting. |
-| competitionStrategy | [CompetitionStrategy](arkts-arkui-competitionstrategy-e.md) | No | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario. |
+| event | [InputEventType](arkts-arkui-inputeventtype-t.md) | Yes | Input event to post. |
+| competitionStrategy | [CompetitionStrategy](arkts-arkui-competitionstrategy-e.md) | No | Gesture competition strategy for posting events. **CompetitionStrategy.DEFAULT** indicates the non-competition mode (gestures of the target component and the current component do not compete), which applies to scenarios where the current component and the target component handle gestures independently without competing for the same event. **CompetitionStrategy.COMPETITION** indicates the competition mode (gestures of the target component and the current component compete), which applies to scenarios where the current component and the target component need to compete for the same gesture event. If not specified, **CompetitionStrategy.DEFAULT** (non-competition) is used by default. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the event is successfully dispatched. Returns **true** if the operation is successful; returns **false** otherwise. |
+| boolean | Whether the event is successfully posted. Returns **true** if the operation is successful; returns **false** otherwise. |
 
 **Examples**
 
@@ -782,11 +812,11 @@ For details, see Example 16: Handling Mouse Events with Competition Strategies i
 postTouchEvent(event: TouchEvent): boolean
 ```
 
-Posts a raw touch event to the FrameNode created by this BuilderNode.
+Posts a raw touch event to the FrameNode created by this BuilderNode. This is suitable for scenarios where a parent component's received touch events need to be forwarded to the internal components of a BuilderNode in a custom NodeContainer, enabling the internal components to respond to touch interactions.
 
-**postTouchEvent** dispatches the event from a middle node in the component tree downwards. To ensure the event is dispatched correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
+**postTouchEvent** posts the event from a middle node in the component tree downwards. To ensure the event is posted correctly, it needs to be transformed into the coordinate system of the parent component, as shown in the figure below.
 
-**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](arkts-arkui-framenode-c.md#getpositiontoparent) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the TouchEvent object. **OffsetC** is the sum of **OffsetA** and **OffsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
+**OffsetA** indicates the offset of the BuilderNode relative to the parent component. You can obtain this offset by calling [getPositionToParent](arkts-arkui-framenode-c.md#getpositiontoparent) in the FrameNode. **OffsetB** indicates the offset of the touch point relative to the BuilderNode. You can obtain this offset from the TouchEvent object. **OffsetC** is the sum of **offsetA** and **offsetB**. It represents the final offset that you need to pass to **postTouchEvent**.
 
 ![postTouchEvent](../../../reference/apis-arkui/figures/postTouchEvent.PNG)
 
@@ -794,9 +824,13 @@ Posts a raw touch event to the FrameNode created by this BuilderNode.
 > 
 > - The coordinates you pass in need to be converted to pixel values (px). If the BuilderNode has any affine transformations applied to it, they must be taken into account and combined with the touch event coordinates.
 > 
-> - In [Webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md), coordinate system transformations are already handled internally, so you can directly dispatch the touch event without additional adjustments.
+> - In [Webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md), coordinate system transformations are already handled internally, so you can directly post the touch event without additional adjustments.
 > 
-> - The **postTouchEvent** API can be called only once for the same timestamp.
+> - The **postTouchEvent** API can be called only once for the same timestamp.<!--Del-->
+> 
+> - This API cannot be called by [UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md).
+
+<!--DelEnd-->
 
 **Since:** 11
 
@@ -804,19 +838,21 @@ Posts a raw touch event to the FrameNode created by this BuilderNode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BuilderNode-postTouchEvent(event: TouchEvent): boolean--><!--Device-BuilderNode-postTouchEvent(event: TouchEvent): boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md) | Yes | Touch event. |
+| event | [TouchEvent](../arkts-components/arkts-arkui-common-comp-touchevent-i.md) | Yes | Touch event to be posted to the FrameNode created by the BuilderNode. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the event is successfully dispatched. The value **true** means the event is consumed by a component that responds to the event, and **false** means that no component responds to the event.<br>**NOTE:** <br>If the event does not hit the expected component, ensure the following: <br>1. The coordinate system has been correctly transformed <br>2. The component is in an interactive state. <br>3. The event has been bound to the component. |
+| boolean | Whether the event is posted successfully. The value **true** indicates that a component capable of responding to the event is hit; **false** indicates that no such component is hit.<br>**NOTE:** <br>If the event does not hit the expected component, ensure the following: <br>1. The coordinate system has been correctly transformed. <br>2. The component is in an interactive state. <br>3. The event has been bound to the component. |
 
 **Examples**
 
@@ -931,6 +967,8 @@ Triggers recycling of custom components under this BuilderNode. Component recycl
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BuilderNode-recycle(): void--><!--Device-BuilderNode-recycle(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## reuse
@@ -941,11 +979,15 @@ reuse(param?: Object): void
 
 Triggers component reuse for custom components under this BuilderNode. For details about component reuse, see [@Reusable Decorator: Reusing V1 Components](../../../ui/state-management/arkts-reusable.md). For details about the scenarios involving BuilderNode unbinding, see [Canceling the Reference to the Entity Node](../../../ui/arkts-user-defined-arktsNode-builderNode.md#canceling-the-reference-to-the-entity-node). Since API version 26.0.0, custom components in **BuilderNode** support V2 component reuse. For details, see [@ReusableV2 Decorator: Reusing Components](../../../ui/state-management/arkts-new-reusableV2.md).
 
+The BuilderNode uses reuse and [recycle](#recycle) to transfer reuse events between its internal and external custom components. For specific usage scenarios, see [Implementing Node Reuse with the BuilderNode reuse and recycle APIs](../../../ui/arkts-user-defined-arktsNode-builderNode.md#implementing-node-reuse-with-the-buildernode-reuse-and-recycle-apis).
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BuilderNode-reuse(param?: Object): void--><!--Device-BuilderNode-reuse(param?: Object): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -953,7 +995,7 @@ Triggers component reuse for custom components under this BuilderNode. For detai
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | Object | No | Parameter used to reuse the BuilderNode. This parameter is passed to all top-level custom components within the BuilderNode during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) lifecycle callback of internal custom components, with this parameter as the callback input. Default value: **undefined**, in which case the custom components in the BuilderNode will use their original construction data source. |
+| param | Object | No | Parameter used to reuse the BuilderNode. This parameter is passed to all top-level custom components within the BuilderNode during reuse and must include all required constructor parameters for each component; otherwise, undefined behavior may occur. Calling this method synchronously triggers the [aboutToReuse](arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md#abouttoreuse) lifecycle callback of internal custom components, with this parameter as the callback input. The default value is **undefined**, in which case the custom components in the BuilderNode will use the data source at the time of construction. |
 
 ## update
 
@@ -968,6 +1010,8 @@ Updates this BuilderNode using the provided parameter, which must be of the same
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BuilderNode-update(arg: Object): void--><!--Device-BuilderNode-update(arg: Object): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1093,6 +1137,8 @@ Transfers a system environment change event and triggers full update of a node. 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BuilderNode-updateConfiguration(): void--><!--Device-BuilderNode-updateConfiguration(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

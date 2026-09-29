@@ -18,7 +18,9 @@ Disables Bluetooth on a device.
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-access-function disableBluetooth(): void--><!--Device-access-function disableBluetooth(): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

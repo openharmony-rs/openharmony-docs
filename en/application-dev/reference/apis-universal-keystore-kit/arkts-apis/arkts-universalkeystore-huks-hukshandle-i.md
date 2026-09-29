@@ -17,6 +17,8 @@ Defines the struct for a HUKS handle.
 
 **Substitutes:** null
 
+<!--Device-huks-export interface HuksHandle--><!--Device-huks-export interface HuksHandle-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksHandle-errorCode: number--><!--Device-HuksHandle-errorCode: number-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## handle
@@ -59,6 +63,8 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 
 **Deprecated since:** 9
 
+<!--Device-HuksHandle-handle: number--><!--Device-HuksHandle-handle: number-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 ## token
@@ -76,5 +82,7 @@ Note: This API is deprecated since API version 9. No substitute API is provided.
 **Since:** 8
 
 **Deprecated since:** 9
+
+<!--Device-HuksHandle-token?: Uint8Array--><!--Device-HuksHandle-token?: Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

@@ -8,6 +8,8 @@ interface TransitionAnimation
 
 **起始版本：** 20
 
+<!--Device-window-interface TransitionAnimation--><!--Device-window-interface TransitionAnimation-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,7 +30,9 @@ config: WindowAnimationConfig
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TransitionAnimation-config: WindowAnimationConfig--><!--Device-TransitionAnimation-config: WindowAnimationConfig-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -44,6 +48,8 @@ opacity?: number
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TransitionAnimation-opacity?: double--><!--Device-TransitionAnimation-opacity?: double-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

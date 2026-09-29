@@ -12,4 +12,6 @@ ReuseId callback type. It is used to compute reuseId.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type ReuseIdCallback = () => string--><!--Device-unnamed-declare type ReuseIdCallback = () => string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

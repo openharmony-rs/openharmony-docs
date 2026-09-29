@@ -19,6 +19,8 @@ Registers a listener for wallpaper changes to receive notifications about the ch
 
 **Since:** 10
 
+<!--Device-wallpaper-function on(    type: 'wallpaperChange',    callback: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void--><!--Device-wallpaper-function on(    type: 'wallpaperChange',    callback: (wallpaperType: WallpaperType, resourceType: WallpaperResourceType, uri?: string) => void  ): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **System API:** This is a system API.

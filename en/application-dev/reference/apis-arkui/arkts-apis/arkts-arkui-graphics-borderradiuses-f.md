@@ -14,13 +14,15 @@ Generates a **borderRadiuses** object with the specified radius for all border c
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export function borderRadiuses(all: number): BorderRadiuses--><!--Device-unnamed-export function borderRadiuses(all: number): BorderRadiuses-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| all | number | Yes | Radius of border corners.<br>Unit: vp. <br>Value range: [0, +∞). |
+| all | number | Yes | Radius of the border corners.<br>Unit: vp <br>Value range: [0, +∞) <br>A negative value is treated as the default value. |
 
 **Return value:**
 

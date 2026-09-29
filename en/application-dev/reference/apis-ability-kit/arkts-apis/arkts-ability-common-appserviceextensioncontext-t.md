@@ -10,6 +10,8 @@ Defines the context environment for the [AppServiceExtensionAbility](../../../re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-common-export type AppServiceExtensionContext = _AppServiceExtensionContext.default--><!--Device-common-export type AppServiceExtensionContext = _AppServiceExtensionContext.default-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _AppServiceExtensionContext.default

@@ -18,6 +18,8 @@ Enables device-cloud sync. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC_MANAGER
 
+<!--Device-cloudSyncManager-function enableCloud(accountId: string, switches: Record<string, boolean>): Promise<void>--><!--Device-cloudSyncManager-function enableCloud(accountId: string, switches: Record<string, boolean>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ Enables device-cloud sync. This API uses an asynchronous callback to return the 
 **Since:** 10
 
 **Required permissions:** ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+<!--Device-cloudSyncManager-function enableCloud(    accountId: string,    switches: Record<string, boolean>,    callback: AsyncCallback<void>  ): void--><!--Device-cloudSyncManager-function enableCloud(    accountId: string,    switches: Record<string, boolean>,    callback: AsyncCallback<void>  ): void-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

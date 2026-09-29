@@ -16,6 +16,8 @@ Checks whether a call is in progress.
 
 **Since:** 10
 
+<!--Device-call-function hasCallSync(): boolean--><!--Device-call-function hasCallSync(): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Return value:**

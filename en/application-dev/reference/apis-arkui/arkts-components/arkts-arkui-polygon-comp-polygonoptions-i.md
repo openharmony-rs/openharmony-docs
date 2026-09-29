@@ -14,6 +14,8 @@ Describes the options of the polygon.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface PolygonOptions--><!--Device-unnamed-declare interface PolygonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -40,6 +42,8 @@ If the given value is less than 0, the default value is used. The abnormal value
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PolygonOptions-height?: Length--><!--Device-PolygonOptions-height?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -65,5 +69,7 @@ If the given value is less than 0, the default value is used. The abnormal value
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PolygonOptions-width?: Length--><!--Device-PolygonOptions-width?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

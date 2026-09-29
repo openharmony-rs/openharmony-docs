@@ -23,6 +23,8 @@ Obtains the information about the child processes of the current application. Th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-childProcessManager-function getChildProcessInfos(): Promise<Array<ChildProcessInformation>>--><!--Device-childProcessManager-function getChildProcessInfos(): Promise<Array<ChildProcessInformation>>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

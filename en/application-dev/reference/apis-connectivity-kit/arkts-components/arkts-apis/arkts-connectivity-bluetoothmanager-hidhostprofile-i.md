@@ -14,6 +14,8 @@ Manager hid host profile.
 
 **Substitutes:** [HidHostProfile](arkts-connectivity-hid-hidhostprofile-i-sys.md)
 
+<!--Device-bluetoothManager-interface HidHostProfile extends BaseProfile--><!--Device-bluetoothManager-interface HidHostProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -39,6 +41,8 @@ Unsubscribe the event reported when the profile connection state changes. On API
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
+
+<!--Device-HidHostProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void--><!--Device-HidHostProfile-off(type: 'connectionStateChange', callback?: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -73,6 +77,8 @@ Subscribe the event reported when the profile connection state changes. On API 1
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: N/A
+
+<!--Device-HidHostProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void--><!--Device-HidHostProfile-on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

@@ -18,6 +18,8 @@ Disable SIM card in specified slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function deactivateSim(slotId: int, callback: AsyncCallback<void>): void--><!--Device-sim-function deactivateSim(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Disable SIM card in specified slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function deactivateSim(slotId: int): Promise<void>--><!--Device-sim-function deactivateSim(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

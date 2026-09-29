@@ -8,6 +8,8 @@ declare enum FinishCallbackType
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare enum FinishCallbackType--><!--Device-unnamed-declare enum FinishCallbackType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## REMOVED
@@ -26,6 +28,8 @@ REMOVED = 0
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FinishCallbackType-REMOVED = 0--><!--Device-FinishCallbackType-REMOVED = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LOGICALLY
@@ -43,5 +47,7 @@ LOGICALLY = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FinishCallbackType-LOGICALLY = 1--><!--Device-FinishCallbackType-LOGICALLY = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

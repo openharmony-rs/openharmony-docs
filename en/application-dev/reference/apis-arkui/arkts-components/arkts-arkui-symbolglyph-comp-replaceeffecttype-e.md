@@ -4,9 +4,11 @@
 declare enum ReplaceEffectType
 ```
 
-The replace effect type of symbol.
+Enumerates symbol replacement effect types.
 
 **Since:** 20
+
+<!--Device-unnamed-declare enum ReplaceEffectType--><!--Device-unnamed-declare enum ReplaceEffectType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,6 +28,8 @@ Sequential replacement: The current symbol disappears before a new symbol appear
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-ReplaceEffectType-SEQUENTIAL = 0--><!--Device-ReplaceEffectType-SEQUENTIAL = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CROSS_FADE
@@ -44,6 +48,8 @@ Cross-fade transition effect: The current symbol fades out while a new symbol fa
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-ReplaceEffectType-CROSS_FADE = 1--><!--Device-ReplaceEffectType-CROSS_FADE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SLASH_OVERLAY
@@ -61,5 +67,7 @@ Slash overlay effect: The current symbol is replaced with a symbol featuring dia
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-ReplaceEffectType-SLASH_OVERLAY = 2--><!--Device-ReplaceEffectType-SLASH_OVERLAY = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

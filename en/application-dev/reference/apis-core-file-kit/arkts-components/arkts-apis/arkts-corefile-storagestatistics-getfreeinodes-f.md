@@ -18,6 +18,8 @@ Get the free inodes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function getFreeInodes(): Promise<long>--><!--Device-storageStatistics-function getFreeInodes(): Promise<long>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Return value:**

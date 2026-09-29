@@ -18,7 +18,9 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig): Promise<int>--><!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -79,7 +81,9 @@ Add a specified candidate hotspot configuration and returns the networkId. This 
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>): void--><!--Device-wifiManager-function addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback<int>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

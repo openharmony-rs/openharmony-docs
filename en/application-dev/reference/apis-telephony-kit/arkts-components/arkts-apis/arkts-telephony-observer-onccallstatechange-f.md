@@ -20,6 +20,8 @@ Subscribes to the carrier call state changes and obtains the call number. This m
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-observer-function onCCallStateChange(callback: Callback<CCallStateInfo>, options?: ObserverOptions): void--><!--Device-observer-function onCCallStateChange(callback: Callback<CCallStateInfo>, options?: ObserverOptions): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**

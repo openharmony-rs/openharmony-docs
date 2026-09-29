@@ -10,6 +10,8 @@ Describes partial information about the **wantAgent** in the notification reques
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-export type NotificationParameters = _NotificationParameters--><!--Device-notificationManager-export type NotificationParameters = _NotificationParameters-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Type:** _NotificationParameters

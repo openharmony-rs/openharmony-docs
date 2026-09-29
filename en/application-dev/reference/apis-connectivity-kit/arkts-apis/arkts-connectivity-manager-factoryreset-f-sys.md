@@ -20,6 +20,8 @@ Restores a device to its factory settings. This API uses a promise to return the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-manager-function factoryReset(): Promise<void>--><!--Device-manager-function factoryReset(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

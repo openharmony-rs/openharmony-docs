@@ -8,6 +8,8 @@ Describes the text style.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class TextStyle--><!--Device-unnamed-declare class TextStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -24,13 +26,15 @@ A constructor used to create a text style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextStyle-constructor(value?: TextStyleInterface)--><!--Device-TextStyle-constructor(value?: TextStyleInterface)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) | No | Font style options. |
+| value | [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) | No | Font style setting item.<br>Default value: when not passed, inherits the default values of the **TextStyleInterface** properties. |
 
 ## fontColor
 
@@ -48,6 +52,8 @@ Text color of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextStyle-readonly fontColor?: ResourceColor--><!--Device-TextStyle-readonly fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontConfigs
@@ -56,9 +62,7 @@ Text color of the styled string.
 readonly fontConfigs?: FontConfigs
 ```
 
-Font configuration of the styled string.
-
-Default value: **undefined**, indicating that fontConfigs is not set.
+Font configuration of the styled string. indicating that **fontConfigs** is not set. Default value: **undefined**.
 
 **Type:** [FontConfigs](arkts-arkui-fontconfigs-i.md)
 
@@ -68,6 +72,8 @@ Default value: **undefined**, indicating that fontConfigs is not set.
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-TextStyle-readonly fontConfigs?: FontConfigs--><!--Device-TextStyle-readonly fontConfigs?: FontConfigs-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -76,9 +82,9 @@ Default value: **undefined**, indicating that fontConfigs is not set.
 readonly fontFamily?: string
 ```
 
-Font family of the styled string.
+Text font of the styled string.
 
-Returns **undefined** by default.
+Default value: **undefined**.
 
 **Type:** string
 
@@ -88,6 +94,8 @@ Returns **undefined** by default.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextStyle-readonly fontFamily?: string--><!--Device-TextStyle-readonly fontFamily?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -96,9 +104,9 @@ Returns **undefined** by default.
 readonly fontSize?: number
 ```
 
-Font size of the styled string.
+Text font size of the styled string.
 
-Unit: vp
+Unit: [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units)
 
 **Type:** number
 
@@ -107,6 +115,8 @@ Unit: vp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextStyle-readonly fontSize?: number--><!--Device-TextStyle-readonly fontSize?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +126,7 @@ Unit: vp
 readonly fontStyle?: FontStyle
 ```
 
-Font style of the styled string.
+Text font style of the styled string.
 
 **Type:** [FontStyle](arkts-arkui-fontstyle-e.md)
 
@@ -126,6 +136,8 @@ Font style of the styled string.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextStyle-readonly fontStyle?: FontStyle--><!--Device-TextStyle-readonly fontStyle?: FontStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontVariations
@@ -134,11 +146,7 @@ Font style of the styled string.
 readonly fontVariations?: Array<FontVariation>
 ```
 
-Array of variable font attributes.
-
-Default value: **undefined**, indicating that variable font attributes are not set.
-
-**Since**: 26.0.0
+Attribute array of the variable font. indicating that the variable font attributes are not set. Default value: **undefined**.
 
 **Type:** Array&lt;[FontVariation](arkts-arkui-fontvariation-t.md)&gt;
 
@@ -148,6 +156,8 @@ Default value: **undefined**, indicating that variable font attributes are not s
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-TextStyle-readonly fontVariations?: Array<FontVariation>--><!--Device-TextStyle-readonly fontVariations?: Array<FontVariation>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontWeight
@@ -156,7 +166,13 @@ Default value: **undefined**, indicating that variable font attributes are not s
 readonly fontWeight?: number
 ```
 
-Font weight of the styled string.
+Text font weight of the styled string.
+
+Default value: **400**
+
+**NOTE:** 
+
+The return value is of the string type. For details about the relationship between the return value and the set value, see the table below.
 
 **Type:** number
 
@@ -165,6 +181,8 @@ Font weight of the styled string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextStyle-readonly fontWeight?: number--><!--Device-TextStyle-readonly fontWeight?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,7 +194,7 @@ readonly strokeColor?: ResourceColor
 
 Text stroke color of the styled string.
 
-Default value: same as the text color.
+Default value: the font color.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -186,6 +204,8 @@ Default value: same as the text color.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextStyle-readonly strokeColor?: ResourceColor--><!--Device-TextStyle-readonly strokeColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeJoinStyle
@@ -194,11 +214,9 @@ Default value: same as the text color.
 readonly strokeJoinStyle?: StrokeJoinStyle
 ```
 
-Text stroke join style of the styled string.
+Text stroke join style of the styled string. For details about the enum values, see **StrokeJoinStyle**.
 
-Default value: **StrokeJoinStyle.MITER_JOIN**.
-
-**Since**: 26.0.0.
+Default value: **StrokeJoinStyle.MITER_JOIN**, indicating a miter join with a sharp corner.
 
 **Type:** [StrokeJoinStyle](arkts-arkui-strokejoinstyle-e.md)
 
@@ -207,6 +225,8 @@ Default value: **StrokeJoinStyle.MITER_JOIN**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TextStyle-readonly strokeJoinStyle?: StrokeJoinStyle--><!--Device-TextStyle-readonly strokeJoinStyle?: StrokeJoinStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,7 +238,7 @@ readonly strokeWidth?: number
 
 Text stroke width of the styled string.
 
-Default value: **0**, in vp.
+Default value: **0**, in [vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units).
 
 **Type:** number
 
@@ -228,6 +248,8 @@ Default value: **0**, in vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-TextStyle-readonly strokeWidth?: number--><!--Device-TextStyle-readonly strokeWidth?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## superscript
@@ -236,7 +258,7 @@ Default value: **0**, in vp.
 readonly superscript?: SuperscriptStyle
 ```
 
-Superscript or subscript for the styled string.
+Superscript and subscript of the styled string.
 
 Default value: **SuperscriptStyle.NORMAL**.
 
@@ -247,5 +269,7 @@ Default value: **SuperscriptStyle.NORMAL**.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-TextStyle-readonly superscript?: SuperscriptStyle--><!--Device-TextStyle-readonly superscript?: SuperscriptStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -12,6 +12,8 @@ The callback of onPickerRecovery event
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-unnamed-export type PickerRecoveryCallback = (recoveryResult: RecoveryResult) => void--><!--Device-unnamed-export type PickerRecoveryCallback = (recoveryResult: RecoveryResult) => void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**

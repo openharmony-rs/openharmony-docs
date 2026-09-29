@@ -1,6 +1,6 @@
 # ContainerSpan
 
-Text组件的子组件，用于统一管理多个Span、ImageSpan的背景色及圆角弧度，适用于需要为文本片段和图片组合设置统一背景样式的场景。
+[Text](arkts-arkui-text-comp.md)组件的子组件，用于统一管理多个[Span](arkts-arkui-span-comp.md)、[ImageSpan](arkts-arkui-imagespan-comp.md)的背景色及圆角弧度，适用于需要为文本片段和图片组合设置统一背景样式的场景。
 
 > **说明：** 
 > 
@@ -8,7 +8,7 @@ Text组件的子组件，用于统一管理多个Span、ImageSpan的背景色及
 
 ## 子组件
 
-可以包含Span、ImageSpan 子组件。
+可以包含[Span](arkts-arkui-span-comp.md)、[ImageSpan](arkts-arkui-imagespan-comp.md) 子组件。
 
 ## ContainerSpan
 
@@ -24,6 +24,8 @@ ContainerSpan()
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContainerSpanInterface-(): ContainerSpanAttribute--><!--Device-ContainerSpanInterface-(): ContainerSpanAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 汇总
@@ -32,7 +34,7 @@ ContainerSpan()
 
 ### 示例1（设置背景样式）
 
-从API version 11开始，该示例通过textBackgroundStyle属性展示了文本设置背景样式的效果。
+从API version 11开始，该示例通过[textBackgroundStyle](#textbackgroundstyle)属性展示了文本设置背景样式的效果。
 
 
 
@@ -69,7 +71,7 @@ struct Index {
 
 ### 示例2（通过attributeModifier设置背景样式）
 
-从API version 12开始，该示例通过attributeModifier属性展示了文本设置背景样式的效果。
+从API version 12开始，该示例通过[attributeModifier](#attributemodifier12)属性展示了文本设置背景样式的效果。
 
 ```TypeScript
 import { ContainerSpanModifier } from '@kit.ArkUI';

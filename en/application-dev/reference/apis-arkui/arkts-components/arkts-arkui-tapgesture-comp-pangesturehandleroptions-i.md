@@ -10,6 +10,8 @@ Provides the parameters of the pan gesture handler. Inherits from [BaseHandlerOp
 
 **Since:** 12
 
+<!--Device-unnamed-interface PanGestureHandlerOptions extends BaseHandlerOptions--><!--Device-unnamed-interface PanGestureHandlerOptions extends BaseHandlerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -29,6 +31,8 @@ Default value: **PanDirection.All**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PanGestureHandlerOptions-direction?: PanDirection--><!--Device-PanGestureHandlerOptions-direction?: PanDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +64,8 @@ When configuring this field with [gestureModifier](arkts-arkui-common-comp-commo
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PanGestureHandlerOptions-distance?: number--><!--Device-PanGestureHandlerOptions-distance?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## distanceMap
@@ -81,6 +87,8 @@ Value range: [0, +∞). If the value specified is less than 0, the default value
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-PanGestureHandlerOptions-distanceMap?: Map<SourceTool, number>--><!--Device-PanGestureHandlerOptions-distanceMap?: Map<SourceTool, number>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,5 +115,7 @@ If the value is less than 1 or is not set, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PanGestureHandlerOptions-fingers?: number--><!--Device-PanGestureHandlerOptions-fingers?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

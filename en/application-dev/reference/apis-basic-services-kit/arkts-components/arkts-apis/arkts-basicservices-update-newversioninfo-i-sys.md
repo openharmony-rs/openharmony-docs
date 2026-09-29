@@ -8,6 +8,8 @@ Represents information about the new version.
 
 **Since:** 9
 
+<!--Device-update-export interface NewVersionInfo--><!--Device-update-export interface NewVersionInfo-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Version components.
 
 **Since:** 9
 
+<!--Device-NewVersionInfo-versionComponents: Array<VersionComponent>--><!--Device-NewVersionInfo-versionComponents: Array<VersionComponent>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Version digest information.
 **Type:** [VersionDigestInfo](arkts-basicservices-update-versiondigestinfo-i-sys.md)
 
 **Since:** 9
+
+<!--Device-NewVersionInfo-versionDigestInfo: VersionDigestInfo--><!--Device-NewVersionInfo-versionDigestInfo: VersionDigestInfo-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

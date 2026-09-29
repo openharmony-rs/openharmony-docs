@@ -8,6 +8,8 @@ The **Notification** module provides notification management capabilities, cover
 
 **Substitutes:** [notificationManager](arkts-notification-notificationmanager.md)
 
+<!--Device-unnamed-declare namespace notification--><!--Device-unnamed-declare namespace notification-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import

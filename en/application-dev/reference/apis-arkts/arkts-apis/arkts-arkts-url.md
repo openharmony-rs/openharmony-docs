@@ -4,6 +4,8 @@ The url module provides APIs for parsing URL strings and constructing URL instan
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace url--><!--Device-unnamed-declare namespace url-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

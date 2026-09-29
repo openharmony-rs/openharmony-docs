@@ -13,6 +13,8 @@ The **InputMethodExtensionContext** module, inherited from **ExtensionContext**,
 
 **Since:** 9
 
+<!--Device-unnamed-declare class InputMethodExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class InputMethodExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Destroys this input method. This API uses an asynchronous callback to return the
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-destroy(callback: AsyncCallback<void>): void--><!--Device-InputMethodExtensionContext-destroy(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -79,6 +83,8 @@ Destroys this input method. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-InputMethodExtensionContext-destroy(): Promise<void>--><!--Device-InputMethodExtensionContext-destroy(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**
@@ -120,6 +126,8 @@ Starts an ability. This API uses a promise to return the result.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InputMethodExtensionContext-startAbility(want: Want): Promise<void>--><!--Device-InputMethodExtensionContext-startAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

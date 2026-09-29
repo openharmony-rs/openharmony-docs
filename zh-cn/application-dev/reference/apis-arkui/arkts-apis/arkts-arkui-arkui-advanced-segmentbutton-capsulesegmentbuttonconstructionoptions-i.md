@@ -12,6 +12,8 @@ interface CapsuleSegmentButtonConstructionOptions extends CommonSegmentButtonOpt
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface CapsuleSegmentButtonConstructionOptions extends CommonSegmentButtonOptions--><!--Device-unnamed-interface CapsuleSegmentButtonConstructionOptions extends CommonSegmentButtonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ buttons: SegmentButtonItemTuple
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonConstructionOptions-buttons: SegmentButtonItemTuple--><!--Device-CapsuleSegmentButtonConstructionOptions-buttons: SegmentButtonItemTuple-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,5 +65,7 @@ true表示可以多选，false表示不可以多选。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapsuleSegmentButtonConstructionOptions-multiply?: boolean--><!--Device-CapsuleSegmentButtonConstructionOptions-multiply?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

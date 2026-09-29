@@ -12,11 +12,13 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback<number>): void
 ```
 
-Subscribes to a system event to obtain the encoded metadata. The application needs to register a callback to return the encoded metadata when the registered system event occurs.
+Subscribes to the event of a system application requesting to obtain encoded content. This event is triggered when a system application (such as a screenshot) requests to obtain the encoded content of an application. After the application registers a callback, it is notified through the callback when the event occurs. After subscribing to the event by calling on(), the application must call off() to unsubscribe and release the listening resources when the event no longer needs to be listened for.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-metadataBinding-function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback<int>): void--><!--Device-metadataBinding-function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback<int>): void-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.MetadataBinding
 

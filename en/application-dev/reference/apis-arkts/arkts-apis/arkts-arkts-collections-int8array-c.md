@@ -15,6 +15,8 @@ A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-arkts-c
 
 **Decorator:** @Sendable
 
+<!--Device-collections-class Int8Array--><!--Device-collections-class Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Returns an iterator, each item of which is a JavaScript object. NOTE: This API c
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-[Symbol.iterator](): IterableIterator<number>--><!--Device-Int8Array-[Symbol.iterator](): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -60,6 +64,8 @@ Returns the element at the given index. If no element is found, **undefined** is
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-at(index: number): number | undefined--><!--Device-Int8Array-at(index: number): number | undefined-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -94,6 +100,8 @@ A constructor used to create an empty ArkTS Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-constructor()--><!--Device-Int8Array-constructor()-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Error codes:**
@@ -115,6 +123,8 @@ A constructor used to create an ArkTS Int8Array of a given length.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-constructor(length: number)--><!--Device-Int8Array-constructor(length: number)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -144,6 +154,8 @@ A constructor that creates an ArkTS Int8Array from an iterable object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-constructor(elements: Iterable<number>)--><!--Device-Int8Array-constructor(elements: Iterable<number>)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -171,6 +183,8 @@ A constructor that creates an ArkTS Int8Array from an array-like object or ArkTS
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-constructor(array: ArrayLike<number> | ArrayBuffer)--><!--Device-Int8Array-constructor(array: ArrayLike<number> | ArrayBuffer)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -200,6 +214,8 @@ A constructor that creates an ArkTS Int8Array from an ArrayBuffer.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)--><!--Device-Int8Array-constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -227,6 +243,8 @@ Copies elements within a given range from this ArkTS Int8Array to another positi
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-copyWithin(target: number, start: number, end?: number): Int8Array--><!--Device-Int8Array-copyWithin(target: number, start: number, end?: number): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -263,6 +281,8 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-entries(): IterableIterator<[number, number]>--><!--Device-Int8Array-entries(): IterableIterator<[number, number]>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -289,6 +309,8 @@ Checks whether all elements in this ArkTS Int8Array meet a given condition.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-every(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean--><!--Device-Int8Array-every(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -325,6 +347,8 @@ Fills all elements in a given range in this ArkTS Int8Array with a value.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-fill(value: number, start?: number, end?: number): Int8Array--><!--Device-Int8Array-fill(value: number, start?: number, end?: number): Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -359,6 +383,8 @@ Returns a new ArkTS Int8Array that contains all elements that meet the given con
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-filter(predicate: TypedArrayPredicateFn<number, Int8Array>): Int8Array--><!--Device-Int8Array-filter(predicate: TypedArrayPredicateFn<number, Int8Array>): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -395,6 +421,8 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-find(predicate: TypedArrayPredicateFn<number, Int8Array>): number | undefined--><!--Device-Int8Array-find(predicate: TypedArrayPredicateFn<number, Int8Array>): number | undefined-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -429,6 +457,8 @@ Returns the index of the first element that passes a test provided by a callback
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-findIndex(predicate: TypedArrayPredicateFn<number, Int8Array>): number--><!--Device-Int8Array-findIndex(predicate: TypedArrayPredicateFn<number, Int8Array>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -465,6 +495,8 @@ Calls a callback function for each element in this ArkTS Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void--><!--Device-Int8Array-forEach(callbackFn: TypedArrayForEachCallback<number, Int8Array>): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -491,6 +523,8 @@ Creates an ArkTS Int8Array from an array-like or iterator object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-static from(arrayLike: ArrayLike<number>): Int8Array--><!--Device-Int8Array-static from(arrayLike: ArrayLike<number>): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -519,6 +553,8 @@ Creates an ArkTS Int8Array from an array-like object.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Int8Array--><!--Device-Int8Array-static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -549,6 +585,8 @@ Creates an ArkTS Int8Array from an iterator object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Int8Array--><!--Device-Int8Array-static from(arrayLike: Iterable<number>, mapFn?: TypedArrayFromMapFn<number, number>): Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -575,6 +613,8 @@ Checks whether elements are contained in this ArkTS Int8Array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-includes(searchElement: number, fromIndex?: number): boolean--><!--Device-Int8Array-includes(searchElement: number, fromIndex?: number): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -610,6 +650,8 @@ Returns the index of the first occurrence of a value in this ArkTS Int8Array. If
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-indexOf(searchElement: number, fromIndex?: number): number--><!--Device-Int8Array-indexOf(searchElement: number, fromIndex?: number): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -644,6 +686,8 @@ Concatenates all elements in this ArkTS Int8Array into a string, with a given se
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-join(separator?: string): string--><!--Device-Int8Array-join(separator?: string): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -677,6 +721,8 @@ Returns an iterator object that contains the key (index) of each element in this
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-keys(): IterableIterator<number>--><!--Device-Int8Array-keys(): IterableIterator<number>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -703,6 +749,8 @@ Obtains the index of the last occurrence of the specified value in this ArkTS In
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Int8Array-lastIndexOf(searchElement: number, fromIndex?: number): number--><!--Device-Int8Array-lastIndexOf(searchElement: number, fromIndex?: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -737,6 +785,8 @@ Applies a callback function to each element in this ArkTS Int8Array and uses the
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array--><!--Device-Int8Array-map(callbackFn: TypedArrayMapCallback<number, Int8Array>): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -773,6 +823,8 @@ Creates an ArkTS Int8Array with a variable number of parameters.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Int8Array-static of(...items: number[]): Int8Array--><!--Device-Int8Array-static of(...items: number[]): Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -798,6 +850,8 @@ Applies a reduce function on each element in this ArkTS Int8Array and returns th
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number--><!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -833,6 +887,8 @@ Applies a reduce function for each element in this ArkTS Int8Array, receives an 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>, initialValue: number): number--><!--Device-Int8Array-reduce(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>, initialValue: number): number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -870,6 +926,8 @@ Applies a reduce function for each element in this ArkTS Int8Array, receives an 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U--><!--Device-Int8Array-reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -903,6 +961,8 @@ Reversely traverses this ArkTS Int8Array, applies a reduce function for each ele
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-Int8Array-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U--><!--Device-Int8Array-reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Int8Array>, initialValue: U): U-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -940,6 +1000,8 @@ Reversely traverses this ArkTS Int8Array, applies a reduce function on each elem
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Int8Array-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number--><!--Device-Int8Array-reduceRight(callbackFn: TypedArrayReduceCallback<number, number, Int8Array>): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -973,6 +1035,8 @@ Reverses this ArkTS Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-reverse(): Int8Array--><!--Device-Int8Array-reverse(): Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -999,6 +1063,8 @@ Writes the elements in an array-like object to the given start position in seque
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-set(array: ArrayLike<number>, offset?: number): void--><!--Device-Int8Array-set(array: ArrayLike<number>, offset?: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1027,6 +1093,8 @@ Selects a range of elements in this ArkTS Int8Array to create an ArkTS Int8Array
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-slice(start?: number, end?: number): Int8Array--><!--Device-Int8Array-slice(start?: number, end?: number): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1061,6 +1129,8 @@ Checks whether any element in this ArkTS Int8Array meets a given condition.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean--><!--Device-Int8Array-some(predicate: TypedArrayPredicateFn<number, Int8Array>): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1097,6 +1167,8 @@ Sorts elements in this ArkTS Int8Array and returns the sorted ArkTS Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-sort(compareFn?: TypedArrayCompareFn<number>): Int8Array--><!--Device-Int8Array-sort(compareFn?: TypedArrayCompareFn<number>): Int8Array-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -1129,6 +1201,8 @@ Truncates an array from a specified position and returns a new ArkTS Int8Array b
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-subarray(begin?: number, end?: number): Int8Array--><!--Device-Int8Array-subarray(begin?: number, end?: number): Int8Array-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1164,6 +1238,8 @@ Generates a string of digits that matches the cultural conventions of the curren
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Int8Array-toLocaleString(): string--><!--Device-Int8Array-toLocaleString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1191,6 +1267,8 @@ Converts an ArkTS Int8Array into a string.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-Int8Array-toString(): string--><!--Device-Int8Array-toString(): string-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -1217,6 +1295,8 @@ Returns an iterator object that contains the value of each element in this ArkTS
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-values(): IterableIterator<number>--><!--Device-Int8Array-values(): IterableIterator<number>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1247,6 +1327,8 @@ Returns the element at a given index in this Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-[index: number]: number--><!--Device-Int8Array-[index: number]: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## buffer
@@ -1262,6 +1344,8 @@ Bottom-layer buffer used by an ArkTS Int8Array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-readonly buffer: ArrayBuffer--><!--Device-Int8Array-readonly buffer: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1279,6 +1363,8 @@ Number of bytes occupied by an ArkTS Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-readonly byteLength: number--><!--Device-Int8Array-readonly byteLength: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## byteOffset
@@ -1294,6 +1380,8 @@ Offset between the ArkTS Int8Array and the start position of the ArrayBuffer.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-readonly byteOffset: number--><!--Device-Int8Array-readonly byteOffset: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -1311,6 +1399,8 @@ Number of bytes occupied by each element in the ArkTS Int8Array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Int8Array-static readonly BYTES_PER_ELEMENT: number--><!--Device-Int8Array-static readonly BYTES_PER_ELEMENT: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## length
@@ -1326,5 +1416,7 @@ Number of elements in an ArkTS Int8Array.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Int8Array-readonly length: number--><!--Device-Int8Array-readonly length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

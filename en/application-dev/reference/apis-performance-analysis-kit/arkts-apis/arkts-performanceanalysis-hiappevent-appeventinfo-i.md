@@ -8,6 +8,8 @@ Defines parameters of the event information.
 
 **Since:** 9
 
+<!--Device-hiAppEvent-interface AppEventInfo--><!--Device-hiAppEvent-interface AppEventInfo-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Event domain. The value is a string of up to 32 characters, including digits (0 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventInfo-domain: string--><!--Device-AppEventInfo-domain: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -44,7 +48,9 @@ Event type.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventInfo-eventType: EventType--><!--Device-AppEventInfo-eventType: EventType-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -60,7 +66,9 @@ Event name. The value is string that contains a maximum of 48 characters, includ
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AppEventInfo-name: string--><!--Device-AppEventInfo-name: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -84,5 +92,7 @@ of 8 * 1024 characters. If the length exceeds the limit, the parameter and its n
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AppEventInfo-params: object--><!--Device-AppEventInfo-params: object-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

@@ -24,6 +24,8 @@ Queries whether Wi-Fi is disabled on the current device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function isWifiDisabled(admin: Want): boolean--><!--Device-wifiManager-function isWifiDisabled(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

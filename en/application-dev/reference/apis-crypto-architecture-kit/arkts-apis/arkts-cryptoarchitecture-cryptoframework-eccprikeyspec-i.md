@@ -12,6 +12,8 @@ Defines a child class of [AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-a
 
 **Since:** 10
 
+<!--Device-cryptoFramework-interface ECCPriKeySpec extends AsyKeySpec--><!--Device-cryptoFramework-interface ECCPriKeySpec extends AsyKeySpec-End-->
+
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.AsymKey
 - API versions 10 to 11: SystemCapability.Security.CryptoFramework
@@ -34,7 +36,9 @@ Common parameters of the public and private keys in the ECC algorithm.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ECCPriKeySpec-params: ECCCommonParamsSpec--><!--Device-ECCPriKeySpec-params: ECCCommonParamsSpec-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.AsymKey
@@ -52,7 +56,9 @@ Private key **sk** in the ECC algorithm.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-ECCPriKeySpec-sk: bigint--><!--Device-ECCPriKeySpec-sk: bigint-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.CryptoFramework.Key.AsymKey

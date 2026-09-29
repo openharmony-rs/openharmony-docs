@@ -8,6 +8,8 @@ declare enum KeySource
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum KeySource--><!--Device-unnamed-declare enum KeySource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Unknown
@@ -23,6 +25,8 @@ Unknown
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Keyboard
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-KeySource-Keyboard--><!--Device-KeySource-Keyboard-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## JOYSTICK
@@ -55,5 +61,7 @@ JOYSTICK
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

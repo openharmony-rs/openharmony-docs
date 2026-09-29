@@ -25,6 +25,8 @@ import { SwipeRefresher } from '@kit.ArkUI';
 
 **装饰器类型：** @Component
 
+<!--Device-unnamed-export declare struct SwipeRefresher--><!--Device-unnamed-export declare struct SwipeRefresher-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -55,6 +57,8 @@ content?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SwipeRefresher-content?: ResourceStr--><!--Device-SwipeRefresher-content?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## isLoading
@@ -78,5 +82,7 @@ false：未在加载。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeRefresher-isLoading: boolean--><!--Device-SwipeRefresher-isLoading: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

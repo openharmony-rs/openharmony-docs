@@ -14,6 +14,8 @@ Represents a visual effect configuration object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect--><!--Device-unnamed-declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.graphics.uiEffect').default.VisualEffect

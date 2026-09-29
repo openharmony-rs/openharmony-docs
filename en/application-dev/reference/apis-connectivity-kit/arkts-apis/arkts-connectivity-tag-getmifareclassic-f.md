@@ -16,7 +16,9 @@ Obtains a **MifareClassicTag** object, which allows access to the tags that use 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-function getMifareClassic(tagInfo: TagInfo): MifareClassicTag--><!--Device-tag-function getMifareClassic(tagInfo: TagInfo): MifareClassicTag-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

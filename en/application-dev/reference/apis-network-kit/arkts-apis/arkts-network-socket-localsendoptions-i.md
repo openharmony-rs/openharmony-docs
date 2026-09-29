@@ -8,6 +8,8 @@ Defines the request parameters for the **LocalSocket** object.
 
 **Since:** 11
 
+<!--Device-socket-export interface LocalSendOptions--><!--Device-socket-export interface LocalSendOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Data to be transmitted.
 
 **Since:** 11
 
+<!--Device-LocalSendOptions-data: string | ArrayBuffer--><!--Device-LocalSendOptions-data: string | ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## encoding
@@ -41,5 +45,7 @@ Encoding format of the string.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-LocalSendOptions-encoding?: string--><!--Device-LocalSendOptions-encoding?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

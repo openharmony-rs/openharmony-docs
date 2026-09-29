@@ -8,6 +8,8 @@ export class DialogBaseController
 
 **起始版本：** 26.0.1
 
+<!--Device-unnamed-export class DialogBaseController--><!--Device-unnamed-export class DialogBaseController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ close(): void
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogBaseController-close(): void--><!--Device-DialogBaseController-close(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -46,6 +50,8 @@ constructor()
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogBaseController-constructor()--><!--Device-DialogBaseController-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## getState
@@ -61,6 +67,8 @@ getState(): DialogState
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogBaseController-getState(): DialogState--><!--Device-DialogBaseController-getState(): DialogState-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

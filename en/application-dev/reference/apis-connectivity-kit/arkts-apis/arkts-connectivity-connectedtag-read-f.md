@@ -18,6 +18,8 @@ Reads the content of this active tag. This API uses a promise to return the resu
 
 **Required permissions:** ohos.permission.NFC_TAG
 
+<!--Device-connectedTag-function read(): Promise<number[]>--><!--Device-connectedTag-function read(): Promise<number[]>-End-->
+
 **System capability:** SystemCapability.Communication.ConnectedTag
 
 **Return value:**
@@ -61,6 +63,8 @@ Reads the content of this active tag. This API uses an asynchronous callback to 
 **Since:** 9
 
 **Required permissions:** ohos.permission.NFC_TAG
+
+<!--Device-connectedTag-function read(callback: AsyncCallback<number[]>): void--><!--Device-connectedTag-function read(callback: AsyncCallback<number[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.ConnectedTag
 

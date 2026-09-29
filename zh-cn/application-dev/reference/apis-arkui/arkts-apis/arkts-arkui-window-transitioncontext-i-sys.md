@@ -8,6 +8,8 @@ interface TransitionContext
 
 **起始版本：** 9
 
+<!--Device-window-interface TransitionContext--><!--Device-window-interface TransitionContext-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -24,9 +26,11 @@ import { window } from '@kit.ArkUI';
 completeTransition(isCompleted: boolean): void
 ```
 
-设置属性转换的最终完成状态。该函数需要在动画函数[animateTo()](../arkts-components/arkts-arkui-common-comp.md#common)执行后设置。
+设置属性转换的最终完成状态。该函数需要在动画函数[animateTo()](../arkts-components/arkts-arkui-common-comp.md)执行后设置。
 
 **起始版本：** 9
+
+<!--Device-TransitionContext-completeTransition(isCompleted: boolean): void--><!--Device-TransitionContext-completeTransition(isCompleted: boolean): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -87,6 +91,8 @@ toWindow: Window
 **类型：** [Window](arkts-arkui-window-window-i.md)
 
 **起始版本：** 9
+
+<!--Device-TransitionContext-toWindow: Window--><!--Device-TransitionContext-toWindow: Window-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

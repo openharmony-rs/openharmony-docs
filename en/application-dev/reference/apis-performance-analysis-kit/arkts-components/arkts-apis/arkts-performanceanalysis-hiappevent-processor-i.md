@@ -8,6 +8,8 @@ Defines a data processor for reporting and managing events. You can customize pr
 
 **Since:** 11
 
+<!--Device-hiAppEvent-interface Processor--><!--Device-hiAppEvent-interface Processor-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Application ID. It is left empty by default. The length of the input string cann
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-appId?: string--><!--Device-Processor-appId?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -48,7 +52,9 @@ Event reporting threshold. When the number of events reaches the threshold, an e
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-batchReport?: int--><!--Device-Processor-batchReport?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -66,7 +72,9 @@ Configuration ID for data processor. The input value must be greater than or equ
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Processor-configId?: int--><!--Device-Processor-configId?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -84,7 +92,9 @@ Name of the data processor configuration, which can be loaded from the configura
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-Processor-configName?: string--><!--Device-Processor-configName?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -104,7 +114,9 @@ Custom extended parameters. If the input parameter name and value do not meet th
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Processor-customConfigs?: Record<string, string>--><!--Device-Processor-customConfigs?: Record<string, string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -122,7 +134,9 @@ Whether to enable the debug mode. The default value is **false**. The value **tr
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-debugMode?: boolean--><!--Device-Processor-debugMode?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -140,7 +154,9 @@ Event description configuration array that can be reported by the data processor
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-eventConfigs?: AppEventReportConfig[]--><!--Device-Processor-eventConfigs?: AppEventReportConfig[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -158,7 +174,9 @@ Name of a data processor. The value is string that contains a maximum of 256 cha
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-name: string--><!--Device-Processor-name: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -176,7 +194,9 @@ Whether to report an event when an application switches to the background. The d
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-onBackgroundReport?: boolean--><!--Device-Processor-onBackgroundReport?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -194,7 +214,9 @@ Whether to report an event when the data processor starts. The default value is 
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-onStartReport?: boolean--><!--Device-Processor-onStartReport?: boolean-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -212,7 +234,9 @@ Interval for event reporting, in seconds. The input value must be greater than o
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-periodReport?: int--><!--Device-Processor-periodReport?: int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -230,7 +254,9 @@ Server location information. It is left empty by default. The length of the inpu
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-routeInfo?: string--><!--Device-Processor-routeInfo?: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -248,7 +274,9 @@ Name array of user IDs that can be reported by the data processor. **name** corr
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-userIds?: string[]--><!--Device-Processor-userIds?: string[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -266,6 +294,8 @@ Name array of user properties that can be reported by the data processor. **name
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Processor-userProperties?: string[]--><!--Device-Processor-userProperties?: string[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

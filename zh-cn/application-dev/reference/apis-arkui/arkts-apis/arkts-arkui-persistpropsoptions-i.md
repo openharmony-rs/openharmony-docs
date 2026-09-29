@@ -8,6 +8,8 @@ declare interface PersistPropsOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface PersistPropsOptions--><!--Device-unnamed-declare interface PersistPropsOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## defaultValue
@@ -24,6 +26,8 @@ defaultValue: number | string | boolean | Object
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PersistPropsOptions-defaultValue: number | string | boolean | Object--><!--Device-PersistPropsOptions-defaultValue: number | string | boolean | Object-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
@@ -39,5 +43,7 @@ key: string
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PersistPropsOptions-key: string--><!--Device-PersistPropsOptions-key: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

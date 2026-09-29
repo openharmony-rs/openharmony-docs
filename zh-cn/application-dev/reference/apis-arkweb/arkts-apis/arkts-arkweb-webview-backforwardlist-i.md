@@ -10,6 +10,8 @@ BackForwardList是ArkWeb框架中用于访问Web组件浏览历史列表的接�
 
 **起始版本：** 9
 
+<!--Device-webview-interface BackForwardList--><!--Device-webview-interface BackForwardList-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -30,6 +32,8 @@ getItemAtIndex(index: number): HistoryItem
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-BackForwardList-getItemAtIndex(index: number): HistoryItem--><!--Device-BackForwardList-getItemAtIndex(index: number): HistoryItem-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -48,7 +52,7 @@ getItemAtIndex(index: number): HistoryItem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -66,6 +70,8 @@ currentIndex: number
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-BackForwardList-currentIndex: number--><!--Device-BackForwardList-currentIndex: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## size
@@ -81,5 +87,7 @@ size: number
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-BackForwardList-size: number--><!--Device-BackForwardList-size: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

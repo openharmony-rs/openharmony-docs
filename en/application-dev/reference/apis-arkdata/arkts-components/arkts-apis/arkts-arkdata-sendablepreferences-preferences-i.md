@@ -10,6 +10,8 @@ Provides APIs for obtaining and modifying **Preferences** instances. **Preferenc
 
 **Since:** 12
 
+<!--Device-sendablePreferences-interface Preferences extends lang.ISendable--><!--Device-sendablePreferences-interface Preferences extends lang.ISendable-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Clears this **Preferences** instance. This API uses a promise to return the resu
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-clear(): Promise<void>--><!--Device-Preferences-clear(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -69,6 +73,8 @@ Clears this **Preferences** instance. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-clearSync(): void--><!--Device-Preferences-clearSync(): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Error codes:**
@@ -94,6 +100,8 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-delete(key: string): Promise<void>--><!--Device-Preferences-delete(key: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -141,6 +149,8 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-deleteSync(key: string): void--><!--Device-Preferences-deleteSync(key: string): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**
@@ -173,6 +183,8 @@ Flushes the data in this **Preferences** instance to the persistent file. This A
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-flush(): Promise<void>--><!--Device-Preferences-flush(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -213,6 +225,8 @@ Flushes the data in the cached **Preferences** instance to the persistent file.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-Preferences-flushSync(): void--><!--Device-Preferences-flushSync(): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Error codes:**
@@ -238,6 +252,8 @@ Obtains the value of a key from this **Preferences** instance. This API uses a p
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-get(key: string, defValue: lang.ISendable): Promise<lang.ISendable>--><!--Device-Preferences-get(key: string, defValue: lang.ISendable): Promise<lang.ISendable>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -288,6 +304,8 @@ Obtains all KV pairs from this **Preferences** instance. This API uses a promise
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-getAll(): Promise<lang.ISendable>--><!--Device-Preferences-getAll(): Promise<lang.ISendable>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Return value:**
@@ -330,6 +348,8 @@ Obtains all KV pairs from this **Preferences** instance. This API returns the re
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-getAllSync(): lang.ISendable--><!--Device-Preferences-getAllSync(): lang.ISendable-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Return value:**
@@ -366,6 +386,8 @@ Obtains the value of a key from this **Preferences** instance. This API returns 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-getSync(key: string, defValue: lang.ISendable): lang.ISendable--><!--Device-Preferences-getSync(key: string, defValue: lang.ISendable): lang.ISendable-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -408,6 +430,8 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-has(key: string): Promise<boolean>--><!--Device-Preferences-has(key: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -459,6 +483,8 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-hasSync(key: string): boolean--><!--Device-Preferences-hasSync(key: string): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**
@@ -502,6 +528,8 @@ Unsubscribes from data changes.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-off(type: 'change', callback?: Callback<string>): void--><!--Device-Preferences-off(type: 'change', callback?: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -549,6 +577,8 @@ Unsubscribes from inter-process data changes. This API is provided for applicati
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-off(type: 'multiProcessChange', callback?: Callback<string>): void--><!--Device-Preferences-off(type: 'multiProcessChange', callback?: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**
@@ -594,6 +624,8 @@ Unsubscribes from changes of specific data.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-off(type: 'dataChange', keys: Array<string>, callback?: Callback<lang.ISendable>): void--><!--Device-Preferences-off(type: 'dataChange', keys: Array<string>, callback?: Callback<lang.ISendable>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -645,6 +677,8 @@ Subscribes to data changes. The registered callback will be invoked to return th
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-on(type: 'change', callback: Callback<string>): void--><!--Device-Preferences-on(type: 'change', callback: Callback<string>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**
@@ -689,6 +723,8 @@ Subscribes to data changes between processes. When multiple processes hold the s
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-on(type: 'multiProcessChange', callback: Callback<string>): void--><!--Device-Preferences-on(type: 'multiProcessChange', callback: Callback<string>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -735,6 +771,8 @@ Subscribes to changes of specific data. The registered callback will be invoked 
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-on(type: 'dataChange', keys: Array<string>, callback: Callback<lang.ISendable>): void--><!--Device-Preferences-on(type: 'dataChange', keys: Array<string>, callback: Callback<lang.ISendable>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -785,6 +823,8 @@ Writes data to this **Preferences** instance. This API uses a promise to return 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-Preferences-put(key: string, value: lang.ISendable): Promise<void>--><!--Device-Preferences-put(key: string, value: lang.ISendable): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
 **Parameters:**
@@ -831,6 +871,8 @@ Writes data to this **Preferences** instance. This API returns the result synchr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-Preferences-putSync(key: string, value: lang.ISendable): void--><!--Device-Preferences-putSync(key: string, value: lang.ISendable): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 

@@ -12,6 +12,8 @@ Enumerates the active device types.
 
 **Substitutes:** [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md)
 
+<!--Device-audio-enum ActiveDeviceType--><!--Device-audio-enum ActiveDeviceType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## SPEAKER
@@ -28,6 +30,8 @@ Speaker.
 
 **Substitutes:** SPEAKER
 
+<!--Device-ActiveDeviceType-SPEAKER = 2--><!--Device-ActiveDeviceType-SPEAKER = 2-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## BLUETOOTH_SCO
@@ -43,5 +47,7 @@ Bluetooth device using Synchronous Connection Oriented (SCO) links.
 **Deprecated since:** 9
 
 **Substitutes:** BLUETOOTH_SCO
+
+<!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7--><!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device

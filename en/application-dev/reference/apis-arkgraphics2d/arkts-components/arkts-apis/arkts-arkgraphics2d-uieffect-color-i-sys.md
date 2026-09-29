@@ -8,6 +8,8 @@ RGBA color description.
 
 **Since:** 20
 
+<!--Device-uiEffect-interface Color--><!--Device-uiEffect-interface Color-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Alpha component of the color (transparency).
 
 **Since:** 20
 
+<!--Device-Color-alpha: double--><!--Device-Color-alpha: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Blue component of the color.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Color-blue: double--><!--Device-Color-blue: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -62,6 +68,8 @@ Green component of the color.
 
 **Since:** 20
 
+<!--Device-Color-green: double--><!--Device-Color-green: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Red component of the color.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-Color-red: double--><!--Device-Color-red: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

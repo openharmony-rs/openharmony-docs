@@ -8,6 +8,8 @@ Defines the socket connection information.
 
 **Since:** 11
 
+<!--Device-socket-export interface SocketMessageInfo--><!--Device-socket-export interface SocketMessageInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Received **message** event.
 
 **Since:** 11
 
+<!--Device-SocketMessageInfo-message: ArrayBuffer--><!--Device-SocketMessageInfo-message: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## remoteInfo
@@ -41,5 +45,7 @@ Socket connection information.
 **Type:** [SocketRemoteInfo](arkts-network-socket-socketremoteinfo-i.md)
 
 **Since:** 11
+
+<!--Device-SocketMessageInfo-remoteInfo: SocketRemoteInfo--><!--Device-SocketMessageInfo-remoteInfo: SocketRemoteInfo-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

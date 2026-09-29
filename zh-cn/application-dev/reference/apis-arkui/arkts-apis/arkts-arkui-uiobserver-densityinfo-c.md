@@ -8,6 +8,8 @@ export class DensityInfo
 
 **起始版本：** 12
 
+<!--Device-uiObserver-export class DensityInfo--><!--Device-uiObserver-export class DensityInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ context: UIContext
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DensityInfo-context: UIContext--><!--Device-DensityInfo-context: UIContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## density
@@ -51,5 +55,7 @@ density: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DensityInfo-density: number--><!--Device-DensityInfo-density: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

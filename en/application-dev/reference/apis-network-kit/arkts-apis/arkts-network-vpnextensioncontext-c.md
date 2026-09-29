@@ -14,4 +14,6 @@ This module provides the context required for APIs to access the resources of a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class VpnExtensionContext extends ExtensionContext--><!--Device-unnamed-export default class VpnExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

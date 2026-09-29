@@ -20,6 +20,8 @@ Obtains the localized script for the specified language.
 
 **Substitutes:** [getDisplayLanguage](arkts-localization-i18n-system-c.md#getdisplaylanguage)
 
+<!--Device-i18n-export function getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string--><!--Device-i18n-export function getDisplayLanguage(language: string, locale: string, sentenceCase?: boolean): string-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **Parameters:**

@@ -12,4 +12,6 @@ declare type OnActionCallback = () => void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type OnActionCallback = () => void--><!--Device-unnamed-declare type OnActionCallback = () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

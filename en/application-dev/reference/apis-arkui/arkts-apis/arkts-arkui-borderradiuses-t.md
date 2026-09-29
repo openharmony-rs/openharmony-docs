@@ -12,6 +12,8 @@ Sets the uniform radius of the four corners.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export type BorderRadiuses = Corners<number>--><!--Device-unnamed-export type BorderRadiuses = Corners<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [Corners](arkts-arkui-graphics-corners-i.md)&lt;number&gt;

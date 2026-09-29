@@ -8,6 +8,8 @@ Sets the search button located next to the search text box.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface SearchButtonParams--><!--Device-unnamed-export interface SearchButtonParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Font of the search text box. Default value: **{fontSize: '16fp',fontColor: '#ff3
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-SearchButtonParams-options?: SearchButtonOptions--><!--Device-SearchButtonParams-options?: SearchButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## searchButtonValue
@@ -45,5 +49,7 @@ Text on the search button located next to the search text box.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-SearchButtonParams-searchButtonValue: ResourceStr--><!--Device-SearchButtonParams-searchButtonValue: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

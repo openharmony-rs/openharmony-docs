@@ -8,6 +8,8 @@ Enum for provides MSTensor format
 
 **Since:** 10
 
+<!--Device-mindSporeLite-export enum Format--><!--Device-mindSporeLite-export enum Format-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## DEFAULT_FORMAT
@@ -21,6 +23,8 @@ data format is default
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-DEFAULT_FORMAT = -1--><!--Device-Format-DEFAULT_FORMAT = -1-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -36,6 +40,8 @@ data format is NCHW
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Format-NCHW = 0--><!--Device-Format-NCHW = 0-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## NHWC
@@ -49,6 +55,8 @@ data format is NHWC
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-NHWC = 1--><!--Device-Format-NHWC = 1-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -64,6 +72,8 @@ data format is NHWC4
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Format-NHWC4 = 2--><!--Device-Format-NHWC4 = 2-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## HWKC
@@ -77,6 +87,8 @@ data format is HWKC
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-HWKC = 3--><!--Device-Format-HWKC = 3-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -92,6 +104,8 @@ data format is HWCK
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Format-HWCK = 4--><!--Device-Format-HWCK = 4-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 ## KCHW
@@ -105,5 +119,7 @@ data format is KCHW
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-KCHW = 5--><!--Device-Format-KCHW = 5-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

@@ -8,6 +8,8 @@ Subscribes to death notifications of a remote object. When the remote object is 
 
 **Since:** 7
 
+<!--Device-rpc-interface DeathRecipient--><!--Device-rpc-interface DeathRecipient-End-->
+
 **System capability:** SystemCapability.Communication.IPC.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ onRemoteDied(): void
 Called to perform subsequent operations when a death notification of the remote object is received.
 
 **Since:** 7
+
+<!--Device-DeathRecipient-onRemoteDied(): void--><!--Device-DeathRecipient-onRemoteDied(): void-End-->
 
 **System capability:** SystemCapability.Communication.IPC.Core
 

@@ -12,4 +12,6 @@ Defines a synchronous callback.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-unnamed-declare type TaskCallback = () => T--><!--Device-unnamed-declare type TaskCallback = () => T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

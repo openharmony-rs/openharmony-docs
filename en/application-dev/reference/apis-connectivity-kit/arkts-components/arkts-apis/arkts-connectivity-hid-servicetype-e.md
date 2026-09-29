@@ -8,6 +8,8 @@ Describe the l2cap service type.
 
 **Since:** 23
 
+<!--Device-hid-enum ServiceType--><!--Device-hid-enum ServiceType-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SERVICE_NO_TRAFFIC
@@ -21,6 +23,8 @@ Service type no traffic.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0--><!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -36,6 +40,8 @@ Service type best effort.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ServiceType-SERVICE_BEST_EFFORT = 1--><!--Device-ServiceType-SERVICE_BEST_EFFORT = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SERVICE_GUARANTEED
@@ -49,5 +55,7 @@ Service type guaranteed.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceType-SERVICE_GUARANTEED = 2--><!--Device-ServiceType-SERVICE_GUARANTEED = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

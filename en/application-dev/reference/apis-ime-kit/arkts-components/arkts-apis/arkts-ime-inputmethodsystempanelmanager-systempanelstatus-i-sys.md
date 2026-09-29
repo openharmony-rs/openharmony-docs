@@ -8,6 +8,8 @@ System panel status.
 
 **Since:** 26.0.0
 
+<!--Device-inputMethodSystemPanelManager-interface SystemPanelStatus--><!--Device-inputMethodSystemPanelManager-interface SystemPanelStatus-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The input type of the input method.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SystemPanelStatus-inputType: InputMethodInputType--><!--Device-SystemPanelStatus-inputType: InputMethodInputType-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Whether the system panel needs to be raised.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SystemPanelStatus-isPanelRaised: boolean--><!--Device-SystemPanelStatus-isPanelRaised: boolean-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -68,6 +74,8 @@ Whether the system panel's function button is needed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SystemPanelStatus-needFuncButton: boolean--><!--Device-SystemPanelStatus-needFuncButton: boolean-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The panel flag of the input method's soft keyboard panel.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SystemPanelStatus-panelFlag: PanelFlag--><!--Device-SystemPanelStatus-panelFlag: PanelFlag-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

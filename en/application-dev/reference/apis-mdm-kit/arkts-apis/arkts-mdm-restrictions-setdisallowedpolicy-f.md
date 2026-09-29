@@ -33,6 +33,8 @@ Disallows a feature.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void--><!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -89,6 +91,8 @@ Enables or disables a specified device feature. Once disabled, the feature canno
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): void--><!--Device-restrictions-function setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

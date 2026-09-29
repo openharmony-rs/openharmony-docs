@@ -18,6 +18,8 @@ Queries whether the process is in power saving mode. This API uses a promise to 
 
 **Required permissions:** ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
+<!--Device-backgroundProcessManager-function isPowerSaveMode(pid: int): Promise<boolean>--><!--Device-backgroundProcessManager-function isPowerSaveMode(pid: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **Parameters:**

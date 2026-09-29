@@ -8,6 +8,8 @@ Defines the console info.
 
 **Since:** 7
 
+<!--Device-unnamed-export declare class console--><!--Device-unnamed-export declare class console-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -26,6 +28,8 @@ Prints assertion information.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-console-static assert(value?: Object, ...arguments: Object[]): void--><!--Device-console-static assert(value?: Object, ...arguments: Object[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -54,6 +58,8 @@ Maintains an internal counter. When this counter is invoked, its label name and 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static count(label?: string): void--><!--Device-console-static count(label?: string): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -79,6 +85,8 @@ Resets a counter based on the specified label name.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-console-static countReset(label?: string): void--><!--Device-console-static countReset(label?: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -108,6 +116,8 @@ Prints debugging information in formatted output mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-console-static debug(message: string, ...arguments: any[]): void--><!--Device-console-static debug(message: string, ...arguments: any[]): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -129,6 +139,8 @@ Prints content of the specified object.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static dir(dir?: Object): void--><!--Device-console-static dir(dir?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -148,6 +160,8 @@ Displays an interactive tree of the descendant elements of the specified XML ele
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-console-static dirxml(...arguments: Object[]): void--><!--Device-console-static dirxml(...arguments: Object[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -171,6 +185,8 @@ Prints error information in formatted output mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-console-static error(message: string, ...arguments: any[]): void--><!--Device-console-static error(message: string, ...arguments: any[]): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -192,6 +208,8 @@ Increases the indentation of subsequent lines by two spaces. If the information 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static group(...arguments: Object[]): void--><!--Device-console-static group(...arguments: Object[]): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -211,6 +229,8 @@ Creates a new inline group in collapsed mode. The usage and function of this API
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-console-static groupCollapsed(...arguments: Object[]): void--><!--Device-console-static groupCollapsed(...arguments: Object[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -232,6 +252,8 @@ Reduces the indentation of subsequent lines by two spaces.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static groupEnd(): void--><!--Device-console-static groupEnd(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## info
@@ -247,6 +269,8 @@ Prints log information in formatted output mode. This API is the alias of consol
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-console-static info(message: string, ...arguments: any[]): void--><!--Device-console-static info(message: string, ...arguments: any[]): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,6 +295,8 @@ Prints log information in formatted output mode.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-console-static log(message: string, ...arguments: any[]): void--><!--Device-console-static log(message: string, ...arguments: any[]): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -292,6 +318,8 @@ Prints data in a table.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static table(tableData?: Object): void--><!--Device-console-static table(tableData?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -311,6 +339,8 @@ Starts a timer to track the duration of an operation. You can use console.timeEn
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-console-static time(label?: string): void--><!--Device-console-static time(label?: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -338,6 +368,8 @@ Stops the timer started by calling console.time() and prints the elapsed time (i
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static timeEnd(label?: string): void--><!--Device-console-static timeEnd(label?: string): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -363,6 +395,8 @@ Prints the elapsed time and other data parameters for the timer started by conso
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-console-static timeLog(label?: string, ...arguments: Object[]): void--><!--Device-console-static timeLog(label?: string, ...arguments: Object[]): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -391,6 +425,8 @@ Creates a stack trace.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static trace(...arguments: Object[]): void--><!--Device-console-static trace(...arguments: Object[]): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -411,6 +447,8 @@ Prints information about the current hybrid stack of the calling thread in the m
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-console-static traceHybridStack(): void--><!--Device-console-static traceHybridStack(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## warn
@@ -426,6 +464,8 @@ Prints warning information in formatted output mode.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-console-static warn(message: string, ...arguments: any[]): void--><!--Device-console-static warn(message: string, ...arguments: any[]): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

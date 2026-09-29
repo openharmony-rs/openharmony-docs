@@ -18,6 +18,8 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
 
+<!--Device-policy-function setPowerSaveTrustlist(uids: Array<int>, isAllowed: boolean, callback: AsyncCallback<void>): void--><!--Device-policy-function setPowerSaveTrustlist(uids: Array<int>, isAllowed: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_NET_STRATEGY
+
+<!--Device-policy-function setPowerSaveTrustlist(uids: Array<int>, isAllowed: boolean): Promise<void>--><!--Device-policy-function setPowerSaveTrustlist(uids: Array<int>, isAllowed: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

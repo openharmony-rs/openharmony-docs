@@ -16,7 +16,9 @@ Checks whether a language is an RTL language. For an RTL language, [UI mirroring
 
 **Since:** 7
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-i18n-export function isRTL(locale: string): boolean--><!--Device-i18n-export function isRTL(locale: string): boolean-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

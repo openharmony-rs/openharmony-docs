@@ -4,6 +4,8 @@ The **deviceManager** module provides APIs for managing peripheral devices, incl
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace deviceManager--><!--Device-unnamed-declare namespace deviceManager-End-->
+
 **System capability:** SystemCapability.Driver.ExternalDevice
 
 ## Modules to Import

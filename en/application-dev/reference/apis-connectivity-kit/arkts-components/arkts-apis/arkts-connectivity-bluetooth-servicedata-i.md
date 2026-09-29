@@ -12,6 +12,8 @@ Describes the service data.
 
 **Substitutes:** [ServiceData](arkts-connectivity-bluetoothmanager-servicedata-i.md)
 
+<!--Device-bluetooth-interface ServiceData--><!--Device-bluetooth-interface ServiceData-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Indicates the UUID of the service data to add
 
 **Substitutes:** [serviceUuid](arkts-connectivity-bluetoothmanager-servicedata-i.md#serviceuuid)
 
+<!--Device-ServiceData-serviceUuid: string--><!--Device-ServiceData-serviceUuid: string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## serviceValue
@@ -53,5 +57,7 @@ Indicates the service data to add
 **Deprecated since:** 9
 
 **Substitutes:** [serviceValue](arkts-connectivity-bluetoothmanager-servicedata-i.md#servicevalue)
+
+<!--Device-ServiceData-serviceValue: ArrayBuffer--><!--Device-ServiceData-serviceValue: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

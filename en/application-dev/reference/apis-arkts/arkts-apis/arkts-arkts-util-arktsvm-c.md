@@ -8,6 +8,8 @@ A class that provides VM maintenance and test capabilities for developers.
 
 **Since:** 23
 
+<!--Device-util-class ArkTSVM--><!--Device-util-class ArkTSVM-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Test API:** This API is used only in automated test scripts.
@@ -30,6 +32,8 @@ Enable the local handle detection to avoid memory leakage in the event looper of
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ArkTSVM-static enableLocalHandleDetection(): void--><!--Device-ArkTSVM-static enableLocalHandleDetection(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## getAllVMHeapMemoryInfo
@@ -43,6 +47,8 @@ Get all heap memory information from ArkTS-VMs and the shared heap.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ArkTSVM-static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>--><!--Device-ArkTSVM-static getAllVMHeapMemoryInfo(): Promise<HeapMemoryInfo[]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -79,6 +85,8 @@ Gets the number of global handles currently in use by the ArkTS VM on the callin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ArkTSVM-static getGlobalHandleCount(): number--><!--Device-ArkTSVM-static getGlobalHandleCount(): number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Return value:**
@@ -101,6 +109,8 @@ Unregister the callback that is triggered when the heap memory exceeds the criti
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ArkTSVM-static offVMHeapMemoryPressure(): void--><!--Device-ArkTSVM-static offVMHeapMemoryPressure(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## onVMHeapMemoryPressure
@@ -116,6 +126,8 @@ NOTE: There is no guarantee that the callback will be triggered before OOM.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ArkTSVM-static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: HeapMemoryThreshold): boolean--><!--Device-ArkTSVM-static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: HeapMemoryThreshold): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -143,6 +155,8 @@ Sets whether to enable multithreading detection. When **enabled** is set to **tr
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ArkTSVM-static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions):void--><!--Device-ArkTSVM-static setMultithreadingDetectionEnabled(enabled: boolean, options?: MultithreadingDetectionOptions):void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -175,6 +189,8 @@ Enable or disable tracking of the relationship between napi_ref and global handl
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ArkTSVM-static setTrackGlobalRef(enable: boolean): void--><!--Device-ArkTSVM-static setTrackGlobalRef(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

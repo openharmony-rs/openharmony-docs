@@ -20,6 +20,8 @@ Sets the home screen wallpaper. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setHomeWallpaper(admin: Want, fd: number):  Promise<void>--><!--Device-deviceSettings-function setHomeWallpaper(admin: Want, fd: number):  Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

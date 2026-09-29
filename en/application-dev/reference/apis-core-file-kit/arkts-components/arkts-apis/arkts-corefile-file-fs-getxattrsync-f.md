@@ -16,6 +16,8 @@ Obtains an extended attribute of a file or directory. This API returns the resul
 
 **Since:** 12
 
+<!--Device-unnamed-declare function getxattrSync(path: string, key: string): string--><!--Device-unnamed-declare function getxattrSync(path: string, key: string): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

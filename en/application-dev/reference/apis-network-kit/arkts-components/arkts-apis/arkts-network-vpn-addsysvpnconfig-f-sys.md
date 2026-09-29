@@ -18,6 +18,8 @@ Add a system VPN network configuration.
 
 **Required permissions:** ohos.permission.MANAGE_VPN
 
+<!--Device-vpn-function addSysVpnConfig(config: SysVpnConfig): Promise<void>--><!--Device-vpn-function addSysVpnConfig(config: SysVpnConfig): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Enumerates the metrics for frame performance.
 
 **Since:** 22
 
+<!--Device-window-interface FrameMetrics--><!--Device-window-interface FrameMetrics-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Whether the frame is the first frame. **true** for first frame, **false** otherw
 
 **Since:** 22
 
+<!--Device-FrameMetrics-firstDrawFrame: boolean--><!--Device-FrameMetrics-firstDrawFrame: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## inputHandlingDuration
@@ -41,6 +45,8 @@ Duration of gesture handling in a frame, in nanoseconds.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-FrameMetrics-inputHandlingDuration: long--><!--Device-FrameMetrics-inputHandlingDuration: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -56,6 +62,8 @@ Duration of layout measurement in a frame, in nanoseconds.
 
 **Since:** 22
 
+<!--Device-FrameMetrics-layoutMeasureDuration: long--><!--Device-FrameMetrics-layoutMeasureDuration: long-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## vsyncTimestamp
@@ -69,5 +77,7 @@ Timestamp marking the start of the current frame, in nanoseconds.
 **Type:** number
 
 **Since:** 22
+
+<!--Device-FrameMetrics-vsyncTimestamp: long--><!--Device-FrameMetrics-vsyncTimestamp: long-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

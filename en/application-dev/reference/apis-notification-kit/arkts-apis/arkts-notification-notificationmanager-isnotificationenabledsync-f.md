@@ -18,6 +18,8 @@ This API is used to quickly check whether the current application is allowed to 
 
 **Since:** 12
 
+<!--Device-notificationManager-function isNotificationEnabledSync(): boolean--><!--Device-notificationManager-function isNotificationEnabledSync(): boolean-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-3) requests notification to be enabled for this application.

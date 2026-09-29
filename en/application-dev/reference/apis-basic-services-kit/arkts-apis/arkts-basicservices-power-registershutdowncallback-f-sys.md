@@ -18,6 +18,8 @@ Registers a callback to be invoked when the device is shut down or rebooted. Thi
 
 **Required permissions:** ohos.permission.REBOOT
 
+<!--Device-power-function registerShutdownCallback(callback: Callback<boolean>): void--><!--Device-power-function registerShutdownCallback(callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **System API:** This is a system API.

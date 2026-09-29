@@ -16,6 +16,8 @@ Obtain latitude and longitude info from location address.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-function getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback<Array<GeoAddress>>): void--><!--Device-geoLocationManager-function getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback<Array<GeoAddress>>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 **Parameters:**
@@ -66,6 +68,8 @@ function getAddressesFromLocationName(request: GeoCodeRequest): Promise<Array<Ge
 Obtain latitude and longitude info from location address.
 
 **Since:** 9
+
+<!--Device-geoLocationManager-function getAddressesFromLocationName(request: GeoCodeRequest): Promise<Array<GeoAddress>>--><!--Device-geoLocationManager-function getAddressesFromLocationName(request: GeoCodeRequest): Promise<Array<GeoAddress>>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 

@@ -1,4 +1,4 @@
-# Repeat(Defines Repeat component.)
+# Repeat
 
 Defines Repeat Component, and Add More Array Type.
 
@@ -9,8 +9,8 @@ Defines Repeat Component, and Add More Array Type.
 | Name | Description |
 | --- | --- |
 | [RepeatItem](arkts-arkui-repeat-comp-repeatitem-i.md) | Construct a new type for each item. |
-| [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md) | When **cachedCount** is set to the maximum number of nodes in the display area of the container component for the current template, **Repeat** achieves maximum reuse efficiency. If there are no nodes of the current template in the container component's display area, the cache list is not released, which increases application memory usage. You are advised to set **cachedCount** to the number of nodes within the container component's display area and adjust the value according to the actual situation. Yet, setting **cachedCount** to less than 2 is not recommended, as this may lead to the frequent node creation during rapid scrolling and result in performance degradation. |
-| [VirtualScrollOptions](arkts-arkui-repeat-comp-virtualscrolloptions-i.md) | Configures the expected total number of data items to be loaded in lazy loading mode, the reuse capability, and the precise data lazy loading capability. |
+| [TemplateOptions](arkts-arkui-repeat-comp-templateoptions-i.md) | When **cachedCount** is set to the maximum number of nodes in the display area of the container component for the current template, **Repeat** achieves maximum reuse efficiency. If there are no nodes of the current template in the display area of the container component, the cache pool is not released, and the application memory increases. The developer needs to adjust it based on the application's requirements for memory usage and component reuse efficiency. It is recommended to set **cachedCount** to the number of nodes in the display area of the container component. Note that it is not recommended to set **cachedCount** to a value less than 2, because this causes frequent creation of new nodes in fast scrolling scenarios, resulting in performance degradation. |
+| [VirtualScrollOptions](arkts-arkui-repeat-comp-virtualscrolloptions-i.md) | Configures the expected total number of data items to be loaded in lazy loading mode, the reuse capability, and the precise data lazy loading capability. Since API version 26.0.0, the memory optimization strategy can be configured. |
 
 ### Types
 
@@ -24,7 +24,7 @@ Defines Repeat Component, and Add More Array Type.
 
 | Name | Description |
 | --- | --- |
-| [RepeatMemOptStrategy](arkts-arkui-repeat-comp-repeatmemoptstrategy-e.md) | Defines a type for memory optimization strategy. |
+| [RepeatMemOptStrategy](arkts-arkui-repeat-comp-repeatmemoptstrategy-e.md) | Enumerates the memory optimization strategies of **Repeat**. |
 
 ## Examples
 

@@ -12,6 +12,8 @@ Implements an interception callback invoked when the display mode of the **Navig
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type InterceptionModeCallback = (mode: NavigationMode) => void--><!--Device-unnamed-declare type InterceptionModeCallback = (mode: NavigationMode) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

@@ -16,6 +16,8 @@ Stops mirror mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
+<!--Device-screen-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void--><!--Device-screen-function stopMirror(mirrorScreen:Array<long>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ function stopMirror(mirrorScreen:Array<number>): Promise<void>
 Stops mirror mode. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-screen-function stopMirror(mirrorScreen:Array<long>): Promise<void>--><!--Device-screen-function stopMirror(mirrorScreen:Array<long>): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

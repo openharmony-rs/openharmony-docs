@@ -8,6 +8,8 @@ An object with some or all properties of the `Intl.ListFormat` constructor `opti
 
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat#parameters).
 
+<!--Device-Intl-interface ListFormatOptions--><!--Device-Intl-interface ListFormatOptions-End-->
+
 ## Modules to Import
 
 ```TypeScript
@@ -23,6 +25,8 @@ The locale matching algorithm to use. For information about this option, see [In
 
 **Type:** [ListFormatLocaleMatcher](arkts-intl-listformatlocalematcher-t.md) &#124; undefined
 
+<!--Device-ListFormatOptions-localeMatcher?: ListFormatLocaleMatcher | undefined--><!--Device-ListFormatOptions-localeMatcher?: ListFormatLocaleMatcher | undefined-End-->
+
 ## style
 
 ```TypeScript
@@ -33,6 +37,8 @@ The length of the internationalized message.
 
 **Type:** [ListFormatStyle](arkts-intl-listformatstyle-t.md) &#124; undefined
 
+<!--Device-ListFormatOptions-style?: ListFormatStyle | undefined--><!--Device-ListFormatOptions-style?: ListFormatStyle | undefined-End-->
+
 ## type
 
 ```TypeScript
@@ -42,3 +48,5 @@ type?: ListFormatType | undefined
 The format of output message.
 
 **Type:** [ListFormatType](arkts-intl-listformattype-t.md) &#124; undefined
+
+<!--Device-ListFormatOptions-type?: ListFormatType | undefined--><!--Device-ListFormatOptions-type?: ListFormatType | undefined-End-->

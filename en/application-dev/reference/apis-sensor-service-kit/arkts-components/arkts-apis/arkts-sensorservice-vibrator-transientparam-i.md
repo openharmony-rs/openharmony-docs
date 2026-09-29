@@ -8,6 +8,8 @@ Defines the parameters for transient vibration.
 
 **Since:** 18
 
+<!--Device-vibrator-interface TransientParam--><!--Device-vibrator-interface TransientParam-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Vibration frequency. This parameter is optional. The value range is [0,100]. If 
 
 **Since:** 18
 
+<!--Device-TransientParam-frequency?: int--><!--Device-TransientParam-frequency?: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## index
@@ -42,6 +46,8 @@ Channel number. This parameter is optional. The value range is [0,2]. If this pa
 
 **Since:** 18
 
+<!--Device-TransientParam-index?: int--><!--Device-TransientParam-index?: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## intensity
@@ -55,5 +61,7 @@ Vibration intensity. This parameter is optional. The value range is [0,100]. If 
 **Type:** number
 
 **Since:** 18
+
+<!--Device-TransientParam-intensity?: int--><!--Device-TransientParam-intensity?: int-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice

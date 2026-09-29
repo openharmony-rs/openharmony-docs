@@ -18,6 +18,8 @@ interface AvoidArea
 
 **起始版本：** 7
 
+<!--Device-window-interface AvoidArea--><!--Device-window-interface AvoidArea-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -38,7 +40,9 @@ bottomRect: Rect
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidArea-bottomRect: Rect--><!--Device-AvoidArea-bottomRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -54,7 +58,9 @@ leftRect: Rect
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidArea-leftRect: Rect--><!--Device-AvoidArea-leftRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -70,7 +76,9 @@ rightRect: Rect
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidArea-rightRect: Rect--><!--Device-AvoidArea-rightRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -86,7 +94,9 @@ topRect: Rect
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidArea-topRect: Rect--><!--Device-AvoidArea-topRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -102,6 +112,8 @@ visible: boolean
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AvoidArea-visible: boolean--><!--Device-AvoidArea-visible: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

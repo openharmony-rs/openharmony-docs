@@ -4,9 +4,11 @@
 declare enum SymbolRenderingStrategy
 ```
 
-The symbol rendering strategy.
+Enumerates the rendering modes.
 
 **Since:** 11
+
+<!--Device-unnamed-declare enum SymbolRenderingStrategy--><!--Device-unnamed-declare enum SymbolRenderingStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,11 +18,11 @@ The symbol rendering strategy.
 SINGLE = 0
 ```
 
-Single-color mode (default value).
+Monochrome mode (default value).
 
-The default color is black.
+One or more colors can be set, and the default is black.
 
-You can set one or multiple colors, but only the first color will be applied.
+When multiple colors are set, only the first color takes effect.
 
 **Since:** 11
 
@@ -29,6 +31,8 @@ You can set one or multiple colors, but only the first color will be applied.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolRenderingStrategy-SINGLE = 0--><!--Device-SymbolRenderingStrategy-SINGLE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,13 +42,11 @@ You can set one or multiple colors, but only the first color will be applied.
 MULTIPLE_COLOR = 1
 ```
 
-Multi-color mode.
+Multicolor mode.
 
-A maximum of three colors can be set. If only one color is set, it updates the color of the first layer, leaving other colors at their default values.
+Up to three colors can be set. When only one color is set, the first-layer color of the symbol icon is modified, and the other colors remain the default colors.
 
-The sequence of color settings matches the layering order of the symbol; any colors beyond the number of symbol layers will not take effect.
-
-Only color values are accepted. Opacity settings do not take effect.
+The color setting order matches the icon layer order. When the number of colors is greater than the number of icon layers, the extra colors do not take effect.
 
 **Since:** 11
 
@@ -53,6 +55,8 @@ Only color values are accepted. Opacity settings do not take effect.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolRenderingStrategy-MULTIPLE_COLOR = 1--><!--Device-SymbolRenderingStrategy-MULTIPLE_COLOR = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,9 +68,9 @@ MULTIPLE_OPACITY = 2
 
 Layered mode.
 
-The default color is black. You can set one or multiple colors, but only the first color will be applied.
+The default is black, and one or more colors can be set. When multiple colors are set, only the first color takes effect.
 
-Opacity is predefined for the layers: 100% for the first layer, 50% for the second layer, and 20% for the third layer.
+The opacity is related to the layers. For a common symbol icon, the default opacity of the first layer is 100%, that of the second layer is 50%, and that of the third layer is 20%. When the set color contains opacity, the set opacity is superimposed with the default opacity of each layer.
 
 **Since:** 11
 
@@ -75,5 +79,7 @@ Opacity is predefined for the layers: 100% for the first layer, 50% for the seco
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-SymbolRenderingStrategy-MULTIPLE_OPACITY = 2--><!--Device-SymbolRenderingStrategy-MULTIPLE_OPACITY = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

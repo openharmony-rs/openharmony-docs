@@ -17,6 +17,8 @@ function apply<T, A extends readonly any[], R>(
 
 Calls the function with the specified object as the this value and the elements of specified array as the arguments.
 
+<!--Device-Reflect-function apply<T, A extends readonly any[], R>(        target: (this: T, ...args: A) => R,        thisArgument: T,        argumentsList: Readonly<A>,    ): R--><!--Device-Reflect-function apply<T, A extends readonly any[], R>(        target: (this: T, ...args: A) => R,        thisArgument: T,        argumentsList: Readonly<A>,    ): R-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |

@@ -14,6 +14,24 @@ Specifies whether the accelerometer is used to change screen orientation, that i
 
 **Since:** 7
 
+<!--Device-general-const ACCELEROMETER_ROTATION_STATUS: string--><!--Device-general-const ACCELEROMETER_ROTATION_STATUS: string-End-->
+
+**System capability:** SystemCapability.Applications.Settings.Core
+
+## DEVICE_NAME
+
+```TypeScript
+const DEVICE_NAME: string
+```
+
+Indicates the device name.
+
+**Type:** string
+
+**Since:** 7
+
+<!--Device-general-const DEVICE_NAME: string--><!--Device-general-const DEVICE_NAME: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## ACCESSIBILITY_STATUS
@@ -32,6 +50,8 @@ Specifies whether any accessibility feature is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-general-const ACCESSIBILITY_STATUS: string--><!--Device-general-const ACCESSIBILITY_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## ACTIVATED_ACCESSIBILITY_SERVICES
@@ -47,6 +67,8 @@ Indicates the list of accessibility features that have been activated.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-general-const ACTIVATED_ACCESSIBILITY_SERVICES: string--><!--Device-general-const ACTIVATED_ACCESSIBILITY_SERVICES: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -66,6 +88,8 @@ Specifies whether airplane mode is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-general-const AIRPLANE_MODE_STATUS: string--><!--Device-general-const AIRPLANE_MODE_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## BOOT_COUNTING
@@ -81,6 +105,8 @@ Indicates the number of boot operations after the device is powered on.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-general-const BOOT_COUNTING: string--><!--Device-general-const BOOT_COUNTING: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -100,6 +126,8 @@ Specifies whether contact metadata synchronization is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-general-const CONTACT_METADATA_SYNC_STATUS: string--><!--Device-general-const CONTACT_METADATA_SYNC_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## DEBUG_APP_PACKAGE
@@ -115,6 +143,8 @@ Indicates the bundle name of the application to debug.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-general-const DEBUG_APP_PACKAGE: string--><!--Device-general-const DEBUG_APP_PACKAGE: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -134,6 +164,8 @@ Specifies whether the device waits for the debugger when starting an application
 
 **Deprecated since:** 21
 
+<!--Device-general-const DEBUGGER_WAITING: string--><!--Device-general-const DEBUGGER_WAITING: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## DEVELOPMENT_SETTINGS_STATUS
@@ -152,19 +184,7 @@ Specifies whether developer options are enabled.
 
 **Deprecated since:** 21
 
-**System capability:** SystemCapability.Applications.Settings.Core
-
-## DEVICE_NAME
-
-```TypeScript
-const DEVICE_NAME: string
-```
-
-Indicates the device name.
-
-**Type:** string
-
-**Since:** 7
+<!--Device-general-const DEVELOPMENT_SETTINGS_STATUS: string--><!--Device-general-const DEVELOPMENT_SETTINGS_STATUS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -184,6 +204,8 @@ Specifies whether the device is provisioned.
 
 **Deprecated since:** 21
 
+<!--Device-general-const DEVICE_PROVISION_STATUS: string--><!--Device-general-const DEVICE_PROVISION_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## END_BUTTON_ACTION
@@ -202,6 +224,8 @@ Specifies what happens after the user presses the call end button if the user is
 
 **Deprecated since:** 21
 
+<!--Device-general-const END_BUTTON_ACTION: string--><!--Device-general-const END_BUTTON_ACTION: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## GEOLOCATION_ORIGINS_ALLOWED
@@ -217,6 +241,8 @@ Indicates the default geographical location that can be used by the browser. Mul
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-general-const GEOLOCATION_ORIGINS_ALLOWED: string--><!--Device-general-const GEOLOCATION_ORIGINS_ALLOWED: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -236,6 +262,8 @@ Specifies whether the hard disk controller (HDC) on USB devices is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-general-const HDC_STATUS: string--><!--Device-general-const HDC_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## SETUP_WIZARD_FINISHED
@@ -253,6 +281,8 @@ Specifies whether the startup wizard has been run.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-general-const SETUP_WIZARD_FINISHED: string--><!--Device-general-const SETUP_WIZARD_FINISHED: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -272,6 +302,8 @@ Specifies whether an application should attempt to skip all introductory hints a
 
 **Deprecated since:** 21
 
+<!--Device-general-const SKIP_USE_HINTS: string--><!--Device-general-const SKIP_USE_HINTS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## TOUCH_EXPLORATION_STATUS
@@ -290,6 +322,8 @@ Indicates whether touch exploration is enabled.
 
 **Deprecated since:** 21
 
+<!--Device-general-const TOUCH_EXPLORATION_STATUS: string--><!--Device-general-const TOUCH_EXPLORATION_STATUS: string-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 ## USB_STORAGE_STATUS
@@ -307,5 +341,7 @@ Specifies whether USB mass storage is enabled.
 **Since:** 7
 
 **Deprecated since:** 21
+
+<!--Device-general-const USB_STORAGE_STATUS: string--><!--Device-general-const USB_STORAGE_STATUS: string-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core

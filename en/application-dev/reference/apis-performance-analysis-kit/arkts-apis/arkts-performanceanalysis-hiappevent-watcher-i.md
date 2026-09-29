@@ -14,6 +14,8 @@ Defines parameters for a **Watcher** object. This API is used to configure and m
 
 **Since:** 9
 
+<!--Device-hiAppEvent-interface Watcher--><!--Device-hiAppEvent-interface Watcher-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -36,7 +38,9 @@ appEventGroups: event group.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void--><!--Device-Watcher-onReceive?: (domain: string, appEventGroups: Array<AppEventGroup>) => void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -63,7 +67,9 @@ Subscription callback. This parameter takes effect only when it is passed togeth
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void--><!--Device-Watcher-onTrigger?: (curRow: int, curSize: int, holder: AppEventPackageHolder) => void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -87,7 +93,9 @@ Subscription filtering condition. This parameter is passed only when subscriptio
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Watcher-appEventFilters?: AppEventFilter[]--><!--Device-Watcher-appEventFilters?: AppEventFilter[]-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -103,7 +111,9 @@ Unique name of a watcher. The value contains a maximum of 32 characters, includi
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Watcher-name: string--><!--Device-Watcher-name: string-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -119,6 +129,8 @@ Subscription callback triggering condition. This parameter takes effect only whe
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Watcher-triggerCondition?: TriggerCondition--><!--Device-Watcher-triggerCondition?: TriggerCondition-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

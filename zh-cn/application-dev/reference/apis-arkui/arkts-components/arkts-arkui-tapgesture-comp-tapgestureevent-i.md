@@ -10,6 +10,8 @@ interface TapGestureEvent extends BaseGestureEvent
 
 **起始版本：** 11
 
+<!--Device-unnamed-interface TapGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface TapGestureEvent extends BaseGestureEvent-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## tapLocation
@@ -27,5 +29,7 @@ tapLocation?: EventLocationInfo
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TapGestureEvent-tapLocation?: EventLocationInfo--><!--Device-TapGestureEvent-tapLocation?: EventLocationInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

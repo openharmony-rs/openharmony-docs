@@ -12,6 +12,8 @@ The definition of Banner.
 
 **Since:** 23
 
+<!--Device-avMusicTemplate-interface Banner extends MediaEntity--><!--Device-avMusicTemplate-interface Banner extends MediaEntity-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Is support one play
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Banner-isSupportOnePlay: boolean--><!--Device-Banner-isSupportOnePlay: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate

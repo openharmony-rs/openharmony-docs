@@ -8,6 +8,8 @@
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare namespace floatingBall--><!--Device-unnamed-declare namespace floatingBall-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块

@@ -10,6 +10,8 @@ Status change callback type for video processor notifications.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-videoProcessing-type VideoProcessorStatusCallback = (status: VideoProcessorStatus) => void--><!--Device-videoProcessing-type VideoProcessorStatusCallback = (status: VideoProcessorStatus) => void-End-->
+
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine
 
 **Parameters:**

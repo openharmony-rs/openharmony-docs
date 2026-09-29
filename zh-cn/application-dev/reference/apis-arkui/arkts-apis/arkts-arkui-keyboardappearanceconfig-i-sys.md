@@ -8,6 +8,8 @@ declare interface KeyboardAppearanceConfig
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface KeyboardAppearanceConfig--><!--Device-unnamed-declare interface KeyboardAppearanceConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -28,6 +30,8 @@ fluidLightMode?: KeyboardFluidLightMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-KeyboardAppearanceConfig-fluidLightMode?: KeyboardFluidLightMode--><!--Device-KeyboardAppearanceConfig-fluidLightMode?: KeyboardFluidLightMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -47,6 +51,8 @@ gradientMode?: KeyboardGradientMode
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-KeyboardAppearanceConfig-gradientMode?: KeyboardGradientMode--><!--Device-KeyboardAppearanceConfig-gradientMode?: KeyboardGradientMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -14,6 +14,8 @@ The **FoldSplitContainer** component implements split-screen layout, providing r
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct FoldSplitContainer--><!--Device-unnamed-export declare struct FoldSplitContainer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Callback function triggered when the foldable screen enters or exits hover mode.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FoldSplitContainer-onHoverStatusChange?: OnHoverStatusChangeHandler--><!--Device-FoldSplitContainer-onHoverStatusChange?: OnHoverStatusChangeHandler-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Default value: **null**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FoldSplitContainer-animationOptions?: AnimateParam | null--><!--Device-FoldSplitContainer-animationOptions?: AnimateParam | null-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## expandedLayoutOptions
@@ -77,6 +83,8 @@ Expanded state layout information, used to control whether the expanded area spa
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FoldSplitContainer-expandedLayoutOptions: ExpandedRegionLayoutOptions--><!--Device-FoldSplitContainer-expandedLayoutOptions: ExpandedRegionLayoutOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ Callback function for building the UI content of the expanded area. Pass this pa
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FoldSplitContainer-extra?: Callback<void>--><!--Device-FoldSplitContainer-extra?: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## foldedLayoutOptions
@@ -117,6 +127,8 @@ Folded state layout information, used to control the height ratio between the pr
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FoldSplitContainer-foldedLayoutOptions: FoldedRegionLayoutOptions--><!--Device-FoldSplitContainer-foldedLayoutOptions: FoldedRegionLayoutOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +150,8 @@ Hover state layout information, used to control whether the expanded area is dis
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FoldSplitContainer-hoverModeLayoutOptions: HoverModeRegionLayoutOptions--><!--Device-FoldSplitContainer-hoverModeLayoutOptions: HoverModeRegionLayoutOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## primary
@@ -158,6 +172,8 @@ Callback function for building the UI content of the primary area. This callback
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FoldSplitContainer-primary: Callback<void>--><!--Device-FoldSplitContainer-primary: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondary
@@ -177,5 +193,7 @@ Callback function for building the UI content of the secondary area. This callba
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FoldSplitContainer-secondary: Callback<void>--><!--Device-FoldSplitContainer-secondary: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

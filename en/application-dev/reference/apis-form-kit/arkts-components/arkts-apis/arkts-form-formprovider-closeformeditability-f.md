@@ -18,6 +18,8 @@ Closes the widget editing page.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formProvider-function closeFormEditAbility(isMainPage?: boolean): void--><!--Device-formProvider-function closeFormEditAbility(isMainPage?: boolean): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **Parameters:**

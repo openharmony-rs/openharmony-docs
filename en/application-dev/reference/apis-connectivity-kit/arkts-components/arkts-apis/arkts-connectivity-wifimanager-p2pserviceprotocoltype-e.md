@@ -8,6 +8,8 @@ Enumerates the P2P service protocol types.
 
 **Since:** 26.0.1
 
+<!--Device-wifiManager-enum P2pServiceProtocolType--><!--Device-wifiManager-enum P2pServiceProtocolType-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## SERVICE_TYPE_ALL
@@ -21,6 +23,8 @@ All service protocol types.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-P2pServiceProtocolType-SERVICE_TYPE_ALL = 0--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_ALL = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -36,6 +40,8 @@ Bonjour（DNS-SD）service discovery protocol.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-P2pServiceProtocolType-SERVICE_TYPE_BONJOUR = 1--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_BONJOUR = 1-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## SERVICE_TYPE_UP_NP
@@ -49,6 +55,8 @@ UPnP service discovery protocol.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-P2pServiceProtocolType-SERVICE_TYPE_UP_NP = 2--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_UP_NP = 2-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -64,6 +72,8 @@ WS-Discovery service discovery protocol.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-P2pServiceProtocolType-SERVICE_TYPE_WS_DISCOVERY = 3--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_WS_DISCOVERY = 3-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## SERVICE_TYPE_VENDOR_SPECIFIC
@@ -77,5 +87,7 @@ Vendor-specific protocol.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-P2pServiceProtocolType-SERVICE_TYPE_VENDOR_SPECIFIC = 255--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_VENDOR_SPECIFIC = 255-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P

@@ -8,6 +8,8 @@ Enumerates the visibility of the tab.
 
 **Since:** 26.2.0
 
+<!--Device-unnamed-declare enum TabVisibility--><!--Device-unnamed-declare enum TabVisibility-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## VISIBLE
@@ -24,6 +26,8 @@ The tab is visible.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-TabVisibility-VISIBLE = 0--><!--Device-TabVisibility-VISIBLE = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## HIDDEN
@@ -39,5 +43,7 @@ The tab is hidden.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabVisibility-HIDDEN = 1--><!--Device-TabVisibility-HIDDEN = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Data struct describes geographic locations.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-export interface GeoAddress--><!--Device-geoLocationManager-export interface GeoAddress-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Indicates whether it is an mock GeoAddress
 **Type:** Boolean
 
 **Since:** 9
+
+<!--Device-GeoAddress-isFromMock?: Boolean--><!--Device-GeoAddress-isFromMock?: Boolean-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 

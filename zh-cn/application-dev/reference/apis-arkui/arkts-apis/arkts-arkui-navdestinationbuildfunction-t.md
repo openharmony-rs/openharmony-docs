@@ -12,6 +12,8 @@ MultiNavigation用以加载NavDestination的方法。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type NavDestinationBuildFunction = (name: string, param?: object) => void--><!--Device-unnamed-declare type NavDestinationBuildFunction = (name: string, param?: object) => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**

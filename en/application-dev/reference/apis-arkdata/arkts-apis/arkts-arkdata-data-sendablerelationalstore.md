@@ -4,6 +4,8 @@ The **sendableRelationalStore** module provides APIs for obtaining **ValuesBucke
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace sendableRelationalStore--><!--Device-unnamed-declare namespace sendableRelationalStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import

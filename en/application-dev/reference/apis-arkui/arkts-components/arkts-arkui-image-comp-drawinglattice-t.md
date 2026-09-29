@@ -12,6 +12,8 @@ Represents a matrix grid object that divides an image into a rectangular grid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice--><!--Device-unnamed-declare type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.graphics.drawing').default.Lattice

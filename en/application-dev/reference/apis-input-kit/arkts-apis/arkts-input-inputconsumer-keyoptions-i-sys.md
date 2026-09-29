@@ -8,6 +8,8 @@ Represents combination key options.
 
 **Since:** 8
 
+<!--Device-inputConsumer-interface KeyOptions--><!--Device-inputConsumer-interface KeyOptions-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ For example, in the combination keys **Ctrl+Alt+A**, **A** is called the final k
 
 **Since:** 8
 
+<!--Device-KeyOptions-finalKey: int--><!--Device-KeyOptions-finalKey: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ If the value of this field is greater than **0** and **isFinalKeyDown** is **tru
 
 **Since:** 8
 
+<!--Device-KeyOptions-finalKeyDownDuration: int--><!--Device-KeyOptions-finalKeyDownDuration: int-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **System API:** This is a system API.
@@ -70,6 +76,8 @@ The value **true** indicates that the key is pressed, and the value **false** in
 
 **Since:** 8
 
+<!--Device-KeyOptions-isFinalKeyDown: boolean--><!--Device-KeyOptions-isFinalKeyDown: boolean-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Whether to report repeated key events. The value **true** means to report repeat
 **Type:** boolean
 
 **Since:** 18
+
+<!--Device-KeyOptions-isRepeat?: boolean--><!--Device-KeyOptions-isRepeat?: boolean-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -104,6 +114,8 @@ For example, in the combination keys **Ctrl+Alt+A**, **Ctrl+Alt** are called pre
 
 **Since:** 8
 
+<!--Device-KeyOptions-preKeys: Array<int>--><!--Device-KeyOptions-preKeys: Array<int>-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **System API:** This is a system API.
@@ -121,6 +133,8 @@ Trigger type, which indicates that the conditions for triggering the callback ex
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyOptions-triggerType?: KeyCommandTriggerType--><!--Device-KeyOptions-triggerType?: KeyCommandTriggerType-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 

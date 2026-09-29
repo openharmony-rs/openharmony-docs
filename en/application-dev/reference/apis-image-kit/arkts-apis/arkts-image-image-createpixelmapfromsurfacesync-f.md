@@ -16,6 +16,8 @@ Creates a PixelMap object from surface id.
 
 **Since:** 12
 
+<!--Device-image-function createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap--><!--Device-image-function createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -68,6 +70,8 @@ function createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 Creates a PixelMap object from surface id.
 
 **Since:** 15
+
+<!--Device-image-function createPixelMapFromSurfaceSync(surfaceId: string): PixelMap--><!--Device-image-function createPixelMapFromSurfaceSync(surfaceId: string): PixelMap-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

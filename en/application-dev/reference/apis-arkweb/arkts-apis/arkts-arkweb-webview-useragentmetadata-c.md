@@ -8,6 +8,8 @@ UserAgentMetadata is a class in the ArkWeb framework used to configure the compl
 
 **Since:** 24
 
+<!--Device-webview-class UserAgentMetadata--><!--Device-webview-class UserAgentMetadata-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains the architecture type of the platform. If the corresponding [setArchitec
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-getArchitecture(): string--><!--Device-UserAgentMetadata-getArchitecture(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -52,6 +56,8 @@ Obtains the bitness type of the platform. If the corresponding [setBitness](#set
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-getBitness(): string--><!--Device-UserAgentMetadata-getBitness(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -75,6 +81,8 @@ Obtains the brand and version information list. If the corresponding [setBrandVe
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>--><!--Device-UserAgentMetadata-getBrandVersionList(): Array<UserAgentBrandVersion>-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -100,6 +108,8 @@ Obtains the device form factor information, such as phone and tablet. If the cor
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>--><!--Device-UserAgentMetadata-getFormFactors(): Array<UserAgentFormFactor>-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -123,6 +133,8 @@ Obtains the full version number. If the corresponding [setFullVersion](#setfullv
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-getFullVersion(): string--><!--Device-UserAgentMetadata-getFullVersion(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -148,6 +160,8 @@ Obtains whether the device is a mobile device. If the corresponding [setMobile](
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-getMobile(): boolean--><!--Device-UserAgentMetadata-getMobile(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -171,6 +185,8 @@ Obtains the device model. If the corresponding [setModel](#setmodel) is not call
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-getModel(): string--><!--Device-UserAgentMetadata-getModel(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -196,6 +212,8 @@ Obtains the operating system name. If the corresponding [setPlatform](#setplatfo
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-getPlatform(): string--><!--Device-UserAgentMetadata-getPlatform(): string-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -219,6 +237,8 @@ Obtains the operating system version number. If the corresponding [setPlatformVe
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-getPlatformVersion(): string--><!--Device-UserAgentMetadata-getPlatformVersion(): string-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -244,6 +264,8 @@ Obtains whether the binary file is running in 32-bit mode on 64-bit Windows. If 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-getWow64(): boolean--><!--Device-UserAgentMetadata-getWow64(): boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Return value:**
@@ -265,6 +287,8 @@ Sets the architecture type of the platform.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-setArchitecture(arch: string): void--><!--Device-UserAgentMetadata-setArchitecture(arch: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -290,6 +314,8 @@ Sets the bitness type of the platform.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-setBitness(bitness: string): void--><!--Device-UserAgentMetadata-setBitness(bitness: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -313,6 +339,8 @@ Sets the brand and version information.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void--><!--Device-UserAgentMetadata-setBrandVersionList(brandVersionList: Array<UserAgentBrandVersion>): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -338,6 +366,8 @@ Sets the device form, such as the mobile phone or tablet.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-setFormFactors(formFactors: Array<UserAgentFormFactor>): void--><!--Device-UserAgentMetadata-setFormFactors(formFactors: Array<UserAgentFormFactor>): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -361,6 +391,8 @@ Sets the full version number.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-setFullVersion(fullVersion: string): void--><!--Device-UserAgentMetadata-setFullVersion(fullVersion: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -386,6 +418,8 @@ Sets whether the device is a mobile device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void--><!--Device-UserAgentMetadata-setMobile(isMobile: boolean): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -409,6 +443,8 @@ Sets the device model.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-setModel(model: string): void--><!--Device-UserAgentMetadata-setModel(model: string): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -434,6 +470,8 @@ Sets the OS name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-setPlatform(platform: string): void--><!--Device-UserAgentMetadata-setPlatform(platform: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -458,6 +496,8 @@ Sets the OS version.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UserAgentMetadata-setPlatformVersion(platformVersion: string): void--><!--Device-UserAgentMetadata-setPlatformVersion(platformVersion: string): void-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**
@@ -481,6 +521,8 @@ Sets whether the binary file runs in 32-bit mode on a 64-bit Windows.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentMetadata-setWow64(isWow64: boolean): void--><!--Device-UserAgentMetadata-setWow64(isWow64: boolean): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

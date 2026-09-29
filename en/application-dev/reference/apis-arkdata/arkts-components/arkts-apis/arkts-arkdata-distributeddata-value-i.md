@@ -12,6 +12,8 @@ Defines the **value** object in a KV store.
 
 **Substitutes:** Value
 
+<!--Device-distributedData-interface Value--><!--Device-distributedData-interface Value-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Type of the value.
 
 **Substitutes:** type
 
+<!--Device-Value-type: ValueType--><!--Device-Value-type: ValueType-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core @memberof Value
 
 ## value
@@ -52,5 +56,7 @@ Value of the KV pair stored in the KV store.
 **Deprecated since:** 9
 
 **Substitutes:** value
+
+<!--Device-Value-value: Uint8Array | string | number | boolean--><!--Device-Value-value: Uint8Array | string | number | boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

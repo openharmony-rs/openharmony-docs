@@ -20,6 +20,8 @@ Obtains an [InputMethodController](arkts-ime-inputmethod-inputmethodcontroller-i
 
 **Substitutes:** [getController](arkts-ime-inputmethod-getcontroller-f.md)
 
+<!--Device-inputMethod-function getInputMethodController(): InputMethodController--><!--Device-inputMethod-function getInputMethodController(): InputMethodController-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **Return value:**

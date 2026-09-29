@@ -12,7 +12,9 @@ This callback function is implemented by applications to release related resourc
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-media-type SourceCloseCallback = (uuid: long) => void--><!--Device-media-type SourceCloseCallback = (uuid: long) => void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 

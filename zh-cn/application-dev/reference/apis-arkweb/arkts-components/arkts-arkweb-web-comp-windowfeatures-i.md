@@ -8,6 +8,8 @@ declare interface WindowFeatures
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare interface WindowFeatures--><!--Device-unnamed-declare interface WindowFeatures-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## height
@@ -21,6 +23,8 @@ height: number
 **类型：** number
 
 **起始版本：** 23
+
+<!--Device-WindowFeatures-height: number--><!--Device-WindowFeatures-height: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ width: number
 
 **起始版本：** 23
 
+<!--Device-WindowFeatures-width: number--><!--Device-WindowFeatures-width: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## x
@@ -50,6 +56,8 @@ x: number
 
 **起始版本：** 23
 
+<!--Device-WindowFeatures-x: number--><!--Device-WindowFeatures-x: number-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## y
@@ -63,5 +71,7 @@ y: number
 **类型：** number
 
 **起始版本：** 23
+
+<!--Device-WindowFeatures-y: number--><!--Device-WindowFeatures-y: number-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

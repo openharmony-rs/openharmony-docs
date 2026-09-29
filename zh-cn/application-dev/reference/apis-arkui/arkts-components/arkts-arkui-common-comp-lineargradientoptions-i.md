@@ -12,6 +12,8 @@ declare interface LinearGradientOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface LinearGradientOptions--><!--Device-unnamed-declare interface LinearGradientOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -39,6 +41,8 @@ angle?: number | string
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-LinearGradientOptions-angle?: number | string--><!--Device-LinearGradientOptions-angle?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colors
@@ -58,6 +62,8 @@ colors: Array<[ResourceColor, number]>
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LinearGradientOptions-colors: Array<[ResourceColor, number]>--><!--Device-LinearGradientOptions-colors: Array<[ResourceColor, number]>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +85,8 @@ direction?: GradientDirection
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LinearGradientOptions-direction?: GradientDirection--><!--Device-LinearGradientOptions-direction?: GradientDirection-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,5 +114,7 @@ false：渐变效果仅在指定范围内显示一次。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LinearGradientOptions-repeating?: boolean--><!--Device-LinearGradientOptions-repeating?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

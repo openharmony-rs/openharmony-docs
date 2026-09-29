@@ -20,6 +20,8 @@ Obtains information about all external storage physical disks. This API uses a p
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function getExternalDiskInfos(): Promise<Array<ExternalDiskInfo>>--><!--Device-volumeManager-function getExternalDiskInfos(): Promise<Array<ExternalDiskInfo>>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **Return value:**

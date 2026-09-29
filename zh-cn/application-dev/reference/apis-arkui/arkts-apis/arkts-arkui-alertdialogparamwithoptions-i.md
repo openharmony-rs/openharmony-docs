@@ -10,6 +10,8 @@ declare interface AlertDialogParamWithOptions extends AlertDialogParam
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface AlertDialogParamWithOptions extends AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParamWithOptions extends AlertDialogParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonDirection
@@ -30,6 +32,8 @@ buttonDirection?: DialogButtonDirection
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-AlertDialogParamWithOptions-buttonDirection?: DialogButtonDirection--><!--Device-AlertDialogParamWithOptions-buttonDirection?: DialogButtonDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttons
@@ -47,5 +51,7 @@ buttons: Array<AlertDialogButtonOptions>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-AlertDialogParamWithOptions-buttons: Array<AlertDialogButtonOptions>--><!--Device-AlertDialogParamWithOptions-buttons: Array<AlertDialogButtonOptions>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

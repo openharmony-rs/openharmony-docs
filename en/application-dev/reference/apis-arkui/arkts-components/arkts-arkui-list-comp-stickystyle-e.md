@@ -8,6 +8,8 @@ Enumerates the sticky styles.
 
 **Since:** 9
 
+<!--Device-unnamed-declare enum StickyStyle--><!--Device-unnamed-declare enum StickyStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -25,6 +27,8 @@ In the **ListItemGroup** component, the header is not pinned to the top, and the
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StickyStyle-None = 0--><!--Device-StickyStyle-None = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ In the **ListItemGroup** component, the header is pinned to the top, and the foo
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-StickyStyle-Header = 1--><!--Device-StickyStyle-Header = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Footer
@@ -62,6 +68,8 @@ In the **ListItemGroup** component, the footer is pinned to the bottom, and the 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-StickyStyle-Footer = 2--><!--Device-StickyStyle-Footer = 2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTH
@@ -70,7 +78,7 @@ In the **ListItemGroup** component, the footer is pinned to the bottom, and the 
 BOTH = 3
 ```
 
-In the **ListItemGroup** component, the header is pinned to the top, and the footer is pinned to the bottom.
+The header of the ListItemGroup is sticky at the top, and the footer is sticky at the bottom.
 
 **Since:** 20
 
@@ -79,5 +87,7 @@ In the **ListItemGroup** component, the header is pinned to the top, and the foo
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-StickyStyle-BOTH = 3--><!--Device-StickyStyle-BOTH = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

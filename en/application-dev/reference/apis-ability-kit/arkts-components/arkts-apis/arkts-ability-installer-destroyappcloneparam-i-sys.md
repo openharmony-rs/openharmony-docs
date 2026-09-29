@@ -8,6 +8,8 @@ Describes the parameters used for destroying an application clone.
 
 **Since:** 15
 
+<!--Device-installer-export interface DestroyAppCloneParam--><!--Device-installer-export interface DestroyAppCloneParam-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -43,6 +45,8 @@ downgrade mode (supported since API version 23). That is, if a higher version of
 
 **Since:** 15
 
+<!--Device-DestroyAppCloneParam-parameters?: Array<Parameters>--><!--Device-DestroyAppCloneParam-parameters?: Array<Parameters>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
@@ -58,6 +62,8 @@ ID of the user for whom the clone is to be destroyed. You can obtain the user ID
 **Type:** number
 
 **Since:** 15
+
+<!--Device-DestroyAppCloneParam-userId?: int--><!--Device-DestroyAppCloneParam-userId?: int-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

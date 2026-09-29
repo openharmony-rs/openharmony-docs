@@ -18,6 +18,8 @@ Returns true if obj is a FastBuffer, false otherwise
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-fastbuffer-function isBuffer(obj: Object): boolean--><!--Device-fastbuffer-function isBuffer(obj: Object): boolean-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

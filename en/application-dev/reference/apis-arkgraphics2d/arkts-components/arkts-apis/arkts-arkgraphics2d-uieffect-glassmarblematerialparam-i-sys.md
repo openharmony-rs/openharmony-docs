@@ -8,6 +8,8 @@ Material parameters for the glass marble. Controls material properties (backgrou
 
 **Since:** 26.0.1
 
+<!--Device-uiEffect-interface GlassMarbleMaterialParam--><!--Device-uiEffect-interface GlassMarbleMaterialParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Average background color. The alpha channel is not used.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-averageBgColor: Color--><!--Device-GlassMarbleMaterialParam-averageBgColor: Color-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Edge softness of the caustic (focused light). The value range is [0, 1]; a value
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleMaterialParam-causticEdgeSoftness: double--><!--Device-GlassMarbleMaterialParam-causticEdgeSoftness: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -68,6 +74,8 @@ Vertical offset of the caustic (focused light), normalized to the shape radius. 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-causticOffset: double--><!--Device-GlassMarbleMaterialParam-causticOffset: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Overall opacity of the caustic (focused light). The value range is [0, 1]; out-o
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleMaterialParam-causticOpacity: double--><!--Device-GlassMarbleMaterialParam-causticOpacity: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -104,6 +114,8 @@ Radius of the caustic (focused light), normalized to the shape radius. The value
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-causticRadius: double--><!--Device-GlassMarbleMaterialParam-causticRadius: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -122,6 +134,8 @@ Overall opacity of the glass effect. The value range is [0, 1]; a value of 0 is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-opacity: double--><!--Device-GlassMarbleMaterialParam-opacity: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -129,16 +143,18 @@ Overall opacity of the glass effect. The value range is [0, 1]; a value of 0 is 
 ## reflectionMap
 
 ```TypeScript
-reflectionMap: image.PixelMap
+reflectionMap?: image.PixelMap
 ```
 
-Reflection map used for environment reflections on the glass surface. Created through the image module as a PixelMap instance.
+Reflection map used for environment reflections on the glass surface. Created through the image module as a PixelMap instance. If not set, the default is undefined, and no reflection is applied.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleMaterialParam-reflectionMap?: image.PixelMap--><!--Device-GlassMarbleMaterialParam-reflectionMap?: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -158,6 +174,8 @@ Edge softness of the shadow. The value range is [0, 1]; a value of 0 produces a 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-shadowEdgeSoftness: double--><!--Device-GlassMarbleMaterialParam-shadowEdgeSoftness: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -175,6 +193,8 @@ Vertical offset of the shadow, normalized to the shape radius. The value range i
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleMaterialParam-shadowOffset: double--><!--Device-GlassMarbleMaterialParam-shadowOffset: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -194,6 +214,8 @@ Overall opacity of the shadow. The value range is [0, 1]; out-of-range values wi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-shadowOpacity: double--><!--Device-GlassMarbleMaterialParam-shadowOpacity: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -212,6 +234,8 @@ Radius of the shadow, normalized to the shape radius. The value range is [0, 1];
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-GlassMarbleMaterialParam-shadowRadius: double--><!--Device-GlassMarbleMaterialParam-shadowRadius: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -229,6 +253,8 @@ Scaling factor applied to the glass shape. The value range is [0, 1]; out-of-ran
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GlassMarbleMaterialParam-shapeScale: double--><!--Device-GlassMarbleMaterialParam-shapeScale: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

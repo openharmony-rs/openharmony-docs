@@ -8,6 +8,8 @@ Provides text style information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorTextStyle--><!--Device-unnamed-declare interface RichEditorTextStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## decoration
@@ -34,6 +36,8 @@ Default value of **thicknessScale**: **1.0**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorTextStyle-decoration?: DecorationStyleInterface--><!--Device-RichEditorTextStyle-decoration?: DecorationStyleInterface-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -54,6 +58,8 @@ Default value: $r('sys.color.font_primary'). When [shaderStyle](arkts-arkui-rich
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorTextStyle-fontColor?: ResourceColor--><!--Device-RichEditorTextStyle-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -71,6 +77,8 @@ Sets the font list. Currently, the 'HarmonyOS Sans' font and [registered custom 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorTextStyle-fontFamily?: ResourceStr--><!--Device-RichEditorTextStyle-fontFamily?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +112,8 @@ For more information about the font features, visit [font-feature-settings prope
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorTextStyle-fontFeature?: string--><!--Device-RichEditorTextStyle-fontFeature?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontSize
@@ -121,6 +131,8 @@ Sets the font size. When Length is of the number type, the unit fp is used. Valu
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorTextStyle-fontSize?: Length | number--><!--Device-RichEditorTextStyle-fontSize?: Length | number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,6 +153,8 @@ Default value: **FontStyle.Normal**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorTextStyle-fontStyle?: FontStyle--><!--Device-RichEditorTextStyle-fontStyle?: FontStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,6 +180,8 @@ Default value: FontWeight.Normal.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorTextStyle-fontWeight?: number | FontWeight | string--><!--Device-RichEditorTextStyle-fontWeight?: number | FontWeight | string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## halfLeading
@@ -188,6 +204,8 @@ Default value: **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-RichEditorTextStyle-halfLeading?: boolean--><!--Device-RichEditorTextStyle-halfLeading?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## letterSpacing
@@ -205,6 +223,8 @@ Sets the character spacing of the text. The default unit is fp. Default value: 0
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorTextStyle-letterSpacing?: number | string--><!--Device-RichEditorTextStyle-letterSpacing?: number | string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -228,6 +248,8 @@ Value range of the number type: (0, +∞). If the value is not greater than 0, t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorTextStyle-lineHeight?: number | string | Resource--><!--Device-RichEditorTextStyle-lineHeight?: number | string | Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -250,6 +272,8 @@ When the value is invalid, it follows the font color.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-RichEditorTextStyle-strokeColor?: ResourceColor--><!--Device-RichEditorTextStyle-strokeColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeJoinStyle
@@ -269,6 +293,8 @@ Default value: StrokeJoinStyle.MITER_JOIN.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-RichEditorTextStyle-strokeJoinStyle?: StrokeJoinStyle--><!--Device-RichEditorTextStyle-strokeJoinStyle?: StrokeJoinStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -298,6 +324,8 @@ When set together with [shaderStyle](arkts-arkui-richeditor-comp-richeditorparag
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-RichEditorTextStyle-strokeWidth?: LengthMetrics | number--><!--Device-RichEditorTextStyle-strokeWidth?: LengthMetrics | number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textBackgroundStyle
@@ -326,6 +354,8 @@ radius: 0
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-RichEditorTextStyle-textBackgroundStyle?: TextBackgroundStyle--><!--Device-RichEditorTextStyle-textBackgroundStyle?: TextBackgroundStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textShadow
@@ -351,5 +381,7 @@ Only the shadow blur radius, color, and offset can be set. Smart color picking i
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorTextStyle-textShadow?: ShadowOptions | Array<ShadowOptions>--><!--Device-RichEditorTextStyle-textShadow?: ShadowOptions | Array<ShadowOptions>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

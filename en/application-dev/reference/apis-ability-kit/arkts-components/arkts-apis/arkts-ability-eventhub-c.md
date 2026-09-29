@@ -8,6 +8,8 @@ EventHub is an event communication mechanism based on the publish-subscribe patt
 
 **Since:** 9
 
+<!--Device-unnamed-declare class EventHub--><!--Device-unnamed-declare class EventHub-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## emit
@@ -23,6 +25,8 @@ Trigger the event callbacks.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EventHub-emit(event: string, ...args: Object[]): void--><!--Device-EventHub-emit(event: string, ...args: Object[]): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -89,7 +93,9 @@ Unsubscribes from an event.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventHub-off(event: string, callback?: Function): void--><!--Device-EventHub-off(event: string, callback?: Function): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -154,7 +160,9 @@ Subscribes to an event.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-EventHub-on(event: string, callback: Function): void--><!--Device-EventHub-on(event: string, callback: Function): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

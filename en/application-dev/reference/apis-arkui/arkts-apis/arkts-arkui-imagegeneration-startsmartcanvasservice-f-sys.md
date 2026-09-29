@@ -19,6 +19,8 @@ Start the smart canvas service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-imageGeneration-function startSmartCanvasService(    context: common.ServiceExtensionContext | common.UIAbilityContext | common.UIExtensionContext): Promise<void>--><!--Device-imageGeneration-function startSmartCanvasService(    context: common.ServiceExtensionContext | common.UIAbilityContext | common.UIExtensionContext): Promise<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

@@ -26,6 +26,8 @@ This method quickly clears errors, releases storage space, and protects private 
 
 **Since:** 9
 
+<!--Device-update-export interface Restorer--><!--Device-update-export interface Restorer-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -73,6 +75,8 @@ app status needs to be saved in advance.
 **Required permissions:** ohos.permission.FACTORY_RESET
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Restorer-deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise<void>--><!--Device-Restorer-deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 
@@ -147,6 +151,8 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 
 **Required permissions:** ohos.permission.FACTORY_RESET
 
+<!--Device-Restorer-factoryReset(callback: AsyncCallback<void>): void--><!--Device-Restorer-factoryReset(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -215,6 +221,8 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 
 **Required permissions:** ohos.permission.FACTORY_RESET
 
+<!--Device-Restorer-factoryReset(): Promise<void>--><!--Device-Restorer-factoryReset(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -282,6 +290,8 @@ and device handover.
 
 **Required permissions:** ohos.permission.FORCE_FACTORY_RESET
 
+<!--Device-Restorer-forceFactoryReset(): Promise<void>--><!--Device-Restorer-forceFactoryReset(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -347,6 +357,8 @@ not perform the deep factory reset. Otherwise, the operation may fail due to pow
 **Required permissions:** ohos.permission.FACTORY_RESET
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Restorer-getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise<FactoryResetInfo>--><!--Device-Restorer-getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise<FactoryResetInfo>-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

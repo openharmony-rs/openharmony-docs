@@ -18,6 +18,8 @@ Provides constants that define the names of all predefined events.
 
 **Substitutes:** Event
 
+<!--Device-hiAppEvent-namespace Event--><!--Device-hiAppEvent-namespace Event-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import

@@ -12,6 +12,8 @@ Images occupy a large amount of memory. When you finish using an AuxiliaryPictur
 
 **Since:** 13
 
+<!--Device-image-interface AuxiliaryPicture--><!--Device-image-interface AuxiliaryPicture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -19,6 +21,28 @@ Images occupy a large amount of memory. When you finish using an AuxiliaryPictur
 ```TypeScript
 import { image } from '@kit.ImageKit';
 ```
+
+## acquirePixelmap
+
+```TypeScript
+acquirePixelmap(): PixelMap | null
+```
+
+Obtains the PixelMap of this auxiliary picture.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuxiliaryPicture-acquirePixelmap(): PixelMap | null--><!--Device-AuxiliaryPicture-acquirePixelmap(): PixelMap | null-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [PixelMap](arkts-image-image-pixelmap-i.md) &#124; null | PixelMap object obtained. Returns null when the auxiliary picture does not contain PixelMap data. |
 
 ## getAuxiliaryPictureInfo
 
@@ -29,6 +53,8 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 Obtains the auxiliary picture information.
 
 **Since:** 13
+
+<!--Device-AuxiliaryPicture-getAuxiliaryPictureInfo(): AuxiliaryPictureInfo--><!--Device-AuxiliaryPicture-getAuxiliaryPictureInfo(): AuxiliaryPictureInfo-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -63,6 +89,8 @@ getMetadata(metadataType: MetadataType): Promise<Metadata>
 Obtains the metadata of this auxiliary picture. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-AuxiliaryPicture-getMetadata(metadataType: MetadataType): Promise<Metadata>--><!--Device-AuxiliaryPicture-getMetadata(metadataType: MetadataType): Promise<Metadata>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -113,6 +141,8 @@ Obtains the type of this auxiliary picture.
 
 **Since:** 13
 
+<!--Device-AuxiliaryPicture-getType(): AuxiliaryPictureType--><!--Device-AuxiliaryPicture-getType(): AuxiliaryPictureType-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -143,6 +173,8 @@ readPixelsToBuffer(): Promise<ArrayBuffer>
 Reads pixels of this auxiliary picture and writes the data to an ArrayBuffer. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-AuxiliaryPicture-readPixelsToBuffer(): Promise<ArrayBuffer>--><!--Device-AuxiliaryPicture-readPixelsToBuffer(): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -193,6 +225,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 13
 
+<!--Device-AuxiliaryPicture-release():void--><!--Device-AuxiliaryPicture-release():void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Examples**
@@ -222,6 +256,8 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 Sets the auxiliary picture information.
 
 **Since:** 13
+
+<!--Device-AuxiliaryPicture-setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void--><!--Device-AuxiliaryPicture-setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -266,6 +302,8 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>
 Sets the metadata for this auxiliary picture. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-AuxiliaryPicture-setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>--><!--Device-AuxiliaryPicture-setMetadata(metadataType: MetadataType, metadata: Metadata): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -332,6 +370,8 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise<void>
 Reads pixels from an ArrayBuffer and writes the data to this AuxiliaryPicture object. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-AuxiliaryPicture-writePixelsFromBuffer(data: ArrayBuffer): Promise<void>--><!--Device-AuxiliaryPicture-writePixelsFromBuffer(data: ArrayBuffer): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

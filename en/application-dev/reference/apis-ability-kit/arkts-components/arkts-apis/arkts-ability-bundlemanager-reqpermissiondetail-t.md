@@ -10,6 +10,8 @@ Defines the detailed information of the permissions to request from the system.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-bundleManager-export type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail--><!--Device-bundleManager-export type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Type:** [_BundleInfo.ReqPermissionDetail](arkts-ability-bundleinfo-reqpermissiondetail-i.md)

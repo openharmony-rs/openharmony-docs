@@ -8,6 +8,8 @@ Defines a responsive layout policy applicable to the WaterFlow, Grid, List, Swip
 
 **Since:** 22
 
+<!--Device-unnamed-declare interface ItemFillPolicy--><!--Device-unnamed-declare interface ItemFillPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fillType
@@ -27,5 +29,7 @@ Column count for different breakpoints. The default value is **BREAKPOINT_DEFAUL
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ItemFillPolicy-fillType?: ResponsiveFillType--><!--Device-ItemFillPolicy-fillType?: ResponsiveFillType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

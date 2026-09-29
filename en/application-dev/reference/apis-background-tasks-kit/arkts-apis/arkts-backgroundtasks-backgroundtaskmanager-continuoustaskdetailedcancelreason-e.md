@@ -8,6 +8,8 @@ Describes the detailed reason for canceling a continuous task.
 
 **Since:** 26.0.0
 
+<!--Device-backgroundTaskManager-export enum ContinuousTaskDetailedCancelReason--><!--Device-backgroundTaskManager-export enum ContinuousTaskDetailedCancelReason-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## USER_CANCEL_REMOVE_NOTIFICATION
@@ -21,6 +23,8 @@ User removal notification.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3--><!--Device-ContinuousTaskDetailedCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -36,6 +40,8 @@ A continuous task of the **DATA_TRANSFER** type is requested, but the data trans
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING
@@ -49,6 +55,8 @@ A continuous task of the **AUDIO_PLAYBACK** type is requested, but the audio and
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING = 6-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -64,6 +72,8 @@ A continuous task of the **AUDIO_RECORDING** type is requested, but audio record
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_NOT_USE_LOCATION
@@ -77,6 +87,8 @@ A continuous task of the **LOCATION** type is requested, but the location servic
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -92,6 +104,8 @@ A continuous task of the **BLUETOOTH_INTERACTION** type is requested, but Blueto
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE
@@ -105,6 +119,8 @@ A continuous task of the **MULTI_DEVICE_CONNECTION** type is requested, but the 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -120,6 +136,8 @@ A continuous task of an invalid type is used. For example, a continuous task of 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE
@@ -133,6 +151,8 @@ A continuous task of the **DATA_TRANSFER** type is requested, but the progress i
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE = 12--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE = 12-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -148,6 +168,8 @@ A continuous task of the **VOIP** type is requested, but no audio stream or reco
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_USER_UNAUTHORIZED
@@ -161,6 +183,8 @@ A continuous task of the special scenario type is requested, but the user is not
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -176,6 +200,8 @@ A continuous task of the **NEARLINK** type is requested, but nearlink is not in 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_NEARLINK = 15--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_NEARLINK = 15-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## SYSTEM_CANCEL_NOT_USE_USB
@@ -189,5 +215,7 @@ A continuous task of the **USB_CONNECTION** type is requested, but USB device is
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_USB = 16--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_USB = 16-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

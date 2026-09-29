@@ -8,6 +8,8 @@ Configures the settings of a **CanvasRenderingContext2D** object, including whet
 
 **Since:** 8
 
+<!--Device-unnamed-declare class RenderingContextSettings--><!--Device-unnamed-declare class RenderingContextSettings-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -25,6 +27,8 @@ Creates a **RenderingContextSettings** object, with support for configuring anti
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RenderingContextSettings-constructor(antialias?: boolean)--><!--Device-RenderingContextSettings-constructor(antialias?: boolean)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,5 +55,7 @@ Whether to enable anti-aliasing for the canvas. <br>Abnormal values **undefined*
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RenderingContextSettings-antialias?: boolean--><!--Device-RenderingContextSettings-antialias?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

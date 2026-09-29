@@ -10,6 +10,8 @@ WebGL 1.0
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-unnamed-type Float32List = Float32Array | GLfloat[]--><!--Device-unnamed-type Float32List = Float32Array | GLfloat[]-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 | Type | Description |

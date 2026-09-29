@@ -12,32 +12,32 @@ import { MarginTypeV2, PromptOptionsV2, PromptOptionsV2Config, ExceptionPromptV2
 
 | Name | Description |
 | --- | --- |
-| [PromptOptionsV2](arkts-arkui-arkui-advanced-exceptionpromptv2-promptoptionsv2-c.md) | Configuration parameter of ExceptionPromptV2. Use @ObservedV2 and @Trace to support deep observation and dynamic refresh of properties. |
+| [PromptOptionsV2](arkts-arkui-arkui-advanced-exceptionpromptv2-promptoptionsv2-c.md) | Defines the configuration information of the exception prompt component. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [ExceptionPromptV2](arkts-arkui-arkui-advanced-exceptionpromptv2-exceptionpromptv2-s.md) | Declare struct ExceptionPromptV2 higher-order component. The exception prompt component is used to show an error message when an error arises. @struct { ExceptionPromptV2 } |
+| [ExceptionPromptV2](arkts-arkui-arkui-advanced-exceptionpromptv2-exceptionpromptv2-s.md) | The **ExceptionPromptV2** component is used when an exception occurs and the exception content needs to be prompted. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [PromptOptionsV2Config](arkts-arkui-arkui-advanced-exceptionpromptv2-promptoptionsv2config-i.md) | Configuration information interface for PromptOptionsV2. Used to construct PromptOptionsV2 object. |
-
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [MarginTypeV2](arkts-arkui-arkui-advanced-exceptionpromptv2-margintypev2-e.md) | Control margin status of ExceptionPromptV2. |
+| [PromptOptionsV2Config](arkts-arkui-arkui-advanced-exceptionpromptv2-promptoptionsv2config-i.md) | Defines the configuration information API for constructing a **PromptOptionsV2** object. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnActionTextClickCallback](arkts-arkui-onactiontextclickcallback-t.md) | Declare the callback function type to be called when clicking the icon button. @typedef { function } OnActionTextClickCallback |
-| [OnTipClickCallback](arkts-arkui-ontipclickcallback-t.md) | Declare the callback function type to be called when clicking the text on the left. @typedef { function } OnTipClickCallback |
+| [OnActionTextClickCallback](arkts-arkui-onactiontextclickcallback-t.md) | Defines the callback function type for tapping the icon button on the right. |
+| [OnTipClickCallback](arkts-arkui-ontipclickcallback-t.md) | Defines the callback function type for tapping the left-side tip text. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [MarginTypeV2](arkts-arkui-arkui-advanced-exceptionpromptv2-margintypev2-e.md) | Defines the margin type of the exception prompt. |
 
 ## Examples
 

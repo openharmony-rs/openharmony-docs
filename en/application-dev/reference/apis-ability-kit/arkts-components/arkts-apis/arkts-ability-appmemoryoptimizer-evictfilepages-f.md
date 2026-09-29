@@ -18,6 +18,8 @@ Sends a request to the system to release file page cache of specified files. The
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-appMemoryOptimizer-function evictFilePages(fileNames: Array<string>): Promise<void>--><!--Device-appMemoryOptimizer-function evictFilePages(fileNames: Array<string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

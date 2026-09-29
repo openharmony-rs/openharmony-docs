@@ -20,6 +20,8 @@ Get all AVMusicTemplate descriptors.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]--><!--Device-avMusicTemplate-function getAllAVMusicTemplateDescriptors(userId?: int): AVMusicTemplateDescriptor[]-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 **System API:** This is a system API.

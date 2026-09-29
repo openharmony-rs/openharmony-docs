@@ -19,6 +19,8 @@ Queries tool permissions based on the specified operations. This function checks
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-abilityToolAccessCtrl-export function requestToolPermissions(permissionQuery: PermissionQuery): Promise<PermissionQueryResult>--><!--Device-abilityToolAccessCtrl-export function requestToolPermissions(permissionQuery: PermissionQuery): Promise<PermissionQueryResult>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

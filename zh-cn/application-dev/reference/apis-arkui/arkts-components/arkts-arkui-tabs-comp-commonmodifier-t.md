@@ -12,6 +12,8 @@ CommonModifier类型用于设置Tabs组件参数。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier--><!--Device-unnamed-declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **类型：** import('../api/arkui/CommonModifier').CommonModifier

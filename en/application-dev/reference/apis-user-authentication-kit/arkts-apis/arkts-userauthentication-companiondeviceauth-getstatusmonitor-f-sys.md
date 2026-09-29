@@ -20,6 +20,8 @@ Obtains the status monitor. This API is used to obtain the status monitor object
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-function getStatusMonitor(localUserId: int): StatusMonitor--><!--Device-companionDeviceAuth-function getStatusMonitor(localUserId: int): StatusMonitor-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

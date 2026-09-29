@@ -8,6 +8,8 @@ Scan enhance mode.
 
 **Since:** 26.0.0
 
+<!--Device-ble-enum EnhanceMode--><!--Device-ble-enum EnhanceMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Balanced scan performance and other bluetooth service performance.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_BALANCED = 0--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_BALANCED = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -40,6 +44,8 @@ The scan performance is improved, and the performance of other bluetooth service
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -56,6 +62,8 @@ The scan performance is ensured as much as possible, and the performance of othe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_FAST = 2--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_FAST = 2-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
@@ -71,6 +79,8 @@ The scan performance is fully ensured, and the performance of other bluetooth se
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_ULTRA_FAST = 3--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_ULTRA_FAST = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

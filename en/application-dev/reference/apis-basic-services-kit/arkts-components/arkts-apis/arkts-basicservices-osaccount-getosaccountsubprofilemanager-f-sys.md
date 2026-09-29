@@ -18,6 +18,8 @@ Obtains the OS account sub-profile manager.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-osAccount-function getOsAccountSubProfileManager(): OsAccountSubProfileManager--><!--Device-osAccount-function getOsAccountSubProfileManager(): OsAccountSubProfileManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.

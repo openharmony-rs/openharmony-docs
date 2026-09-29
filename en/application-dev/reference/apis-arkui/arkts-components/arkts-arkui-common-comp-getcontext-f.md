@@ -18,6 +18,8 @@ Obtains the Context object associated with a component on the page.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare function getContext(component?: Object): Context--><!--Device-unnamed-declare function getContext(component?: Object): Context-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

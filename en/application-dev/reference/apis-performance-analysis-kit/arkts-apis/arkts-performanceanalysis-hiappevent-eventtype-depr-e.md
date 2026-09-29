@@ -12,6 +12,8 @@ Enumerates the event types.
 
 **Substitutes:** [EventType](arkts-performanceanalysis-hiappevent-eventtype-e.md)
 
+<!--Device-hiAppEvent-enum EventType--><!--Device-hiAppEvent-enum EventType-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## FAULT
@@ -27,6 +29,8 @@ Fault event.
 **Deprecated since:** 9
 
 **Substitutes:** [FAULT](arkts-performanceanalysis-hiappevent-eventtype-e.md#fault)
+
+<!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -44,6 +48,8 @@ Statistic event.
 
 **Substitutes:** [STATISTIC](arkts-performanceanalysis-hiappevent-eventtype-e.md#statistic)
 
+<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## SECURITY
@@ -60,6 +66,8 @@ Security event.
 
 **Substitutes:** [SECURITY](arkts-performanceanalysis-hiappevent-eventtype-e.md#security)
 
+<!--Device-EventType-SECURITY = 3--><!--Device-EventType-SECURITY = 3-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## BEHAVIOR
@@ -75,5 +83,7 @@ User behavior event.
 **Deprecated since:** 9
 
 **Substitutes:** [BEHAVIOR](arkts-performanceanalysis-hiappevent-eventtype-e.md#behavior)
+
+<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

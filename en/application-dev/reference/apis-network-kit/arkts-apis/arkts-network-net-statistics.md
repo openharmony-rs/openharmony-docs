@@ -13,6 +13,8 @@ of long-term network usage trends of the application.
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace statistics--><!--Device-unnamed-declare namespace statistics-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -87,14 +89,6 @@ import { statistics } from '@kit.NetworkKit';
 | [UidInfo](arkts-network-statistics-uidinfo-i-sys.md) | Defines the parameters for querying historical traffic of an application. |
 <!--DelEnd-->
 
-<!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [TrafficPlanParam](arkts-network-statistics-trafficplanparam-e-sys.md) | Defines the fields related to the traffic plan. |
-<!--DelEnd-->
-
 ### Types
 
 | Name | Description |
@@ -107,4 +101,12 @@ import { statistics } from '@kit.NetworkKit';
 | Name | Description |
 | --- | --- |
 | [UidNetStatsInfo](arkts-network-statistics-uidnetstatsinfo-t-sys.md) |  |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [TrafficPlanParam](arkts-network-statistics-trafficplanparam-e-sys.md) | Defines the fields related to the traffic plan. |
 <!--DelEnd-->

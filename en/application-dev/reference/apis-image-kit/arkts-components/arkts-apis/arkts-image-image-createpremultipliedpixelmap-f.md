@@ -16,6 +16,8 @@ Transforms pixelmap from unpremultiplied alpha format to premultiplied alpha for
 
 **Since:** 12
 
+<!--Device-image-function createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback<void>): void--><!--Device-image-function createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -75,6 +77,8 @@ function createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise<void
 Transforms pixelmap from premultiplied alpha format to unpremultiplied alpha format.
 
 **Since:** 12
+
+<!--Device-image-function createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise<void>--><!--Device-image-function createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

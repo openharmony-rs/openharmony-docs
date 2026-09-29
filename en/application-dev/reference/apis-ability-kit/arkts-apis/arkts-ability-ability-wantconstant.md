@@ -8,6 +8,8 @@ The module provides the actions, entities, and flags used in Want objects.
 
 **Substitutes:** [wantConstant/wantConstant](arkts-ability-app-ability-wantconstant.md)
 
+<!--Device-unnamed-declare namespace wantConstant--><!--Device-unnamed-declare namespace wantConstant-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## Modules to Import

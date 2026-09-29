@@ -8,6 +8,8 @@ Represents data of the pixel map type defined by the system.
 
 **Since:** 15
 
+<!--Device-uniformDataStruct-interface PixelMap--><!--Device-uniformDataStruct-interface PixelMap-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Object of the dictionary type used to describe the icon. The key is of the strin
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PixelMap-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-PixelMap-details?: Record<string, int | long | double | string | Uint8Array>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## pixelMap
@@ -46,6 +50,8 @@ Binary data of the pixel map.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PixelMap-pixelMap: image.PixelMap--><!--Device-PixelMap-pixelMap: image.PixelMap-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## uniformDataType
@@ -61,5 +67,7 @@ Uniform data type, which has a fixed value of **openharmony.pixel-map**. For det
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PixelMap-readonly uniformDataType: 'openharmony.pixel-map'--><!--Device-PixelMap-readonly uniformDataType: 'openharmony.pixel-map'-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

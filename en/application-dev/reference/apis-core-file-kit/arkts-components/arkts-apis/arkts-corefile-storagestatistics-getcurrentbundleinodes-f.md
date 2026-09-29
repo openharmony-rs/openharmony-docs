@@ -18,6 +18,8 @@ Get the current bundle inodes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-storageStatistics-function getCurrentBundleInodes(): Promise<long>--><!--Device-storageStatistics-function getCurrentBundleInodes(): Promise<long>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Return value:**

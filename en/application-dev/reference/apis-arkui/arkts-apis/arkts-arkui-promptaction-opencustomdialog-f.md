@@ -34,6 +34,8 @@ By default, the width of the dialog box in portrait mode is the width of the win
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-promptAction-function openCustomDialog(options: CustomDialogOptions): Promise<number>--><!--Device-promptAction-function openCustomDialog(options: CustomDialogOptions): Promise<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

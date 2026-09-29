@@ -8,6 +8,8 @@ Class of fence extension ability.
 
 **Since:** 14
 
+<!--Device-unnamed-export default class FenceExtensionAbility--><!--Device-unnamed-export default class FenceExtensionAbility-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called back before a fence extension is destroyed.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FenceExtensionAbility-onDestroy(): void--><!--Device-FenceExtensionAbility-onDestroy(): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -54,6 +58,8 @@ Called back when geofence status is change.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FenceExtensionAbility-onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record<string, string>): void--><!--Device-FenceExtensionAbility-onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record<string, string>): void-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -124,5 +130,7 @@ Indicates the fence extension context.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FenceExtensionAbility-context: FenceExtensionContext--><!--Device-FenceExtensionAbility-context: FenceExtensionContext-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence

@@ -12,7 +12,7 @@ import { reminderAgent } from '@kit.BackgroundTasksKit';
 function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void
 ```
 
-Publishes a reminder through the reminder agent. This API uses an asynchronous callback to return the result. It can be called only when notification is enabled for the application through [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification)
+Publishes a reminder through the reminder agent. This API uses an asynchronous callback to return the result. It can be called only when notification is enabled for the application through [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md)
 
 **Since:** 7
 
@@ -21,6 +21,8 @@ Publishes a reminder through the reminder agent. This API uses an asynchronous c
 **Substitutes:** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
+
+<!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void--><!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback<number>): void-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -56,7 +58,7 @@ reminderAgent.publishReminder(timer, (err: BusinessError, reminderId: number) =>
 function publishReminder(reminderReq: ReminderRequest): Promise<number>
 ```
 
-Publishes a reminder through the reminder agent. This API uses a promise to return the result. It can be called only when notification is enabled for the application through [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification)
+Publishes a reminder through the reminder agent. This API uses a promise to return the result. It can be called only when notification is enabled for the application through [Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md)
 
 **Since:** 7
 
@@ -65,6 +67,8 @@ Publishes a reminder through the reminder agent. This API uses a promise to retu
 **Substitutes:** [publishReminder](arkts-backgroundtasks-reminderagentmanager-publishreminder-f.md)
 
 **Required permissions:** ohos.permission.PUBLISH_AGENT_REMINDER
+
+<!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest): Promise<number>--><!--Device-reminderAgent-function publishReminder(reminderReq: ReminderRequest): Promise<number>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

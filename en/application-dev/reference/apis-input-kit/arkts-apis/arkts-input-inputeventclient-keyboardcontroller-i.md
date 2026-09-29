@@ -13,6 +13,8 @@ has not been released.
 
 **Since:** 26.0.0
 
+<!--Device-inputEventClient-interface KeyboardController--><!--Device-inputEventClient-interface KeyboardController-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Presses a key. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyboardController-pressKey(keyCode: KeyCode): Promise<void>--><!--Device-KeyboardController-pressKey(keyCode: KeyCode): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -103,6 +107,8 @@ Releases a key. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.CONTROL_DEVICE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyboardController-releaseKey(keyCode: KeyCode): Promise<void>--><!--Device-KeyboardController-releaseKey(keyCode: KeyCode): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
 

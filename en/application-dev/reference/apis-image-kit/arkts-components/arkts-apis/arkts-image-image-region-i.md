@@ -8,6 +8,8 @@ Describes the region information.
 
 **Since:** 8
 
+<!--Device-image-interface Region--><!--Device-image-interface Region-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,9 +30,11 @@ Region size.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Region-size: Size--><!--Device-Region-size: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -46,9 +50,11 @@ X coordinate of the top-left corner of the region, in px.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Region-x: int--><!--Device-Region-x: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -64,8 +70,10 @@ Y coordinate of the top-left corner of the region, in px.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 12.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+
+<!--Device-Region-y: int--><!--Device-Region-y: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

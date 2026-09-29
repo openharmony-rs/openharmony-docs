@@ -4,13 +4,15 @@
 type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>
 ```
 
-Represents a FrameNode of the **ListItemGroup** type. Only [ListItem](../arkts-components/arkts-arkui-listitem-comp.md#list_item) child components can be added.
+Represents a FrameNode of the **ListItemGroup** type. Only [ListItem](../arkts-components/arkts-arkui-listitem-comp.md) child components can be added.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>--><!--Device-typeNode-type ListItemGroup = TypedFrameNode<ListItemGroupInterface, ListItemGroupAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

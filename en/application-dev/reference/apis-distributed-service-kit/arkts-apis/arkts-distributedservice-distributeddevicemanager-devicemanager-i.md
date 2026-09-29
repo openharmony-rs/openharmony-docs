@@ -8,6 +8,8 @@ Provides APIs to obtain information about trusted devices and local devices. Bef
 
 **Since:** 10
 
+<!--Device-distributedDeviceManager-interface DeviceManager--><!--Device-distributedDeviceManager-interface DeviceManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Binds a device. This API uses an asynchronous callback to return the result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-bindTarget(deviceId: string, bindParam: { [key: string]: Object; }, callback: AsyncCallback<{deviceId: string;}>): void--><!--Device-DeviceManager-bindTarget(deviceId: string, bindParam: { [key: string]: Object; }, callback: AsyncCallback<{deviceId: string;}>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -94,6 +98,8 @@ Obtains all trusted devices. This API uses an asynchronous callback to return th
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-getAvailableDeviceList(callback: AsyncCallback<Array<DeviceBasicInfo>>): void--><!--Device-DeviceManager-getAvailableDeviceList(callback: AsyncCallback<Array<DeviceBasicInfo>>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -144,6 +150,8 @@ Obtains all trusted devices. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-getAvailableDeviceList(): Promise<Array<DeviceBasicInfo>>--><!--Device-DeviceManager-getAvailableDeviceList(): Promise<Array<DeviceBasicInfo>>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Return value:**
@@ -184,6 +192,8 @@ Obtains all trusted devices synchronously.
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-getAvailableDeviceListSync(): Array<DeviceBasicInfo>--><!--Device-DeviceManager-getAvailableDeviceListSync(): Array<DeviceBasicInfo>-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -226,6 +236,8 @@ Obtains the device name based on the network ID of the specified device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-getDeviceName(networkId: string): string--><!--Device-DeviceManager-getDeviceName(networkId: string): string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -279,6 +291,8 @@ Obtains the device type based on the network ID of the specified device.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-getDeviceType(networkId: string): int--><!--Device-DeviceManager-getDeviceType(networkId: string): int-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -291,7 +305,7 @@ Obtains the device type based on the network ID of the specified device.
 
 | Type | Description |
 | --- | --- |
-| number | &lt;!--RP2--&gt;Device type obtained.&lt;!--RP2End--&gt; |
+| number | <!--RP2-->Device type obtained.<!--RP2End--> |
 
 **Error codes:**
 
@@ -330,6 +344,8 @@ Obtains the local device ID. The value is the result of obfuscating the udid-has
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-getLocalDeviceId(): string--><!--Device-DeviceManager-getLocalDeviceId(): string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -374,6 +390,8 @@ Obtains the local device name.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-getLocalDeviceName(): string--><!--Device-DeviceManager-getLocalDeviceName(): string-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Return value:**
@@ -416,6 +434,8 @@ Obtains the network ID of the local device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-getLocalDeviceNetworkId(): string--><!--Device-DeviceManager-getLocalDeviceNetworkId(): string-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -460,13 +480,15 @@ Obtains the local device type.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-getLocalDeviceType(): int--><!--Device-DeviceManager-getLocalDeviceType(): int-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| number | &lt;!--RP1--&gt;Local device type obtained.&lt;!--RP1End--&gt; |
+| number | <!--RP1-->Local device type obtained.<!--RP1End--> |
 
 **Error codes:**
 
@@ -502,6 +524,8 @@ Unsubscribes from the device state changes. This API uses an asynchronous callba
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChange; device: DeviceBasicInfo; }>): void--><!--Device-DeviceManager-off(type: 'deviceStateChange', callback?: Callback<{ action: DeviceStateChange; device: DeviceBasicInfo; }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -558,6 +582,8 @@ Unsubscribes from the **'discoverSuccess'** event. This API uses an asynchronous
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-off(type: 'discoverSuccess', callback?: Callback<{ device: DeviceBasicInfo; }>): void--><!--Device-DeviceManager-off(type: 'discoverSuccess', callback?: Callback<{ device: DeviceBasicInfo; }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -612,6 +638,8 @@ Unsubscribes from the device name changes. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-off(type: 'deviceNameChange', callback?: Callback<{ deviceName: string; }>): void--><!--Device-DeviceManager-off(type: 'deviceNameChange', callback?: Callback<{ deviceName: string; }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -660,6 +688,8 @@ Unsubscribes from the **'discoverFailure'** event. This API uses an asynchronous
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-off(type: 'discoverFailure', callback?: Callback<{ reason: int; }>): void--><!--Device-DeviceManager-off(type: 'discoverFailure', callback?: Callback<{ reason: int; }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -710,6 +740,8 @@ Unsubscribes from the dead events of the **DeviceManager** service. This API use
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-off(type: 'serviceDie', callback?: Callback<{}>): void--><!--Device-DeviceManager-off(type: 'serviceDie', callback?: Callback<{}>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -754,6 +786,8 @@ Subscribes to the device state changes. The application (identified by the bundl
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChange; device: DeviceBasicInfo; }>): void--><!--Device-DeviceManager-on(type: 'deviceStateChange', callback: Callback<{ action: DeviceStateChange; device: DeviceBasicInfo; }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -810,6 +844,8 @@ Subscribes to the **'discoverSuccess'** event. The application will be notified 
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-on(type: 'discoverSuccess', callback: Callback<{ device: DeviceBasicInfo; }>): void--><!--Device-DeviceManager-on(type: 'discoverSuccess', callback: Callback<{ device: DeviceBasicInfo; }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -864,6 +900,8 @@ Subscribes to device name changes. The application will be notified when the nam
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-on(type: 'deviceNameChange', callback: Callback<{ deviceName: string; }>): void--><!--Device-DeviceManager-on(type: 'deviceNameChange', callback: Callback<{ deviceName: string; }>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -912,6 +950,8 @@ Subscribes to the **'discoverFailure'** event. The application will be notified 
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-on(type: 'discoverFailure', callback: Callback<{ reason: int; }>): void--><!--Device-DeviceManager-on(type: 'discoverFailure', callback: Callback<{ reason: int; }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -962,6 +1002,8 @@ Subscribes to the dead events of the **DeviceManager** service. The application 
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-on(type: 'serviceDie', callback: Callback<{}>): void--><!--Device-DeviceManager-on(type: 'serviceDie', callback: Callback<{}>): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Parameters:**
@@ -1006,6 +1048,8 @@ Starts to discover devices nearby. The discovery process takes 2 minutes. A maxi
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-startDiscovering(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; }): void--><!--Device-DeviceManager-startDiscovering(discoverParam: { [key: string]: Object; }, filterOptions?: { [key: string]: Object; }): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -1070,6 +1114,8 @@ Stops device discovery.
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-DeviceManager-stopDiscovering(): void--><!--Device-DeviceManager-stopDiscovering(): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **Error codes:**
@@ -1105,6 +1151,8 @@ Unbinds a device.
 **Since:** 10
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-DeviceManager-unbindTarget(deviceId: string): void--><!--Device-DeviceManager-unbindTarget(deviceId: string): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

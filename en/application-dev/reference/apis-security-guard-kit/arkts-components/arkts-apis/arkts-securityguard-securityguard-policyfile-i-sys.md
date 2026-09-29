@@ -10,6 +10,8 @@ Provides policy file information.
 
 **Since:** 12
 
+<!--Device-securityGuard-interface PolicyFile--><!--Device-securityGuard-interface PolicyFile-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The policy file descriptor.
 
 **Since:** 12
 
+<!--Device-PolicyFile-fd: number--><!--Device-PolicyFile-fd: number-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ The policy file name.
 **Type:** string
 
 **Since:** 12
+
+<!--Device-PolicyFile-name: string--><!--Device-PolicyFile-name: string-End-->
 
 **System capability:** SystemCapability.Security.SecurityGuard
 

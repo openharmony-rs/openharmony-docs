@@ -24,6 +24,8 @@ Set settingsdata value(synchronous method)
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-settings-function setValueSync(dataAbilityHelper: DataAbilityHelper, name: string, value: string): boolean--><!--Device-settings-function setValueSync(dataAbilityHelper: DataAbilityHelper, name: string, value: string): boolean-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**
@@ -67,6 +69,8 @@ Set settingsdata value(synchronous method)
 **Required permissions:** ohos.permission.MANAGE_SETTINGS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function setValueSync(context: Context, name: string, value: string): boolean--><!--Device-settings-function setValueSync(context: Context, name: string, value: string): boolean-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 
@@ -112,6 +116,8 @@ Set settingsdata value(synchronous method). [DEVICE_SHARED, USER_PROPERTY] domai
 **Required permissions:** ohos.permission.MANAGE_SECURE_SETTINGS or ohos.permission.MANAGE_SETTINGS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-settings-function setValueSync(context: Context, name: string, value: string, domainName: string): boolean--><!--Device-settings-function setValueSync(context: Context, name: string, value: string, domainName: string): boolean-End-->
 
 **System capability:** SystemCapability.Applications.Settings.Core
 

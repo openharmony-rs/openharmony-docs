@@ -28,6 +28,8 @@ FormLink(options: FormLinkOptions)
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-FormLinkInterface-(options: FormLinkOptions): FormLinkAttribute--><!--Device-FormLinkInterface-(options: FormLinkOptions): FormLinkAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**

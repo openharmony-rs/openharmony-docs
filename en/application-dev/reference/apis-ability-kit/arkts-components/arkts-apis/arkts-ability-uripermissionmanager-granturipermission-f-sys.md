@@ -29,6 +29,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 **Required permissions:** ohos.permission.PROXY_AUTHORIZATION_URI
 
+<!--Device-uriPermissionManager-function grantUriPermission(    uri: string,    flag: wantConstant.Flags,    targetBundleName: string,    callback: AsyncCallback<number>  ): void--><!--Device-uriPermissionManager-function grantUriPermission(    uri: string,    flag: wantConstant.Flags,    targetBundleName: string,    callback: AsyncCallback<number>  ): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -103,6 +105,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 **Since:** 10
 
 **Required permissions:** ohos.permission.PROXY_AUTHORIZATION_URI
+
+<!--Device-uriPermissionManager-function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string): Promise<number>--><!--Device-uriPermissionManager-function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string): Promise<number>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -185,6 +189,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 **Since:** 14
 
 **Required permissions:** ohos.permission.PROXY_AUTHORIZATION_URI
+
+<!--Device-uriPermissionManager-function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string, appCloneIndex: int): Promise<void>--><!--Device-uriPermissionManager-function grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: string, appCloneIndex: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ Represents the sync result of an asset.
 
 **Since:** 20
 
+<!--Device-asset-interface SyncResult--><!--Device-asset-interface SyncResult-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Number of assets that fail to be synced.
 
 **Since:** 20
 
+<!--Device-SyncResult-readonly failedCount?: number--><!--Device-SyncResult-readonly failedCount?: number-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## resultCode
@@ -42,6 +46,8 @@ Sync result code of an asset. If the sync is successful, the result code is **0*
 
 **Since:** 20
 
+<!--Device-SyncResult-readonly resultCode: number--><!--Device-SyncResult-readonly resultCode: number-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 ## totalCount
@@ -55,5 +61,7 @@ Total number of assets to be synced.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-SyncResult-readonly totalCount?: number--><!--Device-SyncResult-readonly totalCount?: number-End-->
 
 **System capability:** SystemCapability.Security.Asset

@@ -8,6 +8,8 @@ Defines the information about the dragged item during drag.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface DragItemInfo--><!--Device-unnamed-declare interface DragItemInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## builder
@@ -30,6 +32,8 @@ When passing the builder as a parameter, the format builder: ()=&gt;{this.custom
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DragItemInfo-builder?: CustomBuilder--><!--Device-DragItemInfo-builder?: CustomBuilder-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## extraInfo
@@ -46,6 +50,8 @@ Additional information about the dragged item, used to describe the item being d
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-DragItemInfo-extraInfo?: string--><!--Device-DragItemInfo-extraInfo?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pixelMap
@@ -61,5 +67,7 @@ Image to be displayed during dragging.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DragItemInfo-pixelMap?: PixelMap--><!--Device-DragItemInfo-pixelMap?: PixelMap-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

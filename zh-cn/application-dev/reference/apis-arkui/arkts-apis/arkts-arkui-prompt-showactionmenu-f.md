@@ -22,6 +22,8 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-prompt-function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void--><!--Device-prompt-function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,6 +76,8 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 **替代接口：** showActionMenu
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-prompt-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>--><!--Device-prompt-function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

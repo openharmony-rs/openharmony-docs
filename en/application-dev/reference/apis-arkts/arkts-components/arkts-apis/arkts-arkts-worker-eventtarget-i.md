@@ -12,6 +12,8 @@ Specific event features.
 
 **Substitutes:** [WorkerEventTarget](arkts-arkts-worker-workereventtarget-i.md)
 
+<!--Device-unnamed-export interface EventTarget--><!--Device-unnamed-export interface EventTarget-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Adds an event listener to the worker.
 **Deprecated since:** 9
 
 **Substitutes:** addEventListener
+
+<!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void--><!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -69,6 +73,8 @@ Dispatches the event defined for the worker.
 **Deprecated since:** 9
 
 **Substitutes:** dispatchEvent
+
+<!--Device-EventTarget-dispatchEvent(event: Event): boolean--><!--Device-EventTarget-dispatchEvent(event: Event): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -141,6 +147,8 @@ Removes all event listeners for the worker.
 
 **Substitutes:** removeAllListener
 
+<!--Device-EventTarget-removeAllListener(): void--><!--Device-EventTarget-removeAllListener(): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Examples**
@@ -171,6 +179,8 @@ Removes an event defined for the worker.
 **Deprecated since:** 9
 
 **Substitutes:** removeEventListener
+
+<!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void--><!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

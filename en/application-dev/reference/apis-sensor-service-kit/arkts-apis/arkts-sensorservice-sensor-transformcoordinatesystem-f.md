@@ -13,13 +13,21 @@ function transformCoordinateSystem(inRotationVector: Array<number>, coordinates:
     callback: AsyncCallback<Array<number>>): void
 ```
 
-Rotates a rotation vector so that it can represent the coordinate system in different ways. This API uses an asynchronous callback to return the result.
+Rotates a rotation vector so that it can represent the coordinate system in different ways. This API uses an asynchronous callback to return the result. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md)
+> instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md)(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;)
+
+<!--Device-sensor-function transformCoordinateSystem(inRotationVector: Array<number>, coordinates: CoordinatesOptions,    callback: AsyncCallback<Array<number>>): void--><!--Device-sensor-function transformCoordinateSystem(inRotationVector: Array<number>, coordinates: CoordinatesOptions,    callback: AsyncCallback<Array<number>>): void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -61,11 +69,19 @@ function transformCoordinateSystem(inRotationVector: Array<number>, coordinates:
 
 Rotates a rotation vector so that it can represent the coordinate system in different ways. This API uses a promise to return the result.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [sensor.transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md)
+> instead.
+
 **Since:** 8
 
 **Deprecated since:** 9
 
 **Substitutes:** [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md)(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions)
+
+<!--Device-sensor-function transformCoordinateSystem(inRotationVector: Array<number>, coordinates: CoordinatesOptions): Promise<Array<number>>--><!--Device-sensor-function transformCoordinateSystem(inRotationVector: Array<number>, coordinates: CoordinatesOptions): Promise<Array<number>>-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 

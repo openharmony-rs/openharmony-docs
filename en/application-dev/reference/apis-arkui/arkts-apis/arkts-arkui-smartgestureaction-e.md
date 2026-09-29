@@ -4,9 +4,11 @@
 declare enum SmartGestureAction
 ```
 
-Define the actions for smart gesture shortcut.
+Enumerates smart gesture action types.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-declare enum SmartGestureAction--><!--Device-unnamed-declare enum SmartGestureAction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,6 +26,8 @@ No action.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-SmartGestureAction-NONE = 0--><!--Device-SmartGestureAction-NONE = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PAGE_FORWARD
@@ -32,13 +36,15 @@ No action.
 PAGE_FORWARD = 1
 ```
 
-Page forward action.
+Page forward, including downward and rightward swipes.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SmartGestureAction-PAGE_FORWARD = 1--><!--Device-SmartGestureAction-PAGE_FORWARD = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,15 @@ Page forward action.
 SCROLL_FORWARD = 2
 ```
 
-Scroll forward action.
+Scroll forward, including downward and rightward swipes.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SmartGestureAction-SCROLL_FORWARD = 2--><!--Device-SmartGestureAction-SCROLL_FORWARD = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +72,15 @@ Scroll forward action.
 SELECT = 3
 ```
 
-Select action.
+Select the component.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SmartGestureAction-SELECT = 3--><!--Device-SmartGestureAction-SELECT = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,13 +90,15 @@ Select action.
 CLICK = 4
 ```
 
-Click action.
+Click the component.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SmartGestureAction-CLICK = 4--><!--Device-SmartGestureAction-CLICK = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,12 +108,14 @@ Click action.
 BACK_PRESS = 5
 ```
 
-Back press action.
+Go back.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-SmartGestureAction-BACK_PRESS = 5--><!--Device-SmartGestureAction-BACK_PRESS = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

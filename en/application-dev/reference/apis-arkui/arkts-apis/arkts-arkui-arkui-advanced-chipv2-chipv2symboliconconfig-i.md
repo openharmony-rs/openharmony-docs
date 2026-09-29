@@ -8,6 +8,8 @@ Defines the attribute configuration of the symbol icon.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export declare interface ChipV2SymbolIconConfig--><!--Device-unnamed-export declare interface ChipV2SymbolIconConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arku
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SymbolIconConfig-activated?: SymbolGlyphModifier--><!--Device-ChipV2SymbolIconConfig-activated?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -57,5 +61,7 @@ Modifying the animation type using [SymbolEffect](../arkts-components/arkts-arku
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SymbolIconConfig-normal?: SymbolGlyphModifier--><!--Device-ChipV2SymbolIconConfig-normal?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

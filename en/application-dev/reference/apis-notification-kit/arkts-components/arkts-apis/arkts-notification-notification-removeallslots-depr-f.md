@@ -19,6 +19,8 @@ Removes all notification slots. This API uses an asynchronous callback to return
 
 **Substitutes:** [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md)
 
+<!--Device-notification-function removeAllSlots(callback: AsyncCallback<void>): void--><!--Device-notification-function removeAllSlots(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -43,6 +45,8 @@ Removes all notification slots. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** [removeAllSlots](arkts-notification-notificationmanager-removeallslots-f.md)
+
+<!--Device-notification-function removeAllSlots(): Promise<void>--><!--Device-notification-function removeAllSlots(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

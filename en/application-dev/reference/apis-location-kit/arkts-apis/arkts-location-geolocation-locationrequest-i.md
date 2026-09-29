@@ -16,6 +16,8 @@ Configuring parameters in location requests
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-export interface LocationRequest--><!--Device-geolocation-export interface LocationRequest-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## Modules to Import
@@ -38,6 +40,8 @@ distanceInterval?: number
 
 **Substitutes:** [distanceInterval](arkts-location-geolocationmanager-locationrequest-i.md#distanceinterval)
 
+<!--Device-LocationRequest-distanceInterval?: number--><!--Device-LocationRequest-distanceInterval?: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## maxAccuracy
@@ -53,6 +57,8 @@ maxAccuracy?: number
 **Deprecated since:** 9
 
 **Substitutes:** [maxAccuracy](arkts-location-geolocationmanager-locationrequest-i.md#maxaccuracy)
+
+<!--Device-LocationRequest-maxAccuracy?: number--><!--Device-LocationRequest-maxAccuracy?: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -70,6 +76,8 @@ priority?: LocationRequestPriority
 
 **Substitutes:** [priority](arkts-location-geolocationmanager-locationrequest-i.md#priority)
 
+<!--Device-LocationRequest-priority?: LocationRequestPriority--><!--Device-LocationRequest-priority?: LocationRequestPriority-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## scenario
@@ -86,6 +94,8 @@ scenario?: LocationRequestScenario
 
 **Substitutes:** [scenario](arkts-location-geolocationmanager-locationrequest-i.md#scenario)
 
+<!--Device-LocationRequest-scenario?: LocationRequestScenario--><!--Device-LocationRequest-scenario?: LocationRequestScenario-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 ## timeInterval
@@ -101,5 +111,7 @@ timeInterval?: number
 **Deprecated since:** 9
 
 **Substitutes:** [timeInterval](arkts-location-geolocationmanager-locationrequest-i.md#timeinterval)
+
+<!--Device-LocationRequest-timeInterval?: number--><!--Device-LocationRequest-timeInterval?: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

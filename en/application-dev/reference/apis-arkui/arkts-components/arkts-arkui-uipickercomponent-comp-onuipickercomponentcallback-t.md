@@ -4,9 +4,7 @@
 declare type OnUIPickerComponentCallback = (selectedIndex: number) => void
 ```
 
-Defines the callback types for the [onChange](arkts-arkui-uipickercomponent-comp-attribute.md#onchange) and [onScrollStop](arkts-arkui-uipickercomponent-comp-attribute.md#onscrollstop) events.
-
-Value range: an integer in the range of [0, Number of child components – 1].
+Defines the callback type for the [onChange](arkts-arkui-uipickercomponent-comp-attribute.md#onchange) and [onScrollStop](arkts-arkui-uipickercomponent-comp-attribute.md#onscrollstop) events.
 
 **Since:** 22
 
@@ -14,10 +12,12 @@ Value range: an integer in the range of [0, Number of child components – 1].
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-unnamed-declare type OnUIPickerComponentCallback = (selectedIndex: number) => void--><!--Device-unnamed-declare type OnUIPickerComponentCallback = (selectedIndex: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectedIndex | number | Yes | Index of the selected item. |
+| selectedIndex | number | Yes | Index of the currently selected item.<br>Value range: an integer in [0, number of child components - 1]. |

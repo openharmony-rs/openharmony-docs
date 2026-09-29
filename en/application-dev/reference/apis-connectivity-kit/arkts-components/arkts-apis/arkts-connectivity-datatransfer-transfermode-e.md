@@ -8,6 +8,8 @@ Enumerates the data transfer modes with a remote device.
 
 **Since:** 26.0.0
 
+<!--Device-dataTransfer-enum TransferMode--><!--Device-dataTransfer-enum TransferMode-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## BASIC
@@ -22,6 +24,8 @@ Basic mode, without a data retransfer mechanism. This mode is applicable to serv
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TransferMode-BASIC = 0--><!--Device-TransferMode-BASIC = 0-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## RELIABLE
@@ -35,5 +39,7 @@ Reliable mode, with a data retransfer mechanism. This mode is applicable to serv
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferMode-RELIABLE = 1--><!--Device-TransferMode-RELIABLE = 1-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

@@ -10,6 +10,8 @@ DataPanelShadowOptions继承自[MultiShadowOptions](arkts-arkui-common-comp-mult
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface DataPanelShadowOptions extends MultiShadowOptions--><!--Device-unnamed-declare interface DataPanelShadowOptions extends MultiShadowOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colors
@@ -37,5 +39,7 @@ colors?: Array<ResourceColor | LinearGradient>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataPanelShadowOptions-colors?: Array<ResourceColor | LinearGradient>--><!--Device-DataPanelShadowOptions-colors?: Array<ResourceColor | LinearGradient>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

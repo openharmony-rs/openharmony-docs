@@ -18,6 +18,8 @@ Creates an NDEF message from raw byte data. The data must comply with the NDEF r
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ndef-function createNdefMessage(data: int[]): NdefMessage--><!--Device-ndef-function createNdefMessage(data: int[]): NdefMessage-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 **Parameters:**
@@ -52,6 +54,8 @@ Creates an NDEF message from the NDEF records list.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ndef-function createNdefMessage(ndefRecords: NdefRecord[]): NdefMessage--><!--Device-ndef-function createNdefMessage(ndefRecords: NdefRecord[]): NdefMessage-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

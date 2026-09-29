@@ -10,6 +10,8 @@ Enumerates the mission continuation states of the application. It is used in the
 
 **Since:** 10
 
+<!--Device-AbilityConstant-export enum ContinueState--><!--Device-AbilityConstant-export enum ContinueState-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## ACTIVE
@@ -24,7 +26,9 @@ Mission continuation is activated for the current application.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ContinueState-ACTIVE = 0--><!--Device-ContinueState-ACTIVE = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ Mission continuation is not activated for the current application.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ContinueState-INACTIVE = 1--><!--Device-ContinueState-INACTIVE = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

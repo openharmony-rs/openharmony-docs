@@ -4,13 +4,15 @@
 declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
 ```
 
-This component can only inherit the [universal attributes of security components](../arkts-apis/arkts-arkui-security_component.md).
+This component can only inherit the [universal attributes of security components](../arkts-apis/arkts-arkui-securitycomponent.md#security_component).
 
 <br>Only the following events are supported.
 
 **Inheritance/Implementation:** PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
 
 **Since:** 10
+
+<!--Device-unnamed-declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>--><!--Device-unnamed-declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ Triggered when the paste button is clicked, returning the authorization result. 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PasteButtonAttribute-onClick(event: PasteButtonCallback): PasteButtonAttribute--><!--Device-PasteButtonAttribute-onClick(event: PasteButtonCallback): PasteButtonAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

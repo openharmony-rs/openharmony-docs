@@ -26,6 +26,8 @@ Sets or cancels the keep-alive status for an application that belongs to a speci
 
 **Required permissions:** ohos.permission.MANAGE_APP_KEEP_ALIVE
 
+<!--Device-appManager-function setKeepAliveForBundle(bundleName: string, userId: int, enable: boolean): Promise<void>--><!--Device-appManager-function setKeepAliveForBundle(bundleName: string, userId: int, enable: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

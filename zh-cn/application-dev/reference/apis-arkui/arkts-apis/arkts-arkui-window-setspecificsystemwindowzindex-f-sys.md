@@ -20,6 +20,8 @@ function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): 
 
 **起始版本：** 23
 
+<!--Device-window-function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise<void>--><!--Device-window-function setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: int): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。

@@ -10,7 +10,7 @@ export declare struct SubHeader
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果SubHeader设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
+> - 如果SubHeader设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SubHeader本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SubHeader设置通用属性和通用事件。
 
 ## 子组件
 
@@ -27,6 +27,8 @@ export declare struct SubHeader
 **起始版本：** 10
 
 **装饰器类型：** @Component
+
+<!--Device-unnamed-export declare struct SubHeader--><!--Device-unnamed-export declare struct SubHeader-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +55,8 @@ titleBuilder?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-titleBuilder?: () => void--><!--Device-SubHeader-titleBuilder?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,6 +90,8 @@ contentMargin?: LocalizedMargin
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-contentMargin?: LocalizedMargin--><!--Device-SubHeader-contentMargin?: LocalizedMargin-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentPadding
@@ -114,6 +120,8 @@ contentPadding?: LocalizedPadding
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-contentPadding?: LocalizedPadding--><!--Device-SubHeader-contentPadding?: LocalizedPadding-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIcon
@@ -134,6 +142,8 @@ endIcon?: ResourceStr
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-endIcon?: ResourceStr--><!--Device-SubHeader-endIcon?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## endIconSymbolOptions
@@ -142,7 +152,7 @@ endIcon?: ResourceStr
 endIconSymbolOptions?: SymbolOptions
 ```
 
-endIcon为SymbolGlyph时的设置项。
+endIcon为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)时的设置项。
 
 默认值：undefined，表示不设置标题尾部Symbol图标样式。
 
@@ -153,6 +163,8 @@ endIcon为SymbolGlyph时的设置项。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-endIconSymbolOptions?: SymbolOptions--><!--Device-SubHeader-endIconSymbolOptions?: SymbolOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,6 +190,8 @@ icon?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-icon?: ResourceStr--><!--Device-SubHeader-icon?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## iconSymbolOptions
@@ -186,7 +200,7 @@ icon?: ResourceStr
 iconSymbolOptions?: SymbolOptions
 ```
 
-icon为SymbolGlyph时的设置项。
+icon为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)时的设置项。
 
 默认值：undefined，表示不显示图标。
 
@@ -197,6 +211,8 @@ icon为SymbolGlyph时的设置项。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-iconSymbolOptions?: SymbolOptions--><!--Device-SubHeader-iconSymbolOptions?: SymbolOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,6 +234,8 @@ operationItem?: Array<OperationOption>
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-operationItem?: Array<OperationOption>--><!--Device-SubHeader-operationItem?: Array<OperationOption>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## operationSymbolOptions
@@ -228,7 +246,7 @@ operationSymbolOptions?: Array<SymbolOptions>
 
 operationType为OperationType.ICON_GROUP，
 
-operationItem设置多个图标，图标为SymbolGlyph时的设置项。
+operationItem设置多个图标，图标为[SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md)时的设置项。
 
 默认值：undefined，表示不设置Symbol图标。
 
@@ -239,6 +257,8 @@ operationItem设置多个图标，图标为SymbolGlyph时的设置项。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-operationSymbolOptions?: Array<SymbolOptions>--><!--Device-SubHeader-operationSymbolOptions?: Array<SymbolOptions>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -261,6 +281,8 @@ operationType?: OperationType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-operationType?: OperationType--><!--Device-SubHeader-operationType?: OperationType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,6 +308,8 @@ primaryTitle?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-primaryTitle?: ResourceStr--><!--Device-SubHeader-primaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## primaryTitleModifier
@@ -300,13 +324,15 @@ primaryTitleModifier?: TextModifier
 
 **说明：** 只有primaryTitle生效时，该参数才会生效。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-primaryTitleModifier?: TextModifier--><!--Device-SubHeader-primaryTitleModifier?: TextModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -330,6 +356,8 @@ secondaryTitle?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-secondaryTitle?: ResourceStr--><!--Device-SubHeader-secondaryTitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## secondaryTitleModifier
@@ -342,13 +370,15 @@ secondaryTitleModifier?: TextModifier
 
 默认值：undefined，表示使用系统默认样式。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-secondaryTitleModifier?: TextModifier--><!--Device-SubHeader-secondaryTitleModifier?: TextModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,6 +399,8 @@ select?: SelectOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-select?: SelectOptions--><!--Device-SubHeader-select?: SelectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +424,8 @@ titleAccessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeader-titleAccessibilityText?: ResourceStr--><!--Device-SubHeader-titleAccessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleId
@@ -413,5 +447,7 @@ titleId?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeader-titleId?: string--><!--Device-SubHeader-titleId?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

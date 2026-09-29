@@ -8,6 +8,8 @@ Provides APIs for domain account management.
 
 **Since:** 18
 
+<!--Device-osAccount-class DomainAccountManager--><!--Device-osAccount-class DomainAccountManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Authenticates a domain account.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-DomainAccountManager-static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -101,6 +105,8 @@ Authenticates a specified domain account. You can specify authentication options
 **Since:** 24
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+<!--Device-DomainAccountManager-static auth(      domainAccountInfo: DomainAccountInfo,      credential: Uint8Array,      options: DomainAccountAuthOptions,      callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static auth(      domainAccountInfo: DomainAccountInfo,      credential: Uint8Array,      options: DomainAccountAuthOptions,      callback: IUserAuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -179,6 +185,8 @@ Authenticates a domain account in a pop-up window.
 - API version 11 and later: N/A
 - API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-DomainAccountManager-static authWithPopup(callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static authWithPopup(callback: IUserAuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -242,6 +250,8 @@ Authenticates a domain account in a pop-up window.
 - API version 11 and later: N/A
 - API version 10: ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-DomainAccountManager-static authWithPopup(localId: int, callback: IUserAuthCallback): void--><!--Device-DomainAccountManager-static authWithPopup(localId: int, callback: IUserAuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -300,6 +310,8 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 Obtains the business access token of a domain account. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
+
+<!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback<Uint8Array>): void--><!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback<Uint8Array>): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -363,6 +375,8 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 Obtains the business access token of a domain account. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Array>--><!--Device-DomainAccountManager-static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Array>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -430,6 +444,8 @@ Obtains information about a specified domain account. This API uses an asynchron
 
 **Required permissions:** ohos.permission.GET_DOMAIN_ACCOUNTS
 
+<!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback<DomainAccountInfo>): void--><!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback<DomainAccountInfo>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -494,6 +510,8 @@ Obtains information about a specified domain account. This API uses a promise to
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_DOMAIN_ACCOUNTS
+
+<!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccountInfo>--><!--Device-DomainAccountManager-static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccountInfo>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -561,6 +579,8 @@ Checks whether a domain account exists. This API uses an asynchronous callback t
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<boolean>): void--><!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -624,6 +644,8 @@ Checks whether a domain account exists. This API uses a promise to return the re
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+<!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>--><!--Device-DomainAccountManager-static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -690,6 +712,8 @@ Checks whether the authentication of a domain account has expired. This API uses
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<boolean>--><!--Device-DomainAccountManager-static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -747,6 +771,8 @@ Registers a domain plug-in.
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+<!--Device-DomainAccountManager-static registerPlugin(plugin: DomainPlugin): void--><!--Device-DomainAccountManager-static registerPlugin(plugin: DomainPlugin): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -811,6 +837,8 @@ Unregisters this domain plug-in.
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
+<!--Device-DomainAccountManager-static unregisterPlugin(): void--><!--Device-DomainAccountManager-static unregisterPlugin(): void-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.
@@ -852,6 +880,8 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+<!--Device-DomainAccountManager-static updateAccountToken(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<void>    ): void--><!--Device-DomainAccountManager-static updateAccountToken(      domainAccountInfo: DomainAccountInfo,      token: Uint8Array,      callback: AsyncCallback<void>    ): void-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -914,6 +944,8 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 **Since:** 10
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+<!--Device-DomainAccountManager-static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Promise<void>--><!--Device-DomainAccountManager-static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Promise<void>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

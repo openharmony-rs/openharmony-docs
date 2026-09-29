@@ -19,6 +19,8 @@ Checks whether the app has the permission to access the serial port device. When
 
 **Since:** 19
 
+<!--Device-serialManager-function hasSerialRight(portId: int): boolean--><!--Device-serialManager-function hasSerialRight(portId: int): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

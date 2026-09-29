@@ -6,9 +6,11 @@ declare interface RatingConfiguration extends CommonConfiguration<RatingConfigur
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** RatingConfiguration extends CommonConfiguration&lt;RatingConfiguration&gt;
+**继承/实现关系：** RatingConfiguration extends CommonConfiguration<RatingConfiguration>
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare interface RatingConfiguration extends CommonConfiguration<RatingConfiguration>--><!--Device-unnamed-declare interface RatingConfiguration extends CommonConfiguration<RatingConfiguration>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,6 +31,8 @@ indicator: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RatingConfiguration-indicator: boolean--><!--Device-RatingConfiguration-indicator: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ rating: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RatingConfiguration-rating: number--><!--Device-RatingConfiguration-rating: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## stars
@@ -77,6 +83,8 @@ stars: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RatingConfiguration-stars: number--><!--Device-RatingConfiguration-stars: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ stepSize: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RatingConfiguration-stepSize: number--><!--Device-RatingConfiguration-stepSize: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## triggerChange
@@ -115,5 +125,7 @@ triggerChange: Callback<number>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RatingConfiguration-triggerChange: Callback<number>--><!--Device-RatingConfiguration-triggerChange: Callback<number>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

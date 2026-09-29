@@ -20,6 +20,8 @@ The integrity check verifies the digital signature of the **AuthToken** to ensur
 
 **Required permissions:** ohos.permission.USE_USER_ACCESS_MANAGER
 
+<!--Device-userAccessCtrl-function verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promise<AuthToken>--><!--Device-userAccessCtrl-function verifyAuthToken(authToken: Uint8Array, allowableDuration: int): Promise<AuthToken>-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

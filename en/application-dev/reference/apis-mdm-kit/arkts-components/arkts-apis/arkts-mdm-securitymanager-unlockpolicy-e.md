@@ -8,6 +8,8 @@ The policy of unlock device.
 
 **Since:** 26.0.1
 
+<!--Device-securityManager-export enum UnlockPolicy--><!--Device-securityManager-export enum UnlockPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DEFAULT
@@ -21,6 +23,8 @@ Default authentication method.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnlockPolicy-DEFAULT = 0--><!--Device-UnlockPolicy-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ Use only extended authentication.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1--><!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## EXTENDED_AUTH_REQUIRED
@@ -49,5 +55,7 @@ Combines authentication using extended authentication and system authentication.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnlockPolicy-EXTENDED_AUTH_REQUIRED = 2--><!--Device-UnlockPolicy-EXTENDED_AUTH_REQUIRED = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

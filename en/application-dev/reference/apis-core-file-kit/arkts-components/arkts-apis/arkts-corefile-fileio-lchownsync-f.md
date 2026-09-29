@@ -17,6 +17,8 @@ Changes the file owner based on a file path and changes the owner of the symboli
 
 **Deprecated since:** 9
 
+<!--Device-unnamed-declare function lchownSync(path: string, uid: number, gid: number): void--><!--Device-unnamed-declare function lchownSync(path: string, uid: number, gid: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

@@ -8,6 +8,8 @@ Program access control management class, providing capabilities such as permissi
 
 **Since:** 8
 
+<!--Device-abilityAccessCtrl-interface AtManager--><!--Device-abilityAccessCtrl-interface AtManager-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Applicable to scenarios where a pre-permission check is performed before an app 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AtManager-checkAccessToken(tokenID: int, permissionName: Permissions): Promise<GrantStatus>--><!--Device-AtManager-checkAccessToken(tokenID: int, permissionName: Permissions): Promise<GrantStatus>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -92,7 +96,9 @@ Applicable to scenarios where a pre-permission check is performed before an app 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AtManager-checkAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus--><!--Device-AtManager-checkAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -148,7 +154,9 @@ Applicable to scenarios such as before determining whether to request a permissi
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-AtManager-getSelfPermissionStatus(permissionName: Permissions): PermissionStatus--><!--Device-AtManager-getSelfPermissionStatus(permissionName: Permissions): PermissionStatus-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -212,6 +220,8 @@ This API is usually used in conjunction with [on](arkts-ability-abilityaccessctr
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-AtManager-off(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback?: Callback<PermissionStateChangeInfo>    ): void--><!--Device-AtManager-off(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback?: Callback<PermissionStateChangeInfo>    ): void-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -281,6 +291,8 @@ This API is usually used in conjunction with [off](arkts-ability-abilityaccessct
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-AtManager-on(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback: Callback<PermissionStateChangeInfo>    ): void--><!--Device-AtManager-on(      type: 'selfPermissionStateChange',      permissionList: Array<Permissions>,      callback: Callback<PermissionStateChangeInfo>    ): void-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **Parameters:**
@@ -337,6 +349,8 @@ Applicable to scenarios where [manual_settings](../../../security/AccessToken/ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AtManager-openPermissionOnSetting(context: Context, permission: Permissions): Promise<SelectedResult>--><!--Device-AtManager-openPermissionOnSetting(context: Context, permission: Permissions): Promise<SelectedResult>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **Parameters:**
@@ -392,17 +406,19 @@ Applicable to scenarios that depend on system-level global switches (such as cam
 
 When an app needs to use functions such as the camera, microphone, or location that require global switch control, if the corresponding global switch is turned off, the app can bring up this dialog box to request the user to turn on the corresponding function. If the current global switch status is on, the dialog box will not be brought up.
 
-&lt;!--RP5--&gt;
+<!--RP5-->
 
 ![requestGlobalSwitch](../../../reference/apis-ability-kit/figures/requestGlobalSwitch.png)
 
-&lt;!--RP5End--&gt;
+<!--RP5End-->
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AtManager-requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>--><!--Device-AtManager-requestGlobalSwitch(context: Context, type: SwitchType): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -460,17 +476,19 @@ Applicable to scenarios where the user has already denied the permission grant i
 
 Before calling this API, the app needs to call [requestPermissionsFromUser](#requestpermissionsfromuser) first. If the user has already authorized in the first dialog box, calling this API will not bring up the authorization dialog box.
 
-&lt;!--RP4--&gt;
+<!--RP4-->
 
 ![requestPermissionOnSetting](../../../reference/apis-ability-kit/figures/requestPermissionOnSetting.png)
 
-&lt;!--RP4End--&gt;
+<!--RP4End-->
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AtManager-requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>): Promise<Array<GrantStatus>>--><!--Device-AtManager-requestPermissionOnSetting(context: Context, permissionList: Array<Permissions>): Promise<Array<GrantStatus>>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -524,23 +542,25 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void
 ```
 
-Used by &lt;!--RP1--&gt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&lt;!--RP1End--&gt; to bring up a dialog box to request [user authorization](../../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses an asynchronous callback to return the result.
+Used by <!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End--> to bring up a dialog box to request [user authorization](../../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses an asynchronous callback to return the result.
 
 Applicable to scenarios where an app proactively applies for [user_grant](../../../security/AccessToken/app-permission-mgmt-overview.md#user_grant-user-authorization) permissions from the user before accessing protected resources for the first time.
 
 If the user denies authorization, the authorization dialog box cannot be brought up again through this API. The developer can guide the user to go to the system settings interface for manual authorization, or call [requestPermissionOnSetting](#requestpermissiononsetting) to bring up the permission settings dialog box to guide the user to complete authorization.
 
-&lt;!--RP3--&gt;
+<!--RP3-->
 
 ![requestPermissionsFromUser](../../../reference/apis-ability-kit/figures/requestPermissionsFromUser.png)
 
-&lt;!--RP3End--&gt;
+<!--RP3End-->
 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void--><!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>, requestCallback: AsyncCallback<PermissionRequestResult>) : void-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -548,7 +568,7 @@ If the user denies authorization, the authorization dialog box cannot be brought
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-t.md) | Yes | Context of the &lt;!--RP1--&gt;UIAbility&lt;!--RP1End--&gt; requesting the permission.<br>If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
+| context | [Context](arkts-ability-context-t.md) | Yes | Context of the<!--RP1-->UIAbility<!--RP1End--> requesting the permission. <br>If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
 | permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names. It is recommended to pass in only the sensitive permissions necessary for the current business scenario, avoiding requesting too many permissions at once.<br>The minimum length is 1. Value constraint: The permission name can contain a maximum of 256 characters. |
 | requestCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-permissionrequestresult-t.md)&gt; | Yes | Callback function. After the call is complete, error information is returned through **err**, and the permission request result object is returned through **data**. The developer can determine whether the user has authorized, whether a dialog box has been displayed, and the reason for failure based on the permission request result. |
 
@@ -596,7 +616,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
 requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>
 ```
 
-Used by &lt;!--RP1--&gt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&lt;!--RP1End--&gt; to bring up a dialog box to request [user authorization](../../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses a promise to return the result.
+Used by <!--RP1-->[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)<!--RP1End--> to bring up a dialog box to request [user authorization](../../../security/AccessToken/request-user-authorization.md), and returns the authorization result of the permissions requested this time. This API uses a promise to return the result.
 
 Applicable to scenarios where an app proactively applies for user_grant permissions from the user before accessing protected resources for the first time.
 
@@ -606,7 +626,9 @@ If the user denies authorization, the authorization dialog box cannot be brought
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>--><!--Device-AtManager-requestPermissionsFromUser(context: Context, permissionList: Array<Permissions>) : Promise<PermissionRequestResult>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -614,7 +636,7 @@ If the user denies authorization, the authorization dialog box cannot be brought
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-t.md) | Yes | Context of the &lt;!--RP1--&gt;UIAbility&lt;!--RP1End--&gt; requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
+| context | [Context](arkts-ability-context-t.md) | Yes | Context of the<!--RP1-->UIAbility<!--RP1End--> requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
 | permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names. This array cannot be empty. It is recommended to pass in only the sensitive permissions necessary for the current business scenario and avoid requesting too many permissions at once.<br>The minimum length is 1. Value constraint: The length of a permission name cannot exceed 256 characters. |
 
 **Return value:**
@@ -673,6 +695,8 @@ Applicable to scenarios where a pre-permission check is performed before an app 
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-verifyAccessToken(tokenID: int, permissionName: Permissions): Promise<GrantStatus>--><!--Device-AtManager-verifyAccessToken(tokenID: int, permissionName: Permissions): Promise<GrantStatus>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -733,6 +757,8 @@ Verifies whether an app has been granted the specified permission. After the cal
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-AtManager-verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>--><!--Device-AtManager-verifyAccessToken(tokenID: number, permissionName: string): Promise<GrantStatus>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **Parameters:**
@@ -785,6 +811,8 @@ It is recommended to use [checkAccessTokenSync](#checkaccesstokensync) instead.
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AtManager-verifyAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus--><!--Device-AtManager-verifyAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

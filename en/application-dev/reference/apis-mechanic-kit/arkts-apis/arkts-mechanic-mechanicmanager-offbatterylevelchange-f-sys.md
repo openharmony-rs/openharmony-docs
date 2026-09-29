@@ -18,6 +18,8 @@ Unsubscribes to device battery level change information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-mechanicManager-function offBatteryLevelChange(mechId: int, callback?: Callback<BatteryLevelInfo>): void--><!--Device-mechanicManager-function offBatteryLevelChange(mechId: int, callback?: Callback<BatteryLevelInfo>): void-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.

@@ -12,6 +12,8 @@ Represents the configuration of a **KVManager** instance, including the bundle n
 
 **Substitutes:** KVManagerConfig
 
+<!--Device-distributedData-interface KVManagerConfig--><!--Device-distributedData-interface KVManagerConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Bundle name of the caller.
 
 **Substitutes:** bundleName
 
+<!--Device-KVManagerConfig-bundleName: string--><!--Device-KVManagerConfig-bundleName: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## userInfo
@@ -50,5 +54,7 @@ User information.
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-KVManagerConfig-userInfo: UserInfo--><!--Device-KVManagerConfig-userInfo: UserInfo-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

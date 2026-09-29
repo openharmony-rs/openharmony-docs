@@ -8,6 +8,8 @@ class of print extension ability.
 
 **Since:** 14
 
+<!--Device-unnamed-declare class PrintExtensionAbility--><!--Device-unnamed-declare class PrintExtensionAbility-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Called once to remove the print job has been started.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-public onCancelPrintJob(jobInfo: print.PrintJob): void--><!--Device-PrintExtensionAbility-public onCancelPrintJob(jobInfo: print.PrintJob): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -67,6 +71,8 @@ Called once to connect to the specific printer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PrintExtensionAbility-onConnectPrinter(printerId: int): void--><!--Device-PrintExtensionAbility-onConnectPrinter(printerId: int): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -99,6 +105,8 @@ Called once to initialize the extensionAbility.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-onCreate(want: Want): void--><!--Device-PrintExtensionAbility-onCreate(want: Want): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -134,6 +142,8 @@ Called once to finalize the extensionAbility.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PrintExtensionAbility-onDestroy(): void--><!--Device-PrintExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Examples**
@@ -159,6 +169,8 @@ Called once to disconnect to the specific printer.
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-onDisconnectPrinter(printerId: int): void--><!--Device-PrintExtensionAbility-onDisconnectPrinter(printerId: int): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -192,6 +204,8 @@ Called once to request the printer's capabilities.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-public onRequestPrinterCapability(printerId: int): print.PrinterCapability--><!--Device-PrintExtensionAbility-public onRequestPrinterCapability(printerId: int): print.PrinterCapability-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -244,6 +258,8 @@ Called once to start to discover the printers connected with the device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PrintExtensionAbility-onStartDiscoverPrinter(): void--><!--Device-PrintExtensionAbility-onStartDiscoverPrinter(): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Examples**
@@ -270,6 +286,8 @@ Called once to start print job.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-public onStartPrintJob(jobInfo: print.PrintJob): void--><!--Device-PrintExtensionAbility-public onStartPrintJob(jobInfo: print.PrintJob): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -310,6 +328,8 @@ Called once to stop discovering the printer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PrintExtensionAbility-onStopDiscoverPrinter(): void--><!--Device-PrintExtensionAbility-onStopDiscoverPrinter(): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Examples**
@@ -338,5 +358,7 @@ Indicates print service extension ability context.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintExtensionAbility-context: PrintExtensionContext--><!--Device-PrintExtensionAbility-context: PrintExtensionContext-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

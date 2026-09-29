@@ -20,6 +20,8 @@ Sets the state of a switch. This API can enable or disable NearLink, Bluetooth, 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void--><!--Device-deviceSettings-function setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

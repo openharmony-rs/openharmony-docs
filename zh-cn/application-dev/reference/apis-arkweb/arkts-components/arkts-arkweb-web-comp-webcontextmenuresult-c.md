@@ -12,6 +12,8 @@ WebContextMenuResult是ArkWeb组件中用于处理上下文菜单（长按页面
 
 **起始版本：** 9
 
+<!--Device-unnamed-declare class WebContextMenuResult--><!--Device-unnamed-declare class WebContextMenuResult-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## closeContextMenu
@@ -36,6 +38,8 @@ closeContextMenu(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebContextMenuResult-closeContextMenu(): void--><!--Device-WebContextMenuResult-closeContextMenu(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## constructor
@@ -49,6 +53,8 @@ WebContextMenuResult的构造函数。
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebContextMenuResult-constructor()--><!--Device-WebContextMenuResult-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -68,6 +74,8 @@ copy(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebContextMenuResult-copy(): void--><!--Device-WebContextMenuResult-copy(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## copyImage
@@ -86,6 +94,8 @@ copyImage(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebContextMenuResult-copyImage(): void--><!--Device-WebContextMenuResult-copyImage(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## cut
@@ -103,6 +113,8 @@ cut(): void
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebContextMenuResult-cut(): void--><!--Device-WebContextMenuResult-cut(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -125,6 +137,8 @@ paste(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebContextMenuResult-paste(): void--><!--Device-WebContextMenuResult-paste(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## pasteAndMatchStyle
@@ -144,6 +158,8 @@ pasteAndMatchStyle(): void
 
 **起始版本：** 20
 
+<!--Device-WebContextMenuResult-pasteAndMatchStyle(): void--><!--Device-WebContextMenuResult-pasteAndMatchStyle(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## redo
@@ -160,6 +176,8 @@ redo(): void
 
 **起始版本：** 20
 
+<!--Device-WebContextMenuResult-redo(): void--><!--Device-WebContextMenuResult-redo(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## requestPasswordAutoFill
@@ -175,6 +193,8 @@ requestPasswordAutoFill(): void
 > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 23
+
+<!--Device-WebContextMenuResult-requestPasswordAutoFill(): void--><!--Device-WebContextMenuResult-requestPasswordAutoFill(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -194,6 +214,8 @@ saveImage(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WebContextMenuResult-saveImage(): void--><!--Device-WebContextMenuResult-saveImage(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## selectAll
@@ -212,6 +234,8 @@ selectAll(): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebContextMenuResult-selectAll(): void--><!--Device-WebContextMenuResult-selectAll(): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## undo
@@ -227,5 +251,7 @@ undo(): void
 > 完成操作后，应调用[closeContextMenu](#closecontextmenu)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **起始版本：** 20
+
+<!--Device-WebContextMenuResult-undo(): void--><!--Device-WebContextMenuResult-undo(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

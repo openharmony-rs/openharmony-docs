@@ -18,6 +18,8 @@ Obtains the browser policy by app ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function getPoliciesSync(admin: Want, appId: string): string--><!--Device-browser-function getPoliciesSync(admin: Want, appId: string): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -77,6 +79,8 @@ Obtains the policy set for a specified browser based on **appid**. This API is a
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-browser-function getPoliciesSync(admin: Want | null, appId: string): string--><!--Device-browser-function getPoliciesSync(admin: Want | null, appId: string): string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

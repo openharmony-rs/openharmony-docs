@@ -16,6 +16,8 @@ Indicates whether the SIM card in a specified slot is a specified operator.
 
 **Since:** 11
 
+<!--Device-sim-function isOperatorSimCard(slotId: int, operator: OperatorSimCard): boolean--><!--Device-sim-function isOperatorSimCard(slotId: int, operator: OperatorSimCard): boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.

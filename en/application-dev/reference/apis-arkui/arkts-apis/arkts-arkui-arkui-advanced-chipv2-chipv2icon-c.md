@@ -10,6 +10,8 @@ Defines the base class of icons.
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export abstract class ChipV2Icon--><!--Device-unnamed-export abstract class ChipV2Icon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,5 +33,7 @@ A constructor used to create a **ChipV2Icon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2Icon-constructor()--><!--Device-ChipV2Icon-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

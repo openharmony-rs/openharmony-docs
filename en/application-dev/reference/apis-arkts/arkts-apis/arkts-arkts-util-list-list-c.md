@@ -8,6 +8,8 @@ List is implemented based on the singly linked list. Each node has a reference p
 
 **Since:** 8
 
+<!--Device-unnamed-declare class List<T>--><!--Device-unnamed-declare class List<T>-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -28,6 +30,8 @@ returns an iterator.Each item of the iterator is a Javascript Object
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-List-[Symbol.iterator](): IterableIterator<T>--><!--Device-List-[Symbol.iterator](): IterableIterator<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -84,7 +88,9 @@ Adds an element at the end of this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-add(element: T): boolean--><!--Device-List-add(element: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -134,7 +140,9 @@ Clears this List and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-clear(): void--><!--Device-List-clear(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -167,7 +175,9 @@ A constructor used to create a **List** instance.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-constructor()--><!--Device-List-constructor()-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -193,7 +203,9 @@ Converts this List into an array and returns the array.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-convertToArray(): Array<T>--><!--Device-List-convertToArray(): Array<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -232,6 +244,8 @@ Compares whether a specified object is equal to this List.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-List-equal(obj: Object): boolean--><!--Device-List-equal(obj: Object): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -280,6 +294,8 @@ Uses a callback to traverse each element in the **List** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-List-forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?: Object): void--><!--Device-List-forEach(callbackFn: (value: T, index?: number, List?: List<T>) => void, thisArg?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -322,7 +338,9 @@ Obtains the element at the specified position in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-get(index: int): T--><!--Device-List-get(index: int): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -370,7 +388,9 @@ Obtains the first element in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-getFirst(): T--><!--Device-List-getFirst(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -409,7 +429,9 @@ Obtains the index of the first occurrence of the specified element in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-getIndexOf(element: T): int--><!--Device-List-getIndexOf(element: T): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -456,7 +478,9 @@ Obtains the last element in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-getLast(): T--><!--Device-List-getLast(): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -495,7 +519,9 @@ Obtains the index of the last occurrence of the specified element in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-getLastIndexOf(element: T): int--><!--Device-List-getLastIndexOf(element: T): int-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -542,7 +568,9 @@ Obtains elements within a range in this List, including the element at the start
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-getSubList(fromIndex: int, toIndex: int): List<T>--><!--Device-List-getSubList(fromIndex: int, toIndex: int): List<T>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -588,7 +616,9 @@ Checks whether this List has the specified element.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-has(element: T): boolean--><!--Device-List-has(element: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -629,7 +659,9 @@ Inserts an element at the specified position in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-insert(element: T, index: int): void--><!--Device-List-insert(element: T, index: int): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -667,7 +699,9 @@ Checks whether this List is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-isEmpty(): boolean--><!--Device-List-isEmpty(): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -705,7 +739,9 @@ Removes the first occurrence of the specified element from this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-remove(element: T): boolean--><!--Device-List-remove(element: T): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -750,6 +786,8 @@ Searches for an element based on its index and then removes it.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-List-removeByIndex(index: number): T--><!--Device-List-removeByIndex(index: number): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -797,6 +835,8 @@ Replaces all elements in this List with new elements, and returns the new ones.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-List-replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, thisArg?: Object): void--><!--Device-List-replaceAllElements(callbackFn: (value: T, index?: number, list?: List<T>) => T, thisArg?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -841,7 +881,9 @@ Replaces an element at the specified position in this List with a given element.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-set(index: int, element: T): T--><!--Device-List-set(index: int, element: T): T-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -887,7 +929,9 @@ Sorts elements in this List.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-List-sort(comparator: ListComparatorFn<T>): void--><!--Device-List-sort(comparator: ListComparatorFn<T>): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -931,5 +975,7 @@ Number of elements in a List.
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-List-length: number--><!--Device-List-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang

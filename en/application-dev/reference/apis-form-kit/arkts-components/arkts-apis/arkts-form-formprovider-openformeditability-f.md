@@ -16,6 +16,8 @@ Opens the widget editing page.
 
 **Since:** 18
 
+<!--Device-formProvider-function openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): void--><!--Device-formProvider-function openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **Parameters:**

@@ -8,6 +8,8 @@ Defines the information carried when the system recording controller state chang
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface SystemRecordControllerChangeInfo--><!--Device-audio-interface SystemRecordControllerChangeInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Whether the system recording controller panel is enabled. The value true means t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SystemRecordControllerChangeInfo-enabled: boolean--><!--Device-SystemRecordControllerChangeInfo-enabled: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -50,6 +54,8 @@ The expected audio source type configured by the application when enabling the r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SystemRecordControllerChangeInfo-sourceType?: SourceType--><!--Device-SystemRecordControllerChangeInfo-sourceType?: SourceType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -67,6 +73,8 @@ The UID of the application that triggers the system recording controller state c
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SystemRecordControllerChangeInfo-uid?: int--><!--Device-SystemRecordControllerChangeInfo-uid?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

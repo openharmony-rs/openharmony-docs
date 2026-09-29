@@ -4,6 +4,8 @@ The **secureElement** module provides APIs for managing secure elements (SEs). S
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace omapi--><!--Device-unnamed-declare namespace omapi-End-->
+
 **System capability:** SystemCapability.Communication.SecureElement
 
 ## Modules to Import
@@ -19,7 +21,7 @@ import { omapi } from '@kit.ConnectivityKit';
 | Name | Description |
 | --- | --- |
 | [createService](arkts-connectivity-omapi-createservice-f.md) | Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time- consuming. Therefore, only asynchronous APIs are provided. This API uses a promise to return the result. |
-| [newSEService](arkts-connectivity-omapi-newseservice-f.md#newseserviceservicestate) | Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time- consuming. Therefore, this API supports only the asynchronous mode. This API uses an asynchronous callback to return the result. |
+| [newSEService](arkts-connectivity-omapi-newseservice-f.md) | Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time- consuming. Therefore, this API supports only the asynchronous mode. This API uses an asynchronous callback to return the result. |
 | [off](arkts-connectivity-omapi-off-f.md#offstatechanged) | Disables listening for service status change events. |
 | [on](arkts-connectivity-omapi-on-f.md#onstatechanged) | Enables listening for service status change events. |
 

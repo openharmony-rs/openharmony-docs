@@ -22,6 +22,8 @@ Freezing operations include suspending the target application, and managing soft
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function addFreezeExemptedApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void--><!--Device-applicationManager-function addFreezeExemptedApps(admin: Want, applicationInstances: Array<common.ApplicationInstance>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

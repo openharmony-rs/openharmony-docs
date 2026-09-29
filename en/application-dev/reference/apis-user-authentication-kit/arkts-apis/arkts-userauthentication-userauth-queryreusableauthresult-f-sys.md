@@ -18,6 +18,8 @@ Queries whether there is any reusable identity authentication result. This API i
 
 **Required permissions:** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
+<!--Device-userAuth-function queryReusableAuthResult(authParam: AuthParam): Uint8Array--><!--Device-userAuth-function queryReusableAuthResult(authParam: AuthParam): Uint8Array-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ Unsubscribes from application shortcut key change events. This API uses an async
 
 **Since:** 14
 
+<!--Device-inputConsumer-function off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback<HotkeyOptions>): void--><!--Device-inputConsumer-function off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback<HotkeyOptions>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Parameters:**
@@ -111,6 +113,8 @@ function off(type: 'keyPressed', callback?: Callback<KeyEvent>): void
 Unsubscribes from key press events. This API uses an asynchronous callback to return the result. If the API call is successful, the system's default response to the key event will be resumed; that is, system-level actions, such as volume adjustment, will be triggered normally.
 
 **Since:** 16
+
+<!--Device-inputConsumer-function off(type: 'keyPressed', callback?: Callback<KeyEvent>): void--><!--Device-inputConsumer-function off(type: 'keyPressed', callback?: Callback<KeyEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 

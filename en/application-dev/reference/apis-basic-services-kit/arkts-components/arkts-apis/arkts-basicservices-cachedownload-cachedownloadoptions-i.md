@@ -8,6 +8,8 @@ Provides configuration options for download and cache, including HTTP options, t
 
 **Since:** 18
 
+<!--Device-cacheDownload-interface CacheDownloadOptions--><!--Device-cacheDownload-interface CacheDownloadOptions-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Cache update strategies, including **FORCE** or **LAZY**. The **FORCE** policy i
 
 **Since:** 23
 
+<!--Device-CacheDownloadOptions-cacheStrategy?: CacheStrategy--><!--Device-CacheDownloadOptions-cacheStrategy?: CacheStrategy-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## caPath
@@ -42,6 +46,8 @@ CA certificate path. Currently, only the .pem certificate is supported. The CA c
 
 **Since:** 21
 
+<!--Device-CacheDownloadOptions-caPath?: string--><!--Device-CacheDownloadOptions-caPath?: string-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## headers
@@ -55,6 +61,8 @@ Request header used by a download task during HTTP transfer. The default value i
 **Type:** Record&lt;string, string&gt;
 
 **Since:** 18
+
+<!--Device-CacheDownloadOptions-headers?: Record<string, string>--><!--Device-CacheDownloadOptions-headers?: Record<string, string>-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -72,6 +80,8 @@ Task retry configuration.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CacheDownloadOptions-retry?: RetryOptions--><!--Device-CacheDownloadOptions-retry?: RetryOptions-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## sslType
@@ -85,6 +95,8 @@ Secure communication protocol, such as TSL or TLCP. TLS is used by default. Curr
 **Type:** [SslType](arkts-basicservices-cachedownload-ssltype-e.md)
 
 **Since:** 21
+
+<!--Device-CacheDownloadOptions-sslType?: SslType--><!--Device-CacheDownloadOptions-sslType?: SslType-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -101,5 +113,7 @@ Task timeout configuration.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CacheDownloadOptions-timeout?: TimeoutOptions--><!--Device-CacheDownloadOptions-timeout?: TimeoutOptions-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

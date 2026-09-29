@@ -1,10 +1,12 @@
-# @ohos.multimodalAwareness.carAwareness
+# @ohos.multimodalAwareness.carAwareness(Car awareness)
 
 This module provides the capability to use car awareness
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-unnamed-declare namespace carAwareness--><!--Device-unnamed-declare namespace carAwareness-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 

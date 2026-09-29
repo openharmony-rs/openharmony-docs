@@ -8,6 +8,8 @@ Defines an authenticator.
 
 **Since:** 8
 
+<!--Device-appAccount-class Authenticator--><!--Device-appAccount-class Authenticator-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 ## Modules to Import
@@ -15,42 +17,6 @@ Defines an authenticator.
 ```TypeScript
 import { appAccount } from '@kit.BasicServicesKit';
 ```
-
-## addAccountImplicitly
-
-```TypeScript
-addAccountImplicitly(
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void
-```
-
-Adds an application account implicitly based on the specified authentication type and options. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [createAccountImplicitly](#createaccountimplicitly)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| callerBundleName | string | Yes | Bundle name of the authentication requester. |
-| options | { [key: string]: any } | Yes | Options for the authentication. |
-| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
 
 ## auth
 
@@ -61,6 +27,8 @@ auth(name: string, authType: string, options: Record<string, Object>, callback: 
 Authenticates an application account. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-Authenticator-auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void--><!--Device-Authenticator-auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -73,44 +41,6 @@ Authenticates an application account. This API uses an asynchronous callback to 
 | options | Record&lt;string, Object&gt; | Yes | Options for the authentication. |
 | callback | [AuthCallback](arkts-basicservices-appaccount-authcallback-i.md) | Yes | Authenticator callback used to return the result. |
 
-## authenticate
-
-```TypeScript
-authenticate(
-      name: string,
-      authType: string,
-      callerBundleName: string,
-      options: { [key: string]: any },
-      callback: AuthenticatorCallback
-    ): void
-```
-
-Authenticates an application account to obtain the OAuth token. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [auth](#auth)
-> instead.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [auth](#auth)(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback)
-
-**System capability:** SystemCapability.Account.AppAccount
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
-| callerBundleName | string | Yes | Bundle name of the authentication requester. |
-| options | { [key: string]: any } | Yes | Options for the authentication. |
-| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
-
 ## checkAccountLabels
 
 ```TypeScript
@@ -120,6 +50,8 @@ checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback):
 Checks the account labels. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-Authenticator-checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback): void--><!--Device-Authenticator-checkAccountLabels(name: string, labels: Array<string>, callback: AuthCallback): void-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -145,6 +77,8 @@ Checks whether an application account can be deleted. This API uses an asynchron
 
 **Since:** 9
 
+<!--Device-Authenticator-checkAccountRemovable(name: string, callback: AuthCallback): void--><!--Device-Authenticator-checkAccountRemovable(name: string, callback: AuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -168,6 +102,8 @@ Creates an application account implicitly based on the specified account owner. 
 
 **Since:** 9
 
+<!--Device-Authenticator-createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthCallback): void--><!--Device-Authenticator-createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -186,6 +122,8 @@ getRemoteObject(): rpc.RemoteObject
 Obtains the remote object of an authenticator. This API cannot be overloaded.
 
 **Since:** 9
+
+<!--Device-Authenticator-getRemoteObject(): rpc.RemoteObject--><!--Device-Authenticator-getRemoteObject(): rpc.RemoteObject-End-->
 
 **System capability:** SystemCapability.Account.AppAccount
 
@@ -254,6 +192,8 @@ Sets the authenticator properties. This API uses an asynchronous callback to ret
 
 **Since:** 9
 
+<!--Device-Authenticator-setProperties(options: SetPropertiesOptions, callback: AuthCallback): void--><!--Device-Authenticator-setProperties(options: SetPropertiesOptions, callback: AuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -277,6 +217,8 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 **Since:** 9
 
+<!--Device-Authenticator-verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthCallback): void--><!--Device-Authenticator-verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthCallback): void-End-->
+
 **System capability:** SystemCapability.Account.AppAccount
 
 **Parameters:**
@@ -290,3 +232,81 @@ Verifies the credential of an application account. This API uses an asynchronous
 **Examples**
 
 This API must be used together with the getRemoteObject API. For details, see the example of the [getRemoteObject](#getremoteobject) API.
+
+## addAccountImplicitly
+
+```TypeScript
+addAccountImplicitly(
+      authType: string,
+      callerBundleName: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void
+```
+
+Adds an application account implicitly based on the specified authentication type and options. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [createAccountImplicitly](#createaccountimplicitly)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(options: CreateAccountImplicitlyOptions, callback: AuthCallback)
+
+<!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-addAccountImplicitly(      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| callerBundleName | string | Yes | Bundle name of the authentication requester. |
+| options | { [key: string]: any } | Yes | Options for the authentication. |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |
+
+## authenticate
+
+```TypeScript
+authenticate(
+      name: string,
+      authType: string,
+      callerBundleName: string,
+      options: { [key: string]: any },
+      callback: AuthenticatorCallback
+    ): void
+```
+
+Authenticates an application account to obtain the OAuth token. This API uses an asynchronous callback to return the result.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [auth](#auth)
+> instead.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [auth](#auth)(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback)
+
+<!--Device-Authenticator-authenticate(      name: string,      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-Authenticator-authenticate(      name: string,      authType: string,      callerBundleName: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
+| authType | string | Yes | Authentication type. The value is user-defined and contains a maximum of 1024 characters. |
+| callerBundleName | string | Yes | Bundle name of the authentication requester. |
+| options | { [key: string]: any } | Yes | Options for the authentication. |
+| callback | [AuthenticatorCallback](arkts-basicservices-appaccount-authenticatorcallback-i.md) | Yes | Authenticator callback used to return the result. |

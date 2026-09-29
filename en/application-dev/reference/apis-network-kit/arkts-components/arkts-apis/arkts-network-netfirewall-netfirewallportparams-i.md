@@ -8,6 +8,8 @@ Defines the port parameters of a firewall rule.
 
 **Since:** 15
 
+<!--Device-netFirewall-interface NetFirewallPortParams--><!--Device-netFirewall-interface NetFirewallPortParams-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## Modules to Import
@@ -28,6 +30,8 @@ End port number.
 
 **Since:** 15
 
+<!--Device-NetFirewallPortParams-endPort: int--><!--Device-NetFirewallPortParams-endPort: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## startPort
@@ -41,5 +45,7 @@ Start port number.
 **Type:** number
 
 **Since:** 15
+
+<!--Device-NetFirewallPortParams-startPort: int--><!--Device-NetFirewallPortParams-startPort: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

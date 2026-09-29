@@ -8,6 +8,8 @@ Represents information about a participant of device-cloud sharing.
 
 **Since:** 11
 
+<!--Device-sharing-interface Participant--><!--Device-sharing-interface Participant-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Additional information, such as the verification code used for participant ident
 
 **Since:** 11
 
+<!--Device-Participant-attachInfo?: string--><!--Device-Participant-attachInfo?: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ ID of the participant.
 **Type:** string
 
 **Since:** 11
+
+<!--Device-Participant-identity: string--><!--Device-Participant-identity: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -62,6 +68,8 @@ Permissions on the shared data. The Privilege defaults are used by default.
 
 **Since:** 11
 
+<!--Device-Participant-privilege?: Privilege--><!--Device-Participant-privilege?: Privilege-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Role of the participant, inviter or invitee. The default value is undefined.
 
 **Since:** 11
 
+<!--Device-Participant-role?: Role--><!--Device-Participant-role?: Role-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ State of the device-cloud sharing. The default value is undefined.
 **Type:** [State](arkts-arkdata-sharing-state-e-sys.md)
 
 **Since:** 11
+
+<!--Device-Participant-state?: State--><!--Device-Participant-state?: State-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

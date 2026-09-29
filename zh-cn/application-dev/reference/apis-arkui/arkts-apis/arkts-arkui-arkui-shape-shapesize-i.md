@@ -8,6 +8,8 @@ interface ShapeSize
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface ShapeSize--><!--Device-unnamed-interface ShapeSize-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -44,6 +46,8 @@ height?: number | string
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ShapeSize-height?: number | string--><!--Device-ShapeSize-height?: number | string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -73,5 +77,7 @@ width?: number | string
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ShapeSize-width?: number | string--><!--Device-ShapeSize-width?: number | string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

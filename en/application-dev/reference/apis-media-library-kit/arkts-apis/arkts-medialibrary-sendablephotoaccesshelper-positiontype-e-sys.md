@@ -8,6 +8,8 @@ Photo asset position
 
 **Since:** 14
 
+<!--Device-sendablePhotoAccessHelper-enum PositionType--><!--Device-sendablePhotoAccessHelper-enum PositionType-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -22,6 +24,8 @@ Asset exists only in local device
 
 **Since:** 14
 
+<!--Device-PositionType-LOCAL = 1 << 0--><!--Device-PositionType-LOCAL = 1 << 0-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -35,6 +39,8 @@ CLOUD = 1 << 1
 Asset exists only in cloud
 
 **Since:** 14
+
+<!--Device-PositionType-CLOUD = 1 << 1--><!--Device-PositionType-CLOUD = 1 << 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

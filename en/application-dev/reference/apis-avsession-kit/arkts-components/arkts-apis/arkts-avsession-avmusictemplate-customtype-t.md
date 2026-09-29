@@ -12,6 +12,8 @@ Custom tab type USER_INFO & TAB, COMPILATION, SETTINGS.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-avMusicTemplate-type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'--><!--Device-avMusicTemplate-type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 | Type | Description |

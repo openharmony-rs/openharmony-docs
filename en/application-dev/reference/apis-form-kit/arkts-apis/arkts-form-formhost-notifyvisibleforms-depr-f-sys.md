@@ -21,6 +21,8 @@ Instructs the widget framework to make a widget visible. After this API is calle
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function notifyVisibleForms(formIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-formHost-function notifyVisibleForms(formIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -50,6 +52,8 @@ Instructs the widget framework to make a widget visible. After this API is calle
 **Substitutes:** [notifyVisibleForms](arkts-form-formhost-notifyvisibleforms-f-sys.md)
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function notifyVisibleForms(formIds: Array<string>): Promise<void>--><!--Device-formHost-function notifyVisibleForms(formIds: Array<string>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

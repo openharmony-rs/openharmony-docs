@@ -6,9 +6,11 @@ declare interface DataPanelConfiguration extends CommonConfiguration<DataPanelCo
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** DataPanelConfiguration extends CommonConfiguration&lt;DataPanelConfiguration&gt;
+**继承/实现关系：** DataPanelConfiguration extends CommonConfiguration<DataPanelConfiguration>
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare interface DataPanelConfiguration extends CommonConfiguration<DataPanelConfiguration>--><!--Device-unnamed-declare interface DataPanelConfiguration extends CommonConfiguration<DataPanelConfiguration>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,6 +36,8 @@ DataPanel显示的最大值。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DataPanelConfiguration-maxValue: number--><!--Device-DataPanelConfiguration-maxValue: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## values
@@ -57,5 +61,7 @@ values: number[]
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DataPanelConfiguration-values: number[]--><!--Device-DataPanelConfiguration-values: number[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

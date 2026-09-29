@@ -13,7 +13,7 @@ The **Image** component is usually used to display images in applications. It su
 > - When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused state. For instructions on how to set focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a- component-is-focusable).By default, the **Image** component is not focusable. To enable it to gain focus, set both the [focusable](arkts-arkui-common-comp-commonmethod-c.md#focusable) and [focusOnTouch](arkts-arkui-common-comp-commonmethod-c.md#focusontouch) attributes to
 > **true**.
 > 
-> - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](arkts-arkui-common-comp.md#common).
+> - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](arkts-arkui-common-comp.md).
 > 
 > - For animated images, animation playback is disabled by default and depends on the visibility of the **Image**component. When the component is visible, the animation is started through the callback. When the component is invisible, the animation is stopped. The visibility status of the **Image** component can be identified through the
 > 
@@ -26,6 +26,8 @@ The **Image** component is usually used to display images in applications. It su
 **Inheritance/Implementation:** ImageAttribute extends CommonMethod<ImageAttribute>
 
 **Since:** 7
+
+<!--Device-unnamed-declare class ImageAttribute extends CommonMethod<ImageAttribute>--><!--Device-unnamed-declare class ImageAttribute extends CommonMethod<ImageAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +50,8 @@ This attribute does not take effect when the parameter type of the component is 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-alt(value: string | Resource | PixelMap): ImageAttribute--><!--Device-ImageAttribute-alt(value: string | Resource | PixelMap): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +89,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
+<!--Device-ImageAttribute-alt(src: ResourceStr | PixelMap | ImageAlt): ImageAttribute--><!--Device-ImageAttribute-alt(src: ResourceStr | PixelMap | ImageAlt): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -114,6 +120,8 @@ Sets whether to enable anti-aliasing for the edges of a pixel map image. If the 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ImageAttribute-antialiased(isAntialiased: Optional<boolean>): ImageAttribute--><!--Device-ImageAttribute-antialiased(isAntialiased: Optional<boolean>): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +155,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageAttribute-autoResize(value: boolean): ImageAttribute--><!--Device-ImageAttribute-autoResize(value: boolean): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -170,6 +180,8 @@ When this attribute is set, [renderMode](#rendermode) is not effective.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-colorFilter(value: ColorFilter | DrawingColorFilter): ImageAttribute--><!--Device-ImageAttribute-colorFilter(value: ColorFilter | DrawingColorFilter): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,6 +211,8 @@ Sets the color filter for the image.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-ImageAttribute-colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor): ImageAttribute--><!--Device-ImageAttribute-colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -220,6 +234,8 @@ Triggers transition animations when the image content changes.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 21.
+
+<!--Device-ImageAttribute-contentTransition(transition: ContentTransitionEffect): ImageAttribute--><!--Device-ImageAttribute-contentTransition(transition: ContentTransitionEffect): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,6 +263,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageAttribute-copyOption(value: CopyOptions): ImageAttribute--><!--Device-ImageAttribute-copyOption(value: CopyOptions): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -268,6 +286,8 @@ Specifies whether the image is draggable.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ImageAttribute-draggable(value: boolean): ImageAttribute--><!--Device-ImageAttribute-draggable(value: boolean): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -292,6 +312,8 @@ Sets the dynamic range of the image to be displayed. This attribute is not appli
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageAttribute-dynamicRangeMode(value: DynamicRangeMode): ImageAttribute--><!--Device-ImageAttribute-dynamicRangeMode(value: DynamicRangeMode): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -331,6 +353,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttribute-enableAnalyzer(enable: boolean): ImageAttribute--><!--Device-ImageAttribute-enableAnalyzer(enable: boolean): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -356,6 +380,8 @@ This attribute does not take effect when the parameter type of the component is 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-fillColor(value: ResourceColor): ImageAttribute--><!--Device-ImageAttribute-fillColor(value: ResourceColor): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -383,6 +409,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ImageAttribute-fillColor(color: ResourceColor | ColorContent): ImageAttribute--><!--Device-ImageAttribute-fillColor(color: ResourceColor | ColorContent): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -408,6 +436,8 @@ This attribute does not take effect when the parameter type of the component is 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ImageAttribute-fillColor(color: ResourceColor | ColorContent | ColorMetrics): ImageAttribute--><!--Device-ImageAttribute-fillColor(color: ResourceColor | ColorContent | ColorMetrics): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -437,6 +467,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageAttribute-fitOriginalSize(value: boolean): ImageAttribute--><!--Device-ImageAttribute-fitOriginalSize(value: boolean): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -462,6 +494,8 @@ If this attribute and the [dynamicRangeMode](#dynamicrangemode) attribute are bo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ImageAttribute-hdrBrightness(brightness: number): ImageAttribute--><!--Device-ImageAttribute-hdrBrightness(brightness: number): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -489,6 +523,8 @@ This attribute is strongly associated with [objectFit](#objectfit) and takes eff
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-ImageAttribute-imageMatrix(matrix: ImageMatrix): ImageAttribute--><!--Device-ImageAttribute-imageMatrix(matrix: ImageMatrix): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -514,6 +550,8 @@ This attribute does not take effect when the parameter type of the component is 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-interpolation(value: ImageInterpolation): ImageAttribute--><!--Device-ImageAttribute-interpolation(value: ImageInterpolation): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -541,6 +579,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageAttribute-matchTextDirection(value: boolean): ImageAttribute--><!--Device-ImageAttribute-matchTextDirection(value: boolean): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -564,6 +604,8 @@ Sets how the image is resized to fit its container. If the attribute is not set,
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-objectFit(value: ImageFit): ImageAttribute--><!--Device-ImageAttribute-objectFit(value: ImageFit): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -590,6 +632,8 @@ This attribute does not take effect when the parameter type of the component is 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-objectRepeat(value: ImageRepeat): ImageAttribute--><!--Device-ImageAttribute-objectRepeat(value: ImageRepeat): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -891,6 +935,8 @@ Triggered when an image is successfully loaded or decoded. The size of the image
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-ImageAttribute-onComplete(    callback: (event?: {      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      width: number;      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      height: number;      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      componentWidth: number;      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      componentHeight: number;      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      loadingStatus: number;      /**       * The width of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The width of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentWidth: number;      /**       * The height of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The height of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentHeight: number;      /**       * The actual draw is offset from the x-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The actual draw is offset from the x-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentOffsetX: number;      /**       * The actual draw is offset from the y-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The actual draw is offset from the y-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentOffsetY: number;    }) => void,  ): ImageAttribute--><!--Device-ImageAttribute-onComplete(    callback: (event?: {      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The width of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      width: number;      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The height of the image source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      height: number;      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The width of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      componentWidth: number;      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The height of the component source.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      componentHeight: number;      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 7       */      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @since 9       * @form       */      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @since 10       * @form       */      /**       * The value of the status of the image being loaded successfully.       * If the returned status value is 0, the image data is successfully loaded.       * If the returned status value is 1, the image is successfully decoded.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @crossplatform       * @atomicservice       * @since 11       * @form       */      loadingStatus: number;      /**       * The width of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The width of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentWidth: number;      /**       * The height of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The height of the picture that is actually drawn.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentHeight: number;      /**       * The actual draw is offset from the x-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The actual draw is offset from the x-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentOffsetX: number;      /**       * The actual draw is offset from the y-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @since 10       * @form       */      /**       * The actual draw is offset from the y-axis of the component itself.       *       * @type { number }       * @syscap SystemCapability.ArkUI.ArkUI.Full       * @stagemodelonly       * @crossplatform       * @atomicservice       * @since 11       * @form       */      contentOffsetY: number;    }) => void,  ): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -916,6 +962,8 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-onError(callback: ImageErrorCallback): ImageAttribute--><!--Device-ImageAttribute-onError(callback: ImageErrorCallback): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -943,6 +991,8 @@ Only images in SVG format are supported. This event is not triggered if the para
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageAttribute-onFinish(event: () => void): ImageAttribute--><!--Device-ImageAttribute-onFinish(event: () => void): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -969,6 +1019,8 @@ This attribute does not apply to placeholder images specified by [alt](#alt).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-ImageAttribute-orientation(orientation: ImageRotateOrientation) : ImageAttribute--><!--Device-ImageAttribute-orientation(orientation: ImageRotateOrientation) : ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -992,6 +1044,8 @@ Sets whether to secure sensitive information on widgets.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageAttribute-privacySensitive(supported: boolean): ImageAttribute--><!--Device-ImageAttribute-privacySensitive(supported: boolean): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1020,6 +1074,8 @@ This attribute does not take effect when the parameter type of the component is 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-renderMode(value: ImageRenderMode): ImageAttribute--><!--Device-ImageAttribute-renderMode(value: ImageRenderMode): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1053,6 +1109,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ImageAttribute-resizable(value: ResizableOptions): ImageAttribute--><!--Device-ImageAttribute-resizable(value: ResizableOptions): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1079,6 +1137,8 @@ This attribute does not take effect when the parameter type of the component is 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageAttribute-sourceSize(value: ImageSourceSize): ImageAttribute--><!--Device-ImageAttribute-sourceSize(value: ImageSourceSize): ImageAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1104,6 +1164,8 @@ After the **Image** component is created, the value of this attribute cannot be 
 **Atomic service API:** This API can be used in atomic services since API version 21.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 21.
+
+<!--Device-ImageAttribute-supportSvg2(enable: boolean) : ImageAttribute--><!--Device-ImageAttribute-supportSvg2(enable: boolean) : ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1132,6 +1194,8 @@ If image flickering occurs during loading, set **syncLoad** to **true**. For det
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageAttribute-syncLoad(value: boolean): ImageAttribute--><!--Device-ImageAttribute-syncLoad(value: boolean): ImageAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -16,7 +16,9 @@ Unregisters the callback function used to notify whether the trace capture is en
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-hiTraceMeter-function unregisterTraceListener(index: int): int--><!--Device-hiTraceMeter-function unregisterTraceListener(index: int): int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 

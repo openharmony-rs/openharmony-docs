@@ -18,6 +18,8 @@ Injects an ad JavaScript object to the **Web** component (this API is only open 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext): void--><!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext): void-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 **Parameters:**
@@ -78,6 +80,8 @@ Injects an ad JavaScript object to the **Web** component (this API is only open 
 **Since:** 16
 
 **Atomic service API:** This API can be used in atomic services since API version 16.
+
+<!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext,     needRefresh: boolean): void--><!--Device-advertising-function registerWebAdInterface(controller: web_webview.WebviewController, context: common.UIAbilityContext,     needRefresh: boolean): void-End-->
 
 **System capability:** SystemCapability.Advertising.Ads
 

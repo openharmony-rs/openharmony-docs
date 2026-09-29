@@ -8,6 +8,8 @@ Defines the options for selecting audio clips.
 
 **Since:** 9
 
+<!--Device-picker-class AudioSelectOptions--><!--Device-picker-class AudioSelectOptions-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Value range: 1 to 500
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AudioSelectOptions-maxSelectNumber?: number--><!--Device-AudioSelectOptions-maxSelectNumber?: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService

@@ -8,6 +8,8 @@ interface Size
 
 **起始版本：** 7
 
+<!--Device-screenshot-interface Size--><!--Device-screenshot-interface Size-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ height: number
 
 **起始版本：** 7
 
+<!--Device-Size-height: long--><!--Device-Size-height: long-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ width: number
 **类型：** number
 
 **起始版本：** 7
+
+<!--Device-Size-width: long--><!--Device-Size-width: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

@@ -16,6 +16,8 @@ Enables or disables camera tracking.
 
 **Since:** 20
 
+<!--Device-mechanicManager-function setCameraTrackingEnabled(isEnabled: boolean): void--><!--Device-mechanicManager-function setCameraTrackingEnabled(isEnabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **Parameters:**

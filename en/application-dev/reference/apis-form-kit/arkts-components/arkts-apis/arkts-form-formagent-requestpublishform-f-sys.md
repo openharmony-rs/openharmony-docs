@@ -18,6 +18,8 @@ Requests to publish a widget to the widget host. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.AGENT_REQUIRE_FORM
 
+<!--Device-formAgent-function requestPublishForm(want: Want, callback: AsyncCallback<string>): void--><!--Device-formAgent-function requestPublishForm(want: Want, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -57,6 +59,8 @@ Requests to publish a widget to the widget host. This API uses a promise to retu
 **Since:** 11
 
 **Required permissions:** ohos.permission.AGENT_REQUIRE_FORM
+
+<!--Device-formAgent-function requestPublishForm(want: Want): Promise<string>--><!--Device-formAgent-function requestPublishForm(want: Want): Promise<string>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

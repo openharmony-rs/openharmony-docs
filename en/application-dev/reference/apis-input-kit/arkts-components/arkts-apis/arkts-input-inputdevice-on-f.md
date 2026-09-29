@@ -16,6 +16,8 @@ Registers a listener for input device hot-swap events. This feature requires con
 
 **Since:** 9
 
+<!--Device-inputDevice-function on(type: 'change', listener: Callback<DeviceListener>): void--><!--Device-inputDevice-function on(type: 'change', listener: Callback<DeviceListener>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
 **Parameters:**

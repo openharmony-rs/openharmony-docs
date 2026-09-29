@@ -8,6 +8,8 @@ Describes a **Panel** object, which is created using [createPanel](arkts-basicse
 
 **Since:** 24
 
+<!--Device-selectionManager-interface Panel--><!--Device-selectionManager-interface Panel-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 ## Modules to Import
@@ -25,6 +27,8 @@ hide(): Promise<void>
 Hides the word selection panel. This API is used together with [show](#show). This API can be called only after a **Panel** instance is obtained by calling [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md). This API uses a promise to return the result. If this API is not called proactively, the panel is automatically hidden when it loses focus.
 
 **Since:** 24
+
+<!--Device-Panel-hide(): Promise<void>--><!--Device-Panel-hide(): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -65,6 +69,8 @@ Moves the word selection panel to the specified coordinates in the global coordi
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Panel-moveToGlobalDisplay(x: int, y: int): Promise<void>--><!--Device-Panel-moveToGlobalDisplay(x: int, y: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -115,6 +121,8 @@ Unsubscribes from the word selection panel destruction event. This API is used t
 
 **Since:** 24
 
+<!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'destroyed', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Parameters:**
@@ -145,6 +153,8 @@ Unsubscribes from the word selection panel hiding event. This API is used togeth
 
 **Since:** 24
 
+<!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void--><!--Device-Panel-off(type: 'hidden', callback?: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Parameters:**
@@ -174,6 +184,8 @@ on(type: 'destroyed', callback: Callback<void>): void
 Subscribes to the word selection panel destruction event. This API is used together with [off('destroyed')](#offdestroyed). This API can be called only after a **Panel** instance is obtained by calling [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md).
 
 **Since:** 24
+
+<!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void--><!--Device-Panel-on(type: 'destroyed', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -206,6 +218,8 @@ on(type: 'hidden', callback: Callback<void>): void
 Subscribes to the word selection panel hiding event. This API is used together with [off('hidden')](#offhidden). This event is triggered when the panel is hidden by calling [hide](#hide) or automatically hidden when it loses focus. This API can be called only after a **Panel** instance is obtained by calling [createPanel](arkts-basicservices-selectionmanager-createpanel-f.md).
 
 **Since:** 24
+
+<!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void--><!--Device-Panel-on(type: 'hidden', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -240,6 +254,8 @@ Sets the UI content for the current word selection panel, for example, to displa
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Panel-setUiContent(path: string): Promise<void>--><!--Device-Panel-setUiContent(path: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 
@@ -291,6 +307,8 @@ Shows the word selection panel. This API is used together with [hide](#hide). Th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Panel-show(): Promise<void>--><!--Device-Panel-show(): Promise<void>-End-->
+
 **System capability:** SystemCapability.SelectionInput.Selection
 
 **Return value:**
@@ -330,6 +348,8 @@ Sets whether the word selection panel can be dragged along with the mouse, touch
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Panel-startMoving(): Promise<void>--><!--Device-Panel-startMoving(): Promise<void>-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection
 

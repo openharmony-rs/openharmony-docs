@@ -21,6 +21,8 @@ Unregister application state observer.
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
 
+<!--Device-appManager-function unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback<void>): void--><!--Device-appManager-function unregisterApplicationStateObserver(observerId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Unregister application state observer.
 **Substitutes:** [off](arkts-ability-appmanager-off-f.md)
 
 **Required permissions:** ohos.permission.RUNNING_STATE_OBSERVER
+
+<!--Device-appManager-function unregisterApplicationStateObserver(observerId: number): Promise<void>--><!--Device-appManager-function unregisterApplicationStateObserver(observerId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

@@ -8,6 +8,8 @@ The managed feature.
 
 **Since:** 26.0.1
 
+<!--Device-common-export enum ManagedFeature--><!--Device-common-export enum ManagedFeature-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## LOCAL_HOTA_DOMAIN
@@ -21,6 +23,8 @@ The feature of local hota domain.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ManagedFeature-LOCAL_HOTA_DOMAIN = 0--><!--Device-ManagedFeature-LOCAL_HOTA_DOMAIN = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -36,6 +40,8 @@ The feature of add user extend credential.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ManagedFeature-USER_EXTEND_CREDENTIAL = 1--><!--Device-ManagedFeature-USER_EXTEND_CREDENTIAL = 1-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## DEVICE_SECURITY_LEVEL
@@ -50,6 +56,8 @@ The feature of set device security level.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ManagedFeature-DEVICE_SECURITY_LEVEL = 2--><!--Device-ManagedFeature-DEVICE_SECURITY_LEVEL = 2-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## PRINTER_IP_ADDRESS_POLICY
@@ -63,5 +71,7 @@ The feature of set printer ip address policy.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ManagedFeature-PRINTER_IP_ADDRESS_POLICY = 3--><!--Device-ManagedFeature-PRINTER_IP_ADDRESS_POLICY = 3-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

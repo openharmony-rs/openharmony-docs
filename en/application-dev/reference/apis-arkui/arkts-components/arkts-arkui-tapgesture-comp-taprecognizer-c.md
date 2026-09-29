@@ -10,6 +10,8 @@ Implements a tap gesture recognizer object. Inherits from [GestureRecognizer](ar
 
 **Since:** 18
 
+<!--Device-unnamed-declare class TapRecognizer extends GestureRecognizer--><!--Device-unnamed-declare class TapRecognizer extends GestureRecognizer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getTapCount
@@ -25,6 +27,8 @@ Obtains the number of consecutive taps required for the tap gesture to be recogn
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-TapRecognizer-getTapCount(): number--><!--Device-TapRecognizer-getTapCount(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

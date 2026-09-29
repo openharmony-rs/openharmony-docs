@@ -12,6 +12,8 @@ Enumerates the properties available for the metadata of a TIFF image.
 
 **Since:** 26.0.0
 
+<!--Device-image-enum TiffPropertyKey--><!--Device-image-enum TiffPropertyKey-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## COMPRESSION
@@ -25,6 +27,8 @@ Compression scheme used for image data (e.g., None, LZW, JPEG, Deflate).
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-COMPRESSION = 'TiffCompression'--><!--Device-TiffPropertyKey-COMPRESSION = 'TiffCompression'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -40,6 +44,8 @@ Defines how pixel colors are interpreted (e.g., RGB, grayscale).
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'--><!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## TRANSFER_FUNCTION
@@ -53,6 +59,8 @@ Tone transfer curve mapping pixel values to output intensity.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-TRANSFER_FUNCTION = 'TiffTransferFunction'--><!--Device-TiffPropertyKey-TRANSFER_FUNCTION = 'TiffTransferFunction'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -68,6 +76,8 @@ Indicates image orientation for correct display rotation/flip.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'--><!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## X_RESOLUTION
@@ -81,6 +91,8 @@ Horizontal resolution (pixels per resolution unit).
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-X_RESOLUTION = 'TiffXResolution'--><!--Device-TiffPropertyKey-X_RESOLUTION = 'TiffXResolution'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -96,6 +108,8 @@ Vertical resolution (pixels per resolution unit).
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'--><!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## RESOLUTION_UNIT
@@ -109,6 +123,8 @@ Unit for X/Y resolution.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-RESOLUTION_UNIT = 'TiffResolutionUnit'--><!--Device-TiffPropertyKey-RESOLUTION_UNIT = 'TiffResolutionUnit'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -124,6 +140,8 @@ Chromaticity coordinates of the reference white point.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'--><!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## PRIMARY_CHROMATICITIES
@@ -137,6 +155,8 @@ Chromaticity coordinates of the RGB primaries.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'--><!--Device-TiffPropertyKey-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -152,6 +172,8 @@ Height of each image tile in pixels.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'--><!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## TILE_WIDTH
@@ -165,6 +187,8 @@ Width of each image tile in pixels.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-TILE_WIDTH = 'TiffTileWidth'--><!--Device-TiffPropertyKey-TILE_WIDTH = 'TiffTileWidth'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -180,6 +204,8 @@ Name of the document or image.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'--><!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## IMAGE_DESCRIPTION
@@ -193,6 +219,8 @@ Description of the image content.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-IMAGE_DESCRIPTION = 'TiffImageDescription'--><!--Device-TiffPropertyKey-IMAGE_DESCRIPTION = 'TiffImageDescription'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -208,6 +236,8 @@ Name of the image creator or artist.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-ARTIST = 'TiffArtist'--><!--Device-TiffPropertyKey-ARTIST = 'TiffArtist'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## COPYRIGHT
@@ -221,6 +251,8 @@ Copyright notice for the image.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-COPYRIGHT = 'TiffCopyright'--><!--Device-TiffPropertyKey-COPYRIGHT = 'TiffCopyright'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -236,6 +268,8 @@ Date and time associated with the image (typically last modification).
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-DATE_TIME = 'TiffDateTime'--><!--Device-TiffPropertyKey-DATE_TIME = 'TiffDateTime'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## MAKE
@@ -249,6 +283,8 @@ Manufacturer of the capture device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-MAKE = 'TiffMake'--><!--Device-TiffPropertyKey-MAKE = 'TiffMake'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -264,6 +300,8 @@ Model name/number of the capture device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-MODEL = 'TiffModel'--><!--Device-TiffPropertyKey-MODEL = 'TiffModel'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## SOFTWARE
@@ -278,6 +316,8 @@ Software used to create or process the image.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffPropertyKey-SOFTWARE = 'TiffSoftware'--><!--Device-TiffPropertyKey-SOFTWARE = 'TiffSoftware'-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## HOST_COMPUTER
@@ -291,5 +331,7 @@ Host computer/system used for image processing.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffPropertyKey-HOST_COMPUTER = 'TiffHostComputer'--><!--Device-TiffPropertyKey-HOST_COMPUTER = 'TiffHostComputer'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

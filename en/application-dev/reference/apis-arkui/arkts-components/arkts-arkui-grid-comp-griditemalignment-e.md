@@ -8,12 +8,17 @@ Enumerates the alignment modes of grid items.
 
 > **NOTE:** 
 > 
-> 1. The **STRETCH** option only takes effect in scrollable grids.<br>
-> 2. The **STRETCH** option takes effect only if each grid item in a row is of a regular size (occupying only one row and one column). It is not effective in scenarios where there are grid items spanning across rows or columns.<br>
-> 3. When **STRETCH** is used, only grid items without a set height will adopt the height of the tallest grid item in the current row; the height of grid items with a set height will remain unchanged.<br>
+> 1. The **STRETCH** option only takes effect in scrollable grids.
+
+> 2. The **STRETCH** option takes effect only if each grid item in a row is of a regular size (occupying only one row and one column). It is not effective in scenarios where there are grid items spanning across rows or columns.
+
+> 3. When **STRETCH** is used, only grid items without a set height will adopt the height of the tallest grid item in the current row; the height of grid items with a set height will remain unchanged.
+
 > 4. When **STRETCH** is used, the grid undergoes an additional layout process, which may incur additional performance overhead.
 
 **Since:** 12
+
+<!--Device-unnamed-declare enum GridItemAlignment--><!--Device-unnamed-declare enum GridItemAlignment-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +36,8 @@ Use the default alignment mode of the grid.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-GridItemAlignment-DEFAULT = 0--><!--Device-GridItemAlignment-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## STRETCH
@@ -46,5 +53,7 @@ Use the height of the tallest grid item in a row as the height for all other gri
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-GridItemAlignment-STRETCH = 1--><!--Device-GridItemAlignment-STRETCH = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

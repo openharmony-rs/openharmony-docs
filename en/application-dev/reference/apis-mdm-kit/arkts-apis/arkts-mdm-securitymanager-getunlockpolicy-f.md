@@ -20,6 +20,8 @@ Gets the unlock policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getUnlockPolicy(accountId: number): UnlockPolicy--><!--Device-securityManager-function getUnlockPolicy(accountId: number): UnlockPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

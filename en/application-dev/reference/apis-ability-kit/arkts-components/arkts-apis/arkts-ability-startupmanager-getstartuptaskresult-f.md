@@ -18,6 +18,8 @@ Obtains the execution result of a startup task or .so file preloading task.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-startupManager-function getStartupTaskResult(startupTask: string): Object--><!--Device-startupManager-function getStartupTaskResult(startupTask: string): Object-End-->
+
 **System capability:** SystemCapability.Ability.AppStartup
 
 **Parameters:**

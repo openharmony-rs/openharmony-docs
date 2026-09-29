@@ -22,6 +22,8 @@ Obtains the cellular data connection status. This API uses an asynchronous callb
 - API version 22 and later: ohos.permission.GET_NETWORK_INFO
 - API versions 7 to 21: N/A
 
+<!--Device-data-function getCellularDataState(callback: AsyncCallback<DataConnectState>): void--><!--Device-data-function getCellularDataState(callback: AsyncCallback<DataConnectState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**
@@ -69,6 +71,8 @@ Obtains the cellular data connection status. This API uses a promise to return t
 **Required permissions:** 
 - API version 22 and later: ohos.permission.GET_NETWORK_INFO
 - API versions 7 to 21: N/A
+
+<!--Device-data-function getCellularDataState(): Promise<DataConnectState>--><!--Device-data-function getCellularDataState(): Promise<DataConnectState>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

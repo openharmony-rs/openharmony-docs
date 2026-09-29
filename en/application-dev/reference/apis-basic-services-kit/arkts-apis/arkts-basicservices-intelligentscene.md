@@ -8,6 +8,8 @@ This module provides system focus modes and Do Not Disturb data access abilities
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace intelligentScene--><!--Device-unnamed-declare namespace intelligentScene-End-->
+
 **System capability:** SystemCapability.Applications.IntelligentScene
 
 ## Modules to Import

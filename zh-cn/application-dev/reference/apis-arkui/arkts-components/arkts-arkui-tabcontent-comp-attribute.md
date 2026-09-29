@@ -8,9 +8,11 @@ declare class TabContentAttribute extends CommonMethod<TabContentAttribute>
 
 除支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** TabContentAttribute extends CommonMethod&lt;TabContentAttribute&gt;
+**继承/实现关系：** TabContentAttribute extends CommonMethod<TabContentAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>--><!--Device-unnamed-declare class TabContentAttribute extends CommonMethod<TabContentAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,6 +33,8 @@ onWillHide(event: VoidCallback)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabContentAttribute-onWillHide(event: VoidCallback): TabContentAttribute--><!--Device-TabContentAttribute-onWillHide(event: VoidCallback): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ onWillShow(event: VoidCallback)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabContentAttribute-onWillShow(event: VoidCallback): TabContentAttribute--><!--Device-TabContentAttribute-onWillShow(event: VoidCallback): TabContentAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -79,6 +85,8 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabContentAttribute-tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(options: string | Resource | CustomBuilder | TabBarOptions): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TabContentAttribute-tabBar(value: SubTabBarStyle | BottomTabBarStyle): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(value: SubTabBarStyle | BottomTabBarStyle): TabContentAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -140,6 +150,8 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder |     TabBarOptions): TabContentAttribute--><!--Device-TabContentAttribute-tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string | Resource | CustomBuilder |     TabBarOptions): TabContentAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

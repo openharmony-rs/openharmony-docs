@@ -10,6 +10,8 @@ Describes a resource in a scene.
 
 **Since:** 12
 
+<!--Device-unnamed-export interface SceneResource--><!--Device-unnamed-export interface SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## destroy
@@ -21,6 +23,8 @@ destroy(): void
 Destroys the scene resource and releases all associated resources or references. Once released, the resource can no longer be used or accessed.
 
 **Since:** 12
+
+<!--Device-SceneResource-destroy(): void--><!--Device-SceneResource-destroy(): void-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -60,6 +64,8 @@ Name. There is no special format requirement.
 
 **Since:** 12
 
+<!--Device-SceneResource-name: string--><!--Device-SceneResource-name: string-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## resourceType
@@ -74,6 +80,8 @@ Scene resource type. The default value is undefined.
 
 **Since:** 12
 
+<!--Device-SceneResource-readonly resourceType: SceneResourceType--><!--Device-SceneResource-readonly resourceType: SceneResourceType-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## uri
@@ -87,5 +95,7 @@ Resource to load. The default value is undefined.
 **Type:** ResourceStr
 
 **Since:** 12
+
+<!--Device-SceneResource-readonly uri?: ResourceStr--><!--Device-SceneResource-readonly uri?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

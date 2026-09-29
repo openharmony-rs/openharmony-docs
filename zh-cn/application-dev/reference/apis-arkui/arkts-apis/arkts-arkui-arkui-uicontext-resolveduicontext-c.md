@@ -16,6 +16,8 @@ ResolvedUIContext实例对象。
 
 **起始版本：** 22
 
+<!--Device-unnamed-export class ResolvedUIContext extends UIContext--><!--Device-unnamed-export class ResolvedUIContext extends UIContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -42,5 +44,7 @@ strategy: ResolveStrategy
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-ResolvedUIContext-strategy: ResolveStrategy--><!--Device-ResolvedUIContext-strategy: ResolveStrategy-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

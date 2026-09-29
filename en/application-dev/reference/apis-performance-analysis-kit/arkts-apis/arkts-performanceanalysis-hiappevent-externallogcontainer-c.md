@@ -8,6 +8,8 @@ An external log container including all external log files.
 
 **Since:** 26.0.1
 
+<!--Device-hiAppEvent-class ExternalLogContainer--><!--Device-hiAppEvent-class ExternalLogContainer-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Get the set of all external log file paths
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getAllLogFiles(): Set<string>--><!--Device-ExternalLogContainer-getAllLogFiles(): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -50,7 +54,9 @@ Get the set of all ExternalLogWrappers
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getAllLogs(): Set<ExternalLogWrapper>--><!--Device-ExternalLogContainer-getAllLogs(): Set<ExternalLogWrapper>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -72,7 +78,9 @@ Get the first generated external log file paths of a given number
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getFirstGeneratedLogFiles(num: int): Set<string>--><!--Device-ExternalLogContainer-getFirstGeneratedLogFiles(num: int): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -100,7 +108,9 @@ Get the set of all external log file paths which are after a given time
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getLogFilesGeneratedAfter(timePoint: long): Set<string>--><!--Device-ExternalLogContainer-getLogFilesGeneratedAfter(timePoint: long): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -128,7 +138,9 @@ Get the set of all external log file paths which are before a given time
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getLogFilesGeneratedBefore(timePoint: long): Set<string>--><!--Device-ExternalLogContainer-getLogFilesGeneratedBefore(timePoint: long): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -156,7 +168,9 @@ Get the set of all external log file paths whose size are larger than a given am
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getLogFilesLargerThan(sizeKb: long): Set<string>--><!--Device-ExternalLogContainer-getLogFilesLargerThan(sizeKb: long): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -184,7 +198,9 @@ Get the set of all external log file paths of a given system event
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getLogFilesOfSysEvent(event: string): Set<string>--><!--Device-ExternalLogContainer-getLogFilesOfSysEvent(event: string): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -212,7 +228,9 @@ Get the set of all external log file paths whose size are smaller than a given a
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getLogFilesSmallerThan(sizeKb: long): Set<string>--><!--Device-ExternalLogContainer-getLogFilesSmallerThan(sizeKb: long): Set<string>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -240,7 +258,9 @@ Get the number of all external log files
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.1.
+
+<!--Device-ExternalLogContainer-getLogNumber(): int--><!--Device-ExternalLogContainer-getLogNumber(): int-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 

@@ -79,7 +79,8 @@
   - [SourceType](arkts-input-inputdevice-sourcetype-t.md)
   - [FunctionKey](arkts-input-inputdevice-functionkey-e.md)
   - [KeyboardType](arkts-input-inputdevice-keyboardtype-e.md)
-- [@ohos.multimodalInput.inputDeviceCooperate(Screen Hopping)](arkts-input-multimodalinput-inputdevicecooperate.md)
+<!--Del-->
+- [@ohos.multimodalInput.inputDeviceCooperate(Screen Hopping)](arkts-input-multimodalinput-inputdevicecooperate.md)<!--DelEnd-->
   <!--Del-->
   - [enable(system api)](arkts-input-inputdevicecooperate-enable-f-sys.md)<!--DelEnd-->
   <!--Del-->

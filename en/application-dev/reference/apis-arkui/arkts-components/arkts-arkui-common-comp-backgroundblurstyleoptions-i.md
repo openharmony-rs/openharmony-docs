@@ -10,6 +10,8 @@ Defines the options of backgroundBlurStyle
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface BackgroundBlurStyleOptions extends BlurStyleOptions--><!--Device-unnamed-declare interface BackgroundBlurStyleOptions extends BlurStyleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## inactiveColor
@@ -30,6 +32,8 @@ Background color when the blur effect does not take effect. This parameter must 
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-BackgroundBlurStyleOptions-inactiveColor?: ResourceColor--><!--Device-BackgroundBlurStyleOptions-inactiveColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## policy
@@ -49,5 +53,7 @@ Blur activation policy.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-BackgroundBlurStyleOptions-policy?: BlurStyleActivePolicy--><!--Device-BackgroundBlurStyleOptions-policy?: BlurStyleActivePolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

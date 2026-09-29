@@ -8,6 +8,8 @@ Defines a VPN connection object. Before calling **VpnConnection** APIs, you need
 
 **Since:** 11
 
+<!--Device-vpnExtension-export interface VpnConnection--><!--Device-vpnExtension-export interface VpnConnection-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 > resources when the VPN is not needed.
 
 **Since:** 11
+
+<!--Device-VpnConnection-create(config: VpnConfig): Promise<int>--><!--Device-VpnConnection-create(config: VpnConfig): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -146,6 +150,8 @@ Destroys a VPN. This API uses a promise to return the result.
 
 **Since:** 11
 
+<!--Device-VpnConnection-destroy(): Promise<void>--><!--Device-VpnConnection-destroy(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **Return value:**
@@ -194,6 +200,8 @@ destroy(vpnId: string): Promise<void>
 Destroys a VPN based on the specified VPN ID. This API uses a promise to return the result.
 
 **Since:** 20
+
+<!--Device-VpnConnection-destroy(vpnId: string): Promise<void>--><!--Device-VpnConnection-destroy(vpnId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -253,6 +261,8 @@ To use the multi-VPN capability of the system, you need to call this API to gene
 
 **Since:** 20
 
+<!--Device-VpnConnection-generateVpnId(): Promise<string>--><!--Device-VpnConnection-generateVpnId(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
 **Return value:**
@@ -297,6 +307,8 @@ protect(socketFd: number): Promise<void>
 Protects sockets against a VPN connection. The data sent through sockets is directly transmitted over the physical network and therefore the traffic does not traverse through the VPN. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-VpnConnection-protect(socketFd: int): Promise<void>--><!--Device-VpnConnection-protect(socketFd: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -363,6 +375,8 @@ protectProcessNet(): Promise<void>
 Protects application processes against a VPN connection. The data sent through the protected processes is transmitted over the physical network without traversing the VPN. This API uses a promise to return the result.
 
 **Since:** 22
+
+<!--Device-VpnConnection-protectProcessNet(): Promise<void>--><!--Device-VpnConnection-protectProcessNet(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 

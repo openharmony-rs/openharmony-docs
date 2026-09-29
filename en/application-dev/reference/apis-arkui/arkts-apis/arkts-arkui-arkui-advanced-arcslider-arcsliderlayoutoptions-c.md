@@ -10,6 +10,8 @@ Defines the layout of the arc slider.
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-declare class ArcSliderLayoutOptions--><!--Device-unnamed-declare class ArcSliderLayoutOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -30,13 +32,15 @@ A constructor used to create an **ArcSliderLayoutOptions** instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSliderLayoutOptions-constructor(options?: ArcSliderLayoutOptionsConstructorOptions)--><!--Device-ArcSliderLayoutOptions-constructor(options?: ArcSliderLayoutOptionsConstructorOptions)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ArcSliderLayoutOptionsConstructorOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderlayoutoptionsconstructoroptions-i.md) | No | Construction information for **ArcSliderLayoutOptions**. |
+| options | [ArcSliderLayoutOptionsConstructorOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderlayoutoptionsconstructoroptions-i.md) | No | Construction information of **ArcSliderLayoutOptions**. When not passed in, all sub-attributes of **ArcSliderLayoutOptions** take their default values. |
 
 ## position
 
@@ -48,7 +52,7 @@ Position of the arc slider on the screen.
 
 Default value: **ArcSliderPosition.RIGHT**
 
-@Trace
+**Decorator**: @Trace
 
 **Type:** [ArcSliderPosition](arkts-arkui-arkui-advanced-arcslider-arcsliderposition-e.md)
 
@@ -60,6 +64,8 @@ Default value: **ArcSliderPosition.RIGHT**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-ArcSliderLayoutOptions-position?: ArcSliderPosition--><!--Device-ArcSliderLayoutOptions-position?: ArcSliderPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## reverse
@@ -68,11 +74,11 @@ Default value: **ArcSliderPosition.RIGHT**
 reverse?: boolean
 ```
 
-Whether the value range of the arc slider is reversed. **false**: top-to-bottom sliding.
+Whether to reverse the sliding direction of the arc slider. The value **false** means sliding from top to bottom.
 
-**true** (default): bottom-to-top sliding.
+Default value: **true**, meaning sliding from bottom to top.
 
-@Trace
+**Decorator:*
 
 **Type:** boolean
 
@@ -83,5 +89,7 @@ Whether the value range of the arc slider is reversed. **false**: top-to-bottom 
 **Decorator:** @Trace
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ArcSliderLayoutOptions-reverse?: boolean--><!--Device-ArcSliderLayoutOptions-reverse?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

@@ -8,6 +8,8 @@ Defines the type of the button element on the right of the **ComposeListItem** c
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class OperateButton--><!--Device-unnamed-export declare class OperateButton-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Default value: **"Double-tap to activate"**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperateButton-accessibilityDescription?: ResourceStr--><!--Device-OperateButton-accessibilityDescription?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +70,8 @@ Default value: **"auto"**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperateButton-accessibilityLevel?: string--><!--Device-OperateButton-accessibilityLevel?: string-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -86,6 +92,8 @@ Default value: **""**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperateButton-accessibilityText?: ResourceStr--><!--Device-OperateButton-accessibilityText?: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -105,5 +113,7 @@ Default value: **""**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OperateButton-text?: ResourceStr--><!--Device-OperateButton-text?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Provides APIs for X.509 certificate operations.
 
 **Since:** 9
 
+<!--Device-cert-interface X509Cert--><!--Device-cert-interface X509Cert-End-->
+
 **System capability:** SystemCapability.Security.Cert
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Checks the validity period of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-checkValidityWithDate(date: string): void--><!--Device-X509Cert-checkValidityWithDate(date: string): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -106,7 +110,9 @@ Obtains the basic constraints of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getBasicConstraints(): int--><!--Device-X509Cert-getBasicConstraints(): int-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -168,7 +174,9 @@ Obtains the X.509 certificate serial number.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getCertSerialNumber(): bigint--><!--Device-X509Cert-getCertSerialNumber(): bigint-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -242,7 +250,9 @@ Obtains the CRL distribution points of this X.509 certificate.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getCRLDistributionPoint(): DataArray--><!--Device-X509Cert-getCRLDistributionPoint(): DataArray-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -320,7 +330,9 @@ Obtains the serialized X.509 certificate data. This API uses an asynchronous cal
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509Cert-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -398,7 +410,9 @@ Obtains the serialized X.509 certificate data. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getEncoded(): Promise<EncodingBlob>--><!--Device-X509Cert-getEncoded(): Promise<EncodingBlob>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -471,7 +485,9 @@ Obtains the certificate extension object.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getExtensionsObject(): CertExtension--><!--Device-X509Cert-getExtensionsObject(): CertExtension-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -558,7 +574,9 @@ Obtains the usage of the extended key of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getExtKeyUsage(): DataArray--><!--Device-X509Cert-getExtKeyUsage(): DataArray-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -649,7 +667,9 @@ Obtains the Issuer Alternative Names (IANs) of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getIssuerAltNames(): DataArray--><!--Device-X509Cert-getIssuerAltNames(): DataArray-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -739,7 +759,9 @@ Obtains the issuer name of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getIssuerName(): DataBlob--><!--Device-X509Cert-getIssuerName(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -817,7 +839,9 @@ Obtains the issuer name of this X.509 certificate based on the encoding type.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-X509Cert-getIssuerName(encodingType: EncodingType): string--><!--Device-X509Cert-getIssuerName(encodingType: EncodingType): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -912,7 +936,9 @@ Obtains the X.500 distinguished name object of the X.509 certificate issuer.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getIssuerX500DistinguishedName(): X500DistinguishedName--><!--Device-X509Cert-getIssuerX500DistinguishedName(): X500DistinguishedName-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -999,7 +1025,9 @@ Obtains the fields in the X.509 certificate.
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getItem(itemType: CertItemType): DataBlob--><!--Device-X509Cert-getItem(itemType: CertItemType): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1084,7 +1112,9 @@ Obtains the key usage of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getKeyUsage(): DataBlob--><!--Device-X509Cert-getKeyUsage(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1169,7 +1199,9 @@ Obtains the expiration time of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getNotAfterTime(): string--><!--Device-X509Cert-getNotAfterTime(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1245,7 +1277,9 @@ Obtains the start time of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getNotBeforeTime(): string--><!--Device-X509Cert-getNotBeforeTime(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1321,7 +1355,9 @@ Obtains the public key of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getPublicKey(): cryptoFramework.PubKey--><!--Device-X509Cert-getPublicKey(): cryptoFramework.PubKey-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1385,75 +1421,6 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 });
 ```
 
-## getSerialNumber
-
-```TypeScript
-getSerialNumber(): number
-```
-
-Obtains the X.509 certificate serial number.
-
-> **NOTE:** 
-> 
-> This API is supported since API version 9 and deprecated since API version 10. Use
-> [X509Cert.getCertSerialNumber()](#getcertserialnumber) instead.
-
-**Since:** 9
-
-**Deprecated since:** 10
-
-**Substitutes:** [getCertSerialNumber](#getcertserialnumber)
-
-**System capability:** SystemCapability.Security.Cert
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| number | X.509 certificate serial number obtained. |
-
-**Examples**
-
-```TypeScript
-import { cert } from '@kit.DeviceCertificateKit';
-
-// Convert the string into a Uint8Array.
-function stringToUint8Array(str: string): Uint8Array {
-  let arr: Array<number> = [];
-  for (let i = 0, j = str.length; i < j; i++) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
-
-// Certificate binary data, which needs to match your case.
-let certData = '-----BEGIN CERTIFICATE-----\n' +
-  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
-  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
-  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
-  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
-  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
-  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
-  'Qw==\n' +
-  '-----END CERTIFICATE-----\n';
-
-let encodingBlob: cert.EncodingBlob = {
-  data: stringToUint8Array(certData),
-  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
-  encodingFormat: cert.EncodingFormat.FORMAT_PEM
-};
-
-cert.createX509Cert(encodingBlob, (error, x509Cert) => {
-  if (error) {
-    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
-  } else {
-    console.info('createX509Cert result: success.');
-    let serialNumber = x509Cert.getSerialNumber();
-    console.info('serialNumber = ' + serialNumber);
-  }
-});
-```
-
 ## getSignature
 
 ```TypeScript
@@ -1464,7 +1431,9 @@ Obtains the signature data of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSignature(): DataBlob--><!--Device-X509Cert-getSignature(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1540,7 +1509,9 @@ Obtains the signing algorithm of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSignatureAlgName(): string--><!--Device-X509Cert-getSignatureAlgName(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1616,7 +1587,9 @@ Obtains the object identifier (OID) of the X.509 certificate signing algorithm. 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSignatureAlgOid(): string--><!--Device-X509Cert-getSignatureAlgOid(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1692,7 +1665,9 @@ Obtains the signing algorithm parameters of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSignatureAlgParams(): DataBlob--><!--Device-X509Cert-getSignatureAlgParams(): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1788,7 +1763,9 @@ Obtains the Subject Alternative Names (SANs) of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSubjectAltNames(): DataArray--><!--Device-X509Cert-getSubjectAltNames(): DataArray-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1881,7 +1858,9 @@ Obtains the subject name of this X.509 certificate.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSubjectName(encodingType?: EncodingType): DataBlob--><!--Device-X509Cert-getSubjectName(encodingType?: EncodingType): DataBlob-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -1971,7 +1950,9 @@ Obtains the X.500 distinguished name object of the X.509 certificate subject.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getSubjectX500DistinguishedName(): X500DistinguishedName--><!--Device-X509Cert-getSubjectX500DistinguishedName(): X500DistinguishedName-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2058,7 +2039,9 @@ Obtains the X.509 certificate version.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-getVersion(): int--><!--Device-X509Cert-getVersion(): int-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2119,7 +2102,9 @@ Obtains the hash value of the data in DER format.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-hashCode(): Uint8Array--><!--Device-X509Cert-hashCode(): Uint8Array-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2206,7 +2191,9 @@ Checks whether this certificate matches the specified parameters.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-match(param: X509CertMatchParameters): boolean--><!--Device-X509Cert-match(param: X509CertMatchParameters): boolean-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2313,7 +2300,9 @@ Converts the object data into a string.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-toString(): string--><!--Device-X509Cert-toString(): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2402,7 +2391,9 @@ Converts this object into a string in the specified encoding format.
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-X509Cert-toString(encodingType: EncodingType): string--><!--Device-X509Cert-toString(encodingType: EncodingType): string-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2494,7 +2485,9 @@ Verifies the certificate signature. This API uses an asynchronous callback to re
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void--><!--Device-X509Cert-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2582,7 +2575,9 @@ Verifies the certificate signature. This API uses a promise to return the result
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-X509Cert-verify(key: cryptoFramework.PubKey): Promise<void>--><!--Device-X509Cert-verify(key: cryptoFramework.PubKey): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -2653,5 +2648,76 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
   }
 }).catch((error: BusinessError) => {
   console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
+});
+```
+
+## getSerialNumber
+
+```TypeScript
+getSerialNumber(): number
+```
+
+Obtains the X.509 certificate serial number.
+
+> **NOTE:** 
+> 
+> This API is supported since API version 9 and deprecated since API version 10. Use
+> [X509Cert.getCertSerialNumber()](#getcertserialnumber) instead.
+
+**Since:** 9
+
+**Deprecated since:** 10
+
+**Substitutes:** [getCertSerialNumber](#getcertserialnumber)
+
+<!--Device-X509Cert-getSerialNumber(): number--><!--Device-X509Cert-getSerialNumber(): number-End-->
+
+**System capability:** SystemCapability.Security.Cert
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | X.509 certificate serial number obtained. |
+
+**Examples**
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+// Certificate binary data, which needs to match your case.
+let certData = '-----BEGIN CERTIFICATE-----\n' +
+  'MIIBHTCBwwICA+gwCgYIKoZIzj0EAwIwGjEYMBYGA1UEAwwPRXhhbXBsZSBSb290\n' +
+  'IENBMB4XDTIzMDkwNTAyNDgyMloXDTI2MDUzMTAyNDgyMlowGjEYMBYGA1UEAwwP\n' +
+  'RXhhbXBsZSBSb290IENBMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEHjG74yMI\n' +
+  'ueO7z3T+dyuEIrhxTg2fqgeNB3SGfsIXlsiUfLTatUsU0i/sePnrKglj2H8Abbx9\n' +
+  'PK0tsW/VgqwDIDAKBggqhkjOPQQDAgNJADBGAiEApVZno/Z7WyDc/muRN1y57uaY\n' +
+  'Mjrgnvp/AMdE8qmFiDwCIQCrIYdHVO1awaPgcdALZY+uLQi6mEs/oMJLUcmaag3E\n' +
+  'Qw==\n' +
+  '-----END CERTIFICATE-----\n';
+
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(certData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
+
+cert.createX509Cert(encodingBlob, (error, x509Cert) => {
+  if (error) {
+    console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
+  } else {
+    console.info('createX509Cert result: success.');
+    let serialNumber = x509Cert.getSerialNumber();
+    console.info('serialNumber = ' + serialNumber);
+  }
 });
 ```

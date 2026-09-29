@@ -6,6 +6,8 @@ The **componentUtils** module provides API for obtaining the coordinates and siz
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace componentUtils--><!--Device-unnamed-declare namespace componentUtils-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

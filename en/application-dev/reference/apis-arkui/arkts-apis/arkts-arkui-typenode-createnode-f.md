@@ -6,13 +6,15 @@
 function createNode(context: UIContext, nodeType: 'Text'): Text
 ```
 
-Creates a FrameNode of the **Text** type.
+Creates a FrameNode of the **Text** type. When **typeNode** is used to create a **Text** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Text'): Text--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Text'): Text-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +84,8 @@ Creates a FrameNode of the **Column** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Column'): Column--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Column'): Column-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -149,6 +153,8 @@ Creates a FrameNode of the Row type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Row'): Row--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Row'): Row-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -215,6 +221,8 @@ Creates a FrameNode of the **Stack** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Stack'): Stack--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Stack'): Stack-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,6 +294,8 @@ Creates a FrameNode of the **GridRow** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'GridRow'): GridRow--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'GridRow'): GridRow-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -361,6 +371,8 @@ Creates a FrameNode of the **GridCol** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'GridCol'): GridCol--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'GridCol'): GridCol-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -435,6 +447,8 @@ Creates a FrameNode of the Flex type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Flex'): Flex--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Flex'): Flex-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -501,6 +515,8 @@ Creates a FrameNode of the **Swiper** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Swiper'): Swiper--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Swiper'): Swiper-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -588,6 +604,8 @@ Creates a FrameNode of the **Progress** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Progress'): Progress--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Progress'): Progress-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -657,6 +675,8 @@ Creates a FrameNode of the **Scroll** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Scroll'): Scroll--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Scroll'): Scroll-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -742,6 +762,8 @@ Creates a FrameNode of the **RelativeContainer** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'RelativeContainer'): RelativeContainer--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'RelativeContainer'): RelativeContainer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -808,6 +830,8 @@ Creates a FrameNode of the **Divider** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Divider'): Divider--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Divider'): Divider-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -882,6 +906,8 @@ Creates a FrameNode of the **LoadingProgress** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingProgress--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'LoadingProgress'): LoadingProgress-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -949,6 +975,8 @@ Creates a FrameNode of the **Search** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Search'): Search--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Search'): Search-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1019,6 +1047,8 @@ Creates a FrameNode of the **Blank** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Blank'): Blank--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Blank'): Blank-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1085,13 +1115,15 @@ struct FrameNodeTypeTest {
 function createNode(context: UIContext, nodeType: 'Image'): Image
 ```
 
-Creates a FrameNode of the **Image** type.
+Creates a FrameNode of the **Image** type. When **typeNode** is used to create an **Image** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Image'): Image--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Image'): Image-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1171,6 +1203,8 @@ Creates a FrameNode of the **List** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'List'): List--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'List'): List-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1178,7 +1212,7 @@ Creates a FrameNode of the **List** type.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UI context for node creation. |
-| nodeType | 'List' | Yes | Node type, which is **List** in this API. |
+| nodeType | 'List' | Yes | Node type. Set to **'List'**. |
 
 **Return value:**
 
@@ -1262,6 +1296,8 @@ Creates a FrameNode of the **ListItem** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'ListItem'): ListItem--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'ListItem'): ListItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1297,6 +1333,8 @@ Creates a FrameNode of the **TextInput** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextInput'): TextInput--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextInput'): TextInput-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1364,6 +1402,8 @@ Creates a FrameNode of the **Button** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Button'): Button--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Button'): Button-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1439,6 +1479,8 @@ Creates a FrameNode of the **ListItemGroup** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGroup--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGroup-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1474,6 +1516,8 @@ Creates a FrameNode of the **WaterFlow** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'WaterFlow'): WaterFlow-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1570,6 +1614,8 @@ Creates a FrameNode of the **FlowItem** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1605,6 +1651,8 @@ Creates a FrameNode of the **XComponent** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'XComponent'): XComponent--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'XComponent'): XComponent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1673,6 +1721,8 @@ Creates a FrameNode of the **XComponent** type based on the settings specified i
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'XComponent', options: XComponentOptions): XComponent--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'XComponent', options: XComponentOptions): XComponent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1749,6 +1799,8 @@ Creates a FrameNode of the **XComponent** type based on the settings specified i
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'XComponent', parameters: NativeXComponentParameters): XComponent--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'XComponent', parameters: NativeXComponentParameters): XComponent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1821,6 +1873,8 @@ Creates a FrameNode of the **Checkbox** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Checkbox'): Checkbox-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1897,6 +1951,8 @@ Creates a FrameNode of the **CheckboxGroup** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'CheckboxGroup'): CheckboxGroup-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1976,6 +2032,8 @@ Creates a FrameNode of the **Radio** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Radio'): Radio--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Radio'): Radio-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2051,6 +2109,8 @@ Creates a FrameNode of the **Rating** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Rating'): Rating--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Rating'): Rating-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2114,13 +2174,15 @@ struct FrameNodeTypeTest {
 function createNode(context: UIContext, nodeType: 'Select'): Select
 ```
 
-Creates a FrameNode of the **Select** type.
+Creates a FrameNode of the **Select** type. When **typeNode** is used to create a **Select** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Select'): Select--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Select'): Select-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2191,6 +2253,8 @@ Creates a FrameNode of the **Slider** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Slider'): Slider--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Slider'): Slider-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2253,13 +2317,15 @@ struct FrameNodeTypeTest {
 function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Toggle
 ```
 
-Creates a FrameNode of the **Toggle** type.
+Creates a FrameNode of the **Toggle** type. When **typeNode** is used to create a **Toggle** node, after the UI instance corresponding to the passed **UIContext** is destroyed, calling this API returns an invalid FrameNode that cannot be properly mounted and displayed.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Toggle--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Toggle', options?: ToggleOptions): Toggle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2269,7 +2335,7 @@ Creates a FrameNode of the **Toggle** type.
 | --- | --- | --- | --- |
 | context | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UI context for node creation. |
 | nodeType | 'Toggle' | Yes | Node type. Set to **'Toggle'**. |
-| options | [ToggleOptions](../arkts-components/arkts-arkui-toggle-comp-toggleoptions-i.md) | No | Options for configuring the node of the Toggle type, including setting the style through the **type** property. |
+| options | [ToggleOptions](../arkts-components/arkts-arkui-toggle-comp-toggleoptions-i.md) | No | Options for creating a **Toggle** node. The switch style can only be set through the **type** attribute in **ToggleOptions**. When this parameter is not passed, the **type** attribute of **Toggle** must be set through the **initialize** API. |
 
 **Return value:**
 
@@ -2332,6 +2398,8 @@ Creates a FrameNode of the **Marquee** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Marquee'): Marquee--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Marquee'): Marquee-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2401,6 +2469,8 @@ Creates a FrameNode of the **TextArea** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextArea'): TextArea--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextArea'): TextArea-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2467,6 +2537,8 @@ Creates a FrameNode of the **SymbolGlyph** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'SymbolGlyph'): SymbolGlyph-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2535,6 +2607,8 @@ Creates a FrameNode of the **QRCode** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'QRCode'): QRCode--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'QRCode'): QRCode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2572,6 +2646,8 @@ Creates a FrameNode of the **Badge** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Badge'): Badge--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Badge'): Badge-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2611,6 +2687,8 @@ Creates a FrameNode of the **TextClock** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextClock'): TextClock--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextClock'): TextClock-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2649,6 +2727,8 @@ Creates a FrameNode of the **TextTimer** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -2686,6 +2766,8 @@ Creates a FrameNode of the **Grid** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Grid'): Grid--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'Grid'): Grid-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2776,6 +2858,8 @@ Creates a FrameNode of the **GridItem** type.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-typeNode-function createNode(context: UIContext, nodeType: 'GridItem'): GridItem--><!--Device-typeNode-function createNode(context: UIContext, nodeType: 'GridItem'): GridItem-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

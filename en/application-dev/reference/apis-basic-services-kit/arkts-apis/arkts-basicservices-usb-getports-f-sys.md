@@ -20,6 +20,8 @@ Obtains the list of all physical USB ports.
 
 **Substitutes:** [getPorts](arkts-basicservices-usbmanager-getports-f-sys.md)
 
+<!--Device-usb-function getPorts(): Array<USBPort>--><!--Device-usb-function getPorts(): Array<USBPort>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **System API:** This is a system API.

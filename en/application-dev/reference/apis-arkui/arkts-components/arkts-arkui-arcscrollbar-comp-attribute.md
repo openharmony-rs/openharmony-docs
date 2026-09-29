@@ -12,6 +12,8 @@ Defines the arc scroll bar attribute functions.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-export declare class ArcScrollBarAttribute extends CommonMethod<ArcScrollBarAttribute>--><!--Device-unnamed-export declare class ArcScrollBarAttribute extends CommonMethod<ArcScrollBarAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import

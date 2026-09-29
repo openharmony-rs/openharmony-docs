@@ -18,6 +18,8 @@ Registers an observer for cell information change events. This API uses an async
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-observer-function on(type: 'cellInfoChange', callback: Callback<Array<CellInformation>>): void--><!--Device-observer-function on(type: 'cellInfoChange', callback: Callback<Array<CellInformation>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ Registers an observer for signal status change events of the SIM card in the spe
 **Since:** 8
 
 **Required permissions:** ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-observer-function on(type: 'cellInfoChange', options: ObserverOptions, callback: Callback<Array<CellInformation>>): void--><!--Device-observer-function on(type: 'cellInfoChange', options: ObserverOptions, callback: Callback<Array<CellInformation>>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 

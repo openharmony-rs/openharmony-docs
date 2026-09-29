@@ -178,6 +178,12 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | Defines the options used in **write()**. It inherits from [Options](arkts-corefile-file-fs-options-i.md). |
 | [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md) | Defines the options used in **createWriteStream()**. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [ProgressListener](arkts-corefile-progresslistener-t.md) | Listener used to observe the copy progress. |
+
 ### Enums
 
 | Name | Description |
@@ -187,9 +193,3 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [LocationType](arkts-corefile-file-fs-locationtype-e.md) | Enumerates the file locations. |
 | [MappingMode](arkts-corefile-file-fs-mappingmode-e.md) | Enumerated type of the file memory mapping mode, which can be used by the mmap API. |
 | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | Enumerates the types of the relative offset position used in **lseek()**. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [ProgressListener](arkts-corefile-progresslistener-t.md) | Listener used to observe the copy progress. |

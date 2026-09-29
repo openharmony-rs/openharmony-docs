@@ -8,6 +8,8 @@ ChipV2LabelConfig定义文本属性配置。
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2LabelConfig--><!--Device-unnamed-export interface ChipV2LabelConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -38,6 +40,8 @@ ChipV2激活时的文字颜色。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2LabelConfig-activatedFontColor?: ColorMetrics--><!--Device-ChipV2LabelConfig-activatedFontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -62,6 +66,8 @@ fontColor?: ColorMetrics
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2LabelConfig-fontColor?: ColorMetrics--><!--Device-ChipV2LabelConfig-fontColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -83,6 +89,8 @@ fontFamily?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2LabelConfig-fontFamily?: string--><!--Device-ChipV2LabelConfig-fontFamily?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2LabelConfig-fontSize?: LengthMetrics--><!--Device-ChipV2LabelConfig-fontSize?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## labelMargin
@@ -137,6 +147,8 @@ size为ChipV2Size.NORMAL时，默认值：{ left: 6, right: 6 }。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2LabelConfig-labelMargin?: ChipV2LabelMarginConfig--><!--Device-ChipV2LabelConfig-labelMargin?: ChipV2LabelMarginConfig-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +180,8 @@ size为ChipV2Size.NORMAL时，默认值：
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipV2LabelConfig-localizedLabelMargin?: ChipV2LocalizedLabelMarginConfig--><!--Device-ChipV2LabelConfig-localizedLabelMargin?: ChipV2LocalizedLabelMarginConfig-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifier
@@ -180,13 +194,15 @@ modifier?: TextModifier
 
 默认值：undefined，不应用修饰器。
 
-**类型：** TextModifier
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2LabelConfig-modifier?: TextModifier--><!--Device-ChipV2LabelConfig-modifier?: TextModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,5 +221,7 @@ text: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipV2LabelConfig-text: string--><!--Device-ChipV2LabelConfig-text: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

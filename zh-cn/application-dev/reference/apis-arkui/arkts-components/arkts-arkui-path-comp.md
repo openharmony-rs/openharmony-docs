@@ -7,7 +7,7 @@
 > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
@@ -54,6 +54,8 @@ Use new to create Path. Annonymous Object Rectification.
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-PathInterface-new (options?: PathOptions): PathAttribute--><!--Device-PathInterface-new (options?: PathOptions): PathAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
@@ -75,6 +77,8 @@ Path(options?: PathOptions)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-PathInterface-(options?: PathOptions): PathAttribute--><!--Device-PathInterface-(options?: PathOptions): PathAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

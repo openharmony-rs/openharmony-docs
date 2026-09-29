@@ -8,6 +8,8 @@ Enumerates network types.
 
 **Since:** 8
 
+<!--Device-connection-export enum NetBearType--><!--Device-connection-export enum NetBearType-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## BEARER_CELLULAR
@@ -20,7 +22,9 @@ Cellular network.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetBearType-BEARER_CELLULAR = 0--><!--Device-NetBearType-BEARER_CELLULAR = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -34,7 +38,9 @@ Wi-Fi network.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetBearType-BEARER_WIFI = 1--><!--Device-NetBearType-BEARER_WIFI = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -48,7 +54,9 @@ Bluetooth network.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-NetBearType-BEARER_BLUETOOTH = 2--><!--Device-NetBearType-BEARER_BLUETOOTH = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -62,7 +70,9 @@ Ethernet network.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-NetBearType-BEARER_ETHERNET = 3--><!--Device-NetBearType-BEARER_ETHERNET = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -75,5 +85,7 @@ BEARER_VPN = 4
 VPN.
 
 **Since:** 12
+
+<!--Device-NetBearType-BEARER_VPN = 4--><!--Device-NetBearType-BEARER_VPN = 4-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

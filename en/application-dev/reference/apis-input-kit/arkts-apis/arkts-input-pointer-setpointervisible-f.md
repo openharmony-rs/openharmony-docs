@@ -16,6 +16,8 @@ Sets whether the mouse pointer is visible in the current window. This API uses a
 
 **Since:** 9
 
+<!--Device-pointer-function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): void--><!--Device-pointer-function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **Parameters:**
@@ -75,6 +77,8 @@ function setPointerVisible(visible: boolean): Promise<void>
 Sets whether the mouse pointer is visible in the current window. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-pointer-function setPointerVisible(visible: boolean): Promise<void>--><!--Device-pointer-function setPointerVisible(visible: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

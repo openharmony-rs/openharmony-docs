@@ -8,6 +8,8 @@ Represents the options for key operations.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface KeyOptions--><!--Device-unnamed-declare interface KeyOptions-End-->
+
 **System capability:** SystemCapability.Test.UiTest
 
 **Test API:** This API is used only in automated test scripts.
@@ -33,7 +35,9 @@ The first keyCode to press during the operation. If not set, no key event will b
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-KeyOptions-key1?: int--><!--Device-KeyOptions-key1?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 
@@ -53,7 +57,9 @@ The second KeyCode to press during the operation. If not set, no key event will 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-KeyOptions-key2?: int--><!--Device-KeyOptions-key2?: int-End-->
 
 **System capability:** SystemCapability.Test.UiTest
 

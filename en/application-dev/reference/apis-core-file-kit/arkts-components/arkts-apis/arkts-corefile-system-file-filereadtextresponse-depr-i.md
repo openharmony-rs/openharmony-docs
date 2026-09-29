@@ -10,6 +10,8 @@ Returns the text read, including the text content.
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export interface FileReadTextResponse--><!--Device-unnamed-export interface FileReadTextResponse-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -30,5 +32,7 @@ Text read from the specified file.
 **Since:** 3
 
 **Deprecated since:** 10
+
+<!--Device-FileReadTextResponse-text: string--><!--Device-FileReadTextResponse-text: string-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite

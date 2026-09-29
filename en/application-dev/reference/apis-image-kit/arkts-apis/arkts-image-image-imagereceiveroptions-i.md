@@ -8,6 +8,8 @@ Describes the initialization options for ImageReceiver.
 
 **Since:** 23
 
+<!--Device-image-interface ImageReceiverOptions--><!--Device-image-interface ImageReceiverOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Maximum number of images that can be accessed simultaneously. The value range is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ImageReceiverOptions-capacity?: int--><!--Device-ImageReceiverOptions-capacity?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver
 
 ## size
@@ -45,5 +49,7 @@ Image size, with both the width and height greater than 0.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ImageReceiverOptions-size?: Size--><!--Device-ImageReceiverOptions-size?: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageReceiver

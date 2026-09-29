@@ -14,6 +14,8 @@ PdfData适用于需要离线保存网页内容、生成网页PDF报告等场景�
 
 **起始版本：** 14
 
+<!--Device-webview-class PdfData--><!--Device-webview-class PdfData-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -33,6 +35,8 @@ pdfArrayBuffer(): Uint8Array
 **起始版本：** 14
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-PdfData-pdfArrayBuffer(): Uint8Array--><!--Device-PdfData-pdfArrayBuffer(): Uint8Array-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

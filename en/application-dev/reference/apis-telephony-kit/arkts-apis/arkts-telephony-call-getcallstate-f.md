@@ -16,6 +16,8 @@ Obtains the call status. This API uses an asynchronous callback to return the re
 
 **Since:** 6
 
+<!--Device-call-function getCallState(callback: AsyncCallback<CallState>): void--><!--Device-call-function getCallState(callback: AsyncCallback<CallState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**
@@ -50,6 +52,8 @@ function getCallState(): Promise<CallState>
 Obtains the call status. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-call-function getCallState(): Promise<CallState>--><!--Device-call-function getCallState(): Promise<CallState>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

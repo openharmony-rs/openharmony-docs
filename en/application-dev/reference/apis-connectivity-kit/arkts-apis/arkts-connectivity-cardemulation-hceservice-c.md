@@ -8,6 +8,8 @@ Provides APIs for implementing HCE, including receiving Application Protocol Dat
 
 **Since:** 8
 
+<!--Device-cardEmulation-export class HceService--><!--Device-cardEmulation-export class HceService-End-->
+
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-HceService-off(type: 'hceCmd', callback?: AsyncCallback<int[]>): void--><!--Device-HceService-off(type: 'hceCmd', callback?: AsyncCallback<int[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
@@ -98,6 +102,8 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HceService-on(type: 'hceCmd', callback: AsyncCallback<int[]>): void--><!--Device-HceService-on(type: 'hceCmd', callback: AsyncCallback<int[]>): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
@@ -194,6 +200,230 @@ export default {
 }
 ```
 
+## start
+
+```TypeScript
+start(elementName: ElementName, aidList: string[]): void
+```
+
+Starts HCE, including enabling this application to run in the foreground preferentially and dynamically registering the AID list.
+
+**Since:** 9
+
+**Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HceService-start(elementName: ElementName, aidList: string[]): void--><!--Device-HceService-start(elementName: ElementName, aidList: string[]): void-End-->
+
+**System capability:** SystemCapability.Communication.NFC.CardEmulation
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | Yes | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty. |
+| aidList | string[] | Yes | List of AIDs to register. This parameter can be left empty. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
+
+## stop
+
+```TypeScript
+stop(elementName: ElementName): void
+```
+
+Stops HCE, including canceling the subscription of APDU data, exiting this application from the foreground, and releasing the dynamically registered AID list. The application needs to call this API in **onDestroy** of the HCE page.
+
+**Since:** 9
+
+**Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HceService-stop(elementName: ElementName): void--><!--Device-HceService-stop(elementName: ElementName): void-End-->
+
+**System capability:** SystemCapability.Communication.NFC.CardEmulation
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | Yes | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
+
+## transmit
+
+```TypeScript
+transmit(response: number[]): Promise<void>
+```
+
+Transmits an APDU to the peer card reader. This API uses a promise to return the result. The application calls this API only after receiving an APDU sent by the card reader via on.
+
+**Since:** 9
+
+**Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HceService-transmit(response: int[]): Promise<void>--><!--Device-HceService-transmit(response: int[]): Promise<void>-End-->
+
+**System capability:** SystemCapability.Communication.NFC.CardEmulation
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| response | number[] | Yes | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
+
+**Examples**
+
+```TypeScript
+// Applicable to devices other than lite wearables
+import { cardEmulation } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hceService: cardEmulation.HceService = new cardEmulation.HceService();
+
+// Data to be sent by the application. The following data is for reference only.
+const responseData = [0x1, 0x2];
+hceService.transmit(responseData).then(() => {
+  // Process the promise.
+  console.info("transmit Promise success.");
+}).catch((err: BusinessError) => {
+  console.error("transmit Promise error:", err);
+});
+```
+
+```TypeScript
+// Applicable to lite wearables
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+let hceService = new cardEmulation.HceService();
+
+// Data to be sent by the application. The following data is for reference only.
+let responseData = [0x1, 0x2];
+hceService.transmit(responseData).then(() => {
+  // Process the promise.
+  console.info("transmit Promise success.");
+});
+console.info("transmit Promise end.");
+```
+
+<a id="transmit-1"></a>
+
+## transmit
+
+```TypeScript
+transmit(response: number[], callback: AsyncCallback<void>): void
+```
+
+Sends APDU data to the peer card reader. The application can call this API only after receiving an APDU sent by the card reader via on. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Required permissions:** ohos.permission.NFC_CARD_EMULATION
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-HceService-transmit(response: int[], callback: AsyncCallback<void>): void--><!--Device-HceService-transmit(response: int[], callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.Communication.NFC.CardEmulation
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| response | number[] | Yes | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
+
+**Examples**
+
+```TypeScript
+// Applicable to devices other than lite wearables
+import { cardEmulation } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hceService: cardEmulation.HceService = new cardEmulation.HceService();
+
+// Data to be sent by the application. The following data is for reference only.
+try {
+  const responseData = [0x1, 0x2];
+
+  hceService.transmit(responseData, (err : BusinessError)=> {
+    if (err) {
+      console.error(`transmit AsyncCallback err Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info("transmit AsyncCallback success.");
+    }
+  });
+} catch (error) {
+  console.error(`transmit AsyncCallback catch Code: ${(error as BusinessError).code}, ` +
+    `message: ${(error as BusinessError).message}`);
+}
+```
+
+```TypeScript
+// Applicable to lite wearables
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+let hceService = new cardEmulation.HceService();
+
+// Data to be sent by the application. The following data is for reference only.
+let responseData = [0x1, 0x2];
+hceService.transmit(responseData, () => {
+  console.info("transmit Promise success.");
+});
+console.info("transmit Promise end.");
+```
+
 ## sendResponse
 
 ```TypeScript
@@ -216,6 +446,8 @@ Sends a response to the peer card reader.
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HceService-sendResponse(responseApdu: number[]): void--><!--Device-HceService-sendResponse(responseApdu: number[]): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
@@ -296,40 +528,6 @@ export default  {
 }
 ```
 
-## start
-
-```TypeScript
-start(elementName: ElementName, aidList: string[]): void
-```
-
-Starts HCE, including enabling this application to run in the foreground preferentially and dynamically registering the AID list.
-
-**Since:** 9
-
-**Required permissions:** ohos.permission.NFC_CARD_EMULATION
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Communication.NFC.CardEmulation
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | Yes | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty. |
-| aidList | string[] | Yes | List of AIDs to register. This parameter can be left empty. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
-
 ## startHCE
 
 ```TypeScript
@@ -352,6 +550,8 @@ Starts HCE, including enabling this application to run in the foreground prefere
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HceService-startHCE(aidList: string[]): boolean--><!--Device-HceService-startHCE(aidList: string[]): boolean-End-->
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
@@ -431,39 +631,6 @@ export default  {
 }
 ```
 
-## stop
-
-```TypeScript
-stop(elementName: ElementName): void
-```
-
-Stops HCE, including canceling the subscription of APDU data, exiting this application from the foreground, and releasing the dynamically registered AID list. The application needs to call this API in **onDestroy** of the HCE page.
-
-**Since:** 9
-
-**Required permissions:** ohos.permission.NFC_CARD_EMULATION
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Communication.NFC.CardEmulation
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| elementName | [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | Yes | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
-
 ## stopHCE
 
 ```TypeScript
@@ -486,6 +653,8 @@ Stops HCE, including exiting the current application from the foreground, releas
 **Required permissions:** ohos.permission.NFC_CARD_EMULATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HceService-stopHCE(): boolean--><!--Device-HceService-stopHCE(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.NFC.CardEmulation
 
@@ -555,153 +724,4 @@ export default  {
         hceService.stopHCE();
     }
 }
-```
-
-## transmit
-
-```TypeScript
-transmit(response: number[]): Promise<void>
-```
-
-Transmits an APDU to the peer card reader. This API uses a promise to return the result. The application calls this API only after receiving an APDU sent by the card reader via on.
-
-**Since:** 9
-
-**Required permissions:** ohos.permission.NFC_CARD_EMULATION
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Communication.NFC.CardEmulation
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| response | number[] | Yes | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**. |
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
-
-**Examples**
-
-```TypeScript
-// Applicable to devices other than lite wearables
-import { cardEmulation } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-
-// Data to be sent by the application. The following data is for reference only.
-const responseData = [0x1, 0x2];
-hceService.transmit(responseData).then(() => {
-  // Process the promise.
-  console.info("transmit Promise success.");
-}).catch((err: BusinessError) => {
-  console.error("transmit Promise error:", err);
-});
-```
-
-```TypeScript
-// Applicable to lite wearables
-import cardEmulation from '@ohos.nfc.cardEmulation';
-
-let hceService = new cardEmulation.HceService();
-
-// Data to be sent by the application. The following data is for reference only.
-let responseData = [0x1, 0x2];
-hceService.transmit(responseData).then(() => {
-  // Process the promise.
-  console.info("transmit Promise success.");
-});
-console.info("transmit Promise end.");
-```
-
-<a id="transmit-1"></a>
-
-## transmit
-
-```TypeScript
-transmit(response: number[], callback: AsyncCallback<void>): void
-```
-
-Sends APDU data to the peer card reader. The application can call this API only after receiving an APDU sent by the card reader via on. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Required permissions:** ohos.permission.NFC_CARD_EMULATION
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**System capability:** SystemCapability.Communication.NFC.CardEmulation
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| response | number[] | Yes | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the operation result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [3100301](../errorcode-nfc.md#3100301-abnormal-nfc-card-emulation-status) | Card emulation running state is abnormal in service. |
-
-**Examples**
-
-```TypeScript
-// Applicable to devices other than lite wearables
-import { cardEmulation } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-
-// Data to be sent by the application. The following data is for reference only.
-try {
-  const responseData = [0x1, 0x2];
-
-  hceService.transmit(responseData, (err : BusinessError)=> {
-    if (err) {
-      console.error(`transmit AsyncCallback err Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info("transmit AsyncCallback success.");
-    }
-  });
-} catch (error) {
-  console.error(`transmit AsyncCallback catch Code: ${(error as BusinessError).code}, ` +
-    `message: ${(error as BusinessError).message}`);
-}
-```
-
-```TypeScript
-// Applicable to lite wearables
-import cardEmulation from '@ohos.nfc.cardEmulation';
-
-let hceService = new cardEmulation.HceService();
-
-// Data to be sent by the application. The following data is for reference only.
-let responseData = [0x1, 0x2];
-hceService.transmit(responseData, () => {
-  console.info("transmit Promise success.");
-});
-console.info("transmit Promise end.");
 ```

@@ -10,6 +10,8 @@ When the main type of the continuous task is **MODE_SPECIAL_SCENARIO_PROCESSING*
 
 **Since:** 21
 
+<!--Device-backgroundTaskManager-export enum BackgroundTaskMode--><!--Device-backgroundTaskManager-export enum BackgroundTaskMode-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 ## MODE_ALLOW_WIFI_AWARE
@@ -21,6 +23,8 @@ MODE_ALLOW_WIFI_AWARE = 7
 WLAN-related services.
 
 **Since:** 21
+
+<!--Device-BackgroundTaskMode-MODE_ALLOW_WIFI_AWARE = 7--><!--Device-BackgroundTaskMode-MODE_ALLOW_WIFI_AWARE = 7-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

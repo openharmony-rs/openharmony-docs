@@ -14,6 +14,8 @@ declare type Dimension = PX | VP | FP | LPX | Percentage | Resource
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-unnamed-declare type Dimension = PX | VP | FP | LPX | Percentage | Resource--><!--Device-unnamed-declare type Dimension = PX | VP | FP | LPX | Percentage | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |

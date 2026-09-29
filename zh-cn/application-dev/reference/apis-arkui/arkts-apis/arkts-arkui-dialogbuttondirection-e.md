@@ -8,6 +8,8 @@ declare enum DialogButtonDirection
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare enum DialogButtonDirection--><!--Device-unnamed-declare enum DialogButtonDirection-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## AUTO
@@ -23,6 +25,8 @@ AUTO = 0
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogButtonDirection-AUTO = 0--><!--Device-DialogButtonDirection-AUTO = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ HORIZONTAL = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-DialogButtonDirection-HORIZONTAL = 1--><!--Device-DialogButtonDirection-HORIZONTAL = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## VERTICAL
@@ -55,5 +61,7 @@ VERTICAL = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DialogButtonDirection-VERTICAL = 2--><!--Device-DialogButtonDirection-VERTICAL = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

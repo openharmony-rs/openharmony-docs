@@ -8,6 +8,8 @@ declare interface DirectionalEdgesT<T>
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface DirectionalEdgesT<T>--><!--Device-unnamed-declare interface DirectionalEdgesT<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -27,6 +29,8 @@ bottom: T
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DirectionalEdgesT-bottom: T--><!--Device-DirectionalEdgesT-bottom: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ end: T
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-DirectionalEdgesT-end: T--><!--Device-DirectionalEdgesT-end: T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -68,6 +74,8 @@ start: T
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-DirectionalEdgesT-start: T--><!--Device-DirectionalEdgesT-start: T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -87,5 +95,7 @@ top: T
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-DirectionalEdgesT-top: T--><!--Device-DirectionalEdgesT-top: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

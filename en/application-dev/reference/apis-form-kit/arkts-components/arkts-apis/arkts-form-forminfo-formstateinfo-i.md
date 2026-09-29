@@ -10,6 +10,8 @@ Provides state information about a form.
 
 **Since:** 9
 
+<!--Device-formInfo-interface FormStateInfo--><!--Device-formInfo-interface FormStateInfo-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Obtains the form state.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormStateInfo-formState: FormState--><!--Device-FormStateInfo-formState: FormState-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -46,6 +50,8 @@ Obtains the want form .
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-FormStateInfo-want: Want--><!--Device-FormStateInfo-want: Want-End-->
 
 **System capability:** SystemCapability.Ability.Form

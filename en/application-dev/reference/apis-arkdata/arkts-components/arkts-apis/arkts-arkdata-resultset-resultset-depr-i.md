@@ -12,6 +12,8 @@ A result set is a set of results returned after the relational database (RDB) qu
 
 **Substitutes:** [relationalStore](arkts-arkdata-data-relationalstore.md)
 
+<!--Device-unnamed-export interface ResultSet--><!--Device-unnamed-export interface ResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## close
@@ -27,6 +29,8 @@ Closes this result set.
 **Deprecated since:** 9
 
 **Substitutes:** close
+
+<!--Device-ResultSet-close(): void--><!--Device-ResultSet-close(): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -55,6 +59,8 @@ Obtains the value from the specified column in the current row as a byte array.
 **Deprecated since:** 9
 
 **Substitutes:** getBlob
+
+<!--Device-ResultSet-getBlob(columnIndex: number): Uint8Array--><!--Device-ResultSet-getBlob(columnIndex: number): Uint8Array-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -89,6 +95,8 @@ Obtains the column index based on the column name.
 **Deprecated since:** 9
 
 **Substitutes:** getColumnIndex
+
+<!--Device-ResultSet-getColumnIndex(columnName: string): number--><!--Device-ResultSet-getColumnIndex(columnName: string): number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -130,6 +138,8 @@ Obtains the column name based on the column index.
 
 **Substitutes:** getColumnName
 
+<!--Device-ResultSet-getColumnName(columnIndex: number): string--><!--Device-ResultSet-getColumnName(columnIndex: number): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -166,6 +176,8 @@ Obtains the value from the specified column in the current row as a Double.
 
 **Substitutes:** getDouble
 
+<!--Device-ResultSet-getDouble(columnIndex: number): number--><!--Device-ResultSet-getDouble(columnIndex: number): number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -199,6 +211,8 @@ Obtains the value from the specified column in the current row as a Long.
 **Deprecated since:** 9
 
 **Substitutes:** getLong
+
+<!--Device-ResultSet-getLong(columnIndex: number): number--><!--Device-ResultSet-getLong(columnIndex: number): number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -234,6 +248,8 @@ Obtains the value from the specified column in the current row as a string.
 
 **Substitutes:** getString
 
+<!--Device-ResultSet-getString(columnIndex: number): string--><!--Device-ResultSet-getString(columnIndex: number): string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -267,6 +283,8 @@ Moves the result set forward or backward to the specified row with an offset rel
 **Deprecated since:** 9
 
 **Substitutes:** goTo
+
+<!--Device-ResultSet-goTo(offset: number): boolean--><!--Device-ResultSet-goTo(offset: number): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -309,6 +327,8 @@ Moves the cursor to the first row of the result set.
 
 **Substitutes:** goToFirstRow
 
+<!--Device-ResultSet-goToFirstRow(): boolean--><!--Device-ResultSet-goToFirstRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -343,6 +363,8 @@ Moves the cursor to the last row of the result set.
 **Deprecated since:** 9
 
 **Substitutes:** goToLastRow
+
+<!--Device-ResultSet-goToLastRow(): boolean--><!--Device-ResultSet-goToLastRow(): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -379,6 +401,8 @@ Moves the cursor to the next row in the result set.
 
 **Substitutes:** goToNextRow
 
+<!--Device-ResultSet-goToNextRow(): boolean--><!--Device-ResultSet-goToNextRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -414,6 +438,8 @@ Moves the cursor to the previous row in the result set.
 
 **Substitutes:** goToPreviousRow
 
+<!--Device-ResultSet-goToPreviousRow(): boolean--><!--Device-ResultSet-goToPreviousRow(): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value:**
@@ -448,6 +474,8 @@ Moves the cursor to the specified row in the result set.
 **Deprecated since:** 9
 
 **Substitutes:** goToRow
+
+<!--Device-ResultSet-goToRow(position: number): boolean--><!--Device-ResultSet-goToRow(position: number): boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -490,6 +518,8 @@ Checks whether the value in the specified column of the current row is null.
 
 **Substitutes:** isColumnNull
 
+<!--Device-ResultSet-isColumnNull(columnIndex: number): boolean--><!--Device-ResultSet-isColumnNull(columnIndex: number): boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**
@@ -526,6 +556,8 @@ Number of columns in the result set.
 
 **Substitutes:** columnCount
 
+<!--Device-ResultSet-columnCount: number--><!--Device-ResultSet-columnCount: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## columnNames
@@ -543,6 +575,8 @@ Names of all columns in the result set.
 **Deprecated since:** 9
 
 **Substitutes:** columnNames
+
+<!--Device-ResultSet-columnNames: Array<string>--><!--Device-ResultSet-columnNames: Array<string>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -562,6 +596,8 @@ Whether the cursor is in the first row of the result set.
 
 **Substitutes:** isAtFirstRow
 
+<!--Device-ResultSet-isAtFirstRow: boolean--><!--Device-ResultSet-isAtFirstRow: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isAtLastRow
@@ -579,6 +615,8 @@ Whether the cursor is in the last row of the result set.
 **Deprecated since:** 9
 
 **Substitutes:** isAtLastRow
+
+<!--Device-ResultSet-isAtLastRow: boolean--><!--Device-ResultSet-isAtLastRow: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -598,6 +636,8 @@ Whether the result set is closed.
 
 **Substitutes:** isClosed
 
+<!--Device-ResultSet-isClosed: boolean--><!--Device-ResultSet-isClosed: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## isEnded
@@ -615,6 +655,8 @@ Whether the cursor is after the last row of the result set.
 **Deprecated since:** 9
 
 **Substitutes:** isEnded
+
+<!--Device-ResultSet-isEnded: boolean--><!--Device-ResultSet-isEnded: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -634,6 +676,8 @@ Whether the cursor has been moved.
 
 **Substitutes:** isStarted
 
+<!--Device-ResultSet-isStarted: boolean--><!--Device-ResultSet-isStarted: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## rowCount
@@ -652,6 +696,8 @@ Number of rows in the result set.
 
 **Substitutes:** rowCount
 
+<!--Device-ResultSet-rowCount: number--><!--Device-ResultSet-rowCount: number-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## rowIndex
@@ -669,5 +715,7 @@ Index of the current row in the result set.
 **Deprecated since:** 9
 
 **Substitutes:** rowIndex
+
+<!--Device-ResultSet-rowIndex: number--><!--Device-ResultSet-rowIndex: number-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

@@ -20,6 +20,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-errorManager-function off(type: 'error', observerId: number, callback: AsyncCallback<void>): void--><!--Device-errorManager-function off(type: 'error', observerId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -74,6 +76,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-errorManager-function off(type: 'error', observerId: number): Promise<void>--><!--Device-errorManager-function off(type: 'error', observerId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -135,6 +139,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-errorManager-function off(type: 'loopObserver', observer?: LoopObserver): void--><!--Device-errorManager-function off(type: 'loopObserver', observer?: LoopObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -179,6 +185,8 @@ This API can only be used in the main thread. If a thread error occurs, an error
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-errorManager-function off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void--><!--Device-errorManager-function off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -262,6 +270,8 @@ If the observer passed in is not in the observer queue registered via the **on**
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-errorManager-function off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void--><!--Device-errorManager-function off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -322,6 +332,8 @@ If the observer passed in does not match the observer registered via the **on** 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-errorManager-function off(type: 'freeze', observer?: FreezeObserver): void--><!--Device-errorManager-function off(type: 'freeze', observer?: FreezeObserver): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**
@@ -371,6 +383,8 @@ If the observer passed in is not in the observer queue registered via the **on**
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-errorManager-function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void--><!--Device-errorManager-function off(type: 'globalErrorOccurred', observer?: GlobalObserver): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

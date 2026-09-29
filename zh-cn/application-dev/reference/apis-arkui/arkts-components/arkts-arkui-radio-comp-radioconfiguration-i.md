@@ -6,9 +6,11 @@ declare interface RadioConfiguration extends CommonConfiguration<RadioConfigurat
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md)。
 
-**继承/实现关系：** RadioConfiguration extends CommonConfiguration&lt;RadioConfiguration&gt;
+**继承/实现关系：** RadioConfiguration extends CommonConfiguration<RadioConfiguration>
 
 **起始版本：** 12
+
+<!--Device-unnamed-declare interface RadioConfiguration extends CommonConfiguration<RadioConfiguration>--><!--Device-unnamed-declare interface RadioConfiguration extends CommonConfiguration<RadioConfiguration>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,6 +34,8 @@ checked: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RadioConfiguration-checked: boolean--><!--Device-RadioConfiguration-checked: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## triggerChange
@@ -52,6 +56,8 @@ triggerChange: Callback<boolean>
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RadioConfiguration-triggerChange: Callback<boolean>--><!--Device-RadioConfiguration-triggerChange: Callback<boolean>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -69,5 +75,7 @@ value: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RadioConfiguration-value: string--><!--Device-RadioConfiguration-value: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

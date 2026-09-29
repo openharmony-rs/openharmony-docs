@@ -8,6 +8,8 @@ Defines an MMSC address.
 
 **Since:** 8
 
+<!--Device-sms-export interface MmsAddress--><!--Device-sms-export interface MmsAddress-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Network address.
 
 **Since:** 8
 
+<!--Device-MmsAddress-address: string--><!--Device-MmsAddress-address: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Character set.
 **Type:** [MmsCharSets](arkts-telephony-sms-mmscharsets-e-sys.md)
 
 **Since:** 8
+
+<!--Device-MmsAddress-charset: MmsCharSets--><!--Device-MmsAddress-charset: MmsCharSets-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

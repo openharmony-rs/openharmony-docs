@@ -14,6 +14,8 @@ Before calling any API in AudioVolumeManager, you must use [getVolumeManager](ar
 
 **Since:** 9
 
+<!--Device-audio-interface AudioVolumeManager--><!--Device-audio-interface AudioVolumeManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Confirms the result of adjusting the volume that exceeds the volume protection t
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioVolumeManager-confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void--><!--Device-AudioVolumeManager-confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -64,6 +68,8 @@ Interface for forcibly setting the volume type by pressing the volume key.
 **Since:** 20
 
 **Required permissions:** ohos.permission.MODIFY_AUDIO_SETTINGS
+
+<!--Device-AudioVolumeManager-forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: int): void--><!--Device-AudioVolumeManager-forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: int): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -116,6 +122,8 @@ Obtains the Volume information of the active audio streams.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioVolumeManager-getActiveStreamsVolumeInfo(): ActiveStreamsVolumeInfoArray--><!--Device-AudioVolumeManager-getActiveStreamsVolumeInfo(): ActiveStreamsVolumeInfoArray-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -144,6 +152,8 @@ Get the volume for specified app with range from 0 to 100. Applications with sam
 **Since:** 19
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeManager-getAppVolumePercentageForUid(uid: int): Promise<int>--><!--Device-AudioVolumeManager-getAppVolumePercentageForUid(uid: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -189,6 +199,8 @@ Obtains volume type by stream type.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-getAudioVolumeTypeByStreamUsage(streamUsage: StreamUsage): AudioVolumeType--><!--Device-AudioVolumeManager-getAudioVolumeTypeByStreamUsage(streamUsage: StreamUsage): AudioVolumeType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -221,6 +233,8 @@ getMaxSystemVolume(volumeType: AudioVolumeType): number
 Obtains the maximum volume allowed for a volume type.
 
 **Since:** 20
+
+<!--Device-AudioVolumeManager-getMaxSystemVolume(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeManager-getMaxSystemVolume(volumeType: AudioVolumeType): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -255,6 +269,8 @@ Obtains the minimum volume allowed for a volume type.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-getMinSystemVolume(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeManager-getMinSystemVolume(volumeType: AudioVolumeType): int-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -287,6 +303,8 @@ getMinSystemVolumePercentage(volumeType: AudioVolumeType): number
 Gets the minimum system volume percentage application can set for specified volume type.
 
 **Since:** 23
+
+<!--Device-AudioVolumeManager-getMinSystemVolumePercentage(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeManager-getMinSystemVolumePercentage(volumeType: AudioVolumeType): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -333,6 +351,8 @@ Obtains stream types by volume type.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-getStreamUsagesByVolumeType(volumeType: AudioVolumeType): StreamUsageArray--><!--Device-AudioVolumeManager-getStreamUsagesByVolumeType(volumeType: AudioVolumeType): StreamUsageArray-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -366,6 +386,8 @@ Obtains system supported volume types.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-getSupportedAudioVolumeTypes(): Array<Readonly<AudioVolumeType>>--><!--Device-AudioVolumeManager-getSupportedAudioVolumeTypes(): Array<Readonly<AudioVolumeType>>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -391,6 +413,8 @@ getSystemVolume(volumeType: AudioVolumeType): number
 Obtains the volume of a volume type.
 
 **Since:** 20
+
+<!--Device-AudioVolumeManager-getSystemVolume(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeManager-getSystemVolume(volumeType: AudioVolumeType): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -424,6 +448,8 @@ getSystemVolumeByUid(volumeType: AudioVolumeType, callingUid: number): number
 Obtains the volume of streams in specific uid application.
 
 **Since:** 20
+
+<!--Device-AudioVolumeManager-getSystemVolumeByUid(volumeType: AudioVolumeType, callingUid: int): int--><!--Device-AudioVolumeManager-getSystemVolumeByUid(volumeType: AudioVolumeType, callingUid: int): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -459,6 +485,8 @@ getSystemVolumePercentage(volumeType: AudioVolumeType): number
 Gets the current system volume percentage for specified volume type.
 
 **Since:** 23
+
+<!--Device-AudioVolumeManager-getSystemVolumePercentage(volumeType: AudioVolumeType): int--><!--Device-AudioVolumeManager-getSystemVolumePercentage(volumeType: AudioVolumeType): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -505,6 +533,8 @@ Get the volume group list for a networkId. This method uses an asynchronous call
 
 **Since:** 9
 
+<!--Device-AudioVolumeManager-getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos>): void--><!--Device-AudioVolumeManager-getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -542,6 +572,8 @@ Get the volume group list for a networkId. This method uses a promise to return 
 
 **Since:** 9
 
+<!--Device-AudioVolumeManager-getVolumeGroupInfos(networkId: string): Promise<VolumeGroupInfos>--><!--Device-AudioVolumeManager-getVolumeGroupInfos(networkId: string): Promise<VolumeGroupInfos>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -576,6 +608,8 @@ getVolumeGroupInfosSync(networkId: string): VolumeGroupInfos
 Get the volume group list for a networkId.
 
 **Since:** 10
+
+<!--Device-AudioVolumeManager-getVolumeGroupInfosSync(networkId: string): VolumeGroupInfos--><!--Device-AudioVolumeManager-getVolumeGroupInfosSync(networkId: string): VolumeGroupInfos-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -624,6 +658,8 @@ Gets the volume db value that system calculate by volume type, volume level and 
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-getVolumeInUnitOfDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): double--><!--Device-AudioVolumeManager-getVolumeInUnitOfDb(volumeType: AudioVolumeType, volumeLevel: int, device: DeviceType): double-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -660,6 +696,8 @@ Checks whether the app volume is muted. If there are multiple callers setting mu
 **Since:** 19
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeManager-isAppVolumeMutedForUid(uid: int, owned: boolean): Promise<boolean>--><!--Device-AudioVolumeManager-isAppVolumeMutedForUid(uid: int, owned: boolean): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -706,6 +744,8 @@ Checks whether a volume type is muted.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-isSystemMuted(volumeType: AudioVolumeType): boolean--><!--Device-AudioVolumeManager-isSystemMuted(volumeType: AudioVolumeType): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -740,6 +780,8 @@ Unsubscribes to the app volume change events..
 **Since:** 19
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeManager-off(type: 'appVolumeChangeForUid', callback?: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-off(type: 'appVolumeChangeForUid', callback?: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -788,6 +830,8 @@ Unsubscribes from active volume type changes.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void--><!--Device-AudioVolumeManager-off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -831,6 +875,8 @@ off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void
 Unsubscribes to the system volume change events.
 
 **Since:** 20
+
+<!--Device-AudioVolumeManager-off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -878,6 +924,8 @@ Unsubscribes from the system volume change events.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioVolumeManager-offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -907,6 +955,8 @@ Unsubscribes from monitoring whether the current volume exceeds the volume prote
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioVolumeManager-offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void--><!--Device-AudioVolumeManager-offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -933,6 +983,8 @@ offVolumePercentageChange(callback?: Callback<VolumeEvent>): void
 Unsubscribes from system volume percentage change events.
 
 **Since:** 23
+
+<!--Device-AudioVolumeManager-offVolumePercentageChange(callback?: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-offVolumePercentageChange(callback?: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -982,6 +1034,8 @@ Listens for specified app volume change events. The app volume may changed by [s
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
 
+<!--Device-AudioVolumeManager-on(type: 'appVolumeChangeForUid', uid: int, callback: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-on(type: 'appVolumeChangeForUid', uid: int, callback: Callback<VolumeEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -1024,6 +1078,8 @@ Subscribes to active volume type changes.
 
 **Since:** 20
 
+<!--Device-AudioVolumeManager-on(type: 'activeVolumeTypeChange', callback: Callback<AudioVolumeType>): void--><!--Device-AudioVolumeManager-on(type: 'activeVolumeTypeChange', callback: Callback<AudioVolumeType>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -1059,6 +1115,8 @@ on(type: 'systemVolumeChange', callback: Callback<VolumeEvent>): void
 Listens for system volume change events. This method uses a callback to get volume change events.
 
 **Since:** 20
+
+<!--Device-AudioVolumeManager-on(type: 'systemVolumeChange', callback: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-on(type: 'systemVolumeChange', callback: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -1098,6 +1156,8 @@ Subscribes to system volume change events. When the system volume for the target
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioVolumeManager-onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<VolumeEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -1128,6 +1188,8 @@ Listens for the event when the current volume exceeds the volume protection thre
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioVolumeManager-onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void--><!--Device-AudioVolumeManager-onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -1154,6 +1216,8 @@ onVolumePercentageChange(callback: Callback<VolumeEvent>): void
 Subscribes to system volume percentage change events.
 
 **Since:** 23
+
+<!--Device-AudioVolumeManager-onVolumePercentageChange(callback: Callback<VolumeEvent>): void--><!--Device-AudioVolumeManager-onVolumePercentageChange(callback: Callback<VolumeEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -1194,6 +1258,8 @@ Change mute state of specified application volume. If there are multiple callers
 **Since:** 19
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeManager-setAppVolumeMutedForUid(uid: int, muted: boolean): Promise<void>--><!--Device-AudioVolumeManager-setAppVolumeMutedForUid(uid: int, muted: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -1242,6 +1308,8 @@ Sets the volume for specified app with range from 0 to 100. Applications with sa
 **Since:** 19
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeManager-setAppVolumePercentageForUid(uid: int, volume: int): Promise<void>--><!--Device-AudioVolumeManager-setAppVolumePercentageForUid(uid: int, volume: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -1292,6 +1360,8 @@ Sets the volume for specific uid application. This method uses a promise to retu
 
 **Required permissions:** ohos.permission.ACCESS_NOTIFICATION_POLICY
 
+<!--Device-AudioVolumeManager-setSystemVolumeByUid(volumeType: AudioVolumeType, volume: int, callingUid: int): Promise<void>--><!--Device-AudioVolumeManager-setSystemVolumeByUid(volumeType: AudioVolumeType, volume: int, callingUid: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -1330,6 +1400,8 @@ Sets the system volume percentage, using an integer ranging from minimum system 
 **Since:** 23
 
 **Required permissions:** ohos.permission.MANAGE_AUDIO_CONFIG
+
+<!--Device-AudioVolumeManager-setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: int): Promise<void>--><!--Device-AudioVolumeManager-setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -1379,6 +1451,8 @@ Sets the mute state for the VoIP audio capture stream of a specified application
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioVolumeManager-setVoipCapturerMuteForUid(uid: int, streamId: long, muted: boolean): Promise<void>--><!--Device-AudioVolumeManager-setVoipCapturerMuteForUid(uid: int, streamId: long, muted: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -1419,6 +1493,8 @@ Sets the mute state for the VoIP audio renderer stream of a specified applicatio
 **Required permissions:** ohos.permission.MUTE_VOIP_PLAYBACK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioVolumeManager-setVoipRendererMuteForUid(uid: int, streamId: long, muted: boolean): Promise<void>--><!--Device-AudioVolumeManager-setVoipRendererMuteForUid(uid: int, streamId: long, muted: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 

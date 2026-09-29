@@ -10,6 +10,8 @@ Gesture recognizer object.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class PanRecognizer extends GestureRecognizer--><!--Device-unnamed-declare class PanRecognizer extends GestureRecognizer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getDirection
@@ -25,6 +27,8 @@ Obtains the recognized direction of the current pan gesture recognizer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-PanRecognizer-getDirection(): PanDirection--><!--Device-PanRecognizer-getDirection(): PanDirection-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ Obtains the minimum pan distance required to trigger this pan gesture recognizer
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-PanRecognizer-getDistance(): number--><!--Device-PanRecognizer-getDistance(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ Obtains the minimum pan distances required for different input sources to trigge
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-PanRecognizer-getDistanceMap(): Map<SourceTool, number>--><!--Device-PanRecognizer-getDistanceMap(): Map<SourceTool, number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -97,6 +105,8 @@ Obtains the properties of this pan gesture recognizer.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PanRecognizer-getPanGestureOptions(): PanGestureOptions--><!--Device-PanRecognizer-getPanGestureOptions(): PanGestureOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

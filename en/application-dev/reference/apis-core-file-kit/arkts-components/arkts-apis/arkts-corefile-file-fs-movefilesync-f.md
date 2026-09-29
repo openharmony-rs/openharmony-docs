@@ -22,6 +22,8 @@ Moves a file. This API returns the result synchronously.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-unnamed-declare function moveFileSync(src: string, dest: string, mode?: number): void--><!--Device-unnamed-declare function moveFileSync(src: string, dest: string, mode?: number): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

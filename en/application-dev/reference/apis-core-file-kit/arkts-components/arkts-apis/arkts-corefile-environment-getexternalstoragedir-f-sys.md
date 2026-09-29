@@ -18,6 +18,8 @@ Obtains the sandbox path of the root directory of an external storage card. This
 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
+<!--Device-Environment-function getExternalStorageDir(): string--><!--Device-Environment-function getExternalStorageDir(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **System API:** This is a system API.

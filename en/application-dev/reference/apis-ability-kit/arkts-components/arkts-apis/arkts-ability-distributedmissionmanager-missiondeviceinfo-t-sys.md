@@ -10,6 +10,8 @@ Defines the parameters required for registering a listener. It is used as an inp
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedMissionManager-export type MissionDeviceInfo = _MissionDeviceInfo--><!--Device-distributedMissionManager-export type MissionDeviceInfo = _MissionDeviceInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.

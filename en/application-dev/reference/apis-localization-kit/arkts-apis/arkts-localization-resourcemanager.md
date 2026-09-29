@@ -30,6 +30,8 @@ through context without importing any module. For details about the context, see
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace resourceManager--><!--Device-unnamed-declare namespace resourceManager-End-->
+
 **System capability:** SystemCapability.Global.ResourceManager
 
 ## Modules to Import
@@ -65,6 +67,13 @@ import { resourceManager } from '@kit.LocalizationKit';
 | [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md) | Asynchronous callback interface. |
 | [ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md) | Provides the capability of accessing application resources and system resources. The accessible resources include the resources in the HAP/HSP module corresponding to the current context and all system resources. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md) | Describes the file descriptor information of the HAP where the rawfile is located. |
+| [Resource](arkts-localization-resourcemanager-resource-t.md) | Describes the resource information, including the application package name, application module name, resource ID, resource type, and formatting parameters. |
+
 ### Enums
 
 | Name | Description |
@@ -73,10 +82,3 @@ import { resourceManager } from '@kit.LocalizationKit';
 | [DeviceType](arkts-localization-resourcemanager-devicetype-e.md) | Enumerates the device types. |
 | [Direction](arkts-localization-resourcemanager-direction-e.md) | Enumerates the screen directions. |
 | [ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md) | Enumerates the screen density types. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md) | Describes the file descriptor information of the HAP where the rawfile is located. |
-| [Resource](arkts-localization-resourcemanager-resource-t.md) | Describes the resource information, including the application package name, application module name, resource ID, resource type, and formatting parameters. |

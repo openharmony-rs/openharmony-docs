@@ -20,6 +20,8 @@ Sets the notification switch state. This API uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function setNotificationSwitch(switchName: string, switchState: boolean, userId: int): Promise<void>--><!--Device-notificationManager-function setNotificationSwitch(switchName: string, switchState: boolean, userId: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

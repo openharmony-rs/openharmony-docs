@@ -16,6 +16,8 @@ Begin to write device logs into a file descriptor for the purpose of problem loc
 
 **Since:** 13
 
+<!--Device-avSession-function startDeviceLogging(url: string, maxSize?: int): Promise<void>--><!--Device-avSession-function startDeviceLogging(url: string, maxSize?: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.

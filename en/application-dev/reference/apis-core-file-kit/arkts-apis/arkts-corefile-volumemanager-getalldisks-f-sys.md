@@ -20,6 +20,8 @@ Querying Information About All Disks.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-volumeManager-function getAllDisks(): Promise<Array<Disk>>--><!--Device-volumeManager-function getAllDisks(): Promise<Array<Disk>>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Volume
 
 **System API:** This is a system API.

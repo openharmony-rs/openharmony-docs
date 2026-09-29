@@ -4,9 +4,11 @@
 export declare interface CustomComponentLifecycle
 ```
 
-**CustomComponentLifecycle** monitors the lifecycle changes of a custom component.
+**CustomComponentLifecycle** is used to monitor changes in the lifecycle of a custom component. You can obtain a **CustomComponentLifecycle** instance through [UIUtils.getLifecycle](arkts-arkui-arkui-statemanagement-uiutils-c.md#getlifecycle).
 
 **Since:** 23
+
+<!--Device-unnamed-export declare interface CustomComponentLifecycle--><!--Device-unnamed-export declare interface CustomComponentLifecycle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,13 +24,17 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 addObserver(observer: CustomComponentLifecycleObserver): void
 ```
 
-Registers a listener for the lifecycle of a custom component. Lifecycle changes will trigger the lifecycle callback in the listener.
+Registers a custom component lifecycle listener. Before calling this method, you need to obtain a CustomComponentLifecycle instance through [UIUtils.getLifecycle](arkts-arkui-arkui-statemanagement-uiutils-c.md#getlifecycle). When the lifecycle of the custom component changes, the corresponding lifecycle callback function in the listener is triggered.
+
+After calling **addObserver** to register a listener, you must call [removeObserver](#removeobserver) to remove the listener when the component is destroyed or when the listener is no longer needed. The two must be used in pairs. If **removeObserver** is not called to remove the listener, the listener may keep triggering callbacks and cause memory leaks.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycle-addObserver(observer: CustomComponentLifecycleObserver): void--><!--Device-CustomComponentLifecycle-addObserver(observer: CustomComponentLifecycleObserver): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +42,7 @@ Registers a listener for the lifecycle of a custom component. Lifecycle changes 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| observer | [CustomComponentLifecycleObserver](arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md) | Yes | Listener for a custom component. |
+| observer | [CustomComponentLifecycleObserver](arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md) | Yes | Listener for the custom component lifecycle. |
 
 ## getCurrentState
 
@@ -44,13 +50,15 @@ Registers a listener for the lifecycle of a custom component. Lifecycle changes 
 getCurrentState(): CustomComponentLifecycleState
 ```
 
-getCurrentState(): CustomComponentLifecycleState
+The **getCurrentState** function is used to obtain the current lifecycle state of a custom component. Before calling this method, you need to obtain a CustomComponentLifecycle instance through [UIUtils.getLifecycle](arkts-arkui-arkui-statemanagement-uiutils-c.md#getlifecycle).
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-CustomComponentLifecycle-getCurrentState(): CustomComponentLifecycleState--><!--Device-CustomComponentLifecycle-getCurrentState(): CustomComponentLifecycleState-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +97,7 @@ struct Index {
 removeObserver(observer: CustomComponentLifecycleObserver): void
 ```
 
-Removes a listener for the lifecycle of a custom component. After the listener is removed, the lifecycle callback in the listener is not triggered even if the component status changes.
+Removes a custom component lifecycle listener. Before calling this method, you need to obtain a **CustomComponentLifecycle** instance through [UIUtils.getLifecycle](arkts-arkui-arkui-statemanagement-uiutils-c.md#getlifecycle). After unregistration, even if the lifecycle state of the custom component changes, the corresponding lifecycle callback function in the listener will not be triggered.
 
 **Since:** 23
 
@@ -97,10 +105,12 @@ Removes a listener for the lifecycle of a custom component. After the listener i
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-CustomComponentLifecycle-removeObserver(observer: CustomComponentLifecycleObserver): void--><!--Device-CustomComponentLifecycle-removeObserver(observer: CustomComponentLifecycleObserver): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| observer | [CustomComponentLifecycleObserver](arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md) | Yes | Listener for a custom component. |
+| observer | [CustomComponentLifecycleObserver](arkts-arkui-arkui-statemanagement-customcomponentlifecycleobserver-i.md) | Yes | Listener for the custom component lifecycle. |

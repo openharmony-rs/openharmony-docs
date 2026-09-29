@@ -12,6 +12,8 @@ export interface CanvasElement extends Element
 
 **Since:** 4
 
+<!--Device-unnamed-export interface CanvasElement extends Element--><!--Device-unnamed-export interface CanvasElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getContext("2d")
@@ -25,6 +27,8 @@ Obtains the context of 2D canvas drawing. Only parameters related to 2D canvas d
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasElement-getContext(type: "2d", options?: ContextAttrOptions): CanvasRenderingContext2D--><!--Device-CanvasElement-getContext(type: "2d", options?: ContextAttrOptions): CanvasRenderingContext2D-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +57,8 @@ Obtains the context of webgl canvas drawing. Only parameters related to webgl ca
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasElement-getContext(type: "webgl", options?: WebGLContextAttributes): WebGLRenderingContext--><!--Device-CanvasElement-getContext(type: "webgl", options?: WebGLContextAttributes): WebGLRenderingContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -80,6 +86,8 @@ Obtains the context of webgl2 canvas drawing. Only parameters related to webgl2 
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-CanvasElement-getContext(type: "webgl2", options?: WebGLContextAttributes): WebGL2RenderingContext--><!--Device-CanvasElement-getContext(type: "webgl2", options?: WebGLContextAttributes): WebGL2RenderingContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -106,6 +114,8 @@ Creates a data URI that contains the image display.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-CanvasElement-toDataURL(type?: string, quality?: number): string--><!--Device-CanvasElement-toDataURL(type?: string, quality?: number): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

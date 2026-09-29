@@ -18,6 +18,8 @@ Cancels listening for global touchscreen input events. This API uses an asynchro
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'touch', receiver?: TouchEventReceiver): void--><!--Device-inputMonitor-function off(type: 'touch', receiver?: TouchEventReceiver): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -113,6 +115,8 @@ Disables listening for global mouse events. This API uses an asynchronous callba
 **Since:** 9
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function off(type: 'mouse', receiver?: Callback<MouseEvent>): void--><!--Device-inputMonitor-function off(type: 'mouse', receiver?: Callback<MouseEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -210,6 +214,8 @@ Disables listening for global touchpad pinch events. This API uses an asynchrono
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'pinch', receiver?: Callback<Pinch>): void--><!--Device-inputMonitor-function off(type: 'pinch', receiver?: Callback<Pinch>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -305,6 +311,8 @@ Disables listening for global touchpad pinch events. This API uses an asynchrono
 **Since:** 11
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function off(type: 'pinch', fingers: number, receiver?: Callback<Pinch>): void--><!--Device-inputMonitor-function off(type: 'pinch', fingers: number, receiver?: Callback<Pinch>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -403,6 +411,8 @@ Disables listening for rotation events of the touchpad. This API uses an asynchr
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'rotate', fingers: number, receiver?: Callback<Rotate>): void--><!--Device-inputMonitor-function off(type: 'rotate', fingers: number, receiver?: Callback<Rotate>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -500,6 +510,8 @@ Disables listening for three-finger swipe events. This API uses an asynchronous 
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'threeFingersSwipe', receiver?: Callback<ThreeFingersSwipe>): void--><!--Device-inputMonitor-function off(type: 'threeFingersSwipe', receiver?: Callback<ThreeFingersSwipe>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -595,6 +607,8 @@ Disables listening for four-finger swipe events. This API uses an asynchronous c
 **Since:** 10
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function off(type: 'fourFingersSwipe', receiver?: Callback<FourFingersSwipe>): void--><!--Device-inputMonitor-function off(type: 'fourFingersSwipe', receiver?: Callback<FourFingersSwipe>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -692,6 +706,8 @@ Disables listening for three-finger tap events. This API uses an asynchronous ca
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'threeFingersTap', receiver?: Callback<ThreeFingersTap>): void--><!--Device-inputMonitor-function off(type: 'threeFingersTap', receiver?: Callback<ThreeFingersTap>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -787,6 +803,8 @@ Disables listening for fingerprint gesture input events. This API uses an asynch
 **Since:** 12
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function off(type: 'fingerprint', receiver?: Callback<FingerprintEvent>): void--><!--Device-inputMonitor-function off(type: 'fingerprint', receiver?: Callback<FingerprintEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
@@ -884,6 +902,8 @@ Cancels listening for inward swipe events. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'swipeInward', receiver?: Callback<SwipeInward>): void--><!--Device-inputMonitor-function off(type: 'swipeInward', receiver?: Callback<SwipeInward>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -980,6 +1000,8 @@ Disables listening for touchscreen swipe events. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback<TouchGestureEvent>): void--><!--Device-inputMonitor-function off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback<TouchGestureEvent>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -1074,6 +1096,8 @@ Disables listening for touchscreen pinch events. This API uses an asynchronous c
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
 
+<!--Device-inputMonitor-function off(type: 'touchscreenPinch', fingers: number, receiver?: Callback<TouchGestureEvent>): void--><!--Device-inputMonitor-function off(type: 'touchscreenPinch', fingers: number, receiver?: Callback<TouchGestureEvent>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **System API:** This is a system API.
@@ -1167,6 +1191,8 @@ Cancels listening for the press and release events of the specified key, which c
 **Since:** 15
 
 **Required permissions:** ohos.permission.INPUT_MONITORING
+
+<!--Device-inputMonitor-function off(type: 'keyPressed', receiver?: Callback<KeyEvent>): void--><!--Device-inputMonitor-function off(type: 'keyPressed', receiver?: Callback<KeyEvent>): void-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 

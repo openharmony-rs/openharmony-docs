@@ -18,6 +18,8 @@ Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object
 
 **Required permissions:** ohos.permission.RUNNING_LOCK
 
+<!--Device-runningLock-function create(name: string, type: RunningLockType, callback: AsyncCallback<RunningLock>): void--><!--Device-runningLock-function create(name: string, type: RunningLockType, callback: AsyncCallback<RunningLock>): void-End-->
+
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 
 **Parameters:**
@@ -61,6 +63,8 @@ Creates a [RunningLock](arkts-basicservices-runninglock-runninglock-c.md) object
 **Since:** 9
 
 **Required permissions:** ohos.permission.RUNNING_LOCK
+
+<!--Device-runningLock-function create(name: string, type: RunningLockType): Promise<RunningLock>--><!--Device-runningLock-function create(name: string, type: RunningLockType): Promise<RunningLock>-End-->
 
 **System capability:** SystemCapability.PowerManager.PowerManager.Core
 

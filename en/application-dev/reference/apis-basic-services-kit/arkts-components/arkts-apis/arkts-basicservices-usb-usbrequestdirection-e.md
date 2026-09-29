@@ -12,6 +12,8 @@ Enumerates request directions.
 
 **Substitutes:** [USBRequestDirection](arkts-basicservices-usbmanager-usbrequestdirection-e.md)
 
+<!--Device-usb-export enum USBRequestDirection--><!--Device-usb-export enum USBRequestDirection-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_DIR_TO_DEVICE
@@ -28,6 +30,8 @@ Request for writing data from the host to the device.
 
 **Substitutes:** [USB_REQUEST_DIR_TO_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usb_request_dir_to_device)
 
+<!--Device-USBRequestDirection-USB_REQUEST_DIR_TO_DEVICE = 0--><!--Device-USBRequestDirection-USB_REQUEST_DIR_TO_DEVICE = 0-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## USB_REQUEST_DIR_FROM_DEVICE
@@ -43,5 +47,7 @@ Request for reading data from the device to the host.
 **Deprecated since:** 9
 
 **Substitutes:** [USB_REQUEST_DIR_FROM_DEVICE](arkts-basicservices-usbmanager-usbrequestdirection-e.md#usb_request_dir_from_device)
+
+<!--Device-USBRequestDirection-USB_REQUEST_DIR_FROM_DEVICE = 0x80--><!--Device-USBRequestDirection-USB_REQUEST_DIR_FROM_DEVICE = 0x80-End-->
 
 **System capability:** SystemCapability.USB.USBManager

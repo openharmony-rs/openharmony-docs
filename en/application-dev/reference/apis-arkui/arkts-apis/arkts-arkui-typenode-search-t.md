@@ -12,6 +12,8 @@ Represents a FrameNode of the **Search** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type Search = TypedFrameNode<SearchInterface, SearchAttribute>--><!--Device-typeNode-type Search = TypedFrameNode<SearchInterface, SearchAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SearchInterface, [SearchAttribute](../arkts-components/arkts-arkui-search-comp-attribute.md)&gt;

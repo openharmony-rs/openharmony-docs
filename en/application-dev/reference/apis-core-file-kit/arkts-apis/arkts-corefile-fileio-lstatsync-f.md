@@ -19,6 +19,8 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 **Substitutes:** [lstatSync](arkts-corefile-file-fs-lstatsync-f.md)
 
+<!--Device-unnamed-declare function lstatSync(path: string): Stat--><!--Device-unnamed-declare function lstatSync(path: string): Stat-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

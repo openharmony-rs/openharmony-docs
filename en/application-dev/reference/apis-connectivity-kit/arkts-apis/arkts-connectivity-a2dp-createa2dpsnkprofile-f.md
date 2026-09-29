@@ -18,6 +18,8 @@ Create the instance of a2dp sink profile.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-a2dp-function createA2dpSnkProfile(): A2dpSinkProfile--><!--Device-a2dp-function createA2dpSnkProfile(): A2dpSinkProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

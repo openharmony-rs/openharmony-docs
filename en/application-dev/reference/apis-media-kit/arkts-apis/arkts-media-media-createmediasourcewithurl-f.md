@@ -18,6 +18,8 @@ Creates a media source for streaming media to be pre-downloaded.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-media-function createMediaSourceWithUrl(url: string, headers?: Record<string, string>): MediaSource--><!--Device-media-function createMediaSourceWithUrl(url: string, headers?: Record<string, string>): MediaSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 **Parameters:**

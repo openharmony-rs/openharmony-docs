@@ -20,6 +20,8 @@ Get available form host service info list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formAgent-function getAvailableFormHostServices(): Promise<Array<formInfo.PeerFormHostServiceInfo>>--><!--Device-formAgent-function getAvailableFormHostServices(): Promise<Array<formInfo.PeerFormHostServiceInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ Checks whether a specified template is supported before using [NotificationTempl
 
 **Since:** 9
 
+<!--Device-notificationManager-function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Parameters:**
@@ -62,6 +64,8 @@ function isSupportTemplate(templateName: string): Promise<boolean>
 Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-notificationtemplate-i.md) to publish a notification. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-notificationManager-function isSupportTemplate(templateName: string): Promise<boolean>--><!--Device-notificationManager-function isSupportTemplate(templateName: string): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

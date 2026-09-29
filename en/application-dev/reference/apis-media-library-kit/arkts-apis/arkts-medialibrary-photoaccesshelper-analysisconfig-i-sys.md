@@ -8,6 +8,8 @@ Defines the asset analysis configuration.
 
 **Since:** 24
 
+<!--Device-photoAccessHelper-interface AnalysisConfig--><!--Device-photoAccessHelper-interface AnalysisConfig-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Length range: (0, 500].
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AnalysisConfig-extraInfos?: string--><!--Device-AnalysisConfig-extraInfos?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Array of intelligent analysis types. The maximum size of the array is the number
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AnalysisConfig-types: AnalysisType[]--><!--Device-AnalysisConfig-types: AnalysisType[]-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -71,6 +77,8 @@ Length range: [0, 100].
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AnalysisConfig-uris: string[]--><!--Device-AnalysisConfig-uris: string[]-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -10,6 +10,8 @@ WebSchemeHandler与[WebSchemeHandlerRequest](arkts-arkweb-webview-webschemehandl
 
 **起始版本：** 12
 
+<!--Device-webview-class WebSchemeHandler--><!--Device-webview-class WebSchemeHandler-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## 导入模块
@@ -35,6 +37,8 @@ onRequestStart(
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void--><!--Device-WebSchemeHandler-onRequestStart(      callback: (request: WebSchemeHandlerRequest, handler: WebResourceHandler) => boolean): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -47,7 +51,7 @@ onRequestStart(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -161,6 +165,8 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void--><!--Device-WebSchemeHandler-onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -173,7 +179,7 @@ onRequestStop(callback: Callback<WebSchemeHandlerRequest>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 401 | Invalid input parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid input parameter. |
 
 **示例**
 

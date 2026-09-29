@@ -4,6 +4,8 @@ Provides methods to accessing bluetooth MAP(Message Access Profile)-related capa
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace map--><!--Device-unnamed-declare namespace map-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import

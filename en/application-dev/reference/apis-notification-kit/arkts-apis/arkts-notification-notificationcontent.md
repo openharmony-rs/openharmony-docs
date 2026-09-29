@@ -39,18 +39,18 @@ The **NotificationContent** defines the content structure of a notification and 
 <!--DelEnd-->
 
 <!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [IconType](arkts-notification-icontype-t-sys.md) | Describes the icon types. |
+<!--DelEnd-->
+
+<!--Del-->
 ### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [LiveViewStatus](arkts-notification-notificationcontent-liveviewstatus-e-sys.md) | Enumerates the statuses of the common live view. |
 | [LiveViewTypes](arkts-notification-notificationcontent-liveviewtypes-e-sys.md) | Enumerates live view types. |
-<!--DelEnd-->
-
-<!--Del-->
-### Types(System API)
-
-| Name | Description |
-| --- | --- |
-| [IconType](arkts-notification-icontype-t-sys.md) | Describes the icon types. |
 <!--DelEnd-->

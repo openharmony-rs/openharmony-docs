@@ -3,7 +3,16 @@
 The **Shape** component is the parent component of the drawing components. The attributes described in this topic are universal attributes supported by all the drawing components.
 1. Drawing components use **Shape** as their parent to implement the effect similar to SVG.
 2. Drawing components can be used independently to draw specified shapes.
-> **NOTE** > > This component supports dynamic constructor parameter updates using the > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the > [AttributeUpdater](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) class since API version 20. > > **Child Components** > > The following child components are supported: Rect, Path, Circle, Ellipse, Polyline, [Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon), Image, Text, [Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column), Row, and **Shape**.
+
+> **NOTE:** 
+> 
+> This component supports dynamic constructor parameter updates using the
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
+> [AttributeUpdater](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) class since API version 20.
+> 
+> **Child Components**
+> 
+> The following child components are supported: Rect, Path, Circle, Ellipse, Polyline, [Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon), Image, Text, [Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column), Row, and **Shape**.
 
 ## Shape
 
@@ -18,6 +27,8 @@ Draws the **Shape** component. After being called, it creates a **Shape** object
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute--><!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +51,8 @@ Draws the **Shape** component. After being called, it creates a **Shape** object
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ShapeInterface-(value: PixelMap): ShapeAttribute--><!--Device-ShapeInterface-(value: PixelMap): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +77,8 @@ Draws the **Shape** component. This function has no parameter. After being calle
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ShapeInterface-(): ShapeAttribute--><!--Device-ShapeInterface-(): ShapeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,6 +18,8 @@ Lock the screen.
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK_INNER
 
+<!--Device-screenLock-function lock(callback: AsyncCallback<boolean>): void--><!--Device-screenLock-function lock(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.
@@ -65,6 +67,8 @@ Lock the screen.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ACCESS_SCREEN_LOCK_INNER
+
+<!--Device-screenLock-function lock(): Promise<boolean>--><!--Device-screenLock-function lock(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

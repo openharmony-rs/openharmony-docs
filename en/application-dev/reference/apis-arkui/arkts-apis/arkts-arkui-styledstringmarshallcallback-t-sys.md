@@ -10,6 +10,8 @@ Defines a callback for marshalling [StyledStringMarshallingValue](arkts-arkui-st
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingValue) => ArrayBuffer--><!--Device-unnamed-declare type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingValue) => ArrayBuffer-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.

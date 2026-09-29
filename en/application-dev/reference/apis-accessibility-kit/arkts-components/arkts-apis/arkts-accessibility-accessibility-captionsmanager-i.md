@@ -8,6 +8,8 @@ Manages captions configuration. Before calling any method of **CaptionsManager**
 
 **Since:** 8
 
+<!--Device-accessibility-interface CaptionsManager--><!--Device-accessibility-interface CaptionsManager-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Unsubscribes from the state changes of captions configuration. This API uses an 
 **Since:** 8
 
 **Deprecated since:** 12
+
+<!--Device-CaptionsManager-off(type: 'enableChange', callback?: Callback<boolean>): void--><!--Device-CaptionsManager-off(type: 'enableChange', callback?: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -85,6 +89,8 @@ Unsubscribes from the captions style changes. This API uses an asynchronous call
 **Since:** 8
 
 **Deprecated since:** 12
+
+<!--Device-CaptionsManager-off(type: 'styleChange', callback?: Callback<CaptionsStyle>): void--><!--Device-CaptionsManager-off(type: 'styleChange', callback?: Callback<CaptionsStyle>): void-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -149,6 +155,8 @@ Subscribes to the state changes of captions configuration. This API uses an asyn
 
 **Deprecated since:** 12
 
+<!--Device-CaptionsManager-on(type: 'enableChange', callback: Callback<boolean>): void--><!--Device-CaptionsManager-on(type: 'enableChange', callback: Callback<boolean>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
 **Parameters:**
@@ -207,6 +215,8 @@ Subscribes to captions style changes. This API uses an asynchronous callback to 
 
 **Deprecated since:** 12
 
+<!--Device-CaptionsManager-on(type: 'styleChange', callback: Callback<CaptionsStyle>): void--><!--Device-CaptionsManager-on(type: 'styleChange', callback: Callback<CaptionsStyle>): void-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
 **Parameters:**
@@ -259,9 +269,11 @@ Whether to enable captions configuration. The value **true** indicates that the 
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-CaptionsManager-enabled: boolean--><!--Device-CaptionsManager-enabled: boolean-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing
 
@@ -277,8 +289,10 @@ Style of captions.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-CaptionsManager-style: CaptionsStyle--><!--Device-CaptionsManager-style: CaptionsStyle-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Hearing

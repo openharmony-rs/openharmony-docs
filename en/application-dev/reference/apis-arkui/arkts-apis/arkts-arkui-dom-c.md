@@ -8,6 +8,8 @@ global dom
 
 **Since:** 11
 
+<!--Device-unnamed-export declare class dom--><!--Device-unnamed-export declare class dom-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## createElement
@@ -23,6 +25,8 @@ create a dynamic dom by tag, return element
 **Model restriction:** This API can be used only in the FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-dom-static createElement(tag: string): Element--><!--Device-dom-static createElement(tag: string): Element-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

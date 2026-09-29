@@ -18,6 +18,8 @@ Unsubscribe Wi-Fi stream change events. All callback functions will be deregiste
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifiManager-function off(type: 'streamChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'streamChange', callback?: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Subscribe Wi-Fi device config change events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function off(type: 'deviceConfigChange', callback?: Callback<number>): void--><!--Device-wifiManager-function off(type: 'deviceConfigChange', callback?: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -118,6 +122,8 @@ Unsubscribe Wi-Fi hotspot sta join events. All callback functions will be deregi
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+<!--Device-wifiManager-function off(type: 'hotspotStaJoin', callback?: Callback<StationInfo>): void--><!--Device-wifiManager-function off(type: 'hotspotStaJoin', callback?: Callback<StationInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.
@@ -167,6 +173,8 @@ Unsubscribe Wi-Fi hotspot sta leave events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT
+
+<!--Device-wifiManager-function off(type: 'hotspotStaLeave', callback?: Callback<StationInfo>): void--><!--Device-wifiManager-function off(type: 'hotspotStaLeave', callback?: Callback<StationInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 

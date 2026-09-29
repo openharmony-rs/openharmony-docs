@@ -12,6 +12,8 @@ In addition, use [execute](arkts-arkdata-relationalstore-rdbstore-i.md#execute) 
 
 **Since:** 9
 
+<!--Device-relationalStore-interface RdbStore--><!--Device-relationalStore-interface RdbStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -31,6 +33,8 @@ Cleans dirty data deleted in the cross-device sync. If a cursor is specified, da
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-cleanDeviceDirtyData(table: string, cursor?: long): Promise<void>--><!--Device-RdbStore-cleanDeviceDirtyData(table: string, cursor?: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -78,6 +82,8 @@ cloudSync(
 Sync data to cloud.
 
 **Since:** 11
+
+<!--Device-RdbStore-cloudSync(      mode: SyncMode,      predicates: RdbPredicates,      progress: Callback<ProgressDetails>,      callback: AsyncCallback<void>    ): void--><!--Device-RdbStore-cloudSync(      mode: SyncMode,      predicates: RdbPredicates,      progress: Callback<ProgressDetails>,      callback: AsyncCallback<void>    ): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -175,6 +181,8 @@ Sync data to cloud.
 
 **Since:** 11
 
+<!--Device-RdbStore-cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback<ProgressDetails>): Promise<void>--><!--Device-RdbStore-cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback<ProgressDetails>): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -219,6 +227,8 @@ Deletes data from the database based on a specified instance object of RdbPredic
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<long>): void--><!--Device-RdbStore-delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<long>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -301,6 +311,8 @@ Deletes data from the database based on a specified instance object of RdbPredic
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-delete(table: string, predicates: dataSharePredicates.DataSharePredicates): Promise<long>--><!--Device-RdbStore-delete(table: string, predicates: dataSharePredicates.DataSharePredicates): Promise<long>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -385,6 +397,8 @@ Lock cloud container before non-auto cloud sync.
 
 **Since:** 12
 
+<!--Device-RdbStore-lockCloudContainer(): Promise<int>--><!--Device-RdbStore-lockCloudContainer(): Promise<int>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -414,6 +428,8 @@ Queries data in the database based on specified conditions.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-query(table: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<ResultSet>): void--><!--Device-RdbStore-query(table: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<ResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -545,6 +561,8 @@ Queries data in the database based on specified conditions.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RdbStore-query(      table: string,      predicates: dataSharePredicates.DataSharePredicates,      columns: Array<string>,      callback: AsyncCallback<ResultSet>    ): void--><!--Device-RdbStore-query(      table: string,      predicates: dataSharePredicates.DataSharePredicates,      columns: Array<string>,      callback: AsyncCallback<ResultSet>    ): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -675,6 +693,8 @@ Queries data in the database based on specified conditions.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RdbStore-query(      table: string,      predicates: dataSharePredicates.DataSharePredicates,      columns?: Array<string>    ): Promise<ResultSet>--><!--Device-RdbStore-query(      table: string,      predicates: dataSharePredicates.DataSharePredicates,      columns?: Array<string>    ): Promise<ResultSet>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -802,6 +822,8 @@ Obtains sharing resource of rows corresponding to the predicates.
 
 **Since:** 11
 
+<!--Device-RdbStore-querySharingResource(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>--><!--Device-RdbStore-querySharingResource(predicates: RdbPredicates, columns?: Array<string>): Promise<ResultSet>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -856,6 +878,8 @@ Obtains sharing resource of rows corresponding to the predicates.
 
 **Since:** 11
 
+<!--Device-RdbStore-querySharingResource(predicates: RdbPredicates, callback: AsyncCallback<ResultSet>): void--><!--Device-RdbStore-querySharingResource(predicates: RdbPredicates, callback: AsyncCallback<ResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
@@ -903,6 +927,8 @@ querySharingResource(predicates: RdbPredicates, columns: Array<string>, callback
 Obtains sharing resource of rows corresponding to the predicates.
 
 **Since:** 11
+
+<!--Device-RdbStore-querySharingResource(predicates: RdbPredicates, columns: Array<string>, callback: AsyncCallback<ResultSet>): void--><!--Device-RdbStore-querySharingResource(predicates: RdbPredicates, columns: Array<string>, callback: AsyncCallback<ResultSet>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -953,6 +979,8 @@ Requests full data donation for specified distributed tables.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RdbStore-requestFullDataDonation(tables: Array<string>): Promise<void>--><!--Device-RdbStore-requestFullDataDonation(tables: Array<string>): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -989,6 +1017,8 @@ restore(): Promise<void>
 Restores a database from a specified database file.
 
 **Since:** 12
+
+<!--Device-RdbStore-restore(): Promise<void>--><!--Device-RdbStore-restore(): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1064,6 +1094,8 @@ Remove distributed table remote data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RdbStore-retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>--><!--Device-RdbStore-retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -1103,6 +1135,8 @@ Unlock cloud container.
 
 **Since:** 12
 
+<!--Device-RdbStore-unlockCloudContainer(): Promise<void>--><!--Device-RdbStore-unlockCloudContainer(): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -1137,6 +1171,8 @@ Updates data in the database based on a specified instance object of RdbPredicat
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-update(      table: string,      values: ValuesBucket,      predicates: dataSharePredicates.DataSharePredicates,      callback: AsyncCallback<long>    ): void--><!--Device-RdbStore-update(      table: string,      values: ValuesBucket,      predicates: dataSharePredicates.DataSharePredicates,      callback: AsyncCallback<long>    ): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1348,6 +1384,8 @@ Updates data in the database based on a specified instance object of RdbPredicat
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates): Promise<long>--><!--Device-RdbStore-update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates): Promise<long>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1562,6 +1600,8 @@ Update distributed table log.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RdbStore-updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise<long>--><!--Device-RdbStore-updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise<long>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

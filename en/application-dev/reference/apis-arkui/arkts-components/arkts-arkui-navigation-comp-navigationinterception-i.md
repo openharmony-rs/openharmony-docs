@@ -8,6 +8,8 @@ Describes the object to be intercepted during navigation redirection.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface NavigationInterception--><!--Device-unnamed-declare interface NavigationInterception-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## didShow
@@ -23,6 +25,8 @@ Callback after page redirection. The setting takes effect in the next redirectio
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationInterception-didShow?: InterceptionShowCallback--><!--Device-NavigationInterception-didShow?: InterceptionShowCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Callback invoked before a page transition, allowing for stack operations, which 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-NavigationInterception-interception?: InterceptionCallback--><!--Device-NavigationInterception-interception?: InterceptionCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## modeChange
@@ -56,6 +62,8 @@ Callback invoked when the display mode of the **Navigation** component switches 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavigationInterception-modeChange?: InterceptionModeCallback--><!--Device-NavigationInterception-modeChange?: InterceptionModeCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## willShow
@@ -71,5 +79,7 @@ Callback invoked before a page transition, allowing for stack operations, which 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavigationInterception-willShow?: InterceptionShowCallback--><!--Device-NavigationInterception-willShow?: InterceptionShowCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

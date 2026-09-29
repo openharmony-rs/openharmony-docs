@@ -8,6 +8,8 @@ Enumerates the interruption modes of the audio files with the same ID in SoundPo
 
 **Since:** 23
 
+<!--Device-media-enum SoundInterruptMode--><!--Device-media-enum SoundInterruptMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## NO_INTERRUPT
@@ -22,6 +24,8 @@ If the former audio file is not completely played, the latter audio file with th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SoundInterruptMode-NO_INTERRUPT = 0--><!--Device-SoundInterruptMode-NO_INTERRUPT = 0-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.SoundPool
 
 ## SAME_SOUND_INTERRUPT
@@ -35,5 +39,7 @@ If the former audio file is not completely played, the latter audio file with th
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SoundInterruptMode-SAME_SOUND_INTERRUPT = 1--><!--Device-SoundInterruptMode-SAME_SOUND_INTERRUPT = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.SoundPool

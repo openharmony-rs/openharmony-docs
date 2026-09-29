@@ -30,6 +30,8 @@ Obtains the current font weight scale factor.
 - API version 20 and later: N/A
 - API versions 12 to 19: ohos.permission.UPDATE_CONFIGURATION
 
+<!--Device-uiAppearance-function getFontWeightScale(): number--><!--Device-uiAppearance-function getFontWeightScale(): number-End-->
+
 **System capability:** SystemCapability.ArkUI.UiAppearance
 
 **Return value:**

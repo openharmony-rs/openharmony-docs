@@ -14,6 +14,8 @@ Defines the allowed data types for specifying the background shadow of a dialog 
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-promptAction-declare type DialogOptionsShadow = ShadowOptions | ShadowStyle--><!--Device-promptAction-declare type DialogOptionsShadow = ShadowOptions | ShadowStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

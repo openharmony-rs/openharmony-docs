@@ -8,6 +8,8 @@ Defines the memory limit of the application process.
 
 **Since:** 12
 
+<!--Device-hidebug-interface MemoryLimit--><!--Device-hidebug-interface MemoryLimit-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The limit of the application process's resident set, in kilobyte
 
 **Since:** 12
 
+<!--Device-MemoryLimit-rssLimit: bigint--><!--Device-MemoryLimit-rssLimit: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## vmHeapLimit
@@ -41,6 +45,8 @@ The limit of the js vm heap size of current virtual machine, in kilobyte
 **Type:** bigint
 
 **Since:** 12
+
+<!--Device-MemoryLimit-vmHeapLimit: bigint--><!--Device-MemoryLimit-vmHeapLimit: bigint-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -56,6 +62,8 @@ The limit of the total js vm heap size of process, in kilobyte
 
 **Since:** 12
 
+<!--Device-MemoryLimit-vmTotalHeapSize: bigint--><!--Device-MemoryLimit-vmTotalHeapSize: bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 ## vssLimit
@@ -69,5 +77,7 @@ The limit of the application process's virtual memory, in kilobyte
 **Type:** bigint
 
 **Since:** 12
+
+<!--Device-MemoryLimit-vssLimit: bigint--><!--Device-MemoryLimit-vssLimit: bigint-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

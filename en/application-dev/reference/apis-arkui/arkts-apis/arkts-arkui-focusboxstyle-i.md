@@ -8,6 +8,8 @@ Sets the system focus box style for the component.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface FocusBoxStyle--><!--Device-unnamed-declare interface FocusBoxStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## margin
@@ -28,6 +30,8 @@ A positive number indicates the outside, and a negative number indicates the ins
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FocusBoxStyle-margin?: LengthMetrics--><!--Device-FocusBoxStyle-margin?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeColor
@@ -45,6 +49,8 @@ Stroke color of the focus box.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FocusBoxStyle-strokeColor?: ColorMetrics--><!--Device-FocusBoxStyle-strokeColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,5 +71,7 @@ Negative numbers and percentages are not supported.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FocusBoxStyle-strokeWidth?: LengthMetrics--><!--Device-FocusBoxStyle-strokeWidth?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Sets initialization parameters of the function area.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface OperationParams--><!--Device-unnamed-export interface OperationParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Auxiliary item on the right of the search area. Default value: **undefined**.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-OperationParams-auxiliaryItem?: OperationOption--><!--Device-OperationParams-auxiliaryItem?: OperationOption-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## independentItem
@@ -45,5 +49,7 @@ Independent item on the right of the search area. Default value: **undefined**.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-OperationParams-independentItem?: OperationOption--><!--Device-OperationParams-independentItem?: OperationOption-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

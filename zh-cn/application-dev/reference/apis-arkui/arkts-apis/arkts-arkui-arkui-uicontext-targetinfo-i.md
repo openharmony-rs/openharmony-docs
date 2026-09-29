@@ -8,6 +8,8 @@ export interface TargetInfo
 
 **起始版本：** 18
 
+<!--Device-unnamed-export interface TargetInfo--><!--Device-unnamed-export interface TargetInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -35,6 +37,8 @@ componentId?: number
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TargetInfo-componentId?: number--><!--Device-TargetInfo-componentId?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -55,5 +59,7 @@ id: string | number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TargetInfo-id: string | number--><!--Device-TargetInfo-id: string | number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -24,6 +24,8 @@ Queries the security patch tag of a device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getSecurityPatchTag(admin: Want): string--><!--Device-securityManager-function getSecurityPatchTag(admin: Want): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

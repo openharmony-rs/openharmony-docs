@@ -8,6 +8,8 @@ Defines a color filter with a 4 x 5 matrix.
 
 **Since:** 9
 
+<!--Device-unnamed-declare class ColorFilter--><!--Device-unnamed-declare class ColorFilter-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -25,6 +27,8 @@ Constructor of ColorFilter, which creates a color filter with a 4\*5 matrix.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ColorFilter-constructor(value: number[])--><!--Device-ColorFilter-constructor(value: number[])-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

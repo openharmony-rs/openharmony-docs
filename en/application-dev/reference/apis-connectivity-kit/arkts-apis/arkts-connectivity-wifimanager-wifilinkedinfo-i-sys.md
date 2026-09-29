@@ -8,6 +8,8 @@ Wi-Fi connection information. @typedef WifiLinkedInfo
 
 **Since:** 12
 
+<!--Device-wifiManager-interface WifiLinkedInfo--><!--Device-wifiManager-interface WifiLinkedInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The load value of this Wi-Fi connection. A greater value indicates a higher load
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-chload: int--><!--Device-WifiLinkedInfo-chload: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ Whether the Wi-Fi hotspot is HiLinkPro network.
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-WifiLinkedInfo-isHiLinkProNetwork?: boolean--><!--Device-WifiLinkedInfo-isHiLinkProNetwork?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -60,6 +66,8 @@ The ID(uniquely identifies) of a Wi-Fi connection.
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-networkId: int--><!--Device-WifiLinkedInfo-networkId: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -76,6 +84,8 @@ The signal-to-noise ratio (SNR) of this Wi-Fi connection.
 
 **Since:** 9
 
+<!--Device-WifiLinkedInfo-snr: int--><!--Device-WifiLinkedInfo-snr: int-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
@@ -91,6 +101,8 @@ The state of the supplicant of this Wi-Fi connection.
 **Type:** [SuppState](arkts-connectivity-wifimanager-suppstate-e-sys.md)
 
 **Since:** 9
+
+<!--Device-WifiLinkedInfo-suppState: SuppState--><!--Device-WifiLinkedInfo-suppState: SuppState-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -109,6 +121,8 @@ Whether Wi-Fi Tx and Rx are both working properly
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiLinkedInfo-wifiTxRxValid?: boolean--><!--Device-WifiLinkedInfo-wifiTxRxValid?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

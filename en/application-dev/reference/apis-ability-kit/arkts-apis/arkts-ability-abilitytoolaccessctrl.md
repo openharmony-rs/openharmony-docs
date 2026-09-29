@@ -6,6 +6,8 @@ This module provides permission management capabilities for tools (CLI commands 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-unnamed-declare namespace abilityToolAccessCtrl--><!--Device-unnamed-declare namespace abilityToolAccessCtrl-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

@@ -16,6 +16,8 @@ Obtains the serial port device list, including the device name and port number. 
 
 **Since:** 19
 
+<!--Device-serialManager-function getPortList(): Readonly<SerialPort>[]--><!--Device-serialManager-function getPortList(): Readonly<SerialPort>[]-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Return value:**

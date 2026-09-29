@@ -14,6 +14,8 @@ This module applies to the following scenarios:
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace companionDeviceAuth--><!--Device-unnamed-declare namespace companionDeviceAuth-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.
@@ -54,16 +56,6 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 <!--DelEnd-->
 
 <!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [BusinessId](arkts-userauthentication-companiondeviceauth-businessid-e-sys.md) | Enumerates service IDs. A service ID uniquely identifies a service scenario supported by the companion device. The service scenarios supported by different companion devices vary according to the authentication security. For example, executing voice commands without screen unlocking. |
-| [DeviceIdType](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md) | Enumerates device ID types. They are used to define the device service identifier type. System-defined types and vendor-defined types are supported. |
-| [SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md) | Selects the purpose of the companion device. |
-<!--DelEnd-->
-
-<!--Del-->
 ### Types(System API)
 
 | Name | Description |
@@ -74,4 +66,14 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | [PasscodePromptCallback](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md) | Defines the callback invoked when the framework needs a passcode for a companion device. |
 | [PasscodeSubmitCallback](arkts-userauthentication-companiondeviceauth-passcodesubmitcallback-t-sys.md) | Defines the callback used to submit a passcode entered by the user. |
 | [TemplateStatusCallback](arkts-userauthentication-companiondeviceauth-templatestatuscallback-t-sys.md) | Defines the callback triggered for receiving notifications of template status changes. When the template status changes (for example, the template is added, deleted, or its validity changes), the system notifies the application through this callback. |
+<!--DelEnd-->
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [BusinessId](arkts-userauthentication-companiondeviceauth-businessid-e-sys.md) | Enumerates service IDs. A service ID uniquely identifies a service scenario supported by the companion device. The service scenarios supported by different companion devices vary according to the authentication security. For example, executing voice commands without screen unlocking. |
+| [DeviceIdType](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md) | Enumerates device ID types. They are used to define the device service identifier type. System-defined types and vendor-defined types are supported. |
+| [SelectPurpose](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md) | Selects the purpose of the companion device. |
 <!--DelEnd-->

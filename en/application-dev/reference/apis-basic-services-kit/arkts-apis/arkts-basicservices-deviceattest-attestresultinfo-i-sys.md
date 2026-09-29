@@ -10,6 +10,8 @@ Device attest result information.
 
 **Since:** 9
 
+<!--Device-deviceAttest-export interface AttestResultInfo--><!--Device-deviceAttest-export interface AttestResultInfo-End-->
+
 **System capability:** SystemCapability.XTS.DeviceAttest
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Result of the device hardware information authentication.
 
 **Since:** 9
 
+<!--Device-AttestResultInfo-authResult: number--><!--Device-AttestResultInfo-authResult: number-End-->
+
 **System capability:** SystemCapability.XTS.DeviceAttest
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Result of the device software information authentication.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AttestResultInfo-softwareResult: number--><!--Device-AttestResultInfo-softwareResult: number-End-->
 
 **System capability:** SystemCapability.XTS.DeviceAttest
 
@@ -64,6 +70,8 @@ Software result detail array that includes versionId, patchLevel, rootHash and a
 
 **Since:** 9
 
+<!--Device-AttestResultInfo-softwareResultDetail: Array<number>--><!--Device-AttestResultInfo-softwareResultDetail: Array<number>-End-->
+
 **System capability:** SystemCapability.XTS.DeviceAttest
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ Credential sent from the cloud.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-AttestResultInfo-ticket: string--><!--Device-AttestResultInfo-ticket: string-End-->
 
 **System capability:** SystemCapability.XTS.DeviceAttest
 

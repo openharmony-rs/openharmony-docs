@@ -8,6 +8,8 @@ declare enum GestureMode
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum GestureMode--><!--Device-unnamed-declare enum GestureMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Sequence
@@ -24,6 +26,8 @@ Sequence
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureMode-Sequence--><!--Device-GestureMode-Sequence-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Parallel
@@ -38,6 +42,8 @@ Simultaneous recognition. Registration gestures participate in recognition. Ever
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-GestureMode-Parallel--><!--Device-GestureMode-Parallel-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Exclusive
@@ -51,5 +57,7 @@ Mutually exclusive recognition. Only one gesture is successfully recognized.
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureMode-Exclusive--><!--Device-GestureMode-Exclusive-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

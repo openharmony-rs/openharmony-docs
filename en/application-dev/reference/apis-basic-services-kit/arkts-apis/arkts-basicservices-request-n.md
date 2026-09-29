@@ -10,6 +10,8 @@ The **request** module provides applications with basic upload, download, and ba
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace request--><!--Device-unnamed-declare namespace request-End-->
+
 **System capability:** 
 - API version 10 and later: SystemCapability.Request.FileTransferAgent
 

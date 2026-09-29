@@ -8,6 +8,8 @@ Describes the method for querying focusable nodes.
 
 **Since:** 23
 
+<!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'--><!--Device-unnamed-export type FocusCondition = 'forward' | 'backward' |'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

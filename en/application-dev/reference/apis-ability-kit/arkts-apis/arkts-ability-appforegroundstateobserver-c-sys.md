@@ -8,6 +8,8 @@ The module defines the listener used to listen for application startup and exit 
 
 **Since:** 11
 
+<!--Device-unnamed-export default class AppForegroundStateObserver--><!--Device-unnamed-export default class AppForegroundStateObserver-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ onAppStateChanged(appStateData: AppStateData): void
 Called when the application launch or exit state changes.
 
 **Since:** 11
+
+<!--Device-AppForegroundStateObserver-onAppStateChanged(appStateData: AppStateData): void--><!--Device-AppForegroundStateObserver-onAppStateChanged(appStateData: AppStateData): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

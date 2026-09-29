@@ -8,6 +8,8 @@ Provides APIs for output Entity.
 
 **Since:** 23
 
+<!--Device-photoAccessHelper-interface Entity--><!--Device-photoAccessHelper-interface Entity-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Indicates Entity Alias.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Entity-alias: string[]--><!--Device-Entity-alias: string[]-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Indicates Entity Name.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Entity-field: FieldType--><!--Device-Entity-field: FieldType-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -68,6 +74,8 @@ Indicates Entity Id.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Entity-id: string--><!--Device-Entity-id: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ Indicates Entity Name.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Entity-name: string--><!--Device-Entity-name: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

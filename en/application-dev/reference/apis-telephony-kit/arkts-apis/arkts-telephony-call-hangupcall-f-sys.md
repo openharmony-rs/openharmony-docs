@@ -18,6 +18,8 @@ Ends a call. This API uses an asynchronous callback to return the result.
 
 **Required permissions:** ohos.permission.ANSWER_CALL or ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-call-function hangUpCall(callId: int, callback: AsyncCallback<void>): void--><!--Device-call-function hangUpCall(callId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -69,6 +71,8 @@ Ends a call. This API uses a promise to return the result.
 **Since:** 9
 
 **Required permissions:** ohos.permission.ANSWER_CALL or ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-call-function hangUpCall(callId?: int): Promise<void>--><!--Device-call-function hangUpCall(callId?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

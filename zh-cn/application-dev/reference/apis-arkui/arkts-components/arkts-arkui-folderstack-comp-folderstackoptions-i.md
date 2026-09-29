@@ -12,6 +12,8 @@ FolderStack悬停态配置项对象，用于描述悬停态状态下需要移到
 
 **起始版本：** 18
 
+<!--Device-unnamed-interface FolderStackOptions--><!--Device-unnamed-interface FolderStackOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## upperItems
@@ -33,5 +35,7 @@ upperItems?: Array<string>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FolderStackOptions-upperItems?: Array<string>--><!--Device-FolderStackOptions-upperItems?: Array<string>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

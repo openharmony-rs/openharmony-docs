@@ -10,6 +10,8 @@ Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.
 
 **Since:** 11
 
+<!--Device-unnamed-interface PanGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface PanGestureEvent extends BaseGestureEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## offsetX
@@ -27,6 +29,8 @@ Offset of the gesture event on the x-axis relative to the original area of the c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PanGestureEvent-offsetX: number--><!--Device-PanGestureEvent-offsetX: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Offset of the gesture event on the y-axis relative to the original area of the c
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PanGestureEvent-offsetY: number--><!--Device-PanGestureEvent-offsetY: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -63,6 +69,8 @@ Velocity along the main axis. The value is the arithmetic square root of the sum
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PanGestureEvent-velocity: number--><!--Device-PanGestureEvent-velocity: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ Velocity along the x-axis. The origin of the coordinate axis is the upper left c
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-PanGestureEvent-velocityX: number--><!--Device-PanGestureEvent-velocityX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocityY
@@ -99,5 +109,7 @@ Velocity along the y-axis. The origin of the coordinate axis is the upper left c
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PanGestureEvent-velocityY: number--><!--Device-PanGestureEvent-velocityY: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

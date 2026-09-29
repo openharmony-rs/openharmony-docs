@@ -1,4 +1,4 @@
-# @ohos.router
+# @ohos.router(Page Routing(Not Recommended))
 
 The **Router** module provides APIs to access pages through URLs. You can use the APIs to navigate to a specified page in an application, replace the current page with another one in the same application, and return to the previous page or a specified page.
 
@@ -14,6 +14,8 @@ For routing management, it is recommended that you use the [Navigation](../../..
 > - When using [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)or [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getLength](arkts-arkui-arkui-uicontext-router-c.md#getlength) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information available after the stack operation is complete.
 
 **Since:** 8
+
+<!--Device-unnamed-declare namespace router--><!--Device-unnamed-declare namespace router-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

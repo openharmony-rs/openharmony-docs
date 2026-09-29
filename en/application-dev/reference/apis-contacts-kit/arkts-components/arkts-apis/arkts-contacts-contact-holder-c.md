@@ -8,6 +8,8 @@ Defines an application that creates the contact.
 
 **Since:** 7
 
+<!--Device-contact-class Holder--><!--Device-contact-class Holder-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Bundle name. The default value is **com.ohos.contacts**.
 
 **Since:** 7
 
+<!--Device-Holder-readonly bundleName: string--><!--Device-Holder-readonly bundleName: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## displayName
@@ -42,6 +46,8 @@ Application name.
 
 **Since:** 7
 
+<!--Device-Holder-readonly displayName?: string--><!--Device-Holder-readonly displayName?: string-End-->
+
 **System capability:** SystemCapability.Applications.ContactsData
 
 ## holderId
@@ -55,5 +61,7 @@ Application ID.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-Holder-holderId?: number--><!--Device-Holder-holderId?: number-End-->
 
 **System capability:** SystemCapability.Applications.ContactsData

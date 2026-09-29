@@ -18,6 +18,8 @@ Checks whether a device administrator application of the current user is enabled
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void--><!--Device-adminManager-function isAdminEnabled(admin: Want, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -71,6 +73,8 @@ Checks whether a device administrator application of the specified user is enabl
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boolean>): void--><!--Device-adminManager-function isAdminEnabled(admin: Want, userId: number, callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -127,6 +131,8 @@ Checks whether a device administrator application of the current or specified us
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-adminManager-function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>--><!--Device-adminManager-function isAdminEnabled(admin: Want, userId?: number): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

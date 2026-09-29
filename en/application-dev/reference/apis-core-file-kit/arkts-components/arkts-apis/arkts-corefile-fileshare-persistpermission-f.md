@@ -18,6 +18,8 @@ Set persistence permissions for the URI
 
 **Required permissions:** ohos.permission.FILE_ACCESS_PERSIST
 
+<!--Device-fileShare-function persistPermission(policies: Array<PolicyInfo>): Promise<void>--><!--Device-fileShare-function persistPermission(policies: Array<PolicyInfo>): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **Parameters:**

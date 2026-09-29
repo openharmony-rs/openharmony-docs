@@ -12,6 +12,8 @@ UIContext
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext--><!--Device-unnamed-declare type UIContext = import('../api/@ohos.arkui.UIContext').UIContext-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.arkui.UIContext').UIContext

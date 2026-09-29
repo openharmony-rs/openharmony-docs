@@ -12,6 +12,8 @@ The enum of a2dp playing state.
 
 **Substitutes:** [PlayingState](arkts-connectivity-bluetoothmanager-playingstate-e.md)
 
+<!--Device-bluetooth-enum PlayingState--><!--Device-bluetooth-enum PlayingState-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STATE_NOT_PLAYING
@@ -28,6 +30,8 @@ Not playing.
 
 **Substitutes:** [STATE_NOT_PLAYING](arkts-connectivity-bluetoothmanager-playingstate-e.md#state_not_playing)
 
+<!--Device-PlayingState-STATE_NOT_PLAYING = 0--><!--Device-PlayingState-STATE_NOT_PLAYING = 0-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## STATE_PLAYING
@@ -43,5 +47,7 @@ Playing.
 **Deprecated since:** 9
 
 **Substitutes:** [STATE_PLAYING](arkts-connectivity-bluetoothmanager-playingstate-e.md#state_playing)
+
+<!--Device-PlayingState-STATE_PLAYING = 1--><!--Device-PlayingState-STATE_PLAYING = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

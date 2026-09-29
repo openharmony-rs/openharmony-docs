@@ -8,6 +8,8 @@ Provides APIs to obtain information about trusted devices and local devices. Bef
 
 **Since:** 10
 
+<!--Device-distributedDeviceManager-interface DeviceManager--><!--Device-distributedDeviceManager-interface DeviceManager-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains the device icon. This API uses a promise to return the result.
 **Since:** 18
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise<DeviceIconInfo>--><!--Device-DeviceManager-getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise<DeviceIconInfo>-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -96,6 +100,8 @@ Obtains the list of network devices according to the specified filter options.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<string>>--><!--Device-DeviceManager-getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise<Array<string>>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -157,6 +163,8 @@ Obtains the list of devices under the same account. This API uses a promise to r
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise<Array<DeviceProfileInfo>>--><!--Device-DeviceManager-getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise<Array<DeviceProfileInfo>>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -216,6 +224,8 @@ Query device identification by device IDs.
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC and ohos.permission.ACCESS_SERVICE_DM and ohos.permission.sec.ACCESS_UDID
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceManager-getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentification>--><!--Device-DeviceManager-getIdentificationByDeviceIds(deviceIds: Array<string>): Array<DeviceIdentification>-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -281,6 +291,8 @@ Obtains the local device's display name with the specified length. This API uses
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-getLocalDisplayDeviceName(maxNameLength: int): Promise<string>--><!--Device-DeviceManager-getLocalDisplayDeviceName(maxNameLength: int): Promise<string>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -340,6 +352,8 @@ Query the device operating system type by device network ID.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DeviceManager-getOsTypeByNetworkId(networkId: string): int--><!--Device-DeviceManager-getOsTypeByNetworkId(networkId: string): int-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -376,6 +390,8 @@ Unsubscribes from the reply to the UI operation result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-off(type: 'replyResult', callback?: Callback<{ param: string; }>): void--><!--Device-DeviceManager-off(type: 'replyResult', callback?: Callback<{ param: string; }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -422,6 +438,8 @@ Subscribes to the reply to the UI operation result.
 **Since:** 10
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-on(type: 'replyResult', callback: Callback<{ param: string; }>): void--><!--Device-DeviceManager-on(type: 'replyResult', callback: Callback<{ param: string; }>): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -482,6 +500,8 @@ Updates the device list. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promise<int>--><!--Device-DeviceManager-putDeviceProfileInfoList(deviceProfileInfoList: Array<DeviceProfileInfo>): Promise<int>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -539,6 +559,8 @@ Replies to the user's UI operation. This API can be used only by the PIN HAP of 
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-replyUiAction(action: int, actionResult: string): void--><!--Device-DeviceManager-replyUiAction(action: int, actionResult: string): void-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -582,49 +604,6 @@ try {
 }
 ```
 
-## restoreLocalDeivceName
-
-```TypeScript
-restoreLocalDeivceName(): void
-```
-
-Restores the local device name by resetting the network settings.
-
-**Since:** 18
-
-**Deprecated since:** 24
-
-**Substitutes:** [restoreLocalDeviceName](#restorelocaldevicename)
-
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain the service. |
-
-**Examples**
-
-```TypeScript
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-  dmInstance.restoreLocalDeivceName();
-} catch (err) {
-  let e: BusinessError = err as BusinessError;
-  console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
-}
-```
-
 ## restoreLocalDeviceName
 
 ```TypeScript
@@ -638,6 +617,8 @@ Restores the local device name.
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceManager-restoreLocalDeviceName(): void--><!--Device-DeviceManager-restoreLocalDeviceName(): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -677,6 +658,8 @@ Sets the heartbeat broadcast policy.
 **Since:** 15
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): void--><!--Device-DeviceManager-setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): void-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -726,6 +709,8 @@ Sets the local device name. This API uses a promise to return the result.
 **Since:** 18
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-setLocalDeviceName(deviceName: string): Promise<int>--><!--Device-DeviceManager-setLocalDeviceName(deviceName: string): Promise<int>-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
@@ -787,6 +772,8 @@ Sets the remote device name. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
+<!--Device-DeviceManager-setRemoteDeviceName(deviceId: string, deviceName: string): Promise<int>--><!--Device-DeviceManager-setRemoteDeviceName(deviceId: string, deviceName: string): Promise<int>-End-->
+
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
@@ -834,5 +821,50 @@ try {
 } catch (err) {
   let e: BusinessError = err as BusinessError;
   console.error('setRemoteDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+}
+```
+
+## restoreLocalDeivceName
+
+```TypeScript
+restoreLocalDeivceName(): void
+```
+
+Restores the local device name by resetting the network settings.
+
+**Since:** 18
+
+**Deprecated since:** 24
+
+**Substitutes:** [restoreLocalDeviceName](#restorelocaldevicename)
+
+**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+
+<!--Device-DeviceManager-restoreLocalDeivceName(): void--><!--Device-DeviceManager-restoreLocalDeivceName(): void-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [11600102](../errorcode-device-manager.md#11600102-failed-to-obtain-the-service) | Failed to obtain the service. |
+
+**Examples**
+
+```TypeScript
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+  dmInstance.restoreLocalDeivceName();
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```

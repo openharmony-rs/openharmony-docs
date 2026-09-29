@@ -20,6 +20,8 @@ Unsubscribe the event of battery state changes from a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bas-function offBatteryChange(callback?: Callback<BatteryInfo>): void--><!--Device-bas-function offBatteryChange(callback?: Callback<BatteryInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

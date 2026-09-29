@@ -12,6 +12,8 @@ Defines the type for image color filter settings.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-unnamed-declare type ColorFilterType = ColorFilter | DrawingColorFilter--><!--Device-unnamed-declare type ColorFilterType = ColorFilter | DrawingColorFilter-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

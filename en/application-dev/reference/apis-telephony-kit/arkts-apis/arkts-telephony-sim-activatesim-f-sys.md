@@ -18,6 +18,8 @@ Activate the SIM card in the specified slot.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-sim-function activateSim(slotId: int, callback: AsyncCallback<void>): void--><!--Device-sim-function activateSim(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ Activate the SIM card in the specified slot.
 **Since:** 8
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-sim-function activateSim(slotId: int): Promise<void>--><!--Device-sim-function activateSim(slotId: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

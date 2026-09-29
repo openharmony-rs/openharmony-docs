@@ -8,6 +8,8 @@ Defines the Gallery widget information.
 
 **Since:** 18
 
+<!--Device-photoAccessHelper-interface GalleryFormInfo--><!--Device-photoAccessHelper-interface GalleryFormInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ When deleting a widget, this parameter can be omitted.
 
 **Since:** 18
 
+<!--Device-GalleryFormInfo-assetUris?: Array<string>--><!--Device-GalleryFormInfo-assetUris?: Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Widget ID, which is provided when a widget is created in Gallery.
 **Type:** string
 
 **Since:** 18
+
+<!--Device-GalleryFormInfo-formId: string--><!--Device-GalleryFormInfo-formId: string-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

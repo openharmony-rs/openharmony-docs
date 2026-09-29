@@ -8,6 +8,8 @@ Implements audio-haptic playback. Before calling any API in AudioHapticPlayer, y
 
 **Since:** 11
 
+<!--Device-audioHaptic-interface AudioHapticPlayer--><!--Device-audioHaptic-interface AudioHapticPlayer-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ enableHapticsInSilentMode(enable: boolean): void
 Enable haptics when the ringer mode is silent mode. This function should be called before player start or after stop, and before release.
 
 **Since:** 20
+
+<!--Device-AudioHapticPlayer-enableHapticsInSilentMode(enable: boolean): void--><!--Device-AudioHapticPlayer-enableHapticsInSilentMode(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -53,6 +57,8 @@ Check whether the device supports haptics intensity adjustment.
 
 **Since:** 20
 
+<!--Device-AudioHapticPlayer-isHapticsIntensityAdjustmentSupported(): boolean--><!--Device-AudioHapticPlayer-isHapticsIntensityAdjustmentSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **System API:** This is a system API.
@@ -79,6 +85,8 @@ Check whether the device supports haptics intensity ramp effect.
 
 **Since:** 20
 
+<!--Device-AudioHapticPlayer-isHapticsRampSupported(): boolean--><!--Device-AudioHapticPlayer-isHapticsRampSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
 **System API:** This is a system API.
@@ -104,6 +112,8 @@ setHapticsIntensity(intensity: number): Promise<void>
 Set haptics intensity for this player. This method uses a promise to return the result. This function should be called before player release, and can only set once for each starting process.
 
 **Since:** 20
+
+<!--Device-AudioHapticPlayer-setHapticsIntensity(intensity: double): Promise<void>--><!--Device-AudioHapticPlayer-setHapticsIntensity(intensity: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -139,6 +149,8 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 Set haptics intensity ramp effect for this player. This method uses a promise to return the result. This function should be called before player start or after stop, and before release.
 
 **Since:** 20
+
+<!--Device-AudioHapticPlayer-setHapticsRamp(duration: int, startIntensity: double, endIntensity: double): Promise<void>--><!--Device-AudioHapticPlayer-setHapticsRamp(duration: int, startIntensity: double, endIntensity: double): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AudioHaptic.Core
 

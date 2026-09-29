@@ -8,6 +8,8 @@ Callback provided when enabling an accessibility extension app through the [conf
 
 **Since:** 23
 
+<!--Device-config-export interface ConnectCallback--><!--Device-config-export interface ConnectCallback-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Callback invoked when the connection to the accessibility extension app is disco
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectCallback-onDisconnect: OnDisconnectCallback--><!--Device-ConnectCallback-onDisconnect: OnDisconnectCallback-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

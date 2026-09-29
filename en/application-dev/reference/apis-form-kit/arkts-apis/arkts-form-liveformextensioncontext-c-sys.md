@@ -10,6 +10,8 @@ declare class LiveFormExtensionContext extends ExtensionContext
 
 **Since:** 20
 
+<!--Device-unnamed-declare class LiveFormExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class LiveFormExtensionContext extends ExtensionContext-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## connectServiceExtensionAbility
@@ -23,6 +25,8 @@ Connect a service extension ability.The destination of the connection must be a 
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiveFormExtensionContext-public connectServiceExtensionAbility(want: Want, connection: ConnectOptions): long--><!--Device-LiveFormExtensionContext-public connectServiceExtensionAbility(want: Want, connection: ConnectOptions): long-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -141,6 +145,8 @@ Disconnect an ability to a service extension, in contrast to [connectServiceExte
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiveFormExtensionContext-public disconnectServiceExtensionAbility(connectionId: long): Promise<void>--><!--Device-LiveFormExtensionContext-public disconnectServiceExtensionAbility(connectionId: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

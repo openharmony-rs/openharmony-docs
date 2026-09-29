@@ -20,6 +20,8 @@ Create a Model instance from buffer
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-mindSporeLite-function loadModelFromBuffer(    model: ArrayBuffer,    context?: Context): Promise<Model>--><!--Device-mindSporeLite-function loadModelFromBuffer(    model: ArrayBuffer,    context?: Context): Promise<Model>-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters:**
@@ -90,6 +92,8 @@ Create a Model instance from buffer
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-mindSporeLite-function loadModelFromBuffer(    model: ArrayBuffer, callback: Callback<Model>): void--><!--Device-mindSporeLite-function loadModelFromBuffer(    model: ArrayBuffer, callback: Callback<Model>): void-End-->
+
 **System capability:** SystemCapability.AI.MindSporeLite
 
 **Parameters:**
@@ -152,6 +156,8 @@ Create a Model instance from buffer
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-mindSporeLite-function loadModelFromBuffer(    model: ArrayBuffer,    context: Context, callback: Callback<Model>): void--><!--Device-mindSporeLite-function loadModelFromBuffer(    model: ArrayBuffer,    context: Context, callback: Callback<Model>): void-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 

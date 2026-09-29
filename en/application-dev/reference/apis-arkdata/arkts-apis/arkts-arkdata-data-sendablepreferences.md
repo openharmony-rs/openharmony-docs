@@ -9,6 +9,8 @@ The **sendablePreferences** module provides APIs for processing data in the form
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace sendablePreferences--><!--Device-unnamed-declare namespace sendablePreferences-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core @name sendablePreferences
 
 ## Modules to Import

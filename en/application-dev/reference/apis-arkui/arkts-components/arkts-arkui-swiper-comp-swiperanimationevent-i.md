@@ -8,6 +8,8 @@ Describes the animation information of the **Swiper** component.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface SwiperAnimationEvent--><!--Device-unnamed-declare interface SwiperAnimationEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## currentOffset
@@ -29,6 +31,8 @@ Default value: **0**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwiperAnimationEvent-currentOffset: number--><!--Device-SwiperAnimationEvent-currentOffset: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Default value: **0**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SwiperAnimationEvent-targetOffset: number--><!--Device-SwiperAnimationEvent-targetOffset: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## velocity
@@ -73,5 +79,7 @@ Default value: **0**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwiperAnimationEvent-velocity: number--><!--Device-SwiperAnimationEvent-velocity: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

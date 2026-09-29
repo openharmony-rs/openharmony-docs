@@ -8,6 +8,8 @@ export interface SubHeaderV2OperationItemOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-export interface SubHeaderV2OperationItemOptions--><!--Device-unnamed-export interface SubHeaderV2OperationItemOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -30,6 +32,8 @@ action?: SubHeaderV2OperationItemAction
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2OperationItemOptions-action?: SubHeaderV2OperationItemAction--><!--Device-SubHeaderV2OperationItemOptions-action?: SubHeaderV2OperationItemAction-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -49,6 +53,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2OperationItemOptions-accessibilityDescription?: ResourceStr--><!--Device-SubHeaderV2OperationItemOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +88,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2OperationItemOptions-accessibilityLevel?: string--><!--Device-SubHeaderV2OperationItemOptions-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -102,6 +110,8 @@ accessibilityText?: ResourceStr
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2OperationItemOptions-accessibilityText?: ResourceStr--><!--Device-SubHeaderV2OperationItemOptions-accessibilityText?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -119,6 +129,8 @@ content: SubHeaderV2OperationItemType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2OperationItemOptions-content: SubHeaderV2OperationItemType--><!--Device-SubHeaderV2OperationItemOptions-content: SubHeaderV2OperationItemType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,6 +158,8 @@ false：子标题尾部操作项不是默认焦点。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-SubHeaderV2OperationItemOptions-defaultFocus?: boolean--><!--Device-SubHeaderV2OperationItemOptions-defaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## id
@@ -165,5 +179,7 @@ id?: string
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-SubHeaderV2OperationItemOptions-id?: string--><!--Device-SubHeaderV2OperationItemOptions-id?: string-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

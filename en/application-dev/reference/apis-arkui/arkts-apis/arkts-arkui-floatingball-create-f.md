@@ -16,6 +16,8 @@ Creates a floating ball controller. This API uses a promise to return the result
 
 **Since:** 20
 
+<!--Device-floatingBall-function create(config: FloatingBallConfiguration): Promise<FloatingBallController>--><!--Device-floatingBall-function create(config: FloatingBallConfiguration): Promise<FloatingBallController>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**

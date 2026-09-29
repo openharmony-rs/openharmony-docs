@@ -20,6 +20,8 @@ Subscribe Wi-Fi status change events.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wifiManager-function on(type: 'wifiStateChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'wifiStateChange', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**
@@ -52,6 +54,8 @@ Subscribe Wi-Fi connection change events.
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-wifiManager-function on(type: 'wifiConnectionChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'wifiConnectionChange', callback: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -86,6 +90,8 @@ Subscribe Wi-Fi scan status change events.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-wifiManager-function on(type: 'wifiScanStateChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'wifiScanStateChange', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Parameters:**
@@ -116,6 +122,8 @@ Subscribe Wi-Fi rssi change events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function on(type: 'wifiRssiChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'wifiRssiChange', callback: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -148,6 +156,8 @@ Subscribe Wi-Fi hotspot state change events.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function on(type: 'hotspotStateChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'hotspotStateChange', callback: Callback<number>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **Parameters:**
@@ -178,6 +188,8 @@ Subscribe P2P status change events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function on(type: 'p2pStateChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'p2pStateChange', callback: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -210,6 +222,8 @@ Subscribe P2P connection change events.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function on(type: 'p2pConnectionChange', callback: Callback<WifiP2pLinkedInfo>): void--><!--Device-wifiManager-function on(type: 'p2pConnectionChange', callback: Callback<WifiP2pLinkedInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**
@@ -240,6 +254,8 @@ Subscribe P2P local device change events.
 **Since:** 10
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function on(type: 'p2pDeviceChange', callback: Callback<WifiP2pDevice>): void--><!--Device-wifiManager-function on(type: 'p2pDeviceChange', callback: Callback<WifiP2pDevice>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -272,6 +288,8 @@ Subscribe P2P peer device change events.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function on(type: 'p2pPeerDeviceChange', callback: Callback<WifiP2pDevice[]>): void--><!--Device-wifiManager-function on(type: 'p2pPeerDeviceChange', callback: Callback<WifiP2pDevice[]>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**
@@ -303,6 +321,8 @@ Subscribe P2P persistent group change events.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function on(type: 'p2pPersistentGroupChange', callback: Callback<void>): void--><!--Device-wifiManager-function on(type: 'p2pPersistentGroupChange', callback: Callback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Parameters:**
@@ -333,6 +353,8 @@ Subscribe P2P discovery events.
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
+
+<!--Device-wifiManager-function on(type: 'p2pDiscoveryChange', callback: Callback<number>): void--><!--Device-wifiManager-function on(type: 'p2pDiscoveryChange', callback: Callback<number>): void-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 

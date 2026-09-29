@@ -16,6 +16,8 @@ Obtains all the shortcut information defined in the [configuration](../../../qui
 
 **Since:** 20
 
+<!--Device-shortcutManager-function getAllShortcutInfoForSelf(): Promise<Array<ShortcutInfo>>--><!--Device-shortcutManager-function getAllShortcutInfoForSelf(): Promise<Array<ShortcutInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **Return value:**

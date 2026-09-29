@@ -8,6 +8,8 @@ Defines additional options for binding an input method.
 
 **Since:** 23
 
+<!--Device-inputMethod-export interface AttachOptions--><!--Device-inputMethod-export interface AttachOptions-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Reason for requesting the keyboard.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason--><!--Device-AttachOptions-requestKeyboardReason?: RequestKeyboardReason-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## showKeyboard
@@ -49,5 +53,7 @@ Whether to start the input method keyboard after the self-drawing component is a
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AttachOptions-showKeyboard?: boolean--><!--Device-AttachOptions-showKeyboard?: boolean-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

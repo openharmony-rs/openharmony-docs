@@ -10,6 +10,8 @@ Options for the custom-style dialog. The dialog content is provided as the first
 
 **Since:** 26.0.1
 
+<!--Device-dialog-declare interface DialogCustomOptions extends DialogBaseOptions--><!--Device-dialog-declare interface DialogCustomOptions extends DialogBaseOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -35,5 +37,7 @@ Whether to enable the custom style.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogCustomOptions-customStyle?: boolean--><!--Device-DialogCustomOptions-customStyle?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

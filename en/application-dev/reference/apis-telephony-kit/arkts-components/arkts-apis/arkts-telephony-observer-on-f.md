@@ -20,6 +20,8 @@ Registers an observer for network status change events. This API uses an asynchr
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-observer-function on(type: 'networkStateChange', callback: Callback<NetworkState>): void--><!--Device-observer-function on(type: 'networkStateChange', callback: Callback<NetworkState>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -62,6 +64,8 @@ Registers an observer for network status change events of the SIM card in the sp
 **Since:** 6
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-observer-function on(type: 'networkStateChange', options: ObserverOptions, callback: Callback<NetworkState>): void--><!--Device-observer-function on(type: 'networkStateChange', options: ObserverOptions, callback: Callback<NetworkState>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -106,6 +110,8 @@ Registers an observer for signal status change events. This API uses an asynchro
 
 **Since:** 6
 
+<!--Device-observer-function on(type: 'signalInfoChange', callback: Callback<Array<SignalInformation>>): void--><!--Device-observer-function on(type: 'signalInfoChange', callback: Callback<Array<SignalInformation>>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -145,6 +151,8 @@ function on(type: 'signalInfoChange', options: ObserverOptions, callback: Callba
 Registers an observer for signal status change events of the SIM card in the specified slot. This API uses an asynchronous callback to return the execution result.
 
 **Since:** 6
+
+<!--Device-observer-function on(type: 'signalInfoChange', options: ObserverOptions, callback: Callback<Array<SignalInformation>>): void--><!--Device-observer-function on(type: 'signalInfoChange', options: ObserverOptions, callback: Callback<Array<SignalInformation>>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -190,6 +198,8 @@ Registers an observer for connection status change events of the cellular data l
 
 **Since:** 7
 
+<!--Device-observer-function on(type: 'cellularDataConnectionStateChange', callback: Callback<DataConnectionStateInfo>): void--><!--Device-observer-function on(type: 'cellularDataConnectionStateChange', callback: Callback<DataConnectionStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -228,6 +238,8 @@ function on(type: 'cellularDataConnectionStateChange', options: ObserverOptions,
 Registers an observer for connection status change events of the cellular data link over the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-observer-function on(type: 'cellularDataConnectionStateChange', options: ObserverOptions,              callback: Callback<DataConnectionStateInfo>): void--><!--Device-observer-function on(type: 'cellularDataConnectionStateChange', options: ObserverOptions,              callback: Callback<DataConnectionStateInfo>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -271,6 +283,8 @@ Registers an observer for the uplink and downlink data flow status change events
 
 **Since:** 7
 
+<!--Device-observer-function on(type: 'cellularDataFlowChange', callback: Callback<DataFlowType>): void--><!--Device-observer-function on(type: 'cellularDataFlowChange', callback: Callback<DataFlowType>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -310,6 +324,8 @@ function on(type: 'cellularDataFlowChange', options: ObserverOptions, callback: 
 Registers an observer for the uplink and downlink data flow status change events of the cellular data service on the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-observer-function on(type: 'cellularDataFlowChange', options: ObserverOptions, callback: Callback<DataFlowType>): void--><!--Device-observer-function on(type: 'cellularDataFlowChange', options: ObserverOptions, callback: Callback<DataFlowType>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -355,6 +371,8 @@ Registers an observer for call status change events. This API uses an asynchrono
 
 **Since:** 6
 
+<!--Device-observer-function on(type: 'callStateChange', callback: Callback<CallStateInfo>): void--><!--Device-observer-function on(type: 'callStateChange', callback: Callback<CallStateInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -392,6 +410,8 @@ function on(type: 'callStateChange', options: ObserverOptions, callback: Callbac
 Registers an observer for call status change events. This API uses an asynchronous callback to return the execution result.
 
 **Since:** 6
+
+<!--Device-observer-function on(type: 'callStateChange', options: ObserverOptions, callback: Callback<CallStateInfo>): void--><!--Device-observer-function on(type: 'callStateChange', options: ObserverOptions, callback: Callback<CallStateInfo>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -434,6 +454,8 @@ function on(type: 'callStateChangeEx', callback: Callback<TelCallState>, options
 Registers an observer for extended call status change events. This API uses an asynchronous callback to return the execution result.
 
 **Since:** 21
+
+<!--Device-observer-function on(type: 'callStateChangeEx', callback: Callback<TelCallState>, options?: ObserverOptions): void--><!--Device-observer-function on(type: 'callStateChangeEx', callback: Callback<TelCallState>, options?: ObserverOptions): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -486,6 +508,8 @@ Registers an observer for SIM card status change events. This API uses an asynch
 
 **Since:** 7
 
+<!--Device-observer-function on(type: 'simStateChange', callback: Callback<SimStateData>): void--><!--Device-observer-function on(type: 'simStateChange', callback: Callback<SimStateData>): void-End-->
+
 **System capability:** SystemCapability.Telephony.StateRegistry
 
 **Parameters:**
@@ -523,6 +547,8 @@ function on(type: 'simStateChange', options: ObserverOptions, callback: Callback
 Registers an observer for status change events of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-observer-function on(type: 'simStateChange', options: ObserverOptions, callback: Callback<SimStateData>): void--><!--Device-observer-function on(type: 'simStateChange', options: ObserverOptions, callback: Callback<SimStateData>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 
@@ -565,6 +591,8 @@ function on(type: 'iccAccountInfoChange', callback: Callback<void>): void
 Registers an observer for account information change events of the SIM card. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-observer-function on(type: 'iccAccountInfoChange', callback: Callback<void>): void--><!--Device-observer-function on(type: 'iccAccountInfoChange', callback: Callback<void>): void-End-->
 
 **System capability:** SystemCapability.Telephony.StateRegistry
 

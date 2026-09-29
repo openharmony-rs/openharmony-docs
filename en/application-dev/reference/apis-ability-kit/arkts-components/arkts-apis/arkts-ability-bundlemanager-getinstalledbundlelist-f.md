@@ -20,6 +20,8 @@ Obtains all the bundle information in the system based on the given bundle flags
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getInstalledBundleList(bundleFlags: int): Promise<Array<BundleInfo>>--><!--Device-bundleManager-function getInstalledBundleList(bundleFlags: int): Promise<Array<BundleInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Parameters:**

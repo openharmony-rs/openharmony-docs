@@ -8,6 +8,8 @@ You apply a point light style by setting the light source that emits illuminatio
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface PointLightStyle--><!--Device-unnamed-declare interface PointLightStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ Default value: **0**
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PointLightStyle-bloom?: number--><!--Device-PointLightStyle-bloom?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Default value: **IlluminatedType.NONE**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PointLightStyle-illuminated?: IlluminatedType--><!--Device-PointLightStyle-illuminated?: IlluminatedType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -73,6 +79,8 @@ Default value: none
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PointLightStyle-lightSource?: LightSource--><!--Device-PointLightStyle-lightSource?: LightSource-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -8,6 +8,8 @@ declare interface PixelStretchEffectOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface PixelStretchEffectOptions--><!--Device-unnamed-declare interface PixelStretchEffectOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -29,6 +31,8 @@ bottom?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PixelStretchEffectOptions-bottom?: Length--><!--Device-PixelStretchEffectOptions-bottom?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ left?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PixelStretchEffectOptions-left?: Length--><!--Device-PixelStretchEffectOptions-left?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## right
@@ -74,6 +80,8 @@ right?: Length
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PixelStretchEffectOptions-right?: Length--><!--Device-PixelStretchEffectOptions-right?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -95,5 +103,7 @@ top?: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PixelStretchEffectOptions-top?: Length--><!--Device-PixelStretchEffectOptions-top?: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

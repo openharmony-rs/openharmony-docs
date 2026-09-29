@@ -8,6 +8,8 @@ WebGL 1.0
 
 **Since:** 7
 
+<!--Device-unnamed-interface WebGLRenderingContextOverloads--><!--Device-unnamed-interface WebGLRenderingContextOverloads-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 ## bufferData
@@ -21,6 +23,8 @@ Sets buffer data
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum): void--><!--Device-WebGLRenderingContextOverloads-bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -46,6 +50,8 @@ Sets buffer data from BufferSource
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-bufferData(target: GLenum, data: BufferSource | null, usage: GLenum): void--><!--Device-WebGLRenderingContextOverloads-bufferData(target: GLenum, data: BufferSource | null, usage: GLenum): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -67,6 +73,8 @@ Sets buffer sub data
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-bufferSubData(target: GLenum, offset: GLintptr, data: BufferSource): void--><!--Device-WebGLRenderingContextOverloads-bufferSubData(target: GLenum, offset: GLintptr, data: BufferSource): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -97,6 +105,8 @@ Compressed texture image 2D
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-compressedTexImage2D(      target: GLenum,      level: GLint,      internalformat: GLenum,      width: GLsizei,      height: GLsizei,      border: GLint,      data: ArrayBufferView,    ): void--><!--Device-WebGLRenderingContextOverloads-compressedTexImage2D(      target: GLenum,      level: GLint,      internalformat: GLenum,      width: GLsizei,      height: GLsizei,      border: GLint,      data: ArrayBufferView,    ): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -133,6 +143,8 @@ Compressed texture sub image 2D
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-compressedTexSubImage2D(      target: GLenum,      level: GLint,      xoffset: GLint,      yoffset: GLint,      width: GLsizei,      height: GLsizei,      format: GLenum,      data: ArrayBufferView,    ): void--><!--Device-WebGLRenderingContextOverloads-compressedTexSubImage2D(      target: GLenum,      level: GLint,      xoffset: GLint,      yoffset: GLint,      width: GLsizei,      height: GLsizei,      format: GLenum,      data: ArrayBufferView,    ): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -167,6 +179,8 @@ Reads pixels from the framebuffer
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-readPixels(      x: GLint,      y: GLint,      width: GLsizei,      height: GLsizei,      format: GLenum,      type: GLenum,      pixels: ArrayBufferView | null,    ): void--><!--Device-WebGLRenderingContextOverloads-readPixels(      x: GLint,      y: GLint,      width: GLsizei,      height: GLsizei,      format: GLenum,      type: GLenum,      pixels: ArrayBufferView | null,    ): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -203,6 +217,8 @@ Sets texture image 2D from pixels
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-texImage2D(      target: GLenum,      level: GLint,      internalformat: GLint,      width: GLsizei,      height: GLsizei,      border: GLint,      format: GLenum,      type: GLenum,      pixels: ArrayBufferView | null,    ): void--><!--Device-WebGLRenderingContextOverloads-texImage2D(      target: GLenum,      level: GLint,      internalformat: GLint,      width: GLsizei,      height: GLsizei,      border: GLint,      format: GLenum,      type: GLenum,      pixels: ArrayBufferView | null,    ): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -241,6 +257,8 @@ Sets texture image 2D from TexImageSource
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-texImage2D(      target: GLenum,      level: GLint,      internalformat: GLint,      format: GLenum,      type: GLenum,      source: TexImageSource,    ): void--><!--Device-WebGLRenderingContextOverloads-texImage2D(      target: GLenum,      level: GLint,      internalformat: GLint,      format: GLenum,      type: GLenum,      source: TexImageSource,    ): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -275,6 +293,8 @@ Sets texture sub image 2D from pixels
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-texSubImage2D(      target: GLenum,      level: GLint,      xoffset: GLint,      yoffset: GLint,      width: GLsizei,      height: GLsizei,      format: GLenum,      type: GLenum,      pixels: ArrayBufferView | null,    ): void--><!--Device-WebGLRenderingContextOverloads-texSubImage2D(      target: GLenum,      level: GLint,      xoffset: GLint,      yoffset: GLint,      width: GLsizei,      height: GLsizei,      format: GLenum,      type: GLenum,      pixels: ArrayBufferView | null,    ): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -314,6 +334,8 @@ Sets texture sub image 2D from TexImageSource
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-texSubImage2D(      target: GLenum,      level: GLint,      xoffset: GLint,      yoffset: GLint,      format: GLenum,      type: GLenum,      source: TexImageSource,    ): void--><!--Device-WebGLRenderingContextOverloads-texSubImage2D(      target: GLenum,      level: GLint,      xoffset: GLint,      yoffset: GLint,      format: GLenum,      type: GLenum,      source: TexImageSource,    ): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -340,6 +362,8 @@ Sets uniform1fv value
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-uniform1fv(location: WebGLUniformLocation | null, v: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniform1fv(location: WebGLUniformLocation | null, v: Float32List): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -360,6 +384,8 @@ Sets uniform1iv value
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-uniform1iv(location: WebGLUniformLocation | null, v: Int32List): void--><!--Device-WebGLRenderingContextOverloads-uniform1iv(location: WebGLUniformLocation | null, v: Int32List): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -382,6 +408,8 @@ Sets uniform2fv value
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-uniform2fv(location: WebGLUniformLocation | null, v: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniform2fv(location: WebGLUniformLocation | null, v: Float32List): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -402,6 +430,8 @@ Sets uniform2iv value
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-uniform2iv(location: WebGLUniformLocation | null, v: Int32List): void--><!--Device-WebGLRenderingContextOverloads-uniform2iv(location: WebGLUniformLocation | null, v: Int32List): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -424,6 +454,8 @@ Sets uniform3fv value
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-uniform3fv(location: WebGLUniformLocation | null, v: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniform3fv(location: WebGLUniformLocation | null, v: Float32List): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -444,6 +476,8 @@ Sets uniform3iv value
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-uniform3iv(location: WebGLUniformLocation | null, v: Int32List): void--><!--Device-WebGLRenderingContextOverloads-uniform3iv(location: WebGLUniformLocation | null, v: Int32List): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -466,6 +500,8 @@ Sets uniform4fv value
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-uniform4fv(location: WebGLUniformLocation | null, v: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniform4fv(location: WebGLUniformLocation | null, v: Float32List): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -487,6 +523,8 @@ Sets uniform4iv value
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-uniform4iv(location: WebGLUniformLocation | null, v: Int32List): void--><!--Device-WebGLRenderingContextOverloads-uniform4iv(location: WebGLUniformLocation | null, v: Int32List): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -507,6 +545,8 @@ Sets uniformMatrix2fv value
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
@@ -530,6 +570,8 @@ Sets uniformMatrix3fv value
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-WebGLRenderingContextOverloads-uniformMatrix3fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniformMatrix3fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void-End-->
+
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
 **Parameters:**
@@ -551,6 +593,8 @@ Sets uniformMatrix4fv value
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-WebGLRenderingContextOverloads-uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void--><!--Device-WebGLRenderingContextOverloads-uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 

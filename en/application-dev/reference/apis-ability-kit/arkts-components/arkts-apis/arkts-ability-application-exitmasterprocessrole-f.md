@@ -18,6 +18,8 @@ Relinquishes the [master-process](../../../application-models/ability-terminolog
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-application-export function exitMasterProcessRole(): Promise<void>--><!--Device-application-export function exitMasterProcessRole(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

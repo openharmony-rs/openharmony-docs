@@ -10,6 +10,8 @@ File
 
 **Deprecated since:** 10
 
+<!--Device-unnamed-export default class File--><!--Device-unnamed-export default class File-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Checks whether a file or directory exists.
 **Deprecated since:** 10
 
 **Substitutes:** [access](arkts-corefile-file-fs-access-f.md)
+
+<!--Device-File-static access(options: FileAccessOption): void--><!--Device-File-static access(options: FileAccessOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -133,6 +137,8 @@ Copies a file to the given URI.
 **Deprecated since:** 10
 
 **Substitutes:** [copyFile](arkts-corefile-file-fs-copyfile-f.md)
+
+<!--Device-File-static copy(options: FileCopyOption): void--><!--Device-File-static copy(options: FileCopyOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -239,6 +245,8 @@ Deletes a local file.
 
 **Substitutes:** [unlink](arkts-corefile-file-fs-unlink-f.md)
 
+<!--Device-File-static delete(options: FileDeleteOption): void--><!--Device-File-static delete(options: FileDeleteOption): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters:**
@@ -341,6 +349,8 @@ Obtains information about a local file.
 **Deprecated since:** 10
 
 **Substitutes:** [stat](arkts-corefile-file-fs-stat-f.md)
+
+<!--Device-File-static get(options: FileGetOption): void--><!--Device-File-static get(options: FileGetOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -445,6 +455,8 @@ Obtains all files in the specified directory.
 
 **Substitutes:** [listFile](arkts-corefile-file-fs-listfile-f.md)
 
+<!--Device-File-static list(options: FileListOption): void--><!--Device-File-static list(options: FileListOption): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters:**
@@ -548,6 +560,8 @@ Creates a directory.
 
 **Substitutes:** [mkdir](arkts-corefile-file-fs-mkdir-f.md)
 
+<!--Device-File-static mkdir(options: FileMkdirOption): void--><!--Device-File-static mkdir(options: FileMkdirOption): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters:**
@@ -650,6 +664,8 @@ Moves a specified file to a given location.
 **Deprecated since:** 10
 
 **Substitutes:** [moveFile](arkts-corefile-file-fs-movefile-f.md)
+
+<!--Device-File-static move(options: FileMoveOption): void--><!--Device-File-static move(options: FileMoveOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -755,6 +771,8 @@ Reads buffer data from a file. Only text files can be read and written.
 **Deprecated since:** 10
 
 **Substitutes:** [read](arkts-corefile-file-fs-read-f.md)
+
+<!--Device-File-static readArrayBuffer(options: FileReadArrayBufferOption): void--><!--Device-File-static readArrayBuffer(options: FileReadArrayBufferOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -863,6 +881,8 @@ Reads text from a file. Only text files can be read and written.
 
 **Substitutes:** [readText](arkts-corefile-file-fs-readtext-f.md)
 
+<!--Device-File-static readText(options: FileReadTextOption): void--><!--Device-File-static readText(options: FileReadTextOption): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters:**
@@ -966,6 +986,8 @@ Deletes a directory.
 
 **Substitutes:** [rmdir](arkts-corefile-file-fs-rmdir-f.md)
 
+<!--Device-File-static rmdir(options: FileRmdirOption): void--><!--Device-File-static rmdir(options: FileRmdirOption): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
 **Parameters:**
@@ -1068,6 +1090,8 @@ Writes buffer data into a file. Only text files can be read and written.
 **Deprecated since:** 10
 
 **Substitutes:** [write](arkts-corefile-file-fs-write-f.md)
+
+<!--Device-File-static writeArrayBuffer(options: FileWriteArrayBufferOption): void--><!--Device-File-static writeArrayBuffer(options: FileWriteArrayBufferOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -1173,6 +1197,8 @@ Writes text into a file. Only text files can be read and written.
 **Deprecated since:** 10
 
 **Substitutes:** [write](arkts-corefile-file-fs-write-f.md)
+
+<!--Device-File-static writeText(options: FileWriteTextOption): void--><!--Device-File-static writeText(options: FileWriteTextOption): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO.Lite
 

@@ -24,6 +24,8 @@ Obtains the features supported by this device.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function getSupportedFeatures(): number--><!--Device-wifi-function getSupportedFeatures(): number-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 **System API:** This is a system API.

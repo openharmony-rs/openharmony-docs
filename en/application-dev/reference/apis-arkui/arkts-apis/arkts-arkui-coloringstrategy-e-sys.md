@@ -8,6 +8,8 @@ Enumerates the coloring strategies.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum ColoringStrategy--><!--Device-unnamed-declare enum ColoringStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## CONTRAST
@@ -21,6 +23,8 @@ Extract the average color from the component background and convert to a contras
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ColoringStrategy-CONTRAST = 'contrast'--><!--Device-ColoringStrategy-CONTRAST = 'contrast'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

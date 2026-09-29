@@ -18,6 +18,8 @@ A formatted phone number is a standard numeric string, for example, 555 0100.
 
 **Since:** 7
 
+<!--Device-call-function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, callback: AsyncCallback<string>): void--><!--Device-call-function formatPhoneNumber(phoneNumber: string, options: NumberFormatOptions, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **Parameters:**
@@ -69,6 +71,8 @@ Formats a phone number based on specified formatting options. This API uses a pr
 A formatted phone number is a standard numeric string, for example, 555 0100.
 
 **Since:** 7
+
+<!--Device-call-function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): Promise<string>--><!--Device-call-function formatPhoneNumber(phoneNumber: string, options?: NumberFormatOptions): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -124,6 +128,8 @@ Formats a phone number. This API uses an asynchronous callback to return the res
 A formatted phone number is a standard numeric string, for example, 555 0100.
 
 **Since:** 7
+
+<!--Device-call-function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>): void--><!--Device-call-function formatPhoneNumber(phoneNumber: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

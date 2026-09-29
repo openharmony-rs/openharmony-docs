@@ -14,6 +14,8 @@ Indicates the root uri of the device
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileAccess-const DEVICES_URI = 'file://docs'--><!--Device-fileAccess-const DEVICES_URI = 'file://docs'-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.

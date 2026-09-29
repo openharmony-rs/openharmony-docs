@@ -8,6 +8,8 @@ Enumerates system layout directions.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum LayoutDirection--><!--Device-unnamed-declare enum LayoutDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## LTR
@@ -23,6 +25,8 @@ Left-to-right layout.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LayoutDirection-LTR--><!--Device-LayoutDirection-LTR-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Right-to-left layout.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-LayoutDirection-RTL--><!--Device-LayoutDirection-RTL-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Auto
@@ -55,5 +61,7 @@ Automatic layout direction based on the system.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LayoutDirection-Auto--><!--Device-LayoutDirection-Auto-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

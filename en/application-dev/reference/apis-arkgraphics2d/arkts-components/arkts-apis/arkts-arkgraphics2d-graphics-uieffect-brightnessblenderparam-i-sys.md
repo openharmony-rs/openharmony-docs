@@ -8,6 +8,8 @@ Parameter list of BrightnessBlender, used to configure various properties of the
 
 **Since:** 12
 
+<!--Device-unnamed-export declare interface BrightnessBlenderParam--><!--Device-unnamed-export declare interface BrightnessBlenderParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -30,7 +32,9 @@ Third-order coefficient for grayscale adjustment. The value range is [-20, 20]. 
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-cubicRate: double--><!--Device-BrightnessBlenderParam-cubicRate: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -48,7 +52,9 @@ Grayscale adjustment ratio. The value range is [-20, 20]. Values outside the ran
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-degree: double--><!--Device-BrightnessBlenderParam-degree: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -66,7 +72,9 @@ Blending ratio for the brightness effect. The value range is [0, 1]. Values outs
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-fraction: double--><!--Device-BrightnessBlenderParam-fraction: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -84,7 +92,9 @@ Linear coefficient for grayscale adjustment. The value range is [-20, 20]. Value
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-linearRate: double--><!--Device-BrightnessBlenderParam-linearRate: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -102,7 +112,9 @@ Negative RGB adjustment coefficients based on the base saturation. The value ran
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-negativeCoefficient: [double, double, double]--><!--Device-BrightnessBlenderParam-negativeCoefficient: [double, double, double]-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -120,7 +132,9 @@ Positive RGB adjustment coefficients based on the base saturation. The value ran
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-positiveCoefficient: [double, double, double]--><!--Device-BrightnessBlenderParam-positiveCoefficient: [double, double, double]-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -138,7 +152,9 @@ Second-order coefficient for grayscale adjustment. The value range is [-20, 20].
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-quadraticRate: double--><!--Device-BrightnessBlenderParam-quadraticRate: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -156,7 +172,9 @@ Base saturation for brightness. The value range is [0, 20]. Values outside the r
 
 **Since:** 12
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-BrightnessBlenderParam-saturation: double--><!--Device-BrightnessBlenderParam-saturation: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

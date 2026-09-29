@@ -20,6 +20,8 @@ For details about the system parameter design principles and definitions, see [P
 
 **Substitutes:** [systemParameterEnhance](arkts-basicservices-systemparameterenhance.md)
 
+<!--Device-unnamed-declare namespace systemParameter--><!--Device-unnamed-declare namespace systemParameter-End-->
+
 **System capability:** SystemCapability.Startup.SystemInfo
 
 **System API:** This is a system API.

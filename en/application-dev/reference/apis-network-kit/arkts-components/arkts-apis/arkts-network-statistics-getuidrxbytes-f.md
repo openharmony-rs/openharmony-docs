@@ -25,6 +25,8 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 - API version 26 and later: ohos.permission.GET_NETWORK_STATS
 - API versions 10 to 25: N/A
 
+<!--Device-statistics-function getUidRxBytes(uid: int, callback: AsyncCallback<long>): void--><!--Device-statistics-function getUidRxBytes(uid: int, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**
@@ -82,6 +84,8 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 **Required permissions:** 
 - API version 26 and later: ohos.permission.GET_NETWORK_STATS
 - API versions 10 to 25: N/A
+
+<!--Device-statistics-function getUidRxBytes(uid: int): Promise<long>--><!--Device-statistics-function getUidRxBytes(uid: int): Promise<long>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

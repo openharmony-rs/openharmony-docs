@@ -8,6 +8,8 @@ Defines the Measure interface.
 
 **Since:** 9
 
+<!--Device-unnamed-export default class MeasureText--><!--Device-unnamed-export default class MeasureText-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -26,11 +28,11 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 > **NOTE:** 
 > 
-> - Since API version 12, you can use the [getMeasureUtils](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context.
+> - Since API version 12, you can use the [getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context.
 > 
 > - **measureText** always measures single-line text width. Layout constraints in **options** (**constraintWidth**,
 > **maxLines**, and more) do not affect results. For layout-constrained width measurement, use
-> [measureTextSize](../../../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12).
+> [measureTextSize](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretextsize).
 
 **Since:** 9
 
@@ -39,6 +41,8 @@ Measures the single-line display width of the specified text. For multi-line tex
 **Substitutes:** measureText
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MeasureText-static measureText(options: MeasureOptions): number--><!--Device-MeasureText-static measureText(options: MeasureOptions): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +94,7 @@ Measures the width and height of the given text.
 
 > **NOTE:** 
 > 
-> - Since API version 12, you can use the [getMeasureUtils](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getmeasureutils12) API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context.
+> - Since API version 12, you can use the [getMeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getmeasureutils)API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [MeasureUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context.
 
 **Since:** 10
 
@@ -101,6 +105,8 @@ Measures the width and height of the given text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MeasureText-static measureTextSize(options: MeasureOptions): SizeOptions--><!--Device-MeasureText-static measureTextSize(options: MeasureOptions): SizeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

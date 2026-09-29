@@ -10,6 +10,8 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 **Since:** 9
 
+<!--Device-unnamed-declare interface ImageError--><!--Device-unnamed-declare interface ImageError-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## componentHeight
@@ -31,6 +33,8 @@ Unit: px
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageError-componentHeight: number--><!--Device-ImageError-componentHeight: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Unit: px
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ImageError-componentWidth: number--><!--Device-ImageError-componentWidth: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## downloadInfo
@@ -75,6 +81,8 @@ Default value: **null**
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-ImageError-downloadInfo?: RequestDownloadInfo--><!--Device-ImageError-downloadInfo?: RequestDownloadInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ Default value: **{ code : -1, message : "" }**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-ImageError-error?: BusinessError<void>--><!--Device-ImageError-error?: BusinessError<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## message
@@ -117,5 +127,7 @@ Error information.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-ImageError-message: string--><!--Device-ImageError-message: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

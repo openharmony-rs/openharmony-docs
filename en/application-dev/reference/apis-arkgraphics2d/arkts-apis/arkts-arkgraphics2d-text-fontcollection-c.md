@@ -8,6 +8,8 @@ Represents a font collection, which manages the font resources required for text
 
 **Since:** 12
 
+<!--Device-text-class FontCollection--><!--Device-text-class FontCollection-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -26,9 +28,11 @@ Clears the font typesetting cache. The font typesetting cache has a memory limit
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-FontCollection-clearCaches(): void--><!--Device-FontCollection-clearCaches(): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -60,7 +64,9 @@ Obtains a global **FontCollection** instance.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-FontCollection-static getGlobalInstance(): FontCollection--><!--Device-FontCollection-static getGlobalInstance(): FontCollection-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -103,9 +109,11 @@ Obtains the local **FontCollection** instance. This API is recommended for widge
 
 **Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-FontCollection-static getLocalInstance(): FontCollection--><!--Device-FontCollection-static getLocalInstance(): FontCollection-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -132,9 +140,11 @@ Loads the custom font. This API uses a promise to return the result. In this API
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-FontCollection-loadFont(name: string, path: string | Resource): Promise<void>--><!--Device-FontCollection-loadFont(name: string, path: string | Resource): Promise<void>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -194,9 +204,11 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-FontCollection-loadFontSync(name: string, path: string | Resource): void--><!--Device-FontCollection-loadFontSync(name: string, path: string | Resource): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -253,9 +265,11 @@ Loads a custom font. This API returns the result synchronously. In this API, **n
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-FontCollection-loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void--><!--Device-FontCollection-loadFontSyncWithCheck(name: string, path: string | Resource, index?: int): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -328,9 +342,11 @@ Loads a custom font. This API uses a promise to return the result. In this API, 
 
 **Since:** 23
 
-**Atomic service API:** This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+
+<!--Device-FontCollection-loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>--><!--Device-FontCollection-loadFontWithCheck(name: string, path: string | Resource, index?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -415,7 +431,9 @@ Sets whether to enable the typesetting paragraph caching. Typesetting paragraph 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-FontCollection-setParagraphCachesEnabled(enable: boolean): void--><!--Device-FontCollection-setParagraphCachesEnabled(enable: boolean): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -465,9 +483,11 @@ missing glyphs).
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-FontCollection-unloadFont(name: string): Promise<void>--><!--Device-FontCollection-unloadFont(name: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -534,9 +554,11 @@ missing glyphs).
 
 **Since:** 20
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 22.
+**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+
+<!--Device-FontCollection-unloadFontSync(name: string): void--><!--Device-FontCollection-unloadFontSync(name: string): void-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

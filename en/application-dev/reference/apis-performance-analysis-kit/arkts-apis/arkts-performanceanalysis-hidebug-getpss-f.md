@@ -22,6 +22,8 @@ Obtains the size of the physical memory actually used by the application process
 
 **Since:** 8
 
+<!--Device-hidebug-function getPss() : bigint--><!--Device-hidebug-function getPss() : bigint-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Return value:**

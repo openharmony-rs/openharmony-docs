@@ -22,6 +22,8 @@ Connects all allowed bluetooth profiles between the local and remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-connection-function connectAllowedProfiles(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-connection-function connectAllowedProfiles(deviceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -78,6 +80,8 @@ Connects all allowed bluetooth profiles between the local and remote device.
 - API versions 11 to 15: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-connection-function connectAllowedProfiles(deviceId: string): Promise<void>--><!--Device-connection-function connectAllowedProfiles(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

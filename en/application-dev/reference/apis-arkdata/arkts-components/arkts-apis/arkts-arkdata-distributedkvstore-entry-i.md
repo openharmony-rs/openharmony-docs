@@ -8,6 +8,8 @@ Provides key-value pairs stored in the distributedKVStore.
 
 **Since:** 9
 
+<!--Device-distributedKVStore-interface Entry--><!--Device-distributedKVStore-interface Entry-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Indicates the key
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Entry-key: string--><!--Device-Entry-key: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## value
@@ -45,5 +49,7 @@ Indicates the value
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Entry-value: Value--><!--Device-Entry-value: Value-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

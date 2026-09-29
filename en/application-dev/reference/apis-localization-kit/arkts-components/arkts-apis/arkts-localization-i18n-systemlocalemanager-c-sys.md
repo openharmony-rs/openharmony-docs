@@ -8,6 +8,8 @@ Provide some functions for settings and startup guide to select language or regi
 
 **Since:** 10
 
+<!--Device-i18n-export class SystemLocaleManager--><!--Device-i18n-export class SystemLocaleManager-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ constructor()
 Creates a SystemLocaleManager object.
 
 **Since:** 10
+
+<!--Device-SystemLocaleManager-constructor()--><!--Device-SystemLocaleManager-constructor()-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -55,6 +59,8 @@ getLanguageInfoArray(languages: Array<string>, options?: SortOptions): Array<Loc
 Obtains the list of languages after sorting.
 
 **Since:** 10
+
+<!--Device-SystemLocaleManager-getLanguageInfoArray(languages: Array<string>, options?: SortOptions): Array<LocaleItem>--><!--Device-SystemLocaleManager-getLanguageInfoArray(languages: Array<string>, options?: SortOptions): Array<LocaleItem>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -110,6 +116,8 @@ Obtains the IDs of the countries or regions after sorting.
 
 **Since:** 10
 
+<!--Device-SystemLocaleManager-getRegionInfoArray(regions: Array<string>, options?: SortOptions): Array<LocaleItem>--><!--Device-SystemLocaleManager-getRegionInfoArray(regions: Array<string>, options?: SortOptions): Array<LocaleItem>-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 **System API:** This is a system API.
@@ -163,6 +171,8 @@ static getTimeZoneCityItemArray(): Array<TimeZoneCityItem>
 Obtains list of time zone city items after sorting.
 
 **Since:** 10
+
+<!--Device-SystemLocaleManager-static getTimeZoneCityItemArray(): Array<TimeZoneCityItem>--><!--Device-SystemLocaleManager-static getTimeZoneCityItemArray(): Array<TimeZoneCityItem>-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

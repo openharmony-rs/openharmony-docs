@@ -24,6 +24,8 @@ controller: RichEditorController = new RichEditorController();
 
 **Since:** 10
 
+<!--Device-unnamed-declare class RichEditorController extends RichEditorBaseController--><!--Device-unnamed-declare class RichEditorController extends RichEditorBaseController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## addBuilderSpan
@@ -57,13 +59,15 @@ Adds a custom layout (**BuilderSpan**) to **RichEditor**.
 > 
 > - If the component cursor is blinking, the cursor position is updated to after the newly inserted builder after insertion.
 > 
-> - For the node text of [addBuilderSpan](#addbuilderspan), the [enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector),[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig), and [enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector) functions do not take effect.Only the following universal attributes are supported: [size](arkts-arkui-common-comp-commonmethod-c.md#size),[padding](arkts-arkui-common-comp-commonmethod-c.md#padding), [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio), [borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle),[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor),[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius),[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),[opacity](arkts-arkui-common-comp.md#common), [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur),[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow),[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale),[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness),[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate), [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),[invert](arkts-arkui-common-comp-commonmethod-c.md#invert),[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),[clip](arkts-arkui-common-comp-commonmethod-c.md#clip), [mask](arkts-arkui-common-comp-commonmethod-c.md#mask),[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle),[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup),[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext),[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription),[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel),[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect),[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect).
+> - For the node text of [addBuilderSpan](#addbuilderspan), the [enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector),[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig), and [enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector) functions do not take effect.Only the following universal attributes are supported: [size](arkts-arkui-common-comp-commonmethod-c.md#size),[padding](arkts-arkui-common-comp-commonmethod-c.md#padding), [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio), [borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle),[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor),[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius),[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),[opacity](arkts-arkui-common-comp.md), [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur),[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow),[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale),[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness),[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate), [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),[invert](arkts-arkui-common-comp-commonmethod-c.md#invert),[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),[clip](arkts-arkui-common-comp-commonmethod-c.md#clip), [mask](arkts-arkui-common-comp-commonmethod-c.md#mask),[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle),[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup),[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext),[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription),[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel),[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect),[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect).
 
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorController-addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanOptions): number--><!--Device-RichEditorController-addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanOptions): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +99,8 @@ This API is a synchronous API. Adding network images directly under poor network
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorController-addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions): number--><!--Device-RichEditorController-addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,6 +139,8 @@ Adds a custom layout (BuilderSpan) in **RichEditor**, providing identity recogni
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-RichEditorController-addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number--><!--Device-RichEditorController-addRichEditorBuilderSpan(value: RichEditorBuilderSpan, info?: BuilderSpanInfo): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -164,6 +172,8 @@ Adds an icon symbol (**SymbolSpan**) to **RichEditor**. If the component cursor 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorController-addSymbolSpan(value: Resource, options?: RichEditorSymbolSpanOptions ): number--><!--Device-RichEditorController-addSymbolSpan(value: Resource, options?: RichEditorSymbolSpanOptions ): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -192,6 +202,8 @@ Adds text content. If the component cursor is blinking, the cursor position is u
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorController-addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions): number--><!--Device-RichEditorController-addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +234,8 @@ Deletes the text and images within the specified range. This API does not take e
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorController-deleteSpans(value?: RichEditorRange): void--><!--Device-RichEditorController-deleteSpans(value?: RichEditorRange): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -243,6 +257,8 @@ Converts a styled string to a span.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorController-fromStyledString(value: StyledString): Array<RichEditorSpan>--><!--Device-RichEditorController-fromStyledString(value: StyledString): Array<RichEditorSpan>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,6 +293,8 @@ Obtains the paragraph information within a specified range.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorController-getParagraphs(value?: RichEditorRange): Array<RichEditorParagraphResult>--><!--Device-RichEditorController-getParagraphs(value?: RichEditorRange): Array<RichEditorParagraphResult>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +332,8 @@ Obtains the identity and position information of BuilderSpans within the specifi
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-RichEditorController-getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>--><!--Device-RichEditorController-getRichEditorBuilderSpans(value?: RichEditorRange): Array<BuilderSpanInfo>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -342,6 +362,8 @@ Obtains the range and span information of the selection. If no text is selected,
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorController-getSelection(): RichEditorSelection--><!--Device-RichEditorController-getSelection(): RichEditorSelection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -363,6 +385,8 @@ Obtains span information.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorController-getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorTextSpanResult>--><!--Device-RichEditorController-getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | RichEditorTextSpanResult>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -391,6 +415,8 @@ Converts the component content within the given range to a styled string. **Symb
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorController-toStyledString(value: RichEditorRange): StyledString--><!--Device-RichEditorController-toStyledString(value: RichEditorRange): StyledString-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -426,6 +452,8 @@ Updates the paragraph style.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-RichEditorController-updateParagraphStyle(value: RichEditorParagraphStyleOptions): void--><!--Device-RichEditorController-updateParagraphStyle(value: RichEditorParagraphStyleOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -451,6 +479,8 @@ Calling this API will not close the custom context menu on selection by default.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorController-updateSpanStyle(value: RichEditorUpdateTextSpanStyleOptions | RichEditorUpdateImageSpanStyleOptions | RichEditorUpdateSymbolSpanStyleOptions): void--><!--Device-RichEditorController-updateSpanStyle(value: RichEditorUpdateTextSpanStyleOptions | RichEditorUpdateImageSpanStyleOptions | RichEditorUpdateSymbolSpanStyleOptions): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

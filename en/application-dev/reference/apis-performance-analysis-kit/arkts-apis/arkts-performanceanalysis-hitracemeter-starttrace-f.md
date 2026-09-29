@@ -22,7 +22,9 @@ Since API version 19, you are advised to use [startAsyncTrace()](arkts-performan
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-hiTraceMeter-function startTrace(name: string, taskId: int): void--><!--Device-hiTraceMeter-function startTrace(name: string, taskId: int): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 

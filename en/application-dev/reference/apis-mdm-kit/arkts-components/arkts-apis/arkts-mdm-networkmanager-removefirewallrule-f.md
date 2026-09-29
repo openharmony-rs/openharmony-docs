@@ -26,6 +26,8 @@ If there is no rule with [Action](arkts-mdm-networkmanager-action-e.md) being **
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void--><!--Device-networkManager-function removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

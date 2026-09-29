@@ -25,6 +25,8 @@ Sets a browser policy for a specified browser. This API is applicable to scenari
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-browser-function setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void--><!--Device-browser-function setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

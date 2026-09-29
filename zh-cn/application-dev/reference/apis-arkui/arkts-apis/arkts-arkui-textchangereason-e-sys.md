@@ -8,6 +8,8 @@ declare enum TextChangeReason
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare enum TextChangeReason--><!--Device-unnamed-declare enum TextChangeReason-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -23,6 +25,8 @@ UNKNOWN = 0
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-UNKNOWN = 0--><!--Device-TextChangeReason-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ INPUT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TextChangeReason-INPUT = 1--><!--Device-TextChangeReason-INPUT = 1-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -55,6 +61,8 @@ PASTE = 2
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-PASTE = 2--><!--Device-TextChangeReason-PASTE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +80,8 @@ CUT = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TextChangeReason-CUT = 3--><!--Device-TextChangeReason-CUT = 3-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -87,6 +97,8 @@ DRAG = 4
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-DRAG = 4--><!--Device-TextChangeReason-DRAG = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +116,8 @@ AUTO_FILL = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TextChangeReason-AUTO_FILL = 5--><!--Device-TextChangeReason-AUTO_FILL = 5-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -119,6 +133,8 @@ AI帮写。
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-AI_WRITE = 6--><!--Device-TextChangeReason-AI_WRITE = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,6 +152,8 @@ REDO = 7
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TextChangeReason-REDO = 7--><!--Device-TextChangeReason-REDO = 7-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -151,6 +169,8 @@ UNDO = 8
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-UNDO = 8--><!--Device-TextChangeReason-UNDO = 8-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +188,8 @@ CONTROLLER = 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TextChangeReason-CONTROLLER = 9--><!--Device-TextChangeReason-CONTROLLER = 9-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -183,6 +205,8 @@ ACCESSIBILITY = 10
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-ACCESSIBILITY = 10--><!--Device-TextChangeReason-ACCESSIBILITY = 10-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,6 +224,8 @@ COLLABORATION = 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-TextChangeReason-COLLABORATION = 11--><!--Device-TextChangeReason-COLLABORATION = 11-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -215,6 +241,8 @@ STYLUS = 12
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-STYLUS = 12--><!--Device-TextChangeReason-STYLUS = 12-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

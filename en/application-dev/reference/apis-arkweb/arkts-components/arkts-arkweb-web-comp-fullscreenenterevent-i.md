@@ -8,6 +8,8 @@ Provides the callback information for the **Web** component to enter the full-sc
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface FullScreenEnterEvent--><!--Device-unnamed-declare interface FullScreenEnterEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## handler
@@ -23,6 +25,8 @@ Function handle for exiting full screen mode.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FullScreenEnterEvent-handler: FullScreenExitHandler--><!--Device-FullScreenEnterEvent-handler: FullScreenExitHandler-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Video height, in px. If the element that enters fulls screen mode is a **&lt;vid
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FullScreenEnterEvent-videoHeight?: number--><!--Device-FullScreenEnterEvent-videoHeight?: number-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## videoWidth
@@ -55,5 +61,7 @@ Video width, in px. If the element that enters fulls screen mode is a **&lt;vide
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FullScreenEnterEvent-videoWidth?: number--><!--Device-FullScreenEnterEvent-videoWidth?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

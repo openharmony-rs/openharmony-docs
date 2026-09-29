@@ -8,6 +8,8 @@ An option to make different picker usage
 
 **Since:** 14
 
+<!--Device-avSession-interface AVCastPickerOptions--><!--Device-avSession-interface AVCastPickerOptions-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Set the popup menu position if pickerstyple is set to STYLE_MENU.
 
 **Since:** 22
 
+<!--Device-AVCastPickerOptions-menuPosition?: MenuPosition--><!--Device-AVCastPickerOptions-menuPosition?: MenuPosition-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 ## pickerStyle
@@ -41,6 +45,8 @@ Set the picker style.
 **Type:** [AVCastPickerStyle](arkts-avsession-multimedia-avcastpickerparam-avcastpickerstyle-e.md)
 
 **Since:** 22
+
+<!--Device-AVCastPickerOptions-pickerStyle?: AVCastPickerStyle--><!--Device-AVCastPickerOptions-pickerStyle?: AVCastPickerStyle-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -56,6 +62,8 @@ Indicates current session type to show different picker ui. If not set, default 
 
 **Since:** 14
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-AVCastPickerOptions-sessionType?: AVSessionType--><!--Device-AVCastPickerOptions-sessionType?: AVSessionType-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast

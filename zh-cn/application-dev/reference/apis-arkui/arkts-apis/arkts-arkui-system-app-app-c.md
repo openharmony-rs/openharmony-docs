@@ -8,6 +8,8 @@ export default class App
 
 **起始版本：** 3
 
+<!--Device-unnamed-export default class App--><!--Device-unnamed-export default class App-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 ## 导入模块
@@ -31,6 +33,8 @@ static getInfo(): AppResponse
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-App-static getInfo(): AppResponse--><!--Device-App-static getInfo(): AppResponse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -169,6 +173,8 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-App-static setImageCacheCount(value: number): void--><!--Device-App-static setImageCacheCount(value: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -222,6 +228,8 @@ static setImageFileCacheSize(value: number): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-App-static setImageFileCacheSize(value: number): void--><!--Device-App-static setImageFileCacheSize(value: number): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -261,6 +269,8 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-App-static setImageRawDataCacheSize(value: number): void--><!--Device-App-static setImageRawDataCacheSize(value: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +324,8 @@ static terminate(): void
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-App-static terminate(): void--><!--Device-App-static terminate(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -410,6 +422,8 @@ Requests the application to run in full window. In some scenarios, such as semi-
 
 **替代接口：** startAbility
 
+<!--Device-App-static requestFullWindow(options?: RequestFullWindowOptions): void--><!--Device-App-static requestFullWindow(options?: RequestFullWindowOptions): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -444,6 +458,8 @@ static screenOnVisible(options?: ScreenOnVisibleOptions): void
 **起始版本：** 3
 
 **废弃版本：** 8
+
+<!--Device-App-static screenOnVisible(options?: ScreenOnVisibleOptions): void--><!--Device-App-static screenOnVisible(options?: ScreenOnVisibleOptions): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

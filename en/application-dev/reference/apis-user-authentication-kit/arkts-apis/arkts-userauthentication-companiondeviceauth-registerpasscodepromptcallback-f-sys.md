@@ -20,6 +20,8 @@ Registers the callback invoked when the framework needs a companion device passc
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-companionDeviceAuth-function registerPasscodePromptCallback(callback: PasscodePromptCallback): void--><!--Device-companionDeviceAuth-function registerPasscodePromptCallback(callback: PasscodePromptCallback): void-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
 
 **System API:** This is a system API.

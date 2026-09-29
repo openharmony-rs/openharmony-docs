@@ -16,6 +16,8 @@ Sets the screen to mirror mode. This API uses an asynchronous callback to return
 
 **Since:** 9
 
+<!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>, callback: AsyncCallback<long>): void--><!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -67,6 +69,8 @@ function makeMirror(mainScreen:number, mirrorScreen:Array<number>): Promise<numb
 Sets the screen to mirror mode. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>): Promise<long>--><!--Device-screen-function makeMirror(mainScreen:long, mirrorScreen:Array<long>): Promise<long>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

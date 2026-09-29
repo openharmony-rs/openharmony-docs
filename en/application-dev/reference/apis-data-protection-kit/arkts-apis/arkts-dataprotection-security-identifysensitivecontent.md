@@ -4,6 +4,8 @@ This module identifies sensitive information in a specified file based on the in
 
 **Since:** 21
 
+<!--Device-unnamed-declare namespace identifySensitiveContent--><!--Device-unnamed-declare namespace identifySensitiveContent-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import

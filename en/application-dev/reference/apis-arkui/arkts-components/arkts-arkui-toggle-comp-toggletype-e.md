@@ -8,6 +8,8 @@ Enumerates toggle types.
 
 **Since:** 8
 
+<!--Device-unnamed-declare enum ToggleType--><!--Device-unnamed-declare enum ToggleType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Checkbox
@@ -26,13 +28,13 @@ The default value of the universal attribute [margin](arkts-arkui-common-comp-co
 
 {
 
-top: '14px',
+ top: '14px',
 
-right: '14px',
+ right: '14px',
 
-bottom: '14px',
+ bottom: '14px',
 
-left: '14px'
+ left: '14px'
 
 }.
 
@@ -47,6 +49,8 @@ Default size:
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleType-Checkbox--><!--Device-ToggleType-Checkbox-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +68,13 @@ The default value of the universal attribute [margin](arkts-arkui-common-comp-co
 
 {
 
-top: '6px',
+ top: '6px',
 
-right: '14px',
+ right: '14px',
 
-bottom: '6px',
+ bottom: '6px',
 
-left: '14px'
+ left: '14px'
 
 }.
 
@@ -85,6 +89,8 @@ Default size:
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleType-Switch--><!--Device-ToggleType-Switch-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,5 +109,7 @@ Status button type. If child content contains text, the text is displayed on the
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleType-Button--><!--Device-ToggleType-Button-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

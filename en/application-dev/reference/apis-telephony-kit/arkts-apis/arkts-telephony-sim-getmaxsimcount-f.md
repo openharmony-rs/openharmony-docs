@@ -16,6 +16,8 @@ Obtains the number of card slots.
 
 **Since:** 7
 
+<!--Device-sim-function getMaxSimCount(): int--><!--Device-sim-function getMaxSimCount(): int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Return value:**

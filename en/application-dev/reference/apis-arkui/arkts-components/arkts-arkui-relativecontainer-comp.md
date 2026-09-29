@@ -4,7 +4,22 @@ Defines a relative layout component used for element alignment in complex scenar
 
 Child components can define their alignment rules within the container using [alignRules](arkts-arkui-common-comp-commonmethod-c.md#alignrules).
 
-> **NOTE** > > * This component is supported since API version 9. New APIs in later versions are marked with a superscript to > indicate their initial version. > > * In the **RelativeContainer** component, when [width](arkts-arkui-common-comp-commonmethod-c.md#width) and > [height](arkts-arkui-common-comp-commonmethod-c.md#height) are not set, the layout behavior of the corresponding attributes > is the same as when they are set to 100%. > > * Since API version 11, in the **RelativeContainer** component, setting > [width](arkts-arkui-common-comp-commonmethod-c.md#width) and [height](arkts-arkui-common-comp-commonmethod-c.md#height) to "auto" > means adapting to child components. When width is set to "auto", if a child component uses the container as an > anchor in the horizontal direction, "auto" does not take effect (that is, it is treated as if width is not set). > The same applies to the vertical direction. > > * Since API version 20, in the **RelativeContainer** component, setting > [width](arkts-arkui-common-comp-commonmethod-c.md#width-1) and > [height](arkts-arkui-common-comp-commonmethod-c.md#height-1) to **LayoutPolicy.wrapContent** means > adapting to child components while being constrained by the ancestor node size, and setting them to > **LayoutPolicy.fixAtIdealSize** means adapting to child components without being constrained by the ancestor node > size. When **width** is set to **wrapContent** or **fixAtIdealSize**, if a child component directly or indirectly > uses the container as an anchor in the horizontal direction, the container size in that direction does not adapt to > that component. The same applies to the vertical direction. > > * The [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) of a child component in **RelativeContainer** differs from the universal > margin attribute. It refers to the distance from the child component to the anchor in that direction. For example, > when **alignRules** sets a left anchor, **margin.left** indicates the distance from the child component to the left > anchor. If **alignRules** does not set an anchor in a certain boundary direction (for example, neither **left** nor > **right** anchor is set), the **margin** in that direction does not take effect.
+> **NOTE:** 
+> 
+> * This component is supported since API version 9. New APIs in later versions are marked with a superscript to indicate their initial version.
+> 
+> * In the **RelativeContainer** component, when [width](arkts-arkui-common-comp-commonmethod-c.md#width) and [height](arkts-arkui-common-comp-commonmethod-c.md#height) are not set, the layout behavior of the corresponding attributes is the same as when they are set to 100%.
+> 
+> * Since API version 11, in the **RelativeContainer** component, setting [width](arkts-arkui-common-comp-commonmethod-c.md#width) and [height](arkts-arkui-common-comp-commonmethod-c.md#height) to "auto"means adapting to child components. When width is set to "auto", if a child component uses the container as an anchor in the horizontal direction, "auto" does not take effect (that is, it is treated as if width is not set).The same applies to the vertical direction.
+> 
+> * Since API version 20, in the **RelativeContainer** component, setting [width](arkts-arkui-common-comp-commonmethod-c.md#width-1) and [height](arkts-arkui-common-comp-commonmethod-c.md#height-1) to **LayoutPolicy.wrapContent** means adapting to child components while being constrained by the ancestor node size, and setting them to
+> **LayoutPolicy.fixAtIdealSize** means adapting to child components without being constrained by the ancestor node
+> size. When **width** is set to **wrapContent** or **fixAtIdealSize**, if a child component directly or indirectly
+> uses the container as an anchor in the horizontal direction, the container size in that direction does not adapt to
+> that component. The same applies to the vertical direction.
+> 
+> * The [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) of a child component in **RelativeContainer** differs from the universal margin attribute. It refers to the distance from the child component to the anchor in that direction. For example,when **alignRules** sets a left anchor, **margin.left** indicates the distance from the child component to the left anchor. If **alignRules** does not set an anchor in a certain boundary direction (for example, neither **left** nor
+> **right** anchor is set), the **margin** in that direction does not take effect.
 
 ## Child Components
 
@@ -23,6 +38,8 @@ The **RelativeContainer** component is a container component used for relative l
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RelativeContainerInterface-(): RelativeContainerAttribute--><!--Device-RelativeContainerInterface-(): RelativeContainerAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

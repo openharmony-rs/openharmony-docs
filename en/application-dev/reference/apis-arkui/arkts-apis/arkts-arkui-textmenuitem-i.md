@@ -8,6 +8,8 @@ TextMenuItem
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface TextMenuItem--><!--Device-unnamed-declare interface TextMenuItem-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## content
@@ -26,6 +28,8 @@ Menu name.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextMenuItem-content: ResourceStr--><!--Device-TextMenuItem-content: ResourceStr-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -36,7 +40,9 @@ icon?: ResourceStr
 
 Menu icon.
 
-Online images are not supported.
+Network images are not supported.
+
+Default value: undefined, which means no menu icon is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -45,6 +51,8 @@ Online images are not supported.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TextMenuItem-icon?: ResourceStr--><!--Device-TextMenuItem-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +72,8 @@ Menu ID.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextMenuItem-id: TextMenuItemId--><!--Device-TextMenuItem-id: TextMenuItemId-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## labelInfo
@@ -74,7 +84,9 @@ labelInfo?: ResourceStr
 
 Shortcut key hint.
 
-This field is only supported on 2-in-1 devices.
+This field is supported only on 2-in-1 devices.
+
+Default value: undefined, which means no shortcut key hint is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -83,5 +95,7 @@ This field is only supported on 2-in-1 devices.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-TextMenuItem-labelInfo?: ResourceStr--><!--Device-TextMenuItem-labelInfo?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

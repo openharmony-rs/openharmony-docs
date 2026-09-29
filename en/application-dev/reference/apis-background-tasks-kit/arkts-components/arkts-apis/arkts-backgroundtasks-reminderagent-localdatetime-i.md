@@ -12,6 +12,8 @@ Sets the time information for a calendar reminder.
 
 **Substitutes:** [LocalDateTime](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md)
 
+<!--Device-reminderAgent-interface LocalDateTime--><!--Device-reminderAgent-interface LocalDateTime-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Date.
 
 **Substitutes:** [day](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#day)
 
+<!--Device-LocalDateTime-day: number--><!--Device-LocalDateTime-day: number-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## hour
@@ -53,6 +57,8 @@ Hour.
 **Deprecated since:** 9
 
 **Substitutes:** [hour](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#hour)
+
+<!--Device-LocalDateTime-hour: number--><!--Device-LocalDateTime-hour: number-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -72,6 +78,8 @@ Minute.
 
 **Substitutes:** [minute](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#minute)
 
+<!--Device-LocalDateTime-minute: number--><!--Device-LocalDateTime-minute: number-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## month
@@ -89,6 +97,8 @@ Month.
 **Deprecated since:** 9
 
 **Substitutes:** [month](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#month)
+
+<!--Device-LocalDateTime-month: number--><!--Device-LocalDateTime-month: number-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -108,6 +118,8 @@ Second.
 
 **Substitutes:** [second](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#second)
 
+<!--Device-LocalDateTime-second?: number--><!--Device-LocalDateTime-second?: number-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## year
@@ -125,5 +137,7 @@ Year.
 **Deprecated since:** 9
 
 **Substitutes:** [year](arkts-backgroundtasks-reminderagentmanager-localdatetime-i.md#year)
+
+<!--Device-LocalDateTime-year: number--><!--Device-LocalDateTime-year: number-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

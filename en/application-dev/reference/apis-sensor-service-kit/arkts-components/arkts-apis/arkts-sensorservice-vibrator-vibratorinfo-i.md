@@ -8,6 +8,8 @@ Defines the vibrator information.
 
 **Since:** 19
 
+<!--Device-vibrator-interface VibratorInfo--><!--Device-vibrator-interface VibratorInfo-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Device ID.
 
 **Since:** 19
 
+<!--Device-VibratorInfo-deviceId: int--><!--Device-VibratorInfo-deviceId: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## deviceName
@@ -41,6 +45,8 @@ Device name.
 **Type:** string
 
 **Since:** 19
+
+<!--Device-VibratorInfo-deviceName: string--><!--Device-VibratorInfo-deviceName: string-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -56,6 +62,8 @@ Whether HD vibration is supported. The value **true** indicates that HD vibratio
 
 **Since:** 19
 
+<!--Device-VibratorInfo-isHdHapticSupported: boolean--><!--Device-VibratorInfo-isHdHapticSupported: boolean-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## isLocalVibrator
@@ -70,6 +78,8 @@ Whether the device is a local device. The value **true** indicates that the devi
 
 **Since:** 19
 
+<!--Device-VibratorInfo-isLocalVibrator: boolean--><!--Device-VibratorInfo-isLocalVibrator: boolean-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## vibratorId
@@ -83,5 +93,7 @@ Vibrator ID.
 **Type:** number
 
 **Since:** 19
+
+<!--Device-VibratorInfo-vibratorId: int--><!--Device-VibratorInfo-vibratorId: int-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice

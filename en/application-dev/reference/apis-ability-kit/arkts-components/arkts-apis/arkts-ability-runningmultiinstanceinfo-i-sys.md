@@ -8,6 +8,8 @@ The module defines the information of a multi-instance application in the runnin
 
 **Since:** 14
 
+<!--Device-unnamed-export interface RunningMultiInstanceInfo--><!--Device-unnamed-export interface RunningMultiInstanceInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Unique instance ID of a multi-instance application.
 **Type:** string
 
 **Since:** 14
+
+<!--Device-RunningMultiInstanceInfo-instanceKey: string--><!--Device-RunningMultiInstanceInfo-instanceKey: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -40,6 +44,8 @@ Process ID set of the application.
 
 **Since:** 14
 
+<!--Device-RunningMultiInstanceInfo-pids: Array<int>--><!--Device-RunningMultiInstanceInfo-pids: Array<int>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ UID of the application.
 **Type:** number
 
 **Since:** 14
+
+<!--Device-RunningMultiInstanceInfo-uid: int--><!--Device-RunningMultiInstanceInfo-uid: int-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

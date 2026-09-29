@@ -8,6 +8,8 @@ Describes the options for image encoding.
 
 **Since:** 6
 
+<!--Device-image-interface PackingOption--><!--Device-image-interface PackingOption-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The background color used when the image pixels are in RGBA format but the targe
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PackingOption-backgroundColor?: int--><!--Device-PackingOption-backgroundColor?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## bufferSize
@@ -44,7 +48,9 @@ Size of the buffer for receiving the encoded data, in bytes. If this parameter i
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PackingOption-bufferSize?: int--><!--Device-PackingOption-bufferSize?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -59,6 +65,8 @@ Desired dynamic range. The default value is **SDR**.
 **Type:** [PackingDynamicRange](arkts-image-image-packingdynamicrange-e.md)
 
 **Since:** 12
+
+<!--Device-PackingOption-desiredDynamicRange?: PackingDynamicRange--><!--Device-PackingOption-desiredDynamicRange?: PackingDynamicRange-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -78,7 +86,9 @@ Currently, only the following formats are supported: image/jpeg, image/webp, ima
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PackingOption-format: string--><!--Device-PackingOption-format: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -96,6 +106,8 @@ This parameter is valid only when needsPackProperties is set to true. It specifi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PackingOption-maxEmbedThumbnailDimension?: int--><!--Device-PackingOption-maxEmbedThumbnailDimension?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## needsPackGPS
@@ -112,6 +124,8 @@ Indicates whether to carry GPS information when encoding the EXIF metadata. Defa
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PackingOption-needsPackGPS?: boolean--><!--Device-PackingOption-needsPackGPS?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## needsPackProperties
@@ -125,6 +139,8 @@ Whether encoding image property information, for example, Exif, is required. **t
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-PackingOption-needsPackProperties?: boolean--><!--Device-PackingOption-needsPackProperties?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -146,7 +162,9 @@ In the case of sut encoding, the parameter can be set to **92**.
 
 **Since:** 6
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-PackingOption-quality: int--><!--Device-PackingOption-quality: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -164,6 +182,8 @@ Packing image size limit.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PackingOption-sizeLimit?: PackingSizeLimit--><!--Device-PackingOption-sizeLimit?: PackingSizeLimit-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## tiffPackingOptions
@@ -179,5 +199,7 @@ Options for tiff image packing.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PackingOption-tiffPackingOptions?: PackingOptionsForTiff--><!--Device-PackingOption-tiffPackingOptions?: PackingOptionsForTiff-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker

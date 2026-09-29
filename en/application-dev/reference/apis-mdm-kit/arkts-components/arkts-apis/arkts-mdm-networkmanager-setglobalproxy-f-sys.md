@@ -24,6 +24,8 @@ Sets the global network proxy. This API uses an asynchronous callback to return 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-networkManager-function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: AsyncCallback<void>): void--><!--Device-networkManager-function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -97,6 +99,8 @@ Sets the global network proxy. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-networkManager-function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise<void>--><!--Device-networkManager-function setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

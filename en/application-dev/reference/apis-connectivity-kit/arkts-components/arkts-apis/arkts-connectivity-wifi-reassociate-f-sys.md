@@ -22,6 +22,8 @@ Re-associate to current network.
 
 **Required permissions:** ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
+<!--Device-wifi-function reassociate(): boolean--><!--Device-wifi-function reassociate(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

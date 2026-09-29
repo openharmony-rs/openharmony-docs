@@ -18,6 +18,8 @@ Subscribes to display changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-display-function on(type: 'add' | 'remove' | 'change', callback: Callback<long>): void--><!--Device-display-function on(type: 'add' | 'remove' | 'change', callback: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters:**
@@ -58,6 +60,8 @@ Subscribes to display changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-display-function on(type: 'add' | 'remove' | 'change', callback: Callback<long>): void--><!--Device-display-function on(type: 'add' | 'remove' | 'change', callback: Callback<long>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters:**
@@ -89,6 +93,8 @@ Subscribes to display changes.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-display-function on(type: 'add' | 'remove' | 'change', callback: Callback<long>): void--><!--Device-display-function on(type: 'add' | 'remove' | 'change', callback: Callback<long>): void-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -127,6 +133,8 @@ To check whether the content is displayed on the inner or outer screen of the fo
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-display-function on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void--><!--Device-display-function on(type: 'foldStatusChange', callback: Callback<FoldStatus>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -172,6 +180,8 @@ Subscribes to folding angle change events of the foldable device. Note that ther
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-display-function on(type: 'foldAngleChange', callback: Callback<Array<double>>): void--><!--Device-display-function on(type: 'foldAngleChange', callback: Callback<Array<double>>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -215,6 +225,8 @@ Subscribes to events indicating the status of the device's screen content is bei
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-display-function on(type: 'captureStatusChange', callback: Callback<boolean>): void--><!--Device-display-function on(type: 'captureStatusChange', callback: Callback<boolean>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -260,6 +272,8 @@ The two are different. In terms of timing, the fold status changes first, and th
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-display-function on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>): void--><!--Device-display-function on(type: 'foldDisplayModeChange', callback: Callback<FoldDisplayMode>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -303,6 +317,8 @@ Subscribes to events related to screen brightness information changes. If the sc
 **Since:** 22
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-display-function on(type: 'brightnessInfoChange', callback: BrightnessCallback<long, BrightnessInfo>): void--><!--Device-display-function on(type: 'brightnessInfoChange', callback: BrightnessCallback<long, BrightnessInfo>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

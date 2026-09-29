@@ -8,6 +8,8 @@ Enumerates the memory pressure levels. When an application clears the cache occu
 
 **Since:** 14
 
+<!--Device-webview-enum PressureLevel--><!--Device-webview-enum PressureLevel-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## MEMORY_PRESSURE_LEVEL_MODERATE
@@ -22,6 +24,8 @@ Moderate memory pressure level. At this level, the **Web** kernel attempts to re
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_MODERATE = 1-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## MEMORY_PRESSURE_LEVEL_CRITICAL
@@ -35,5 +39,7 @@ Critical memory pressure level. At this level, the **Web** kernel attempts to re
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_CRITICAL = 2--><!--Device-PressureLevel-MEMORY_PRESSURE_LEVEL_CRITICAL = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

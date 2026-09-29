@@ -1,52 +1,40 @@
 # UIPickerComponent
 
-The **UIPickerComponent** container is used to implement user selection operations. It supports single selection from a limited set of options and can be applied to various scenarios such as time selection, date selection, region selection, and status selection. Its display effect is a three-dimensional wheel style, supporting customizable options including text type, image type, and text-image combination type.
+The **UIPickerComponent** container is a component used to implement user selection operations. It allows users to make a single selection from a limited set of options, and uses a 3D wheel style to provide intuitive visual feedback and a smooth scrolling experience. This component supports on-demand customization of options, including text type, image type, and image-text combination type, which can provide richer information display based on service requirements. It can be widely used in various scenarios such as time selection, date selection, region selection, and status selection.
 
-NOTE
+> **NOTE:** 
+> 
+> - The **UIPickerComponent** container has a default option row height of 40 vp and displays 7 options by default.You can configure them through the [itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight) and [displayedItemCount](arkts-arkui-uipickercomponent-comp-attribute.md#displayeditemcount) attributes. Because the display effect is a 3D wheel style, options other than the selected one are rotated at different angles, so the actual visible height is smaller than the option row height.
+> 
+> - It is recommended that the [height](arkts-arkui-common-comp-commonmethod-c.md#height) of the **UIPickerComponent**container be set to 200 vp. When the set height is greater than or equal to this recommended value, the default 7options can be fully displayed. If more visible items or a larger option height are configured through [displayedItemCount](arkts-arkui-uipickercomponent-comp-attribute.md#displayeditemcount) or [itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight), it is recommended to increase the component height accordingly. When the set height is smaller than the recommended value, the display range is cropped from the top and bottom edges toward the center, and the number of options that can be displayed is reduced accordingly, with the selected item always kept vertically centered.
+> 
+> - When the [width](arkts-arkui-common-comp-commonmethod-c.md#width) of the **UIPickerComponent** container is not set, the maximum width of the visible child components in the current view is used as the container width. It is recommended to set a width for the **UIPickerComponent** container, or set the same width for each child component, to avoid dynamic changes in the container width during scrolling, which may affect the display effect.
+> 
+> - The alignment of child components in the **UIPickerComponent** container is fixed to center alignment. Changing the alignment of child components through the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute is not supported.
+> 
+> - The **UIPickerComponent** container currently does not support smartwatch devices. You can obtain the device type through **deviceInfo.deviceType** to determine whether the device is a smartwatch.
+> 
+> - This component supports [WithTheme](arkts-arkui-withtheme-comp.md) since API version 26.0.0.
 
-- The height of the **UIPickerComponent** container options is fixed at 40 vp, and a maximum of seven options can
-be displayed. Due to the three-dimensional wheel display effect, options other than the selected one will be rotated at different angles, so the actual visible height will be less than 40 vp.
+## Child Components
 
-- It is recommended that the [height](arkts-arkui-common-comp-commonmethod-c.md#height) of the **UIPickerComponent**
-container be set to 200 vp. When the set height is greater than or equal to this recommended value, all 7 options can be fully displayed. Otherwise, the display area will be cropped from the top and bottom edges towards the center, and the number of displayed options will be reduced accordingly, always keeping the selected item vertically centered.
+- Multiple child components are supported.  
+- Supported child component types: [Text](arkts-arkui-text-comp.md), [Image](arkts-arkui-image-comp.md), [Row](arkts-arkui-row-comp.md), and [SymbolGlyph](arkts-arkui-symbolglyph-comp.md).  
+- Supported rendering control types: [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) and [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md).
 
-- When the **UIPickerComponent** container's [width](arkts-arkui-common-comp-commonmethod-c.md#width) is not set, the
-maximum width of the visible child components in the current view is taken as the container width. You are advised to set the width of the **UIPickerComponent** container or set the same width for each child component to avoid dynamic changes in container width during sliding, which affects the display effect.
-
-- The alignment mode of child components in the **UIPickerComponent** container is fixed to center alignment, and
-cannot be changed via the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute.
-
-- Currently, the **UIPickerComponent** container does not support wearables.
-
-- This component supports WithTheme since API version 26.0.0.
-
-Child Components
-
-- Multiple child components are supported.
-- Supported child component types: Text, Image, Row, and
-SymbolGlyph
-- Supported rendering control types: [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) and
-[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)
-
-NOTE
-
-- When the Row **container** is used as a child component, the **Row** container can contain only the **Text**,
-**Image**, and **SymbolGlyph** basic components. Including other container components may affect the display effect or cause sliding functionality abnormalities.
-
-- When counting the number of child components, the **Row** container and its child components are counted as one
-child component.
-
-- When the child component is **Text**, **Image**, or **SymbolGlyph**, the
-[height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute does not take effect and is fixed at 40 vp.
-
-- When the child component is a **Row** container, its [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute
-does not take effect and is fixed at 40 vp. The [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute of the child components in the **Row** container takes effect. The final display effect is determined by the **Row** container.
-
-- The text-image combination option requires that the **Row** container contain the **Text** and **Image**
-components. When using the text-image combination option, you are advised to set the image's [height](arkts-arkui-common-comp-commonmethod-c.md#height) to 40 vp or below to avoid cropping when images are large.
-
-- The **fontSize** attribute of all text components (including the **Text** components in the **Row** container) in
-the **UIPickerComponent** container is 20 fp by default. User settings will override the default value, and abnormal values will be processed according to the result of handling the text component's [fontSize](arkts-arkui-text-comp-attribute.md#fontsize). You are advised to set the **fontSize** attribute to a unified value or not to set it to ensure a good display effect.
+> **NOTE:** 
+> 
+> - When a **Row** container is used as a child component, the **Row** container can contain only the basic components **Text**, **Image**, and **SymbolGlyph**. Including other container components may affect the display effect or cause abnormal scrolling.
+> 
+> - When counting child components, the child components inside a **Row** container are not counted. A **Row**container and its child components are counted as one child component.
+> 
+> - When the child component is **Text**, **Image**, or **SymbolGlyph**, the [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute does not take effect. The actual height is determined by the [itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight) attribute (40 vp by default). The child component content is displayed within the option area.
+> 
+> - When the child component is a **Row** container, the [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute of the **Row** container does not take effect. The actual height is determined by the [itemHeight](arkts-arkui-uipickercomponent-comp-attribute.md#itemheight) attribute (40 vp by default). The [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute of the child components inside the **Row** container takes effect normally, and the final display effect is determined by the **Row** container.
+> 
+> - An option that combines an image and text requires a **Row** container to contain the image and text components.When using an option that combines an image and text, you are advised to set the [height](arkts-arkui-common-comp-commonmethod-c.md#height) of the image to 40 vp or less to prevent the image from being cropped when it is large.
+> 
+> - The **fontSize** attribute of all text components in the **UIPickerComponent** container (including the text components inside a **Row** container) is 20 fp by default. A user setting overrides the default value. If an invalid value is set, the result processed by the text component [fontSize](arkts-arkui-text-comp-attribute.md#fontsize) prevails.You are advised to set **fontSize** uniformly or not set it to ensure a good display effect.
 
 ## UIPickerComponent
 
@@ -54,7 +42,7 @@ the **UIPickerComponent** container is 20 fp by default. User settings will over
 UIPickerComponent(options?: UIPickerComponentOptions)
 ```
 
-Creates a **UIPickerComponent** container, whose selected item is determined by the **selectedIndex** attribute in the **options** parameter.
+Creates a **UIPickerComponent** container. The selected item is determined by the **selectedIndex** attribute value in the **options** parameter.
 
 **Since:** 22
 
@@ -62,13 +50,15 @@ Creates a **UIPickerComponent** container, whose selected item is determined by 
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-UIPickerComponentInterface-(options?: UIPickerComponentOptions): UIPickerComponentAttribute--><!--Device-UIPickerComponentInterface-(options?: UIPickerComponentOptions): UIPickerComponentAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [UIPickerComponentOptions](arkts-arkui-uipickercomponent-comp-uipickercomponentoptions-i.md) | No | Parameters of the **UIPickerComponent** container. If the parameter is left empty, the component is a placeholder but the content is empty. |
+| options | [UIPickerComponentOptions](arkts-arkui-uipickercomponent-comp-uipickercomponentoptions-i.md) | No | Parameters for configuring the **UIPickerComponent** container, used to customize settings such as the initially selected item. When this parameter is omitted, the component occupies space but displays empty content. Pass this parameter when you need to set the initially selected item. |
 
 ## Summary
 
@@ -76,14 +66,14 @@ Creates a **UIPickerComponent** container, whose selected item is determined by 
 
 | Name | Description |
 | --- | --- |
-| [PickerIndicatorStyle](arkts-arkui-uipickercomponent-comp-pickerindicatorstyle-i.md) | Sets parameters of the selected item indicator style. |
+| [PickerIndicatorStyle](arkts-arkui-uipickercomponent-comp-pickerindicatorstyle-i.md) | Describes the parameters of the selected item indicator style. |
 | [UIPickerComponentOptions](arkts-arkui-uipickercomponent-comp-uipickercomponentoptions-i.md) | Describes the parameters of the **UIPickerComponent** container. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnUIPickerComponentCallback](arkts-arkui-uipickercomponent-comp-onuipickercomponentcallback-t.md) | Defines the callback types for the [onChange](arkts-arkui-uipickercomponent-comp-attribute.md#onchange) and [onScrollStop](arkts-arkui-uipickercomponent-comp-attribute.md#onscrollstop) events. |
+| [OnUIPickerComponentCallback](arkts-arkui-uipickercomponent-comp-onuipickercomponentcallback-t.md) | Defines the callback type for the [onChange](arkts-arkui-uipickercomponent-comp-attribute.md#onchange) and [onScrollStop](arkts-arkui-uipickercomponent-comp-attribute.md#onscrollstop) events. |
 
 ### Enums
 

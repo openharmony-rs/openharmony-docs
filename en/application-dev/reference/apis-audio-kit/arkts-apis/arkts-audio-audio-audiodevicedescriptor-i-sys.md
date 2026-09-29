@@ -8,6 +8,8 @@ Describes an audio device.
 
 **Since:** 7
 
+<!--Device-audio-interface AudioDeviceDescriptor--><!--Device-audio-interface AudioDeviceDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Extended information for distributed device, includes whether the device support
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioDeviceDescriptor-readonly dmDeviceInfo?: string--><!--Device-AudioDeviceDescriptor-readonly dmDeviceInfo?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Only [SPEAKER](arkts-audio-audio-devicetype-e.md#speaker) with networkId、[REMO
 **Type:** number
 
 **Since:** 18
+
+<!--Device-AudioDeviceDescriptor-readonly dmDeviceType?: int--><!--Device-AudioDeviceDescriptor-readonly dmDeviceType?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -62,6 +68,8 @@ whether supports high-quality recording.
 
 **Since:** 21
 
+<!--Device-AudioDeviceDescriptor-readonly highQualityRecordingSupported?: boolean--><!--Device-AudioDeviceDescriptor-readonly highQualityRecordingSupported?: boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Interrupt group id
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AudioDeviceDescriptor-readonly interruptGroupId: int--><!--Device-AudioDeviceDescriptor-readonly interruptGroupId: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -94,6 +104,8 @@ Device network id
 
 **Since:** 9
 
+<!--Device-AudioDeviceDescriptor-readonly networkId: string--><!--Device-AudioDeviceDescriptor-readonly networkId: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Volume group id
 **Type:** number
 
 **Since:** 9
+
+<!--Device-AudioDeviceDescriptor-readonly volumeGroupId: int--><!--Device-AudioDeviceDescriptor-readonly volumeGroupId: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 

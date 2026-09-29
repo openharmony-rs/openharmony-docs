@@ -16,6 +16,8 @@ Get System Capability.
 
 **Since:** 9
 
+<!--Device-systemCapability-function querySystemCapabilities(callback: AsyncCallback<string>): void--><!--Device-systemCapability-function querySystemCapabilities(callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Developtools.Syscap
 
 **System API:** This is a system API.
@@ -53,6 +55,8 @@ function querySystemCapabilities(): Promise<string>
 Get System Capability.
 
 **Since:** 9
+
+<!--Device-systemCapability-function querySystemCapabilities(): Promise<string>--><!--Device-systemCapability-function querySystemCapabilities(): Promise<string>-End-->
 
 **System capability:** SystemCapability.Developtools.Syscap
 

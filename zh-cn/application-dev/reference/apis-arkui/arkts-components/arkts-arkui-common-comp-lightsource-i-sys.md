@@ -8,6 +8,8 @@ declare interface LightSource
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare interface LightSource--><!--Device-unnamed-declare interface LightSource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -28,6 +30,8 @@ color?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-LightSource-color?: ResourceColor--><!--Device-LightSource-color?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ intensity: number
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LightSource-intensity: number--><!--Device-LightSource-intensity: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ positionX: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-LightSource-positionX: Dimension--><!--Device-LightSource-positionX: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -82,6 +90,8 @@ positionY: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-LightSource-positionY: Dimension--><!--Device-LightSource-positionY: Dimension-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -99,6 +109,8 @@ positionZ: Dimension
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LightSource-positionZ: Dimension--><!--Device-LightSource-positionZ: Dimension-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -16,6 +16,8 @@ When the crash and freeze events are subscribed by [HiAppEvent](arkts-performanc
 
 **Since:** 21
 
+<!--Device-unnamed-declare class FaultLogExtensionAbility--><!--Device-unnamed-declare class FaultLogExtensionAbility-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Called to perform the initialization operation when the system service completes
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FaultLogExtensionAbility-onConnect(): void--><!--Device-FaultLogExtensionAbility-onConnect(): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -60,6 +64,8 @@ Called to release resources and clear the running status when the system service
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FaultLogExtensionAbility-onDisconnect(): void--><!--Device-FaultLogExtensionAbility-onDisconnect(): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 **Examples**
@@ -83,6 +89,8 @@ Called to subscribe to and process fault events when the system service notifies
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FaultLogExtensionAbility-onFaultReportReady(): void--><!--Device-FaultLogExtensionAbility-onFaultReportReady(): void-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -122,5 +130,7 @@ Context of the FaultLogExtensionAbility. This context is inherited from [Extensi
 **Since:** 21
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FaultLogExtensionAbility-context: FaultLogExtensionContext--><!--Device-FaultLogExtensionAbility-context: FaultLogExtensionContext-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger

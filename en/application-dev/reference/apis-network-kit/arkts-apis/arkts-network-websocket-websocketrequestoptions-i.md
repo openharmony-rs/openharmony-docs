@@ -8,6 +8,8 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 
 **Since:** 6
 
+<!--Device-webSocket-export interface WebSocketRequestOptions--><!--Device-webSocket-export interface WebSocketRequestOptions-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Path of CA certificates. If a path is set, the system uses the CA certificates i
 
 **Since:** 11
 
+<!--Device-WebSocketRequestOptions-caPath?: string--><!--Device-WebSocketRequestOptions-caPath?: string-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## clientCert
@@ -41,6 +45,8 @@ Client certificate.
 **Type:** [ClientCert](arkts-network-websocket-clientcert-i.md)
 
 **Since:** 11
+
+<!--Device-WebSocketRequestOptions-clientCert?: ClientCert--><!--Device-WebSocketRequestOptions-clientCert?: ClientCert-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -58,6 +64,8 @@ Header carrying optional parameters in the request for establishing a WebSocket 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebSocketRequestOptions-header?: Object--><!--Device-WebSocketRequestOptions-header?: Object-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## minSupportTlsProtocol
@@ -74,6 +82,8 @@ Custom minimum TLS version supported. For example, if this parameter is set to *
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WebSocketRequestOptions-minSupportTlsProtocol?: TlsProtocol--><!--Device-WebSocketRequestOptions-minSupportTlsProtocol?: TlsProtocol-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## pingInterval
@@ -87,6 +97,8 @@ Custom [heartbeat detection interval](../../../network/websocket-connection.md).
 **Type:** number
 
 **Since:** 21
+
+<!--Device-WebSocketRequestOptions-pingInterval?: int--><!--Device-WebSocketRequestOptions-pingInterval?: int-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -102,6 +114,8 @@ Timeout interval for disconnecting a connection after heartbeat detection is ini
 
 **Since:** 21
 
+<!--Device-WebSocketRequestOptions-pongTimeout?: int--><!--Device-WebSocketRequestOptions-pongTimeout?: int-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## protocol
@@ -115,6 +129,8 @@ Custom **Sec-WebSocket-Protocol** field. The default value is "".
 **Type:** string
 
 **Since:** 12
+
+<!--Device-WebSocketRequestOptions-protocol?: string--><!--Device-WebSocketRequestOptions-protocol?: string-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -130,6 +146,8 @@ Proxy configuration. By default, the system network proxy is used.
 
 **Since:** 12
 
+<!--Device-WebSocketRequestOptions-proxy?: ProxyConfiguration--><!--Device-WebSocketRequestOptions-proxy?: ProxyConfiguration-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## skipServerCertVerification
@@ -143,6 +161,8 @@ Whether to skip server certificate verification. The value **true** means to ski
 **Type:** boolean
 
 **Since:** 20
+
+<!--Device-WebSocketRequestOptions-skipServerCertVerification?: boolean--><!--Device-WebSocketRequestOptions-skipServerCertVerification?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -159,5 +179,7 @@ The option of supporting origin port.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebSocketRequestOptions-supportOriginPort?: boolean--><!--Device-WebSocketRequestOptions-supportOriginPort?: boolean-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

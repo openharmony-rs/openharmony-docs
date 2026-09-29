@@ -18,6 +18,8 @@ Deletes invalid widgets from the list. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function deleteInvalidForms(formIds: Array<string>, callback: AsyncCallback<int>): void--><!--Device-formHost-function deleteInvalidForms(formIds: Array<string>, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -54,6 +56,8 @@ Deletes invalid widgets from the list. This API uses a promise to return the res
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
+
+<!--Device-formHost-function deleteInvalidForms(formIds: Array<string>): Promise<int>--><!--Device-formHost-function deleteInvalidForms(formIds: Array<string>): Promise<int>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

@@ -12,6 +12,8 @@ Image properties are initialized only during image creation and cannot be change
 
 **Since:** 9
 
+<!--Device-image-interface Image--><!--Device-image-interface Image-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Obtains ImageBufferData from an image.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Image-getBufferData(): ImageBufferData | null--><!--Device-Image-getBufferData(): ImageBufferData | null-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -67,6 +71,8 @@ getComponent(componentType: ComponentType, callback: AsyncCallback<Component>): 
 Obtains the component buffer from the Image instance based on the color component type. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
+
+<!--Device-Image-getComponent(componentType: ComponentType, callback: AsyncCallback<Component>): void--><!--Device-Image-getComponent(componentType: ComponentType, callback: AsyncCallback<Component>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -104,6 +110,8 @@ getComponent(componentType: ComponentType): Promise<Component>
 Obtains the component buffer from the Image instance based on the color component type. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-Image-getComponent(componentType: ComponentType): Promise<Component>--><!--Device-Image-getComponent(componentType: ComponentType): Promise<Component>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -144,6 +152,8 @@ Obtains the HDR metadata from an image based on the HDR metadata type.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Image-getMetadata(key: HdrMetadataKey): HdrMetadataValue | null--><!--Device-Image-getMetadata(key: HdrMetadataKey): HdrMetadataValue | null-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -195,6 +205,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 9
 
+<!--Device-Image-release(callback: AsyncCallback<void>): void--><!--Device-Image-release(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Parameters:**
@@ -237,6 +249,8 @@ Before releasing the instance, ensure that all asynchronous operations associate
 
 **Since:** 9
 
+<!--Device-Image-release(): Promise<void>--><!--Device-Image-release(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **Return value:**
@@ -271,6 +285,8 @@ Image area to be cropped.
 
 **Since:** 9
 
+<!--Device-Image-clipRect: Region--><!--Device-Image-clipRect: Region-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## colorSpace
@@ -287,6 +303,8 @@ Color space of the image.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Image-readonly colorSpace: colorSpaceManager.ColorSpace--><!--Device-Image-readonly colorSpace: colorSpaceManager.ColorSpace-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## format
@@ -300,6 +318,8 @@ Image format. For details, see [OH_NativeBuffer_Format](../../../reference/apis-
 **Type:** number
 
 **Since:** 9
+
+<!--Device-Image-readonly format: int--><!--Device-Image-readonly format: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -323,6 +343,8 @@ For details about the best practices of camera preview and photo capture, see [D
 
 **Since:** 9
 
+<!--Device-Image-readonly size: Size--><!--Device-Image-readonly size: Size-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## timestamp
@@ -336,5 +358,7 @@ Image timestamp. Timestamps, measured in nanoseconds, are usually monotonically 
 **Type:** number
 
 **Since:** 12
+
+<!--Device-Image-readonly timestamp: long--><!--Device-Image-readonly timestamp: long-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

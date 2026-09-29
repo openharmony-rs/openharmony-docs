@@ -12,6 +12,8 @@ The 3D scene consists of nodes in a tree hierarchy, where each node implements a
 
 **Since:** 12
 
+<!--Device-unnamed-export interface Node extends SceneResource--><!--Device-unnamed-export interface Node extends SceneResource-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## getNodeByPath
@@ -23,6 +25,8 @@ getNodeByPath(path: string): Node | null
 Obtains a node by path. If no node is obtained, null is returned.
 
 **Since:** 12
+
+<!--Device-Node-getNodeByPath(path: string): Node | null--><!--Device-Node-getNodeByPath(path: string): Node | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -93,6 +97,8 @@ Child node of the node and null if it does not exist. This is a read-only proper
 
 **Since:** 12
 
+<!--Device-Node-readonly children: Container<Node>--><!--Device-Node-readonly children: Container<Node>-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## layerMask
@@ -106,6 +112,8 @@ Layer mask of a node.
 **Type:** [LayerMask](arkts-arkgraphics3d-scenenodes-layermask-i.md)
 
 **Since:** 12
+
+<!--Device-Node-readonly layerMask: LayerMask--><!--Device-Node-readonly layerMask: LayerMask-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -121,6 +129,8 @@ Node type.
 
 **Since:** 12
 
+<!--Device-Node-readonly nodeType: NodeType--><!--Device-Node-readonly nodeType: NodeType-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## parent
@@ -134,6 +144,8 @@ Parent node of the node and null if it does not exist.
 **Type:** [Node](arkts-arkgraphics3d-scenenodes-node-i.md) &#124; null
 
 **Since:** 12
+
+<!--Device-Node-readonly parent: Node | null--><!--Device-Node-readonly parent: Node | null-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -149,6 +161,8 @@ Node path.
 
 **Since:** 12
 
+<!--Device-Node-readonly path: string--><!--Device-Node-readonly path: string-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## position
@@ -162,6 +176,8 @@ Node position, in scene units of the world coordinate system (for example, cm, m
 **Type:** [Position3](arkts-arkgraphics3d-position3-t.md)
 
 **Since:** 12
+
+<!--Device-Node-position: Position3--><!--Device-Node-position: Position3-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
@@ -177,6 +193,8 @@ Rotation angle of a node.
 
 **Since:** 12
 
+<!--Device-Node-rotation: Quaternion--><!--Device-Node-rotation: Quaternion-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## scale
@@ -191,6 +209,8 @@ Node scale.
 
 **Since:** 12
 
+<!--Device-Node-scale: Scale3--><!--Device-Node-scale: Scale3-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## visible
@@ -204,5 +224,7 @@ Whether a node is visible. true if visible, false otherwise.
 **Type:** boolean
 
 **Since:** 12
+
+<!--Device-Node-visible: boolean--><!--Device-Node-visible: boolean-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D

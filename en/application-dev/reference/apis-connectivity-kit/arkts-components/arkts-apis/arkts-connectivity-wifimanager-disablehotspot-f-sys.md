@@ -18,6 +18,8 @@ Disable Wi-Fi hotspot function. This method is asynchronous. If Wi-Fi is enabled
 
 **Required permissions:** ohos.permission.MANAGE_WIFI_HOTSPOT
 
+<!--Device-wifiManager-function disableHotspot(): void--><!--Device-wifiManager-function disableHotspot(): void-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.AP.Core
 
 **System API:** This is a system API.

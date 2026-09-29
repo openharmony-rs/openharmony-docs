@@ -28,6 +28,8 @@ Unregisters the callback that receives bundle status changes. This API uses an a
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
+<!--Device-innerBundleManager-function off(type: 'BundleStatusChange', callback: AsyncCallback<string>): void--><!--Device-innerBundleManager-function off(type: 'BundleStatusChange', callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -61,6 +63,8 @@ Unregisters the callback that receives bundle status changes. This API uses an a
 **Substitutes:** off
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
+
+<!--Device-innerBundleManager-function off(type: 'BundleStatusChange'): Promise<string>--><!--Device-innerBundleManager-function off(type: 'BundleStatusChange'): Promise<string>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

@@ -18,6 +18,8 @@ Deregisters a mission status listener. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function off(type: 'mission', listenerId: long, callback: AsyncCallback<void>): void--><!--Device-missionManager-function off(type: 'mission', listenerId: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -138,6 +140,8 @@ Unregisters a mission status listener. This API uses a promise to return the res
 **Since:** 9
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function off(type: 'mission', listenerId: long): Promise<void>--><!--Device-missionManager-function off(type: 'mission', listenerId: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -263,6 +267,8 @@ Deregisters a mission status listener. This API uses an asynchronous callback to
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
 
+<!--Device-missionManager-function off(type: 'missionEvent', listenerId: long, callback: AsyncCallback<void>): void--><!--Device-missionManager-function off(type: 'missionEvent', listenerId: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -384,6 +390,8 @@ Unregisters a mission status listener. This API uses a promise to return the res
 **Substitutes:** off(type: 'mission', listenerId: number)
 
 **Required permissions:** ohos.permission.MANAGE_MISSIONS
+
+<!--Device-missionManager-function off(type: 'missionEvent', listenerId: long): Promise<void>--><!--Device-missionManager-function off(type: 'missionEvent', listenerId: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

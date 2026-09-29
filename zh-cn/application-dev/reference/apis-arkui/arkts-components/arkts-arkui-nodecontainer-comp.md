@@ -8,7 +8,7 @@
 > 
 > - 不支持挂载查询获得的系统组件代理节点，请参见[isModifiable](../arkts-apis/arkts-arkui-framenode-c.md#ismodifiable)。
 > 
-> - 当前不支持使用动态属性设置。
+> - 当前不支持使用[动态属性设置](arkts-arkui-common-comp.md)。
 > 
 > - 该组件下的节点树构建时会使用UI实例[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)，实例切换时可能会因实例不匹配，导致所绑定[NodeController](../arkts-apis/arkts-arkui-nodecontroller-c.md)的[makeNode](../arkts-apis/arkts-arkui-nodecontroller-c.md#makenode)回调方法的入参为undefined，因此该组件当前不支持跨实例的节点复用。
 > 
@@ -27,6 +27,8 @@ NodeContainer(controller: import('../api/@ohos.arkui.node').NodeController)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NodeContainerInterface-(controller: import('../api/@ohos.arkui.node').NodeController): NodeContainerAttribute--><!--Device-NodeContainerInterface-(controller: import('../api/@ohos.arkui.node').NodeController): NodeContainerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

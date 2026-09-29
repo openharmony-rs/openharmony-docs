@@ -16,7 +16,9 @@ Obtains an **NfcBTag** object, which allows access to the tags that use the NFC-
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-tag-function getNfcB(tagInfo: TagInfo): NfcBTag--><!--Device-tag-function getNfcB(tagInfo: TagInfo): NfcBTag-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

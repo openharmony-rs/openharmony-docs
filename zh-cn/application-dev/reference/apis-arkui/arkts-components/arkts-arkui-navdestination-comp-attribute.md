@@ -8,9 +8,11 @@ declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribu
 
 除支持通用事件外，还支持如下事件：
 
-**继承/实现关系：** NavDestinationAttribute extends CommonMethod&lt;NavDestinationAttribute&gt;
+**继承/实现关系：** NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>
 
 **起始版本：** 9
+
+<!--Device-unnamed-declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>--><!--Device-unnamed-declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,6 +35,8 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier): NavDestinationAttribute--><!--Device-NavDestinationAttribute-backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibilityText?: ResourceStr): NavDestinationAttribute--><!--Device-NavDestinationAttribute-backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibilityText?: ResourceStr): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -79,7 +85,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 ```
 
-绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见示例1。
+绑定NavDestination组件和嵌套的可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动父组件或子组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个嵌套的可滚动容器组件绑定，嵌套的可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
 
 > **说明：** 
 
@@ -94,6 +100,8 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +117,7 @@ bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>)
 bindToScrollable(scrollers: Array<Scroller>)
 ```
 
-绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见示例1。
+绑定NavDestination组件和可滚动容器组件（支持List、Scroll、Grid、WaterFlow），当滑动可滚动容器组件时，会触发所有与其绑定的NavDestination组件的标题栏和工具栏的显示和隐藏动效，上滑隐藏，下滑显示。一个NavDestination可与多个可滚动容器组件绑定，一个可滚动容器组件也可与多个NavDestination绑定。使用示例参见[示例1](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例1标题栏工具栏与可滚动类组件联动)。
 
 > **说明：** 
 
@@ -124,6 +132,8 @@ bindToScrollable(scrollers: Array<Scroller>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-bindToScrollable(scrollers: Array<Scroller>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-bindToScrollable(scrollers: Array<Scroller>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +162,8 @@ customTransition(delegate: NavDestinationTransitionDelegate)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-customTransition(delegate: NavDestinationTransitionDelegate): NavDestinationAttribute--><!--Device-NavDestinationAttribute-customTransition(delegate: NavDestinationTransitionDelegate): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,6 +194,8 @@ enableNavigationIndicator(enabled: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-enableNavigationIndicator(enabled: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-enableNavigationIndicator(enabled: Optional<boolean>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -219,6 +233,8 @@ enableStatusBar(enabled: Optional<boolean>, animated?: boolean)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-enableStatusBar(enabled: Optional<boolean>, animated?: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-enableStatusBar(enabled: Optional<boolean>, animated?: boolean): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -244,6 +260,8 @@ fullScreenOverlay(fullScreenOverlay: Optional<boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-fullScreenOverlay(fullScreenOverlay: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-fullScreenOverlay(fullScreenOverlay: Optional<boolean>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -266,6 +284,8 @@ hideBackButton(hide: Optional<boolean>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-hideBackButton(hide: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideBackButton(hide: Optional<boolean>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -285,6 +305,8 @@ hideTitleBar(value: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-hideTitleBar(value: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideTitleBar(value: boolean): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,6 +332,8 @@ hideTitleBar(hide: boolean, animated: boolean)
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-hideTitleBar(hide: boolean, animated: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideTitleBar(hide: boolean, animated: boolean): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -332,6 +356,8 @@ hideToolBar(hide: boolean, animated?: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-hideToolBar(hide: boolean, animated?: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideToolBar(hide: boolean, animated?: boolean): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -364,6 +390,8 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -392,6 +420,8 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-menus(value: Array<NavigationMenuItem> | CustomBuilder): NavDestinationAttribute--><!--Device-NavDestinationAttribute-menus(value: Array<NavigationMenuItem> | CustomBuilder): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -423,6 +453,8 @@ menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenu
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions): NavDestinationAttribute--><!--Device-NavDestinationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -450,6 +482,8 @@ mode(value: NavDestinationMode)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-mode(value: NavDestinationMode): NavDestinationAttribute--><!--Device-NavDestinationAttribute-mode(value: NavDestinationMode): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -464,7 +498,7 @@ mode(value: NavDestinationMode)
 onActive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见示例5。
+NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件遮挡）时，触发该回调。使用示例参见[示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：** 
 
@@ -475,6 +509,8 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-onActive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onActive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,6 +534,8 @@ onBackPressed(callback: () => boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onBackPressed(callback: () => boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onBackPressed(callback: () => boolean): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -520,6 +558,8 @@ onHidden(callback: Callback<VisibilityChangeReason>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onHidden(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onHidden(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -534,7 +574,7 @@ onHidden(callback: Callback<VisibilityChangeReason>)
 onInactive(callback: Optional<Callback<NavDestinationActiveReason>>)
 ```
 
-NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见示例5。
+NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶时上层有特殊组件遮挡）时，触发该回调。使用示例参见[示例5](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例5navdestination的onactive与oninactive生命周期)。
 
 > **说明：** 
 
@@ -545,6 +585,8 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-onInactive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onInactive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -574,6 +616,8 @@ onNewParam(callback: Optional<Callback<ESObject>>)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onNewParam(callback: Optional<Callback<ESObject>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onNewParam(callback: Optional<Callback<ESObject>>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -600,6 +644,8 @@ onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -623,6 +669,8 @@ onRestoreState(callback: Optional<RestoreStateCallback>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-onRestoreState(callback: Optional<RestoreStateCallback>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onRestoreState(callback: Optional<RestoreStateCallback>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -650,6 +698,8 @@ NavDestination返回时触发该回调。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onResult(callback: Optional<Callback<ESObject>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onResult(callback: Optional<Callback<ESObject>>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -674,6 +724,8 @@ onSaveState(callback: Optional<SaveStateCallback>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onSaveState(callback: Optional<SaveStateCallback>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onSaveState(callback: Optional<SaveStateCallback>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -695,6 +747,8 @@ onShown(callback: Callback<VisibilityChangeReason>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-onShown(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onShown(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -722,6 +776,8 @@ onWillAppear(callback: Callback<void>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onWillAppear(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillAppear(callback: Callback<void>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -747,6 +803,8 @@ onWillDisappear(callback: Callback<void>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-onWillDisappear(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillDisappear(callback: Callback<void>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -774,6 +832,8 @@ onWillHide(callback: Callback<void>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-onWillHide(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillHide(callback: Callback<void>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -799,6 +859,8 @@ onWillShow(callback: Callback<void>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-onWillShow(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillShow(callback: Callback<void>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -834,6 +896,8 @@ preferredOrientation(orientation: Optional<Orientation>)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-preferredOrientation(orientation: Optional<Orientation>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-preferredOrientation(orientation: Optional<Orientation>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -857,6 +921,8 @@ recoverable(recoverable: Optional<boolean>)
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NavDestinationAttribute-recoverable(recoverable: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-recoverable(recoverable: Optional<boolean>): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -888,6 +954,8 @@ systemBarStyle(style: Optional<SystemBarStyle>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-NavDestinationAttribute-systemBarStyle(style: Optional<SystemBarStyle>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-systemBarStyle(style: Optional<SystemBarStyle>): NavDestinationAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -909,6 +977,8 @@ systemTransition(type: NavigationSystemTransitionType)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-systemTransition(type: NavigationSystemTransitionType): NavDestinationAttribute--><!--Device-NavDestinationAttribute-systemTransition(type: NavigationSystemTransitionType): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -934,6 +1004,8 @@ title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestination
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource,          options?: NavigationTitleOptions): NavDestinationAttribute--><!--Device-NavDestinationAttribute-title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource,          options?: NavigationTitleOptions): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -963,6 +1035,8 @@ toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?:
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavDestinationAttribute-toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavDestinationAttribute--><!--Device-NavDestinationAttribute-toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavDestinationAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

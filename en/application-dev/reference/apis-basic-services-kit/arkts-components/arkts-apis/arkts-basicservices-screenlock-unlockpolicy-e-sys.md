@@ -8,6 +8,8 @@ Indicates the screen lock authentication policy used to unlock the screen.
 
 **Since:** 26.0.0
 
+<!--Device-screenLock-enum UnlockPolicy--><!--Device-screenLock-enum UnlockPolicy-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.
@@ -23,6 +25,8 @@ Indicates that the screen lock is unlocked using the default system authenticati
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnlockPolicy-DEFAULT = 0--><!--Device-UnlockPolicy-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
@@ -40,6 +44,8 @@ Indicates that the screen lock is unlocked using only the extended authenticatio
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1--><!--Device-UnlockPolicy-EXTENDED_AUTH_ONLY = 1-End-->
+
 **System capability:** SystemCapability.MiscServices.ScreenLock
 
 **System API:** This is a system API.
@@ -55,6 +61,8 @@ Indicates that the screen lock is unlocked using the extended and system authent
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UnlockPolicy-EXTENDED_AUTH_AND_SYSTEM = 2--><!--Device-UnlockPolicy-EXTENDED_AUTH_AND_SYSTEM = 2-End-->
 
 **System capability:** SystemCapability.MiscServices.ScreenLock
 

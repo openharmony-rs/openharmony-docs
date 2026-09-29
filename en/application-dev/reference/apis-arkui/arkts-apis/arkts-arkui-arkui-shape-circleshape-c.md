@@ -12,6 +12,8 @@ This API inherits from [BaseShape](arkts-arkui-arkui-shape-baseshape-c.md).
 
 **Since:** 12
 
+<!--Device-unnamed-export declare class CircleShape extends BaseShape<CircleShape>--><!--Device-unnamed-export declare class CircleShape extends BaseShape<CircleShape>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -36,10 +38,12 @@ A constructor used to create a **CircleShape** object.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-CircleShape-constructor(options?: ShapeSize)--><!--Device-CircleShape-constructor(options?: ShapeSize)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md) | No | Size of the shape. |
+| options | [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md) | No | Size of the shape, including the **width** and **height** attributes, which is used to set the dimensions of the shape. If not specified, the default size is used, with the default width of 0 vp and default height of 0 vp. |

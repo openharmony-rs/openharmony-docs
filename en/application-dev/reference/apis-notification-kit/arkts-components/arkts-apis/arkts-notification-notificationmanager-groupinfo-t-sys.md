@@ -10,6 +10,8 @@ Defines the custom group notification information.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-export type GroupInfo = _GroupInfo--><!--Device-notificationManager-export type GroupInfo = _GroupInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

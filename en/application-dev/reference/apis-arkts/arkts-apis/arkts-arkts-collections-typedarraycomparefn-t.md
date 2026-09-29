@@ -10,6 +10,8 @@ Describes the sort function of the ArkTS typed array.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-collections-type TypedArrayCompareFn<ElementType> = (first: ElementType, second: ElementType) => number--><!--Device-collections-type TypedArrayCompareFn<ElementType> = (first: ElementType, second: ElementType) => number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

@@ -8,6 +8,8 @@ declare interface AlertDialogParam
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare interface AlertDialogParam--><!--Device-unnamed-declare interface AlertDialogParam-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## distortionMode
@@ -25,6 +27,8 @@ Sets the distortion animation Mode of the dialog.
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlertDialogParam-distortionMode?: DistortionMode--><!--Device-AlertDialogParam-distortionMode?: DistortionMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ Sets the edgeLight animation Mode of the dialog.
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlertDialogParam-edgeLightMode?: EdgeLightMode--><!--Device-AlertDialogParam-edgeLightMode?: EdgeLightMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

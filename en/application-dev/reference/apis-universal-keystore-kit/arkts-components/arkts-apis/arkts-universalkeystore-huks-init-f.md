@@ -22,6 +22,8 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
 **Substitutes:** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)(keyAlias: string, options: HuksOptions)
 
+<!--Device-huks-function init(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksHandle>): void--><!--Device-huks-function init(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksHandle>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**
@@ -50,6 +52,8 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 **Deprecated since:** 9
 
 **Substitutes:** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-1)(keyAlias: string, options: HuksOptions)
+
+<!--Device-huks-function init(keyAlias: string, options: HuksOptions): Promise<HuksHandle>--><!--Device-huks-function init(keyAlias: string, options: HuksOptions): Promise<HuksHandle>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

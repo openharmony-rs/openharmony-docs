@@ -18,6 +18,8 @@ Get intercepted records by userId, and it is necessary to specify the pagination
 
 **Required permissions:** ohos.permission.GET_NET_FIREWALL
 
+<!--Device-netFirewall-function getInterceptedRecords(userId: int, requestParam: RequestParam): Promise<InterceptedRecordPage>--><!--Device-netFirewall-function getInterceptedRecords(userId: int, requestParam: RequestParam): Promise<InterceptedRecordPage>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **System API:** This is a system API.

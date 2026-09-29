@@ -8,6 +8,8 @@ Defines the options for blur snapshot optimization. Setting this object enables 
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface BlurSnapshotOptions--><!--Device-unnamed-declare interface BlurSnapshotOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Whether to enable freeze optimization for the blur snapshot. When enabled, freez
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlurSnapshotOptions-enableFreeze?: boolean--><!--Device-BlurSnapshotOptions-enableFreeze?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

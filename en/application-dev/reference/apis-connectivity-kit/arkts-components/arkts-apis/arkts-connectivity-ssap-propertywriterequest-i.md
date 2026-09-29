@@ -8,6 +8,8 @@ Define a client property write request.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface PropertyWriteRequest--><!--Device-ssap-interface PropertyWriteRequest-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Client device address. The address format is **11:22:33:AA:BB:FF**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyWriteRequest-address: string--><!--Device-PropertyWriteRequest-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## propertyUuid
@@ -45,6 +49,8 @@ Property UUID, in the same format as **serviceUuid**.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyWriteRequest-propertyUuid: string--><!--Device-PropertyWriteRequest-propertyUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -62,6 +68,8 @@ Write request ID of the client. This ID must be carried in the response returned
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyWriteRequest-requestId: int--><!--Device-PropertyWriteRequest-requestId: int-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## serviceUuid
@@ -77,6 +85,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyWriteRequest-serviceUuid: string--><!--Device-PropertyWriteRequest-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -94,6 +104,8 @@ Value written by the client.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PropertyWriteRequest-value: ArrayBuffer--><!--Device-PropertyWriteRequest-value: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## writeType
@@ -109,5 +121,7 @@ Property write type of the client.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PropertyWriteRequest-writeType: PropertyWriteType--><!--Device-PropertyWriteRequest-writeType: PropertyWriteType-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

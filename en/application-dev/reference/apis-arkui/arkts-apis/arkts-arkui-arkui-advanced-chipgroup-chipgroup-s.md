@@ -21,6 +21,8 @@ The **ChipGroup** component provides chip group capabilities, supporting single-
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct ChipGroup--><!--Device-unnamed-export declare struct ChipGroup-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -51,6 +53,8 @@ If **undefined**, no material style is applied.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipGroup-backgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroup-backgroundSystemMaterial?: uiMaterial.Material-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## chipGroupPadding
@@ -76,6 +80,8 @@ If **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroup-chipGroupPadding?: ChipGroupPaddingOptions--><!--Device-ChipGroup-chipGroupPadding?: ChipGroupPaddingOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,6 +109,8 @@ If **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroup-chipGroupSpace?: ChipGroupSpaceOptions--><!--Device-ChipGroup-chipGroupSpace?: ChipGroupSpaceOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## items
@@ -124,6 +132,8 @@ If **undefined**, ChipGroup is empty by default.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroup-items: ChipGroupItemOptions[]--><!--Device-ChipGroup-items: ChipGroupItemOptions[]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,6 +161,8 @@ If **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroup-itemStyle?: ChipItemStyle--><!--Device-ChipGroup-itemStyle?: ChipItemStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## multiple
@@ -177,6 +189,8 @@ If **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroup-multiple?: boolean--><!--Device-ChipGroup-multiple?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onChange
@@ -196,6 +210,8 @@ If **undefined**, this callback is not triggered.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroup-onChange?: Callback<Array<number>>--><!--Device-ChipGroup-onChange?: Callback<Array<number>>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -220,6 +236,8 @@ If **undefined**, no material style is applied to the selected state.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipGroup-selectedBackgroundSystemMaterial?: uiMaterial.Material--><!--Device-ChipGroup-selectedBackgroundSystemMaterial?: uiMaterial.Material-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,6 +269,8 @@ If **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChipGroup-selectedIndexes?: Array<number>--><!--Device-ChipGroup-selectedIndexes?: Array<number>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## suffix
@@ -274,5 +294,7 @@ If **undefined**, there is no suffix.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChipGroup-suffix?: Callback<void>--><!--Device-ChipGroup-suffix?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

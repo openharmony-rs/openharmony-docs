@@ -18,6 +18,8 @@ Notifies the update of the widget lock state. This API uses a promise to return 
 
 **Required permissions:** ohos.permission.REQUIRE_FORM
 
+<!--Device-formHost-function updateFormLockedState(formId: string, isLocked: boolean): Promise<void>--><!--Device-formHost-function updateFormLockedState(formId: string, isLocked: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

@@ -1,8 +1,12 @@
 # Gauge
 
-The **Gauge** component represents a gauge that displays data in a circular format.
+A gauge component that displays data in a circular chart. It is suitable for scenarios such as displaying task completion progress, performance metrics, and data proportions. It supports various visual configurations, including custom colors, start and end angles, pointer styles, and shadow effects, to intuitively present data status and improve users' understanding of and interaction with data.
 
-> **NOTE** > > - This component supports [WithTheme](arkts-arkui-withtheme-comp.md#with_themedefines-withtheme-component) since API version 26.0.0.
+> **NOTE:** 
+> 
+> - This component supports [WithTheme](arkts-arkui-withtheme-comp.md) since API version 26.0.0.
+> 
+> - [startAngle](arkts-arkui-gauge-comp-attribute.md#startangle) and [endAngle](arkts-arkui-gauge-comp-attribute.md#endangle) only determine the arc path range and do not affect the component size. The smaller the angle difference, the smaller the proportion of the arc within the component, and the larger the blank space between the `min`/`max` markers and the arc.
 
 ## Child Components
 
@@ -10,11 +14,11 @@ This component can contain only one child component.
 
 > **NOTE:** 
 > 
-> - Supported child component types: built-in and custom components, including [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) but excluding [ForEach](arkts-arkui-foreach-comp-attribute.md#foreachattribute) and [LazyForEach](arkts-arkui-lazyforeach-comp.md#lazy_for_each).
+> - Supported child component types: system components and custom components. Conditional rendering control [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) is supported, while loop rendering controls [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) are not supported.
 > 
-> - You are advised to use the **Text** component to build the current value and auxiliary text.
+> - It is recommended to use text components to build the current value text and auxiliary text.
 > 
-> - If the width and height of the child component are in percentage, the reference range is the rectangle that has the outer ring as its inscribed circle.
+> - If the width and height of a child component are in percentage, the percentage is based on the width and height of the rectangle that inscribes the outer circle.
 
 ## Gauge
 
@@ -29,6 +33,8 @@ Creates a gauge.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-GaugeInterface-(options: GaugeOptions): GaugeAttribute--><!--Device-GaugeInterface-(options: GaugeOptions): GaugeAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

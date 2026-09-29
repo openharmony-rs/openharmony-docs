@@ -8,6 +8,8 @@ Describes the notification event indicating that the volume exceeds the threshol
 
 **Since:** 26.0.1
 
+<!--Device-audio-interface VolumeLimitExceededEvent--><!--Device-audio-interface VolumeLimitExceededEvent-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ The value is between the values obtained from [getMinSystemVolume](arkts-audio-a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VolumeLimitExceededEvent-currentVolume: int--><!--Device-VolumeLimitExceededEvent-currentVolume: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Indicates the UID of the process that triggers the volume threshold-crossing.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VolumeLimitExceededEvent-uid: int--><!--Device-VolumeLimitExceededEvent-uid: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
@@ -72,6 +78,8 @@ The value is between the values obtained from [getMinSystemVolume](arkts-audio-a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-VolumeLimitExceededEvent-volumeThreshold: int--><!--Device-VolumeLimitExceededEvent-volumeThreshold: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
@@ -89,6 +97,8 @@ Current volume type.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VolumeLimitExceededEvent-volumeType: AudioVolumeType--><!--Device-VolumeLimitExceededEvent-volumeType: AudioVolumeType-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 

@@ -22,6 +22,8 @@ Sets whether to enable distributed notification on this device. This API uses an
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function setDistributedEnable(enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -80,6 +82,8 @@ Sets whether to enable distributed notification on this device. This API uses a 
 **Substitutes:** [setDistributedEnabled](arkts-notification-notificationmanager-setdistributedenabled-f-sys.md)(enable: boolean, deviceType: string)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function setDistributedEnable(enable: boolean): Promise<void>--><!--Device-notificationManager-function setDistributedEnable(enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

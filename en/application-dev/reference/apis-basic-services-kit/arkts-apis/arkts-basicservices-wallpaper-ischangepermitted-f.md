@@ -18,6 +18,8 @@ Checks whether to allow the application to change the wallpaper for the current 
 
 **Deprecated since:** 9
 
+<!--Device-wallpaper-function isChangePermitted(callback: AsyncCallback<boolean>): void--><!--Device-wallpaper-function isChangePermitted(callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Wallpaper
 
 **Parameters:**
@@ -54,6 +56,8 @@ Checks whether to allow the application to change the wallpaper for the current 
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-wallpaper-function isChangePermitted(): Promise<boolean>--><!--Device-wallpaper-function isChangePermitted(): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.MiscServices.Wallpaper
 

@@ -37,6 +37,8 @@ declare interface ContextMenuOptions
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface ContextMenuOptions--><!--Device-unnamed-declare interface ContextMenuOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## aboutToAppear
@@ -52,6 +54,8 @@ aboutToAppear?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-aboutToAppear?: () => void--><!--Device-ContextMenuOptions-aboutToAppear?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,6 +73,8 @@ aboutToDisappear?: () => void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-aboutToDisappear?: () => void--><!--Device-ContextMenuOptions-aboutToDisappear?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onAppear
@@ -85,6 +91,8 @@ onAppear?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-onAppear?: () => void--><!--Device-ContextMenuOptions-onAppear?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDisappear
@@ -100,6 +108,8 @@ onDisappear?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-onDisappear?: () => void--><!--Device-ContextMenuOptions-onDisappear?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,6 +140,8 @@ anchorPosition?: Position
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-anchorPosition?: Position--><!--Device-ContextMenuOptions-anchorPosition?: Position-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,6 +181,8 @@ bindContextMenu从API version 10开始支持该属性；bindMenu从API version 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-arrowOffset?: Length--><!--Device-ContextMenuOptions-arrowOffset?: Length-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## availableLayoutArea
@@ -190,6 +204,8 @@ availableLayoutArea?: AvailableLayoutArea
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-availableLayoutArea?: AvailableLayoutArea--><!--Device-ContextMenuOptions-availableLayoutArea?: AvailableLayoutArea-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -213,6 +229,8 @@ backgroundBlurStyle?: BlurStyle
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-backgroundBlurStyle?: BlurStyle--><!--Device-ContextMenuOptions-backgroundBlurStyle?: BlurStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundBlurStyleOptions
@@ -230,6 +248,8 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions--><!--Device-ContextMenuOptions-backgroundBlurStyleOptions?: BackgroundBlurStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,6 +273,8 @@ backgroundColor?: ResourceColor
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-backgroundColor?: ResourceColor--><!--Device-ContextMenuOptions-backgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## backgroundEffect
@@ -270,6 +292,8 @@ backgroundEffect?: BackgroundEffectOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-backgroundEffect?: BackgroundEffectOptions--><!--Device-ContextMenuOptions-backgroundEffect?: BackgroundEffectOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -303,6 +327,8 @@ borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses--><!--Device-ContextMenuOptions-borderRadius?: Length | BorderRadiuses | LocalizedBorderRadiuses-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -317,7 +343,7 @@ colorMode?: AnchoredColorMode
 
 **说明：** 
 
-1. 仅当绑定组件使用了WithTheme标签时，该属性才会生效。
+1. 仅当绑定组件使用了[WithTheme](arkts-arkui-withtheme-comp.md)标签时，该属性才会生效。
 2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。
 3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。
 
@@ -330,6 +356,8 @@ colorMode?: AnchoredColorMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-colorMode?: AnchoredColorMode--><!--Device-ContextMenuOptions-colorMode?: AnchoredColorMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -356,6 +384,8 @@ enableArrow为true时，placement未设置或者值为非法值，默认在目�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-enableArrow?: boolean--><!--Device-ContextMenuOptions-enableArrow?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -385,6 +415,8 @@ enableHoverMode?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-enableHoverMode?: boolean--><!--Device-ContextMenuOptions-enableHoverMode?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## gridStyle
@@ -402,6 +434,8 @@ gridStyle?: MenuGridStyleOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-gridStyle?: MenuGridStyleOptions--><!--Device-ContextMenuOptions-gridStyle?: MenuGridStyleOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -433,6 +467,8 @@ hapticFeedbackMode?: HapticFeedbackMode
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-hapticFeedbackMode?: HapticFeedbackMode--><!--Device-ContextMenuOptions-hapticFeedbackMode?: HapticFeedbackMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## keyboardAvoidMode
@@ -456,6 +492,8 @@ keyboardAvoidMode?: MenuKeyboardAvoidMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-keyboardAvoidMode?: MenuKeyboardAvoidMode--><!--Device-ContextMenuOptions-keyboardAvoidMode?: MenuKeyboardAvoidMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -493,6 +531,8 @@ layoutRegionMargin?: Margin
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-layoutRegionMargin?: Margin--><!--Device-ContextMenuOptions-layoutRegionMargin?: Margin-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## mask
@@ -521,6 +561,8 @@ true：有蒙层；false：没有蒙层；MenuMaskType：自定义蒙层的样�
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-mask?: boolean | MenuMaskType--><!--Device-ContextMenuOptions-mask?: boolean | MenuMaskType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## maxHeight
@@ -547,6 +589,8 @@ maxHeight?: LengthMetrics
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-maxHeight?: LengthMetrics--><!--Device-ContextMenuOptions-maxHeight?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## minKeyboardAvoidDistance
@@ -568,6 +612,8 @@ minKeyboardAvoidDistance?: LengthMetrics
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-minKeyboardAvoidDistance?: LengthMetrics--><!--Device-ContextMenuOptions-minKeyboardAvoidDistance?: LengthMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -592,6 +638,8 @@ modalMode?: ModalMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-modalMode?: ModalMode--><!--Device-ContextMenuOptions-modalMode?: ModalMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -627,6 +675,8 @@ offset最终取值与placement设置值的关系参见表1：同时设置offset�
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-offset?: Position--><!--Device-ContextMenuOptions-offset?: Position-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidAppear
@@ -653,6 +703,8 @@ onDidAppear?: Callback<void>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-onDidAppear?: Callback<void>--><!--Device-ContextMenuOptions-onDidAppear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDidDisappear
@@ -676,6 +728,8 @@ onDidDisappear?: Callback<void>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-onDidDisappear?: Callback<void>--><!--Device-ContextMenuOptions-onDidDisappear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onWillAppear
@@ -698,6 +752,8 @@ onWillAppear?: Callback<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-onWillAppear?: Callback<void>--><!--Device-ContextMenuOptions-onWillAppear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -723,6 +779,8 @@ onWillDisappear?: Callback<void>
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-onWillDisappear?: Callback<void>--><!--Device-ContextMenuOptions-onWillDisappear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## outlineColor
@@ -746,6 +804,8 @@ outlineColor?: ResourceColor | EdgeColors
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-outlineColor?: ResourceColor | EdgeColors--><!--Device-ContextMenuOptions-outlineColor?: ResourceColor | EdgeColors-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -772,6 +832,8 @@ outlineWidth?: Dimension | EdgeOutlineWidths
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-outlineWidth?: Dimension | EdgeOutlineWidths--><!--Device-ContextMenuOptions-outlineWidth?: Dimension | EdgeOutlineWidths-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -802,6 +864,8 @@ placement?: Placement
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-placement?: Placement--><!--Device-ContextMenuOptions-placement?: Placement-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## preview
@@ -830,6 +894,8 @@ preview?: MenuPreviewMode | CustomBuilder
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-preview?: MenuPreviewMode | CustomBuilder--><!--Device-ContextMenuOptions-preview?: MenuPreviewMode | CustomBuilder-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewAnimationOptions
@@ -856,6 +922,8 @@ previewAnimationOptions?: ContextMenuAnimationOptions
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-previewAnimationOptions?: ContextMenuAnimationOptions--><!--Device-ContextMenuOptions-previewAnimationOptions?: ContextMenuAnimationOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -885,6 +953,8 @@ previewBorderRadius?: BorderRadiusType
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-previewBorderRadius?: BorderRadiusType--><!--Device-ContextMenuOptions-previewBorderRadius?: BorderRadiusType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## previewScaleMode
@@ -913,6 +983,8 @@ previewScaleMode?: PreviewScaleMode
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-previewScaleMode?: PreviewScaleMode--><!--Device-ContextMenuOptions-previewScaleMode?: PreviewScaleMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## scrollBar
@@ -937,6 +1009,8 @@ scrollBar?: BarState
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-scrollBar?: BarState--><!--Device-ContextMenuOptions-scrollBar?: BarState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## systemMaterial
@@ -956,6 +1030,8 @@ systemMaterial?: SystemUiMaterial
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-systemMaterial?: SystemUiMaterial--><!--Device-ContextMenuOptions-systemMaterial?: SystemUiMaterial-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -984,6 +1060,8 @@ targetSpace?: LengthMetrics
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-ContextMenuOptions-targetSpace?: LengthMetrics--><!--Device-ContextMenuOptions-targetSpace?: LengthMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## transition
@@ -1011,5 +1089,7 @@ transition?: TransitionEffect
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuOptions-transition?: TransitionEffect--><!--Device-ContextMenuOptions-transition?: TransitionEffect-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

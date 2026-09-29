@@ -8,6 +8,8 @@ Enumerates whether the **Web** component loses focus when the soft keyboard is h
 
 **Since:** 14
 
+<!--Device-unnamed-declare enum BlurOnKeyboardHideMode--><!--Device-unnamed-declare enum BlurOnKeyboardHideMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## SILENT
@@ -22,6 +24,8 @@ The blur function of the Web component is disabled when the soft keyboard is hid
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-BlurOnKeyboardHideMode-SILENT = 0--><!--Device-BlurOnKeyboardHideMode-SILENT = 0-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## BLUR
@@ -35,5 +39,7 @@ The blur function of the Web component is enabled when the soft keyboard is hidd
 **Since:** 14
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-BlurOnKeyboardHideMode-BLUR = 1--><!--Device-BlurOnKeyboardHideMode-BLUR = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

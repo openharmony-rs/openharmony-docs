@@ -10,6 +10,8 @@ interface PiPController
 
 **起始版本：** 11
 
+<!--Device-PiPWindow-interface PiPController--><!--Device-PiPWindow-interface PiPController-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -27,6 +29,8 @@ isPiPSupported(): boolean
 判断当前设备是否支持画中画功能。
 
 **起始版本：** 18
+
+<!--Device-PiPController-isPiPSupported(): boolean--><!--Device-PiPController-isPiPSupported(): boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

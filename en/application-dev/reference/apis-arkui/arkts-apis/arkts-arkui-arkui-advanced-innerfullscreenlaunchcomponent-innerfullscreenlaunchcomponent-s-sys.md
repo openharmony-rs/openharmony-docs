@@ -16,6 +16,8 @@ export declare struct InnerFullScreenLaunchComponent
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct InnerFullScreenLaunchComponent--><!--Device-unnamed-export declare struct InnerFullScreenLaunchComponent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -40,6 +42,8 @@ Content displayed in the component.
 
 **Decorator:** @BuilderParam
 
+<!--Device-InnerFullScreenLaunchComponent-content: Callback<void>--><!--Device-InnerFullScreenLaunchComponent-content: Callback<void>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -55,6 +59,8 @@ Controller for launching the atomic service.
 **Type:** [LaunchController](arkts-arkui-arkui-advanced-innerfullscreenlaunchcomponent-launchcontroller-c-sys.md)
 
 **Since:** 12
+
+<!--Device-InnerFullScreenLaunchComponent-controller: LaunchController--><!--Device-InnerFullScreenLaunchComponent-controller: LaunchController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ Callback triggered when an exception occurs during the execution of an embedded 
 
 **Since:** 23
 
+<!--Device-InnerFullScreenLaunchComponent-onError?: ErrorCallback--><!--Device-InnerFullScreenLaunchComponent-onError?: ErrorCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -88,6 +96,8 @@ Callback triggered when an embedded atomic service calls [@ohos.window (window)]
 
 **Since:** 20
 
+<!--Device-InnerFullScreenLaunchComponent-onReceive?: Callback<Record<string, Object>>--><!--Device-InnerFullScreenLaunchComponent-onReceive?: Callback<Record<string, Object>>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ Callback triggered when an embedded atomic service exits normally. Exit scenario
 **Type:** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt;
 
 **Since:** 23
+
+<!--Device-InnerFullScreenLaunchComponent-onTerminated?: Callback<TerminationInfo>--><!--Device-InnerFullScreenLaunchComponent-onTerminated?: Callback<TerminationInfo>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

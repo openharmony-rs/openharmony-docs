@@ -17,6 +17,8 @@ Provides OS local account authorization management capabilities. You can use the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace authorization--><!--Device-unnamed-declare namespace authorization-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import

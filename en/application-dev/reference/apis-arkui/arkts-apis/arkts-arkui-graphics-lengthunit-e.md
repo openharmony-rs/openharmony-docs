@@ -8,6 +8,8 @@ Enumerates length units.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum LengthUnit--><!--Device-unnamed-declare enum LengthUnit-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PX
@@ -16,13 +18,15 @@ Enumerates length units.
 PX = 0
 ```
 
-Length in px.
+Length type used to describe the length in units of px.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LengthUnit-PX = 0--><!--Device-LengthUnit-PX = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ Length in px.
 VP = 1
 ```
 
-Length in vp.
+Length type used to describe the length in units of vp.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LengthUnit-VP = 1--><!--Device-LengthUnit-VP = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,15 @@ Length in vp.
 FP = 2
 ```
 
-Length in fp.
+Length type used to describe the length in units of fp.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LengthUnit-FP = 2--><!--Device-LengthUnit-FP = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +72,15 @@ Length in fp.
 PERCENT = 3
 ```
 
-Length in percentage.
+Length type used to describe the length in units of %.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LengthUnit-PERCENT = 3--><!--Device-LengthUnit-PERCENT = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,12 +90,14 @@ Length in percentage.
 LPX = 4
 ```
 
-Length in lpx.
+Length type used to describe the length in units of lpx.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LengthUnit-LPX = 4--><!--Device-LengthUnit-LPX = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

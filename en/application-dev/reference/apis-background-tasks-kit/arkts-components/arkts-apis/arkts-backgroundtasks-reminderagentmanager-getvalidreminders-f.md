@@ -16,6 +16,8 @@ Obtains all [valid (not yet expired) reminders](../../../task-management/agent-p
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-function getValidReminders(callback: AsyncCallback<Array<ReminderRequest>>): void--><!--Device-reminderAgentManager-function getValidReminders(callback: AsyncCallback<Array<ReminderRequest>>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -78,6 +80,8 @@ function getValidReminders(): Promise<Array<ReminderRequest>>
 Obtains all [valid (not yet expired) reminders](../../../task-management/agent-powered-reminder.md#constraints) set by the current application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-reminderAgentManager-function getValidReminders(): Promise<Array<ReminderRequest>>--><!--Device-reminderAgentManager-function getValidReminders(): Promise<Array<ReminderRequest>>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

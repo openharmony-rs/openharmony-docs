@@ -18,6 +18,8 @@ Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function setId(id: HiTraceId): void--><!--Device-hiTraceChain-function setId(id: HiTraceId): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**

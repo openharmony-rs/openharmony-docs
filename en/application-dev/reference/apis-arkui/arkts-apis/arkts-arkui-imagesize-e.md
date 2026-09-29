@@ -4,9 +4,11 @@
 declare enum ImageSize
 ```
 
-ImageSize enumeration description
+Sets the width and height effect of an image.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum ImageSize--><!--Device-unnamed-declare enum ImageSize-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ ImageSize enumeration description
 Auto
 ```
 
-Keep the scale of the original image unchanged.
+The original image aspect ratio is retained.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageSize-Auto--><!--Device-ImageSize-Auto-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,13 +36,15 @@ Keep the scale of the original image unchanged.
 Cover
 ```
 
-Keep the aspect ratio to zoom in or out the image so that both sides of the image are greater than or equal to the display boundary.
+The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageSize-Cover--><!--Device-ImageSize-Cover-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,15 @@ Keep the aspect ratio to zoom in or out the image so that both sides of the imag
 Contain
 ```
 
-Keep the aspect ratio to zoom out or zoom in so that the image is completely displayed within the display boundary.
+The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageSize-Contain--><!--Device-ImageSize-Contain-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,12 +72,14 @@ Keep the aspect ratio to zoom out or zoom in so that the image is completely dis
 FILL = 3
 ```
 
-Zoom in or out without maintaining the aspect ratio so that the image fills the display boundary.
+The image is scaled to fill the display area, and its aspect ratio is not retained.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ImageSize-FILL = 3--><!--Device-ImageSize-FILL = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

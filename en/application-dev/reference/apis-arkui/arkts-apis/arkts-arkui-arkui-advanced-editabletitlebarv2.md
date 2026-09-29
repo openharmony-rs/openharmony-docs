@@ -34,12 +34,6 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 | [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | Indicates the style options of the title bar. |
 | [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md) | Indicates the options of the title. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md) | Declaration of the left icon type. |
-
 ### Types
 
 | Name | Description |
@@ -47,6 +41,12 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 | [EditableTitleBarItemV2](arkts-arkui-editabletitlebaritemv2-t.md) | Declaration of the image item. |
 | [EditableTitleBarItemV2Options](arkts-arkui-editabletitlebaritemv2options-t.md) | Indicates the options of the image item. |
 | [OnActionCallback](arkts-arkui-onactioncallback-t.md) | Callback function when click on this menu item. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md) | Declaration of the left icon type. |
 
 ## Examples
 

@@ -15,6 +15,8 @@ An app only needs to create one [CdsmClient](arkts-connectivity-cdsm-cdsmclient-
 
 **Since:** 26.0.0
 
+<!--Device-cdsm-interface CdsmClient--><!--Device-cdsm-interface CdsmClient-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Queries information about the coordinated devices set of a remote device.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CdsmClient-getCdsmInfo(): CdsmInfo--><!--Device-CdsmClient-getCdsmInfo(): CdsmInfo-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -65,6 +69,8 @@ Unsubscribes from the CDSM information change event. This API uses an asynchrono
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void--><!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Parameters:**
@@ -86,6 +92,8 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void--><!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 

@@ -10,6 +10,8 @@ The module provides the configuration about the module, UIAbility, and Extension
 
 **Since:** 9
 
+<!--Device-unnamed-export interface Metadata--><!--Device-unnamed-export interface Metadata-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## name
@@ -24,7 +26,9 @@ Indicates the metadata name
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Metadata-name: string--><!--Device-Metadata-name: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,7 +44,9 @@ Indicates the metadata resource
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Metadata-resource: string--><!--Device-Metadata-resource: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -56,7 +62,9 @@ Indicates the metadata value
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-Metadata-value: string--><!--Device-Metadata-value: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -72,6 +80,8 @@ Indicates the value id of the metadata
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-Metadata-readonly valueId?: long--><!--Device-Metadata-readonly valueId?: long-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

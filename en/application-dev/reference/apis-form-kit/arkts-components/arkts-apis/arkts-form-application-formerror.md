@@ -6,6 +6,8 @@ interface of formError.
 
 **Since:** 8
 
+<!--Device-unnamed-declare namespace formError--><!--Device-unnamed-declare namespace formError-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import

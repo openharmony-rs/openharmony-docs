@@ -20,6 +20,8 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-linkEnhance-function createServer(name: string): Server--><!--Device-linkEnhance-function createServer(name: string): Server-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**

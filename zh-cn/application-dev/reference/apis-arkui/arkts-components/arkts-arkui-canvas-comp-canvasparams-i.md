@@ -8,6 +8,8 @@ declare interface CanvasParams
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare interface CanvasParams--><!--Device-unnamed-declare interface CanvasParams-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageAIOptions
@@ -30,6 +32,8 @@ imageAIOptions?: ImageAIOptions
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-CanvasParams-imageAIOptions?: ImageAIOptions--><!--Device-CanvasParams-imageAIOptions?: ImageAIOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## unit
@@ -51,5 +55,7 @@ unit?: LengthMetricsUnit
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-CanvasParams-unit?: LengthMetricsUnit--><!--Device-CanvasParams-unit?: LengthMetricsUnit-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

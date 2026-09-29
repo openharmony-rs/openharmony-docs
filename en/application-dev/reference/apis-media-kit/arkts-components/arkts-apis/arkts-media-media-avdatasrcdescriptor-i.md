@@ -8,6 +8,8 @@ Defines the descriptor of an audio and video file, which is used in DataSource p
 
 **Since:** 10
 
+<!--Device-media-interface AVDataSrcDescriptor--><!--Device-media-interface AVDataSrcDescriptor-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Callback function implemented by users, which is used to fill data. buffer - The
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVDataSrcDescriptor-callback: (buffer: ArrayBuffer, length: long, pos?: long) => int--><!--Device-AVDataSrcDescriptor-callback: (buffer: ArrayBuffer, length: long, pos?: long) => int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -50,6 +54,8 @@ Size of the file, -1 means the file size is unknown, in this case, seek and setS
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-AVDataSrcDescriptor-fileSize: long--><!--Device-AVDataSrcDescriptor-fileSize: long-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer

@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 7
 
+<!--Device-unnamed-declare class SwiperAttribute extends CommonMethod<SwiperAttribute>--><!--Device-unnamed-declare class SwiperAttribute extends CommonMethod<SwiperAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## autoPlay
@@ -29,6 +31,8 @@ If [loop](#loop) is set to **false**, the automatic playback stops at the last p
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-autoPlay(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-autoPlay(value: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,6 +61,8 @@ If [loop](#loop) is set to **false**, automatic playback stops at the last page 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-SwiperAttribute-autoPlay(autoPlay: boolean, options: AutoPlayOptions): SwiperAttribute--><!--Device-SwiperAttribute-autoPlay(autoPlay: boolean, options: AutoPlayOptions): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +96,8 @@ Sets the number of child components to be preloaded (cached), which are needed f
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperAttribute-cachedCount(value: number): SwiperAttribute--><!--Device-SwiperAttribute-cachedCount(value: number): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -119,6 +127,8 @@ Sets the number of child components to be cached.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-SwiperAttribute-cachedCount(count: number, isShown: boolean): SwiperAttribute--><!--Device-SwiperAttribute-cachedCount(count: number, isShown: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,6 +169,8 @@ Sets the number of child components to be prloaded and configuration options.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-SwiperAttribute-cachedCount(count: number, options: CachedCountOptions): SwiperAttribute--><!--Device-SwiperAttribute-cachedCount(count: number, options: CachedCountOptions): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -181,6 +193,8 @@ Sets the animation curve. The interpolating spring curve is used by default. For
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-curve(value: Curve | string | ICurve): SwiperAttribute--><!--Device-SwiperAttribute-curve(value: Curve | string | ICurve): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,6 +231,8 @@ is still effective. If you do not want the page to scroll, you can set the **tra
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-SwiperAttribute-customContentTransition(transition: SwiperContentAnimatedTransition): SwiperAttribute--><!--Device-SwiperAttribute-customContentTransition(transition: SwiperContentAnimatedTransition): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -238,6 +254,8 @@ Sets whether to disable the swipe feature.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-disableSwipe(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-disableSwipe(value: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,6 +283,8 @@ Sets the arrow style of the navigation indicator.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwiperAttribute-displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,7 +325,7 @@ Sets the number of elements to display per page.
 > 
 > - This API can be called within [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 18.
 
-When the navigation indicator is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario)&lt;!--RP1--&gt;&lt;!--RP1End--&gt;, the number of displayed navigation dots follows the rules below.
+When the navigation indicator is set to dot style and the number of child elements displayed in the viewport is greater than 1 (multi-page scenario)<!--RP1--><!--RP1End-->, the number of displayed navigation dots follows the rules below.
 
 | Total Children Count  
 > Visible Children Count|Swiping by Group Enabled|Loop Status|Number of Navigation
@@ -331,6 +351,8 @@ Dots Displayed| Description|
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,6 +391,8 @@ For details about the parameter, see [displayCount](#displaycount).
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
+<!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -391,6 +415,8 @@ Sets the mode in which elements are displayed along the main axis. This API take
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-displayMode(value: SwiperDisplayMode): SwiperAttribute--><!--Device-SwiperAttribute-displayMode(value: SwiperDisplayMode): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,6 +442,8 @@ The default curve for the animation is [interpolatingSpring](../arkts-apis/arkts
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SwiperAttribute-duration(value: number): SwiperAttribute--><!--Device-SwiperAttribute-duration(value: number): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -437,6 +465,8 @@ Edge sliding effect. This parameter takes effect only when [loop](#loop) is set 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-effectMode(value: EdgeEffect): SwiperAttribute--><!--Device-SwiperAttribute-effectMode(value: EdgeEffect): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -462,6 +492,8 @@ Since API version 10, this attribute supports two-way binding through [$$](../..
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperAttribute-index(value: number): SwiperAttribute--><!--Device-SwiperAttribute-index(value: number): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -483,6 +515,8 @@ Sets the style of the navigation indicator.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute--><!--Device-SwiperAttribute-indicator(value: DotIndicator | DigitIndicator | boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -516,6 +550,8 @@ Sets the navigation indicator for the component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-SwiperAttribute-indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean): SwiperAttribute--><!--Device-SwiperAttribute-indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -538,6 +574,8 @@ Sets whether the navigation indicator is interactive.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SwiperAttribute-indicatorInteractive(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-indicatorInteractive(value: boolean): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -545,28 +583,6 @@ Sets whether the navigation indicator is interactive.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether the navigation indicator is interactive.<br>The value **true** means that the navigation indicator is interactive, and **false** means the opposite.<br>If the input parameter is invalid, the value **true** is used. |
-
-## indicatorStyle
-
-```TypeScript
-indicatorStyle(value?: IndicatorStyle)
-```
-
-Sets the style of the navigation indicator.
-
-**Since:** 8
-
-**Deprecated since:** 10
-
-**Substitutes:** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | No | Style of the navigation indicator. |
 
 ## interval
 
@@ -581,6 +597,8 @@ Sets the interval for automatic playback.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-interval(value: number): SwiperAttribute--><!--Device-SwiperAttribute-interval(value: number): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -606,6 +624,8 @@ If the type is number, the default unit is vp. If the type is string, the pixel 
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperAttribute-itemSpace(value: number | string): SwiperAttribute--><!--Device-SwiperAttribute-itemSpace(value: number | string): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -627,6 +647,8 @@ Sets whether to enable loop playback. In **LazyForEach** mode, it is recommended
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-loop(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-loop(value: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -653,6 +675,8 @@ When **swipeByGroup** in [displayCount](#displaycount) is set to **true**, the v
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-SwiperAttribute-maintainVisibleContentPosition(enabled: boolean): SwiperAttribute--><!--Device-SwiperAttribute-maintainVisibleContentPosition(enabled: boolean): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -683,6 +707,8 @@ Sets the nested scrolling mode of the **Swiper** component and its parent contai
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwiperAttribute-nestedScroll(value: SwiperNestedScrollMode): SwiperAttribute--><!--Device-SwiperAttribute-nestedScroll(value: SwiperNestedScrollMode): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,6 +742,8 @@ When using the **nextMargin** or **prevMargin** API, avoid applying [size constr
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SwiperAttribute-nextMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-nextMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -740,6 +768,8 @@ This event is triggered when the switching animation of the **Swiper** component
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-onAnimationEnd(event: OnSwiperAnimationEndCallback): SwiperAttribute--><!--Device-SwiperAttribute-onAnimationEnd(event: OnSwiperAnimationEndCallback): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -771,6 +801,8 @@ Triggered when the page transition animation starts.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperAttribute-onAnimationStart(event: OnSwiperAnimationStartCallback): SwiperAttribute--><!--Device-SwiperAttribute-onAnimationStart(event: OnSwiperAnimationStartCallback): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -798,6 +830,8 @@ When the **Swiper** component is used together with **LazyForEach**, the subpage
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-SwiperAttribute-onChange(event: Callback<number>): SwiperAttribute--><!--Device-SwiperAttribute-onChange(event: Callback<number>): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -829,6 +863,8 @@ the callback is invoked for all pages in a group if any page in the group is wit
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwiperAttribute-onContentDidScroll(handler: ContentDidScrollCallback): SwiperAttribute--><!--Device-SwiperAttribute-onContentDidScroll(handler: ContentDidScrollCallback): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -863,6 +899,8 @@ the event is triggered once per page turning. The system uses the return value t
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-SwiperAttribute-onContentWillScroll(handler: ContentWillScrollCallback): SwiperAttribute--><!--Device-SwiperAttribute-onContentWillScroll(handler: ContentWillScrollCallback): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -884,6 +922,8 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SwiperAttribute-onGestureSwipe(event: OnSwiperGestureSwipeCallback): SwiperAttribute--><!--Device-SwiperAttribute-onGestureSwipe(event: OnSwiperGestureSwipeCallback): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -909,6 +949,8 @@ Defines the callback of the swipe state change event for the **Swiper** componen
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-SwiperAttribute-onScrollStateChanged(event: Callback<ScrollState>): SwiperAttribute--><!--Device-SwiperAttribute-onScrollStateChanged(event: Callback<ScrollState>): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -932,6 +974,8 @@ Triggered when the selected element changes. The index of the currently selected
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
+
+<!--Device-SwiperAttribute-onSelected(event: Callback<number>): SwiperAttribute--><!--Device-SwiperAttribute-onSelected(event: Callback<number>): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -957,6 +1001,8 @@ Triggered when the selected element changes. The index of the element that is ab
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
+<!--Device-SwiperAttribute-onUnselected(event: Callback<number>): SwiperAttribute--><!--Device-SwiperAttribute-onUnselected(event: Callback<number>): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -980,6 +1026,8 @@ Sets the mode for flipping pages using the mouse wheel. If this API is not used,
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
+
+<!--Device-SwiperAttribute-pageFlipMode(mode: Optional<PageFlipMode>): SwiperAttribute--><!--Device-SwiperAttribute-pageFlipMode(mode: Optional<PageFlipMode>): SwiperAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1013,6 +1061,8 @@ When using the **nextMargin** or **prevMargin** API, avoid applying [size constr
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SwiperAttribute-prevMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute--><!--Device-SwiperAttribute-prevMargin(value: Length, ignoreBlank?: boolean): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1036,6 +1086,8 @@ Sets whether vertical swiping is used.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
+<!--Device-SwiperAttribute-vertical(value: boolean): SwiperAttribute--><!--Device-SwiperAttribute-vertical(value: boolean): SwiperAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -1043,3 +1095,27 @@ Sets whether vertical swiping is used.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether vertical swiping is used. The value **true** means vertical swiping, and **false** means horizontal swiping.<br>Default value: **false**. |
+
+## indicatorStyle
+
+```TypeScript
+indicatorStyle(value?: IndicatorStyle)
+```
+
+Sets the style of the navigation indicator.
+
+**Since:** 8
+
+**Deprecated since:** 10
+
+**Substitutes:** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
+
+<!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute--><!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | No | Style of the navigation indicator. |

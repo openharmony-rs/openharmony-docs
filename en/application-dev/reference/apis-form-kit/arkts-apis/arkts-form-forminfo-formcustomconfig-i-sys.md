@@ -10,6 +10,8 @@ FormCustomConfig
 
 **Since:** 26.0.0
 
+<!--Device-formInfo-interface FormCustomConfig--><!--Device-formInfo-interface FormCustomConfig-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Obtains the ability name of the form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormCustomConfig-abilityName: string--><!--Device-FormCustomConfig-abilityName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -51,6 +55,8 @@ Obtains the bundle name of the form.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormCustomConfig-bundleName: string--><!--Device-FormCustomConfig-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -70,6 +76,8 @@ Obtains the form name of the form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormCustomConfig-formName: string--><!--Device-FormCustomConfig-formName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -87,6 +95,8 @@ Obtains whether the form can be added repeatedly.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormCustomConfig-isRepeatAdditionSupported: boolean--><!--Device-FormCustomConfig-isRepeatAdditionSupported: boolean-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -106,6 +116,8 @@ Obtains whether the form shows in form center.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormCustomConfig-isShowInFormCenter: boolean--><!--Device-FormCustomConfig-isShowInFormCenter: boolean-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -124,6 +136,8 @@ Obtains the module name of the form.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FormCustomConfig-moduleName: string--><!--Device-FormCustomConfig-moduleName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -141,6 +155,8 @@ Obtains the related bundle name.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FormCustomConfig-relatedBundleName: string--><!--Device-FormCustomConfig-relatedBundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

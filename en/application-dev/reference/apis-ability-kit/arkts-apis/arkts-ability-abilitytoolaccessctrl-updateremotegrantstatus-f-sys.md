@@ -19,6 +19,8 @@ Updates the remote grant status. This function enables or disables the remote au
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-abilityToolAccessCtrl-export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise<void>--><!--Device-abilityToolAccessCtrl-export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.

@@ -10,6 +10,8 @@ Declare TreeViewV2 Component
 
 **Decorator:** @ComponentV2
 
+<!--Device-unnamed-export declare struct TreeViewV2--><!--Device-unnamed-export declare struct TreeViewV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,5 +35,7 @@ Node data source of TreeViewV2.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TreeViewV2-treeControllerV2: TreeControllerV2--><!--Device-TreeViewV2-treeControllerV2: TreeControllerV2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

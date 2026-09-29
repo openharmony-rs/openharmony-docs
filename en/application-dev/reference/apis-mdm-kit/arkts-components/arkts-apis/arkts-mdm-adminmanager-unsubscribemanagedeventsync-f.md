@@ -20,6 +20,8 @@ Unsubscribes from system management events. After the API is successfully called
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function unsubscribeManagedEventSync(admin: Want, managedEvents: Array<ManagedEvent>): void--><!--Device-adminManager-function unsubscribeManagedEventSync(admin: Want, managedEvents: Array<ManagedEvent>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

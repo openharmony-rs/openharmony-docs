@@ -8,6 +8,8 @@ Defines the authentication widget manager. It is used to register the custom aut
 
 **Since:** 10
 
+<!--Device-userAuth-interface UserAuthWidgetMgr--><!--Device-userAuth-interface UserAuthWidgetMgr-End-->
+
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 Unsubscribes from command events from the user authentication framework. The authentication widget uses this API to unsubscribe from commands from the user authentication framework.
 
 **Since:** 10
+
+<!--Device-UserAuthWidgetMgr-off(type: 'command', callback?: IAuthWidgetCallback): void--><!--Device-UserAuthWidgetMgr-off(type: 'command', callback?: IAuthWidgetCallback): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -77,6 +81,8 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 Subscribes to command events from the user authentication framework. The authentication widget uses this API to subscribe to commands from the user authentication framework so that it can perform corresponding authentication operations based on the commands.
 
 **Since:** 10
+
+<!--Device-UserAuthWidgetMgr-on(type: 'command', callback: IAuthWidgetCallback): void--><!--Device-UserAuthWidgetMgr-on(type: 'command', callback: IAuthWidgetCallback): void-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

@@ -8,6 +8,8 @@ Information about a lock.
 
 **Since:** 12
 
+<!--Device-locks-class AsyncLockInfo--><!--Device-locks-class AsyncLockInfo-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -30,6 +32,8 @@ lockAsync caller's execution context identifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AsyncLockInfo-contextId: number--><!--Device-AsyncLockInfo-contextId: number-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## mode
@@ -46,6 +50,8 @@ Lock operation mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AsyncLockInfo-mode: AsyncLockMode--><!--Device-AsyncLockInfo-mode: AsyncLockMode-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## name
@@ -61,5 +67,7 @@ Name of the lock.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AsyncLockInfo-name: string--><!--Device-AsyncLockInfo-name: string-End-->
 
 **System capability:** SystemCapability.Utils.Lang

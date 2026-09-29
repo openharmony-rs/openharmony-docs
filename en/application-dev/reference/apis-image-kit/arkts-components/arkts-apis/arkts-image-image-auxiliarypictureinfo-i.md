@@ -8,6 +8,8 @@ Describes the auxiliary picture information.
 
 **Since:** 13
 
+<!--Device-image-interface AuxiliaryPictureInfo--><!--Device-image-interface AuxiliaryPictureInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Auxiliary picture type.
 
 **Since:** 13
 
+<!--Device-AuxiliaryPictureInfo-auxiliaryPictureType: AuxiliaryPictureType--><!--Device-AuxiliaryPictureInfo-auxiliaryPictureType: AuxiliaryPictureType-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## colorSpace
@@ -41,6 +45,8 @@ Color space.
 **Type:** [colorSpaceManager.ColorSpaceManager](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspacemanager-i.md)
 
 **Since:** 13
+
+<!--Device-AuxiliaryPictureInfo-colorSpace: colorSpaceManager.ColorSpaceManager--><!--Device-AuxiliaryPictureInfo-colorSpace: colorSpaceManager.ColorSpaceManager-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -56,6 +62,8 @@ Pixel format.
 
 **Since:** 13
 
+<!--Device-AuxiliaryPictureInfo-pixelFormat: PixelMapFormat--><!--Device-AuxiliaryPictureInfo-pixelFormat: PixelMapFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## rowStride
@@ -70,6 +78,8 @@ Row stride.
 
 **Since:** 13
 
+<!--Device-AuxiliaryPictureInfo-rowStride: int--><!--Device-AuxiliaryPictureInfo-rowStride: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## size
@@ -83,5 +93,7 @@ Image size.
 **Type:** Size
 
 **Since:** 13
+
+<!--Device-AuxiliaryPictureInfo-size: Size--><!--Device-AuxiliaryPictureInfo-size: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -18,6 +18,8 @@ Receives a function that uses the error-first callback mode, that is, uses `(err
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-util-function promisify(original: (err: Object, value: Object) => void): Function--><!--Device-util-function promisify(original: (err: Object, value: Object) => void): Function-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -30,8 +32,7 @@ Receives a function that uses the error-first callback mode, that is, uses `(err
 
 | Type | Description |
 | --- | --- |
-| [function](arkts-arkts-taskpool-task-c.md) | Return a function that returns promises<br>**Since:** 9 - 11 |
-| Function | Promise function.<br>**Since:** 10 |
+| Function | Promise function. |
 
 **Examples**
 

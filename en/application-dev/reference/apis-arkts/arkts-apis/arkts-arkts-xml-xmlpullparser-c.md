@@ -8,6 +8,8 @@ The XmlPullParser interface is used to parse the existing xml file.
 
 **Since:** 8
 
+<!--Device-xml-class XmlPullParser--><!--Device-xml-class XmlPullParser-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Creates and returns an XmlPullParser object.
 
 **Since:** 8
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-XmlPullParser-constructor(buffer: ArrayBuffer | DataView, encoding?: string)--><!--Device-XmlPullParser-constructor(buffer: ArrayBuffer | DataView, encoding?: string)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -48,6 +52,28 @@ let uint8Array = textEncoder.encodeInto(strXml);
 let that = new xml.XmlPullParser(uint8Array.buffer as object as ArrayBuffer, 'UTF-8');
 ```
 
+## parseXml
+
+```TypeScript
+parseXml(option: ParseOptions): void
+```
+
+Parses XML information.
+
+**Since:** 14
+
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-XmlPullParser-parseXml(option: ParseOptions): void--><!--Device-XmlPullParser-parseXml(option: ParseOptions): void-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| option | [ParseOptions](arkts-arkts-xml-parseoptions-i.md) | Yes | XML parsing options. |
+
 ## parse
 
 ```TypeScript
@@ -63,6 +89,8 @@ Starts parsing the XML file.
 **Substitutes:** [parseXml](#parsexml)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-XmlPullParser-parse(option: ParseOptions): void--><!--Device-XmlPullParser-parse(option: ParseOptions): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -103,23 +131,3 @@ that.parse(options);
 // title
 // note
 ```
-
-## parseXml
-
-```TypeScript
-parseXml(option: ParseOptions): void
-```
-
-Parses XML information.
-
-**Since:** 14
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-**System capability:** SystemCapability.Utils.Lang
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| option | [ParseOptions](arkts-arkts-xml-parseoptions-i.md) | Yes | XML parsing options. |

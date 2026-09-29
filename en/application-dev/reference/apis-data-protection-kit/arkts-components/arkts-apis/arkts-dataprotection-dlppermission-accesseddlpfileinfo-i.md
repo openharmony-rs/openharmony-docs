@@ -8,6 +8,8 @@ Represents the information about a DLP file opened.
 
 **Since:** 10
 
+<!--Device-dlpPermission-export interface AccessedDLPFileInfo--><!--Device-dlpPermission-export interface AccessedDLPFileInfo-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Time when the file was last opened. The value must be greater than or equal to 0
 
 **Since:** 10
 
+<!--Device-AccessedDLPFileInfo-lastOpenTime: number--><!--Device-AccessedDLPFileInfo-lastOpenTime: number-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## uri
@@ -41,5 +45,7 @@ URI of the DLP file. The value contains a maximum of 4095 bytes. If the value is
 **Type:** string
 
 **Since:** 10
+
+<!--Device-AccessedDLPFileInfo-uri: string--><!--Device-AccessedDLPFileInfo-uri: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

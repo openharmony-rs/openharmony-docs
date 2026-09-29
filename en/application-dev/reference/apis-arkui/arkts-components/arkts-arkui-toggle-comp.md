@@ -2,7 +2,7 @@
 
 The **Toggle** component provides a clickable element of the checkbox, button, or switch type.
 
-> **NOTE**
+> **NOTE:** 
 
 ## Child Components
 
@@ -14,6 +14,8 @@ This component can contain child components only when **ToggleType** is set to *
 Toggle(options: ToggleOptions)
 ```
 
+Creates the Toggle component.
+
 **Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
@@ -21,6 +23,8 @@ Toggle(options: ToggleOptions)
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleInterface-(options: ToggleOptions): ToggleAttribute--><!--Device-ToggleInterface-(options: ToggleOptions): ToggleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

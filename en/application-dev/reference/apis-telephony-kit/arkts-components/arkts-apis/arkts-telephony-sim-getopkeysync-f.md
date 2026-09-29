@@ -16,6 +16,8 @@ Obtains the opkey of the SIM card in the specified slot.
 
 **Since:** 10
 
+<!--Device-sim-function getOpKeySync(slotId: int): string--><!--Device-sim-function getOpKeySync(slotId: int): string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

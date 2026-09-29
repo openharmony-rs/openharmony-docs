@@ -8,6 +8,8 @@ Describes the static metadata keys, that is, the values available for **HDR_STAT
 
 **Since:** 12
 
+<!--Device-image-interface HdrStaticMetadata--><!--Device-image-interface HdrStaticMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ The X-coordinate of the primary colors. Specifies the normalized X-coordinates o
 
 **Since:** 12
 
+<!--Device-HdrStaticMetadata-displayPrimariesX: Array<double>--><!--Device-HdrStaticMetadata-displayPrimariesX: Array<double>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## displayPrimariesY
@@ -41,6 +45,8 @@ The Y-coordinate of the primary colors. Specifies the normalized Y-coordinates o
 **Type:** Array&lt;number&gt;
 
 **Since:** 12
+
+<!--Device-HdrStaticMetadata-displayPrimariesY: Array<double>--><!--Device-HdrStaticMetadata-displayPrimariesY: Array<double>-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -58,6 +64,8 @@ The value is measured in units of 1, with a maximum allowed value of 65,535.
 
 **Since:** 12
 
+<!--Device-HdrStaticMetadata-maxContentLightLevel: double--><!--Device-HdrStaticMetadata-maxContentLightLevel: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## maxFrameAverageLightLevel
@@ -73,6 +81,8 @@ The value is measured in units of 1, with a maximum allowed value of 65,535.
 **Type:** number
 
 **Since:** 12
+
+<!--Device-HdrStaticMetadata-maxFrameAverageLightLevel: double--><!--Device-HdrStaticMetadata-maxFrameAverageLightLevel: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -90,6 +100,8 @@ Unit:nit.
 
 **Since:** 12
 
+<!--Device-HdrStaticMetadata-maxLuminance: double--><!--Device-HdrStaticMetadata-maxLuminance: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## minLuminance
@@ -105,6 +117,8 @@ The value is measured in units of 0.0001, with a maximum allowed value of 6.5553
 **Type:** number
 
 **Since:** 12
+
+<!--Device-HdrStaticMetadata-minLuminance: double--><!--Device-HdrStaticMetadata-minLuminance: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -122,6 +136,8 @@ The value is represented in units of 0.00002 and must fall within the range [0.0
 
 **Since:** 12
 
+<!--Device-HdrStaticMetadata-whitePointX: double--><!--Device-HdrStaticMetadata-whitePointX: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## whitePointY
@@ -137,5 +153,7 @@ The value is represented in units of 0.00002 and must fall within the range [0.0
 **Type:** number
 
 **Since:** 12
+
+<!--Device-HdrStaticMetadata-whitePointY: double--><!--Device-HdrStaticMetadata-whitePointY: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

@@ -8,6 +8,8 @@ Provides the container definition for media description key-value pairs.
 
 **Since:** 8
 
+<!--Device-media-interface MediaDescription--><!--Device-media-interface MediaDescription-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## Modules to Import
@@ -29,5 +31,7 @@ key:value pair, key see @MediaDescriptionKey .
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaDescription-[key: string]: Object--><!--Device-MediaDescription-[key: string]: Object-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

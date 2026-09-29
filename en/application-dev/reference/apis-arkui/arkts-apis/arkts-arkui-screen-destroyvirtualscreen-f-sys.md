@@ -16,6 +16,8 @@ Destroys a virtual screen. This API uses an asynchronous callback to return the 
 
 **Since:** 9
 
+<!--Device-screen-function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): void--><!--Device-screen-function destroyVirtualScreen(screenId:long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -66,6 +68,8 @@ function destroyVirtualScreen(screenId:number): Promise<void>
 Destroys a virtual screen. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-screen-function destroyVirtualScreen(screenId:long): Promise<void>--><!--Device-screen-function destroyVirtualScreen(screenId:long): Promise<void>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

@@ -8,6 +8,8 @@ Defines component edge widths for localized logical directions. Globalization is
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface DirectionalEdgesT<T>--><!--Device-unnamed-declare interface DirectionalEdgesT<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## bottom
@@ -27,6 +29,8 @@ Bottom edge.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-DirectionalEdgesT-bottom: T--><!--Device-DirectionalEdgesT-bottom: T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ End edge. Corresponds to the right edge in LTR layout and the left edge in RTL l
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-DirectionalEdgesT-end: T--><!--Device-DirectionalEdgesT-end: T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -68,6 +74,8 @@ Start edge. Corresponds to the left edge in LTR layout and the right edge in RTL
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-DirectionalEdgesT-start: T--><!--Device-DirectionalEdgesT-start: T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## top
@@ -87,5 +95,7 @@ Top edge.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-DirectionalEdgesT-top: T--><!--Device-DirectionalEdgesT-top: T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

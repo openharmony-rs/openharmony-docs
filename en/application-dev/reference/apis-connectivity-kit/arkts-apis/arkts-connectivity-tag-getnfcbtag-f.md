@@ -25,6 +25,8 @@ Obtains an **NfcBTag** object, which allows access to the tags that use the NFC-
 
 **Substitutes:** [getNfcB](arkts-connectivity-tag-getnfcb-f.md)
 
+<!--Device-tag-function getNfcBTag(tagInfo: TagInfo): NfcBTag--><!--Device-tag-function getNfcBTag(tagInfo: TagInfo): NfcBTag-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 **Parameters:**

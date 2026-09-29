@@ -18,4 +18,6 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Substitutes:** grid_col/GridColAttribute and grid_row/GridRowAttribute
 
+<!--Device-unnamed-declare class GridContainerAttribute extends ColumnAttribute--><!--Device-unnamed-declare class GridContainerAttribute extends ColumnAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

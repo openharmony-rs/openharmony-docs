@@ -8,6 +8,8 @@ ASR processing controller.
 
 **Since:** 12
 
+<!--Device-audio-interface AsrProcessingController--><!--Device-audio-interface AsrProcessingController-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ getAsrAecMode(): AsrAecMode
 Get ASR AEC mode.
 
 **Since:** 12
+
+<!--Device-AsrProcessingController-getAsrAecMode(): AsrAecMode--><!--Device-AsrProcessingController-getAsrAecMode(): AsrAecMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -61,6 +65,8 @@ Get ASR noise suppression mode.
 
 **Since:** 12
 
+<!--Device-AsrProcessingController-getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode--><!--Device-AsrProcessingController-getAsrNoiseSuppressionMode(): AsrNoiseSuppressionMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -93,6 +99,8 @@ getAsrWhisperDetectionMode(): AsrWhisperDetectionMode
 Get ASR whisper detection mode.
 
 **Since:** 12
+
+<!--Device-AsrProcessingController-getAsrWhisperDetectionMode(): AsrWhisperDetectionMode--><!--Device-AsrProcessingController-getAsrWhisperDetectionMode(): AsrWhisperDetectionMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -127,6 +135,8 @@ Query whether user is whispering.
 
 **Since:** 12
 
+<!--Device-AsrProcessingController-isWhispering(): boolean--><!--Device-AsrProcessingController-isWhispering(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -159,6 +169,8 @@ setAsrAecMode(mode: AsrAecMode): boolean
 Set ASR AEC mode.
 
 **Since:** 12
+
+<!--Device-AsrProcessingController-setAsrAecMode(mode: AsrAecMode): boolean--><!--Device-AsrProcessingController-setAsrAecMode(mode: AsrAecMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -201,6 +213,8 @@ Set ASR noise suppression mode.
 
 **Since:** 12
 
+<!--Device-AsrProcessingController-setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean--><!--Device-AsrProcessingController-setAsrNoiseSuppressionMode(mode: AsrNoiseSuppressionMode): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -241,6 +255,8 @@ setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean
 Set ASR voice control mode.
 
 **Since:** 12
+
+<!--Device-AsrProcessingController-setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean--><!--Device-AsrProcessingController-setAsrVoiceControlMode(mode: AsrVoiceControlMode, enable: boolean): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -284,6 +300,8 @@ Set ASR voice mute mode.
 
 **Since:** 12
 
+<!--Device-AsrProcessingController-setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean--><!--Device-AsrProcessingController-setAsrVoiceMuteMode(mode: AsrVoiceMuteMode, enable: boolean): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -325,6 +343,8 @@ setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean
 Set ASR whisper detection mode.
 
 **Since:** 12
+
+<!--Device-AsrProcessingController-setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean--><!--Device-AsrProcessingController-setAsrWhisperDetectionMode(mode: AsrWhisperDetectionMode): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

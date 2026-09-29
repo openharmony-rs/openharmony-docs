@@ -8,6 +8,8 @@ The **NotificationInfo** module describes the notification information delivered
 
 **Since:** 22
 
+<!--Device-unnamed-export interface NotificationInfo--><!--Device-unnamed-export interface NotificationInfo-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## appIndex
@@ -21,6 +23,8 @@ Index of the application clone that creates the notification. It takes effect on
 **Type:** number
 
 **Since:** 22
+
+<!--Device-NotificationInfo-readonly appIndex: int--><!--Device-NotificationInfo-readonly appIndex: int-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -36,6 +40,8 @@ Name of the application that creates the notification.
 
 **Since:** 22
 
+<!--Device-NotificationInfo-readonly appName?: string--><!--Device-NotificationInfo-readonly appName?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## bundleName
@@ -49,6 +55,8 @@ Bundle name of the application that creates the notification.
 **Type:** string
 
 **Since:** 22
+
+<!--Device-NotificationInfo-readonly bundleName: string--><!--Device-NotificationInfo-readonly bundleName: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -64,6 +72,8 @@ Notification content, which includes the title and body of the notification.
 
 **Since:** 22
 
+<!--Device-NotificationInfo-readonly content: NotificationExtensionContent--><!--Device-NotificationInfo-readonly content: NotificationExtensionContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## deliveryTime
@@ -77,6 +87,8 @@ Timestamp when the notification is published. Data format: timestamp. Unit: mill
 **Type:** number
 
 **Since:** 22
+
+<!--Device-NotificationInfo-readonly deliveryTime?: long--><!--Device-NotificationInfo-readonly deliveryTime?: long-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -92,6 +104,8 @@ Name of the notification group.
 
 **Since:** 22
 
+<!--Device-NotificationInfo-readonly groupName?: string--><!--Device-NotificationInfo-readonly groupName?: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## hashCode
@@ -106,6 +120,8 @@ Unique identifier of the notification.
 
 **Since:** 22
 
+<!--Device-NotificationInfo-readonly hashCode: string--><!--Device-NotificationInfo-readonly hashCode: string-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## notificationSlotType
@@ -119,5 +135,7 @@ Notification slot type, which identifies the slot category of the notification (
 **Type:** [notificationManager.SlotType](arkts-notification-notificationmanager-slottype-e.md)
 
 **Since:** 22
+
+<!--Device-NotificationInfo-readonly notificationSlotType: notificationManager.SlotType--><!--Device-NotificationInfo-readonly notificationSlotType: notificationManager.SlotType-End-->
 
 **System capability:** SystemCapability.Notification.Notification

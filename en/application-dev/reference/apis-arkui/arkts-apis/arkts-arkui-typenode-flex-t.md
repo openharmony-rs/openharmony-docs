@@ -12,6 +12,8 @@ Represents a FrameNode of the Flex type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type Flex = TypedFrameNode<FlexInterface, FlexAttribute>--><!--Device-typeNode-type Flex = TypedFrameNode<FlexInterface, FlexAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;FlexInterface, [FlexAttribute](../arkts-components/arkts-arkui-flex-comp-attribute.md)&gt;

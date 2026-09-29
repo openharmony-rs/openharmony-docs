@@ -18,6 +18,8 @@ Obtains the current scanner settings. This API uses a promise to return the resu
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-scan-function getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise<ScannerOptionValue>--><!--Device-scan-function getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise<ScannerOptionValue>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

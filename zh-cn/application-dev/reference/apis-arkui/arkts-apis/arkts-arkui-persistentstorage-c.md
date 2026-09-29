@@ -12,6 +12,8 @@ PersistentStorage提供了UI状态的持久化存储能力，将选定的AppStor
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class PersistentStorage--><!--Device-unnamed-declare class PersistentStorage-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## deleteProp
@@ -25,6 +27,8 @@ static deleteProp(key: string): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PersistentStorage-static deleteProp(key: string): void--><!--Device-PersistentStorage-static deleteProp(key: string): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,6 +55,8 @@ static keys(): Array<string>
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PersistentStorage-static keys(): Array<string>--><!--Device-PersistentStorage-static keys(): Array<string>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ static persistProp<T>(key: string, defaultValue: T): void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-PersistentStorage-static persistProp<T>(key: string, defaultValue: T): void--><!--Device-PersistentStorage-static persistProp<T>(key: string, defaultValue: T): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -112,6 +120,8 @@ static persistProps(props: PersistPropsOptions[]): void
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PersistentStorage-static persistProps(props: PersistPropsOptions[]): void--><!--Device-PersistentStorage-static persistProps(props: PersistPropsOptions[]): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,6 +153,8 @@ static DeleteProp(key: string): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-PersistentStorage-static DeleteProp(key: string): void--><!--Device-PersistentStorage-static DeleteProp(key: string): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -172,6 +184,8 @@ static Keys(): Array<string>
 **替代接口：** [keys](#keys)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-PersistentStorage-static Keys(): Array<string>--><!--Device-PersistentStorage-static Keys(): Array<string>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -213,6 +227,8 @@ static PersistProp<T>(key: string, defaultValue: T): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-PersistentStorage-static PersistProp<T>(key: string, defaultValue: T): void--><!--Device-PersistentStorage-static PersistProp<T>(key: string, defaultValue: T): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -248,6 +264,8 @@ static PersistProps(
 **替代接口：** [PersistProps](#persistprops)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-PersistentStorage-static PersistProps(    properties: {      key: string;      defaultValue: any;    }[],  ): void--><!--Device-PersistentStorage-static PersistProps(    properties: {      key: string;      defaultValue: any;    }[],  ): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

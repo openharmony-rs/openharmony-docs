@@ -16,6 +16,8 @@ Obtains the AttestResultInfo object.
 
 **Since:** 9
 
+<!--Device-deviceAttest-function getAttestStatusSync(): AttestResultInfo--><!--Device-deviceAttest-function getAttestStatusSync(): AttestResultInfo-End-->
+
 **System capability:** SystemCapability.XTS.DeviceAttest
 
 **System API:** This is a system API.

@@ -8,6 +8,8 @@ Indicates options for preloading a page.
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-declare interface PreloadOptions--><!--Device-unnamed-declare interface PreloadOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## onDestroy
@@ -25,5 +27,7 @@ Callback when preloaded page is destroyed by the system.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-PreloadOptions-onDestroy?: Callback<void>--><!--Device-PreloadOptions-onDestroy?: Callback<void>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

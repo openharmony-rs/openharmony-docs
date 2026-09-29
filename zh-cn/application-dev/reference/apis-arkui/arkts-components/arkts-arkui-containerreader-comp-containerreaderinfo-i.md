@@ -8,6 +8,8 @@ export interface ContainerReaderInfo
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-export interface ContainerReaderInfo--><!--Device-unnamed-export interface ContainerReaderInfo-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -34,6 +36,8 @@ heightBreakpoint?: HeightBreakpoint
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ContainerReaderInfo-heightBreakpoint?: HeightBreakpoint--><!--Device-ContainerReaderInfo-heightBreakpoint?: HeightBreakpoint-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -54,6 +58,8 @@ size: Size
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-ContainerReaderInfo-size: Size--><!--Device-ContainerReaderInfo-size: Size-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## widthBreakpoint
@@ -73,5 +79,7 @@ widthBreakpoint?: WidthBreakpoint
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-ContainerReaderInfo-widthBreakpoint?: WidthBreakpoint--><!--Device-ContainerReaderInfo-widthBreakpoint?: WidthBreakpoint-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

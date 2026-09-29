@@ -10,6 +10,8 @@ Describes an audio session strategy.
 
 **Since:** 12
 
+<!--Device-audio-interface AudioSessionStrategy--><!--Device-audio-interface AudioSessionStrategy-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Audio concurrency mode.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AudioSessionStrategy-concurrencyMode: AudioConcurrencyMode--><!--Device-AudioSessionStrategy-concurrencyMode: AudioConcurrencyMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

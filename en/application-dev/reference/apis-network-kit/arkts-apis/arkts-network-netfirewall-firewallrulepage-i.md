@@ -8,6 +8,8 @@ Defines the pagination structure for firewall rules.
 
 **Since:** 15
 
+<!--Device-netFirewall-interface FirewallRulePage--><!--Device-netFirewall-interface FirewallRulePage-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Page data.
 
 **Since:** 15
 
+<!--Device-FirewallRulePage-data: Array<NetFirewallRule>--><!--Device-FirewallRulePage-data: Array<NetFirewallRule>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## page
@@ -41,6 +45,8 @@ Current page number. The value range is [1,1000].
 **Type:** number
 
 **Since:** 15
+
+<!--Device-FirewallRulePage-page: int--><!--Device-FirewallRulePage-page: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -56,6 +62,8 @@ Page size. The value range is [1,50].
 
 **Since:** 15
 
+<!--Device-FirewallRulePage-pageSize: int--><!--Device-FirewallRulePage-pageSize: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 ## totalPage
@@ -69,5 +77,7 @@ Total number of pages. The value range is [1,1000].
 **Type:** number
 
 **Since:** 15
+
+<!--Device-FirewallRulePage-totalPage: int--><!--Device-FirewallRulePage-totalPage: int-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

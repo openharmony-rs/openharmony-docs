@@ -24,6 +24,8 @@ Obtains the Bluetooth local name of a device. On API 10 and above, the permissio
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
 
+<!--Device-bluetoothManager-function getLocalName(): string--><!--Device-bluetoothManager-function getLocalName(): string-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Return value:**

@@ -20,6 +20,8 @@ Queries the scope of a font by URL. This API uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fontManager-function getFontScope(url: string): Promise<FontScope>--><!--Device-fontManager-function getFontScope(url: string): Promise<FontScope>-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **Parameters:**

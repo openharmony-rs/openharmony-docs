@@ -8,6 +8,8 @@ Represents a tab bar symbol style object.
 
 **Since:** 12
 
+<!--Device-unnamed-declare class TabBarSymbol--><!--Device-unnamed-declare class TabBarSymbol-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -34,6 +36,8 @@ Default value:
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TabBarSymbol-normal: SymbolGlyphModifier--><!--Device-TabBarSymbol-normal: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## selected
@@ -59,5 +63,7 @@ Default value:
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-TabBarSymbol-selected?: SymbolGlyphModifier--><!--Device-TabBarSymbol-selected?: SymbolGlyphModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

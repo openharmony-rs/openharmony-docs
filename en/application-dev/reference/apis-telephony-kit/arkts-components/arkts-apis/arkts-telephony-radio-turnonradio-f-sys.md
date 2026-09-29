@@ -18,6 +18,8 @@ Turn on the radio service.
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
 
+<!--Device-radio-function turnOnRadio(slotId: int, callback: AsyncCallback<void>): void--><!--Device-radio-function turnOnRadio(slotId: int, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Turn on the radio service.
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-radio-function turnOnRadio(slotId?: int): Promise<void>--><!--Device-radio-function turnOnRadio(slotId?: int): Promise<void>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -126,6 +130,8 @@ Turn on the radio service.
 **Since:** 7
 
 **Required permissions:** ohos.permission.SET_TELEPHONY_STATE
+
+<!--Device-radio-function turnOnRadio(callback: AsyncCallback<void>): void--><!--Device-radio-function turnOnRadio(callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

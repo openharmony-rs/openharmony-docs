@@ -18,6 +18,8 @@ Updates the printer capabilities to the printer discovery list. This API uses a 
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise<void>--><!--Device-print-function updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise<void>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

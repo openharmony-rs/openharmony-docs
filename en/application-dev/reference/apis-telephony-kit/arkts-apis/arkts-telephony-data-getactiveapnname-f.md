@@ -20,6 +20,8 @@ Obtains the access point name (APN) of the default SIM card used for mobile data
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-data-function getActiveApnName(): Promise<string>--><!--Device-data-function getActiveApnName(): Promise<string>-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Return value:**

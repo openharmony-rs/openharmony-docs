@@ -24,6 +24,8 @@ Obtains the device screen-off time. This API uses an asynchronous callback to re
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function getScreenOffTime(admin: Want, callback: AsyncCallback<number>): void--><!--Device-deviceSettings-function getScreenOffTime(admin: Want, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -86,6 +88,8 @@ Obtains the device screen-off time. This API uses an asynchronous promise to ret
 **Required permissions:** ohos.permission.ENTERPRISE_GET_SETTINGS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceSettings-function getScreenOffTime(admin: Want): Promise<number>--><!--Device-deviceSettings-function getScreenOffTime(admin: Want): Promise<number>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

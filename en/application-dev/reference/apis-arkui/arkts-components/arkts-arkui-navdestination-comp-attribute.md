@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 9
 
+<!--Device-unnamed-declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>--><!--Device-unnamed-declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## backButtonIcon
@@ -35,6 +37,8 @@ Sets the icon of the back button on the title bar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationAttribute-backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier): NavDestinationAttribute--><!--Device-NavDestinationAttribute-backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ Sets the icon and accessibility text for the back button on the title bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-NavDestinationAttribute-backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibilityText?: ResourceStr): NavDestinationAttribute--><!--Device-NavDestinationAttribute-backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibilityText?: ResourceStr): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -99,6 +105,8 @@ Binds the **NavDestination** component with a nested scrollable container, which
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-NavDestinationAttribute-bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-bindToNestedScrollable(scrollInfos: Array<NestedScrollInfo>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -129,6 +137,8 @@ Binds the **NavDestination** component with a scrollable container, which can be
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-NavDestinationAttribute-bindToScrollable(scrollers: Array<Scroller>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-bindToScrollable(scrollers: Array<Scroller>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -156,6 +166,8 @@ Sets a custom transition animation for the **NavDestination** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-NavDestinationAttribute-customTransition(delegate: NavDestinationTransitionDelegate): NavDestinationAttribute--><!--Device-NavDestinationAttribute-customTransition(delegate: NavDestinationTransitionDelegate): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,6 +197,8 @@ Sets whether to show or hide the system navigation bar when entering this **NavD
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-NavDestinationAttribute-enableNavigationIndicator(enabled: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-enableNavigationIndicator(enabled: Optional<boolean>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +236,8 @@ Sets whether to show or hide the system status bar when entering this **NavDesti
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-NavDestinationAttribute-enableStatusBar(enabled: Optional<boolean>, animated?: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-enableStatusBar(enabled: Optional<boolean>, animated?: boolean): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -247,6 +263,8 @@ When set to true, in split navigation mode, the page covers both the NavBar and 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-NavDestinationAttribute-fullScreenOverlay(fullScreenOverlay: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-fullScreenOverlay(fullScreenOverlay: Optional<boolean>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -269,6 +287,8 @@ Sets whether to hide the back button in the title bar.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-NavDestinationAttribute-hideBackButton(hide: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideBackButton(hide: Optional<boolean>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -288,6 +308,8 @@ Specifies whether to hide the title bar.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavDestinationAttribute-hideTitleBar(value: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideTitleBar(value: boolean): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,6 +335,8 @@ Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitle
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-NavDestinationAttribute-hideTitleBar(hide: boolean, animated: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideTitleBar(hide: boolean, animated: boolean): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -335,6 +359,8 @@ Specifies whether to hide the toolbar.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-NavDestinationAttribute-hideToolBar(hide: boolean, animated?: boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-hideToolBar(hide: boolean, animated?: boolean): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,6 +396,8 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafeAreaEdge>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -400,6 +428,8 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationAttribute-menus(value: Array<NavigationMenuItem> | CustomBuilder): NavDestinationAttribute--><!--Device-NavDestinationAttribute-menus(value: Array<NavigationMenuItem> | CustomBuilder): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -433,6 +463,8 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-NavDestinationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions): NavDestinationAttribute--><!--Device-NavDestinationAttribute-menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -460,6 +492,8 @@ Sets the mode of the **NavDestination** component. Dynamic modification is not s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationAttribute-mode(value: NavDestinationMode): NavDestinationAttribute--><!--Device-NavDestinationAttribute-mode(value: NavDestinationMode): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -486,6 +520,8 @@ Triggered when the **NavDestination** component becomes active (on top of the st
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
 
+<!--Device-NavDestinationAttribute-onActive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onActive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -510,6 +546,8 @@ The value **true** means that the back button logic is overridden, and **false**
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavDestinationAttribute-onBackPressed(callback: () => boolean): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onBackPressed(callback: () => boolean): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -531,6 +569,8 @@ Triggered when the navigation destination page is hidden. Starting from API vers
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavDestinationAttribute-onHidden(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onHidden(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -557,6 +597,8 @@ Triggered when the **NavDestination** component becomes inactive (not on top of 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-NavDestinationAttribute-onInactive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onInactive(callback: Optional<Callback<NavDestinationActiveReason>>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -586,6 +628,8 @@ Triggered when a **NavDestination** page that already exists in the stack is mov
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-NavDestinationAttribute-onNewParam(callback: Optional<Callback<ESObject>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onNewParam(callback: Optional<Callback<ESObject>>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -612,6 +656,8 @@ Triggered when the **NavDestination** component is about to build a child compon
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-NavDestinationAttribute-onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onReady(callback: import('../api/@ohos.base').Callback<NavDestinationContext>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -635,6 +681,8 @@ Triggered when page is reconstructed. The custom state saved by onSaveState is p
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-NavDestinationAttribute-onRestoreState(callback: Optional<RestoreStateCallback>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onRestoreState(callback: Optional<RestoreStateCallback>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -662,6 +710,8 @@ Triggered when the **NavDestination** component returns.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-NavDestinationAttribute-onResult(callback: Optional<Callback<ESObject>>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onResult(callback: Optional<Callback<ESObject>>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -686,6 +736,8 @@ Triggered when page becomes hidden. Save custom page state for potential restora
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-NavDestinationAttribute-onSaveState(callback: Optional<SaveStateCallback>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onSaveState(callback: Optional<SaveStateCallback>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -707,6 +759,8 @@ Triggered when the navigation destination page is displayed. Starting from API v
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavDestinationAttribute-onShown(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onShown(callback: Callback<VisibilityChangeReason>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -734,6 +788,8 @@ Called when the **NavDestination** component is about to be mounted. The routing
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationAttribute-onWillAppear(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillAppear(callback: Callback<void>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -759,6 +815,8 @@ Called when the the **NavDestination** component is about to be unmounted (or wh
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationAttribute-onWillDisappear(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillDisappear(callback: Callback<void>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -786,6 +844,8 @@ Called when the **NavDestination** component is about to be hidden.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationAttribute-onWillHide(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillHide(callback: Callback<void>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -811,6 +871,8 @@ Called when the **NavDestination** component is about to display.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationAttribute-onWillShow(callback: Callback<void>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-onWillShow(callback: Callback<void>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -846,6 +908,8 @@ Sets the display orientation for the **NavDestination** component. After the tra
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-NavDestinationAttribute-preferredOrientation(orientation: Optional<Orientation>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-preferredOrientation(orientation: Optional<Orientation>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -870,6 +934,8 @@ Sets whether the **NavDestination** component is recoverable. If set to recovera
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NavDestinationAttribute-recoverable(recoverable: Optional<boolean>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-recoverable(recoverable: Optional<boolean>): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -902,6 +968,8 @@ Sets the style of the system status bar when this **NavDestination** page is dis
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-NavDestinationAttribute-systemBarStyle(style: Optional<SystemBarStyle>): NavDestinationAttribute--><!--Device-NavDestinationAttribute-systemBarStyle(style: Optional<SystemBarStyle>): NavDestinationAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -923,6 +991,8 @@ Sets the system transition animation of the **NavDestination** component. System
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-NavDestinationAttribute-systemTransition(type: NavigationSystemTransitionType): NavDestinationAttribute--><!--Device-NavDestinationAttribute-systemTransition(type: NavigationSystemTransitionType): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -948,6 +1018,8 @@ Sets the page title. When the title string is too long: (1) If no subtitle is se
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NavDestinationAttribute-title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource,          options?: NavigationTitleOptions): NavDestinationAttribute--><!--Device-NavDestinationAttribute-title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource,          options?: NavigationTitleOptions): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -979,6 +1051,8 @@ Sets the content of the toolbar. If this API is not called, the toolbar remains 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-NavDestinationAttribute-toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavDestinationAttribute--><!--Device-NavDestinationAttribute-toolbarConfiguration(toolbarParam: Array<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavDestinationAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

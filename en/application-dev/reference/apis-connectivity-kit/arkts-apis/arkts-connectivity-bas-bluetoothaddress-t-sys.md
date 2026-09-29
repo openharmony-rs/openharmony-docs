@@ -10,6 +10,8 @@ Bluetooth device address.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bas-type BluetoothAddress = common.BluetoothAddress--><!--Device-bas-type BluetoothAddress = common.BluetoothAddress-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.

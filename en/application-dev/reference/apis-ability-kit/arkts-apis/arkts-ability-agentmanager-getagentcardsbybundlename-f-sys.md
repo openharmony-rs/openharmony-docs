@@ -20,6 +20,8 @@ Gets all AgentCards within specified bundleName.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function getAgentCardsByBundleName(bundleName: string): Promise<Array<AgentCard>>--><!--Device-agentManager-function getAgentCardsByBundleName(bundleName: string): Promise<Array<AgentCard>>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

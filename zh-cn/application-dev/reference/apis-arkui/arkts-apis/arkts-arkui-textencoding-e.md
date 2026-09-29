@@ -8,6 +8,8 @@ declare enum TextEncoding
 
 **起始版本：** 26.0.0
 
+<!--Device-unnamed-declare enum TextEncoding--><!--Device-unnamed-declare enum TextEncoding-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_ENCODING_UTF8
@@ -24,6 +26,8 @@ UTF-8编码。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextEncoding-TEXT_ENCODING_UTF8 = 0--><!--Device-TextEncoding-TEXT_ENCODING_UTF8 = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TEXT_ENCODING_UTF16
@@ -39,5 +43,7 @@ UTF-16编码。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextEncoding-TEXT_ENCODING_UTF16 = 1--><!--Device-TextEncoding-TEXT_ENCODING_UTF16 = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

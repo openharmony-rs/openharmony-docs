@@ -4,9 +4,11 @@
 declare enum HorizontalAlign
 ```
 
-HorizontalAlign enumeration description.
+Sets the horizontal alignment mode of child components.
 
 **Since:** 7
+
+<!--Device-unnamed-declare enum HorizontalAlign--><!--Device-unnamed-declare enum HorizontalAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ HorizontalAlign enumeration description.
 Start
 ```
 
-Aligns the start end in the language direction.
+Aligned with the start edge in the same direction as the language in use.
 
 **Since:** 7
 
@@ -25,6 +27,8 @@ Aligns the start end in the language direction.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-HorizontalAlign-Start--><!--Device-HorizontalAlign-Start-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +38,7 @@ Aligns the start end in the language direction.
 Center
 ```
 
-Center alignment. The default alignment mode is used.
+Aligned with the center. This is the default alignment mode.
 
 **Since:** 7
 
@@ -43,6 +47,8 @@ Center alignment. The default alignment mode is used.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-HorizontalAlign-Center--><!--Device-HorizontalAlign-Center-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,7 @@ Center alignment. The default alignment mode is used.
 End
 ```
 
-Aligns the ends in the language direction.
+Aligned with the end edge in the same direction as the language in use.
 
 **Since:** 7
 
@@ -61,5 +67,7 @@ Aligns the ends in the language direction.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-HorizontalAlign-End--><!--Device-HorizontalAlign-End-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

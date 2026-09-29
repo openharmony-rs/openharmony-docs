@@ -20,6 +20,8 @@ Subscribes to loaded events of a preloaded [UIExtensionAbility](arkts-ability-ap
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-abilityManager-function onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedFn): void--><!--Device-abilityManager-function onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedFn): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.

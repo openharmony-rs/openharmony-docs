@@ -8,6 +8,8 @@ Provide a DateTime formatting interface which could format date to ISO 8601 stan
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export class ISO8601DateTimeFormat--><!--Device-i18n-export class ISO8601DateTimeFormat-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -29,6 +31,8 @@ A constructor used to create a ISO8601DateTimeFormat object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ISO8601DateTimeFormat-public constructor(options?: ISO8601DateTimeFormatOptions)--><!--Device-ISO8601DateTimeFormat-public constructor(options?: ISO8601DateTimeFormatOptions)-End-->
 
 **System capability:** SystemCapability.Global.I18n
 
@@ -61,6 +65,8 @@ Formats a date to ISO 8601 formatted string.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ISO8601DateTimeFormat-public format(date: Date): string--><!--Device-ISO8601DateTimeFormat-public format(date: Date): string-End-->
 
 **System capability:** SystemCapability.Global.I18n
 

@@ -16,6 +16,8 @@ ChipItemStyle定义了Chip的通用属性。
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface ChipItemStyle--><!--Device-unnamed-export interface ChipItemStyle-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -46,6 +48,8 @@ Chip背景颜色。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipItemStyle-backgroundColor?: ResourceColor--><!--Device-ChipItemStyle-backgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -69,6 +73,8 @@ Chip文字颜色。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipItemStyle-fontColor?: ResourceColor--><!--Device-ChipItemStyle-fontColor?: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +100,8 @@ Chip激活时的背景颜色。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipItemStyle-selectedBackgroundColor?: ResourceColor--><!--Device-ChipItemStyle-selectedBackgroundColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## selectedFontColor
@@ -118,6 +126,8 @@ Chip激活时的文字颜色。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-ChipItemStyle-selectedFontColor?: ResourceColor--><!--Device-ChipItemStyle-selectedFontColor?: ResourceColor-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## size
@@ -139,5 +149,7 @@ Chip尺寸，使用时需要从Chip组件引入ChipSize类型。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChipItemStyle-size?: ChipSize | SizeOptions--><!--Device-ChipItemStyle-size?: ChipSize | SizeOptions-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

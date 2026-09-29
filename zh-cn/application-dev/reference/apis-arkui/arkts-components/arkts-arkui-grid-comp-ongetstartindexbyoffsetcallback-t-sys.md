@@ -10,6 +10,8 @@ declare type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLin
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-unnamed-declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo--><!--Device-unnamed-declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo-End-->
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**

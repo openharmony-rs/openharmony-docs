@@ -10,6 +10,8 @@ interface FloatingBallController
 
 **起始版本：** 20
 
+<!--Device-floatingBall-interface FloatingBallController--><!--Device-floatingBall-interface FloatingBallController-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -27,6 +29,8 @@ getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>
 获得闪控球窗口信息，使用Promise异步回调。
 
 **起始版本：** 20
+
+<!--Device-FloatingBallController-getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>--><!--Device-FloatingBallController-getFloatingBallWindowInfo(): Promise<FloatingBallWindowInfo>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -70,6 +74,8 @@ off(type: 'stateChange', callback?: Callback<FloatingBallState>): void
 
 **起始版本：** 20
 
+<!--Device-FloatingBallController-off(type: 'stateChange', callback?: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-off(type: 'stateChange', callback?: Callback<FloatingBallState>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -111,6 +117,8 @@ off(type: 'click', callback?: Callback<void>): void
 取消闪控球点击的监听事件。
 
 **起始版本：** 20
+
+<!--Device-FloatingBallController-off(type: 'click', callback?: Callback<void>): void--><!--Device-FloatingBallController-off(type: 'click', callback?: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -155,6 +163,8 @@ offDestroy(callback?: Callback<string>): void
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatingBallController-offDestroy(callback?: Callback<string>): void--><!--Device-FloatingBallController-offDestroy(callback?: Callback<string>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -203,6 +213,8 @@ on(type: 'stateChange', callback: Callback<FloatingBallState>): void
 
 **起始版本：** 20
 
+<!--Device-FloatingBallController-on(type: 'stateChange', callback: Callback<FloatingBallState>): void--><!--Device-FloatingBallController-on(type: 'stateChange', callback: Callback<FloatingBallState>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -245,6 +257,8 @@ on(type: 'click', callback: Callback<void>): void
 注册闪控球的点击监听事件，不使用时，取消监听以避免内存泄漏。
 
 **起始版本：** 20
+
+<!--Device-FloatingBallController-on(type: 'click', callback: Callback<void>): void--><!--Device-FloatingBallController-on(type: 'click', callback: Callback<void>): void-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -291,6 +305,8 @@ onDestroy(callback: Callback<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatingBallController-onDestroy(callback: Callback<string>): void--><!--Device-FloatingBallController-onDestroy(callback: Callback<string>): void-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -335,6 +351,8 @@ restoreMainWindow(want: Want): Promise<void>
 
 **需要权限：** ohos.permission.USE_FLOAT_BALL
 
+<!--Device-FloatingBallController-restoreMainWindow(want: Want): Promise<void>--><!--Device-FloatingBallController-restoreMainWindow(want: Want): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -353,7 +371,7 @@ restoreMainWindow(want: Want): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 201 | Permission verification failed, usually returned by VerifyAccessToken. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: Internal error, the window type is not a floating ball. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: The process ID calling the API does not match the process ID of the session that created the floating ball. |
@@ -403,6 +421,8 @@ setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatingBallController-setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>--><!--Device-FloatingBallController-setFloatingBallVisibilityInApp(isVisible: boolean): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -450,6 +470,8 @@ startFloatingBall(params: FloatingBallParams): Promise<void>
 
 **需要权限：** ohos.permission.USE_FLOAT_BALL
 
+<!--Device-FloatingBallController-startFloatingBall(params: FloatingBallParams): Promise<void>--><!--Device-FloatingBallController-startFloatingBall(params: FloatingBallParams): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -468,7 +490,7 @@ startFloatingBall(params: FloatingBallParams): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 201 | Permission verification failed, usually returned by VerifyAccessToken. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually returned by VerifyAccessToken. |
 | [1300019](../errorcode-window.md#1300019-闪控球参数校验错误) | Wrong parameters for operating the floating ball. Possible causes:<br>1. FloatingBallParams parameter is null. <br>2. Parameter is invalid, such as invalid icon object, template type, or title (empty or exceeds 64 bytes). |
 | [1300020](../errorcode-window.md#1300020-创建闪控球窗口失败) | Failed to create the floating ball window. Possible cause: The main window is not shown. |
 | [1300021](../errorcode-window.md#1300021-启动多个闪控球失败) | Failed to start multiple floating ball windows. |
@@ -511,6 +533,8 @@ stopFloatingBall(): Promise<void>
 
 **起始版本：** 20
 
+<!--Device-FloatingBallController-stopFloatingBall(): Promise<void>--><!--Device-FloatingBallController-stopFloatingBall(): Promise<void>-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **返回值：**
@@ -549,6 +573,8 @@ updateFloatingBall(params: FloatingBallParams): Promise<void>
 更新闪控球，使用Promise异步回调。
 
 **起始版本：** 20
+
+<!--Device-FloatingBallController-updateFloatingBall(params: FloatingBallParams): Promise<void>--><!--Device-FloatingBallController-updateFloatingBall(params: FloatingBallParams): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

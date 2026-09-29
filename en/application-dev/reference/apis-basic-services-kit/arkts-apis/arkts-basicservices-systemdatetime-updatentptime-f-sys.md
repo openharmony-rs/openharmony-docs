@@ -16,6 +16,8 @@ Updates the NTP time from the NTP server This API returns the result asynchronou
 
 **Since:** 14
 
+<!--Device-systemDateTime-function updateNtpTime(): Promise<void>--><!--Device-systemDateTime-function updateNtpTime(): Promise<void>-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.

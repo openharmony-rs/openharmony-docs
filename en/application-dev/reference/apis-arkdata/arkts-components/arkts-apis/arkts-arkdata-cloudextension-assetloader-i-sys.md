@@ -8,6 +8,8 @@ Provides APIs for uploading and downloading assets.
 
 **Since:** 11
 
+<!--Device-cloudExtension-export interface AssetLoader--><!--Device-cloudExtension-export interface AssetLoader-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>):
 Downloads assets. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-AssetLoader-download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>--><!--Device-AssetLoader-download(table: string, gid: string, prefix: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -69,6 +73,8 @@ upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Res
 Uploads assets. This API uses a promise to return the result.
 
 **Since:** 11
+
+<!--Device-AssetLoader-upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>--><!--Device-AssetLoader-upload(table: string, gid: string, assets: Array<CloudAsset>): Promise<Array<Result<CloudAsset>>>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

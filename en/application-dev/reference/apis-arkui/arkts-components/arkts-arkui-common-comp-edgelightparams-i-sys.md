@@ -8,6 +8,8 @@ Defines the parameters of the edge light effect.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface EdgeLightParams--><!--Device-unnamed-declare interface EdgeLightParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ The color of the light effect. <br>If not specified, the default color is white 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EdgeLightParams-color?: ResourceColor--><!--Device-EdgeLightParams-color?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ The luminous intensity of the Edge Streamer effect. <br>Valid range: [0.0, 1.0].
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightParams-intensity?: double--><!--Device-EdgeLightParams-intensity?: double-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +70,8 @@ Projection length of the edge streamer along the flow direction. <br>Negative va
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EdgeLightParams-length: Length--><!--Device-EdgeLightParams-length: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -81,6 +89,8 @@ The location of the edge light effect.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightParams-position: EdgeLightPosition--><!--Device-EdgeLightParams-position: EdgeLightPosition-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,6 +111,8 @@ The thickness (width) of the light effect line. <br>Negative values are treated 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightParams-thickness?: Length--><!--Device-EdgeLightParams-thickness?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

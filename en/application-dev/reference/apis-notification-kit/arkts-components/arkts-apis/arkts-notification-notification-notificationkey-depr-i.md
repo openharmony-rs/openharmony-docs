@@ -10,6 +10,8 @@ Notification key.
 
 **Deprecated since:** 9
 
+<!--Device-notification-export interface NotificationKey--><!--Device-notification-export interface NotificationKey-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Notification ID.
 
 **Substitutes:** NotificationKey
 
+<!--Device-NotificationKey-id: number--><!--Device-NotificationKey-id: number-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## label
@@ -50,5 +54,7 @@ Notification label.
 **Deprecated since:** 9
 
 **Substitutes:** NotificationKey
+
+<!--Device-NotificationKey-label?: string--><!--Device-NotificationKey-label?: string-End-->
 
 **System capability:** SystemCapability.Notification.Notification

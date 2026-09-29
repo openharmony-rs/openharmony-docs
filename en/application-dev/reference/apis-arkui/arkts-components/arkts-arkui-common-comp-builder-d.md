@@ -14,4 +14,6 @@ Defining Builder MethodDecorator
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare const Builder: MethodDecorator--><!--Device-unnamed-declare const Builder: MethodDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

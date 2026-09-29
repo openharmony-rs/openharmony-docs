@@ -1,4 +1,4 @@
-# KioskStatus
+# KioskStatus(Kiosk Status)
 
 ## Summary
 

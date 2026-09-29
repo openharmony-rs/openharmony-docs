@@ -12,6 +12,8 @@ Enumerates the rectangle width styles.
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-unnamed-declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle--><!--Device-unnamed-declare type RectWidthStyle = import('../api/@ohos.graphics.text').default.RectWidthStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.graphics.text').default.RectWidthStyle

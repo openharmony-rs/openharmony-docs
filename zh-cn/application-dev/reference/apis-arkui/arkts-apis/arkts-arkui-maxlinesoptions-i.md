@@ -8,6 +8,8 @@ declare interface MaxLinesOptions
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface MaxLinesOptions--><!--Device-unnamed-declare interface MaxLinesOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## overflowMode
@@ -16,7 +18,7 @@ declare interface MaxLinesOptions
 overflowMode?: MaxLinesMode
 ```
 
-`overflowMode`可配置TextArea组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[textOverflow](../arkts-components/arkts-arkui-textarea-comp-attribute.md#textoverflow)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。
+`overflowMode`可配置[TextArea](../arkts-components/arkts-arkui-textarea-comp.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[textOverflow](../arkts-components/arkts-arkui-textarea-comp-attribute.md#textoverflow)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。
 
 **类型：** [MaxLinesMode](arkts-arkui-maxlinesmode-e.md)
 
@@ -25,5 +27,7 @@ overflowMode?: MaxLinesMode
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MaxLinesOptions-overflowMode?: MaxLinesMode--><!--Device-MaxLinesOptions-overflowMode?: MaxLinesMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

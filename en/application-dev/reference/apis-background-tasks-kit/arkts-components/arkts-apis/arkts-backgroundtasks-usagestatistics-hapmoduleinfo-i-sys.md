@@ -6,6 +6,8 @@ interface HapModuleInfo
 
 **Since:** 9
 
+<!--Device-usageStatistics-interface HapModuleInfo--><!--Device-usageStatistics-interface HapModuleInfo-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -28,6 +30,8 @@ The description id of main ability.
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-abilityDescriptionId?: long--><!--Device-HapModuleInfo-abilityDescriptionId?: long-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -43,6 +47,8 @@ The icon id of main ability.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-HapModuleInfo-abilityIconId?: long--><!--Device-HapModuleInfo-abilityIconId?: long-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -60,6 +66,8 @@ The ability id of main ability.
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-abilityLableId?: long--><!--Device-HapModuleInfo-abilityLableId?: long-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -75,6 +83,8 @@ The main ability name of module.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-HapModuleInfo-abilityName?: string--><!--Device-HapModuleInfo-abilityName?: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -92,6 +102,8 @@ The label id of application.
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-appLabelId?: long--><!--Device-HapModuleInfo-appLabelId?: long-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -107,6 +119,8 @@ The bundle name.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-HapModuleInfo-bundleName: string--><!--Device-HapModuleInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -124,6 +138,8 @@ The description id of application.
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-descriptionId?: long--><!--Device-HapModuleInfo-descriptionId?: long-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -139,6 +155,8 @@ The device id of module.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-HapModuleInfo-deviceId?: string--><!--Device-HapModuleInfo-deviceId?: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -156,6 +174,8 @@ The form usage record list of current module.
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-formRecords: Array<HapFormInfo>--><!--Device-HapModuleInfo-formRecords: Array<HapFormInfo>-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -171,6 +191,8 @@ The label id of module.
 **Type:** number
 
 **Since:** 9
+
+<!--Device-HapModuleInfo-labelId?: long--><!--Device-HapModuleInfo-labelId?: long-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
@@ -188,6 +210,8 @@ The last time when the module was accessed, in milliseconds. <br> Unit:ms
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-lastModuleUsedTime: long--><!--Device-HapModuleInfo-lastModuleUsedTime: long-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -204,6 +228,8 @@ The launch count of module.
 
 **Since:** 9
 
+<!--Device-HapModuleInfo-launchedCount: int--><!--Device-HapModuleInfo-launchedCount: int-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 
 **System API:** This is a system API.
@@ -219,6 +245,8 @@ The module name.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-HapModuleInfo-moduleName: string--><!--Device-HapModuleInfo-moduleName: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.UsageStatistics.App
 

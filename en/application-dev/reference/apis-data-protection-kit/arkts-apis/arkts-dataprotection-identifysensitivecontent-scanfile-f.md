@@ -18,6 +18,8 @@ Identifies sensitive content in a specified file based on the configured policy 
 
 **Required permissions:** ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
+<!--Device-identifySensitiveContent-function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Array<MatchResult>>--><!--Device-identifySensitiveContent-function scanFile(filePath: string, identifyPolicies: Array<Policy>): Promise<Array<MatchResult>>-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters:**

@@ -8,6 +8,8 @@ DNG metadata.
 
 **Since:** 24
 
+<!--Device-image-class DngMetadata--><!--Device-image-class DngMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ The active area.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly activeArea?: int[]--><!--Device-DngMetadata-readonly activeArea?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## analogBalance
@@ -45,6 +49,8 @@ The analog balance.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly analogBalance?: double[]--><!--Device-DngMetadata-readonly analogBalance?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -62,6 +68,8 @@ The anti-alias strength.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly antiAliasStrength?: double--><!--Device-DngMetadata-readonly antiAliasStrength?: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## asShotICCProfile
@@ -77,6 +85,8 @@ An ICC profile.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly asShotICCProfile?: ArrayBuffer--><!--Device-DngMetadata-readonly asShotICCProfile?: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -94,6 +104,8 @@ The as-shot neutral.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly asShotNeutral?: double[]--><!--Device-DngMetadata-readonly asShotNeutral?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## asShotPreProfileMatrix
@@ -109,6 +121,8 @@ The as-shot pre-profile matrix.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly asShotPreProfileMatrix?: double[]--><!--Device-DngMetadata-readonly asShotPreProfileMatrix?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -126,6 +140,8 @@ The as-shot camera profile.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly asShotProfileName?: string--><!--Device-DngMetadata-readonly asShotProfileName?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## asShotWhiteXY
@@ -141,6 +157,8 @@ The as-shot white, encoded as x-y chromaticity coordinates.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly asShotWhiteXY?: double[]--><!--Device-DngMetadata-readonly asShotWhiteXY?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -158,6 +176,8 @@ The baseline exposure.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly baselineExposure?: double--><!--Device-DngMetadata-readonly baselineExposure?: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## baselineExposureOffset
@@ -173,6 +193,8 @@ The baseline exposure offset.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly baselineExposureOffset?: double--><!--Device-DngMetadata-readonly baselineExposureOffset?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -190,6 +212,8 @@ The baseline noise.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly baselineNoise?: double--><!--Device-DngMetadata-readonly baselineNoise?: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## baselineSharpness
@@ -205,6 +229,8 @@ The baseline sharpness.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly baselineSharpness?: double--><!--Device-DngMetadata-readonly baselineSharpness?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -222,6 +248,8 @@ The Bayer green split.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly bayerGreenSplit?: int--><!--Device-DngMetadata-readonly bayerGreenSplit?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## bestQualityScale
@@ -237,6 +265,8 @@ The best quality scale.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly bestQualityScale?: double--><!--Device-DngMetadata-readonly bestQualityScale?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -254,6 +284,8 @@ The zero-light encoding level.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly blackLevel?: double[]--><!--Device-DngMetadata-readonly blackLevel?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## blackLevelDeltaH
@@ -269,6 +301,8 @@ The black level delta H.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly blackLevelDeltaH?: double[]--><!--Device-DngMetadata-readonly blackLevelDeltaH?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -286,6 +320,8 @@ The black level delta V.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly blackLevelDeltaV?: double[]--><!--Device-DngMetadata-readonly blackLevelDeltaV?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## blackLevelRepeatDim
@@ -301,6 +337,8 @@ The black level repeat dimension.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly blackLevelRepeatDim?: int[]--><!--Device-DngMetadata-readonly blackLevelRepeatDim?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -318,6 +356,8 @@ The first calibration illuminant.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly calibrationIlluminant1?: int--><!--Device-DngMetadata-readonly calibrationIlluminant1?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## calibrationIlluminant2
@@ -333,6 +373,8 @@ The second calibration illuminant.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly calibrationIlluminant2?: int--><!--Device-DngMetadata-readonly calibrationIlluminant2?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -350,6 +392,8 @@ A calibration matrix under the first calibration illuminant.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly cameraCalibration1?: double[]--><!--Device-DngMetadata-readonly cameraCalibration1?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## cameraCalibration2
@@ -365,6 +409,8 @@ A calibration matrix under the second calibration illuminant.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly cameraCalibration2?: double[]--><!--Device-DngMetadata-readonly cameraCalibration2?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -382,6 +428,8 @@ The camera calibration signature.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly cameraCalibrationSignature?: string--><!--Device-DngMetadata-readonly cameraCalibrationSignature?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## cameraSerialNumber
@@ -397,6 +445,8 @@ The serial number of the camera.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly cameraSerialNumber?: string--><!--Device-DngMetadata-readonly cameraSerialNumber?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -414,6 +464,8 @@ The CFA (color filter array) layout.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly cfaLayout?: int--><!--Device-DngMetadata-readonly cfaLayout?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## cfaPlaneColor
@@ -429,6 +481,8 @@ The CFA (color filter array) plane color.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly cfaPlaneColor?: int[]--><!--Device-DngMetadata-readonly cfaPlaneColor?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -446,6 +500,8 @@ The chroma blur radius.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly chromaBlurRadius?: double--><!--Device-DngMetadata-readonly chromaBlurRadius?: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## colorimetricReference
@@ -461,6 +517,8 @@ The colorimetric reference.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly colorimetricReference?: int--><!--Device-DngMetadata-readonly colorimetricReference?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -478,6 +536,8 @@ A transformation matrix under the first calibration illuminant.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly colorMatrix1?: double[]--><!--Device-DngMetadata-readonly colorMatrix1?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## colorMatrix2
@@ -493,6 +553,8 @@ A transformation matrix under the second calibration illuminant.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly colorMatrix2?: double[]--><!--Device-DngMetadata-readonly colorMatrix2?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -510,6 +572,8 @@ The current ICC profile.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly currentICCProfile?: ArrayBuffer--><!--Device-DngMetadata-readonly currentICCProfile?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## currentPreProfileMatrix
@@ -525,6 +589,8 @@ The current pre-profile matrix.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly currentPreProfileMatrix?: double[]--><!--Device-DngMetadata-readonly currentPreProfileMatrix?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -542,6 +608,8 @@ The default black render.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly defaultBlackRender?: int--><!--Device-DngMetadata-readonly defaultBlackRender?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## defaultCropOrigin
@@ -557,6 +625,8 @@ The default crop origin.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly defaultCropOrigin?: double[]--><!--Device-DngMetadata-readonly defaultCropOrigin?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -574,6 +644,8 @@ The default crop size.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly defaultCropSize?: int[]--><!--Device-DngMetadata-readonly defaultCropSize?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## defaultScale
@@ -589,6 +661,8 @@ The default scale.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly defaultScale?: double[]--><!--Device-DngMetadata-readonly defaultScale?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -606,6 +680,8 @@ The default user crop.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly defaultUserCrop?: int[]--><!--Device-DngMetadata-readonly defaultUserCrop?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## dngBackwardVersion
@@ -621,6 +697,8 @@ The DNG backward compatibility version.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly dngBackwardVersion?: int[]--><!--Device-DngMetadata-readonly dngBackwardVersion?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -638,6 +716,8 @@ The private data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly dngPrivateData?: ArrayBuffer--><!--Device-DngMetadata-readonly dngPrivateData?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## dngVersion
@@ -653,6 +733,8 @@ The DNG version.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly dngVersion?: int[]--><!--Device-DngMetadata-readonly dngVersion?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -670,6 +752,8 @@ The extra camera profiles.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly extraCameraProfiles?: int[]--><!--Device-DngMetadata-readonly extraCameraProfiles?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## forwardMatrix1
@@ -685,6 +769,8 @@ The first forward matrix.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly forwardMatrix1?: double[]--><!--Device-DngMetadata-readonly forwardMatrix1?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -702,6 +788,8 @@ The second forward matrix.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly forwardMatrix2?: double[]--><!--Device-DngMetadata-readonly forwardMatrix2?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## lensInfo
@@ -717,6 +805,8 @@ Information about the lens.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly lensInfo?: double[]--><!--Device-DngMetadata-readonly lensInfo?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -734,6 +824,8 @@ The linearization table.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly linearizationTable?: int[]--><!--Device-DngMetadata-readonly linearizationTable?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## linearResponseLimit
@@ -749,6 +841,8 @@ The linear response limit.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly linearResponseLimit?: double--><!--Device-DngMetadata-readonly linearResponseLimit?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -766,6 +860,8 @@ A localized camera model.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly localizedCameraModel?: string--><!--Device-DngMetadata-readonly localizedCameraModel?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## makerNoteSafety
@@ -781,6 +877,8 @@ Whether the EXIF MakerNote tag is safe.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly makerNoteSafety?: boolean--><!--Device-DngMetadata-readonly makerNoteSafety?: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -798,6 +896,8 @@ The masked areas.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly maskedAreas?: int[]--><!--Device-DngMetadata-readonly maskedAreas?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## newRawImageDigest
@@ -813,6 +913,8 @@ A modified MD5 digest of the raw image data.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly newRawImageDigest?: string--><!--Device-DngMetadata-readonly newRawImageDigest?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -830,6 +932,8 @@ The noise profile.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly noiseProfile?: double[]--><!--Device-DngMetadata-readonly noiseProfile?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## noiseReductionApplied
@@ -845,6 +949,8 @@ The applied noise reduction.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly noiseReductionApplied?: double--><!--Device-DngMetadata-readonly noiseReductionApplied?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -862,6 +968,8 @@ The first opcode list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly opcodeList1?: ArrayBuffer--><!--Device-DngMetadata-readonly opcodeList1?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## opcodeList2
@@ -877,6 +985,8 @@ The second opcode list.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly opcodeList2?: ArrayBuffer--><!--Device-DngMetadata-readonly opcodeList2?: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -894,6 +1004,8 @@ The third opcode list.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly opcodeList3?: ArrayBuffer--><!--Device-DngMetadata-readonly opcodeList3?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## originalBestQualityFinalSize
@@ -909,6 +1021,8 @@ The original best quality final size.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly originalBestQualityFinalSize?: int[]--><!--Device-DngMetadata-readonly originalBestQualityFinalSize?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -926,6 +1040,8 @@ The original default crop size.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly originalDefaultCropSize?: double[]--><!--Device-DngMetadata-readonly originalDefaultCropSize?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## originalDefaultFinalSize
@@ -941,6 +1057,8 @@ The original default final size.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly originalDefaultFinalSize?: int[]--><!--Device-DngMetadata-readonly originalDefaultFinalSize?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -958,6 +1076,8 @@ The original raw file data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly originalRawFileData?: ArrayBuffer--><!--Device-DngMetadata-readonly originalRawFileData?: ArrayBuffer-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## originalRawFileDigest
@@ -973,6 +1093,8 @@ An MD5 digest of the data stored in the OriginalRawFileData.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly originalRawFileDigest?: string--><!--Device-DngMetadata-readonly originalRawFileDigest?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -990,6 +1112,8 @@ The original raw file name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly originalRawFileName?: string--><!--Device-DngMetadata-readonly originalRawFileName?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## previewApplicationName
@@ -1005,6 +1129,8 @@ The preview application name.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly previewApplicationName?: string--><!--Device-DngMetadata-readonly previewApplicationName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1022,6 +1148,8 @@ The preview application version.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly previewApplicationVersion?: string--><!--Device-DngMetadata-readonly previewApplicationVersion?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## previewColorSpace
@@ -1037,6 +1165,8 @@ The preview color space.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly previewColorSpace?: int--><!--Device-DngMetadata-readonly previewColorSpace?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1054,6 +1184,8 @@ The preview date time.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly previewDateTime?: string--><!--Device-DngMetadata-readonly previewDateTime?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## previewSettingsDigest
@@ -1069,6 +1201,8 @@ The preview settings digest.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly previewSettingsDigest?: string--><!--Device-DngMetadata-readonly previewSettingsDigest?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1086,6 +1220,8 @@ The preview settings name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly previewSettingsName?: string--><!--Device-DngMetadata-readonly previewSettingsName?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## profileCalibrationSignature
@@ -1101,6 +1237,8 @@ The profile calibration signature.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly profileCalibrationSignature?: string--><!--Device-DngMetadata-readonly profileCalibrationSignature?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1118,6 +1256,8 @@ The profile copyright.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly profileCopyright?: string--><!--Device-DngMetadata-readonly profileCopyright?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## profileEmbedPolicy
@@ -1133,6 +1273,8 @@ The profile embed policy.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly profileEmbedPolicy?: int--><!--Device-DngMetadata-readonly profileEmbedPolicy?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1150,6 +1292,8 @@ The first hue/saturation mapping table data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly profileHueSatMapData1?: double[]--><!--Device-DngMetadata-readonly profileHueSatMapData1?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## profileHueSatMapData2
@@ -1165,6 +1309,8 @@ The second hue/saturation mapping table data.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly profileHueSatMapData2?: double[]--><!--Device-DngMetadata-readonly profileHueSatMapData2?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1182,6 +1328,8 @@ The profile hue/saturation map dims.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly profileHueSatMapDims?: int[]--><!--Device-DngMetadata-readonly profileHueSatMapDims?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## profileHueSatMapEncoding
@@ -1197,6 +1345,8 @@ The profile hue/saturation map encoding.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly profileHueSatMapEncoding?: int--><!--Device-DngMetadata-readonly profileHueSatMapEncoding?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1214,6 +1364,8 @@ The profile lookup table data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly profileLookTableData?: double[]--><!--Device-DngMetadata-readonly profileLookTableData?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## profileLookTableDims
@@ -1229,6 +1381,8 @@ The profile lookup table dimensions.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly profileLookTableDims?: int[]--><!--Device-DngMetadata-readonly profileLookTableDims?: int[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1246,6 +1400,8 @@ The profile lookup table encoding.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly profileLookTableEncoding?: int--><!--Device-DngMetadata-readonly profileLookTableEncoding?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## profileName
@@ -1261,6 +1417,8 @@ The profile name.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly profileName?: string--><!--Device-DngMetadata-readonly profileName?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1278,6 +1436,8 @@ The profile tone curve.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly profileToneCurve?: double[]--><!--Device-DngMetadata-readonly profileToneCurve?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## rawDataUniqueID
@@ -1293,6 +1453,8 @@ The unique identifier of raw image data.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly rawDataUniqueID?: string--><!--Device-DngMetadata-readonly rawDataUniqueID?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1310,6 +1472,8 @@ An MD5 digest of the raw image data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly rawImageDigest?: string--><!--Device-DngMetadata-readonly rawImageDigest?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## rawToPreviewGain
@@ -1325,6 +1489,8 @@ The gain between the main raw IFD and the preview IFD.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly rawToPreviewGain?: double--><!--Device-DngMetadata-readonly rawToPreviewGain?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1342,6 +1508,8 @@ A dimensionality reduction matrix under the first calibration illuminant.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly reductionMatrix1?: double[]--><!--Device-DngMetadata-readonly reductionMatrix1?: double[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## reductionMatrix2
@@ -1357,6 +1525,8 @@ A dimensionality reduction matrix under the second calibration illuminant.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly reductionMatrix2?: double[]--><!--Device-DngMetadata-readonly reductionMatrix2?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1374,6 +1544,8 @@ The row interleave factor.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly rowInterleaveFactor?: int--><!--Device-DngMetadata-readonly rowInterleaveFactor?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## shadowScale
@@ -1389,6 +1561,8 @@ The shadow scale.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly shadowScale?: double--><!--Device-DngMetadata-readonly shadowScale?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -1406,6 +1580,8 @@ The sub‑tile block size.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly subTileBlockSize?: int[]--><!--Device-DngMetadata-readonly subTileBlockSize?: int[]-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## uniqueCameraModel
@@ -1422,6 +1598,8 @@ A unique camera model.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DngMetadata-readonly uniqueCameraModel?: string--><!--Device-DngMetadata-readonly uniqueCameraModel?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## whiteLevel
@@ -1437,5 +1615,7 @@ The white level.
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DngMetadata-readonly whiteLevel?: double[]--><!--Device-DngMetadata-readonly whiteLevel?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

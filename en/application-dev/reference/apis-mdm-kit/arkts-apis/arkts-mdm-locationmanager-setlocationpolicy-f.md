@@ -28,6 +28,8 @@ Sets a location service policy. This API can be used in enterprise management an
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-locationManager-function setLocationPolicy(admin: Want, policy: LocationPolicy): void--><!--Device-locationManager-function setLocationPolicy(admin: Want, policy: LocationPolicy): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

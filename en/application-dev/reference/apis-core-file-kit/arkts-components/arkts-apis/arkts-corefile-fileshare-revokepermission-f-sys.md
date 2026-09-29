@@ -22,6 +22,8 @@ Revoke all persistence permissions for the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-fileShare-function revokePermission(tokenID: int): Promise<void>--><!--Device-fileShare-function revokePermission(tokenID: int): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
 **System API:** This is a system API.
@@ -84,6 +86,8 @@ Revoke persistence permissions for the URI.
 **Required permissions:** ohos.permission.REVOKE_FILE_ACCESS_PERSIST
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-fileShare-function revokePermission(tokenID: int, policies: Array<PolicyInfo>): Promise<void>--><!--Device-fileShare-function revokePermission(tokenID: int, policies: Array<PolicyInfo>): Promise<void>-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 

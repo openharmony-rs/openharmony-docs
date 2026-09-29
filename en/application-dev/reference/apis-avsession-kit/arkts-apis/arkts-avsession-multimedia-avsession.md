@@ -2,6 +2,8 @@
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace avSession--><!--Device-unnamed-declare namespace avSession-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## Modules to Import
@@ -145,6 +147,20 @@ import { avSession } from '@kit.AVSessionKit';
 | [SessionToken](arkts-avsession-avsession-sessiontoken-i-sys.md) | Session token. Used to judge the legitimacy of the session. |
 <!--DelEnd-->
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md) | The type of control command |
+| [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | The type of control command. |
+| [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md) | The type of media center control command, which can be used to determine the button displayed on the media center. |
+| [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | Session type supports audio & video, voice_call, video_call, photo |
+| [EventProcess](arkts-avsession-avsession-eventprocess-t.md) | The general process funcation with an event and arguments. |
+| [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md) | The extra info object. |
+| [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md) | The callback of key request. |
+| [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | Defines the basic callback. |
+| [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md) | Defines the callback type including two parameters. |
+
 ### Enums
 
 | Name | Description |
@@ -178,17 +194,3 @@ import { avSession } from '@kit.AVSessionKit';
 | [ProtocolType](arkts-avsession-avsession-protocoltype-e-sys.md) | Define different protocol capability |
 | [SessionCategory](arkts-avsession-avsession-sessioncategory-e-sys.md) | Session category for different scenes. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [AVCastControlCommandType](arkts-avsession-avsession-avcastcontrolcommandtype-t.md) | The type of control command |
-| [AVControlCommandType](arkts-avsession-avsession-avcontrolcommandtype-t.md) | The type of control command. |
-| [AVMediaCenterControlType](arkts-avsession-avsession-avmediacentercontroltype-t.md) | The type of media center control command, which can be used to determine the button displayed on the media center. |
-| [AVSessionType](arkts-avsession-avsession-avsessiontype-t.md) | Session type supports audio & video, voice_call, video_call, photo |
-| [EventProcess](arkts-avsession-avsession-eventprocess-t.md) | The general process funcation with an event and arguments. |
-| [ExtraInfo](arkts-avsession-avsession-extrainfo-t.md) | The extra info object. |
-| [KeyRequestCallback](arkts-avsession-avsession-keyrequestcallback-t.md) | The callback of key request. |
-| [NoParamCallback](arkts-avsession-avsession-noparamcallback-t.md) | Defines the basic callback. |
-| [TwoParamCallback](arkts-avsession-avsession-twoparamcallback-t.md) | Defines the callback type including two parameters. |

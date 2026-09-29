@@ -14,6 +14,8 @@ export interface HoverModeRegionLayoutOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-export interface HoverModeRegionLayoutOptions--><!--Device-unnamed-export interface HoverModeRegionLayoutOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -40,6 +42,8 @@ extraRegionPosition?: ExtraRegionPosition
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-HoverModeRegionLayoutOptions-extraRegionPosition?: ExtraRegionPosition--><!--Device-HoverModeRegionLayoutOptions-extraRegionPosition?: ExtraRegionPosition-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## horizontalSplitRatio
@@ -60,6 +64,8 @@ horizontalSplitRatio?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-HoverModeRegionLayoutOptions-horizontalSplitRatio?: number--><!--Device-HoverModeRegionLayoutOptions-horizontalSplitRatio?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## showExtraRegion
@@ -79,5 +85,7 @@ showExtraRegion?: boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HoverModeRegionLayoutOptions-showExtraRegion?: boolean--><!--Device-HoverModeRegionLayoutOptions-showExtraRegion?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,7 +4,7 @@
 export interface subscribeAccelerometerOptions
 ```
 
-Defines the type of data to return for a subscription to data changes of the acceleration sensor.
+Sets the parameters for subscribing to the acceleration sensor, including the callback frequency and callback function.
 
 **Since:** 3
 
@@ -13,6 +13,8 @@ Defines the type of data to return for a subscription to data changes of the acc
 **Substitutes:** [ACCELEROMETER](arkts-sensorservice-sensor-sensorid-e.md#accelerometer)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
+
+<!--Device-unnamed-export interface subscribeAccelerometerOptions--><!--Device-unnamed-export interface subscribeAccelerometerOptions-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -28,7 +30,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 fail?: (data: string, code: number) => void
 ```
 
-Callback invoked when an API call fails.
+Callback invoked when an API call fails. The callback parameters are **data** of the string type and **code** of the number type, where **data** indicates the error information and **code** indicates the error code. If this parameter is not specified, no callback notification is sent when the API call fails.
 
 **Since:** 3
 
@@ -39,6 +41,8 @@ Callback invoked when an API call fails.
 **Required permissions:** ohos.permission.ACCELEROMETER
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-subscribeAccelerometerOptions-fail?: (data: string, code: number) => void--><!--Device-subscribeAccelerometerOptions-fail?: (data: string, code: number) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -55,7 +59,7 @@ Callback invoked when an API call fails.
 success: (data: AccelerometerResponse) => void
 ```
 
-Callback invoked when the acceleration sensor data changes.
+Callback function invoked when the acceleration sensor data changes. The callback parameter is an **AccelerometerResponse** object.
 
 **Since:** 3
 
@@ -66,6 +70,8 @@ Callback invoked when the acceleration sensor data changes.
 **Required permissions:** ohos.permission.ACCELEROMETER
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-subscribeAccelerometerOptions-success: (data: AccelerometerResponse) => void--><!--Device-subscribeAccelerometerOptions-success: (data: AccelerometerResponse) => void-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -83,11 +89,13 @@ interval: string
 
 Execution frequency of the callback for returning the acceleration sensor data.
 
-The default value is **normal**. The options are as follows:
+Default value: **'normal'**
 
-- **game**: called at an interval of 20 ms, which is applicable to gaming scenarios.  
-- **ui**: called at an interval of 60 ms, which is applicable to UI updating scenarios.  
-- **normal**: called at an interval of 200 ms, which is applicable to power-saving scenarios.
+Possible values:
+
+- **'game'**: called at an interval of 20 ms, which is applicable to gaming scenarios.  
+- **'ui'**: called at an interval of 60 ms, which is applicable to UI updating scenarios.  
+- **'normal'**: called at an interval of 200 ms, which is applicable to power-saving scenarios.
 
 **Type:** string
 
@@ -100,5 +108,7 @@ The default value is **normal**. The options are as follows:
 **Required permissions:** ohos.permission.ACCELEROMETER
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-subscribeAccelerometerOptions-interval: string--><!--Device-subscribeAccelerometerOptions-interval: string-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

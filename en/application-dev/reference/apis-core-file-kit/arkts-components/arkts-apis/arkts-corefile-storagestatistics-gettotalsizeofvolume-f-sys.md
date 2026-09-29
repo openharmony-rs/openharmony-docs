@@ -18,6 +18,8 @@ Get the total size of volume.
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
 
+<!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<long>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **System API:** This is a system API.
@@ -79,6 +81,8 @@ Get the total size of volume.
 **Since:** 8
 
 **Required permissions:** ohos.permission.STORAGE_MANAGER
+
+<!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string): Promise<long>--><!--Device-storageStatistics-function getTotalSizeOfVolume(volumeUuid: string): Promise<long>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

@@ -61,6 +61,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-sendableImage-function createImageSource(uri: string): ImageSource--><!--Device-sendableImage-function createImageSource(uri: string): ImageSource-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 **Parameters:**
@@ -102,6 +104,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-sendableImage-function createImageSource(fd: number): ImageSource--><!--Device-sendableImage-function createImageSource(fd: number): ImageSource-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
@@ -148,6 +152,8 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-sendableImage-function createImageSource(buf: ArrayBuffer): ImageSource--><!--Device-sendableImage-function createImageSource(buf: ArrayBuffer): ImageSource-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 

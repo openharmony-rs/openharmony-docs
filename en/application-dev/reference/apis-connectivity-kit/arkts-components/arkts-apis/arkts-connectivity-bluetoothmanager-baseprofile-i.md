@@ -12,6 +12,8 @@ Base interface of profile.
 
 **Substitutes:** [BaseProfile](arkts-connectivity-baseprofile-baseprofile-i.md)
 
+<!--Device-bluetoothManager-interface BaseProfile--><!--Device-bluetoothManager-interface BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -37,6 +39,8 @@ Obtains the connected devices list of profile. On API 10 and above, the permissi
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
+
+<!--Device-BaseProfile-getConnectionDevices(): Array<string>--><!--Device-BaseProfile-getConnectionDevices(): Array<string>-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -86,6 +90,8 @@ Obtains the profile state of device. On API 10 and above, the permission require
 **Required permissions:** 
 - API version 10 and later: ohos.permission.ACCESS_BLUETOOTH
 - API version 9: ohos.permission.USE_BLUETOOTH
+
+<!--Device-BaseProfile-getDeviceState(device: string): ProfileConnectionState--><!--Device-BaseProfile-getDeviceState(device: string): ProfileConnectionState-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

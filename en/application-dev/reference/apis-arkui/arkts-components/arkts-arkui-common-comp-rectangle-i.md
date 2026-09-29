@@ -27,6 +27,8 @@ The data type used to describe a rectangular area.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface Rectangle--><!--Device-unnamed-declare interface Rectangle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## height
@@ -46,6 +48,8 @@ Default value: **'100%'**
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Rectangle-height?: Length--><!--Device-Rectangle-height?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +71,8 @@ Default value: **'100%'**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-Rectangle-width?: Length--><!--Device-Rectangle-width?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -87,6 +93,8 @@ Default value: **0vp**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-Rectangle-x?: Length--><!--Device-Rectangle-x?: Length-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -106,5 +114,7 @@ Default value: **0vp**
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Rectangle-y?: Length--><!--Device-Rectangle-y?: Length-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

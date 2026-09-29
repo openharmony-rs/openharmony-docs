@@ -8,11 +8,13 @@ Enumerates the types of the slider in the block direction.
 
 | Name | Value| Description |  
 | ------- | -- | ---------------------- |  
-| [DEFAULT](arkts-arkui-slider-comp-sliderblocktype-e.md) | 0 | Round slider. |
-| [IMAGE](arkts-arkui-slider-comp-sliderblocktype-e.md) | 1 | Slider with an image background. |
-| [SHAPE](arkts-arkui-slider-comp-sliderblocktype-e.md) | 2 | Slider in a custom shape.|
+| DEFAULT | 0 | Default slider (round). |
+| IMAGE | 1 | Slider with an image background. |
+| SHAPE | 2 | Slider in a custom shape.|
 
 **Since:** 10
+
+<!--Device-unnamed-declare enum SliderBlockType--><!--Device-unnamed-declare enum SliderBlockType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,8 @@ Round slider.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderBlockType-DEFAULT = 0--><!--Device-SliderBlockType-DEFAULT = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## IMAGE
@@ -46,6 +50,8 @@ Slider with an image background.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SliderBlockType-IMAGE = 1--><!--Device-SliderBlockType-IMAGE = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## SHAPE
@@ -61,5 +67,7 @@ Slider in a custom shape.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SliderBlockType-SHAPE = 2--><!--Device-SliderBlockType-SHAPE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

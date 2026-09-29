@@ -8,6 +8,8 @@ Permission query information.
 
 **Since:** 26.0.0
 
+<!--Device-abilityToolAccessCtrl-interface PermissionQuery--><!--Device-abilityToolAccessCtrl-interface PermissionQuery-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Caller token ID. Value range: (-∞,+∞).
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionQuery-callerTokenId?: long--><!--Device-PermissionQuery-callerTokenId?: long-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ Domain ID.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionQuery-domainId?: string--><!--Device-PermissionQuery-domainId?: string-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -67,6 +73,8 @@ Whether a ticket is required.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionQuery-needTicket?: boolean--><!--Device-PermissionQuery-needTicket?: boolean-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -84,6 +92,8 @@ Operation information list.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionQuery-operationInfo: OperationInfo[]--><!--Device-PermissionQuery-operationInfo: OperationInfo[]-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -103,6 +113,8 @@ Remote device information.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionQuery-remoteInfo?: RemoteInfo--><!--Device-PermissionQuery-remoteInfo?: RemoteInfo-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -120,6 +132,8 @@ Ticket expiration time in milliseconds. Unit: milliseconds. The value must be gr
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionQuery-ticketExpireTimeMs?: long--><!--Device-PermissionQuery-ticketExpireTimeMs?: long-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

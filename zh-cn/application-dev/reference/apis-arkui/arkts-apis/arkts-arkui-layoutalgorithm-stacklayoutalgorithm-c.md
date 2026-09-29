@@ -17,6 +17,8 @@ export class StackLayoutAlgorithm implements LayoutAlgorithm
 
 **装饰器类型：** @ObservedV2
 
+<!--Device-unnamed-export class StackLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class StackLayoutAlgorithm implements LayoutAlgorithm-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -35,6 +37,8 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-StackLayoutAlgorithm-constructor(option?: StackLayoutAlgorithmOptions)--><!--Device-StackLayoutAlgorithm-constructor(option?: StackLayoutAlgorithmOptions)-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -45,7 +49,7 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **示例**
 
-请参考DynamicLayout组件示例2（切换布局算法）。
+请参考DynamicLayout组件[示例2（切换布局算法）](../arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
 ## alignContent
 
@@ -70,5 +74,7 @@ public alignContent?: LocalizedAlignment
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-StackLayoutAlgorithm-public alignContent?: LocalizedAlignment--><!--Device-StackLayoutAlgorithm-public alignContent?: LocalizedAlignment-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

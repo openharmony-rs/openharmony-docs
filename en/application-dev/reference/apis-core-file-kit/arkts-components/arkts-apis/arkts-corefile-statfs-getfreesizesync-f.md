@@ -16,6 +16,8 @@ Obtains the free size of the specified file system, in bytes. This API returns t
 
 **Since:** 10
 
+<!--Device-statfs-function getFreeSizeSync(path: string): long--><!--Device-statfs-function getFreeSizeSync(path: string): long-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

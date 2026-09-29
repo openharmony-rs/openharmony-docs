@@ -1,12 +1,18 @@
 # Search
 
-The **Search** component provides an area for users to enter search queries.
+The search box component supports configuration of the search icon, clear button, search button, placeholder text, custom keyboard, and other features. It is applicable to scenarios such as the search content input box of a browser and in-app search.
 
-> **NOTE** > > This component supports plain text only. For rich text, use the [RichEditor](arkts-arkui-richeditor-comp.md#rich_editor) component.
+> **NOTE:** 
+> 
+> - This component is supported since API version 8. New APIs of later versions are marked with a superscript to indicate their earliest version.
+> 
+> - This component supports only a single text style. To implement a rich text style, use the [RichEditor](arkts-arkui-richeditor-comp.md) component.
+> 
+> - To set whether to clear text selection and handles when touching outside the text component, use the [setTextSelectionClearPolicy](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#settextselectionclearpolicy) API.
 
 ## Child Components
 
-Not supported
+None
 
 ## Search
 
@@ -20,13 +26,15 @@ Defines the constructor of Search.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-SearchInterface-(options?: SearchOptions): SearchAttribute--><!--Device-SearchInterface-(options?: SearchOptions): SearchAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [SearchOptions](arkts-arkui-search-comp-searchoptions-i.md) | No | Initialization options of the **Search** component. |
+| options | [SearchOptions](arkts-arkui-search-comp-searchoptions-i.md) | No | Initialization options of the search box component. Pass this parameter when you need to set the initial value, placeholder text, icon, or controller of the search box. If this parameter is not passed, the default configuration is used. |
 
 ## Summary
 
@@ -38,20 +46,20 @@ Defines the constructor of Search.
 | [CancelButtonSymbolOptions](arkts-arkui-search-comp-cancelbuttonsymboloptions-i.md) | Defines the CancelButton symbol options. |
 | [IconOptions](arkts-arkui-search-comp-iconoptions-i.md) | Defines the icon options. |
 | [SearchButtonOptions](arkts-arkui-search-comp-searchbuttonoptions-i.md) | Defines the SearchButton options. |
-| [SearchOptions](arkts-arkui-search-comp-searchoptions-i.md) | Describes the initialization options of the **Search** component. |
+| [SearchOptions](arkts-arkui-search-comp-searchoptions-i.md) | Initialization parameters of Search. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [SearchSubmitCallback](arkts-arkui-search-comp-searchsubmitcallback-t.md) | Called when the search icon, search button, or soft keyboard search button is clicked. |
+| [SearchSubmitCallback](arkts-arkui-search-comp-searchsubmitcallback-t.md) | Callback invoked when the search icon or search button is tapped, or when the search button on the soft keyboard is pressed. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
 | [CancelButtonStyle](arkts-arkui-search-comp-cancelbuttonstyle-e.md) | Enum for the style of cancel button. |
-| [SearchType](arkts-arkui-search-comp-searchtype-e.md) | Enumerates the text input types of a search box. |
+| [SearchType](arkts-arkui-search-comp-searchtype-e.md) | Enumerates the search input box types. |
 
 ## Examples
 

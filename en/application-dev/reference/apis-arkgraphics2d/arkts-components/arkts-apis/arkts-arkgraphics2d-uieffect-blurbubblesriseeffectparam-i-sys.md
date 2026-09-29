@@ -8,6 +8,8 @@ The parameters of blur bubbles rise effect.
 
 **Since:** 26.0.0
 
+<!--Device-uiEffect-interface BlurBubblesRiseEffectParam--><!--Device-uiEffect-interface BlurBubblesRiseEffectParam-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The Gaussian blur intensity of the blur bubbles rise effect. The value range is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BlurBubblesRiseEffectParam-blurIntensity: double--><!--Device-BlurBubblesRiseEffectParam-blurIntensity: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The mask image for the blur bubbles rise effect, controlling the blur bubbles ar
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlurBubblesRiseEffectParam-maskImage: image.PixelMap--><!--Device-BlurBubblesRiseEffectParam-maskImage: image.PixelMap-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -68,6 +74,8 @@ The mixing strength between the original and blurred images. The value range is 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-BlurBubblesRiseEffectParam-mixStrength: double--><!--Device-BlurBubblesRiseEffectParam-mixStrength: double-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 **System API:** This is a system API.
@@ -85,6 +93,8 @@ The animation progress of the blur bubbles rise effect. The value range is [0, 1
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlurBubblesRiseEffectParam-progress: double--><!--Device-BlurBubblesRiseEffectParam-progress: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

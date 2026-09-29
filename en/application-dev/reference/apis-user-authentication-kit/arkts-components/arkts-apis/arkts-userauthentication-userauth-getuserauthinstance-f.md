@@ -22,7 +22,9 @@ Obtains a [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-userAuth-function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance--><!--Device-userAuth-function getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

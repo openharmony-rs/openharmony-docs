@@ -4,6 +4,8 @@ The module provides APIs for obtaining application information, including bundle
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace bundleManager--><!--Device-unnamed-declare namespace bundleManager-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## Modules to Import
@@ -165,41 +167,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | [verifyAbc](arkts-ability-bundlemanager-verifyabc-f-sys.md#verifyabc-1) | Verifies an .abc file. This API uses a promise to return the result. |
 <!--DelEnd-->
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md) | Enumerates the ability flags, which indicate the type of ability information to obtain. |
-| [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md) | Enumerates the types of ability components. |
-| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md) | Enumerates the bundle flags, which indicate the type of bundle information to obtain. |
-| [BundleInstallStatus](arkts-ability-bundlemanager-bundleinstallstatus-e.md) | Enumerates the application installation statuses. |
-| [BundleType](arkts-ability-bundlemanager-bundletype-e.md) | Enumerates the bundle types. |
-| [CompatiblePolicy](arkts-ability-bundlemanager-compatiblepolicy-e.md) | Defines the version compatibility type of the dynamic shared library. |
-| [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md) | Enumerates the display orientations of the ability. It is applicable only to [PageAbility](../../../application-models/pageability-overview.md) in the FA model. |
-| [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | Enumerates the types of ExtensionAbility components. |
-| [LaunchType](arkts-ability-bundlemanager-launchtype-e.md) | Enumerates the [launch types](../../../application-models/uiability-launch-type.md) of the UIAbility. |
-| [ModuleType](arkts-ability-bundlemanager-moduletype-e.md) | Enumerates the module types. |
-| [MultiAppModeType](arkts-ability-bundlemanager-multiappmodetype-e.md) | Enumerates the types of the multi-app mode. |
-| [PermissionGrantState](arkts-ability-bundlemanager-permissiongrantstate-e.md) | Enumerates the permission grant states. |
-| [SupportWindowMode](arkts-ability-bundlemanager-supportwindowmode-e.md) | Enumerates the window modes supported by the ability. |
-
-<!--Del-->
-### Enums(System API)
-
-| Name | Description |
-| --- | --- |
-| [AppClonePreferenceMode](arkts-ability-bundlemanager-appclonepreferencemode-e-sys.md) | Enumerates the application clone preference modes. |
-| [AppDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md) | Enumerates the application [distribution types](../../../security/app-provision-structure.md). |
-| [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md) | Enumerates the application flags, which indicate the type of application information to obtain. |
-| [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md) | Enumerates the application information flag, which describes the status between an application and user. |
-| [ApplicationReservedFlag](arkts-ability-bundlemanager-applicationreservedflag-e-sys.md) | Each bit of this ApplicationReservedFlag value identifies relevant information. |
-| [AppSandboxPolicy](arkts-ability-bundlemanager-appsandboxpolicy-e-sys.md) | App sandbox policy for dual-mode (2in1/tablet) scenarios. |
-| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e-sys.md) | Enumerates the bundle flags, which indicate the type of bundle information to obtain. |
-| [DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md) | Define the enumeration of device mode distribution policies, which is used to specify how an application is distributed on a device. |
-| [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md) | Enumerates the ExtensionAbility flags, which indicate the type of ExtensionAbility information to obtain. |
-| [ProfileType](arkts-ability-bundlemanager-profiletype-e-sys.md) | Enumerates the types of profiles (also called application files). |
-<!--DelEnd-->
-
 ### Types
 
 | Name | Description |
@@ -242,4 +209,39 @@ import { bundleManager } from '@kit.AbilityKit';
 | [RecoverableApplicationInfo](arkts-ability-bundlemanager-recoverableapplicationinfo-t-sys.md) | Defines the information about a preinstalled application that can be restored after being uninstalled. |
 | [SharedBundleInfo](arkts-ability-bundlemanager-sharedbundleinfo-t-sys.md) | Defines the shared bundle information. |
 | [Validity](arkts-ability-bundlemanager-validity-t-sys.md) | Defines the validity period in the configuration file. |
+<!--DelEnd-->
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md) | Enumerates the ability flags, which indicate the type of ability information to obtain. |
+| [AbilityType](arkts-ability-bundlemanager-abilitytype-e.md) | Enumerates the types of ability components. |
+| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md) | Enumerates the bundle flags, which indicate the type of bundle information to obtain. |
+| [BundleInstallStatus](arkts-ability-bundlemanager-bundleinstallstatus-e.md) | Enumerates the application installation statuses. |
+| [BundleType](arkts-ability-bundlemanager-bundletype-e.md) | Enumerates the bundle types. |
+| [CompatiblePolicy](arkts-ability-bundlemanager-compatiblepolicy-e.md) | Defines the version compatibility type of the dynamic shared library. |
+| [DisplayOrientation](arkts-ability-bundlemanager-displayorientation-e.md) | Enumerates the display orientations of the ability. It is applicable only to [PageAbility](../../../application-models/pageability-overview.md) in the FA model. |
+| [ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | Enumerates the types of ExtensionAbility components. |
+| [LaunchType](arkts-ability-bundlemanager-launchtype-e.md) | Enumerates the [launch types](../../../application-models/uiability-launch-type.md) of the UIAbility. |
+| [ModuleType](arkts-ability-bundlemanager-moduletype-e.md) | Enumerates the module types. |
+| [MultiAppModeType](arkts-ability-bundlemanager-multiappmodetype-e.md) | Enumerates the types of the multi-app mode. |
+| [PermissionGrantState](arkts-ability-bundlemanager-permissiongrantstate-e.md) | Enumerates the permission grant states. |
+| [SupportWindowMode](arkts-ability-bundlemanager-supportwindowmode-e.md) | Enumerates the window modes supported by the ability. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [AppClonePreferenceMode](arkts-ability-bundlemanager-appclonepreferencemode-e-sys.md) | Enumerates the application clone preference modes. |
+| [AppDistributionType](arkts-ability-bundlemanager-appdistributiontype-e-sys.md) | Enumerates the application [distribution types](../../../security/app-provision-structure.md). |
+| [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md) | Enumerates the application flags, which indicate the type of application information to obtain. |
+| [ApplicationInfoFlag](arkts-ability-bundlemanager-applicationinfoflag-e-sys.md) | Enumerates the application information flag, which describes the status between an application and user. |
+| [ApplicationReservedFlag](arkts-ability-bundlemanager-applicationreservedflag-e-sys.md) | Each bit of this ApplicationReservedFlag value identifies relevant information. |
+| [AppSandboxPolicy](arkts-ability-bundlemanager-appsandboxpolicy-e-sys.md) | App sandbox policy for dual-mode (2in1/tablet) scenarios. |
+| [BundleFlag](arkts-ability-bundlemanager-bundleflag-e-sys.md) | Enumerates the bundle flags, which indicate the type of bundle information to obtain. |
+| [DeviceModeDistributionPolicy](arkts-ability-bundlemanager-devicemodedistributionpolicy-e-sys.md) | Define the enumeration of device mode distribution policies, which is used to specify how an application is distributed on a device. |
+| [ExtensionAbilityFlag](arkts-ability-bundlemanager-extensionabilityflag-e-sys.md) | Enumerates the ExtensionAbility flags, which indicate the type of ExtensionAbility information to obtain. |
+| [ProfileType](arkts-ability-bundlemanager-profiletype-e-sys.md) | Enumerates the types of profiles (also called application files). |
 <!--DelEnd-->

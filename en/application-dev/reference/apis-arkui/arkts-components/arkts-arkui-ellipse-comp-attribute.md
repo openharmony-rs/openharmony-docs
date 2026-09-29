@@ -16,4 +16,6 @@ The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [unive
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare class EllipseAttribute extends CommonShapeMethod<EllipseAttribute>--><!--Device-unnamed-declare class EllipseAttribute extends CommonShapeMethod<EllipseAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -23,6 +23,8 @@ Disables the age group detection function.
 
 **Deprecated since:** 24
 
+<!--Device-userStatus-function off(type: 'userAgeGroupDetected', callback?: Callback<UserClassification>): void--><!--Device-userStatus-function off(type: 'userAgeGroupDetected', callback?: Callback<UserClassification>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **Parameters:**

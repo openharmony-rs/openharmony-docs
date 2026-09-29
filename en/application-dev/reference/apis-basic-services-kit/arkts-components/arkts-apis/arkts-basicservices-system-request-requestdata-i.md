@@ -10,6 +10,8 @@ export interface RequestData
 
 **Substitutes:** [RequestData](arkts-basicservices-request-requestdata-i.md)
 
+<!--Device-unnamed-export interface RequestData--><!--Device-unnamed-export interface RequestData-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Name of the form element.
 
 **Substitutes:** name
 
+<!--Device-RequestData-name: string--><!--Device-RequestData-name: string-End-->
+
 **System capability:** SystemCapability.MiscServices.Upload
 
 ## value
@@ -51,5 +55,7 @@ Value of the form element.
 **Deprecated since:** 9
 
 **Substitutes:** value
+
+<!--Device-RequestData-value: string--><!--Device-RequestData-value: string-End-->
 
 **System capability:** SystemCapability.MiscServices.Upload

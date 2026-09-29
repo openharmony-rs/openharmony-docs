@@ -19,6 +19,8 @@ Enables vehicle awareness and subscribes to vehicle awareness results. If this f
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-carAwareness-function onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?:  CarAwarenessOptions): void--><!--Device-carAwareness-function onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?:  CarAwarenessOptions): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **System API:** This is a system API.

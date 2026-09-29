@@ -16,6 +16,8 @@ Checks whether an application is enabled. This API returns the result synchronou
 
 **Since:** 10
 
+<!--Device-bundleManager-function isApplicationEnabledSync(bundleName: string): boolean--><!--Device-bundleManager-function isApplicationEnabledSync(bundleName: string): boolean-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.

@@ -2,7 +2,11 @@
 
 The **Path** component generates a closed custom shape based on the drawing path, and supports defining complex geometric shapes through the SVG path syntax.
 
-> **NOTE** > > Since API version 20, this component supports updating constructor parameters through the > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the > [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class.
+> **NOTE:** 
+> 
+> Since API version 20, this component supports updating constructor parameters through the
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
+> [AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md) class.
 
 ## Child Components
 
@@ -48,6 +52,8 @@ Creates a **Path** object instance, which is used to generate a closed custom sh
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-PathInterface-new (options?: PathOptions): PathAttribute--><!--Device-PathInterface-new (options?: PathOptions): PathAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -69,6 +75,8 @@ Creates a **Path** component, which is used to generate a closed custom shape ba
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-PathInterface-(options?: PathOptions): PathAttribute--><!--Device-PathInterface-(options?: PathOptions): PathAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

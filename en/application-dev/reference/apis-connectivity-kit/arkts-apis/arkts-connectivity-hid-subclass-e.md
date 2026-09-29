@@ -8,6 +8,8 @@ Describe the subclass.
 
 **Since:** 23
 
+<!--Device-hid-enum Subclass--><!--Device-hid-enum Subclass-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SUBCLASS_UNCATEGORIZED
@@ -21,6 +23,8 @@ Uncategorized subclass.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Subclass-SUBCLASS_UNCATEGORIZED = 0--><!--Device-Subclass-SUBCLASS_UNCATEGORIZED = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -36,6 +40,8 @@ Joystick subclass.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Subclass-SUBCLASS_JOYSTICK = 1--><!--Device-Subclass-SUBCLASS_JOYSTICK = 1-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SUBCLASS_GAMEPAD
@@ -49,6 +55,8 @@ Gamepad subclass.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Subclass-SUBCLASS_GAMEPAD = 2--><!--Device-Subclass-SUBCLASS_GAMEPAD = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -64,6 +72,8 @@ Remote control subclass.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Subclass-SUBCLASS_REMOTE_CONTROL = 3--><!--Device-Subclass-SUBCLASS_REMOTE_CONTROL = 3-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SUBCLASS_SENSING_DEVICE
@@ -77,6 +87,8 @@ Sensing device subclass.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Subclass-SUBCLASS_SENSING_DEVICE = 4--><!--Device-Subclass-SUBCLASS_SENSING_DEVICE = 4-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -92,6 +104,8 @@ digitizer tablet subclass.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Subclass-SUBCLASS_DIGITIZER_TABLET = 5--><!--Device-Subclass-SUBCLASS_DIGITIZER_TABLET = 5-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SUBCLASS_CARD_READER
@@ -105,6 +119,8 @@ Card reader subclass.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Subclass-SUBCLASS_CARD_READER = 6--><!--Device-Subclass-SUBCLASS_CARD_READER = 6-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -120,6 +136,8 @@ Keyboard subclass.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Subclass-SUBCLASS_KEYBOARD = 64--><!--Device-Subclass-SUBCLASS_KEYBOARD = 64-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SUBCLASS_MOUSE
@@ -134,6 +152,8 @@ Mouse subclass.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Subclass-SUBCLASS_MOUSE = 128--><!--Device-Subclass-SUBCLASS_MOUSE = 128-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## SUBCLASS_COMBO
@@ -147,5 +167,7 @@ Combo subclass.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Subclass-SUBCLASS_COMBO = 192--><!--Device-Subclass-SUBCLASS_COMBO = 192-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

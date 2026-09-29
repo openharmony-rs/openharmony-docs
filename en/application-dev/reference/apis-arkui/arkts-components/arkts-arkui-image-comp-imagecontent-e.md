@@ -8,6 +8,8 @@ Defines the image content.
 
 **Since:** 12
 
+<!--Device-unnamed-declare enum ImageContent--><!--Device-unnamed-declare enum ImageContent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## EMPTY
@@ -25,5 +27,7 @@ Empty image.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ImageContent-EMPTY = 0--><!--Device-ImageContent-EMPTY = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

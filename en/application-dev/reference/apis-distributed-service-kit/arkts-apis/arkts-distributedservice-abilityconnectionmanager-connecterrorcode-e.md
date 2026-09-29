@@ -8,6 +8,8 @@ Enumerates connection error codes.
 
 **Since:** 18
 
+<!--Device-abilityConnectionManager-export enum ConnectErrorCode--><!--Device-abilityConnectionManager-export enum ConnectErrorCode-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## CONNECTED_SESSION_EXISTS
@@ -21,6 +23,8 @@ A session already exists between applications.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectErrorCode-CONNECTED_SESSION_EXISTS = 0--><!--Device-ConnectErrorCode-CONNECTED_SESSION_EXISTS = 0-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -36,6 +40,8 @@ The peer application rejects the collaboration request.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1--><!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## LOCAL_WIFI_NOT_OPEN
@@ -49,6 +55,8 @@ Wi-Fi is disabled at the local end.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectErrorCode-LOCAL_WIFI_NOT_OPEN = 2--><!--Device-ConnectErrorCode-LOCAL_WIFI_NOT_OPEN = 2-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
@@ -64,6 +72,8 @@ Wi-Fi is disabled at the peer end.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3--><!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## PEER_ABILITY_NO_ONCOLLABORATE
@@ -78,6 +88,8 @@ The **onCollaborate** callback is not implemented.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectErrorCode-PEER_ABILITY_NO_ONCOLLABORATE = 4--><!--Device-ConnectErrorCode-PEER_ABILITY_NO_ONCOLLABORATE = 4-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 ## SYSTEM_INTERNAL_ERROR
@@ -91,5 +103,7 @@ An internal system error occurs.
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectErrorCode-SYSTEM_INTERNAL_ERROR = 5--><!--Device-ConnectErrorCode-SYSTEM_INTERNAL_ERROR = 5-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

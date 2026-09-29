@@ -20,6 +20,8 @@ Creates a **Connection** object on the device that functions as the client. Afte
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-linkEnhance-function createConnection(deviceId: string, name: string): Connection--><!--Device-linkEnhance-function createConnection(deviceId: string, name: string): Connection-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**

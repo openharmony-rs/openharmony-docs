@@ -17,6 +17,8 @@ allSettled<T extends readonly unknown[] | []>(values: T): Promise<{ -readonly [P
 
 Creates a Promise that is resolved with an array of results when all of the provided Promises resolve or reject.
 
+<!--Device-PromiseConstructor-allSettled<T extends readonly unknown[] | []>(values: T): Promise<{ -readonly [P in keyof T]: PromiseSettledResult<Awaited<T[P]>> }>--><!--Device-PromiseConstructor-allSettled<T extends readonly unknown[] | []>(values: T): Promise<{ -readonly [P in keyof T]: PromiseSettledResult<Awaited<T[P]>> }>-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -38,6 +40,8 @@ allSettled<T>(values: Iterable<T | PromiseLike<T>>): Promise<PromiseSettledResul
 ```
 
 Creates a Promise that is resolved with an array of results when all of the provided Promises resolve or reject.
+
+<!--Device-PromiseConstructor-allSettled<T>(values: Iterable<T | PromiseLike<T>>): Promise<PromiseSettledResult<Awaited<T>>[]>--><!--Device-PromiseConstructor-allSettled<T>(values: Iterable<T | PromiseLike<T>>): Promise<PromiseSettledResult<Awaited<T>>[]>-End-->
 
 **Parameters:**
 

@@ -8,6 +8,8 @@ ArcSwiper容器组件的控制器，可以将此对象绑定至ArcSwiper组件�
 
 **起始版本：** 18
 
+<!--Device-unnamed-export class ArcSwiperController--><!--Device-unnamed-export class ArcSwiperController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -28,6 +30,8 @@ ArcSwiperController的构造函数。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSwiperController-constructor()--><!--Device-ArcSwiperController-constructor()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## finishAnimation
@@ -41,6 +45,8 @@ finishAnimation(handler?: FinishAnimationHandler)
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSwiperController-finishAnimation(handler?: FinishAnimationHandler)--><!--Device-ArcSwiperController-finishAnimation(handler?: FinishAnimationHandler)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -62,6 +68,8 @@ showNext()
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcSwiperController-showNext()--><!--Device-ArcSwiperController-showNext()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## showPrevious
@@ -75,5 +83,7 @@ showPrevious()
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcSwiperController-showPrevious()--><!--Device-ArcSwiperController-showPrevious()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

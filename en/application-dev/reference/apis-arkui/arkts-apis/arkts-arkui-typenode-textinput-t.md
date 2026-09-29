@@ -12,6 +12,8 @@ Represents a FrameNode of the **TextInput** type.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-typeNode-type TextInput = TypedFrameNode<TextInputInterface, TextInputAttribute>--><!--Device-typeNode-type TextInput = TypedFrameNode<TextInputInterface, TextInputAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextInputInterface, [TextInputAttribute](../arkts-components/arkts-arkui-textinput-comp-attribute.md)&gt;

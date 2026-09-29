@@ -18,6 +18,8 @@ Check whether the device supports a specified feature.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function isFeatureSupported(featureId: long): boolean--><!--Device-wifiManager-function isFeatureSupported(featureId: long): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 **Parameters:**

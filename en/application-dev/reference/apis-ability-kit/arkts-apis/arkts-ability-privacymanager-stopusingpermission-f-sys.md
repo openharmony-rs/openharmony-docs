@@ -22,6 +22,8 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-privacyManager-function stopUsingPermission(tokenID: int, permissionName: Permissions): Promise<void>--><!--Device-privacyManager-function stopUsingPermission(tokenID: int, permissionName: Permissions): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -85,6 +87,8 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-privacyManager-function stopUsingPermission(tokenID: int, permissionName: Permissions, callback: AsyncCallback<void>): void--><!--Device-privacyManager-function stopUsingPermission(tokenID: int, permissionName: Permissions, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -151,6 +155,8 @@ The PID must be the same as the PID passed in [startUsingPermission](arkts-abili
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-privacyManager-function stopUsingPermission(    tokenID: int,    permissionName: Permissions,    pid?: int,    options?: PermissionUsingOptions  ): Promise<void>--><!--Device-privacyManager-function stopUsingPermission(    tokenID: int,    permissionName: Permissions,    pid?: int,    options?: PermissionUsingOptions  ): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -237,6 +243,8 @@ The pid must be the same as the pid passed into [startUsingPermission](arkts-abi
 **Required permissions:** ohos.permission.PERMISSION_USED_STATS
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-privacyManager-function stopUsingPermission(    tokenID: int,    permissionName: Permissions,    pid?: int  ): Promise<void>--><!--Device-privacyManager-function stopUsingPermission(    tokenID: int,    permissionName: Permissions,    pid?: int  ): Promise<void>-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

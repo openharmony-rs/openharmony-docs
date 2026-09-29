@@ -8,6 +8,8 @@ Enumerates the coloring strategies.
 
 **Since:** 10
 
+<!--Device-unnamed-declare enum ColoringStrategy--><!--Device-unnamed-declare enum ColoringStrategy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## INVERT
@@ -23,6 +25,8 @@ The foreground colors are the inverse of the component background colors. This s
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ColoringStrategy-INVERT = 'invert'--><!--Device-ColoringStrategy-INVERT = 'invert'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ The shadow colors of the component are the average color obtained from the compo
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ColoringStrategy-AVERAGE = 'average'--><!--Device-ColoringStrategy-AVERAGE = 'average'-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## PRIMARY
@@ -55,5 +61,7 @@ The shadow colors of the component are the primary color obtained from the compo
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ColoringStrategy-PRIMARY = 'primary'--><!--Device-ColoringStrategy-PRIMARY = 'primary'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

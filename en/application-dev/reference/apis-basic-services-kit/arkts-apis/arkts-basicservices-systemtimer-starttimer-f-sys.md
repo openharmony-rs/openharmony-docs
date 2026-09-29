@@ -16,6 +16,8 @@ Starts a timer. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
+<!--Device-systemTimer-function startTimer(timer: long, triggerTime: long, callback: AsyncCallback<void>): void--><!--Device-systemTimer-function startTimer(timer: long, triggerTime: long, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Time
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ function startTimer(timer: number, triggerTime: number): Promise<void>
 Starts a timer. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-systemTimer-function startTimer(timer: long, triggerTime: long): Promise<void>--><!--Device-systemTimer-function startTimer(timer: long, triggerTime: long): Promise<void>-End-->
 
 **System capability:** SystemCapability.MiscServices.Time
 

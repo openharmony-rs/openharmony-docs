@@ -8,6 +8,8 @@ Defines mode for playback capture, each mode means different target streams to c
 
 **Since:** 26.0.0
 
+<!--Device-audio-enum AudioPlaybackCaptureMode--><!--Device-audio-enum AudioPlaybackCaptureMode-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
 ## MODE_ONLY_VOIP
@@ -21,6 +23,8 @@ Only voip mode. Capture only voice/video communication streams. If [playbackCapt
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioPlaybackCaptureMode-MODE_ONLY_VOIP = 0x4000--><!--Device-AudioPlaybackCaptureMode-MODE_ONLY_VOIP = 0x4000-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 

@@ -20,6 +20,8 @@ Queries the serial number of the usb device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-usbManager-function getUsbSerialNumber(busNum: number, devAddress: number): string--><!--Device-usbManager-function getUsbSerialNumber(busNum: number, devAddress: number): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

@@ -10,6 +10,8 @@ Parameters for target searching.
 
 **Since:** 21
 
+<!--Device-mechanicManager-export interface SearchParams--><!--Device-mechanicManager-export interface SearchParams-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Search direction.
 **Type:** [SearchDirection](arkts-mechanic-mechanicmanager-searchdirection-e-sys.md)
 
 **Since:** 21
+
+<!--Device-SearchParams-direction: SearchDirection--><!--Device-SearchParams-direction: SearchDirection-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

@@ -12,4 +12,6 @@ declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecora
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecorator--><!--Device-unnamed-declare function Env<T>(key: SystemEnvKey<T> | SystemProperties): PropertyDecorator-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

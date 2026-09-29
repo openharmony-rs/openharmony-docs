@@ -8,6 +8,8 @@ Defines the offset area between the input method soft keyboard and the system pa
 
 **Since:** 21
 
+<!--Device-inputMethodEngine-interface SystemPanelInsets--><!--Device-inputMethodEngine-interface SystemPanelInsets-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Distance between the bottom border of the keyboard area and the bottom border of
 
 **Since:** 21
 
+<!--Device-SystemPanelInsets-readonly bottom: int--><!--Device-SystemPanelInsets-readonly bottom: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## left
@@ -42,6 +46,8 @@ Distance between the left border of the keyboard area and the left border of the
 
 **Since:** 21
 
+<!--Device-SystemPanelInsets-readonly left: int--><!--Device-SystemPanelInsets-readonly left: int-End-->
+
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 ## right
@@ -55,5 +61,7 @@ Distance between the right border of the keyboard area and the right border of t
 **Type:** number
 
 **Since:** 21
+
+<!--Device-SystemPanelInsets-readonly right: int--><!--Device-SystemPanelInsets-readonly right: int-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

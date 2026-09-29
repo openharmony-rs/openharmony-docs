@@ -8,6 +8,8 @@ Defines the minimum speed of a task. If the task speed is lower than the preset 
 
 **Since:** 20
 
+<!--Device-agent-interface MinSpeed--><!--Device-agent-interface MinSpeed-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Duration during which the task speed can be lower than the minimum speed, in sec
 
 **Since:** 20
 
+<!--Device-MinSpeed-duration: int--><!--Device-MinSpeed-duration: int-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 ## speed
@@ -41,5 +45,7 @@ Minimum speed of a task, in byte/s. If the task speed is lower than this value f
 **Type:** number
 
 **Since:** 20
+
+<!--Device-MinSpeed-speed: long--><!--Device-MinSpeed-speed: long-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

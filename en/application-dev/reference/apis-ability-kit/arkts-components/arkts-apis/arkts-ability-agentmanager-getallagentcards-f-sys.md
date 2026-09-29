@@ -20,6 +20,8 @@ Obtains all AgentCards on the device. This API uses a promise to return the resu
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function getAllAgentCards(): Promise<Array<AgentCard>>--><!--Device-agentManager-function getAllAgentCards(): Promise<Array<AgentCard>>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

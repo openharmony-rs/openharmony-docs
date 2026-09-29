@@ -8,6 +8,8 @@ Defines the package configuration information in the **pack.info** file.
 
 **Since:** 9
 
+<!--Device-freeInstall-export type PackageConfig = _PackInfo.PackageConfig--><!--Device-freeInstall-export type PackageConfig = _PackInfo.PackageConfig-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.

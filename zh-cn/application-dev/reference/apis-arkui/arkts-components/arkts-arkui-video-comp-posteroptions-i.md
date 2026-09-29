@@ -8,6 +8,8 @@ declare interface PosterOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface PosterOptions--><!--Device-unnamed-declare interface PosterOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentTransitionEffect
@@ -32,6 +34,8 @@ contentTransitionEffect?: ContentTransitionEffect
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
+<!--Device-PosterOptions-contentTransitionEffect?: ContentTransitionEffect--><!--Device-PosterOptions-contentTransitionEffect?: ContentTransitionEffect-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## showFirstFrame
@@ -55,5 +59,7 @@ true：开启首帧送显；false：关闭首帧送显。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PosterOptions-showFirstFrame?: boolean--><!--Device-PosterOptions-showFirstFrame?: boolean-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

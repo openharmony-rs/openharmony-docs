@@ -8,6 +8,8 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 **Since:** 10
 
+<!--Device-componentUtils-interface ComponentInfo--><!--Device-componentUtils-interface ComponentInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Offset of the component relative to the parent component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ComponentInfo-localOffset: Offset--><!--Device-ComponentInfo-localOffset: Offset-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rotate
@@ -49,6 +53,8 @@ Rotation of the component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ComponentInfo-rotate: RotateResult--><!--Device-ComponentInfo-rotate: RotateResult-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Scaling of the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ComponentInfo-scale: ScaleResult--><!--Device-ComponentInfo-scale: ScaleResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## screenOffset
@@ -85,6 +93,8 @@ Offset of the component relative to the screen.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ComponentInfo-screenOffset: Offset--><!--Device-ComponentInfo-screenOffset: Offset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +114,8 @@ Component size.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ComponentInfo-size: Size--><!--Device-ComponentInfo-size: Size-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## transform
@@ -121,6 +133,8 @@ Affine matrix of the component, which is a 4x4 matrix object created based on th
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ComponentInfo-transform: Matrix4Result--><!--Device-ComponentInfo-transform: Matrix4Result-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +154,8 @@ Translation of the component.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ComponentInfo-translate: TranslateResult--><!--Device-ComponentInfo-translate: TranslateResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## windowOffset
@@ -157,5 +173,7 @@ Offset of the component relative to the window.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ComponentInfo-windowOffset: Offset--><!--Device-ComponentInfo-windowOffset: Offset-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

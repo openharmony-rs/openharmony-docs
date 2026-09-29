@@ -16,6 +16,8 @@ Checks whether camera tracking is enabled for this mechanical device.
 
 **Since:** 20
 
+<!--Device-mechanicManager-function getCameraTrackingEnabled(): boolean--><!--Device-mechanicManager-function getCameraTrackingEnabled(): boolean-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **Return value:**

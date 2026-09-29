@@ -8,6 +8,8 @@ Defines the contact data filter item.
 
 **Since:** 15
 
+<!--Device-contact-interface DataFilter--><!--Device-contact-interface DataFilter-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Contact data field.
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
+<!--Device-DataFilter-field: DataField--><!--Device-DataFilter-field: DataField-End-->
+
 **System capability:** SystemCapability.Applications.Contacts
 
 ## options
@@ -45,5 +49,7 @@ Contact filtering parameter. Multiple filter options in the array are ORed. The 
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-DataFilter-options: Array<FilterOptions>--><!--Device-DataFilter-options: Array<FilterOptions>-End-->
 
 **System capability:** SystemCapability.Applications.Contacts

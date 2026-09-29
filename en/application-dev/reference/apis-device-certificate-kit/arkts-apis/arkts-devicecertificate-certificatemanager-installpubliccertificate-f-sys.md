@@ -20,6 +20,8 @@ Installs the public credential of the user. This API is called only by the certi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise<CMResult>--><!--Device-certificateManager-function installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

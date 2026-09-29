@@ -24,6 +24,8 @@ Queries whether Bluetooth is disabled.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bluetoothManager-function isBluetoothDisabled(admin: Want): boolean--><!--Device-bluetoothManager-function isBluetoothDisabled(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

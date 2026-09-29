@@ -8,6 +8,8 @@ Enumerates the permission toggle states.
 
 **Since:** 12
 
+<!--Device-abilityAccessCtrl-export enum PermissionRequestToggleStatus--><!--Device-abilityAccessCtrl-export enum PermissionRequestToggleStatus-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Indicates that the dialog box for the specified permission is disabled. When an 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-PermissionRequestToggleStatus-CLOSED = 0--><!--Device-PermissionRequestToggleStatus-CLOSED = 0-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Indicates that the dialog box for the specified permission is enabled. When an a
 **Since:** 12
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-PermissionRequestToggleStatus-OPEN = 1--><!--Device-PermissionRequestToggleStatus-OPEN = 1-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

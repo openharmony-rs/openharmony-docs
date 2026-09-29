@@ -10,6 +10,8 @@ Picker used to show available input devices. @struct { AVInputCastPicker }
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct AVInputCastPicker--><!--Device-unnamed-export declare struct AVInputCastPicker-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVInputCast
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Called when the component state changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-AVInputCastPicker-onStateChange?: OnPickerStateCallback--><!--Device-AVInputCastPicker-onStateChange?: OnPickerStateCallback-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVInputCast
 
 ## customPicker
@@ -47,5 +51,7 @@ Custom picker.
 **Decorator:** @Prop
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-AVInputCastPicker-customPicker?: CustomBuilder--><!--Device-AVInputCastPicker-customPicker?: CustomBuilder-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVInputCast

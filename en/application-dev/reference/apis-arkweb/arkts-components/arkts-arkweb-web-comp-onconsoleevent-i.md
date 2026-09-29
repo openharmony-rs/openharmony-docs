@@ -8,6 +8,8 @@ Represents the callback invoked to notify the host application of a JavaScript c
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface OnConsoleEvent--><!--Device-unnamed-declare interface OnConsoleEvent-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## message
@@ -23,5 +25,7 @@ Console message.
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OnConsoleEvent-message: ConsoleMessage--><!--Device-OnConsoleEvent-message: ConsoleMessage-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

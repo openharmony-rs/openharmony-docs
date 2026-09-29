@@ -20,6 +20,8 @@ Add a printer to system.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-print-function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>--><!--Device-print-function addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

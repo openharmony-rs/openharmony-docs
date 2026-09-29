@@ -18,6 +18,8 @@ Update the policy file.
 
 **Required permissions:** ohos.permission.MANAGE_SECURITY_GUARD_CONFIG
 
+<!--Device-securityGuard-function updatePolicyFile(policyFile: PolicyFile): Promise<void>--><!--Device-securityGuard-function updatePolicyFile(policyFile: PolicyFile): Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.SecurityGuard
 
 **System API:** This is a system API.

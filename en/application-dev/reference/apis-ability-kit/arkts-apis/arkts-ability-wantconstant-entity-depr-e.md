@@ -10,6 +10,8 @@ Enumerates the entity constants of the Want object. **entity** specifies additio
 
 **Deprecated since:** 9
 
+<!--Device-wantConstant-export enum Entity--><!--Device-wantConstant-export enum Entity-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## ENTITY_DEFAULT
@@ -23,6 +25,8 @@ Default entity. The default entity is used if no entity is specified.
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-Entity-ENTITY_DEFAULT = 'entity.system.default'--><!--Device-Entity-ENTITY_DEFAULT = 'entity.system.default'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -38,6 +42,8 @@ Home screen entity.
 
 **Deprecated since:** 9
 
+<!--Device-Entity-ENTITY_HOME = 'entity.system.home'--><!--Device-Entity-ENTITY_HOME = 'entity.system.home'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## ENTITY_VOICE
@@ -51,6 +57,8 @@ Voice interaction entity.
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'--><!--Device-Entity-ENTITY_VOICE = 'entity.system.voice'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -66,6 +74,8 @@ Browser type entity.
 
 **Deprecated since:** 9
 
+<!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'--><!--Device-Entity-ENTITY_BROWSABLE = 'entity.system.browsable'-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## ENTITY_VIDEO
@@ -79,5 +89,7 @@ Video type entity.
 **Since:** 6
 
 **Deprecated since:** 9
+
+<!--Device-Entity-ENTITY_VIDEO = 'entity.system.video'--><!--Device-Entity-ENTITY_VIDEO = 'entity.system.video'-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase

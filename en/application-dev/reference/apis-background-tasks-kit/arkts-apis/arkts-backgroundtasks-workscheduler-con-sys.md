@@ -14,6 +14,8 @@ Whether the requested task is executed immediately.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-workScheduler-const EXECUTE_IMMEDIATE: string--><!--Device-workScheduler-const EXECUTE_IMMEDIATE: string-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ The last condition met when the current task is triggered.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-workScheduler-const WORK_SCHEDULER_CONDITION: string--><!--Device-workScheduler-const WORK_SCHEDULER_CONDITION: string-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 

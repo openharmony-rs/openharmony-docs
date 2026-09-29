@@ -8,6 +8,8 @@ Sets the type of page transition.
 
 **Since:** 7
 
+<!--Device-unnamed-declare enum RouteType--><!--Device-unnamed-declare enum RouteType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
@@ -16,11 +18,13 @@ Sets the type of page transition.
 None = 0
 ```
 
-The page is not redirected. The animation specified by **PageTransitionEnter** takes effect for page entrance, and the animation specified by **PageTransitionExit** takes effect for page exit.
+The page is not redirected. For example, when **RouteType** is **None** as described in **Push** and **Pop**, the transition effect of **PageTransitionEnter** takes effect when the page enters, and the transition effect of **PageTransitionExit** takes effect when the page exits.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouteType-None = 0--><!--Device-RouteType-None = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,11 +34,13 @@ The page is not redirected. The animation specified by **PageTransitionEnter** t
 Push = 1
 ```
 
-Redirects to the next page. To redirect the user from page A to page B, set **RouteType** of **PageTransitionExit** to **None** or **Push** for page A and set **RouteType** of **PageTransitionEnter** to **None** or **Push** for page B.
+Jumps to the next page, for example, from PageA to PageB. For PageA, the component style of **PageTransitionExit** with **RouteType** set to **None** or **Push** takes effect; for PageB, the component style of **PageTransitionEnter** with **RouteType** set to **None** or **Push** takes effect.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouteType-Push = 1--><!--Device-RouteType-Push = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,10 +50,12 @@ Redirects to the next page. To redirect the user from page A to page B, set **Ro
 Pop = 2
 ```
 
-Redirects to a specified page. To redirect the user from page B back to page A, set **RouteType** of **PageTransitionExit** to **None** or **Pop** for page B and set **RouteType** of **PageTransitionEnter** to **None** or **Pop** for page A.
+Returns to the previous page, for example, from PageB to PageA. For PageB, the component style of **PageTransitionExit** with **RouteType** set to **None** or **Pop** takes effect; for PageA, the component style of **PageTransitionEnter** with **RouteType** set to **None** or **Pop** takes effect.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RouteType-Pop = 2--><!--Device-RouteType-Pop = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ ExtensionAbility: the extension ability forms class.
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ExtensionAbility--><!--Device-unnamed-export interface ExtensionAbility-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Widget information.
 
 **Since:** 9
 
+<!--Device-ExtensionAbility-readonly forms: Array<AbilityFormInfo>--><!--Device-ExtensionAbility-readonly forms: Array<AbilityFormInfo>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Name of the ExtensionAbility.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-ExtensionAbility-readonly name: string--><!--Device-ExtensionAbility-readonly name: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

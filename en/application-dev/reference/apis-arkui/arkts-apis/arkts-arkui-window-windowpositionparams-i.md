@@ -8,6 +8,8 @@ Describes the position of a main window to adjust its z-order.
 
 **Since:** 26.0.1
 
+<!--Device-window-interface WindowPositionParams--><!--Device-window-interface WindowPositionParams-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Position to adjust to. If the value is greater than 0, it is the ID of another m
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-WindowPositionParams-insertAfter: int--><!--Device-WindowPositionParams-insertAfter: int-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowId
@@ -45,5 +49,7 @@ ID of the main window whose z-order is to be adjusted. The window must be a main
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowPositionParams-windowId: int--><!--Device-WindowPositionParams-windowId: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

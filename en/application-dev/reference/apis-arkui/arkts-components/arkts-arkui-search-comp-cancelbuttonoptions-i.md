@@ -8,6 +8,8 @@ Defines the CancelButton options.
 
 **Since:** 12
 
+<!--Device-unnamed-interface CancelButtonOptions--><!--Device-unnamed-interface CancelButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -16,7 +18,7 @@ Defines the CancelButton options.
 icon?: IconOptions
 ```
 
-Icon of the Cancel button on the right.
+Icon of the clear button on the right. If not passed, the default clear icon style is used.
 
 **Type:** [IconOptions](arkts-arkui-search-comp-iconoptions-i.md)
 
@@ -26,6 +28,8 @@ Icon of the Cancel button on the right.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CancelButtonOptions-icon?: IconOptions--><!--Device-CancelButtonOptions-icon?: IconOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
@@ -34,7 +38,7 @@ Icon of the Cancel button on the right.
 style?: CancelButtonStyle
 ```
 
-Display state of the Cancel button on the right.
+Display state of the clear button on the right. Default value: CancelButtonStyle.INPUT.
 
 **Type:** [CancelButtonStyle](arkts-arkui-search-comp-cancelbuttonstyle-e.md)
 
@@ -43,5 +47,7 @@ Display state of the Cancel button on the right.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CancelButtonOptions-style?: CancelButtonStyle--><!--Device-CancelButtonOptions-style?: CancelButtonStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

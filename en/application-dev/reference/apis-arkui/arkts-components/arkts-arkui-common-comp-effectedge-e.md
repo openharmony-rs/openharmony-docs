@@ -4,9 +4,11 @@
 declare enum EffectEdge
 ```
 
-Enumerates the effective edge of the edge effect.
+Enumerates the edges where the edge effect is applied.
 
 **Since:** 18
+
+<!--Device-unnamed-declare enum EffectEdge--><!--Device-unnamed-declare enum EffectEdge-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,13 +18,15 @@ Enumerates the effective edge of the edge effect.
 START = 1
 ```
 
-Effective only for the starting edge.
+Start edge.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-EffectEdge-START = 1--><!--Device-EffectEdge-START = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,12 +36,14 @@ Effective only for the starting edge.
 END = 2
 ```
 
-Effective only for the end edge.
+End edge.
 
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-EffectEdge-END = 2--><!--Device-EffectEdge-END = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

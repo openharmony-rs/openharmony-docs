@@ -20,6 +20,8 @@ Checks whether the Ability component of a specified application (system applicat
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-applicationManager-function isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string): boolean--><!--Device-applicationManager-function isAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityName: string): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -86,6 +88,8 @@ Checks whether the Ability component of a specified application (system applicat
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-applicationManager-function isAbilityDisabled(admin: Want | null, bundleName: string, accountId: number, abilityName: string): boolean--><!--Device-applicationManager-function isAbilityDisabled(admin: Want | null, bundleName: string, accountId: number, abilityName: string): boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

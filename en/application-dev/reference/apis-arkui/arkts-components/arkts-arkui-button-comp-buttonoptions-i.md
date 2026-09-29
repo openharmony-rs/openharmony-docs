@@ -8,6 +8,8 @@ Describes the button style.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface ButtonOptions--><!--Device-unnamed-declare interface ButtonOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## buttonStyle
@@ -36,6 +38,8 @@ The button primacy is as follows, from high to low: emphasized button, normal bu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-ButtonOptions-buttonStyle?: ButtonStyleMode--><!--Device-ButtonOptions-buttonStyle?: ButtonStyleMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## controlSize
@@ -60,6 +64,8 @@ Default value: **ControlSize.NORMAL**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-ButtonOptions-controlSize?: ControlSize--><!--Device-ButtonOptions-controlSize?: ControlSize-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## role
@@ -83,6 +89,8 @@ Default value: **ButtonRole.NORMAL**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ButtonOptions-role?: ButtonRole--><!--Device-ButtonOptions-role?: ButtonRole-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ When the pressed state effect is enabled and a custom pressed state style is con
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ButtonOptions-stateEffect?: boolean--><!--Device-ButtonOptions-stateEffect?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -135,5 +145,7 @@ API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ButtonOptions-type?: ButtonType--><!--Device-ButtonOptions-type?: ButtonType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

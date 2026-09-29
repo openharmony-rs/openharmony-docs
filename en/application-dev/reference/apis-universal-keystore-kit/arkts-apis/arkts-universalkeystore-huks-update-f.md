@@ -22,6 +22,8 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
 **Substitutes:** [updateSession](arkts-universalkeystore-huks-updatesession-f.md)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
 
+<!--Device-huks-function update(handle: number, token?: Uint8Array, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function update(handle: number, token?: Uint8Array, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Extension
 
 **Parameters:**
@@ -51,6 +53,8 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 **Deprecated since:** 9
 
 **Substitutes:** [updateSession](arkts-universalkeystore-huks-updatesession-f.md)(handle: number, options: HuksOptions, token?: Uint8Array)
+
+<!--Device-huks-function update(handle: number, token?: Uint8Array, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function update(handle: number, token?: Uint8Array, options: HuksOptions): Promise<HuksResult>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

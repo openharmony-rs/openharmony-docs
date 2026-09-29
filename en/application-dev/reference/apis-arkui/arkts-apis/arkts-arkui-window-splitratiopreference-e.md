@@ -10,6 +10,8 @@ Describes the type of split ratio preference.
 
 **Since:** 26.0.0
 
+<!--Device-window-enum SplitRatioPreference--><!--Device-window-enum SplitRatioPreference-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## EQUAL
@@ -23,6 +25,8 @@ Equal split ratio preference of the window.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SplitRatioPreference-EQUAL = 0--><!--Device-SplitRatioPreference-EQUAL = 0-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
@@ -38,6 +42,8 @@ Set primary split window to a larger split ratio.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-SplitRatioPreference-PRIMARY_DOMINANT = 1--><!--Device-SplitRatioPreference-PRIMARY_DOMINANT = 1-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 ## SECONDARY_DOMINANT
@@ -51,5 +57,7 @@ Set secondary split window to a larger split ratio.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SplitRatioPreference-SECONDARY_DOMINANT = 2--><!--Device-SplitRatioPreference-SECONDARY_DOMINANT = 2-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core

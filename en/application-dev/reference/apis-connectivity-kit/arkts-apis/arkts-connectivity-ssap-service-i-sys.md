@@ -8,6 +8,8 @@ Represents the NearLink service.
 
 **Since:** 26.0.0
 
+<!--Device-ssap-interface Service--><!--Device-ssap-interface Service-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Events of a service. If this field is not specified, the service does not provid
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Service-events?: Event[]--><!--Device-Service-events?: Event[]-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Methods of a service. If this field is not specified, the service does not provi
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Service-methods?: Method[]--><!--Device-Service-methods?: Method[]-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 

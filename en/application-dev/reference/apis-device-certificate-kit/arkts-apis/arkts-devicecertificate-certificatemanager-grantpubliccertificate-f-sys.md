@@ -20,6 +20,8 @@ Grants the permission for an application to use the public credentials of a user
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function grantPublicCertificate(keyUri: string, clientAppUid: int) : Promise<CMResult>--><!--Device-certificateManager-function grantPublicCertificate(keyUri: string, clientAppUid: int) : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

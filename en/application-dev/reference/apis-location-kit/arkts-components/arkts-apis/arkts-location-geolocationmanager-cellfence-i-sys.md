@@ -8,6 +8,8 @@ Indicates CELL fence information.
 
 **Since:** 26.0.0
 
+<!--Device-geoLocationManager-export interface CellFence--><!--Device-geoLocationManager-export interface CellFence-End-->
+
 **System capability:** SystemCapability.Location.Location.Geofence
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Indicates CELL information array.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CellFence-cellInfos: Array<CellInfo>--><!--Device-CellFence-cellInfos: Array<CellInfo>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

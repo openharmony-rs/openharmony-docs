@@ -8,6 +8,8 @@ Provides the rectangle area change information of the float view.
 
 **Since:** 26.0.0
 
+<!--Device-floatView-interface FloatViewRectChangeInfo--><!--Device-floatView-interface FloatViewRectChangeInfo-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Reason for the change of the rectangle area of the float view. The reasons and t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewRectChangeInfo-reason: string--><!--Device-FloatViewRectChangeInfo-reason: string-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowRect
@@ -52,6 +56,8 @@ Rectangle area of the float view.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewRectChangeInfo-windowRect: window.Rect--><!--Device-FloatViewRectChangeInfo-windowRect: window.Rect-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## windowScale
@@ -67,5 +73,7 @@ Scale factor of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewRectChangeInfo-windowScale: double--><!--Device-FloatViewRectChangeInfo-windowScale: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

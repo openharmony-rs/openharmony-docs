@@ -14,6 +14,8 @@ You can set video stabilization only when a [VideoOutput](arkts-camera-camera-vi
 
 **Since:** 11
 
+<!--Device-camera-interface Stabilization extends StabilizationQuery--><!--Device-camera-interface Stabilization extends StabilizationQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -32,7 +34,9 @@ Obtains the video stabilization mode in use.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Stabilization-getActiveVideoStabilizationMode(): VideoStabilizationMode--><!--Device-Stabilization-getActiveVideoStabilizationMode(): VideoStabilizationMode-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -76,7 +80,9 @@ Sets a video stabilization mode. Before the setting, call [isVideoStabilizationM
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-Stabilization-setVideoStabilizationMode(mode: VideoStabilizationMode): void--><!--Device-Stabilization-setVideoStabilizationMode(mode: VideoStabilizationMode): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

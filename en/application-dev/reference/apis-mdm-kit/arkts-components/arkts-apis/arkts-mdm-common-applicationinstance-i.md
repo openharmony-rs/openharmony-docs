@@ -10,6 +10,8 @@ It is used as an input parameter in the [addUserNonStopApps](arkts-mdm-applicati
 
 **Since:** 22
 
+<!--Device-common-export interface ApplicationInstance--><!--Device-common-export interface ApplicationInstance-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Account ID. The value is an integer greater than or equal to 0. You can obtain t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationInstance-accountId: number--><!--Device-ApplicationInstance-accountId: number-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appIdentifier
@@ -47,6 +51,8 @@ appIdentifier: string
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInstance-appIdentifier: string--><!--Device-ApplicationInstance-appIdentifier: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -65,5 +71,7 @@ You can obtain the index by calling the [getAppCloneIdentity](../../apis-ability
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInstance-appIndex: number--><!--Device-ApplicationInstance-appIndex: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

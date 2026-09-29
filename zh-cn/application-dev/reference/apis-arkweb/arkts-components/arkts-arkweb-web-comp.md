@@ -22,6 +22,8 @@ Sets Value.
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-WebInterface-(value: WebOptions): WebAttribute--><!--Device-WebInterface-(value: WebOptions): WebAttribute-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数:**
@@ -113,7 +115,7 @@ Sets Value.
 | [SslErrorEvent](arkts-arkweb-web-comp-sslerrorevent-i.md) | 用户加载资源时发生SSL错误时触发的回调详情，包括URL、错误类型和证书链。适用于需要详细分析SSL错误的场景，提升安全问题的诊断和排查效率。 |
 | [UrlRegexRule](arkts-arkweb-web-comp-urlregexrule-i.md) | 定义Url正则表达式规则。 |
 | [VerifyPinEvent](arkts-arkweb-web-comp-verifypinevent-i.md) | 定义当需要用户进行PIN码认证时触发回调。 |
-| [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](#webweb控制器)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。 |
+| [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](arkts-arkweb-web-comp.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。 |
 | [WebKeyboardOptions](arkts-arkweb-web-comp-webkeyboardoptions-i.md) | 拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。 |
 | [WebMediaOptions](arkts-arkweb-web-comp-webmediaoptions-i.md) | 用于配置 Web 组件的媒体策略，包括音频续播有效期、音频独占模式等。适用于需要优化音频播放体验和多实例音频管理的场景，提升媒体播放的稳定性和用户体验。 |
 | [WebOptions](arkts-arkweb-web-comp-weboptions-i.md) | 通过[接口](../../../reference/apis-arkweb/arkts-basic-components-web.md#接口)定义Web选项，包括网页资源地址、控制器、渲染方式等。 |

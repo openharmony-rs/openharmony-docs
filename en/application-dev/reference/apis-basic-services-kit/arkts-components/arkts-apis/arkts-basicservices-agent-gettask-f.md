@@ -16,6 +16,8 @@ Obtains task information based on the task ID. This API uses a promise to return
 
 **Since:** 11
 
+<!--Device-agent-function getTask(context: BaseContext, id: string, token?: string): Promise<Task>--><!--Device-agent-function getTask(context: BaseContext, id: string, token?: string): Promise<Task>-End-->
+
 **System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters:**

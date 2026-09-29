@@ -4,9 +4,11 @@
 declare interface IMonitorValue<T>
 ```
 
-Define IMonitorValue interface
+Provides the specific information about the state variable changes monitored by **\@Monitor**, obtained through the **value** API of **IMonitor**. **T** is the state variable type.
 
 **Since:** 12
+
+<!--Device-unnamed-declare interface IMonitorValue<T>--><!--Device-unnamed-declare interface IMonitorValue<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +18,7 @@ Define IMonitorValue interface
 before: T
 ```
 
-Get the previous value.
+Value of the state variable before the change.
 
 **Type:** T
 
@@ -27,6 +29,8 @@ Get the previous value.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-IMonitorValue-before: T--><!--Device-IMonitorValue-before: T-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,7 @@ Get the previous value.
 now: T
 ```
 
-Get current value.
+Current value of the state variable.
 
 **Type:** T
 
@@ -48,6 +52,8 @@ Get current value.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-IMonitorValue-now: T--><!--Device-IMonitorValue-now: T-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## path
@@ -56,7 +62,7 @@ Get current value.
 path: string
 ```
 
-Monitored path input by the user.
+Path of the state variable.
 
 **Type:** string
 
@@ -67,5 +73,7 @@ Monitored path input by the user.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-IMonitorValue-path: string--><!--Device-IMonitorValue-path: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

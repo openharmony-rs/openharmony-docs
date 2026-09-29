@@ -18,6 +18,8 @@ Sets whether to enable notification for a specified application. This API uses a
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -74,6 +76,8 @@ Sets whether to enable notification for a specified application. This API uses a
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function setNotificationEnable(bundle: BundleOption, enable: boolean): Promise<void>--><!--Device-notificationManager-function setNotificationEnable(bundle: BundleOption, enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

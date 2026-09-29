@@ -30,6 +30,8 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-dragController-function createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: DragInfo): DragAction--><!--Device-dragController-function createDragAction(customArray: Array<CustomBuilder | DragItemInfo>, dragInfo: DragInfo): DragAction-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

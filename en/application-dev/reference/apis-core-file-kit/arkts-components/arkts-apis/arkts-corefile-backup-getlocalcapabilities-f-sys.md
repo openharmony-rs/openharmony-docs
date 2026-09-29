@@ -18,6 +18,8 @@ Obtain a Json file that describes local capabilities.
 
 **Required permissions:** ohos.permission.BACKUP
 
+<!--Device-backup-function getLocalCapabilities(): Promise<FileData>--><!--Device-backup-function getLocalCapabilities(): Promise<FileData>-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -90,6 +92,8 @@ Obtain a Json file that describes local capabilities.
 **Since:** 10
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-backup-function getLocalCapabilities(callback: AsyncCallback<FileData>): void--><!--Device-backup-function getLocalCapabilities(callback: AsyncCallback<FileData>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
@@ -166,6 +170,8 @@ Obtain a json file that describes local capabilities.
 **Since:** 12
 
 **Required permissions:** ohos.permission.BACKUP
+
+<!--Device-backup-function getLocalCapabilities(dataList: Array<IncrementalBackupTime>): Promise<FileData>--><!--Device-backup-function getLocalCapabilities(dataList: Array<IncrementalBackupTime>): Promise<FileData>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

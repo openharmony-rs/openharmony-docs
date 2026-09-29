@@ -10,6 +10,8 @@ Describes the properties of the voice content of the received notification.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationSubscribe-export type VoiceContent = _VoiceContent--><!--Device-notificationSubscribe-export type VoiceContent = _VoiceContent-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

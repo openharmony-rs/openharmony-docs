@@ -12,6 +12,8 @@ The callback of onUnselectableItemInfo event
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-unnamed-export type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void--><!--Device-unnamed-export type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**

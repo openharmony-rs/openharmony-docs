@@ -17,6 +17,8 @@ A horizontal linear layout algorithm class, which is used to implement horizonta
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export class RowLayoutAlgorithm implements LayoutAlgorithm--><!--Device-unnamed-export class RowLayoutAlgorithm implements LayoutAlgorithm-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -34,6 +36,8 @@ Constructs the horizontal linear layout algorithm class.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-RowLayoutAlgorithm-constructor(option?: RowLayoutAlgorithmOptions)--><!--Device-RowLayoutAlgorithm-constructor(option?: RowLayoutAlgorithmOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,6 +75,8 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-RowLayoutAlgorithm-public alignItems?: VerticalAlign--><!--Device-RowLayoutAlgorithm-public alignItems?: VerticalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## isReverse
@@ -96,6 +102,8 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-RowLayoutAlgorithm-public isReverse?: boolean--><!--Device-RowLayoutAlgorithm-public isReverse?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,6 +131,8 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
+<!--Device-RowLayoutAlgorithm-public justifyContent?: FlexAlign--><!--Device-RowLayoutAlgorithm-public justifyContent?: FlexAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -148,5 +158,7 @@ Decorator: [@Trace](../../../ui/state-management/arkts-new-observedV2-and-trace.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+<!--Device-RowLayoutAlgorithm-public space?: LengthMetrics--><!--Device-RowLayoutAlgorithm-public space?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

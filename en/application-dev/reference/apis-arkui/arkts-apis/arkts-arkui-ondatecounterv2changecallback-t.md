@@ -12,6 +12,8 @@ Defines the callback for date changes of the inline date **CounterV2**.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-export type OnDateCounterV2ChangeCallback = (date: CounterV2DateData) => void--><!--Device-unnamed-export type OnDateCounterV2ChangeCallback = (date: CounterV2DateData) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

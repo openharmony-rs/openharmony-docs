@@ -18,6 +18,8 @@ Check whether the fusion fence service is supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-geoLocationManager-function isFusionFenceSupported(): boolean--><!--Device-geoLocationManager-function isFusionFenceSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Location.Location.Core
 
 **System API:** This is a system API.

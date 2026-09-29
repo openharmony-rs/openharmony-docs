@@ -8,6 +8,8 @@ Define the divider configuration options.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface DividerOptions--><!--Device-unnamed-declare interface DividerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -18,7 +20,7 @@ color?: ResourceColor
 
 Color of the divider.
 
-Default value: **'#33000000'**
+Default value: '#33000000'
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -30,6 +32,8 @@ Default value: **'#33000000'**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DividerOptions-color?: ResourceColor--><!--Device-DividerOptions-color?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## endMargin
@@ -38,13 +42,15 @@ Default value: **'#33000000'**
 endMargin?: Dimension
 ```
 
-Distance between the divider and the end edge of the text picker.
+Distance between the divider and the end side of the TextPicker.
 
-Default value: **0**
+Default value: 0
 
-Unit: vp (default) or px.
+Unit: vp by default, or px if specified.
 
-Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.
+Value range: [0, +∞). If endMargin is less than 0, it is invalid. The maximum value cannot exceed the TextPicker column width. The percentage type is not supported.
+
+**Note:** When startMargin + endMargin exceeds the component width, they are set to 0.
 
 **Type:** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -55,6 +61,8 @@ Values less than 0 are invalid. The maximum value allowed is the width of the co
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DividerOptions-endMargin?: Dimension--><!--Device-DividerOptions-endMargin?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,13 +72,15 @@ Values less than 0 are invalid. The maximum value allowed is the width of the co
 startMargin?: Dimension
 ```
 
-Distance between the divider and the start edge of the text picker.
+Distance between the divider and the start side of the TextPicker.
 
-Default value: **0**
+Default value: 0
 
-Unit: vp (default) or px.
+Unit: vp by default, or px if specified.
 
-Values less than 0 are invalid. The maximum value allowed is the width of the column. Percentages are not supported.
+Value range: [0, +∞). If startMargin is less than 0, it is invalid. The maximum value cannot exceed the TextPicker column width. The percentage type is not supported.
+
+**Note:** When startMargin + endMargin exceeds the component width, they are set to 0.
 
 **Type:** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -82,6 +92,8 @@ Values less than 0 are invalid. The maximum value allowed is the width of the co
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-DividerOptions-startMargin?: Dimension--><!--Device-DividerOptions-startMargin?: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## strokeWidth
@@ -90,13 +102,13 @@ Values less than 0 are invalid. The maximum value allowed is the width of the co
 strokeWidth?: Dimension
 ```
 
-Stroke width of the divider.
+Line width of the divider.
 
-Default value: **2.0px**
+Default value: 2.0px
 
-Unit: vp (default) or px.
+Unit: vp by default, or px if specified.
 
-If the value is less than 0, the default value is used. The maximum value allowed is half the height of the column. Percentages are not supported.
+Value range: [0, +∞). If strokeWidth is less than 0, the default value is used. The maximum value cannot exceed half of the column height. The percentage type is not supported.
 
 **Type:** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -107,5 +119,7 @@ If the value is less than 0, the default value is used. The maximum value allowe
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DividerOptions-strokeWidth?: Dimension--><!--Device-DividerOptions-strokeWidth?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

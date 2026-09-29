@@ -8,6 +8,8 @@ declare enum Alignment
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare enum Alignment--><!--Device-unnamed-declare enum Alignment-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TopStart
@@ -25,6 +27,8 @@ TopStart
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Top
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TopEnd
@@ -61,6 +67,8 @@ TopEnd
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +88,8 @@ Start
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Center
@@ -97,6 +107,8 @@ Center
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Alignment-Center--><!--Device-Alignment-Center-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +128,8 @@ End
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Alignment-End--><!--Device-Alignment-End-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BottomStart
@@ -133,6 +147,8 @@ BottomStart
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,6 +168,8 @@ Bottom
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BottomEnd
@@ -169,5 +187,7 @@ BottomEnd
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

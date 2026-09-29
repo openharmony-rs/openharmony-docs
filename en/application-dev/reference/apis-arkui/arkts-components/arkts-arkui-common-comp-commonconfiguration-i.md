@@ -8,6 +8,8 @@ You need a custom class to implement the **ContentModifier** API.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface CommonConfiguration<T>--><!--Device-unnamed-declare interface CommonConfiguration<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentModifier
@@ -26,6 +28,8 @@ Content modifier that sends the component information required by users to the c
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-CommonConfiguration-contentModifier: ContentModifier<T>--><!--Device-CommonConfiguration-contentModifier: ContentModifier<T>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## enabled
@@ -43,5 +47,7 @@ Whether to enable the content modifier and respond to operations such as **trigg
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CommonConfiguration-enabled: boolean--><!--Device-CommonConfiguration-enabled: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

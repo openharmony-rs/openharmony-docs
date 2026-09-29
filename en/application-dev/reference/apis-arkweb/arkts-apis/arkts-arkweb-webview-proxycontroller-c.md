@@ -10,6 +10,8 @@ ProxyController provides two core methods: **applyProxyOverride** is used to app
 
 **Since:** 15
 
+<!--Device-webview-class ProxyController--><!--Device-webview-class ProxyController-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Sets the proxy configuration used by all Web instances in the app. URLs that mat
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyController-static applyProxyOverride(proxyConfig: ProxyConfig, callback: OnProxyConfigChangeCallback): void--><!--Device-ProxyController-static applyProxyOverride(proxyConfig: ProxyConfig, callback: OnProxyConfigChangeCallback): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,6 +64,8 @@ Removes the proxy configuration. After the proxy configuration is removed, there
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-ProxyController-static removeProxyOverride(callback: OnProxyConfigChangeCallback): void--><!--Device-ProxyController-static removeProxyOverride(callback: OnProxyConfigChangeCallback): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

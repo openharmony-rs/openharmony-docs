@@ -8,6 +8,8 @@ Defines the parameters for obtaining the port channel connection state.
 
 **Since:** 26.0.0
 
+<!--Device-dataTransfer-interface ConnectionStateParams--><!--Device-dataTransfer-interface ConnectionStateParams-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## Modules to Import
@@ -30,6 +32,8 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ConnectionStateParams-address: string--><!--Device-ConnectionStateParams-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 ## uuid
@@ -45,5 +49,7 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionStateParams-uuid: string--><!--Device-ConnectionStateParams-uuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

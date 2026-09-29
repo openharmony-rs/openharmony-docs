@@ -26,6 +26,8 @@ Creates an AVPlayer instance. This API uses an asynchronous callback to return t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-media-function createAVPlayer(callback: AsyncCallback<AVPlayer>): void--><!--Device-media-function createAVPlayer(callback: AsyncCallback<AVPlayer>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 **Parameters:**
@@ -78,6 +80,8 @@ Creates an AVPlayer instance. This API uses a promise to return the result.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-media-function createAVPlayer(): Promise<AVPlayer>--><!--Device-media-function createAVPlayer(): Promise<AVPlayer>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVPlayer
 

@@ -20,6 +20,8 @@ Send intent result.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-insightIntentProvider-function sendIntentResult(instanceId: int, result: insightIntent.IntentResult<T>): Promise<void>--><!--Device-insightIntentProvider-function sendIntentResult(instanceId: int, result: insightIntent.IntentResult<T>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

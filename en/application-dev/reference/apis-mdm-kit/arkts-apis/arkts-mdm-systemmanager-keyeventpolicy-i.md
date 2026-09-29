@@ -8,6 +8,8 @@ Enumerates key event handling policies. When a key event occurs, only the keys f
 
 **Since:** 23
 
+<!--Device-systemManager-interface KeyEventPolicy--><!--Device-systemManager-interface KeyEventPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Key code.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-KeyEventPolicy-keyCode: KeyCode--><!--Device-KeyEventPolicy-keyCode: KeyCode-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## keyPolicy
@@ -45,5 +49,7 @@ Key policy.
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyEventPolicy-keyPolicy: KeyPolicy--><!--Device-KeyEventPolicy-keyPolicy: KeyPolicy-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

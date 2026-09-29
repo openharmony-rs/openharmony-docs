@@ -20,6 +20,8 @@ Moves the source directory to the destination directory. This API uses a promise
 
 **Since:** 10
 
+<!--Device-unnamed-declare function moveDir(src: string, dest: string, mode?: number): Promise<void>--><!--Device-unnamed-declare function moveDir(src: string, dest: string, mode?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -73,6 +75,8 @@ Moves the source directory to the destination directory. This API uses an asynch
 
 **Since:** 10
 
+<!--Device-unnamed-declare function moveDir(src: string, dest: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function moveDir(src: string, dest: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -125,6 +129,8 @@ An exception will be thrown if a directory conflict occurs, that is, the destina
 
 **Since:** 10
 
+<!--Device-unnamed-declare function moveDir(src: string, dest: string, callback: AsyncCallback<void, Array<ConflictFiles>>): void--><!--Device-unnamed-declare function moveDir(src: string, dest: string, callback: AsyncCallback<void, Array<ConflictFiles>>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -153,6 +159,8 @@ declare function moveDir(src: string, dest: string, mode: number, callback: Asyn
 Moves the source directory to the destination directory. You can set the move mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
+
+<!--Device-unnamed-declare function moveDir(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function moveDir(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
@@ -204,6 +212,8 @@ Moves the source directory to the destination directory. You can set the move mo
 > This API is not supported in a distributed directory.
 
 **Since:** 10
+
+<!--Device-unnamed-declare function moveDir(src: string, dest: string, mode: number, callback: AsyncCallback<void, Array<ConflictFiles>>): void--><!--Device-unnamed-declare function moveDir(src: string, dest: string, mode: number, callback: AsyncCallback<void, Array<ConflictFiles>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

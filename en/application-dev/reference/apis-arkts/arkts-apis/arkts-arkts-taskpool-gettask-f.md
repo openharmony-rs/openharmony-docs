@@ -27,6 +27,8 @@ Obtains the corresponding task instance by task ID, or by task ID and task name.
 
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
+<!--Device-taskpool-function getTask(taskId: number, taskName?: string): Task | undefined--><!--Device-taskpool-function getTask(taskId: number, taskName?: string): Task | undefined-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

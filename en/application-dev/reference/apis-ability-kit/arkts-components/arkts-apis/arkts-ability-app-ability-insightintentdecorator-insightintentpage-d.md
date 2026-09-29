@@ -16,4 +16,6 @@ Decorates a page in the application as an intent, enabling AI systems to swiftly
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-unnamed-export declare const InsightIntentPage: ((intentInfo: PageIntentDecoratorInfo) => ClassDecorator)--><!--Device-unnamed-export declare const InsightIntentPage: ((intentInfo: PageIntentDecoratorInfo) => ClassDecorator)-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

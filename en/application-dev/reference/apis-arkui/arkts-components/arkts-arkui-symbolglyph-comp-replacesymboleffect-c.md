@@ -4,11 +4,13 @@
 declare class ReplaceSymbolEffect extends SymbolEffect
 ```
 
-Defines ReplaceSymbolEffect class, which inherits from **SymbolEffect**.
+Inherits from **SymbolEffect**.
 
 **Inheritance/Implementation:** ReplaceSymbolEffect extends [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md)
 
 **Since:** 12
+
+<!--Device-unnamed-declare class ReplaceSymbolEffect extends SymbolEffect--><!--Device-unnamed-declare class ReplaceSymbolEffect extends SymbolEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +20,7 @@ Defines ReplaceSymbolEffect class, which inherits from **SymbolEffect**.
 constructor(scope?: EffectScope)
 ```
 
-A constructor used to create an **AppearSymbolEffect** instance, which comes with an appear animation effect.
+A constructor used to create a **ReplaceSymbolEffect** instance, which comes with a replace animation effect.
 
 **Since:** 12
 
@@ -28,13 +30,15 @@ A constructor used to create an **AppearSymbolEffect** instance, which comes wit
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope)--><!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Effect scope.<br>Default value: **EffectScope.LAYER** |
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
 <a id="constructor-1"></a>
 
@@ -54,14 +58,16 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)--><!--Device-ReplaceSymbolEffect-constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Effect scope.<br>Default value: **EffectScope.LAYER** |
-| replaceType | [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | No | Replacement effect type.<br>Default value: **ReplaceEffectType.SEQUENTIAL** |
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope.<br>Default value: EffectScope.LAYER |
+| replaceType | [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | No | Replacement animation type.<br>Default value: ReplaceEffectType.SEQUENTIAL |
 
 ## replaceType
 
@@ -69,9 +75,9 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 replaceType?: ReplaceEffectType
 ```
 
-Replacement effect type.
+Replacement Animation Type. For details about the specific enumeration values and descriptions, see ReplaceEffectType Enumeration Description.
 
-Default value: **ReplaceEffectType.SEQUENTIAL**.
+Default value: ReplaceEffectType.SEQUENTIAL
 
 **Type:** [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md)
 
@@ -83,6 +89,8 @@ Default value: **ReplaceEffectType.SEQUENTIAL**.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
+<!--Device-ReplaceSymbolEffect-replaceType?: ReplaceEffectType--><!--Device-ReplaceSymbolEffect-replaceType?: ReplaceEffectType-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## scope
@@ -91,9 +99,9 @@ Default value: **ReplaceEffectType.SEQUENTIAL**.
 scope?: EffectScope
 ```
 
-Effect scope.
+Animation Scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.
 
-Default value: **EffectScope.LAYER**
+Default value: EffectScope.LAYER
 
 **Type:** [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md)
 
@@ -104,5 +112,7 @@ Default value: **EffectScope.LAYER**
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
+
+<!--Device-ReplaceSymbolEffect-scope?: EffectScope--><!--Device-ReplaceSymbolEffect-scope?: EffectScope-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

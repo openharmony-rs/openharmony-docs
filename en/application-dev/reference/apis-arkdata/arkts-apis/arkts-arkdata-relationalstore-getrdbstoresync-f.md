@@ -18,6 +18,8 @@ Obtains a RDB store. You can set parameters of the RDB store as required. This i
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-relationalStore-function getRdbStoreSync(context: Context, config: StoreConfig): RdbStore--><!--Device-relationalStore-function getRdbStoreSync(context: Context, config: StoreConfig): RdbStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters:**

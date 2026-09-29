@@ -20,6 +20,8 @@ Install the user CA certificate. Use Promise asynchronous callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function installUserTrustedCertificate(certificate: CertBlob) : Promise<CMResult>--><!--Device-certificateManager-function installUserTrustedCertificate(certificate: CertBlob) : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**

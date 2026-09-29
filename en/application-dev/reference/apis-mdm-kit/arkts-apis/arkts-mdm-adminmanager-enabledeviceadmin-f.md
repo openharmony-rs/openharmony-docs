@@ -20,6 +20,8 @@ Enables a [DA](../../../mdm/mdm-kit-term.md#device-admin-da) application by a [S
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function enableDeviceAdmin(admin: Want): Promise<void>--><!--Device-adminManager-function enableDeviceAdmin(admin: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

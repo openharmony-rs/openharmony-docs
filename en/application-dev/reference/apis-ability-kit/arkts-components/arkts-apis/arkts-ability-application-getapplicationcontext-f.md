@@ -20,6 +20,8 @@ Obtains the application context. This API provides context access independent of
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
+<!--Device-application-export function getApplicationContext(): ApplicationContext--><!--Device-application-export function getApplicationContext(): ApplicationContext-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value:**

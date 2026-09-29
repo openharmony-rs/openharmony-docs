@@ -20,6 +20,8 @@ Opens a proxy channel. This API uses a promise to return the result. Based on th
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-proxyChannelManager-function openProxyChannel(channelInfo: ChannelInfo): Promise<int>--><!--Device-proxyChannelManager-function openProxyChannel(channelInfo: ChannelInfo): Promise<int>-End-->
+
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 
 **Parameters:**

@@ -8,6 +8,8 @@ declare interface SelectionMenuOptionsExt
 
 **起始版本：** 13
 
+<!--Device-unnamed-declare interface SelectionMenuOptionsExt--><!--Device-unnamed-declare interface SelectionMenuOptionsExt-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## menuType
@@ -26,6 +28,8 @@ menuType?: MenuType
 
 **起始版本：** 13
 
+<!--Device-SelectionMenuOptionsExt-menuType?: MenuType--><!--Device-SelectionMenuOptionsExt-menuType?: MenuType-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## onAppear
@@ -39,6 +43,8 @@ onAppear?: Callback<void>
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 13
+
+<!--Device-SelectionMenuOptionsExt-onAppear?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onAppear?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -54,6 +60,8 @@ onDisappear?: Callback<void>
 
 **起始版本：** 13
 
+<!--Device-SelectionMenuOptionsExt-onDisappear?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onDisappear?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## onMenuHide
@@ -67,6 +75,8 @@ onMenuHide?: Callback<void>
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 21
+
+<!--Device-SelectionMenuOptionsExt-onMenuHide?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onMenuHide?: Callback<void>-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -82,6 +92,8 @@ onMenuShow?: Callback<void>
 
 **起始版本：** 21
 
+<!--Device-SelectionMenuOptionsExt-onMenuShow?: Callback<void>--><!--Device-SelectionMenuOptionsExt-onMenuShow?: Callback<void>-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## preview
@@ -96,6 +108,8 @@ preview?: CustomBuilder
 
 **起始版本：** 13
 
+<!--Device-SelectionMenuOptionsExt-preview?: CustomBuilder--><!--Device-SelectionMenuOptionsExt-preview?: CustomBuilder-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## previewMenuOptions
@@ -109,5 +123,7 @@ previewMenuOptions?: PreviewMenuOptions
 **类型：** [PreviewMenuOptions](arkts-arkweb-web-comp-previewmenuoptions-i.md)
 
 **起始版本：** 20
+
+<!--Device-SelectionMenuOptionsExt-previewMenuOptions?: PreviewMenuOptions--><!--Device-SelectionMenuOptionsExt-previewMenuOptions?: PreviewMenuOptions-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

@@ -27,6 +27,8 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-util-function callbackWrapper(original: Function): (err: Object, value: Object) => void--><!--Device-util-function callbackWrapper(original: Function): (err: Object, value: Object) => void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**

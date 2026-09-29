@@ -16,6 +16,8 @@ Obtains the OverlayModuleInfo about a module with the overlay feature in the cur
 
 **Since:** 10
 
+<!--Device-overlay-function getOverlayModuleInfo(moduleName: string, callback: AsyncCallback<OverlayModuleInfo>): void--><!--Device-overlay-function getOverlayModuleInfo(moduleName: string, callback: AsyncCallback<OverlayModuleInfo>): void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 
 **Parameters:**
@@ -69,6 +71,8 @@ function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>
 Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-overlay-function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>--><!--Device-overlay-function getOverlayModuleInfo(moduleName: string): Promise<OverlayModuleInfo>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Overlay
 

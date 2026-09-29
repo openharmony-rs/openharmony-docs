@@ -20,6 +20,8 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function uninstallPublicCertificate(keyUri: string) : Promise<void>--><!--Device-certificateManager-function uninstallPublicCertificate(keyUri: string) : Promise<void>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

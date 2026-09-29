@@ -8,6 +8,8 @@ Size information of the text.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface TextMetrics--><!--Device-unnamed-declare interface TextMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## actualBoundingBoxAscent
@@ -27,6 +29,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly actualBoundingBoxAscent: number--><!--Device-TextMetrics-readonly actualBoundingBoxAscent: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextMetrics-readonly actualBoundingBoxDescent: number--><!--Device-TextMetrics-readonly actualBoundingBoxDescent: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## actualBoundingBoxLeft
@@ -67,6 +73,8 @@ Distance parallel to the baseline from the alignment point determined by the [Ca
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly actualBoundingBoxLeft: number--><!--Device-TextMetrics-readonly actualBoundingBoxLeft: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +96,8 @@ Distance parallel to the baseline from the alignment point determined by the [Ca
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextMetrics-readonly actualBoundingBoxRight: number--><!--Device-TextMetrics-readonly actualBoundingBoxRight: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alphabeticBaseline
@@ -107,6 +117,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly alphabeticBaseline: number--><!--Device-TextMetrics-readonly alphabeticBaseline: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,6 +140,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextMetrics-readonly emHeightAscent: number--><!--Device-TextMetrics-readonly emHeightAscent: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## emHeightDescent
@@ -147,6 +161,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly emHeightDescent: number--><!--Device-TextMetrics-readonly emHeightDescent: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +184,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextMetrics-readonly fontBoundingBoxAscent: number--><!--Device-TextMetrics-readonly fontBoundingBoxAscent: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontBoundingBoxDescent
@@ -188,6 +206,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextMetrics-readonly fontBoundingBoxDescent: number--><!--Device-TextMetrics-readonly fontBoundingBoxDescent: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hangingBaseline
@@ -207,6 +227,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly hangingBaseline: number--><!--Device-TextMetrics-readonly hangingBaseline: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,6 +254,8 @@ If the unit mode of the **CanvasRenderingContext2D** object is set to px, the un
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-TextMetrics-readonly height: number--><!--Device-TextMetrics-readonly height: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ideographicBaseline
@@ -251,6 +275,8 @@ Distance from the horizontal line specified by the [CanvasRenderingContext2D.tex
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly ideographicBaseline: number--><!--Device-TextMetrics-readonly ideographicBaseline: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,5 +301,7 @@ If the unit mode of the **CanvasRenderingContext2D** object is set to px, the un
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextMetrics-readonly width: number--><!--Device-TextMetrics-readonly width: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

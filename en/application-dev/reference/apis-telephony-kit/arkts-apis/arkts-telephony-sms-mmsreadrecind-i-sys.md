@@ -8,6 +8,8 @@ Defines the MMS message reading index.
 
 **Since:** 8
 
+<!--Device-sms-export interface MmsReadRecInd--><!--Device-sms-export interface MmsReadRecInd-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Date.
 
 **Since:** 8
 
+<!--Device-MmsReadRecInd-date?: long--><!--Device-MmsReadRecInd-date?: long-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Source address.
 **Type:** [MmsAddress](arkts-telephony-sms-mmsaddress-i-sys.md)
 
 **Since:** 8
+
+<!--Device-MmsReadRecInd-from: MmsAddress--><!--Device-MmsReadRecInd-from: MmsAddress-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,6 +68,8 @@ Message ID.
 
 **Since:** 8
 
+<!--Device-MmsReadRecInd-messageId: string--><!--Device-MmsReadRecInd-messageId: string-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -77,6 +85,8 @@ Read status.
 **Type:** number
 
 **Since:** 8
+
+<!--Device-MmsReadRecInd-readStatus: int--><!--Device-MmsReadRecInd-readStatus: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -94,6 +104,8 @@ Destination address.
 
 **Since:** 8
 
+<!--Device-MmsReadRecInd-to: Array<MmsAddress>--><!--Device-MmsReadRecInd-to: Array<MmsAddress>-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -109,6 +121,8 @@ Version.
 **Type:** [MmsVersionType](arkts-telephony-sms-mmsversiontype-e-sys.md)
 
 **Since:** 8
+
+<!--Device-MmsReadRecInd-version: MmsVersionType--><!--Device-MmsReadRecInd-version: MmsVersionType-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

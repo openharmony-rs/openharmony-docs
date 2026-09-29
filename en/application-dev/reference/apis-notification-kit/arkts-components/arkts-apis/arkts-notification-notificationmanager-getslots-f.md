@@ -18,6 +18,8 @@ This API is used to batch query the configuration information of all notificatio
 
 **Since:** 9
 
+<!--Device-notificationManager-function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void--><!--Device-notificationManager-function getSlots(callback: AsyncCallback<Array<NotificationSlot>>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **See also:**
@@ -73,6 +75,8 @@ Obtains all notification slots of this application. This API uses a promise to r
 This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through addSlot first; otherwise, the obtained result will be empty.
 
 **Since:** 9
+
+<!--Device-notificationManager-function getSlots(): Promise<Array<NotificationSlot>>--><!--Device-notificationManager-function getSlots(): Promise<Array<NotificationSlot>>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

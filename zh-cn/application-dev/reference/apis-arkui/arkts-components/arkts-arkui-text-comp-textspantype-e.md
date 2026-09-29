@@ -4,7 +4,7 @@
 declare enum TextSpanType
 ```
 
-Span类型信息。
+[Span](arkts-arkui-span-comp.md)类型信息。
 
 > **说明：** 
 > 
@@ -19,6 +19,8 @@ Span类型信息。
 > 4. 查找是否注册了TextSpanType.DEFAULT、TextResponseType.DEFAULT菜单
 
 **起始版本：** 11
+
+<!--Device-unnamed-declare enum TextSpanType--><!--Device-unnamed-declare enum TextSpanType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +38,8 @@ Span为文字类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextSpanType-TEXT = 0--><!--Device-TextSpanType-TEXT = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## IMAGE
@@ -51,6 +55,8 @@ Span为图像类型。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextSpanType-IMAGE = 1--><!--Device-TextSpanType-IMAGE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +74,8 @@ Span为图文混合类型。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextSpanType-MIXED = 2--><!--Device-TextSpanType-MIXED = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DEFAULT
@@ -83,5 +91,7 @@ DEFAULT = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextSpanType-DEFAULT = 3--><!--Device-TextSpanType-DEFAULT = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Defines a pinch event.
 
 **Since:** 10
 
+<!--Device-unnamed-export declare interface Pinch--><!--Device-unnamed-export declare interface Pinch-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Pinch scale factor. The value is greater than or equal to 0.
 
 **Since:** 10
 
+<!--Device-Pinch-scale: double--><!--Device-Pinch-scale: double-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
 ## type
@@ -41,5 +45,7 @@ Gesture event type, for example, gesture start, gesture update, or gesture end.
 **Type:** [ActionType](arkts-input-multimodalinput-gestureevent-actiontype-e.md)
 
 **Since:** 10
+
+<!--Device-Pinch-type: ActionType--><!--Device-Pinch-type: ActionType-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

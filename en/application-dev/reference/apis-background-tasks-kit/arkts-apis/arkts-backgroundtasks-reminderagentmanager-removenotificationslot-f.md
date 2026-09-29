@@ -16,6 +16,8 @@ Removes a specified notification slot. This API uses an asynchronous callback to
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-function removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback<void>): void--><!--Device-reminderAgentManager-function removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 **Parameters:**
@@ -60,6 +62,8 @@ function removeNotificationSlot(slotType: notification.SlotType): Promise<void>
 Removes a specified notification slot. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-reminderAgentManager-function removeNotificationSlot(slotType: notification.SlotType): Promise<void>--><!--Device-reminderAgentManager-function removeNotificationSlot(slotType: notification.SlotType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 

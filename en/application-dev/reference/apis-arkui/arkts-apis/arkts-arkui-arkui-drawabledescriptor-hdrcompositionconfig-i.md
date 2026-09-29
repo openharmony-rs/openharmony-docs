@@ -8,6 +8,8 @@ Provides HDR composition configuration.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare interface HdrCompositionConfig--><!--Device-unnamed-declare interface HdrCompositionConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -31,5 +33,7 @@ Rectangle area for HDR composition.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HdrCompositionConfig-rect: Rectangle--><!--Device-HdrCompositionConfig-rect: Rectangle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

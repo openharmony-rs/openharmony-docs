@@ -4,9 +4,15 @@
 declare class ChildrenMainSize
 ```
 
-Indicates children main size.
+Provides the size information of the child components of the **List** or **ListItemGroup** component along the main axis. This object only supports one-to-one binding to the **List** or **ListItemGroup** component.
+
+> **NOTE:** 
+> 
+> - The main axis size information must match the actual main axis size of the child components. When child components' main axis sizes change or components are added or removed, the **ChildrenMainSize** object methods must be invoked to notify the **List** or **ListItemGroup** component.
 
 **Since:** 12
+
+<!--Device-unnamed-declare class ChildrenMainSize--><!--Device-unnamed-declare class ChildrenMainSize-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -16,7 +22,7 @@ Indicates children main size.
 constructor(childDefaultSize: number)
 ```
 
-Creates an instance of ChildrenMainSize.
+A constructor used to create a **ChildrenMainSize** object.
 
 **Since:** 12
 
@@ -24,13 +30,15 @@ Creates an instance of ChildrenMainSize.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChildrenMainSize-constructor(childDefaultSize: number)--><!--Device-ChildrenMainSize-constructor(childDefaultSize: number)-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| childDefaultSize | number | Yes | default main size, in vp. If the main axis is vertical, it indicates height. If the main axis is horizontal, it indicates width. |
+| childDefaultSize | number | Yes | Default size of the child component along the main axis.<br>Unit: vp <br>**NOTE:** <br>The value must be a finite non-negative number; otherwise, an exception will be thrown. |
 
 **Error codes:**
 
@@ -44,7 +52,7 @@ Creates an instance of ChildrenMainSize.
 splice(start: number, deleteCount?: number, childrenSize?: Array<number>): void
 ```
 
-Changes children main size by removing or replacing existing elements and/or adding new elements in place.
+Performs batch operations to add, delete, or modify the size information of child components along the main axis.
 
 **Since:** 12
 
@@ -52,15 +60,17 @@ Changes children main size by removing or replacing existing elements and/or add
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-ChildrenMainSize-splice(start: number, deleteCount?: number, childrenSize?: Array<number>): void--><!--Device-ChildrenMainSize-splice(start: number, deleteCount?: number, childrenSize?: Array<number>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| start | number | Yes | Zero-based index at which to start changing the children main size. |
-| deleteCount | number | No | Indicating the number of children main size to remove from start. |
-| childrenSize | Array&lt;number&gt; | No | Add the new children main size, beginning from start. |
+| start | number | Yes | Index starting from 0, which indicates the position at which to begin modifying the size information of child components along the main axis.<br>**NOTE:** <br>1. The value must be a finite non-negative number; otherwise, an exception will be thrown. <br>2. Non-integer values are truncated to the nearest integer. <br>3. Values exceeding the maximum index do not take effect. <br>Value range: [0, +∞) |
+| deleteCount | number | No | Number of size information entries to be deleted starting from the **start** position.<br>**NOTE:** <br>1. The value must be a finite non-negative number; otherwise, it will be treated as **0**. <br>2. Non-integer values are truncated to the nearest integer. <br>3. The result of (start + deleteCount - 1) can exceed the maximum index, which will delete all size information of child components starting from the **start** position. <br>Default value: **+∞** <br>Value range: [0, +∞) |
+| childrenSize | Array&lt;number&gt; | No | Size information of all child components to be inserted, starting from the **start** position.<br>Unit for each value in the array: vp <br>**NOTE:** <br>1. If the values in the array are finite non-negative number, they are considered specified sizes and will not change with the default size. <br>2. If the values in the array are not finite non-negative number, they will be treated as the default size and will change with the default size. <br>The default value is an empty array. <br>Value range: [0, +∞) |
 
 **Error codes:**
 
@@ -81,6 +91,8 @@ Updates main size for specified child.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChildrenMainSize-update(index: number, childSize: number): void--><!--Device-ChildrenMainSize-update(index: number, childSize: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +115,7 @@ Updates main size for specified child.
 set childDefaultSize(value: number)
 ```
 
-Set default size.
+Sets the default size of the child component along the main axis.
 
 **Type:** number
 
@@ -112,6 +124,8 @@ Set default size.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChildrenMainSize-set childDefaultSize(value: number)--><!--Device-ChildrenMainSize-set childDefaultSize(value: number)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,5 +148,7 @@ Get default size
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ChildrenMainSize-get childDefaultSize(): number--><!--Device-ChildrenMainSize-get childDefaultSize(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

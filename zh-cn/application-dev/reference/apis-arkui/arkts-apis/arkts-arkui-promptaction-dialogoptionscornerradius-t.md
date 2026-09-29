@@ -14,6 +14,8 @@ declare type DialogOptionsCornerRadius = Dimension | BorderRadiuses
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-promptAction-declare type DialogOptionsCornerRadius = Dimension | BorderRadiuses--><!--Device-promptAction-declare type DialogOptionsCornerRadius = Dimension | BorderRadiuses-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |

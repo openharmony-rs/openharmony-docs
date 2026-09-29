@@ -8,6 +8,8 @@ Defines the quota policy for the specified network.
 
 **Since:** 10
 
+<!--Device-policy-export interface NetQuotaPolicy--><!--Device-policy-export interface NetQuotaPolicy-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Network for which the quota policy is set.
 
 **Since:** 10
 
+<!--Device-NetQuotaPolicy-networkMatchRule: NetworkMatchRule--><!--Device-NetQuotaPolicy-networkMatchRule: NetworkMatchRule-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Network quota policy.
 **Type:** [QuotaPolicy](arkts-network-policy-quotapolicy-i-sys.md)
 
 **Since:** 10
+
+<!--Device-NetQuotaPolicy-quotaPolicy: QuotaPolicy--><!--Device-NetQuotaPolicy-quotaPolicy: QuotaPolicy-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

@@ -8,6 +8,8 @@ Define some common extra keys used in different scenarios.
 
 **Since:** 26.0.0
 
+<!--Device-avSession-enum ExtraKey--><!--Device-avSession-enum ExtraKey-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
 ## LIVE_VIEW_HIDDEN_WHEN_KEYGUARD
@@ -22,7 +24,9 @@ Inform the system that the live view card should be hidden on the keyguard.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-ExtraKey-LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'--><!--Device-ExtraKey-LIVE_VIEW_HIDDEN_WHEN_KEYGUARD = 'hw_live_view_hidden_when_keyguard'-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 

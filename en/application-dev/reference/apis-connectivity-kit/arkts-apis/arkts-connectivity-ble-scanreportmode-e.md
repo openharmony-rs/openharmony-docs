@@ -8,6 +8,8 @@ Report mode used during scan.
 
 **Since:** 15
 
+<!--Device-ble-enum ScanReportMode--><!--Device-ble-enum ScanReportMode-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## NORMAL
@@ -22,7 +24,9 @@ In normal mode, the advertisement packet is reported immediately after being sca
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-ScanReportMode-NORMAL = 1--><!--Device-ScanReportMode-NORMAL = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -38,7 +42,9 @@ Enables delayed sending of advertising packets in batch mode by the interval spe
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-ScanReportMode-BATCH = 2--><!--Device-ScanReportMode-BATCH = 2-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -54,7 +60,9 @@ In low sensitivity fence mode, the advertisement packets are reported only when 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScanReportMode-FENCE_SENSITIVITY_LOW = 10--><!--Device-ScanReportMode-FENCE_SENSITIVITY_LOW = 10-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -70,6 +78,8 @@ In high sensitivity fence mode, the advertisement packets are reported only when
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-ScanReportMode-FENCE_SENSITIVITY_HIGH = 11--><!--Device-ScanReportMode-FENCE_SENSITIVITY_HIGH = 11-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

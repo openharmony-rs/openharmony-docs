@@ -4,6 +4,8 @@ The **cloudSyncManager** module provides APIs for managing device-cloud sync for
 
 **Since:** 10
 
+<!--Device-unnamed-declare namespace cloudSyncManager--><!--Device-unnamed-declare namespace cloudSyncManager-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
 ## Modules to Import

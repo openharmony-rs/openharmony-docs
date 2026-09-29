@@ -8,7 +8,9 @@ Defines the callback used to receive the offset and index of each character in a
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-text-type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean--><!--Device-text-type CaretOffsetsCallback = (offset: double, index: int, leadingEdge: boolean) => boolean-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

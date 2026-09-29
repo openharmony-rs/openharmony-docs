@@ -8,6 +8,8 @@ Implements file downloads. Before using any APIs of this class, you must obtain 
 
 **Since:** 6
 
+<!--Device-request-interface DownloadTask--><!--Device-request-interface DownloadTask-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-delete(callback: AsyncCallback<boolean>): void--><!--Device-DownloadTask-delete(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -93,6 +97,8 @@ Deletes the download task. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-DownloadTask-delete(): Promise<boolean>--><!--Device-DownloadTask-delete(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Return value:**
@@ -147,6 +153,8 @@ Obtains the information about this download task. This API uses an asynchronous 
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-getTaskInfo(callback: AsyncCallback<DownloadInfo>): void--><!--Device-DownloadTask-getTaskInfo(callback: AsyncCallback<DownloadInfo>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -208,6 +216,8 @@ Obtains the information about this download task. This API uses a promise to ret
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-DownloadTask-getTaskInfo(): Promise<DownloadInfo>--><!--Device-DownloadTask-getTaskInfo(): Promise<DownloadInfo>-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Return value:**
@@ -263,6 +273,8 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-getTaskMimeType(callback: AsyncCallback<string>): void--><!--Device-DownloadTask-getTaskMimeType(callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -324,6 +336,8 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-DownloadTask-getTaskMimeType(): Promise<string>--><!--Device-DownloadTask-getTaskMimeType(): Promise<string>-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Return value:**
@@ -372,6 +386,8 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) => vo
 Unsubscribes from download progress events.
 
 **Since:** 6
+
+<!--Device-DownloadTask-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void--><!--Device-DownloadTask-off(type: 'progress', callback?: (receivedSize: long, totalSize: long) => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -429,6 +445,8 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 Unsubscribes from download events.
 
 **Since:** 7
+
+<!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void--><!--Device-DownloadTask-off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -513,6 +531,8 @@ Unsubscribes from download failure events.
 
 **Since:** 7
 
+<!--Device-DownloadTask-off(type: 'fail', callback?: (err: int) => void): void--><!--Device-DownloadTask-off(type: 'fail', callback?: (err: int) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Parameters:**
@@ -575,6 +595,8 @@ Subscribes to download progress events. This API uses an asynchronous callback t
 
 **Since:** 6
 
+<!--Device-DownloadTask-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void--><!--Device-DownloadTask-on(type: 'progress', callback: (receivedSize: long, totalSize: long) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Parameters:**
@@ -623,6 +645,8 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 Subscribes to download events. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
+
+<!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void--><!--Device-DownloadTask-on(type: 'complete' | 'pause' | 'remove', callback: () => void): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -683,6 +707,8 @@ Subscribes to download failure events. This API uses an asynchronous callback to
 
 **Since:** 7
 
+<!--Device-DownloadTask-on(type: 'fail', callback: (err: int) => void): void--><!--Device-DownloadTask-on(type: 'fail', callback: (err: int) => void): void-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Parameters:**
@@ -722,342 +748,6 @@ try {
 }
 ```
 
-## pause
-
-```TypeScript
-pause(callback: AsyncCallback<void>): void
-```
-
-Pauses this download task. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.pause((err: BusinessError) => {
-  if(err) {
-    console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in pausing the download task.');
-});
-```
-
-<a id="pause-1"></a>
-
-## pause
-
-```TypeScript
-pause(): Promise<void>
-```
-
-Pauses this download task. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [suspend](#suspend)()
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.pause().then(() => {    
-  console.info('Succeeded in pausing the download task.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## query
-
-```TypeScript
-query(callback: AsyncCallback<DownloadInfo>): void
-```
-
-Queries this download task. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadInfo** object obtained. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
-  if(err) {
-    console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in querying the download task.');
-  }
-});
-```
-
-<a id="query-1"></a>
-
-## query
-
-```TypeScript
-query(): Promise<DownloadInfo>
-```
-
-Queries this download task. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getTaskInfo](#gettaskinfo)()
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | Promise used to return the **DownloadInfo** object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.query().then((downloadInfo) => {    
-  console.info('Succeeded in querying the download task.')
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
-});
-```
-
-## queryMimeType
-
-```TypeScript
-queryMimeType(callback: AsyncCallback<string>): void
-```
-
-Queries the MIME type of this download task. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the **MimeType** object obtained. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.queryMimeType((err: BusinessError, data: string)=>{
-  if(err) {
-    console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('Succeeded in querying the download mimeType.');
-  }
-});
-```
-
-<a id="querymimetype-1"></a>
-
-## queryMimeType
-
-```TypeScript
-queryMimeType(): Promise<string>
-```
-
-Queries the MIME type of this download task. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [getTaskMimeType](#gettaskmimetype)()
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;string&gt; | Promise used to return the MIME type of a download task. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.queryMimeType().then((data: string) => {    
-  console.info('Succeeded in querying the download MimeType.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
-});
-```
-
-## remove
-
-```TypeScript
-remove(callback: AsyncCallback<boolean>): void
-```
-
-Deletes the download task. This API uses an asynchronous callback to return the result.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.remove((err, result)=>{
-  if(err) {
-    console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in removing the download task.');
-});
-```
-
-<a id="remove-1"></a>
-
-## remove
-
-```TypeScript
-remove(): Promise<boolean>
-```
-
-Deletes the download task. This API uses a promise to return the result.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)()
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.remove().then((result) => {
-  console.info('Succeeded in removing the download task.');
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
 ## restore
 
 ```TypeScript
@@ -1074,6 +764,8 @@ Restores the download task. This API uses an asynchronous callback to return the
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-restore(callback: AsyncCallback<boolean>): void--><!--Device-DownloadTask-restore(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -1135,6 +827,8 @@ Restores the download task. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-DownloadTask-restore(): Promise<boolean>--><!--Device-DownloadTask-restore(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Return value:**
@@ -1174,90 +868,6 @@ try {
 }
 ```
 
-## resume
-
-```TypeScript
-resume(callback: AsyncCallback<void>): void
-```
-
-Restores the download task. This API uses an asynchronous callback to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.resume((err: BusinessError) => {
-  if (err) {
-    console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in resuming the download task.');
-});
-```
-
-<a id="resume-1"></a>
-
-## resume
-
-```TypeScript
-resume(): Promise<void>
-```
-
-Restores the download task. This API uses a promise to return the result.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [restore](#restore)()
-
-**Required permissions:** ohos.permission.INTERNET
-
-**System capability:** SystemCapability.MiscServices.Download
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-
-**Examples**
-
-```TypeScript
-downloadTask.resume().then(() => {
-  console.info('Succeeded in resuming the download task.')
-}).catch((err: BusinessError) => {
-  console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
-});
-```
-
 ## suspend
 
 ```TypeScript
@@ -1274,6 +884,8 @@ Suspends this download task. You can use [restore](#restore) to restore the down
 **Since:** 9
 
 **Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-suspend(callback: AsyncCallback<boolean>): void--><!--Device-DownloadTask-suspend(callback: AsyncCallback<boolean>): void-End-->
 
 **System capability:** SystemCapability.MiscServices.Download
 
@@ -1335,6 +947,8 @@ Suspends this download task. You can use [restore](#restore) to restore the down
 
 **Required permissions:** ohos.permission.INTERNET
 
+<!--Device-DownloadTask-suspend(): Promise<boolean>--><!--Device-DownloadTask-suspend(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.MiscServices.Download
 
 **Return value:**
@@ -1372,4 +986,444 @@ try {
 } catch (err) {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
+```
+
+## pause
+
+```TypeScript
+pause(callback: AsyncCallback<void>): void
+```
+
+Pauses this download task. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-pause(callback: AsyncCallback<void>): void--><!--Device-DownloadTask-pause(callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.pause((err: BusinessError) => {
+  if(err) {
+    console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in pausing the download task.');
+});
+```
+
+<a id="pause-1"></a>
+
+## pause
+
+```TypeScript
+pause(): Promise<void>
+```
+
+Pauses this download task. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [suspend](#suspend)()
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-pause(): Promise<void>--><!--Device-DownloadTask-pause(): Promise<void>-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.pause().then(() => {    
+  console.info('Succeeded in pausing the download task.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## query
+
+```TypeScript
+query(callback: AsyncCallback<DownloadInfo>): void
+```
+
+Queries this download task. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-query(callback: AsyncCallback<DownloadInfo>): void--><!--Device-DownloadTask-query(callback: AsyncCallback<DownloadInfo>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadInfo** object obtained. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
+  if(err) {
+    console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in querying the download task.');
+  }
+});
+```
+
+<a id="query-1"></a>
+
+## query
+
+```TypeScript
+query(): Promise<DownloadInfo>
+```
+
+Queries this download task. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getTaskInfo](#gettaskinfo)()
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-query(): Promise<DownloadInfo>--><!--Device-DownloadTask-query(): Promise<DownloadInfo>-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[DownloadInfo](arkts-basicservices-request-downloadinfo-i.md)&gt; | Promise used to return the **DownloadInfo** object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.query().then((downloadInfo) => {    
+  console.info('Succeeded in querying the download task.')
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query the download task. Code: ${err.code}, message: ${err.message}`)
+});
+```
+
+## queryMimeType
+
+```TypeScript
+queryMimeType(callback: AsyncCallback<string>): void
+```
+
+Queries the MIME type of this download task. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-queryMimeType(callback: AsyncCallback<string>): void--><!--Device-DownloadTask-queryMimeType(callback: AsyncCallback<string>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the **MimeType** object obtained. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.queryMimeType((err: BusinessError, data: string)=>{
+  if(err) {
+    console.error(`Failed to query the download mimeType. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('Succeeded in querying the download mimeType.');
+  }
+});
+```
+
+<a id="querymimetype-1"></a>
+
+## queryMimeType
+
+```TypeScript
+queryMimeType(): Promise<string>
+```
+
+Queries the MIME type of this download task. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [getTaskMimeType](#gettaskmimetype)()
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-queryMimeType(): Promise<string>--><!--Device-DownloadTask-queryMimeType(): Promise<string>-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;string&gt; | Promise used to return the MIME type of a download task. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.queryMimeType().then((data: string) => {    
+  console.info('Succeeded in querying the download MimeType.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query the download MimeType. Code: ${err.code}, message: ${err.message}`)
+});
+```
+
+## remove
+
+```TypeScript
+remove(callback: AsyncCallback<boolean>): void
+```
+
+Deletes the download task. This API uses an asynchronous callback to return the result.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-remove(callback: AsyncCallback<boolean>): void--><!--Device-DownloadTask-remove(callback: AsyncCallback<boolean>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.remove((err, result)=>{
+  if(err) {
+    console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in removing the download task.');
+});
+```
+
+<a id="remove-1"></a>
+
+## remove
+
+```TypeScript
+remove(): Promise<boolean>
+```
+
+Deletes the download task. This API uses a promise to return the result.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)()
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-remove(): Promise<boolean>--><!--Device-DownloadTask-remove(): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.remove().then((result) => {
+  console.info('Succeeded in removing the download task.');
+}).catch ((err: BusinessError) => {
+  console.error(`Failed to remove the download task. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## resume
+
+```TypeScript
+resume(callback: AsyncCallback<void>): void
+```
+
+Restores the download task. This API uses an asynchronous callback to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-resume(callback: AsyncCallback<void>): void--><!--Device-DownloadTask-resume(callback: AsyncCallback<void>): void-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.resume((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in resuming the download task.');
+});
+```
+
+<a id="resume-1"></a>
+
+## resume
+
+```TypeScript
+resume(): Promise<void>
+```
+
+Restores the download task. This API uses a promise to return the result.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [restore](#restore)()
+
+**Required permissions:** ohos.permission.INTERNET
+
+<!--Device-DownloadTask-resume(): Promise<void>--><!--Device-DownloadTask-resume(): Promise<void>-End-->
+
+**System capability:** SystemCapability.MiscServices.Download
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
+
+**Examples**
+
+```TypeScript
+downloadTask.resume().then(() => {
+  console.info('Succeeded in resuming the download task.')
+}).catch((err: BusinessError) => {
+  console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
+});
 ```

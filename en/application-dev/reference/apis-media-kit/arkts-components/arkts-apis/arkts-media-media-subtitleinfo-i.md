@@ -8,6 +8,8 @@ Provides subtitle information. When a subtitle update event is subscribed to, th
 
 **Since:** 12
 
+<!--Device-media-interface SubtitleInfo--><!--Device-media-interface SubtitleInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.Core
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Duration of the text to be displayed, as milliseconds.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SubtitleInfo-duration?: int--><!--Device-SubtitleInfo-duration?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -44,7 +48,9 @@ Display start time of the text, as milliseconds.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SubtitleInfo-startTime?: int--><!--Device-SubtitleInfo-startTime?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core
 
@@ -60,6 +66,8 @@ Text information of current update event.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-SubtitleInfo-text?: string--><!--Device-SubtitleInfo-text?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.Core

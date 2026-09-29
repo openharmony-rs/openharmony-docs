@@ -8,6 +8,8 @@ interface RelativePosition
 
 **起始版本：** 20
 
+<!--Device-display-interface RelativePosition--><!--Device-display-interface RelativePosition-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ displayId: number
 
 **起始版本：** 20
 
+<!--Device-RelativePosition-displayId: long--><!--Device-RelativePosition-displayId: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## position
@@ -41,5 +45,7 @@ position: Position
 **类型：** [Position](arkts-arkui-display-position-i.md)
 
 **起始版本：** 20
+
+<!--Device-RelativePosition-position: Position--><!--Device-RelativePosition-position: Position-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

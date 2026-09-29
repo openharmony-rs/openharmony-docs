@@ -20,6 +20,8 @@ Defines the transition effect by setting parameters in the struct.
 
 **Substitutes:** [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md)
 
+<!--Device-unnamed-declare interface TransitionOptions--><!--Device-unnamed-declare interface TransitionOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## opacity
@@ -43,6 +45,8 @@ If the value specified is less than 0, the value **0** is used. If the value spe
 **Deprecated since:** 10
 
 **Substitutes:** [opacity](arkts-arkui-common-comp-transitioneffect-c.md#opacity)
+
+<!--Device-TransitionOptions-opacity?: number--><!--Device-TransitionOptions-opacity?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +72,8 @@ point of the page.
 **Deprecated since:** 10
 
 **Substitutes:** [rotate](arkts-arkui-common-comp-transitioneffect-c.md#rotate)
+
+<!--Device-TransitionOptions-rotate?: RotateOptions--><!--Device-TransitionOptions-rotate?: RotateOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +104,8 @@ If **centerX** or **centerY** is set to an invalid string (for example, **"illeg
 
 **Substitutes:** [scale](arkts-arkui-common-comp-transitioneffect-c.md#scale)
 
+<!--Device-TransitionOptions-scale?: ScaleOptions--><!--Device-TransitionOptions-scale?: ScaleOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## translate
@@ -122,6 +130,8 @@ Translation of the component during transition, which is the value of the start 
 
 **Substitutes:** [translate](arkts-arkui-common-comp-transitioneffect-c.md#translate)
 
+<!--Device-TransitionOptions-translate?: TranslateOptions--><!--Device-TransitionOptions-translate?: TranslateOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## type
@@ -145,5 +155,7 @@ If **type** is not specified, the default value **TransitionType.All** is used, 
 **Deprecated since:** 10
 
 **Substitutes:** [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md)
+
+<!--Device-TransitionOptions-type?: TransitionType--><!--Device-TransitionOptions-type?: TransitionType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

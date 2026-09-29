@@ -8,6 +8,8 @@ Defines the detect encoding result information.
 
 **Since:** 26.0.0
 
+<!--Device-i18n-export interface EncodingInfo--><!--Device-i18n-export interface EncodingInfo-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## Modules to Import
@@ -32,6 +34,8 @@ An integer between 0 to 100, determine the accuracy of the result. Higher value 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-EncodingInfo-confidence: int--><!--Device-EncodingInfo-confidence: int-End-->
+
 **System capability:** SystemCapability.Global.I18n
 
 ## encodingName
@@ -49,5 +53,7 @@ Name of the detect encoding result, the value can be "UTF-8", "UTF-16BE", "UTF-1
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EncodingInfo-encodingName: string--><!--Device-EncodingInfo-encodingName: string-End-->
 
 **System capability:** SystemCapability.Global.I18n

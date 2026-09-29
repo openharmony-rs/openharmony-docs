@@ -20,6 +20,8 @@ Checks whether the application has the permission to access the device.
 
 **Substitutes:** [hasRight](arkts-basicservices-usbmanager-hasright-f.md)
 
+<!--Device-usb-function hasRight(deviceName: string): boolean--><!--Device-usb-function hasRight(deviceName: string): boolean-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

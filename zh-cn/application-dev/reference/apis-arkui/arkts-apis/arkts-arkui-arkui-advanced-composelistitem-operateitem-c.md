@@ -10,6 +10,8 @@ export declare class OperateItem
 
 **起始版本：** 10
 
+<!--Device-unnamed-export declare class OperateItem--><!--Device-unnamed-export declare class OperateItem-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ arrow?: OperateIcon
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateItem-arrow?: OperateIcon--><!--Device-OperateItem-arrow?: OperateIcon-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## button
@@ -55,6 +59,8 @@ button?: OperateButton
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateItem-button?: OperateButton--><!--Device-OperateItem-button?: OperateButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ checkbox?: OperateCheck
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateItem-checkbox?: OperateCheck--><!--Device-OperateItem-checkbox?: OperateCheck-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -95,6 +103,8 @@ icon?: OperateIcon
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateItem-icon?: OperateIcon--><!--Device-OperateItem-icon?: OperateIcon-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +126,8 @@ image?: ResourceStr
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateItem-image?: ResourceStr--><!--Device-OperateItem-image?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## radio
@@ -135,6 +147,8 @@ radio?: OperateCheck
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateItem-radio?: OperateCheck--><!--Device-OperateItem-radio?: OperateCheck-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,6 +170,8 @@ subIcon?: OperateIcon
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateItem-subIcon?: OperateIcon--><!--Device-OperateItem-subIcon?: OperateIcon-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## switch
@@ -175,6 +191,8 @@ switch?: OperateCheck
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateItem-switch?: OperateCheck--><!--Device-OperateItem-switch?: OperateCheck-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,6 +214,8 @@ symbolStyle?: SymbolGlyphModifier
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-OperateItem-symbolStyle?: SymbolGlyphModifier--><!--Device-OperateItem-symbolStyle?: SymbolGlyphModifier-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -215,5 +235,7 @@ text?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OperateItem-text?: ResourceStr--><!--Device-OperateItem-text?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

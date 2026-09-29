@@ -18,9 +18,11 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 > 
 > - **CustomDialogController** is effective only when it is a member variable of the @CustomDialog and @Component decorated struct and is defined in the @Component decorated struct. For details, see the following example.
 > 
-> - You can pass in multiple other controllers in the CustomDialog to open one or more other CustomDialogs in the CustomDialog. In this case, you must place the controller pointing to the self behind all controllers. For details,see [Example 1: Opening Nested Dialog Boxes](../../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#example-1-opening-nested-dialog-boxes). &gt;
+> - You can pass in multiple other controllers in the CustomDialog to open one or more other CustomDialogs in the CustomDialog. In this case, you must place the controller pointing to the self behind all controllers.
 
 **Since:** 7
+
+<!--Device-unnamed-declare class CustomDialogController--><!--Device-unnamed-declare class CustomDialogController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,11 +32,15 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 close()
 ```
 
+Close the dialog box.
+
 **Since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogController-close()--><!--Device-CustomDialogController-close()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,10 +55,10 @@ Constructor for a custom dialog box.
 > **NOTE:** 
 > 
 > Custom dialog box parameters do not support dynamic updates. However, by setting **customStyle** to **true** and
-> configuring attributes such as [background color](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),
-> [background blur](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),
-> and width/height on the custom component, dynamic updates can be achieved through state variables
-> bound to these attributes.
+> configuring [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),
+> [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),
+> and [size](../arkts-components/arkts-arkui-common-comp.md)-related attributes on the custom component, you can implement dynamic updates via
+> state variables bound to these attributes.
 > 
 > If **CustomDialogController** is used as a global variable to implement global custom dialog boxes, the previous
 > dialog box cannot be closed after a new value is assigned to the controller. You are advised to close the dialog
@@ -66,6 +72,8 @@ Constructor for a custom dialog box.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogController-constructor(value: CustomDialogControllerOptions)--><!--Device-CustomDialogController-constructor(value: CustomDialogControllerOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,6 +97,8 @@ Obtains the state of the custom dialog box.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-CustomDialogController-getState(): PromptActionCommonState--><!--Device-CustomDialogController-getState(): PromptActionCommonState-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Return value:**
@@ -108,14 +118,14 @@ Opens the content of the custom dialog box. This API can be called multiple time
 > **NOTE:** 
 > 
 > **CustomDialog** with subwindow display (**showInSubwindow** set to **true**) is not supported in input method
-> windows. For details, see the constraints in
-> [createPanel](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel-1)
-> of the input method framework documentation.
+> windows.
 
 **Since:** 7
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-CustomDialogController-open()--><!--Device-CustomDialogController-open()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

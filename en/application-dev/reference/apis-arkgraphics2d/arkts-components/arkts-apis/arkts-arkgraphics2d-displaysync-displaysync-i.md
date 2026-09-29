@@ -8,6 +8,8 @@ An object that implements the setting of the frame rate and callback. It provide
 
 **Since:** 11
 
+<!--Device-displaySync-interface DisplaySync--><!--Device-displaySync-interface DisplaySync-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Unsubscribes from change events of each frame.
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-DisplaySync-off(type: 'frame', callback?: Callback<IntervalInfo>): void--><!--Device-DisplaySync-off(type: 'frame', callback?: Callback<IntervalInfo>): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,6 +68,8 @@ Subscribes to change events of each frame.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
+<!--Device-DisplaySync-on(type: 'frame', callback: Callback<IntervalInfo>): void--><!--Device-DisplaySync-on(type: 'frame', callback: Callback<IntervalInfo>): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -98,7 +104,9 @@ Sets the expected frame rate range.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+
+<!--Device-DisplaySync-setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void--><!--Device-DisplaySync-setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +149,9 @@ Starts callback for each frame.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+
+<!--Device-DisplaySync-start(): void--><!--Device-DisplaySync-start(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,7 +219,9 @@ Stops callback for each frame.
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.2.0.
+
+<!--Device-DisplaySync-stop(): void--><!--Device-DisplaySync-stop(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

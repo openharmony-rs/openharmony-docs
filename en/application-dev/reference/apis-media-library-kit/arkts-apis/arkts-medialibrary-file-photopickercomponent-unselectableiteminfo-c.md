@@ -8,6 +8,8 @@ UnselectableItemInfo
 
 **Since:** 26.0.1
 
+<!--Device-unnamed-export declare class UnselectableItemInfo--><!--Device-unnamed-export declare class UnselectableItemInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
@@ -32,6 +34,8 @@ MimeType.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
+<!--Device-UnselectableItemInfo-public mimeType?: string--><!--Device-UnselectableItemInfo-public mimeType?: string-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## photoSubType
@@ -49,5 +53,7 @@ PhotoSubtype. Asset subtype, non-special type images default to DEFAULT(0).
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-UnselectableItemInfo-public photoSubType?: photoAccessHelper.PhotoSubtype--><!--Device-UnselectableItemInfo-public photoSubType?: photoAccessHelper.PhotoSubtype-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

@@ -8,6 +8,8 @@ Defines the paragraph style.
 
 **Since:** 11
 
+<!--Device-unnamed-declare interface RichEditorParagraphStyle--><!--Device-unnamed-declare interface RichEditorParagraphStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## leadingMargin
@@ -25,6 +27,8 @@ Paragraph indentation. When a paragraph contains only ImageSpan or BuilderSpan, 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorParagraphStyle-leadingMargin?: Dimension | LeadingMarginPlaceholder--><!--Device-RichEditorParagraphStyle-leadingMargin?: Dimension | LeadingMarginPlaceholder-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +51,8 @@ This parameter takes effect when **wordBreak** is not set to **breakAll**. Hyphe
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorParagraphStyle-lineBreakStrategy?: LineBreakStrategy--><!--Device-RichEditorParagraphStyle-lineBreakStrategy?: LineBreakStrategy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +78,8 @@ The default paragraph spacing is 0.
 
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
+<!--Device-RichEditorParagraphStyle-paragraphSpacing?: number--><!--Device-RichEditorParagraphStyle-paragraphSpacing?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## shaderStyle
@@ -94,6 +102,8 @@ When this API is set together with strokeWidth in [RichEditorTextStyle](arkts-ar
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-RichEditorParagraphStyle-shaderStyle?: ShaderStyle--><!--Device-RichEditorParagraphStyle-shaderStyle?: ShaderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textAlign
@@ -113,6 +123,8 @@ Default value: **TextAlign.START**
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorParagraphStyle-textAlign?: TextAlign--><!--Device-RichEditorParagraphStyle-textAlign?: TextAlign-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,6 +146,8 @@ Default value: **TextDirection.DEFAULT**
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-RichEditorParagraphStyle-textDirection?: TextDirection--><!--Device-RichEditorParagraphStyle-textDirection?: TextDirection-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## textVerticalAlign
@@ -154,6 +168,8 @@ Default value: **TextVerticalAlign.BASELINE**.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-RichEditorParagraphStyle-textVerticalAlign?: TextVerticalAlign--><!--Device-RichEditorParagraphStyle-textVerticalAlign?: TextVerticalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## wordBreak
@@ -173,5 +189,7 @@ Default value: WordBreak.BREAK_WORD.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-RichEditorParagraphStyle-wordBreak?: WordBreak--><!--Device-RichEditorParagraphStyle-wordBreak?: WordBreak-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

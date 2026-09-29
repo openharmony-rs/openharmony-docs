@@ -8,6 +8,8 @@ Transfers USB data packets in an asynchronous manner.
 
 **Since:** 18
 
+<!--Device-usbManager-interface SubmitTransferCallback--><!--Device-usbManager-interface SubmitTransferCallback-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Actual length of the read/write operation, in bytes.
 
 **Since:** 18
 
+<!--Device-SubmitTransferCallback-actualLength: int--><!--Device-SubmitTransferCallback-actualLength: int-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## isoPacketDescs
@@ -42,6 +46,8 @@ Packet information of the isochronous transfer.
 
 **Since:** 18
 
+<!--Device-SubmitTransferCallback-isoPacketDescs: Array<Readonly<UsbIsoPacketDescriptor>>--><!--Device-SubmitTransferCallback-isoPacketDescs: Array<Readonly<UsbIsoPacketDescriptor>>-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## status
@@ -55,5 +61,7 @@ Status of the read/write operation.
 **Type:** [UsbTransferStatus](arkts-basicservices-usbmanager-usbtransferstatus-e.md)
 
 **Since:** 18
+
+<!--Device-SubmitTransferCallback-status: UsbTransferStatus--><!--Device-SubmitTransferCallback-status: UsbTransferStatus-End-->
 
 **System capability:** SystemCapability.USB.USBManager

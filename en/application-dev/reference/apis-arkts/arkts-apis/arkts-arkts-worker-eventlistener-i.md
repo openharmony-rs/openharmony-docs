@@ -12,6 +12,8 @@ Implements event listening.
 
 **Substitutes:** [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md)
 
+<!--Device-unnamed-export interface EventListener--><!--Device-unnamed-export interface EventListener-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Specifies the callback to invoke.
 **Deprecated since:** 9
 
 **Substitutes:** ohos.worker.WorkerEventListener.(event: Event)
+
+<!--Device-EventListener-(evt: Event): void | Promise<void>--><!--Device-EventListener-(evt: Event): void | Promise<void>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

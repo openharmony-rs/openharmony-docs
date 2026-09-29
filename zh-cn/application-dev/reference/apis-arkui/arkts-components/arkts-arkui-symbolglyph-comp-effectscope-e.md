@@ -8,6 +8,8 @@ EffectScope的枚举值。
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare enum EffectScope--><!--Device-unnamed-declare enum EffectScope-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## LAYER
@@ -26,6 +28,8 @@ LAYER = 0
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-EffectScope-LAYER = 0--><!--Device-EffectScope-LAYER = 0-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## WHOLE
@@ -43,5 +47,7 @@ WHOLE = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-EffectScope-WHOLE = 1--><!--Device-EffectScope-WHOLE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

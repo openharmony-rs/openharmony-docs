@@ -8,6 +8,8 @@ interface WindowProperties
 
 **起始版本：** 6
 
+<!--Device-window-interface WindowProperties--><!--Device-window-interface WindowProperties-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## 导入模块
@@ -28,7 +30,9 @@ brightness: number
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-brightness: double--><!--Device-WindowProperties-brightness: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -44,7 +48,9 @@ displayId?: number
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-displayId?: long--><!--Device-WindowProperties-displayId?: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -60,7 +66,9 @@ drawableRect: Rect
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-drawableRect: Rect--><!--Device-WindowProperties-drawableRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -76,7 +84,9 @@ focusable: boolean
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-focusable: boolean--><!--Device-WindowProperties-focusable: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -92,6 +102,8 @@ globalDisplayRect?: Rect
 
 **起始版本：** 20
 
+<!--Device-WindowProperties-globalDisplayRect?: Rect--><!--Device-WindowProperties-globalDisplayRect?: Rect-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## id
@@ -106,7 +118,9 @@ id: number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-id: int--><!--Device-WindowProperties-id: int-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -122,7 +136,9 @@ isFullScreen: boolean
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-isFullScreen: boolean--><!--Device-WindowProperties-isFullScreen: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -138,7 +154,9 @@ isKeepScreenOn: boolean
 
 **起始版本：** 6
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-isKeepScreenOn: boolean--><!--Device-WindowProperties-isKeepScreenOn: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -158,7 +176,9 @@ isLayoutFullScreen: boolean
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-isLayoutFullScreen: boolean--><!--Device-WindowProperties-isLayoutFullScreen: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -174,7 +194,9 @@ isPrivacyMode: boolean
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-isPrivacyMode: boolean--><!--Device-WindowProperties-isPrivacyMode: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -190,7 +212,9 @@ isTransparent: boolean
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-isTransparent: boolean--><!--Device-WindowProperties-isTransparent: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -206,7 +230,9 @@ name?: string
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-name?: string--><!--Device-WindowProperties-name?: string-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -222,7 +248,9 @@ touchable: boolean
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-touchable: boolean--><!--Device-WindowProperties-touchable: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -238,7 +266,9 @@ windowRect: Rect
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-windowRect: Rect--><!--Device-WindowProperties-windowRect: Rect-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -256,7 +286,9 @@ windowType?: WindowType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-windowType?: WindowType--><!--Device-WindowProperties-windowType?: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -276,6 +308,8 @@ dimBehindValue: number
 
 **废弃版本：** 9
 
+<!--Device-WindowProperties-dimBehindValue: number--><!--Device-WindowProperties-dimBehindValue: number-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ## isRoundCorner
@@ -293,6 +327,8 @@ isRoundCorner: boolean
 **起始版本：** 7
 
 **废弃版本：** 9
+
+<!--Device-WindowProperties-isRoundCorner: boolean--><!--Device-WindowProperties-isRoundCorner: boolean-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -314,6 +350,8 @@ type: WindowType
 
 **替代接口：** [windowType](#windowtype)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WindowProperties-type: WindowType--><!--Device-WindowProperties-type: WindowType-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

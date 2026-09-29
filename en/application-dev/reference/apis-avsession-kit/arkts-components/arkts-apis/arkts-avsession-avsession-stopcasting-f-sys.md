@@ -16,6 +16,8 @@ Stop current cast and disconnect device connection.
 
 **Since:** 10
 
+<!--Device-avSession-function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void--><!--Device-avSession-function stopCasting(session: SessionToken, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 
 **System API:** This is a system API.
@@ -59,6 +61,8 @@ function stopCasting(session: SessionToken): Promise<void>
 Stop current cast and disconnect device connection.
 
 **Since:** 10
+
+<!--Device-avSession-function stopCasting(session: SessionToken): Promise<void>--><!--Device-avSession-function stopCasting(session: SessionToken): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVCast
 

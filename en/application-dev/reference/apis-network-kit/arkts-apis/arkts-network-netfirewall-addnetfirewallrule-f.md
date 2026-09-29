@@ -70,6 +70,8 @@ Adds a firewall rule for the system user ID. The supported rule types are IP, Do
 
 **Required permissions:** ohos.permission.MANAGE_NET_FIREWALL
 
+<!--Device-netFirewall-function addNetFirewallRule(rule: NetFirewallRule): Promise<int>--><!--Device-netFirewall-function addNetFirewallRule(rule: NetFirewallRule): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
 **Parameters:**

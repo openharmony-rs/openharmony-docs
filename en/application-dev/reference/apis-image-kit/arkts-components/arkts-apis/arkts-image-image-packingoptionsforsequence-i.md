@@ -8,6 +8,8 @@ Defines the options for encoding animated images.
 
 **Since:** 18
 
+<!--Device-image-interface PackingOptionsForSequence--><!--Device-image-interface PackingOptionsForSequence-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## Modules to Import
@@ -32,6 +34,8 @@ If the array length is less than **frameCount**, the last value in the array wil
 
 **Since:** 18
 
+<!--Device-PackingOptionsForSequence-delayTimeList: Array<int>--><!--Device-PackingOptionsForSequence-delayTimeList: Array<int>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## disposalTypes
@@ -51,6 +55,8 @@ Array that defines how each image frame transitions. If the array length is less
 
 **Since:** 18
 
+<!--Device-PackingOptionsForSequence-disposalTypes?: Array<int>--><!--Device-PackingOptionsForSequence-disposalTypes?: Array<int>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
 ## frameCount
@@ -64,6 +70,8 @@ Number of frames specified in GIF encoding.
 **Type:** number
 
 **Since:** 18
+
+<!--Device-PackingOptionsForSequence-frameCount: int--><!--Device-PackingOptionsForSequence-frameCount: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker
 
@@ -80,5 +88,7 @@ The value **0** means an infinite loop. If this field is not carried, loop playb
 **Type:** number
 
 **Since:** 18
+
+<!--Device-PackingOptionsForSequence-loopCount?: int--><!--Device-PackingOptionsForSequence-loopCount?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImagePacker

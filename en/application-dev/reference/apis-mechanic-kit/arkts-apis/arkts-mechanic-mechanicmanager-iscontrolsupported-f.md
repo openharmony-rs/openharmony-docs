@@ -16,6 +16,8 @@ Checks whether the current device supports embodied control for a specific type 
 
 **Since:** 26.0.0
 
+<!--Device-mechanicManager-function isControlSupported(mechDeviceType?: MechDeviceType): boolean--><!--Device-mechanicManager-function isControlSupported(mechDeviceType?: MechDeviceType): boolean-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **Parameters:**

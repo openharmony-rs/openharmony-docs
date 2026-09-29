@@ -10,6 +10,8 @@ Enumerates the material types in a scene. The material type defines how material
 
 **Since:** 12
 
+<!--Device-unnamed-export enum MaterialType--><!--Device-unnamed-export enum MaterialType-End-->
+
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
 ## UNLIT_SHADOW_ALPHA
@@ -23,6 +25,8 @@ Draws only shadows. When the Blend property of the material is enabled, the mate
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MaterialType-UNLIT_SHADOW_ALPHA = 100--><!--Device-MaterialType-UNLIT_SHADOW_ALPHA = 100-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 

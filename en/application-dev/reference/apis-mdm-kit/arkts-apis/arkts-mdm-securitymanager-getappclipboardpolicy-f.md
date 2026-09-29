@@ -20,6 +20,8 @@ Obtains the device clipboard policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getAppClipboardPolicy(admin: Want, tokenId?: number): string--><!--Device-securityManager-function getAppClipboardPolicy(admin: Want, tokenId?: number): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -102,6 +104,8 @@ Obtains the device clipboard policy. Enterprises can use this API to query the c
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getAppClipboardPolicy(admin: Want | null, tokenId?: number): string--><!--Device-securityManager-function getAppClipboardPolicy(admin: Want | null, tokenId?: number): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -164,6 +168,8 @@ Obtains the device clipboard policy of a specified application for a specified u
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): string--><!--Device-securityManager-function getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): string-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -208,6 +214,8 @@ Obtains the device clipboard policy of a specified application for a specified u
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-securityManager-function getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string--><!--Device-securityManager-function getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

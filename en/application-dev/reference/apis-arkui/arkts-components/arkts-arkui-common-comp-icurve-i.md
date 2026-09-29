@@ -8,6 +8,8 @@ Interface for curve object.
 
 **Since:** 9
 
+<!--Device-unnamed-interface ICurve--><!--Device-unnamed-interface ICurve-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## interpolate
@@ -23,6 +25,8 @@ Calculates the interpolated value along the curve at the specified normalized ti
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ICurve-interpolate(fraction : number) : number--><!--Device-ICurve-interpolate(fraction : number) : number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

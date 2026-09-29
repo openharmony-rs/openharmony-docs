@@ -12,6 +12,8 @@ Defines a callback invoked when the selected segmented button item changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-export type OnSelectedIndexChange = (selectedIndex: number) => void--><!--Device-unnamed-export type OnSelectedIndexChange = (selectedIndex: number) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

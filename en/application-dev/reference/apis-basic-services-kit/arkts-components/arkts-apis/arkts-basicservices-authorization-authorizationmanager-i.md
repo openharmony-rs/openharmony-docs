@@ -8,6 +8,8 @@ Defines the authorization manager, which is used to request and check the author
 
 **Since:** 26.0.1
 
+<!--Device-authorization-interface AuthorizationManager--><!--Device-authorization-interface AuthorizationManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Checks whether the current process has authorization for the specified privilege
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationManager-hasAuthorization(privilege: Privilege): Promise<boolean>--><!--Device-AuthorizationManager-hasAuthorization(privilege: Privilege): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -63,6 +67,8 @@ When the application is in the foreground and there is no valid authorization, t
 **Required permissions:** ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationManager-requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise<AuthorizationResult>--><!--Device-AuthorizationManager-requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise<AuthorizationResult>-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

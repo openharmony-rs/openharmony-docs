@@ -8,6 +8,8 @@ declare namespace pluginComponentManager
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare namespace pluginComponentManager--><!--Device-unnamed-declare namespace pluginComponentManager-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块

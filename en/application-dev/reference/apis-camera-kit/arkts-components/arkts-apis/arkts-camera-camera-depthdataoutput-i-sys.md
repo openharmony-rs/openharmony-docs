@@ -10,6 +10,8 @@ Implements depth data output. It inherits from [CameraOutput](arkts-camera-camer
 
 **Since:** 13
 
+<!--Device-camera-interface DepthDataOutput extends CameraOutput--><!--Device-camera-interface DepthDataOutput extends CameraOutput-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ off(type: 'depthDataAvailable', callback?: AsyncCallback<DepthData>): void
 Unsubscribes from depth data availability events.
 
 **Since:** 13
+
+<!--Device-DepthDataOutput-off(type: 'depthDataAvailable', callback?: AsyncCallback<DepthData>): void--><!--Device-DepthDataOutput-off(type: 'depthDataAvailable', callback?: AsyncCallback<DepthData>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -74,6 +78,8 @@ Unsubscribes from DepthDataOutput error events.
 
 **Since:** 13
 
+<!--Device-DepthDataOutput-off(type: 'error', callback?: ErrorCallback): void--><!--Device-DepthDataOutput-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -112,6 +118,8 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
 
 **Since:** 13
+
+<!--Device-DepthDataOutput-on(type: 'depthDataAvailable', callback: AsyncCallback<DepthData>): void--><!--Device-DepthDataOutput-on(type: 'depthDataAvailable', callback: AsyncCallback<DepthData>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -161,6 +169,8 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 
 **Since:** 13
 
+<!--Device-DepthDataOutput-on(type: 'error', callback: ErrorCallback): void--><!--Device-DepthDataOutput-on(type: 'error', callback: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -201,6 +211,8 @@ start(): Promise<void>
 Starts depth data output. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-DepthDataOutput-start(): Promise<void>--><!--Device-DepthDataOutput-start(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -243,6 +255,8 @@ stop(): Promise<void>
 Stops depth data output. This API uses a promise to return the result.
 
 **Since:** 13
+
+<!--Device-DepthDataOutput-stop(): Promise<void>--><!--Device-DepthDataOutput-stop(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

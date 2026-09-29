@@ -8,6 +8,8 @@ type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
 
 **起始版本：** 22
 
+<!--Device-unnamed-type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void--><!--Device-unnamed-type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**

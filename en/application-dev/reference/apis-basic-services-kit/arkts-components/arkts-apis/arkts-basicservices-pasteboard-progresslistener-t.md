@@ -8,7 +8,9 @@ Defines a listener for progress data changes. If the default progress indicator 
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-pasteboard-type ProgressListener = (progress: ProgressInfo) => void--><!--Device-pasteboard-type ProgressListener = (progress: ProgressInfo) => void-End-->
 
 **System capability:** SystemCapability.MiscServices.Pasteboard
 

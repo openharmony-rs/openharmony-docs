@@ -8,6 +8,8 @@ Image span information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorImageSpan--><!--Device-unnamed-declare interface RichEditorImageSpan-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageStyle
@@ -25,6 +27,8 @@ Image style.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorImageSpan-imageStyle?: RichEditorImageSpanStyle--><!--Device-RichEditorImageSpan-imageStyle?: RichEditorImageSpanStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Span position.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorImageSpan-spanPosition: RichEditorSpanPosition--><!--Device-RichEditorImageSpan-spanPosition: RichEditorSpanPosition-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -61,5 +67,7 @@ Image content.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorImageSpan-value: PixelMap | ResourceStr--><!--Device-RichEditorImageSpan-value: PixelMap | ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

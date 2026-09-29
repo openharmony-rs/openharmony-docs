@@ -18,6 +18,8 @@ Cancels a task in the task pool. If the task is in the internal queue of the tas
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-taskpool-function cancel(task: Task): void--><!--Device-taskpool-function cancel(task: Task): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -129,6 +131,8 @@ Cancels a task group in the task pool. If a task group is canceled before all th
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-taskpool-function cancel(group: TaskGroup): void--><!--Device-taskpool-function cancel(group: TaskGroup): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -197,6 +201,8 @@ Cancels a task in the task pool by task ID. If the task is in the internal queue
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-taskpool-function cancel(taskId: number): void--><!--Device-taskpool-function cancel(taskId: number): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

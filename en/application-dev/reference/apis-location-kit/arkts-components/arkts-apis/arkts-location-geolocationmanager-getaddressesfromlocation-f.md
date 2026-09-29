@@ -16,6 +16,8 @@ Obtain address info from location.
 
 **Since:** 9
 
+<!--Device-geoLocationManager-function getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback<Array<GeoAddress>>): void--><!--Device-geoLocationManager-function getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback<Array<GeoAddress>>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 **Parameters:**
@@ -70,6 +72,8 @@ function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array
 Obtain address info from location.
 
 **Since:** 9
+
+<!--Device-geoLocationManager-function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array<GeoAddress>>--><!--Device-geoLocationManager-function getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise<Array<GeoAddress>>-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 

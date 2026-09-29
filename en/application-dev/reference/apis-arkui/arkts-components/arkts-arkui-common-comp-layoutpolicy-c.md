@@ -35,6 +35,8 @@ Layout policy for the width and height of a component. It provides three layout 
 
 **Since:** 15
 
+<!--Device-unnamed-declare class LayoutPolicy--><!--Device-unnamed-declare class LayoutPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fixAtIdealSize
@@ -54,6 +56,8 @@ When the current component adapts to its child components (content), its size is
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-LayoutPolicy-static readonly fixAtIdealSize: LayoutPolicy--><!--Device-LayoutPolicy-static readonly fixAtIdealSize: LayoutPolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,6 +79,8 @@ When the current component adapts to the parent component layout, its size is eq
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 15.
 
+<!--Device-LayoutPolicy-static readonly matchParent: LayoutPolicy--><!--Device-LayoutPolicy-static readonly matchParent: LayoutPolicy-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## wrapContent
@@ -94,5 +100,7 @@ When the current component adapts to its child components (content), its size is
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-LayoutPolicy-static readonly wrapContent: LayoutPolicy--><!--Device-LayoutPolicy-static readonly wrapContent: LayoutPolicy-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

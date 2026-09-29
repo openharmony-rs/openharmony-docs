@@ -16,6 +16,8 @@ Data is not distinguished by device in a single KV store. The data written to di
 
 **Substitutes:** SingleKVStore
 
+<!--Device-distributedData-interface SingleKVStore extends KVStore--><!--Device-distributedData-interface SingleKVStore extends KVStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core @version 1
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](
 **Deprecated since:** 9
 
 **Substitutes:** closeResultSet
+
+<!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -80,6 +84,8 @@ Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](
 
 **Substitutes:** closeResultSet
 
+<!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet): Promise<void>--><!--Device-SingleKVStore-closeResultSet(resultSet: KvStoreResultSet): Promise<void>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -123,6 +129,8 @@ Obtains the value of the specified key. This API uses an asynchronous callback t
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>): void--><!--Device-SingleKVStore-get(key: string, callback: AsyncCallback<Uint8Array | string | boolean | number>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -170,6 +178,8 @@ Obtains the value of the specified key. This API uses a promise to return the re
 **Deprecated since:** 9
 
 **Substitutes:** get
+
+<!--Device-SingleKVStore-get(key: string): Promise<Uint8Array | string | boolean | number>--><!--Device-SingleKVStore-get(key: string): Promise<Uint8Array | string | boolean | number>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -220,6 +230,8 @@ Obtains all KV pairs that match the specified key prefix. This API uses an async
 **Deprecated since:** 9
 
 **Substitutes:** getEntries
+
+<!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -275,6 +287,8 @@ Obtains all KV pairs that match the specified key prefix. This API uses a promis
 **Deprecated since:** 9
 
 **Substitutes:** getEntries
+
+<!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(keyPrefix: string): Promise<Entry[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -343,6 +357,8 @@ Obtains the KV pairs that match the specified **Query** object. This API uses an
 
 **Substitutes:** getEntries
 
+<!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void--><!--Device-SingleKVStore-getEntries(query: Query, callback: AsyncCallback<Entry[]>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -402,6 +418,8 @@ Obtains the KV pairs that match the specified **Query** object. This API uses a 
 **Deprecated since:** 9
 
 **Substitutes:** getEntries
+
+<!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>--><!--Device-SingleKVStore-getEntries(query: Query): Promise<Entry[]>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -468,6 +486,8 @@ Obtains the result set with the specified prefix. This API uses an asynchronous 
 
 **Substitutes:** getResultSet
 
+<!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -525,6 +545,8 @@ Obtains the result set with the specified prefix. This API uses a promise to ret
 **Deprecated since:** 9
 
 **Substitutes:** getResultSet
+
+<!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KvStoreResultSet>--><!--Device-SingleKVStore-getResultSet(keyPrefix: string): Promise<KvStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -595,6 +617,8 @@ Obtains a **KvStoreResultSet** object that matches the specified **Query** objec
 
 **Substitutes:** getResultSet
 
+<!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void--><!--Device-SingleKVStore-getResultSet(query: Query, callback: AsyncCallback<KvStoreResultSet>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -651,6 +675,8 @@ Obtains a **KvStoreResultSet** object that matches the specified **Query** objec
 **Deprecated since:** 9
 
 **Substitutes:** getResultSet
+
+<!--Device-SingleKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>--><!--Device-SingleKVStore-getResultSet(query: Query): Promise<KvStoreResultSet>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -716,6 +742,8 @@ Obtains the number of results that match the specified **Query** object. This AP
 
 **Substitutes:** getResultSize
 
+<!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void--><!--Device-SingleKVStore-getResultSize(query: Query, callback: AsyncCallback<number>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -770,6 +798,8 @@ Obtains the number of results that match the specified **Query** object. This AP
 **Deprecated since:** 9
 
 **Substitutes:** getResultSize
+
+<!--Device-SingleKVStore-getResultSize(query: Query): Promise<number>--><!--Device-SingleKVStore-getResultSize(query: Query): Promise<number>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -833,6 +863,8 @@ Obtains the security level of this KV store. This API uses an asynchronous callb
 
 **Substitutes:** getSecurityLevel
 
+<!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void--><!--Device-SingleKVStore-getSecurityLevel(callback: AsyncCallback<SecurityLevel>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -870,6 +902,8 @@ Obtains the security level of this KV store. This API uses a promise to return t
 
 **Substitutes:** getSecurityLevel
 
+<!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>--><!--Device-SingleKVStore-getSecurityLevel(): Promise<SecurityLevel>-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Return value:**
@@ -906,6 +940,8 @@ Unsubscribes from data changes.
 **Deprecated since:** 9
 
 **Substitutes:** off
+
+<!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -953,6 +989,8 @@ Unsubscribes from sync completion events.
 
 **Substitutes:** off
 
+<!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -997,6 +1035,8 @@ Subscribes to data changes of the specified type.
 
 **Substitutes:** on
 
+<!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-SingleKVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1031,6 +1071,8 @@ Subscribes to sync completion events.
 **Deprecated since:** 9
 
 **Substitutes:** on
+
+<!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-SingleKVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1074,6 +1116,8 @@ Deletes data of a device. This API uses an asynchronous callback to return the r
 **Deprecated since:** 9
 
 **Substitutes:** removeDeviceData
+
+<!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1125,6 +1169,8 @@ Deletes data of a device. This API uses a promise to return the result.
 **Deprecated since:** 9
 
 **Substitutes:** removeDeviceData
+
+<!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>--><!--Device-SingleKVStore-removeDeviceData(deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1182,6 +1228,8 @@ Sets the default delay allowed for KV store sync. This API uses an asynchronous 
 
 **Substitutes:** setSyncParam
 
+<!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 **Parameters:**
@@ -1220,6 +1268,8 @@ Sets the default delay allowed for KV store sync. This API uses a promise to ret
 **Deprecated since:** 9
 
 **Substitutes:** setSyncParam
+
+<!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number): Promise<void>--><!--Device-SingleKVStore-setSyncParam(defaultAllowedDelayMs: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -1266,6 +1316,8 @@ Synchronizes the KV store manually.
 **Substitutes:** sync
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-SingleKVStore-sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void--><!--Device-SingleKVStore-sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 

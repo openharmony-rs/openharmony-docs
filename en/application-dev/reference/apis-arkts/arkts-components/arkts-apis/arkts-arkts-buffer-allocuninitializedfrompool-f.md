@@ -16,7 +16,9 @@ Creates a **Buffer** object of the specified size from the buffer pool, without 
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-buffer-function allocUninitializedFromPool(size: int): Buffer--><!--Device-buffer-function allocUninitializedFromPool(size: int): Buffer-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

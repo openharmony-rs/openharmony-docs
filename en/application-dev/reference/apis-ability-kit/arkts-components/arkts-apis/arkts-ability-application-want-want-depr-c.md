@@ -12,6 +12,8 @@ Want is a carrier for information transfer between objects (application componen
 
 **Substitutes:** [Want/Want](arkts-ability-app-ability-want-want-c.md)
 
+<!--Device-unnamed-export default class Want--><!--Device-unnamed-export default class Want-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Name of the ability. If both **bundleName** and **abilityName** are specified in
 
 **Substitutes:** [abilityName](arkts-ability-app-ability-want-want-c.md#abilityname)
 
+<!--Device-Want-abilityName?: string--><!--Device-Want-abilityName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## action
@@ -43,7 +47,7 @@ Name of the ability. If both **bundleName** and **abilityName** are specified in
 action?: string
 ```
 
-Action to take, such as viewing and sharing application details. In implicit Want, you can define this property and use it together with **uri** or **parameters** to specify the operation to be performed on the data. For details, see [action](arkts-ability-wantconstant-action-depr-e.md#action). For details about the definition and matching rules of implicit Want, see [Matching Rules of Explicit Want and Implicit Want](../../../application-models/explicit-implicit-want-mappings.md).
+Action to take, such as viewing and sharing application details. In implicit Want, you can define this property and use it together with **uri** or **parameters** to specify the operation to be performed on the data. For details, see [action](arkts-ability-wantconstant-action-depr-e.md). For details about the definition and matching rules of implicit Want, see [Matching Rules of Explicit Want and Implicit Want](../../../application-models/explicit-implicit-want-mappings.md).
 
 **Type:** string
 
@@ -52,6 +56,8 @@ Action to take, such as viewing and sharing application details. In implicit Wan
 **Deprecated since:** 9
 
 **Substitutes:** [action](arkts-ability-app-ability-want-want-c.md#action)
+
+<!--Device-Want-action?: string--><!--Device-Want-action?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -71,6 +77,8 @@ Bundle name.
 
 **Substitutes:** [bundleName](arkts-ability-app-ability-want-want-c.md#bundlename)
 
+<!--Device-Want-bundleName?: string--><!--Device-Want-bundleName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## deviceId
@@ -89,6 +97,8 @@ ID of the device running the ability. If this field is unspecified, the local de
 
 **Substitutes:** [deviceId](arkts-ability-app-ability-want-want-c.md#deviceid)
 
+<!--Device-Want-deviceId?: string--><!--Device-Want-deviceId?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## entities
@@ -97,7 +107,7 @@ ID of the device running the ability. If this field is unspecified, the local de
 entities?: Array<string>
 ```
 
-Additional category information (such as browser and video player) of the ability. It is a supplement to the **action** field for implicit Want. and is used to filter ability types. For details, see [entity](arkts-ability-wantconstant-entity-depr-e.md#entity).
+Additional category information (such as browser and video player) of the ability. It is a supplement to the **action** field for implicit Want. and is used to filter ability types. For details, see [entity](arkts-ability-wantconstant-entity-depr-e.md).
 
 **Type:** Array&lt;string&gt;
 
@@ -107,6 +117,8 @@ Additional category information (such as browser and video player) of the abilit
 
 **Substitutes:** [entities](arkts-ability-app-ability-want-want-c.md#entities)
 
+<!--Device-Want-entities?: Array<string>--><!--Device-Want-entities?: Array<string>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## flags
@@ -115,7 +127,7 @@ Additional category information (such as browser and video player) of the abilit
 flags?: number
 ```
 
-How the Want object will be handled. By default, numbers are passed in. For details, see [flags](arkts-ability-wantconstant-flags-depr-e.md#flags).
+How the Want object will be handled. By default, numbers are passed in. For details, see [flags](arkts-ability-wantconstant-flags-depr-e.md).
 
 **Type:** number
 
@@ -124,6 +136,8 @@ How the Want object will be handled. By default, numbers are passed in. For deta
 **Deprecated since:** 9
 
 **Substitutes:** [flags](arkts-ability-app-ability-want-want-c.md#flags)
+
+<!--Device-Want-flags?: number--><!--Device-Want-flags?: number-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 
@@ -154,6 +168,8 @@ sent to the peer.
 
 **Substitutes:** [parameters](arkts-ability-app-ability-want-want-c.md#parameters)
 
+<!--Device-Want-parameters?: { [key: string]: any }--><!--Device-Want-parameters?: { [key: string]: any }-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## type
@@ -172,6 +188,8 @@ MIME type, that is, the type of the file to open, for example, **'text/xml'** an
 
 **Substitutes:** [type](arkts-ability-app-ability-want-want-c.md#type)
 
+<!--Device-Want-type?: string--><!--Device-Want-type?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityBase
 
 ## uri
@@ -189,6 +207,8 @@ URI information to match. If **Uri** is specified in a Want object, the Want obj
 **Deprecated since:** 9
 
 **Substitutes:** [uri](arkts-ability-app-ability-want-want-c.md#uri)
+
+<!--Device-Want-uri?: string--><!--Device-Want-uri?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityBase
 

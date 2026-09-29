@@ -18,6 +18,8 @@ Obtains printer information based on the printer ID. This API uses a promise to 
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function getPrinterInformationById(printerId: string): Promise<PrinterInformation>--><!--Device-print-function getPrinterInformationById(printerId: string): Promise<PrinterInformation>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**

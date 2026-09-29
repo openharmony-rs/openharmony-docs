@@ -8,6 +8,8 @@ Defines background options.
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface BackgroundOptions--><!--Device-unnamed-declare interface BackgroundOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## align
@@ -30,6 +32,8 @@ Anonymous Object Rectification.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-BackgroundOptions-align?: Alignment--><!--Device-BackgroundOptions-align?: Alignment-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## ignoresLayoutSafeAreaEdges
@@ -49,5 +53,7 @@ The set of edges for which to ignore layout safe area. To respect safe area inse
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-BackgroundOptions-ignoresLayoutSafeAreaEdges?: Array<LayoutSafeAreaEdge>--><!--Device-BackgroundOptions-ignoresLayoutSafeAreaEdges?: Array<LayoutSafeAreaEdge>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

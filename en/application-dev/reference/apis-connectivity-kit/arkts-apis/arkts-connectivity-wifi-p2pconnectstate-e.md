@@ -14,6 +14,8 @@ P2P connection status.
 
 **Substitutes:** [P2pConnectState](arkts-connectivity-wifimanager-p2pconnectstate-e.md)
 
+<!--Device-wifi-enum P2pConnectState--><!--Device-wifi-enum P2pConnectState-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## DISCONNECTED
@@ -30,6 +32,8 @@ p2p is disconnected.
 
 **Substitutes:** [DISCONNECTED](arkts-connectivity-wifimanager-p2pconnectstate-e.md#disconnected)
 
+<!--Device-P2pConnectState-DISCONNECTED = 0--><!--Device-P2pConnectState-DISCONNECTED = 0-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 ## CONNECTED
@@ -45,5 +49,7 @@ p2p is connected.
 **Deprecated since:** 9
 
 **Substitutes:** [CONNECTED](arkts-connectivity-wifimanager-p2pconnectstate-e.md#connected)
+
+<!--Device-P2pConnectState-CONNECTED = 1--><!--Device-P2pConnectState-CONNECTED = 1-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P

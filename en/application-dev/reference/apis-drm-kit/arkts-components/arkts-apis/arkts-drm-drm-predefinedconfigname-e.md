@@ -8,6 +8,8 @@ Enumerates the predefined configuration properties.
 
 **Since:** 11
 
+<!--Device-drm-enum PreDefinedConfigName--><!--Device-drm-enum PreDefinedConfigName-End-->
+
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
 ## CONFIG_DEVICE_VENDOR
@@ -20,7 +22,9 @@ Plugin vendor name, which corresponds to the value of **vendor** in the return v
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_DEVICE_VENDOR = 'vendor'--><!--Device-PreDefinedConfigName-CONFIG_DEVICE_VENDOR = 'vendor'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -34,7 +38,9 @@ Plugin version number, which corresponds to the value of **version** in the retu
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_DEVICE_VERSION = 'version'--><!--Device-PreDefinedConfigName-CONFIG_DEVICE_VERSION = 'version'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -48,7 +54,9 @@ Device description, which corresponds to the value of **description** in the ret
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_DEVICE_DESCRIPTION = 'description'--><!--Device-PreDefinedConfigName-CONFIG_DEVICE_DESCRIPTION = 'description'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -62,7 +70,9 @@ Supported algorithms, which correspond to the value of **algorithms** in the ret
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_DEVICE_ALGORITHMS = 'algorithms'--><!--Device-PreDefinedConfigName-CONFIG_DEVICE_ALGORITHMS = 'algorithms'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -76,7 +86,9 @@ Unique device ID, which corresponds to the value of **deviceUniqueId** in the re
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_DEVICE_UNIQUE_ID = 'deviceUniqueId'--><!--Device-PreDefinedConfigName-CONFIG_DEVICE_UNIQUE_ID = 'deviceUniqueId'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -90,7 +102,9 @@ Maximum number of supported sessions, which corresponds to the value of **maxSes
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_SESSION_MAX = 'maxSessionNum'--><!--Device-PreDefinedConfigName-CONFIG_SESSION_MAX = 'maxSessionNum'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core
 
@@ -104,6 +118,8 @@ Number of active sessions, which corresponds to the value of **currentSessionNum
 
 **Since:** 11
 
-**Atomic service API:** This API can be used in atomic services since API version 14.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+
+<!--Device-PreDefinedConfigName-CONFIG_SESSION_CURRENT = 'currentSessionNum'--><!--Device-PreDefinedConfigName-CONFIG_SESSION_CURRENT = 'currentSessionNum'-End-->
 
 **System capability:** SystemCapability.Multimedia.Drm.Core

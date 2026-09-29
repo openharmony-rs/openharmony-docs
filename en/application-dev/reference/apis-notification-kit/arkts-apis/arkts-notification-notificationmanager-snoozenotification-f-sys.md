@@ -20,6 +20,8 @@ Snoozes a notification. The notification will be reminded again after the specif
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function snoozeNotification(hashCode: string, delayTime: long): Promise<void>--><!--Device-notificationManager-function snoozeNotification(hashCode: string, delayTime: long): Promise<void>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

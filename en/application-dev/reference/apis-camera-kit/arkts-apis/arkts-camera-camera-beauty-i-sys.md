@@ -10,6 +10,8 @@ Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md) Provides 
 
 **Since:** 11
 
+<!--Device-camera-interface Beauty extends BeautyQuery--><!--Device-camera-interface Beauty extends BeautyQuery-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -29,6 +31,8 @@ getBeauty(type: BeautyType): number
 Obtains the level of the beauty type in use.
 
 **Since:** 11
+
+<!--Device-Beauty-getBeauty(type: BeautyType): int--><!--Device-Beauty-getBeauty(type: BeautyType): int-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -82,6 +86,8 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 **Since:** 11
 
+<!--Device-Beauty-setBeauty(type: BeautyType, value: int): void--><!--Device-Beauty-setBeauty(type: BeautyType, value: int): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 **System API:** This is a system API.
@@ -125,6 +131,8 @@ setPortraitThemeType(type: PortraitThemeType): void
 Sets a portrait theme type for a camera device.
 
 **Since:** 14
+
+<!--Device-Beauty-setPortraitThemeType(type: PortraitThemeType): void--><!--Device-Beauty-setPortraitThemeType(type: PortraitThemeType): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

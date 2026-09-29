@@ -8,6 +8,8 @@ interface WindowSnapshotAnimationConfig
 
 **起始版本：** 26.0.0
 
+<!--Device-window-interface WindowSnapshotAnimationConfig--><!--Device-window-interface WindowSnapshotAnimationConfig-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -30,6 +32,8 @@ delay?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-WindowSnapshotAnimationConfig-delay?: long--><!--Device-WindowSnapshotAnimationConfig-delay?: long-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## duration
@@ -45,5 +49,7 @@ duration?: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowSnapshotAnimationConfig-duration?: long--><!--Device-WindowSnapshotAnimationConfig-duration?: long-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

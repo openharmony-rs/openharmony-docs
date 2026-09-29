@@ -8,6 +8,8 @@ declare interface ColorStop
 
 **起始版本：** 10
 
+<!--Device-unnamed-declare interface ColorStop--><!--Device-unnamed-declare interface ColorStop-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -25,6 +27,8 @@ color: ResourceColor
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorStop-color: ResourceColor--><!--Device-ColorStop-color: ResourceColor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ offset: Length
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ColorStop-offset: Length--><!--Device-ColorStop-offset: Length-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -16,6 +16,8 @@ Reads the text content of a file line by line. This API returns the result synch
 
 **Since:** 11
 
+<!--Device-unnamed-declare function readLinesSync(filePath: string, options?: Options): ReaderIterator--><!--Device-unnamed-declare function readLinesSync(filePath: string, options?: Options): ReaderIterator-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**

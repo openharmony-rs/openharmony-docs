@@ -17,6 +17,8 @@ Defines text configuration options.
 
 **Since:** 11
 
+<!--Device-unnamed-export interface LabelOptions--><!--Device-unnamed-export interface LabelOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -45,6 +47,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LabelOptions-activatedFontColor?: ResourceColor--><!--Device-LabelOptions-activatedFontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -67,6 +71,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LabelOptions-fontColor?: ResourceColor--><!--Device-LabelOptions-fontColor?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -88,6 +94,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LabelOptions-fontFamily?: string--><!--Device-LabelOptions-fontFamily?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +122,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LabelOptions-fontSize?: Dimension--><!--Device-LabelOptions-fontSize?: Dimension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +152,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LabelOptions-labelMargin?: LabelMarginOptions--><!--Device-LabelOptions-labelMargin?: LabelMarginOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,6 +185,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-LabelOptions-localizedLabelMargin?: LocalizedLabelMarginOptions--><!--Device-LabelOptions-localizedLabelMargin?: LocalizedLabelMarginOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -190,5 +204,7 @@ Text content displayed by the **Chip** component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-LabelOptions-text: string--><!--Device-LabelOptions-text: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

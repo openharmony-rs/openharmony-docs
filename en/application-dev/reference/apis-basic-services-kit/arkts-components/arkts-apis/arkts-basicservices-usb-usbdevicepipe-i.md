@@ -12,6 +12,8 @@ Represents a USB device pipe, which is used to determine a USB device.
 
 **Substitutes:** [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md)
 
+<!--Device-usb-interface USBDevicePipe--><!--Device-usb-interface USBDevicePipe-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## Modules to Import
@@ -36,6 +38,8 @@ Bus address.
 
 **Substitutes:** [busNum](arkts-basicservices-usbmanager-usbdevicepipe-i.md#busnum)
 
+<!--Device-USBDevicePipe-busNum: number--><!--Device-USBDevicePipe-busNum: number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 ## devAddress
@@ -53,5 +57,7 @@ Device address.
 **Deprecated since:** 9
 
 **Substitutes:** [devAddress](arkts-basicservices-usbmanager-usbdevicepipe-i.md#devaddress)
+
+<!--Device-USBDevicePipe-devAddress: number--><!--Device-USBDevicePipe-devAddress: number-End-->
 
 **System capability:** SystemCapability.USB.USBManager

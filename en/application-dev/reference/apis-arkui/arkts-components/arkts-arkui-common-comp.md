@@ -18,6 +18,8 @@ Constructor
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-CommonInterface-(): CommonAttribute--><!--Device-CommonInterface-(): CommonAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Summary
@@ -28,45 +30,45 @@ Constructor
 | --- | --- |
 | [@AnimatableExtend](arkts-arkui-common-comp-animatableextend-d.md) | The @AnimatableExtend decorator is used to customize animatable property methods. Functions defined within this decorator are called on a frame-by-frame basis during the animation process until the animation ends. |
 | [@Builder](arkts-arkui-common-comp-builder-d.md) | Defining Builder MethodDecorator |
-| [@BuilderParam](arkts-arkui-common-comp-builderparam-d.md) | Defining BuilderParam PropertyDecorator |
-| [@Component](arkts-arkui-common-comp-component-d.md) | Defining Component ClassDecorator Component is a ClassDecorator and it supports ComponentOptions as parameters. |
-| [@ComponentV2](arkts-arkui-common-comp-componentv2-d.md) | Defining ComponentV2 ClassDecorator ComponentV2 is a ClassDecorator and it supports ComponentOptions as parameters. |
-| [@Computed](arkts-arkui-common-comp-computed-d.md) | Defining Computed MethodDecorator. |
+| [@BuilderParam](arkts-arkui-common-comp-builderparam-d.md) | **\@BuilderParam** is used to decorate variables that point to [\@Builder](arkts-arkui-common-comp-builder-d.md#builder) functions, enabling a custom component to receive externally passed **\@Builder** functions for custom rendering of UI content. It is suitable for scenarios where the parent component's UI building logic needs to be passed to a child component to achieve dynamic customization of component content. |
+| [@Component](arkts-arkui-common-comp-component-d.md) | The **@Component** decorator can decorate a struct declared with the **struct** keyword. A struct decorated by **@Component** gains componentization capabilities, enabling UI encapsulation and reuse. It is suitable for scenarios such as building reusable custom components and splitting complex UIs. The **build** method must be implemented to describe the UI. A struct can be decorated by only one **@Component**. |
+| [@ComponentV2](arkts-arkui-common-comp-componentv2-d.md) | **@ComponentV2** is primarily used with state management V2. Compared with [@Component](../../../ui/state-management/arkts-create-custom-components.md), **@ComponentV2** supports deep observation and deep listening of objects. The decorator is highly easy to use and extensible, and is suitable for scenarios requiring deep observation of nested object states. Unless otherwise specified, custom components decorated with **@ComponentV2** behave the same as those decorated with **@Component**. |
+| [@Computed](arkts-arkui-common-comp-computed-d.md) | **@Computed** is a method decorator used in [State Management V2](../../../ui/state-management/arkts-state-management-overview.md) to decorate a **getter** method, turning it into a computed property. Its return value is cached and recalculated only when the dependent source data changes, reducing the overhead of repeated computation. |
 | [@Concurrent](arkts-arkui-common-comp-concurrent-d.md) | Defining Concurrent MethodDecorator |
-| [@Consume](arkts-arkui-common-comp-consume-d.md) | Defining Consume PropertyDecorator. |
-| [@Consumer](arkts-arkui-common-comp-consumer-d.md) | Defining Consumer PropertyDecorator, aliasName is the only matching key and if aliasName is the default, the default attribute name is regarded as aliasName. And @Consumer will find the nearest @Provider. |
+| [@Consume](arkts-arkui-common-comp-consume-d.md) | [@Provide](arkts-arkui-common-comp-provide-d.md#provide) and **\@Consume** are used together for [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to implement two-way synchronization across component levels. This is applicable to scenarios where states need to be shared among multiple layers of nested components. It simplifies the communication logic between components by avoiding the complexity of layer-by-layer data transfer. As a data consumer, the variable decorated with **\@Consume** establishes a bidirectional binding relationship with the variable decorated with **\@Provide** through an alias or variable name. When a variable decorated with **\@Provide** or **\@Consume** changes, the change is automatically synchronized to the other party. An alias is preferred for matching. If no alias is set, a variable name is used for matching. |
+| [@Consumer](arkts-arkui-common-comp-consumer-d.md) | Decorates a data consumer to obtain data from a data source. It is used together with **\@Provider** in state management V2 to implement bidirectional data synchronization across component levels. If the variable decorated with **\@Consumer** does not find the variable decorated with **\@Provider** with the matching alias in the component tree, it uses its own initial value and does not perform data synchronization. |
 | [@CustomDialog](arkts-arkui-common-comp-customdialog-d.md) | Defining CustomDialog ClassDecorator |
-| [@CustomEnv](arkts-arkui-common-comp-customenv-d.md) | Defines the custom environment PropertyDecorator. |
-| [@Entry](arkts-arkui-common-comp-entry-d.md) | Defines Entry ClassDecorator. |
-| [@Env](arkts-arkui-common-comp-env-d.md) | Defining Env PropertyDecorator. On API 26.0.0 and above, the parameter also supports the SystemEnvKey&lt;T&gt; type. |
-| [@Event](arkts-arkui-common-comp-event-d.md) | Defining Event PropertyDecorator. |
+| [@CustomEnv](arkts-arkui-common-comp-customenv-d.md) | This component is used to obtain custom environment variables. |
+| [@Entry](arkts-arkui-common-comp-entry-d.md) | A custom component decorated by \@Entry serves as the entry to a UI page and is identified by the framework as the root component of the page. It is suitable for building standalone UI pages. |
+| [@Env](arkts-arkui-common-comp-env-d.md) | The **\@Env** decorator is used to obtain system environment variables, helping you sense system environment changes and dynamically adjust the UI display. |
+| [@Event](arkts-arkui-common-comp-event-d.md) | **\@Event** decorates a callback function, which is used as the output of a custom component in [state management V2](../../../ui/state-management/arkts-state-management-overview.md). **\@Event** is usually used together with [ |
 | [@Extend](arkts-arkui-common-comp-extend-d.md) | The @Extend decorator is used to extend the styles of specified components. It supports defining multiple style attributes in a unified manner within the decorated function, and enables flexible style reuse through parameter passing. This is suitable for scenarios where the same styles need to be applied to multiple components, reducing style code duplication. |
-| [@Link](arkts-arkui-common-comp-link-d.md) | Defining Link PropertyDecorator. |
-| [@Local](arkts-arkui-common-comp-local-d.md) | Defining Local PropertyDecorator. |
+| [@Link](arkts-arkui-common-comp-link-d.md) | **\@Link** is used for [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to receive the reference of the state variable passed by the parent component and establish two-way data binding between the parent and child components. It is applicable to scenarios where the parent component's state needs to be directly changed in the child component and the communication between the parent and child components needs to be simplified. |
+| [@Local](arkts-arkui-common-comp-local-d.md) | **\@Local** is used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md) to represent the internal state of components, enabling the observation of variables within custom components. It is applicable to scenarios where partial states (such as counters and switch states) need to be maintained and observed within custom components. Using **\@Local** can simplify the internal state management logic of components. When the state changes, the UI is automatically refreshed without manual management. |
 | [@LocalBuilder](arkts-arkui-common-comp-localbuilder-d.md) | Defining LocalBuilder MethodDecorator |
-| [@LocalStorageLink](arkts-arkui-common-comp-localstoragelink-d.md) | Defining LocalStorageLink PropertyDecorator. |
-| [@LocalStorageProp](arkts-arkui-common-comp-localstorageprop-d.md) | Defining LocalStorageProp PropertyDecorator |
-| [@Monitor](arkts-arkui-common-comp-monitor-d.md) | Define Monitor MethodDecorator |
-| [@ObjectLink](arkts-arkui-common-comp-objectlink-d.md) | Defining ObjectLink PropertyDecorator. |
-| [@Observed](arkts-arkui-common-comp-observed-d.md) | Defining Observed ClassDecorator. |
-| [@ObservedV2](arkts-arkui-common-comp-observedv2-d.md) | Defining ObservedV2 ClassDecorator. |
-| [@Once](arkts-arkui-common-comp-once-d.md) | Defining Once PropertyDecorator. |
-| [@Param](arkts-arkui-common-comp-param-d.md) | Defining Param PropertyDecorator. |
+| [@LocalStorageLink](arkts-arkui-common-comp-localstoragelink-d.md) | **\@LocalStorageLink** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to establish bidirectional data synchronization with the property corresponding to the specified key in [LocalStorage](../arkts-apis/arkts-arkui-localstorage-c.md). When either the variable decorated by **\@LocalStorageLink** or the corresponding property in LocalStorage changes, the change will be synchronized to the other party. This is applicable to scenarios where the UI state needs to be shared among multiple components and data needs to be synchronized with LocalStorage in real time. It can avoid layer-by-layer data transfer and ensure cross-component data consistency. |
+| [@LocalStorageProp](arkts-arkui-common-comp-localstorageprop-d.md) | **\@LocalStorageProp** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to establish unidirectional data synchronization with the property corresponding to the specified key in [LocalStorage](../arkts-apis/arkts-arkui-localstorage-c.md). After the establishment, changes to the property value in LocalStorage will be synchronized to the variable decorated with **\@LocalStorageProp**, but changes to the variable decorated with **\@LocalStorageProp** will not be synchronized back to LocalStorage. This is applicable to scenarios where LocalStorage needs to be shared among multiple components and only unidirectional data flow is required, avoiding unnecessary data writeback. |
+| [@Monitor](arkts-arkui-common-comp-monitor-d.md) | **\@Monitor** is used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md) to listen for changes to state variables, so that the state variables support deep listening. It is applicable to scenarios where custom logic (such as data synchronization, UI refresh, and log recording) needs to be executed when state variables or their nested properties change. Compared with [@Watch](arkts-arkui-common-comp-watch-d.md#watch) in [state management V1](../../../ui/state-management/arkts-state-management-overview.md), **\@Monitor** supports deep listening to changes in nested object properties. Since API version 26.0.0, **\@Monitor** also supports wildcard characters, allowing for more flexible matching of variable paths. |
+| [@ObjectLink](arkts-arkui-common-comp-objectlink-d.md) | **\@ObjectLink** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to receive instances of classes decorated with [@Observed](arkts-arkui-common-comp-observed-d.md#observed) and establish two-way data binding with the data source in the parent component. It is applicable to scenarios where nested class properties are independently observed and listened to in child components to trigger UI updates. |
+| [@Observed](arkts-arkui-common-comp-observed-d.md) | **\@Observed** is a class decorator used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to observe property changes of nested class objects. |
+| [@ObservedV2](arkts-arkui-common-comp-observedv2-d.md) | **\@ObservedV2** is a class decorator used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md). **\@ObservedV2** is used together with [@Trace](arkts-arkui-common-comp-trace-d.md#trace) to decorate classes and class properties, enhancing the observation capability for decorated classes and properties. Compared with [@Observed](arkts-arkui-common-comp-observed-d.md#observed) in [state management V1](../../../ui/state-management/arkts-state-management-overview.md), **\@ObservedV2** provides more fine-grained, property-level in-depth observation capabilities. It is suitable for scenarios where changes in nested object properties need to be precisely tracked to drive UI updates, effectively improving the performance and flexibility of state management. |
+| [@Once](arkts-arkui-common-comp-once-d.md) | **\@Once** is an auxiliary decorator used in [State Management V2](../../../ui/state-management/arkts-state-management-overview.md). It must be used together with [ |
+| [@Param](arkts-arkui-common-comp-param-d.md) | ** |
 | [@Preview](arkts-arkui-common-comp-preview-d.md) | The @Preview decorator decorates custom components for preview. |
-| [@Prop](arkts-arkui-common-comp-prop-d.md) | Defining Prop PropertyDecorator. |
-| [@Provide](arkts-arkui-common-comp-provide-d.md) | Defining Provide PropertyDecorator. |
-| [@Provider](arkts-arkui-common-comp-provider-d.md) | Defining Provider PropertyDecorator, aliasName is the only matching key and if aliasName is the default, the default attribute name is regarded as aliasName. |
-| [@Require](arkts-arkui-common-comp-require-d.md) | Defining Require PropertyDecorator. |
+| [@Prop](arkts-arkui-common-comp-prop-d.md) | **@Prop** is used for [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to receive values passed from external sources and establish a one-way synchronization relationship with parent components. When the state variables decorated with [@State](arkts-arkui-common-comp-state-d.md#state) in the parent component change, the changes are synchronously updated to the corresponding **@Prop** decorated variables in the child component, triggering the child component to re-render. **@Prop** uses a unidirectional data flow mechanism. Changes to **@Prop** decorated variables in child components take effect only within the child components and are not synchronized back to the parent component. This is applicable when child components need to respond to state changes of parent components but do not need to modify the parent component's state reversely. |
+| [@Provide](arkts-arkui-common-comp-provide-d.md) | **@Provide** and [@Consume](arkts-arkui-common-comp-consume-d.md#consume) are used together for [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to implement two-way synchronization across component levels. This is applicable to scenarios where state data needs to be transferred across multiple component levels to avoid layer-by-layer transfer. It can solve the problem of complex state transfer when there are many component levels. Variables decorated with **@Provide** are used as data sources. Bidirectional binding relationships are established between the data sources and variables decorated with **@Consume** through aliases or variable names. When a variable decorated with **@Provide** or **@Consume** changes, the change is automatically synchronized to the other party. |
+| [@Provider](arkts-arkui-common-comp-provider-d.md) | **@Provider** and [@Consumer](arkts-arkui-common-comp-consumer-d.md#consumer) are used together in [state management V2](../../../ui/state-management/arkts-state-management-overview.md) to implement bidirectional data synchronization across component levels. **@Provider** decorates a data provider to provide data for child components. It is applicable to scenarios where state data needs to be shared across multiple layers of components (with deep component layers) to avoid layer-by-layer data transfer. This simplifies the state management process and reduces the coupling between components. |
+| [@Require](arkts-arkui-common-comp-require-d.md) | The **\@Require** decorator validates whether [\@Prop](../../../ui/state-management/arkts-prop.md), [\@State](../../../ui/state-management/arkts-state.md), [\@Provide](../../../ui/state-management/arkts-provide-and-consume.md), [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md), [\ |
 | [@Reusable](arkts-arkui-common-comp-reusable-d.md) | Defining Reusable ClassDecorator. |
-| [@ReusableV2](arkts-arkui-common-comp-reusablev2-d.md) | Defining ReusableV2 ClassDecorator that is used to decorate @ComponentV2. |
+| [@ReusableV2](arkts-arkui-common-comp-reusablev2-d.md) | To reduce the performance overhead caused by repeatedly creating and destroying custom components, developers can use the **@ReusableV2** decorator on custom components decorated by [@ComponentV2](arkts-arkui-common-comp-componentv2-d.md#componentv2) to achieve component reuse. This is applicable to scenarios where components need to be repeatedly created and destroyed, such as list scrolling and frequent toggling of component visibility, and supports configuring memory optimization strategies through parameters. |
 | [@Sendable](arkts-arkui-common-comp-sendable-d.md) | Defining Sendable ClassDecorator The Sendable decorator can be used only for classes. A class with this decorator is marked as sendable, and the class object can be shared globally. Since 12, the Sendable decorator can be used for function and typeAlias also. A function with this decorator is marked as sendable, and the function can be an shareable property of sendable-class object. A typeAlias with this decorator is marked as sendable, and the typeAlias can be used to declare properties, variables, and arguments that need to be assigned with sendable-function. |
-| [@State](arkts-arkui-common-comp-state-d.md) | Defining State PropertyDecorator. |
-| [@StorageLink](arkts-arkui-common-comp-storagelink-d.md) | Defining StorageLink PropertyDecorator. |
-| [@StorageProp](arkts-arkui-common-comp-storageprop-d.md) | Defining StorageProp PropertyDecorator. |
+| [@State](arkts-arkui-common-comp-state-d.md) | **@State** is used for [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to convert common variables within a custom component into state variables. When the state variables change, the UI in the component is re-rendered. It is applicable to scenarios where mutable states need to be managed within a component. |
+| [@StorageLink](arkts-arkui-common-comp-storagelink-d.md) | **@StorageLink** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to establish bidirectional data synchronization with the property of a specified key in [AppStorage](../arkts-apis/arkts-arkui-appstorage-c.md). When the variable decorated with **@StorageLink** changes, the change is synchronized to the property corresponding to the key in AppStorage. When the property corresponding to the key in AppStorage changes, the change is also synchronized back to the variable decorated with **@StorageLink**. It is applicable to scenarios where the global state of AppStorage needs to be shared across pages and abilities and bidirectional data synchronization with AppStorage is required. It can avoid layer-by-layer state data transfer to ensure data consistency. |
+| [@StorageProp](arkts-arkui-common-comp-storageprop-d.md) | **@StorageProp** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to establish unidirectional data synchronization with the corresponding property in [AppStorage](../arkts-apis/arkts-arkui-appstorage-c.md). The changes of the corresponding property in AppStorage are synchronized to the variable decorated with **@StorageProp**, but the changes of the variable decorated with **@StorageProp** will not be synchronized back to AppStorage. It is applicable to scenarios where the global state changes of AppStorage need to be detected across pages and abilities and only unidirectional data flow is required. This can avoid unnecessary data writeback. |
 | [@SyncMonitor](arkts-arkui-common-comp-syncmonitor-d.md) | Define SyncMonitor MethodDecorator. Decorator path parameters are the same as defined for Monitor. The function decorator is functionally equivalent to the UIUtils.addMonitor API with isSynchronous enabled. SyncMonitor must contain at least one path item, with multiple path items separated by commas. Path items are either observed attribute names or array item indices.The path in SyncMonitor supports wildcard at the end of a path item, but path items must never appear at the beginning or in the middle of a path. All other paths using one or more wildcard are invalid. |
-| [@Trace](arkts-arkui-common-comp-trace-d.md) | Defining Trace PropertyDecorator. |
-| [@Track](arkts-arkui-common-comp-track-d.md) | Defining Track PropertyDecorator. |
-| [@Watch](arkts-arkui-common-comp-watch-d.md) | Defining Watch PropertyDecorator. |
+| [@Trace](arkts-arkui-common-comp-trace-d.md) | **@Trace** is a property decorator used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md). [@ObservedV2](arkts-arkui-common-comp-observedv2-d.md#observedv2) and **@Trace** are used together to decorate classes and class properties, enhancing the observation capability for decorated classes and properties. That is, they can recursively observe changes in property values of nested objects and trigger automatic UI refresh. They are applicable to scenarios where precise observation and management of class property changes are required. |
+| [@Track](arkts-arkui-common-comp-track-d.md) | **@Track** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to implement property-level precise observation by decorating specified properties of a class object. When a property decorated with **@Track** changes, the system updates only the UI components that depend on that property, thereby reducing unnecessary UI re-rendering. It is applicable to scenarios where a class object contains many properties and redundant UI refreshes need to be reduced to optimize rendering performance. |
+| [@Watch](arkts-arkui-common-comp-watch-d.md) | **\@Watch** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md) to listen for changes to state variables and trigger specified callback functions when the variables change. It applies to scenarios where linked logic, data synchronization, or derived value calculation needs to be automatically executed when a state variable changes. |
 
 ### Interfaces
 
@@ -77,7 +79,7 @@ Constructor
 | [AnimatableArithmetic](arkts-arkui-common-comp-animatablearithmetic-i.md) | The **AnimatableArithmetic** API defines animation calculation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), you need to implement the addition, subtraction, multiplication, and equality checking functions in the **AnimatableArithmetic\&lt;T\&gt;** API. This enables the data to participate in animation interpolation calculations and to detect whether the data has changed. In other words, the non-number data is defined as types that implement the **AnimatableArithmetic\&lt;T\&gt;** API. |
 | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | Defines parameters related to animation effects. |
 | [AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md) | Defines the options for the AreaChangeEvent. |
-| [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md) | Defines the attribute modifier. |
+| [AttributeModifier](arkts-arkui-common-comp-attributemodifier-i.md) | You need a custom class to implement the **AttributeModifier** API. |
 | [AxisEvent](arkts-arkui-common-comp-axisevent-i.md) | Describes the axis event object. Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [BackgroundBlurStyleOptions](arkts-arkui-common-comp-backgroundblurstyleoptions-i.md) | Defines the options of backgroundBlurStyle |
 | [BackgroundBrightnessOptions](arkts-arkui-common-comp-backgroundbrightnessoptions-i.md) | Provides background brightness options. |
@@ -95,7 +97,7 @@ Constructor
 | [ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) | Defines the click effect. |
 | [ClickEvent](arkts-arkui-common-comp-clickevent-i.md) | Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md) | You need a custom class to implement the **ContentModifier** API. |
-| [ComponentOptions](arkts-arkui-common-comp-componentoptions-i.md) | Defines the options of Component ClassDecorator. |
+| [ComponentOptions](arkts-arkui-common-comp-componentoptions-i.md) | Defines parameters of a custom component, which is used to configure whether to support component freezing and the global reuse pool. They apply to scenarios where the performance of custom components needs to be optimized and the component reuse efficiency needs to be improved. |
 | [Configuration](arkts-arkui-common-comp-configuration-i.md) | Defines the data type of the interface restriction. |
 | [ContentCoverOptions](arkts-arkui-common-comp-contentcoveroptions-i.md) | Inherited from [BindOptions](arkts-arkui-common-comp-bindoptions-i.md). |
 | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md) | Defines the content modifier. |
@@ -115,13 +117,13 @@ Constructor
 | [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) | Defines the information about the dragged item during drag. |
 | [DragPreviewOptions](arkts-arkui-common-comp-dragpreviewoptions-i.md) | Preview image processing mode and badge count during dragging. |
 | [DropOptions](arkts-arkui-common-comp-dropoptions-i.md) | Sets parameters for the drop process. |
-| [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | Define EdgeEffect Options. |
+| [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | Implements an object used to configure the [edgeEffect](arkts-arkui-common-comp-scrollablecommonmethod-c.md#edgeeffect) attribute. |
 | [EdgeLightParams](arkts-arkui-common-comp-edgelightparams-i-sys.md) | Defines the parameters of the edge light effect. |
-| [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md) | Define edit mode options. |
-| [EntryOptions](arkts-arkui-common-comp-entryoptions-i.md) | Defines the options of Entry ClassDecorator. |
+| [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md) | Sets attributes of the **List** or **Grid** component in edit mode. |
+| [EntryOptions](arkts-arkui-common-comp-entryoptions-i.md) | Page entry configuration options, used to configure parameters such as the route name, state storage, and shared storage when decorating a page with @Entry. |
 | [EventTarget](arkts-arkui-common-comp-eventtarget-i.md) | Defines the type of the **target** parameter in [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [ExpectedFrameRateRange](arkts-arkui-common-comp-expectedframeraterange-i.md) | Sets the expected frame rate range for an animation. |
-| [FadingEdgeOptions](arkts-arkui-common-comp-fadingedgeoptions-i.md) | Defines the fadingEdge options. |
+| [FadingEdgeOptions](arkts-arkui-common-comp-fadingedgeoptions-i.md) | Implements an object used to configure the [fadingEdge](arkts-arkui-common-comp-scrollablecommonmethod-c.md#fadingedge) attribute. |
 | [FocusAxisEvent](arkts-arkui-common-comp-focusaxisevent-i.md) | Describes the focus axis event object. Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [FocusMovement](arkts-arkui-common-comp-focusmovement-i.md) | Sets the target component for focus movement based on key presses. If it is not specified, the default focus movement logic applies. |
 | [ForegroundBlurStyleOptions](arkts-arkui-common-comp-foregroundblurstyleoptions-i.md) | Inherits from [BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md) to define the foreground blur options. |
@@ -134,13 +136,13 @@ Constructor
 | [HorizontalAlignParam](arkts-arkui-common-comp-horizontalalignparam-i.md) | Defines the horizontal align rule of relative container. |
 | [HoverEvent](arkts-arkui-common-comp-hoverevent-i.md) | Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [ICurve](arkts-arkui-common-comp-icurve-i.md) | Interface for curve object. |
-| [IMonitor](arkts-arkui-common-comp-imonitor-i.md) | Define IMonitor interface |
-| [IMonitorValue](arkts-arkui-common-comp-imonitorvalue-i.md) | Define IMonitorValue interface |
+| [IMonitor](arkts-arkui-common-comp-imonitor-i.md) | When the monitored state variable changes, the state management framework will call the registered function and pass the change information of the **IMonitor** type. |
+| [IMonitorValue](arkts-arkui-common-comp-imonitorvalue-i.md) | Provides the specific information about the state variable changes monitored by **\@Monitor**, obtained through the **value** API of **IMonitor**. **T** is the state variable type. |
 | [InputCounterOptions](arkts-arkui-common-comp-inputcounteroptions-i.md) | Provides configuration options for the character counter. |
 | [InputEventInterceptResult](arkts-arkui-common-comp-inputeventinterceptresult-i.md) | Input event interception result interface, used by the listener callback [InputEventListener](arkts-arkui-common-comp-inputeventlistener-t.md) to return the interception decision. |
 | [InputEventMonitor](arkts-arkui-common-comp-inputeventmonitor-i.md) | Input event monitor identity object. |
 | [InvertOptions](arkts-arkui-common-comp-invertoptions-i.md) | Describes the options for inverting the foreground color. |
-| [ItemDragEventHandler](arkts-arkui-common-comp-itemdrageventhandler-i.md) | Define item drag event handler. |
+| [ItemDragEventHandler](arkts-arkui-common-comp-itemdrageventhandler-i.md) | Defines callbacks for drag events on a data source, allowing you to respond to different drag operations. |
 | [ItemDragInfo](arkts-arkui-common-comp-itemdraginfo-i.md) | ItemDragInfo object description |
 | [KeyEvent](arkts-arkui-common-comp-keyevent-i.md) | KeyEvent object description. |
 | [KeyframeAnimateParam](arkts-arkui-common-comp-keyframeanimateparam-i.md) | Provides animation configuration options. |
@@ -162,14 +164,14 @@ Constructor
 | [MenuGridStyleOptions](arkts-arkui-common-comp-menugridstyleoptions-i.md) | Defines the grid style of menu. |
 | [MenuMaskType](arkts-arkui-common-comp-menumasktype-i.md) | Sets the mask type. |
 | [MenuOptions](arkts-arkui-common-comp-menuoptions-i.md) | Configues menu item information, which is inherited from [ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md). |
-| [MonitorDecoratorOptions](arkts-arkui-common-comp-monitordecoratoroptions-i.md) | Defines MonitorDecoratorOptions interface |
+| [MonitorDecoratorOptions](arkts-arkui-common-comp-monitordecoratoroptions-i.md) | Represents the configuration options of the **@Monitor** decorator. |
 | [MotionBlurAnchor](arkts-arkui-common-comp-motionbluranchor-i.md) | Describes the coordinates of the motion blur anchor. |
 | [MotionBlurOptions](arkts-arkui-common-comp-motionbluroptions-i.md) | Defines motion blur options. |
 | [MotionPathOptions](arkts-arkui-common-comp-motionpathoptions-i.md) | Defines motion path configuration options of the component. |
 | [MouseEvent](arkts-arkui-common-comp-mouseevent-i.md) | Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
 | [MouseHistoricalPoint](arkts-arkui-common-comp-mousehistoricalpoint-i.md) | Mouse event historical point information. |
 | [MultiShadowOptions](arkts-arkui-common-comp-multishadowoptions-i.md) | Defines shadow style properties. |
-| [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Define nested scroll options |
+| [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Implements an object used to configure the [nestedScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#nestedscroll) attribute. |
 | [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md) | Offset of the overlay from the upper left corner. By default, the overlay is in the upper left corner of the component. |
 | [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md) |  |
 | [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker |
@@ -186,17 +188,17 @@ Constructor
 | [PopupStateChangeParam](arkts-arkui-common-comp-popupstatechangeparam-i.md) | Display state of the popup. |
 | [PreviewConfiguration](arkts-arkui-common-comp-previewconfiguration-i.md) | Configures the style of the preview image during custom drag operations. |
 | [PreviewParams](arkts-arkui-common-comp-previewparams-i.md) | Implements a configuration object for @Preview parameters. Defines preview device attributes such as device type and screen state. |
-| [ProvideOptions](arkts-arkui-common-comp-provideoptions-i.md) | Defines the options of Provide PropertyDecorator. |
+| [ProvideOptions](arkts-arkui-common-comp-provideoptions-i.md) | Options of the **@Provide** decorator. You can use **allowOverride** to override the alias of an @Provide decorated variable with the same name in the same component tree. It is suitable for scenarios where a child component needs to override the alias of the **@Provide** decorated variable with the same name in the parent component, improving the flexibility of cross-level state management. For details, see [Support for the allowOverride Parameter](../../../ui/state-management/arkts-provide-and-consume.md). |
 | [RadialGradientOptions](arkts-arkui-common-comp-radialgradientoptions-i.md) | Defines the radial gradient parameters. |
 | [Rectangle](arkts-arkui-common-comp-rectangle-i.md) | The data type used to describe a rectangular area. |
 | [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Describes the position, width, and height of a component. |
 | [ResponseRegion](arkts-arkui-common-comp-responseregion-i.md) | Defines a touch target consisting of an input tool type, touch position, and size. |
-| [ReusableOptions](arkts-arkui-common-comp-reusableoptions-i.md) | Defines the options for Reusable ClassDecorator. |
+| [ReusableOptions](arkts-arkui-common-comp-reusableoptions-i.md) | Defines the parameters of a reusable custom component, which are used to configure the memory optimization strategy. They apply to scenarios where the memory usage of reusable custom components needs to be reduced. |
 | [ReuseOptions](arkts-arkui-common-comp-reuseoptions-i.md) | Defining the reusable configuration parameters. |
 | [RotateAngleOptions](arkts-arkui-common-comp-rotateangleoptions-i.md) | Rotation parameter option of the rotation angle on each axis. |
 | [RotateOptions](arkts-arkui-common-comp-rotateoptions-i.md) | Defines component rotation parameters. |
 | [ScaleOptions](arkts-arkui-common-comp-scaleoptions-i.md) | Defines the options of scale. |
-| [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | Defines the selection options. |
+| [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | Provides the configuration options for text selection. |
 | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) | Provides the shadow attributes, including the blur radius, color, and offset along the x-axis and y-axis. |
 | [sharedTransitionOptions](arkts-arkui-common-comp-sharedtransitionoptions-i.md) | Parameters of the shared element transition animation. |
 | [SheetDismiss](arkts-arkui-common-comp-sheetdismiss-i.md) | Component sheet dismiss |
@@ -212,7 +214,7 @@ Constructor
 | [SweepGradientOptions](arkts-arkui-common-comp-sweepgradientoptions-i.md) | Defines the sweep gradient parameters. |
 | [SystemAdaptiveOptions](arkts-arkui-common-comp-systemadaptiveoptions-i.md) | Provides parameters for system adaptive adjustments. By default, the system performs adaptive adjustments based on chip performance. |
 | [TextContentControllerOptions](arkts-arkui-common-comp-textcontentcontrolleroptions-i.md) | Provides configuration options for text insertion operations in text input components. |
-| [TextDecorationOptions](arkts-arkui-common-comp-textdecorationoptions-i.md) | Provides text decoration options. |
+| [TextDecorationOptions](arkts-arkui-common-comp-textdecorationoptions-i.md) | Provides the text decoration options. |
 | [TipsOptions](arkts-arkui-common-comp-tipsoptions-i.md) | Defines the parameters of the tooltip. |
 | [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) | Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). In non-event injection scenarios, **changedTouches** contains points resampled at the screen refresh rate, while **touches** contains points reported at the device's refresh rate. As such, **changedTouches** data may differ from **touches**. |
 | [TouchObject](arkts-arkui-common-comp-touchobject-i.md) | Type of the touch event. |
@@ -220,7 +222,7 @@ Constructor
 | [TranslateOptions](arkts-arkui-common-comp-translateoptions-i.md) | Defines the options of translate. |
 | [UICommonEvent](arkts-arkui-common-comp-uicommonevent-i.md) | Implements a common event callback. Passing **undefined** as the input parameter resets the corresponding event callback. |
 | [UIGestureEvent](arkts-arkui-common-comp-uigestureevent-i.md) | Provides APIs for configuring gestures bound to a component. |
-| [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md) | Defines a UIScrollableCommonEvent which is used to set event to target component. |
+| [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md) | Configures scroll event callbacks. |
 | [VersionCondition](arkts-arkui-common-comp-versioncondition-i.md) | Defines VersionCondition interface |
 | [VerticalAlignParam](arkts-arkui-common-comp-verticalalignparam-i.md) | Defines the vertical align rule of relative container. |
 | [VisibleAreaEventOptions](arkts-arkui-common-comp-visibleareaeventoptions-i.md) | Describes visible area change configuration options. |
@@ -237,7 +239,7 @@ Constructor
 | [AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md) | Callback type for the component area change event. |
 | [Blender](arkts-arkui-common-comp-blender-t-sys.md) | [Blender](arkts-arkui-common-comp-blender-t-sys.md) |
 | [BorderRadiusType](arkts-arkui-common-comp-borderradiustype-t.md) | Enumerates the border corner radius types. |
-| [BuilderCallback](arkts-arkui-common-comp-buildercallback-t.md) | Defines the callback type used in mutableBuilder. |
+| [BuilderCallback](arkts-arkui-common-comp-buildercallback-t.md) | `BuilderCallback` is a type alias of the global `@Builder` function. It serves as the input parameter type of the `mutableBuilder` function and is used to specify the global `@Builder` function to be wrapped. |
 | [CircleShape](arkts-arkui-common-comp-circleshape-t.md) | Defines the CircleShape type. |
 | [ComponentContent](arkts-arkui-common-comp-componentcontent-t.md) | Represents a constructor used to create a **ComponentContent** object. |
 | [Context](arkts-arkui-common-comp-context-t.md) | Get context. |
@@ -248,7 +250,7 @@ Constructor
 | [DragSpringLoadingConfiguration](arkts-arkui-common-comp-dragspringloadingconfiguration-t.md) | Defines the configuration parameters for drag hover detection. |
 | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) |
 | [EllipseShape](arkts-arkui-common-comp-ellipseshape-t.md) | Defines the EllipseShape type. |
-| [EnvDecorator](arkts-arkui-common-comp-envdecorator-t.md) | Define Env Decorator type |
+| [EnvDecorator](arkts-arkui-common-comp-envdecorator-t.md) | Defines the **EnvDecorator** property decorator type. |
 | [Filter](arkts-arkui-common-comp-filter-t.md) | Represents a filter object. |
 | [FractionStop](arkts-arkui-common-comp-fractionstop-t.md) | Defines a gradient blur stop. |
 | [GestureCollectInterceptCallback](arkts-arkui-common-comp-gesturecollectinterceptcallback-t.md) | Defines the callback type used in [onGestureCollectIntercept](arkts-arkui-common-comp-commonmethod-c.md#ongesturecollectintercept). |
@@ -258,19 +260,19 @@ Constructor
 | [InputEventListener](arkts-arkui-common-comp-inputeventlistener-t.md) | Input event listener callback type. |
 | [IntentionCode](arkts-arkui-common-comp-intentioncode-t.md) | Intention corresponding to the key. |
 | [Matrix4Transit](arkts-arkui-common-comp-matrix4transit-t.md) | Import the Matrix4Transit type object for common method. |
-| [MonitorDecorator](arkts-arkui-common-comp-monitordecorator-t.md) | Defines Monitor Decorator type |
+| [MonitorDecorator](arkts-arkui-common-comp-monitordecorator-t.md) | Represents the actual type of the **@Monitor** decorator. |
 | [NavDestinationInfo](arkts-arkui-common-comp-navdestinationinfo-t.md) | The navigation destination information. |
 | [NavigationInfo](arkts-arkui-common-comp-navigationinfo-t.md) | The navigation information. |
-| [OnDidStopDraggingCallback](arkts-arkui-common-comp-ondidstopdraggingcallback-t.md) | On scroll callback using in scrollable onDidStopDragging. |
+| [OnDidStopDraggingCallback](arkts-arkui-common-comp-ondidstopdraggingcallback-t.md) | Defines the callback invoked when the scrollable component stops being dragged. |
 | [OnDragEventCallback](arkts-arkui-common-comp-ondrageventcallback-t.md) | Defines a callback for drag events. |
-| [OnGetPreviewBadgeCallback](arkts-arkui-common-comp-ongetpreviewbadgecallback-t.md) | Defines the callback type used in onGetPreviewBadge of EditModeOptions. |
-| [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | Defines the callback type used in onItemDragStart. |
-| [OnMoveHandler](arkts-arkui-common-comp-onmovehandler-t.md) | Defines the onMove callback. |
+| [OnGetPreviewBadgeCallback](arkts-arkui-common-comp-ongetpreviewbadgecallback-t.md) | Called to obtain the number of selected items when the animation for gathering selected items upon long press is about to start. |
+| [OnItemDragStartCallback](arkts-arkui-common-comp-onitemdragstartcallback-t.md) | Called when a list or grid element starts to be dragged. |
+| [OnMoveHandler](arkts-arkui-common-comp-onmovehandler-t.md) | Defines the callback triggered when data is moved during drag-and-drop sorting. |
 | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) | Defines the callback type used in onNeedSoftkeyboard. Called when component is focused, the return value indicates whether keyboard is needed. |
-| [OnScrollCallback](arkts-arkui-common-comp-onscrollcallback-t.md) | On scroll callback using in scrollable onDidScroll. |
-| [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) | Defines the callback type used in OnVisibleIndexesChange. |
-| [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) | Called before scroll to allow developer to control real offset the Scrollable can scroll. |
-| [OnWillStopDraggingCallback](arkts-arkui-common-comp-onwillstopdraggingcallback-t.md) | On scroll callback using in scrollable onWillStopDragging. |
+| [OnScrollCallback](arkts-arkui-common-comp-onscrollcallback-t.md) | Triggered when the scrollable component scrolls. |
+| [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) | Defines the callback type invoked when the indexes of the child components displayed by the lazy loading layout containers [LazyColumnLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md), [LazyVGridLayout](arkts-arkui-lazyvgridlayout-comp.md), and [LazyVWaterFlowLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md) change. |
+| [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) | Triggered when the scrollable component is about to scroll. |
+| [OnWillStopDraggingCallback](arkts-arkui-common-comp-onwillstopdraggingcallback-t.md) | Defines the callback invoked when the scrollable component is released. |
 | [Optional](arkts-arkui-common-comp-optional-t.md) | Defines the Optional type. The value can be **undefined**. |
 | [PathShape](arkts-arkui-common-comp-pathshape-t.md) | Defines the PathShape type. |
 | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Defines the PixelMap type object for ui component. |
@@ -279,7 +281,7 @@ Constructor
 | [PromptActionDialogController](arkts-arkui-common-comp-promptactiondialogcontroller-t.md) | Import the DialogController type from promptAction. |
 | [RectShape](arkts-arkui-common-comp-rectshape-t.md) | Defines the RectShape type. |
 | [ReuseIdCallback](arkts-arkui-common-comp-reuseidcallback-t.md) | ReuseId callback type. It is used to compute reuseId. |
-| [ReusePoolOwnership](arkts-arkui-common-comp-reusepoolownership-t.md) | Defining the reuse type of a custom component. |
+| [ReusePoolOwnership](arkts-arkui-common-comp-reusepoolownership-t.md) | Defines the ownership type of the global reuse pool. |
 | [RouterPageInfo](arkts-arkui-common-comp-routerpageinfo-t.md) | The router page information. |
 | [ShouldBuiltInRecognizerParallelWithCallback](arkts-arkui-common-comp-shouldbuiltinrecognizerparallelwithcallback-t.md) | Represents the callback used to set the parallel relationship between built-in gestures and gestures of other components in the response chain. |
 | [ShouldRecognizerParallelWithCallback](arkts-arkui-common-comp-shouldrecognizerparallelwithcallback-t.md) | Represents the callback used to set the parallel relationship between gestures of the current component and gestures of other components in the response chain. |
@@ -317,7 +319,7 @@ Constructor
 | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | Enumerates blur styles. |
 | [BlurStyleActivePolicy](arkts-arkui-common-comp-blurstyleactivepolicy-e.md) | Enumerates the policies for activating the blur style. |
 | [ChainStyle](arkts-arkui-common-comp-chainstyle-e.md) | Enumerates the chain styles in relative container. |
-| [ContentClipMode](arkts-arkui-common-comp-contentclipmode-e.md) | Enum of scrollable containers' content clip mode. |
+| [ContentClipMode](arkts-arkui-common-comp-contentclipmode-e.md) | Enumerates the content clipping modes for the scrollable container. |
 | [DismissReason](arkts-arkui-common-comp-dismissreason-e.md) | Enumerates the reasons for popup dismissal. |
 | [DistortionMode](arkts-arkui-common-comp-distortionmode-e-sys.md) | Enum for distortion animation mode. |
 | [DragAnimationType](arkts-arkui-common-comp-draganimationtype-e-sys.md) | Enumerates drag animation types. |
@@ -326,7 +328,7 @@ Constructor
 | [DragPreviewMode](arkts-arkui-common-comp-dragpreviewmode-e.md) | Sets the display mode of the drag preview. |
 | [DragResult](arkts-arkui-common-comp-dragresult-e.md) | Defines the result of a drag operation and the drop-selection state of a component. |
 | [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md) | Edge light animation mode enumeration. |
-| [EffectEdge](arkts-arkui-common-comp-effectedge-e.md) | Enumerates the effective edge of the edge effect. |
+| [EffectEdge](arkts-arkui-common-comp-effectedge-e.md) | Enumerates the edges where the edge effect is applied. |
 | [EffectType](arkts-arkui-common-comp-effecttype-e.md) | Enum of using the effects template mode. |
 | [FinishCallbackType](arkts-arkui-common-comp-finishcallbacktype-e.md) | Defines the type of the **onFinish** callback. |
 | [HapticFeedbackMode](arkts-arkui-common-comp-hapticfeedbackmode-e.md) | Enumerates the haptic feedback modes used when the menu is displayed. |
@@ -344,7 +346,7 @@ Constructor
 | [PreDragStatus](arkts-arkui-common-comp-predragstatus-e.md) | Defines the states before the drag gesture is triggered. |
 | [PreviewScaleMode](arkts-arkui-common-comp-previewscalemode-e.md) | Enumerates the scale modes of the preview image. |
 | [RepeatMode](arkts-arkui-common-comp-repeatmode-e.md) | Defines the Border Image Repeat Mode. |
-| [ReusableMemOptStrategy](arkts-arkui-common-comp-reusablememoptstrategy-e.md) | Defines a type for memory optimization strategy. |
+| [ReusableMemOptStrategy](arkts-arkui-common-comp-reusablememoptstrategy-e.md) | Enumerates the memory optimization strategies of reusable custom components. |
 | [SafeAreaEdge](arkts-arkui-common-comp-safeareaedge-e.md) | Edge of the safe area for expanding the layout. |
 | [SafeAreaType](arkts-arkui-common-comp-safeareatype-e.md) | Enumerates the types for expanding layout safe areas. |
 | [ScrollSizeMode](arkts-arkui-common-comp-scrollsizemode-e.md) | Define the scroll size mode of the sheet. |

@@ -8,6 +8,8 @@ Provides parameter configuration required for creating a float view controller.
 
 **Since:** 26.0.0
 
+<!--Device-floatView-interface FloatViewConfiguration--><!--Device-floatView-interface FloatViewConfiguration-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Context environment.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewConfiguration-context: BaseContext--><!--Device-FloatViewConfiguration-context: BaseContext-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## isConfirmOnClose
@@ -46,6 +50,8 @@ This field controls whether user confirmation is required when the close button 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewConfiguration-isConfirmOnClose?: boolean--><!--Device-FloatViewConfiguration-isConfirmOnClose?: boolean-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## templateType
@@ -61,5 +67,7 @@ Template type of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewConfiguration-templateType: FloatViewTemplateType--><!--Device-FloatViewConfiguration-templateType: FloatViewTemplateType-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

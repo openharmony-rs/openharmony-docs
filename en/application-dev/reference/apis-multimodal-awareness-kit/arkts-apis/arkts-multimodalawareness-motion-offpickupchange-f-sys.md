@@ -18,6 +18,8 @@ Unsubscribe to pick up sensor event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-motion-function offPickupChange(callback?: Callback<PickupEvent>): void--><!--Device-motion-function offPickupChange(callback?: Callback<PickupEvent>): void-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **System API:** This is a system API.

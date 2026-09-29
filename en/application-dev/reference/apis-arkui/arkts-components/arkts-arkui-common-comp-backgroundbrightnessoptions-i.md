@@ -22,6 +22,8 @@ Provides background brightness options.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface BackgroundBrightnessOptions--><!--Device-unnamed-declare interface BackgroundBrightnessOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## lightUpDegree
@@ -44,6 +46,8 @@ Value range: [-1.0, 1.0]
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BackgroundBrightnessOptions-lightUpDegree: number--><!--Device-BackgroundBrightnessOptions-lightUpDegree: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## rate
@@ -65,5 +69,7 @@ Value range: (0.0, +∞)
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BackgroundBrightnessOptions-rate: number--><!--Device-BackgroundBrightnessOptions-rate: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

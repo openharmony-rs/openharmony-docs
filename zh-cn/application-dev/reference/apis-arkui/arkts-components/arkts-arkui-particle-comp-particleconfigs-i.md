@@ -8,6 +8,8 @@ interface ParticleConfigs
 
 **起始版本：** 10
 
+<!--Device-unnamed-interface ParticleConfigs--><!--Device-unnamed-interface ParticleConfigs-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleType.IMAGE]
@@ -26,6 +28,8 @@ interface ParticleConfigs
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ParticleConfigs-[ParticleType.IMAGE]: ImageParticleParameters--><!--Device-ParticleConfigs-[ParticleType.IMAGE]: ImageParticleParameters-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [ParticleType.POINT]
@@ -43,5 +47,7 @@ interface ParticleConfigs
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ParticleConfigs-[ParticleType.POINT]: PointParticleParameters--><!--Device-ParticleConfigs-[ParticleType.POINT]: PointParticleParameters-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

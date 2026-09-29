@@ -8,6 +8,8 @@ Defines the network for which the quota policy is set.
 
 **Since:** 10
 
+<!--Device-policy-export interface NetworkMatchRule--><!--Device-policy-export interface NetworkMatchRule-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ It is used together with **iccid**.
 
 **Since:** 10
 
+<!--Device-NetworkMatchRule-identity: string--><!--Device-NetworkMatchRule-identity: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ Network type.
 **Type:** [NetBearType](arkts-network-policy-netbeartype-t.md)
 
 **Since:** 10
+
+<!--Device-NetworkMatchRule-netType: NetBearType--><!--Device-NetworkMatchRule-netType: NetBearType-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -67,6 +73,8 @@ It is not used for Ethernet and Wi-Fi networks.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-NetworkMatchRule-simId: string--><!--Device-NetworkMatchRule-simId: string-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 

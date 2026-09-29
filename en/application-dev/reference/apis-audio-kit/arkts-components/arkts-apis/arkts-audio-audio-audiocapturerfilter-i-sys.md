@@ -8,6 +8,8 @@ Describe audio capturer filter.
 
 **Since:** 18
 
+<!--Device-audio-interface AudioCapturerFilter--><!--Device-audio-interface AudioCapturerFilter-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Capturer information.
 
 **Since:** 18
 
+<!--Device-AudioCapturerFilter-capturerInfo?: AudioCapturerInfo--><!--Device-AudioCapturerFilter-capturerInfo?: AudioCapturerInfo-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Application uid.
 **Type:** number
 
 **Since:** 18
+
+<!--Device-AudioCapturerFilter-uid?: int--><!--Device-AudioCapturerFilter-uid?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

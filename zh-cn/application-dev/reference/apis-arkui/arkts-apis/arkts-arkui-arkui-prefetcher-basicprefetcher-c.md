@@ -12,6 +12,8 @@ BasicPrefetcher对象不支持使用JSON序列化。
 
 **起始版本：** 12
 
+<!--Device-unnamed-export class BasicPrefetcher implements IPrefetcher--><!--Device-unnamed-export class BasicPrefetcher implements IPrefetcher-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -33,6 +35,8 @@ constructor(dataSource?: IDataSourcePrefetching)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BasicPrefetcher-constructor(dataSource?: IDataSourcePrefetching)--><!--Device-BasicPrefetcher-constructor(dataSource?: IDataSourcePrefetching)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ setDataSource(dataSource: IDataSourcePrefetching): void
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-BasicPrefetcher-setDataSource(dataSource: IDataSourcePrefetching): void--><!--Device-BasicPrefetcher-setDataSource(dataSource: IDataSourcePrefetching): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -77,6 +83,8 @@ visibleAreaChanged(minVisible: number, maxVisible: number): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-BasicPrefetcher-visibleAreaChanged(minVisible: number, maxVisible: number): void--><!--Device-BasicPrefetcher-visibleAreaChanged(minVisible: number, maxVisible: number): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

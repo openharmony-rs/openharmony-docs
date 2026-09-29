@@ -8,6 +8,8 @@ Configures icon, text, and interaction information of a menu item.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface MenuElement--><!--Device-unnamed-declare interface MenuElement-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## action
@@ -21,6 +23,8 @@ Action triggered when a menu item is clicked.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuElement-action: () => void--><!--Device-MenuElement-action: () => void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MenuElement-enabled?: boolean--><!--Device-MenuElement-enabled?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## icon
@@ -63,6 +69,8 @@ Menu item icon.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuElement-icon?: ResourceStr--><!--Device-MenuElement-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ Icon of a menu item. You can configure the menu item icon using **Modifier**. If
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MenuElement-symbolIcon?: SymbolGlyphModifier--><!--Device-MenuElement-symbolIcon?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -97,5 +107,7 @@ Menu item text.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuElement-value: ResourceStr--><!--Device-MenuElement-value: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ The advertising module provides APIs for requesting and displaying ads.
 
 **Since:** 11
 
+<!--Device-unnamed-declare namespace advertising--><!--Device-unnamed-declare namespace advertising-End-->
+
 **System capability:** SystemCapability.Advertising.Ads
 
 ## Modules to Import

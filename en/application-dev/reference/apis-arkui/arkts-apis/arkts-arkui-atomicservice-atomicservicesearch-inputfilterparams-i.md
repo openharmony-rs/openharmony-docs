@@ -8,6 +8,8 @@ Sets regular expression for input filtering.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface InputFilterParams--><!--Device-unnamed-export interface InputFilterParams-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Callback used to return the filtered-out content when regular expression matchin
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-InputFilterParams-error?: Callback<string>--><!--Device-InputFilterParams-error?: Callback<string>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## inputFilterValue
@@ -45,5 +49,7 @@ Regular expression.
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-InputFilterParams-inputFilterValue: ResourceStr--><!--Device-InputFilterParams-inputFilterValue: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

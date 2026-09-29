@@ -8,6 +8,8 @@ A structured identifier for an application component, containing fields such as 
 
 **Since:** 9
 
+<!--Device-unnamed-export interface ElementName--><!--Device-unnamed-export interface ElementName-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 ## abilityName
@@ -22,7 +24,9 @@ Name of the ability.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ElementName-abilityName: string--><!--Device-ElementName-abilityName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,7 +44,9 @@ Bundle name.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ElementName-bundleName: string--><!--Device-ElementName-bundleName: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -56,7 +62,9 @@ Device ID.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ElementName-deviceId?: string--><!--Device-ElementName-deviceId?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -74,7 +82,9 @@ Module name of the HAP file to which the ability belongs.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ElementName-moduleName?: string--><!--Device-ElementName-moduleName?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -90,7 +100,9 @@ Short name of the ability. It is a string starting with a period (.).
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ElementName-shortName?: string--><!--Device-ElementName-shortName?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -106,6 +118,8 @@ Resource ID.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-ElementName-uri?: string--><!--Device-ElementName-uri?: string-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

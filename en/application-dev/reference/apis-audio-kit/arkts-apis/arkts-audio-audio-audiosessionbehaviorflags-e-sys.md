@@ -8,6 +8,8 @@ Enumerates audio session behavior flags.
 
 **Since:** 24
 
+<!--Device-audio-enum AudioSessionBehaviorFlags--><!--Device-audio-enum AudioSessionBehaviorFlags-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## VOIP_CAPTURE_MIX_WITH_OTHERS
@@ -23,6 +25,8 @@ This flag only takes effect when used in setIndependentAudioSessionStrategy. Whe
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionBehaviorFlags-VOIP_CAPTURE_MIX_WITH_OTHERS = 0x20000000--><!--Device-AudioSessionBehaviorFlags-VOIP_CAPTURE_MIX_WITH_OTHERS = 0x20000000-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

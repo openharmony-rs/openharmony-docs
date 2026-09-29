@@ -28,6 +28,8 @@ Disables the specified permission of the specified user. After the permission is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function setDisallowedPermission(admin: Want, permission: string, disallow: boolean, accountId: number): void--><!--Device-securityManager-function setDisallowedPermission(admin: Want, permission: string, disallow: boolean, accountId: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

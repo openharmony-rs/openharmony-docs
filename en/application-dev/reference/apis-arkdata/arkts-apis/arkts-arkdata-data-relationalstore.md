@@ -24,6 +24,8 @@ obtained from the RDB store, such as [queryWithoutRowCount](arkts-arkdata-relati
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace relationalStore--><!--Device-unnamed-declare namespace relationalStore-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -96,6 +98,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
+| [Asset](arkts-arkdata-relationalstore-asset-i-sys.md) | Represents the asset (such as a document, image, or video). |
 | [CloudSyncConfig](arkts-arkdata-relationalstore-cloudsyncconfig-i-sys.md) | Cloud sync configuration. |
 | [DistributedConfig](arkts-arkdata-relationalstore-distributedconfig-i-sys.md) | Defines a struct for distributed configuration of a table. |
 | [DistributedInfo](arkts-arkdata-relationalstore-distributedinfo-i-sys.md) | Manages the distributed info of the table. |
@@ -104,6 +107,19 @@ import { relationalStore } from '@kit.ArkData';
 | [ResultSet](arkts-arkdata-relationalstore-resultset-i-sys.md) | Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called. |
 | [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i-sys.md) | Defines the RDB store configuration. |
 <!--DelEnd-->
+
+### Types
+
+| Name | Description |
+| --- | --- |
+| [Assets](arkts-arkdata-relationalstore-assets-t.md) | Indicates several assets in one column |
+| [ModifyTime](arkts-arkdata-relationalstore-modifytime-t.md) | Indicates the primary key and UTC time of the modified rows. |
+| [PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md) | The type of the priority key can be number or string |
+| [RowData](arkts-arkdata-relationalstore-rowdata-t.md) | Indicates a row of data with an array. |
+| [RowsData](arkts-arkdata-relationalstore-rowsdata-t.md) | Indicates multiple rows of data with an array. |
+| [UTCTime](arkts-arkdata-relationalstore-utctime-t.md) | The time is in UTC format. |
+| [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md) | Values in buckets are stored in key-value pairs, change {[key: string]: ValueType;} to Record&lt;string, ValueType&gt; |
+| [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) | Indicates possible value types |
 
 ### Enums
 
@@ -140,16 +156,3 @@ import { relationalStore } from '@kit.ArkData';
 | [DistributedOrigin](arkts-arkdata-relationalstore-distributedorigin-e-sys.md) | Describes the data origin sources. |
 | [HAMode](arkts-arkdata-relationalstore-hamode-e-sys.md) | Enumerates the high availability modes of the RDB store. |
 <!--DelEnd-->
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [Assets](arkts-arkdata-relationalstore-assets-t.md) | Indicates several assets in one column |
-| [ModifyTime](arkts-arkdata-relationalstore-modifytime-t.md) | Indicates the primary key and UTC time of the modified rows. |
-| [PRIKeyType](arkts-arkdata-relationalstore-prikeytype-t.md) | The type of the priority key can be number or string |
-| [RowData](arkts-arkdata-relationalstore-rowdata-t.md) | Indicates a row of data with an array. |
-| [RowsData](arkts-arkdata-relationalstore-rowsdata-t.md) | Indicates multiple rows of data with an array. |
-| [UTCTime](arkts-arkdata-relationalstore-utctime-t.md) | The time is in UTC format. |
-| [ValuesBucket](arkts-arkdata-relationalstore-valuesbucket-t.md) | Values in buckets are stored in key-value pairs, change {[key: string]: ValueType;} to Record&lt;string, ValueType&gt; |
-| [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) | Indicates possible value types |

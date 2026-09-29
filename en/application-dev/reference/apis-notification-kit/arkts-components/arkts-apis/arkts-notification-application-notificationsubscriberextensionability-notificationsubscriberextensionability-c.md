@@ -10,6 +10,8 @@ Use this module when your wearable application needs to obtain local notificatio
 
 **Since:** 22
 
+<!--Device-unnamed-declare class NotificationSubscriberExtensionAbility--><!--Device-unnamed-declare class NotificationSubscriberExtensionAbility-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Called when notifications are canceled.
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationSubscriberExtensionAbility-onCancelMessages(hashCodes: Array<string>): void--><!--Device-NotificationSubscriberExtensionAbility-onCancelMessages(hashCodes: Array<string>): void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -62,6 +66,8 @@ Called when the notification subscription extension is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-NotificationSubscriberExtensionAbility-onDestroy(): void--><!--Device-NotificationSubscriberExtensionAbility-onDestroy(): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **Examples**
@@ -87,6 +93,8 @@ Called when a notification is received.
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationSubscriberExtensionAbility-onReceiveMessage(notificationInfo: NotificationInfo): void--><!--Device-NotificationSubscriberExtensionAbility-onReceiveMessage(notificationInfo: NotificationInfo): void-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -121,5 +129,7 @@ Context for the NotificationSubscriberExtensionAbility.
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-NotificationSubscriberExtensionAbility-context: NotificationSubscriberExtensionContext--><!--Device-NotificationSubscriberExtensionAbility-context: NotificationSubscriberExtensionContext-End-->
 
 **System capability:** SystemCapability.Notification.Notification

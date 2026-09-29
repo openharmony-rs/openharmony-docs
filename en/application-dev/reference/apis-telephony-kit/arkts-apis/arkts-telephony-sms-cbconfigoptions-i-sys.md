@@ -8,6 +8,8 @@ Defines the cell broadcast configuration options.
 
 **Since:** 7
 
+<!--Device-sms-export interface CBConfigOptions--><!--Device-sms-export interface CBConfigOptions-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Whether to enable cell broadcast.
 
 **Since:** 7
 
+<!--Device-CBConfigOptions-enable: boolean--><!--Device-CBConfigOptions-enable: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ End message ID.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-CBConfigOptions-endMessageId: int--><!--Device-CBConfigOptions-endMessageId: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -62,6 +68,8 @@ RAN type.
 
 **Since:** 7
 
+<!--Device-CBConfigOptions-ranType: RanType--><!--Device-CBConfigOptions-ranType: RanType-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -78,6 +86,8 @@ Card slot ID.
 
 **Since:** 7
 
+<!--Device-CBConfigOptions-slotId: int--><!--Device-CBConfigOptions-slotId: int-End-->
+
 **System capability:** SystemCapability.Telephony.SmsMms
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Start message ID.
 **Type:** number
 
 **Since:** 7
+
+<!--Device-CBConfigOptions-startMessageId: int--><!--Device-CBConfigOptions-startMessageId: int-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 

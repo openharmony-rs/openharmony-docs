@@ -8,6 +8,8 @@ interface WindowCreateParams
 
 **起始版本：** 20
 
+<!--Device-window-interface WindowCreateParams--><!--Device-window-interface WindowCreateParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## 导入模块
@@ -28,6 +30,8 @@ The params of start animation
 
 **起始版本：** 20
 
+<!--Device-WindowCreateParams-animationParams?: StartAnimationParams--><!--Device-WindowCreateParams-animationParams?: StartAnimationParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## needAnimation
@@ -45,5 +49,7 @@ needAnimation?: boolean
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowCreateParams-needAnimation?: boolean--><!--Device-WindowCreateParams-needAnimation?: boolean-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

@@ -20,6 +20,8 @@ Checks whether roaming is enabled for the cellular data service. This API uses a
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-data-function isCellularDataRoamingEnabled(slotId: int, callback: AsyncCallback<boolean>): void--><!--Device-data-function isCellularDataRoamingEnabled(slotId: int, callback: AsyncCallback<boolean>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CellularData
 
 **Parameters:**
@@ -71,6 +73,8 @@ Checks whether roaming is enabled for the cellular data service. This API uses a
 **Since:** 7
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-data-function isCellularDataRoamingEnabled(slotId: int): Promise<boolean>--><!--Device-data-function isCellularDataRoamingEnabled(slotId: int): Promise<boolean>-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 

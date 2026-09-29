@@ -10,6 +10,8 @@ PageIntentDecoratorInfo inherits from [IntentDecoratorInfo](arkts-ability-app-ab
 
 **Since:** 20
 
+<!--Device-unnamed-declare interface PageIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface PageIntentDecoratorInfo extends IntentDecoratorInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Name of the [navDestination](../../apis-arkui/arkts-components/arkts-arkui-navig
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-PageIntentDecoratorInfo-navDestinationName?: string--><!--Device-PageIntentDecoratorInfo-navDestinationName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## navigationId
@@ -51,6 +55,8 @@ ID of the [NavDestination组件](../../apis-arkui/arkts-components/arkts-arkui-n
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PageIntentDecoratorInfo-navigationId?: string--><!--Device-PageIntentDecoratorInfo-navigationId?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -70,6 +76,8 @@ Path of the page bound to the intent. The page must be a file that actually exis
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
+<!--Device-PageIntentDecoratorInfo-pagePath: string--><!--Device-PageIntentDecoratorInfo-pagePath: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## uiAbility
@@ -87,5 +95,7 @@ Name of the UIAbility bound to the intent.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-PageIntentDecoratorInfo-uiAbility?: string--><!--Device-PageIntentDecoratorInfo-uiAbility?: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

@@ -12,6 +12,8 @@ In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 ar
 
 **Since:** 12
 
+<!--Device-networkManager-interface DomainFilterRule--><!--Device-networkManager-interface DomainFilterRule-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## Modules to Import
@@ -38,6 +40,8 @@ This parameter is optional when a domain name filtering rule is removed. If this
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DomainFilterRule-action?: Action--><!--Device-DomainFilterRule-action?: Action-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## appUid
@@ -53,6 +57,8 @@ UID of the application.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DomainFilterRule-appUid?: string--><!--Device-DomainFilterRule-appUid?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -74,6 +80,8 @@ This parameter is optional when a domain name filtering rule is removed. If the 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DomainFilterRule-direction?: Direction--><!--Device-DomainFilterRule-direction?: Direction-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 ## domainName
@@ -89,6 +97,8 @@ Domain name. This parameter is mandatory when a domain name filtering rule is ad
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DomainFilterRule-domainName?: string--><!--Device-DomainFilterRule-domainName?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -107,6 +117,8 @@ IP protocol version. The value can be **1** (IPv4) or **2** (IPv6).
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DomainFilterRule-family?: number--><!--Device-DomainFilterRule-family?: number-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -129,5 +141,7 @@ When obtaining domain name filter rules, the **logType** field can be obtained o
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DomainFilterRule-logType?: LogType--><!--Device-DomainFilterRule-logType?: LogType-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

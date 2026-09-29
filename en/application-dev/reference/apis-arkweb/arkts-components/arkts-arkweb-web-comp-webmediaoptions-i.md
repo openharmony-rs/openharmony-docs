@@ -8,6 +8,8 @@ Configures the media policy of the **Web** component, including the audio playba
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface WebMediaOptions--><!--Device-unnamed-declare interface WebMediaOptions-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## audioExclusive
@@ -28,6 +30,8 @@ Default value: **true**.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-WebMediaOptions-audioExclusive?: boolean--><!--Device-WebMediaOptions-audioExclusive?: boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## audioSessionType
@@ -41,6 +45,8 @@ Web audio type in the app. The default value corresponds to STREAM_USAGE_MUSIC i
 **Type:** [AudioSessionType](arkts-arkweb-web-comp-audiosessiontype-e.md)
 
 **Since:** 20
+
+<!--Device-WebMediaOptions-audioSessionType?: AudioSessionType--><!--Device-WebMediaOptions-audioSessionType?: AudioSessionType-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -63,5 +69,7 @@ Default value: **0**.
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebMediaOptions-resumeInterval?: number--><!--Device-WebMediaOptions-resumeInterval?: number-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

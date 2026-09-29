@@ -10,6 +10,8 @@ Date object.
 
 **废弃版本：** 20
 
+<!--Device-unnamed-interface MonthData--><!--Device-unnamed-interface MonthData-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -31,6 +33,8 @@ CalendarDay.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MonthData-data: CalendarDay[]--><!--Device-MonthData-data: CalendarDay[]-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ Gregorian calendar month.
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-MonthData-month: number--><!--Device-MonthData-month: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -75,6 +81,8 @@ Gregorian calendar year.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-MonthData-year: number--><!--Device-MonthData-year: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

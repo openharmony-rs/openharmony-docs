@@ -16,6 +16,8 @@ In the following API examples, you need to obtain an **LiteResultSet** instance 
 
 **Since:** 23
 
+<!--Device-relationalStore-class LiteResultSet--><!--Device-relationalStore-class LiteResultSet-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Obtains the value of the specified column in the current row as a float array. T
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-LiteResultSet-getFloat32Array(columnIndex: int): Float32Array--><!--Device-LiteResultSet-getFloat32Array(columnIndex: int): Float32Array-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

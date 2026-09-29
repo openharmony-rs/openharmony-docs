@@ -8,6 +8,8 @@ declare class Storage
 
 **起始版本：** 7
 
+<!--Device-unnamed-declare class Storage--><!--Device-unnamed-declare class Storage-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -24,6 +26,8 @@ clear(): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-Storage-clear(): void--><!--Device-Storage-clear(): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -39,6 +43,8 @@ constructor(needCrossThread?: boolean, file?: string)
 **起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)--><!--Device-Storage-constructor(needCrossThread?: boolean, file?: string)-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +69,8 @@ delete(key: string): void
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
+<!--Device-Storage-delete(key: string): void--><!--Device-Storage-delete(key: string): void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
@@ -84,6 +92,8 @@ get(key: string): string | undefined
 **起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Storage-get(key: string): string | undefined--><!--Device-Storage-get(key: string): string | undefined-End-->
 
 **系统接口：** 此接口为系统接口。
 
@@ -110,6 +120,8 @@ set(key: string, val: any): void
 **起始版本：** 7
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-Storage-set(key: string, val: any): void--><!--Device-Storage-set(key: string, val: any): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

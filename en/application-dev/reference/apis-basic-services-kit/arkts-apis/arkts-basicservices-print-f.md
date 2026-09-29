@@ -22,6 +22,8 @@ Prints files. This API uses an asynchronous callback to return the result. To st
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void--><!--Device-print-function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -78,6 +80,8 @@ Prints files. This API uses a promise to return the result. To start the system 
 
 **Required permissions:** ohos.permission.PRINT
 
+<!--Device-print-function print(files: Array<string>): Promise<PrintTask>--><!--Device-print-function print(files: Array<string>): Promise<PrintTask>-End-->
+
 **System capability:** SystemCapability.Print.PrintFramework
 
 **Parameters:**
@@ -132,6 +136,8 @@ Prints files. This API uses an asynchronous callback to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-print-function print(files: Array<string>, context: Context, callback: AsyncCallback<PrintTask>): void--><!--Device-print-function print(files: Array<string>, context: Context, callback: AsyncCallback<PrintTask>): void-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -201,6 +207,8 @@ Prints files. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-print-function print(files: Array<string>, context: Context): Promise<PrintTask>--><!--Device-print-function print(files: Array<string>, context: Context): Promise<PrintTask>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -274,6 +282,8 @@ Prints a file. This API uses a promise to return the result.
 **Since:** 11
 
 **Required permissions:** ohos.permission.PRINT
+
+<!--Device-print-function print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes,    context: Context): Promise<PrintTask>--><!--Device-print-function print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes,    context: Context): Promise<PrintTask>-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

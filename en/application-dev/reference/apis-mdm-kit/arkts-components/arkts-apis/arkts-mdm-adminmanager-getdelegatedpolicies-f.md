@@ -20,6 +20,8 @@ Queries the list of policies that can be accessed by the delegated application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-adminManager-function getDelegatedPolicies(admin: Want, bundleName: string): Array<string>--><!--Device-adminManager-function getDelegatedPolicies(admin: Want, bundleName: string): Array<string>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

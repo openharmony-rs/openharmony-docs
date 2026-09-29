@@ -4,9 +4,11 @@
 export interface PromptOptionsV2Config
 ```
 
-Configuration information interface for PromptOptionsV2. Used to construct PromptOptionsV2 object.
+Defines the configuration information API for constructing a **PromptOptionsV2** object.
 
 **Since:** 26.0.0
+
+<!--Device-unnamed-export interface PromptOptionsV2Config--><!--Device-unnamed-export interface PromptOptionsV2Config-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +24,9 @@ import { MarginTypeV2, PromptOptionsV2, PromptOptionsV2Config, ExceptionPromptV2
 actionText?: ResourceStr
 ```
 
-Text of the icon on the right of the ExceptionPromptV2. If this parameter is not set or is set to undefined, the text is not displayed.
+Text content of the right icon button of the current exception prompt.
+
+Not set by default or set to **undefined**, the text content is not displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -31,6 +35,8 @@ Text of the icon on the right of the ExceptionPromptV2. If this parameter is not
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-PromptOptionsV2Config-actionText?: ResourceStr--><!--Device-PromptOptionsV2Config-actionText?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +46,9 @@ Text of the icon on the right of the ExceptionPromptV2. If this parameter is not
 icon?: ResourceStr
 ```
 
-Icon style of the ExceptionPromptV2. If this parameter is not set or is set to undefined, the icon is not displayed.
+Exception icon style of the current exception prompt.
+
+Not set by default or set to **undefined**, the exception icon is not displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -49,6 +57,8 @@ Icon style of the ExceptionPromptV2. If this parameter is not set or is set to u
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-PromptOptionsV2Config-icon?: ResourceStr--><!--Device-PromptOptionsV2Config-icon?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +68,13 @@ Icon style of the ExceptionPromptV2. If this parameter is not set or is set to u
 isShown?: boolean
 ```
 
-Whether the ExceptionPromptV2 is displayed. true: The exception prompt is displayed. false: The exception prompt is hidden. Default value: false.
+Visibility state of the current exception prompt.
+
+**true**: shown.
+
+**false**: hidden.
+
+Default value: **false**
 
 **Type:** boolean
 
@@ -68,6 +84,8 @@ Whether the ExceptionPromptV2 is displayed. true: The exception prompt is displa
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-PromptOptionsV2Config-isShown?: boolean--><!--Device-PromptOptionsV2Config-isShown?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginTop
@@ -76,7 +94,7 @@ Whether the ExceptionPromptV2 is displayed. true: The exception prompt is displa
 marginTop: Dimension
 ```
 
-Top margin of the ExceptionPromptV2. Distance from the top to the content area of ExceptionPromptV2
+Top margin of the current exception prompt.
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -86,6 +104,8 @@ Top margin of the ExceptionPromptV2. Distance from the top to the content area o
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-PromptOptionsV2Config-marginTop: Dimension--><!--Device-PromptOptionsV2Config-marginTop: Dimension-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## marginType
@@ -94,7 +114,7 @@ Top margin of the ExceptionPromptV2. Distance from the top to the content area o
 marginType: MarginTypeV2
 ```
 
-Margin Type of the ExceptionPromptV2. Margin from the content area to the edge of the container
+Margin type of the current exception prompt.
 
 **Type:** [MarginTypeV2](arkts-arkui-arkui-advanced-exceptionpromptv2-margintypev2-e.md)
 
@@ -104,6 +124,8 @@ Margin Type of the ExceptionPromptV2. Margin from the content area to the edge o
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-PromptOptionsV2Config-marginType: MarginTypeV2--><!--Device-PromptOptionsV2Config-marginType: MarginTypeV2-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## symbolStyle
@@ -112,7 +134,9 @@ Margin Type of the ExceptionPromptV2. Margin from the content area to the edge o
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon style of the ExceptionPromptV2, which has higher priority than icon. If this parameter is not set or is set to undefined, the symbol icon is not displayed.
+Exception symbol icon style of the current exception prompt, which takes priority over **icon**.
+
+Not set by default or set to **undefined**, the symbol icon is not displayed.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -122,6 +146,8 @@ Symbol icon style of the ExceptionPromptV2, which has higher priority than icon.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-PromptOptionsV2Config-symbolStyle?: SymbolGlyphModifier--><!--Device-PromptOptionsV2Config-symbolStyle?: SymbolGlyphModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## tip
@@ -130,12 +156,16 @@ Symbol icon style of the ExceptionPromptV2, which has higher priority than icon.
 tip?: ResourceStr
 ```
 
-Text content of the ExceptionPromptV2. By default, the following text resources are provided:
-1. ohos_network_not_connected: displayed when no Internet connection.
-2. ohos_network_connected_unstable: displayed when the Internet connection is unstable.
-3. ohos_unstable_connect_server: displayed when the server fails to be connected.
-4. ohos_custom_network_tips_left: displayed when an Internet connection is available
-but the location fails to be obtained. If this parameter is not set or is set to undefined, the text content is not displayed.
+Text content of the current exception prompt.
+
+Supports custom resources or the following four system resource strings for status text.
+
+1. No network state: Show network not connected, referencing **$r('sys.string.ohos_network_not_connected')**.
+2. Poor network state: Show network connection is unstable, tap to retry, referencing **$r('sys.string.ohos_network_connected_unstable')**.
+3. Unable to connect to server state: Show unable to connect to server, tap to retry, referencing **$r('sys.string.ohos_unstable_connect_server')**.
+4. Network available but unable to obtain location state: Show unable to obtain location, tap to retry, referencing **$r('sys.string.ohos_custom_network_tips_left')**.
+
+Not set by default or set to **undefined**, the text content is not displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -144,5 +174,7 @@ but the location fails to be obtained. If this parameter is not set or is set to
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-PromptOptionsV2Config-tip?: ResourceStr--><!--Device-PromptOptionsV2Config-tip?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

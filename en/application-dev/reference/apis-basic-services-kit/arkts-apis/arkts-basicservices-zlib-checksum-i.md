@@ -8,6 +8,8 @@ Checksum object.
 
 **Since:** 12
 
+<!--Device-zlib-interface Checksum--><!--Device-zlib-interface Checksum-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -26,7 +28,9 @@ Calculates the Adler-32 checksum. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-adler32(adler: long, buf: ArrayBuffer): Promise<long>--><!--Device-Checksum-adler32(adler: long, buf: ArrayBuffer): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -79,7 +83,9 @@ Combines two Adler-32 checksums. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-adler32Combine(adler1: long, adler2: long, len2: long): Promise<long>--><!--Device-Checksum-adler32Combine(adler1: long, adler2: long, len2: long): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -144,7 +150,9 @@ Updates a CRC-32 checksum. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-crc32(crc: long, buf: ArrayBuffer): Promise<long>--><!--Device-Checksum-crc32(crc: long, buf: ArrayBuffer): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -199,7 +207,9 @@ Combines two CRC-32 checksums. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-crc32Combine(crc1: long, crc2: long, len2: long): Promise<long>--><!--Device-Checksum-crc32Combine(crc1: long, crc2: long, len2: long): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -264,7 +274,9 @@ Updates a CRC-64 checksum. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-crc64(crc: long, buf: ArrayBuffer): Promise<long>--><!--Device-Checksum-crc64(crc: long, buf: ArrayBuffer): Promise<long>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -319,7 +331,9 @@ Obtains this CRC-64 checksum table. This API uses a promise to return the result
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-getCrc64Table(): Promise<Array<long>>--><!--Device-Checksum-getCrc64Table(): Promise<Array<long>>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 
@@ -353,7 +367,9 @@ Obtains this CRC-32 checksum table. This API uses a promise to return the result
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-Checksum-getCrcTable(): Promise<Array<long>>--><!--Device-Checksum-getCrcTable(): Promise<Array<long>>-End-->
 
 **System capability:** SystemCapability.BundleManager.Zlib
 

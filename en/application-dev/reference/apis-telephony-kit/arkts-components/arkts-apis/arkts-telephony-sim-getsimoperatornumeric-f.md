@@ -16,6 +16,8 @@ Obtains the home public land mobile network (PLMN) ID of the SIM card in the spe
 
 **Since:** 6
 
+<!--Device-sim-function getSimOperatorNumeric(slotId: int, callback: AsyncCallback<string>): void--><!--Device-sim-function getSimOperatorNumeric(slotId: int, callback: AsyncCallback<string>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**
@@ -59,6 +61,8 @@ function getSimOperatorNumeric(slotId: number): Promise<string>
 Obtains the home PLMN ID of the SIM card in the specified slot. This API uses a promise to return the result.
 
 **Since:** 6
+
+<!--Device-sim-function getSimOperatorNumeric(slotId: int): Promise<string>--><!--Device-sim-function getSimOperatorNumeric(slotId: int): Promise<string>-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

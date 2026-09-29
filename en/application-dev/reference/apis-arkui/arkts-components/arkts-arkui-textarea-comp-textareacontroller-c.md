@@ -4,9 +4,9 @@
 declare class TextAreaController extends TextContentControllerBase
 ```
 
-The controller for the **TextArea** component inherits from [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md). The APIs involved are as follows:<!--Del--> system API [getText](arkts-arkui-common-comp-textcontentcontrollerbase-c-sys.md#gettext) and other APIs like<!--DelEnd--> [getTextContentRect](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentrect), [getTextContentLineCount](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentlinecount), [getCaretOffset](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getcaretoffset), [addText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#addtext), [deleteText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletetext), [getSelection](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getselection), [clearPreviewText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#clearpreviewtext), [setStyledPlaceholder](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#setstyledplaceholder), and [deleteBackward](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletebackward).
+The controller of the TextArea component inherits from [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md). The involved APIs include [getTextContentRect](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentrect), [getTextContentLineCount](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentlinecount), [getCaretOffset](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getcaretoffset), [addText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#addtext), [deleteText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletetext), [getSelection](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getselection), [clearPreviewText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#clearpreviewtext), [setStyledPlaceholder](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#setstyledplaceholder), [deleteBackward](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletebackward), [scrollToVisible](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#scrolltovisible)<!--Del-->, and the system API [getText](arkts-arkui-common-comp-textcontentcontrollerbase-c-sys.md#gettext)<!--DelEnd-->.
 
-## Objects to Import
+## Import Object
 
 ```ts
 controller: TextAreaController = new TextAreaController();
@@ -15,6 +15,8 @@ controller: TextAreaController = new TextAreaController();
 **Inheritance/Implementation:** TextAreaController extends [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md)
 
 **Since:** 8
+
+<!--Device-unnamed-declare class TextAreaController extends TextContentControllerBase--><!--Device-unnamed-declare class TextAreaController extends TextContentControllerBase-End-->
 
 **System capability:** 
 - API version 10 and later: SystemCapability.ArkUI.ArkUI.Full
@@ -25,11 +27,13 @@ controller: TextAreaController = new TextAreaController();
 caretPosition(value: number): void
 ```
 
-Sets the position of the caret.
+Sets the position of the input cursor.
 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextAreaController-caretPosition(value: number): void--><!--Device-TextAreaController-caretPosition(value: number): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +41,7 @@ Sets the position of the caret.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Length from the start of the string to the position where the caret is located.<br>Values less than 0 are treated as **0**. Values greater than the string length are treated as the string length. |
+| value | number | Yes | Length of the characters from the start of the string to the cursor position.<br>If value is less than 0, it is processed as 0. If value is greater than the string length, it is processed as the string length. |
 
 ## constructor
 
@@ -45,11 +49,13 @@ Sets the position of the caret.
 constructor()
 ```
 
-A constructor used to create a **TextAreaController** object.
+Constructor of TextAreaController.
 
 **Since:** 8
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextAreaController-constructor()--><!--Device-TextAreaController-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +65,7 @@ A constructor used to create a **TextAreaController** object.
 setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
 ```
 
-Sets the text selection range and highlights the selected text when the component is focused. This API works only when the value of **selectionStart** is less than that of **selectionEnd**.
+Sets the text selection area and highlights it when the component is focused. The text is selected and highlighted only when selectionStart is less than selectionEnd.
 
 **Since:** 10
 
@@ -67,15 +73,17 @@ Sets the text selection range and highlights the selected text when the componen
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TextAreaController-setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void--><!--Device-TextAreaController-setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectionStart | number | Yes | Start position of the text selection range. The start position of text in the text box is 0.<br>Values less than 0 are treated as **0**. Values greater than the maximum text length are treated as the maximum text length.<br> |
-| selectionEnd | number | Yes | End position of the text selection range.<br>Values less than 0 are treated as **0**. Values greater than the maximum text length are treated as the maximum text length.<br> |
-| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration options for text selection.<br>Default value: **MenuPolicy.DEFAULT**<br><br>**Since:** 12 |
+| selectionStart | number | Yes | Start position of the text selection area. The start position of the text in the text box is 0.<br>If selectionStart is less than 0, it is processed as 0. If selectionStart is greater than the maximum text length, it is processed as the maximum text length. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| selectionEnd | number | Yes | End position of the text selection area.<br>If selectionEnd is less than 0, it is processed as 0. If selectionEnd is greater than the maximum text length, it is processed as the maximum text length. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration for the selected text.<br>Default value: MenuPolicy.DEFAULT <br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Since:** 12 |
 
 ## stopEditing
 
@@ -90,5 +98,7 @@ Exits the editing state.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TextAreaController-stopEditing(): void--><!--Device-TextAreaController-stopEditing(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

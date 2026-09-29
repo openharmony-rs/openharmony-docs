@@ -8,7 +8,7 @@
 
 ## 子组件
 
-仅支持ArcListItem子组件。
+仅支持[ArcListItem](arkts-arkui-arclist-comp.md)子组件。
 
 > **说明：** 
 > 
@@ -36,6 +36,8 @@ ArcList(options?: ArkListOptions)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ArcListInterface-(options?: ArkListOptions): ArcListAttribute--><!--Device-ArcListInterface-(options?: ArkListOptions): ArcListAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 **参数:**
@@ -50,7 +52,7 @@ ArcList(options?: ArkListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ArcListItemInterface](arkts-arkui-arclist-comp-arclistiteminterface-i.md) | 用于展示弧形列表的子组件，必须配合ArcList使用。 |
+| [ArcListItemInterface](arkts-arkui-arclist-comp-arclistiteminterface-i.md) | 用于展示弧形列表的子组件，必须配合[ArcList](arkts-arkui-arclist-comp.md)使用。 |
 | [ArkListOptions](arkts-arkui-arclist-comp-arklistoptions-i.md) | 包含创建ArcList组件的基础参数。 |
 
 ### 类型

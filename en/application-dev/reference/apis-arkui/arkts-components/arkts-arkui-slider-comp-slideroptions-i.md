@@ -8,6 +8,8 @@ Provides information about the slider.
 
 **Since:** 7
 
+<!--Device-unnamed-declare interface SliderOptions--><!--Device-unnamed-declare interface SliderOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## direction
@@ -33,6 +35,8 @@ Default value: **Axis.Horizontal**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderOptions-direction?: Axis--><!--Device-SliderOptions-direction?: Axis-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## max
@@ -45,7 +49,7 @@ Maximum value.
 
 Default value: **100**
 
-**NOTE:** 
+**Note:** 
 
 If the value of **min** is greater than or equal to the value of **max**, the **min** value defaults to **0**, and the **max** value defaults to **100**.
 
@@ -63,6 +67,8 @@ If the value is not within the [min, max] range, the value of **min** or **max**
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderOptions-max?: number--><!--Device-SliderOptions-max?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +94,8 @@ Default value: **0**
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderOptions-min?: number--><!--Device-SliderOptions-min?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,6 +124,8 @@ Default value: **false**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderOptions-reverse?: boolean--><!--Device-SliderOptions-reverse?: boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## step
@@ -130,9 +140,9 @@ Default value: **1**
 
 Value range: [0.01, max - min]
 
-**NOTE:** 
+**Note:** 
 
-If this parameter is set to a value less than 0 or greater than the value of **max**, the default value is used.
+If this parameter is set to a value less than 0 or greater than **max** - **min**, the default value is used.
 
 **Type:** number
 
@@ -146,6 +156,8 @@ If this parameter is set to a value less than 0 or greater than the value of **m
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderOptions-step?: number--><!--Device-SliderOptions-step?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,6 +184,8 @@ Default value: **SliderStyle.OutSet**
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-SliderOptions-style?: SliderStyle--><!--Device-SliderOptions-style?: SliderStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -184,15 +198,15 @@ Current progress.
 
 Default value: same as the value of **min**.
 
-Since API version 10, this property supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
-This property supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
+This attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
 Value range: [min, max]
 
-Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.
+If the value is less than the value of **min**, the value of **min** is used; if the value is greater than the value of **max**, the value of **max** is used.
 
-The $$ operator enables two-way synchronization between the TS variable and the **Slider** component's **value**. For details, see [Example 7: Setting Two-Way Binding for the Slider](../../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#example-7-setting-two-way-binding-for-the-slider).
+The $$ operator provides a reference to a TS variable for a system component, keeping the value of the TS variable synchronized with **value** of the **Slider** component. For details, see [Example 7: Setting Two-Way Binding for the Slider](../../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#example-7-setting-two-way-binding-for-the-slider).
 
 **Type:** number
 
@@ -206,5 +220,7 @@ The $$ operator enables two-way synchronization between the TS variable and the 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderOptions-value?: number--><!--Device-SliderOptions-value?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

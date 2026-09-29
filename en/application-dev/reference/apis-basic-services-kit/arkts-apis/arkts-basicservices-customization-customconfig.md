@@ -4,6 +4,8 @@ This module provides APIs for applications to obtain custom configurations, such
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace customConfig--><!--Device-unnamed-declare namespace customConfig-End-->
+
 **System capability:** SystemCapability.Customization.CustomConfig
 
 ## Modules to Import

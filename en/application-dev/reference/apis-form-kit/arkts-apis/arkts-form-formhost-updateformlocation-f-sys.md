@@ -20,6 +20,8 @@ Updates the widget location.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formHost-function updateFormLocation(formId: string, location: formInfo.FormLocation): void--><!--Device-formHost-function updateFormLocation(formId: string, location: formInfo.FormLocation): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

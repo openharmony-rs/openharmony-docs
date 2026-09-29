@@ -4,6 +4,8 @@ The stream module provides APIs to process basic types of streams. With streams,
 
 **Since:** 12
 
+<!--Device-unnamed-declare namespace stream--><!--Device-unnamed-declare namespace stream-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import

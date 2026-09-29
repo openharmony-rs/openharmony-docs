@@ -8,6 +8,8 @@ AVScreenCaptureRecorder is a class for screen capture management. It provides AP
 
 **Since:** 12
 
+<!--Device-media-interface AVScreenCaptureRecorder--><!--Device-media-interface AVScreenCaptureRecorder-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 ## Modules to Import
@@ -27,6 +29,8 @@ add a watermark for the AVScreenCaptureRecorder. This API uses a promise to retu
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>--><!--Device-AVScreenCaptureRecorder-addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise<int>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -81,6 +85,8 @@ excludePickerWindows(excludedWindows: Array<number>): Promise<void>
 Sets the list of windows to be hidden in the picker. The setting takes effect the next time the picker is displayed. This API uses a promise to return the result.
 
 **Since:** 22
+
+<!--Device-AVScreenCaptureRecorder-excludePickerWindows(excludedWindows: Array<int>): Promise<void>--><!--Device-AVScreenCaptureRecorder-excludePickerWindows(excludedWindows: Array<int>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -145,6 +151,8 @@ init(config: AVScreenCaptureRecordConfig): Promise<void>
 Initializes screen capture and sets screen capture parameters. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-init(config: AVScreenCaptureRecordConfig): Promise<void>--><!--Device-AVScreenCaptureRecorder-init(config: AVScreenCaptureRecordConfig): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -218,6 +226,8 @@ Unsubscribes from screen capture state changes. You can specify a callback to ca
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecorder-off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void--><!--Device-AVScreenCaptureRecorder-off(type: 'stateChange', callback?: Callback<AVScreenCaptureStateCode>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Parameters:**
@@ -263,6 +273,8 @@ Unsubscribes from AVScreenCaptureRecorder errors. You can specify a callback to 
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecorder-off(type: 'error', callback?: ErrorCallback): void--><!--Device-AVScreenCaptureRecorder-off(type: 'error', callback?: ErrorCallback): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Parameters:**
@@ -307,6 +319,8 @@ on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void
 Subscribes to screen capture state changes. An application can subscribe to only one screen capture state change event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void--><!--Device-AVScreenCaptureRecorder-on(type: 'stateChange', callback: Callback<AVScreenCaptureStateCode>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -354,6 +368,8 @@ on(type: 'error', callback: ErrorCallback): void
 Subscribes to AVScreenCaptureRecorder errors. You can handle the errors based on the application logic. An application can subscribe to only one AVScreenCaptureRecorder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-on(type: 'error', callback: ErrorCallback): void--><!--Device-AVScreenCaptureRecorder-on(type: 'error', callback: ErrorCallback): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -411,6 +427,8 @@ Pause screen capture. This API uses a promise to return the result.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-pauseRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-pauseRecording(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -474,6 +492,8 @@ Displays the Picker once more after the screen capture starts, allowing for dyna
 
 **Since:** 22
 
+<!--Device-AVScreenCaptureRecorder-presentPicker(): Promise<void>--><!--Device-AVScreenCaptureRecorder-presentPicker(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Return value:**
@@ -529,6 +549,8 @@ release(): Promise<void>
 Releases this AVScreenCaptureRecorder instance. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-release(): Promise<void>--><!--Device-AVScreenCaptureRecorder-release(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -587,6 +609,8 @@ Resume screen capture. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AVScreenCaptureRecorder-resumeRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-resumeRecording(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Return value:**
@@ -644,6 +668,8 @@ Sets whether the captured screen content automatically rotates to keep the image
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AVScreenCaptureRecorder-setContentAutoRotation(enable: boolean): Promise<void>--><!--Device-AVScreenCaptureRecorder-setContentAutoRotation(enable: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -706,6 +732,8 @@ Enables or disables the microphone. This API uses a promise to return the result
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecorder-setMicEnabled(enable: boolean): Promise<void>--><!--Device-AVScreenCaptureRecorder-setMicEnabled(enable: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Parameters:**
@@ -766,6 +794,8 @@ setPickerMode(pickerMode: PickerMode): Promise<void>
 Sets the display mode of the picker. The setting takes effect the next time the picker is displayed. This API uses a promise to return the result.
 
 **Since:** 22
+
+<!--Device-AVScreenCaptureRecorder-setPickerMode(pickerMode: PickerMode): Promise<void>--><!--Device-AVScreenCaptureRecorder-setPickerMode(pickerMode: PickerMode): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -831,6 +861,8 @@ For example, if a user enters a password in this application during screen captu
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecorder-skipPrivacyMode(windowIDs: Array<int>): Promise<void>--><!--Device-AVScreenCaptureRecorder-skipPrivacyMode(windowIDs: Array<int>): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Parameters:**
@@ -893,6 +925,8 @@ Starts screen recording. Before using this API, you must call [init](#init). Thi
 
 **Since:** 12
 
+<!--Device-AVScreenCaptureRecorder-startRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-startRecording(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Return value:**
@@ -947,6 +981,8 @@ stopRecording(): Promise<void>
 Stops screen recording. This API uses a promise to return the result.
 
 **Since:** 12
+
+<!--Device-AVScreenCaptureRecorder-stopRecording(): Promise<void>--><!--Device-AVScreenCaptureRecorder-stopRecording(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
 

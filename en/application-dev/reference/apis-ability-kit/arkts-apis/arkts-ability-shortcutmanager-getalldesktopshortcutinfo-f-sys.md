@@ -18,6 +18,8 @@ Obtains the information about all shortcuts of the given user.
 
 **Required permissions:** ohos.permission.MANAGE_SHORTCUTS
 
+<!--Device-shortcutManager-function getAllDesktopShortcutInfo(userId: int): Promise<Array<ShortcutInfo>>--><!--Device-shortcutManager-function getAllDesktopShortcutInfo(userId: int): Promise<Array<ShortcutInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **System API:** This is a system API.

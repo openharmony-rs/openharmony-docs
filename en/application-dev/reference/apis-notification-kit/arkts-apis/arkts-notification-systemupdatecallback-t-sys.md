@@ -10,6 +10,8 @@ Returns the notification information carrying system property values. type Syste
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export type SystemUpdateCallback = (data: SubscribeCallbackData) => void--><!--Device-unnamed-export type SystemUpdateCallback = (data: SubscribeCallbackData) => void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

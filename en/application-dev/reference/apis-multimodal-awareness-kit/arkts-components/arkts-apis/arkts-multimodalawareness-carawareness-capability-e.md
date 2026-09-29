@@ -8,6 +8,8 @@ CarAwareness Capability.
 
 **Since:** 26.0.1
 
+<!--Device-carAwareness-enum Capability--><!--Device-carAwareness-enum Capability-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## SPATIAL_MOTION
@@ -21,6 +23,8 @@ spatial motion specific capability
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Capability-SPATIAL_MOTION = 'SpatialMotion'--><!--Device-Capability-SPATIAL_MOTION = 'SpatialMotion'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
@@ -36,6 +40,8 @@ realtime weather specific capability
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-Capability-REALTIME_WEATHER = 'RealTimeWeather'--><!--Device-Capability-REALTIME_WEATHER = 'RealTimeWeather'-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 ## REFUELING
@@ -49,5 +55,7 @@ refueling specific capability
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Capability-REFUELING = 'Refueling'--><!--Device-Capability-REFUELING = 'Refueling'-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness

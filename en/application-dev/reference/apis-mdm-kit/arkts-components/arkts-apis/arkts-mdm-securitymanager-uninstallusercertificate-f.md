@@ -20,6 +20,8 @@ Uninstalls a user certificate. This API uses a promise to return the result. Thi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-securityManager-function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>--><!--Device-securityManager-function uninstallUserCertificate(admin: Want, certUri: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

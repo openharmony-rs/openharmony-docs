@@ -18,6 +18,8 @@ is random mac disabled
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO and ohos.permission.GET_WIFI_CONFIG
 
+<!--Device-wifiManager-function isRandomMacDisabled(): boolean--><!--Device-wifiManager-function isRandomMacDisabled(): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.

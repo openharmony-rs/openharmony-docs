@@ -8,6 +8,8 @@ declare interface WithThemeOptions
 
 **起始版本：** 12
 
+<!--Device-unnamed-declare interface WithThemeOptions--><!--Device-unnamed-declare interface WithThemeOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## colorMode
@@ -28,6 +30,8 @@ colorMode?: ThemeColorMode
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-WithThemeOptions-colorMode?: ThemeColorMode--><!--Device-WithThemeOptions-colorMode?: ThemeColorMode-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## theme
@@ -38,7 +42,7 @@ theme?: CustomTheme
 
 用于设置WithTheme作用域内组件的自定义主题配色。
 
-默认值：undefined，默认配色跟随系统token默认样式。
+默认值：undefined，默认配色跟随系统[token默认样式](../../../ui/theme_skinning.md#系统缺省token色值)。
 
 **类型：** [CustomTheme](arkts-arkui-withtheme-comp-customtheme-t.md)
 
@@ -47,5 +51,7 @@ theme?: CustomTheme
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WithThemeOptions-theme?: CustomTheme--><!--Device-WithThemeOptions-theme?: CustomTheme-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

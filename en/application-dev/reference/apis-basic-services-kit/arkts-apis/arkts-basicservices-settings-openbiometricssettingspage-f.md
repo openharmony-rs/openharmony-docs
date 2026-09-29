@@ -18,6 +18,8 @@ Open the biometrics and password settings page.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-settings-function openBiometricsSettingsPage(context: Context): void--><!--Device-settings-function openBiometricsSettingsPage(context: Context): void-End-->
+
 **System capability:** SystemCapability.Applications.Settings.Core
 
 **Parameters:**

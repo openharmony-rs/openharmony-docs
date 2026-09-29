@@ -19,6 +19,8 @@ Truncates a file based on the file path. This API uses a promise to return the r
 
 **Substitutes:** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
+<!--Device-unnamed-declare function truncate(path: string, len?: number): Promise<void>--><!--Device-unnamed-declare function truncate(path: string, len?: number): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -51,6 +53,8 @@ Truncates a file based on the file path. This API uses an asynchronous callback 
 
 **Substitutes:** [truncate](arkts-corefile-file-fs-truncate-f.md)
 
+<!--Device-unnamed-declare function truncate(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function truncate(path: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -76,6 +80,8 @@ Truncates a file based on the file path. This API uses an asynchronous callback 
 **Deprecated since:** 9
 
 **Substitutes:** [truncate](arkts-corefile-file-fs-truncate-f.md)
+
+<!--Device-unnamed-declare function truncate(path: string, len: number, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function truncate(path: string, len: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

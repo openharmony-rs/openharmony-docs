@@ -8,6 +8,8 @@ State-specific styles for the component.
 
 **Since:** 8
 
+<!--Device-unnamed-declare interface StateStyles--><!--Device-unnamed-declare interface StateStyles-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## clicked
@@ -25,6 +27,8 @@ Style of the component in the clicked state.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StateStyles-clicked?: any--><!--Device-StateStyles-clicked?: any-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Style of the component in the disabled state.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-StateStyles-disabled?: any--><!--Device-StateStyles-disabled?: any-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## focused
@@ -61,6 +67,8 @@ Style of the component in the focused state.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StateStyles-focused?: any--><!--Device-StateStyles-focused?: any-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,6 +90,8 @@ Style of the component in the hovered state.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
+<!--Device-StateStyles-hovered?: object--><!--Device-StateStyles-hovered?: object-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normal
@@ -100,6 +110,8 @@ Style of the component when being stateless.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-StateStyles-normal?: any--><!--Device-StateStyles-normal?: any-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pressed
@@ -117,6 +129,8 @@ Style of the component in the pressed state.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-StateStyles-pressed?: any--><!--Device-StateStyles-pressed?: any-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,5 +151,7 @@ Style of the component in the selected state.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-StateStyles-selected?: object--><!--Device-StateStyles-selected?: object-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

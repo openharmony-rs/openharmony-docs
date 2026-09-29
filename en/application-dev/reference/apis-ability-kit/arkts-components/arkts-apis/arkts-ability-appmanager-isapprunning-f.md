@@ -23,6 +23,8 @@ Checks whether the application with the specified bundle name and application cl
 
 **Required permissions:** ohos.permission.GET_RUNNING_INFO
 
+<!--Device-appManager-function isAppRunning(bundleName: string, appCloneIndex?: int): Promise<boolean>--><!--Device-appManager-function isAppRunning(bundleName: string, appCloneIndex?: int): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

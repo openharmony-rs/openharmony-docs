@@ -19,6 +19,8 @@ Removes a directory. This API uses a promise to return the result.
 
 **Substitutes:** [rmdir](arkts-corefile-file-fs-rmdir-f.md)
 
+<!--Device-unnamed-declare function rmdir(path: string): Promise<void>--><!--Device-unnamed-declare function rmdir(path: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
 **Parameters:**
@@ -49,6 +51,8 @@ Removes a directory. This API uses an asynchronous callback to return the result
 **Deprecated since:** 9
 
 **Substitutes:** [rmdir](arkts-corefile-file-fs-rmdir-f.md)
+
+<!--Device-unnamed-declare function rmdir(path: string, callback: AsyncCallback<void>): void--><!--Device-unnamed-declare function rmdir(path: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 

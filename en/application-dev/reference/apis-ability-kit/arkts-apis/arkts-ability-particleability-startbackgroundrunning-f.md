@@ -24,6 +24,8 @@ Requests a continuous task from the system. This API uses an asynchronous callba
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest, callback: AsyncCallback<void>): void--><!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **Parameters:**
@@ -98,6 +100,8 @@ Requests a continuous task from the system. This API uses a promise to return th
 **Required permissions:** ohos.permission.KEEP_BACKGROUND_RUNNING
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest): Promise<void>--><!--Device-particleAbility-function startBackgroundRunning(id: number, request: NotificationRequest): Promise<void>-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

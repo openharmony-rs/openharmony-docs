@@ -19,6 +19,8 @@ Provides APIs for measuring text metrics, such as text height and width.
 
 **Since:** 12
 
+<!--Device-unnamed-export class MeasureUtils--><!--Device-unnamed-export class MeasureUtils-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -41,6 +43,8 @@ Converts a styled string into an array of corresponding [Paragraph](../../apis-a
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MeasureUtils-getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array<Paragraph>--><!--Device-MeasureUtils-getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array<Paragraph>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,6 +286,8 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-MeasureUtils-measureText(options: MeasureOptions): number--><!--Device-MeasureUtils-measureText(options: MeasureOptions): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -344,6 +350,8 @@ Measures the width and height of the given single-line text.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MeasureUtils-measureTextSize(options: MeasureOptions): SizeOptions--><!--Device-MeasureUtils-measureTextSize(options: MeasureOptions): SizeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

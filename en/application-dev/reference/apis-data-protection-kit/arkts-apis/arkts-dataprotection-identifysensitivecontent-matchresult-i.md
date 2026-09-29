@@ -8,6 +8,8 @@ Displays the identification result of sensitive content.
 
 **Since:** 21
 
+<!--Device-identifySensitiveContent-export interface MatchResult--><!--Device-identifySensitiveContent-export interface MatchResult-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Matched sensitive content segment, that is, the text content matched by keyword 
 
 **Since:** 21
 
+<!--Device-MatchResult-readonly matchContent: string--><!--Device-MatchResult-readonly matchContent: string-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## matchNumber
@@ -42,6 +46,8 @@ Total number of matched items.
 
 **Since:** 21
 
+<!--Device-MatchResult-readonly matchNumber: number--><!--Device-MatchResult-readonly matchNumber: number-End-->
+
 **System capability:** SystemCapability.Security.DataLossPrevention
 
 ## sensitiveLabel
@@ -55,5 +61,7 @@ Label of an identification policy, which corresponds to sensitiveLabel in the in
 **Type:** string
 
 **Since:** 21
+
+<!--Device-MatchResult-readonly sensitiveLabel: string--><!--Device-MatchResult-readonly sensitiveLabel: string-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention

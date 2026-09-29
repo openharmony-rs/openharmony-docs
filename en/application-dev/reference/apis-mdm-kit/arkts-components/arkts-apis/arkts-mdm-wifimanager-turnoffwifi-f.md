@@ -24,6 +24,8 @@ In the following scenario, attempting to disable Wi-Fi using this API will fail,
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function turnOffWifi(admin: Want): void--><!--Device-wifiManager-function turnOffWifi(admin: Want): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

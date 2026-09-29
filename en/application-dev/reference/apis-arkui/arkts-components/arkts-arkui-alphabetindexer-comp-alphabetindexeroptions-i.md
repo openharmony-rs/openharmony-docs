@@ -14,6 +14,8 @@ Defines the options of the **AlphabetIndexer** component.
 
 **Since:** 18
 
+<!--Device-unnamed-interface AlphabetIndexerOptions--><!--Device-unnamed-interface AlphabetIndexerOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## arrayValue
@@ -29,6 +31,8 @@ Array of index items.
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlphabetIndexerOptions-arrayValue: Array<string>--><!--Device-AlphabetIndexerOptions-arrayValue: Array<string>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,5 +53,7 @@ This parameter supports two-way binding through [$$](../../../ui/state-managemen
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AlphabetIndexerOptions-selected: number--><!--Device-AlphabetIndexerOptions-selected: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ Represents the information about the avoidance area of the window.
 
 **Since:** 12
 
+<!--Device-uiExtension-interface AvoidAreaInfo--><!--Device-uiExtension-interface AvoidAreaInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Avoidance area for the content of the window.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AvoidAreaInfo-area: window.AvoidArea--><!--Device-AvoidAreaInfo-area: window.AvoidArea-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,6 +52,8 @@ Type of the avoidance area of the window.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+
+<!--Device-AvoidAreaInfo-type: window.AvoidAreaType--><!--Device-AvoidAreaInfo-type: window.AvoidAreaType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

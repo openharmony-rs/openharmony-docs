@@ -8,6 +8,8 @@ class MediaQuery
 
 **Since:** 10
 
+<!--Device-unnamed-export class MediaQuery--><!--Device-unnamed-export class MediaQuery-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Sets the media query criteria and returns the corresponding listening handle
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MediaQuery-matchMediaSync(condition: string): mediaQuery.MediaQueryListener--><!--Device-MediaQuery-matchMediaSync(condition: string): mediaQuery.MediaQueryListener-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

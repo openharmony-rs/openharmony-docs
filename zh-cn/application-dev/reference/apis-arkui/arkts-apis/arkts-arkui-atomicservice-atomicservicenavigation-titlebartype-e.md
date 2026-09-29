@@ -8,6 +8,8 @@ export declare enum TitleBarType
 
 **起始版本：** 18
 
+<!--Device-unnamed-export declare enum TitleBarType--><!--Device-unnamed-export declare enum TitleBarType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## SQUARED_ICON
@@ -21,6 +23,8 @@ SQUARED_ICON = 1
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleBarType-SQUARED_ICON = 1--><!--Device-TitleBarType-SQUARED_ICON = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ ROUND_ICON = 2
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TitleBarType-ROUND_ICON = 2--><!--Device-TitleBarType-ROUND_ICON = 2-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DRAWER
@@ -49,5 +55,7 @@ DRAWER = 3
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitleBarType-DRAWER = 3--><!--Device-TitleBarType-DRAWER = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

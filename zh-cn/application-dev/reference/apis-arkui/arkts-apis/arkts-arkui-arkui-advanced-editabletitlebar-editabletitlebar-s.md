@@ -10,7 +10,7 @@ export declare struct EditableTitleBar
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 如果EditableTitleBar设置通用属性和通用事件，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到EditableTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议EditableTitleBar设置通用属性和通用事件。
+> - 如果EditableTitleBar设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到EditableTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议EditableTitleBar设置通用属性和通用事件。
 
 ## 子组件
 
@@ -23,6 +23,8 @@ export declare struct EditableTitleBar
 **起始版本：** 10
 
 **装饰器类型：** @Component
+
+<!--Device-unnamed-export declare struct EditableTitleBar--><!--Device-unnamed-export declare struct EditableTitleBar-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +52,8 @@ onCancel?: () => void
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-onCancel?: () => void--><!--Device-EditableTitleBar-onCancel?: () => void-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## onSave
@@ -67,6 +71,8 @@ onSave?: () => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBar-onSave?: () => void--><!--Device-EditableTitleBar-onSave?: () => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,6 +100,8 @@ contentMargin?: LocalizedMargin
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-contentMargin?: LocalizedMargin--><!--Device-EditableTitleBar-contentMargin?: LocalizedMargin-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## imageItem
@@ -115,6 +123,8 @@ imageItem?: EditableTitleBarItem
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBar-imageItem?: EditableTitleBarItem--><!--Device-EditableTitleBar-imageItem?: EditableTitleBarItem-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,6 +150,8 @@ isSaveIconRequired: boolean
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-isSaveIconRequired: boolean--><!--Device-EditableTitleBar-isSaveIconRequired: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## leftIconDefaultFocus
@@ -164,6 +176,8 @@ leftIconDefaultFocus?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-leftIconDefaultFocus?: boolean--><!--Device-EditableTitleBar-leftIconDefaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## leftIconStyle
@@ -184,6 +198,8 @@ leftIconStyle: EditableLeftIconType
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-leftIconStyle: EditableLeftIconType--><!--Device-EditableTitleBar-leftIconStyle: EditableLeftIconType-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## menuItems
@@ -203,6 +219,8 @@ menuItems?: Array<EditableTitleBarMenuItem>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBar-menuItems?: Array<EditableTitleBarMenuItem>--><!--Device-EditableTitleBar-menuItems?: Array<EditableTitleBarMenuItem>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,6 +256,8 @@ backgroundColor: '#00000000'
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-options: EditableTitleBarOptions--><!--Device-EditableTitleBar-options: EditableTitleBarOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## saveIconDefaultFocus
@@ -262,6 +282,8 @@ saveIconDefaultFocus?: boolean
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-saveIconDefaultFocus?: boolean--><!--Device-EditableTitleBar-saveIconDefaultFocus?: boolean-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## subtitle
@@ -282,6 +304,8 @@ subtitle?: ResourceStr
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-EditableTitleBar-subtitle?: ResourceStr--><!--Device-EditableTitleBar-subtitle?: ResourceStr-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## title
@@ -301,5 +325,7 @@ title: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-EditableTitleBar-title: ResourceStr--><!--Device-EditableTitleBar-title: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -15,6 +15,8 @@ Options that contain the user ID.
 
 **Deprecated since:** 9
 
+<!--Device-bundle-export interface BundleOptions--><!--Device-bundle-export interface BundleOptions-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 ## Modules to Import
@@ -36,5 +38,7 @@ User ID. The default value is the user ID of the caller. The value must be great
 **Since:** 7
 
 **Deprecated since:** 9
+
+<!--Device-BundleOptions-userId?: number--><!--Device-BundleOptions-userId?: number-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework

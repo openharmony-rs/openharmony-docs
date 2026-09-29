@@ -8,6 +8,8 @@ Accessibility grid information. For details, see the property currentItem in [Ac
 
 **Since:** 20
 
+<!--Device-unnamed-export interface AccessibilityGrid--><!--Device-unnamed-export interface AccessibilityGrid-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -24,6 +26,8 @@ Grid column index.
 
 **Since:** 20
 
+<!--Device-AccessibilityGrid-columnIndex: int--><!--Device-AccessibilityGrid-columnIndex: int-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -39,6 +43,8 @@ Grid row index.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-AccessibilityGrid-rowIndex: int--><!--Device-AccessibilityGrid-rowIndex: int-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

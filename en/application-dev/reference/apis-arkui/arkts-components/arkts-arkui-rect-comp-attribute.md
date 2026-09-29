@@ -10,6 +10,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 7
 
+<!--Device-unnamed-declare class RectAttribute extends CommonShapeMethod<RectAttribute>--><!--Device-unnamed-declare class RectAttribute extends CommonShapeMethod<RectAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## radius
@@ -27,6 +29,8 @@ Sets the radius of the rounded corner. The value range is greater than or equal 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RectAttribute-radius(value: Length | Array<any>): RectAttribute--><!--Device-RectAttribute-radius(value: Length | Array<any>): RectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Sets the height of the rounded corner. When only **radiusHeight** is set, the he
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-RectAttribute-radiusHeight(value: Length): RectAttribute--><!--Device-RectAttribute-radiusHeight(value: Length): RectAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -75,6 +81,8 @@ Sets the width of the rounded corner. When only **radiusWidth** is set, the widt
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-RectAttribute-radiusWidth(value: Length): RectAttribute--><!--Device-RectAttribute-radiusWidth(value: Length): RectAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

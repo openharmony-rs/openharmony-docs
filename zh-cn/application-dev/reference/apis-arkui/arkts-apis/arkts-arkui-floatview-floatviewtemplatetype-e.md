@@ -8,6 +8,8 @@ enum FloatViewTemplateType
 
 **起始版本：** 26.0.0
 
+<!--Device-floatView-enum FloatViewTemplateType--><!--Device-floatView-enum FloatViewTemplateType-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## ROUNDED_RECTANGLE
@@ -22,6 +24,8 @@ ROUNDED_RECTANGLE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-FloatViewTemplateType-ROUNDED_RECTANGLE = 0--><!--Device-FloatViewTemplateType-ROUNDED_RECTANGLE = 0-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 ## HORIZONTAL_BAR
@@ -35,5 +39,7 @@ HORIZONTAL_BAR = 1
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FloatViewTemplateType-HORIZONTAL_BAR = 1--><!--Device-FloatViewTemplateType-HORIZONTAL_BAR = 1-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

@@ -14,6 +14,8 @@ Defines a length in vp.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-unnamed-declare type VP = `${number}vp` | number--><!--Device-unnamed-declare type VP = `${number}vp` | number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 | Type | Description |

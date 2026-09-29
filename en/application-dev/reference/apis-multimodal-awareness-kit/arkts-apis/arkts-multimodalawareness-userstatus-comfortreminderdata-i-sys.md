@@ -10,6 +10,8 @@ Defines comfort reminder data.
 
 **Since:** 26.0.0
 
+<!--Device-userStatus-export interface ComfortReminderData extends UserStatusData--><!--Device-userStatus-export interface ComfortReminderData extends UserStatusData-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -34,6 +36,8 @@ Event type. The value ranges from 0 to 1. 0: Gaze event, 1: Ambient sound event.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ComfortReminderData-eventType: int--><!--Device-ComfortReminderData-eventType: int-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -52,6 +56,8 @@ Fusion reminder data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ComfortReminderData-fusionReminderData: ReminderLevel--><!--Device-ComfortReminderData-fusionReminderData: ReminderLevel-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
 **System API:** This is a system API.
@@ -69,6 +75,8 @@ Swing reminder data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ComfortReminderData-swingReminderData: ReminderLevel--><!--Device-ComfortReminderData-swingReminderData: ReminderLevel-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 

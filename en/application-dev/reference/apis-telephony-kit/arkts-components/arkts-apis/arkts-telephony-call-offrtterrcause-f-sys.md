@@ -20,6 +20,8 @@ Unsubscribe from the rtt error report event.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-call-function offRttErrCause(callback?: Callback<RttErrorInfo>): void--><!--Device-call-function offRttErrCause(callback?: Callback<RttErrorInfo>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.

@@ -10,6 +10,8 @@ Save the time information of the incremental backup. IncrementalBackupTime is us
 
 **Since:** 12
 
+<!--Device-backup-interface IncrementalBackupTime--><!--Device-backup-interface IncrementalBackupTime-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Indicates the name of a bundle.
 
 **Since:** 12
 
+<!--Device-IncrementalBackupTime-bundleName: string--><!--Device-IncrementalBackupTime-bundleName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ Time of the last incremental backup
 **Type:** number
 
 **Since:** 12
+
+<!--Device-IncrementalBackupTime-lastIncrementalTime: long--><!--Device-IncrementalBackupTime-lastIncrementalTime: long-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.Backup
 

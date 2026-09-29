@@ -28,6 +28,8 @@ Downloads and installs an application from AppGallery.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function installMarketApps(admin: Want, bundleNames: Array<string>): void--><!--Device-bundleManager-function installMarketApps(admin: Want, bundleNames: Array<string>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

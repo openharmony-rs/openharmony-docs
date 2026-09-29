@@ -15,6 +15,8 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 **Since:** 11
 
+<!--Device-unnamed-declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>--><!--Device-unnamed-declare class FolderStackAttribute extends CommonMethod<FolderStackAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## alignContent
@@ -34,6 +36,8 @@ Sets the alignment of child components in the container. After this attribute is
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FolderStackAttribute-alignContent(value: Alignment): FolderStackAttribute--><!--Device-FolderStackAttribute-alignContent(value: Alignment): FolderStackAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +67,8 @@ Typical usage: When the user has turned off the auto-rotate function in system s
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FolderStackAttribute-autoHalfFold(value: boolean): FolderStackAttribute--><!--Device-FolderStackAttribute-autoHalfFold(value: boolean): FolderStackAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -89,6 +95,8 @@ Sets whether to use the default animation effect. After this attribute is set, t
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-FolderStackAttribute-enableAnimation(value: boolean): FolderStackAttribute--><!--Device-FolderStackAttribute-enableAnimation(value: boolean): FolderStackAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -103,7 +111,7 @@ Sets whether to use the default animation effect. After this attribute is set, t
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 ```
 
-Triggered when the fold status of the current device changes &lt;!--RP3--&gt;(This callback takes effect only in landscape mode.)&lt;!--RP3End--&gt;.
+Triggered when the fold status of the current device changes <!--RP3-->(This callback takes effect only in landscape mode.)<!--RP3End-->.
 
 Typical usage: Adjust the app layout based on the fold status, for example, displaying a two-column layout in the expanded state and adjusting the content distribution between the upper and lower screens in the half-fold status.
 
@@ -116,6 +124,8 @@ Typical usage: Adjust the app layout based on the fold status, for example, disp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FolderStackAttribute-onFolderStateChange(callback: OnFoldStatusChangeCallback): FolderStackAttribute--><!--Device-FolderStackAttribute-onFolderStateChange(callback: OnFoldStatusChangeCallback): FolderStackAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,6 +154,8 @@ Typical usage: Adjust the app layout and interaction logic based on the hover st
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FolderStackAttribute-onHoverStatusChange(handler: OnHoverStatusChangeCallback): FolderStackAttribute--><!--Device-FolderStackAttribute-onHoverStatusChange(handler: OnHoverStatusChangeCallback): FolderStackAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

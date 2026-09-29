@@ -8,6 +8,8 @@ The module provides APIs for setting, obtaining, and deleting the disposed statu
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace appControl--><!--Device-unnamed-declare namespace appControl-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.AppControl
 
 **System API:** This is a system API.

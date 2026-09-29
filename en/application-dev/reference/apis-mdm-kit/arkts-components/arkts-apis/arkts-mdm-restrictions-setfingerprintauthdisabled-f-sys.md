@@ -24,6 +24,8 @@ Enables or disables fingerprint authentication.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-restrictions-function setFingerprintAuthDisabled(admin: Want, disabled: boolean): void--><!--Device-restrictions-function setFingerprintAuthDisabled(admin: Want, disabled: boolean): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

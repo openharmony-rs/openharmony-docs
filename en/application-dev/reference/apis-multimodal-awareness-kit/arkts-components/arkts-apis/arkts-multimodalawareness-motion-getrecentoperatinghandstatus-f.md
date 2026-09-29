@@ -20,6 +20,8 @@ Obtains the latest operating hand status.
 - API version 20 and later: ohos.permission.ACTIVITY_MOTION or ohos.permission.DETECT_GESTURE
 - API versions 15 to 19: ohos.permission.ACTIVITY_MOTION
 
+<!--Device-motion-function getRecentOperatingHandStatus(): OperatingHandStatus--><!--Device-motion-function getRecentOperatingHandStatus(): OperatingHandStatus-End-->
+
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
 **Return value:**

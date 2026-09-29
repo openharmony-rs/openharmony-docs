@@ -18,6 +18,8 @@ Resets the default application for a user based on a system-defined application 
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function resetDefaultApplication(type: string, userId: int, callback: AsyncCallback<void>) : void--><!--Device-defaultAppManager-function resetDefaultApplication(type: string, userId: int, callback: AsyncCallback<void>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.
@@ -91,6 +93,8 @@ Resets the default application based on a system-defined application type, a fil
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
 
+<!--Device-defaultAppManager-function resetDefaultApplication(type: string, callback: AsyncCallback<void>) : void--><!--Device-defaultAppManager-function resetDefaultApplication(type: string, callback: AsyncCallback<void>) : void-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
 **System API:** This is a system API.
@@ -158,6 +162,8 @@ Resets the default application based on a system-defined application type, a fil
 **Since:** 9
 
 **Required permissions:** ohos.permission.SET_DEFAULT_APPLICATION
+
+<!--Device-defaultAppManager-function resetDefaultApplication(type: string, userId?: int) : Promise<void>--><!--Device-defaultAppManager-function resetDefaultApplication(type: string, userId?: int) : Promise<void>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 

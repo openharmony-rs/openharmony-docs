@@ -13,6 +13,8 @@ Enumerates the operations for combining two regions.
 
 **Since:** 12
 
+<!--Device-drawing-enum RegionOp--><!--Device-drawing-enum RegionOp-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## DIFFERENCE
@@ -24,6 +26,8 @@ DIFFERENCE = 0
 Difference operation.
 
 **Since:** 12
+
+<!--Device-RegionOp-DIFFERENCE = 0--><!--Device-RegionOp-DIFFERENCE = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -37,6 +41,8 @@ Intersect operation.
 
 **Since:** 12
 
+<!--Device-RegionOp-INTERSECT = 1--><!--Device-RegionOp-INTERSECT = 1-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## UNION
@@ -48,6 +54,8 @@ UNION = 2
 Union operation.
 
 **Since:** 12
+
+<!--Device-RegionOp-UNION = 2--><!--Device-RegionOp-UNION = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -61,6 +69,8 @@ XOR operation.
 
 **Since:** 12
 
+<!--Device-RegionOp-XOR = 3--><!--Device-RegionOp-XOR = 3-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## REVERSE_DIFFERENCE
@@ -73,6 +83,8 @@ Reverse difference operation.
 
 **Since:** 12
 
+<!--Device-RegionOp-REVERSE_DIFFERENCE = 4--><!--Device-RegionOp-REVERSE_DIFFERENCE = 4-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## REPLACE
@@ -84,5 +96,7 @@ REPLACE = 5
 Replace operation.
 
 **Since:** 12
+
+<!--Device-RegionOp-REPLACE = 5--><!--Device-RegionOp-REPLACE = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

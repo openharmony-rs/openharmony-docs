@@ -25,6 +25,8 @@ published through **emit** but have not been executed are also canceled and no c
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace emitter--><!--Device-unnamed-declare namespace emitter-End-->
+
 **System capability:** SystemCapability.Notification.Emitter
 
 ## Modules to Import

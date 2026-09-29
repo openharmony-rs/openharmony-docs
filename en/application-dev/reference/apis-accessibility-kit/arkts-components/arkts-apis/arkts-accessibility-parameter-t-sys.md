@@ -8,6 +8,8 @@ Provides parameter values for specific settings when an accessibility node eleme
 
 **Since:** 20
 
+<!--Device-unnamed-export type Parameter = _Parameter--><!--Device-unnamed-export type Parameter = _Parameter-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.

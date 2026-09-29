@@ -14,6 +14,8 @@ To reference this object, at least one parameter must be passed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-declare type EdgeWidth = EdgeWidths--><!--Device-unnamed-declare type EdgeWidth = EdgeWidths-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** EdgeWidths

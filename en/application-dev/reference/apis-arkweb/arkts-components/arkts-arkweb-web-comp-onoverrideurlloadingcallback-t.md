@@ -10,6 +10,8 @@ Callback used to intercept URL loading requests. It can block the loading of spe
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean--><!--Device-unnamed-type OnOverrideUrlLoadingCallback = (webResourceRequest: WebResourceRequest) => boolean-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 **Parameters:**

@@ -16,6 +16,8 @@ Data struct describes geographic locations.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-geolocation-export interface GeoAddress--><!--Device-geolocation-export interface GeoAddress-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## Modules to Import
@@ -42,6 +44,8 @@ Indicates website URL.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-addressUrl?: string--><!--Device-GeoAddress-addressUrl?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## administrativeArea
@@ -61,6 +65,8 @@ Indicates administrative region name.
 **Substitutes:** [administrativeArea](arkts-location-geolocationmanager-geoaddress-i.md#administrativearea)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-administrativeArea?: string--><!--Device-GeoAddress-administrativeArea?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -82,6 +88,8 @@ Indicates country code.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-countryCode?: string--><!--Device-GeoAddress-countryCode?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## countryName
@@ -101,6 +109,8 @@ Indicates country name.
 **Substitutes:** [countryName](arkts-location-geolocationmanager-geoaddress-i.md#countryname)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-countryName?: string--><!--Device-GeoAddress-countryName?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -122,6 +132,8 @@ Indicates additional information.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-descriptions?: Array<string>--><!--Device-GeoAddress-descriptions?: Array<string>-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## descriptionsSize
@@ -141,6 +153,8 @@ Indicates the amount of additional descriptive information.
 **Substitutes:** [descriptionsSize](arkts-location-geolocationmanager-geoaddress-i.md#descriptionssize)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-descriptionsSize?: number--><!--Device-GeoAddress-descriptionsSize?: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -162,6 +176,8 @@ Indicates latitude information. A positive value indicates north latitude, and a
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-latitude?: number--><!--Device-GeoAddress-latitude?: number-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## locale
@@ -181,6 +197,8 @@ Indicates language used for the location description. zh indicates Chinese, and 
 **Substitutes:** [locale](arkts-location-geolocationmanager-geoaddress-i.md#locale)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-locale?: string--><!--Device-GeoAddress-locale?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -202,6 +220,8 @@ Indicates locality information.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-locality?: string--><!--Device-GeoAddress-locality?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## longitude
@@ -221,6 +241,8 @@ Indicates longitude information. A positive value indicates east longitude , and
 **Substitutes:** [longitude](arkts-location-geolocationmanager-geoaddress-i.md#longitude)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-longitude?: number--><!--Device-GeoAddress-longitude?: number-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -242,6 +264,8 @@ Indicates phone number.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-phoneNumber?: string--><!--Device-GeoAddress-phoneNumber?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## placeName
@@ -261,6 +285,8 @@ Indicates landmark of the location.
 **Substitutes:** [placeName](arkts-location-geolocationmanager-geoaddress-i.md#placename)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-placeName?: string--><!--Device-GeoAddress-placeName?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -282,6 +308,8 @@ Indicates postal code.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-postalCode?: string--><!--Device-GeoAddress-postalCode?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## premises
@@ -301,6 +329,8 @@ Indicates house information.
 **Substitutes:** [premises](arkts-location-geolocationmanager-geoaddress-i.md#premises)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-premises?: string--><!--Device-GeoAddress-premises?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -322,6 +352,8 @@ Indicates road name.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-roadName?: string--><!--Device-GeoAddress-roadName?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## subAdministrativeArea
@@ -341,6 +373,8 @@ Indicates sub-administrative region name.
 **Substitutes:** [subAdministrativeArea](arkts-location-geolocationmanager-geoaddress-i.md#subadministrativearea)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-subAdministrativeArea?: string--><!--Device-GeoAddress-subAdministrativeArea?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder
 
@@ -362,6 +396,8 @@ Indicates sub-locality information.
 
 **Required permissions:** ohos.permission.LOCATION
 
+<!--Device-GeoAddress-subLocality?: string--><!--Device-GeoAddress-subLocality?: string-End-->
+
 **System capability:** SystemCapability.Location.Location.Geocoder
 
 ## subRoadName
@@ -381,5 +417,7 @@ Indicates auxiliary road information.
 **Substitutes:** [subRoadName](arkts-location-geolocationmanager-geoaddress-i.md#subroadname)
 
 **Required permissions:** ohos.permission.LOCATION
+
+<!--Device-GeoAddress-subRoadName?: string--><!--Device-GeoAddress-subRoadName?: string-End-->
 
 **System capability:** SystemCapability.Location.Location.Geocoder

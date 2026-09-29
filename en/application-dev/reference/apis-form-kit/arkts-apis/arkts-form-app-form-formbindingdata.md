@@ -4,6 +4,8 @@ The **FormBindingData** module provides APIs for widget data binding. You can us
 
 **Since:** 9
 
+<!--Device-unnamed-declare namespace formBindingData--><!--Device-unnamed-declare namespace formBindingData-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import

@@ -4,11 +4,13 @@
 interface AccelerometerUncalibratedResponse extends Response
 ```
 
-Describes the uncalibrated acceleration sensor data. It extends from [Response](arkts-sensorservice-sensor-response-i.md).
+Describes the uncalibrated acceleration sensor data. It is inherited from [Response](arkts-sensorservice-sensor-response-i.md).
 
 **Inheritance/Implementation:** AccelerometerUncalibratedResponse extends [Response](arkts-sensorservice-sensor-response-i.md)
 
 **Since:** 8
+
+<!--Device-sensor-interface AccelerometerUncalibratedResponse extends Response--><!--Device-sensor-interface AccelerometerUncalibratedResponse extends Response-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -24,11 +26,13 @@ import { sensor } from '@kit.SensorServiceKit';
 biasX: number
 ```
 
-Uncalibrated acceleration bias along the x-axis of the device, in m/s?.
+Uncalibrated acceleration bias (estimated acceleration bias) along the x-axis of the device, in m/s².
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-AccelerometerUncalibratedResponse-biasX: double--><!--Device-AccelerometerUncalibratedResponse-biasX: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -38,11 +42,13 @@ Uncalibrated acceleration bias along the x-axis of the device, in m/s?.
 biasY: number
 ```
 
-Uncalibrated acceleration bias along the y-axis of the device, in m/s?.
+Uncalibrated acceleration bias (estimated acceleration bias) along the y-axis of the device, in m/s².
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-AccelerometerUncalibratedResponse-biasY: double--><!--Device-AccelerometerUncalibratedResponse-biasY: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -52,11 +58,13 @@ Uncalibrated acceleration bias along the y-axis of the device, in m/s?.
 biasZ: number
 ```
 
-Uncalibrated acceleration bias along the z-axis of the device, in m/s?.
+Uncalibrated acceleration bias (estimated acceleration bias) along the z-axis of the device, in m/s².
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-AccelerometerUncalibratedResponse-biasZ: double--><!--Device-AccelerometerUncalibratedResponse-biasZ: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -66,11 +74,13 @@ Uncalibrated acceleration bias along the z-axis of the device, in m/s?.
 x: number
 ```
 
-Uncalibrated acceleration along the x-axis of the device, in m/s?.
+Uncalibrated acceleration along the x-axis of the device, in m/s².
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-AccelerometerUncalibratedResponse-x: double--><!--Device-AccelerometerUncalibratedResponse-x: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -80,11 +90,13 @@ Uncalibrated acceleration along the x-axis of the device, in m/s?.
 y: number
 ```
 
-Uncalibrated acceleration along the y-axis of the device, in m/s?.
+Uncalibrated acceleration along the y-axis of the device, in m/s².
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-AccelerometerUncalibratedResponse-y: double--><!--Device-AccelerometerUncalibratedResponse-y: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor
 
@@ -94,10 +106,12 @@ Uncalibrated acceleration along the y-axis of the device, in m/s?.
 z: number
 ```
 
-Uncalibrated acceleration along the z-axis of the device, in m/s?.
+Uncalibrated acceleration along the z-axis of the device, in m/s².
 
 **Type:** number
 
 **Since:** 8
+
+<!--Device-AccelerometerUncalibratedResponse-z: double--><!--Device-AccelerometerUncalibratedResponse-z: double-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor

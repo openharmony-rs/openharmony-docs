@@ -4,7 +4,7 @@
 declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 ```
 
-除支持通用属性，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)，还支持以下属性：
 
 > **说明：** 
 > 
@@ -41,11 +41,13 @@ declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 > 当光标在文本框边缘显示异常时，请检查是否是padding、borderRadius属性影响造成。
 > 
 > 从API version 10开始，单行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
-> 尺寸设置。
+> [尺寸设置](arkts-arkui-common-comp.md)。
 
-**继承/实现关系：** TextInputAttribute extends CommonMethod&lt;TextInputAttribute&gt;
+**继承/实现关系：** TextInputAttribute extends CommonMethod<TextInputAttribute>
 
 **起始版本：** 7
+
+<!--Device-unnamed-declare class TextInputAttribute extends CommonMethod<TextInputAttribute>--><!--Device-unnamed-declare class TextInputAttribute extends CommonMethod<TextInputAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,6 +64,8 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-autoCapitalizationMode(mode: AutoCapitalizationMode): TextInputAttribute--><!--Device-TextInputAttribute-autoCapitalizationMode(mode: AutoCapitalizationMode): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,6 +89,8 @@ barState(value: BarState)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-barState(value: BarState): TextInputAttribute--><!--Device-TextInputAttribute-barState(value: BarState): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -99,7 +105,7 @@ barState(value: BarState)
 cancelButton(options: CancelButtonOptions)
 ```
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考示例4（设置右侧清除按钮样式）。未通过该接口设置时，默认为{
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例4（设置右侧清除按钮样式）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例4设置右侧清除按钮样式)。未通过该接口设置时，默认为{
 
 style: CancelButtonStyle.INPUT
 
@@ -110,6 +116,8 @@ style: CancelButtonStyle.INPUT
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-cancelButton(options: CancelButtonOptions): TextInputAttribute--><!--Device-TextInputAttribute-cancelButton(options: CancelButtonOptions): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +135,7 @@ style: CancelButtonStyle.INPUT
 cancelButton(symbolOptions: CancelButtonSymbolOptions)
 ```
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考示例15（设置symbol类型清除按钮）。未通过该接口设置时，默认为{
+设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式。示例请参考[示例15（设置symbol类型清除按钮）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例15设置symbol类型清除按钮)。未通过该接口设置时，默认为{
 
 style: CancelButtonStyle.INPUT
 
@@ -138,6 +146,8 @@ style: CancelButtonStyle.INPUT
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-cancelButton(symbolOptions: CancelButtonSymbolOptions): TextInputAttribute--><!--Device-TextInputAttribute-cancelButton(symbolOptions: CancelButtonSymbolOptions): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +168,8 @@ caretColor(value: ResourceColor)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-caretColor(value: ResourceColor): TextInputAttribute--><!--Device-TextInputAttribute-caretColor(value: ResourceColor): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,6 +193,8 @@ caretPosition(value: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-caretPosition(value: number): TextInputAttribute--><!--Device-TextInputAttribute-caretPosition(value: number): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -202,6 +216,8 @@ caretStyle(value: CaretStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-caretStyle(value: CaretStyle): TextInputAttribute--><!--Device-TextInputAttribute-caretStyle(value: CaretStyle): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -229,6 +245,8 @@ compressLeadingPunctuation(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-compressLeadingPunctuation(enabled: Optional<boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -251,6 +269,8 @@ contentType(value: ContentType)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-contentType(value: ContentType): TextInputAttribute--><!--Device-TextInputAttribute-contentType(value: ContentType): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -270,6 +290,8 @@ copyOption(value: CopyOptions)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-copyOption(value: CopyOptions): TextInputAttribute--><!--Device-TextInputAttribute-copyOption(value: CopyOptions): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +333,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions): TextInputAttribute--><!--Device-TextInputAttribute-customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -344,6 +368,8 @@ decoration(value: TextDecorationOptions)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-decoration(value: TextDecorationOptions): TextInputAttribute--><!--Device-TextInputAttribute-decoration(value: TextDecorationOptions): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -367,6 +393,8 @@ editMenuOptions(editMenu: EditMenuOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-editMenuOptions(editMenu: EditMenuOptions): TextInputAttribute--><!--Device-TextInputAttribute-editMenuOptions(editMenu: EditMenuOptions): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,6 +420,8 @@ ellipsisMode(mode: Optional<EllipsisMode>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-ellipsisMode(mode: Optional<EllipsisMode>): TextInputAttribute--><!--Device-TextInputAttribute-ellipsisMode(mode: Optional<EllipsisMode>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -413,6 +443,8 @@ enableAutoFill(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-enableAutoFill(value: boolean): TextInputAttribute--><!--Device-TextInputAttribute-enableAutoFill(value: boolean): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -436,6 +468,8 @@ enableAutoFillAnimation(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-enableAutoFillAnimation(enabled: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-enableAutoFillAnimation(enabled: Optional<boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -457,6 +491,8 @@ enableAutoSpacing(enabled: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-enableAutoSpacing(enabled: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-enableAutoSpacing(enabled: Optional<boolean>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -482,6 +518,8 @@ enableHapticFeedback(isEnabled: boolean)
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-enableHapticFeedback(isEnabled: boolean): TextInputAttribute--><!--Device-TextInputAttribute-enableHapticFeedback(isEnabled: boolean): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -506,6 +544,8 @@ enableKeyboardOnFocus(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-enableKeyboardOnFocus(value: boolean): TextInputAttribute--><!--Device-TextInputAttribute-enableKeyboardOnFocus(value: boolean): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -529,6 +569,8 @@ enablePreviewText(enable: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-enablePreviewText(enable: boolean): TextInputAttribute--><!--Device-TextInputAttribute-enablePreviewText(enable: boolean): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -562,6 +604,8 @@ AI菜单生效时，选中范围内需包括且仅包括一个完整的AI实体�
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-enableSelectedDataDetector(enable: boolean | undefined): TextInputAttribute--><!--Device-TextInputAttribute-enableSelectedDataDetector(enable: boolean | undefined): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -581,6 +625,8 @@ enterKeyType(value: EnterKeyType)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-enterKeyType(value: EnterKeyType): TextInputAttribute--><!--Device-TextInputAttribute-enterKeyType(value: EnterKeyType): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -604,6 +650,8 @@ fallbackLineSpacing(enabled: Optional<boolean>)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-fallbackLineSpacing(enabled: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-fallbackLineSpacing(enabled: Optional<boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -623,6 +671,8 @@ fontColor(value: ResourceColor)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-fontColor(value: ResourceColor): TextInputAttribute--><!--Device-TextInputAttribute-fontColor(value: ResourceColor): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -647,6 +697,8 @@ fontFamily(value: ResourceStr)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-fontFamily(value: ResourceStr): TextInputAttribute--><!--Device-TextInputAttribute-fontFamily(value: ResourceStr): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -678,6 +730,8 @@ fontFeature(value: string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-fontFeature(value: string): TextInputAttribute--><!--Device-TextInputAttribute-fontFeature(value: string): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -697,6 +751,8 @@ fontSize(value: Length)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-fontSize(value: Length): TextInputAttribute--><!--Device-TextInputAttribute-fontSize(value: Length): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -718,6 +774,8 @@ fontStyle(value: FontStyle)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-fontStyle(value: FontStyle): TextInputAttribute--><!--Device-TextInputAttribute-fontStyle(value: FontStyle): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -737,6 +795,8 @@ fontWeight(value: number | FontWeight | ResourceStr)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-fontWeight(value: number | FontWeight | ResourceStr): TextInputAttribute--><!--Device-TextInputAttribute-fontWeight(value: number | FontWeight | ResourceStr): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -759,6 +819,8 @@ halfLeading(halfLeading: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-halfLeading(halfLeading: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-halfLeading(halfLeading: Optional<boolean>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -794,6 +856,8 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-heightAdaptivePolicy(value: TextHeightAdaptivePolicy): TextInputAttribute--><!--Device-TextInputAttribute-heightAdaptivePolicy(value: TextHeightAdaptivePolicy): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -815,6 +879,8 @@ includeFontPadding(include: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-includeFontPadding(include: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-includeFontPadding(include: Optional<boolean>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -838,6 +904,8 @@ inputFilter(value: ResourceStr, error?: Callback<string>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-inputFilter(value: ResourceStr, error?: Callback<string>): TextInputAttribute--><!--Device-TextInputAttribute-inputFilter(value: ResourceStr, error?: Callback<string>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -860,6 +928,8 @@ keyboardAppearance(appearance: Optional<KeyboardAppearance>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): TextInputAttribute--><!--Device-TextInputAttribute-keyboardAppearance(appearance: Optional<KeyboardAppearance>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -887,13 +957,15 @@ letterSpacing(value: number | string | Resource)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-letterSpacing(value: number | string | Resource): TextInputAttribute--><!--Device-TextInputAttribute-letterSpacing(value: number | string | Resource): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>单位：fp |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本字符间距。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 ## lineBreakStrategy
 
@@ -910,6 +982,8 @@ lineBreakStrategy(strategy: LineBreakStrategy)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-lineBreakStrategy(strategy: LineBreakStrategy): TextInputAttribute--><!--Device-TextInputAttribute-lineBreakStrategy(strategy: LineBreakStrategy): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -941,6 +1015,8 @@ lineHeight(value: number | string | Resource)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-lineHeight(value: number | string | Resource): TextInputAttribute--><!--Device-TextInputAttribute-lineHeight(value: number | string | Resource): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -963,13 +1039,15 @@ maxFontScale(scale: Optional<number|Resource>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-maxFontScale(scale: Optional<number|Resource>): TextInputAttribute--><!--Device-TextInputAttribute-maxFontScale(scale: Optional<number|Resource>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>当设置maxFontScale属性后，showError最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见示例18（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞) <br>**说明：** <br>设置的值小于1时，按值为1处理。异常值默认不生效。<br>当设置maxFontScale属性后，showError最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例18（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例18设置最小字体范围与最大字体范围)。 |
 
 ## maxFontSize
 
@@ -991,13 +1069,15 @@ maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号�
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-maxFontSize(value: number | string | Resource): TextInputAttribute--><!--Device-TextInputAttribute-maxFontSize(value: number | string | Resource): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>单位：fp <br>需大于0且大于minFontSize，否则自适应字号不生效，按fontSize属性值生效。<br>需配合minFontSize使用，单独设置不生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最大显示字号。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>需大于0且大于minFontSize，否则自适应字号不生效，按fontSize属性值生效。<br>需配合minFontSize使用，单独设置不生效。 |
 
 ## maxLength
 
@@ -1010,6 +1090,8 @@ maxLength(value: number)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-maxLength(value: number): TextInputAttribute--><!--Device-TextInputAttribute-maxLength(value: number): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1033,6 +1115,8 @@ maxLines(value: number)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-maxLines(value: number): TextInputAttribute--><!--Device-TextInputAttribute-maxLines(value: number): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1055,13 +1139,15 @@ minFontScale(scale: Optional<number|Resource>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-minFontScale(scale: Optional<number|Resource>): TextInputAttribute--><!--Device-TextInputAttribute-minFontScale(scale: Optional<number|Resource>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见示例18（设置最小字体范围与最大字体范围）。 |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | 是 | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例18（设置最小字体范围与最大字体范围）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例18设置最小字体范围与最大字体范围)。 |
 
 ## minFontSize
 
@@ -1083,13 +1169,15 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-minFontSize(value: number | string | Resource): TextInputAttribute--><!--Device-TextInputAttribute-minFontSize(value: number | string | Resource): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>单位：fp <br>需大于0，小于或等于0时自适应字号不生效，按fontSize属性值生效。<br>需配合maxFontSize使用，单独设置不生效。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本最小显示字号。<br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>需大于0，小于或等于0时自适应字号不生效，按fontSize属性值生效。<br>需配合maxFontSize使用，单独设置不生效。 |
 
 ## onChange
 
@@ -1115,6 +1203,8 @@ onChange(callback: EditableTextOnChangeCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onChange(callback: EditableTextOnChangeCallback): TextInputAttribute--><!--Device-TextInputAttribute-onChange(callback: EditableTextOnChangeCallback): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1137,6 +1227,8 @@ onContentScroll(callback: OnContentScrollCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onContentScroll(callback: OnContentScrollCallback): TextInputAttribute--><!--Device-TextInputAttribute-onContentScroll(callback: OnContentScrollCallback): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1157,6 +1249,8 @@ onCopy(callback: Callback<string>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onCopy(callback: Callback<string>): TextInputAttribute--><!--Device-TextInputAttribute-onCopy(callback: Callback<string>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1176,6 +1270,8 @@ onCut(callback: Callback<string>)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-onCut(callback: Callback<string>): TextInputAttribute--><!--Device-TextInputAttribute-onCut(callback: Callback<string>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1211,6 +1307,8 @@ onDidDelete(callback: Callback<DeleteValue>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onDidDelete(callback: Callback<DeleteValue>): TextInputAttribute--><!--Device-TextInputAttribute-onDidDelete(callback: Callback<DeleteValue>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1233,6 +1331,8 @@ onDidInsert(callback: Callback<InsertValue>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onDidInsert(callback: Callback<InsertValue>): TextInputAttribute--><!--Device-TextInputAttribute-onDidInsert(callback: Callback<InsertValue>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1253,6 +1353,8 @@ onEditChange(callback: Callback<boolean>)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onEditChange(callback: Callback<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onEditChange(callback: Callback<boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1272,6 +1374,8 @@ onPaste(callback: OnPasteCallback)
 **起始版本：** 8
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-onPaste(callback: OnPasteCallback): TextInputAttribute--><!--Device-TextInputAttribute-onPaste(callback: OnPasteCallback): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1299,6 +1403,8 @@ onSecurityStateChange(callback: Callback<boolean>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onSecurityStateChange(callback: Callback<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onSecurityStateChange(callback: Callback<boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1315,11 +1421,13 @@ onSubmit(callback: OnSubmitCallback)
 
 按下输入法回车键触发该回调。
 
-非TV设备按下回车键时输入框默认会失焦且收起键盘，可在OnSubmitCallback回调中配置是否收起键盘，参考示例2（设置下划线）。
+非TV设备按下回车键时输入框默认会失焦且收起键盘，可在OnSubmitCallback回调中配置是否收起键盘，参考[示例2（设置下划线）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例2设置下划线)。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-onSubmit(callback: OnSubmitCallback): TextInputAttribute--><!--Device-TextInputAttribute-onSubmit(callback: OnSubmitCallback): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1343,6 +1451,8 @@ onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onTextSelectionChange(callback: OnTextSelectionChangeCallback): TextInputAttribute--><!--Device-TextInputAttribute-onTextSelectionChange(callback: OnTextSelectionChangeCallback): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1361,7 +1471,7 @@ onWillAttachIME(callback: Callback<IMEClient>)
 
 <!--Del-->
 
-在输入框将要绑定输入法前，可以通过`UIContext`的系统接口setKeyboardAppearanceConfig设置键盘的样式。&lt;!--DelEnd- -&gt;
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c-sys.md#setkeyboardappearanceconfig)设置键盘的样式。&lt;!--DelEnd- -&gt;
 
 从API version 22开始，调用[IMEClient](../arkts-apis/arkts-arkui-imeclient-i.md)的[setExtraConfig](../arkts-apis/arkts-arkui-imeclient-i.md#setextraconfig)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
@@ -1376,6 +1486,8 @@ IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-onWillAttachIME(callback: Callback<IMEClient>): TextInputAttribute--><!--Device-TextInputAttribute-onWillAttachIME(callback: Callback<IMEClient>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1411,6 +1523,8 @@ onWillChange(callback: Callback<EditableTextChangeValue, boolean>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onWillChange(callback: Callback<EditableTextChangeValue, boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onWillChange(callback: Callback<EditableTextChangeValue, boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1443,6 +1557,8 @@ onWillCopy(callback: Callback<string, boolean>)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onWillCopy(callback: Callback<string, boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onWillCopy(callback: Callback<string, boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1474,6 +1590,8 @@ onWillCut(callback: Callback<string, boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-onWillCut(callback: Callback<string, boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onWillCut(callback: Callback<string, boolean>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1509,6 +1627,8 @@ onWillDelete(callback: Callback<DeleteValue, boolean>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onWillDelete(callback: Callback<DeleteValue, boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onWillDelete(callback: Callback<DeleteValue, boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1541,6 +1661,8 @@ onWillInsert(callback: Callback<InsertValue, boolean>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-onWillInsert(callback: Callback<InsertValue, boolean>): TextInputAttribute--><!--Device-TextInputAttribute-onWillInsert(callback: Callback<InsertValue, boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1562,6 +1684,8 @@ orphanCharOptimization(enabled: Optional<boolean>)
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-orphanCharOptimization(enabled: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-orphanCharOptimization(enabled: Optional<boolean>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1585,6 +1709,8 @@ passwordIcon(value: PasswordIcon)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-passwordIcon(value: PasswordIcon): TextInputAttribute--><!--Device-TextInputAttribute-passwordIcon(value: PasswordIcon): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1607,6 +1733,8 @@ passwordRules(value: string)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-passwordRules(value: string): TextInputAttribute--><!--Device-TextInputAttribute-passwordRules(value: string): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1626,6 +1754,8 @@ placeholderColor(value: ResourceColor)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-placeholderColor(value: ResourceColor): TextInputAttribute--><!--Device-TextInputAttribute-placeholderColor(value: ResourceColor): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1651,6 +1781,8 @@ placeholderFont(value?: Font)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-placeholderFont(value?: Font): TextInputAttribute--><!--Device-TextInputAttribute-placeholderFont(value?: Font): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1672,6 +1804,8 @@ punctuationOverflow(enabled: Optional<boolean>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-punctuationOverflow(enabled: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-punctuationOverflow(enabled: Optional<boolean>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1695,6 +1829,8 @@ selectAll(value: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-selectAll(value: boolean): TextInputAttribute--><!--Device-TextInputAttribute-selectAll(value: boolean): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1716,6 +1852,8 @@ selectedBackgroundColor(value: ResourceColor)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-selectedBackgroundColor(value: ResourceColor): TextInputAttribute--><!--Device-TextInputAttribute-selectedBackgroundColor(value: ResourceColor): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1739,6 +1877,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): TextInputAttribute--><!--Device-TextInputAttribute-selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1760,6 +1900,8 @@ selectionMenuHidden(value: boolean)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-selectionMenuHidden(value: boolean): TextInputAttribute--><!--Device-TextInputAttribute-selectionMenuHidden(value: boolean): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1789,6 +1931,8 @@ shaderStyle(shader: ShaderStyle | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-shaderStyle(shader: ShaderStyle | undefined): TextInputAttribute--><!--Device-TextInputAttribute-shaderStyle(shader: ShaderStyle | undefined): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1811,7 +1955,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 [TextInputStyle](arkts-arkui-textinput-comp-textinputstyle-e.md)的内联模式、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
 
-示例5（设置计数器）展示了设置showCounter的效果。
+[示例5（设置计数器）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例5设置计数器)展示了设置showCounter的效果。
 
 > **说明：** 
 > 
@@ -1822,6 +1966,8 @@ showCounter(value: boolean, options?: InputCounterOptions)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-showCounter(value: boolean, options?: InputCounterOptions): TextInputAttribute--><!--Device-TextInputAttribute-showCounter(value: boolean, options?: InputCounterOptions): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1840,13 +1986,15 @@ showError(value?: ResourceStr | undefined)
 
 设置错误状态下提示的错误文本或者不显示错误状态。
 
-当参数类型为ResourceStr并且输入内容不符合定义规范时，提示错误文本，当提示错误单行文本超长时，末尾以省略号显示。当参数类型为undefined时，不显示错误状态。请参考示例2。
+当参数类型为ResourceStr并且输入内容不符合定义规范时，提示错误文本，当提示错误单行文本超长时，末尾以省略号显示。当参数类型为undefined时，不显示错误状态。请参考[示例2](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例2设置下划线)。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-showError(value?: ResourceStr | undefined): TextInputAttribute--><!--Device-TextInputAttribute-showError(value?: ResourceStr | undefined): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1866,13 +2014,15 @@ showPassword(visible: boolean)
 
 当[InputType](arkts-arkui-textinput-comp-inputtype-e.md)设置为Password、NEW_PASSWORD和NUMBER_PASSWORD模式时，密码保护功能才能生效。非密码输入模式则不会触发该功能。
 
-[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，由于输入框后端的状态和前端应用侧的状态管理变量会不一致，可能导致末尾图标的状态异常。建议在[onSecurityStateChange](#onsecuritystatechange)上增加状态同步。参考示例1（设置与获取光标位置）。
+[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，由于输入框后端的状态和前端应用侧的状态管理变量会不一致，可能导致末尾图标的状态异常。建议在[onSecurityStateChange](#onsecuritystatechange)上增加状态同步。参考[示例1（设置与获取光标位置）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#示例1设置与获取光标位置)。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-showPassword(visible: boolean): TextInputAttribute--><!--Device-TextInputAttribute-showPassword(visible: boolean): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1893,6 +2043,8 @@ showPasswordIcon(value: boolean)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-showPasswordIcon(value: boolean): TextInputAttribute--><!--Device-TextInputAttribute-showPasswordIcon(value: boolean): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1916,6 +2068,8 @@ showUnderline(value: boolean)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-showUnderline(value: boolean): TextInputAttribute--><!--Device-TextInputAttribute-showUnderline(value: boolean): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1937,6 +2091,8 @@ showUnit(value: CustomBuilder)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-showUnit(value: CustomBuilder): TextInputAttribute--><!--Device-TextInputAttribute-showUnit(value: CustomBuilder): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1960,6 +2116,8 @@ stopBackPress(isStopped: Optional<boolean>)
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-stopBackPress(isStopped: Optional<boolean>): TextInputAttribute--><!--Device-TextInputAttribute-stopBackPress(isStopped: Optional<boolean>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1981,6 +2139,8 @@ strokeColor(color: Optional<ResourceColor>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-strokeColor(color: Optional<ResourceColor>): TextInputAttribute--><!--Device-TextInputAttribute-strokeColor(color: Optional<ResourceColor>): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2004,6 +2164,8 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextInputAttribute--><!--Device-TextInputAttribute-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2026,6 +2188,8 @@ strokeWidth(width: Optional<LengthMetrics>)
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-strokeWidth(width: Optional<LengthMetrics>): TextInputAttribute--><!--Device-TextInputAttribute-strokeWidth(width: Optional<LengthMetrics>): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2047,6 +2211,8 @@ style(value: TextInputStyle | TextContentStyle)
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-style(value: TextInputStyle | TextContentStyle): TextInputAttribute--><!--Device-TextInputAttribute-style(value: TextInputStyle | TextContentStyle): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2076,6 +2242,8 @@ textAlign(value: TextAlign)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-textAlign(value: TextAlign): TextInputAttribute--><!--Device-TextInputAttribute-textAlign(value: TextAlign): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2097,6 +2265,8 @@ textDirection(direction: TextDirection | undefined)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-textDirection(direction: TextDirection | undefined): TextInputAttribute--><!--Device-TextInputAttribute-textDirection(direction: TextDirection | undefined): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2120,13 +2290,15 @@ textIndent(value: Dimension)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-textIndent(value: Dimension): TextInputAttribute--><!--Device-TextInputAttribute-textIndent(value: Dimension): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：vp <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
+| value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 首行文本缩进。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>取值范围：大于等于0。设置负数时，按默认值处理。 |
 
 ## textOverflow
 
@@ -2145,6 +2317,8 @@ textOverflow(value: TextOverflow)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-textOverflow(value: TextOverflow): TextInputAttribute--><!--Device-TextInputAttribute-textOverflow(value: TextOverflow): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2167,6 +2341,8 @@ type(value: InputType)
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-type(value: InputType): TextInputAttribute--><!--Device-TextInputAttribute-type(value: InputType): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2192,6 +2368,8 @@ underlineColor(value: ResourceColor | UnderlineColor | undefined)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-TextInputAttribute-underlineColor(value: ResourceColor | UnderlineColor | undefined): TextInputAttribute--><!--Device-TextInputAttribute-underlineColor(value: ResourceColor | UnderlineColor | undefined): TextInputAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -2213,6 +2391,8 @@ wordBreak(value: WordBreak)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextInputAttribute-wordBreak(value: WordBreak): TextInputAttribute--><!--Device-TextInputAttribute-wordBreak(value: WordBreak): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2239,6 +2419,8 @@ onEditChanged(callback: (isEditing: boolean) => void)
 **废弃版本：** 8
 
 **替代接口：** [onEditChange](#oneditchange)
+
+<!--Device-TextInputAttribute-onEditChanged(callback: (isEditing: boolean) => void): TextInputAttribute--><!--Device-TextInputAttribute-onEditChanged(callback: (isEditing: boolean) => void): TextInputAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

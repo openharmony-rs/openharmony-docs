@@ -16,6 +16,8 @@ Verifies the certificate passed by the application using the preset CA certifica
 
 **Since:** 11
 
+<!--Device-networkSecurity-export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<int>--><!--Device-networkSecurity-export function certVerification(cert: CertBlob, caCert?: CertBlob): Promise<int>-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 **Parameters:**

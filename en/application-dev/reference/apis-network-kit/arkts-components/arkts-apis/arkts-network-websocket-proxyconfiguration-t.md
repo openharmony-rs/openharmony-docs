@@ -8,6 +8,8 @@ Represents the HTTP proxy configuration.
 
 **Since:** 12
 
+<!--Device-webSocket-export type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy--><!--Device-webSocket-export type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 | Type | Description |

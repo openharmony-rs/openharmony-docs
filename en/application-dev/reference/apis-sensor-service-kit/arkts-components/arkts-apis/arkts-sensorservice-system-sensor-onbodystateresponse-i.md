@@ -4,13 +4,15 @@
 export interface OnBodyStateResponse
 ```
 
-Specifies whether the device that houses the sensor is worn.
+Defines a response object of the device wearing status, including the data indicating whether the device is worn.
 
 **Since:** 3
 
 **Deprecated since:** 8
 
 **Substitutes:** [WearDetectionResponse](arkts-sensorservice-sensor-weardetectionresponse-i.md)
+
+<!--Device-unnamed-export interface OnBodyStateResponse--><!--Device-unnamed-export interface OnBodyStateResponse-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite
 
@@ -26,7 +28,7 @@ import { Sensor, AccelerometerResponse, BarometerResponse, CompassResponse, Devi
 value: boolean
 ```
 
-Boolean value indicating whether the device is worn. The value **true** indicates that the device is worn, and the value **false** indicates the opposite.
+Whether the device is worn The value **true** indicates that the device is worn, and the value **false** indicates that the device is not worn.
 
 **Type:** boolean
 
@@ -37,5 +39,7 @@ Boolean value indicating whether the device is worn. The value **true** indicate
 **Substitutes:** [value](arkts-sensorservice-sensor-weardetectionresponse-i.md#value)
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-OnBodyStateResponse-value: boolean--><!--Device-OnBodyStateResponse-value: boolean-End-->
 
 **System capability:** SystemCapability.Sensors.Sensor.Lite

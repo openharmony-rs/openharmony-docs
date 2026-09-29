@@ -16,6 +16,8 @@ Obtains the ISO country code of the network with which the SIM card in the speci
 
 **Since:** 10
 
+<!--Device-radio-function getISOCountryCodeForNetworkSync(slotId: int): string--><!--Device-radio-function getISOCountryCodeForNetworkSync(slotId: int): string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 **Parameters:**

@@ -4,9 +4,11 @@
 interface VibratePreset
 ```
 
-Represents the preset vibration effect. You can pass **VibratePreset** to [VibrateEffect9+](arkts-sensorservice-vibrator-vibrateeffect-t.md) to specify a preset vibration effect when calling [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md) or [vibrator.startVibration9+](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1).
+Represents the preset vibration effect. When [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md) or [vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1) is called, the value of [VibrateEffect&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-vibrateeffect-t.md) can be **VibratePreset**, indicating that the preset vibration effect is triggered.
 
 **Since:** 9
+
+<!--Device-vibrator-interface VibratePreset--><!--Device-vibrator-interface VibratePreset-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -28,6 +30,8 @@ Number of repeated vibrations. This parameter is optional. The default value is 
 
 **Since:** 9
 
+<!--Device-VibratePreset-count?: int--><!--Device-VibratePreset-count?: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## effectId
@@ -41,6 +45,8 @@ Effect ID. The value is a string of a maximum of 64 characters. If the length ex
 **Type:** string
 
 **Since:** 9
+
+<!--Device-VibratePreset-effectId: string--><!--Device-VibratePreset-effectId: string-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice
 
@@ -56,6 +62,8 @@ Vibration intensity. This parameter is optional. The value range is [0, 100]. Th
 
 **Since:** 12
 
+<!--Device-VibratePreset-intensity?: int--><!--Device-VibratePreset-intensity?: int-End-->
+
 **System capability:** SystemCapability.Sensors.MiscDevice
 
 ## type
@@ -69,5 +77,7 @@ The value **preset** means that vibration is triggered based on the specified ef
 **Type:** 'preset'
 
 **Since:** 9
+
+<!--Device-VibratePreset-type: 'preset'--><!--Device-VibratePreset-type: 'preset'-End-->
 
 **System capability:** SystemCapability.Sensors.MiscDevice

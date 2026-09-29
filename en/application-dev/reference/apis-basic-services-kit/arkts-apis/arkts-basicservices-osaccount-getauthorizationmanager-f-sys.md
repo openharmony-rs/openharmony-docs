@@ -18,6 +18,8 @@ Obtains the current OS account authorization manager.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-osAccount-function getAuthorizationManager(): AuthorizationManager--><!--Device-osAccount-function getAuthorizationManager(): AuthorizationManager-End-->
+
 **System capability:** SystemCapability.Account.OsAccount
 
 **System API:** This is a system API.

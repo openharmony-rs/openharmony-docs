@@ -20,6 +20,8 @@ Obtains the public credentials of all users. This API is called only by the cert
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-certificateManager-function getAllPublicCertificates() : Promise<CMResult>--><!--Device-certificateManager-function getAllPublicCertificates() : Promise<CMResult>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **System API:** This is a system API.

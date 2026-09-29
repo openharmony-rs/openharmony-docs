@@ -10,6 +10,8 @@ Interactive widget extension class. It provides APIs for the widget provider to 
 
 **Since:** 20
 
+<!--Device-unnamed-declare class LiveFormExtensionAbility extends ExtensionAbility--><!--Device-unnamed-declare class LiveFormExtensionAbility extends ExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -30,7 +32,9 @@ Called after the UI content of **LiveFormExtensionAbility** is created.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-LiveFormExtensionAbility-onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void--><!--Device-LiveFormExtensionAbility-onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -68,7 +72,9 @@ Called to clear resources when this **LiveFormExtensionAbility** is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+
+<!--Device-LiveFormExtensionAbility-onLiveFormDestroy(liveFormInfo: LiveFormInfo): void--><!--Device-LiveFormExtensionAbility-onLiveFormDestroy(liveFormInfo: LiveFormInfo): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -107,5 +113,7 @@ Context of the **LiveFormExtensionAbility**. This context is inherited from [Ext
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-LiveFormExtensionAbility-context: LiveFormExtensionContext--><!--Device-LiveFormExtensionAbility-context: LiveFormExtensionContext-End-->
 
 **System capability:** SystemCapability.Ability.Form

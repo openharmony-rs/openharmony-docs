@@ -10,6 +10,8 @@ Before calling the following APIs, you must use [floatView.create()](arkts-arkui
 
 **Since:** 26.0.0
 
+<!--Device-floatView-interface FloatViewController--><!--Device-floatView-interface FloatViewController-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Obtains the properties of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-getWindowProperties(): FloatViewProperties--><!--Device-FloatViewController-getWindowProperties(): FloatViewProperties-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -68,6 +72,8 @@ Unregisters the callback for listening to limit changes of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-offLimitsChange(callback?: Callback<FloatViewLimits>): void--><!--Device-FloatViewController-offLimitsChange(callback?: Callback<FloatViewLimits>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -110,6 +116,8 @@ Unregisters the callback for listening to changes in the rectangular area of the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void--><!--Device-FloatViewController-offRectChange(callback?: Callback<FloatViewRectChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -151,6 +159,8 @@ Unregisters the callback for listening to float view state changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void--><!--Device-FloatViewController-offStateChange(callback?: Callback<FloatViewStateChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -191,6 +201,8 @@ Registers a callback for listening to limit changes of the float view. When the 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-onLimitsChange(callback: Callback<FloatViewLimits>): void--><!--Device-FloatViewController-onLimitsChange(callback: Callback<FloatViewLimits>): void-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -234,6 +246,8 @@ Registers a callback for listening to changes in the rectangular area (position 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-onRectChange(callback: Callback<FloatViewRectChangeInfo>): void--><!--Device-FloatViewController-onRectChange(callback: Callback<FloatViewRectChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -276,6 +290,8 @@ Registers a callback for listening to float view state changes. To prevent memor
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-onStateChange(callback: Callback<FloatViewStateChangeInfo>): void--><!--Device-FloatViewController-onStateChange(callback: Callback<FloatViewStateChangeInfo>): void-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -317,6 +333,8 @@ Restores the main window of the float view to display in the foreground. If this
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>--><!--Device-FloatViewController-restoreMainWindow(wantParameters?: Record<string, Object>): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -378,6 +396,8 @@ After the float view is created and before this API is called, the float view is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>--><!--Device-FloatViewController-setFloatViewVisibilityInApp(isVisible: boolean): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -428,6 +448,8 @@ Loads the content of a page, with its path specified in the current project, for
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-setUIContext(path: string, storage?: LocalStorage): Promise<void>--><!--Device-FloatViewController-setUIContext(path: string, storage?: LocalStorage): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -481,6 +503,8 @@ Sets the UI content of a [named route](../../../ui/arkts-routing.md#named-route)
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-setUIContextByName(name: string, storage?: LocalStorage): Promise<void>--><!--Device-FloatViewController-setUIContextByName(name: string, storage?: LocalStorage): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -564,6 +588,8 @@ Sets the size of the float view. You are advised to call the [getFloatViewLimits
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-setWindowSize(size: window.Size): Promise<void>--><!--Device-FloatViewController-setWindowSize(size: window.Size): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Parameters:**
@@ -623,6 +649,8 @@ Starts the float view. The return value of this API does not indicate that the s
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-start(): Promise<void>--><!--Device-FloatViewController-start(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**
@@ -673,6 +701,8 @@ Stops the float view. The return value of this API does not indicate that the st
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewController-stop(): Promise<void>--><!--Device-FloatViewController-stop(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 **Return value:**
@@ -719,6 +749,8 @@ Switches the template of the flow view and changes the window size. You are advi
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewController-switchTemplate(templateProperty: TemplateProperty): Promise<void>--><!--Device-FloatViewController-switchTemplate(templateProperty: TemplateProperty): Promise<void>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 

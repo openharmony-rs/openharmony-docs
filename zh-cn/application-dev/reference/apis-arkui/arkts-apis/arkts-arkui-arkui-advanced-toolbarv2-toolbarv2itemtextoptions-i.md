@@ -8,6 +8,8 @@ Declare the options of ToolBarV2ItemText
 
 **起始版本：** 18
 
+<!--Device-unnamed-export interface ToolBarV2ItemTextOptions--><!--Device-unnamed-export interface ToolBarV2ItemTextOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -32,6 +34,8 @@ Text fontColor when the item is activated.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarV2ItemTextOptions-activatedColor?: ColorMetrics--><!--Device-ToolBarV2ItemTextOptions-activatedColor?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -50,6 +54,8 @@ Define text fontColor.
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-ToolBarV2ItemTextOptions-color?: ColorMetrics--><!--Device-ToolBarV2ItemTextOptions-color?: ColorMetrics-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -67,5 +73,7 @@ Define text content.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ToolBarV2ItemTextOptions-text: ResourceStr--><!--Device-ToolBarV2ItemTextOptions-text: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

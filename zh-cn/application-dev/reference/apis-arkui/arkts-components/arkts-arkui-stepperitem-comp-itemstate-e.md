@@ -12,6 +12,8 @@ declare enum ItemState
 
 **替代接口：** Swiper
 
+<!--Device-unnamed-declare enum ItemState--><!--Device-unnamed-declare enum ItemState-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
@@ -33,6 +35,8 @@ Normal
 **替代接口：** index
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ItemState-Normal--><!--Device-ItemState-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Disabled
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ItemState-Disabled--><!--Device-ItemState-Disabled-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Waiting
@@ -78,6 +84,8 @@ Waiting
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-ItemState-Waiting--><!--Device-ItemState-Waiting-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Skip
@@ -99,5 +107,7 @@ Skip
 **替代接口：** index
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ItemState-Skip--><!--Device-ItemState-Skip-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,6 +4,8 @@ The **http** module provides APIs for implementing HTTP data request capabilitie
 
 **Since:** 6
 
+<!--Device-unnamed-declare namespace http--><!--Device-unnamed-declare namespace http-End-->
+
 **System capability:** SystemCapability.Communication.NetStack
 
 ## Modules to Import
@@ -49,19 +51,6 @@ import { http } from '@kit.NetworkKit';
 | [TlsConfig](arkts-network-http-tlsconfig-i.md) | Defines the TLS configuration, including the version and cipher suite. |
 | [ValidationContext](arkts-network-http-validationcontext-i.md) | The validation context of [ValidationCallback](arkts-network-http-validationcallback-t.md) |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [AddressFamily](arkts-network-http-addressfamily-e.md) | Enumerates IP address families of the target domain name. |
-| [CertType](arkts-network-http-certtype-e.md) | Enumerates certificate types. |
-| [HttpDataType](arkts-network-http-httpdatatype-e.md) | Enumerates HTTP data types. |
-| [HttpProtocol](arkts-network-http-httpprotocol-e.md) | Enumerates HTTP protocol versions. |
-| [InterceptorType](arkts-network-http-interceptortype-e.md) | Enumerates the types of HTTP interceptors. |
-| [RequestMethod](arkts-network-http-requestmethod-e.md) | Defines an HTTP request method. |
-| [ResponseCode](arkts-network-http-responsecode-e.md) | Enumerates the response codes for an HTTP request. |
-| [TlsVersion](arkts-network-http-tlsversion-e.md) | Enumerates TLS versions. |
-
 ### Types
 
 | Name | Description |
@@ -86,6 +75,19 @@ import { http } from '@kit.NetworkKit';
 | [TlsV13SpecificCipherSuite](arkts-network-http-tlsv13specificciphersuite-t.md) | Enumerates cipher suites supported by TLS 1.3 or later. |
 | [ValidationCallback](arkts-network-http-validationcallback-t.md) | Self defined remote validation. This API uses a promise to return the result. |
 | [X509Cert](arkts-network-http-x509cert-t.md) | X509 certificate. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [AddressFamily](arkts-network-http-addressfamily-e.md) | Enumerates IP address families of the target domain name. |
+| [CertType](arkts-network-http-certtype-e.md) | Enumerates certificate types. |
+| [HttpDataType](arkts-network-http-httpdatatype-e.md) | Enumerates HTTP data types. |
+| [HttpProtocol](arkts-network-http-httpprotocol-e.md) | Enumerates HTTP protocol versions. |
+| [InterceptorType](arkts-network-http-interceptortype-e.md) | Enumerates the types of HTTP interceptors. |
+| [RequestMethod](arkts-network-http-requestmethod-e.md) | Defines an HTTP request method. |
+| [ResponseCode](arkts-network-http-responsecode-e.md) | Enumerates the response codes for an HTTP request. |
+| [TlsVersion](arkts-network-http-tlsversion-e.md) | Enumerates TLS versions. |
 
 ## Examples
 

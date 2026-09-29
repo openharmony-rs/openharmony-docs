@@ -8,6 +8,8 @@ Defines the options of the preview menu.
 
 **Since:** 18
 
+<!--Device-unnamed-declare interface PreviewMenuOptions--><!--Device-unnamed-declare interface PreviewMenuOptions-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## hapticFeedbackMode
@@ -29,5 +31,7 @@ Default value: HapticFeedbackMode.DISABLED, which means no vibration when the me
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-PreviewMenuOptions-hapticFeedbackMode? : HapticFeedbackMode--><!--Device-PreviewMenuOptions-hapticFeedbackMode? : HapticFeedbackMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ declare interface MenuOutlineOptions
 
 **起始版本：** 20
 
+<!--Device-unnamed-declare interface MenuOutlineOptions--><!--Device-unnamed-declare interface MenuOutlineOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## color
@@ -28,6 +30,8 @@ color?: ResourceColor | EdgeColors
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
+<!--Device-MenuOutlineOptions-color?: ResourceColor | EdgeColors--><!--Device-MenuOutlineOptions-color?: ResourceColor | EdgeColors-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## width
@@ -47,5 +51,7 @@ width?: Dimension | EdgeOutlineWidths
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-MenuOutlineOptions-width?: Dimension | EdgeOutlineWidths--><!--Device-MenuOutlineOptions-width?: Dimension | EdgeOutlineWidths-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

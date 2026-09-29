@@ -12,6 +12,8 @@ declare type ReusePoolOwnership = 'shared' | 'perInstance'
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-unnamed-declare type ReusePoolOwnership = 'shared' | 'perInstance'--><!--Device-unnamed-declare type ReusePoolOwnership = 'shared' | 'perInstance'-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |

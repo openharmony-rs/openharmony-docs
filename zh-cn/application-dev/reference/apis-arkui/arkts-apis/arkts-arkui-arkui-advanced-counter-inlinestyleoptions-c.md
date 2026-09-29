@@ -16,6 +16,8 @@ InlineStyleOptions定义了数值内联型Counter的属性和事件。
 
 **起始版本：** 11
 
+<!--Device-unnamed-declare class InlineStyleOptions extends CommonOptions--><!--Device-unnamed-declare class InlineStyleOptions extends CommonOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -43,6 +45,8 @@ value：当前显示的数值。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InlineStyleOptions-onChange?: (value: number) => void--><!--Device-InlineStyleOptions-onChange?: (value: number) => void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +82,8 @@ max?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InlineStyleOptions-max?: number--><!--Device-InlineStyleOptions-max?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## min
@@ -105,6 +111,8 @@ min?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InlineStyleOptions-min?: number--><!--Device-InlineStyleOptions-min?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,6 +142,8 @@ textWidth?: number
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-InlineStyleOptions-textWidth?: number--><!--Device-InlineStyleOptions-textWidth?: number-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -159,5 +169,7 @@ value?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InlineStyleOptions-value?: number--><!--Device-InlineStyleOptions-value?: number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

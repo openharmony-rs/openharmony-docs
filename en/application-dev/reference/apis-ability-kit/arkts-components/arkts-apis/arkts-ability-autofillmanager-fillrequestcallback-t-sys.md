@@ -10,6 +10,8 @@ Defines the callback for an auto-fill request, which is used to automatically fi
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-autoFillManager-export type FillRequestCallback = _AutoFillRequest.FillRequestCallback--><!--Device-autoFillManager-export type FillRequestCallback = _AutoFillRequest.FillRequestCallback-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.

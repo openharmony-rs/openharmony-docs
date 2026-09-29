@@ -8,6 +8,8 @@ Defines the RDB store configuration.
 
 **Since:** 9
 
+<!--Device-relationalStore-interface StoreConfig--><!--Device-relationalStore-interface StoreConfig-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Specifies whether to clean up dirty data that is synchronized to the local but d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-StoreConfig-autoCleanDeviceDirtyData?: boolean--><!--Device-StoreConfig-autoCleanDeviceDirtyData?: boolean-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Enumerates the high availability modes of the RDB store.
 
 **Since:** 12
 
+<!--Device-StoreConfig-haMode?: HAMode--><!--Device-StoreConfig-haMode?: HAMode-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Specifies whether data can be searched.
 **Type:** boolean
 
 **Since:** 11
+
+<!--Device-StoreConfig-isSearchable?: boolean--><!--Device-StoreConfig-isSearchable?: boolean-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

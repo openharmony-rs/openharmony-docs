@@ -8,6 +8,8 @@ Indicates the permission status.
 
 **Since:** 26.0.0
 
+<!--Device-abilityAccessCtrl-interface PermissionStatusInfo--><!--Device-abilityAccessCtrl-interface PermissionStatusInfo-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -47,6 +49,8 @@ The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PermissionStatusInfo-grantFlags: int--><!--Device-PermissionStatusInfo-grantFlags: int-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -64,6 +68,8 @@ Permission authorization status.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionStatusInfo-grantStatus: GrantStatus--><!--Device-PermissionStatusInfo-grantStatus: GrantStatus-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -83,6 +89,8 @@ Timestamp of the authorization status change. This is an optional field and is r
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PermissionStatusInfo-grantTimestamp?: long--><!--Device-PermissionStatusInfo-grantTimestamp?: long-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -101,6 +109,8 @@ Permission name.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-PermissionStatusInfo-permissionName: Permissions--><!--Device-PermissionStatusInfo-permissionName: Permissions-End-->
+
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
@@ -118,6 +128,8 @@ Application ID. The value should be an integer.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionStatusInfo-tokenID: int--><!--Device-PermissionStatusInfo-tokenID: int-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

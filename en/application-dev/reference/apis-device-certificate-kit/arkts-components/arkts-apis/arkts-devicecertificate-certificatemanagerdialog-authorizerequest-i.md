@@ -8,6 +8,8 @@ Represents the authorization request information of the credentials.
 
 **Since:** 22
 
+<!--Device-certificateManagerDialog-export interface AuthorizeRequest--><!--Device-certificateManagerDialog-export interface AuthorizeRequest-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Certificate usage. If the **certTypes** parameter contains the **CertificateType
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizeRequest-certPurpose?: certificateManager.CertificatePurpose--><!--Device-AuthorizeRequest-certPurpose?: certificateManager.CertificatePurpose-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## certTypes
@@ -45,6 +49,8 @@ List of certificate types.
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizeRequest-certTypes: Array<CertificateType>--><!--Device-AuthorizeRequest-certTypes: Array<CertificateType>-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
@@ -62,6 +68,8 @@ Indicates the certificate issuer, which is encoded in DER format. This parameter
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizeRequest-issuers?: Array<Uint8Array>--><!--Device-AuthorizeRequest-issuers?: Array<Uint8Array>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## keyAlgIDs
@@ -78,6 +86,8 @@ Indicates the algorithm type of the public key of the certificate. It is used to
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AuthorizeRequest-keyAlgIDs?: Array<string>--><!--Device-AuthorizeRequest-keyAlgIDs?: Array<string>-End-->
+
 **System capability:** SystemCapability.Security.CertificateManagerDialog
 
 ## uri
@@ -93,5 +103,7 @@ This URI is displayed in the authorization dialog box and is used to provide the
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizeRequest-uri?: string--><!--Device-AuthorizeRequest-uri?: string-End-->
 
 **System capability:** SystemCapability.Security.CertificateManagerDialog

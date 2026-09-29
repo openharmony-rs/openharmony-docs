@@ -10,6 +10,8 @@ interface StartAnimationSystemParams
 
 **起始版本：** 20
 
+<!--Device-window-interface StartAnimationSystemParams--><!--Device-window-interface StartAnimationSystemParams-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -32,6 +34,8 @@ animationConfig?: WindowAnimationConfig
 
 **起始版本：** 20
 
+<!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig--><!--Device-StartAnimationSystemParams-animationConfig?: WindowAnimationConfig-End-->
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **系统接口：** 此接口为系统接口。
@@ -47,6 +51,8 @@ type: AnimationType
 **类型：** [AnimationType](arkts-arkui-window-animationtype-e.md)
 
 **起始版本：** 20
+
+<!--Device-StartAnimationSystemParams-type: AnimationType--><!--Device-StartAnimationSystemParams-type: AnimationType-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 

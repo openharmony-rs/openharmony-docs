@@ -12,6 +12,8 @@ Defines the current callback invoked when the hover state of the device changes.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
+<!--Device-unnamed-declare type OnHoverStatusChangeCallback = (param: HoverEventParam) => void--><!--Device-unnamed-declare type OnHoverStatusChangeCallback = (param: HoverEventParam) => void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

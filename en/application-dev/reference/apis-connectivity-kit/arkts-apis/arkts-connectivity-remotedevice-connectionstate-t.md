@@ -10,6 +10,8 @@ Enumerates the connection states with a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-remoteDevice-type ConnectionState = nearlinkConstant.ConnectionState--><!--Device-remoteDevice-type ConnectionState = nearlinkConstant.ConnectionState-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **Type:** [nearlinkConstant.ConnectionState](arkts-connectivity-nearlinkconstant-connectionstate-e.md)

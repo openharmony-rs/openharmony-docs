@@ -20,6 +20,8 @@ Obtains a PhotoAccessHelper instance for accessing and modifying media files in 
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-photoAccessHelper-function getPhotoAccessHelper(context: Context): PhotoAccessHelper--><!--Device-photoAccessHelper-function getPhotoAccessHelper(context: Context): PhotoAccessHelper-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**

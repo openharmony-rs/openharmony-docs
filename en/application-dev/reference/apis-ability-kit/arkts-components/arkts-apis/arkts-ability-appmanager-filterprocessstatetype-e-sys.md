@@ -8,6 +8,8 @@ Enumerates the types of process states to filter. It can be used with [AppStateF
 
 **Since:** 21
 
+<!--Device-appManager-export enum FilterProcessStateType--><!--Device-appManager-export enum FilterProcessStateType-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -21,6 +23,8 @@ CREATE = 1 << 0
 The process has just been created. It corresponds to the state whose value is **0** in [ProcessData](../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#properties).
 
 **Since:** 21
+
+<!--Device-FilterProcessStateType-CREATE = 1 << 0--><!--Device-FilterProcessStateType-CREATE = 1 << 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -36,6 +40,8 @@ The process is running in the foreground. It corresponds to the state whose valu
 
 **Since:** 21
 
+<!--Device-FilterProcessStateType-FOREGROUND = 1 << 1--><!--Device-FilterProcessStateType-FOREGROUND = 1 << 1-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -50,6 +56,8 @@ The process is running in the background. It corresponds to the state whose valu
 
 **Since:** 21
 
+<!--Device-FilterProcessStateType-BACKGROUND = 1 << 2--><!--Device-FilterProcessStateType-BACKGROUND = 1 << 2-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -63,6 +71,8 @@ DESTROY = 1 << 3
 The process has terminated. It corresponds to the state whose value is **5** in [ProcessData](../../../reference/apis-ability-kit/js-apis-inner-application-processData.md#properties).
 
 **Since:** 21
+
+<!--Device-FilterProcessStateType-DESTROY = 1 << 3--><!--Device-FilterProcessStateType-DESTROY = 1 << 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

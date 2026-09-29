@@ -18,6 +18,8 @@ Obtain connection information about the Wi-Fi connection.this apireturns the res
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getLinkedInfoSync(): WifiLinkedInfo--><!--Device-wifiManager-function getLinkedInfoSync(): WifiLinkedInfo-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

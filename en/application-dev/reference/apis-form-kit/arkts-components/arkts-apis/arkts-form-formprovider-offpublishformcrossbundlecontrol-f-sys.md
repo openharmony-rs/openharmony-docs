@@ -20,6 +20,8 @@ Unsubscribes from controls on cross-bundle widget addition to the home screen. T
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formProvider-function offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void--><!--Device-formProvider-function offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.

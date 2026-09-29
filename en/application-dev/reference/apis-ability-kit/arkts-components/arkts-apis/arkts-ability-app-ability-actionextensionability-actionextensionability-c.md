@@ -18,6 +18,8 @@ For details about the inheritance relationship of each ability, see [Inheritance
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-export default class ActionExtensionAbility extends UIExtensionAbility--><!--Device-unnamed-export default class ActionExtensionAbility extends UIExtensionAbility-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 ## Modules to Import

@@ -10,6 +10,8 @@ A panel to set the system audio output volume.
 
 **Decorator:** @Component
 
+<!--Device-unnamed-export declare struct AVVolumePanel--><!--Device-unnamed-export declare struct AVVolumePanel-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Sets the device volume through the volume panel. The value should be between min
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-AVVolumePanel-volumeLevel?: number--><!--Device-AVVolumePanel-volumeLevel?: number-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 ## volumeParameter
@@ -51,5 +55,7 @@ Sets the custom parameters of volume panel.
 **Decorator:** @Prop
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AVVolumePanel-volumeParameter?: AVVolumePanelParameter--><!--Device-AVVolumePanel-volumeParameter?: AVVolumePanelParameter-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Volume

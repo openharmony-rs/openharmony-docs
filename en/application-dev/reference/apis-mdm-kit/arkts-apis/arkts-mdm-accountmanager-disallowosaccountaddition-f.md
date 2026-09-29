@@ -20,6 +20,8 @@ Users are not allowed to add accounts. After the API is successfully called, the
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-accountManager-function disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): void--><!--Device-accountManager-function disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

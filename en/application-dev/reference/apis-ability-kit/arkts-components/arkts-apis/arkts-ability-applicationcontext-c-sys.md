@@ -4,7 +4,7 @@
 declare class ApplicationContext extends Context
 ```
 
-ApplicationContext inherits from Context and provides application-level management capabilities, such as application lifecycle listening, process management, and application environment setting.
+ApplicationContext inherits from [Context](arkts-ability-context.md) and provides application-level management capabilities, such as application lifecycle listening, process management, and application environment setting.
 
 > **NOTE:** 
 > 
@@ -14,114 +14,9 @@ ApplicationContext inherits from Context and provides application-level manageme
 
 **Since:** 9
 
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## getProcessRunningInformation
-
-```TypeScript
-getProcessRunningInformation(): Promise<Array<ProcessInformation>>
-```
-
-Obtains information about the running processes. This API uses a promise to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 10
-
-**Substitutes:** [getRunningProcessInformation](arkts-ability-applicationcontext-c.md#getrunningprocessinformation)
-
-**Model restriction:** This API can be used only in the stage model.
+<!--Device-unnamed-declare class ApplicationContext extends Context--><!--Device-unnamed-declare class ApplicationContext extends Context-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-**Return value:**
-
-| Type | Description |
-| --- | --- |
-| Promise&lt;Array&lt;[ProcessInformation](arkts-ability-processinformation-i.md)&gt;&gt; | Promise used to return the API call result and the process running information. You can perform error handling or custom processing in this callback. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
-
-**Examples**
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    // Obtain the ApplicationContext instance.
-    let applicationContext = this.context.getApplicationContext();
-    applicationContext.getProcessRunningInformation().then((data) => {
-      console.info(`The process running information is: ${JSON.stringify(data)}`);
-    }).catch((error: BusinessError) => {
-      console.error(`error code: ${error.code}, error msg: ${error.message}`);
-    });
-  }
-}
-```
-
-<a id="getprocessrunninginformation-1"></a>
-
-## getProcessRunningInformation
-
-```TypeScript
-getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void
-```
-
-Obtains information about the running processes. This API uses an asynchronous callback to return the result.
-
-**Since:** 9
-
-**Deprecated since:** 10
-
-**Substitutes:** [getRunningProcessInformation](arkts-ability-applicationcontext-c.md#getrunningprocessinformation)
-
-**Model restriction:** This API can be used only in the stage model.
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ProcessInformation](arkts-ability-processinformation-i.md)&gt;&gt; | Yes | Callback used to return the information about the running processes. |
-
-**Error codes:**
-
-| Error Code ID | Error Message |
-| --- | --- |
-| [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
-
-**Examples**
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onForeground() {
-    // Obtain the ApplicationContext instance.
-    let applicationContext = this.context.getApplicationContext();
-    applicationContext.getProcessRunningInformation((err, data) => {
-      if (err) {
-        console.error(`getProcessRunningInformation failed, err: ${JSON.stringify(err)}`);
-      } else {
-        console.info(`The process running information is: ${JSON.stringify(data)}`);
-      }
-    })
-  }
-}
-```
 
 ## preloadUIExtensionAbility
 
@@ -144,6 +39,8 @@ A UIExtensionAbility instance can be preloaded for multiple times. Each time a p
 **Required permissions:** ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-preloadUIExtensionAbility(want: Want): Promise<void>--><!--Device-ApplicationContext-preloadUIExtensionAbility(want: Want): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -215,6 +112,117 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## getProcessRunningInformation
+
+```TypeScript
+getProcessRunningInformation(): Promise<Array<ProcessInformation>>
+```
+
+Obtains information about the running processes. This API uses a promise to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 10
+
+**Substitutes:** [getRunningProcessInformation](arkts-ability-applicationcontext-c.md#getrunningprocessinformation)
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-getProcessRunningInformation(): Promise<Array<ProcessInformation>>--><!--Device-ApplicationContext-getProcessRunningInformation(): Promise<Array<ProcessInformation>>-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;Array&lt;[ProcessInformation](arkts-ability-processinformation-i.md)&gt;&gt; | Promise used to return the API call result and the process running information. You can perform error handling or custom processing in this callback. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class MyAbility extends UIAbility {
+  onForeground() {
+    // Obtain the ApplicationContext instance.
+    let applicationContext = this.context.getApplicationContext();
+    applicationContext.getProcessRunningInformation().then((data) => {
+      console.info(`The process running information is: ${JSON.stringify(data)}`);
+    }).catch((error: BusinessError) => {
+      console.error(`error code: ${error.code}, error msg: ${error.message}`);
+    });
+  }
+}
+```
+
+<a id="getprocessrunninginformation-1"></a>
+
+## getProcessRunningInformation
+
+```TypeScript
+getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void
+```
+
+Obtains information about the running processes. This API uses an asynchronous callback to return the result.
+
+**Since:** 9
+
+**Deprecated since:** 10
+
+**Substitutes:** [getRunningProcessInformation](arkts-ability-applicationcontext-c.md#getrunningprocessinformation)
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-ApplicationContext-getProcessRunningInformation(callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ProcessInformation](arkts-ability-processinformation-i.md)&gt;&gt; | Yes | Callback used to return the information about the running processes. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
+
+**Examples**
+
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class MyAbility extends UIAbility {
+  onForeground() {
+    // Obtain the ApplicationContext instance.
+    let applicationContext = this.context.getApplicationContext();
+    applicationContext.getProcessRunningInformation((err, data) => {
+      if (err) {
+        console.error(`getProcessRunningInformation failed, err: ${JSON.stringify(err)}`);
+      } else {
+        console.info(`The process running information is: ${JSON.stringify(data)}`);
+      }
+    })
+  }
+}
+```
+
 ## registerAbilityLifecycleCallback
 
 ```TypeScript
@@ -232,6 +240,8 @@ Registers a listener to monitor the ability lifecycle of the application. This A
 **Substitutes:** [on](arkts-ability-applicationcontext-c.md#onabilitylifecycle)(type: 'abilityLifecycle', callback: AbilityLifecycleCallback)
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-registerAbilityLifecycleCallback(abilityLifecycleCallback: AbilityLifecycleCallback): number--><!--Device-ApplicationContext-registerAbilityLifecycleCallback(abilityLifecycleCallback: AbilityLifecycleCallback): number-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -323,6 +333,8 @@ Register environment callback.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationContext-registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number--><!--Device-ApplicationContext-registerEnvironmentCallback(environmentCallback: EnvironmentCallback): number-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -390,6 +402,8 @@ Unregisters the listener that monitors the ability lifecycle of the application.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<void>): void--><!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -448,6 +462,8 @@ Unregisters a listener for the lifecycle of a UIAbility within the application. 
 **Substitutes:** [off](arkts-ability-applicationcontext-c.md#offabilitylifecycle)(type: 'abilityLifecycle', callbackId: number): Promise&lt;void&gt;;
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>--><!--Device-ApplicationContext-unregisterAbilityLifecycleCallback(callbackId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -509,6 +525,8 @@ Unregisters the listener for system environment changes. This API uses an asynch
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<void>): void--><!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number, envcallback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -564,6 +582,8 @@ Unregisters the listener for system environment changes. This API uses a promise
 **Substitutes:** [off](arkts-ability-applicationcontext-c.md#offenvironment)(type: 'environment', callbackId: number): Promise&lt;void&gt;;
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number): Promise<void>--><!--Device-ApplicationContext-unregisterEnvironmentCallback(callbackId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

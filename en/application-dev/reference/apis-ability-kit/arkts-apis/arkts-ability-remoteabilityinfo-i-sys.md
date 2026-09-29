@@ -12,6 +12,8 @@ The module provides information about a remote ability, which can be obtained th
 
 **Since:** 9
 
+<!--Device-unnamed-export interface RemoteAbilityInfo--><!--Device-unnamed-export interface RemoteAbilityInfo-End-->
+
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Element name information of the remote ability.
 **Type:** [ElementName](arkts-ability-elementname-i.md)
 
 **Since:** 9
+
+<!--Device-RemoteAbilityInfo-readonly elementName: ElementName--><!--Device-RemoteAbilityInfo-readonly elementName: ElementName-End-->
 
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
@@ -44,6 +48,8 @@ Icon of the remote ability.
 
 **Since:** 9
 
+<!--Device-RemoteAbilityInfo-readonly icon: string--><!--Device-RemoteAbilityInfo-readonly icon: string-End-->
+
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Label of the remote ability.
 **Type:** string
 
 **Since:** 9
+
+<!--Device-RemoteAbilityInfo-readonly label: string--><!--Device-RemoteAbilityInfo-readonly label: string-End-->
 
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 

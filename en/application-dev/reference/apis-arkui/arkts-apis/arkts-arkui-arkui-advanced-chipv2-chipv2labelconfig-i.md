@@ -8,6 +8,8 @@ Defines the text attribute configuration.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-export interface ChipV2LabelConfig--><!--Device-unnamed-export interface ChipV2LabelConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -38,6 +40,8 @@ When the value is invalid, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2LabelConfig-activatedFontColor?: ColorMetrics--><!--Device-ChipV2LabelConfig-activatedFontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontColor
@@ -62,6 +66,8 @@ When the value is invalid, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2LabelConfig-fontColor?: ColorMetrics--><!--Device-ChipV2LabelConfig-fontColor?: ColorMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## fontFamily
@@ -83,6 +89,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2LabelConfig-fontFamily?: string--><!--Device-ChipV2LabelConfig-fontFamily?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,6 +120,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2LabelConfig-fontSize?: LengthMetrics--><!--Device-ChipV2LabelConfig-fontSize?: LengthMetrics-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## labelMargin
@@ -137,6 +147,8 @@ When the value is **undefined**, the default value is used.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2LabelConfig-labelMargin?: ChipV2LabelMarginConfig--><!--Device-ChipV2LabelConfig-labelMargin?: ChipV2LabelMarginConfig-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +180,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2LabelConfig-localizedLabelMargin?: ChipV2LocalizedLabelMarginConfig--><!--Device-ChipV2LabelConfig-localizedLabelMargin?: ChipV2LocalizedLabelMarginConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifier
@@ -188,6 +202,8 @@ Default value: **undefined**, meaning that the modifier is not applied.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2LabelConfig-modifier?: TextModifier--><!--Device-ChipV2LabelConfig-modifier?: TextModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## text
@@ -205,5 +221,7 @@ Text content.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2LabelConfig-text: string--><!--Device-ChipV2LabelConfig-text: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

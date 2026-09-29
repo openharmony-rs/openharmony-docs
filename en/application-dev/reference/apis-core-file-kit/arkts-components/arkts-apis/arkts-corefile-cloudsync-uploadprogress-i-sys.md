@@ -8,6 +8,8 @@ The UploadProgress data structure.
 
 **Since:** 26.0.0
 
+<!--Device-cloudSync-interface UploadProgress--><!--Device-cloudSync-interface UploadProgress-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The error type of upload.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UploadProgress-error: ErrorType--><!--Device-UploadProgress-error: ErrorType-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -49,6 +53,8 @@ The processed data size for current file. <br>Unit:Byte.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadProgress-processed: long--><!--Device-UploadProgress-processed: long-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -68,6 +74,8 @@ The size of current file. <br>Unit:Byte.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UploadProgress-size: long--><!--Device-UploadProgress-size: long-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -86,6 +94,8 @@ The current upload state.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-UploadProgress-state: UploadState--><!--Device-UploadProgress-state: UploadState-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **System API:** This is a system API.
@@ -103,6 +113,8 @@ The uri of current file.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadProgress-uri: string--><!--Device-UploadProgress-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

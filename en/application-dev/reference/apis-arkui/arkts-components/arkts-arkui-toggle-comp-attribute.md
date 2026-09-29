@@ -12,6 +12,8 @@ In addition to the universal events, the following events are supported.
 
 **Since:** 8
 
+<!--Device-unnamed-declare class ToggleAttribute extends CommonMethod<ToggleAttribute>--><!--Device-unnamed-declare class ToggleAttribute extends CommonMethod<ToggleAttribute>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## contentModifier
@@ -27,6 +29,8 @@ Creates a content modifier.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ToggleAttribute-contentModifier(modifier: ContentModifier<ToggleConfiguration>): ToggleAttribute--><!--Device-ToggleAttribute-contentModifier(modifier: ContentModifier<ToggleConfiguration>): ToggleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ Triggered when the toggle status changes.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ToggleAttribute-onChange(callback: (isOn: boolean) => void): ToggleAttribute--><!--Device-ToggleAttribute-onChange(callback: (isOn: boolean) => void): ToggleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -75,6 +81,8 @@ Sets the background color of the component when it is turned on.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ToggleAttribute-selectedColor(value: ResourceColor): ToggleAttribute--><!--Device-ToggleAttribute-selectedColor(value: ResourceColor): ToggleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,6 +108,8 @@ Sets the color of the circular slider when the component is of the **Switch** ty
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-ToggleAttribute-switchPointColor(color: ResourceColor): ToggleAttribute--><!--Device-ToggleAttribute-switchPointColor(color: ResourceColor): ToggleAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -121,6 +131,8 @@ Sets the style for the component of the **Switch** type. This attribute is valid
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ToggleAttribute-switchStyle(value: SwitchStyle): ToggleAttribute--><!--Device-ToggleAttribute-switchStyle(value: SwitchStyle): ToggleAttribute-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

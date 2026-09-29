@@ -8,6 +8,8 @@ Rotational speed. A negative value indicates a clockwise rotation, and a positiv
 
 **Since:** 20
 
+<!--Device-mechanicManager-export interface RotationSpeed--><!--Device-mechanicManager-export interface RotationSpeed-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Pitch speed, measured in radians per second.
 
 **Since:** 20
 
+<!--Device-RotationSpeed-pitchSpeed?: double--><!--Device-RotationSpeed-pitchSpeed?: double-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Roll speed, measured in radians per second.
 
 **Since:** 20
 
+<!--Device-RotationSpeed-rollSpeed?: double--><!--Device-RotationSpeed-rollSpeed?: double-End-->
+
 **System capability:** SystemCapability.Mechanic.Core
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Yaw speed, measured in radians per second.
 **Type:** number
 
 **Since:** 20
+
+<!--Device-RotationSpeed-yawSpeed?: double--><!--Device-RotationSpeed-yawSpeed?: double-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

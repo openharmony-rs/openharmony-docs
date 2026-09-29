@@ -8,6 +8,8 @@ TIFF metadata.
 
 **Since:** 26.0.0
 
+<!--Device-image-class TiffMetadata--><!--Device-image-class TiffMetadata-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Name of the image creator or artist.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly artist?: string--><!--Device-TiffMetadata-readonly artist?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## compression
@@ -45,6 +49,8 @@ Compression scheme used for image data (e.g., None, LZW, JPEG, Deflate). The val
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly compression?: int--><!--Device-TiffMetadata-readonly compression?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -62,6 +68,8 @@ Copyright notice for the image.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly copyright?: string--><!--Device-TiffMetadata-readonly copyright?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## dateTime
@@ -77,6 +85,8 @@ Date and time associated with the image (typically last modification).
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly dateTime?: string--><!--Device-TiffMetadata-readonly dateTime?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -94,6 +104,8 @@ Name of the document or image.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly documentName?: string--><!--Device-TiffMetadata-readonly documentName?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## hostComputer
@@ -109,6 +121,8 @@ Host computer/system used for image processing.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly hostComputer?: string--><!--Device-TiffMetadata-readonly hostComputer?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -126,6 +140,8 @@ Description of the image content.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly imageDescription?: string--><!--Device-TiffMetadata-readonly imageDescription?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## make
@@ -141,6 +157,8 @@ Manufacturer of the capture device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly make?: string--><!--Device-TiffMetadata-readonly make?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -158,6 +176,8 @@ Model name/number of the capture device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly model?: string--><!--Device-TiffMetadata-readonly model?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## orientation
@@ -173,6 +193,8 @@ Indicates image orientation for correct display rotation/flip.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly orientation?: Orientation--><!--Device-TiffMetadata-readonly orientation?: Orientation-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -190,6 +212,8 @@ Defines how pixel colors are interpreted (e.g., RGB, grayscale). The value shoul
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly photometricInterpretation?: int--><!--Device-TiffMetadata-readonly photometricInterpretation?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## primaryChromaticities
@@ -205,6 +229,8 @@ Chromaticity coordinates of the RGB primaries.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly primaryChromaticities?: double[]--><!--Device-TiffMetadata-readonly primaryChromaticities?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -222,6 +248,8 @@ Unit for X/Y resolution. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly resolutionUnit?: int--><!--Device-TiffMetadata-readonly resolutionUnit?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## software
@@ -237,6 +265,8 @@ Software used to create or process the image.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly software?: string--><!--Device-TiffMetadata-readonly software?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -254,6 +284,8 @@ Height of each image tile in pixels. The value should be an integer.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly tileLength?: int--><!--Device-TiffMetadata-readonly tileLength?: int-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## tileWidth
@@ -269,6 +301,8 @@ Width of each image tile in pixels. The value should be an integer.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly tileWidth?: int--><!--Device-TiffMetadata-readonly tileWidth?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -286,6 +320,8 @@ Tone transfer curve mapping pixel values to output intensity.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly transferFunction?: string--><!--Device-TiffMetadata-readonly transferFunction?: string-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## whitePoint
@@ -301,6 +337,8 @@ Chromaticity coordinates of the reference white point.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly whitePoint?: double[]--><!--Device-TiffMetadata-readonly whitePoint?: double[]-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -318,6 +356,8 @@ Horizontal resolution (pixels per resolution unit).
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TiffMetadata-readonly xResolution?: double--><!--Device-TiffMetadata-readonly xResolution?: double-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 ## yResolution
@@ -333,5 +373,7 @@ Vertical resolution (pixels per resolution unit).
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TiffMetadata-readonly yResolution?: double--><!--Device-TiffMetadata-readonly yResolution?: double-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

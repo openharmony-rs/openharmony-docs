@@ -20,6 +20,8 @@ Before setting a notification slot, create a slot through [addSlot](arkts-notifi
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notificationManager-function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback<void>): void--><!--Device-notificationManager-function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -82,6 +84,8 @@ Before setting a notification slot, create a slot through [addSlot](arkts-notifi
 **Since:** 9
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notificationManager-function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<void>--><!--Device-notificationManager-function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

@@ -20,6 +20,8 @@ Queries the local P2P services. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-wifiManager-function getLocalP2pServices(): Promise<Array<WifiP2pServiceInfo>>--><!--Device-wifiManager-function getLocalP2pServices(): Promise<Array<WifiP2pServiceInfo>>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
 **Return value:**

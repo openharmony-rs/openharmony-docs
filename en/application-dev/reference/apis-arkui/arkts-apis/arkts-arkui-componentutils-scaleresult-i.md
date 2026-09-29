@@ -8,6 +8,8 @@ Scale Result
 
 **Since:** 10
 
+<!--Device-componentUtils-interface ScaleResult--><!--Device-componentUtils-interface ScaleResult-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScaleResult-centerX: number--><!--Device-ScaleResult-centerX: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## centerY
@@ -54,6 +58,8 @@ Unit: vp
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScaleResult-centerY: number--><!--Device-ScaleResult-centerY: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -71,6 +77,8 @@ Scale factor along the x-axis.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScaleResult-x: number--><!--Device-ScaleResult-x: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +98,8 @@ Scale factor along the y-axis.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-ScaleResult-y: number--><!--Device-ScaleResult-y: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## z
@@ -107,5 +117,7 @@ Scale factor along the z-axis.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScaleResult-z: number--><!--Device-ScaleResult-z: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

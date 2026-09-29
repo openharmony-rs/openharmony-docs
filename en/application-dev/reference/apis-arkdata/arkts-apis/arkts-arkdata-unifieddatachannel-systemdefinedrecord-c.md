@@ -10,6 +10,8 @@ Represents specific data types defined by OpenHarmony. It is a child class of [U
 
 **Since:** 10
 
+<!--Device-unifiedDataChannel-class SystemDefinedRecord extends UnifiedRecord--><!--Device-unifiedDataChannel-class SystemDefinedRecord extends UnifiedRecord-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
 
 ## Modules to Import
@@ -33,5 +35,7 @@ A dictionary type object, where the key is of the string type, and the value can
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SystemDefinedRecord-details?: Record<string, int | long | double | string | Uint8Array>--><!--Device-SystemDefinedRecord-details?: Record<string, int | long | double | string | Uint8Array>-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

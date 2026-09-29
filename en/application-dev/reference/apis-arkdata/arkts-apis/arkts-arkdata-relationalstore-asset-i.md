@@ -8,6 +8,8 @@ Represents the asset (such as a document, image, or video).
 
 **Since:** 10
 
+<!--Device-relationalStore-interface Asset--><!--Device-relationalStore-interface Asset-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Time when an asset is created.
 
 **Since:** 10
 
+<!--Device-Asset-createTime: string--><!--Device-Asset-createTime: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## modifyTime
@@ -41,6 +45,8 @@ Time when an asset is last modified.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-Asset-modifyTime: string--><!--Device-Asset-modifyTime: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -56,6 +62,8 @@ Asset name.
 
 **Since:** 10
 
+<!--Device-Asset-name: string--><!--Device-Asset-name: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## path
@@ -70,6 +78,8 @@ Path of an asset in the application sandbox.
 
 **Since:** 10
 
+<!--Device-Asset-path: string--><!--Device-Asset-path: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## size
@@ -83,6 +93,8 @@ Asset size. In the device-cloud sync mechanism, this field is one of the key bas
 **Type:** string
 
 **Since:** 10
+
+<!--Device-Asset-size: string--><!--Device-Asset-size: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -100,6 +112,8 @@ Default value: **ASSET_NORMAL**.
 
 **Since:** 10
 
+<!--Device-Asset-status?: AssetStatus--><!--Device-Asset-status?: AssetStatus-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## uri
@@ -113,5 +127,7 @@ Asset URI, which is an absolute path in the system.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-Asset-uri: string--><!--Device-Asset-uri: string-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

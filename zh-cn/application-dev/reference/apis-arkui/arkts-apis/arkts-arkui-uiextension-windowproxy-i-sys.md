@@ -8,6 +8,8 @@ UIExtension窗口代理。
 
 **起始版本：** 12
 
+<!--Device-uiExtension-interface WindowProxy--><!--Device-uiExtension-interface WindowProxy-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -26,7 +28,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 
 > **说明：** 
 > 
-> - 不安全窗口是指可能遮挡[EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md#embedded_component)（或[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md#ui_extension_componentsystem-api)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
+> - 不安全窗口是指可能遮挡[EmbeddedComponent](../arkts-components/arkts-arkui-embeddedcomponent-comp.md)（或[UIExtensionComponent](../arkts-components/arkts-arkui-uiextensioncomponent-comp-sys.md)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
 > 
 > - 当EmbeddedComponent（或UIExtensionComponent）组件被用来显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护敏感操作提示内容不会被遮挡。当EmbeddedComponent（或UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。
 > 
@@ -37,6 +39,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise<void>
 **需要权限：** ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowProxy-hideNonSecureWindows(shouldHide: boolean): Promise<void>--><!--Device-WindowProxy-hideNonSecureWindows(shouldHide: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,6 +113,8 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowProxy-setWaterMarkFlag(enable: boolean): Promise<void>--><!--Device-WindowProxy-setWaterMarkFlag(enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

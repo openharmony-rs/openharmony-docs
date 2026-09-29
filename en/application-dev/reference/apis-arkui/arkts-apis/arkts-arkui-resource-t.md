@@ -20,6 +20,8 @@ Defines reference resources for component attributes. Resource files must be sto
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
+<!--Device-unnamed-declare type Resource = import('../api/global/resource').Resource--><!--Device-unnamed-declare type Resource = import('../api/global/resource').Resource-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/global/resource').Resource

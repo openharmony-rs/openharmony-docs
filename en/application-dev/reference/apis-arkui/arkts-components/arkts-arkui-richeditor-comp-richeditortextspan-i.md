@@ -8,6 +8,8 @@ Defines text span information.
 
 **Since:** 10
 
+<!--Device-unnamed-declare interface RichEditorTextSpan--><!--Device-unnamed-declare interface RichEditorTextSpan-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## spanPosition
@@ -25,6 +27,8 @@ Span position.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorTextSpan-spanPosition: RichEditorSpanPosition--><!--Device-RichEditorTextSpan-spanPosition: RichEditorSpanPosition-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +48,8 @@ Text span style.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-RichEditorTextSpan-textStyle?: RichEditorTextStyle--><!--Device-RichEditorTextSpan-textStyle?: RichEditorTextStyle-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## value
@@ -61,5 +67,7 @@ Text span content.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RichEditorTextSpan-value: string--><!--Device-RichEditorTextSpan-value: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

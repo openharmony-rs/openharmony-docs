@@ -12,6 +12,8 @@ Manages GATT server. Before calling an Gatt server method, you must use [createG
 
 **Substitutes:** [GattServer](arkts-connectivity-bluetoothmanager-gattserver-i.md)
 
+<!--Device-bluetooth-interface GattServer--><!--Device-bluetooth-interface GattServer-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Adds a specified service to be hosted. The added service and its characteristics
 **Substitutes:** [addService](arkts-connectivity-bluetoothmanager-gattserver-i.md#addservice)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-addService(service: GattService): boolean--><!--Device-GattServer-addService(service: GattService): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -102,6 +106,8 @@ Closes this `GattServer` object and unregisters its callbacks.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-close(): void--><!--Device-GattServer-close(): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Examples**
@@ -128,6 +134,8 @@ This method should be called for every BLE peripheral device that has requested 
 **Substitutes:** [notifyCharacteristicChanged](arkts-connectivity-bluetoothmanager-gattserver-i.md#notifycharacteristicchanged)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): boolean--><!--Device-GattServer-notifyCharacteristicChanged(deviceId: string, notifyCharacteristic: NotifyCharacteristic): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -181,6 +189,8 @@ Unsubscribe characteristic read event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-off(type: 'characteristicRead', callback?: Callback<CharacteristicReadReq>): void--><!--Device-GattServer-off(type: 'characteristicRead', callback?: Callback<CharacteristicReadReq>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -212,6 +222,8 @@ Unsubscribe characteristic write event.
 **Substitutes:** characteristicWrite
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-off(type: 'characteristicWrite', callback?: Callback<CharacteristicWriteReq>): void--><!--Device-GattServer-off(type: 'characteristicWrite', callback?: Callback<CharacteristicWriteReq>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -245,6 +257,8 @@ Unsubscribe descriptor read event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-off(type: 'descriptorRead', callback?: Callback<DescriptorReadReq>): void--><!--Device-GattServer-off(type: 'descriptorRead', callback?: Callback<DescriptorReadReq>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -276,6 +290,8 @@ Unsubscribe descriptor write event.
 **Substitutes:** descriptorWrite
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-off(type: 'descriptorWrite', callback?: Callback<DescriptorWriteReq>): void--><!--Device-GattServer-off(type: 'descriptorWrite', callback?: Callback<DescriptorWriteReq>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -309,6 +325,8 @@ Unsubscribe server connection state changed event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-off(type: 'connectStateChange', callback?: Callback<BLEConnectChangedState>): void--><!--Device-GattServer-off(type: 'connectStateChange', callback?: Callback<BLEConnectChangedState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -340,6 +358,8 @@ Subscribe characteristic read event.
 **Substitutes:** characteristicRead
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-on(type: 'characteristicRead', callback: Callback<CharacteristicReadReq>): void--><!--Device-GattServer-on(type: 'characteristicRead', callback: Callback<CharacteristicReadReq>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -392,6 +412,8 @@ Subscribe characteristic write event.
 **Substitutes:** characteristicWrite
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-on(type: 'characteristicWrite', callback: Callback<CharacteristicWriteReq>): void--><!--Device-GattServer-on(type: 'characteristicWrite', callback: Callback<CharacteristicWriteReq>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -448,6 +470,8 @@ Subscribe descriptor read event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-on(type: 'descriptorRead', callback: Callback<DescriptorReadReq>): void--><!--Device-GattServer-on(type: 'descriptorRead', callback: Callback<DescriptorReadReq>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -499,6 +523,8 @@ Subscribe descriptor write event.
 **Substitutes:** descriptorWrite
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-on(type: 'descriptorWrite', callback: Callback<DescriptorWriteReq>): void--><!--Device-GattServer-on(type: 'descriptorWrite', callback: Callback<DescriptorWriteReq>): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -554,6 +580,8 @@ Subscribe server connection state changed event.
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-on(type: 'connectStateChange', callback: Callback<BLEConnectChangedState>): void--><!--Device-GattServer-on(type: 'connectStateChange', callback: Callback<BLEConnectChangedState>): void-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -591,6 +619,8 @@ Removes a specified service from the list of GATT services provided by this devi
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
 
+<!--Device-GattServer-removeService(serviceUuid: string): boolean--><!--Device-GattServer-removeService(serviceUuid: string): boolean-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters:**
@@ -627,6 +657,8 @@ Sends a response to a specified read or write request to a given BLE peripheral 
 **Substitutes:** [sendResponse](arkts-connectivity-bluetoothmanager-gattserver-i.md#sendresponse)
 
 **Required permissions:** ohos.permission.USE_BLUETOOTH
+
+<!--Device-GattServer-sendResponse(serverResponse: ServerResponse): boolean--><!--Device-GattServer-sendResponse(serverResponse: ServerResponse): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -681,6 +713,8 @@ Starts BLE advertising.
 **Substitutes:** [startAdvertising](arkts-connectivity-bluetoothmanager-gattserver-i.md#startadvertising)
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-GattServer-startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?: AdvertiseData): void--><!--Device-GattServer-startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?: AdvertiseData): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -754,6 +788,8 @@ Stops BLE advertising.
 **Substitutes:** [stopAdvertising](arkts-connectivity-bluetoothmanager-gattserver-i.md#stopadvertising)
 
 **Required permissions:** ohos.permission.DISCOVER_BLUETOOTH
+
+<!--Device-GattServer-stopAdvertising(): void--><!--Device-GattServer-stopAdvertising(): void-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

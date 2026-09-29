@@ -22,6 +22,8 @@ Obtains the RunningFormInfo objects by FormProviderFilter.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-formObserver-function getRunningFormInfosByFilter(    formProviderFilter: formInfo.FormProviderFilter  ): Promise<Array<formInfo.RunningFormInfo>>--><!--Device-formObserver-function getRunningFormInfosByFilter(    formProviderFilter: formInfo.FormProviderFilter  ): Promise<Array<formInfo.RunningFormInfo>>-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -68,6 +70,8 @@ Obtains the RunningFormInfo objects by FormProviderFilter.
 **Required permissions:** ohos.permission.OBSERVE_FORM_RUNNING
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-formObserver-function getRunningFormInfosByFilter(    formProviderFilter: formInfo.FormProviderFilter,    callback: AsyncCallback<Array<formInfo.RunningFormInfo>>  ): void--><!--Device-formObserver-function getRunningFormInfosByFilter(    formProviderFilter: formInfo.FormProviderFilter,    callback: AsyncCallback<Array<formInfo.RunningFormInfo>>  ): void-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

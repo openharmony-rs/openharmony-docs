@@ -8,6 +8,8 @@ Implements a **TreeController** object, which can be bound to a tree view compon
 
 **Since:** 10
 
+<!--Device-unnamed-export declare class TreeController--><!--Device-unnamed-export declare class TreeController-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Adds a child node to the selected node.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TreeController-addNode(nodeParam?: NodeParam): TreeController--><!--Device-TreeController-addNode(nodeParam?: NodeParam): TreeController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Builds a tree view. After a node is added, this API must be called to save the t
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TreeController-buildDone(): void--><!--Device-TreeController-buildDone(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## modifyNode
@@ -74,6 +80,8 @@ Modifies the selected node.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-TreeController-modifyNode(): void--><!--Device-TreeController-modifyNode(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## refreshNode
@@ -89,6 +97,8 @@ Refreshes the tree view. You can call this API to update the information about t
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TreeController-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void--><!--Device-TreeController-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,5 +123,7 @@ Removes the selected node.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-TreeController-removeNode(): void--><!--Device-TreeController-removeNode(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

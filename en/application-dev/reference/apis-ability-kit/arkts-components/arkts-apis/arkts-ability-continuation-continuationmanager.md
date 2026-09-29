@@ -10,6 +10,8 @@ The continuationManager module provides the continuation/collaboration managemen
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-unnamed-declare namespace continuationManager--><!--Device-unnamed-declare namespace continuationManager-End-->
+
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
 ## Modules to Import
@@ -53,16 +55,16 @@ import { continuationManager } from '@kit.AbilityKit';
 | [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md#updatecontinuationstate) | Instructs the device selection module to update the device connection state. This API uses an asynchronous callback to return the result. |
 | [updateContinuationState](arkts-ability-continuationmanager-updatecontinuationstate-f.md#updatecontinuationstate-1) | Instructs the device selection module to update the device connection state. This API uses a promise to return the result. |
 
-### Enums
-
-| Name | Description |
-| --- | --- |
-| [ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md) | Enumerates the continuation modes provided by the device selection module. |
-| [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | Device connection state. |
-
 ### Types
 
 | Name | Description |
 | --- | --- |
 | [ContinuationExtraParams](arkts-ability-continuationmanager-continuationextraparams-t.md) | Defines the extra parameters required by the device selection module in the continuation management entry. |
 | [ContinuationResult](arkts-ability-continuationmanager-continuationresult-t.md) | Defines the device information returned by the continuation management entry. |
+
+### Enums
+
+| Name | Description |
+| --- | --- |
+| [ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md) | Enumerates the continuation modes provided by the device selection module. |
+| [DeviceConnectState](arkts-ability-continuationmanager-deviceconnectstate-e.md) | Device connection state. |

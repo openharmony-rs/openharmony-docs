@@ -22,6 +22,8 @@ Checks whether this device supports a specified feature.
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifi-function isFeatureSupported(featureId: number): boolean--><!--Device-wifi-function isFeatureSupported(featureId: number): boolean-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.Core
 
 **Parameters:**

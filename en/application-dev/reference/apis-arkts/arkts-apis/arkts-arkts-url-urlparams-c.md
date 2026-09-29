@@ -8,6 +8,8 @@ The URLParams interface defines some practical methods to process URL query stri
 
 **Since:** 9
 
+<!--Device-url-class URLParams--><!--Device-url-class URLParams-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -27,6 +29,8 @@ Obtains an ES6 iterator. Each item of the iterator is a JavaScript array, and th
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-URLParams-[Symbol.iterator](): IterableIterator<[string, string]>--><!--Device-URLParams-[Symbol.iterator](): IterableIterator<[string, string]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -58,7 +62,9 @@ Appends a key-value pair into the query string.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-append(name: string, value: string): void--><!--Device-URLParams-append(name: string, value: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -88,6 +94,8 @@ A constructor used to create a URLParams instance.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-URLParams-constructor(init?: string[][] | Record<string, string> | string | URLParams)--><!--Device-URLParams-constructor(init?: string[][] | Record<string, string> | string | URLParams)-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -124,7 +132,9 @@ Deletes key-value pairs of the specified key.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-delete(name: string): void--><!--Device-URLParams-delete(name: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -152,7 +162,9 @@ Obtains an ES6 iterator. Each item of the iterator is a JavaScript array, and th
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-entries(): IterableIterator<[string, string]>--><!--Device-URLParams-entries(): IterableIterator<[string, string]>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -186,6 +198,8 @@ Callback functions are used to traverse key-value pairs on the URLParams instanc
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-URLParams-forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => void, thisArg?: Object): void--><!--Device-URLParams-forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => void, thisArg?: Object): void-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 **Parameters:**
@@ -215,6 +229,8 @@ Obtains the value of the first key-value pair based on the specified key.
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-URLParams-get(name: string): string | null--><!--Device-URLParams-get(name: string): string | null-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -249,7 +265,9 @@ Obtains all the values based on the specified key.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-getAll(name: string): string[]--><!--Device-URLParams-getAll(name: string): string[]-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -284,7 +302,9 @@ Checks whether a key has a value.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-has(name: string): boolean--><!--Device-URLParams-has(name: string): boolean-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -318,7 +338,9 @@ Obtains an ES6 iterator that contains the keys of all the key-value pairs.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-keys(): IterableIterator<string>--><!--Device-URLParams-keys(): IterableIterator<string>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -350,7 +372,9 @@ Sets the value for a key. If key-value pairs matching the specified key exist, t
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-set(name: string, value: string): void--><!--Device-URLParams-set(name: string, value: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -379,7 +403,9 @@ Sorts all key-value pairs contained in this object based on the Unicode code poi
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-sort(): void--><!--Device-URLParams-sort(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -401,7 +427,9 @@ Obtains search parameters that are serialized as a string and, if necessary, per
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-toString(): string--><!--Device-URLParams-toString(): string-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -430,7 +458,9 @@ Obtains an ES6 iterator that contains the values of all the key-value pairs.
 
 **Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+
+<!--Device-URLParams-values(): IterableIterator<string>--><!--Device-URLParams-values(): IterableIterator<string>-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

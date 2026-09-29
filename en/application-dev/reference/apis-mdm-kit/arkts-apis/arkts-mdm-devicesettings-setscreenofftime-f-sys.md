@@ -24,6 +24,8 @@ Sets the device screen-off time.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-deviceSettings-function setScreenOffTime(admin: Want, time: number): void--><!--Device-deviceSettings-function setScreenOffTime(admin: Want, time: number): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.

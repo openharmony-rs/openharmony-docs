@@ -6,9 +6,9 @@ export enum ToastShowMode
 
 Enumerates display modes for toasts. By default, the toast is displayed within the application and supports display in subwindows.
 
-@enum { number }
-
 **Since:** 11
+
+<!--Device-promptAction-export enum ToastShowMode--><!--Device-promptAction-export enum ToastShowMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +23,8 @@ Toast shows in SYSTEM_TOAST window.
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ToastShowMode-SYSTEM_TOP_MOST = 2--><!--Device-ToastShowMode-SYSTEM_TOP_MOST = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

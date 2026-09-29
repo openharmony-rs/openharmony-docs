@@ -8,6 +8,8 @@ Defines the ICC account information.
 
 **Since:** 10
 
+<!--Device-sim-export interface IccAccountInfo--><!--Device-sim-export interface IccAccountInfo-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import
@@ -28,6 +30,8 @@ ICCID number.
 
 **Since:** 10
 
+<!--Device-IccAccountInfo-iccId: string--><!--Device-IccAccountInfo-iccId: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## isActive
@@ -46,6 +50,8 @@ Whether the card is activated.
 
 **Since:** 10
 
+<!--Device-IccAccountInfo-isActive: boolean--><!--Device-IccAccountInfo-isActive: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## isEsim
@@ -63,6 +69,8 @@ Whether the SIM card is an eSIM.
 
 **Since:** 10
 
+<!--Device-IccAccountInfo-isEsim: boolean--><!--Device-IccAccountInfo-isEsim: boolean-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## showName
@@ -76,6 +84,8 @@ SIM card display name.
 **Type:** string
 
 **Since:** 10
+
+<!--Device-IccAccountInfo-showName: string--><!--Device-IccAccountInfo-showName: string-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -91,6 +101,8 @@ SIM card display number.
 
 **Since:** 10
 
+<!--Device-IccAccountInfo-showNumber: string--><!--Device-IccAccountInfo-showNumber: string-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## simId
@@ -105,6 +117,8 @@ SIM card ID.
 
 **Since:** 10
 
+<!--Device-IccAccountInfo-simId: int--><!--Device-IccAccountInfo-simId: int-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## slotIndex
@@ -118,5 +132,7 @@ Card slot ID.
 **Type:** number
 
 **Since:** 10
+
+<!--Device-IccAccountInfo-slotIndex: int--><!--Device-IccAccountInfo-slotIndex: int-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

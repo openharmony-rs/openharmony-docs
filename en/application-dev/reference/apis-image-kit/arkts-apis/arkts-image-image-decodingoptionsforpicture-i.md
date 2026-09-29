@@ -8,6 +8,8 @@ Describes the image decoding options.
 
 **Since:** 13
 
+<!--Device-image-interface DecodingOptionsForPicture--><!--Device-image-interface DecodingOptionsForPicture-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## Modules to Import
@@ -30,6 +32,8 @@ To exclude all auxiliary picture, you can decode the auxiliary picture to a Pixe
 
 **Since:** 13
 
+<!--Device-DecodingOptionsForPicture-desiredAuxiliaryPictures: Array<AuxiliaryPictureType>--><!--Device-DecodingOptionsForPicture-desiredAuxiliaryPictures: Array<AuxiliaryPictureType>-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## desiredPixelFormat
@@ -46,6 +50,8 @@ Desired Pixel format, RGBA_8888\BGRA_8888\RGB_565\NV12\NV21 are supported.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-DecodingOptionsForPicture-desiredPixelFormat?: PixelMapFormat--><!--Device-DecodingOptionsForPicture-desiredPixelFormat?: PixelMapFormat-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.ImageSource
 
 ## desiredSizeForMainPixelMap
@@ -61,5 +67,7 @@ Desired size of the main pixel map. The value (0, 0) indicates that the pixels a
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DecodingOptionsForPicture-desiredSizeForMainPixelMap?: Size--><!--Device-DecodingOptionsForPicture-desiredSizeForMainPixelMap?: Size-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.ImageSource

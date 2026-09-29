@@ -8,6 +8,8 @@ Defines the underline color width property.
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface UnderlineColor--><!--Device-unnamed-declare interface UnderlineColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## disable
@@ -16,7 +18,7 @@ Defines the underline color width property.
 disable?: ResourceColor | undefined
 ```
 
-Underline color in the disabled state. If no value is specified or if the value specified is **undefined**, **null**, or invalid, the default value is used.
+Underline color in the disabled state. When not set, undefined, null, or an invalid value is used, the default value is restored, which is the underline color configured by the theme.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; undefined
 
@@ -25,6 +27,8 @@ Underline color in the disabled state. If no value is specified or if the value 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UnderlineColor-disable?: ResourceColor | undefined--><!--Device-UnderlineColor-disable?: ResourceColor | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +38,7 @@ Underline color in the disabled state. If no value is specified or if the value 
 error?: ResourceColor | undefined
 ```
 
-Underline color when an error occurs. If no value is specified or if the value specified is **undefined**, **null**, or invalid, the default value is used. This option changes the color used in the **showCounter** attribute when the maximum number of characters is reached.
+Underline color in the error state. When not set, undefined, null, or an invalid value is used, the default value is restored, which is the underline color configured by the theme. This option modifies the color when the maximum number of characters is reached in the showCounter attribute.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; undefined
 
@@ -43,6 +47,8 @@ Underline color when an error occurs. If no value is specified or if the value s
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UnderlineColor-error?: ResourceColor | undefined--><!--Device-UnderlineColor-error?: ResourceColor | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,7 @@ Underline color when an error occurs. If no value is specified or if the value s
 normal?: ResourceColor | undefined
 ```
 
-Underline color in the normal state. If no value is specified or if the value specified is **undefined**, **null**, or invalid, the default value is used.
+Underline color in the non-special state. When not set, undefined, null, or an invalid value is used, the default value is restored, which is the underline color configured by the theme.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; undefined
 
@@ -61,6 +67,8 @@ Underline color in the normal state. If no value is specified or if the value sp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UnderlineColor-normal?: ResourceColor | undefined--><!--Device-UnderlineColor-normal?: ResourceColor | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +78,7 @@ Underline color in the normal state. If no value is specified or if the value sp
 typing?: ResourceColor | undefined
 ```
 
-Underline color in the typing state. If no value is specified or if the value specified is **undefined**, **null**, or invalid, the default value is used.
+Underline color during typing. When not set, undefined, null, or an invalid value is used, the default value is restored, which is the underline color configured by the theme.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; undefined
 
@@ -79,5 +87,7 @@ Underline color in the typing state. If no value is specified or if the value sp
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-UnderlineColor-typing?: ResourceColor | undefined--><!--Device-UnderlineColor-typing?: ResourceColor | undefined-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

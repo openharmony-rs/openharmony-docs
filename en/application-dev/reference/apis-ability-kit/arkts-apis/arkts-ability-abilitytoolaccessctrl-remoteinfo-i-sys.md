@@ -8,6 +8,8 @@ Remote device information.
 
 **Since:** 26.0.1
 
+<!--Device-abilityToolAccessCtrl-interface RemoteInfo--><!--Device-abilityToolAccessCtrl-interface RemoteInfo-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Domain ID.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteInfo-domainId: string--><!--Device-RemoteInfo-domainId: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -48,6 +52,8 @@ interaction params in remote control.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteInfo-remoteControlParams?: RemoteControlParams--><!--Device-RemoteInfo-remoteControlParams?: RemoteControlParams-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -67,6 +73,8 @@ Remote device ID.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
+<!--Device-RemoteInfo-remoteId: string--><!--Device-RemoteInfo-remoteId: string-End-->
+
 **System capability:** SystemCapability.Security.Asset
 
 **System API:** This is a system API.
@@ -84,6 +92,8 @@ Device role.
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-RemoteInfo-role: Role--><!--Device-RemoteInfo-role: Role-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

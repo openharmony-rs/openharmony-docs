@@ -10,6 +10,8 @@ Describes the video configuration information. It inherits from [Profile](arkts-
 
 **Since:** 10
 
+<!--Device-camera-interface VideoProfile extends Profile--><!--Device-camera-interface VideoProfile extends Profile-End-->
+
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Describes the frame rate range. Unit: FPS
 
 **Since:** 10
 
-**Atomic service API:** This API can be used in atomic services since API version 19.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+
+<!--Device-VideoProfile-readonly frameRateRange: FrameRateRange--><!--Device-VideoProfile-readonly frameRateRange: FrameRateRange-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core

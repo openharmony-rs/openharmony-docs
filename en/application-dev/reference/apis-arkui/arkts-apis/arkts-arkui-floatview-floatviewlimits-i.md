@@ -8,6 +8,8 @@ Provides the limits of the float view.
 
 **Since:** 26.0.0
 
+<!--Device-floatView-interface FloatViewLimits--><!--Device-floatView-interface FloatViewLimits-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -30,6 +32,8 @@ Maximum size of the float view.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewLimits-maxSize: window.Size--><!--Device-FloatViewLimits-maxSize: window.Size-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## minSize
@@ -46,6 +50,8 @@ Minimum size of the float view.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-FloatViewLimits-minSize: window.Size--><!--Device-FloatViewLimits-minSize: window.Size-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## ratioLimits
@@ -61,5 +67,7 @@ Aspect ratio range of the float view.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FloatViewLimits-ratioLimits: Array<RatioLimit>--><!--Device-FloatViewLimits-ratioLimits: Array<RatioLimit>-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

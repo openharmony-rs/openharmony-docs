@@ -8,6 +8,8 @@ Provides the information about the component corresponding to the gesture recogn
 
 **Since:** 12
 
+<!--Device-unnamed-declare class EventTargetInfo--><!--Device-unnamed-declare class EventTargetInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## getId
@@ -23,6 +25,8 @@ Obtains the ID of this component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-EventTargetInfo-getId(): string--><!--Device-EventTargetInfo-getId(): string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ Returns the unique ID of the current component.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-EventTargetInfo-getUniqueId(): int--><!--Device-EventTargetInfo-getUniqueId(): int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

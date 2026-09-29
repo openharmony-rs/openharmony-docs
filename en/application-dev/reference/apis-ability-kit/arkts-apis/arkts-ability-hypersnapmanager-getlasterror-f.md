@@ -18,6 +18,8 @@ Gets the last Hyper Snap error information of the current application for a spec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-hyperSnapManager-function getLastError(errType: HyperSnapErrorType): Promise<HyperSnapErrorInfo>--><!--Device-hyperSnapManager-function getLastError(errType: HyperSnapErrorType): Promise<HyperSnapErrorInfo>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Parameters:**

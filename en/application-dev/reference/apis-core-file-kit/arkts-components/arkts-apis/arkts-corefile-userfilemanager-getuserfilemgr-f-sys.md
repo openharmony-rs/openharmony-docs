@@ -22,6 +22,8 @@ Obtains a **UserFileManager** instance. This instance can be used to access and 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-userFileManager-function getUserFileMgr(context: Context): UserFileManager--><!--Device-userFileManager-function getUserFileMgr(context: Context): UserFileManager-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.

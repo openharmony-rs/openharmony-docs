@@ -20,6 +20,8 @@ Register a CLI hook for intercepting tool and command execution. Only one CLI ho
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-cliManager-function registerCliHook(hook: CliHook): Promise<void>--><!--Device-cliManager-function registerCliHook(hook: CliHook): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

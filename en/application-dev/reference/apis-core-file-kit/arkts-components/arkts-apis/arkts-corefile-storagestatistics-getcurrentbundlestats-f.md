@@ -16,6 +16,8 @@ Obtains the storage space (in bytes) of this application. This API uses an async
 
 **Since:** 9
 
+<!--Device-storageStatistics-function getCurrentBundleStats(callback: AsyncCallback<BundleStats>): void--><!--Device-storageStatistics-function getCurrentBundleStats(callback: AsyncCallback<BundleStats>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 
 **Parameters:**
@@ -58,6 +60,8 @@ function getCurrentBundleStats(): Promise<BundleStats>
 Obtains the storage space (in bytes) of this application. This API uses a promise to return the result.
 
 **Since:** 9
+
+<!--Device-storageStatistics-function getCurrentBundleStats(): Promise<BundleStats>--><!--Device-storageStatistics-function getCurrentBundleStats(): Promise<BundleStats>-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
 

@@ -8,6 +8,8 @@ Defines a struct for statistics of device-cloud upload and download tasks of a d
 
 **Since:** 10
 
+<!--Device-relationalStore-interface TableDetails--><!--Device-relationalStore-interface TableDetails-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Describes the `Statistic` details of the download process.
 
 **Since:** 10
 
+<!--Device-TableDetails-download: Statistic--><!--Device-TableDetails-download: Statistic-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 ## upload
@@ -41,5 +45,7 @@ Describes the `Statistic` details of the upload process.
 **Type:** [Statistic](arkts-arkdata-relationalstore-statistic-i.md)
 
 **Since:** 10
+
+<!--Device-TableDetails-upload: Statistic--><!--Device-TableDetails-upload: Statistic-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

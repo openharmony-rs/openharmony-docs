@@ -4,13 +4,15 @@
 declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)，还支持以下事件：
 
-**继承/实现关系：** CalendarPickerAttribute extends CommonMethod&lt;CalendarPickerAttribute&gt;
+**继承/实现关系：** CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
 
 **起始版本：** 10
+
+<!--Device-unnamed-declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>--><!--Device-unnamed-declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarPickerAttribute-edgeAlign(alignType: CalendarAlign, offset?: Offset): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-edgeAlign(alignType: CalendarAlign, offset?: Offset): CalendarPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,6 +57,8 @@ edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CalendarPickerAttribute-edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset): CalendarPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -76,6 +82,8 @@ markToday(enabled: boolean)
 
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
+<!--Device-CalendarPickerAttribute-markToday(enabled: boolean): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-markToday(enabled: boolean): CalendarPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -97,6 +105,8 @@ onChange(callback: Callback<Date>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarPickerAttribute-onChange(callback: Callback<Date>): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-onChange(callback: Callback<Date>): CalendarPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +136,8 @@ onChange(callback: Optional<Callback<Date>>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CalendarPickerAttribute-onChange(callback: Optional<Callback<Date>>): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-onChange(callback: Optional<Callback<Date>>): CalendarPickerAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -147,6 +159,8 @@ textStyle(value: PickerTextStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarPickerAttribute-textStyle(value: PickerTextStyle): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-textStyle(value: PickerTextStyle): CalendarPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +185,8 @@ textStyle(style: Optional<PickerTextStyle>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarPickerAttribute-textStyle(style: Optional<PickerTextStyle>): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-textStyle(style: Optional<PickerTextStyle>): CalendarPickerAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

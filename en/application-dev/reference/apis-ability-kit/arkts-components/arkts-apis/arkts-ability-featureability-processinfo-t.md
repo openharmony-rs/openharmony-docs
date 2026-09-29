@@ -10,6 +10,8 @@ Defines a ProcessInfo object.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-export type ProcessInfo = _ProcessInfo--><!--Device-featureAbility-export type ProcessInfo = _ProcessInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Type:** _ProcessInfo

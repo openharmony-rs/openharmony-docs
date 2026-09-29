@@ -10,6 +10,8 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **Since:** 12
 
+<!--Device-unnamed-declare interface ButtonConfiguration extends CommonConfiguration<ButtonConfiguration>--><!--Device-unnamed-declare interface ButtonConfiguration extends CommonConfiguration<ButtonConfiguration>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## triggerClick
@@ -25,6 +27,8 @@ Click event of the new component constructed using the builder.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ButtonConfiguration-triggerClick: ButtonTriggerClickCallback--><!--Device-ButtonConfiguration-triggerClick: ButtonTriggerClickCallback-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,6 +49,8 @@ Note: If the text is longer than the width of the button, it is truncated.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ButtonConfiguration-label: string--><!--Device-ButtonConfiguration-label: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,5 +77,7 @@ This setting applies to the original button size, not to any new component const
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ButtonConfiguration-pressed: boolean--><!--Device-ButtonConfiguration-pressed: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

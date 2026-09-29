@@ -20,6 +20,8 @@ Obtains the sandbox path of the pre-authorized **Download** directory.
 - API version 12 and later: N/A
 - API version 11: ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY
 
+<!--Device-Environment-function getUserDownloadDir(): string--><!--Device-Environment-function getUserDownloadDir(): string-End-->
+
 **System capability:** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **Return value:**

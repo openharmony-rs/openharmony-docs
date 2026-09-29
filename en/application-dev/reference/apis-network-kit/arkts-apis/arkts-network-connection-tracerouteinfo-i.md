@@ -8,6 +8,8 @@ Defines the route tracing information.
 
 **Since:** 26.0.0
 
+<!--Device-connection-export interface TraceRouteInfo--><!--Device-connection-export interface TraceRouteInfo-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## Modules to Import
@@ -30,6 +32,8 @@ IP address to jump to.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TraceRouteInfo-address: string--><!--Device-TraceRouteInfo-address: string-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## jumpNo
@@ -46,6 +50,8 @@ Jump number.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-TraceRouteInfo-jumpNo: int--><!--Device-TraceRouteInfo-jumpNo: int-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 ## rtt
@@ -61,5 +67,7 @@ Round-trip time (RTT), in milliseconds. Five probe packets are sent for each jum
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TraceRouteInfo-rtt: int[]--><!--Device-TraceRouteInfo-rtt: int[]-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

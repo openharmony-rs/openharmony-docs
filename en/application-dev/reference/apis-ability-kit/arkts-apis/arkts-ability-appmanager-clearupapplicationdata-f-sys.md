@@ -18,6 +18,8 @@ Clears application data by bundle name. This API uses a promise to return the re
 
 **Required permissions:** ohos.permission.CLEAN_APPLICATION_DATA
 
+<!--Device-appManager-function clearUpApplicationData(bundleName: string): Promise<void>--><!--Device-appManager-function clearUpApplicationData(bundleName: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -78,6 +80,8 @@ Clears application data by bundle name. This API uses an asynchronous callback t
 **Since:** 9
 
 **Required permissions:** ohos.permission.CLEAN_APPLICATION_DATA
+
+<!--Device-appManager-function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void>): void--><!--Device-appManager-function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

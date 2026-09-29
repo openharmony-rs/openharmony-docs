@@ -18,6 +18,8 @@ Queries the alternate icon information configured in the alternateIcons in the a
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function getAlternateIcons(): Promise<Array<AlternateIconInfo>>--><!--Device-bundleManager-function getAlternateIcons(): Promise<Array<AlternateIconInfo>>-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **Return value:**

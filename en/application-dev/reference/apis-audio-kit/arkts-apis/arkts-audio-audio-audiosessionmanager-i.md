@@ -16,6 +16,8 @@ Before calling any API in AudioSessionManager, you must use [getSessionManager](
 
 **Since:** 12
 
+<!--Device-audio-interface AudioSessionManager--><!--Device-audio-interface AudioSessionManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 ## Modules to Import
@@ -34,7 +36,9 @@ Activates an audio session. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AudioSessionManager-activateAudioSession(strategy: AudioSessionStrategy): Promise<void>--><!--Device-AudioSessionManager-activateAudioSession(strategy: AudioSessionStrategy): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -84,6 +88,8 @@ Clears the media input device set by calling [selectMediaInputDevice](#selectmed
 
 **Since:** 21
 
+<!--Device-AudioSessionManager-clearSelectedMediaInputDevice(): Promise<void>--><!--Device-AudioSessionManager-clearSelectedMediaInputDevice(): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Return value:**
@@ -120,7 +126,9 @@ Deactivates this audio session. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AudioSessionManager-deactivateAudioSession(): Promise<void>--><!--Device-AudioSessionManager-deactivateAudioSession(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -168,6 +176,8 @@ For details, see [Enabling Mute Suggestion Notifications for Mixed Playback](../
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioSessionManager-enableMuteSuggestionWhenMixWithOthers(enable: boolean): void--><!--Device-AudioSessionManager-enableMuteSuggestionWhenMixWithOthers(enable: boolean): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -198,6 +208,8 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 Obtains the available audio devices.
 
 **Since:** 21
+
+<!--Device-AudioSessionManager-getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors--><!--Device-AudioSessionManager-getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -244,6 +256,8 @@ Obtains the preferred device category for recording with Bluetooth or NearLink, 
 
 **Since:** 21
 
+<!--Device-AudioSessionManager-getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredRecordCategory--><!--Device-AudioSessionManager-getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredRecordCategory-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Return value:**
@@ -282,6 +296,8 @@ Obtains the default audio output device set by calling [setDefaultOutputDevice](
 
 **Since:** 20
 
+<!--Device-AudioSessionManager-getDefaultOutputDevice(): DeviceType--><!--Device-AudioSessionManager-getDefaultOutputDevice(): DeviceType-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Return value:**
@@ -312,6 +328,8 @@ getSelectedMediaInputDevice(): AudioDeviceDescriptor
 Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice). If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
 
 **Since:** 21
+
+<!--Device-AudioSessionManager-getSelectedMediaInputDevice(): AudioDeviceDescriptor--><!--Device-AudioSessionManager-getSelectedMediaInputDevice(): AudioDeviceDescriptor-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -351,7 +369,9 @@ Checks whether this audio session is activated.
 
 **Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+
+<!--Device-AudioSessionManager-isAudioSessionActivated(): boolean--><!--Device-AudioSessionManager-isAudioSessionActivated(): boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -379,6 +399,8 @@ Check whether any other application is currently playing audio of the four media
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioSessionManager-isOtherMediaPlaying(): boolean--><!--Device-AudioSessionManager-isOtherMediaPlaying(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Return value:**
@@ -404,6 +426,8 @@ Unsubscribes from the audio session deactivation event. This API uses an asynchr
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-AudioSessionManager-off(type: 'audioSessionDeactivated', callback?: Callback<AudioSessionDeactivatedEvent>): void--><!--Device-AudioSessionManager-off(type: 'audioSessionDeactivated', callback?: Callback<AudioSessionDeactivatedEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -447,6 +471,8 @@ Unsubscribes from the audio session state change event. This API uses an asynchr
 
 **Since:** 20
 
+<!--Device-AudioSessionManager-off(type: 'audioSessionStateChanged', callback?: Callback<AudioSessionStateChangedEvent>): void--><!--Device-AudioSessionManager-off(type: 'audioSessionStateChanged', callback?: Callback<AudioSessionStateChangedEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -489,6 +515,8 @@ Unsubscribes from the current output device change event. This API uses an async
 
 **Since:** 20
 
+<!--Device-AudioSessionManager-off(type: 'currentOutputDeviceChanged', callback?: Callback<CurrentOutputDeviceChangedEvent>): void--><!--Device-AudioSessionManager-off(type: 'currentOutputDeviceChanged', callback?: Callback<CurrentOutputDeviceChangedEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -530,6 +558,8 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): voi
 Unsubscribes from the event indicating that the connection status of an available audio device is changed.
 
 **Since:** 21
+
+<!--Device-AudioSessionManager-off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): void--><!--Device-AudioSessionManager-off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -575,6 +605,8 @@ Unsubscribes from the current input device change event.
 
 **Since:** 21
 
+<!--Device-AudioSessionManager-off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceChangedEvent>): void--><!--Device-AudioSessionManager-off(type: 'currentInputDeviceChanged', callback?: Callback<CurrentInputDeviceChangedEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -618,6 +650,8 @@ Subscribes to the audio session deactivation event, which is triggered when an a
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-AudioSessionManager-on(type: 'audioSessionDeactivated', callback: Callback<AudioSessionDeactivatedEvent>): void--><!--Device-AudioSessionManager-on(type: 'audioSessionDeactivated', callback: Callback<AudioSessionDeactivatedEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -653,6 +687,8 @@ Subscribes to the audio session state change event, which is triggered when the 
 
 **Since:** 20
 
+<!--Device-AudioSessionManager-on(type: 'audioSessionStateChanged', callback: Callback<AudioSessionStateChangedEvent>): void--><!--Device-AudioSessionManager-on(type: 'audioSessionStateChanged', callback: Callback<AudioSessionStateChangedEvent>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -687,6 +723,8 @@ on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceCha
 Subscribes to the current output device change event, which is triggered when the current output device is changed. This API uses an asynchronous callback to return the result.
 
 **Since:** 20
+
+<!--Device-AudioSessionManager-on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceChangedEvent>): void--><!--Device-AudioSessionManager-on(type: 'currentOutputDeviceChanged', callback: Callback<CurrentOutputDeviceChangedEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -727,6 +765,8 @@ Subscribes to the event indicating that the connection status of an available au
 
 **Since:** 21
 
+<!--Device-AudioSessionManager-on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<DeviceChangeAction>): void--><!--Device-AudioSessionManager-on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<DeviceChangeAction>): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -764,6 +804,8 @@ on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChang
 Subscribes to the current input device change event, which is triggered when the current input device is changed.
 
 **Since:** 21
+
+<!--Device-AudioSessionManager-on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChangedEvent>): void--><!--Device-AudioSessionManager-on(type: 'currentInputDeviceChanged', callback: Callback<CurrentInputDeviceChangedEvent>): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -812,6 +854,8 @@ Selects a media input device. This API uses a promise to return the result.
 > - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged)event to find out the actual input device being used.
 
 **Since:** 21
+
+<!--Device-AudioSessionManager-selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>--><!--Device-AudioSessionManager-selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -874,6 +918,8 @@ Sets audio session behavior parameters. (Multiple flags can be combined.)
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioSessionManager-setAudioSessionBehavior(behavior: int): void--><!--Device-AudioSessionManager-setAudioSessionBehavior(behavior: int): void-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
 **Parameters:**
@@ -905,6 +951,8 @@ setAudioSessionScene(scene: AudioSessionScene): void
 Sets an audio session scene.
 
 **Since:** 20
+
+<!--Device-AudioSessionManager-setAudioSessionScene(scene: AudioSessionScene): void--><!--Device-AudioSessionManager-setAudioSessionScene(scene: AudioSessionScene): void-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -945,6 +993,8 @@ Sets the preferred device category for recording with Bluetooth or NearLink. Thi
 > - Applications can listen for the [currentInputDeviceChanged](#oncurrentinputdevicechanged)event to find out the actual input device being used.
 
 **Since:** 21
+
+<!--Device-AudioSessionManager-setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPreferredRecordCategory): Promise<void>--><!--Device-AudioSessionManager-setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPreferredRecordCategory): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
@@ -991,6 +1041,8 @@ Set mute hint for all capturer streams in the current audio session. It dose not
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionManager-setCapturerMuteHint(mute: boolean): Promise<void>--><!--Device-AudioSessionManager-setCapturerMuteHint(mute: boolean): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1040,6 +1092,8 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 **Since:** 20
 
+<!--Device-AudioSessionManager-setDefaultOutputDevice(deviceType: DeviceType): Promise<void>--><!--Device-AudioSessionManager-setDefaultOutputDevice(deviceType: DeviceType): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.Device
 
 **Parameters:**
@@ -1085,6 +1139,8 @@ Set the audio output device to the built-in speaker, when other audio peripheral
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSessionManager-setMediaOutputDevice(deviceType: DeviceType): Promise<void>--><!--Device-AudioSessionManager-setMediaOutputDevice(deviceType: DeviceType): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Device
 

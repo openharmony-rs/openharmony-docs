@@ -4,6 +4,8 @@ The **Zip** module provides APIs for file compression and decompression.
 
 **Since:** 7
 
+<!--Device-unnamed-declare namespace zlib--><!--Device-unnamed-declare namespace zlib-End-->
+
 **System capability:** SystemCapability.BundleManager.Zlib
 
 ## Modules to Import
@@ -50,6 +52,13 @@ import { zlib } from '@kit.BasicServicesKit';
 | [ZipOutputInfo](arkts-basicservices-zlib-zipoutputinfo-i.md) | Compression and decompression return value information. |
 | [ZStream](arkts-basicservices-zlib-zstream-i.md) | Process all the information required for compression and decompression. |
 
+### Types
+
+| Name | Description |
+| --- | --- |
+| [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | A callback function for reading input data provided by a user. When the decompression process requires more input data, zlib will call this function. This function should read data from the data source to the buffer. |
+| [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | The output data provided by the user is written into the callback function. Whenever decompressed data is ready for output, zlib calls this function to write the data from the buffer to the target location. |
+
 ### Enums
 
 | Name | Description |
@@ -64,10 +73,3 @@ import { zlib } from '@kit.BasicServicesKit';
 | [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) |
 | [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md) | Defines **PathSeparatorStrategy**, a property of [Options](arkts-basicservices-zlib-options-i.md), used to specify the separator strategy for the file path in the compressed package specified for decompression. |
 | [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md) | Return codes for the compression/decompression functions. |
-
-### Types
-
-| Name | Description |
-| --- | --- |
-| [InflateBackInputCallback](arkts-basicservices-zlib-inflatebackinputcallback-t.md) | A callback function for reading input data provided by a user. When the decompression process requires more input data, zlib will call this function. This function should read data from the data source to the buffer. |
-| [InflateBackOutputCallback](arkts-basicservices-zlib-inflatebackoutputcallback-t.md) | The output data provided by the user is written into the callback function. Whenever decompressed data is ready for output, zlib calls this function to write the data from the buffer to the target location. |

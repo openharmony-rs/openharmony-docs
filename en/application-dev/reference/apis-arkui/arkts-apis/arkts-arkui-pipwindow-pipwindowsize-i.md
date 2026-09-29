@@ -8,6 +8,8 @@ Describes the size of a PiP window.
 
 **Since:** 15
 
+<!--Device-PiPWindow-interface PiPWindowSize--><!--Device-PiPWindow-interface PiPWindowSize-End-->
+
 **System capability:** SystemCapability.Window.SessionManager
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Window height, in px. The value must be a positive integer and cannot be greater
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-PiPWindowSize-height: int--><!--Device-PiPWindowSize-height: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -44,7 +48,9 @@ Scale factor of the window, representing the display size relative to the width 
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-PiPWindowSize-scale: double--><!--Device-PiPWindowSize-scale: double-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -60,6 +66,8 @@ Window width, in px. The value must be a positive integer and cannot be greater 
 
 **Since:** 15
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+
+<!--Device-PiPWindowSize-width: int--><!--Device-PiPWindowSize-width: int-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

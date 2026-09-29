@@ -12,6 +12,8 @@ export interface SuffixImageIconOptions extends IconOptions
 
 **起始版本：** 14
 
+<!--Device-unnamed-export interface SuffixImageIconOptions extends IconOptions--><!--Device-unnamed-export interface SuffixImageIconOptions extends IconOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ action?: VoidCallback
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-SuffixImageIconOptions-action?: VoidCallback--><!--Device-SuffixImageIconOptions-action?: VoidCallback-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityDescription
@@ -57,6 +61,8 @@ accessibilityDescription?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-SuffixImageIconOptions-accessibilityDescription?: ResourceStr--><!--Device-SuffixImageIconOptions-accessibilityDescription?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,6 +98,8 @@ accessibilityLevel?: string
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
+<!--Device-SuffixImageIconOptions-accessibilityLevel?: string--><!--Device-SuffixImageIconOptions-accessibilityLevel?: string-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## accessibilityText
@@ -113,5 +121,7 @@ accessibilityText?: ResourceStr
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-SuffixImageIconOptions-accessibilityText?: ResourceStr--><!--Device-SuffixImageIconOptions-accessibilityText?: ResourceStr-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -10,6 +10,8 @@ Manager pan host profile.
 
 **Since:** 10
 
+<!--Device-pan-interface PanProfile extends BaseProfile--><!--Device-pan-interface PanProfile extends BaseProfile-End-->
+
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Determine whether the local device supports PAN.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanProfile-isPanSupported(): boolean--><!--Device-PanProfile-isPanSupported(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -57,6 +61,8 @@ Obtains the tethering enable or disable.
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PanProfile-isTetheringOn(): boolean--><!--Device-PanProfile-isTetheringOn(): boolean-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

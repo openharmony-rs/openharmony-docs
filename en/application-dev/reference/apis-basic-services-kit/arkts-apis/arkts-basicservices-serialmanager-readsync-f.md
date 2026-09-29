@@ -21,6 +21,8 @@ Reads data from the serial port device synchronously. The read data is stored in
 
 **Since:** 19
 
+<!--Device-serialManager-function readSync(portId: int, buffer: Uint8Array, timeout?: int): int--><!--Device-serialManager-function readSync(portId: int, buffer: Uint8Array, timeout?: int): int-End-->
+
 **System capability:** SystemCapability.USB.USBManager.Serial
 
 **Parameters:**

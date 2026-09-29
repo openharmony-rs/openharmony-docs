@@ -10,6 +10,8 @@ Defines the level-2 module DataAbilityHelper.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-ability-export type DataAbilityHelper = _DataAbilityHelper--><!--Device-ability-export type DataAbilityHelper = _DataAbilityHelper-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Type:** _DataAbilityHelper

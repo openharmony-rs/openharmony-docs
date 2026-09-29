@@ -18,6 +18,8 @@ Specifically, create a **HiTraceId**, use the **chainId** and **spanId** in the 
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function createSpan(): HiTraceId--><!--Device-hiTraceChain-function createSpan(): HiTraceId-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Return value:**

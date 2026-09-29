@@ -14,4 +14,6 @@ Define a network address.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-socket-export import NetAddress = connection.NetAddress--><!--Device-socket-export import NetAddress = connection.NetAddress-End-->
+
 **System capability:** SystemCapability.Communication.NetStack

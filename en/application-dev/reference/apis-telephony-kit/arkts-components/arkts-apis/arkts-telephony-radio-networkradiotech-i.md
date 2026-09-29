@@ -8,6 +8,8 @@ Defines the radio access technology for the packet switched (PS) or circuit swit
 
 **Since:** 11
 
+<!--Device-radio-export interface NetworkRadioTech--><!--Device-radio-export interface NetworkRadioTech-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## Modules to Import
@@ -28,6 +30,8 @@ CS.
 
 **Since:** 11
 
+<!--Device-NetworkRadioTech-csRadioTech: RadioTechnology--><!--Device-NetworkRadioTech-csRadioTech: RadioTechnology-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## psRadioTech
@@ -41,5 +45,7 @@ PS.
 **Type:** [RadioTechnology](arkts-telephony-radio-radiotechnology-e.md)
 
 **Since:** 11
+
+<!--Device-NetworkRadioTech-psRadioTech: RadioTechnology--><!--Device-NetworkRadioTech-psRadioTech: RadioTechnology-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

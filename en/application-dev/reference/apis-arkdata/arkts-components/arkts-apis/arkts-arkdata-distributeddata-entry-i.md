@@ -12,6 +12,8 @@ Defines the KV pairs stored in the KV store.
 
 **Substitutes:** Entry
 
+<!--Device-distributedData-interface Entry--><!--Device-distributedData-interface Entry-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## Modules to Import
@@ -35,6 +37,8 @@ Key of the KV pair stored in the KV store.
 
 **Substitutes:** key
 
+<!--Device-Entry-key: string--><!--Device-Entry-key: string-End-->
+
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core
 
 ## value
@@ -52,5 +56,7 @@ Value of the KV pair stored in the KV store.
 **Deprecated since:** 9
 
 **Substitutes:** value
+
+<!--Device-Entry-value: Value--><!--Device-Entry-value: Value-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.Core

@@ -8,6 +8,8 @@ Provides APIs for setting the height (**height**), background color (**backgroun
 
 **Since:** 13
 
+<!--Device-unnamed-export declare class ToolBarModifier--><!--Device-unnamed-export declare class ToolBarModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -29,6 +31,8 @@ Sets the background color of the toolbar. By overriding this API, you can implem
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-ToolBarModifier-backgroundColor(backgroundColor: ResourceColor): ToolBarModifier--><!--Device-ToolBarModifier-backgroundColor(backgroundColor: ResourceColor): ToolBarModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +62,8 @@ Sets the height of the toolbar. By overriding this API, you can implement custom
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-ToolBarModifier-height(height: LengthMetrics): ToolBarModifier--><!--Device-ToolBarModifier-height(height: LengthMetrics): ToolBarModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -86,6 +92,8 @@ Sets the left and right padding of the toolbar. By overriding this API, you can 
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
 
+<!--Device-ToolBarModifier-padding(padding: LengthMetrics): ToolBarModifier--><!--Device-ToolBarModifier-padding(padding: LengthMetrics): ToolBarModifier-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -113,6 +121,8 @@ Sets whether to display the pressed state effect.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 13.
+
+<!--Device-ToolBarModifier-stateEffect(stateEffect: boolean): ToolBarModifier--><!--Device-ToolBarModifier-stateEffect(stateEffect: boolean): ToolBarModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

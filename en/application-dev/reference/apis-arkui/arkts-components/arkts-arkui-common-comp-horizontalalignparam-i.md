@@ -10,6 +10,8 @@ Defines the horizontal align rule of relative container.
 
 **Since:** 23
 
+<!--Device-unnamed-declare interface HorizontalAlignParam--><!--Device-unnamed-declare interface HorizontalAlignParam-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## align
@@ -30,6 +32,8 @@ Anonymous Object Rectification
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
+<!--Device-HorizontalAlignParam-align: HorizontalAlign--><!--Device-HorizontalAlignParam-align: HorizontalAlign-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## anchor
@@ -49,5 +53,7 @@ Anonymous Object Rectification
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-HorizontalAlignParam-anchor: string--><!--Device-HorizontalAlignParam-anchor: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

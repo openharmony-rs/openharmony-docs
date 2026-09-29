@@ -14,6 +14,8 @@ This API inherits from [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chip
 
 **Decorator:** @ObservedV2
 
+<!--Device-unnamed-export declare class ChipV2SuffixSymbolIcon extends ChipV2SymbolIcon--><!--Device-unnamed-export declare class ChipV2SuffixSymbolIcon extends ChipV2SymbolIcon-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -44,6 +46,8 @@ When the value is **undefined**, the default value is used.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SuffixSymbolIcon-public action?: VoidCallback--><!--Device-ChipV2SuffixSymbolIcon-public action?: VoidCallback-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -59,6 +63,8 @@ A constructor used to create a **ChipV2SuffixSymbolIcon** object.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixSymbolIcon-constructor(config: ChipV2SuffixSymbolIconConfig)--><!--Device-ChipV2SuffixSymbolIcon-constructor(config: ChipV2SuffixSymbolIconConfig)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +96,8 @@ Default value: **undefined**, meaning no content is read aloud.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-ChipV2SuffixSymbolIcon-public activatedAccessibility?: ChipV2Accessibility--><!--Device-ChipV2SuffixSymbolIcon-public activatedAccessibility?: ChipV2Accessibility-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## normalAccessibility
@@ -113,5 +121,7 @@ Default value: **undefined**, meaning no content is read aloud.
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ChipV2SuffixSymbolIcon-public normalAccessibility?: ChipV2Accessibility--><!--Device-ChipV2SuffixSymbolIcon-public normalAccessibility?: ChipV2Accessibility-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -20,6 +20,8 @@ Get this month traffic data of the cellular network.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-statistics-function getMonthTrafficStats(simId: int): Promise<long>--><!--Device-statistics-function getMonthTrafficStats(simId: int): Promise<long>-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.

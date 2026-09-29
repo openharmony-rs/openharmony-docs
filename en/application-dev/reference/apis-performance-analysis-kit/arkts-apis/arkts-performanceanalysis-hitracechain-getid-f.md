@@ -18,6 +18,8 @@ Obtains the HiTrace ID in the TLS of the current thread.
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function getId(): HiTraceId--><!--Device-hiTraceChain-function getId(): HiTraceId-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Return value:**

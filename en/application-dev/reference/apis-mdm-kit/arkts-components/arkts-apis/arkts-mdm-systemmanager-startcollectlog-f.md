@@ -28,6 +28,8 @@ separately and do not affect each other. Only one MDM app can start a log collec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function startCollectLog(admin: Want): Promise<void>--><!--Device-systemManager-function startCollectLog(admin: Want): Promise<void>-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**

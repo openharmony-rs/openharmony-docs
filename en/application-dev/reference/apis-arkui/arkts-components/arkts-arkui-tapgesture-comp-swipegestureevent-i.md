@@ -10,6 +10,8 @@ Inherits from [BaseGestureEvent](arkts-arkui-tapgesture-comp-basegestureevent-i.
 
 **Since:** 11
 
+<!--Device-unnamed-interface SwipeGestureEvent extends BaseGestureEvent--><!--Device-unnamed-interface SwipeGestureEvent extends BaseGestureEvent-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## angle
@@ -32,6 +34,8 @@ With the positive horizontal direction as the reference, when the sliding direct
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-SwipeGestureEvent-angle: number--><!--Device-SwipeGestureEvent-angle: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## speed
@@ -49,5 +53,7 @@ Swipe gesture speed, defined as the average swipe speed of all fingers relative 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-SwipeGestureEvent-speed: number--><!--Device-SwipeGestureEvent-speed: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

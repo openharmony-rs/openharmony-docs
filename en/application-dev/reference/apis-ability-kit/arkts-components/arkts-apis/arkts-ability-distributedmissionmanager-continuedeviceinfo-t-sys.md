@@ -12,6 +12,8 @@ Parameters corresponding to continue mission.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-distributedMissionManager-export type ContinueDeviceInfo = _ContinueDeviceInfo--><!--Device-distributedMissionManager-export type ContinueDeviceInfo = _ContinueDeviceInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.

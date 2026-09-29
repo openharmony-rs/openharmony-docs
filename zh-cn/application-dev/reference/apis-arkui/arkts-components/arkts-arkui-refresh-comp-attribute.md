@@ -4,13 +4,15 @@
 declare class RefreshAttribute extends CommonMethod<RefreshAttribute>
 ```
 
-除支持通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp.md)外，还支持以下属性：
 
-除支持通用事件外，还支持以下事件：
+除支持[通用事件](arkts-arkui-common-comp.md)外，还支持以下事件：
 
-**继承/实现关系：** RefreshAttribute extends CommonMethod&lt;RefreshAttribute&gt;
+**继承/实现关系：** RefreshAttribute extends CommonMethod<RefreshAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class RefreshAttribute extends CommonMethod<RefreshAttribute>--><!--Device-unnamed-declare class RefreshAttribute extends CommonMethod<RefreshAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ maxPullDownDistance(distance: Optional<number>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshAttribute-maxPullDownDistance(distance: Optional<number>): RefreshAttribute--><!--Device-RefreshAttribute-maxPullDownDistance(distance: Optional<number>): RefreshAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +58,8 @@ maxPullDownDistance(distance: number | Resource | undefined)
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshAttribute-maxPullDownDistance(distance: number | Resource | undefined): RefreshAttribute--><!--Device-RefreshAttribute-maxPullDownDistance(distance: number | Resource | undefined): RefreshAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -80,6 +86,8 @@ onOffsetChange(callback: Callback<number>)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshAttribute-onOffsetChange(callback: Callback<number>): RefreshAttribute--><!--Device-RefreshAttribute-onOffsetChange(callback: Callback<number>): RefreshAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -101,6 +109,8 @@ onRefreshing(callback: () => void)
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshAttribute-onRefreshing(callback: () => void): RefreshAttribute--><!--Device-RefreshAttribute-onRefreshing(callback: () => void): RefreshAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,6 +134,8 @@ onStateChange(callback: (state: RefreshStatus) => void)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshAttribute-onStateChange(callback: (state: RefreshStatus) => void): RefreshAttribute--><!--Device-RefreshAttribute-onStateChange(callback: (state: RefreshStatus) => void): RefreshAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -145,6 +157,8 @@ pullDownRatio(ratio: Optional<number>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshAttribute-pullDownRatio(ratio: Optional<number>): RefreshAttribute--><!--Device-RefreshAttribute-pullDownRatio(ratio: Optional<number>): RefreshAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +182,8 @@ pullToRefresh(value: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshAttribute-pullToRefresh(value: boolean): RefreshAttribute--><!--Device-RefreshAttribute-pullToRefresh(value: boolean): RefreshAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -190,6 +206,8 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
+<!--Device-RefreshAttribute-pullUpToCancelRefresh(enabled: boolean | undefined): RefreshAttribute--><!--Device-RefreshAttribute-pullUpToCancelRefresh(enabled: boolean | undefined): RefreshAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -211,6 +229,8 @@ refreshOffset(value: number)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshAttribute-refreshOffset(value: number): RefreshAttribute--><!--Device-RefreshAttribute-refreshOffset(value: number): RefreshAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,6 +257,8 @@ refreshOffset(value: number | Resource)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RefreshAttribute-refreshOffset(value: number | Resource): RefreshAttribute--><!--Device-RefreshAttribute-refreshOffset(value: number | Resource): RefreshAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

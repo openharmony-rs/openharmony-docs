@@ -8,6 +8,8 @@ Provides enhanced audio device management capabilities.
 
 **Since:** 26.0.0
 
+<!--Device-audio-interface AudioDeviceEnhanceManager--><!--Device-audio-interface AudioDeviceEnhanceManager-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
 ## Modules to Import
@@ -28,6 +30,8 @@ Queries whether the system supports the enhanced routing functions provided by t
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioDeviceEnhanceManager-isEnhancedRoutingSupported(): boolean--><!--Device-AudioDeviceEnhanceManager-isEnhancedRoutingSupported(): boolean-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
 **Return value:**
@@ -47,6 +51,8 @@ Selects the input device for your application. This setting applies to all recor
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDeviceEnhanceManager-selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>--><!--Device-AudioDeviceEnhanceManager-selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
@@ -80,6 +86,8 @@ Selects the input device for the target AudioCapturer. Your application must ens
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDeviceEnhanceManager-selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDeviceDescriptor): Promise<void>--><!--Device-AudioDeviceEnhanceManager-selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDeviceDescriptor): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
@@ -115,6 +123,8 @@ Selects the output device for your application. This setting applies to all play
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-AudioDeviceEnhanceManager-selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>--><!--Device-AudioDeviceEnhanceManager-selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise<void>-End-->
+
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 
 **Parameters:**
@@ -147,6 +157,8 @@ Selects the output device for the target AudioRenderer. Your application must en
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioDeviceEnhanceManager-selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioDeviceDescriptor): Promise<void>--><!--Device-AudioDeviceEnhanceManager-selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioDeviceDescriptor): Promise<void>-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.DeviceEnhance
 

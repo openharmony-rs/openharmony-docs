@@ -27,6 +27,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-huks-function initSession(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksSessionHandle>): void--><!--Device-huks-function initSession(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksSessionHandle>): void-End-->
+
 **System capability:** SystemCapability.Security.Huks.Core
 
 **Parameters:**
@@ -82,6 +84,8 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-huks-function initSession(keyAlias: string, options: HuksOptions): Promise<HuksSessionHandle>--><!--Device-huks-function initSession(keyAlias: string, options: HuksOptions): Promise<HuksSessionHandle>-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension
 

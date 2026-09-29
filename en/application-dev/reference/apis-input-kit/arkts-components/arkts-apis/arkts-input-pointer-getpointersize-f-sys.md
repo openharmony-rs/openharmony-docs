@@ -16,6 +16,8 @@ Obtains the current mouse pointer size. This API uses an asynchronous callback t
 
 **Since:** 10
 
+<!--Device-pointer-function getPointerSize(callback: AsyncCallback<int>): void--><!--Device-pointer-function getPointerSize(callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 
 **System API:** This is a system API.
@@ -76,6 +78,8 @@ function getPointerSize(): Promise<number>
 Obtains the current mouse pointer size. This API uses a promise to return the result.
 
 **Since:** 10
+
+<!--Device-pointer-function getPointerSize(): Promise<int>--><!--Device-pointer-function getPointerSize(): Promise<int>-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Pointer
 

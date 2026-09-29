@@ -22,6 +22,8 @@ Sets the application-level HTTP proxy configuration.
 
 **Since:** 11
 
+<!--Device-connection-function setAppHttpProxy(httpProxy: HttpProxy): void--><!--Device-connection-function setAppHttpProxy(httpProxy: HttpProxy): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **Parameters:**

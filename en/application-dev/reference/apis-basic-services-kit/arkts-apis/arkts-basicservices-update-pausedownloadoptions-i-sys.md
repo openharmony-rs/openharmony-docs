@@ -8,6 +8,8 @@ Defines the pausing download options, which are used to control the pause behavi
 
 **Since:** 9
 
+<!--Device-update-export interface PauseDownloadOptions--><!--Device-update-export interface PauseDownloadOptions-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -33,6 +35,8 @@ You are advised to set this parameter to **true** when the network is unstable, 
 **Type:** boolean
 
 **Since:** 9
+
+<!--Device-PauseDownloadOptions-isAllowAutoResume: boolean--><!--Device-PauseDownloadOptions-isAllowAutoResume: boolean-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

@@ -12,6 +12,8 @@ Provides APIs for selecting and saving images or videos. You are advised to use 
 
 **Substitutes:** [PhotoViewPicker](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)
 
+<!--Device-picker-class PhotoViewPicker--><!--Device-picker-class PhotoViewPicker-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 ## Modules to Import
@@ -35,6 +37,8 @@ A constructor used to create a PhotoViewPicker instance. This constructor is not
 **Substitutes:** [PhotoViewPicker](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PhotoViewPicker-constructor()--><!--Device-PhotoViewPicker-constructor()-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -60,13 +64,15 @@ A constructor used to create a PhotoViewPicker instance. This constructor is rec
 
 **Substitutes:** [PhotoViewPicker](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md)
 
+<!--Device-PhotoViewPicker-constructor(context: Context)--><!--Device-PhotoViewPicker-constructor(context: Context)-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see Context. |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
 
 **Examples**
 
@@ -108,7 +114,9 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 
 **Deprecated since:** 12
 
-**Substitutes:** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md#savebutton)
+**Substitutes:** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md)
+
+<!--Device-PhotoViewPicker-save(option?: PhotoSaveOptions): Promise<Array<string>>--><!--Device-PhotoViewPicker-save(option?: PhotoSaveOptions): Promise<Array<string>>-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -161,7 +169,9 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 
 **Deprecated since:** 12
 
-**Substitutes:** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md#savebutton)
+**Substitutes:** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md)
+
+<!--Device-PhotoViewPicker-save(option: PhotoSaveOptions, callback: AsyncCallback<Array<string>>): void--><!--Device-PhotoViewPicker-save(option: PhotoSaveOptions, callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -211,7 +221,9 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 
 **Deprecated since:** 12
 
-**Substitutes:** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md#savebutton)
+**Substitutes:** [SaveButton](../../apis-arkui/arkts-components/arkts-arkui-savebutton-comp.md)
+
+<!--Device-PhotoViewPicker-save(callback: AsyncCallback<Array<string>>): void--><!--Device-PhotoViewPicker-save(callback: AsyncCallback<Array<string>>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -283,6 +295,8 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PhotoViewPicker-select(option?: PhotoSelectOptions): Promise<PhotoSelectResult>--><!--Device-PhotoViewPicker-select(option?: PhotoSelectOptions): Promise<PhotoSelectResult>-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -339,6 +353,8 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-PhotoViewPicker-select(option: PhotoSelectOptions, callback: AsyncCallback<PhotoSelectResult>): void--><!--Device-PhotoViewPicker-select(option: PhotoSelectOptions, callback: AsyncCallback<PhotoSelectResult>): void-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **Parameters:**
@@ -391,6 +407,8 @@ Starts a **photoPicker** page for the user to select one or more images or video
 **Substitutes:** [select](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select-2)(callback: AsyncCallback&lt;PhotoSelectResult&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PhotoViewPicker-select(callback: AsyncCallback<PhotoSelectResult>): void--><!--Device-PhotoViewPicker-select(callback: AsyncCallback<PhotoSelectResult>): void-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

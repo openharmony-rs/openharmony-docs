@@ -16,6 +16,8 @@ Inherits from Array&lt;[ToolBarOption](arkts-arkui-arkui-advanced-toolbar-toolba
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-export declare class ToolBarOptions extends Array<ToolBarOption>--><!--Device-unnamed-export declare class ToolBarOptions extends Array<ToolBarOption>-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import

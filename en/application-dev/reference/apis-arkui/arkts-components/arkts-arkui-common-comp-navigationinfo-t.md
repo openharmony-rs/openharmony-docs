@@ -12,6 +12,8 @@ The navigation information.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo--><!--Device-unnamed-declare type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Type:** import('../api/@ohos.arkui.observer').default.NavigationInfo

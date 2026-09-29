@@ -18,6 +18,8 @@ Checks whether the interface is activated. This API uses an asynchronous callbac
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
 
+<!--Device-ethernet-function isIfaceActive(iface: string, callback: AsyncCallback<int>): void--><!--Device-ethernet-function isIfaceActive(iface: string, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
 **System API:** This is a system API.
@@ -70,6 +72,8 @@ Checks whether the interface is activated. This API uses a promise to return the
 **Since:** 9
 
 **Required permissions:** ohos.permission.GET_NETWORK_INFO
+
+<!--Device-ethernet-function isIfaceActive(iface: string): Promise<int>--><!--Device-ethernet-function isIfaceActive(iface: string): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 

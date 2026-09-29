@@ -12,6 +12,8 @@ animation element
 
 **Since:** 4
 
+<!--Device-unnamed-export interface AnimationElement extends Element--><!--Device-unnamed-export interface AnimationElement extends Element-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## cancel
@@ -25,6 +27,8 @@ Cancels the animation.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationElement-cancel(): void--><!--Device-AnimationElement-cancel(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,6 +44,8 @@ Ends the animation.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationElement-finish(): void--><!--Device-AnimationElement-finish(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## pause
@@ -53,6 +59,8 @@ Pauses the animation.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationElement-pause(): void--><!--Device-AnimationElement-pause(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,6 +76,8 @@ Starts the animation.
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-AnimationElement-play(): void--><!--Device-AnimationElement-play(): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## reverse
@@ -81,5 +91,7 @@ Plays the animation in reverse direction.
 **Since:** 4
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-AnimationElement-reverse(): void--><!--Device-AnimationElement-reverse(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

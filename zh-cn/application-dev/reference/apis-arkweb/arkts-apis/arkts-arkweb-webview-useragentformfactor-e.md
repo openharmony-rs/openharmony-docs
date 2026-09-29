@@ -8,6 +8,8 @@ enum UserAgentFormFactor
 
 **起始版本：** 24
 
+<!--Device-webview-enum UserAgentFormFactor--><!--Device-webview-enum UserAgentFormFactor-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## AUTOMOTIVE
@@ -21,6 +23,8 @@ AUTOMOTIVE = 'Automotive'
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentFormFactor-AUTOMOTIVE = 'Automotive'--><!--Device-UserAgentFormFactor-AUTOMOTIVE = 'Automotive'-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,6 +40,8 @@ PC，字符串类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentFormFactor-DESKTOP = 'Desktop'--><!--Device-UserAgentFormFactor-DESKTOP = 'Desktop'-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## MOBILE
@@ -49,6 +55,8 @@ MOBILE = 'Mobile'
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentFormFactor-MOBILE = 'Mobile'--><!--Device-UserAgentFormFactor-MOBILE = 'Mobile'-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,6 +72,8 @@ EINK = 'EInk'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentFormFactor-EINK = 'EInk'--><!--Device-UserAgentFormFactor-EINK = 'EInk'-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## TABLET
@@ -77,6 +87,8 @@ TABLET = 'Tablet'
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentFormFactor-TABLET = 'Tablet'--><!--Device-UserAgentFormFactor-TABLET = 'Tablet'-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -92,6 +104,8 @@ WATCH = 'Watch'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+<!--Device-UserAgentFormFactor-WATCH = 'Watch'--><!--Device-UserAgentFormFactor-WATCH = 'Watch'-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## XR
@@ -105,5 +119,7 @@ VR+AR设备，字符串类型。
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentFormFactor-XR = 'XR'--><!--Device-UserAgentFormFactor-XR = 'XR'-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

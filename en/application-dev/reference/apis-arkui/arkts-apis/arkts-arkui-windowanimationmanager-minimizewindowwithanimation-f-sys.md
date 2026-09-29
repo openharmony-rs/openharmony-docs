@@ -17,6 +17,8 @@ Minimize the window target with animation.
 
 **Since:** 9
 
+<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,    callback: AsyncCallback<WindowAnimationFinishedCallback>): void-End-->
+
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
@@ -104,6 +106,8 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promi
 Minimize the window target with animation.
 
 **Since:** 9
+
+<!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>--><!--Device-windowAnimationManager-function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise<WindowAnimationFinishedCallback>-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

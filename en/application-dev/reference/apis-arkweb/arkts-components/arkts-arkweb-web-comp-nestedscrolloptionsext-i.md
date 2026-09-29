@@ -8,6 +8,8 @@ Sets the nested scrolling rules of the **Web** component, supporting scrolling o
 
 **Since:** 14
 
+<!--Device-unnamed-declare interface NestedScrollOptionsExt--><!--Device-unnamed-declare interface NestedScrollOptionsExt-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## scrollDown
@@ -23,6 +25,8 @@ Default value: **NestedScrollMode.SELF_FIRST**.
 **Type:** [NestedScrollMode](../../apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md)
 
 **Since:** 14
+
+<!--Device-NestedScrollOptionsExt-scrollDown?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollDown?: NestedScrollMode-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,6 +44,8 @@ Default value: **NestedScrollMode.SELF_FIRST**.
 
 **Since:** 14
 
+<!--Device-NestedScrollOptionsExt-scrollLeft?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollLeft?: NestedScrollMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## scrollRight
@@ -56,6 +62,8 @@ Default value: **NestedScrollMode.SELF_FIRST**.
 
 **Since:** 14
 
+<!--Device-NestedScrollOptionsExt-scrollRight?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollRight?: NestedScrollMode-End-->
+
 **System capability:** SystemCapability.Web.Webview.Core
 
 ## scrollUp
@@ -71,5 +79,7 @@ Default value: **NestedScrollMode.SELF_FIRST**.
 **Type:** [NestedScrollMode](../../apis-arkui/arkts-apis/arkts-arkui-nestedscrollmode-e.md)
 
 **Since:** 14
+
+<!--Device-NestedScrollOptionsExt-scrollUp?: NestedScrollMode--><!--Device-NestedScrollOptionsExt-scrollUp?: NestedScrollMode-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

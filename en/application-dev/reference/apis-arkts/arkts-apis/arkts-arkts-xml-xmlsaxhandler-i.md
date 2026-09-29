@@ -8,6 +8,8 @@ A simple API for XML handling
 
 **Since:** 24
 
+<!--Device-xml-interface XmlSAXHandler--><!--Device-xml-interface XmlSAXHandler-End-->
+
 **System capability:** SystemCapability.Utils.Lang
 
 ## Modules to Import
@@ -28,7 +30,9 @@ CallBack function triggered by the text content
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXHandler-characters(content: string): void--><!--Device-XmlSAXHandler-characters(content: string): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -50,7 +54,9 @@ CallBack function triggered at the end of the document
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXHandler-endDocument(): void--><!--Device-XmlSAXHandler-endDocument(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -66,7 +72,9 @@ CallBack function triggered at the end of the element
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXHandler-endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined): void--><!--Device-XmlSAXHandler-endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -90,7 +98,9 @@ CallBack function triggered at the beginning of the document
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXHandler-startDocument(): void--><!--Device-XmlSAXHandler-startDocument(): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -106,7 +116,9 @@ CallBack function triggered at the beginning of the element
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+
+<!--Device-XmlSAXHandler-startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string,string>): void--><!--Device-XmlSAXHandler-startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string,string>): void-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 

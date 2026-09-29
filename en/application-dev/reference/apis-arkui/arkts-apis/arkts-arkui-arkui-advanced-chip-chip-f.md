@@ -22,6 +22,8 @@ Creates a **Chip** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-unnamed-export declare function Chip(options: ChipOptions): void--><!--Device-unnamed-export declare function Chip(options: ChipOptions): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

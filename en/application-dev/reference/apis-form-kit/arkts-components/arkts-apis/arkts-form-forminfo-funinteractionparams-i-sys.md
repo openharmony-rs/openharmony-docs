@@ -10,6 +10,8 @@ The fun interaction form params.
 
 **Since:** 20
 
+<!--Device-formInfo-interface FunInteractionParams--><!--Device-formInfo-interface FunInteractionParams-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ The ability name of the fun interaction form.
 
 **Since:** 20
 
+<!--Device-FunInteractionParams-abilityName?: string--><!--Device-FunInteractionParams-abilityName?: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -47,6 +51,8 @@ duration of the fun interaction form will be paused if not operate. Unit: millis
 **Type:** number
 
 **Since:** 20
+
+<!--Device-FunInteractionParams-keepStateDuration?: int--><!--Device-FunInteractionParams-keepStateDuration?: int-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -64,6 +70,8 @@ The sub bundle name used by game engine.
 
 **Since:** 20
 
+<!--Device-FunInteractionParams-subBundleName: string--><!--Device-FunInteractionParams-subBundleName: string-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -79,6 +87,8 @@ The bundle name used by game engine.
 **Type:** string
 
 **Since:** 20
+
+<!--Device-FunInteractionParams-targetBundleName: string--><!--Device-FunInteractionParams-targetBundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

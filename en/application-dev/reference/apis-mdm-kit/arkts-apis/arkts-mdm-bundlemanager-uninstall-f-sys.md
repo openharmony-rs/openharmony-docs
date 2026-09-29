@@ -30,6 +30,8 @@ Uninstalls an application of the current user without retaining the bundle data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -99,6 +101,8 @@ Uninstalls an application of the specified user without retaining the bundle dat
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -171,6 +175,8 @@ Uninstalls an application of the current user. The **isKeepData** parameter spec
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -241,6 +247,8 @@ Uninstalls an application of the specified user. The **isKeepData** parameter sp
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

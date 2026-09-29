@@ -8,6 +8,8 @@ Represents the batch download progress of a file from the Drive Kit.
 
 **Since:** 20
 
+<!--Device-cloudSync-class MultiDownloadProgress--><!--Device-cloudSync-class MultiDownloadProgress-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## Modules to Import
@@ -25,6 +27,8 @@ getFailedFiles(): Array<FailedFileInfo>
 Obtains the list of files that fail to be downloaded in batches.
 
 **Since:** 20
+
+<!--Device-MultiDownloadProgress-getFailedFiles(): Array<FailedFileInfo>--><!--Device-MultiDownloadProgress-getFailedFiles(): Array<FailedFileInfo>-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -82,6 +86,8 @@ Obtains the list of files that are successfully downloaded in batches.
 
 **Since:** 20
 
+<!--Device-MultiDownloadProgress-getSuccessfulFiles(): Array<string>--><!--Device-MultiDownloadProgress-getSuccessfulFiles(): Array<string>-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **Return value:**
@@ -138,6 +144,8 @@ Size of the downloaded file, in bytes. The value range is [0, INT64_MAX). If the
 
 **Since:** 20
 
+<!--Device-MultiDownloadProgress-downloadedSize: long--><!--Device-MultiDownloadProgress-downloadedSize: long-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## errType
@@ -151,6 +159,8 @@ Type of the error returned when the batch download fails.
 **Type:** [DownloadErrorType](arkts-corefile-cloudsync-downloaderrortype-e.md)
 
 **Since:** 20
+
+<!--Device-MultiDownloadProgress-errType: DownloadErrorType--><!--Device-MultiDownloadProgress-errType: DownloadErrorType-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -166,6 +176,8 @@ Number of files that fail to be downloaded. The value ranges from 0 to 400. If t
 
 **Since:** 20
 
+<!--Device-MultiDownloadProgress-failedCount: int--><!--Device-MultiDownloadProgress-failedCount: int-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## state
@@ -179,6 +191,8 @@ Execution state of the batch download.
 **Type:** [State](arkts-corefile-cloudsync-state-e.md)
 
 **Since:** 20
+
+<!--Device-MultiDownloadProgress-state: State--><!--Device-MultiDownloadProgress-state: State-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -194,6 +208,8 @@ Number of successfully downloaded files. The value ranges from 0 to 400. If the 
 
 **Since:** 20
 
+<!--Device-MultiDownloadProgress-successfulCount: int--><!--Device-MultiDownloadProgress-successfulCount: int-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## taskId
@@ -207,6 +223,8 @@ ID of a batch download task. The value ranges from 0 to INT64_MAX. If the progre
 **Type:** number
 
 **Since:** 20
+
+<!--Device-MultiDownloadProgress-taskId: long--><!--Device-MultiDownloadProgress-taskId: long-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -222,6 +240,8 @@ Total number of files. The value ranges from 0 to 400. If the progress is abnorm
 
 **Since:** 20
 
+<!--Device-MultiDownloadProgress-totalCount: int--><!--Device-MultiDownloadProgress-totalCount: int-End-->
+
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 ## totalSize
@@ -235,5 +255,7 @@ Total size of the files to be downloaded, in bytes. The value range is [0, INT64
 **Type:** number
 
 **Since:** 20
+
+<!--Device-MultiDownloadProgress-totalSize: long--><!--Device-MultiDownloadProgress-totalSize: long-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

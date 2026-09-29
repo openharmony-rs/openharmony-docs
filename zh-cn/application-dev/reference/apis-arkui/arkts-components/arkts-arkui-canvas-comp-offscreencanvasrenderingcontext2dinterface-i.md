@@ -21,6 +21,8 @@ declare interface OffscreenCanvasRenderingContext2DInterface
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare interface OffscreenCanvasRenderingContext2DInterface--><!--Device-unnamed-declare interface OffscreenCanvasRenderingContext2DInterface-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## [[Call]]
@@ -30,6 +32,8 @@ declare interface OffscreenCanvasRenderingContext2DInterface
 ```
 
 **起始版本：** 8
+
+<!--Device-OffscreenCanvasRenderingContext2DInterface-(width: number, height: number, settings?: RenderingContextSettings): OffscreenCanvasRenderingContext2D--><!--Device-OffscreenCanvasRenderingContext2DInterface-(width: number, height: number, settings?: RenderingContextSettings): OffscreenCanvasRenderingContext2D-End-->
 
 **参数：**
 
@@ -48,6 +52,8 @@ declare interface OffscreenCanvasRenderingContext2DInterface
 ```
 
 **起始版本：** 12
+
+<!--Device-OffscreenCanvasRenderingContext2DInterface-(width: number, height: number, settings?: RenderingContextSettings, unit?: LengthMetricsUnit): OffscreenCanvasRenderingContext2D--><!--Device-OffscreenCanvasRenderingContext2DInterface-(width: number, height: number, settings?: RenderingContextSettings, unit?: LengthMetricsUnit): OffscreenCanvasRenderingContext2D-End-->
 
 **参数：**
 

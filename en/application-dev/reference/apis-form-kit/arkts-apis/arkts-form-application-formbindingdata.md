@@ -8,6 +8,8 @@ The **FormBindingData** module provides APIs for widget data binding. You can us
 
 **Substitutes:** [formBindingData](arkts-form-app-form-formbindingdata.md)
 
+<!--Device-unnamed-declare namespace formBindingData--><!--Device-unnamed-declare namespace formBindingData-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 ## Modules to Import
@@ -21,7 +23,7 @@ The **FormBindingData** module provides APIs for widget data binding. You can us
 
 | Name | Description |
 | --- | --- |
-| [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-depr-f.md#createformbindingdata) | Creates a **FormBindingData** object. |
+| [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-depr-f.md) | Creates a **FormBindingData** object. |
 
 ### Interfaces
 

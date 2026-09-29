@@ -16,6 +16,8 @@ Removes one or more rules. The removed rules will become ineffective.
 
 **Since:** 9
 
+<!--Device-hichecker-function removeCheckRule(rule: bigint) : void--><!--Device-hichecker-function removeCheckRule(rule: bigint) : void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiChecker
 
 **Parameters:**

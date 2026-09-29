@@ -8,6 +8,8 @@ interface ScaleOptions
 
 **起始版本：** 9
 
+<!--Device-window-interface ScaleOptions--><!--Device-window-interface ScaleOptions-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -30,6 +32,8 @@ pivotX?: number
 
 **起始版本：** 9
 
+<!--Device-ScaleOptions-pivotX?: double--><!--Device-ScaleOptions-pivotX?: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -45,6 +49,8 @@ pivotY?: number
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-ScaleOptions-pivotY?: double--><!--Device-ScaleOptions-pivotY?: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,6 +68,8 @@ X轴的缩放参数。该参数为浮点数，默认值为1.0。
 
 **起始版本：** 9
 
+<!--Device-ScaleOptions-x?: double--><!--Device-ScaleOptions-x?: double-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -77,6 +85,8 @@ Y轴的缩放参数。该参数为浮点数，默认值为1.0。
 **类型：** number
 
 **起始版本：** 9
+
+<!--Device-ScaleOptions-y?: double--><!--Device-ScaleOptions-y?: double-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

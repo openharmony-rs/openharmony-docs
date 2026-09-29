@@ -12,6 +12,8 @@ export class BasicPrefetcher implements IPrefetcher
 
 **Since:** 12
 
+<!--Device-unnamed-export class BasicPrefetcher implements IPrefetcher--><!--Device-unnamed-export class BasicPrefetcher implements IPrefetcher-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
@@ -33,6 +35,8 @@ Passes the data source that supports prefetching and binds it to **Prefetcher** 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BasicPrefetcher-constructor(dataSource?: IDataSourcePrefetching)--><!--Device-BasicPrefetcher-constructor(dataSource?: IDataSourcePrefetching)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,6 +60,8 @@ Sets the prefetching-capable data source to bind to the **Prefetcher**.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BasicPrefetcher-setDataSource(dataSource: IDataSourcePrefetching): void--><!--Device-BasicPrefetcher-setDataSource(dataSource: IDataSourcePrefetching): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -78,11 +84,13 @@ Called when the boundary of the visible area changes. It notifies **Prefetcher**
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-BasicPrefetcher-visibleAreaChanged(minVisible: number, maxVisible: number): void--><!--Device-BasicPrefetcher-visibleAreaChanged(minVisible: number, maxVisible: number): void-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| minVisible | number | Yes | Index of the first data item in the current visible area. |
-| maxVisible | number | Yes | Index of the last data item in the current visible area. |
+| minVisible | number | Yes | Index of the first data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |
+| maxVisible | number | Yes | Index of the last data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |

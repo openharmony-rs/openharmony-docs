@@ -24,6 +24,8 @@ Removes the applications that cannot be installed by the current user. This API 
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-bundleManager-function removeDisallowedInstallBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function removeDisallowedInstallBundles(admin: Want, appIds: Array<string>, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **System API:** This is a system API.
@@ -89,6 +91,8 @@ Removes the applications that cannot be installed by the user specified by **use
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function removeDisallowedInstallBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void--><!--Device-bundleManager-function removeDisallowedInstallBundles(admin: Want, appIds: Array<string>, userId: number, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -156,6 +160,8 @@ Removes the applications that cannot be installed by the current or specified us
 **Required permissions:** ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-bundleManager-function removeDisallowedInstallBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>--><!--Device-bundleManager-function removeDisallowedInstallBundles(admin: Want, appIds: Array<string>, userId?: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

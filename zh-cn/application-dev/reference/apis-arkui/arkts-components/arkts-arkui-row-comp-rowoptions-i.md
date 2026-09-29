@@ -12,6 +12,8 @@ declare interface RowOptions
 
 **起始版本：** 18
 
+<!--Device-unnamed-declare interface RowOptions--><!--Device-unnamed-declare interface RowOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## space
@@ -41,5 +43,7 @@ space取值是大于等于0的数字，或者可以转换为数字的字符串�
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-RowOptions-space?: string | number--><!--Device-RowOptions-space?: string | number-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

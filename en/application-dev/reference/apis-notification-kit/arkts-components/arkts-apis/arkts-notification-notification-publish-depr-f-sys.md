@@ -23,6 +23,8 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
+<!--Device-notification-function publish(request: NotificationRequest, userId: number, callback: AsyncCallback<void>): void--><!--Device-notification-function publish(request: NotificationRequest, userId: number, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -53,6 +55,8 @@ Publishes a notification to a specified user. This API uses a promise to return 
 **Substitutes:** [publish](arkts-notification-notificationmanager-publish-f.md)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
+
+<!--Device-notification-function publish(request: NotificationRequest, userId: number): Promise<void>--><!--Device-notification-function publish(request: NotificationRequest, userId: number): Promise<void>-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

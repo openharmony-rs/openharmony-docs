@@ -20,6 +20,8 @@ Queries the location service policy.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-locationManager-function getLocationPolicy(admin: Want): LocationPolicy--><!--Device-locationManager-function getLocationPolicy(admin: Want): LocationPolicy-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -79,6 +81,8 @@ Queries the location service policy. This API can be used in enterprise device a
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-locationManager-function getLocationPolicy(admin: Want | null): LocationPolicy--><!--Device-locationManager-function getLocationPolicy(admin: Want | null): LocationPolicy-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

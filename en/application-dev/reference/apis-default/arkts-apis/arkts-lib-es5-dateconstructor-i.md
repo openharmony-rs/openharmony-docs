@@ -45,6 +45,8 @@ new(year: number, monthIndex: number, date?: number, hours?: number, minutes?: n
 
 Creates a new Date.
 
+<!--Device-DateConstructor-new(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number): Date--><!--Device-DateConstructor-new(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number): Date-End-->
+
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
@@ -65,6 +67,8 @@ now(): number
 
 Returns the number of milliseconds elapsed since midnight, January 1, 1970 Universal Coordinated Time (UTC).
 
+<!--Device-DateConstructor-now(): number--><!--Device-DateConstructor-now(): number-End-->
+
 ## parse
 
 ```TypeScript
@@ -72,6 +76,8 @@ parse(s: string): number
 ```
 
 Parses a string containing a date, and returns the number of milliseconds between that date and midnight, January 1, 1970.
+
+<!--Device-DateConstructor-parse(s: string): number--><!--Device-DateConstructor-parse(s: string): number-End-->
 
 **Parameters:**
 
@@ -86,6 +92,8 @@ UTC(year: number, monthIndex: number, date?: number, hours?: number, minutes?: n
 ```
 
 Returns the number of milliseconds between midnight, January 1, 1970 Universal Coordinated Time (UTC) (or GMT) and the specified date.
+
+<!--Device-DateConstructor-UTC(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number): number--><!--Device-DateConstructor-UTC(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number): number-End-->
 
 **Parameters:**
 

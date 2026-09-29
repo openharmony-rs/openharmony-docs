@@ -8,6 +8,8 @@ Describes the notification statistics of a specified application.
 
 **Since:** 26.0.0
 
+<!--Device-notificationManager-export interface BundleNotificationStatistics--><!--Device-notificationManager-export interface BundleNotificationStatistics-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Bundle information of the application.
 
 **Since:** 26.0.0
 
+<!--Device-BundleNotificationStatistics-bundle: BundleOption--><!--Device-BundleNotificationStatistics-bundle: BundleOption-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -46,6 +50,8 @@ Time when the app last published a notification.<br>Data format: timestamp.<br>U
 
 **Since:** 26.0.0
 
+<!--Device-BundleNotificationStatistics-lastTime: number--><!--Device-BundleNotificationStatistics-lastTime: number-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ Total number of notifications published by the application in the last seven day
 **Type:** number
 
 **Since:** 26.0.0
+
+<!--Device-BundleNotificationStatistics-recentCount: number--><!--Device-BundleNotificationStatistics-recentCount: number-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

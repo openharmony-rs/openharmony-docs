@@ -12,6 +12,8 @@ Indicates the configuration for left and right channel volume balance. **-1.0** 
 
 **Since:** 10
 
+<!--Device-config-const audioBalance: Config<double>--><!--Device-config-const audioBalance: Config<double>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -27,6 +29,8 @@ Indicates the mono audio feature status. The value **true** indicates that the m
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;boolean&gt;
 
 **Since:** 10
+
+<!--Device-config-const audioMono: Config<boolean>--><!--Device-config-const audioMono: Config<boolean>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -44,6 +48,8 @@ Length of time required for a click.
 
 **Since:** 11
 
+<!--Device-config-const clickResponseTime: Config<ClickResponseTime>--><!--Device-config-const clickResponseTime: Config<ClickResponseTime>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -59,6 +65,8 @@ Indicates the color correction feature status. Used together with daltonizationC
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;boolean&gt;
 
 **Since:** 11
+
+<!--Device-config-const daltonizationState: Config<boolean>--><!--Device-config-const daltonizationState: Config<boolean>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -78,6 +86,8 @@ Default value: **false**
 
 **Since:** 11
 
+<!--Device-config-const ignoreRepeatClick: Config<boolean>--><!--Device-config-const ignoreRepeatClick: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -93,6 +103,8 @@ Indicates the configuration for the interval of ignoring repeated clicks. Used t
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;[RepeatClickInterval](arkts-accessibility-config-repeatclickinterval-t-sys.md)&gt;
 
 **Since:** 11
+
+<!--Device-config-const repeatClickInterval: Config<RepeatClickInterval>--><!--Device-config-const repeatClickInterval: Config<RepeatClickInterval>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -110,6 +122,8 @@ Indicates the configuration of screen magnification.
 
 **Since:** 12
 
+<!--Device-config-const screenMagnification: Config<boolean>--><!--Device-config-const screenMagnification: Config<boolean>-End-->
+
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
@@ -125,6 +139,8 @@ Indicates the multi-target list configuration of the accessibility extension sho
 **Type:** [Config](arkts-accessibility-config-config-i-sys.md)&lt;Array&lt;string&gt;&gt;
 
 **Since:** 11
+
+<!--Device-config-const shortkeyMultiTargets: Config<Array<string>>--><!--Device-config-const shortkeyMultiTargets: Config<Array<string>>-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -8,6 +8,8 @@ Represents event type information.
 
 **Since:** 9
 
+<!--Device-update-export interface EventClassifyInfo--><!--Device-update-export interface EventClassifyInfo-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -30,6 +32,8 @@ Event type, which specifies the type of event to listen for. The value can be **
 
 **Since:** 9
 
+<!--Device-EventClassifyInfo-eventClassify: EventClassify--><!--Device-EventClassifyInfo-eventClassify: EventClassify-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -45,6 +49,8 @@ Additional information, which is used to transfer the extended data. The default
 **Type:** string
 
 **Since:** 9
+
+<!--Device-EventClassifyInfo-extraInfo: string--><!--Device-EventClassifyInfo-extraInfo: string-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

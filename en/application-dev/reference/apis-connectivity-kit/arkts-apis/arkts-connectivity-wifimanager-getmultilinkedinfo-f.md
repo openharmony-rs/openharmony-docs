@@ -18,6 +18,8 @@ Obtain multiple Wi-Fi connection information when Wi-Fi linked in MLO(Muti-Link 
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
+<!--Device-wifiManager-function getMultiLinkedInfo(): Array<WifiLinkedInfo>--><!--Device-wifiManager-function getMultiLinkedInfo(): Array<WifiLinkedInfo>-End-->
+
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **Return value:**

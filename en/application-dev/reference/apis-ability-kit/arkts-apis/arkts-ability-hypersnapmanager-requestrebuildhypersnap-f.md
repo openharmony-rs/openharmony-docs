@@ -27,6 +27,8 @@ Most applications don't require manual intervention for snapshot management.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-hyperSnapManager-function requestRebuildHyperSnap(): void--><!--Device-hyperSnapManager-function requestRebuildHyperSnap(): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **Error codes:**

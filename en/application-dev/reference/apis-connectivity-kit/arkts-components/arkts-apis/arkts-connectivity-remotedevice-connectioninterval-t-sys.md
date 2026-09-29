@@ -10,6 +10,8 @@ Enumerates the connection intervals.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-remoteDevice-type ConnectionInterval = nearlinkConstant.ConnectionInterval--><!--Device-remoteDevice-type ConnectionInterval = nearlinkConstant.ConnectionInterval-End-->
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.

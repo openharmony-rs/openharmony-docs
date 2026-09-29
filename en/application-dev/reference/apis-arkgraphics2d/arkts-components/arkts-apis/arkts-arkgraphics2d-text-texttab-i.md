@@ -8,6 +8,8 @@ Implements a paragraph-style text tab, which stores the alignment mode and posit
 
 **Since:** 18
 
+<!--Device-text-interface TextTab--><!--Device-text-interface TextTab-End-->
+
 **System capability:** SystemCapability.Graphics.Drawing
 
 ## Modules to Import
@@ -28,7 +30,9 @@ Text alignment method after the tab character in a paragraph. It supports the LE
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextTab-alignment: TextAlign--><!--Device-TextTab-alignment: TextAlign-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -44,6 +48,8 @@ Alignment position of the text following the tab character. The value is a float
 
 **Since:** 18
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+
+<!--Device-TextTab-location: double--><!--Device-TextTab-location: double-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

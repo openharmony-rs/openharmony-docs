@@ -20,6 +20,8 @@ Obtains whether the intelligent priority notification service is enabled. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-notificationManager-function isPriorityIntelligentEnabled(): Promise<boolean>--><!--Device-notificationManager-function isPriorityIntelligentEnabled(): Promise<boolean>-End-->
+
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.

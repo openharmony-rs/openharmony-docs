@@ -8,6 +8,8 @@ declare interface MicrophoneCaptureStateChangeInfo
 
 **起始版本：** 23
 
+<!--Device-unnamed-declare interface MicrophoneCaptureStateChangeInfo--><!--Device-unnamed-declare interface MicrophoneCaptureStateChangeInfo-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## newState
@@ -22,6 +24,8 @@ newState: MicrophoneCaptureState
 
 **起始版本：** 23
 
+<!--Device-MicrophoneCaptureStateChangeInfo-newState: MicrophoneCaptureState--><!--Device-MicrophoneCaptureStateChangeInfo-newState: MicrophoneCaptureState-End-->
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 ## originalState
@@ -35,5 +39,7 @@ originalState: MicrophoneCaptureState
 **类型：** [MicrophoneCaptureState](arkts-arkweb-web-comp-microphonecapturestate-e.md)
 
 **起始版本：** 23
+
+<!--Device-MicrophoneCaptureStateChangeInfo-originalState: MicrophoneCaptureState--><!--Device-MicrophoneCaptureStateChangeInfo-originalState: MicrophoneCaptureState-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

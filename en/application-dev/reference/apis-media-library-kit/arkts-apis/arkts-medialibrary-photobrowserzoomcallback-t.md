@@ -12,6 +12,8 @@ Callback to be invoked when the large image is zoomed in or out after the large 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
+<!--Device-unnamed-export type PhotoBrowserZoomCallback = (scale: double) => void--><!--Device-unnamed-export type PhotoBrowserZoomCallback = (scale: double) => void-End-->
+
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters:**

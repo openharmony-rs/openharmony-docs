@@ -10,6 +10,8 @@ Provides APIs for managing the device's root attribute information.
 
 **Deprecated since:** 23
 
+<!--Device-fileAccess-interface RootInfo--><!--Device-fileAccess-interface RootInfo-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -37,6 +39,8 @@ Obtains a **FileIterator** object that lists the next-level files or directories
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RootInfo-listFile(filter?: Filter): FileIterator--><!--Device-RootInfo-listFile(filter?: Filter): FileIterator-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -140,6 +144,8 @@ Obtains a **FileIterator** object that recursively retrieves the files matching 
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RootInfo-scanFile(filter?: Filter): FileIterator--><!--Device-RootInfo-scanFile(filter?: Filter): FileIterator-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -246,6 +252,8 @@ Capabilities supported by the device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RootInfo-deviceFlags: number--><!--Device-RootInfo-deviceFlags: number-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -267,6 +275,8 @@ Capabilities supported by the device.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RootInfo-deviceType: number--><!--Device-RootInfo-deviceType: number-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -290,6 +300,8 @@ Capabilities supported by the device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RootInfo-displayName: string--><!--Device-RootInfo-displayName: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -312,6 +324,8 @@ Relative path of the root directory.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-RootInfo-relativePath: string--><!--Device-RootInfo-relativePath: string-End-->
+
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
@@ -333,6 +347,8 @@ Capabilities supported by the device.
 **Required permissions:** ohos.permission.FILE_ACCESS_MANAGER
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RootInfo-uri: string--><!--Device-RootInfo-uri: string-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

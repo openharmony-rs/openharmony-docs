@@ -16,6 +16,8 @@ Obtains the certificate storage path.
 
 **Since:** 18
 
+<!--Device-certificateManager-function getCertificateStorePath(property: CertStoreProperty): string--><!--Device-certificateManager-function getCertificateStorePath(property: CertStoreProperty): string-End-->
+
 **System capability:** SystemCapability.Security.CertificateManager
 
 **Parameters:**

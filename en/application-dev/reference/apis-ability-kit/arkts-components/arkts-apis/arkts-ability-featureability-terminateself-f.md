@@ -18,6 +18,8 @@ Terminates this ability. This API uses an asynchronous callback to return the re
 
 **Model restriction:** This API can be used only in the FA model.
 
+<!--Device-featureAbility-function terminateSelf(callback: AsyncCallback<void>): void--><!--Device-featureAbility-function terminateSelf(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
 **Parameters:**
@@ -53,6 +55,8 @@ Terminates this ability. This API uses a promise to return the result.
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
+
+<!--Device-featureAbility-function terminateSelf(): Promise<void>--><!--Device-featureAbility-function terminateSelf(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 

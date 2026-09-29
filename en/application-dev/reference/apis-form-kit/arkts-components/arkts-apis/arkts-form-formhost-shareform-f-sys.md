@@ -18,6 +18,8 @@ Shares a specified widget with a remote device. This API uses an asynchronous ca
 
 **Required permissions:** ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
 
+<!--Device-formHost-function shareForm(formId: string, deviceId: string, callback: AsyncCallback<void>): void--><!--Device-formHost-function shareForm(formId: string, deviceId: string, callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Ability.Form
 
 **System API:** This is a system API.
@@ -56,6 +58,8 @@ Shares a specified widget with a remote device. This API uses a promise to retur
 **Since:** 9
 
 **Required permissions:** ohos.permission.REQUIRE_FORM and ohos.permission.DISTRIBUTED_DATASYNC
+
+<!--Device-formHost-function shareForm(formId: string, deviceId: string): Promise<void>--><!--Device-formHost-function shareForm(formId: string, deviceId: string): Promise<void>-End-->
 
 **System capability:** SystemCapability.Ability.Form
 

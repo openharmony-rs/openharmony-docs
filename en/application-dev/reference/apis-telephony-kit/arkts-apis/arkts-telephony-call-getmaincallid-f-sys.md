@@ -16,6 +16,8 @@ Obtains the main call ID. This API uses an asynchronous callback to return the r
 
 **Since:** 7
 
+<!--Device-call-function getMainCallId(callId: int, callback: AsyncCallback<int>): void--><!--Device-call-function getMainCallId(callId: int, callback: AsyncCallback<int>): void-End-->
+
 **System capability:** SystemCapability.Telephony.CallManager
 
 **System API:** This is a system API.
@@ -64,6 +66,8 @@ function getMainCallId(callId: number): Promise<number>
 Obtains the main call ID. This API uses a promise to return the result.
 
 **Since:** 7
+
+<!--Device-call-function getMainCallId(callId: int): Promise<int>--><!--Device-call-function getMainCallId(callId: int): Promise<int>-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

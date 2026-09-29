@@ -8,6 +8,8 @@ Defines the interaction information returned after the current intent execution 
 
 **Since:** 26.0.1
 
+<!--Device-insightIntent-interface InteractionInfo--><!--Device-insightIntent-interface InteractionInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Information of the interaction UI to be displayed after the current intent execu
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InteractionInfo-interactionUI?: InteractionUI--><!--Device-InteractionInfo-interactionUI?: InteractionUI-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

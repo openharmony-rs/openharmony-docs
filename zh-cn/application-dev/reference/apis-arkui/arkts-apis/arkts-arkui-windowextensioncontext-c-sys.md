@@ -22,6 +22,8 @@ WindowExtensionContext模块提供[WindowExtensionAbility](arkts-arkui-applicati
 
 **废弃版本：** 21
 
+<!--Device-unnamed-declare class WindowExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class WindowExtensionContext extends ExtensionContext-End-->
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **系统接口：** 此接口为系统接口。
@@ -43,6 +45,8 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 **废弃版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void--><!--Device-WindowExtensionContext-startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -122,6 +126,8 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 **废弃版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>--><!--Device-WindowExtensionContext-startAbility(want: Want, options?: StartOptions): Promise<void>-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

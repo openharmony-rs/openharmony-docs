@@ -12,4 +12,6 @@ Defines the callback type used in onNeedSoftkeyboard. Called when component is f
 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
+<!--Device-unnamed-declare type OnNeedSoftkeyboardCallback = () => boolean--><!--Device-unnamed-declare type OnNeedSoftkeyboardCallback = () => boolean-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -8,6 +8,8 @@ interface Vector2T<T>
 
 **起始版本：** 12
 
+<!--Device-unnamed-interface Vector2T<T>--><!--Device-unnamed-interface Vector2T<T>-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## x
@@ -26,6 +28,8 @@ x: T
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-Vector2T-x: T--><!--Device-Vector2T-x: T-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## y
@@ -43,5 +47,7 @@ y: T
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Vector2T-y: T--><!--Device-Vector2T-y: T-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

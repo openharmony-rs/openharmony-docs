@@ -18,6 +18,8 @@ Data migration API used during device upgrades to start a migration task, provid
 
 **Required permissions:** ohos.permission.UPDATE_FONT
 
+<!--Device-fontManager-function dataMigration(callback: DataMigrationCallback): int--><!--Device-fontManager-function dataMigration(callback: DataMigrationCallback): int-End-->
+
 **System capability:** SystemCapability.Global.FontManager
 
 **System API:** This is a system API.

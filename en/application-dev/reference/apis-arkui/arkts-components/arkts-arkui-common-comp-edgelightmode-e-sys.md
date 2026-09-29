@@ -8,6 +8,8 @@ Edge light animation mode enumeration.
 
 **Since:** 26.0.0
 
+<!--Device-unnamed-declare enum EdgeLightMode--><!--Device-unnamed-declare enum EdgeLightMode-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -26,6 +28,8 @@ Turned off on low-performance devices and turned on on medium/high-performance d
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EdgeLightMode-EDGELIGHT_AUTO = 0--><!--Device-EdgeLightMode-EDGELIGHT_AUTO = 0-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -42,6 +46,8 @@ Enable edge light animation.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1--><!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
@@ -57,6 +63,8 @@ Disable edge light animation.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightMode-EDGELIGHT_DISABLED = 2--><!--Device-EdgeLightMode-EDGELIGHT_DISABLED = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

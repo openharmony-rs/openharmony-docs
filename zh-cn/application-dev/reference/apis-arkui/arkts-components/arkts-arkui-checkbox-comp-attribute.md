@@ -8,9 +8,11 @@ declare class CheckboxAttribute extends CommonMethod<CheckboxAttribute>
 
 支持通用事件外，还支持以下事件：
 
-**继承/实现关系：** CheckboxAttribute extends CommonMethod&lt;CheckboxAttribute&gt;
+**继承/实现关系：** CheckboxAttribute extends CommonMethod<CheckboxAttribute>
 
 **起始版本：** 8
+
+<!--Device-unnamed-declare class CheckboxAttribute extends CommonMethod<CheckboxAttribute>--><!--Device-unnamed-declare class CheckboxAttribute extends CommonMethod<CheckboxAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +29,8 @@ contentModifier(modifier: ContentModifier<CheckBoxConfiguration>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CheckboxAttribute-contentModifier(modifier: ContentModifier<CheckBoxConfiguration>): CheckboxAttribute--><!--Device-CheckboxAttribute-contentModifier(modifier: ContentModifier<CheckBoxConfiguration>): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,6 +56,8 @@ contentModifier(modifier: Optional<ContentModifier<CheckBoxConfiguration>>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CheckboxAttribute-contentModifier(modifier: Optional<ContentModifier<CheckBoxConfiguration>>): CheckboxAttribute--><!--Device-CheckboxAttribute-contentModifier(modifier: Optional<ContentModifier<CheckBoxConfiguration>>): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -73,6 +79,8 @@ mark(value: MarkStyle)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CheckboxAttribute-mark(value: MarkStyle): CheckboxAttribute--><!--Device-CheckboxAttribute-mark(value: MarkStyle): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,6 +106,8 @@ mark(style: Optional<MarkStyle>)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
+<!--Device-CheckboxAttribute-mark(style: Optional<MarkStyle>): CheckboxAttribute--><!--Device-CheckboxAttribute-mark(style: Optional<MarkStyle>): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -121,6 +131,8 @@ onChange(callback: OnCheckboxChangeCallback)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CheckboxAttribute-onChange(callback: OnCheckboxChangeCallback): CheckboxAttribute--><!--Device-CheckboxAttribute-onChange(callback: OnCheckboxChangeCallback): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +159,8 @@ onChange(callback: Optional<OnCheckboxChangeCallback>)
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CheckboxAttribute-onChange(callback: Optional<OnCheckboxChangeCallback>): CheckboxAttribute--><!--Device-CheckboxAttribute-onChange(callback: Optional<OnCheckboxChangeCallback>): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,6 +190,8 @@ select(value: boolean)
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CheckboxAttribute-select(value: boolean): CheckboxAttribute--><!--Device-CheckboxAttribute-select(value: boolean): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -204,6 +220,8 @@ select(isSelected: Optional<boolean>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CheckboxAttribute-select(isSelected: Optional<boolean>): CheckboxAttribute--><!--Device-CheckboxAttribute-select(isSelected: Optional<boolean>): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -227,6 +245,8 @@ selectedColor(value: ResourceColor)
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CheckboxAttribute-selectedColor(value: ResourceColor): CheckboxAttribute--><!--Device-CheckboxAttribute-selectedColor(value: ResourceColor): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,6 +274,8 @@ selectedColor(resColor: Optional<ResourceColor>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CheckboxAttribute-selectedColor(resColor: Optional<ResourceColor>): CheckboxAttribute--><!--Device-CheckboxAttribute-selectedColor(resColor: Optional<ResourceColor>): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -277,6 +299,8 @@ shape(value: CheckBoxShape)
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CheckboxAttribute-shape(value: CheckBoxShape): CheckboxAttribute--><!--Device-CheckboxAttribute-shape(value: CheckBoxShape): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,6 +328,8 @@ shape(shape: Optional<CheckBoxShape>)
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-CheckboxAttribute-shape(shape: Optional<CheckBoxShape>): CheckboxAttribute--><!--Device-CheckboxAttribute-shape(shape: Optional<CheckBoxShape>): CheckboxAttribute-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -325,6 +351,8 @@ unselectedColor(value: ResourceColor)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CheckboxAttribute-unselectedColor(value: ResourceColor): CheckboxAttribute--><!--Device-CheckboxAttribute-unselectedColor(value: ResourceColor): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -349,6 +377,8 @@ unselectedColor(resColor: Optional<ResourceColor>)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CheckboxAttribute-unselectedColor(resColor: Optional<ResourceColor>): CheckboxAttribute--><!--Device-CheckboxAttribute-unselectedColor(resColor: Optional<ResourceColor>): CheckboxAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

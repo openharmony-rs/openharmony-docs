@@ -10,6 +10,8 @@ Result returned when querying whether a shortcut exists.
 
 **Deprecated since:** 10
 
+<!--Device-bundle-export enum ShortcutExistence--><!--Device-bundle-export enum ShortcutExistence-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Exists.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-ShortcutExistence-SHORTCUT_EXISTENCE_EXISTS = 0--><!--Device-ShortcutExistence-SHORTCUT_EXISTENCE_EXISTS = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
@@ -42,6 +46,8 @@ Does not exist.
 
 **Deprecated since:** 10
 
+<!--Device-ShortcutExistence-SHORTCUT_EXISTENCE_NOT_EXISTS = 1--><!--Device-ShortcutExistence-SHORTCUT_EXISTENCE_NOT_EXISTS = 1-End-->
+
 **System capability:** SystemCapability.BundleManager.BundleFramework
 
 **System API:** This is a system API.
@@ -57,6 +63,8 @@ Unknown.
 **Since:** 9
 
 **Deprecated since:** 10
+
+<!--Device-ShortcutExistence-SHORTCUT_EXISTENCE_UNKNOW = 2--><!--Device-ShortcutExistence-SHORTCUT_EXISTENCE_UNKNOW = 2-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework
 

@@ -20,6 +20,8 @@ Notifies that the specified LOW_CODE agent has completed.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-agentManager-function notifyLowCodeAgentComplete(agentId: string): Promise<void>--><!--Device-agentManager-function notifyLowCodeAgentComplete(agentId: string): Promise<void>-End-->
+
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.

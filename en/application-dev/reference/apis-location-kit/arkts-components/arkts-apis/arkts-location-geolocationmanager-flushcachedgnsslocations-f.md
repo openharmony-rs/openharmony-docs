@@ -18,6 +18,8 @@ All prepared GNSS locations are returned to the application through the callback
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
+<!--Device-geoLocationManager-function flushCachedGnssLocations(callback: AsyncCallback<void>): void--><!--Device-geoLocationManager-function flushCachedGnssLocations(callback: AsyncCallback<void>): void-End-->
+
 **System capability:** SystemCapability.Location.Location.Gnss
 
 **Parameters:**
@@ -67,6 +69,8 @@ All prepared GNSS locations are returned to the application, and the bottom-laye
 **Since:** 9
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
+
+<!--Device-geoLocationManager-function flushCachedGnssLocations(): Promise<void>--><!--Device-geoLocationManager-function flushCachedGnssLocations(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 

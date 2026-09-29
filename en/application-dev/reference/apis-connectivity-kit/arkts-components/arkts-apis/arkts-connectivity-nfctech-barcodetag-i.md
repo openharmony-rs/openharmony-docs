@@ -16,6 +16,8 @@ The following describes the unique APIs of **BarcodeTag**.
 
 **Since:** 18
 
+<!--Device-unnamed-export interface BarcodeTag extends TagSession--><!--Device-unnamed-export interface BarcodeTag extends TagSession-End-->
+
 **System capability:** SystemCapability.Communication.NFC.Tag
 
 ## getBarcode
@@ -30,7 +32,9 @@ Obtains a complete barcode tag. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+
+<!--Device-BarcodeTag-getBarcode(): Promise<ArrayBuffer>--><!--Device-BarcodeTag-getBarcode(): Promise<ArrayBuffer>-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
 

@@ -20,6 +20,8 @@ Obtains the fault information about the current application. This API uses an as
 
 **Substitutes:** [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)
 
+<!--Device-FaultLogger-function query(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>>): void--><!--Device-FaultLogger-function query(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>>): void-End-->
+
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
 **Parameters:**
@@ -85,6 +87,8 @@ Obtains the fault information about the current application. This API uses a pro
 **Deprecated since:** 18
 
 **Substitutes:** [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)
+
+<!--Device-FaultLogger-function query(faultType: FaultType): Promise<Array<FaultLogInfo>>--><!--Device-FaultLogger-function query(faultType: FaultType): Promise<Array<FaultLogInfo>>-End-->
 
 **System capability:** SystemCapability.HiviewDFX.Hiview.FaultLogger
 

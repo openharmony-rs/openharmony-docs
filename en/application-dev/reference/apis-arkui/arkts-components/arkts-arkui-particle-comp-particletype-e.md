@@ -4,11 +4,11 @@
 declare enum ParticleType
 ```
 
-Enumerates the particle types.
-
-@enum { string }
+Particle type.
 
 **Since:** 10
+
+<!--Device-unnamed-declare enum ParticleType--><!--Device-unnamed-declare enum ParticleType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,13 +18,15 @@ Enumerates the particle types.
 POINT = 'point'
 ```
 
-Point-like particle.
+Point particle.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ParticleType-POINT = 'point'--><!--Device-ParticleType-POINT = 'point'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,12 +36,16 @@ Point-like particle.
 IMAGE = 'image'
 ```
 
-Image-like particle.
+Image particle.
+
+Image particles do not support color settings.
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ParticleType-IMAGE = 'image'--><!--Device-ParticleType-IMAGE = 'image'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

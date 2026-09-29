@@ -20,6 +20,8 @@ Checks whether the device is automatically unlocked upon reboot.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-systemManager-function getAutoUnlockAfterReboot(admin: Want): boolean--><!--Device-systemManager-function getAutoUnlockAfterReboot(admin: Want): boolean-End-->
+
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
 **Parameters:**
@@ -78,6 +80,8 @@ Checks whether the device is automatically unlocked upon reboot. This API is app
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-systemManager-function getAutoUnlockAfterReboot(admin: Want | null): boolean--><!--Device-systemManager-function getAutoUnlockAfterReboot(admin: Want | null): boolean-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

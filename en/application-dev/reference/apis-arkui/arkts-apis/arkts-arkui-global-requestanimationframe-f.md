@@ -14,6 +14,8 @@ Sets a vsync after which a function will be executed.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
+<!--Device-unnamed-export declare function requestAnimationFrame(handler: Function): number--><!--Device-unnamed-export declare function requestAnimationFrame(handler: Function): number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**

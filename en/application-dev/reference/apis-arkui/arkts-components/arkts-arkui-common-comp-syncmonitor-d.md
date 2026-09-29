@@ -14,6 +14,8 @@ Functions decorated with @SyncMonitor can be used in @ObservedV2 objects and @Co
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-unnamed-declare const SyncMonitor: MonitorDecorator--><!--Device-unnamed-declare const SyncMonitor: MonitorDecorator-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes:**

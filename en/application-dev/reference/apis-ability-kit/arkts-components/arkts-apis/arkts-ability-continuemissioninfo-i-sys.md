@@ -8,6 +8,8 @@ The module defines the parameters required for initiating mission continuation w
 
 **Since:** 10
 
+<!--Device-unnamed-export interface ContinueMissionInfo--><!--Device-unnamed-export interface ContinueMissionInfo-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -25,6 +27,8 @@ Bundle name of the target application to which the mission belongs.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinueMissionInfo-bundleName: string--><!--Device-ContinueMissionInfo-bundleName: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -44,6 +48,8 @@ Continuation type of the application to which the mission belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinueMissionInfo-continueType?: string--><!--Device-ContinueMissionInfo-continueType?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -61,6 +67,8 @@ ID of the target device.
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinueMissionInfo-dstDeviceId: string--><!--Device-ContinueMissionInfo-dstDeviceId: string-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -80,6 +88,8 @@ Bundle name of the source application to which the mission belongs. The value is
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinueMissionInfo-srcBundleName?: string--><!--Device-ContinueMissionInfo-srcBundleName?: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -98,6 +108,8 @@ ID of the source device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+<!--Device-ContinueMissionInfo-srcDeviceId: string--><!--Device-ContinueMissionInfo-srcDeviceId: string-End-->
+
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
@@ -115,6 +127,8 @@ Extended parameters.
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ContinueMissionInfo-wantParam: Record<string, Object>--><!--Device-ContinueMissionInfo-wantParam: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 

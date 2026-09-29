@@ -14,6 +14,8 @@ interface FontOptions
 
 **起始版本：** 9
 
+<!--Device-font-interface FontOptions--><!--Device-font-interface FontOptions-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -36,6 +38,8 @@ familyName: string | Resource
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
+<!--Device-FontOptions-familyName: string | Resource--><!--Device-FontOptions-familyName: string | Resource-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## familySrc
@@ -55,5 +59,7 @@ familySrc: string | Resource
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FontOptions-familySrc: string | Resource--><!--Device-FontOptions-familySrc: string | Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

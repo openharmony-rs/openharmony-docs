@@ -8,6 +8,8 @@ Describes gainmap generation parameters.
 
 **Since:** 26.0.0
 
+<!--Device-image-interface GainmapParams--><!--Device-image-interface GainmapParams-End-->
+
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
@@ -31,6 +33,8 @@ Indicates generating a full-size gainmap or a 1/2 downscaled gainmap.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GainmapParams-isFullSizeGainmap: boolean--><!--Device-GainmapParams-isFullSizeGainmap: boolean-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

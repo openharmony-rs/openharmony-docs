@@ -8,6 +8,8 @@ Defines the progress indicator configuration options of the **ArcButton** compon
 
 **Since:** 23
 
+<!--Device-unnamed-export declare class ArcButtonProgressConfig--><!--Device-unnamed-export declare class ArcButtonProgressConfig-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## Modules to Import
@@ -34,6 +36,8 @@ Default value: **"#1F71FF"**, which is blue.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ArcButtonProgressConfig-color?: ResourceColor--><!--Device-ArcButtonProgressConfig-color?: ResourceColor-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## total
@@ -58,6 +62,8 @@ Value range: [0, 2147483647]. If the value is 0 or out of the range, the default
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
 
+<!--Device-ArcButtonProgressConfig-total?: number--><!--Device-ArcButtonProgressConfig-total?: number-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
 ## value
@@ -79,5 +85,7 @@ Value range: [0, total]
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 23.
+
+<!--Device-ArcButtonProgressConfig-value: number--><!--Device-ArcButtonProgressConfig-value: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

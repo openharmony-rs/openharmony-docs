@@ -8,6 +8,8 @@ export class DrawContext
 
 **起始版本：** 11
 
+<!--Device-unnamed-export class DrawContext--><!--Device-unnamed-export class DrawContext-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## canvas
@@ -25,6 +27,8 @@ get canvas(): drawing.Canvas
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DrawContext-get canvas(): drawing.Canvas--><!--Device-DrawContext-get canvas(): drawing.Canvas-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,6 +94,8 @@ get size(): Size
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
+<!--Device-DrawContext-get size(): Size--><!--Device-DrawContext-get size(): Size-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## sizeInPixel
@@ -107,5 +113,7 @@ get sizeInPixel(): Size
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DrawContext-get sizeInPixel(): Size--><!--Device-DrawContext-get sizeInPixel(): Size-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -14,6 +14,8 @@ textTimerController: TextTimerController = new TextTimerController();
 
 **起始版本：** 8
 
+<!--Device-unnamed-declare class TextTimerController--><!--Device-unnamed-declare class TextTimerController-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## constructor
@@ -29,6 +31,8 @@ TextTimerController的构造函数。
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerController-constructor()--><!--Device-TextTimerController-constructor()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ pause()
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextTimerController-pause()--><!--Device-TextTimerController-pause()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## reset
@@ -62,6 +68,8 @@ reset()
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
+<!--Device-TextTimerController-reset()--><!--Device-TextTimerController-reset()-End-->
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## start
@@ -77,5 +85,7 @@ start()
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextTimerController-start()--><!--Device-TextTimerController-start()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

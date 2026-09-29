@@ -8,6 +8,8 @@ Represents an upgrade service type.
 
 **Since:** 9
 
+<!--Device-update-export interface BusinessType--><!--Device-update-export interface BusinessType-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -36,6 +38,8 @@ You are advised to set **subType** to **FIRMWARE** for system firmware upgrade. 
 
 **Since:** 9
 
+<!--Device-BusinessType-subType: BusinessSubType--><!--Device-BusinessType-subType: BusinessSubType-End-->
+
 **System capability:** SystemCapability.Update.UpdateService
 
 **System API:** This is a system API.
@@ -57,6 +61,8 @@ You are advised to select a vendor type based on the actual upgrade package sour
 **Type:** [BusinessVendor](arkts-basicservices-update-businessvendor-e-sys.md)
 
 **Since:** 9
+
+<!--Device-BusinessType-vendor: BusinessVendor--><!--Device-BusinessType-vendor: BusinessVendor-End-->
 
 **System capability:** SystemCapability.Update.UpdateService
 

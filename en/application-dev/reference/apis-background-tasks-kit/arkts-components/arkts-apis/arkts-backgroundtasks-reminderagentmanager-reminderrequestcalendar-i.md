@@ -12,6 +12,8 @@ Defines a reminder for a calendar event.
 
 **Since:** 9
 
+<!--Device-reminderAgentManager-interface ReminderRequestCalendar extends ReminderRequest--><!--Device-reminderAgentManager-interface ReminderRequestCalendar extends ReminderRequest-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## Modules to Import
@@ -32,6 +34,8 @@ Reminder time.
 
 **Since:** 9
 
+<!--Device-ReminderRequestCalendar-dateTime: LocalDateTime--><!--Device-ReminderRequestCalendar-dateTime: LocalDateTime-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## daysOfWeek
@@ -45,6 +49,8 @@ Days of a week when the reminder repeats. The value ranges from 1 to 7, correspo
 **Type:** Array&lt;number&gt;
 
 **Since:** 11
+
+<!--Device-ReminderRequestCalendar-daysOfWeek?: Array<int>--><!--Device-ReminderRequestCalendar-daysOfWeek?: Array<int>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent
 
@@ -60,6 +66,8 @@ End time of the reminder.
 
 **Since:** 12
 
+<!--Device-ReminderRequestCalendar-endDateTime?: LocalDateTime--><!--Device-ReminderRequestCalendar-endDateTime?: LocalDateTime-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## repeatDays
@@ -74,6 +82,8 @@ Day in which the reminder repeats. The value range is [1, 31]. This parameter is
 
 **Since:** 9
 
+<!--Device-ReminderRequestCalendar-repeatDays?: Array<int>--><!--Device-ReminderRequestCalendar-repeatDays?: Array<int>-End-->
+
 **System capability:** SystemCapability.Notification.ReminderAgent
 
 ## repeatMonths
@@ -87,5 +97,7 @@ Month in which the reminder repeats. The value range is [1, 12]. This parameter 
 **Type:** Array&lt;number&gt;
 
 **Since:** 9
+
+<!--Device-ReminderRequestCalendar-repeatMonths?: Array<int>--><!--Device-ReminderRequestCalendar-repeatMonths?: Array<int>-End-->
 
 **System capability:** SystemCapability.Notification.ReminderAgent

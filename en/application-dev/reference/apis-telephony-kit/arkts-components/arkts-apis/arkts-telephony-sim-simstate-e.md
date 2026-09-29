@@ -8,6 +8,8 @@ Enumerates SIM card states.
 
 **Since:** 6
 
+<!--Device-sim-export enum SimState--><!--Device-sim-export enum SimState-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## SIM_STATE_UNKNOWN
@@ -19,6 +21,8 @@ SIM_STATE_UNKNOWN = 0
 The SIM card is in **unknown** state; that is, the SIM card status cannot be obtained.
 
 **Since:** 6
+
+<!--Device-SimState-SIM_STATE_UNKNOWN = 0--><!--Device-SimState-SIM_STATE_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -32,6 +36,8 @@ The SIM card is in **not present** state; that is, no SIM card is inserted into 
 
 **Since:** 6
 
+<!--Device-SimState-SIM_STATE_NOT_PRESENT = 1--><!--Device-SimState-SIM_STATE_NOT_PRESENT = 1-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## SIM_STATE_LOCKED
@@ -43,6 +49,8 @@ SIM_STATE_LOCKED = 2
 The SIM card is in **locked** state; that is, the SIM card is locked by the personal identification number (PIN), PIN unblocking key (PUK), or network.
 
 **Since:** 6
+
+<!--Device-SimState-SIM_STATE_LOCKED = 2--><!--Device-SimState-SIM_STATE_LOCKED = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -56,6 +64,8 @@ The SIM card is in **not ready** state; that is, the SIM card has been installed
 
 **Since:** 6
 
+<!--Device-SimState-SIM_STATE_NOT_READY = 3--><!--Device-SimState-SIM_STATE_NOT_READY = 3-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## SIM_STATE_READY
@@ -68,6 +78,8 @@ The SIM card is in **ready** state; that is, the SIM card has been installed and
 
 **Since:** 6
 
+<!--Device-SimState-SIM_STATE_READY = 4--><!--Device-SimState-SIM_STATE_READY = 4-End-->
+
 **System capability:** SystemCapability.Telephony.CoreService
 
 ## SIM_STATE_LOADED
@@ -79,5 +91,7 @@ SIM_STATE_LOADED = 5
 The SIM card is in **loaded** state; that is, the SIM card is present and all its files have been loaded.
 
 **Since:** 6
+
+<!--Device-SimState-SIM_STATE_LOADED = 5--><!--Device-SimState-SIM_STATE_LOADED = 5-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

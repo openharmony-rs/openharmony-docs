@@ -4,13 +4,13 @@
 declare class TextClockAttribute extends CommonMethod<TextClockAttribute>
 ```
 
-In addition to the [universal attributes](../../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
-
-In addition to the [universal events](../../../reference/apis-arkui/arkui-ts/ts-component-general-events.md), the following events are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported:
 
 **Inheritance/Implementation:** TextClockAttribute extends CommonMethod<TextClockAttribute>
 
 **Since:** 8
+
+<!--Device-unnamed-declare class TextClockAttribute extends CommonMethod<TextClockAttribute>--><!--Device-unnamed-declare class TextClockAttribute extends CommonMethod<TextClockAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +28,15 @@ Creates a content modifier.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
+<!--Device-TextClockAttribute-contentModifier(modifier: ContentModifier<TextClockConfiguration>): TextClockAttribute--><!--Device-TextClockAttribute-contentModifier(modifier: ContentModifier<TextClockConfiguration>): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclock-comp-textclockconfiguration-i.md)&gt; | Yes | Content modifier to apply to the text clock.<br> **modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclock-comp-textclockconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the TextClock component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier API. |
 
 ## dateTimeOptions
 
@@ -52,13 +54,15 @@ Sets whether to display a leading zero for the hour.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
+<!--Device-TextClockAttribute-dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>): TextClockAttribute--><!--Device-TextClockAttribute-dateTimeOptions(dateTimeOptions: Optional<DateTimeOptions>): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dateTimeOptions | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Whether to display leading zeros in the hour. It only supports setting the **hour** parameter. When the parameter value is **{hour: "2-digit"}**, a leading zero is displayed. When the parameter value is **{hour: "numeric"}**, no leading zero is displayed.<br>Default value: **undefined**. By default, leading zeros are displayed in 24-hour format, but not displayed in 12-hour format. |
+| dateTimeOptions | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Sets whether to display a leading zero for the hour. Only the hour parameter is supported. The value {hour: "2-digit"} indicates that a leading zero is displayed, and the value {hour: "numeric"} indicates that no leading zero is displayed.<br>Default value: undefined. By default, a leading zero is displayed in the 24-hour format and not displayed in the 12-hour format. |
 
 ## fontColor
 
@@ -74,13 +78,15 @@ Sets the font color.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-fontColor(value: ResourceColor): TextClockAttribute--><!--Device-TextClockAttribute-fontColor(value: ResourceColor): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color.<br>Default value for wearables: '#c5ffffff'; default value for other devices: '#e6182431' |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font Color.<br>Default value on Wearable devices: '#c5ffffff'; default value on other devices: '#e6182431' |
 
 ## fontFamily
 
@@ -96,13 +102,15 @@ Sets the font family.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-fontFamily(value: ResourceStr): TextClockAttribute--><!--Device-TextClockAttribute-fontFamily(value: ResourceStr): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font family. Default font: **'HarmonyOS Sans'**<br>The 'HarmonyOS Sans' font and [registered custom fonts](../arkts-apis/arkts-arkui-font.md) are supported for applications.<br>Only the 'HarmonyOS Sans'font is supported for widgets. |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font list. The default font is 'HarmonyOS Sans'. <br>The application currently supports the 'HarmonyOS Sans' font and [registered custom fonts](../arkts-apis/arkts-arkui-font.md). <br>The card currently supports only the 'HarmonyOS Sans' font. |
 
 ## fontFeature
 
@@ -128,13 +136,15 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-fontFeature(value: string): TextClockAttribute--><!--Device-TextClockAttribute-fontFeature(value: string): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Font feature. |
+| value | string | Yes | Text feature effect, used to set the OpenType features of the text. Format: normal &#124; &lt;feature-tag-value&gt;, where the &lt;feature-tag-value&gt; format is: &lt;string&gt; [ &lt;integer&gt; &#124; on &#124; off ]. Multiple features can be set, separated by ','. For example, the format for using monospaced clock digits is:'"ss01" on'. |
 
 ## fontSize
 
@@ -150,13 +160,15 @@ Sets the font size.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-fontSize(value: Length): TextClockAttribute--><!--Device-TextClockAttribute-fontSize(value: Length): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. The value cannot be a percentage. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Font size. When fontSize is of the number type, the unit fp is used.<br>The default font size is 16fp. Percentage strings are not supported. If a percentage string is passed in, the default value is used. |
 
 ## fontStyle
 
@@ -172,13 +184,15 @@ Sets the font style.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-fontStyle(value: FontStyle): TextClockAttribute--><!--Device-TextClockAttribute-fontStyle(value: FontStyle): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md) | Yes | Font style.<br>Default value: **FontStyle.Normal**, indicating the standard font style (non-italic) |
+| value | [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md) | Yes | Font style.<br>Default value: FontStyle.Normal, which indicates the standard font style (not italic). |
 
 ## fontWeight
 
@@ -194,13 +208,15 @@ Sets the font weight of the text. If the value is too large, the text in differe
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-fontWeight(value: number | FontWeight | string): TextClockAttribute--><!--Device-TextClockAttribute-fontWeight(value: number | FontWeight | string): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font width of the text. The value range of the number type is [100, 900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal** |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the text. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font. The default value is 400 for values outside the range of the number type. For the string type, the following values are supported: the string form of a number type value (for example, 400), and the enum values 'lighter' (corresponding to 300), 'regular' (corresponding to 400), 'medium' (corresponding to 500), 'bold' (corresponding to 700), and 'bolder' (corresponding to 900), which correspond to the respective enum values in FontWeight.<br>Default value: FontWeight.Normal |
 
 ## format
 
@@ -210,25 +226,27 @@ format(value: ResourceStr)
 
 Sets the time format, for example, **yyyy/MM/dd** or **yyyy-MM-dd**.
 
-**y**: year (**yyyy** indicates the complete year, and **yy** indicates the last two digits of the year.)
+y: year (yyyy indicates the full year, and yy indicates the last two digits of the year)
 
-**M**: month (To display 01 for January, use **MM** instead.)
+M: month (use MM to display the month as 01)
 
-**d**: day (To display 01 for the first day, use **dd** instead.)
+d: day (use dd to display the day as 01)
 
-**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)
+E: day of the week (use EEEE to display Saturday, and use E, EE, or EEE to display Sat)
 
-**H**: hour (24-hour format); **h**: hour (12-hour format)
+H: hour (24-hour format)
 
-**m**: minute
+h: hour (12-hour format)
 
-**s**: second
+m: minute
 
-**SS**: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)
+s: second
 
-**SSS**: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)
+SS: centisecond (if the number of S in the format is less than 3, all are processed as centiseconds)
 
-**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
+SSS: millisecond (if the number of S in the format is greater than or equal to 3, all are processed as milliseconds)
+
+a: AM/PM (this parameter does not take effect when the hour format is set to H)
 
 Date separators: year, month, day, slash (/), hyphen (-), and period (.) (Custom separator styles are allowed. Letters cannot be used as separators, while Chinese characters can be treated as separators.)
 
@@ -238,11 +256,11 @@ When an invalid letter is set, the letter is ignored. If all letters in **format
 
 If **format** is an empty string ("") or **undefined**, the default value is used.
 
-Default value outside of widgets: 12-hour format: aa hh:mm:ss; 24-hour format: HH:mm:ss.
+Default value in non-widget scenarios: 12-hour format: aa hh:mm:ss; 24-hour format: HH:mm:ss.
 
-Default value in widgets: 12-hour format: hh:mm, 24-hour format: HH:mm.
+Default value in widgets: 12-hour format: hh:mm; 24-hour format: HH:mm.
 
-When used in widgets, the minimum time unit is minute. In this case, if the format contains seconds or centiseconds, the default value will be used.
+When used in a widget, the minimum time unit is minute. If the set format contains seconds or centiseconds, the default value is used.
 
 The following table shows how different settings of **format** work out.
 
@@ -259,7 +277,7 @@ The following table shows how different settings of **format** work out.
 | MM | Feb |
 | M | Feb |
 | dd (complete date) | 04 |
-| [d](../../apis-arkts/arkts-apis/arkts-arkts-math-decimal-decimal-c.md) | 4 |
+| d | 4 |
 | EEEE (full name) | Saturday |
 | E, EE, EEE (abbreviation) | [Sat](../arkts-apis/arkts-arkui-week-e.md) |
 | M d, yyyy | Feb 4, 2023 |
@@ -273,7 +291,7 @@ The following table shows how different settings of **format** work out.
 | aa hh:mm | AM 5:00 |
 | hh:mm | 5:00 |
 | mm:ss | 00:04 |
-| [mm:ss.SS](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracechain-hitracetracepointtype-e.md) | 00:04.91 |
+| mm:ss.SS | 00:04.91 |
 | mm:ss.SSS | 00:04.536 |
 | hh:mm:ss aa | 5:00:04 AM |
 | HH | 17 |
@@ -284,13 +302,15 @@ The following table shows how different settings of **format** work out.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-format(value: ResourceStr): TextClockAttribute--><!--Device-TextClockAttribute-format(value: ResourceStr): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Time format to set.<br>**Since:** 20 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Time format to display.<br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
 
 ## onDateChange
 
@@ -312,6 +332,8 @@ If the event is used in a widget, it is triggered when the change occurs in minu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-onDateChange(event: (value: number) => void): TextClockAttribute--><!--Device-TextClockAttribute-onDateChange(event: (value: number) => void): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
@@ -326,7 +348,7 @@ If the event is used in a widget, it is triggered when the change occurs in minu
 textShadow(value: ShadowOptions | Array<ShadowOptions>)
 ```
 
-Sets the text shadow. It supports input parameters in an array to implement multiple text shadows. This API does not work with the **fill** attribute or coloring strategy.
+Sets the text shadow effect. This API supports passing an array as the input parameter to implement multiple text shadows. The fill field and the smart color mode are not supported.
 
 **Since:** 11
 
@@ -336,10 +358,12 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
+<!--Device-TextClockAttribute-textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute--><!--Device-TextClockAttribute-textShadow(value: ShadowOptions | Array<ShadowOptions>): TextClockAttribute-End-->
+
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters:**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Font shadow of the text. |
+| value | [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | Yes | Text shadow effect. Supports a single shadow object or an array of shadow objects to achieve multiple shadow effects. The ShadowOptions object contains attributes such as radius (blur radius), color (shadow color), offsetX (X-axis offset), and offsetY (Y-axis offset). <br>The fill field and the smart color picking mode are not supported. For details about the attributes, see [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md). |

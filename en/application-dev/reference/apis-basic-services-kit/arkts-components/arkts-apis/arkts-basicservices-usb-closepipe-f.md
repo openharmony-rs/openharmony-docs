@@ -22,6 +22,8 @@ Before you do this, call [usb.getDevices](arkts-basicservices-usb-getdevices-f.m
 
 **Substitutes:** [closePipe](arkts-basicservices-usbmanager-closepipe-f.md)
 
+<!--Device-usb-function closePipe(pipe: USBDevicePipe): number--><!--Device-usb-function closePipe(pipe: USBDevicePipe): number-End-->
+
 **System capability:** SystemCapability.USB.USBManager
 
 **Parameters:**

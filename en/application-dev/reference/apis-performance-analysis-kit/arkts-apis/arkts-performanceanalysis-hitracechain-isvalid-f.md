@@ -16,6 +16,8 @@ Checks whether a **HiTraceId** instance is valid. This API returns the result sy
 
 **Since:** 8
 
+<!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean--><!--Device-hiTraceChain-function isValid(id: HiTraceId): boolean-End-->
+
 **System capability:** SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**
