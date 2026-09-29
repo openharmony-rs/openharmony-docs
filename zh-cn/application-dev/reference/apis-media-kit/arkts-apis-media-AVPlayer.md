@@ -1978,6 +1978,8 @@ async function test(){
 
 ArkTS-Dyn: selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
+ArkTS-Sta: selectTrack(index: int, mode?: SwitchMode): Promise\<void>
+
 使用AVPlayer播放多音视频轨资源时，允许用户以指定模式切换到指定轨道以继续播放。使用Promise异步回调。可以在prepared/playing/paused状态下调用。
 
 使用场景：切换多语言音频轨道（如切换中英文配音）、切换不同清晰度的视频轨道、选择字幕轨道。
@@ -2200,6 +2202,8 @@ async function test(){
 ## seek<sup>9+</sup>
 
 ArkTS-Dyn: seek(timeMs: number, mode?:SeekMode): void
+
+ArkTS-Sta: seek(timeMs: int, mode?:SeekMode): void
 
 跳转到指定播放位置。只能在prepared/playing/paused/completed状态调用，可以通过[on('seekDone')](#onseekdone9)事件确认是否生效。
 
