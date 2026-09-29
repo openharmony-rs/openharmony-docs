@@ -1,12 +1,11 @@
 # Application Freeze Event Overview
-
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-31T01:29:09.322Z pushedAt=2026-07-31T03:51:51.495Z -->
+<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:29:00.331Z pushedAt=2026-09-29T10:10:48.402Z -->
 
 ## Overview
 
@@ -26,19 +25,19 @@ This section introduces the detection principle of **AppFreeze** (app freeze) as
 
 For details, see [Application Freeze Detection Principles](appfreeze-guidelines.md#detection-principles).
 
-## Custom Parameter Settings for Page Transition Log Specification
+## Custom Parameter Settings for Page Switch Log Specification
 
-Supported since **API version 24**, page transition log configuration allows the system to collect and report page transition logs when an app freeze occurs, helping you locate issues.
+Supported since **API version 24**, page switch log configuration allows the system to collect and report page switch logs when an app freeze occurs, helping you locate issues.
 
 ### configEventPolicy
 
 | API | Description |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| Sets the policy parameters for app freeze events. This API enables page transition log collection for app freeze events. |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| Sets the policy parameters for app freeze events. This API enables page switch log collection for app freeze events. |
 
 ### configEventPolicy Parameter Settings
 
-You can enable page transition log collection for app freeze events by setting parameters in [EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22).
+You can enable page switch log collection for app freeze events by setting parameters in [EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22).
 
 | Name       | Type    | Read-only | Optional | Description                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
@@ -56,9 +55,9 @@ let policy: hiAppEvent.EventPolicy = {
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+    hilog.info(0x0000, 'testTag', `Set appfreeze config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+    hilog.error(0x0000, 'testTag', `Failed to set appfreeze config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -72,28 +71,28 @@ The **params** attribute in the event information is described as follows.
 | -------- | -------- | -------- |
 | time | number | Event triggering time, in ms.|
 | foreground | boolean | Whether the application is running in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
-| release_type | string | App version type. The value **release** indicates that the app is a [release-type app](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the app is a [debug-type app](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).<br>**Note:** Supported since API version 23. |
+| release_type | string | Application version type. The value **release** indicates that the app is a [release-type app](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the app is a [debug-type app](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).<br>**Note:** Supported since API version 23. |
 | cpu_abi | string | ABI type.<br>**Note**: This field is supported since API version 23.|
-| app_running_unique_id | string | Unique ID associated with the app runtime.<br>**Note:** This parameter is supported since API version 24. |
+| app_running_unique_id | string | Unique ID associated with the application runtime.<br>**Note:** This parameter is supported since API version 24. |
 | bundle_version | string | Application version.|
 | bundle_name | string | Application name.|
 | process_name | string | Process name of the application.|
-| pid | number | Process ID of an application.|
-| uid | number | User ID of an application.|
+| pid | number | Process ID of the application.|
+| uid | number | User ID of the application.|
 | uuid | string | Error ID, which is generated based on fault information and uniquely identifies crash faults of the same type.|
 | exception | object | Exception information. For details, see [exception](#exception). |
 | hilog | string[] | Log information. For the application freeze event, a maximum of 100 lines of faulty process log information can be obtained from the hilog buffer.|
 | event_handler | string[] | Events not yet handled by the main thread.|
-| event_handler_size_3s | string | Number of tasks in the task stack at 3s in the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout) (effective only for Application Not Responding events). |
-| event_handler_size_6s | string | Number of tasks in the task stack at 6s in the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout) (effective only for Application Not Responding events). |
+| event_handler_size_3s | string | Number of tasks in the task stack at 3s in the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout) (effective only for application freeze events). |
+| event_handler_size_6s | string | Number of tasks in the task stack at 6s in the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-app-main-thread-freeze-timeout) (effective only for application freeze events). |
 | peer_binder | string[] | Binder call information.|
-| threads | object[] | Full thread call stack. For details, see [thread](#thread). |
+| threads | object[] | Full thread call stacks. For details, see [thread](#thread). |
 | memory | object | Memory information. For details, see [memory](#memory). |
-| external_log<sup>12+</sup> | string[] | Path of the error log file. If the directory files exceed the threshold (for details, see **log_over_limit**), new log files may fail to be written. Therefore, delete the log files immediately after they are processed.|
-| log_over_limit<sup>12+</sup> | boolean | Whether the total size of the generated fault log file and existing log files exceeds the 5 MB upper limit. The value **true** indicates that the upper limit is exceeded and log writing fails; **false** indicates that the upper limit is not exceeded.<br>When [minidump](performance-analysis-kit-terminology.md#minidump) is enabled, the upper limit is adjusted to 35 MB; when minidump is disabled, the upper limit is restored to 5 MB. |
-| process_life_time | number | Fault process survival time.<br>**Note:** Supported since API version 22. |
+| external_log<sup>12+</sup> | string[] | Path of the fault log file. If the directory files exceed the threshold (for details, see **log_over_limit**), new log files may fail to be written. Therefore, delete the log files immediately after they are processed.|
+| log_over_limit<sup>12+</sup> | boolean | Whether the total size of the generated fault log files and existing log files exceeds the 5 MB upper limit. The value **true** indicates that the upper limit is exceeded and log writing fails; **false** indicates that the upper limit is not exceeded.<br>When [minidump](performance-analysis-kit-terminology.md#minidump) is enabled, the upper limit is adjusted to 35 MB; when minidump is disabled, the upper limit is restored to 5 MB. |
+| process_life_time | number | Survival time of the faulty process.<br>**Note:** Supported since API version 22. |
 | external_callback_log | string | Custom callback log information, which can be written through [OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback).<br>**Note:** Supported since API version 24. |
-| page_switch_log | string | Page transition log path. For details about the log, see [Page Switch Logs](pageswitch-log.md).<br>**Note:** Supported since API version 24. |
+| page_switch_log | string | Page switch log path. For details about the log, see [Page Switch Logs](pageswitch-log.md).<br>**Note:** Supported since API version 24. |
 
 ### exception
 

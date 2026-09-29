@@ -1,22 +1,20 @@
 # Photo Capture (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-10T09:23:00.294Z pushedAt=2026-08-10T14:20:40.538Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:45:45.126Z pushedAt=2026-09-29T08:30:06.578Z -->
 
 ## Overview
 
 Photo capture is one of the key functions of a camera. Based on the complex logic of the camera module, you can set information such as resolution, flash, focal length, photo quality, and rotation angle in intermediate steps to ensure the quality of captured photos.
 
-Currently, there are two photo capture solutions: [deferred photo capture](./native-camera-deferred-capture.md) and one-shot photo capture (**this document uses one-shot photo capture as the basis for explanation**).
+Currently, there are two photo capture solutions: [deferred photo capture](./native-camera-deferred-capture.md) and one-shot photo capture (**this document uses one-shot photo capture as the basis for explanation**). 
 
-- Deferred photo capture allows the camera to output a low-quality image as a thumbnail to improve the perceived capture speed, while also using a high-quality image to ensure that the final image quality reaches the level of the system camera. This meets the requirements of image processing algorithms without blocking the foreground capture speed, building camera performance competitiveness and improving user experience.
-
-- One-shot photo capture returns a high-quality image after multi-frame fusion and multiple underlying algorithm processing during the capture process, so the Shot2See latency (the process from when the user taps the capture control to when the thumbnail appears in the thumbnail display area) is relatively long. In addition, one-shot photo capture supports adjusting the [photo quality prioritization strategy](#photo-quality-prioritization-strategy) through the [high-performance photo capture](#high-performance-photo-capture) feature to speed up image output or improve image quality.
+- Deferred photo capture allows the camera to output a low-quality image as a thumbnail to improve the perceived capture speed, while also using a high-quality image to ensure that the final image quality reaches the level of the system camera. This meets the requirements of image processing algorithms without blocking the foreground capture speed, building camera performance competitiveness and improving user experience. 
+- One-shot photo capture returns a high-quality image after multi-frame fusion and multiple underlying algorithm processing during the capture process, so the Shot2See latency (the process from when the user taps the capture control to when the thumbnail appears in the thumbnail display area) is relatively long. In addition, one-shot photo capture supports adjusting the [photo quality prioritization strategy](#photo-quality-prioritization-strategy) through the [high-performance photo capture](#high-performance-photo-capture) feature to speed up image output or improve image quality. 
 
 ## How to Develop
 
@@ -24,8 +22,8 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
 
 1. Import the NDK, which provides camera-related properties and methods.
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
-
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->    
+   
    ``` C
    #include <cstdint>
    #include <native_buffer/buffer_common.h>
@@ -35,7 +33,6 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -90,12 +87,12 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
 
    Call [OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface) to create a photo output stream.
 
-   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
+   
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
-       OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
        profile_ = cameraOutputCapability_->photoProfiles[0];
        Camera_Profile* profile = cameraOutputCapability_->photoProfiles[0];
        profile->size.width = NUM_1920;
@@ -115,7 +112,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    }
    ```
 
-5. Register a one-time photo capture callback, which is defined as **PhotoAvailable**. If your application requires rapid image display, use the deferred photo delivery callback, which is defined as [PhotoAssetAvailable](./native-camera-deferred-capture.md).
+5. Register a one-shot photo capture callback, which is defined as **PhotoAvailable**. If your application requires rapid image display, use the deferred photo delivery callback, which is defined as [PhotoAssetAvailable](./native-camera-deferred-capture.md).
 
    > **NOTE**
    >
@@ -123,18 +120,15 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    >
    > Therefore, you are not advised to register both **PhotoAssetAvailable** and **PhotoAvailable**.
 
-**One-shot photo capture development process (PhotoAvailable)**:
+   **One-shot photo capture development process (PhotoAvailable)**:
 
    - Register the callback before the session commits the configuration.
-
    - Obtain the image information from the callback, parse the buffer data, and perform custom service processing.
-
    - Pass the processed buffer to the ArkTS side through the callback for image display or storage (using a security component).
-
    - Unregister the callback when it is no longer required.
 
      <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+     
      ``` C++
      // Save the buffer processing callback registered on the NAPI side.
      Camera_ErrorCode NDKCamera::RegisterBufferCb(void *cb)
@@ -147,7 +141,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
          g_bufferCb = cb;
          return CAMERA_OK;
      }
-
+     
      static bool ProcessImageNative(OH_ImageNative* imageNative, uint32_t** components,
                                     OH_NativeBuffer** nativeBuffer, size_t* nativeBufferSize)
      {
@@ -272,7 +266,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
      
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
      }
-
+     
      Camera_ErrorCode NDKCamera::PhotoOutputRegisterPhotoAvailableCallback(void)
      {
          OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
@@ -284,7 +278,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
              ret_);
          return ret;
      }
-
+     
      // Unregister the PhotoAvailableCallback callback.
      Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterPhotoAvailableCallback()
      {
@@ -298,10 +292,10 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
      }
      ```
 
-    Reference sample code for buffer callback processing at the NAPI layer:
+     Reference sample code for buffer callback processing at the NAPI layer:
 
      <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/main.cpp) -->
-
+     
      ``` C++
      // Buffer callback at the NAPI layer.
      static void BufferCb(void* buffer, size_t size)
@@ -311,7 +305,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
          napi_value asyncResource = nullptr;
          napi_value asyncResourceName = nullptr;
          napi_async_work work;
-
+     
          if (size == 0 || size > SIZE_MAX) {
              OH_LOG_ERROR(LOG_APP, "BufferCb size is invalid");
              return;
@@ -362,7 +356,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    You can set camera parameters to adjust photo capture functions, including the flash, zoom ratio, and focal length.
 
    <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
    {
@@ -378,7 +372,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
        } else {
            OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-
+   
        // Query whether the flash mode is supported.
        bool isSupported = false;
        ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
@@ -408,7 +402,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
        }
        return ret;
    }
-
+   
    // Focus mode.
    Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
@@ -443,7 +437,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
        OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
        return ret_;
    }
-
+   
    Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
    {
        float zoom = float(zoomRatio);
@@ -482,7 +476,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    Call [OH_PhotoOutput_Capture_WithCaptureSetting()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture_withcapturesetting) to execute the photo capture task.
 
    <!-- @[capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
    {
@@ -515,29 +509,28 @@ The experience of one-shot photo capture is primarily measured by image output s
 >
 > Only one-shot photo capture supports setting the photo quality prioritization strategy. If the strategy is set in deferred photo capture, the setting will not take effect.
 
+
 ### Photo Quality Prioritization Strategy
 
-When using one-shot photo capture, you can set two types of photo quality prioritization strategies: speed priority and high quality priority, which correspond to different [Camera_PhotoQualityPrioritization](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) enumeration values.
+When using one-shot photo capture, you can set two types of photo quality prioritization strategies: speed priority and high quality priority, which correspond to different [Camera_PhotoQualityPrioritization](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) enumeration values. 
 
-- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) corresponds to speed priority, which reduces image quality to improve capture speed. If you do not set an explicit photo quality prioritization strategy during one-shot photo capture, **one-shot photo capture defaults to the speed priority state**.
-
-- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) corresponds to high quality priority, which takes a longer time to obtain a higher-quality image.
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) corresponds to speed priority, which reduces image quality to improve capture speed. If you do not set an explicit photo quality prioritization strategy during one-shot photo capture, **one-shot photo capture defaults to the speed priority state**. 
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) corresponds to high quality priority, which takes a longer time to obtain a higher-quality image. 
 
 ### How to Correctly Set the Photo Quality Prioritization Strategy
 
 To correctly set the photo quality prioritization strategy in one-shot photo capture, the high-performance photo capture feature provides the following two APIs:
 
-- [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported): Queries whether the current device supports the specified photo quality prioritization strategy. The value **true** indicates supported, and **false** indicates not supported. Before setting the photo quality prioritization strategy, you must first query whether the strategy to be set is available on the current device.
-
-- [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization): Sets the photo quality prioritization strategy. Call this API to set the corresponding strategy for high-performance photo capture.
+- [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported): Queries whether the current device supports the specified photo quality prioritization strategy. The value **true** indicates supported, and **false** indicates not supported. Before setting the photo quality prioritization strategy, you must first query whether the strategy to be set is available on the current device. 
+- [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization): Sets the photo quality prioritization strategy. Call this API to set the corresponding strategy for high-performance photo capture. 
 
 ### How to Develop
 
-The high-performance photo capture APIs must be called during the enabling step of the [Camera Session Management (C/C++)](native-camera-session-management.md) process.
+The high-performance photo capture APIs must be called during the enabling step of the [Camera Session Management (C/C++)](native-camera-session-management.md) process.  
 
-The specific calling timing is as follows:
+The specific calling timing is as follows: 
 
-- Call after [OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig) in the enabling step of the [Camera Session Management (C/C++)](native-camera-session-management.md) process.
+- Call after [OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig) in the enabling step of the [Camera Session Management (C/C++)](native-camera-session-management.md) process. 
 
   ```c++
   Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
@@ -597,7 +590,7 @@ The specific calling timing is as follows:
   }
   ```
 
-- Call before [OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig) in the enabling step of the [Camera Session Management (C/C++)](native-camera-session-management.md) process.
+- Call before [OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig) in the enabling step of the [Camera Session Management (C/C++)](native-camera-session-management.md) process. 
 
   ```c++
   Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
@@ -665,7 +658,7 @@ During camera application development, you can listen for the status of the phot
 - Register the **'onFrameStart'** event to listen for photo capture start events. This event can be registered when a PhotoOutput instance is created and is triggered when the bottom layer starts exposure for photo capture for the first time. The capture ID is returned.
 
   <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   // PhotoOutput Callback
   void PhotoOutputOnFrameStart(Camera_PhotoOutput *photoOutput)
@@ -682,7 +675,7 @@ During camera application development, you can listen for the status of the phot
 - Register the **'onFrameEnd'** event to listen for photo capture end events. This event can be registered when a PhotoOutput instance is created.
 
   <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
   {
@@ -693,7 +686,7 @@ During camera application development, you can listen for the status of the phot
 - Register the **'onError'** event to listen for photo output errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 
   <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {
@@ -702,7 +695,7 @@ During camera application development, you can listen for the status of the phot
   ```
 
   <!-- @[get_photo_output_listener_and_register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   PhotoOutput_Callbacks *NDKCamera::GetPhotoOutputListener(void)
   {
