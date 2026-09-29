@@ -34,7 +34,7 @@ ohos-window restore-window --windowId <id> --help
 ### 约束限制
 
 - 需要配置[ohos.permission.CONTROL_DEVICE](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_device)权限。
-- 支持设备：PC/2in1
+- 支持设备：PC/2in1。
 
 ### 参数说明
 
