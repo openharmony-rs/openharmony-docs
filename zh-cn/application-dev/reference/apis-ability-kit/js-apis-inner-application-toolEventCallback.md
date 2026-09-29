@@ -8,13 +8,11 @@
 
 ToolEventCallback用于接收CLI工具进程运行期间产生的会话事件。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 > **说明：**
 >
 > 本模块仅适用于ArkTS-Dyn。
->
-> 本模块接口为系统接口。
 >
 > 本模块接口仅可在Stage模型下使用。
 
@@ -28,9 +26,7 @@ import { common } from '@kit.AbilityKit';
 
 CLI工具会话事件的回调接口。
 
-**起始版本：** 26.0.0
-
-**系统接口**：此接口为系统接口。
+**起始版本：** 26.0.1
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -38,7 +34,7 @@ CLI工具会话事件的回调接口。
 
 | 名称    | 类型                                                 | 只读 | 可选 | 说明                      |
 | ------- | ---------------------------------------------------- | ---- | ---- | ------------------------- |
-| onEvent | (event: [CliToolEvent (CLI工具会话事件)](js-apis-inner-application-cliToolEvent-sys.md#clitoolevent)) => void | 否   | 否   | CLI工具会话事件回调函数。 |
+| onEvent | (event: [CliToolEvent](js-apis-inner-application-cliToolEvent.md#clitoolevent)) => void | 否 | 否 | CLI工具会话事件回调函数。 |
 
 **示例：**
 

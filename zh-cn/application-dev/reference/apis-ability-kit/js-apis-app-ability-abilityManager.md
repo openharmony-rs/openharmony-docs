@@ -63,7 +63,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo (Ability运行信息)](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或对返回的数据进行自定义处理。 |
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或对返回的数据进行自定义处理。 |
 
 **错误码**：
 
@@ -202,7 +202,7 @@ AbilityRunningInfo二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityRunningInfo (Ability运行信息)](js-apis-inner-application-abilityRunningInfo.md) | AbilityRunningInfo二级模块，提供对Ability运行的相关信息和状态的定义。 |
+| [_AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md) | AbilityRunningInfo二级模块，提供对Ability运行的相关信息和状态的定义。 |
 
 ## AbilityStateData<sup>14+</sup>
 
@@ -218,7 +218,7 @@ AbilityStateData二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |
+| [AbilityStateData](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |
 
 ## AbilityStateData<sup>23+</sup>
 
@@ -234,4 +234,4 @@ AbilityStateData二级模块。
 
 | 类型                                                         | 说明                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| [_AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |
+| [_AbilityStateData](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |

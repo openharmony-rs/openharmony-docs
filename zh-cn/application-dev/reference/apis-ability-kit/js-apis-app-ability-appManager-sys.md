@@ -337,7 +337,7 @@ on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bun
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | 是   | 调用接口类型，固定填'abilityFirstFrameState'字符串。         |
-| observer   | [AbilityFirstFrameStateObserver (首帧绘制状态监听器)](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是   | 表示待注册的Ability首帧绘制完成事件观察者对象。              |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是 | 表示待注册的Ability首帧绘制完成事件观察者对象。 |
 | bundleName | string                                                       | 否   | 表示待监听的Ability的应用bundleName，不填表示注册监听所有应用ability首帧绘制完成事件。 |
 
 **错误码**：
@@ -392,7 +392,7 @@ onAbilityFirstFrameStateChange(observer: AbilityFirstFrameStateObserver, bundleN
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| observer   | [AbilityFirstFrameStateObserver (首帧绘制状态监听器)](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是   | 表示待注册的Ability首帧绘制完成事件观察者对象。              |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是 | 表示待注册的Ability首帧绘制完成事件观察者对象。 |
 | bundleName | string                                                       | 否   | 表示待监听的Ability的应用bundleName，不填表示注册监听所有应用ability首帧绘制完成事件。 |
 
 **错误码**：
@@ -588,7 +588,7 @@ off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 调用接口类型，固定填'abilityFirstFrameState'字符串。         |
-| observer | [AbilityFirstFrameStateObserver (首帧绘制状态监听器)](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否   | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否 | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
 
 **错误码**：
 
@@ -738,7 +738,7 @@ offAbilityFirstFrameStateChange(observer?: AbilityFirstFrameStateObserver): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| observer | [AbilityFirstFrameStateObserver (首帧绘制状态监听器)](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否   | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否 | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
 
 **错误码**：
 
@@ -2126,7 +2126,7 @@ getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
 | 类型           | 说明              |
 | -------------- | ---------------- |
-| Promise\<[RunningMultiAppInfo (多开应用运行信息)](js-apis-inner-application-runningMultiAppInfo-sys.md)> | Promise对象。返回特定包名的运行态应用多开信息。 |
+| Promise\<[RunningMultiAppInfo](js-apis-inner-application-runningMultiAppInfo-sys.md)> | Promise对象。返回特定包名的运行态应用多开信息。 |
 
 **错误码**：
 
@@ -2837,7 +2837,7 @@ UIAbility首帧绘制完成事件监听对象。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityFirstFrameStateData (首帧绘制状态数据)](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成事件监听对象。 |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成事件监听对象。 |
 
 ## AbilityFirstFrameStateObserver<sup>23+</sup>
 
@@ -2853,7 +2853,7 @@ UIAbility首帧绘制完成事件监听对象。
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| [AbilityFirstFrameStateData (首帧绘制状态数据)](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
 
 ## AbilityFirstFrameStateData<sup>12+</sup>
 
@@ -2869,7 +2869,7 @@ UIAbility首帧绘制完成回调上报数据结构。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityFirstFrameStateData (首帧绘制状态数据)](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成回调上报数据结构。 |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成回调上报数据结构。 |
 
 ## AbilityFirstFrameStateData<sup>23+</sup>
 
@@ -2885,7 +2885,7 @@ UIAbility首帧绘制完成回调上报数据结构。
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| [_AbilityFirstFrameStateData (首帧绘制状态数据)](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
+| [_AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
 
 ## RunningMultiAppInfo<sup>12+</sup>
 
@@ -2901,7 +2901,7 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_RunningMultiAppInfo (多开应用运行信息)](js-apis-inner-application-runningMultiAppInfo-sys.md) | 应用多开在运行态的结构信息。 |
+| [_RunningMultiAppInfo](js-apis-inner-application-runningMultiAppInfo-sys.md) | 应用多开在运行态的结构信息。 |
 
 ## FilterBundleType<sup>21+</sup>
 

@@ -521,7 +521,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       // 通过remote进行通信
@@ -530,7 +530,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code: number): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
 
@@ -779,7 +779,7 @@ let options: common.ConnectOptions = {
   onConnect(elementName, remote): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
     if (remote === null) {
-      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+      hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
       return;
     }
     let option = new rpc.MessageOption();
@@ -812,7 +812,7 @@ let options: common.ConnectOptions = {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
   onFailed(code): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
+    hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback');
   }
 };
 
@@ -1057,8 +1057,7 @@ ArkTS-Dyn示例：
 <!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
 
 ``` TypeScript
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want, bundleManager } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1244,8 +1243,7 @@ ArkTS-Dyn示例：
 <!-- @[ability_app_service_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets) -->
 
 ``` TypeScript
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want, abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1268,7 +1266,7 @@ class Stub extends rpc.RemoteObject {
       hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
       // 对客户端包名进行识别
       if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-        hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
+        hilog.error(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
         return;
       }
       // 识别通过，执行正常业务逻辑

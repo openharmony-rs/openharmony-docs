@@ -1085,7 +1085,7 @@ promptAction.showDialog({
     console.info('showDialog success, click button: ' + data.index);
   })
   .catch((err: Error) => {
-    console.info('showDialog error: ' + err);
+    console.error('showDialog error: ' + err);
   })
 ```
 
@@ -1149,7 +1149,7 @@ try {
     ]
   }, (err, data) => {
     if (err) {
-      console.info('showDialog err: ' + err);
+      console.error('showDialog err: ' + err);
       return;
     }
     console.info('showDialog success callback, click button: ' + data.index);
@@ -1187,7 +1187,7 @@ try {
     ]
   }, (err, data) => {
     if (err) {
-      console.info('showDialog err: ' + err);
+      console.error('showDialog err: ' + err);
       return;
     }
     console.info('showDialog success callback, click button: ' + data.index);
@@ -1323,7 +1323,7 @@ try {
     ]
   }, (err, data) => {
     if (err) {
-      console.info('showActionMenu err: ' + err);
+      console.error('showActionMenu err: ' + err);
       return;
     }
     console.info('showActionMenu success callback, click button: ' + data.index);
@@ -1401,7 +1401,7 @@ struct Index {
               console.info('showActionMenu success, click button: ' + data.index);
             })
             .catch((err: Error) => {
-              console.info('showActionMenu error: ' + err);
+              console.error('showActionMenu error: ' + err);
             })
         })
     }
@@ -1475,7 +1475,7 @@ promptAction.showActionMenu({
     console.info('showActionMenu success, click button: ' + data.index);
   })
   .catch((err: Error) => {
-    console.info('showActionMenu error: ' + err);
+    console.error('showActionMenu error: ' + err);
   })
 ```
 

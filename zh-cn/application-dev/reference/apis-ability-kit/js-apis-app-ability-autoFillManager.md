@@ -71,7 +71,7 @@ type OnFillSuccessFn = (viewData: ViewData) => void
 
 | 参数名   | 类型                                              | 必填 | 说明                     |
 | -------- | ------------------------------------------------- | ---- | ----------------------- |
-| viewData | [ViewData (视图数据)](js-apis-inner-application-viewData.md) | 是   | 自动填充的视图数据信息。 |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 是 | 自动填充的视图数据信息。 |
 
 
 ## OnFillFailureFn
@@ -912,7 +912,7 @@ type ViewData = _ViewData.default
 
 | 类型                                                                  | 说明                        |
 | --------------------------------------------------------------------- | --------------------------- |
-| [_ViewData (视图数据)](js-apis-inner-application-viewData.md#viewdata).default | 表示自动填充的视图数据信息。 |
+| [_ViewData](js-apis-inner-application-viewData.md#viewdata).default | 表示自动填充的视图数据信息。 |
 
 ## ViewData
 
@@ -930,7 +930,7 @@ type ViewData = _ViewData
 
 | 类型                                                          | 说明                         |
 | ------------------------------------------------------------- | ---------------------------- |
-| [_ViewData (视图数据)](js-apis-inner-application-viewData.md#viewdata) | 表示自动填充的视图数据信息。 |
+| [_ViewData](js-apis-inner-application-viewData.md#viewdata) | 表示自动填充的视图数据信息。 |
 
 ## PageNodeInfo
 
@@ -950,7 +950,7 @@ type PageNodeInfo = _PageNodeInfo.default
 
 | 类型                                                                              | 说明                        |
 | --------------------------------------------------------------------------------- | --------------------------- |
-| [_PageNodeInfo (页面节点信息)](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo).default | 表示自动填充的页面节点信息。 |
+| [_PageNodeInfo](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo).default | 表示自动填充的页面节点信息。 |
 
 ## PageNodeInfo
 
@@ -968,7 +968,7 @@ type PageNodeInfo = _PageNodeInfo
 
 | 类型                                                                      | 说明                        |
 | ------------------------------------------------------------------------- | --------------------------- |
-| [_PageNodeInfo (页面节点信息)](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo) | 表示自动填充的页面节点信息。 |
+| [_PageNodeInfo](js-apis-inner-application-pageNodeInfo.md#pagenodeinfo) | 表示自动填充的页面节点信息。 |
 
 ## AutoFillType
 
@@ -986,7 +986,7 @@ type AutoFillType = _AutoFillType
 
 | 类型                                                                      | 说明                    |
 | ------------------------------------------------------------------------- | ----------------------- |
-| [_AutoFillType (自动填充类型)](js-apis-inner-application-autoFillType.md#autofilltype) | 表示自动填充的类型信息。 |
+| [_AutoFillType](js-apis-inner-application-autoFillType.md#autofilltype) | 表示自动填充的类型信息。 |
 
 ## FillRequest
 
@@ -1082,7 +1082,7 @@ type AutoFillRect = _AutoFillRect.default
 
 | 类型                                                                              | 说明                        |
 | --------------------------------------------------------------------------------- | --------------------------- |
-| [_AutoFillRect (自动填充矩形区域)](js-apis-inner-application-autoFillRect.md#autofillrect).default | 表示用于自动填充的矩形区域。 |
+| [_AutoFillRect](js-apis-inner-application-autoFillRect.md#autofillrect).default | 表示用于自动填充的矩形区域。 |
 
 ## AutoFillRect<sup>23+</sup>
 
@@ -1100,4 +1100,4 @@ type AutoFillRect = _AutoFillRect
 
 | 类型                                                                      | 说明                        |
 | ------------------------------------------------------------------------- | --------------------------- |
-| [_AutoFillRect (自动填充矩形区域)](js-apis-inner-application-autoFillRect.md#autofillrect) | 表示用于自动填充的矩形区域。 |
+| [_AutoFillRect](js-apis-inner-application-autoFillRect.md#autofillrect) | 表示用于自动填充的矩形区域。 |

@@ -85,7 +85,11 @@
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fileIo.copyFileSync(path.toString(), targetPath.toString());
+            try {
+              fileIo.copyFileSync(path.toString(), targetPath.toString());
+            } catch (e) {
+              hilog.error(0x0000, 'testTag', `copy file failed: ${e}`);
+            }
           }
         }
       }

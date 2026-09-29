@@ -75,3 +75,38 @@ enableTransparentLayer(enabled: boolean)
   > 仅type为SURFACE时有效。
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
+
+**示例：**
+
+以下示例展示了在带半透明背景的XComponent上开启独立图层，以避免半透明区域与下方内容混合时出现渲染异常。
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+
+  build() {
+    RelativeContainer() {
+      Column({ space: 10 }) {
+        Text('Transparent Layer XComponent')
+          .fontSize('24fp')
+          .fontWeight(500)
+        XComponent({ type: XComponentType.SURFACE })
+          .id('XComponentTransparentLayer')
+          .backgroundColor('#80000000') // 半透明背景
+          .enableTransparentLayer(true) // 开启独立图层，避免半透明区域与下方内容混合时出现渲染异常
+      }
+      .margin({
+        top: 12,
+        left: 12,
+        right: 12
+      })
+      .height('25%')
+      .width('90%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
