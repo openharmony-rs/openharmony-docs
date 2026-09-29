@@ -228,7 +228,7 @@
 |napi_delete_strong_sendable_reference | napi_invalid_arg |
 |napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
-### 示例代码
+## 示例代码
 - 模块注册
     ```c++
     // napi_init.cpp
