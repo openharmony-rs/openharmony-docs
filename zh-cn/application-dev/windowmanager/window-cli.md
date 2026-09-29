@@ -8,13 +8,13 @@
 
 ## 简介
 
-ohos-window是OpenHarmony提供的窗口管理CLI（Command Line Interface，命令行界面）工具，用于操控窗口或查询窗口信息。该工具遵循Claw规范，以JSON格式输出执行结果，并提供详细的错误码、错误原因和解决建议，ohos-window的安装路径为`/system/bin/cli_tool/executable/ohos-window`。
+ohos-window是OpenHarmony提供的窗口管理CLI（Command Line Interface，命令行界面）工具，用于操作主窗口或查询窗口信息。该工具以JSON格式输出执行结果，并提供详细的错误码、错误原因和解决建议，ohos-window的安装路径为`/system/bin/cli_tool/executable/ohos-window`。
 
 ## help
 
 查看帮助信息和所有子命令。
 
-### 命令格式
+支持以下两种命令格式：
 
 ```bash
 ohos-window help
@@ -28,32 +28,37 @@ ohos-window --help
 ### 命令格式
 
 ```bash
-ohos-window restore-window --windowId <id>
+ohos-window restore-window --windowId <id> --help
 ```
 
 ### 约束限制
 
-需要配置ohos.permission.CONTROL_DEVICE权限。
+- 需要配置[ohos.permission.CONTROL_DEVICE](../security/AccessToken/restricted-permissions.md#ohospermissioncontrol_device)权限。
+- 支持设备：PC/2in1
 
 ### 参数说明
 
-| 参数名 | 类型 | 说明 |
-|------|------|------|
-| `--windowId` | integer | 必填，待恢复到前台的主窗口的windowId。必须是非负整数。 |
+| 参数名 | 说明 |
+|------|------|
+| `--windowId` | 可选，待恢复到前台的主窗口的windowId。必须是非负整数。 |
+| `--help` | 可选，查看帮助信息。 |
 
 ### 错误码
 
 | 错误码 | 说明 | 处理建议 |
 |--------|------|------|
 | `ERR_INVALID_INPUT` | 无效的输入参数 | 检查参数是否符合参数说明 |
-| `ERR_NO_PERMISSION` | 权限校验失败 | 检查约束限制是否符合 |
+| `ERR_NO_PERMISSION` | 权限校验失败 | 检查是否配置ohos.permission.CONTROL_DEVICE权限 |
 | `ERR_DEVICE_NOT_SUPPORT` | 设备不支持 | 检查当前设备类型 |
-| `ERR_IPC_FAILED` | IPC 通信或服务连接失败 | 内部错误 |
-| `ERR_INVALID_OPERATION` | 当前状态不允许该操作 | 设备解锁后使用命令 |
+| `ERR_IPC_FAILED` | IPC通信或服务连接失败 | 重启设备后再次尝试执行命令 |
+| `ERR_INVALID_OPERATION` | 当前状态不允许该操作 | 待设备解锁后再使用命令 |
 
 ### 示例代码
 
 ```bash
 # 恢复指定主窗口到前台
 ohos-window restore-window --windowId 100
+
+# 查看 restore-window 命令帮助
+ohos-window restore-window --help
 ```
