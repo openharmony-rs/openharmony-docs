@@ -17,7 +17,10 @@ ohos-window是OpenHarmony提供的窗口管理CLI（Command Line Interface，命
 支持以下两种命令格式：
 
 ```bash
+# 方式一
 ohos-window help
+
+# 方式二
 ohos-window --help
 ```
 
