@@ -62,8 +62,8 @@ ArkTS-Sta: activateOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;):
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -153,8 +153,8 @@ ArkTS-Sta: activateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -244,9 +244,9 @@ ArkTS-Sta: activateOsAccount(localId: int, displayId: long): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
@@ -335,8 +335,8 @@ ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -422,8 +422,8 @@ ArkTS-Sta: isOsAccountActivated(localId: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -508,8 +508,8 @@ ArkTS-Sta: isOsAccountConstraintEnabled(localId: int, constraint: string): Promi
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -595,8 +595,8 @@ ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -673,8 +673,8 @@ ArkTS-Sta: removeOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -772,8 +772,8 @@ ArkTS-Sta: removeOsAccount(localId: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -869,8 +869,8 @@ ArkTS-Sta: removeOsAccount(localId: int, options: RemoveOsAccountOptions): Promi
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or options.   |
@@ -971,8 +971,8 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraints. |
@@ -1065,8 +1065,8 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraints.    |
@@ -1148,8 +1148,8 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCall
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName. |
@@ -1241,8 +1241,8 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName.    |
@@ -1332,8 +1332,8 @@ ArkTS-Sta: setOsAccountType(localId: int, type: OsAccountType, options?: SetOsAc
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
 | 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally.                         |
 | 12300002 | Invalid type or options.                                     |
@@ -1416,7 +1416,7 @@ ArkTS-Sta: queryMaxOsAccountNumber(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
@@ -1490,7 +1490,7 @@ ArkTS-Sta: queryMaxOsAccountNumber(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1560,7 +1560,7 @@ ArkTS-Sta: queryMaxLoggedInOsAccountNumber(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1638,8 +1638,8 @@ ArkTS-Sta: getEnabledOsAccountConstraints(localId: int): Promise&lt;Array&lt;str
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -1715,8 +1715,8 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
@@ -1790,8 +1790,8 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1863,8 +1863,8 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName or type. |
@@ -1954,8 +1954,8 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName, type or options. |
@@ -2047,10 +2047,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or domainInfo. |
 | 12300004 | Account already exists. |
@@ -2143,10 +2143,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type, domainInfo or options. |
 | 12300004 | Account already exists. |
@@ -2235,8 +2235,8 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2309,8 +2309,8 @@ ArkTS-Sta: queryOsAccountById(localId: int, callback: AsyncCallback&lt;OsAccount
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -2398,8 +2398,8 @@ ArkTS-Sta: queryOsAccountById(localId: int): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
@@ -2479,8 +2479,8 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int, callback: AsyncCallback&lt;str
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -2568,8 +2568,8 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -2650,8 +2650,8 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string, callback: Async
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
@@ -2749,8 +2749,8 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;voi
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
@@ -2840,8 +2840,8 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
@@ -2898,8 +2898,8 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
@@ -2957,8 +2957,8 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3015,8 +3015,8 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3068,8 +3068,8 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3126,8 +3126,8 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3172,7 +3172,7 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | One or more constraints are invalid. |
 
@@ -3221,7 +3221,7 @@ offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3280,7 +3280,7 @@ ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
@@ -3364,7 +3364,7 @@ ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
@@ -3444,7 +3444,7 @@ ArkTS-Sta: getBundleIdForUidSync(uid: int): int
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002 | Invalid uid. |
 
@@ -3513,8 +3513,8 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3565,8 +3565,8 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3617,8 +3617,8 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3670,8 +3670,8 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3722,8 +3722,8 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3773,8 +3773,8 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3821,8 +3821,8 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3872,8 +3872,8 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3919,8 +3919,8 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
@@ -3994,8 +3994,8 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -4074,8 +4074,8 @@ ArkTS-Sta: getForegroundOsAccountLocalId(displayId: long): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300017 | The foreground OS account is not found. |
 
@@ -4155,8 +4155,8 @@ ArkTS-Sta: getForegroundOsAccountDisplayId(localId: int): Promise&lt;long&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300017 | The foreground OS account is not found. |
 
@@ -4232,8 +4232,8 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, c
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
@@ -4320,8 +4320,8 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): 
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
@@ -4404,8 +4404,8 @@ ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -4488,9 +4488,9 @@ ArkTS-Sta: bindDomainAccount(localId: int, domainAccountInfo: DomainAccountInfo)
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domain account information. |
 | 12300003 | The OS account not found. |
@@ -4571,7 +4571,7 @@ getAuthorizationManager(): AuthorizationManager
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -4630,8 +4630,8 @@ acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): 
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege or options. |
 
@@ -4693,7 +4693,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege. |
 
@@ -4752,7 +4752,7 @@ releaseAuthorization(privilege: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege. |
 
@@ -4869,7 +4869,7 @@ getOsAccountSubProfileManager(): OsAccountSubProfileManager
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -4937,8 +4937,8 @@ ArkTS-Sta: createOsAccountSubProfile(osAccountLocalId: int): Promise&lt;OsAccoun
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | The OS account not found. |
 | 12300008 | Restricted OS account. |
@@ -5026,8 +5026,8 @@ ArkTS-Sta: deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): 
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
 | 12300401 | Sub-profile not found. |
@@ -5117,8 +5117,8 @@ ArkTS-Sta: switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): 
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
 | 12300401 | Sub-profile not found. |
@@ -5198,7 +5198,7 @@ onOsAccountSubProfileEvent(events: OsAccountSubProfileEvent[], callback: Callbac
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid event. |
 
@@ -5268,7 +5268,7 @@ offOsAccountSubProfileEvent(callback?: Callback&lt;OsAccountSubProfileEventData&
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 
 **示例：**
@@ -5333,7 +5333,7 @@ ArkTS-Sta: getOsAccountForegroundSubProfileId(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -5413,7 +5413,7 @@ ArkTS-Sta: getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise&lt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | OS account not found. |
 | 12300401 | The foreground sub-profile not found. |
@@ -5492,8 +5492,8 @@ ArkTS-Sta: getOsAccountSubProfileIds(): Promise&lt;int[]&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 
 **示例：**
@@ -5574,8 +5574,8 @@ ArkTS-Sta: getOsAccountSubProfileIds(osAccountLocalId: int): Promise&lt;int[]&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | OS account not found. |
 
@@ -5659,8 +5659,8 @@ ArkTS-Sta: getOsAccountSubProfile(subProfileId: int): Promise&lt;OsAccountSubPro
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -5745,8 +5745,8 @@ ArkTS-Sta: getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Pro
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -5830,7 +5830,7 @@ ArkTS-Sta: getOsAccountLocalIdForSubProfile(subProfileId: int): Promise&lt;int&g
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300401 | Sub-profile not found. |
 
@@ -5902,7 +5902,7 @@ constructor()
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
   ```ts
@@ -5937,7 +5937,7 @@ ArkTS-Sta: getVersion(): int
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -5998,8 +5998,8 @@ ArkTS-Sta: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
@@ -6070,8 +6070,8 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -6171,8 +6171,8 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -6270,8 +6270,8 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
 | 12300020 | Device hardware abnormal. |
@@ -6386,8 +6386,8 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
@@ -6478,8 +6478,8 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
@@ -6567,8 +6567,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -6665,8 +6665,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -6772,8 +6772,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -6888,8 +6888,8 @@ ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, auth
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -6988,8 +6988,8 @@ cancelAuth(contextID: Uint8Array): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------ |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid contextId. |
@@ -7066,7 +7066,7 @@ constructor()
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -7102,8 +7102,8 @@ registerInputer(inputer: IInputer): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid inputer. |
@@ -7152,8 +7152,8 @@ unregisterInputer(): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -7195,8 +7195,8 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or inputer. |
@@ -7252,8 +7252,8 @@ static unregisterInputer(authType: AuthType): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002  | Invalid authType. |
 
@@ -8528,9 +8528,9 @@ static registerPlugin(plugin: DomainPlugin): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300201 | The domain plugin has been registered. |
 
 **示例：**
@@ -8620,9 +8620,9 @@ static unregisterPlugin(): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 
 **示例：**
 
@@ -8679,10 +8679,10 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
 | 12300003 | Domain account does not exist. |
@@ -8771,9 +8771,9 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: Doma
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
 | 12300003 | Domain account does not exist. |
@@ -8876,8 +8876,8 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | No domain account is bound. |
 | 12300013 | Network exception. |
@@ -8959,8 +8959,8 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
 | 12300003 | No domain account is bound. |
@@ -9037,10 +9037,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
 | 12300013 | Network exception. |
@@ -9131,10 +9131,10 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
 | 12300013 | Network exception. |
@@ -9218,8 +9218,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
@@ -9312,8 +9312,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
@@ -9397,10 +9397,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300013 | Network exception. |
@@ -9493,10 +9493,10 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300013 | Network exception. |
@@ -9581,8 +9581,8 @@ getAccessToken(businessParams: Record&lt;string, Object&gt;, callback: AsyncCall
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -9646,8 +9646,8 @@ getAccessToken(businessParams: Record&lt;string, RecordData&gt;, callback: Async
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -9717,8 +9717,8 @@ getAccessToken(businessParams: Record&lt;string, Object&gt;): Promise&lt;Uint8Ar
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -9785,8 +9785,8 @@ getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uin
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -9855,10 +9855,10 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Domain account not found. |
 
@@ -9929,7 +9929,7 @@ constructor()
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -9965,8 +9965,8 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
@@ -10048,8 +10048,8 @@ ArkTS-Sta: openSession(accountId?: int): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -10124,8 +10124,8 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -10245,8 +10245,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -10389,8 +10389,8 @@ ArkTS-Sta: closeSession(accountId?: int): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
@@ -10432,8 +10432,8 @@ cancel(challenge: Uint8Array): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge. |
@@ -10494,8 +10494,8 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息        |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300101 | The token is invalid. |
@@ -10568,8 +10568,8 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialId. |
@@ -10644,8 +10644,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300020 | Device hardware abnormal. |
 
@@ -10720,8 +10720,8 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300020 | Device hardware abnormal. |
@@ -10804,8 +10804,8 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300020 | Device hardware abnormal. |
@@ -10883,8 +10883,8 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
@@ -10974,8 +10974,8 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
@@ -11055,8 +11055,8 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;Credentia
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | One or more credential types are invalid. |
 | 12300106 | One or more credential types are not supported. |
@@ -11114,8 +11114,8 @@ offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -11186,7 +11186,7 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300002 | Invalid pinSubType. |
 
