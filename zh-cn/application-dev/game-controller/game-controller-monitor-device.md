@@ -147,6 +147,7 @@ GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {
 }
 
 std::string DeviceApi::GetDeviceInfoStringForPrint(GameDevice_DeviceInfo *deviceInfo) {
+    // 获取设备信息
     std::string log;
     char *deviceId = NULL;
     OH_GameDevice_DeviceInfo_GetDeviceId(deviceInfo, &deviceId);

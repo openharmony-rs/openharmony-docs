@@ -155,9 +155,8 @@ void GamePad::LeftThumbstick_OnAxisEvent(const struct GamePad_AxisEvent *axisEve
 | Dpad_LeftButton | 2014 | 
 | Dpad_RightButton | 2015 | 
 
->说明：
->
->非标准按键的按键值请参见[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)。
+> **说明：**<br/>
+> 非标准按键的按键值请参见[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)。
 
 以LeftShoulder按键事件为例。
 
