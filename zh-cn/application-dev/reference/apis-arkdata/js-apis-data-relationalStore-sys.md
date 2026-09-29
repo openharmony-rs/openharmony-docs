@@ -1513,6 +1513,66 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
 }
 ```
 
+### requestFullDataDonation
+
+requestFullDataDonation(tables: Array&lt;string&gt;): Promise&lt;void&gt;
+
+请求指定分布式表的全量数据捐赠，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名      | 类型                              | 必填  | 说明              |
+| -------- | ----------------------------------- | --- |-----------------|
+| tables   | Array&lt;string&gt;                 | 是   | 需要全量捐赠的分布式表名列表，列表最大长度为20且不为空。  |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed. A non-system application calls a system API.|
+| 14800001     | Invalid arguments. Parameter out of range or empty table list.  |
+| 14800014     | The target instance is already closed.                            |
+| 14800043     | The database does not support this scenario.|
+
+**示例：**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+
+async function requestFullDataDonationExample() 
+{
+  if (store === null) {
+    console.error('RdbStore is null.');
+    return;
+  }
+  try {
+    const tables: Array<string> = ['EMPLOYEE'];
+    await store.requestFullDataDonation(tables);
+    console.info('Full data donation request submitted successfully.');
+  } catch (e) {
+    console.error(`Failed to request full data donation, code: ${e.code}`);
+  }
+}
+```
+
 ## cleanDeviceDirtyData
 
 ArkTS-Dyn: cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;

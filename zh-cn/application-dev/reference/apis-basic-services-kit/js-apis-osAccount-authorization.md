@@ -80,7 +80,7 @@ requestAuthorization(privilege: Privilege, context: UIAbilityContext): Promise&l
 | 参数名    | 类型                                                | 必填 | 说明                                                             |
 | --------- | --------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | privilege | [Privilege](#privilege)                             | 是   | 目标特权。      |
-| context   | [UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 承载授权弹窗的UIAbility上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 承载授权弹窗的UIAbility上下文。 |
 
 **返回值：**
 
@@ -238,6 +238,7 @@ try {
 | 名称                             | 值                                            | 说明                 |
 | -------------------------------- | --------------------------------------------- | -------------------- |
 | PRIVILEGE_OPERATE_RAW_NET_PACKETS | 'ohos.privilege.operate_raw_net_packets' | 操作原始网络包的特权。 |
+| PRIVILEGE_MONITOR_RAW_USB_PACKETS | 'ohos.privilege.monitor_raw_usb_packets' | 监听USB数据包的特权。 |
 
 ## AuthorizationResultCode
 

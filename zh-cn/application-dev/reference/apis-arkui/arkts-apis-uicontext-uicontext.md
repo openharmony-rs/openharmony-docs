@@ -4261,7 +4261,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 | 参数名  | 类型                                     | 必填 | 说明        |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| context | common.[UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| common.[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) | 是    | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)所对应的上下文环境。 |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| common.[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)所对应的上下文环境。 |
 
 **返回值：**
 

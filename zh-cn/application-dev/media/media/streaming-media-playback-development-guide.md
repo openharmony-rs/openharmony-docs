@@ -49,7 +49,7 @@
    > - 使用支持的播放格式和协议。
    > 
 
-4. 设置窗口：获取并设置SurfaceID属性，用于配置显示画面。
+4. 设置窗口：获取并设置surfaceID属性，用于配置显示画面。
 
    应用从XComponent组件获取surfaceID，获取方式请参考[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)。
 
@@ -75,7 +75,7 @@
 
 ``` TypeScript
 this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
 })
 ```
 
@@ -84,7 +84,7 @@ ArkTS-Sta:
 
 ``` TypeScript
 this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int) => {
-  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}`);
 })
 ```
 
@@ -171,7 +171,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
          }
        }
      } else {
-       console.error(`getTrackDescription fail, error:${error}`);
+       console.error(`getTrackDescription failed, error:${error}`);
      }
    });
    ```

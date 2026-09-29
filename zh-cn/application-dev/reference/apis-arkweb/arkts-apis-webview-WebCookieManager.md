@@ -20,7 +20,7 @@ WebCookieManager是Web组件的cookie管理器，提供对Web组件中cookie的�
 >
 > - 示例效果请以真机运行为准。
 >
-> - 静态方法必须在用户界面（UI）线程上使用。
+> - 默认情况下，静态方法必须在用户界面（UI）线程上使用。从API版本26.0.1开始，调用[setLazyInitializeWebEngine](#setlazyinitializewebengine22)设置为true后，静态方法支持在非用户界面（UI）线程使用。
 
 ## 导入模块
 

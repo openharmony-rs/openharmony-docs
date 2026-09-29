@@ -203,7 +203,7 @@ type CustomData = _CustomData.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CustomData (自定义数据)](js-apis-inner-application-customData-sys.md#customdata).default | 表示自定义数据。 |
+| [_CustomData](js-apis-inner-application-customData-sys.md#customdata).default | 表示自定义数据。 |
 
 ## CustomData<sup>23+</sup>
 
@@ -223,7 +223,7 @@ type CustomData = _CustomData
 
 | 类型                                                                  | 说明             |
 | --------------------------------------------------------------------- | ---------------- |
-| [_CustomData (自定义数据)](js-apis-inner-application-customData-sys.md#customdata) | 表示自定义数据。 |
+| [_CustomData](js-apis-inner-application-customData-sys.md#customdata) | 表示自定义数据。 |
 
 ## AutoFillPopupConfig<sup>12+</sup>
 

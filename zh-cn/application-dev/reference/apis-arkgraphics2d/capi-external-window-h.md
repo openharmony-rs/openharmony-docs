@@ -133,7 +133,7 @@ OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 | SET_HDR_WHITE_POINT_BRIGHTNESS | 设置HDR白点亮度，函数中的可变参数是[输入] float brightness。取值范围为[0.0f, 1.0f]。<br/>**起始版本：** 12 |
 | SET_SDR_WHITE_POINT_BRIGHTNESS | 设置SDR白点亮度，函数中的可变参数是[输入] float brightness。取值范围为[0.0f, 1.0f]。<br/>**起始版本：** 12 |
 | SET_DESIRED_PRESENT_TIMESTAMP = 24 | 设置本地窗口缓冲区期望上屏时间的时间戳。<br/> 当且仅当RenderService为本地窗口的消费者时，该时间戳生效<br/>本操作执行后需要配合调用[OH_NativeWindow_NativeWindowFlushBuffer](#oh_nativewindow_nativewindowflushbuffer)生效。<br/>生产者下一次放入队列的buffer，达到该期望上屏时间后，才会被RenderService消费并上屏。<br/>如果buffer队列中存在多个生产者放入的buffer，都设置了desiredPresentTimestamp并已达到期望上屏时间，则较早入队的buffer将被消费者丢弃回队列。<br/>如果期望上屏时间大于消费者提供的时间 1 秒以上，则该期望上屏时间戳将被忽略。<br/> 函数中的可变参数是[输入] int64_t desiredPresentTimestamp，取值范围大于0，应由std::chrono::steady_clock标准库时钟生成，且单位为纳秒。<br/>**起始版本：** 13 |
-| OH_NATIVEWINDOW_SET_DMABUFFER_NAME = 25 | 设置DMA buffer名称。通过该操作码设置名称后，后续通过[OH_NativeWindow_NativeWindowRequestBuffer](#oh_nativewindow_nativewindowrequestbuffer)申请的buffer会使用该名称，名称会记录在内核DMA-BUF信息中，用于在内存泄漏排查中定位buffer的来源。<br/>DMA buffer（Direct Memory Access buffer，直接内存访问缓冲区）是允许多进程、多硬件之间共享访问的内存，OHNativeWindowBuffer对应的图形缓冲区底层基于内核DMA-BUF机制分配。<br/> 函数中的可变参数是[输入] const char* name，必须以字母开头，仅包含字母与数字，且长度不超过64字节。<br/>**起始版本：** 26.0.1 |
+| OH_NATIVEWINDOW_SET_DMABUFFER_NAME = 25 | 设置DMA buffer名称。通过该操作码设置名称后，后续通过[OH_NativeWindow_NativeWindowRequestBuffer](#oh_nativewindow_nativewindowrequestbuffer)申请的buffer会使用该名称，名称会记录在内核DMA-BUF信息中，用于在内存泄漏排查中定位buffer的来源。<br/>DMA buffer（Direct Memory Access buffer，直接内存访问缓冲区）是允许多进程、多硬件之间共享访问的内存，OHNativeWindowBuffer对应的图形缓冲区底层基于内核DMA-BUF机制分配。<br/> 函数中的可变参数是[输入] const char* name，必须以字母开头，仅包含字母与数字，且长度不超过64字节，<!--RP1-->开发板<!--RP1End-->最大支持31字节。<br/>**起始版本：** 26.0.1 |
 
 ### OHScalingMode
 
@@ -180,7 +180,7 @@ enum OHScalingModeV2
 | OH_SCALING_MODE_SCALE_TO_WINDOW_V2 | 缓冲区进行拉伸缩放以匹配窗口大小。 |
 | OH_SCALING_MODE_SCALE_CROP_V2 | 缓冲区按原比例缩放，使得缓冲区的较小边与窗口匹配，较长边超出窗口部分被视为透明。 |
 | OH_SCALING_MODE_NO_SCALE_CROP_V2 | 按窗口大小将缓冲区裁剪，裁剪矩形之外的像素被视为完全透明。 |
-| OH_SCALING_MODE_SCALE_FIT_V2 | 缓冲区按原比例缩放。优先显示所有缓冲区内容。如果比例与窗口比例不同，用背景颜色填充窗口的未填充区域。<br><!--Del-->开发板和<!--DelEnd-->模拟器不支持该模式。 |
+| OH_SCALING_MODE_SCALE_FIT_V2 | 缓冲区按原比例缩放。优先显示所有缓冲区内容。如果比例与窗口比例不同，用背景颜色填充窗口的未填充区域。<!--RP1-->开发板<!--RP1End-->不支持该模式。 |
 
 ### OHHDRMetadataKey
 

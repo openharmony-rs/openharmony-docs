@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -293,7 +293,7 @@
 > 
 > 应用默认只能接收自身应用的skill变化事件。
 > 
-> 申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限后能接收自身应用和其他应用的skill变化事件。
+> 申请ohos.permission.MANAGE_SKILL权限后能接收自身应用和其他应用的skill变化事件。
 
 **起始版本：** 26.0.0
 

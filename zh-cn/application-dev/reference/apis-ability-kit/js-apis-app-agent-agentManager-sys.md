@@ -41,7 +41,7 @@ getAllAgentCards(): Promise\<Array\<AgentCard>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<Array<[AgentCard (Agent卡片)](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回设备上所有的AgentCard数组。 |
+| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回设备上所有的AgentCard数组。 |
 
 **错误码：**
 
@@ -92,7 +92,7 @@ getAgentCardsByBundleName(bundleName: string): Promise\<Array\<AgentCard>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<Array<[AgentCard (Agent卡片)](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回指定bundleName内的所有AgentCard数组。 |
+| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回指定bundleName内的所有AgentCard数组。 |
 
 **错误码：**
 
@@ -147,7 +147,7 @@ getAgentCardByAgentId(bundleName: string, agentId: string): Promise\<AgentCard>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[AgentCard (Agent卡片)](./js-apis-inner-application-AgentCard.md#agentcard)> | Promise对象，返回指定的AgentCard。 |
+| Promise<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)> | Promise对象，返回指定的AgentCard。 |
 
 **错误码：**
 
@@ -602,7 +602,7 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 参数名    | 类型                                              | 必填 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ------------ |
-| agentCard | [AgentCard (Agent卡片)](./js-apis-inner-application-AgentCard.md#agentcard) | 是   | 要注册的AgentCard信息。 |
+| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard) | 是 | 要注册的AgentCard信息。 |
 
 **返回值：**
 
@@ -688,7 +688,7 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 参数名    | 类型                                              | 必填 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ------------ |
-| agentCard | [AgentCard (Agent卡片)](./js-apis-inner-application-AgentCard.md#agentcard) | 是   | 要更新的AgentCard信息。 |
+| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard) | 是 | 要更新的AgentCard信息。 |
 
 **返回值：**
 
