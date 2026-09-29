@@ -47,8 +47,8 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include "hilog/log.h"
-// ...
 
+// ...
 
 // OH_JSVM_GetValueUint32的样例方法
 static JSVM_Value GetValueUint32(JSVM_Env env, JSVM_CallbackInfo info)
@@ -80,7 +80,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueUint32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// 样例测试js
+// 样例测试JS
 const char* SRC_CALL_NATIVE = R"JS(getValueUint32(123))JS";
 ```
 
@@ -156,8 +156,8 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include "hilog/log.h"
-// ...
 
+// ...
 
 // OH_JSVM_GetValueInt64的样例方法
 static JSVM_Value GetValueInt64(JSVM_Env env, JSVM_CallbackInfo info)
@@ -187,7 +187,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueInt64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// 样例测试js
+// 样例测试JS
 const char* SRC_CALL_NATIVE = R"JS(getValueInt64(-123))JS";
 ```
 
@@ -260,8 +260,8 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include "hilog/log.h"
-// ...
 
+// ...
 
 // OH_JSVM_CreateInt32的样例方法
 static JSVM_Value CreateInt32(JSVM_Env env, JSVM_CallbackInfo info)
@@ -290,7 +290,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createInt32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// 样例测试js
+// 样例测试JS
 const char* SRC_CALL_NATIVE = R"JS(createInt32())JS";
 ```
 
@@ -312,11 +312,11 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include "hilog/log.h"
+
 // ...
 
-
 // OH_JSVM_CreateUint32的样例方法
-static JSVM_Value CreateUInt32(JSVM_Env env, JSVM_CallbackInfo info)
+static JSVM_Value CreateUint32(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 如果使用
     // uint32_t类型来定义-26，会发生溢出，溢出时会对结果进行模运算，将负数的二进制补码转换为相应的正数。-26输出4294967270
@@ -327,27 +327,27 @@ static JSVM_Value CreateUInt32(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_CreateUint32(env, value, &result);
     if (status != JSVM_OK) {
-        OH_LOG_ERROR(LOG_APP, "JSVM CreateUInt32 fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateUint32 fail");
     } else {
         uint32_t number = 0;
         OH_JSVM_GetValueUint32(env, result, &number);
-        OH_LOG_INFO(LOG_APP, "JSVM CreateUInt32 success: %{public}u", number);
+        OH_LOG_INFO(LOG_APP, "JSVM CreateUint32 success: %{public}u", number);
     }
     return result;
 }
 
-// CreateUInt32注册回调
+// CreateUint32注册回调
 static JSVM_CallbackStruct param[] = {
-    {.data = nullptr, .callback = CreateUInt32},
+    {.data = nullptr, .callback = CreateUint32},
 };
 static JSVM_CallbackStruct *method = param;
-// CreateUInt32方法别名，供JS调用
+// CreateUint32方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"createUInt32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createUint32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// 样例测试js
-const char* SRC_CALL_NATIVE = R"JS(createUInt32())JS";
+// 样例测试JS
+const char* SRC_CALL_NATIVE = R"JS(createUint32())JS";
 ```
 
 预期的输出结果：
@@ -368,8 +368,8 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include "hilog/log.h"
-// ...
 
+// ...
 
 // OH_JSVM_CreateInt64的样例方法
 static JSVM_Value CreateInt64(JSVM_Env env, JSVM_CallbackInfo info)
@@ -400,7 +400,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createInt64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// 样例测试js
+// 样例测试JS
 const char* SRC_CALL_NATIVE = R"JS(createInt64())JS";
 ```
 
@@ -422,8 +422,8 @@ cpp部分代码：
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include "hilog/log.h"
-// ...
 
+// ...
 
 // OH_JSVM_CreateDouble的样例方法
 static JSVM_Value CreateDouble(JSVM_Env env, JSVM_CallbackInfo info)
@@ -451,7 +451,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createDouble", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-// 样例测试js
+// 样例测试JS
 const char* SRC_CALL_NATIVE = R"JS(createDouble())JS";
 ```
 

@@ -187,7 +187,7 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM IsDetachedArraybuffer: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: success");
-        OH_LOG_INFO(LOG_APP, "JSVM IsArrayBuffer: %{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: %{public}d", result);
     }
     JSVM_Value isDetached = nullptr;
     OH_JSVM_GetBoolean(env, result, &isDetached);
