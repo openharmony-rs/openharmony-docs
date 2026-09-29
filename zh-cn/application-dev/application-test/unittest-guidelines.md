@@ -1318,6 +1318,35 @@ export default class TestAbility extends UIAbility {
     Hypium.setData(data);
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
+
+  onDestroy() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    Logger.info(TAG, 'TestAbility onWindowStageCreate');
+    windowStage.loadContent('testability/pages/Index', (err, data) => {
+      if (err.code) {
+        Logger.error(TAG, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      Logger.info(TAG, 'Succeeded in loading the content. Data: %{public}s',
+        JSON.stringify(data) ?? '');
+    });
+  }
+
+  onWindowStageDestroy() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onWindowStageDestroy');
+  }
+
+  onForeground() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onForeground');
+  }
+
+  onBackground() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onBackground');
+  }
+}
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) --> 
