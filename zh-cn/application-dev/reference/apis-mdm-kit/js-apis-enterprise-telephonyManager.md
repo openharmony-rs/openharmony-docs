@@ -251,8 +251,7 @@ addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -324,8 +323,7 @@ removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -393,8 +391,7 @@ getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -456,8 +453,7 @@ getOutgoingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): A
 **示例：**
 
 ```ts
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 try {
   // 设置策略类型为禁用名单
@@ -520,8 +516,7 @@ addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -593,8 +588,7 @@ removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -662,8 +656,7 @@ getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 ```ts
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -725,8 +718,7 @@ getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): A
 **示例：**
 
 ```ts
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 try {
   // 设置策略类型为禁用名单
