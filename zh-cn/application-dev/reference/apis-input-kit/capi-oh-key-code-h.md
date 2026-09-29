@@ -399,7 +399,7 @@ enum Input_KeyCode
 | KEYCODE_XKEY = 3232 | 自定义快捷键<br/>**起始版本：** 26.0.0 |
 | KEYCODE_FINGERPRINT_SLIDE_UP = 3233 | 智控键上滑<br/>**起始版本：** 26.0.0 |
 | KEYCODE_FINGERPRINT_SLIDE_DOWN = 3234 | 智控键下滑<br/>**起始版本：** 26.0.0 |
-| OH_INPUT_KEYCODE_PTZ_CLICK = 3235 | 云台单击键<br/>**起始版本：** 26.0.1 |
+| OH_INPUT_KEYCODE_PTZ_CLICK = 3235 | 云台模式调节键<br/>**起始版本：** 26.0.1 |
 | OH_INPUT_KEYCODE_PTZ_FOCUS_LEFT = 3236 | 云台调焦左调节<br/>**起始版本：** 26.0.1 |
 | OH_INPUT_KEYCODE_PTZ_FOCUS_RIGHT = 3237 | 云台调焦右调节<br/>**起始版本：** 26.0.1 |
 | OH_INPUT_KEYCODE_PTZ_EXPOSURE_LEFT = 3238 | 云台曝光左调节<br/>**起始版本：** 26.0.1 |
