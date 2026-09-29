@@ -31,11 +31,11 @@ import { media } from '@kit.MediaKit';
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。不设置时播放器无播放源，无法播放。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/image-url.png)<br>2. http网络播放：`http://xx`。<br/>3. https网络播放：`https://xx`。<br/>4. HLS网络播放路径：`http://xx`或者`https://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 API权限校验失败](../errorcode-universal.md#201-api权限校验失败)。<br>- 从API版本11开始不支持webm。<br> - 将资源句柄传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
-| fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。不设置时，播放器无播放源，无法播放。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API版本11开始不支持webm。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。不设置时播放器无播放源，无法播放。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/image-url.png)<br>2. http网络播放：`http://xx`。<br/>3. https网络播放：`https://xx`。<br/>4. HLS网络播放路径：`http://xx`或者`https://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API版本11开始不支持webm。<br> - 将资源句柄传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
+| fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。不设置时，播放器无播放源，无法播放。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API版本11开始不支持webm。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。不设置时播放器无播放源，无法播放。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1. 用户需要获取媒体文件的总大小size，（单位为字节Byte），获取不到时设置为-1。<br/>2. 用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3. 用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API版本11开始不支持webm。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
 | surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在prepared、playing、paused或completed/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。 |
-| loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 循环播放属性，默认false，设置为true表示循环播放，动态属性。<br/>只允许在prepared、playing或paused状态下设置。<br/>直播状态下不支持设置本属性。<br/>循环播放行为：设置loop=true时，播放至结尾会跳转至开头重播，触发[endOfStream](#onendofstream9)事件；未设置loop或loop=false时，播放至结尾会触发[stateChange](#onstatechange9)事件上报completed状态。 <br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
+| loop<sup>9+</sup>                                   | boolean                                                      | 否   | 否   | 视频循环播放属性，动态属性。true表示循环播放，false表示不循环播放，默认值为false。<br/>只允许在prepared、playing或paused状态下设置。<br/>直播状态下不支持设置本属性。<br/>循环播放行为：设置loop=true时，播放至结尾会跳转至开头重播，触发[endOfStream](#onendofstream9)事件；未设置loop或loop=false时，播放至结尾会触发[stateChange](#onstatechange9)事件上报completed状态。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。|
 | videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | 否   | 是   | 视频缩放模式，默认VIDEO_SCALE_TYPE_FIT，动态属性。可选值共有三个：VIDEO_SCALE_TYPE_FIT、VIDEO_SCALE_TYPE_FIT_CROP、VIDEO_SCALE_TYPE_SCALED_ASPECT。<br>允许在prepared、playing、paused或completed状态下设置此参数。<br>当需要调整视频显示比例时（如适应不同屏幕尺寸或保持原始比例），也可设置此参数。<br>不设置时使用默认值VIDEO_SCALE_TYPE_FIT。 <br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | 否   | 是   | 音频焦点模型，默认SHARE_MODE，动态属性。<br/>只允许在prepared、playing、paused或completed状态下设置。<br/>在第一次调用[play()](#play9)之前设置， 以便此后中断模式生效。<br/>音频焦点事件：设置audioInterruptMode后，当多个音视频资源同时播放时，会根据音频焦点模型触发[audioInterrupt](#onaudiointerrupt9)事件。 <br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
 | audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | 否   | 是   | 设置音频渲染信息。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。若默认usage不满足需求，则须主动配置[audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)。<br/>只允许在**initialized**状态下设置。<br/>在第一次调用[prepare()](#prepare9)之前设置，以便音频渲染器信息在之后生效。<br/>制约关系：- audioRendererInfo的usage变动时，会导致[audioEffectMode](#属性)恢复为默认值。<br/>- 调用[setLoudnessGain](#setloudnessgain21)前需要设置audioRendererInfo，且usage参数必须是STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE或STREAM_USAGE_AUDIOBOOK。 <br/>**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。|
@@ -1097,7 +1097,7 @@ prepare(callback: AsyncCallback\<void>): void
 
 使用场景：在设置媒体源后、正式播放前调用。如音视频播放器应用在用户点击播放按钮前预加载资源、短视频应用预加载下一个视频以提升切换流畅度。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1432,7 +1432,7 @@ stop(callback: AsyncCallback\<void>): void
 
 使用场景：用户结束播放、切换到新的媒体源、播放完成后重置播放器状态。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1796,7 +1796,7 @@ ArkTS-Sta: getSelectedTracks(): Promise\<Array\<int>>
 
 getSelectedTracks与getTrackDescription的差异：因为getTrackDescription获取所有轨道的完整信息（MediaDescription数组），getSelectedTracks仅获取已选择的轨道索引（数字数组）。所以需要完整轨道信息时使用getTrackDescription，仅需当前选择索引时使用getSelectedTracks。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2052,7 +2052,7 @@ ArkTS-Sta: deselectTrack(index: int): Promise\<void>
 
 deselectTrack与selectTrack的差异：因为selectTrack选择指定轨道播放，deselectTrack取消指定轨道播放（恢复到默认轨道）。所以需要切换到特定轨道时使用selectTrack，需要关闭某个轨道时使用deselectTrack。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
