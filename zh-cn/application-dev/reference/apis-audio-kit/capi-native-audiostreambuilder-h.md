@@ -927,7 +927,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStrea
 
 **描述**
 
-在使用内录（录制设备内部应用的声音）时设置可以录制的音频模式，该模式将决定要录制的音频流类型。此功能仅适用于[AudioStream_Type_Capturer](./capi-native-audiostream-base-h.md#oh_audiostream_type)类型。该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
+在使用内录（录制设备内部应用的声音）时设置可以录制的音频模式，该模式将决定要录制的音频流类型。此功能仅适用于[AUDIOSTREAM_TYPE_CAPTURER](./capi-native-audiostream-base-h.md#oh_audiostream_type)类型。该API最初仅对特定系统应用可用，从API版本26.0.0开始，支持任意应用使用。
 
 **起始版本：** 23
 
