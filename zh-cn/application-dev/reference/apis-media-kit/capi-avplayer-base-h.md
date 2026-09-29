@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 | 
 | -- | -- | -- | 
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | 包含了[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)回调函数指针的集合。<br>应用需通过OH_AVPlayer_SetPlayerCallback方法将此结构体注册到OH_AVPlayer实例中，并处理回调上报的信息，以保证AVPlayer的正常运行。 | 
+| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | 包含了[OH_AVPlayerOnInfo](#oh_avplayeroninfo)和[OH_AVPlayerOnError](#oh_avplayeronerror)回调函数指针的集合。<br>应用需通过OH_AVPlayer_SetPlayerCallback方法将此结构体注册到OH_AVPlayer实例中，并处理回调上报的信息，以保证AVPlayer的正常运行。 |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | 初始化AVPlayer。 | 
 | [OH_AVSeiMessageArray](./capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | SEI消息数组。 | 
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | 音视频播放策略的结构体类型。 |
@@ -38,7 +38,7 @@
 | [AVPlayerState](#avplayerstate) | AVPlayerState | 播放状态。 |
 | [AVPlayerSeekMode](#avplayerseekmode) | AVPlayerSeekMode | 跳转模式。 |
 | [AVPlaybackSpeed](#avplaybackspeed) | AVPlaybackSpeed | 播放速度。 |
-| [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API版本12开始，推荐使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API版本11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)。 |
+| [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API版本12开始，推荐使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API版本11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](#oh_avplayeroninfo)。 |
 | [AVPlayerBufferingType](#avplayerbufferingtype) | AVPlayerBufferingType | 播放缓冲消息类型。 |
 | [AVPlayerTrackSwitchMode](#avplayertrackswitchmode) | AVPlayerTrackSwitchMode | 枚举轨道切换模式。 |
 | [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | 视频输出结果。 |
@@ -49,10 +49,10 @@
 | -- | -- | -- |
 | [typedef void (\*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, int32_t extra)](#oh_avplayeroninfo) | OH_AVPlayerOnInfo | 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。 |
 | [typedef void (\*OH_AVPlayerOnInfoCallback)(OH_AVPlayer \*player, AVPlayerOnInfoType type, OH_AVFormat\* infoBody, void \*userData)](#oh_avplayeroninfocallback) | OH_AVPlayerOnInfoCallback | 收到播放器消息时被调用。如果应用成功设置该回调，则不会回调OH_AVPlayerOnInfo函数。 |
-| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。 |
+| [typedef void (\*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)](#oh_avplayeronerror) | OH_AVPlayerOnError | 在API版本11及以上的版本发生错误时调用。如果应用成功设置OH_AVPlayerOnErrorCallback回调，则不会调用此函数。 |
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | 发生错误时被调用。如果应用成功设置该回调，则不会调用OH_AVPlayerOnError函数。 |
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | 当计算出最大音频电平值时调用。 |
-| [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 用于获取SEI（Supplemental Enhancement Information，补充增强信息）消息的回调处理函数。在订阅SEI消息事件时使用，回调返回详细的SEI信息。 |
+| [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 获取SEI消息的回调。需先通过OH_AVPlayer_EnableSeiMessageReporting接口订阅SEI消息事件，订阅后回调返回SEI信息（含负载类型和负载内容）。适用于获取视频流中的字幕、时间码、元数据等信息。 |
 | [typedef void (\*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmoutputcallback) | OH_AVPlayerPCMOutputCallback | 用于获取音频PCM（Pulse Code Modulation，脉冲编码调制）数据输出的回调处理函数。适用于音频数据分析、可视化等场景。 |
 | [typedef void (\*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmprocessorcallback) | OH_AVPlayerPCMProcessorCallback | 用于获取待进行后处理的音频PCM数据的回调处理函数。AVPlayer需要使用处理后的数据进行音频播放，且处理必须在回调返回前及时完成，否则会阻塞播放。适用于音频实时处理、特效添加等场景。<br> 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。 |
 
@@ -71,7 +71,7 @@
 | const char * OH_PLAYER_BUFFERING_TYPE | 获取缓冲更新消息类型的关键字，对应值类型是[AVPlayerBufferingType](#avplayerbufferingtype)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlayerBufferingType类型。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_BUFFERING_VALUE | 获取缓冲更新消息数值的关键字，对应值类型是int32_t，参见[AVPlayerBufferingType](#avplayerbufferingtype)。<br> 当缓冲更新消息类型是AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_SEEK_POSITION | 获取Seek后播放进度的关键字，对应值类型是int32_t，单位为毫秒（ms）。<br>**起始版本：** 12 |
-| const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字, 对应值类型是[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12 |
+| const char * OH_PLAYER_PLAYBACK_SPEED | 获取播放倍速信息的关键字，对应值类型是[AVPlaybackSpeed](#avplaybackspeed)。<br> 通过该关键字获取信息时，需要先使用int32_t类型变量保存结果，再转换为AVPlaybackSpeed类型。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_PLAYBACK_RATE | 获取有效播放速率的关键字，对应值类型是浮点数。<br>**起始版本：** 20 |
 | const char * OH_PLAYER_BITRATE | 获取比特率信息的关键字，对应值类型是uint32_t，单位为bps。<br>**起始版本：** 12 |
 | const char * OH_PLAYER_CURRENT_POSITION | 获取播放进度信息的关键字，对应值类型是int32_t，单位为毫秒（ms）。<br>**起始版本：** 12 |
@@ -187,7 +187,7 @@ enum AVPlayerOnInfoType
 
 **描述**
 
-OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API版本12开始，推荐使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API版本11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)。
+OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo（已废弃）。<br>从API版本12开始，推荐使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)。不同的OnInfo类型可获取不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br>针对API版本11的开发者，需要使用旧接口。已废弃接口OH_AVPlayerOnInfo的使用方法，参见[OH_AVPlayerOnInfo](#oh_avplayeroninfo)。
 
 **起始版本：** 11
 
@@ -202,7 +202,7 @@ OnInfo类型，用于表示收到的播放器信息类型。<br>可用于OH_AVPl
 | AV_INFO_TYPE_MESSAGE = 6 | 视频开始渲染时返回消息。<br> key为OH_PLAYER_MESSAGE_TYPE：取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。1表示视频开始渲染。 |
 | AV_INFO_TYPE_VOLUME_CHANGE = 7 | 音量改变时返回消息。<br> key为OH_PLAYER_VOLUME：取值类型float。系统通过float传递value，应用需通过float获取。取值范围[0.0, 1.0]。 |
 | AV_INFO_TYPE_RESOLUTION_CHANGE = 8 | 首次获取视频大小或视频大小更新时返回消息。<br> key为OH_PLAYER_VIDEO_WIDTH 或 OH_PLAYER_VIDEO_HEIGHT：取值类型int32_t，单位为像素。系统通过int32_t传递value，应用需通过int32_t获取。 |
-| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | 返回多队列缓冲时间。<br>key为OH_PLAYER_BUFFERING_TYPE：取值类型为[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。系统通过int32_t传递value，应用需先通过int32_t获取，再强制转为[AVPlayerBufferingType](capi-avplayer-base-h.md#avplayerbufferingtype)。<br>key为OH_PLAYER_BUFFERING_VALUE：取值类型为int32_t。系统通过int32_t传递value，应用需通过int32_t获取。<br>仅当缓冲更新消息类型为AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效，分别表示缓冲进度完成百分比、缓冲数据可播放时长，单位为毫秒（ms）。|
+| AV_INFO_TYPE_BUFFERING_UPDATE = 9 | 返回多队列缓冲时间。<br>key为OH_PLAYER_BUFFERING_TYPE：取值类型为[AVPlayerBufferingType](#avplayerbufferingtype)。系统通过int32_t传递value，应用需先通过int32_t获取，再强制转为[AVPlayerBufferingType](#avplayerbufferingtype)。<br>key为OH_PLAYER_BUFFERING_VALUE：取值类型为int32_t。系统通过int32_t传递value，应用需通过int32_t获取。<br>仅当缓冲更新消息类型为AVPLAYER_BUFFERING_PERCENT、AVPLAYER_BUFFERING_CACHED_DURATION时有效，分别表示缓冲进度完成百分比、缓冲数据可播放时长，单位为毫秒（ms）。 |
 | AV_INFO_TYPE_BITRATE_COLLECT = 10 | 上报HLS（HTTP Live Streaming）视频比特率列表消息。<br>key为OH_PLAYER_BITRATE_ARRAY：取值类型为uint8_t字节数组。<br>应用需先使用uint8_t类型指针变量保存比特率列表，使用size_t类型变量保存字节数组长度；然后分配若干个uint32_t类型的存储空间，将uint8_t字节数组转换为uint32_t类型比特率整数值。 |
 | AV_INFO_TYPE_INTERRUPT_EVENT = 11 | 音频焦点改变时返回消息。<br> 取值类型int32_t。系统通过int32_t传递value，应用需通过int32_t获取。<br> key为：<br> OH_PLAYER_AUDIO_INTERRUPT_TYPE：取值1表示中断事件开始；2表示结束。<br> OH_PLAYER_AUDIO_INTERRUPT_FORCE：取值0表示强制打断，系统改变音频播放状态；1表示共享打断，应用改变音频播放状态。<br> OH_PLAYER_AUDIO_INTERRUPT_HINT：取值0表示NONE，无提示；1表示RESUME，提示音频恢复；2表示PAUSE，提示音频暂停暂时失去焦点；3表示STOP，提示音频停止；4表示DUCK，音频降低音量；5表示UNDUCK，音频恢复音量。 |
 | AV_INFO_TYPE_DURATION_UPDATE = 12 | 返回播放时长。<br> key为OH_PLAYER_DURATION：取值类型int64_t。系统通过int64_t传递value，应用需通过int64_t获取。 |
@@ -281,6 +281,8 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 收到播放器消息时调用。如果应用成功设置OH_AVPlayerOnInfoCallback回调，则不会回调此函数。
 
+使用场景：在播放器应用中，用于监听并处理播放器状态变化、播放进度更新、缓冲状态等信息。常用于音乐播放器的状态显示、视频播放器的进度条更新、直播播放器的缓冲提示等场景。
+
 > 说明：
 >
 > 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)替代。
@@ -298,7 +300,7 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 | AV_INFO_TYPE_MESSAGE | 视频开始渲染时返回消息，extra表示视频首帧渲染。 | 
 | AV_INFO_TYPE_VOLUME_CHANGE | 音量改变时返回消息，此场景下extra未定义。 | 
 | AV_INFO_TYPE_RESOLUTION_CHANGE | 首次获取视频大小或视频大小更新时返回消息，此场景下extra未定义。 | 
-| AV_INFO_TYPE_BUFFERING_UPDATE | 返回缓冲更新消息。此场景下extra表示缓冲相关数据，建议使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)获取详细的缓冲信息。 | 
+| AV_INFO_TYPE_BUFFERING_UPDATE | 返回缓冲更新消息。此场景下extra表示缓冲相关数据，建议使用[OH_AVPlayerOnInfoCallback](#oh_avplayeroninfocallback)获取详细的缓冲信息。 | 
 | AV_INFO_TYPE_BITRATE_COLLECT  | 上报HLS视频比特率列表消息。上报时每个比特率已经转化为uint8_t字节数组，使用者需要将uint8_t字节数组强制转换为uint32_t整型数组。   | 
 | AV_INFO_TYPE_INTERRUPT_EVENT | 音频焦点改变时返回消息，extra表示音频打断提示，具体请参见[OH_AudioInterrupt_Hint](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)，应用可决定是否根据打断提示作进一步处理。 | 
 | AV_INFO_TYPE_DURATION_UPDATE | 返回播放时长，extra表示视频时长。 | 
@@ -340,7 +342,7 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 | 
 | [AVPlayerOnInfoType](#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](#avplayeroninfotype)。 | 
-| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 | 
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |
 | void *userData | 原样返回用户设置回调时传入的userData数据。 |
 
 ### OH_AVPlayerOnError()
@@ -351,11 +353,11 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 **描述**
 
-在API版本9及以上的版本发生错误时调用。如果应用成功设置OH_AVPlayerOnErrorCallback回调，则不会调用此函数。
+在API版本11及以上的版本发生错误时调用。如果应用成功设置OH_AVPlayerOnErrorCallback回调，则不会调用此函数。
 
-> 说明：
->
-> 从API版本11开始支持，从API版本12开始废弃，建议使用[OH_AVPlayerOnErrorCallback](#oh_avplayeronerrorcallback)替代。
+使用场景：在播放器应用中，用于监听并处理播放过程中发生的各类错误。常用于音乐播放器的错误提示、视频播放器的播放失败处理、直播应用的连接异常处理等场景，帮助应用根据错误类型进行相应处理。
+
+**起始版本：** 11
 
 **废弃版本：** 12
 
@@ -387,7 +389,7 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 | 
 | int32_t errorCode | 错误码。<br>AV_ERR_NO_MEMORY：无内存，取值为1。可能原因：系统内存不足。处理方法：释放不必要的资源后重试。<br>AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。可能原因：当前状态下不允许执行该操作。处理方法：检查当前状态，在合适的状态下执行操作。<br>AV_ERR_INVALID_VAL：无效值，取值为3。可能原因：传入的参数值无效。处理方法：检查参数值是否在有效范围内。<br>AV_ERR_IO：IO错误。API版本12-13取值为4；API版本14及以后，对应错误细化为错误码5411001~5411011。可能原因：文件读写失败或网络IO异常。处理方法：检查文件是否存在或网络连接是否正常。<br>AV_ERR_TIMEOUT：超时错误，取值为5。可能原因：操作超时。处理方法：检查网络状况或增大超时时间。<br>AV_ERR_UNKNOWN：未知错误，取值为6。可能原因：发生未知错误。处理方法：查看日志或联系技术支持。<br>AV_ERR_SERVICE_DIED：服务死亡，取值为7。可能原因：媒体服务异常终止。处理方法：重新创建播放器实例。<br>AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。可能原因：在错误的状态下调用了该方法。处理方法：检查播放器当前状态是否支持该操作。<br>AV_ERR_UNSUPPORT：未支持的接口，取值为9。可能原因：调用了不支持的接口。处理方法：检查API版本支持情况。<br>AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。可能原因：扩展错误。处理方法：根据具体错误码进行处理。 |
-| const char \*errorMsg | 错误消息。 | 
+| const char \*errorMsg | 错误消息。 |
 | void \*userData | 原样返回用户设置回调时传入的userData数据。 |
 
 ### OH_AVPlayerOnAmplitudeUpdateCallback()
@@ -400,9 +402,7 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 
 当计算出最大音频电平值时调用。
 
-**使用场景**
-
-在音频播放器应用中，用于实现音频可视化效果（如音量波形显示）、音频录制监听、音频电平指示器等场景。
+使用场景：在音频播放器应用中，用于实现音频可视化效果（如音量波形显示）、音频录制监听、音频电平指示器等场景。
 
 **起始版本：** 23
 
@@ -423,7 +423,7 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 **描述**
 
-用于获取SEI消息的回调处理函数。需先通过OH_AVPlayer_EnableSeiMessageReporting接口订阅SEI消息事件，订阅后回调返回详细的SEI信息（含负载类型和负载内容）。适用于获取视频流中的字幕、时间码、元数据等补充增强信息。
+获取SEI消息的回调。需先通过OH_AVPlayer_EnableSeiMessageReporting接口订阅SEI消息事件，订阅后回调返回SEI信息（含负载类型和负载内容）。适用于获取视频流中的字幕、时间码、元数据等信息。
 
 **使用场景：**
 
@@ -435,9 +435,9 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVSeiMessageArray \*message | SEI消息数组。注意：SEI消息数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
-| int32_t playbackPosition | 播放位置，单位为毫秒。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVSeiMessageArray](./capi-avplayer-oh-avseimessagearray.md) \*message | SEI消息数组。需注意SEI消息数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
+| int32_t playbackPosition | 播放位置，单位为毫秒（ms）。 |
 | void \*userData | 指向用户特定数据的指针。 |
 
 ### OH_AVPlayerPCMOutputCallback()
@@ -461,7 +461,7 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
+| OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放，如有需要需自行拷贝数据以供后续使用。 |
 | void \*userData | 指向用户指定数据的指针。 |
 
 ### OH_AVPlayerPCMProcessorCallback()
@@ -473,6 +473,8 @@ typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer
 **描述**
 
 如果应用成功设置该回调，则AVPlayer需要使用处理后的数据进行音频播放，且处理必须在回调返回前及时完成，否则会阻塞播放。<br> 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。
+
+使用场景：在音频播放应用中，用于实时处理音频PCM数据，如添加音效、变声处理、音频降噪等场景。常用于卡拉OK应用的混响效果、语音通话应用的降噪处理、音乐播放器的均衡器调节等实时音频处理功能。
 
 **起始版本：** 26.0.0
 
