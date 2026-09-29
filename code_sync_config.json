@@ -8545,7 +8545,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorWildcardArray.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":87,
 						"name":"SyncMonitorWildcardArray",
 						"start_line":19
 					}
@@ -8575,7 +8575,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorAccessibility.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"SyncMonitorAccessibility",
 						"start_line":19
 					}
